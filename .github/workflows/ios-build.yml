@@ -7,7 +7,7 @@ name: iOS unsigned build (for Sideloadly)
 # (git wurde dort initialisiert) - daher hier KEIN "mobile/"-Praefix in den
 # working-directory-Pfaden, alles ist relativ zum Checkout-Root.
 on:
-  workflow_dispatch:
+  workflow_dispatch: {}
 
 jobs:
   build:
