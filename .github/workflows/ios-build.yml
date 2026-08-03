@@ -1,0 +1,61 @@
+name: iOS unsigned build (for Sideloadly)
+
+# Manuell auslösen (Actions-Tab -> "Run workflow"), damit nicht bei jedem Push
+# unnötig ein ~15-20 Min. macOS-Build verbraucht wird.
+#
+# Hinweis: dieser Workflow liegt im Repo, dessen Root der Ordner "mobile/" ist
+# (git wurde dort initialisiert) - daher hier KEIN "mobile/"-Praefix in den
+# working-directory-Pfaden, alles ist relativ zum Checkout-Root.
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install JS-Abhaengigkeiten
+        run: npm ci
+
+      - name: Native iOS-Projekt generieren (Continuous Native Generation)
+        run: npx expo prebuild --platform ios --no-install
+
+      - name: CocoaPods installieren
+        working-directory: ios
+        run: pod install
+
+      # Bewusst UNSIGNED gebaut - es werden keine Apple-Zertifikate/Secrets in
+      # der CI gebraucht. Sideloadly signiert die .app anschliessend lokal mit
+      # einer kostenlosen Apple-ID neu und installiert sie aufs iPhone.
+      - name: Unsigned Device-Build
+        working-directory: ios
+        run: |
+          xcodebuild \
+            -workspace mobile.xcworkspace \
+            -scheme mobile \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            ONLY_ACTIVE_ARCH=NO \
+            build
+
+      - name: Als .ipa verpacken
+        working-directory: ios
+        run: |
+          APP_PATH="build/Build/Products/Release-iphoneos/mobile.app"
+          mkdir -p Payload
+          cp -r "$APP_PATH" Payload/
+          zip -r mobile-unsigned.ipa Payload
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mobile-unsigned-ipa
+          path: ios/mobile-unsigned.ipa
+          retention-days: 14
