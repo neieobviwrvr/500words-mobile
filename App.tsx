@@ -2,8 +2,12 @@ import { useState } from 'react';
 import { ActivityIndicator, Button, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
+import { File } from 'expo-file-system';
 import { useWhisper } from './src/features/stt/useWhisper';
 import { useWhisperRecorder } from './src/features/stt/useWhisperRecorder';
+
+// 16kHz, 16-bit, mono => 32000 Bytes pro Sekunde Audio (siehe RecordingOptions).
+const BYTES_PER_SECOND_16K_MONO_16BIT = 32000;
 
 // Reale, bereits hochgeladene Vorleseaufnahme aus dem Supabase-Bucket "vocab_audio"
 // (franzoesisch, Wort "garder") - dient hier nur als Beweis, dass das
@@ -18,6 +22,7 @@ export default function App() {
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [transcript, setTranscript] = useState('');
   const [recordError, setRecordError] = useState<string | null>(null);
+  const [recordingInfo, setRecordingInfo] = useState('');
 
   const ttsPlayer = useAudioPlayer(SAMPLE_TTS_URL);
   const ttsStatus = useAudioPlayerStatus(ttsPlayer);
@@ -40,6 +45,11 @@ export default function App() {
       setRecordError('Keine Aufnahme-Datei erhalten.');
       return;
     }
+
+    const sizeBytes = new File(uri).size ?? 0;
+    const impliedSeconds = sizeBytes / BYTES_PER_SECOND_16K_MONO_16BIT;
+    setRecordingInfo(`Aufnahme-Datei: ${sizeBytes} Bytes (~${impliedSeconds.toFixed(1)}s Audio)`);
+
     setIsTranscribing(true);
     setTranscript('');
     const startedAt = Date.now();
@@ -89,6 +99,7 @@ export default function App() {
         </View>
       )}
 
+      {recordingInfo !== '' && <Text>{recordingInfo}</Text>}
       {recordError && <Text style={styles.error}>{recordError}</Text>}
       {transcript !== '' && <Text style={styles.transcript}>Erkannt: {transcript}</Text>}
     </ScrollView>
