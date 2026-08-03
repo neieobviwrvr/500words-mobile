@@ -15,6 +15,7 @@ export default function App() {
   const whisper = useWhisper();
   const recorder = useWhisperRecorder();
   const [isRecording, setIsRecording] = useState(false);
+  const [isTranscribing, setIsTranscribing] = useState(false);
   const [transcript, setTranscript] = useState('');
   const [recordError, setRecordError] = useState<string | null>(null);
 
@@ -39,11 +40,16 @@ export default function App() {
       setRecordError('Keine Aufnahme-Datei erhalten.');
       return;
     }
+    setIsTranscribing(true);
+    setTranscript('');
+    const startedAt = Date.now();
     try {
       const result = await whisper.transcribe(uri, 'fr');
-      setTranscript(result);
+      setTranscript(`${result}  (${((Date.now() - startedAt) / 1000).toFixed(1)}s)`);
     } catch (e) {
       setRecordError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setIsTranscribing(false);
     }
   }
 
@@ -73,8 +79,15 @@ export default function App() {
       <Button
         title={isRecording ? 'Aufnahme stoppen & transkribieren' : 'Aufnahme starten'}
         onPress={handleRecordPress}
-        disabled={whisper.status !== 'ready'}
+        disabled={whisper.status !== 'ready' || isTranscribing}
       />
+
+      {isTranscribing && (
+        <View style={styles.row}>
+          <ActivityIndicator />
+          <Text>Whisper transkribiert...</Text>
+        </View>
+      )}
 
       {recordError && <Text style={styles.error}>{recordError}</Text>}
       {transcript !== '' && <Text style={styles.transcript}>Erkannt: {transcript}</Text>}
