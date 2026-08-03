@@ -4,6 +4,7 @@
   "main": "index.ts",
   "dependencies": {
     "@supabase/supabase-js": "^2.112.0",
+    "buffer": "^6.0.3",
     "expo": "~57.0.9",
     "expo-audio": "~57.0.3",
     "expo-file-system": "~57.0.1",
