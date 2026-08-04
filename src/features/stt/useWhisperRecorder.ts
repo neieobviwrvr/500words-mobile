@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import {
   AudioModule,
   setAudioModeAsync,
@@ -33,6 +34,32 @@ const whisperRecordingOptions: RecordingOptions = {
 
 export function useWhisperRecorder() {
   const recorder = useAudioRecorder(whisperRecordingOptions);
+  const hasWarmedUp = useRef(false);
+
+  // iOS braucht nach App-Start eine kurze Aufwaermphase, bis das Mikrofon
+  // wirklich Samples liefert - ohne das ist die allererste echte Aufnahme
+  // oft (fast) leer ("[BLANK_AUDIO]"). Einmalig eine stille Kurzaufnahme
+  // im Hintergrund machen, damit die Audio-Session schon aktiv ist, wenn
+  // der Nutzer zum ersten Mal wirklich aufnimmt.
+  useEffect(() => {
+    if (hasWarmedUp.current) return;
+    hasWarmedUp.current = true;
+    (async () => {
+      try {
+        const permission = await AudioModule.requestRecordingPermissionsAsync();
+        if (!permission.granted) return;
+        await setAudioModeAsync({ playsInSilentMode: true, allowsRecording: true });
+        await recorder.prepareToRecordAsync();
+        recorder.record();
+        await new Promise((resolve) => setTimeout(resolve, 300));
+        await recorder.stop();
+      } catch {
+        // Best-effort - falls das Warm-up fehlschlaegt, soll es die App
+        // nicht blockieren, die normale Aufnahme laeuft trotzdem an.
+      }
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   async function start() {
     const permission = await AudioModule.requestRecordingPermissionsAsync();
