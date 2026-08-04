@@ -5,7 +5,6 @@ import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import { File } from 'expo-file-system';
 import { useWhisper } from './src/features/stt/useWhisper';
 import { useWhisperRecorder } from './src/features/stt/useWhisperRecorder';
-import { useVocabAudio } from './src/features/tts/useVocabAudio';
 import { supabase } from './src/lib/supabase';
 
 type SwedishVocabRow = {
@@ -37,7 +36,6 @@ export default function App() {
   const ttsPlayer = useAudioPlayer(SAMPLE_TTS_URL);
   const ttsStatus = useAudioPlayerStatus(ttsPlayer);
 
-  const vocabAudio = useVocabAudio();
   const [swedishWord, setSwedishWord] = useState<SwedishVocabRow | null>(null);
   const [swedishError, setSwedishError] = useState<string | null>(null);
   const [swedishLoading, setSwedishLoading] = useState(false);
@@ -68,11 +66,6 @@ export default function App() {
     } finally {
       setSwedishLoading(false);
     }
-  }
-
-  function playSwedishWord() {
-    if (!swedishWord) return;
-    vocabAudio.play(swedishWord.audio_urls, swedishWord.swedish, 'sv-SE');
   }
 
   async function handleRecordPress() {
@@ -153,22 +146,19 @@ export default function App() {
 
       <View style={styles.spacer} />
 
-      <Text style={styles.heading}>Schwedisch-Test (DB + Geräte-TTS-Fallback)</Text>
+      <Text style={styles.heading}>Schwedisch-Test (nur DB-Abfrage, kein Audio)</Text>
       <Text>
-        audio_urls ist für alle Schwedisch-Wörter noch null, es wird also immer
-        die Geräte-TTS (expo-speech, sv-SE) genutzt - genau der aktuell
-        gewünschte Zustand vor der ElevenLabs-Vertonung.
+        Bewusst ohne Geraete-TTS-Button - isoliert getestet, ob die
+        Supabase-Abfrage allein (ohne expo-speech/zusaetzlichen AudioPlayer)
+        die STT-Aufnahme beeinflusst.
       </Text>
       <Button title="Zufälliges Wort laden" onPress={loadRandomSwedishWord} disabled={swedishLoading} />
       {swedishLoading && <ActivityIndicator />}
       {swedishError && <Text style={styles.error}>{swedishError}</Text>}
       {swedishWord && (
-        <View>
-          <Text style={styles.transcript}>
-            {swedishWord.swedish} ({swedishWord.category}) - {swedishWord.german}
-          </Text>
-          <Button title="Vorlesen" onPress={playSwedishWord} />
-        </View>
+        <Text style={styles.transcript}>
+          {swedishWord.swedish} ({swedishWord.category}) - {swedishWord.german}
+        </Text>
       )}
     </ScrollView>
   );

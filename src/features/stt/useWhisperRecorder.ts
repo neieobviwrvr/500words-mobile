@@ -4,7 +4,6 @@ import {
   useAudioRecorder,
   type RecordingOptions,
 } from 'expo-audio';
-import * as Speech from 'expo-speech';
 
 // whisper.rn's transcribe() braucht 16-bit PCM WAV @ 16kHz mono.
 // Auf iOS liefert linearPCM das direkt. Auf Android unterstuetzt MediaRecorder
@@ -40,18 +39,7 @@ export function useWhisperRecorder() {
     if (!permission.granted) {
       throw new Error('Mikrofon-Berechtigung wurde verweigert.');
     }
-    // expo-speech (Geraete-TTS) und expo-audio teilen sich auf iOS dieselbe
-    // AVAudioSession, koordinieren sich aber nicht automatisch. Vor jeder
-    // Aufnahme laufende Sprachausgabe hart stoppen und die Session explizit
-    // und vollstaendig auf Aufnahme umschalten (doNotMix statt nur die
-    // vorherige Playback-Konfiguration mit allowsRecording zu ueberschreiben).
-    Speech.stop();
-    await setAudioModeAsync({
-      playsInSilentMode: true,
-      allowsRecording: true,
-      interruptionMode: 'doNotMix',
-      shouldRouteThroughEarpiece: false,
-    });
+    await setAudioModeAsync({ playsInSilentMode: true, allowsRecording: true });
     await recorder.prepareToRecordAsync();
     recorder.record();
   }
