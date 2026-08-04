@@ -22,17 +22,30 @@ function normalize(text: string): string {
     .trim();
 }
 
-// Bewusst einfaches Substring-Matching statt echtem Fuzzy-Algorithmus fuer
-// diesen ersten Test - Whisper transkribiert erkannte Woerter meist korrekt
-// buchstabiert, das eigentliche Problem ist Wortlaut/Reihenfolge, nicht
-// Tippfehler. Bei Bedarf spaeter um Levenshtein-Toleranz pro Wort erweitern.
+function tokenize(text: string): string[] {
+  return normalize(text).split(' ').filter(Boolean);
+}
+
+// Wort-basiertes Matching statt zusammenhaengender Substring-Suche: alle
+// Woerter einer Synonym-Phrase muessen im Nutzertext vorkommen, aber egal
+// in welcher Reihenfolge und egal ob dazwischen andere Woerter stehen
+// (z.B. "schmeckt gut" matcht auch bei "schmeckt SEHR gut"). Reine
+// Tippfehler-/Aussprache-Toleranz gibt es hier bewusst noch nicht - das
+// eigentliche Problem in der Praxis war Wortstellung/eingeschobene Woerter,
+// nicht Tippfehler (Whisper transkribiert erkannte Woerter meist korrekt
+// buchstabiert).
+function synonymMatches(userTokens: string[], synonym: string): boolean {
+  const synonymTokens = tokenize(synonym);
+  return synonymTokens.every((token) => userTokens.includes(token));
+}
+
 export function evaluateConcepts(userText: string, accepted: AcceptedConcepts): EvaluationResult {
-  const normalizedUser = normalize(userText);
+  const userTokens = tokenize(userText);
   const matched: string[] = [];
   const missed: string[] = [];
 
   for (const group of accepted.required) {
-    const hit = group.synonyms.some((syn) => normalizedUser.includes(normalize(syn)));
+    const hit = group.synonyms.some((syn) => synonymMatches(userTokens, syn));
     if (hit) {
       matched.push(group.concept);
     } else {
