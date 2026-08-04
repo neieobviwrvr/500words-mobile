@@ -2,10 +2,14 @@ import { useEffect, useRef, useState } from 'react';
 import { Directory, File, Paths } from 'expo-file-system';
 import { initWhisper, type WhisperContext } from 'whisper.rn';
 
-// Multilingual tiny model (nicht ".en") - App muss FR/SV/etc. erkennen, nicht nur Englisch.
-const MODEL_URL = 'https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny.bin';
+// Multilingual base model (nicht ".en") - App muss FR/SV/DE/etc. erkennen,
+// nicht nur Englisch. Umstieg von tiny auf base am 2026-08-04, weil tiny bei
+// selteneren/laengeren Woertern (Einwohnermeldeamt, Kaution, Fieber) zu
+// unzuverlaessig war - Whisper ist ausserdem stark englisch-lastig trainiert,
+// bei Nicht-Englisch-Sprachen hilft ein groesseres Modell ueberproportional.
+const MODEL_URL = 'https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.bin';
 const MODEL_DIR_NAME = 'whisper-models';
-const MODEL_FILE_NAME = 'ggml-tiny.bin';
+const MODEL_FILE_NAME = 'ggml-base.bin';
 
 export type WhisperStatus = 'idle' | 'downloading' | 'initializing' | 'ready' | 'error';
 

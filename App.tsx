@@ -160,7 +160,7 @@ export default function App() {
 
       <View style={styles.spacer} />
 
-      <Text style={styles.heading}>STT-Test (whisper.rn, tiny, on-device)</Text>
+      <Text style={styles.heading}>STT-Test (whisper.rn, base, on-device)</Text>
       {whisper.status !== 'ready' && whisper.status !== 'error' && (
         <View style={styles.row}>
           <ActivityIndicator />
