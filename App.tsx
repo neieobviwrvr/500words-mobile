@@ -5,6 +5,16 @@ import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import { File } from 'expo-file-system';
 import { useWhisper } from './src/features/stt/useWhisper';
 import { useWhisperRecorder } from './src/features/stt/useWhisperRecorder';
+import { useVocabAudio } from './src/features/tts/useVocabAudio';
+import { supabase } from './src/lib/supabase';
+
+type SwedishVocabRow = {
+  id: number;
+  swedish: string;
+  german: string;
+  category: string;
+  audio_urls: unknown;
+};
 
 // 16kHz, 16-bit, mono => 32000 Bytes pro Sekunde Audio (siehe RecordingOptions).
 const BYTES_PER_SECOND_16K_MONO_16BIT = 32000;
@@ -26,6 +36,44 @@ export default function App() {
 
   const ttsPlayer = useAudioPlayer(SAMPLE_TTS_URL);
   const ttsStatus = useAudioPlayerStatus(ttsPlayer);
+
+  const vocabAudio = useVocabAudio();
+  const [swedishWord, setSwedishWord] = useState<SwedishVocabRow | null>(null);
+  const [swedishError, setSwedishError] = useState<string | null>(null);
+  const [swedishLoading, setSwedishLoading] = useState(false);
+
+  async function loadRandomSwedishWord() {
+    setSwedishError(null);
+    setSwedishLoading(true);
+    try {
+      // grober "random pick": Gesamtanzahl holen, zufaelligen Offset lesen -
+      // fuer 500 Zeilen voellig ausreichend, kein echtes ORDER BY random() noetig
+      const { count, error: countError } = await supabase
+        .from('schwedisch_vocab')
+        .select('id', { count: 'exact', head: true });
+      if (countError) throw countError;
+      if (!count) throw new Error('Tabelle schwedisch_vocab ist leer.');
+
+      const offset = Math.floor(Math.random() * count);
+      const { data, error } = await supabase
+        .from('schwedisch_vocab')
+        .select('id, swedish, german, category, audio_urls')
+        .range(offset, offset)
+        .single();
+      if (error) throw error;
+
+      setSwedishWord(data as SwedishVocabRow);
+    } catch (e) {
+      setSwedishError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setSwedishLoading(false);
+    }
+  }
+
+  function playSwedishWord() {
+    if (!swedishWord) return;
+    vocabAudio.play(swedishWord.audio_urls, swedishWord.swedish, 'sv-SE');
+  }
 
   async function handleRecordPress() {
     setRecordError(null);
@@ -102,6 +150,26 @@ export default function App() {
       {recordingInfo !== '' && <Text>{recordingInfo}</Text>}
       {recordError && <Text style={styles.error}>{recordError}</Text>}
       {transcript !== '' && <Text style={styles.transcript}>Erkannt: {transcript}</Text>}
+
+      <View style={styles.spacer} />
+
+      <Text style={styles.heading}>Schwedisch-Test (DB + Geräte-TTS-Fallback)</Text>
+      <Text>
+        audio_urls ist für alle Schwedisch-Wörter noch null, es wird also immer
+        die Geräte-TTS (expo-speech, sv-SE) genutzt - genau der aktuell
+        gewünschte Zustand vor der ElevenLabs-Vertonung.
+      </Text>
+      <Button title="Zufälliges Wort laden" onPress={loadRandomSwedishWord} disabled={swedishLoading} />
+      {swedishLoading && <ActivityIndicator />}
+      {swedishError && <Text style={styles.error}>{swedishError}</Text>}
+      {swedishWord && (
+        <View>
+          <Text style={styles.transcript}>
+            {swedishWord.swedish} ({swedishWord.category}) - {swedishWord.german}
+          </Text>
+          <Button title="Vorlesen" onPress={playSwedishWord} />
+        </View>
+      )}
     </ScrollView>
   );
 }
