@@ -47,12 +47,16 @@ export default function App() {
   const [phrasebookScore, setPhrasebookScore] = useState({ richtig: 0, ueberlebt: 0, total: 0 });
   const [clusters, setClusters] = useState<Record<string, string[]>>({});
 
-  async function loadPhrasebookTest() {
+  async function loadPhrasebookTest(onlyWithClusters: boolean) {
     setPhrasebookError(null);
     setPhrasebookLoading(true);
     try {
+      let query = supabase.from('phrasebook_master').select('id, german, scenario, accepted_concepts');
+      if (onlyWithClusters) {
+        query = query.not('accepted_concepts->verb_cluster', 'is', null);
+      }
       const [sentencesRes, clustersRes] = await Promise.all([
-        supabase.from('phrasebook_master').select('id, german, scenario, accepted_concepts'),
+        query,
         supabase.from('answer_clusters').select('cluster_id, forms'),
       ]);
       if (sentencesRes.error) throw sentencesRes.error;
@@ -205,7 +209,12 @@ export default function App() {
       <Text style={styles.heading}>Phrasebook-Test (10 Sätze, Konzept-Bewertung)</Text>
       <Button
         title="10 zufällige Sätze laden"
-        onPress={loadPhrasebookTest}
+        onPress={() => loadPhrasebookTest(false)}
+        disabled={phrasebookLoading || whisper.status !== 'ready'}
+      />
+      <Button
+        title="10 Sätze MIT Verb-Cluster laden (Richtig/Überlebt testen)"
+        onPress={() => loadPhrasebookTest(true)}
         disabled={phrasebookLoading || whisper.status !== 'ready'}
       />
       {phrasebookLoading && <ActivityIndicator />}
