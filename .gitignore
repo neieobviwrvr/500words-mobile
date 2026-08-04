@@ -3,6 +3,9 @@
 # dependencies
 node_modules/
 
+# lokal heruntergeladene CLI-Binaries (nicht versioniert, siehe README)
+tools/
+
 # Expo
 .expo/
 dist/
