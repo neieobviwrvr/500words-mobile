@@ -5,9 +5,18 @@ import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import { File } from 'expo-file-system';
 import { useWhisper } from './src/features/stt/useWhisper';
 import { useWhisperRecorder } from './src/features/stt/useWhisperRecorder';
+import { supabase } from './src/lib/supabase';
+import { evaluateConcepts, type AcceptedConcepts, type EvaluationResult } from './src/features/evaluation/evaluateConcepts';
 
 // 16kHz, 16-bit, mono => 32000 Bytes pro Sekunde Audio (siehe RecordingOptions).
 const BYTES_PER_SECOND_16K_MONO_16BIT = 32000;
+
+type PhrasebookSentence = {
+  id: number;
+  german: string;
+  scenario: string;
+  accepted_concepts: AcceptedConcepts;
+};
 
 // Reale, bereits hochgeladene Vorleseaufnahme aus dem Supabase-Bucket "vocab_audio"
 // (franzoesisch, Wort "garder") - dient hier nur als Beweis, dass das
@@ -26,6 +35,84 @@ export default function App() {
 
   const ttsPlayer = useAudioPlayer(SAMPLE_TTS_URL);
   const ttsStatus = useAudioPlayerStatus(ttsPlayer);
+
+  const [phrasebookSentences, setPhrasebookSentences] = useState<PhrasebookSentence[]>([]);
+  const [phrasebookIndex, setPhrasebookIndex] = useState(0);
+  const [phrasebookLoading, setPhrasebookLoading] = useState(false);
+  const [phrasebookError, setPhrasebookError] = useState<string | null>(null);
+  const [phrasebookIsRecording, setPhrasebookIsRecording] = useState(false);
+  const [phrasebookIsTranscribing, setPhrasebookIsTranscribing] = useState(false);
+  const [phrasebookTranscript, setPhrasebookTranscript] = useState('');
+  const [phrasebookResult, setPhrasebookResult] = useState<EvaluationResult | null>(null);
+  const [phrasebookScore, setPhrasebookScore] = useState({ correct: 0, total: 0 });
+
+  async function loadPhrasebookTest() {
+    setPhrasebookError(null);
+    setPhrasebookLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from('phrasebook_master')
+        .select('id, german, scenario, accepted_concepts');
+      if (error) throw error;
+      if (!data || data.length === 0) throw new Error('Keine Sätze gefunden.');
+
+      const shuffled = [...data].sort(() => Math.random() - 0.5).slice(0, 10);
+      setPhrasebookSentences(shuffled as PhrasebookSentence[]);
+      setPhrasebookIndex(0);
+      setPhrasebookScore({ correct: 0, total: 0 });
+      setPhrasebookTranscript('');
+      setPhrasebookResult(null);
+    } catch (e) {
+      setPhrasebookError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setPhrasebookLoading(false);
+    }
+  }
+
+  async function handlePhrasebookRecordPress() {
+    setPhrasebookError(null);
+    if (!phrasebookIsRecording) {
+      try {
+        await recorder.start();
+        setPhrasebookIsRecording(true);
+      } catch (e) {
+        setPhrasebookError(e instanceof Error ? e.message : String(e));
+      }
+      return;
+    }
+
+    setPhrasebookIsRecording(false);
+    const uri = await recorder.stop();
+    if (!uri) {
+      setPhrasebookError('Keine Aufnahme-Datei erhalten.');
+      return;
+    }
+
+    setPhrasebookIsTranscribing(true);
+    setPhrasebookTranscript('');
+    setPhrasebookResult(null);
+    try {
+      const current = phrasebookSentences[phrasebookIndex];
+      const result = await whisper.transcribe(uri, 'de');
+      setPhrasebookTranscript(result);
+      const evaluation = evaluateConcepts(result, current.accepted_concepts);
+      setPhrasebookResult(evaluation);
+      setPhrasebookScore((prev) => ({
+        correct: prev.correct + (evaluation.passed ? 1 : 0),
+        total: prev.total + 1,
+      }));
+    } catch (e) {
+      setPhrasebookError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setPhrasebookIsTranscribing(false);
+    }
+  }
+
+  function nextPhrasebookSentence() {
+    setPhrasebookIndex((i) => i + 1);
+    setPhrasebookTranscript('');
+    setPhrasebookResult(null);
+  }
 
   async function handleRecordPress() {
     setRecordError(null);
@@ -102,6 +189,58 @@ export default function App() {
       {recordingInfo !== '' && <Text>{recordingInfo}</Text>}
       {recordError && <Text style={styles.error}>{recordError}</Text>}
       {transcript !== '' && <Text style={styles.transcript}>Erkannt: {transcript}</Text>}
+
+      <View style={styles.spacer} />
+
+      <Text style={styles.heading}>Phrasebook-Test (10 Sätze, Konzept-Bewertung)</Text>
+      <Button
+        title="10 zufällige Sätze laden"
+        onPress={loadPhrasebookTest}
+        disabled={phrasebookLoading || whisper.status !== 'ready'}
+      />
+      {phrasebookLoading && <ActivityIndicator />}
+      {phrasebookError && <Text style={styles.error}>{phrasebookError}</Text>}
+
+      {phrasebookSentences.length > 0 && phrasebookIndex < phrasebookSentences.length && (
+        <View>
+          <Text>
+            Satz {phrasebookIndex + 1} von {phrasebookSentences.length} (
+            {phrasebookSentences[phrasebookIndex].scenario})
+          </Text>
+          <Text style={styles.transcript}>{phrasebookSentences[phrasebookIndex].german}</Text>
+          <Button
+            title={phrasebookIsRecording ? 'Aufnahme stoppen & bewerten' : 'Nachsprechen'}
+            onPress={handlePhrasebookRecordPress}
+            disabled={phrasebookIsTranscribing}
+          />
+          {phrasebookIsTranscribing && (
+            <View style={styles.row}>
+              <ActivityIndicator />
+              <Text>Whisper transkribiert...</Text>
+            </View>
+          )}
+          {phrasebookTranscript !== '' && <Text>Erkannt: {phrasebookTranscript}</Text>}
+          {phrasebookResult && (
+            <View>
+              <Text style={phrasebookResult.passed ? styles.correct : styles.error}>
+                {phrasebookResult.passed ? '✅ Richtig' : '❌ Nicht erkannt'}
+              </Text>
+              <Text>Getroffen: {phrasebookResult.matched.join(', ') || '-'}</Text>
+              <Text>Gefehlt: {phrasebookResult.missed.join(', ') || '-'}</Text>
+              <Button
+                title={phrasebookIndex + 1 < phrasebookSentences.length ? 'Nächster Satz' : 'Fertig'}
+                onPress={nextPhrasebookSentence}
+              />
+            </View>
+          )}
+        </View>
+      )}
+
+      {phrasebookSentences.length > 0 && phrasebookIndex >= phrasebookSentences.length && (
+        <Text style={styles.transcript}>
+          Ergebnis: {phrasebookScore.correct} / {phrasebookScore.total} richtig
+        </Text>
+      )}
     </ScrollView>
   );
 }
@@ -127,6 +266,10 @@ const styles = StyleSheet.create({
   },
   error: {
     color: '#c0392b',
+  },
+  correct: {
+    color: '#1e8449',
+    fontWeight: '600',
   },
   transcript: {
     fontSize: 16,
