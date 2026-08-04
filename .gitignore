@@ -34,7 +34,11 @@ yarn-error.*
 *.pem
 
 # local env files
-.env
+# .env bewusst NICHT ignoriert: enthaelt nur EXPO_PUBLIC_*-Werte (Supabase
+# Projekt-URL + anon-Key), die ohnehin im ausgelieferten App-Bundle landen.
+# CI (GitHub Actions) braucht die Datei, sonst wirft src/lib/supabase.ts beim
+# App-Start eine Exception -> weisser Screen. NIEMALS den Service/Secret-Key
+# hier eintragen.
 .env*.local
 
 # typescript
