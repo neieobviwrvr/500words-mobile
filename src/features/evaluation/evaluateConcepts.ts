@@ -6,12 +6,22 @@ export type ConceptGroup = {
 export type AcceptedConcepts = {
   required: ConceptGroup[];
   optional: ConceptGroup[];
+  // Verweist auf einen Cluster in clusters.ts (Konjugationen + Synonym-Verben
+  // einer Verbfamilie, z.B. "moegen_lieben"). Wenn gesetzt: nur wenn der
+  // Nutzertext irgendeine Form aus diesem Cluster enthaelt, wird von
+  // Ueberlebensmodus auf Richtig-Niveau hochgestuft. Wenn nicht gesetzt,
+  // reicht das Treffen der Pflicht-Konzepte direkt fuer Richtig-Niveau.
+  verb_cluster?: string | null;
 };
 
+export type Tier = 'nicht_verstanden' | 'ueberlebt' | 'richtig';
+
 export type EvaluationResult = {
-  passed: boolean;
+  tier: Tier;
+  passed: boolean; // = tier !== 'nicht_verstanden' (Ueberlebensmodus oder besser)
   matched: string[];
   missed: string[];
+  verbClusterMatched: boolean | null; // null = kein Cluster fuer diesen Satz definiert
 };
 
 function normalize(text: string): string {
@@ -65,7 +75,18 @@ function synonymMatches(userTokens: string[], synonym: string): boolean {
   return synonymTokens.every((synToken) => userTokens.some((userToken) => wordsAreClose(userToken, synToken)));
 }
 
-export function evaluateConcepts(userText: string, accepted: AcceptedConcepts): EvaluationResult {
+function clusterMatches(userTokens: string[], clusterForms: string[]): boolean {
+  return clusterForms.some((form) => userTokens.some((userToken) => wordsAreClose(userToken, normalize(form))));
+}
+
+// clusters: Lookup-Tabelle cluster_id -> Wortformen, kommt aus Supabase
+// (answer_clusters), einmal geladen und an jeden evaluateConcepts()-Aufruf
+// durchgereicht statt bei jedem Aufruf neu zu laden.
+export function evaluateConcepts(
+  userText: string,
+  accepted: AcceptedConcepts,
+  clusters: Record<string, string[]>,
+): EvaluationResult {
   const userTokens = tokenize(userText);
   const matched: string[] = [];
   const missed: string[] = [];
@@ -79,5 +100,18 @@ export function evaluateConcepts(userText: string, accepted: AcceptedConcepts): 
     }
   }
 
-  return { passed: missed.length === 0, matched, missed };
+  const survived = missed.length === 0;
+
+  let verbClusterMatched: boolean | null = null;
+  if (accepted.verb_cluster) {
+    const forms = clusters[accepted.verb_cluster] ?? [];
+    verbClusterMatched = clusterMatches(userTokens, forms);
+  }
+
+  let tier: Tier = 'nicht_verstanden';
+  if (survived) {
+    tier = verbClusterMatched === false ? 'ueberlebt' : 'richtig';
+  }
+
+  return { tier, passed: survived, matched, missed, verbClusterMatched };
 }

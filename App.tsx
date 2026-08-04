@@ -44,22 +44,31 @@ export default function App() {
   const [phrasebookIsTranscribing, setPhrasebookIsTranscribing] = useState(false);
   const [phrasebookTranscript, setPhrasebookTranscript] = useState('');
   const [phrasebookResult, setPhrasebookResult] = useState<EvaluationResult | null>(null);
-  const [phrasebookScore, setPhrasebookScore] = useState({ correct: 0, total: 0 });
+  const [phrasebookScore, setPhrasebookScore] = useState({ richtig: 0, ueberlebt: 0, total: 0 });
+  const [clusters, setClusters] = useState<Record<string, string[]>>({});
 
   async function loadPhrasebookTest() {
     setPhrasebookError(null);
     setPhrasebookLoading(true);
     try {
-      const { data, error } = await supabase
-        .from('phrasebook_master')
-        .select('id, german, scenario, accepted_concepts');
-      if (error) throw error;
-      if (!data || data.length === 0) throw new Error('Keine Sätze gefunden.');
+      const [sentencesRes, clustersRes] = await Promise.all([
+        supabase.from('phrasebook_master').select('id, german, scenario, accepted_concepts'),
+        supabase.from('answer_clusters').select('cluster_id, forms'),
+      ]);
+      if (sentencesRes.error) throw sentencesRes.error;
+      if (clustersRes.error) throw clustersRes.error;
+      if (!sentencesRes.data || sentencesRes.data.length === 0) throw new Error('Keine Sätze gefunden.');
 
-      const shuffled = [...data].sort(() => Math.random() - 0.5).slice(0, 10);
+      const clusterLookup: Record<string, string[]> = {};
+      for (const row of clustersRes.data ?? []) {
+        clusterLookup[row.cluster_id] = row.forms as string[];
+      }
+      setClusters(clusterLookup);
+
+      const shuffled = [...sentencesRes.data].sort(() => Math.random() - 0.5).slice(0, 10);
       setPhrasebookSentences(shuffled as PhrasebookSentence[]);
       setPhrasebookIndex(0);
-      setPhrasebookScore({ correct: 0, total: 0 });
+      setPhrasebookScore({ richtig: 0, ueberlebt: 0, total: 0 });
       setPhrasebookTranscript('');
       setPhrasebookResult(null);
     } catch (e) {
@@ -95,10 +104,11 @@ export default function App() {
       const current = phrasebookSentences[phrasebookIndex];
       const result = await whisper.transcribe(uri, 'de');
       setPhrasebookTranscript(result);
-      const evaluation = evaluateConcepts(result, current.accepted_concepts);
+      const evaluation = evaluateConcepts(result, current.accepted_concepts, clusters);
       setPhrasebookResult(evaluation);
       setPhrasebookScore((prev) => ({
-        correct: prev.correct + (evaluation.passed ? 1 : 0),
+        richtig: prev.richtig + (evaluation.tier === 'richtig' ? 1 : 0),
+        ueberlebt: prev.ueberlebt + (evaluation.tier === 'ueberlebt' ? 1 : 0),
         total: prev.total + 1,
       }));
     } catch (e) {
@@ -222,11 +232,26 @@ export default function App() {
           {phrasebookTranscript !== '' && <Text>Erkannt: {phrasebookTranscript}</Text>}
           {phrasebookResult && (
             <View>
-              <Text style={phrasebookResult.passed ? styles.correct : styles.error}>
-                {phrasebookResult.passed ? '✅ Richtig' : '❌ Nicht erkannt'}
+              <Text
+                style={
+                  phrasebookResult.tier === 'richtig'
+                    ? styles.correct
+                    : phrasebookResult.tier === 'ueberlebt'
+                      ? styles.survived
+                      : styles.error
+                }
+              >
+                {phrasebookResult.tier === 'richtig'
+                  ? '✅ Richtig-Niveau'
+                  : phrasebookResult.tier === 'ueberlebt'
+                    ? '🟡 Überlebensmodus-Niveau'
+                    : '❌ Nicht verstanden'}
               </Text>
               <Text>Getroffen: {phrasebookResult.matched.join(', ') || '-'}</Text>
               <Text>Gefehlt: {phrasebookResult.missed.join(', ') || '-'}</Text>
+              {phrasebookResult.verbClusterMatched !== null && (
+                <Text>Richtiges Verb erkannt: {phrasebookResult.verbClusterMatched ? 'ja' : 'nein'}</Text>
+              )}
               <Button
                 title={phrasebookIndex + 1 < phrasebookSentences.length ? 'Nächster Satz' : 'Fertig'}
                 onPress={nextPhrasebookSentence}
@@ -238,7 +263,8 @@ export default function App() {
 
       {phrasebookSentences.length > 0 && phrasebookIndex >= phrasebookSentences.length && (
         <Text style={styles.transcript}>
-          Ergebnis: {phrasebookScore.correct} / {phrasebookScore.total} richtig
+          Ergebnis: {phrasebookScore.richtig} Richtig-Niveau, {phrasebookScore.ueberlebt} Überlebensmodus, von{' '}
+          {phrasebookScore.total}
         </Text>
       )}
     </ScrollView>
@@ -269,6 +295,10 @@ const styles = StyleSheet.create({
   },
   correct: {
     color: '#1e8449',
+    fontWeight: '600',
+  },
+  survived: {
+    color: '#b7950b',
     fontWeight: '600',
   },
   transcript: {
