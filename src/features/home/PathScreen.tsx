@@ -3,12 +3,19 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { router } from 'expo-router';
 import { useAppState } from '../../state/AppState';
 import { CATEGORIES, DEFAULT_THEMEN_PRO_KATEGORIE, GRUNDWORTSCHATZ_THEMEN } from '../../data/categories';
+import { LANGUAGES, getLanguage } from '../../data/languages';
 import { getTheme, ACCENT_BLUE, ACCENT_ORANGE, NODE_DONE, NODE_LOCKED } from '../../theme/tokens';
 
 // S1 - Startscreen (Pfad). Ersetzt PathScreenMockup: echte Navigation statt
 // simuliertem Zustand, Struktur/Verhalten aus dem Claude-Design-Prototyp +
 // App-Overlay-Spec.md ("Homescreen Sprache"):
-// - "Sprache"-Dropdown: nur auf/zu-klappbar, kein echter Sprachwechsel
+// - "Sprache"-Dropdown: App-Overlay-Spec.md hatte das urspruenglich als rein
+//   optisch (auf/zuklappen ohne echten Inhalt) spezifiziert - seit der
+//   echten Supabase-Anbindung (2026-08-05) ist Deutsch/Schwedisch-Wechsel
+//   aber echt umgeschaltet, weil das sonst der einzige Weg waere, den
+//   echten Schwedisch-Content ueberhaupt zu erreichen. Spanisch/
+//   Franzoesisch bleiben "(bald)" und nicht antippbar, da dort 0 Saetze
+//   in Supabase existieren.
 // - Ueberlebens-/Maximalwortschatz: Platzhalter ohne Funktion
 // - Pfad-Knoten (Grundwortschatz-Themen + Themen jeder gekauften Kategorie)
 //   -> S2 Kategorie-Detail-Screen
@@ -29,9 +36,10 @@ function themenToNodes(themen: string[], prefix: string, onPress: (label: string
 }
 
 export function PathScreen() {
-  const { darkMode, purchased, targetLanguage } = useAppState();
+  const { darkMode, purchased, targetLanguageId, setTargetLanguageId } = useAppState();
   const theme = getTheme(darkMode);
   const [langOpen, setLangOpen] = useState(false);
+  const activeLanguage = getLanguage(targetLanguageId);
 
   const purchasedCategories = CATEGORIES.filter((c) => purchased[c.id]);
   const lockedCategories = CATEGORIES.filter((c) => !purchased[c.id]).slice(0, 2);
@@ -73,18 +81,32 @@ export function PathScreen() {
         >
           <Text style={[styles.langLabel, { color: theme.text }]}>Sprache</Text>
           <View style={styles.langRight}>
-            <Text style={[styles.langValue, { color: theme.sub }]}>{targetLanguage}</Text>
+            <Text style={[styles.langValue, { color: theme.sub }]}>{activeLanguage.label}</Text>
             <Text style={{ color: theme.sub, transform: [{ rotate: langOpen ? '180deg' : '0deg' }] }}>▾</Text>
           </View>
         </Pressable>
         {langOpen && (
           <View style={[styles.langDropdown, { backgroundColor: theme.cardBg, borderColor: theme.border }]}>
-            <View style={[styles.langRow, { backgroundColor: theme.modeBg }]}>
-              <Text style={{ color: theme.text, fontWeight: '700' }}>{targetLanguage}</Text>
-              <Text style={{ color: theme.text }}>✓</Text>
-            </View>
-            <Text style={[styles.langRowMuted, { color: theme.sub }]}>Französisch (bald)</Text>
-            <Text style={[styles.langRowMuted, { color: theme.sub }]}>Schwedisch (bald)</Text>
+            {LANGUAGES.map((lang) => {
+              const active = lang.id === targetLanguageId;
+              return (
+                <Pressable
+                  key={lang.id}
+                  disabled={!lang.hasContent}
+                  onPress={() => {
+                    setTargetLanguageId(lang.id);
+                    setLangOpen(false);
+                  }}
+                  style={[styles.langRow, { backgroundColor: active ? theme.modeBg : 'transparent' }]}
+                >
+                  <Text style={{ color: lang.hasContent ? theme.text : theme.sub, fontWeight: active ? '700' : '600' }}>
+                    {lang.label}
+                    {!lang.hasContent ? ' (bald)' : ''}
+                  </Text>
+                  {active && <Text style={{ color: theme.text }}>✓</Text>}
+                </Pressable>
+              );
+            })}
           </View>
         )}
       </View>
@@ -154,8 +176,7 @@ const styles = StyleSheet.create({
   langRight: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   langValue: { fontWeight: '600', fontSize: 14 },
   langDropdown: { position: 'absolute', top: 56, left: 0, right: 0, borderWidth: 1.5, borderRadius: 12, padding: 6, gap: 2 },
-  langRow: { padding: 10, borderRadius: 8, flexDirection: 'row', justifyContent: 'space-between' },
-  langRowMuted: { padding: 10, fontWeight: '600', fontSize: 14 },
+  langRow: { padding: 10, borderRadius: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   wortschatzRow: { flexDirection: 'row', gap: 8 },
   wortschatzBox: { flex: 1, paddingVertical: 11, paddingHorizontal: 10, borderWidth: 1.5, borderRadius: 12, alignItems: 'center' },
   wortschatzText: { fontWeight: '700', fontSize: 13, textAlign: 'center' },

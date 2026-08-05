@@ -1,5 +1,6 @@
 import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
 import { Phrase } from '../data/cheatsheetContent';
+import { DEFAULT_LANGUAGE_ID } from '../data/languages';
 
 // Globaler App-Zustand - Entsprechung zum "state"-Objekt der einen grossen
 // Klassenkomponente im Claude-Design-Prototyp. Dort lief alles ueber
@@ -19,7 +20,8 @@ type AppStateValue = {
   darkMode: boolean;
   toggleDark: () => void;
 
-  targetLanguage: string;
+  targetLanguageId: string;
+  setTargetLanguageId: (id: string) => void;
 
   purchased: Record<string, boolean>;
   cart: string[];
@@ -42,6 +44,7 @@ const AppStateContext = createContext<AppStateValue | null>(null);
 
 export function AppStateProvider({ children }: { children: React.ReactNode }) {
   const [darkMode, setDarkMode] = useState(false);
+  const [targetLanguageId, setTargetLanguageId] = useState(DEFAULT_LANGUAGE_ID);
   const [purchased, setPurchased] = useState<Record<string, boolean>>({});
   const [cart, setCart] = useState<string[]>([]);
   const [saved, setSaved] = useState<Record<string, boolean>>({});
@@ -88,7 +91,8 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     () => ({
       darkMode,
       toggleDark,
-      targetLanguage: 'Spanisch',
+      targetLanguageId,
+      setTargetLanguageId,
       purchased,
       cart,
       toggleCartItem,
@@ -102,7 +106,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       srsSelected,
       setSrsSelected,
     }),
-    [darkMode, toggleDark, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes, srsSelected]
+    [darkMode, toggleDark, targetLanguageId, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes, srsSelected]
   );
 
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;
