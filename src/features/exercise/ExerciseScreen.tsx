@@ -107,6 +107,11 @@ export function ExerciseScreen({ mode, categoryId }: { mode: string; categoryId:
     try {
       const result = await whisper.transcribe(uri, language.whisperLanguage);
       setTranscript(result);
+      // Direkt nach dem Einsprechen auswerten - kein zusaetzlicher Tap auf
+      // "loesen" noetig. Wertet mit dem frisch transkribierten Ergebnis aus
+      // (nicht ueber den transcript-State), weil setState() asynchron ist
+      // und der neue Wert sonst noch nicht sicher verfuegbar waere.
+      evaluateAnswer(result);
     } catch (e) {
       setRecordError(e instanceof Error ? e.message : String(e));
     } finally {
@@ -114,12 +119,15 @@ export function ExerciseScreen({ mode, categoryId }: { mode: string; categoryId:
     }
   }
 
-  function checkAnswer() {
+  function evaluateAnswer(answer: string) {
     if (!sentence) return;
-    const answer = (input.trim() || transcript).trim();
-    const evaluation = evaluateConcepts(answer, sentence.accepted_concepts, clusters);
+    const evaluation = evaluateConcepts(answer.trim(), sentence.accepted_concepts, clusters);
     setFeedback(evaluation);
     setResults((r) => [...r, evaluation.tier]);
+  }
+
+  function checkAnswer() {
+    evaluateAnswer(input.trim() || transcript);
   }
 
   function nextCard() {
