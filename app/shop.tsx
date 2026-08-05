@@ -1,7 +1,7 @@
-import { router } from 'expo-router';
-import { ShopScreenMockup } from '../src/features/home/ShopScreenMockup';
+import { ShopScreen } from '../src/features/shop/ShopScreen';
 
-// S3 - Shop-Screen. Platzhalter, wird durch den echten JSON-Entwurf ersetzt.
-export default function ShopScreen() {
-  return <ShopScreenMockup onBack={() => router.back()} />;
+// S3 - Shop-Screen. Grid-Layout (Nutzer-Entscheidung 2026-08-05), radialer
+// Skilltree ist fuer spaeter vorgemerkt (siehe CLAUDE.md).
+export default function Shop() {
+  return <ShopScreen />;
 }

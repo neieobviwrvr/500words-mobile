@@ -1,40 +1,10 @@
-import { Link } from 'expo-router';
-import { router } from 'expo-router';
-import { ScrollView, StyleSheet, Text } from 'react-native';
-import { PathScreenMockup } from '../src/features/home/PathScreenMockup';
-import { ColoredSentenceDemo } from '../src/features/home/ColoredSentenceDemo';
+import { PathScreen } from '../src/features/home/PathScreen';
 
-// S1 - Startscreen (Pfad). Erster echter Screen unter expo-router (vorher
-// nur Mockup-Komponente in App.tsx). Gesperrte Knoten navigieren jetzt
-// wirklich zu S3 (Shop), statt nur den Zustand in App.tsx umzuschalten.
+// S1 - Startscreen (Pfad). Ersetzt die bisherige PathScreenMockup-Nutzung
+// durch den echten Screen aus dem Claude-Design-Prototyp-Import
+// (2026-08-05, Projekt "Speech app mobile prototype").
+// Dev-Tools (STT/TTS/Phrasebook-Tests) bleiben unter /dev-tools erreichbar,
+// sind aber bewusst nicht mehr auf dem echten Startscreen verlinkt.
 export default function StartScreen() {
-  return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <PathScreenMockup onLockedNodePress={() => router.push('/shop')} />
-
-      <Text style={styles.heading}>Wortfarben-Demo</Text>
-      <ColoredSentenceDemo />
-
-      <Link href="/dev-tools" style={styles.devLink}>
-        Dev-Tools (STT/TTS/Phrasebook-Tests) →
-      </Link>
-    </ScrollView>
-  );
+  return <PathScreen />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    paddingBottom: 40,
-    gap: 12,
-  },
-  heading: {
-    fontSize: 18,
-    fontWeight: '600',
-    paddingHorizontal: 16,
-  },
-  devLink: {
-    marginTop: 12,
-    marginHorizontal: 16,
-    color: '#3a7bd5',
-  },
-});
