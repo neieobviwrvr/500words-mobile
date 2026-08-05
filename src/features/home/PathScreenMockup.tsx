@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 // Rein statischer optischer Mockup des S1-Startscreens (Pfad), auf Basis des
 // Whiteboard-Entwurfs vom 2026-08-05 (JSON-Struktur vom Nutzer). Bewusst OHNE
@@ -52,20 +52,26 @@ const STATE_COLORS: Record<NodeState, string> = {
   locked: '#9aa0a6',
 };
 
-function PathNodeView({ node }: { node: PathNode }) {
+function PathNodeView({ node, onLockedPress }: { node: PathNode; onLockedPress?: () => void }) {
   const color = STATE_COLORS[node.state];
   if (node.label) {
-    return (
+    const bubble = (
       <View style={[styles.bubble, { borderColor: color }]}>
         <Text style={{ color }}>{node.label}</Text>
         {node.state === 'locked' && <Text style={styles.lock}>🔒</Text>}
       </View>
     );
+    // Nur gesperrte Knoten sind "interaktiv" (fuehren testweise zur Shop-Ansicht) -
+    // erledigte/aktuelle Knoten haben in diesem Mockup bewusst noch kein onPress.
+    if (node.state === 'locked' && onLockedPress) {
+      return <Pressable onPress={onLockedPress}>{bubble}</Pressable>;
+    }
+    return bubble;
   }
   return <View style={[styles.dot, { backgroundColor: color }]} />;
 }
 
-export function PathScreenMockup() {
+export function PathScreenMockup({ onLockedNodePress }: { onLockedNodePress?: () => void }) {
   return (
     <View style={styles.container}>
       <View style={styles.langHeader}>
@@ -77,7 +83,7 @@ export function PathScreenMockup() {
         {SECTIONS.map((section, sectionIndex) => (
           <View key={sectionIndex}>
             {section.nodes.map((node, nodeIndex) => (
-              <PathNodeView key={nodeIndex} node={node} />
+              <PathNodeView key={nodeIndex} node={node} onLockedPress={onLockedNodePress} />
             ))}
             {sectionIndex < SECTIONS.length - 1 && <View style={styles.dashedSeparator} />}
           </View>
