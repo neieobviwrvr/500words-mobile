@@ -18,6 +18,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'npm'
 
       - name: Install JS-Abhaengigkeiten
         run: npm ci
@@ -25,9 +26,38 @@ jobs:
       - name: Native iOS-Projekt generieren (Continuous Native Generation)
         run: npx expo prebuild --platform ios --no-install
 
+      # Cache-Keys haengen an ios/Podfile (von "expo prebuild" gerade eben
+      # generiert) statt an package-lock.json/app.json direkt - das ist die
+      # praeziseste verfuegbare Signatur der tatsaechlichen nativen
+      # Abhaengigkeiten. restore-keys als Praefix-Fallback: bei geaenderten
+      # Deps gibt's trotzdem einen "nahen" Cache-Stand statt komplett leer.
+      - name: CocoaPods cachen
+        uses: actions/cache@v4
+        with:
+          path: |
+            ios/Pods
+            ~/Library/Caches/CocoaPods
+          key: ${{ runner.os }}-pods-${{ hashFiles('ios/Podfile') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
+
       - name: CocoaPods installieren
         working-directory: ios
         run: pod install
+
+      # Xcode-DerivedData cachen, damit xcodebuild inkrementell kompiliert
+      # statt jedes Mal Hermes/React-Native-Core/alle nativen Module von
+      # null neu zu bauen. Unklar/noch nicht ueber mehrere Builds verifiziert,
+      # wie gut das greift, weil "expo prebuild" den ios/-Ordner jedes Mal
+      # frisch generiert (andere Datei-Zeitstempel als beim letzten Run) -
+      # aber rein additiv: schlimmstenfalls kein Speedup, nie ein kaputter Build.
+      - name: Xcode DerivedData cachen
+        uses: actions/cache@v4
+        with:
+          path: ios/build
+          key: ${{ runner.os }}-xcode-derived-${{ hashFiles('ios/Podfile') }}
+          restore-keys: |
+            ${{ runner.os }}-xcode-derived-
 
       # Bewusst UNSIGNED gebaut - es werden keine Apple-Zertifikate/Secrets in
       # der CI gebraucht. Sideloadly signiert die .app anschliessend lokal mit
