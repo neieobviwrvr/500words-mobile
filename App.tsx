@@ -7,6 +7,7 @@ import { useWhisper } from './src/features/stt/useWhisper';
 import { useWhisperRecorder } from './src/features/stt/useWhisperRecorder';
 import { supabase } from './src/lib/supabase';
 import { evaluateConcepts, type AcceptedConcepts, type EvaluationResult } from './src/features/evaluation/evaluateConcepts';
+import { PathScreenMockup } from './src/features/home/PathScreenMockup';
 
 // 16kHz, 16-bit, mono => 32000 Bytes pro Sekunde Audio (siehe RecordingOptions).
 const BYTES_PER_SECOND_16K_MONO_16BIT = 32000;
@@ -167,6 +168,11 @@ export default function App() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <StatusBar style="auto" />
+
+      <Text style={styles.heading}>S1-Mockup (statisch, Design-Check)</Text>
+      <PathScreenMockup />
+
+      <View style={styles.spacer} />
 
       <Text style={styles.heading}>TTS-Test (Supabase-Audio)</Text>
       <Text>Status: {ttsStatus.isLoaded ? 'geladen' : 'laedt...'}</Text>
