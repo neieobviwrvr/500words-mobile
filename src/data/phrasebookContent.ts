@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabase';
+import { cachedFetch } from '../lib/offlineCache';
 import { AcceptedConcepts } from '../features/evaluation/evaluateConcepts';
 import { getLanguage } from './languages';
 
@@ -25,9 +26,25 @@ export type ExerciseSentence = {
   accepted_concepts: AcceptedConcepts;
 };
 
-export async function loadExerciseSentences(languageId: string, categoryId: string): Promise<ExerciseSentence[]> {
+// categoryIds: explizite Liste statt eines "alle"-Sentinels, der frueher
+// den Filter komplett wegliess - das haette (fuer den SRS-Pool, siehe
+// srsEngine.ts) auch Saetze aus NICHT gekauften Kategorien mitgeladen.
+// Aufrufer muessen jetzt bewusst die passende Liste uebergeben (z.B. eine
+// einzelne Kategorie fuer S2, oder alle gekauften + "grundwortschatz" fuer
+// den SRS-Pool von S5) - siehe CLAUDE.md "EIN gemeinsamer Wiederholungs-Pool
+// ... ueber ALLE freigeschalteten Kategorien".
+//
+// Offline-Cache (2026-08-07): Netzwerk zuerst, bei Fehler automatisch der
+// zuletzt geladene Stand aus AsyncStorage (siehe lib/offlineCache.ts) -
+// wichtig fuer die Zielgruppe (Backpacker mit wackeligem Auslandsdatentarif,
+// siehe CLAUDE.md). `fromCache` im Rueckgabewert, damit der Screen ehrlich
+// anzeigen kann, dass gerade der letzte gespeicherte Stand genutzt wird.
+export async function loadExerciseSentences(
+  languageId: string,
+  categoryIds: string[]
+): Promise<{ sentences: ExerciseSentence[]; fromCache: boolean }> {
   const lang = getLanguage(languageId);
-  if (!lang.table) return [];
+  if (!lang.table) return { sentences: [], fromCache: false };
 
   const textColumn = lang.id === 'de' ? 'german' : 'target_text';
   const columns =
@@ -35,38 +52,46 @@ export async function loadExerciseSentences(languageId: string, categoryId: stri
       ? 'id, german, scenario, accepted_concepts'
       : 'id, target_text, german, scenario, accepted_concepts, verb_cluster';
 
-  let query = supabase.from(lang.table).select(columns);
-  if (categoryId && categoryId !== 'alle') {
-    query = query.eq('category', categoryId);
-  }
-  const { data, error } = await query;
-  if (error) throw error;
-
-  return (data ?? []).map((row: any) => {
-    const accepted_concepts: AcceptedConcepts = row.accepted_concepts;
-    // Bei Nicht-Deutsch liegt der Cluster in einer eigenen Spalte statt
-    // verschachtelt - hier vereinheitlichen (siehe Kommentar oben).
-    if (lang.id !== 'de' && row.verb_cluster) {
-      accepted_concepts.verb_cluster = row.verb_cluster;
+  const cacheKey = `sentences:${lang.id}:${[...categoryIds].sort().join(',')}`;
+  const { data: sentences, fromCache } = await cachedFetch(cacheKey, async () => {
+    let query = supabase.from(lang.table as string).select(columns);
+    if (categoryIds.length > 0) {
+      query = query.in('category', categoryIds);
     }
-    return {
-      id: row.id,
-      text: row[textColumn],
-      germanGloss: lang.id === 'de' ? null : row.german ?? null,
-      scenario: row.scenario,
-      accepted_concepts,
-    };
+    const { data, error } = await query;
+    if (error) throw error;
+
+    return (data ?? []).map((row: any): ExerciseSentence => {
+      const accepted_concepts: AcceptedConcepts = row.accepted_concepts;
+      // Bei Nicht-Deutsch liegt der Cluster in einer eigenen Spalte statt
+      // verschachtelt - hier vereinheitlichen (siehe Kommentar oben).
+      if (lang.id !== 'de' && row.verb_cluster) {
+        accepted_concepts.verb_cluster = row.verb_cluster;
+      }
+      return {
+        id: row.id,
+        text: row[textColumn],
+        germanGloss: lang.id === 'de' ? null : row.german ?? null,
+        scenario: row.scenario,
+        accepted_concepts,
+      };
+    });
   });
+
+  return { sentences, fromCache };
 }
 
 export async function loadAnswerClusters(): Promise<Record<string, string[]>> {
-  const { data, error } = await supabase.from('answer_clusters').select('cluster_id, forms');
-  if (error) throw error;
-  const lookup: Record<string, string[]> = {};
-  for (const row of data ?? []) {
-    lookup[row.cluster_id] = row.forms as string[];
-  }
-  return lookup;
+  const { data } = await cachedFetch('answer_clusters', async () => {
+    const { data, error } = await supabase.from('answer_clusters').select('cluster_id, forms');
+    if (error) throw error;
+    const lookup: Record<string, string[]> = {};
+    for (const row of data ?? []) {
+      lookup[row.cluster_id] = row.forms as string[];
+    }
+    return lookup;
+  });
+  return data;
 }
 
 function shuffle<T>(arr: T[]): T[] {

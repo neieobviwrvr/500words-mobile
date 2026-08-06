@@ -1,4 +1,5 @@
-import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Phrase } from '../data/cheatsheetContent';
 import { DEFAULT_LANGUAGE_ID } from '../data/languages';
 
@@ -10,11 +11,25 @@ import { DEFAULT_LANGUAGE_ID } from '../data/languages';
 // gebraucht werden (Warenkorb, freigeschaltete Kategorien, Favoriten,
 // Cheat-Sheet-Auswahl, Darkmode-Override).
 //
-// Bewusst noch ohne Persistenz (AsyncStorage/Supabase) - das ist der
-// naechste Ausbauschritt, siehe CLAUDE.md-Backlog "Gast-Modus lokale
-// Speicherung / Supabase Auth".
+// Persistenz (2026-08-07): darkMode/targetLanguageId/purchased/saved/
+// savedMeta ueberleben jetzt einen App-Neustart via AsyncStorage - passt
+// zur bereits entschiedenen "Gast-Modus = lokale Speicherung"-Architektur
+// (siehe CLAUDE.md), unabhaengig vom noch nicht gebauten Supabase Auth.
+// `cart` und `selectedThemes` bleiben bewusst NICHT persistiert - das sind
+// transiente "gerade dabei"-Zustaende (Warenkorb vor dem Kauf, Cheat-Sheet-
+// Suchauswahl), kein sinnvoller Grund, die ueber einen Neustart zu retten.
+
+const STORAGE_KEY = 'app_state_v1';
 
 export type ThemeSelection = { groupId: string; groupTitle: string; themeLabel: string; key: string };
+
+type PersistedState = {
+  darkMode: boolean;
+  targetLanguageId: string;
+  purchased: Record<string, boolean>;
+  saved: Record<string, boolean>;
+  savedMeta: Record<string, Phrase>;
+};
 
 type AppStateValue = {
   darkMode: boolean;
@@ -47,6 +62,39 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   const [saved, setSaved] = useState<Record<string, boolean>>({});
   const [savedMeta, setSavedMeta] = useState<Record<string, Phrase>>({});
   const [selectedThemes, setSelectedThemes] = useState<Record<string, ThemeSelection>>({});
+
+  // Verhindert, dass der Hydrations-Ladevorgang selbst als "Aenderung"
+  // sofort wieder in den Speicher zurueckgeschrieben wird, und dass vor dem
+  // Laden kurz der Default-Zustand ueberschreibend gespeichert wird.
+  const hydrated = useRef(false);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const raw = await AsyncStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed: Partial<PersistedState> = JSON.parse(raw);
+          if (parsed.darkMode !== undefined) setDarkMode(parsed.darkMode);
+          if (parsed.targetLanguageId) setTargetLanguageId(parsed.targetLanguageId);
+          if (parsed.purchased) setPurchased(parsed.purchased);
+          if (parsed.saved) setSaved(parsed.saved);
+          if (parsed.savedMeta) setSavedMeta(parsed.savedMeta);
+        }
+      } catch {
+        // Kaputter/kein gespeicherter Zustand - einfach mit den Defaults weitermachen.
+      } finally {
+        hydrated.current = true;
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    if (!hydrated.current) return;
+    const toPersist: PersistedState = { darkMode, targetLanguageId, purchased, saved, savedMeta };
+    AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(toPersist)).catch(() => {
+      // Best-effort - ein Speicherfehler soll die laufende Session nicht stoeren.
+    });
+  }, [darkMode, targetLanguageId, purchased, saved, savedMeta]);
 
   const toggleDark = useCallback(() => setDarkMode((d) => !d), []);
 
