@@ -23,6 +23,7 @@ export type ExerciseSentence = {
   text: string;
   germanGloss: string | null; // nur bei Nicht-Deutsch-Zielsprachen gesetzt
   scenario: string;
+  category: string;
   accepted_concepts: AcceptedConcepts;
 };
 
@@ -49,8 +50,8 @@ export async function loadExerciseSentences(
   const textColumn = lang.id === 'de' ? 'german' : 'target_text';
   const columns =
     lang.id === 'de'
-      ? 'id, german, scenario, accepted_concepts'
-      : 'id, target_text, german, scenario, accepted_concepts, verb_cluster';
+      ? 'id, german, scenario, category, accepted_concepts'
+      : 'id, target_text, german, scenario, category, accepted_concepts, verb_cluster';
 
   const cacheKey = `sentences:${lang.id}:${[...categoryIds].sort().join(',')}`;
   const { data: sentences, fromCache } = await cachedFetch(cacheKey, async () => {
@@ -73,6 +74,7 @@ export async function loadExerciseSentences(
         text: row[textColumn],
         germanGloss: lang.id === 'de' ? null : row.german ?? null,
         scenario: row.scenario,
+        category: row.category,
         accepted_concepts,
       };
     });

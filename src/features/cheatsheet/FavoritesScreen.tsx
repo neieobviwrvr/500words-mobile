@@ -1,8 +1,13 @@
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { router } from 'expo-router';
 import { useAppState } from '../../state/AppState';
-import { ColoredTokens } from '../../components/ColoredTokens';
 import { getTheme, ACCENT_BLUE } from '../../theme/tokens';
+
+// Favoriten sind reiner lokaler AppState (saved/savedMeta), seit 2026-08-07
+// via AsyncStorage persistiert - funktioniert dadurch automatisch auch
+// offline und im Gast-Modus, ganz ohne Zusatzaufwand (Nutzer-Frage
+// 2026-08-07 beantwortet: Speichern braucht kein Netzwerk, nur die
+// Anzeige der Saetze selbst muss vorher online geladen worden sein).
 
 export function FavoritesScreen() {
   const { darkMode, saved, savedMeta } = useAppState();
@@ -30,15 +35,9 @@ export function FavoritesScreen() {
         )}
         {list.map((f) => (
           <View key={f.id} style={[styles.card, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
-            <Text style={styles.context}>{f.context}</Text>
-            {f.real && f.tokens ? (
-              <>
-                <ColoredTokens tokens={f.tokens} />
-                <Text style={[styles.de, { color: theme.sub }]}>{f.de}</Text>
-              </>
-            ) : (
-              <Text style={[styles.placeholder, { color: theme.sub }]}>(Platzhalter)</Text>
-            )}
+            <Text style={[styles.context, { color: ACCENT_BLUE }]}>{f.context}</Text>
+            <Text style={[styles.sentenceText, { color: theme.text }]}>{f.text}</Text>
+            {f.gloss && <Text style={[styles.de, { color: theme.sub }]}>{f.gloss}</Text>}
           </View>
         ))}
       </ScrollView>
@@ -54,7 +53,7 @@ const styles = StyleSheet.create({
   title: { fontWeight: '800', fontSize: 21 },
   scrollContent: { padding: 18, gap: 10 },
   card: { borderWidth: 1.5, borderRadius: 14, padding: 14, gap: 4 },
-  context: { color: ACCENT_BLUE, fontWeight: '700', fontSize: 11, textTransform: 'uppercase', letterSpacing: 0.4, marginBottom: 4 },
+  context: { fontWeight: '700', fontSize: 11, textTransform: 'uppercase', letterSpacing: 0.4, marginBottom: 4 },
+  sentenceText: { fontSize: 15, fontWeight: '700' },
   de: { fontSize: 13, fontWeight: '500' },
-  placeholder: { fontSize: 14, fontStyle: 'italic' },
 });
