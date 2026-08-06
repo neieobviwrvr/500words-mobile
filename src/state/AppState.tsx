@@ -35,9 +35,6 @@ type AppStateValue = {
   selectedThemes: Record<string, ThemeSelection>;
   toggleThemeSelect: (key: string, meta: ThemeSelection) => void;
   clearSelectedThemes: () => void;
-
-  srsSelected: string;
-  setSrsSelected: (id: string) => void;
 };
 
 const AppStateContext = createContext<AppStateValue | null>(null);
@@ -50,7 +47,6 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   const [saved, setSaved] = useState<Record<string, boolean>>({});
   const [savedMeta, setSavedMeta] = useState<Record<string, Phrase>>({});
   const [selectedThemes, setSelectedThemes] = useState<Record<string, ThemeSelection>>({});
-  const [srsSelected, setSrsSelected] = useState('alle');
 
   const toggleDark = useCallback(() => setDarkMode((d) => !d), []);
 
@@ -103,10 +99,8 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       selectedThemes,
       toggleThemeSelect,
       clearSelectedThemes,
-      srsSelected,
-      setSrsSelected,
     }),
-    [darkMode, toggleDark, targetLanguageId, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes, srsSelected]
+    [darkMode, toggleDark, targetLanguageId, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes]
   );
 
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;

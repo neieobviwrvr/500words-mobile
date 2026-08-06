@@ -15,6 +15,7 @@ export type Theme = {
   pathBoxBg: string;
   modeBg: string;
   buyBg: string;
+  dividerColor: string;
 };
 
 export function getTheme(dark: boolean): Theme {
@@ -26,9 +27,13 @@ export function getTheme(dark: boolean): Theme {
     border: dark ? '#34302A' : '#E8E4DA',
     text: dark ? '#F4F1EA' : '#221F1A',
     sub: dark ? '#A39C8C' : '#85807D',
-    pathBoxBg: dark ? '#1C1A16' : '#F3F1EA',
+    // 2026-08-06 aus aktualisiertem Design-Prototyp uebernommen: pathBoxBg
+    // im Hellmodus ist jetzt reines Weiss (vorher #F3F1EA), dazu ein eigener
+    // dividerColor fuer die gestrichelten Trennlinien im neuen Zickzack-Pfad.
+    pathBoxBg: dark ? '#1C1A16' : '#FFFFFF',
     modeBg: dark ? '#1F2A3E' : '#EDF2FC',
     buyBg: dark ? '#16261C' : '#EAF6EE',
+    dividerColor: dark ? '#57514A' : '#C9C4B8',
   };
 }
 
@@ -54,3 +59,9 @@ export const ACCENT_NEUTRAL_TEXT = '#85807D';
 export const ACCENT_PREMIUM = '#C99A2E';
 export const NODE_LOCKED = '#B7B2A6';
 export const NODE_DONE = '#4C9A6A';
+
+// Fuellfarben fuer die Pfad-Pillen im Zickzack-Layout (S1), aus dem
+// aktualisierten Design-Prototyp (2026-08-06) uebernommen.
+export const PILL_FILL_BLUE = '#EAF1FC';
+export const PILL_FILL_ORANGE = '#FDEEE3';
+export const PILL_FILL_GRAY = '#F1EFE9';

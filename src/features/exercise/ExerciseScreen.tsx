@@ -20,7 +20,7 @@ import { getTheme, ACCENT_BLUE, ACCENT_GREEN } from '../../theme/tokens';
 // Vokabel-Karteikarten-Tabelle aktuell dieselben Satz-Inhalte wie "Saetze
 // lernen" - Lernmodus 1 (echte Wortkarten) ist laut Backlog noch nicht gebaut.
 
-const MODE_LABELS: Record<string, string> = { spam: 'Alles', woerter: 'Wörter', saetze: 'Sätze', srs: 'Wiederholen' };
+const MODE_LABELS: Record<string, string> = { spam: 'Alles', woerter: 'Wörter', saetze: 'Sätze', konversation: 'Konversation' };
 
 const FEEDBACK_MAP: Record<EvaluationResult['tier'], { msg: string; bg: string; color: string }> = {
   richtig: { msg: '✅ Richtig-Niveau', bg: '#DFF1E4', color: '#256B3F' },
@@ -28,7 +28,7 @@ const FEEDBACK_MAP: Record<EvaluationResult['tier'], { msg: string; bg: string; 
   nicht_verstanden: { msg: '❌ Nicht verstanden. Versuch es nochmal.', bg: '#F1EEE6', color: '#85807D' },
 };
 
-export function ExerciseScreen({ mode, categoryId }: { mode: string; categoryId: string }) {
+export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode: string; categoryId: string; source?: 'category' | 'srs' }) {
   const { darkMode, targetLanguageId } = useAppState();
   const theme = getTheme(darkMode);
   const language = getLanguage(targetLanguageId);
@@ -51,6 +51,10 @@ export function ExerciseScreen({ mode, categoryId }: { mode: string; categoryId:
   const [results, setResults] = useState<EvaluationResult['tier'][]>([]);
 
   const catName = categoryId === 'grundwortschatz' || categoryId === 'alle' ? 'Grundwortschatz' : CATEGORY_BY_ID[categoryId]?.name ?? categoryId;
+  // Aus dem 2026-08-06-Design-Update uebernommen: der Header-Titel
+  // unterscheidet, ob die Session von S2 (Kategorie) oder S5 (SRS) aus
+  // gestartet wurde, statt "srs" als eigenen mode-Wert zu behandeln.
+  const headerTitle = `${source === 'srs' ? 'Wiederholen' : catName} — ${MODE_LABELS[mode] ?? 'Üben'}`;
 
   useEffect(() => {
     let cancelled = false;
@@ -154,7 +158,7 @@ export function ExerciseScreen({ mode, categoryId }: { mode: string; categoryId:
           <Text style={[styles.backGlyph, { color: theme.text }]}>‹</Text>
         </Pressable>
         <Text style={[styles.title, { color: theme.text }]}>
-          {catName} — {MODE_LABELS[mode] ?? 'Üben'} ({language.label})
+          {headerTitle} ({language.label})
         </Text>
       </View>
 

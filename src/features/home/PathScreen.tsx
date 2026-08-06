@@ -4,36 +4,62 @@ import { router } from 'expo-router';
 import { useAppState } from '../../state/AppState';
 import { CATEGORIES, DEFAULT_THEMEN_PRO_KATEGORIE, GRUNDWORTSCHATZ_THEMEN } from '../../data/categories';
 import { LANGUAGES, getLanguage } from '../../data/languages';
-import { getTheme, ACCENT_BLUE, ACCENT_ORANGE, NODE_DONE, NODE_LOCKED } from '../../theme/tokens';
+import { getTheme, ACCENT_BLUE, ACCENT_ORANGE, NODE_LOCKED, PILL_FILL_BLUE, PILL_FILL_ORANGE, PILL_FILL_GRAY } from '../../theme/tokens';
 
 // S1 - Startscreen (Pfad). Ersetzt PathScreenMockup: echte Navigation statt
 // simuliertem Zustand, Struktur/Verhalten aus dem Claude-Design-Prototyp +
-// App-Overlay-Spec.md ("Homescreen Sprache"):
-// - "Sprache"-Dropdown: App-Overlay-Spec.md hatte das urspruenglich als rein
-//   optisch (auf/zuklappen ohne echten Inhalt) spezifiziert - seit der
-//   echten Supabase-Anbindung (2026-08-05) ist Deutsch/Schwedisch-Wechsel
-//   aber echt umgeschaltet, weil das sonst der einzige Weg waere, den
-//   echten Schwedisch-Content ueberhaupt zu erreichen. Spanisch/
-//   Franzoesisch bleiben "(bald)" und nicht antippbar, da dort 0 Saetze
-//   in Supabase existieren.
+// App-Overlay-Spec.md ("Homescreen Sprache").
+//
+// 2026-08-06: Zickzack-Pfad-Layout (Duolingo-Stil) aus aktualisiertem
+// Design-Prototyp uebernommen, ersetzt die vorherige flache Listenansicht -
+// Pillen-Knoten werden absolut positioniert (abwechselnd links/rechts,
+// zentrierte Kategorie-/Sprach-Knoten dazwischen), verbunden durch
+// rotierte Linien zwischen den Mittelpunkten. Algorithmus 1:1 aus der
+// Design-JS-Logik (renderVals() -> pathNodes/pathConnectors) portiert.
+//
+// - "Sprache"-Dropdown: seit der echten Supabase-Anbindung (2026-08-05)
+//   ist Deutsch/Schwedisch-Wechsel echt umgeschaltet (sonst waere
+//   Schwedisch-Content nicht erreichbar). Spanisch/Franzoesisch "(bald)".
 // - Ueberlebens-/Maximalwortschatz: Platzhalter ohne Funktion
-// - Pfad-Knoten (Grundwortschatz-Themen + Themen jeder gekauften Kategorie)
-//   -> S2 Kategorie-Detail-Screen
-// - gesperrte Vorschau-Knoten -> S3 Shop
-// - "Wiederholen + Ueben" -> S5 SRS-Auswahl, "Cheat-Sheet-Survival" -> S6
+// - Pfad-Knoten -> S2 Kategorie-Detail-Screen (mit optionalem Thema-Titel)
+// - gesperrte Knoten -> S3 Shop
+// - Scroll-Position nach Kauf bleibt erhalten, weil ShopScreen nach dem Kauf
+//   router.back() statt router.replace() macht - S1 bleibt dabei im
+//   Navigations-Stack gemountet, RN's ScrollView haelt ihre Scroll-Position
+//   dadurch von selbst (kein manuelles Speichern/Wiederherstellen noetig
+//   wie im Web-Prototyp, wo Screens nur bedingt gerenderte Divs sind).
+// - "Wiederholen + Ueben" -> S5 SRS, "Cheat-Sheet-Survival" -> S6
 
-type Node = { key: string; label: string; done?: boolean; current?: boolean; locked?: boolean; onPress: () => void };
-type Section = { title: string; titleColor: string; nodes: Node[]; dashedAfter?: boolean };
+const PILL_W = 176;
+const PILL_H = 44;
+const ROW_H = 82;
+const CONT_W = 300;
 
-function themenToNodes(themen: string[], prefix: string, onPress: (label: string) => void): Node[] {
-  return themen.map((label, i) => ({
-    key: prefix + i,
-    label: prefix.startsWith('grund') ? `Grundlagen – Thema ${label}` : `${prefix.replace(/^cat_/, '')} – Thema ${label}`,
-    done: i < themen.length - 1,
-    current: i === themen.length - 1,
-    onPress: () => onPress(label),
-  }));
-}
+type RawNode = {
+  label: string;
+  color: string;
+  fill: string;
+  big?: boolean;
+  center?: boolean;
+  locked?: boolean;
+  badge?: string | null;
+  newGroup?: boolean;
+  onPress: () => void;
+};
+
+type LaidOutNode = RawNode & {
+  width: number;
+  height: number;
+  fontSize: number;
+  left: number;
+  top: number;
+  cx: number;
+  cy: number;
+  badgeLeft: number;
+  badgeTop: number;
+};
+
+type Connector = { left: number; top: number; length: number; angle: number; color: string };
 
 export function PathScreen() {
   const { darkMode, purchased, targetLanguageId, setTargetLanguageId } = useAppState();
@@ -41,39 +67,89 @@ export function PathScreen() {
   const [langOpen, setLangOpen] = useState(false);
   const activeLanguage = getLanguage(targetLanguageId);
 
-  const purchasedCategories = CATEGORIES.filter((c) => purchased[c.id]);
-  const lockedCategories = CATEGORIES.filter((c) => !purchased[c.id]).slice(0, 2);
+  const goCategoryDetail = (id: string, themeLabel?: string) => () => {
+    router.push({ pathname: '/category/[id]', params: themeLabel ? { id, theme: themeLabel } : { id } });
+  };
+  const goShop = () => router.push('/shop');
 
-  const sections: Section[] = [
-    {
-      title: 'Grundwortschatz',
-      titleColor: ACCENT_BLUE,
-      nodes: themenToNodes(GRUNDWORTSCHATZ_THEMEN, 'grund', () => router.push('/category/grundwortschatz')),
-    },
-    ...purchasedCategories.map((cat) => ({
-      title: cat.name,
-      titleColor: ACCENT_ORANGE,
-      nodes: themenToNodes(DEFAULT_THEMEN_PRO_KATEGORIE, `cat_${cat.name}`, () => router.push(`/category/${cat.id}`)),
+  const purchasedCategories = CATEGORIES.filter((c) => purchased[c.id]);
+  const lockedCategories = CATEGORIES.filter((c) => !purchased[c.id]);
+
+  const raw: RawNode[] = [
+    { label: activeLanguage.label, color: ACCENT_BLUE, fill: PILL_FILL_BLUE, big: true, center: true, onPress: goCategoryDetail('grundwortschatz') },
+    ...GRUNDWORTSCHATZ_THEMEN.map((t) => ({
+      label: `Grundlagen – Thema ${t}`,
+      color: ACCENT_BLUE,
+      fill: PILL_FILL_BLUE,
+      onPress: goCategoryDetail('grundwortschatz', `Thema ${t}`),
     })),
   ];
-  if (lockedCategories.length > 0) {
-    sections[sections.length - 1] = { ...sections[sections.length - 1], dashedAfter: true };
-    sections.push({
-      title: 'Gesperrt',
-      titleColor: theme.sub,
-      nodes: lockedCategories.flatMap((cat) =>
-        DEFAULT_THEMEN_PRO_KATEGORIE.slice(0, 2).map((label, i) => ({
-          key: `locked_${cat.id}_${i}`,
-          label: `${cat.name} – Thema ${label}`,
-          locked: true,
-          onPress: () => router.push('/shop'),
-        }))
-      ),
+  purchasedCategories.forEach((cat, ci) => {
+    raw.push({
+      label: cat.name, color: ACCENT_ORANGE, fill: PILL_FILL_ORANGE, center: true, newGroup: true,
+      badge: ci === 0 ? '"Sprung"' : null, onPress: goCategoryDetail(cat.id),
+    });
+    DEFAULT_THEMEN_PRO_KATEGORIE.forEach((t) =>
+      raw.push({ label: `${cat.name} – Thema ${t}`, color: ACCENT_ORANGE, fill: PILL_FILL_ORANGE, onPress: goCategoryDetail(cat.id, `Thema ${t}`) })
+    );
+  });
+  lockedCategories.forEach((cat, ci) => {
+    raw.push({
+      label: cat.name, color: NODE_LOCKED, fill: PILL_FILL_GRAY, center: true, newGroup: true, locked: true,
+      badge: ci === 0 ? '„gesperrt“' : null, onPress: goShop,
+    });
+    DEFAULT_THEMEN_PRO_KATEGORIE.forEach((t) =>
+      raw.push({ label: `${cat.name} – Thema ${t}`, color: NODE_LOCKED, fill: PILL_FILL_GRAY, locked: true, onPress: goShop })
+    );
+  });
+
+  const dividers: number[] = [];
+  const pathNodes: LaidOutNode[] = raw.map((n, i) => {
+    const w = n.big ? 128 : PILL_W;
+    const left = n.center ? (CONT_W - w) / 2 : i % 2 === 0 ? 0 : CONT_W - w;
+    const top = i * ROW_H;
+    if (n.newGroup && i > 0) dividers.push(top - ROW_H / 2 + PILL_H / 2);
+    return {
+      ...n,
+      width: w,
+      height: n.big ? 56 : PILL_H,
+      fontSize: n.big ? 16 : 12.5,
+      left,
+      top,
+      cx: left + w / 2,
+      cy: top + (n.big ? 28 : PILL_H / 2),
+      badgeLeft: left + w + 8,
+      badgeTop: top + (n.big ? 18 : 12),
+    };
+  });
+  const connectors: Connector[] = [];
+  for (let i = 0; i < pathNodes.length - 1; i++) {
+    const a = pathNodes[i];
+    const b = pathNodes[i + 1];
+    const dx = b.cx - a.cx;
+    const dy = b.cy - a.cy;
+    connectors.push({
+      left: a.cx,
+      top: a.cy,
+      length: Math.sqrt(dx * dx + dy * dy),
+      angle: (Math.atan2(dy, dx) * 180) / Math.PI,
+      color: a.color,
     });
   }
+  const containerHeight = pathNodes.length > 0 ? pathNodes[pathNodes.length - 1].top + PILL_H + 20 : 0;
 
   return (
     <View style={[styles.container, { backgroundColor: theme.pageBg }]}>
+      {/* Randleisten-Button -> Referral-/Bewertungs-/Feedback-Programm
+          (Nutzer-Anforderung 2026-08-06, siehe RewardsScreen.tsx). Fest am
+          rechten Rand, vertikal mittig, unabhaengig vom Pfad-Scroll. */}
+      <Pressable
+        onPress={() => router.push('/rewards')}
+        style={[styles.edgeButton, { backgroundColor: theme.cardBg, borderColor: theme.border }]}
+      >
+        <Text style={styles.edgeButtonGlyph}>🎁</Text>
+      </Pressable>
+
       <View style={styles.langWrap}>
         <Pressable
           onPress={() => setLangOpen((o) => !o)}
@@ -121,33 +197,58 @@ export function PathScreen() {
       </View>
 
       <View style={[styles.pathBox, { borderColor: theme.border, backgroundColor: theme.pathBoxBg }]}>
-        <ScrollView contentContainerStyle={styles.pathBoxContent}>
-          {sections.map((section, si) => (
-            <View key={section.title + si}>
-              <Text style={[styles.sectionTitle, { color: section.titleColor }]}>{section.title.toUpperCase()}</Text>
-              {section.nodes.map((node, ni) => (
-                <View key={node.key} style={styles.nodeRow}>
-                  <View style={styles.nodeCircleCol}>
-                    <View
-                      style={[
-                        styles.nodeCircle,
-                        { backgroundColor: node.locked ? NODE_LOCKED : node.done ? NODE_DONE : ACCENT_ORANGE },
-                      ]}
-                    >
-                      {node.locked && <Text style={styles.nodeGlyph}>🔒</Text>}
-                      {node.done && !node.locked && <Text style={styles.nodeGlyph}>✓</Text>}
-                      {node.current && !node.locked && !node.done && <Text style={styles.nodeGlyph}>●</Text>}
-                    </View>
-                    {ni < section.nodes.length - 1 && <View style={[styles.nodeLine, { backgroundColor: theme.border }]} />}
-                  </View>
-                  <Pressable onPress={node.onPress} style={styles.nodeLabelWrap}>
-                    <Text style={[styles.nodeLabel, { color: node.locked ? theme.sub : theme.text }]}>{node.label}</Text>
+        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.pathBoxContent}>
+          <View style={[styles.pathCanvas, { height: containerHeight }]}>
+            {dividers.map((d, i) => (
+              <View key={`div-${i}`} style={[styles.divider, { top: d, borderColor: theme.dividerColor }]} />
+            ))}
+            {connectors.map((c, i) => (
+              <View
+                key={`conn-${i}`}
+                style={[
+                  styles.connector,
+                  {
+                    left: c.left,
+                    top: c.top,
+                    width: c.length,
+                    backgroundColor: c.color,
+                    transform: [{ rotate: `${c.angle}deg` }],
+                    transformOrigin: '0% 50%',
+                  },
+                ]}
+              />
+            ))}
+            {pathNodes.map((n, i) => (
+              <View key={`node-${i}`}>
+                <Pressable
+                  onPress={n.onPress}
+                  style={[
+                    styles.pill,
+                    {
+                      left: n.left,
+                      top: n.top,
+                      width: n.width,
+                      height: n.height,
+                      borderColor: n.color,
+                      backgroundColor: n.fill,
+                    },
+                  ]}
+                >
+                  <Text style={{ color: n.color, fontWeight: '800', fontSize: n.fontSize, textAlign: 'center' }}>{n.label}</Text>
+                  {n.locked && <Text style={styles.lockGlyph}>🔒</Text>}
+                </Pressable>
+                {n.badge && (
+                  <Pressable
+                    disabled={!n.locked}
+                    onPress={n.locked ? n.onPress : undefined}
+                    style={[styles.badge, { left: n.badgeLeft, top: n.badgeTop, borderColor: theme.border, backgroundColor: theme.cardBg }]}
+                  >
+                    <Text style={{ color: theme.sub, fontWeight: '700', fontSize: 10 }}>{n.badge}</Text>
                   </Pressable>
-                </View>
-              ))}
-              {section.dashedAfter && <View style={[styles.dashedSeparator, { borderColor: theme.border }]} />}
-            </View>
-          ))}
+                )}
+              </View>
+            ))}
+          </View>
         </ScrollView>
         <Text style={[styles.scrollHint, { color: theme.sub }]}>▾</Text>
       </View>
@@ -166,7 +267,14 @@ export function PathScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16, gap: 12 },
+  container: { flex: 1, padding: 16, gap: 12, position: 'relative' },
+  edgeButton: {
+    position: 'absolute', right: 4, top: '50%', marginTop: -22, zIndex: 10,
+    width: 44, height: 44, borderRadius: 22, borderWidth: 1.5,
+    alignItems: 'center', justifyContent: 'center',
+    shadowColor: '#000', shadowOpacity: 0.12, shadowRadius: 6, shadowOffset: { width: 0, height: 2 }, elevation: 3,
+  },
+  edgeButtonGlyph: { fontSize: 20 },
   langWrap: { position: 'relative', zIndex: 5 },
   langButton: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
@@ -181,16 +289,18 @@ const styles = StyleSheet.create({
   wortschatzBox: { flex: 1, paddingVertical: 11, paddingHorizontal: 10, borderWidth: 1.5, borderRadius: 12, alignItems: 'center' },
   wortschatzText: { fontWeight: '700', fontSize: 13, textAlign: 'center' },
   pathBox: { flex: 1, minHeight: 320, borderWidth: 1.5, borderRadius: 16, position: 'relative' },
-  pathBoxContent: { padding: 16, paddingBottom: 30 },
-  sectionTitle: { fontWeight: '800', fontSize: 12, letterSpacing: 0.6, marginBottom: 10, marginTop: 4 },
-  nodeRow: { flexDirection: 'row', gap: 12 },
-  nodeCircleCol: { width: 34, alignItems: 'center' },
-  nodeCircle: { width: 34, height: 34, borderRadius: 17, alignItems: 'center', justifyContent: 'center' },
-  nodeGlyph: { color: '#fff', fontWeight: '800', fontSize: 13 },
-  nodeLine: { width: 2, flex: 1, minHeight: 22, marginTop: 2 },
-  nodeLabelWrap: { flex: 1, paddingVertical: 2, paddingBottom: 22 },
-  nodeLabel: { fontWeight: '700', fontSize: 15 },
-  dashedSeparator: { borderTopWidth: 2, borderStyle: 'dashed', marginVertical: 2, marginBottom: 18 },
+  pathBoxContent: { paddingVertical: 18, paddingHorizontal: 8 },
+  pathCanvas: { width: CONT_W, alignSelf: 'center', position: 'relative' },
+  divider: { position: 'absolute', left: 0, right: 0, borderTopWidth: 2.5, borderStyle: 'dashed' },
+  connector: { position: 'absolute', height: 2, opacity: 0.5 },
+  pill: {
+    position: 'absolute', borderRadius: 100, borderWidth: 2, alignItems: 'center', justifyContent: 'center',
+    flexDirection: 'row', gap: 6, paddingHorizontal: 10,
+  },
+  lockGlyph: { fontSize: 12 },
+  badge: {
+    position: 'absolute', paddingVertical: 5, paddingHorizontal: 10, borderRadius: 100, borderWidth: 1.5,
+  },
   scrollHint: { position: 'absolute', bottom: 8, left: 0, right: 0, textAlign: 'center', fontSize: 16 },
   primaryButton: { marginTop: 2, paddingVertical: 16, borderRadius: 16, backgroundColor: ACCENT_BLUE, alignItems: 'center' },
   primaryButtonText: { color: '#fff', fontWeight: '800', fontSize: 17 },

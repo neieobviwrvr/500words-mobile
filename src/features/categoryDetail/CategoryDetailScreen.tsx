@@ -9,7 +9,7 @@ import { getTheme, ACCENT_BLUE, ACCENT_ORANGE, ACCENT_PREMIUM } from '../../them
 // freigeschaltete Kategorien (Grundwortschatz zaehlt als immer freigeschaltet).
 // Vier Modi -> S4 Uebungs-Screen mit passendem mode-Parameter.
 
-export function CategoryDetailScreen({ categoryId }: { categoryId: string }) {
+export function CategoryDetailScreen({ categoryId, themeLabel }: { categoryId: string; themeLabel?: string }) {
   const { darkMode } = useAppState();
   const theme = getTheme(darkMode);
   const [premiumNoticeOpen, setPremiumNoticeOpen] = useState(false);
@@ -32,6 +32,11 @@ export function CategoryDetailScreen({ categoryId }: { categoryId: string }) {
         </Pressable>
         <Text style={[styles.title, { color: theme.text }]}>{name}</Text>
       </View>
+      {/* Zeigt, von welchem Pfad-Knoten (Thema) aus S1 hierher gesprungen
+          wurde - aus dem 2026-08-06-Design-Update uebernommen. Rein
+          informativ, filtert aktuell noch nichts (echte Thema-Filterung
+          braucht Content-Chunking, siehe CLAUDE.md-Backlog S1). */}
+      {!!themeLabel && <Text style={[styles.themeSubtitle, { color: theme.sub }]}>{themeLabel}</Text>}
       <Text style={styles.progress}>Progression {progressPct}% vollständig gelernt</Text>
 
       <View style={styles.modeList}>
@@ -71,6 +76,7 @@ const styles = StyleSheet.create({
   backBtn: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
   backGlyph: { fontSize: 26 },
   title: { fontWeight: '800', fontSize: 21 },
+  themeSubtitle: { fontWeight: '600', fontSize: 14, marginLeft: 42, marginTop: -4, marginBottom: 10 },
   progress: { color: ACCENT_ORANGE, fontWeight: '700', fontSize: 14, marginBottom: 26 },
   modeList: { gap: 12 },
   modeButton: { padding: 18, borderRadius: 16, borderWidth: 1.5, borderColor: ACCENT_BLUE, alignItems: 'center' },

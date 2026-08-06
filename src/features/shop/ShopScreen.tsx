@@ -33,7 +33,14 @@ export function ShopScreen() {
   const onBuy = () => {
     if (cart.length === 0) return;
     buyCart();
-    router.replace('/');
+    // router.back() statt router.replace('/'): S3 ist laut Navigations-
+    // prinzipien nur von S1 aus erreichbar, also bringt back() genauso
+    // zurueck zu S1 - haelt aber S1s Screen-Instanz im Stack gemountet,
+    // wodurch die Scroll-Position im Pfad automatisch erhalten bleibt
+    // (siehe PathScreen.tsx-Kommentar). Design-Backlog-Notiz vom
+    // 2026-08-05/06 dazu: Nutzer soll nach Kauf an der Stelle landen, von
+    // der aus er in den Shop gewechselt ist statt oben bei der Sprachwahl.
+    router.back();
   };
 
   return (
