@@ -35,7 +35,8 @@
     },
     "plugins": [
       "expo-audio",
-      "expo-router"
+      "expo-router",
+      "expo-web-browser"
     ]
   }
 }
