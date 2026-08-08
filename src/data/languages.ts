@@ -9,14 +9,25 @@ export type Language = {
   label: string;
   table: string | null; // Supabase-Tabelle mit den Phrasebook-Saetzen dieser Sprache
   whisperLanguage: string; // Sprachcode fuer whisper.rn transcribe()
+  // Kurzer, generischer Beispielsatz in der Zielsprache - wird Whisper als
+  // "prompt" mitgegeben (2026-08-08, echter Nutzerfall: falsch ausgesprochenes
+  // Schwedisch wurde als fluessiges Franzoesisch transkribiert). Das
+  // erzwungene `language`-Flag verankert nur den allerersten Token - ein
+  // gleichsprachiger Prompt-Kontext haelt den Decoder ueber den GANZEN Satz
+  // hinweg staerker in der richtigen Sprache, statt nur am Anfang. Bewusst
+  // ein generischer, inhaltlich unabhaengiger Satz (nicht der Zielsatz
+  // selbst) - ein zu spezifischer Prompt kann Whisper dazu verleiten, den
+  // Prompt-Inhalt einfach zu wiederholen statt das tatsaechlich Gesagte zu
+  // transkribieren (bekanntes Whisper-Prompt-Risiko).
+  whisperPrompt: string;
   hasContent: boolean;
 };
 
 export const LANGUAGES: Language[] = [
-  { id: 'de', label: 'Deutsch', table: 'phrasebook_master', whisperLanguage: 'de', hasContent: true },
-  { id: 'sv', label: 'Schwedisch', table: 'schwedisch_phrasebook', whisperLanguage: 'sv', hasContent: true },
-  { id: 'es', label: 'Spanisch', table: null, whisperLanguage: 'es', hasContent: false },
-  { id: 'fr', label: 'Französisch', table: null, whisperLanguage: 'fr', hasContent: false },
+  { id: 'de', label: 'Deutsch', table: 'phrasebook_master', whisperLanguage: 'de', whisperPrompt: 'Das ist ein Beispielsatz auf Deutsch.', hasContent: true },
+  { id: 'sv', label: 'Schwedisch', table: 'schwedisch_phrasebook', whisperLanguage: 'sv', whisperPrompt: 'Det här är en exempelmening på svenska.', hasContent: true },
+  { id: 'es', label: 'Spanisch', table: null, whisperLanguage: 'es', whisperPrompt: 'Esta es una frase de ejemplo en español.', hasContent: false },
+  { id: 'fr', label: 'Französisch', table: null, whisperLanguage: 'fr', whisperPrompt: 'Voici une phrase d\'exemple en français.', hasContent: false },
 ];
 
 export const DEFAULT_LANGUAGE_ID = 'de';

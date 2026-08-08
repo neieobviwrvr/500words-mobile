@@ -57,15 +57,27 @@ function levenshtein(a: string, b: string): number {
   return dp[m][n];
 }
 
-// Toleranz waechst mit der Wortlaenge - bei kurzen Woertern (<=4 Zeichen)
-// gar keine Toleranz (zu riskant, viele unverwandte kurze Woerter liegen
-// nah beieinander), sonst 1-2 Zeichen Unterschied erlaubt. Deckt reale
-// Whisper-Verhoerer ab, z.B. "heizung" -> "heutzung" oder "kaution" ->
-// "kaudzion" (beide Editierdistanz 2).
+// Toleranz waechst mit der Wortlaenge - bei sehr kurzen Woertern (<=2
+// Zeichen) gar keine Toleranz (z.B. "ja"/"en"/"på" - zu ambig, ein Buchstabe
+// Unterschied ist oft ein komplett anderes Wort), sonst 1-2 Zeichen
+// Unterschied erlaubt. Deckt reale Whisper-Verhoerer ab, z.B. "heizung" ->
+// "heutzung" oder "kaution" -> "kaudzion" (beide Editierdistanz 2).
+//
+// Korrektur (2026-08-08, echter Nutzerfall): vorher lag die Grenze bei <=4
+// Zeichen ohne jede Toleranz - traf damit genau kurze Zahl-/Preisw√∂rter wie
+// schwedisch "tio" (10) oder "euro" hart, die bei On-Device-Whisper (Modell
+// "base") besonders anfaellig fuer einen einzelnen falsch erkannten
+// Buchstaben sind. Bei Saetzen mit nur einem Pflicht-Konzept (z.B. reine
+// Preisaussagen) kippte ein einzelner Whisper-Verhoerer dadurch sofort auf
+// die haerteste Stufe "nicht_verstanden" trotz erkennbar richtig
+// gesprochenem Satz - widerspricht dem "SRS soll nicht schlecht gelaunt
+// machen"-Prinzip (siehe CLAUDE.md), FSRS resettet bei dieser Stufe hart.
+// Grenze deshalb auf <=2 Zeichen gesenkt, 3-4-Zeichen-Woerter bekommen jetzt
+// dieselbe Ein-Zeichen-Toleranz wie 5-7-Zeichen-Woerter.
 function wordsAreClose(a: string, b: string): boolean {
   if (a === b) return true;
   const maxLen = Math.max(a.length, b.length);
-  if (maxLen <= 4) return false;
+  if (maxLen <= 2) return false;
   const threshold = maxLen <= 7 ? 1 : 2;
   return levenshtein(a, b) <= threshold;
 }

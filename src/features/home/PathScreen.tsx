@@ -140,16 +140,6 @@ export function PathScreen() {
 
   return (
     <View style={[styles.container, { backgroundColor: theme.pageBg }]}>
-      {/* Randleisten-Button -> Referral-/Bewertungs-/Feedback-Programm
-          (Nutzer-Anforderung 2026-08-06, siehe RewardsScreen.tsx). Fest am
-          rechten Rand, vertikal mittig, unabhaengig vom Pfad-Scroll. */}
-      <Pressable
-        onPress={() => router.push('/rewards')}
-        style={[styles.edgeButton, { backgroundColor: theme.cardBg, borderColor: theme.border }]}
-      >
-        <Text style={styles.edgeButtonGlyph}>🎁</Text>
-      </Pressable>
-
       <View style={styles.langWrap}>
         <Pressable
           onPress={() => setLangOpen((o) => !o)}
@@ -256,25 +246,33 @@ export function PathScreen() {
       <Pressable style={styles.primaryButton} onPress={() => router.push('/srs')}>
         <Text style={styles.primaryButtonText}>Wiederholen + Üben</Text>
       </Pressable>
-      <Pressable
-        style={[styles.secondaryButton, { borderColor: theme.border, backgroundColor: theme.cardBg }]}
-        onPress={() => router.push('/cheatsheet')}
-      >
-        <Text style={[styles.secondaryButtonText, { color: theme.text }]}>Cheat‑Sheet‑Survival</Text>
-      </Pressable>
+
+      {/* Nutzer-Korrektur 2026-08-08: der Referral-/Bewertungs-/Feedback-
+          Button war vorher ein schwebendes Icon ueber dem Pfad - gehoert
+          da laut Nutzer nicht hin. Jetzt als beschrifteter Button unten
+          neben Cheat-Sheet-Survival, mit Text der klarmacht, worum es geht
+          (Freunde einladen/Bewertung/Feedback), statt nur einem Icon. */}
+      <View style={styles.bottomRow}>
+        <Pressable
+          style={[styles.secondaryButton, { borderColor: theme.border, backgroundColor: theme.cardBg }]}
+          onPress={() => router.push('/cheatsheet')}
+        >
+          <Text style={[styles.secondaryButtonText, { color: theme.text }]}>Cheat‑Sheet‑Survival</Text>
+        </Pressable>
+        <Pressable
+          style={[styles.secondaryButton, { borderColor: theme.border, backgroundColor: theme.cardBg }]}
+          onPress={() => router.push('/rewards')}
+        >
+          <Text style={[styles.secondaryButtonText, { color: theme.text }]}>🎁 Extras</Text>
+          <Text style={[styles.secondaryButtonSubtext, { color: theme.sub }]}>Freunde · Bewertung · Feedback</Text>
+        </Pressable>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 16, gap: 12, position: 'relative' },
-  edgeButton: {
-    position: 'absolute', right: 4, top: '50%', marginTop: -22, zIndex: 10,
-    width: 44, height: 44, borderRadius: 22, borderWidth: 1.5,
-    alignItems: 'center', justifyContent: 'center',
-    shadowColor: '#000', shadowOpacity: 0.12, shadowRadius: 6, shadowOffset: { width: 0, height: 2 }, elevation: 3,
-  },
-  edgeButtonGlyph: { fontSize: 20 },
   langWrap: { position: 'relative', zIndex: 5 },
   langButton: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
@@ -304,6 +302,8 @@ const styles = StyleSheet.create({
   scrollHint: { position: 'absolute', bottom: 8, left: 0, right: 0, textAlign: 'center', fontSize: 16 },
   primaryButton: { marginTop: 2, paddingVertical: 16, borderRadius: 16, backgroundColor: ACCENT_BLUE, alignItems: 'center' },
   primaryButtonText: { color: '#fff', fontWeight: '800', fontSize: 17 },
-  secondaryButton: { paddingVertical: 14, borderRadius: 16, borderWidth: 1.5, alignItems: 'center' },
-  secondaryButtonText: { fontWeight: '700', fontSize: 15 },
+  bottomRow: { flexDirection: 'row', gap: 8 },
+  secondaryButton: { flex: 1, paddingVertical: 14, paddingHorizontal: 6, borderRadius: 16, borderWidth: 1.5, alignItems: 'center', gap: 2 },
+  secondaryButtonText: { fontWeight: '700', fontSize: 14, textAlign: 'center' },
+  secondaryButtonSubtext: { fontWeight: '600', fontSize: 10, textAlign: 'center' },
 });

@@ -109,7 +109,7 @@ export default function DevToolsScreen() {
     setPhrasebookResult(null);
     try {
       const current = phrasebookSentences[phrasebookIndex];
-      const result = await whisper.transcribe(uri, 'de');
+      const { text: result } = await whisper.transcribe(uri, 'de');
       setPhrasebookTranscript(result);
       const evaluation = evaluateConcepts(result, current.accepted_concepts, clusters);
       setPhrasebookResult(evaluation);
@@ -158,7 +158,7 @@ export default function DevToolsScreen() {
     setTranscript('');
     const startedAt = Date.now();
     try {
-      const result = await whisper.transcribe(uri, 'fr');
+      const { text: result } = await whisper.transcribe(uri, 'fr', "Voici une phrase d'exemple en français.");
       setTranscript(`${result}  (${((Date.now() - startedAt) / 1000).toFixed(1)}s)`);
     } catch (e) {
       setRecordError(e instanceof Error ? e.message : String(e));

@@ -74,6 +74,9 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
   const [isRecording, setIsRecording] = useState(false);
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [recordError, setRecordError] = useState<string | null>(null);
+  // Diagnose-State (2026-08-08): Sprachcode, den Whisper tatsaechlich
+  // erkannt hat, wenn er vom angeforderten abweicht - siehe useWhisper.ts.
+  const [languageMismatch, setLanguageMismatch] = useState<string | null>(null);
   const [feedback, setFeedback] = useState<EvaluationResult | null>(null);
   const [done, setDone] = useState(false);
   const [results, setResults] = useState<EvaluationResult['tier'][]>([]);
@@ -172,14 +175,33 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
     }
     setIsTranscribing(true);
     setTranscript('');
+    setLanguageMismatch(null);
     try {
-      const result = await whisper.transcribe(uri, language.whisperLanguage);
-      setTranscript(result);
+      const { text, detectedLanguage } = await whisper.transcribe(uri, language.whisperLanguage, language.whisperPrompt);
+      setTranscript(text);
+      // Bestaetigt (2026-08-08, echter Nutzerfall, auf iOS reproduziert -
+      // damit kein Android-Aufnahmeformat-Problem, siehe useWhisperRecorder.ts):
+      // Whisper meldet zurueck, welche Sprache es TATSAECHLICH decodiert
+      // hat. Weicht das vom angeforderten Code ab, ist das eine echte
+      // Whisper-Halluzination, keine falsche Aussprache - das erzwungene
+      // `language`-Flag schraenkt nur den Start-Token ein, die eigentlichen
+      // Wort-Tokens bleiben bei unklarem/nicht-muttersprachlichem Audio frei
+      // waehlbar. Kein Vorfall, den der Nutzer "falsch gemacht" hat, deshalb
+      // NICHT wie eine normale falsche Antwort werten: kein FSRS-Update,
+      // keine "nicht_verstanden"-Wertung - stattdessen einfach nochmal
+      // aufnehmen lassen (siehe CLAUDE.md "SRS soll nicht schlecht gelaunt
+      // machen"). Deckt weiterhin NICHT den Fall ab, dass Whisper "sv"
+      // zurueckmeldet, der Inhalt aber trotzdem Halluzination ist - dafuer
+      // gibt es keinen automatischen Indikator.
+      if (detectedLanguage && detectedLanguage !== language.whisperLanguage) {
+        setLanguageMismatch(detectedLanguage);
+        return;
+      }
       // Direkt nach dem Einsprechen auswerten - kein zusaetzlicher Tap auf
       // "loesen" noetig. Wertet mit dem frisch transkribierten Ergebnis aus
       // (nicht ueber den transcript-State), weil setState() asynchron ist
       // und der neue Wert sonst noch nicht sicher verfuegbar waere.
-      evaluateAnswer(result);
+      evaluateAnswer(text);
     } catch (e) {
       setRecordError(e instanceof Error ? e.message : String(e));
     } finally {
@@ -219,6 +241,7 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
     setIdx(next);
     setInput('');
     setTranscript('');
+    setLanguageMismatch(null);
     setFeedback(null);
     // Kein Session-Stopp, nur ein kurzer, automatisch weiterlaufender
     // Motivations-Einschub alle MOTIVATION_INTERVAL Karten (Nutzer-
@@ -314,6 +337,12 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
             {isTranscribing && <ActivityIndicator color={ACCENT_BLUE} style={{ marginLeft: 8 }} />}
           </View>
           {!!transcript && <Text style={[styles.transcript, { color: theme.text }]}>Erkannt: „{transcript}"</Text>}
+          {!!languageMismatch && (
+            <Text style={{ color: '#D9564F', fontSize: 12, fontWeight: '700', marginBottom: 4 }}>
+              ⚠️ Whisper hat das als „{languageMismatch}" statt „{language.whisperLanguage}" erkannt - das zählt nicht als
+              Versuch. Bitte nochmal einsprechen (oder Antwort tippen).
+            </Text>
+          )}
           {!!recordError && <Text style={{ color: '#D9564F', fontSize: 12 }}>{recordError}</Text>}
 
           <View style={[styles.inputCard, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
@@ -342,8 +371,8 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
 
           {!feedback ? (
             <Pressable
-              disabled={!currentAnswer}
-              style={[styles.solveButton, { opacity: currentAnswer ? 1 : 0.5 }]}
+              disabled={!currentAnswer || (!!languageMismatch && !input.trim())}
+              style={[styles.solveButton, { opacity: currentAnswer && !(languageMismatch && !input.trim()) ? 1 : 0.5 }]}
               onPress={checkAnswer}
             >
               <Text style={styles.solveButtonText}>lösen ▶</Text>
