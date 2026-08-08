@@ -24,6 +24,45 @@ const MODEL_FILE_NAME = 'ggml-small.bin';
 // Dateien gleichzeitig vorhalten).
 const OLD_MODEL_FILE_NAMES = ['ggml-tiny.bin', 'ggml-base.bin'];
 
+// Whisper.cpps ueblicher Standardwert fuer die Temperatur-Eskalation bei
+// Fallback-Durchlaeufen - siehe Kommentar bei runAttempt() weiter unten
+// (2026-08-08-Korrektur: war kurz auf 0, das hat den eingebauten Schutz
+// gegen Wiederholungs-Endlosschleifen mit abgeschaltet).
+const TEMPERATURE_INC = 0.2;
+
+// Kauderwelsch-Erkennung (2026-08-08, echte Nutzerfaelle): manche
+// Whisper-Ergebnisse sind offensichtlich kein echtes Wort in irgendeiner
+// Sprache - entweder eine Wiederholungsschleife ("oooooo...") oder ein
+// durchgerutschtes Sonderzeichen/Steuertoken ("]"). Sprachcode-Pruefung
+// (detectedLanguage) greift hier NICHT, weil Whisper diese Faelle oft
+// trotzdem als "richtige" Sprache meldet - das ist ein eigenstaendiges
+// Qualitaetsproblem, keine Sprachverwechslung. Bewusst simple, robuste
+// Heuristik statt komplexer Sprach-/Woerterbuch-Pruefung:
+// 1. Enthaelt der Text ueberhaupt einen Buchstaben (lateinisch inkl.
+//    Umlaute/Akzente)? Wenn nicht (z.B. nur "]"), Kauderwelsch.
+// 2. Macht ein einzelnes Zeichen einen unrealistisch hohen Anteil des
+//    Textes aus (z.B. "ooooooooo" -> fast 100% "o")? Wenn ja (Schwelle
+//    60%, ab einer Mindestlaenge von 6 Zeichen, damit kurze legitime
+//    Woerter wie "asas" nicht faelschlich reinfallen), Kauderwelsch.
+// Exportiert, damit ExerciseScreen.tsx dieselbe Pruefung auch nach dem
+// letzten (evtl. immer noch schlechten) Versuch anwenden kann, um die
+// Auswertung zu ueberspringen statt sie regulaer als falsch zu werten.
+export function looksLikeGarbageTranscript(text: string): boolean {
+  const cleaned = text.trim();
+  if (!cleaned) return true;
+  if (!/[a-zA-ZÀ-ÿ]/.test(cleaned)) return true;
+  const counts: Record<string, number> = {};
+  let total = 0;
+  for (const ch of cleaned.toLowerCase()) {
+    if (/\s/.test(ch)) continue;
+    counts[ch] = (counts[ch] ?? 0) + 1;
+    total++;
+  }
+  if (total < 6) return false;
+  const maxCount = Math.max(...Object.values(counts));
+  return maxCount / total > 0.6;
+}
+
 export type WhisperStatus = 'idle' | 'downloading' | 'initializing' | 'ready' | 'error';
 
 export function useWhisper() {
@@ -106,14 +145,23 @@ export function useWhisper() {
   // - `prompt`: ein kurzer, generischer Beispielsatz in der Zielsprache
   //   (siehe languages.ts) - haelt den Sprachkontext ueber den ganzen
   //   Decoding-Vorgang aufrecht statt nur am Anfang.
-  // - `temperatureInc: 0`: whisper.cpp erhoeht intern die "Kreativitaet"
-  //   (Temperatur) bei Wiederholungsversuchen, wenn der erste Durchlauf
-  //   laut eigener Qualitaetsheuristik unsicher aussieht - genau in diesen
-  //   Fallback-Durchlaeufen ist das Risiko fuer Sprachabdrift am hoechsten.
-  //   Deaktiviert diese Eskalationsleiter, bleibt immer beim nuechternen
-  //   (deterministischen) ersten Versuch.
   // - `beamSize`: Beam-Search statt reinem Greedy-Sampling - robuster bei
   //   unklarer Aussprache, ohne "kreativer" zu werden.
+  //
+  // KORREKTUR (2026-08-08, echter Nutzerfall): `temperatureInc` war kurz auf
+  // 0 gesetzt, um Sprachabdrift in Fallback-Durchlaeufen zu verhindern -
+  // das hat aber einen wichtigen Nebeneffekt uebersehen: dieselbe Eskalations-
+  // Leiter ist auch whisper.cpps EINGEBAUTER Schutz gegen Wiederholungs-
+  // Endlosschleifen (der Decoder "haengt" manchmal im selben Token fest,
+  // z.B. "ooooooooo..." statt "incluido", oder gibt nur ein einzelnes
+  // Sonderzeichen wie "]" zurueck). Mit temperatureInc:0 abgeschaltet, kam
+  // genau das durch - zwei gemeldete Faelle am selben Tag. Zurueckgesetzt auf
+  // den ueblichen whisper.cpp-Standardwert (0.2, siehe TEMPERATURE_INC oben
+  // im Modul), damit dieser eingebaute Schutz wieder greift. Das Sprach-
+  // abdrift-Risiko wird stattdessen durch den automatischen Zweitversuch
+  // unten UND die Kauderwelsch-Erkennung (isBadResult(), siehe
+  // looksLikeGarbageTranscript oben im Modul) abgefangen, nicht mehr durch
+  // das Abschalten der eigenen Fallback-Logik von whisper.cpp.
   // Automatischer, stiller Zweitversuch bei Sprachabdrift (2026-08-08):
   // laut Whisper-Community-Diskussionen ist `language` grundsaetzlich nur
   // eine starke Praeferenz, keine harte Garantie - das gilt fuer JEDE
@@ -135,11 +183,17 @@ export function useWhisper() {
       language,
       prompt,
       temperature: opts.temperature,
-      temperatureInc: 0,
+      temperatureInc: TEMPERATURE_INC,
       beamSize: opts.beamSize,
     });
     const { result, language: detectedLanguage } = await promise;
     return { text: result, detectedLanguage };
+  }
+
+  function isBadResult(result: { text: string; detectedLanguage?: string }, language: string): boolean {
+    if (result.detectedLanguage && result.detectedLanguage !== language) return true;
+    if (looksLikeGarbageTranscript(result.text)) return true;
+    return false;
   }
 
   async function transcribe(wavFileUri: string, language: string, prompt?: string) {
@@ -147,11 +201,11 @@ export function useWhisper() {
       throw new Error('Whisper-Modell ist noch nicht bereit.');
     }
     const first = await runAttempt(wavFileUri, language, prompt, { beamSize: 5, temperature: 0 });
-    if (!first.detectedLanguage || first.detectedLanguage === language) {
+    if (!isBadResult(first, language)) {
       return first;
     }
     const second = await runAttempt(wavFileUri, language, undefined, { beamSize: 1, temperature: 0.2 });
-    if (!second.detectedLanguage || second.detectedLanguage === language) {
+    if (!isBadResult(second, language)) {
       return second;
     }
     return first;

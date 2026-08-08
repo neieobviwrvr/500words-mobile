@@ -8,7 +8,7 @@ import { CATEGORIES, CATEGORY_BY_ID } from '../../data/categories';
 import { getLanguage } from '../../data/languages';
 import { ExerciseSentence, loadAnswerClusters, loadExerciseSentences, shuffle } from '../../data/phrasebookContent';
 import { evaluateConcepts, EvaluationResult } from '../../features/evaluation/evaluateConcepts';
-import { useWhisper } from '../../features/stt/useWhisper';
+import { useWhisper, looksLikeGarbageTranscript } from '../../features/stt/useWhisper';
 import { useWhisperRecorder } from '../../features/stt/useWhisperRecorder';
 import { newCard, reviewCard, isDue } from '../../features/srs/fsrsEngine';
 import { cardKey, loadAllCards, saveCard } from '../../features/srs/srsStorage';
@@ -123,6 +123,12 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
   // Papagei-Verdacht (2026-08-08): Aufnahme viel zu kurz fuer den Zielsatz,
   // Transkript trotzdem (fast) identisch zum Prompt - siehe looksLikePromptEcho().
   const [promptEchoSuspected, setPromptEchoSuspected] = useState(false);
+  // Kauderwelsch-Verdacht (2026-08-08): Transkript ist offensichtlich kein
+  // echtes Wort (Wiederholungsschleife wie "oooo..." oder durchgerutschtes
+  // Sonderzeichen wie "]") - siehe looksLikeGarbageTranscript() in
+  // useWhisper.ts. useWhisper() versucht das intern schon per Zweitversuch
+  // zu umgehen, das hier greift nur, wenn AUCH der Zweitversuch kaputt war.
+  const [garbageTranscriptSuspected, setGarbageTranscriptSuspected] = useState(false);
   const [feedback, setFeedback] = useState<EvaluationResult | null>(null);
   const [done, setDone] = useState(false);
   const [results, setResults] = useState<EvaluationResult['tier'][]>([]);
@@ -223,6 +229,7 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
     setTranscript('');
     setLanguageMismatch(null);
     setPromptEchoSuspected(false);
+    setGarbageTranscriptSuspected(false);
     try {
       // Zielsatz selbst als Prompt (2026-08-08, Duolingo-Prinzip: bekannter
       // Zielsatz statt offener Transkription, siehe CLAUDE.md) - staerkere
@@ -256,6 +263,16 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
       const recordedSeconds = estimateAudioSeconds(uri);
       if (looksLikePromptEcho(text, targetPrompt, recordedSeconds)) {
         setPromptEchoSuspected(true);
+        return;
+      }
+      // Kauderwelsch-Check (2026-08-08, echte Nutzerfaelle: "]" statt einem
+      // echten Satz, oder "oooooo..." als Wiederholungsschleife). useWhisper()
+      // versucht das schon intern per Zweitversuch zu vermeiden (siehe
+      // isBadResult() dort) - das hier ist der Rueckfall, falls AUCH der
+      // Zweitversuch kaputt war. Gleiche nicht-bestrafende Behandlung wie
+      // Sprach-Mismatch/Papagei-Verdacht: kein FSRS-Update, keine Wertung.
+      if (looksLikeGarbageTranscript(text)) {
+        setGarbageTranscriptSuspected(true);
         return;
       }
       // Direkt nach dem Einsprechen auswerten - kein zusaetzlicher Tap auf
@@ -304,6 +321,7 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
     setTranscript('');
     setLanguageMismatch(null);
     setPromptEchoSuspected(false);
+    setGarbageTranscriptSuspected(false);
     setFeedback(null);
     // Kein Session-Stopp, nur ein kurzer, automatisch weiterlaufender
     // Motivations-Einschub alle MOTIVATION_INTERVAL Karten (Nutzer-
@@ -411,6 +429,12 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
               einsprechen (etwas deutlicher/länger) oder Antwort tippen.
             </Text>
           )}
+          {garbageTranscriptSuspected && (
+            <Text style={{ color: '#D9564F', fontSize: 12, fontWeight: '700', marginBottom: 4 }}>
+              ⚠️ Das hat technisch nicht sauber geklappt - das zählt nicht als Versuch. Bitte nochmal einsprechen oder
+              Antwort tippen.
+            </Text>
+          )}
           {!!recordError && <Text style={{ color: '#D9564F', fontSize: 12 }}>{recordError}</Text>}
 
           <View style={[styles.inputCard, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
@@ -439,10 +463,17 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
 
           {!feedback ? (
             <Pressable
-              disabled={!currentAnswer || ((!!languageMismatch || promptEchoSuspected) && !input.trim())}
+              disabled={
+                !currentAnswer || ((!!languageMismatch || promptEchoSuspected || garbageTranscriptSuspected) && !input.trim())
+              }
               style={[
                 styles.solveButton,
-                { opacity: currentAnswer && !((languageMismatch || promptEchoSuspected) && !input.trim()) ? 1 : 0.5 },
+                {
+                  opacity:
+                    currentAnswer && !((languageMismatch || promptEchoSuspected || garbageTranscriptSuspected) && !input.trim())
+                      ? 1
+                      : 0.5,
+                },
               ]}
               onPress={checkAnswer}
             >
