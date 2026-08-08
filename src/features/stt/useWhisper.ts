@@ -2,14 +2,27 @@ import { useEffect, useRef, useState } from 'react';
 import { Directory, File, Paths } from 'expo-file-system';
 import { initWhisper, type WhisperContext } from 'whisper.rn';
 
-// Multilingual base model (nicht ".en") - App muss FR/SV/DE/etc. erkennen,
-// nicht nur Englisch. Umstieg von tiny auf base am 2026-08-04, weil tiny bei
-// selteneren/laengeren Woertern (Einwohnermeldeamt, Kaution, Fieber) zu
-// unzuverlaessig war - Whisper ist ausserdem stark englisch-lastig trainiert,
-// bei Nicht-Englisch-Sprachen hilft ein groesseres Modell ueberproportional.
-const MODEL_URL = 'https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.bin';
+// Multilingual small model (nicht ".en") - App muss FR/SV/DE/etc. erkennen,
+// nicht nur Englisch. Umstieg von tiny auf base am 2026-08-04, dann base auf
+// small am 2026-08-08 (echter Nutzerfall: selbst sauber ausgesprochenes
+// Schwedisch/Spanisch wurde von "base" wiederholt als andere Sprache
+// erkannt - Parameter-Tuning (prompt/temperatureInc/beamSize) hat das
+// spuerbar, aber nicht ausreichend verbessert, siehe evaluateConcepts.ts/
+// ExerciseScreen.tsx-Kommentare zum selben Datum). Nutzer-Entscheidung:
+// groesserer Download (~466 statt ~142 MB) und etwas laengere Wartezeit pro
+// Satz sind akzeptabel, wenn's die Erkennung wirklich robuster macht - "wir
+// muessen ja nichts bezahlen". Alte "tiny"-Begruendung (Einwohnermeldeamt,
+// Kaution, Fieber zu unzuverlaessig) gilt fuer den base->small-Schritt
+// analog: Whisper ist stark englisch-lastig trainiert, bei Nicht-Englisch-
+// Sprachen hilft ein groesseres Modell ueberproportional.
+const MODEL_URL = 'https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.bin';
 const MODEL_DIR_NAME = 'whisper-models';
-const MODEL_FILE_NAME = 'ggml-base.bin';
+const MODEL_FILE_NAME = 'ggml-small.bin';
+// Alte, jetzt ungenutzte Modelldatei(en) - werden beim naechsten Start
+// geloescht, damit sie nicht unnoetig Speicherplatz auf dem Geraet belegen
+// (Nutzer, die schon "base" heruntergeladen hatten, wuerden sonst beide
+// Dateien gleichzeitig vorhalten).
+const OLD_MODEL_FILE_NAMES = ['ggml-tiny.bin', 'ggml-base.bin'];
 
 export type WhisperStatus = 'idle' | 'downloading' | 'initializing' | 'ready' | 'error';
 
@@ -26,6 +39,18 @@ export function useWhisper() {
       try {
         const dir = new Directory(Paths.document, MODEL_DIR_NAME);
         if (!dir.exists) dir.create();
+
+        // Alte Modelldatei(en) aus fruehreren Modellgroessen-Wechseln
+        // aufraeumen (best-effort - ein Fehler hier soll das Laden des
+        // aktuellen Modells nicht verhindern).
+        for (const oldName of OLD_MODEL_FILE_NAMES) {
+          try {
+            const oldFile = new File(dir, oldName);
+            if (oldFile.exists) oldFile.delete();
+          } catch {
+            // ignorieren - reine Aufraeumarbeit, nicht kritisch
+          }
+        }
 
         const modelFile = new File(dir, MODEL_FILE_NAME);
 
@@ -89,22 +114,47 @@ export function useWhisper() {
   //   (deterministischen) ersten Versuch.
   // - `beamSize`: Beam-Search statt reinem Greedy-Sampling - robuster bei
   //   unklarer Aussprache, ohne "kreativer" zu werden.
-  // Nicht auf echtem Geraet verifiziert (kein Geraete-Build in dieser
-  // Session moeglich) - naechster echter Testlauf sollte zeigen, ob das
-  // reicht oder ob weiter nachjustiert werden muss.
+  // Automatischer, stiller Zweitversuch bei Sprachabdrift (2026-08-08):
+  // laut Whisper-Community-Diskussionen ist `language` grundsaetzlich nur
+  // eine starke Praeferenz, keine harte Garantie - das gilt fuer JEDE
+  // Whisper-Variante, nicht nur unsere, siehe z.B. openai/whisper Discussion
+  // #529 "wrong language detection and forcing the right one". Deshalb statt
+  // nur zu erkennen UND den Nutzer nochmal sprechen zu lassen: bei einer
+  // erkannten Sprache != angeforderter Sprache wird DIESELBE Aufnahme
+  // automatisch ein zweites Mal decodiert, mit bewusst anderer Strategie
+  // (kein Prompt - falls der selbst zur Verwirrung beitraegt -, kleine
+  // Temperatur statt striktem Greedy/Beam-5 - damit der zweite Versuch
+  // tatsaechlich einen anderen Loesungsweg nimmt statt deterministisch
+  // dasselbe Ergebnis nochmal zu berechnen). Kein Zusatzaufwand fuer den
+  // Nutzer, nur etwas mehr Rechenzeit auf dem Geraet (kostenlos). Schlagen
+  // beide Versuche fehl, gibt es den ersten (Prompt-verankerten) zurueck -
+  // ExerciseScreen erkennt den Mismatch weiterhin und zaehlt es nicht als
+  // Versuch.
+  async function runAttempt(wavFileUri: string, language: string, prompt: string | undefined, opts: { beamSize: number; temperature: number }) {
+    const { promise } = contextRef.current!.transcribe(wavFileUri, {
+      language,
+      prompt,
+      temperature: opts.temperature,
+      temperatureInc: 0,
+      beamSize: opts.beamSize,
+    });
+    const { result, language: detectedLanguage } = await promise;
+    return { text: result, detectedLanguage };
+  }
+
   async function transcribe(wavFileUri: string, language: string, prompt?: string) {
     if (!contextRef.current) {
       throw new Error('Whisper-Modell ist noch nicht bereit.');
     }
-    const { promise } = contextRef.current.transcribe(wavFileUri, {
-      language,
-      prompt,
-      temperature: 0,
-      temperatureInc: 0,
-      beamSize: 5,
-    });
-    const { result, language: detectedLanguage } = await promise;
-    return { text: result, detectedLanguage };
+    const first = await runAttempt(wavFileUri, language, prompt, { beamSize: 5, temperature: 0 });
+    if (!first.detectedLanguage || first.detectedLanguage === language) {
+      return first;
+    }
+    const second = await runAttempt(wavFileUri, language, undefined, { beamSize: 1, temperature: 0.2 });
+    if (!second.detectedLanguage || second.detectedLanguage === language) {
+      return second;
+    }
+    return first;
   }
 
   return { status, progress, error, transcribe };

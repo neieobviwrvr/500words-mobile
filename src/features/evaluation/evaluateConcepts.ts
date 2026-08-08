@@ -154,6 +154,17 @@ export function evaluateConcepts(
   }
 
   const survived = missed.length === 0;
+  // Teilkredit (2026-08-08, Nutzer-Wunsch: "brutal schlechte Aussprache"
+  // soll trotzdem etwas zaehlen): bei Saetzen mit MEHREREN Pflicht-
+  // Konzepten reisst bisher ein einzelnes verpasstes Konzept die ganze
+  // Bewertung auf "nicht_verstanden", selbst wenn die Mehrheit erkannt
+  // wurde (z.B. "Berlin" richtig, "naechster Zug" komplett danebenge-
+  // sprochen). Ab jetzt reicht "mindestens die Haelfte der Pflicht-
+  // Konzepte getroffen" fuer "ueberlebt" statt "nicht_verstanden" - bei
+  // Saetzen mit nur EINEM Pflicht-Konzept aendert sich dadurch nichts
+  // (es gibt keine "Haelfte" von einem Konzept, matched muss weiterhin
+  // >= missed sein, also bei 0 von 1 weiterhin nicht_verstanden).
+  const majorityMatched = matched.length > 0 && matched.length >= missed.length;
 
   let verbClusterMatched: boolean | null = null;
   if (accepted.verb_cluster) {
@@ -164,7 +175,9 @@ export function evaluateConcepts(
   let tier: Tier = 'nicht_verstanden';
   if (survived) {
     tier = verbClusterMatched === false ? 'ueberlebt' : 'richtig';
+  } else if (majorityMatched) {
+    tier = 'ueberlebt';
   }
 
-  return { tier, passed: survived, matched, missed, verbClusterMatched };
+  return { tier, passed: tier !== 'nicht_verstanden', matched, missed, verbClusterMatched };
 }
