@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { ActivityIndicator, Button, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Button, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import { File } from 'expo-file-system';
 import { useWhisper } from '../src/features/stt/useWhisper';
 import { useWhisperRecorder } from '../src/features/stt/useWhisperRecorder';
 import { supabase } from '../src/lib/supabase';
 import { evaluateConcepts, type AcceptedConcepts, type EvaluationResult } from '../src/features/evaluation/evaluateConcepts';
+import { LANGUAGES, getLanguage } from '../src/data/languages';
 
 // Alle bisherigen Ad-hoc-Testbereiche (STT/TTS/Phrasebook), umgezogen von
 // App.tsx hierher, als expo-router-Route erreichbar ueber /dev-tools -
@@ -14,8 +15,15 @@ import { evaluateConcepts, type AcceptedConcepts, type EvaluationResult } from '
 // 16kHz, 16-bit, mono => 32000 Bytes pro Sekunde Audio (siehe RecordingOptions).
 const BYTES_PER_SECOND_16K_MONO_16BIT = 32000;
 
+// "text" ist das vereinheitlichte Anzeige-/Vorlesefeld (bei phrasebook_master
+// = die deutsche Spalte selbst, bei uebersetzten Tabellen = target_text) -
+// "german" bleibt IMMER die deutsche Gloss, auch fuer nicht-deutsche
+// Sprachen, zum Kontrollieren/Suchen (siehe Sprachauswahl unten, 2026-08-08:
+// Nutzer-Wunsch, gezielt einen bestimmten Satz erneut testen zu koennen,
+// statt auf einen zufaelligen Treffer beim Durchklicken zu hoffen).
 type PhrasebookSentence = {
   id: number;
+  text: string;
   german: string;
   scenario: string;
   accepted_concepts: AcceptedConcepts;
@@ -49,14 +57,34 @@ export default function DevToolsScreen() {
   const [phrasebookResult, setPhrasebookResult] = useState<EvaluationResult | null>(null);
   const [phrasebookScore, setPhrasebookScore] = useState({ richtig: 0, ueberlebt: 0, total: 0 });
   const [clusters, setClusters] = useState<Record<string, string[]>>({});
+  // Sprachauswahl + Suche (2026-08-08): vorher nur Deutsch, zufaellige 10
+  // Saetze, keine Moeglichkeit gezielt einen bestimmten Satz erneut zu
+  // testen. Jetzt: Sprache waehlbar (aus languages.ts, nur hasContent-
+  // Sprachen), Freitextsuche gegen die deutsche Gloss UND den Zielsatz-
+  // Text - findet z.B. "Quisiera pedir algo" ueber die Suche "bestellen"
+  // oder "pedir", statt auf einen Zufallstreffer beim Durchklicken zu hoffen.
+  const [phrasebookLanguageId, setPhrasebookLanguageId] = useState('de');
+  const [phrasebookSearch, setPhrasebookSearch] = useState('');
 
   async function loadPhrasebookTest(onlyWithClusters: boolean) {
     setPhrasebookError(null);
     setPhrasebookLoading(true);
     try {
-      let query = supabase.from('phrasebook_master').select('id, german, scenario, accepted_concepts');
+      const lang = getLanguage(phrasebookLanguageId);
+      if (!lang.table) throw new Error(`Für ${lang.label} gibt es noch keine Inhalte.`);
+      const isGerman = lang.table === 'phrasebook_master';
+      const textColumn = isGerman ? 'german' : 'target_text';
+      const selectCols = isGerman ? 'id, german, scenario, accepted_concepts' : 'id, target_text, german, scenario, accepted_concepts';
+
+      let query = supabase.from(lang.table).select(selectCols);
       if (onlyWithClusters) {
         query = query.not('accepted_concepts->verb_cluster', 'is', null);
+      }
+      const search = phrasebookSearch.trim();
+      if (search) {
+        // Sucht in Gloss UND Zielsatz gleichzeitig (bei Deutsch ist beides
+        // dieselbe Spalte, .or() mit doppeltem Filter schadet dort nicht).
+        query = query.or(`german.ilike.%${search}%,${textColumn}.ilike.%${search}%`);
       }
       const [sentencesRes, clustersRes] = await Promise.all([
         query,
@@ -72,8 +100,18 @@ export default function DevToolsScreen() {
       }
       setClusters(clusterLookup);
 
-      const shuffled = [...sentencesRes.data].sort(() => Math.random() - 0.5).slice(0, 10);
-      setPhrasebookSentences(shuffled as PhrasebookSentence[]);
+      const normalized: PhrasebookSentence[] = (sentencesRes.data as unknown as Record<string, unknown>[]).map((row) => ({
+        id: row.id as number,
+        text: (isGerman ? row.german : row.target_text) as string,
+        german: row.german as string,
+        scenario: row.scenario as string,
+        accepted_concepts: row.accepted_concepts as AcceptedConcepts,
+      }));
+      // Bei aktiver Suche ALLE Treffer zeigen (typischerweise wenige, gezielt
+      // gesucht) statt zufaellig auf 10 zu kappen - genau der Fall, den der
+      // Nutzer wollte: einen bestimmten Satz gezielt wiederfinden.
+      const result = search ? normalized : [...normalized].sort(() => Math.random() - 0.5).slice(0, 10);
+      setPhrasebookSentences(result);
       setPhrasebookIndex(0);
       setPhrasebookScore({ richtig: 0, ueberlebt: 0, total: 0 });
       setPhrasebookTranscript('');
@@ -109,9 +147,10 @@ export default function DevToolsScreen() {
     setPhrasebookResult(null);
     try {
       const current = phrasebookSentences[phrasebookIndex];
-      const { text: result } = await whisper.transcribe(uri, 'de');
+      const lang = getLanguage(phrasebookLanguageId);
+      const { text: result } = await whisper.transcribe(uri, lang.whisperLanguage, current.text);
       setPhrasebookTranscript(result);
-      const evaluation = evaluateConcepts(result, current.accepted_concepts, clusters, current.german);
+      const evaluation = evaluateConcepts(result, current.accepted_concepts, clusters, current.text);
       setPhrasebookResult(evaluation);
       setPhrasebookScore((prev) => ({
         richtig: prev.richtig + (evaluation.tier === 'richtig' ? 1 : 0),
@@ -207,14 +246,40 @@ export default function DevToolsScreen() {
 
       <View style={styles.spacer} />
 
-      <Text style={styles.heading}>Phrasebook-Test (10 Sätze, Konzept-Bewertung)</Text>
+      <Text style={styles.heading}>Phrasebook-Test (Konzept-Bewertung)</Text>
+
+      {/* Sprachauswahl (2026-08-08) - vorher fest auf Deutsch, jetzt jede
+          Sprache mit echtem Content waehlbar. */}
+      <View style={styles.row}>
+        {LANGUAGES.filter((l) => l.hasContent).map((l) => (
+          <Pressable
+            key={l.id}
+            onPress={() => setPhrasebookLanguageId(l.id)}
+            style={[styles.langChip, phrasebookLanguageId === l.id && styles.langChipActive]}
+          >
+            <Text style={phrasebookLanguageId === l.id ? styles.langChipTextActive : undefined}>{l.label}</Text>
+          </Pressable>
+        ))}
+      </View>
+
+      {/* Freitextsuche (2026-08-08) - findet gezielt einen bestimmten Satz
+          ueber deutsche Gloss ODER Zielsatz-Text, statt auf einen
+          Zufallstreffer beim Durchklicken zu hoffen (Nutzer-Wunsch: einen
+          konkret gemeldeten Problemfall gezielt erneut testen koennen). */}
+      <TextInput
+        value={phrasebookSearch}
+        onChangeText={setPhrasebookSearch}
+        placeholder="Suche (z.B. 'bestellen' oder 'pedir')..."
+        style={styles.searchInput}
+      />
+
       <Button
-        title="10 zufällige Sätze laden"
+        title={phrasebookSearch.trim() ? 'Suchen' : '10 zufällige Sätze laden'}
         onPress={() => loadPhrasebookTest(false)}
         disabled={phrasebookLoading || whisper.status !== 'ready'}
       />
       <Button
-        title="10 Sätze MIT Verb-Cluster laden (Richtig/Überlebt testen)"
+        title="Nur Sätze MIT Verb-Cluster laden (Richtig/Überlebt testen)"
         onPress={() => loadPhrasebookTest(true)}
         disabled={phrasebookLoading || whisper.status !== 'ready'}
       />
@@ -227,7 +292,8 @@ export default function DevToolsScreen() {
             Satz {phrasebookIndex + 1} von {phrasebookSentences.length} (
             {phrasebookSentences[phrasebookIndex].scenario})
           </Text>
-          <Text style={styles.transcript}>{phrasebookSentences[phrasebookIndex].german}</Text>
+          <Text style={styles.transcript}>{phrasebookSentences[phrasebookIndex].text}</Text>
+          {phrasebookLanguageId !== 'de' && <Text>({phrasebookSentences[phrasebookIndex].german})</Text>}
           <Button
             title={phrasebookIsRecording ? 'Aufnahme stoppen & bewerten' : 'Nachsprechen'}
             onPress={handlePhrasebookRecordPress}
@@ -313,5 +379,27 @@ const styles = StyleSheet.create({
   transcript: {
     fontSize: 16,
     fontStyle: 'italic',
+  },
+  langChip: {
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 100,
+    borderWidth: 1,
+    borderColor: '#999',
+  },
+  langChipActive: {
+    backgroundColor: '#1e8449',
+    borderColor: '#1e8449',
+  },
+  langChipTextActive: {
+    color: '#fff',
+    fontWeight: '600',
+  },
+  searchInput: {
+    borderWidth: 1,
+    borderColor: '#999',
+    borderRadius: 8,
+    padding: 10,
+    fontSize: 15,
   },
 });
