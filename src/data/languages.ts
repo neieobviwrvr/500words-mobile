@@ -26,7 +26,7 @@ export type Language = {
 export const LANGUAGES: Language[] = [
   { id: 'de', label: 'Deutsch', table: 'phrasebook_master', whisperLanguage: 'de', whisperPrompt: 'Das ist ein Beispielsatz auf Deutsch.', hasContent: true },
   { id: 'sv', label: 'Schwedisch', table: 'schwedisch_phrasebook', whisperLanguage: 'sv', whisperPrompt: 'Det här är en exempelmening på svenska.', hasContent: true },
-  { id: 'es', label: 'Spanisch', table: null, whisperLanguage: 'es', whisperPrompt: 'Esta es una frase de ejemplo en español.', hasContent: false },
+  { id: 'es', label: 'Spanisch', table: 'spanisch_phrasebook', whisperLanguage: 'es', whisperPrompt: 'Esta es una frase de ejemplo en español.', hasContent: true },
   { id: 'fr', label: 'Französisch', table: null, whisperLanguage: 'fr', whisperPrompt: 'Voici une phrase d\'exemple en français.', hasContent: false },
 ];
 

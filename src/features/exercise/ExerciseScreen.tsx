@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { router } from 'expo-router';
+import { File } from 'expo-file-system';
 import type { Card } from 'ts-fsrs';
 import { useAppState } from '../../state/AppState';
 import { CATEGORIES, CATEGORY_BY_ID } from '../../data/categories';
@@ -50,6 +51,48 @@ const MOTIVATION_MESSAGES = [
   '🚀 Nächste Runde, weiter geht\'s!',
 ];
 
+// Zielsatz-als-Prompt + Papagei-Schutz (2026-08-08, siehe CLAUDE.md/Chat):
+// Ab jetzt bekommt Whisper den TATSAECHLICHEN Zielsatz als `prompt` statt
+// eines generischen Platzhalters (Duolingo-Prinzip: die Erkennung kennt den
+// erwarteten Satz und wird darauf verankert, statt komplett offen zu
+// transkribieren - deutlich robuster gegen Sprachabdrift bei kurzen/
+// undeutlichen Aufnahmen). Bekanntes Risiko dabei: Whisper kann bei sehr
+// kurzem/unklarem Audio den Prompt einfach "nachplappern", egal was
+// tatsaechlich gesagt wurde - das wuerde die Uebung sinnlos machen (immer
+// "richtig" ohne echte Pruefung). Absicherung hier: wenn die Aufnahme
+// (anhand der Dateigrosse, 16kHz/mono/16-bit WAV = 32000 Byte/Sek.) viel zu
+// kurz ist, um den Zielsatz realistisch gesprochen zu haben, UND das
+// Transkript dem Prompt (fast) 1:1 entspricht, wird das NICHT gewertet -
+// gleiche nicht-bestrafende Behandlung wie beim Sprach-Mismatch.
+const BYTES_PER_SECOND_16K_MONO_16BIT = 32000;
+const MIN_SECONDS_PER_WORD = 0.28; // grosszuegig (~214 Woerter/Min.), auch fuer schnelle Sprecher unrealistisch kurz
+const MIN_RECORDING_SECONDS = 0.5; // Untergrenze auch fuer Ein-Wort-Saetze
+
+function estimateAudioSeconds(fileUri: string): number {
+  try {
+    const bytes = new File(fileUri).size ?? 0;
+    return bytes / BYTES_PER_SECOND_16K_MONO_16BIT;
+  } catch {
+    return 0; // Datei nicht lesbar - konservativ 0, loest im Zweifel die Pruefung aus statt sie zu umgehen
+  }
+}
+
+function normalizeForCompare(text: string): string {
+  return text
+    .normalize('NFC')
+    .toLowerCase()
+    .replace(/[.,!?;:"'`]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function looksLikePromptEcho(transcript: string, prompt: string, recordedSeconds: number): boolean {
+  const wordCount = prompt.trim().split(/\s+/).filter(Boolean).length;
+  const minPlausibleSeconds = Math.max(MIN_RECORDING_SECONDS, wordCount * MIN_SECONDS_PER_WORD);
+  if (recordedSeconds >= minPlausibleSeconds) return false; // genug Zeit fuer echte Sprache - kein Verdacht
+  return normalizeForCompare(transcript) === normalizeForCompare(prompt);
+}
+
 export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode: string; categoryId: string; source?: 'category' | 'srs' }) {
   const { darkMode, targetLanguageId, purchased } = useAppState();
   const theme = getTheme(darkMode);
@@ -77,6 +120,9 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
   // Diagnose-State (2026-08-08): Sprachcode, den Whisper tatsaechlich
   // erkannt hat, wenn er vom angeforderten abweicht - siehe useWhisper.ts.
   const [languageMismatch, setLanguageMismatch] = useState<string | null>(null);
+  // Papagei-Verdacht (2026-08-08): Aufnahme viel zu kurz fuer den Zielsatz,
+  // Transkript trotzdem (fast) identisch zum Prompt - siehe looksLikePromptEcho().
+  const [promptEchoSuspected, setPromptEchoSuspected] = useState(false);
   const [feedback, setFeedback] = useState<EvaluationResult | null>(null);
   const [done, setDone] = useState(false);
   const [results, setResults] = useState<EvaluationResult['tier'][]>([]);
@@ -176,8 +222,13 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
     setIsTranscribing(true);
     setTranscript('');
     setLanguageMismatch(null);
+    setPromptEchoSuspected(false);
     try {
-      const { text, detectedLanguage } = await whisper.transcribe(uri, language.whisperLanguage, language.whisperPrompt);
+      // Zielsatz selbst als Prompt (2026-08-08, Duolingo-Prinzip: bekannter
+      // Zielsatz statt offener Transkription, siehe CLAUDE.md) - staerkere
+      // Sprachverankerung als der vorherige generische Platzhalter-Prompt.
+      const targetPrompt = sentence?.text ?? language.whisperPrompt;
+      const { text, detectedLanguage } = await whisper.transcribe(uri, language.whisperLanguage, targetPrompt);
       setTranscript(text);
       // Bestaetigt (2026-08-08, echter Nutzerfall, auf iOS reproduziert -
       // damit kein Android-Aufnahmeformat-Problem, siehe useWhisperRecorder.ts):
@@ -195,6 +246,16 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
       // gibt es keinen automatischen Indikator.
       if (detectedLanguage && detectedLanguage !== language.whisperLanguage) {
         setLanguageMismatch(detectedLanguage);
+        return;
+      }
+      // Papagei-Check (2026-08-08): seit der Zielsatz als Prompt mitgegeben
+      // wird, besteht das Risiko, dass Whisper ihn bei zu kurzem/unklarem
+      // Audio einfach zurueckgibt, ohne die Aufnahme wirklich auszuwerten -
+      // siehe looksLikePromptEcho()-Kommentar oben. Genau wie beim Sprach-
+      // Mismatch: kein FSRS-Update, keine Wertung, einfach nochmal versuchen.
+      const recordedSeconds = estimateAudioSeconds(uri);
+      if (looksLikePromptEcho(text, targetPrompt, recordedSeconds)) {
+        setPromptEchoSuspected(true);
         return;
       }
       // Direkt nach dem Einsprechen auswerten - kein zusaetzlicher Tap auf
@@ -242,6 +303,7 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
     setInput('');
     setTranscript('');
     setLanguageMismatch(null);
+    setPromptEchoSuspected(false);
     setFeedback(null);
     // Kein Session-Stopp, nur ein kurzer, automatisch weiterlaufender
     // Motivations-Einschub alle MOTIVATION_INTERVAL Karten (Nutzer-
@@ -343,6 +405,12 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
               Versuch. Bitte nochmal einsprechen (oder Antwort tippen).
             </Text>
           )}
+          {promptEchoSuspected && (
+            <Text style={{ color: '#D9564F', fontSize: 12, fontWeight: '700', marginBottom: 4 }}>
+              ⚠️ Die Aufnahme war zu kurz, um wirklich ausgewertet zu werden - das zählt nicht als Versuch. Bitte nochmal
+              einsprechen (etwas deutlicher/länger) oder Antwort tippen.
+            </Text>
+          )}
           {!!recordError && <Text style={{ color: '#D9564F', fontSize: 12 }}>{recordError}</Text>}
 
           <View style={[styles.inputCard, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
@@ -371,8 +439,11 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
 
           {!feedback ? (
             <Pressable
-              disabled={!currentAnswer || (!!languageMismatch && !input.trim())}
-              style={[styles.solveButton, { opacity: currentAnswer && !(languageMismatch && !input.trim()) ? 1 : 0.5 }]}
+              disabled={!currentAnswer || ((!!languageMismatch || promptEchoSuspected) && !input.trim())}
+              style={[
+                styles.solveButton,
+                { opacity: currentAnswer && !((languageMismatch || promptEchoSuspected) && !input.trim()) ? 1 : 0.5 },
+              ]}
               onPress={checkAnswer}
             >
               <Text style={styles.solveButtonText}>lösen ▶</Text>
