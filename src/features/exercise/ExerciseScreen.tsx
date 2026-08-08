@@ -272,7 +272,7 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
 
   function evaluateAnswer(answer: string) {
     if (!sentence || !language.table) return;
-    const evaluation = evaluateConcepts(answer.trim(), sentence.accepted_concepts, clusters);
+    const evaluation = evaluateConcepts(answer.trim(), sentence.accepted_concepts, clusters, sentence.text);
     setFeedback(evaluation);
     setResults((r) => [...r, evaluation.tier]);
 

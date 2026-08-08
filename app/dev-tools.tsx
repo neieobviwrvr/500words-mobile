@@ -111,7 +111,7 @@ export default function DevToolsScreen() {
       const current = phrasebookSentences[phrasebookIndex];
       const { text: result } = await whisper.transcribe(uri, 'de');
       setPhrasebookTranscript(result);
-      const evaluation = evaluateConcepts(result, current.accepted_concepts, clusters);
+      const evaluation = evaluateConcepts(result, current.accepted_concepts, clusters, current.german);
       setPhrasebookResult(evaluation);
       setPhrasebookScore((prev) => ({
         richtig: prev.richtig + (evaluation.tier === 'richtig' ? 1 : 0),

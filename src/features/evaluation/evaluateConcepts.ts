@@ -134,10 +134,13 @@ function clusterMatches(userTokens: string[], clusterForms: string[]): boolean {
 // clusters: Lookup-Tabelle cluster_id -> Wortformen, kommt aus Supabase
 // (answer_clusters), einmal geladen und an jeden evaluateConcepts()-Aufruf
 // durchgereicht statt bei jedem Aufruf neu zu laden.
+// targetText: der eigentliche Zielsatz (optional, fuer die Rausch-Pruefung
+// unten) - siehe Kommentar bei "unexplainedRatio".
 export function evaluateConcepts(
   userText: string,
   accepted: AcceptedConcepts,
   clusters: Record<string, string[]>,
+  targetText?: string,
 ): EvaluationResult {
   const userTokens = tokenize(userText);
   const userTextConcat = userTokens.join('');
@@ -177,6 +180,33 @@ export function evaluateConcepts(
     tier = verbClusterMatched === false ? 'ueberlebt' : 'richtig';
   } else if (majorityMatched) {
     tier = 'ueberlebt';
+  }
+
+  // Rausch-Pruefung (2026-08-08, echter Nutzerfall): "Quisiera pedir algo"
+  // wurde als "kisi e ra pedira algoh" transkribiert - 3 von 5 erkannten
+  // Woertern ("kisi","e","ra") haben NICHTS mit dem Zielsatz zu tun, nur
+  // "pedira"/"algoh" lagen zufaellig nah genug an "pedir"/"algo", um die
+  // normale Toleranz zu triggern. Wurde trotzdem als "richtig" gewertet,
+  // weil die Pflicht-Konzepte rein technisch erfuellt waren - obwohl der
+  // Grossteil der Aeusserung reines Kauderwelsch war. Zusaetzliche, vom
+  // Konzept-Matching UNABHAENGIGE Pruefung: wie viele der erkannten Woerter
+  // haben ueberhaupt einen erkennbaren Bezug zum tatsaechlichen Zielsatz
+  // (nicht nur zu den Pflicht-Konzepten - "quisiera" z.B. ist kein
+  // Pflicht-Konzept, aber ein legitimer Teil des Zielsatzes, zaehlt also
+  // nicht als Rauschen)? Ist die Mehrheit der erkannten Woerter reines
+  // Rauschen, wird "richtig" auf "ueberlebt" abgestuft (nie strenger als
+  // das - die eigentliche Konzept-Pruefung oben bleibt die Grundlage, das
+  // hier ist nur eine zusaetzliche Bremse gegen Zufallstreffer). Nur aktiv,
+  // wenn targetText mitgegeben wurde (optional, siehe Aufrufer).
+  if (tier === 'richtig' && targetText) {
+    const targetTokens = tokenize(targetText);
+    const unexplained = userTokens.filter(
+      (userToken) => !targetTokens.some((targetToken) => wordsAreClose(userToken, targetToken)),
+    );
+    const unexplainedRatio = userTokens.length > 0 ? unexplained.length / userTokens.length : 0;
+    if (unexplainedRatio > 0.5) {
+      tier = 'ueberlebt';
+    }
   }
 
   return { tier, passed: tier !== 'nicht_verstanden', matched, missed, verbClusterMatched };
