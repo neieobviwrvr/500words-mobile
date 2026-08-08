@@ -82,9 +82,49 @@ function wordsAreClose(a: string, b: string): boolean {
   return levenshtein(a, b) <= threshold;
 }
 
-function synonymMatches(userTokens: string[], synonym: string): boolean {
+// Toleranz-Stufen wie wordsAreClose, aber fuer eine ganze (leerzeichenfreie)
+// Zeichenkette statt einem Einzelwort - siehe fuzzyContainsMerged() unten.
+function mergedTolerance(len: number): number {
+  if (len <= 2) return 0;
+  return len <= 7 ? 1 : 2;
+}
+
+// Sucht `needle` (typischerweise ein mehrwortiges Synonym OHNE Leerzeichen,
+// z.B. "interent" aus "inte rent") als ungefaehre Teilzeichenkette in
+// `haystack` (der ganze Nutzertext, auch ohne Leerzeichen) - per
+// Schiebefenster + Levenshtein statt fixer Position.
+//
+// Grund (2026-08-08, echter Nutzerfall): Whisper hat "Mitt rum är inte
+// rent" (Google-Translate-TTS, sauber ausgesprochen!) zu "Myt rum är
+// intränt" transkribiert - "inte" und "rent" wurden zu EINEM Kunstwort
+// "intränt" verschmolzen. Das normale Wort-fuer-Wort-Matching (synonymMatches
+// unten) kann das strukturell nicht erkennen, weil kein einzelnes erkanntes
+// Wort nah genug an "inte" ODER "rent" liegt (Editierdistanz 4 zu beiden) -
+// das Problem ist nicht ein falscher Buchstabe in einem Wort, sondern eine
+// falsche Wortgrenze zwischen zwei Woertern. Diese Funktion ist ein
+// Fallback NUR fuer mehrwortige Synonyme (das strikte Pro-Wort-Matching
+// bleibt fuer alles andere unveraendert bestehen, kein Genauigkeitsverlust
+// bei Ein-Wort-Konzepten).
+function fuzzyContainsMerged(haystack: string, needle: string): boolean {
+  const threshold = mergedTolerance(needle.length);
+  for (let len = needle.length - 2; len <= needle.length + 2; len++) {
+    if (len <= 0) continue;
+    for (let i = 0; i + len <= haystack.length; i++) {
+      if (levenshtein(haystack.substr(i, len), needle) <= threshold) return true;
+    }
+  }
+  return false;
+}
+
+function synonymMatches(userTokens: string[], userTextConcat: string, synonym: string): boolean {
   const synonymTokens = tokenize(synonym);
-  return synonymTokens.every((synToken) => userTokens.some((userToken) => wordsAreClose(userToken, synToken)));
+  const strictMatch = synonymTokens.every((synToken) => userTokens.some((userToken) => wordsAreClose(userToken, synToken)));
+  if (strictMatch) return true;
+  // Fallback nur bei mehrwortigen Synonymen - bei Einzelwoertern wuerde das
+  // nur unnoetig Kollisionsrisiko einfuehren, ohne einen Wortgrenzen-Fehler
+  // geben zu koennen (es gibt ja nur ein Wort, keine Grenze zu verschieben).
+  if (synonymTokens.length < 2) return false;
+  return fuzzyContainsMerged(userTextConcat, synonymTokens.join(''));
 }
 
 function clusterMatches(userTokens: string[], clusterForms: string[]): boolean {
@@ -100,11 +140,12 @@ export function evaluateConcepts(
   clusters: Record<string, string[]>,
 ): EvaluationResult {
   const userTokens = tokenize(userText);
+  const userTextConcat = userTokens.join('');
   const matched: string[] = [];
   const missed: string[] = [];
 
   for (const group of accepted.required) {
-    const hit = group.synonyms.some((syn) => synonymMatches(userTokens, syn));
+    const hit = group.synonyms.some((syn) => synonymMatches(userTokens, userTextConcat, syn));
     if (hit) {
       matched.push(group.concept);
     } else {
