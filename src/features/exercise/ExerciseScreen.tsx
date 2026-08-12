@@ -8,7 +8,8 @@ import { CATEGORIES, CATEGORY_BY_ID } from '../../data/categories';
 import { getLanguage } from '../../data/languages';
 import { ExerciseSentence, loadAnswerClusters, loadExerciseSentences, shuffle } from '../../data/phrasebookContent';
 import { evaluateConcepts, EvaluationResult } from '../../features/evaluation/evaluateConcepts';
-import { useWhisper, looksLikeGarbageTranscript } from '../../features/stt/useWhisper';
+import { looksLikeGarbageTranscript } from '../../features/stt/useWhisper';
+import { useSpeechmatics } from '../../features/stt/useSpeechmatics';
 import { useWhisperRecorder } from '../../features/stt/useWhisperRecorder';
 import { newCard, reviewCard, isDue } from '../../features/srs/fsrsEngine';
 import { cardKey, loadAllCards, saveCard } from '../../features/srs/srsStorage';
@@ -97,7 +98,10 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
   const { darkMode, targetLanguageId, purchased } = useAppState();
   const theme = getTheme(darkMode);
   const language = getLanguage(targetLanguageId);
-  const whisper = useWhisper();
+  // Speechmatics statt On-Device-Whisper als primaerer STT-Anbieter
+  // (2026-08-12) - siehe useSpeechmatics.ts-Kommentar fuer die Begruendung
+  // (deutlich robuster gegen Akzent, braucht dafuer Internet).
+  const whisper = useSpeechmatics();
   const recorder = useWhisperRecorder();
 
   const [loading, setLoading] = useState(true);
@@ -407,11 +411,9 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
                   {isRecording ? '● Aufnahme stoppen' : isTranscribing ? '…' : '🎙 Antwort einsprechen'}
                 </Text>
               </Pressable>
-            ) : whisper.status === 'error' ? (
-              <Text style={{ color: theme.sub, fontSize: 12 }}>Spracherkennung nicht verfügbar ({whisper.error}) - bitte Text eingeben.</Text>
             ) : (
               <Text style={{ color: theme.sub, fontSize: 12 }}>
-                Spracherkennung lädt{whisper.status === 'downloading' ? ` (${Math.round(whisper.progress * 100)}%)` : '…'} - bis dahin geht auch Text-Eingabe.
+                Spracherkennung nicht verfügbar ({whisper.error ?? 'lädt…'}) - bitte Text eingeben.
               </Text>
             )}
             {isTranscribing && <ActivityIndicator color={ACCENT_BLUE} style={{ marginLeft: 8 }} />}
