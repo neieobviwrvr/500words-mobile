@@ -29,13 +29,19 @@ export function useSpeechmatics() {
   const [error] = useState<string | null>(null);
 
   async function transcribe(wavFileUri: string, language: string, _prompt?: string) {
+    // Korrektur (2026-08-12, echter Nutzerfall: "Unsupported FormDataPart
+    // Implementation" auf dem Geraet): das klassische RN-FormData-Muster
+    // (Objekt-Literal {uri, name, type} statt echtem Blob) wird von der
+    // hier verwendeten fetch-Implementierung nicht akzeptiert. Fix: die
+    // neuere expo-file-system-`File`-Klasse IMPLEMENTIERT das Blob-Interface
+    // selbst (`class File ... implements Blob`, siehe File.d.ts) - keine
+    // separate .blob()-Methode noetig, die Instanz direkt an
+    // FormData.append() uebergeben, Standard-konform statt des aelteren
+    // RN-spezifischen Objekt-Formats.
     const file = new File(wavFileUri);
-    const blob = await (await fetch(file.uri)).blob();
 
     const form = new FormData();
-    // @ts-expect-error - React Native FormData akzeptiert dieses Blob-Format,
-    // die DOM-Typen von TypeScript kennen die RN-spezifische Form nicht.
-    form.append('audio', { uri: wavFileUri, name: 'audio.wav', type: 'audio/wav' });
+    form.append('audio', file, 'audio.wav');
     form.append('language', language);
 
     const { data: sessionData } = await supabase.auth.getSession();
