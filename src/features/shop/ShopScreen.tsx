@@ -46,7 +46,12 @@ export function ShopScreen() {
   return (
     <View style={[styles.container, { backgroundColor: theme.pageBg }]}>
       <View style={styles.header}>
-        <Pressable onPress={() => router.back()} style={styles.backBtn}>
+        <Pressable
+          onPress={() => router.back()}
+          style={styles.backBtn}
+          accessibilityRole="button"
+          accessibilityLabel="Zurück"
+        >
           <Text style={[styles.backGlyph, { color: theme.text }]}>‹</Text>
         </Pressable>
         <Text style={[styles.title, { color: theme.text }]}>Pakete + Shop</Text>
@@ -63,13 +68,26 @@ export function ShopScreen() {
               <Pressable
                 key={cat.id}
                 onPress={() => onCardPress(cat.id)}
+                accessibilityRole="button"
+                // Der Zustand steckt sonst ausschliesslich in Rahmen- und
+                // Avatarfarbe plus einem Badge - fuer VoiceOver unsichtbar.
+                // Deshalb in den Namen ziehen, zusaetzlich selected fuer den
+                // Warenkorb-Zustand (das ist der einzige, den der Tap
+                // umschaltet).
+                accessibilityLabel={`${cat.name}, ${owned ? 'freigeschaltet' : inCart ? 'im Warenkorb' : 'gesperrt'}`}
+                accessibilityHint={owned ? undefined : inCart ? 'Aus dem Warenkorb entfernen' : 'In den Warenkorb legen'}
+                accessibilityState={{ selected: inCart, disabled: owned }}
                 style={[styles.card, { borderColor, backgroundColor: theme.cardBg }]}
               >
                 <View style={styles.cardTop}>
                   <View style={[styles.avatar, { backgroundColor: avatarBg }]}>
                     <Text style={styles.avatarText}>{cat.initials}</Text>
                   </View>
-                  {!owned && !inCart && <Text style={styles.lockGlyph}>🔒</Text>}
+                  {!owned && !inCart && (
+                    <Text accessibilityElementsHidden importantForAccessibility="no" style={styles.lockGlyph}>
+                      🔒
+                    </Text>
+                  )}
                   {owned && (
                     <View style={styles.badgeActive}>
                       <Text style={styles.badgeText}>AKTIV</Text>
@@ -100,7 +118,13 @@ export function ShopScreen() {
           <Text style={[styles.cartLabel, { color: theme.sub }]}>{cart.length} Paket(e) im Warenkorb</Text>
           <Text style={[styles.cartTotal, { color: theme.text }]}>{cartTotal} €</Text>
         </View>
-        <Pressable style={styles.buyButton} onPress={onBuy}>
+        <Pressable
+          style={styles.buyButton}
+          onPress={onBuy}
+          accessibilityRole="button"
+          accessibilityLabel={`Kaufen, ${cart.length} Pakete für ${cartTotal} Euro`}
+          accessibilityState={{ disabled: cart.length === 0 }}
+        >
           <Text style={styles.buyButtonText}>Kaufen ▶</Text>
         </Pressable>
       </ScrollView>

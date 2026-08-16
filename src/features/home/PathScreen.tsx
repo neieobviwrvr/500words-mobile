@@ -143,12 +143,25 @@ export function PathScreen() {
       <View style={styles.langWrap}>
         <Pressable
           onPress={() => setLangOpen((o) => !o)}
+          accessibilityRole="button"
+          accessibilityLabel={`Sprache: ${activeLanguage.label}`}
+          accessibilityHint="Zielsprache auswählen"
+          accessibilityState={{ expanded: langOpen }}
           style={[styles.langButton, { backgroundColor: theme.cardBg, borderColor: theme.border }]}
         >
           <Text style={[styles.langLabel, { color: theme.text }]}>Sprache</Text>
           <View style={styles.langRight}>
             <Text style={[styles.langValue, { color: theme.sub }]}>{activeLanguage.label}</Text>
-            <Text style={{ color: theme.sub, transform: [{ rotate: langOpen ? '180deg' : '0deg' }] }}>▾</Text>
+            {/* Rein dekorativer Aufklapp-Pfeil - der Zustand steckt schon in
+                accessibilityState.expanded, VoiceOver soll nicht zusaetzlich
+                "nach unten zeigendes Dreieck" vorlesen. */}
+            <Text
+              accessibilityElementsHidden
+              importantForAccessibility="no"
+              style={{ color: theme.sub, transform: [{ rotate: langOpen ? '180deg' : '0deg' }] }}
+            >
+              ▾
+            </Text>
           </View>
         </Pressable>
         {langOpen && (
@@ -163,13 +176,23 @@ export function PathScreen() {
                     setTargetLanguageId(lang.id);
                     setLangOpen(false);
                   }}
+                  accessibilityRole="button"
+                  accessibilityLabel={lang.hasContent ? lang.label : `${lang.label}, noch nicht verfügbar`}
+                  // selected statt nur des Haekchens: der aktive Zustand wird
+                  // sonst ausschliesslich ueber "✓" und Hintergrundfarbe
+                  // transportiert, beides fuer VoiceOver unsichtbar.
+                  accessibilityState={{ selected: active, disabled: !lang.hasContent }}
                   style={[styles.langRow, { backgroundColor: active ? theme.modeBg : 'transparent' }]}
                 >
                   <Text style={{ color: lang.hasContent ? theme.text : theme.sub, fontWeight: active ? '700' : '600' }}>
                     {lang.label}
                     {!lang.hasContent ? ' (bald)' : ''}
                   </Text>
-                  {active && <Text style={{ color: theme.text }}>✓</Text>}
+                  {active && (
+                    <Text accessibilityElementsHidden importantForAccessibility="no" style={{ color: theme.text }}>
+                      ✓
+                    </Text>
+                  )}
                 </Pressable>
               );
             })}
@@ -212,6 +235,14 @@ export function PathScreen() {
               <View key={`node-${i}`}>
                 <Pressable
                   onPress={n.onPress}
+                  accessibilityRole="button"
+                  // Der Sperr-Zustand haengt sonst allein am 🔒-Emoji, das
+                  // VoiceOver bestenfalls als "Schloss" vorliest - ohne
+                  // Bezug zum Knoten. Deshalb in den Namen aufnehmen und
+                  // ueber den Hint sagen, wohin der Tap fuehrt (Shop statt
+                  // Kategorie).
+                  accessibilityLabel={n.locked ? `${n.label}, gesperrt` : n.label}
+                  accessibilityHint={n.locked ? 'Öffnet den Shop zum Freischalten' : 'Öffnet die Kategorie'}
                   style={[
                     styles.pill,
                     {
@@ -225,12 +256,21 @@ export function PathScreen() {
                   ]}
                 >
                   <Text style={{ color: n.color, fontWeight: '800', fontSize: n.fontSize, textAlign: 'center' }}>{n.label}</Text>
-                  {n.locked && <Text style={styles.lockGlyph}>🔒</Text>}
+                  {n.locked && (
+                    <Text accessibilityElementsHidden importantForAccessibility="no" style={styles.lockGlyph}>
+                      🔒
+                    </Text>
+                  )}
                 </Pressable>
                 {n.badge && (
                   <Pressable
                     disabled={!n.locked}
                     onPress={n.locked ? n.onPress : undefined}
+                    // Nur antippbar, wenn gesperrt - sonst ist es eine reine
+                    // Beschriftung und soll den VoiceOver-Fokus nicht als
+                    // vermeintlicher Knopf einsammeln.
+                    accessibilityRole={n.locked ? 'button' : 'text'}
+                    accessibilityLabel={n.locked ? `${n.label} freischalten` : n.badge}
                     style={[styles.badge, { left: n.badgeLeft, top: n.badgeTop, borderColor: theme.border, backgroundColor: theme.cardBg }]}
                   >
                     <Text style={{ color: theme.sub, fontWeight: '700', fontSize: 10 }}>{n.badge}</Text>
@@ -240,10 +280,20 @@ export function PathScreen() {
             ))}
           </View>
         </ScrollView>
-        <Text style={[styles.scrollHint, { color: theme.sub }]}>▾</Text>
+        {/* Reiner Scroll-Hinweis, kein Bedienelement - VoiceOver liest den
+            Pfad ohnehin Knoten fuer Knoten durch. */}
+        <Text accessibilityElementsHidden importantForAccessibility="no" style={[styles.scrollHint, { color: theme.sub }]}>
+          ▾
+        </Text>
       </View>
 
-      <Pressable style={styles.primaryButton} onPress={() => router.push('/srs')}>
+      <Pressable
+        style={styles.primaryButton}
+        onPress={() => router.push('/srs')}
+        accessibilityRole="button"
+        accessibilityLabel="Wiederholen und Üben"
+        accessibilityHint="Öffnet die Wiederholung mit fälligen Karten"
+      >
         <Text style={styles.primaryButtonText}>Wiederholen + Üben</Text>
       </Pressable>
 
@@ -256,12 +306,20 @@ export function PathScreen() {
         <Pressable
           style={[styles.secondaryButton, { borderColor: theme.border, backgroundColor: theme.cardBg }]}
           onPress={() => router.push('/cheatsheet')}
+          accessibilityRole="button"
+          accessibilityLabel="Cheat-Sheet-Survival"
+          accessibilityHint="Sätze zum Nachschlagen, auch offline"
         >
           <Text style={[styles.secondaryButtonText, { color: theme.text }]}>Cheat‑Sheet‑Survival</Text>
         </Pressable>
         <Pressable
           style={[styles.secondaryButton, { borderColor: theme.border, backgroundColor: theme.cardBg }]}
           onPress={() => router.push('/rewards')}
+          accessibilityRole="button"
+          // Ohne eigenes Label liest VoiceOver hier das Geschenk-Emoji vor
+          // und danach die beiden Textzeilen einzeln.
+          accessibilityLabel="Extras"
+          accessibilityHint="Freunde werben, bewerten, Feedback geben"
         >
           <Text style={[styles.secondaryButtonText, { color: theme.text }]}>🎁 Extras</Text>
           <Text style={[styles.secondaryButtonSubtext, { color: theme.sub }]}>Freunde · Bewertung · Feedback</Text>

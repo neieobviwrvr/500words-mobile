@@ -21,7 +21,12 @@ export function FavoritesScreen() {
   return (
     <View style={[styles.container, { backgroundColor: theme.pageBg }]}>
       <View style={styles.header}>
-        <Pressable onPress={() => router.back()} style={styles.backBtn}>
+        <Pressable
+          onPress={() => router.back()}
+          style={styles.backBtn}
+          accessibilityRole="button"
+          accessibilityLabel="Zurück"
+        >
           <Text style={[styles.backGlyph, { color: theme.text }]}>‹</Text>
         </Pressable>
         <Text style={[styles.title, { color: theme.text }]}>Favoriten ({list.length})</Text>

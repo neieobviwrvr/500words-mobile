@@ -357,7 +357,12 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
   return (
     <ScrollView contentContainerStyle={[styles.container, { backgroundColor: theme.pageBg }]}>
       <View style={styles.header}>
-        <Pressable onPress={() => router.back()} style={styles.backBtn}>
+        <Pressable
+          onPress={() => router.back()}
+          style={styles.backBtn}
+          accessibilityRole="button"
+          accessibilityLabel="Zurück"
+        >
           <Text style={[styles.backGlyph, { color: theme.text }]}>‹</Text>
         </Pressable>
         <Text style={[styles.title, { color: theme.text }]}>
@@ -380,7 +385,13 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
       )}
 
       {!loading && !loadError && sentence && !done && showMotivation && (
-        <Pressable style={styles.centerBox} onPress={() => setShowMotivation(false)}>
+        <Pressable
+          style={styles.centerBox}
+          onPress={() => setShowMotivation(false)}
+          accessibilityRole="button"
+          accessibilityLabel={`${motivationMsg} ${idx} geschafft`}
+          accessibilityHint="Weiter zur nächsten Karte"
+        >
           <Text style={[styles.motivationText, { color: theme.text }]}>{motivationMsg}</Text>
           <Text style={{ color: theme.sub, fontSize: 12, marginTop: 6 }}>{idx} geschafft</Text>
         </Pressable>
@@ -400,7 +411,14 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
           <View style={[styles.sentenceCard, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
             <Text style={[styles.sentenceText, { color: theme.text }]}>{sentence.text}</Text>
             {sentence.germanGloss && <Text style={[styles.gloss, { color: theme.sub }]}>{sentence.germanGloss}</Text>}
-            <Pressable disabled style={[styles.ttsButton, { borderColor: theme.border }]}>
+            <Pressable
+              disabled
+              accessibilityRole="button"
+              accessibilityLabel="Vorlesen"
+              accessibilityHint="Für diesen Satz gibt es noch keine Audioaufnahme"
+              accessibilityState={{ disabled: true }}
+              style={[styles.ttsButton, { borderColor: theme.border }]}
+            >
               <Text style={{ color: theme.sub, fontWeight: '700', fontSize: 12 }}>▶ Vorlesen (noch kein Audio)</Text>
             </Pressable>
           </View>
@@ -409,6 +427,21 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
             {stt.status === 'ready' ? (
               <Pressable
                 onPress={handleMicPress}
+                // Der zentrale Knopf der App. Ohne Label liest VoiceOver im
+                // Ruhezustand das Mikrofon-Emoji und waehrend der
+                // Transkription nur "…" vor - beides unbrauchbar. Der
+                // Aufnahme-/Wartezustand steckt sonst allein in der
+                // Hintergrundfarbe (blau vs. rot).
+                accessibilityRole="button"
+                accessibilityLabel={
+                  isRecording
+                    ? 'Aufnahme stoppen'
+                    : isTranscribing
+                      ? 'Wird ausgewertet'
+                      : 'Antwort einsprechen'
+                }
+                accessibilityHint={isRecording || isTranscribing ? undefined : 'Nimmt deine gesprochene Antwort auf'}
+                accessibilityState={{ busy: isTranscribing, disabled: isTranscribing }}
                 style={[styles.micButton, { backgroundColor: isRecording ? '#D9564F' : ACCENT_BLUE }]}
               >
                 <Text style={styles.micButtonText}>
@@ -468,25 +501,33 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
           )}
 
           {!feedback ? (
-            <Pressable
-              disabled={
-                !currentAnswer || ((!!languageMismatch || promptEchoSuspected || garbageTranscriptSuspected) && !input.trim())
-              }
-              style={[
-                styles.solveButton,
-                {
-                  opacity:
-                    currentAnswer && !((languageMismatch || promptEchoSuspected || garbageTranscriptSuspected) && !input.trim())
-                      ? 1
-                      : 0.5,
-                },
-              ]}
-              onPress={checkAnswer}
-            >
-              <Text style={styles.solveButtonText}>lösen ▶</Text>
-            </Pressable>
+            (() => {
+              const solveDisabled =
+                !currentAnswer || ((!!languageMismatch || promptEchoSuspected || garbageTranscriptSuspected) && !input.trim());
+              return (
+                <Pressable
+                  disabled={solveDisabled}
+                  accessibilityRole="button"
+                  accessibilityLabel="Lösen"
+                  // Der Deaktiviert-Zustand wird sonst nur ueber opacity 0.5
+                  // gezeigt - fuer VoiceOver nicht wahrnehmbar.
+                  accessibilityState={{ disabled: solveDisabled }}
+                  accessibilityHint={solveDisabled ? 'Erst antworten, dann auswerten' : 'Wertet deine Antwort aus'}
+                  style={[styles.solveButton, { opacity: solveDisabled ? 0.5 : 1 }]}
+                  onPress={checkAnswer}
+                >
+                  <Text style={styles.solveButtonText}>lösen ▶</Text>
+                </Pressable>
+              );
+            })()
           ) : (
-            <Pressable style={styles.nextButton} onPress={nextCard}>
+            <Pressable
+              style={styles.nextButton}
+              onPress={nextCard}
+              accessibilityRole="button"
+              accessibilityLabel="Weiter"
+              accessibilityHint="Zur nächsten Karte"
+            >
               <Text style={styles.nextButtonText}>Weiter ▶</Text>
             </Pressable>
           )}
@@ -499,7 +540,13 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
           <Text style={[styles.doneSummary, { color: theme.sub }]}>
             {richtigN}× richtig · {ueberlebtN}× überlebt · {nichtN}× nicht verstanden
           </Text>
-          <Pressable style={styles.finishButton} onPress={() => router.back()}>
+          <Pressable
+            style={styles.finishButton}
+            onPress={() => router.back()}
+            accessibilityRole="button"
+            accessibilityLabel="Fertig"
+            accessibilityHint="Schließt die Session"
+          >
             <Text style={styles.finishButtonText}>Fertig</Text>
           </Pressable>
         </View>

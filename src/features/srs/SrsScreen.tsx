@@ -33,20 +33,37 @@ export function SrsScreen() {
   return (
     <View style={[styles.container, { backgroundColor: theme.pageBg }]}>
       <View style={styles.header}>
-        <Pressable onPress={() => router.back()} style={styles.backBtn}>
+        <Pressable
+          onPress={() => router.back()}
+          style={styles.backBtn}
+          accessibilityRole="button"
+          accessibilityLabel="Zurück"
+        >
           <Text style={[styles.backGlyph, { color: theme.text }]}>‹</Text>
         </Pressable>
         <Text style={[styles.title, { color: theme.text }]}>Spaced Repetition</Text>
       </View>
 
       <View style={styles.modeList}>
-        <Pressable onPress={() => startMode('woerter')} style={[styles.modeButton, { backgroundColor: theme.modeBg }]}>
+        <Pressable
+          onPress={() => startMode('woerter')}
+          style={[styles.modeButton, { backgroundColor: theme.modeBg }]}
+          accessibilityRole="button"
+          accessibilityLabel={`Wörter lernen, ${purchasedCount} von ${totalCategoryCount} Kategorien lernbar`}
+          accessibilityHint="Startet die Wiederholung mit fälligen Wortkarten"
+        >
           <Text style={styles.modeButtonText}>Wörter lernen</Text>
           <Text style={[styles.modeSubtext, { color: theme.sub }]}>
             {purchasedCount}/{totalCategoryCount} Kategorien lernbar
           </Text>
         </Pressable>
-        <Pressable onPress={() => startMode('saetze')} style={[styles.modeButton, { backgroundColor: theme.modeBg }]}>
+        <Pressable
+          onPress={() => startMode('saetze')}
+          style={[styles.modeButton, { backgroundColor: theme.modeBg }]}
+          accessibilityRole="button"
+          accessibilityLabel={`Sätze lernen, ${purchasedCount} von ${totalCategoryCount} Kategorien lernbar`}
+          accessibilityHint="Startet die Wiederholung mit fälligen Satzkarten"
+        >
           <Text style={styles.modeButtonText}>Sätze lernen</Text>
           <Text style={[styles.modeSubtext, { color: theme.sub }]}>
             {purchasedCount}/{totalCategoryCount} Kategorien lernbar
@@ -55,6 +72,10 @@ export function SrsScreen() {
         <Pressable
           onPress={() => setPremiumNoticeOpen((o) => !o)}
           style={[styles.premiumButton, { borderColor: theme.border, backgroundColor: theme.pathBoxBg }]}
+          accessibilityRole="button"
+          accessibilityLabel="Konversationsmodus / Sprachbooster, Premium"
+          accessibilityHint="Zeigt den Hinweis zum Premium-Feature"
+          accessibilityState={{ expanded: premiumNoticeOpen }}
         >
           <View style={styles.premiumRow}>
             <Text style={[styles.modeButtonText, { color: theme.sub }]}>Konversationsmodus / Sprachbooster</Text>

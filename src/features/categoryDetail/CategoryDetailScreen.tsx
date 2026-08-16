@@ -27,7 +27,12 @@ export function CategoryDetailScreen({ categoryId, themeLabel }: { categoryId: s
   return (
     <View style={[styles.container, { backgroundColor: theme.pageBg }]}>
       <View style={styles.header}>
-        <Pressable onPress={() => router.back()} style={styles.backBtn}>
+        <Pressable
+          onPress={() => router.back()}
+          style={styles.backBtn}
+          accessibilityRole="button"
+          accessibilityLabel="Zurück"
+        >
           <Text style={[styles.backGlyph, { color: theme.text }]}>‹</Text>
         </Pressable>
         <Text style={[styles.title, { color: theme.text }]}>{name}</Text>
@@ -40,18 +45,41 @@ export function CategoryDetailScreen({ categoryId, themeLabel }: { categoryId: s
       <Text style={styles.progress}>Progression {progressPct}% vollständig gelernt</Text>
 
       <View style={styles.modeList}>
-        <Pressable onPress={() => startMode('spam')} style={[styles.modeButton, { backgroundColor: theme.modeBg }]}>
+        <Pressable
+          onPress={() => startMode('spam')}
+          style={[styles.modeButton, { backgroundColor: theme.modeBg }]}
+          accessibilityRole="button"
+          accessibilityLabel="Komplette Kategorie durchspammen"
+          accessibilityHint={`Übt alle Inhalte aus ${name} gemischt`}
+        >
           <Text style={styles.modeButtonText}>komplette Kategorie durchspammen</Text>
         </Pressable>
-        <Pressable onPress={() => startMode('woerter')} style={[styles.modeButton, { backgroundColor: theme.modeBg }]}>
+        <Pressable
+          onPress={() => startMode('woerter')}
+          style={[styles.modeButton, { backgroundColor: theme.modeBg }]}
+          accessibilityRole="button"
+          accessibilityLabel="Wörter lernen"
+          accessibilityHint={`Übt die Wörter aus ${name}`}
+        >
           <Text style={styles.modeButtonText}>Wörter lernen</Text>
         </Pressable>
-        <Pressable onPress={() => startMode('saetze')} style={[styles.modeButton, { backgroundColor: theme.modeBg }]}>
+        <Pressable
+          onPress={() => startMode('saetze')}
+          style={[styles.modeButton, { backgroundColor: theme.modeBg }]}
+          accessibilityRole="button"
+          accessibilityLabel="Sätze lernen"
+          accessibilityHint={`Übt die Sätze aus ${name}`}
+        >
           <Text style={styles.modeButtonText}>Sätze lernen</Text>
         </Pressable>
         <Pressable
           onPress={() => setPremiumNoticeOpen((o) => !o)}
           style={[styles.premiumButton, { borderColor: theme.border, backgroundColor: theme.pathBoxBg }]}
+          accessibilityRole="button"
+          // Der PREMIUM-Status steckt sonst nur in einem farbigen Badge.
+          accessibilityLabel="Konversationsmodus / Sprachbooster, Premium"
+          accessibilityHint="Zeigt den Hinweis zum Premium-Feature"
+          accessibilityState={{ expanded: premiumNoticeOpen }}
         >
           <Text style={[styles.premiumButtonText, { color: theme.sub }]}>Konversationsmodus / Sprachbooster</Text>
           <View style={styles.premiumBadge}>

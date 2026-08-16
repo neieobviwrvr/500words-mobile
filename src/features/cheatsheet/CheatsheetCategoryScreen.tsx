@@ -52,16 +52,33 @@ export function CheatsheetCategoryScreen({ groupId }: { groupId: string }) {
       <View style={styles.top}>
         <View style={styles.header}>
           <View style={styles.headerLeft}>
-            <Pressable onPress={() => router.back()} style={styles.backBtn}>
+            <Pressable
+          onPress={() => router.back()}
+          style={styles.backBtn}
+          accessibilityRole="button"
+          accessibilityLabel="Zurück"
+        >
               <Text style={[styles.backGlyph, { color: theme.text }]}>‹</Text>
             </Pressable>
             <Text style={[styles.title, { color: theme.text }]}>{'Cheat‑Sheet\n' + title}</Text>
           </View>
           <View style={styles.headerActions}>
-            <Pressable onPress={toggleDark} style={[styles.actionBtn, { borderColor: theme.border, backgroundColor: darkMode ? theme.modeBg : theme.cardBg }]}>
+            <Pressable
+              onPress={toggleDark}
+              accessibilityRole="switch"
+              accessibilityLabel="Darkmode"
+              accessibilityState={{ checked: darkMode }}
+              style={[styles.actionBtn, { borderColor: theme.border, backgroundColor: darkMode ? theme.modeBg : theme.cardBg }]}
+            >
               <Text style={{ color: theme.text, fontWeight: '700', fontSize: 11 }}>Darkmode</Text>
             </Pressable>
-            <Pressable style={[styles.actionBtn, { borderColor: theme.border }]}>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Teilen und Drucken"
+              accessibilityHint="Noch nicht verfügbar"
+              accessibilityState={{ disabled: true }}
+              style={[styles.actionBtn, { borderColor: theme.border }]}
+            >
               <Text style={{ color: theme.text, fontWeight: '700', fontSize: 11 }}>Teilen + Drucken</Text>
             </Pressable>
           </View>
@@ -97,11 +114,22 @@ export function CheatsheetCategoryScreen({ groupId }: { groupId: string }) {
                 {ph.gloss && <Text style={[styles.de, { color: theme.sub }]}>{ph.gloss}</Text>}
               </View>
               <View style={styles.cardActions}>
-                <Pressable disabled style={[styles.smallBtn, { borderColor: theme.border }]}>
+                <Pressable
+                  disabled
+                  accessibilityRole="button"
+                  accessibilityLabel="Vorlesen"
+                  accessibilityHint="Für diesen Satz gibt es noch keine Audioaufnahme"
+                  accessibilityState={{ disabled: true }}
+                  style={[styles.smallBtn, { borderColor: theme.border }]}
+                >
                   <Text style={{ color: theme.sub, fontWeight: '700', fontSize: 11 }}>▶ (kein Audio)</Text>
                 </Pressable>
                 <Pressable
                   onPress={() => toggleSaved(ph.id, ph)}
+                  accessibilityRole="button"
+                  accessibilityLabel={isSaved ? 'Gespeichert' : 'Speichern'}
+                  accessibilityHint={isSaved ? 'Aus den Favoriten entfernen' : 'Zu den Favoriten hinzufügen'}
+                  accessibilityState={{ selected: isSaved }}
                   style={[styles.smallBtn, { borderColor: isSaved ? ACCENT_GREEN : theme.border, backgroundColor: isSaved ? theme.buyBg : 'transparent' }]}
                 >
                   <Text style={{ color: isSaved ? ACCENT_GREEN : theme.sub, fontWeight: '700', fontSize: 11 }}>

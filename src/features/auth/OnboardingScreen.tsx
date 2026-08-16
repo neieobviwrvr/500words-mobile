@@ -54,13 +54,27 @@ export function OnboardingScreen() {
       </View>
 
       <View style={styles.buttons}>
-        <Pressable onPress={handleGoogle} disabled={busy !== null} style={[styles.button, styles.googleButton]}>
+        {/* Waehrend busy zeigen beide Knoepfe nur einen Spinner statt Text -
+            ohne festes Label haette VoiceOver dann gar nichts vorzulesen.
+            Deshalb Label und busy-Zustand explizit setzen. */}
+        <Pressable
+          onPress={handleGoogle}
+          disabled={busy !== null}
+          accessibilityRole="button"
+          accessibilityLabel="Mit Google anmelden"
+          accessibilityState={{ disabled: busy !== null, busy: busy === 'google' }}
+          style={[styles.button, styles.googleButton]}
+        >
           {busy === 'google' ? <ActivityIndicator color="#fff" /> : <Text style={styles.googleButtonText}>Mit Google anmelden</Text>}
         </Pressable>
 
         <Pressable
           onPress={handleGuest}
           disabled={busy !== null}
+          accessibilityRole="button"
+          accessibilityLabel="Als Gast fortfahren"
+          accessibilityHint="Fortschritt bleibt nur auf diesem Gerät"
+          accessibilityState={{ disabled: busy !== null, busy: busy === 'guest' }}
           style={[styles.button, styles.guestButton, { borderColor: theme.border, backgroundColor: theme.cardBg }]}
         >
           {busy === 'guest' ? (

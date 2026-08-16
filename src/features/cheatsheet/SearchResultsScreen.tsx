@@ -73,7 +73,12 @@ export function SearchResultsScreen() {
   return (
     <View style={[styles.container, { backgroundColor: theme.pageBg }]}>
       <View style={styles.header}>
-        <Pressable onPress={() => router.back()} style={styles.backBtn}>
+        <Pressable
+          onPress={() => router.back()}
+          style={styles.backBtn}
+          accessibilityRole="button"
+          accessibilityLabel="Zurück"
+        >
           <Text style={[styles.backGlyph, { color: theme.text }]}>‹</Text>
         </Pressable>
         <Text style={[styles.title, { color: theme.text }]}>Suchergebnisse</Text>
@@ -111,6 +116,12 @@ export function SearchResultsScreen() {
                     </View>
                     <Pressable
                       onPress={() => toggleSaved(ph.id, ph)}
+                      accessibilityRole="button"
+                      // Im gespeicherten Zustand steht dort nur ein "✓" -
+                      // ohne Label gaebe es nichts Sinnvolles vorzulesen.
+                      accessibilityLabel={isSaved ? 'Gespeichert' : 'Speichern'}
+                      accessibilityHint={isSaved ? 'Aus den Favoriten entfernen' : 'Zu den Favoriten hinzufügen'}
+                      accessibilityState={{ selected: isSaved }}
                       style={[styles.saveBtn, { borderColor: isSaved ? ACCENT_GREEN : theme.border, backgroundColor: isSaved ? theme.buyBg : 'transparent' }]}
                     >
                       <Text style={{ color: isSaved ? ACCENT_GREEN : theme.sub, fontWeight: '700', fontSize: 11 }}>

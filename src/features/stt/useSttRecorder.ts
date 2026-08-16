@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { Platform } from 'react-native';
 import {
   AudioModule,
   setAudioModeAsync,
@@ -47,12 +48,28 @@ export function useSttRecorder() {
   // oft (fast) leer ("[BLANK_AUDIO]"). Einmalig eine stille Kurzaufnahme
   // im Hintergrund machen, damit die Audio-Session schon aktiv ist, wenn
   // der Nutzer zum ersten Mal wirklich aufnimmt.
+  //
+  // Zwei Einschraenkungen (2026-08-16):
+  // 1. Nur auf iOS - das Problem ist iOS-spezifisch (siehe oben), auf
+  //    Android/Web brachte das Warm-up nichts und kostete nur eine
+  //    ueberfluessige Mikrofon-Aktivierung.
+  // 2. NUR wenn die Berechtigung bereits erteilt ist (get... statt
+  //    request...). Vorher fragte das Warm-up die Erlaubnis direkt beim
+  //    Betreten des Uebungs-Screens an, bevor der Nutzer irgendetwas
+  //    angetippt hatte. Apples HIG rat davon ab: Berechtigungen im Kontext
+  //    erfragen, sonst wirkt die Anfrage grundlos und wird oefter
+  //    abgelehnt - und eine einmal abgelehnte Mikrofon-Erlaubnis macht die
+  //    Kernfunktion der App unbrauchbar. Die echte Anfrage passiert jetzt
+  //    ausschliesslich in start(), also beim ersten Tap auf den
+  //    Mikrofon-Button. Beim allerersten Mal entfaellt das Warm-up damit -
+  //    danach greift es wie gehabt.
   useEffect(() => {
     if (hasWarmedUp.current) return;
+    if (Platform.OS !== 'ios') return;
     hasWarmedUp.current = true;
     (async () => {
       try {
-        const permission = await AudioModule.requestRecordingPermissionsAsync();
+        const permission = await AudioModule.getRecordingPermissionsAsync();
         if (!permission.granted) return;
         await setAudioModeAsync({ playsInSilentMode: true, allowsRecording: true });
         await recorder.prepareToRecordAsync();

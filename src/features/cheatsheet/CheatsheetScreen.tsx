@@ -56,7 +56,12 @@ export function CheatsheetScreen() {
     <View style={[styles.container, { backgroundColor: theme.pageBg }]}>
       <View style={styles.top}>
         <View style={styles.header}>
-          <Pressable onPress={() => router.back()} style={styles.backBtn}>
+          <Pressable
+          onPress={() => router.back()}
+          style={styles.backBtn}
+          accessibilityRole="button"
+          accessibilityLabel="Zurück"
+        >
             <Text style={[styles.backGlyph, { color: theme.text }]}>‹</Text>
           </Pressable>
           <Text style={[styles.title, { color: theme.text }]}>Cheat‑Sheet‑Survival</Text>
@@ -71,11 +76,22 @@ export function CheatsheetScreen() {
             placeholderTextColor={theme.sub}
             style={[styles.searchInput, { borderColor: theme.border, backgroundColor: theme.cardBg, color: theme.text }]}
           />
-          <Pressable onPress={doTextSearch} style={styles.searchButton}>
+          <Pressable
+            onPress={doTextSearch}
+            accessibilityRole="button"
+            accessibilityLabel="Suchen"
+            style={styles.searchButton}
+          >
+            {/* Reines Lupen-Zeichen ohne Text - ohne Label haette VoiceOver
+                hier nur ein Sonderzeichen vorzulesen. */}
             <Text style={styles.searchButtonText}>⌕</Text>
           </Pressable>
         </View>
-        <Pressable onPress={() => router.push('/cheatsheet/favorites')}>
+        <Pressable
+          onPress={() => router.push('/cheatsheet/favorites')}
+          accessibilityRole="button"
+          accessibilityLabel={`Favoriten, ${favoritesCount}`}
+        >
           <Text style={styles.favLink}>Favoriten (Anzahl {favoritesCount})</Text>
         </Pressable>
       </View>
@@ -95,7 +111,16 @@ export function CheatsheetScreen() {
         <ScrollView contentContainerStyle={styles.scrollContent}>
           {groups.map((grp) => (
             <View key={grp.categoryId}>
-              <Pressable onPress={() => router.push(`/cheatsheet/${grp.categoryId}`)} style={styles.groupHeader}>
+              <Pressable
+                onPress={() => router.push(`/cheatsheet/${grp.categoryId}`)}
+                accessibilityRole="button"
+                accessibilityLabel={
+                  grp.allSentences.length > 0
+                    ? `${grp.title}, ${grp.allSentences.length} Sätze`
+                    : `${grp.title}, noch keine Sätze`
+                }
+                style={styles.groupHeader}
+              >
                 <Text style={[styles.groupTitle, { color: theme.text }]}>{grp.title}</Text>
                 <Text style={[styles.groupLink, { color: theme.sub }]}>
                   {grp.allSentences.length > 0 ? `${grp.allSentences.length} Sätze ›` : 'Cheat‑Sheet ›'}
@@ -113,6 +138,11 @@ export function CheatsheetScreen() {
                       <Pressable
                         key={key}
                         onPress={() => toggleThemeSelect(key, { groupId: grp.categoryId, groupTitle: grp.title, themeLabel: sc.label, key })}
+                        accessibilityRole="button"
+                        accessibilityLabel={sc.label}
+                        // Ausgewaehlt wird sonst nur ueber Rahmen- und
+                        // Hintergrundfarbe gezeigt.
+                        accessibilityState={{ selected }}
                         style={[
                           styles.themeBox,
                           { borderColor: selected ? ACCENT_BLUE : theme.border, backgroundColor: selected ? theme.modeBg : theme.cardBg },
@@ -135,6 +165,9 @@ export function CheatsheetScreen() {
         <Pressable
           disabled={selectedCount === 0}
           onPress={() => router.push('/cheatsheet/search-results')}
+          accessibilityRole="button"
+          accessibilityLabel={`Ausgewählte anzeigen, ${selectedCount}`}
+          accessibilityState={{ disabled: selectedCount === 0 }}
           style={[styles.searchAllButton, { borderColor: theme.text, opacity: selectedCount === 0 ? 0.5 : 1 }]}
         >
           <Text style={[styles.searchAllButtonText, { color: theme.text }]}>Ausgewählte anzeigen ({selectedCount})</Text>

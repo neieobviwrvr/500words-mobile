@@ -27,7 +27,12 @@ export function RewardsScreen() {
   return (
     <View style={[styles.container, { backgroundColor: theme.pageBg }]}>
       <View style={styles.header}>
-        <Pressable onPress={() => router.back()} style={styles.backBtn}>
+        <Pressable
+          onPress={() => router.back()}
+          style={styles.backBtn}
+          accessibilityRole="button"
+          accessibilityLabel="Zurück"
+        >
           <Text style={[styles.backGlyph, { color: theme.text }]}>‹</Text>
         </Pressable>
         <Text style={[styles.title, { color: theme.text }]}>Freunde, Bewertung & Feedback</Text>
@@ -43,7 +48,14 @@ export function RewardsScreen() {
             <Text style={{ fontStyle: 'italic' }}>und die App tatsächlich aktiv nutzen</Text> (genaue
             Aktivitäts-Schwelle noch nicht final festgelegt).
           </Text>
-          <Pressable disabled style={[styles.actionButton, { borderColor: ACCENT_BLUE, opacity: 0.5 }]}>
+          <Pressable
+            disabled
+            accessibilityRole="button"
+            accessibilityLabel="Link teilen"
+            accessibilityHint="Noch nicht verfügbar"
+            accessibilityState={{ disabled: true }}
+            style={[styles.actionButton, { borderColor: ACCENT_BLUE, opacity: 0.5 }]}
+          >
             <Text style={{ color: ACCENT_BLUE, fontWeight: '800', fontSize: 14 }}>Link teilen (bald)</Text>
           </Pressable>
         </View>
@@ -64,7 +76,14 @@ export function RewardsScreen() {
               </Text>
             ))}
           </View>
-          <Pressable disabled style={[styles.actionButton, { borderColor: ACCENT_BLUE, opacity: 0.5 }]}>
+          <Pressable
+            disabled
+            accessibilityRole="button"
+            accessibilityLabel="Bewerten"
+            accessibilityHint="Noch nicht verfügbar"
+            accessibilityState={{ disabled: true }}
+            style={[styles.actionButton, { borderColor: ACCENT_BLUE, opacity: 0.5 }]}
+          >
             <Text style={{ color: ACCENT_BLUE, fontWeight: '800', fontSize: 14 }}>Bewerten (bald)</Text>
           </Pressable>
         </View>
@@ -87,7 +106,14 @@ export function RewardsScreen() {
               style={[styles.feedbackText, { color: theme.text }]}
             />
           </View>
-          <Pressable disabled style={[styles.actionButton, { borderColor: ACCENT_GREEN, opacity: 0.5 }]}>
+          <Pressable
+            disabled
+            accessibilityRole="button"
+            accessibilityLabel="Absenden"
+            accessibilityHint="Noch nicht verfügbar"
+            accessibilityState={{ disabled: true }}
+            style={[styles.actionButton, { borderColor: ACCENT_GREEN, opacity: 0.5 }]}
+          >
             <Text style={{ color: ACCENT_GREEN, fontWeight: '800', fontSize: 14 }}>Absenden (bald)</Text>
           </Pressable>
         </View>
