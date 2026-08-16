@@ -23,8 +23,7 @@
     "react-native-safe-area-context": "~5.7.0",
     "react-native-screens": "~4.26.0",
     "react-native-web": "^0.21.2",
-    "ts-fsrs": "^5.4.1",
-    "whisper.rn": "^0.7.2"
+    "ts-fsrs": "^5.4.1"
   },
   "devDependencies": {
     "@types/react": "~19.2.2",

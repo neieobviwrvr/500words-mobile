@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { ActivityIndicator, Button, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import { File } from 'expo-file-system';
-import { useWhisper } from '../src/features/stt/useWhisper';
-import { useWhisperRecorder } from '../src/features/stt/useWhisperRecorder';
+import { useSpeechmatics } from '../src/features/stt/useSpeechmatics';
+import { useSttRecorder } from '../src/features/stt/useSttRecorder';
 import { supabase } from '../src/lib/supabase';
 import { evaluateConcepts, type AcceptedConcepts, type EvaluationResult } from '../src/features/evaluation/evaluateConcepts';
 import { LANGUAGES, getLanguage } from '../src/data/languages';
@@ -36,8 +36,8 @@ const SAMPLE_TTS_URL =
   'https://xculnaxfdtwzpdplvedc.supabase.co/storage/v1/object/public/vocab_audio/franz_vocab/100_garder.mp3';
 
 export default function DevToolsScreen() {
-  const whisper = useWhisper();
-  const recorder = useWhisperRecorder();
+  const stt = useSpeechmatics();
+  const recorder = useSttRecorder();
   const [isRecording, setIsRecording] = useState(false);
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [transcript, setTranscript] = useState('');
@@ -148,7 +148,7 @@ export default function DevToolsScreen() {
     try {
       const current = phrasebookSentences[phrasebookIndex];
       const lang = getLanguage(phrasebookLanguageId);
-      const { text: result } = await whisper.transcribe(uri, lang.whisperLanguage, current.text);
+      const { text: result } = await stt.transcribe(uri, lang.sttLanguage, current.text);
       setPhrasebookTranscript(result);
       const evaluation = evaluateConcepts(result, current.accepted_concepts, clusters, current.text);
       setPhrasebookResult(evaluation);
@@ -197,7 +197,7 @@ export default function DevToolsScreen() {
     setTranscript('');
     const startedAt = Date.now();
     try {
-      const { text: result } = await whisper.transcribe(uri, 'fr', "Voici une phrase d'exemple en français.");
+      const { text: result } = await stt.transcribe(uri, 'fr', "Voici une phrase d'exemple en français.");
       setTranscript(`${result}  (${((Date.now() - startedAt) / 1000).toFixed(1)}s)`);
     } catch (e) {
       setRecordError(e instanceof Error ? e.message : String(e));
@@ -214,29 +214,22 @@ export default function DevToolsScreen() {
 
       <View style={styles.spacer} />
 
-      <Text style={styles.heading}>STT-Test (whisper.rn, base, on-device)</Text>
-      {whisper.status !== 'ready' && whisper.status !== 'error' && (
-        <View style={styles.row}>
-          <ActivityIndicator />
-          <Text>
-            {whisper.status === 'downloading'
-              ? `Modell wird geladen: ${Math.round(whisper.progress * 100)}%`
-              : 'Initialisiere Whisper...'}
-          </Text>
-        </View>
-      )}
-      {whisper.status === 'error' && <Text style={styles.error}>Fehler: {whisper.error}</Text>}
+      {/* Kein Lade-/Fortschritts-Zustand mehr noetig: Speechmatics laeuft
+          serverseitig, useSpeechmatics() meldet sofort "ready" (frueher wurde
+          hier der Download des on-device Whisper-Modells angezeigt). */}
+      <Text style={styles.heading}>STT-Test (Speechmatics, serverseitig)</Text>
+      {stt.status === 'error' && <Text style={styles.error}>Fehler: {stt.error}</Text>}
 
       <Button
         title={isRecording ? 'Aufnahme stoppen & transkribieren' : 'Aufnahme starten'}
         onPress={handleRecordPress}
-        disabled={whisper.status !== 'ready' || isTranscribing}
+        disabled={stt.status !== 'ready' || isTranscribing}
       />
 
       {isTranscribing && (
         <View style={styles.row}>
           <ActivityIndicator />
-          <Text>Whisper transkribiert...</Text>
+          <Text>Transkribiert...</Text>
         </View>
       )}
 
@@ -276,12 +269,12 @@ export default function DevToolsScreen() {
       <Button
         title={phrasebookSearch.trim() ? 'Suchen' : '10 zufällige Sätze laden'}
         onPress={() => loadPhrasebookTest(false)}
-        disabled={phrasebookLoading || whisper.status !== 'ready'}
+        disabled={phrasebookLoading || stt.status !== 'ready'}
       />
       <Button
         title="Nur Sätze MIT Verb-Cluster laden (Richtig/Überlebt testen)"
         onPress={() => loadPhrasebookTest(true)}
-        disabled={phrasebookLoading || whisper.status !== 'ready'}
+        disabled={phrasebookLoading || stt.status !== 'ready'}
       />
       {phrasebookLoading && <ActivityIndicator />}
       {phrasebookError && <Text style={styles.error}>{phrasebookError}</Text>}
@@ -302,7 +295,7 @@ export default function DevToolsScreen() {
           {phrasebookIsTranscribing && (
             <View style={styles.row}>
               <ActivityIndicator />
-              <Text>Whisper transkribiert...</Text>
+              <Text>Transkribiert...</Text>
             </View>
           )}
           {phrasebookTranscript !== '' && <Text>Erkannt: {phrasebookTranscript}</Text>}

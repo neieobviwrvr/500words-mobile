@@ -6,12 +6,18 @@ import {
   type RecordingOptions,
 } from 'expo-audio';
 
-// whisper.rn's transcribe() braucht 16-bit PCM WAV @ 16kHz mono.
+// 16-bit PCM WAV @ 16kHz mono. Das Format stammt urspruenglich aus der
+// Anforderung von whisper.rn (bis 2026-08-12 der STT-Anbieter, seitdem
+// entfernt) und wird fuer den Speechmatics-Upload unveraendert beibehalten -
+// unkomprimiertes WAV ist ein Standard-Eingabeformat, kein Grund es zu
+// aendern.
 // Auf iOS liefert linearPCM das direkt. Auf Android unterstuetzt MediaRecorder
 // kein natives WAV - falls das in der Praxis Probleme macht, ist der naechste
-// Schritt der von whisper.rn dokumentierte Realtime-PCM-Stream-Adapter
-// (@fugood/react-native-audio-pcm-stream) statt dieser datei-basierten Aufnahme.
-const whisperRecordingOptions: RecordingOptions = {
+// Schritt ein Realtime-PCM-Stream-Adapter
+// (@fugood/react-native-audio-pcm-stream) statt dieser datei-basierten
+// Aufnahme. Dieser Punkt ist unabhaengig vom STT-Anbieter weiterhin offen,
+// siehe CLAUDE.md-Backlog.
+const recordingOptions: RecordingOptions = {
   extension: '.wav',
   sampleRate: 16000,
   numberOfChannels: 1,
@@ -32,8 +38,8 @@ const whisperRecordingOptions: RecordingOptions = {
   },
 };
 
-export function useWhisperRecorder() {
-  const recorder = useAudioRecorder(whisperRecordingOptions);
+export function useSttRecorder() {
+  const recorder = useAudioRecorder(recordingOptions);
   const hasWarmedUp = useRef(false);
 
   // iOS braucht nach App-Start eine kurze Aufwaermphase, bis das Mikrofon

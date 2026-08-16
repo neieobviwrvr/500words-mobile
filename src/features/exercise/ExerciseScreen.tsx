@@ -8,9 +8,9 @@ import { CATEGORIES, CATEGORY_BY_ID } from '../../data/categories';
 import { getLanguage } from '../../data/languages';
 import { ExerciseSentence, loadAnswerClusters, loadExerciseSentences, shuffle } from '../../data/phrasebookContent';
 import { evaluateConcepts, EvaluationResult } from '../../features/evaluation/evaluateConcepts';
-import { looksLikeGarbageTranscript } from '../../features/stt/useWhisper';
+import { looksLikeGarbageTranscript } from '../../features/stt/transcriptQuality';
 import { useSpeechmatics } from '../../features/stt/useSpeechmatics';
-import { useWhisperRecorder } from '../../features/stt/useWhisperRecorder';
+import { useSttRecorder } from '../../features/stt/useSttRecorder';
 import { newCard, reviewCard, isDue } from '../../features/srs/fsrsEngine';
 import { cardKey, loadAllCards, saveCard } from '../../features/srs/srsStorage';
 import { getTheme, ACCENT_BLUE, ACCENT_GREEN } from '../../theme/tokens';
@@ -18,7 +18,8 @@ import { getTheme, ACCENT_BLUE, ACCENT_GREEN } from '../../theme/tokens';
 // S4 - Uebungs-Screen (generisch fuer Woerter/Saetze/Konversation/SRS).
 // Seit 2026-08-05 mit echtem Supabase-Content (phrasebook_master /
 // schwedisch_phrasebook, je nach gewaehlter Zielsprache) statt der
-// Spanisch-Platzhaltersaetze, plus echtem STT (whisper.rn) als primaerer
+// Spanisch-Platzhaltersaetze, plus echtem STT (seit 2026-08-12 Speechmatics,
+// davor whisper.rn) als primaerer
 // Eingabeweg - Text-Eingabe bleibt Fallback, exakt wie in CLAUDE.md als
 // Kernprinzip festgelegt ("TTS/STT ist die eigentliche Uebung, Text-Eingabe
 // nur Uebergangsloesung"). "Woerter lernen" nutzt mangels echter
@@ -53,11 +54,11 @@ const MOTIVATION_MESSAGES = [
 ];
 
 // Zielsatz-als-Prompt + Papagei-Schutz (2026-08-08, siehe CLAUDE.md/Chat):
-// Ab jetzt bekommt Whisper den TATSAECHLICHEN Zielsatz als `prompt` statt
+// Ab jetzt bekommt die Spracherkennung den TATSAECHLICHEN Zielsatz als `prompt` statt
 // eines generischen Platzhalters (Duolingo-Prinzip: die Erkennung kennt den
 // erwarteten Satz und wird darauf verankert, statt komplett offen zu
 // transkribieren - deutlich robuster gegen Sprachabdrift bei kurzen/
-// undeutlichen Aufnahmen). Bekanntes Risiko dabei: Whisper kann bei sehr
+// undeutlichen Aufnahmen). Bekanntes Risiko dabei: die Erkennung kann bei sehr
 // kurzem/unklarem Audio den Prompt einfach "nachplappern", egal was
 // tatsaechlich gesagt wurde - das wuerde die Uebung sinnlos machen (immer
 // "richtig" ohne echte Pruefung). Absicherung hier: wenn die Aufnahme
@@ -101,8 +102,8 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
   // Speechmatics statt On-Device-Whisper als primaerer STT-Anbieter
   // (2026-08-12) - siehe useSpeechmatics.ts-Kommentar fuer die Begruendung
   // (deutlich robuster gegen Akzent, braucht dafuer Internet).
-  const whisper = useSpeechmatics();
-  const recorder = useWhisperRecorder();
+  const stt = useSpeechmatics();
+  const recorder = useSttRecorder();
 
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -121,8 +122,10 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
   const [isRecording, setIsRecording] = useState(false);
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [recordError, setRecordError] = useState<string | null>(null);
-  // Diagnose-State (2026-08-08): Sprachcode, den Whisper tatsaechlich
-  // erkannt hat, wenn er vom angeforderten abweicht - siehe useWhisper.ts.
+  // Diagnose-State (2026-08-08): Sprachcode, den die Spracherkennung
+  // tatsaechlich erkannt hat, wenn er vom angeforderten abweicht. Greift
+  // seit dem Wechsel zu Speechmatics praktisch nie - siehe Kommentar an der
+  // Auswertungsstelle weiter unten.
   const [languageMismatch, setLanguageMismatch] = useState<string | null>(null);
   // Papagei-Verdacht (2026-08-08): Aufnahme viel zu kurz fuer den Zielsatz,
   // Transkript trotzdem (fast) identisch zum Prompt - siehe looksLikePromptEcho().
@@ -130,8 +133,7 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
   // Kauderwelsch-Verdacht (2026-08-08): Transkript ist offensichtlich kein
   // echtes Wort (Wiederholungsschleife wie "oooo..." oder durchgerutschtes
   // Sonderzeichen wie "]") - siehe looksLikeGarbageTranscript() in
-  // useWhisper.ts. useWhisper() versucht das intern schon per Zweitversuch
-  // zu umgehen, das hier greift nur, wenn AUCH der Zweitversuch kaputt war.
+  // ../stt/transcriptQuality.ts.
   const [garbageTranscriptSuspected, setGarbageTranscriptSuspected] = useState(false);
   const [feedback, setFeedback] = useState<EvaluationResult | null>(null);
   const [done, setDone] = useState(false);
@@ -238,29 +240,29 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
       // Zielsatz selbst als Prompt (2026-08-08, Duolingo-Prinzip: bekannter
       // Zielsatz statt offener Transkription, siehe CLAUDE.md) - staerkere
       // Sprachverankerung als der vorherige generische Platzhalter-Prompt.
-      const targetPrompt = sentence?.text ?? language.whisperPrompt;
-      const { text, detectedLanguage } = await whisper.transcribe(uri, language.whisperLanguage, targetPrompt);
+      const targetPrompt = sentence?.text ?? language.sttPrompt;
+      const { text, detectedLanguage } = await stt.transcribe(uri, language.sttLanguage, targetPrompt);
       setTranscript(text);
-      // Bestaetigt (2026-08-08, echter Nutzerfall, auf iOS reproduziert -
-      // damit kein Android-Aufnahmeformat-Problem, siehe useWhisperRecorder.ts):
-      // Whisper meldet zurueck, welche Sprache es TATSAECHLICH decodiert
-      // hat. Weicht das vom angeforderten Code ab, ist das eine echte
-      // Whisper-Halluzination, keine falsche Aussprache - das erzwungene
-      // `language`-Flag schraenkt nur den Start-Token ein, die eigentlichen
-      // Wort-Tokens bleiben bei unklarem/nicht-muttersprachlichem Audio frei
-      // waehlbar. Kein Vorfall, den der Nutzer "falsch gemacht" hat, deshalb
-      // NICHT wie eine normale falsche Antwort werten: kein FSRS-Update,
-      // keine "nicht_verstanden"-Wertung - stattdessen einfach nochmal
+      // Sprach-Mismatch-Schutz. Stammt aus der whisper.rn-Zeit (2026-08-08,
+      // echter Nutzerfall, auf iOS reproduziert): Whisper meldete zurueck,
+      // welche Sprache es TATSAECHLICH decodiert hatte, und wich das vom
+      // angeforderten Code ab, war das eine Halluzination und keine falsche
+      // Aussprache - dann NICHT wie eine falsche Antwort werten (kein
+      // FSRS-Update, keine "nicht_verstanden"-Wertung), sondern nochmal
       // aufnehmen lassen (siehe CLAUDE.md "SRS soll nicht schlecht gelaunt
-      // machen"). Deckt weiterhin NICHT den Fall ab, dass Whisper "sv"
-      // zurueckmeldet, der Inhalt aber trotzdem Halluzination ist - dafuer
-      // gibt es keinen automatischen Indikator.
-      if (detectedLanguage && detectedLanguage !== language.whisperLanguage) {
+      // machen").
+      // ACHTUNG (2026-08-16): seit dem Wechsel zu Speechmatics ist dieser
+      // Zweig praktisch tot - useSpeechmatics() gibt `detectedLanguage`
+      // IMMER als die angeforderte Sprache zurueck, weil der Text-Endpunkt
+      // kein eigenes Spracherkennungsfeld liefert (siehe Kommentar dort).
+      // Bewusst stehen gelassen statt geloescht: kostet nichts, greift sofort
+      // wieder, falls der Anbieter spaeter ein echtes Sprachfeld liefert.
+      if (detectedLanguage && detectedLanguage !== language.sttLanguage) {
         setLanguageMismatch(detectedLanguage);
         return;
       }
       // Papagei-Check (2026-08-08): seit der Zielsatz als Prompt mitgegeben
-      // wird, besteht das Risiko, dass Whisper ihn bei zu kurzem/unklarem
+      // wird, besteht das Risiko, dass die Erkennung ihn bei zu kurzem/unklarem
       // Audio einfach zurueckgibt, ohne die Aufnahme wirklich auszuwerten -
       // siehe looksLikePromptEcho()-Kommentar oben. Genau wie beim Sprach-
       // Mismatch: kein FSRS-Update, keine Wertung, einfach nochmal versuchen.
@@ -270,11 +272,13 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
         return;
       }
       // Kauderwelsch-Check (2026-08-08, echte Nutzerfaelle: "]" statt einem
-      // echten Satz, oder "oooooo..." als Wiederholungsschleife). useWhisper()
-      // versucht das schon intern per Zweitversuch zu vermeiden (siehe
-      // isBadResult() dort) - das hier ist der Rueckfall, falls AUCH der
-      // Zweitversuch kaputt war. Gleiche nicht-bestrafende Behandlung wie
-      // Sprach-Mismatch/Papagei-Verdacht: kein FSRS-Update, keine Wertung.
+      // echten Satz, oder "oooooo..." als Wiederholungsschleife). Frueher gab
+      // es dagegen zusaetzlich einen automatischen Zweitversuch in
+      // useWhisper() - der ist mit dem Anbieterwechsel entfallen (2026-08-16),
+      // Speechmatics hat kein Gegenstueck dazu. Diese Pruefung ist damit die
+      // EINZIGE Absicherung gegen Kauderwelsch, nicht mehr nur der Rueckfall.
+      // Gleiche nicht-bestrafende Behandlung wie Sprach-Mismatch/
+      // Papagei-Verdacht: kein FSRS-Update, keine Wertung.
       if (looksLikeGarbageTranscript(text)) {
         setGarbageTranscriptSuspected(true);
         return;
@@ -402,7 +406,7 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
           </View>
 
           <View style={styles.sttRow}>
-            {whisper.status === 'ready' ? (
+            {stt.status === 'ready' ? (
               <Pressable
                 onPress={handleMicPress}
                 style={[styles.micButton, { backgroundColor: isRecording ? '#D9564F' : ACCENT_BLUE }]}
@@ -413,7 +417,7 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
               </Pressable>
             ) : (
               <Text style={{ color: theme.sub, fontSize: 12 }}>
-                Spracherkennung nicht verfügbar ({whisper.error ?? 'lädt…'}) - bitte Text eingeben.
+                Spracherkennung nicht verfügbar ({stt.error ?? 'lädt…'}) - bitte Text eingeben.
               </Text>
             )}
             {isTranscribing && <ActivityIndicator color={ACCENT_BLUE} style={{ marginLeft: 8 }} />}
@@ -421,7 +425,7 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
           {!!transcript && <Text style={[styles.transcript, { color: theme.text }]}>Erkannt: „{transcript}"</Text>}
           {!!languageMismatch && (
             <Text style={{ color: '#D9564F', fontSize: 12, fontWeight: '700', marginBottom: 4 }}>
-              ⚠️ Whisper hat das als „{languageMismatch}" statt „{language.whisperLanguage}" erkannt - das zählt nicht als
+              ⚠️ Die Spracherkennung hat das als „{languageMismatch}" statt „{language.sttLanguage}" erkannt - das zählt nicht als
               Versuch. Bitte nochmal einsprechen (oder Antwort tippen).
             </Text>
           )}
