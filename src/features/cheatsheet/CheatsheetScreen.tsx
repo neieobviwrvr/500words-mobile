@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { router } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAppState } from '../../state/AppState';
 import { CATEGORIES } from '../../data/categories';
 import { CheatsheetCategoryGroup, loadCheatsheetGroups } from '../../data/cheatsheetContent';
@@ -16,6 +17,10 @@ import { getTheme, ACCENT_BLUE } from '../../theme/tokens';
 export function CheatsheetScreen() {
   const { darkMode, selectedThemes, toggleThemeSelect, saved, purchased, targetLanguageId } = useAppState();
   const theme = getTheme(darkMode);
+  // Seit dieser Screen ein Tab-Einstieg ist, liegt er ohne eigenen Einsatz
+  // unter der Statusleiste bzw. der Dynamic Island - vorher fiel das weniger
+  // auf, weil er ueber einen Zurueck-Pfeil betreten wurde.
+  const insets = useSafeAreaInsets();
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -54,16 +59,13 @@ export function CheatsheetScreen() {
 
   return (
     <View style={[styles.container, { backgroundColor: theme.pageBg }]}>
-      <View style={styles.top}>
+      <View style={[styles.top, { paddingTop: insets.top + 8 }]}>
         <View style={styles.header}>
-          <Pressable
-          onPress={() => router.back()}
-          style={styles.backBtn}
-          accessibilityRole="button"
-          accessibilityLabel="Zurück"
-        >
-            <Text style={[styles.backGlyph, { color: theme.text }]}>‹</Text>
-          </Pressable>
+          {/* Kein Zurueck-Pfeil mehr (2026-08-18): dieser Screen ist seit der
+              Tab-Leiste ein Einstiegspunkt und kein aufgerufener Unterscreen.
+              Ein Pfeil, der aus einem Tab herausfuehrt, waere ein Weg, den es
+              nicht gibt. Die Unterscreens (Kategorie, Suche, Favoriten)
+              behalten ihren Pfeil - die werden weiterhin darueber gelegt. */}
           <Text style={[styles.title, { color: theme.text }]}>Cheat‑Sheet‑Survival</Text>
           {offline && <Text style={styles.offlineBadge}>📴 Offline</Text>}
         </View>
@@ -181,8 +183,6 @@ const styles = StyleSheet.create({
   container: { flex: 1 },
   top: { padding: 16, paddingBottom: 10, gap: 10 },
   header: { flexDirection: 'row', alignItems: 'center', gap: 10 },
-  backBtn: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
-  backGlyph: { fontSize: 26 },
   title: { fontWeight: '800', fontSize: 20, flex: 1 },
   offlineBadge: { fontSize: 11, fontWeight: '700', color: '#9A5A1E' },
   searchRow: { flexDirection: 'row', gap: 8, alignItems: 'center' },

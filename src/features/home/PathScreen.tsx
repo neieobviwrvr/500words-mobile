@@ -1,48 +1,75 @@
-import { useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { router } from 'expo-router';
+import { Feather } from '@expo/vector-icons';
 import { useAppState } from '../../state/AppState';
-import { CATEGORIES, DEFAULT_THEMEN_PRO_KATEGORIE, GRUNDWORTSCHATZ_THEMEN } from '../../data/categories';
+import { CATEGORIES, GRUNDWORTSCHATZ_ID } from '../../data/categories';
 import { LANGUAGES, getLanguage } from '../../data/languages';
-import { getTheme, ACCENT_BLUE, ACCENT_ORANGE, NODE_LOCKED, PILL_FILL_BLUE, PILL_FILL_ORANGE, PILL_FILL_GRAY } from '../../theme/tokens';
+import { Card, Dropdown, PillButton, ProgressBar, Screen, PRESS_DEPTH } from '../../components';
+import type { DropdownOption } from '../../components';
+import { useUnlockedProgress } from './useUnlockedProgress';
+import {
+  getTheme,
+  ACCENT_BLUE,
+  ACCENT_ORANGE,
+  ACCENT_GREEN,
+  ACCENT_GREEN_BG,
+  NODE_LOCKED,
+  PILL_FILL_BLUE,
+  PILL_FILL_ORANGE,
+  PILL_FILL_GRAY,
+  RADIUS,
+  SPACING,
+  FONT_SIZE,
+  FONT_FAMILY,
+  LINE_HEIGHT,
+} from '../../theme/tokens';
 
-// S1 - Startscreen (Pfad). Ersetzt PathScreenMockup: echte Navigation statt
-// simuliertem Zustand, Struktur/Verhalten aus dem Claude-Design-Prototyp +
-// App-Overlay-Spec.md ("Homescreen Sprache").
+// S1 - Startscreen (Pfad).
 //
-// 2026-08-06: Zickzack-Pfad-Layout (Duolingo-Stil) aus aktualisiertem
-// Design-Prototyp uebernommen, ersetzt die vorherige flache Listenansicht -
-// Pillen-Knoten werden absolut positioniert (abwechselnd links/rechts,
-// zentrierte Kategorie-/Sprach-Knoten dazwischen), verbunden durch
-// rotierte Linien zwischen den Mittelpunkten. Algorithmus 1:1 aus der
-// Design-JS-Logik (renderVals() -> pathNodes/pathConnectors) portiert.
+// Aufbau nach Simons Vorlage
+// (`Screenplanung/UI - Rest/Homepage/Homescreen grobe Themenuebersicht.png`),
+// Duolingo als Referenz fuer den Abschnitts-Kopf und das Gefuehl der Knoten.
+// Stil-Rezept unveraendert 70% Babbel / 30% Duolingo (siehe theme/tokens.ts).
 //
-// - "Sprache"-Dropdown: seit der echten Supabase-Anbindung (2026-08-05)
-//   ist Deutsch/Schwedisch-Wechsel echt umgeschaltet (sonst waere
-//   Schwedisch-Content nicht erreichbar). Spanisch/Franzoesisch "(bald)".
-// - Ueberlebens-/Maximalwortschatz: Platzhalter ohne Funktion
-// - Pfad-Knoten -> S2 Kategorie-Detail-Screen (mit optionalem Thema-Titel)
-// - gesperrte Knoten -> S3 Shop
-// - Scroll-Position nach Kauf bleibt erhalten, weil ShopScreen nach dem Kauf
-//   router.back() statt router.replace() macht - S1 bleibt dabei im
-//   Navigations-Stack gemountet, RN's ScrollView haelt ihre Scroll-Position
-//   dadurch von selbst (kein manuelles Speichern/Wiederherstellen noetig
-//   wie im Web-Prototyp, wo Screens nur bedingt gerenderte Divs sind).
-// - "Wiederholen + Ueben" -> S5 SRS, "Cheat-Sheet-Survival" -> S6
+// WICHTIGE STRUKTURENTSCHEIDUNG (2026-08-18): Die Pfad-Box zeigt nur noch
+// KATEGORIEN, keine Themen-Knoten. Oben die Sprach-Pille (= Grundwortschatz),
+// darunter die freigeschalteten Kategorien, unter einer gestrichelten Linie
+// die gesperrten.
+//
+// Der naechste Schritt macht daraus ein Akkordeon: ein Tipp auf die
+// Schatzkarte faechert ALLE Themen auf, ein Tipp auf eine Pille nur deren
+// eigene; die Themen erscheinen als kleinere Kreise mit Linien an ihrer
+// Pille, die folgenden Kategorien rutschen nach unten
+// (`Homescreen genaue Uebersicht.png`). Deshalb entsteht die Knotenliste hier
+// schon aus (Kategorien + `expandedIds`) statt fest zusammengeschrieben zu
+// werden - das Auffaechern ist dann ein Einfuegen in diese Liste und kein
+// Umbau. `expandedIds` ist bis dahin immer leer.
+//
+// Was hier bewusst NICHT mehr steht: die Wortschatz-Kaesten (Platzhalter ohne
+// Funktion, in der Vorlage nicht mehr vorhanden) und die Knopfzeile unten -
+// Cheat-Sheet-Survival ist jetzt der Tab "Survival", die Extras ziehen
+// spaeter hinter den Coins-Knopf und sind dort schon jetzt erreichbar.
 
+// Geometrie des Zickzacks. Layout-Mathematik, keine Abstands-Tokens - die
+// Werte stehen zueinander in einem festen Verhaeltnis (eine Zeile muss hoeher
+// sein als eine Pille, sonst ueberlappen sich zwei Reihen).
 const PILL_W = 176;
-const PILL_H = 44;
-const ROW_H = 82;
+const PILL_H = 48;
+const LANG_PILL_W = 150;
+const LANG_PILL_H = 56;
+const ROW_H = 86;
 const CONT_W = 300;
 
+type NodeState = 'done' | 'current' | 'open' | 'locked';
+
 type RawNode = {
+  id: string;
   label: string;
-  color: string;
-  fill: string;
-  big?: boolean;
-  center?: boolean;
-  locked?: boolean;
-  badge?: string | null;
+  state: NodeState;
+  /** Groessere, zentrierte Pille - die Sprache an der Spitze des Pfades. */
+  lead?: boolean;
+  /** Beginnt hier ein neuer Block? Zeichnet die gestrichelte Trennlinie. */
   newGroup?: boolean;
   onPress: () => void;
 };
@@ -50,168 +77,250 @@ type RawNode = {
 type LaidOutNode = RawNode & {
   width: number;
   height: number;
-  fontSize: number;
   left: number;
   top: number;
   cx: number;
   cy: number;
-  badgeLeft: number;
-  badgeTop: number;
 };
 
 type Connector = { left: number; top: number; length: number; angle: number; color: string };
 
+// Farbe pro Knoten. Bewusst zentral und nicht am Knoten selbst: der Zustand
+// ist die Information, die Farbe nur ihre Darstellung.
+//
+// Blau gehoert dem freien Grundwortschatz, Orange den Kaufkategorien, Grau
+// dem Gesperrten - und Gruen steht nach dem Stil-Rezept ausschliesslich fuer
+// Erfolg und schlaegt deshalb alles andere.
+function nodeColors(node: { state: NodeState; lead?: boolean }) {
+  if (node.state === 'done') return { line: ACCENT_GREEN, fill: ACCENT_GREEN_BG };
+  if (node.state === 'locked') return { line: NODE_LOCKED, fill: PILL_FILL_GRAY };
+  if (node.lead) return { line: ACCENT_BLUE, fill: PILL_FILL_BLUE };
+  return { line: ACCENT_ORANGE, fill: PILL_FILL_ORANGE };
+}
+
 export function PathScreen() {
-  const { darkMode, purchased, targetLanguageId, setTargetLanguageId } = useAppState();
+  const { darkMode, purchased, targetLanguageId, setTargetLanguageId, coins } = useAppState();
   const theme = getTheme(darkMode);
-  const [langOpen, setLangOpen] = useState(false);
   const activeLanguage = getLanguage(targetLanguageId);
 
-  const goCategoryDetail = (id: string, themeLabel?: string) => () => {
-    router.push({ pathname: '/category/[id]', params: themeLabel ? { id, theme: themeLabel } : { id } });
-  };
+  const scrollRef = useRef<ScrollView>(null);
+  const didAutoScroll = useRef(false);
+
+  // Platzhalter fuer das Auffaechern im naechsten Schritt - siehe Kopfnotiz.
+  const [expandedIds] = useState<string[]>([]);
+  const [notice, setNotice] = useState<string | null>(null);
+  const hideNotice = useCallback(() => setNotice(null), []);
+
+  const unlockedIds = useMemo(
+    () => [GRUNDWORTSCHATZ_ID, ...CATEGORIES.filter((c) => purchased[c.id]).map((c) => c.id)],
+    [purchased]
+  );
+  const progress = useUnlockedProgress(targetLanguageId, unlockedIds);
+
+  const goCategory = (id: string) => () => router.push({ pathname: '/category/[id]', params: { id } });
   const goShop = () => router.push('/shop');
 
-  const purchasedCategories = CATEGORIES.filter((c) => purchased[c.id]);
-  const lockedCategories = CATEGORIES.filter((c) => !purchased[c.id]);
+  // ---------------------------------------------------------------------
+  // Knotenliste
+  // ---------------------------------------------------------------------
+  const { nodes: raw, currentIndex, currentLabel } = useMemo(() => {
+    const purchasedCategories = CATEGORIES.filter((c) => purchased[c.id]);
+    const lockedCategories = CATEGORIES.filter((c) => !purchased[c.id]);
 
-  const raw: RawNode[] = [
-    { label: activeLanguage.label, color: ACCENT_BLUE, fill: PILL_FILL_BLUE, big: true, center: true, onPress: goCategoryDetail('grundwortschatz') },
-    ...GRUNDWORTSCHATZ_THEMEN.map((t) => ({
-      label: `Grundlagen – Thema ${t}`,
-      color: ACCENT_BLUE,
-      fill: PILL_FILL_BLUE,
-      onPress: goCategoryDetail('grundwortschatz', `Thema ${t}`),
-    })),
-  ];
-  purchasedCategories.forEach((cat, ci) => {
-    raw.push({
-      label: cat.name, color: ACCENT_ORANGE, fill: PILL_FILL_ORANGE, center: true, newGroup: true,
-      badge: ci === 0 ? '"Sprung"' : null, onPress: goCategoryDetail(cat.id),
-    });
-    DEFAULT_THEMEN_PRO_KATEGORIE.forEach((t) =>
-      raw.push({ label: `${cat.name} – Thema ${t}`, color: ACCENT_ORANGE, fill: PILL_FILL_ORANGE, onPress: goCategoryDetail(cat.id, `Thema ${t}`) })
-    );
-  });
-  lockedCategories.forEach((cat, ci) => {
-    raw.push({
-      label: cat.name, color: NODE_LOCKED, fill: PILL_FILL_GRAY, center: true, newGroup: true, locked: true,
-      badge: ci === 0 ? '„gesperrt“' : null, onPress: goShop,
-    });
-    DEFAULT_THEMEN_PRO_KATEGORIE.forEach((t) =>
-      raw.push({ label: `${cat.name} – Thema ${t}`, color: NODE_LOCKED, fill: PILL_FILL_GRAY, locked: true, onPress: goShop })
-    );
-  });
-
-  const dividers: number[] = [];
-  const pathNodes: LaidOutNode[] = raw.map((n, i) => {
-    const w = n.big ? 128 : PILL_W;
-    const left = n.center ? (CONT_W - w) / 2 : i % 2 === 0 ? 0 : CONT_W - w;
-    const top = i * ROW_H;
-    if (n.newGroup && i > 0) dividers.push(top - ROW_H / 2 + PILL_H / 2);
-    return {
-      ...n,
-      width: w,
-      height: n.big ? 56 : PILL_H,
-      fontSize: n.big ? 16 : 12.5,
-      left,
-      top,
-      cx: left + w / 2,
-      cy: top + (n.big ? 28 : PILL_H / 2),
-      badgeLeft: left + w + 8,
-      badgeTop: top + (n.big ? 18 : 12),
+    // "Fertig" heisst: jeder Satz der Kategorie wurde mindestens einmal
+    // bewertet. "Aktuell" ist die erste freigeschaltete Kategorie, die das
+    // noch nicht ist - sie bekommt den Ring und gibt dem Abschnitts-Kopf
+    // seinen Namen.
+    const stateFor = (categoryId: string): NodeState => {
+      const p = progress.byCategory[categoryId];
+      if (p && p.total > 0 && p.seen >= p.total) return 'done';
+      return 'open';
     };
-  });
-  const connectors: Connector[] = [];
-  for (let i = 0; i < pathNodes.length - 1; i++) {
-    const a = pathNodes[i];
-    const b = pathNodes[i + 1];
-    const dx = b.cx - a.cx;
-    const dy = b.cy - a.cy;
-    connectors.push({
-      left: a.cx,
-      top: a.cy,
-      length: Math.sqrt(dx * dx + dy * dy),
-      angle: (Math.atan2(dy, dx) * 180) / Math.PI,
-      color: a.color,
+
+    const list: RawNode[] = [
+      {
+        id: GRUNDWORTSCHATZ_ID,
+        label: activeLanguage.label,
+        state: stateFor(GRUNDWORTSCHATZ_ID),
+        lead: true,
+        onPress: goCategory(GRUNDWORTSCHATZ_ID),
+      },
+      ...purchasedCategories.map((cat, i) => ({
+        id: cat.id,
+        label: cat.name,
+        state: stateFor(cat.id),
+        newGroup: i === 0,
+        onPress: goCategory(cat.id),
+      })),
+      ...lockedCategories.map((cat, i) => ({
+        id: cat.id,
+        label: cat.name,
+        state: 'locked' as NodeState,
+        newGroup: i === 0,
+        onPress: goShop,
+      })),
+    ];
+
+    // Erster nicht fertiger, nicht gesperrter Knoten wird "aktuell".
+    const idx = list.findIndex((n) => n.state === 'open');
+    if (idx >= 0) list[idx].state = 'current';
+
+    return {
+      nodes: list,
+      currentIndex: idx >= 0 ? idx : 0,
+      currentLabel: idx >= 0 ? list[idx].label : list[0].label,
+    };
+    // `expandedIds` gehoert schon jetzt in die Abhaengigkeiten - sobald das
+    // Auffaechern kommt, muss die Liste sich davon neu bauen.
+  }, [purchased, activeLanguage.label, progress.byCategory, expandedIds]);
+
+  // ---------------------------------------------------------------------
+  // Zickzack-Layout: Pillen abwechselnd links/rechts, verbunden durch
+  // rotierte Linien zwischen den Mittelpunkten.
+  // ---------------------------------------------------------------------
+  const { pathNodes, connectors, dividers, canvasHeight } = useMemo(() => {
+    const laid: LaidOutNode[] = raw.map((n, i) => {
+      const w = n.lead ? LANG_PILL_W : PILL_W;
+      const h = n.lead ? LANG_PILL_H : PILL_H;
+      const left = n.lead ? (CONT_W - w) / 2 : i % 2 === 0 ? 0 : CONT_W - w;
+      const top = i * ROW_H;
+      return { ...n, width: w, height: h, left, top, cx: left + w / 2, cy: top + h / 2 };
     });
-  }
-  const containerHeight = pathNodes.length > 0 ? pathNodes[pathNodes.length - 1].top + PILL_H + 20 : 0;
+
+    const divs: number[] = [];
+    laid.forEach((n, i) => {
+      if (n.newGroup && i > 0) divs.push(n.top - ROW_H / 2 + n.height / 2);
+    });
+
+    const conns: Connector[] = [];
+    for (let i = 0; i < laid.length - 1; i++) {
+      const a = laid[i];
+      const b = laid[i + 1];
+      const dx = b.cx - a.cx;
+      const dy = b.cy - a.cy;
+      conns.push({
+        left: a.cx,
+        top: a.cy,
+        length: Math.sqrt(dx * dx + dy * dy),
+        angle: (Math.atan2(dy, dx) * 180) / Math.PI,
+        // Die Linie gehoert zum Abschnitt, aus dem sie kommt - beim Uebergang
+        // ins Gesperrte wird sie damit von selbst grau.
+        color: nodeColors(a).line,
+      });
+    }
+
+    const last = laid[laid.length - 1];
+    return {
+      pathNodes: laid,
+      connectors: conns,
+      dividers: divs,
+      canvasHeight: last ? last.top + last.height + SPACING.xl : 0,
+    };
+  }, [raw]);
+
+  // Beim Oeffnen zum aktuellen Knoten springen statt oben anzufangen. Nur
+  // einmal pro Mount - wer selbst gescrollt hat, soll nicht zurueckgerissen
+  // werden, wenn der Fortschritt nachlaedt.
+  useEffect(() => {
+    if (didAutoScroll.current || progress.loading || pathNodes.length === 0) return;
+    didAutoScroll.current = true;
+    const target = Math.max(0, (pathNodes[currentIndex]?.top ?? 0) - ROW_H);
+    // Ohne die Verzoegerung misst die ScrollView ihren Inhalt noch nicht.
+    const timer = setTimeout(() => scrollRef.current?.scrollTo({ y: target, animated: false }), 0);
+    return () => clearTimeout(timer);
+  }, [progress.loading, pathNodes, currentIndex]);
+
+  const languageOptions: DropdownOption[] = LANGUAGES.map((l) => ({
+    id: l.id,
+    label: l.label,
+    disabled: !l.hasContent,
+    note: l.hasContent ? undefined : 'bald',
+  }));
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.pageBg }]}>
-      <View style={styles.langWrap}>
-        <Pressable
-          onPress={() => setLangOpen((o) => !o)}
-          accessibilityRole="button"
-          accessibilityLabel={`Sprache: ${activeLanguage.label}`}
-          accessibilityHint="Zielsprache auswählen"
-          accessibilityState={{ expanded: langOpen }}
-          style={[styles.langButton, { backgroundColor: theme.cardBg, borderColor: theme.border }]}
-        >
-          <Text style={[styles.langLabel, { color: theme.text }]}>Sprache</Text>
-          <View style={styles.langRight}>
-            <Text style={[styles.langValue, { color: theme.sub }]}>{activeLanguage.label}</Text>
-            {/* Rein dekorativer Aufklapp-Pfeil - der Zustand steckt schon in
-                accessibilityState.expanded, VoiceOver soll nicht zusaetzlich
-                "nach unten zeigendes Dreieck" vorlesen. */}
-            <Text
-              accessibilityElementsHidden
-              importantForAccessibility="no"
-              style={{ color: theme.sub, transform: [{ rotate: langOpen ? '180deg' : '0deg' }] }}
-            >
-              ▾
+    <Screen dark={darkMode}>
+      {/* Kopfzeile: Sprache links, Geschenk und Coins rechts. */}
+      <View style={styles.topBar}>
+        <View style={styles.langSlot}>
+          <Dropdown
+            compact
+            options={languageOptions}
+            selectedId={targetLanguageId}
+            onSelect={setTargetLanguageId}
+            dark={darkMode}
+            title="Welche Sprache lernst du?"
+            accessibilityLabel="Sprache"
+          />
+        </View>
+
+        <HeaderButton
+          dark={darkMode}
+          icon="gift"
+          label="Geschenk"
+          // Ohne Funktion bis die taegliche Kiste existiert - der Knopf sagt
+          // das beim Antippen, statt still nichts zu tun.
+          hint="Die tägliche Kiste gibt es noch nicht"
+          onPress={() => setNotice('Die tägliche Kiste kommt später.')}
+        />
+        <HeaderButton
+          dark={darkMode}
+          icon="circle"
+          label="Coins"
+          // Echter Kontostand (2026-08-18). Der erste Coin kommt aus dem
+          // Onboarding, direkt nach der bestandenen Beispiellektion - damit
+          // hier von Anfang an nichts Leeres steht.
+          value={String(coins)}
+          hint="Öffnet Freunde werben, Bewertung und Feedback"
+          onPress={() => router.push('/rewards')}
+        />
+      </View>
+
+      {/* Fortschritt ueber die freigeschalteten Inhalte. */}
+      <View style={styles.progressRow}>
+        <ProgressBar
+          dark={darkMode}
+          ratio={progress.ratio}
+          label={`${Math.round(progress.ratio * 100)} Prozent deiner freigeschalteten Inhalte geübt`}
+        />
+        <Text style={[styles.progressValue, { color: theme.sub }]}>
+          {Math.round(progress.ratio * 100)}%
+        </Text>
+      </View>
+
+      {/* Pfad-Box: NUR dieser Bereich scrollt. */}
+      <Card dark={darkMode} padded={false} style={styles.pathBox}>
+        {/* Abschnitts-Kopf, bleibt beim Scrollen stehen. */}
+        <View style={[styles.sectionBar, { borderBottomColor: theme.border }]}>
+          <View style={[styles.sectionField, { borderColor: theme.border, backgroundColor: theme.pageBg }]}>
+            <Text style={[styles.sectionLabel, { color: theme.sub }]}>Du bist hier</Text>
+            <Text style={[styles.sectionName, { color: theme.text }]} numberOfLines={1}>
+              {currentLabel}
             </Text>
           </View>
-        </Pressable>
-        {langOpen && (
-          <View style={[styles.langDropdown, { backgroundColor: theme.cardBg, borderColor: theme.border }]}>
-            {LANGUAGES.map((lang) => {
-              const active = lang.id === targetLanguageId;
-              return (
-                <Pressable
-                  key={lang.id}
-                  disabled={!lang.hasContent}
-                  onPress={() => {
-                    setTargetLanguageId(lang.id);
-                    setLangOpen(false);
-                  }}
-                  accessibilityRole="button"
-                  accessibilityLabel={lang.hasContent ? lang.label : `${lang.label}, noch nicht verfügbar`}
-                  // selected statt nur des Haekchens: der aktive Zustand wird
-                  // sonst ausschliesslich ueber "✓" und Hintergrundfarbe
-                  // transportiert, beides fuer VoiceOver unsichtbar.
-                  accessibilityState={{ selected: active, disabled: !lang.hasContent }}
-                  style={[styles.langRow, { backgroundColor: active ? theme.modeBg : 'transparent' }]}
-                >
-                  <Text style={{ color: lang.hasContent ? theme.text : theme.sub, fontWeight: active ? '700' : '600' }}>
-                    {lang.label}
-                    {!lang.hasContent ? ' (bald)' : ''}
-                  </Text>
-                  {active && (
-                    <Text accessibilityElementsHidden importantForAccessibility="no" style={{ color: theme.text }}>
-                      ✓
-                    </Text>
-                  )}
-                </Pressable>
-              );
-            })}
-          </View>
-        )}
-      </View>
-
-      <View style={styles.wortschatzRow}>
-        <View style={[styles.wortschatzBox, { borderColor: theme.border }]}>
-          <Text style={[styles.wortschatzText, { color: theme.sub }]}>Überlebens­wortschatz</Text>
+          <Pressable
+            onPress={() => setNotice('Das Auffächern der Themen kommt im nächsten Schritt.')}
+            accessibilityRole="button"
+            accessibilityLabel="Alle Themen auffächern"
+            accessibilityHint="Noch ohne Funktion"
+            style={({ pressed }) => [
+              styles.mapButton,
+              { borderColor: theme.border, opacity: pressed ? 0.7 : 1 },
+            ]}
+          >
+            <Image
+              source={require('../../../assets/icon-karte.png')}
+              style={styles.mapImage}
+              accessibilityIgnoresInvertColors
+            />
+          </Pressable>
         </View>
-        <View style={[styles.wortschatzBox, { borderColor: theme.border }]}>
-          <Text style={[styles.wortschatzText, { color: theme.sub }]}>Maximal­wortschatz</Text>
-        </View>
-      </View>
 
-      <View style={[styles.pathBox, { borderColor: theme.border, backgroundColor: theme.pathBoxBg }]}>
-        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.pathBoxContent}>
-          <View style={[styles.pathCanvas, { height: containerHeight }]}>
+        <ScrollView
+          ref={scrollRef}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.pathBoxContent}
+        >
+          <View style={[styles.pathCanvas, { height: canvasHeight }]}>
             {dividers.map((d, i) => (
               <View key={`div-${i}`} style={[styles.divider, { top: d, borderColor: theme.dividerColor }]} />
             ))}
@@ -231,137 +340,294 @@ export function PathScreen() {
                 ]}
               />
             ))}
-            {pathNodes.map((n, i) => (
-              <View key={`node-${i}`}>
-                <Pressable
-                  onPress={n.onPress}
-                  accessibilityRole="button"
-                  // Der Sperr-Zustand haengt sonst allein am 🔒-Emoji, das
-                  // VoiceOver bestenfalls als "Schloss" vorliest - ohne
-                  // Bezug zum Knoten. Deshalb in den Namen aufnehmen und
-                  // ueber den Hint sagen, wohin der Tap fuehrt (Shop statt
-                  // Kategorie).
-                  accessibilityLabel={n.locked ? `${n.label}, gesperrt` : n.label}
-                  accessibilityHint={n.locked ? 'Öffnet den Shop zum Freischalten' : 'Öffnet die Kategorie'}
-                  style={[
-                    styles.pill,
-                    {
-                      left: n.left,
-                      top: n.top,
-                      width: n.width,
-                      height: n.height,
-                      borderColor: n.color,
-                      backgroundColor: n.fill,
-                    },
-                  ]}
-                >
-                  <Text style={{ color: n.color, fontWeight: '800', fontSize: n.fontSize, textAlign: 'center' }}>{n.label}</Text>
-                  {n.locked && (
-                    <Text accessibilityElementsHidden importantForAccessibility="no" style={styles.lockGlyph}>
-                      🔒
-                    </Text>
-                  )}
-                </Pressable>
-                {n.badge && (
-                  <Pressable
-                    disabled={!n.locked}
-                    onPress={n.locked ? n.onPress : undefined}
-                    // Nur antippbar, wenn gesperrt - sonst ist es eine reine
-                    // Beschriftung und soll den VoiceOver-Fokus nicht als
-                    // vermeintlicher Knopf einsammeln.
-                    accessibilityRole={n.locked ? 'button' : 'text'}
-                    accessibilityLabel={n.locked ? `${n.label} freischalten` : n.badge}
-                    style={[styles.badge, { left: n.badgeLeft, top: n.badgeTop, borderColor: theme.border, backgroundColor: theme.cardBg }]}
-                  >
-                    <Text style={{ color: theme.sub, fontWeight: '700', fontSize: 10 }}>{n.badge}</Text>
-                  </Pressable>
-                )}
-              </View>
+            {pathNodes.map((n) => (
+              <PathNode key={n.id} node={n} />
             ))}
           </View>
         </ScrollView>
-        {/* Reiner Scroll-Hinweis, kein Bedienelement - VoiceOver liest den
-            Pfad ohnehin Knoten fuer Knoten durch. */}
-        <Text accessibilityElementsHidden importantForAccessibility="no" style={[styles.scrollHint, { color: theme.sub }]}>
-          ▾
-        </Text>
+      </Card>
+
+      {/* Feste Knoepfe ausserhalb der Scroll-Box. */}
+      <View style={styles.actions}>
+        <PillButton
+          label="Weiter durchstarten"
+          dark={darkMode}
+          hint="Öffnet die Kategorie, an der du gerade bist"
+          onPress={pathNodes[currentIndex]?.onPress ?? goShop}
+        />
+        <PillButton
+          label="Tägliches Wiederholen"
+          variant="secondary"
+          dark={darkMode}
+          hint="Öffnet die Wiederholung mit fälligen Karten"
+          onPress={() => router.push('/srs')}
+        />
       </View>
 
-      <Pressable
-        style={styles.primaryButton}
-        onPress={() => router.push('/srs')}
-        accessibilityRole="button"
-        accessibilityLabel="Wiederholen und Üben"
-        accessibilityHint="Öffnet die Wiederholung mit fälligen Karten"
+      <Notice text={notice} dark={darkMode} onHide={hideNotice} />
+    </Screen>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Kleine Bausteine, die nur S1 braucht
+// ---------------------------------------------------------------------------
+
+// Ein Knoten im Pfad. Traegt die Druckkante von `PillButton`, damit sich
+// Knoten und Knoepfe gleich anfuehlen - das ist der 30%-Duolingo-Anteil.
+function PathNode({ node }: { node: LaidOutNode }) {
+  const colors = nodeColors(node);
+  const isLocked = node.state === 'locked';
+  const isCurrent = node.state === 'current';
+
+  return (
+    <Pressable
+      onPress={node.onPress}
+      accessibilityRole="button"
+      // Der Zustand darf nicht allein an Farbe und Symbol haengen - Gruen,
+      // Haekchen und Schloss sind fuer VoiceOver unsichtbar, deshalb steht
+      // jeder Zustand im Namen.
+      accessibilityLabel={
+        isLocked
+          ? `${node.label}, gesperrt`
+          : node.state === 'done'
+            ? `${node.label}, abgeschlossen`
+            : isCurrent
+              ? `${node.label}, hier bist du`
+              : node.label
+      }
+      accessibilityHint={isLocked ? 'Öffnet den Shop zum Freischalten' : 'Öffnet die Kategorie'}
+      style={({ pressed }) => [
+        styles.node,
+        {
+          left: node.left,
+          top: node.top + (pressed ? PRESS_DEPTH : 0),
+          width: node.width,
+          height: node.height - PRESS_DEPTH,
+          borderColor: colors.line,
+          backgroundColor: colors.fill,
+          // Kraeftigerer Rand statt eines Schattens fuer "hier bist du" -
+          // ein Schatten traegt auf hellem Grund kaum und faellt im
+          // Darkmode ganz weg.
+          borderWidth: isCurrent ? 3 : 2,
+          borderBottomWidth: pressed ? 2 : PRESS_DEPTH,
+        },
+      ]}
+    >
+      {node.state === 'done' && (
+        <Feather name="check" size={14} color={colors.line} accessibilityElementsHidden />
+      )}
+      {isLocked && <Feather name="lock" size={13} color={colors.line} accessibilityElementsHidden />}
+      <Text
+        numberOfLines={2}
+        style={[node.lead ? styles.nodeLabelLead : styles.nodeLabel, { color: colors.line }]}
       >
-        <Text style={styles.primaryButtonText}>Wiederholen + Üben</Text>
-      </Pressable>
+        {node.label}
+      </Text>
+    </Pressable>
+  );
+}
 
-      {/* Nutzer-Korrektur 2026-08-08: der Referral-/Bewertungs-/Feedback-
-          Button war vorher ein schwebendes Icon ueber dem Pfad - gehoert
-          da laut Nutzer nicht hin. Jetzt als beschrifteter Button unten
-          neben Cheat-Sheet-Survival, mit Text der klarmacht, worum es geht
-          (Freunde einladen/Bewertung/Feedback), statt nur einem Icon. */}
-      <View style={styles.bottomRow}>
-        <Pressable
-          style={[styles.secondaryButton, { borderColor: theme.border, backgroundColor: theme.cardBg }]}
-          onPress={() => router.push('/cheatsheet')}
-          accessibilityRole="button"
-          accessibilityLabel="Cheat-Sheet-Survival"
-          accessibilityHint="Sätze zum Nachschlagen, auch offline"
-        >
-          <Text style={[styles.secondaryButtonText, { color: theme.text }]}>Cheat‑Sheet‑Survival</Text>
-        </Pressable>
-        <Pressable
-          style={[styles.secondaryButton, { borderColor: theme.border, backgroundColor: theme.cardBg }]}
-          onPress={() => router.push('/rewards')}
-          accessibilityRole="button"
-          // Ohne eigenes Label liest VoiceOver hier das Geschenk-Emoji vor
-          // und danach die beiden Textzeilen einzeln.
-          accessibilityLabel="Extras"
-          accessibilityHint="Freunde werben, bewerten, Feedback geben"
-        >
-          <Text style={[styles.secondaryButtonText, { color: theme.text }]}>🎁 Extras</Text>
-          <Text style={[styles.secondaryButtonSubtext, { color: theme.sub }]}>Freunde · Bewertung · Feedback</Text>
-        </Pressable>
-      </View>
+function HeaderButton({
+  dark,
+  icon,
+  label,
+  value,
+  hint,
+  onPress,
+}: {
+  dark: boolean;
+  icon: React.ComponentProps<typeof Feather>['name'];
+  label: string;
+  value?: string;
+  hint?: string;
+  onPress: () => void;
+}) {
+  const theme = getTheme(dark);
+  return (
+    <Pressable
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={value ? `${label}: ${value}` : label}
+      accessibilityHint={hint}
+      style={({ pressed }) => [
+        styles.headerButton,
+        { borderColor: theme.border, backgroundColor: theme.cardBg, opacity: pressed ? 0.7 : 1 },
+      ]}
+    >
+      <Feather name={icon} size={15} color={theme.sub} />
+      {value !== undefined && (
+        <Text style={[styles.headerButtonValue, { color: theme.text }]}>{value}</Text>
+      )}
+    </Pressable>
+  );
+}
+
+// Kurze Rueckmeldung fuer Knoepfe, die es zwar gibt, die aber noch nichts
+// tun. Lieber eine Zeile, die sagt woran man ist, als ein Tipp ins Leere.
+function Notice({ text, dark, onHide }: { text: string | null; dark: boolean; onHide: () => void }) {
+  const theme = getTheme(dark);
+
+  useEffect(() => {
+    if (!text) return;
+    const timer = setTimeout(onHide, 2600);
+    return () => clearTimeout(timer);
+  }, [text, onHide]);
+
+  if (!text) return null;
+  return (
+    <View
+      accessibilityLiveRegion="polite"
+      style={[styles.notice, { backgroundColor: theme.cardBg, borderColor: theme.border }]}
+    >
+      <Text style={[styles.noticeText, { color: theme.text }]}>{text}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16, gap: 12, position: 'relative' },
-  langWrap: { position: 'relative', zIndex: 5 },
-  langButton: {
-    flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-    paddingVertical: 12, paddingHorizontal: 16, borderWidth: 1.5, borderRadius: 14,
+  topBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: SPACING.sm,
   },
-  langLabel: { fontWeight: '800', fontSize: 19 },
-  langRight: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  langValue: { fontWeight: '600', fontSize: 14 },
-  langDropdown: { position: 'absolute', top: 56, left: 0, right: 0, borderWidth: 1.5, borderRadius: 12, padding: 6, gap: 2 },
-  langRow: { padding: 10, borderRadius: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  wortschatzRow: { flexDirection: 'row', gap: 8 },
-  wortschatzBox: { flex: 1, paddingVertical: 11, paddingHorizontal: 10, borderWidth: 1.5, borderRadius: 12, alignItems: 'center' },
-  wortschatzText: { fontWeight: '700', fontSize: 13, textAlign: 'center' },
-  pathBox: { flex: 1, minHeight: 320, borderWidth: 1.5, borderRadius: 16, position: 'relative' },
-  pathBoxContent: { paddingVertical: 18, paddingHorizontal: 8 },
-  pathCanvas: { width: CONT_W, alignSelf: 'center', position: 'relative' },
-  divider: { position: 'absolute', left: 0, right: 0, borderTopWidth: 2.5, borderStyle: 'dashed' },
-  connector: { position: 'absolute', height: 2, opacity: 0.5 },
-  pill: {
-    position: 'absolute', borderRadius: 100, borderWidth: 2, alignItems: 'center', justifyContent: 'center',
-    flexDirection: 'row', gap: 6, paddingHorizontal: 10,
+  langSlot: {
+    flex: 1,
   },
-  lockGlyph: { fontSize: 12 },
-  badge: {
-    position: 'absolute', paddingVertical: 5, paddingHorizontal: 10, borderRadius: 100, borderWidth: 1.5,
+  headerButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: SPACING.xs,
+    // 44pt ist das kleinste Tippziel, unter dem das Danebentippen anfaengt.
+    minHeight: 44,
+    minWidth: 44,
+    justifyContent: 'center',
+    paddingHorizontal: SPACING.md,
+    borderWidth: 1.5,
+    borderRadius: RADIUS.md,
   },
-  scrollHint: { position: 'absolute', bottom: 8, left: 0, right: 0, textAlign: 'center', fontSize: 16 },
-  primaryButton: { marginTop: 2, paddingVertical: 16, borderRadius: 16, backgroundColor: ACCENT_BLUE, alignItems: 'center' },
-  primaryButtonText: { color: '#fff', fontWeight: '800', fontSize: 17 },
-  bottomRow: { flexDirection: 'row', gap: 8 },
-  secondaryButton: { flex: 1, paddingVertical: 14, paddingHorizontal: 6, borderRadius: 16, borderWidth: 1.5, alignItems: 'center', gap: 2 },
-  secondaryButtonText: { fontWeight: '700', fontSize: 14, textAlign: 'center' },
-  secondaryButtonSubtext: { fontWeight: '600', fontSize: 10, textAlign: 'center' },
+  headerButtonValue: {
+    fontSize: FONT_SIZE.small,
+    fontWeight: '800',
+  },
+  progressRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: SPACING.sm,
+    marginTop: SPACING.md,
+  },
+  progressValue: {
+    fontSize: FONT_SIZE.caption,
+    fontWeight: '800',
+    minWidth: 34,
+    textAlign: 'right',
+  },
+  pathBox: {
+    flex: 1,
+    marginTop: SPACING.md,
+  },
+  sectionBar: {
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    gap: SPACING.sm,
+    padding: SPACING.md,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  sectionField: {
+    flex: 1,
+    justifyContent: 'center',
+    borderWidth: 1.5,
+    borderRadius: RADIUS.md,
+    paddingHorizontal: SPACING.md,
+    paddingVertical: SPACING.sm,
+  },
+  sectionLabel: {
+    fontSize: FONT_SIZE.caption - 1,
+    fontWeight: '700',
+    textTransform: 'uppercase',
+    letterSpacing: 0.6,
+  },
+  sectionName: {
+    fontFamily: FONT_FAMILY.serif,
+    fontSize: FONT_SIZE.bodyLg,
+    lineHeight: LINE_HEIGHT.bodyLg,
+  },
+  mapButton: {
+    width: 56,
+    height: 56,
+    borderWidth: 1.5,
+    borderRadius: RADIUS.md,
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  mapImage: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+  },
+  pathBoxContent: {
+    paddingVertical: SPACING.lg,
+    paddingHorizontal: SPACING.sm,
+  },
+  pathCanvas: {
+    width: CONT_W,
+    alignSelf: 'center',
+    position: 'relative',
+  },
+  divider: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    borderTopWidth: 2,
+    borderStyle: 'dashed',
+  },
+  connector: {
+    position: 'absolute',
+    height: 2,
+    opacity: 0.45,
+  },
+  node: {
+    position: 'absolute',
+    borderRadius: RADIUS.pill,
+    borderWidth: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    gap: SPACING.xs,
+    paddingHorizontal: SPACING.md,
+  },
+  nodeLabel: {
+    fontWeight: '800',
+    fontSize: FONT_SIZE.caption,
+    textAlign: 'center',
+    flexShrink: 1,
+  },
+  nodeLabelLead: {
+    fontFamily: FONT_FAMILY.serif,
+    fontSize: FONT_SIZE.bodyLg,
+    textAlign: 'center',
+  },
+  actions: {
+    marginTop: SPACING.md,
+    marginBottom: SPACING.md,
+    gap: SPACING.sm,
+  },
+  notice: {
+    // Bezieht sich auf die Innenkante von `Screen`, das den seitlichen Rand
+    // schon setzt - hier also 0 statt noch einmal derselbe Abstand.
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: SPACING.lg,
+    borderWidth: 1.5,
+    borderRadius: RADIUS.md,
+    paddingVertical: SPACING.md,
+    paddingHorizontal: SPACING.lg,
+  },
+  noticeText: {
+    fontSize: FONT_SIZE.small,
+    fontWeight: '700',
+    textAlign: 'center',
+  },
 });

@@ -33,10 +33,17 @@ export const CATEGORY_BY_ID: Record<string, Category> = Object.fromEntries(
   CATEGORIES.map((c) => [c.id, c])
 );
 
-// Grundwortschatz-Themen fuer den Pfad - Platzhalter, bis die echte
-// Thema-Chunking-Logik aus Supabase-Content existiert (siehe CLAUDE.md,
-// Abschnitt S1: Knotenanzahl ist dynamisch/konfigurierbar, nicht hart codiert).
-export const GRUNDWORTSCHATZ_THEMEN = ['Vorstellung', 'Bestellen', 'Hotel'];
+// Der Grundwortschatz ist KEINE der Kaufkategorien und steht deshalb nicht in
+// `CATEGORIES` - er gehoert zum freien Tier. In Supabase ist er trotzdem ein
+// ganz normaler `category`-Wert, weshalb ihn mehrere Screens brauchen. Bis
+// 2026-08-18 stand die Zeichenkette an vier Stellen einzeln im Code; hier ist
+// sie einmal benannt.
+export const GRUNDWORTSCHATZ_ID = 'grundwortschatz';
 
-// Platzhalter-Themen pro Kategorie, bis echte Lektions-Chunks existieren.
+// Platzhalter-Themen. Seit dem S1-Umbau (2026-08-18) liest sie NIEMAND mehr:
+// die Pfad-Box zeigt nur noch Kategorien, die Themen erscheinen erst beim
+// Auffaechern - und dann aus echtem Content statt aus dieser Liste. Beide
+// stehen nur noch hier, bis die Unterthemen pro Kategorie gemeinsam
+// festgelegt sind; danach ersatzlos loeschen.
+export const GRUNDWORTSCHATZ_THEMEN = ['Vorstellung', 'Bestellen', 'Hotel'];
 export const DEFAULT_THEMEN_PRO_KATEGORIE = ['Leute ansprechen', 'Anmachsprüche', 'Auf der Tanzfläche'];

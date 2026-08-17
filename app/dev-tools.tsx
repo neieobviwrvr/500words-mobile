@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { ActivityIndicator, Button, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { router } from 'expo-router';
+import { useOnboardingState } from '../src/state/OnboardingState';
 import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import { File } from 'expo-file-system';
 import { useSpeechmatics } from '../src/features/stt/useSpeechmatics';
@@ -36,6 +38,8 @@ const SAMPLE_TTS_URL =
   'https://xculnaxfdtwzpdplvedc.supabase.co/storage/v1/object/public/vocab_audio/franz_vocab/100_garder.mp3';
 
 export default function DevToolsScreen() {
+  const onboarding = useOnboardingState();
+  const [resetDone, setResetDone] = useState(false);
   const stt = useSpeechmatics();
   const recorder = useSttRecorder();
   const [isRecording, setIsRecording] = useState(false);
@@ -208,6 +212,30 @@ export default function DevToolsScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      {/* Onboarding zuruecksetzen (2026-08-17): Die Strecke O1-O12 laeuft nur
+          einmal - danach entscheidet `completed` in app/index.tsx, dass es
+          direkt zum Pfad geht. Zum wiederholten Testen braucht es deshalb
+          einen Weg zurueck. Bewusst hier statt als Konsolen-Trick: auf dem
+          Geraet gibt es keine Entwicklerkonsole, und der Zustand liegt pro
+          Geraet bzw. pro Browser. */}
+      <Text style={styles.heading}>Onboarding zurücksetzen</Text>
+      <Text>
+        {onboarding.completed
+          ? 'Status: durchlaufen — die App startet direkt auf dem Pfad.'
+          : 'Status: noch nicht durchlaufen.'}
+      </Text>
+      {resetDone && <Text>Zurückgesetzt. Beim nächsten Start beginnt O1 von vorn.</Text>}
+      <Button
+        title="Onboarding zurücksetzen und starten"
+        onPress={() => {
+          onboarding.resetOnboarding();
+          setResetDone(true);
+          router.replace('/onboarding');
+        }}
+      />
+
+      <View style={styles.spacer} />
+
       <Text style={styles.heading}>TTS-Test (Supabase-Audio)</Text>
       <Text>Status: {ttsStatus.isLoaded ? 'geladen' : 'laedt...'}</Text>
       <Button title="Satz abspielen (garder)" onPress={() => ttsPlayer.play()} />

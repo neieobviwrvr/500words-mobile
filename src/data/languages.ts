@@ -20,14 +20,19 @@ export type Language = {
   // Prompt-Inhalt einfach zu wiederholen statt das tatsaechlich Gesagte zu
   // transkribieren (bekanntes Whisper-Prompt-Risiko).
   sttPrompt: string;
+  // Gebietsschema fuer die Sprachausgabe (IETF BCP 47, z.B. "sv-SE").
+  // Getrennt von `sttLanguage`, weil die Spracherkennung mit dem kurzen Code
+  // arbeitet, die Systemstimme aber ein vollstaendiges Gebietsschema braucht,
+  // um die richtige Stimme zu waehlen.
+  ttsLocale: string;
   hasContent: boolean;
 };
 
 export const LANGUAGES: Language[] = [
-  { id: 'de', label: 'Deutsch', table: 'phrasebook_master', sttLanguage: 'de', sttPrompt: 'Das ist ein Beispielsatz auf Deutsch.', hasContent: true },
-  { id: 'sv', label: 'Schwedisch', table: 'schwedisch_phrasebook', sttLanguage: 'sv', sttPrompt: 'Det här är en exempelmening på svenska.', hasContent: true },
-  { id: 'es', label: 'Spanisch', table: 'spanisch_phrasebook', sttLanguage: 'es', sttPrompt: 'Esta es una frase de ejemplo en español.', hasContent: true },
-  { id: 'fr', label: 'Französisch', table: null, sttLanguage: 'fr', sttPrompt: 'Voici une phrase d\'exemple en français.', hasContent: false },
+  { id: 'de', label: 'Deutsch', table: 'phrasebook_master', sttLanguage: 'de', sttPrompt: 'Das ist ein Beispielsatz auf Deutsch.', ttsLocale: 'de-DE', hasContent: true },
+  { id: 'sv', label: 'Schwedisch', table: 'schwedisch_phrasebook', sttLanguage: 'sv', sttPrompt: 'Det här är en exempelmening på svenska.', ttsLocale: 'sv-SE', hasContent: true },
+  { id: 'es', label: 'Spanisch', table: 'spanisch_phrasebook', sttLanguage: 'es', sttPrompt: 'Esta es una frase de ejemplo en español.', ttsLocale: 'es-ES', hasContent: true },
+  { id: 'fr', label: 'Französisch', table: null, sttLanguage: 'fr', sttPrompt: 'Voici une phrase d\'exemple en français.', ttsLocale: 'fr-FR', hasContent: false },
 ];
 
 export const DEFAULT_LANGUAGE_ID = 'de';

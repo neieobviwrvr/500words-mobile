@@ -11,8 +11,9 @@ import { DEFAULT_LANGUAGE_ID } from '../data/languages';
 // gebraucht werden (Warenkorb, freigeschaltete Kategorien, Favoriten,
 // Cheat-Sheet-Auswahl, Darkmode-Override).
 //
-// Persistenz (2026-08-07): darkMode/targetLanguageId/purchased/saved/
-// savedMeta ueberleben jetzt einen App-Neustart via AsyncStorage - passt
+// Persistenz (2026-08-07, um Coins erweitert 2026-08-18):
+// darkMode/targetLanguageId/purchased/saved/savedMeta/coins/coinGrants
+// ueberleben einen App-Neustart via AsyncStorage - passt
 // zur bereits entschiedenen "Gast-Modus = lokale Speicherung"-Architektur
 // (siehe CLAUDE.md), unabhaengig vom noch nicht gebauten Supabase Auth.
 // `cart` und `selectedThemes` bleiben bewusst NICHT persistiert - das sind
@@ -29,6 +30,13 @@ type PersistedState = {
   purchased: Record<string, boolean>;
   saved: Record<string, boolean>;
   savedMeta: Record<string, Phrase>;
+  coins: number;
+  /**
+   * Welche einmaligen Geschenke schon vergeben wurden - Schluessel wie
+   * "onboarding_lektion". Ohne das gaebe es bei jedem Betreten des
+   * Geschenk-Screens einen weiteren Coin.
+   */
+  coinGrants: Record<string, boolean>;
 };
 
 type AppStateValue = {
@@ -50,6 +58,20 @@ type AppStateValue = {
   selectedThemes: Record<string, ThemeSelection>;
   toggleThemeSelect: (key: string, meta: ThemeSelection) => void;
   clearSelectedThemes: () => void;
+
+  coins: number;
+  /**
+   * Vergibt Coins genau einmal pro `grantId`. Gibt zurueck, ob dieser Aufruf
+   * die Gutschrift ausgeloest hat - der Geschenk-Screen zeigt danach je
+   * nachdem "Du bekommst einen Coin" oder nur noch den Kontostand.
+   *
+   * Erst aufrufen, wenn `hydrated` true ist, sonst wird gegen den leeren
+   * Default-Zustand geprueft statt gegen den gespeicherten.
+   */
+  grantCoins: (grantId: string, amount: number) => boolean;
+
+  /** true, sobald der gespeicherte Zustand geladen ist. */
+  hydrated: boolean;
 };
 
 const AppStateContext = createContext<AppStateValue | null>(null);
@@ -62,11 +84,21 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   const [saved, setSaved] = useState<Record<string, boolean>>({});
   const [savedMeta, setSavedMeta] = useState<Record<string, Phrase>>({});
   const [selectedThemes, setSelectedThemes] = useState<Record<string, ThemeSelection>>({});
+  const [coins, setCoins] = useState(0);
+  const [coinGrants, setCoinGrants] = useState<Record<string, boolean>>({});
+  // Spiegel der vergebenen Geschenke. `grantCoins` muss SOFORT wissen, ob ein
+  // Geschenk schon vergeben wurde, und darf nicht auf den naechsten Render
+  // warten - sonst wuerden zwei schnelle Aufrufe beide gutschreiben.
+  const coinGrantsRef = useRef<Record<string, boolean>>({});
 
   // Verhindert, dass der Hydrations-Ladevorgang selbst als "Aenderung"
   // sofort wieder in den Speicher zurueckgeschrieben wird, und dass vor dem
   // Laden kurz der Default-Zustand ueberschreibend gespeichert wird.
   const hydrated = useRef(false);
+  // Zusaetzlich als State, weil Screens darauf REAGIEREN muessen: der
+  // Coin-Screen darf sein Geschenk erst pruefen, wenn der gespeicherte Stand
+  // da ist - ein Ref loest dafuer kein Neu-Rendern aus.
+  const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -79,22 +111,31 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
           if (parsed.purchased) setPurchased(parsed.purchased);
           if (parsed.saved) setSaved(parsed.saved);
           if (parsed.savedMeta) setSavedMeta(parsed.savedMeta);
+          if (parsed.coins !== undefined) setCoins(parsed.coins);
+          if (parsed.coinGrants) {
+            setCoinGrants(parsed.coinGrants);
+            // Auch den Spiegel setzen, nicht erst ueber den Render-Umweg -
+            // sonst koennte ein frueher Aufruf ein schon vergebenes
+            // Geschenk ein zweites Mal gutschreiben.
+            coinGrantsRef.current = parsed.coinGrants;
+          }
         }
       } catch {
         // Kaputter/kein gespeicherter Zustand - einfach mit den Defaults weitermachen.
       } finally {
         hydrated.current = true;
+        setIsHydrated(true);
       }
     })();
   }, []);
 
   useEffect(() => {
     if (!hydrated.current) return;
-    const toPersist: PersistedState = { darkMode, targetLanguageId, purchased, saved, savedMeta };
+    const toPersist: PersistedState = { darkMode, targetLanguageId, purchased, saved, savedMeta, coins, coinGrants };
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(toPersist)).catch(() => {
       // Best-effort - ein Speicherfehler soll die laufende Session nicht stoeren.
     });
-  }, [darkMode, targetLanguageId, purchased, saved, savedMeta]);
+  }, [darkMode, targetLanguageId, purchased, saved, savedMeta, coins, coinGrants]);
 
   const toggleDark = useCallback(() => setDarkMode((d) => !d), []);
 
@@ -131,6 +172,14 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
 
   const clearSelectedThemes = useCallback(() => setSelectedThemes({}), []);
 
+  const grantCoins = useCallback((grantId: string, amount: number) => {
+    if (coinGrantsRef.current[grantId]) return false;
+    coinGrantsRef.current = { ...coinGrantsRef.current, [grantId]: true };
+    setCoinGrants(coinGrantsRef.current);
+    setCoins((c) => c + amount);
+    return true;
+  }, []);
+
   const value = useMemo<AppStateValue>(
     () => ({
       darkMode,
@@ -147,8 +196,11 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       selectedThemes,
       toggleThemeSelect,
       clearSelectedThemes,
+      coins,
+      grantCoins,
+      hydrated: isHydrated,
     }),
-    [darkMode, toggleDark, targetLanguageId, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes]
+    [darkMode, toggleDark, targetLanguageId, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes, coins, grantCoins, isHydrated]
   );
 
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;
