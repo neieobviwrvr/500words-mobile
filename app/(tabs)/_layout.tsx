@@ -1,4 +1,5 @@
-import { ActivityIndicator, Platform, StyleSheet, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { ActivityIndicator, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Redirect, Tabs } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
@@ -6,7 +7,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAppState } from '../../src/state/AppState';
 import { useAuthState } from '../../src/state/AuthState';
 import { useOnboardingState } from '../../src/state/OnboardingState';
-import { getTheme, ACCENT_ORANGE, FONT_SIZE, SPACING } from '../../src/theme/tokens';
+import { getTheme, ACCENT_ORANGE, FONT_SIZE, RADIUS, SPACING } from '../../src/theme/tokens';
 
 // Tab-Leiste (2026-08-18, seit dem 18. als schwebende Leiste).
 //
@@ -16,7 +17,8 @@ import { getTheme, ACCENT_ORANGE, FONT_SIZE, SPACING } from '../../src/theme/tok
 // Navigation" nicht mehr - bewusste Entscheidung, die Doku ist nachgezogen.
 //
 // Zwei Punkte aus den Apple-Richtlinien, die hier den Ausschlag geben:
-// - Zwei bis fuenf Ziele. Fuenf ist das Maximum, mehr passt nicht nebeneinander.
+// - Zwei bis fuenf Ziele. Seit 2026-08-18 sind es vier: "Freunde" ist auf
+//   Nutzer-Wunsch hinter das Drei-Punkte-Menue auf S1 gewandert.
 // - Ein-Wort-Beschriftungen. Deshalb "Survival" statt "Cheat-Sheet-Survival".
 //
 // Das Gate liegt hier und nicht in `index.tsx`: haenge es am Startscreen,
@@ -30,13 +32,19 @@ import { getTheme, ACCENT_ORANGE, FONT_SIZE, SPACING } from '../../src/theme/tok
 // (34) schon groesser als der gewuenschte Schwebeabstand, die Leiste sitzt
 // dann genau auf dessen Oberkante; auf aelteren Geraeten ohne Indikator sorgt
 // FLOAT_GAP fuer den Abstand zum Bildschirmrand.
-const FLOAT_GAP = 14;
+const FLOAT_GAP = 20;
 const BAR_HEIGHT = 64;
 const BAR_RADIUS = 36;
 // Abstand zwischen Bildschirminhalt und Leiste. Ohne das verschwaende der
 // Inhalt unter der Leiste - sie liegt absolut positioniert darueber und
 // reserviert keinen Platz mehr im Layout.
 const CONTENT_GAP = SPACING.md;
+// Zweite, abgesetzte Kapsel rechts neben der Leiste (Nutzer-Vorlage
+// 2026-08-18). Quadratisch und so hoch wie die Leiste, damit beide auf
+// derselben Linie sitzen; der Abstand dazwischen macht sie als eigenes
+// Element lesbar statt als abgetrennten fuenften Tab.
+const ACTION_SIZE = BAR_HEIGHT;
+const ACTION_GAP = SPACING.sm;
 
 export default function TabsLayout() {
   const { darkMode } = useAppState();
@@ -46,6 +54,15 @@ export default function TabsLayout() {
   const insets = useSafeAreaInsets();
 
   const bottomOffset = Math.max(insets.bottom, FLOAT_GAP);
+
+  // Der Knopf hat noch keine Funktion - beim Antippen sagt er das, statt
+  // still nichts zu tun (dasselbe Muster wie die Schatzkarte auf S1).
+  const [notice, setNotice] = useState<string | null>(null);
+  useEffect(() => {
+    if (!notice) return;
+    const timer = setTimeout(() => setNotice(null), 2600);
+    return () => clearTimeout(timer);
+  }, [notice]);
 
   // Beide Quellen liegen in AsyncStorage und laden asynchron. Ohne dieses
   // Warten blitzt kurz der Default-Zustand durch und schickt einen fertigen
@@ -62,6 +79,7 @@ export default function TabsLayout() {
   }
 
   return (
+    <View style={styles.root}>
     <Tabs
       screenOptions={{
         headerShown: false,
@@ -82,7 +100,9 @@ export default function TabsLayout() {
         tabBarStyle: {
           position: 'absolute',
           left: SPACING.lg,
-          right: SPACING.lg,
+          // Platz fuer die zweite Kapsel - die Leiste endet vor ihr, statt
+          // unter ihr durchzulaufen.
+          right: SPACING.lg + ACTION_SIZE + ACTION_GAP,
           bottom: bottomOffset,
           height: BAR_HEIGHT,
           borderRadius: BAR_RADIUS,
@@ -151,13 +171,6 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="freunde"
-        options={{
-          title: 'Freunde',
-          tabBarIcon: ({ color, size }) => <Feather name="message-circle" size={size} color={color} />,
-        }}
-      />
-      <Tabs.Screen
         name="profil"
         options={{
           title: 'Profil',
@@ -165,6 +178,45 @@ export default function TabsLayout() {
         }}
       />
     </Tabs>
+
+      {/* Zweite Kapsel: eigenes Element neben der Leiste, gleiches Material,
+          gleicher Schatten. Bewusst KEIN fuenfter Tab - sie zeigt keinen
+          Zustand an und gehoert nicht in die Navigations-Reihenfolge. */}
+      <Pressable
+        onPress={() => setNotice('Dieser Knopf bekommt später eine Funktion.')}
+        accessibilityRole="button"
+        accessibilityLabel="Neue Aktion"
+        accessibilityHint="Noch ohne Funktion"
+        style={({ pressed }) => [
+          styles.action,
+          {
+            bottom: bottomOffset,
+            borderColor: darkMode ? 'rgba(255,255,255,0.14)' : 'rgba(0,0,0,0.08)',
+            shadowOpacity: darkMode ? 0.4 : 0.16,
+            opacity: pressed ? 0.75 : 1,
+          },
+        ]}
+      >
+        <TabBarSurface dark={darkMode} radius={ACTION_SIZE / 2} />
+        <Feather name="plus" size={26} color={theme.sub} />
+      </Pressable>
+
+      {notice ? (
+        <View
+          accessibilityLiveRegion="polite"
+          style={[
+            styles.notice,
+            {
+              bottom: bottomOffset + ACTION_SIZE + SPACING.md,
+              backgroundColor: theme.cardBg,
+              borderColor: theme.border,
+            },
+          ]}
+        >
+          <Text style={[styles.noticeText, { color: theme.text }]}>{notice}</Text>
+        </View>
+      ) : null}
+    </View>
   );
 }
 
@@ -183,9 +235,9 @@ export default function TabsLayout() {
 //
 // `overflow: 'hidden'` statt `borderRadius` direkt auf der BlurView: die
 // Ecken-Rundung greift laut Expo-Doku auf Android sonst nicht.
-function TabBarSurface({ dark }: { dark: boolean }) {
+function TabBarSurface({ dark, radius = BAR_RADIUS }: { dark: boolean; radius?: number }) {
   return (
-    <View style={styles.surface}>
+    <View style={[styles.surface, { borderRadius: radius }]}>
       <BlurView
         intensity={60}
         tint={dark ? 'systemThinMaterialDark' : 'systemThinMaterialLight'}
@@ -204,13 +256,43 @@ function TabBarSurface({ dark }: { dark: boolean }) {
 }
 
 const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+  },
+  action: {
+    position: 'absolute',
+    right: SPACING.lg,
+    width: ACTION_SIZE,
+    height: ACTION_SIZE,
+    borderRadius: ACTION_SIZE / 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 5 },
+    shadowRadius: 25,
+    elevation: 12,
+  },
+  notice: {
+    position: 'absolute',
+    left: SPACING.lg,
+    right: SPACING.lg,
+    borderWidth: 1.5,
+    borderRadius: RADIUS.md,
+    paddingVertical: SPACING.md,
+    paddingHorizontal: SPACING.lg,
+  },
+  noticeText: {
+    fontSize: FONT_SIZE.small,
+    fontWeight: '700',
+    textAlign: 'center',
+  },
   surface: {
     position: 'absolute',
     top: 0,
     right: 0,
     bottom: 0,
     left: 0,
-    borderRadius: BAR_RADIUS,
     overflow: 'hidden',
   },
 });

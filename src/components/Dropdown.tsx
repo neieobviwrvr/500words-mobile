@@ -76,7 +76,13 @@ export function Dropdown({
           },
         ]}
       >
-        <Text style={[compact ? styles.fieldValueCompact : styles.fieldValue, { color: theme.text }]}>
+        <Text
+          // Nur im schmalen Modus: dort sitzt das Feld in einer Kopfzeile
+          // neben anderen Knoepfen und darf nicht umbrechen. Im Onboarding
+          // fuellt es die Seitenbreite, da ist eine Kuerzung unnoetig.
+          numberOfLines={compact ? 1 : undefined}
+          style={[compact ? styles.fieldValueCompact : styles.fieldValue, { color: theme.text }]}
+        >
           {selected?.label ?? '—'}
         </Text>
         <Feather name="chevron-down" size={compact ? 18 : 22} color={theme.sub} />

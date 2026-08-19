@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useAppState } from '../../state/AppState';
-import { Screen } from '../../components';
+import { HeaderMenu, Screen } from '../../components';
 import {
   getTheme,
   SPACING,
@@ -22,14 +22,25 @@ type Props = {
   /** Was hier spaeter stehen wird - ein bis zwei Saetze, im Klartext. */
   description: string;
   icon: React.ComponentProps<typeof Feather>['name'];
+  /** Kopfzeilen-Menue zeigen - nur auf Tab-Screens sinnvoll. */
+  showMenu?: boolean;
 };
 
-export function PlaceholderScreen({ title, description, icon }: Props) {
+export function PlaceholderScreen({ title, description, icon, showMenu = false }: Props) {
   const { darkMode } = useAppState();
   const theme = getTheme(darkMode);
 
   return (
     <Screen dark={darkMode}>
+      {/* Auf allen Tab-Screens erreichbar - siehe HeaderMenu. Die
+          Unterscheidung macht `showMenu`: Screens, die ueber den Stack
+          geoeffnet werden (Freunde), brauchen es nicht doppelt. */}
+      {showMenu ? (
+        <View style={styles.menuSlot}>
+          <HeaderMenu dark={darkMode} overlay />
+        </View>
+      ) : null}
+
       <View style={styles.body}>
         <Feather name={icon} size={40} color={theme.sub} />
         <Text style={[styles.title, { color: theme.text }]}>{title}</Text>
@@ -41,6 +52,10 @@ export function PlaceholderScreen({ title, description, icon }: Props) {
 }
 
 const styles = StyleSheet.create({
+  menuSlot: {
+    position: 'relative',
+    zIndex: 10,
+  },
   body: {
     flex: 1,
     alignItems: 'center',

@@ -3,6 +3,7 @@ import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, TextInput, 
 import { router } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAppState } from '../../state/AppState';
+import { HeaderMenu } from '../../components';
 import { CATEGORIES } from '../../data/categories';
 import { CheatsheetCategoryGroup, loadCheatsheetGroups } from '../../data/cheatsheetContent';
 import { getTheme, ACCENT_BLUE } from '../../theme/tokens';
@@ -60,6 +61,9 @@ export function CheatsheetScreen() {
   return (
     <View style={[styles.container, { backgroundColor: theme.pageBg }]}>
       <View style={[styles.top, { paddingTop: insets.top + 8 }]}>
+        {/* Kopfzeilen-Menue auf allen Tab-Screens - siehe HeaderMenu. Hier
+            in der Zeile statt darueber gelegt, weil dieser Screen schon eine
+            eigene Kopfzeile hat. */}
         <View style={styles.header}>
           {/* Kein Zurueck-Pfeil mehr (2026-08-18): dieser Screen ist seit der
               Tab-Leiste ein Einstiegspunkt und kein aufgerufener Unterscreen.
@@ -68,6 +72,7 @@ export function CheatsheetScreen() {
               behalten ihren Pfeil - die werden weiterhin darueber gelegt. */}
           <Text style={[styles.title, { color: theme.text }]}>Cheat‑Sheet‑Survival</Text>
           {offline && <Text style={styles.offlineBadge}>📴 Offline</Text>}
+          <HeaderMenu dark={darkMode} />
         </View>
         <View style={styles.searchRow}>
           <TextInput

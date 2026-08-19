@@ -80,6 +80,7 @@ function RootStack() {
         <Stack.Screen name="cheatsheet/search-results" />
         <Stack.Screen name="cheatsheet/favorites" />
         <Stack.Screen name="rewards" />
+        <Stack.Screen name="freunde" />
         <Stack.Screen name="dev-tools" options={{ headerShown: true, title: 'Dev-Tools (Testscreens)' }} />
       </Stack>
     </ThemeProvider>

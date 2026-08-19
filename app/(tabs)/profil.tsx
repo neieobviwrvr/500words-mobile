@@ -6,6 +6,7 @@ import { PlaceholderScreen } from '../../src/features/placeholder/PlaceholderScr
 export default function Profil() {
   return (
     <PlaceholderScreen
+      showMenu
       icon="user"
       title="Profil"
       description="Hier verwaltest du später dein Konto, den Darkmode, deine Sprache und die Erinnerungen."

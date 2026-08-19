@@ -1,11 +1,19 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import {
+  Image,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  useWindowDimensions,
+  View,
+} from 'react-native';
 import { router } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
 import { useAppState } from '../../state/AppState';
 import { CATEGORIES, GRUNDWORTSCHATZ_ID } from '../../data/categories';
 import { LANGUAGES, getLanguage } from '../../data/languages';
-import { Card, Dropdown, PillButton, ProgressBar, Screen, PRESS_DEPTH } from '../../components';
+import { Card, Dropdown, HeaderMenu, ProgressBar, Screen, PRESS_DEPTH } from '../../components';
 import type { DropdownOption } from '../../components';
 import { useUnlockedProgress } from './useUnlockedProgress';
 import {
@@ -60,6 +68,8 @@ const LANG_PILL_W = 150;
 const LANG_PILL_H = 56;
 const ROW_H = 86;
 const CONT_W = 300;
+/** Anteil der Fensterhoehe, den die Pfad-Box hoechstens einnimmt. */
+const PATH_BOX_HEIGHT_RATIO = 0.52;
 
 type NodeState = 'done' | 'current' | 'open' | 'locked';
 
@@ -69,8 +79,6 @@ type RawNode = {
   state: NodeState;
   /** Groessere, zentrierte Pille - die Sprache an der Spitze des Pfades. */
   lead?: boolean;
-  /** Beginnt hier ein neuer Block? Zeichnet die gestrichelte Trennlinie. */
-  newGroup?: boolean;
   onPress: () => void;
 };
 
@@ -102,6 +110,13 @@ export function PathScreen() {
   const { darkMode, purchased, targetLanguageId, setTargetLanguageId, coins } = useAppState();
   const theme = getTheme(darkMode);
   const activeLanguage = getLanguage(targetLanguageId);
+
+  // Hoehe der Pfad-Box deckeln (Nutzer-Wunsch 2026-08-18: vertikal kleiner).
+  // Als Anteil der Fensterhoehe statt als feste Zahl - auf einem kleinen
+  // iPhone SE waere eine feste Hoehe zu viel, auf einem Pro Max zu wenig.
+  // Die Box scrollt ohnehin innen, sie muss also nicht alles zeigen.
+  const { width: windowWidth, height: windowHeight } = useWindowDimensions();
+  const pathBoxMaxHeight = Math.round(windowHeight * PATH_BOX_HEIGHT_RATIO);
 
   const scrollRef = useRef<ScrollView>(null);
   const didAutoScroll = useRef(false);
@@ -149,14 +164,12 @@ export function PathScreen() {
         id: cat.id,
         label: cat.name,
         state: stateFor(cat.id),
-        newGroup: i === 0,
         onPress: goCategory(cat.id),
       })),
       ...lockedCategories.map((cat, i) => ({
         id: cat.id,
         label: cat.name,
         state: 'locked' as NodeState,
-        newGroup: i === 0,
         onPress: goShop,
       })),
     ];
@@ -178,18 +191,13 @@ export function PathScreen() {
   // Zickzack-Layout: Pillen abwechselnd links/rechts, verbunden durch
   // rotierte Linien zwischen den Mittelpunkten.
   // ---------------------------------------------------------------------
-  const { pathNodes, connectors, dividers, canvasHeight } = useMemo(() => {
+  const { pathNodes, connectors, canvasHeight } = useMemo(() => {
     const laid: LaidOutNode[] = raw.map((n, i) => {
       const w = n.lead ? LANG_PILL_W : PILL_W;
       const h = n.lead ? LANG_PILL_H : PILL_H;
       const left = n.lead ? (CONT_W - w) / 2 : i % 2 === 0 ? 0 : CONT_W - w;
       const top = i * ROW_H;
       return { ...n, width: w, height: h, left, top, cx: left + w / 2, cy: top + h / 2 };
-    });
-
-    const divs: number[] = [];
-    laid.forEach((n, i) => {
-      if (n.newGroup && i > 0) divs.push(n.top - ROW_H / 2 + n.height / 2);
     });
 
     const conns: Connector[] = [];
@@ -213,7 +221,6 @@ export function PathScreen() {
     return {
       pathNodes: laid,
       connectors: conns,
-      dividers: divs,
       canvasHeight: last ? last.top + last.height + SPACING.xl : 0,
     };
   }, [raw]);
@@ -238,7 +245,24 @@ export function PathScreen() {
   }));
 
   return (
-    <Screen dark={darkMode}>
+    // ===== TEST-HINTERGRUND (2026-08-20) =================================
+    // Pergament-Textur testweise hinter S1. Zum Entfernen: dieses <View> und
+    // das <Image> loeschen, `style={styles.transparentPage}` am <Screen>
+    // streichen und `pathBoxTestTransparent` unten aus dem Card-Stil nehmen.
+    // Die Datei liegt unter assets/hintergrund-pergament.png.
+    // =====================================================================
+    <View style={styles.root}>
+      <Image
+        source={require('../../../assets/hintergrund-pergament.png')}
+        // Volle Fensterhoehe statt 100% des Elternteils: die Tab-Gruppe haelt
+        // unten Platz fuer die schwebende Leiste frei, sonst endete die
+        // Textur 90 Punkte ueber dem Rand und die Leiste schwebte auf
+        // nacktem Untergrund.
+        style={[styles.backdrop, { width: windowWidth, height: windowHeight }]}
+        resizeMode="cover"
+        accessibilityIgnoresInvertColors
+      />
+    <Screen dark={darkMode} style={styles.transparentPage}>
       {/* Kopfzeile: Sprache links, Geschenk und Coins rechts. */}
       <View style={styles.topBar}>
         <View style={styles.langSlot}>
@@ -253,26 +277,7 @@ export function PathScreen() {
           />
         </View>
 
-        <HeaderButton
-          dark={darkMode}
-          icon="gift"
-          label="Geschenk"
-          // Ohne Funktion bis die taegliche Kiste existiert - der Knopf sagt
-          // das beim Antippen, statt still nichts zu tun.
-          hint="Die tägliche Kiste gibt es noch nicht"
-          onPress={() => setNotice('Die tägliche Kiste kommt später.')}
-        />
-        <HeaderButton
-          dark={darkMode}
-          icon="circle"
-          label="Coins"
-          // Echter Kontostand (2026-08-18). Der erste Coin kommt aus dem
-          // Onboarding, direkt nach der bestandenen Beispiellektion - damit
-          // hier von Anfang an nichts Leeres steht.
-          value={String(coins)}
-          hint="Öffnet Freunde werben, Bewertung und Feedback"
-          onPress={() => router.push('/rewards')}
-        />
+        <HeaderMenu dark={darkMode} />
       </View>
 
       {/* Fortschritt ueber die freigeschalteten Inhalte. */}
@@ -288,9 +293,23 @@ export function PathScreen() {
       </View>
 
       {/* Pfad-Box: NUR dieser Bereich scrollt. */}
-      <Card dark={darkMode} padded={false} style={styles.pathBox}>
+      {/* Rahmen unsichtbar (Nutzer-Wunsch 2026-08-18): die Lern-Box soll nicht
+          als Kasten lesbar sein, sondern nur der Pfad darin. `transparent`
+          statt einer festen Farbe, damit es in beiden Erscheinungsbildern
+          stimmt - im Darkmode hebt sich die Box weiterhin ueber ihre eigene
+          Fuellung ab, im hellen verschwindet sie ganz. */}
+      <Card
+        dark={darkMode}
+        padded={false}
+        style={[
+          styles.pathBox,
+          styles.pathBoxFrameless,
+          styles.pathBoxTestTransparent,
+          { maxHeight: pathBoxMaxHeight },
+        ]}
+      >
         {/* Abschnitts-Kopf, bleibt beim Scrollen stehen. */}
-        <View style={[styles.sectionBar, { borderBottomColor: theme.border }]}>
+        <View style={styles.sectionBar}>
           <View style={[styles.sectionField, { borderColor: theme.border, backgroundColor: theme.pageBg }]}>
             <Text style={[styles.sectionLabel, { color: theme.sub }]}>Du bist hier</Text>
             <Text style={[styles.sectionName, { color: theme.text }]} numberOfLines={1}>
@@ -321,9 +340,6 @@ export function PathScreen() {
           contentContainerStyle={styles.pathBoxContent}
         >
           <View style={[styles.pathCanvas, { height: canvasHeight }]}>
-            {dividers.map((d, i) => (
-              <View key={`div-${i}`} style={[styles.divider, { top: d, borderColor: theme.dividerColor }]} />
-            ))}
             {connectors.map((c, i) => (
               <View
                 key={`conn-${i}`}
@@ -347,25 +363,26 @@ export function PathScreen() {
         </ScrollView>
       </Card>
 
-      {/* Feste Knoepfe ausserhalb der Scroll-Box. */}
+      {/* Fester Knopf ausserhalb der Scroll-Box. */}
       <View style={styles.actions}>
-        <PillButton
-          label="Weiter durchstarten"
+        <SplitButton
           dark={darkMode}
-          hint="Öffnet die Kategorie, an der du gerade bist"
-          onPress={pathNodes[currentIndex]?.onPress ?? goShop}
-        />
-        <PillButton
-          label="Tägliches Wiederholen"
-          variant="secondary"
-          dark={darkMode}
-          hint="Öffnet die Wiederholung mit fälligen Karten"
-          onPress={() => router.push('/srs')}
+          left={{
+            label: 'Tägliches Wiederholen',
+            hint: 'Öffnet die Wiederholung mit fälligen Karten',
+            onPress: () => router.push('/srs'),
+          }}
+          right={{
+            label: 'Weiter durchstarten',
+            hint: 'Öffnet die Kategorie, an der du gerade bist',
+            onPress: pathNodes[currentIndex]?.onPress ?? goShop,
+          }}
         />
       </View>
 
       <Notice text={notice} dark={darkMode} onHide={hideNotice} />
     </Screen>
+    </View>
   );
 }
 
@@ -428,38 +445,80 @@ function PathNode({ node }: { node: LaidOutNode }) {
   );
 }
 
-function HeaderButton({
+type SplitAction = { label: string; hint: string; onPress: () => void };
+
+// Die beiden Lern-Einstiege als EIN Knopf (Nutzer-Vorlage 2026-08-18).
+//
+// Optisch eine durchgehende Kapsel, funktional zwei Ziele - deshalb zwei
+// echte Pressables nebeneinander und nicht ein Knopf mit zwei Beschriftungen:
+// fuer VoiceOver muessen es zwei Bedienelemente mit eigenem Namen und
+// eigenem Hinweis bleiben.
+//
+// Bewusst OHNE die Druckkante von `PillButton`: die Vorlage zeigt eine flache
+// Kapsel mit weichem Aussenschatten. Die Rueckmeldung beim Druecken uebernimmt
+// deshalb eine dezente Fuellung auf der gedrueckten Haelfte - ohne die waere
+// nicht erkennbar, welche der beiden Seiten getroffen wurde.
+//
+// Keine Trennlinie in der Mitte, ebenfalls nach Vorlage. Die Haelften sind
+// trotzdem eindeutig, weil beide Beschriftungen zentriert in ihrer Haelfte
+// stehen.
+function SplitButton({
   dark,
-  icon,
-  label,
-  value,
-  hint,
-  onPress,
+  left,
+  right,
 }: {
   dark: boolean;
-  icon: React.ComponentProps<typeof Feather>['name'];
-  label: string;
-  value?: string;
-  hint?: string;
-  onPress: () => void;
+  left: SplitAction;
+  right: SplitAction;
 }) {
   const theme = getTheme(dark);
-  return (
+
+  const half = (action: SplitAction, side: 'left' | 'right') => (
     <Pressable
-      onPress={onPress}
+      onPress={action.onPress}
       accessibilityRole="button"
-      accessibilityLabel={value ? `${label}: ${value}` : label}
-      accessibilityHint={hint}
+      accessibilityLabel={action.label}
+      accessibilityHint={action.hint}
       style={({ pressed }) => [
-        styles.headerButton,
-        { borderColor: theme.border, backgroundColor: theme.cardBg, opacity: pressed ? 0.7 : 1 },
+        styles.splitHalf,
+        side === 'left' ? styles.splitHalfLeft : styles.splitHalfRight,
+        pressed && { backgroundColor: theme.subtleFill },
       ]}
     >
-      <Feather name={icon} size={15} color={theme.sub} />
-      {value !== undefined && (
-        <Text style={[styles.headerButtonValue, { color: theme.text }]}>{value}</Text>
-      )}
+      <Text numberOfLines={2} style={[styles.splitLabel, { color: theme.text }]}>
+        {action.label}
+      </Text>
     </Pressable>
+  );
+
+  return (
+    <View
+      style={[
+        styles.splitButton,
+        {
+          backgroundColor: theme.cardBg,
+          // Im Darkmode traegt ein Schatten nicht - dort uebernimmt eine
+          // dezente Kontur die Abgrenzung vom Untergrund.
+          borderColor: dark ? theme.border : 'transparent',
+        },
+      ]}
+    >
+      {half(left, 'left')}
+      {/* Trennstrich zwischen den Haelften (Nutzer-Wunsch 2026-08-18).
+          Bewusst ein eigenes Flex-Element und nicht absolut positioniert: so
+          sitzt er exakt in der Mitte, ohne dass jemand die halbe Breite
+          ausrechnen muss, und die beiden Haelften bleiben gleich breit.
+          `marginVertical` haelt ihn von Ober- und Unterkante fern - er soll
+          die Kapsel nicht durchschneiden, sondern nur die Seiten trennen.
+
+          Farbe bewusst `border` und nicht `dividerColor` (Nutzer-Wunsch
+          2026-08-18): der Strich soll nur angedeutet sein, nicht gelesen
+          werden. `border` ist im Hellen heller und im Dunkeln dunkler als
+          `dividerColor` - in beiden Faellen also kontrastaermer, ohne dass
+          dafuer ein neuer Farbwert noetig waere. */}
+      <View style={[styles.splitDivider, { backgroundColor: theme.border }]} />
+      {half(right, 'right')}
+    </View>
   );
 }
 
@@ -490,25 +549,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: SPACING.sm,
+    // Sprache links, Menue rechts. Frueher schob `flex: 1` am Sprachfeld das
+    // Menue nach aussen; jetzt uebernimmt das der Zwischenraum, und das Feld
+    // darf so schmal sein, wie sein Inhalt es braucht.
+    justifyContent: 'space-between',
   },
   langSlot: {
-    flex: 1,
-  },
-  headerButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: SPACING.xs,
-    // 44pt ist das kleinste Tippziel, unter dem das Danebentippen anfaengt.
-    minHeight: 44,
-    minWidth: 44,
-    justifyContent: 'center',
-    paddingHorizontal: SPACING.md,
-    borderWidth: 1.5,
-    borderRadius: RADIUS.md,
-  },
-  headerButtonValue: {
-    fontSize: FONT_SIZE.small,
-    fontWeight: '800',
+    // `flexShrink` statt `flex`: das Feld waechst nicht mehr auf die ganze
+    // Zeile, kann aber schrumpfen, falls ein sehr langer Sprachname kommt -
+    // dann greift die Kuerzung im Feld selbst, statt dass das Menue
+    // hinausgeschoben wird.
+    flexShrink: 1,
   },
   progressRow: {
     flexDirection: 'row',
@@ -526,12 +577,36 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: SPACING.md,
   },
+  pathBoxFrameless: {
+    borderColor: 'transparent',
+  },
+  // --- gehoert zum TEST-HINTERGRUND, siehe oben ---
+  root: {
+    flex: 1,
+  },
+  backdrop: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    // Hoehe kommt aus dem Fenster (siehe oben). `width/height: 100%` hatte
+    // react-native-web dazu gebracht, das Bild zu STRECKEN statt es
+    // zuzuschneiden - die Textur war dadurch verzerrt.
+  },
+  transparentPage: {
+    // Sonst liegt die Seitenfarbe aus dem Theme ueber der Textur.
+    backgroundColor: 'transparent',
+  },
+  pathBoxTestTransparent: {
+    // Die weisse Fuellung der Box wuerde die Textur in der Mitte zudecken -
+    // dann saehe man nur die Raender.
+    backgroundColor: 'transparent',
+  },
   sectionBar: {
     flexDirection: 'row',
     alignItems: 'stretch',
     gap: SPACING.sm,
     padding: SPACING.md,
-    borderBottomWidth: StyleSheet.hairlineWidth,
   },
   sectionField: {
     flex: 1,
@@ -575,13 +650,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     position: 'relative',
   },
-  divider: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    borderTopWidth: 2,
-    borderStyle: 'dashed',
-  },
   connector: {
     position: 'absolute',
     height: 2,
@@ -609,9 +677,52 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   actions: {
-    marginTop: SPACING.md,
+    // Haelt die Knoepfe unten, seit die Box gedeckelt ist - der freiwerdende
+    // Platz liegt dadurch zwischen Pfad und Knoepfen und nicht darunter.
+    marginTop: 'auto',
+    paddingTop: SPACING.md,
     marginBottom: SPACING.md,
-    gap: SPACING.sm,
+  },
+  splitButton: {
+    flexDirection: 'row',
+    borderRadius: RADIUS.pill,
+    borderWidth: 1,
+    overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 18,
+    shadowOpacity: 0.12,
+    elevation: 5,
+  },
+  splitHalf: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: SPACING.lg,
+    paddingHorizontal: SPACING.sm,
+    // Zwei Zeilen Text plus Luft - beide Beschriftungen brechen um.
+    minHeight: 76,
+  },
+  splitDivider: {
+    // Feste 1 statt `hairlineWidth`: die faellt auf dichten Bildschirmen
+    // unter einen Punkt und war bei der Tab-Leiste schon einmal unsichtbar.
+    width: 1,
+    marginVertical: SPACING.lg,
+    alignSelf: 'stretch',
+  },
+  splitHalfLeft: {
+    borderTopLeftRadius: RADIUS.pill,
+    borderBottomLeftRadius: RADIUS.pill,
+  },
+  splitHalfRight: {
+    borderTopRightRadius: RADIUS.pill,
+    borderBottomRightRadius: RADIUS.pill,
+  },
+  splitLabel: {
+    fontSize: FONT_SIZE.bodyLg,
+    lineHeight: LINE_HEIGHT.bodyLg,
+    fontWeight: '700',
+    textAlign: 'center',
   },
   notice: {
     // Bezieht sich auf die Innenkante von `Screen`, das den seitlichen Rand

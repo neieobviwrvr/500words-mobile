@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { StyleSheet, View, ViewStyle } from 'react-native';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { getTheme, SPACING } from '../theme/tokens';
 
@@ -24,7 +24,7 @@ type Props = {
   padHorizontal?: boolean;
   /** Abstand zum Home-Indikator - nur ausserhalb der Tab-Leiste noetig. */
   padBottom?: boolean;
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle>;
 };
 
 export function Screen({

@@ -155,6 +155,29 @@ export const NODE_LOCKED = '#B7B2A6';
 // nach dem Stil-Rezept ist das die eine Farbe fuer Erfolg.
 export const ACCENT_ERROR = '#D9564F';
 
+// Farbfamilien der Kategorie-Welten (2026-08-18, fuer den Lektionen-Screen).
+//
+// ACHTUNG - diese Toene sind AUSDRUECKLICH DEKORATIV und tragen KEINE
+// Bedeutung. Sie ordnen die Kartenreihen optisch, damit der Katalog nicht als
+// eine Wand gleicher Kacheln erscheint (Vorbild: Drops gruppiert nach Thema
+// ueber die Farbe). Der Zustand einer Karte - freigeschaltet, fertig,
+// gesperrt - laeuft weiterhin ausschliesslich ueber Rahmen, Symbol und
+// Beschriftung, genau wie im Pfad. Wer hier eine Zustandsfarbe hineinliest,
+// liest falsch.
+//
+// Bewusst gedeckt gehalten: das Vorbild ist gesättigt und dunkel, unser
+// Rezept ist weiss und ruhig. Es sind Fuellungen fuer Karten, keine
+// Markenfarben - ACCENT_BLUE, ACCENT_ORANGE und ACCENT_GREEN behalten ihre
+// Rollen unangetastet.
+export type WorldTint = { fill: string; fillDark: string; ink: string; inkDark: string };
+export const WORLD_TINTS: Record<string, WorldTint> = {
+  grundlagen: { fill: '#E8F0FC', fillDark: '#1B2537', ink: '#2F5AAE', inkDark: '#9CBCF0' },
+  ankommen: { fill: '#FDEDE2', fillDark: '#33231A', ink: '#B75F2C', inkDark: '#E9A579' },
+  essen: { fill: '#FAF0DC', fillDark: '#332B18', ink: '#8A6415', inkDark: '#DCBC6A' },
+  leute: { fill: '#F2EAFB', fillDark: '#271E36', ink: '#6B45A8', inkDark: '#BFA0E8' },
+  alltag: { fill: '#E4F1EC', fillDark: '#172A24', ink: '#2E6B57', inkDark: '#8FCBB5' },
+};
+
 // Fuellfarben fuer die Pfad-Pillen im Zickzack-Layout (S1).
 export const PILL_FILL_BLUE = '#EAF1FC';
 export const PILL_FILL_ORANGE = '#FDEEE3';

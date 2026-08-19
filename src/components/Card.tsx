@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { StyleSheet, View, ViewStyle } from 'react-native';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import { getTheme, RADIUS, SPACING } from '../theme/tokens';
 
 // Umrandete Flaeche - der Grundbaustein, aus dem die Screens bestehen.
@@ -20,7 +20,7 @@ type Props = {
   dark: boolean;
   children: ReactNode;
   padded?: boolean;
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle>;
 };
 
 export function Card({ dark, children, padded = true, style }: Props) {
