@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useAppState } from '../../state/AppState';
 import { CATEGORIES } from '../../data/categories';
@@ -16,6 +17,10 @@ import { getTheme, ACCENT_ORANGE, ACCENT_GREEN } from '../../theme/tokens';
 export function SearchResultsScreen() {
   const { darkMode, selectedThemes, saved, toggleSaved, purchased, targetLanguageId } = useAppState();
   const theme = getTheme(darkMode);
+  // Der native Header ist app-weit aus (app/_layout.tsx), jeder Screen
+  // zeichnet seinen eigenen. Ohne diesen Einsatz liegt die Ueberschrift unter
+  // der Statusleiste bzw. der Kamera-Insel und wird verdeckt.
+  const insets = useSafeAreaInsets();
   const language = getLanguage(targetLanguageId);
   const { query } = useLocalSearchParams<{ query?: string }>();
 
@@ -71,7 +76,7 @@ export function SearchResultsScreen() {
   }
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.pageBg }]}>
+    <View style={[styles.container, { backgroundColor: theme.pageBg, paddingTop: insets.top }]}>
       <View style={styles.header}>
         <Pressable
           onPress={() => router.back()}

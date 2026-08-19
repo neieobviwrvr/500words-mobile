@@ -8,10 +8,12 @@ import { getTheme, RADIUS, SPACING, FONT_SIZE } from '../theme/tokens';
 // Das ausfahrbare Drei-Punkte-Menue der Kopfzeile.
 //
 // Enthaelt die Einstiege, die nicht in die Tab-Leiste passen: Geschenk
-// (taegliche Kiste), Coins und Freunde. "Freunde" lag bis 2026-08-18 in der
-// Tab-Leiste und ist auf Nutzer-Wunsch hierher gewandert - damit die Route
-// dadurch nicht nur noch vom Startscreen aus erreichbar ist, steht dieses
-// Menue auf ALLEN Tab-Screens (Nutzer-Vorgabe "fuer die gesamte App").
+// (taegliche Kiste), Coins und Profil. "Freunde" lag bis 2026-08-18 in der
+// Tab-Leiste, ist kurz hierher gewandert und am 2026-08-20 auf Nutzer-Wunsch
+// wieder zurueck - dafuer liegt seitdem "Profil" hier: Konto und
+// Einstellungen sind Monats-, keine Tageshandlungen. Damit die Routen nicht
+// nur noch vom Startscreen aus erreichbar sind, steht dieses Menue auf ALLEN
+// Tab-Screens.
 //
 // Beim Antippen fahren die Knoepfe nach links aus, aus der Richtung, in der
 // der Ausloeser steht. Absolut positioniert, damit das Ausfahren die Kopfzeile
@@ -154,12 +156,12 @@ export function HeaderMenu({ dark, overlay = false }: Props) {
             />
             <HeaderButton
               dark={dark}
-              icon="users"
-              label="Freunde"
-              hint="Öffnet den Freunde-Bereich"
+              icon="user"
+              label="Profil"
+              hint="Öffnet Konto, Sprache und Einstellungen"
               onPress={() => {
                 setOpen(false);
-                router.push('/freunde');
+                router.push('/profil');
               }}
             />
           </Animated.View>
@@ -169,7 +171,7 @@ export function HeaderMenu({ dark, overlay = false }: Props) {
           dark={dark}
           icon="more-horizontal"
           label="Mehr"
-          hint="Zeigt Geschenk, Coins und Freunde"
+          hint="Zeigt Geschenk, Coins und Profil"
           expanded={open}
           onPress={() => setOpen((o) => !o)}
         />

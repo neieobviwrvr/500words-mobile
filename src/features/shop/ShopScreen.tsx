@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { useAppState } from '../../state/AppState';
 import { CATEGORIES } from '../../data/categories';
@@ -19,6 +20,10 @@ import { getTheme, ACCENT_BLUE, ACCENT_ORANGE, ACCENT_GREEN, NODE_LOCKED } from 
 export function ShopScreen() {
   const { darkMode, purchased, cart, toggleCartItem, buyCart } = useAppState();
   const theme = getTheme(darkMode);
+  // Der native Header ist app-weit aus (app/_layout.tsx), jeder Screen
+  // zeichnet seinen eigenen. Ohne diesen Einsatz liegt die Ueberschrift unter
+  // der Statusleiste bzw. der Kamera-Insel und wird verdeckt.
+  const insets = useSafeAreaInsets();
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const selected = selectedId ? CATEGORIES.find((c) => c.id === selectedId) : null;
@@ -44,7 +49,7 @@ export function ShopScreen() {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.pageBg }]}>
+    <View style={[styles.container, { backgroundColor: theme.pageBg, paddingTop: insets.top }]}>
       <View style={styles.header}>
         <Pressable
           onPress={() => router.back()}

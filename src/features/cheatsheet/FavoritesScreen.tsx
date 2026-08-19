@@ -1,4 +1,5 @@
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { useAppState } from '../../state/AppState';
 import { getTheme, ACCENT_BLUE } from '../../theme/tokens';
@@ -12,6 +13,10 @@ import { getTheme, ACCENT_BLUE } from '../../theme/tokens';
 export function FavoritesScreen() {
   const { darkMode, saved, savedMeta } = useAppState();
   const theme = getTheme(darkMode);
+  // Der native Header ist app-weit aus (app/_layout.tsx), jeder Screen
+  // zeichnet seinen eigenen. Ohne diesen Einsatz liegt die Ueberschrift unter
+  // der Statusleiste bzw. der Kamera-Insel und wird verdeckt.
+  const insets = useSafeAreaInsets();
 
   const list = Object.keys(saved)
     .filter((id) => saved[id])
@@ -19,7 +24,7 @@ export function FavoritesScreen() {
     .filter(Boolean);
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.pageBg }]}>
+    <View style={[styles.container, { backgroundColor: theme.pageBg, paddingTop: insets.top }]}>
       <View style={styles.header}>
         <Pressable
           onPress={() => router.back()}

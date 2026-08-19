@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { router } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
@@ -52,9 +52,6 @@ export function LessonsScreen() {
   const theme = getTheme(darkMode);
   const situations = useCategorySituations(targetLanguageId);
 
-  // Welche Kategorie ihren Info-Text zeigt. Nur eine gleichzeitig.
-  const [infoId, setInfoId] = useState<string | null>(null);
-
   const isUnlocked = (id: string) => id === GRUNDWORTSCHATZ_ID || !!purchased[id];
 
   // Grundwortschatz zuerst, dann freigeschaltet, dann gesperrt.
@@ -66,8 +63,6 @@ export function LessonsScreen() {
       ...paid.filter((id) => !purchased[id]),
     ];
   }, [purchased]);
-
-  const infoCategory = infoId ? CATEGORY_BY_ID[infoId] : undefined;
 
   return (
     <Screen dark={darkMode} padHorizontal={false}>
@@ -114,21 +109,6 @@ export function LessonsScreen() {
                   {locked ? (
                     <Feather name="lock" size={13} color={NODE_LOCKED} accessibilityElementsHidden />
                   ) : null}
-                  {/* Info-Knopf nur bei freigeschalteten Kaufkategorien
-                      (Nutzer-Wunsch 2026-08-18): beim Grundwortschatz gibt es
-                      keine Paket-Texte, und bei gesperrten stehen dieselben
-                      Texte ohnehin im Shop, wohin die Karten fuehren. */}
-                  {categoryId !== GRUNDWORTSCHATZ_ID && !locked ? (
-                    <Pressable
-                      onPress={() => setInfoId((cur) => (cur === categoryId ? null : categoryId))}
-                      accessibilityRole="button"
-                      accessibilityLabel={`Was steckt in ${name}?`}
-                      hitSlop={10}
-                      style={[styles.infoButton, { borderColor: theme.sub }]}
-                    >
-                      <Feather name="info" size={12} color={theme.sub} />
-                    </Pressable>
-                  ) : null}
                 </View>
 
                 {list.length === 0 ? (
@@ -172,27 +152,6 @@ export function LessonsScreen() {
         )}
       </ScrollView>
 
-      {/* Info-Blatt mit den Paket-Texten aus data/categories.ts - dieselbe
-          Quelle, aus der auch der Shop schoepft. */}
-      {infoCategory ? (
-        <View style={[styles.infoSheet, { backgroundColor: theme.cardBg, borderColor: theme.border }]}>
-          <View style={styles.infoHead}>
-            <Text style={[styles.infoTitle, { color: theme.text }]}>{infoCategory.name}</Text>
-            <Pressable
-              onPress={() => setInfoId(null)}
-              accessibilityRole="button"
-              accessibilityLabel="Info schließen"
-              hitSlop={12}
-            >
-              <Feather name="x" size={20} color={theme.sub} />
-            </Pressable>
-          </View>
-          <Text style={[styles.infoLabel, { color: theme.sub }]}>Beinhaltet</Text>
-          <Text style={[styles.infoText, { color: theme.text }]}>{infoCategory.includes}</Text>
-          <Text style={[styles.infoLabel, { color: theme.sub }]}>Befähigt dich zu</Text>
-          <Text style={[styles.infoText, { color: theme.text }]}>{infoCategory.enables}</Text>
-        </View>
-      ) : null}
     </Screen>
   );
 }
@@ -371,44 +330,5 @@ const styles = StyleSheet.create({
   cardCount: {
     fontSize: FONT_SIZE.caption,
     opacity: 0.8,
-  },
-  infoButton: {
-    width: 22,
-    height: 22,
-    borderRadius: RADIUS.pill,
-    borderWidth: 1.5,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  infoSheet: {
-    position: 'absolute',
-    left: SPACING.lg,
-    right: SPACING.lg,
-    bottom: SPACING.lg,
-    borderWidth: 1.5,
-    borderRadius: RADIUS.lg,
-    padding: SPACING.lg,
-    gap: SPACING.xs,
-  },
-  infoHead: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  infoTitle: {
-    fontFamily: FONT_FAMILY.serif,
-    fontSize: FONT_SIZE.title,
-    lineHeight: LINE_HEIGHT.title,
-    flex: 1,
-  },
-  infoLabel: {
-    fontSize: FONT_SIZE.caption,
-    fontWeight: '800',
-    letterSpacing: 0.6,
-    marginTop: SPACING.sm,
-  },
-  infoText: {
-    fontSize: FONT_SIZE.body,
-    lineHeight: LINE_HEIGHT.body,
   },
 });

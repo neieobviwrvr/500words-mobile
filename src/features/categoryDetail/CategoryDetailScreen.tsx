@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { useAppState } from '../../state/AppState';
 import { CATEGORY_BY_ID } from '../../data/categories';
@@ -12,6 +13,10 @@ import { getTheme, ACCENT_BLUE, ACCENT_ORANGE, ACCENT_PREMIUM } from '../../them
 export function CategoryDetailScreen({ categoryId, themeLabel }: { categoryId: string; themeLabel?: string }) {
   const { darkMode } = useAppState();
   const theme = getTheme(darkMode);
+  // Der native Header ist app-weit aus (app/_layout.tsx), jeder Screen
+  // zeichnet seinen eigenen. Ohne diesen Einsatz liegt die Ueberschrift unter
+  // der Statusleiste bzw. der Kamera-Insel und wird verdeckt.
+  const insets = useSafeAreaInsets();
   const [premiumNoticeOpen, setPremiumNoticeOpen] = useState(false);
 
   const isGrundwortschatz = categoryId === 'grundwortschatz';
@@ -25,7 +30,7 @@ export function CategoryDetailScreen({ categoryId, themeLabel }: { categoryId: s
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.pageBg }]}>
+    <View style={[styles.container, { backgroundColor: theme.pageBg, paddingTop: insets.top + CONTAINER_PADDING }]}>
       <View style={styles.header}>
         <Pressable
           onPress={() => router.back()}
@@ -98,8 +103,14 @@ export function CategoryDetailScreen({ categoryId, themeLabel }: { categoryId: s
   );
 }
 
+// Innenabstand des Wurzel-Elements. Steht als Konstante da, weil die
+// Ueberschrift ihn zum Sicherheitsrand DAZUrechnen muss - die
+// Einzelangabe `paddingTop` wuerde das `padding` unten sonst schlagen
+// und der Kopf klebte oben ohne Luft an der Statusleiste.
+const CONTAINER_PADDING = 18;
+
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 18 },
+  container: { flex: 1, padding: CONTAINER_PADDING },
   header: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 8 },
   backBtn: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
   backGlyph: { fontSize: 26 },

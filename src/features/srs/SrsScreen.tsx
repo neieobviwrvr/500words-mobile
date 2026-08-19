@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { useAppState } from '../../state/AppState';
 import { CATEGORIES } from '../../data/categories';
@@ -21,6 +22,10 @@ import { getTheme, ACCENT_BLUE, ACCENT_PREMIUM } from '../../theme/tokens';
 export function SrsScreen() {
   const { darkMode, purchased } = useAppState();
   const theme = getTheme(darkMode);
+  // Der native Header ist app-weit aus (app/_layout.tsx), jeder Screen
+  // zeichnet seinen eigenen. Ohne diesen Einsatz liegt die Ueberschrift unter
+  // der Statusleiste bzw. der Kamera-Insel und wird verdeckt.
+  const insets = useSafeAreaInsets();
   const [premiumNoticeOpen, setPremiumNoticeOpen] = useState(false);
 
   const purchasedCount = CATEGORIES.filter((c) => purchased[c.id]).length;
@@ -31,8 +36,10 @@ export function SrsScreen() {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.pageBg }]}>
+    <View style={[styles.container, { backgroundColor: theme.pageBg, paddingTop: insets.top + CONTAINER_PADDING }]}>
       <View style={styles.header}>
+        {/* Zurueck-Pfeil wieder da: der Screen wird ueber den Knopf auf S1
+            aufgerufen und ist kein Tab-Einstieg mehr. */}
         <Pressable
           onPress={() => router.back()}
           style={styles.backBtn}
@@ -41,7 +48,7 @@ export function SrsScreen() {
         >
           <Text style={[styles.backGlyph, { color: theme.text }]}>‹</Text>
         </Pressable>
-        <Text style={[styles.title, { color: theme.text }]}>Spaced Repetition</Text>
+        <Text style={[styles.title, { color: theme.text }]}>Wiederholen</Text>
       </View>
 
       <View style={styles.modeList}>
@@ -99,11 +106,17 @@ export function SrsScreen() {
   );
 }
 
+// Innenabstand des Wurzel-Elements. Steht als Konstante da, weil die
+// Ueberschrift ihn zum Sicherheitsrand DAZUrechnen muss - die
+// Einzelangabe `paddingTop` wuerde das `padding` unten sonst schlagen
+// und der Kopf klebte oben ohne Luft an der Statusleiste.
+const CONTAINER_PADDING = 18;
+
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 18 },
-  header: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 24 },
+  container: { flex: 1, padding: CONTAINER_PADDING },
   backBtn: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
   backGlyph: { fontSize: 26 },
+  header: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 24 },
   title: { fontWeight: '800', fontSize: 22 },
   modeList: { gap: 12 },
   modeButton: { padding: 16, paddingVertical: 18, borderRadius: 16, alignItems: 'center', gap: 4 },

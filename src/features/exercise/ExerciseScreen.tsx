@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { File } from 'expo-file-system';
 import type { Card } from 'ts-fsrs';
@@ -98,6 +99,10 @@ function looksLikePromptEcho(transcript: string, prompt: string, recordedSeconds
 export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode: string; categoryId: string; source?: 'category' | 'srs' }) {
   const { darkMode, targetLanguageId, purchased } = useAppState();
   const theme = getTheme(darkMode);
+  // Der native Header ist app-weit aus (app/_layout.tsx), jeder Screen
+  // zeichnet seinen eigenen. Ohne diesen Einsatz liegt die Ueberschrift unter
+  // der Statusleiste bzw. der Kamera-Insel und wird verdeckt.
+  const insets = useSafeAreaInsets();
   const language = getLanguage(targetLanguageId);
   // Speechmatics statt On-Device-Whisper als primaerer STT-Anbieter
   // (2026-08-12) - siehe useSpeechmatics.ts-Kommentar fuer die Begruendung
@@ -355,7 +360,7 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
   const motivationMsg = MOTIVATION_MESSAGES[Math.floor(idx / MOTIVATION_INTERVAL) % MOTIVATION_MESSAGES.length];
 
   return (
-    <ScrollView contentContainerStyle={[styles.container, { backgroundColor: theme.pageBg }]}>
+    <ScrollView contentContainerStyle={[styles.container, { backgroundColor: theme.pageBg, paddingTop: insets.top + CONTAINER_PADDING }]}>
       <View style={styles.header}>
         <Pressable
           onPress={() => router.back()}
@@ -555,8 +560,14 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
   );
 }
 
+// Innenabstand des Wurzel-Elements. Steht als Konstante da, weil die
+// Ueberschrift ihn zum Sicherheitsrand DAZUrechnen muss - die
+// Einzelangabe `paddingTop` wuerde das `padding` unten sonst schlagen
+// und der Kopf klebte oben ohne Luft an der Statusleiste.
+const CONTAINER_PADDING = 18;
+
 const styles = StyleSheet.create({
-  container: { flexGrow: 1, padding: 18 },
+  container: { flexGrow: 1, padding: CONTAINER_PADDING },
   header: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 6 },
   backBtn: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
   backGlyph: { fontSize: 26 },

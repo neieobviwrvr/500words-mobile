@@ -17,8 +17,12 @@ import { getTheme, ACCENT_ORANGE, FONT_SIZE, RADIUS, SPACING } from '../../src/t
 // Navigation" nicht mehr - bewusste Entscheidung, die Doku ist nachgezogen.
 //
 // Zwei Punkte aus den Apple-Richtlinien, die hier den Ausschlag geben:
-// - Zwei bis fuenf Ziele. Seit 2026-08-18 sind es vier: "Freunde" ist auf
-//   Nutzer-Wunsch hinter das Drei-Punkte-Menue auf S1 gewandert.
+// - Zwei bis fuenf Ziele. Es sind vier: Start, Lektionen, Survival, Freunde.
+//   "Profil" liegt im Drei-Punkte-Menue (Konto und Einstellungen sind
+//   Monats-, keine Tageshandlungen). "Wiederholen" war kurz ein Tab und ist
+//   auf Nutzer-Entscheidung wieder der Knopf auf S1 - bei fuenf Tabs blieben
+//   52 Punkte pro Eintrag, und "Wiederholen" braucht 60 fuer seine
+//   Beschriftung, wurde also abgeschnitten.
 // - Ein-Wort-Beschriftungen. Deshalb "Survival" statt "Cheat-Sheet-Survival".
 //
 // Das Gate liegt hier und nicht in `index.tsx`: haenge es am Startscreen,
@@ -43,8 +47,14 @@ const CONTENT_GAP = SPACING.md;
 // 2026-08-18). Quadratisch und so hoch wie die Leiste, damit beide auf
 // derselben Linie sitzen; der Abstand dazwischen macht sie als eigenes
 // Element lesbar statt als abgetrennten fuenften Tab.
-const ACTION_SIZE = BAR_HEIGHT;
-const ACTION_GAP = SPACING.sm;
+// Kleiner als die Leiste hoch ist (Nutzer-Rueckmeldung 2026-08-20): ein
+// gleich grosser Kreis las sich wie ein abgetrennter fuenfter Tab. Der
+// groessere Abstand daneben macht die Trennung eindeutig.
+const ACTION_SIZE = 52;
+const ACTION_GAP = SPACING.md;
+/** Seitlicher Rand der Leiste. Groesser als der Seitenrand des Inhalts,
+ *  damit die Kapsel schmaler wirkt und nicht von Kante zu Kante spannt. */
+const BAR_SIDE = SPACING.xl;
 
 export default function TabsLayout() {
   const { darkMode } = useAppState();
@@ -99,12 +109,26 @@ export default function TabsLayout() {
         tabBarBackground: () => <TabBarSurface dark={darkMode} />,
         tabBarStyle: {
           position: 'absolute',
-          left: SPACING.lg,
+          left: BAR_SIDE,
           // Platz fuer die zweite Kapsel - die Leiste endet vor ihr, statt
           // unter ihr durchzulaufen.
-          right: SPACING.lg + ACTION_SIZE + ACTION_GAP,
+          right: BAR_SIDE + ACTION_SIZE + ACTION_GAP,
           bottom: bottomOffset,
           height: BAR_HEIGHT,
+          // WARUM DAS HIER STEHEN MUSS (Geraete-Fehler vom 2026-08-20):
+          // React Navigation rechnet den unteren Sicherheitsrand als INNEREN
+          // Abstand in die Leiste (BottomTabBar.js: `paddingBottom:
+          // insets.bottom`). Das ist fuer eine am Rand klebende Leiste
+          // richtig - unsere schwebt aber schon oberhalb des Sicherheitsrands,
+          // weil `bottom: bottomOffset` ihn bereits einrechnet.
+          //
+          // Folge ohne diese Zeile: von den 64 Punkten Hoehe gingen auf einem
+          // iPhone mit Home-Indikator 34 fuer den doppelt gezaehlten
+          // Sicherheitsrand drauf. Uebrig blieb Platz fuer das Symbol, die
+          // BESCHRIFTUNG WURDE ABGESCHNITTEN. Im Browser faellt das nie auf:
+          // dort ist `insets.bottom` gleich 0, deshalb sahen die Tabs in der
+          // Vorschau vollstaendig aus und auf dem Geraet nicht.
+          paddingBottom: 0,
           borderRadius: BAR_RADIUS,
           // Der Untergrund kommt komplett aus <TabBarSurface />. Waere hier
           // eine Farbe gesetzt, laege sie ueber dem Blur und wuerde ihn
@@ -136,12 +160,17 @@ export default function TabsLayout() {
           shadowOpacity: darkMode ? 0.4 : 0.16,
           elevation: 12,
         },
+        // Ausdruecklich, nicht auf den Standard verlassen: ohne
+        // Beschriftungen stehen vier gleich aussehende Symbole in einer
+        // breiten Leiste, und niemand weiss, was sie tun.
+        tabBarShowLabel: true,
         tabBarItemStyle: {
-          // Die Leiste ist niedriger als die Standardleiste samt
-          // Sicherheitsrand - ohne eigenen Innenabstand kleben Symbol und
-          // Beschriftung an der Oberkante.
-          paddingTop: SPACING.sm,
-          paddingBottom: SPACING.sm,
+          // Klein gehalten: die Leiste ist mit 64 niedriger als eine
+          // Standardleiste samt Sicherheitsrand, und Symbol UND Beschriftung
+          // muessen hineinpassen. Mit SPACING.sm oben und unten blieb fuer
+          // die Beschriftung zu wenig, sie wurde abgeschnitten.
+          paddingTop: SPACING.xs,
+          paddingBottom: SPACING.xs,
         },
         tabBarLabelStyle: {
           fontSize: FONT_SIZE.caption - 2,
@@ -171,12 +200,26 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="profil"
+        name="freunde"
         options={{
-          title: 'Profil',
-          tabBarIcon: ({ color, size }) => <Feather name="user" size={size} color={color} />,
+          title: 'Freunde',
+          tabBarIcon: ({ color, size }) => <Feather name="message-circle" size={size} color={color} />,
         }}
       />
+      {/* Ab hier: Screens, die in der Gruppe liegen, damit die Tab-Leiste auf
+          ihnen sichtbar bleibt (Nutzer-Wunsch 2026-08-20) - aber KEIN eigener
+          Tab sind. `href: null` nimmt sie aus der Leiste, ohne sie aus dem
+          Navigator zu nehmen. Ohne diese Eintraege haette die Leiste zwoelf
+          Symbole statt vier. */}
+      <Tabs.Screen name="shop" options={{ href: null }} />
+      <Tabs.Screen name="srs" options={{ href: null }} />
+      <Tabs.Screen name="profil" options={{ href: null }} />
+      <Tabs.Screen name="exercise" options={{ href: null }} />
+      <Tabs.Screen name="rewards" options={{ href: null }} />
+      <Tabs.Screen name="category/[id]" options={{ href: null }} />
+      <Tabs.Screen name="cheatsheet/[groupId]" options={{ href: null }} />
+      <Tabs.Screen name="cheatsheet/search-results" options={{ href: null }} />
+      <Tabs.Screen name="cheatsheet/favorites" options={{ href: null }} />
     </Tabs>
 
       {/* Zweite Kapsel: eigenes Element neben der Leiste, gleiches Material,

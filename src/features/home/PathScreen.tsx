@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Image,
+  PanResponder,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -68,8 +69,30 @@ const LANG_PILL_W = 150;
 const LANG_PILL_H = 56;
 const ROW_H = 86;
 const CONT_W = 300;
-/** Anteil der Fensterhoehe, den die Pfad-Box hoechstens einnimmt. */
-const PATH_BOX_HEIGHT_RATIO = 0.52;
+
+// Schwellen der Wischgeste nach rechts.
+// `CLAIM` ist die Strecke, ab der die Geste ueberhaupt als waagerecht gilt -
+// klein genug, um sich natuerlich anzufuehlen, gross genug, dass ein
+// Daumenzittern beim Scrollen sie nicht ausloest.
+const SWIPE_CLAIM = 20;
+/** Strecke, die allein schon reicht - auch bei langsamem Ziehen. */
+const SWIPE_DISTANCE = 90;
+/** Alternativ: kurzer, aber schneller Zug. */
+const SWIPE_VELOCITY = 0.3;
+/**
+ * Anteil der Fensterhoehe, den die Pfad-Box hoechstens einnimmt.
+ *
+ * Herleitung des Werts (2026-08-20): bei 0.52 war die Box auf einem
+ * 812 Punkte hohen Bildschirm 422 hoch, und zwischen ihrer Unterkante und
+ * dem Lern-Knopf blieben 109 Punkte Luft. Die Box sollte unten um 40% dieser
+ * Luft wachsen, also um rund 44 Punkte auf 466 - das sind 0.573 der
+ * Fensterhoehe. Die restliche Luft betraegt danach etwa 65 Punkte.
+ *
+ * Weil es ein Anteil und keine feste Zahl ist, waechst die Box auf groesseren
+ * Geraeten mit; die verbleibende Luft ist dort entsprechend etwas groesser
+ * als 65, nicht exakt gleich.
+ */
+const PATH_BOX_HEIGHT_RATIO = 0.573;
 
 type NodeState = 'done' | 'current' | 'open' | 'locked';
 
@@ -117,6 +140,30 @@ export function PathScreen() {
   // Die Box scrollt ohnehin innen, sie muss also nicht alles zeigen.
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   const pathBoxMaxHeight = Math.round(windowHeight * PATH_BOX_HEIGHT_RATIO);
+
+  // Nach rechts wischen oeffnet die Geschenk-/Belohnungsseite (Nutzer-Wunsch
+  // 2026-08-20). Zusaetzlicher Weg, nicht der einzige: der Coins-Knopf im
+  // Menue bleibt - eine Wischgeste ist unsichtbar und fuer VoiceOver-Nutzer
+  // gar nicht bedienbar.
+  //
+  // `PanResponder` statt einer Gestenbibliothek: react-native-gesture-handler
+  // waere ein weiteres natives Modul samt neuem Build, und fuer eine einzelne
+  // Wischgeste ist der eingebaute Weg ausreichend.
+  //
+  // Die Bedingung ist bewusst streng - der Zug muss deutlich waagerecht sein
+  // (doppelt so weit seitlich wie hoch) und nach RECHTS gehen. Sonst wuerde
+  // die Geste das senkrechte Scrollen in der Pfad-Box abfangen.
+  const swipe = useRef(
+    PanResponder.create({
+      onMoveShouldSetPanResponder: (_e, g) =>
+        g.dx > SWIPE_CLAIM && Math.abs(g.dx) > Math.abs(g.dy) * 2,
+      onPanResponderRelease: (_e, g) => {
+        if (g.dx > SWIPE_DISTANCE || (g.dx > SWIPE_CLAIM && g.vx > SWIPE_VELOCITY)) {
+          router.push('/rewards');
+        }
+      },
+    })
+  ).current;
 
   const scrollRef = useRef<ScrollView>(null);
   const didAutoScroll = useRef(false);
@@ -251,7 +298,7 @@ export function PathScreen() {
     // streichen und `pathBoxTestTransparent` unten aus dem Card-Stil nehmen.
     // Die Datei liegt unter assets/hintergrund-pergament.png.
     // =====================================================================
-    <View style={styles.root}>
+    <View style={styles.root} {...swipe.panHandlers}>
       <Image
         source={require('../../../assets/hintergrund-pergament.png')}
         // Volle Fensterhoehe statt 100% des Elternteils: die Tab-Gruppe haelt
@@ -365,18 +412,11 @@ export function PathScreen() {
 
       {/* Fester Knopf ausserhalb der Scroll-Box. */}
       <View style={styles.actions}>
-        <SplitButton
+        <SoftButton
           dark={darkMode}
-          left={{
-            label: 'Tägliches Wiederholen',
-            hint: 'Öffnet die Wiederholung mit fälligen Karten',
-            onPress: () => router.push('/srs'),
-          }}
-          right={{
-            label: 'Weiter durchstarten',
-            hint: 'Öffnet die Kategorie, an der du gerade bist',
-            onPress: pathNodes[currentIndex]?.onPress ?? goShop,
-          }}
+          label="Tägliches Wiederholen"
+          hint="Öffnet die Wiederholung mit fälligen Karten"
+          onPress={() => router.push('/srs')}
         />
       </View>
 
@@ -445,80 +485,49 @@ function PathNode({ node }: { node: LaidOutNode }) {
   );
 }
 
-type SplitAction = { label: string; hint: string; onPress: () => void };
-
-// Die beiden Lern-Einstiege als EIN Knopf (Nutzer-Vorlage 2026-08-18).
+// Der Lern-Einstieg auf S1 (Nutzer-Vorlage 2026-08-18, auf eine Aktion
+// zusammengezogen 2026-08-20).
 //
-// Optisch eine durchgehende Kapsel, funktional zwei Ziele - deshalb zwei
-// echte Pressables nebeneinander und nicht ein Knopf mit zwei Beschriftungen:
-// fuer VoiceOver muessen es zwei Bedienelemente mit eigenem Namen und
-// eigenem Hinweis bleiben.
+// Flache Kapsel mit weichem Aussenschatten - bewusst OHNE die Druckkante von
+// `PillButton`, so gibt es die Vorlage her. Die Rueckmeldung beim Druecken
+// uebernimmt deshalb eine dezente Fuellung.
 //
-// Bewusst OHNE die Druckkante von `PillButton`: die Vorlage zeigt eine flache
-// Kapsel mit weichem Aussenschatten. Die Rueckmeldung beim Druecken uebernimmt
-// deshalb eine dezente Fuellung auf der gedrueckten Haelfte - ohne die waere
-// nicht erkennbar, welche der beiden Seiten getroffen wurde.
-//
-// Keine Trennlinie in der Mitte, ebenfalls nach Vorlage. Die Haelften sind
-// trotzdem eindeutig, weil beide Beschriftungen zentriert in ihrer Haelfte
-// stehen.
-function SplitButton({
+// Hier stand bis 2026-08-20 ein geteilter Knopf mit "Weiter durchstarten" in
+// der rechten Haelfte. Der ist auf Nutzer-Entscheidung weg; dieselbe Kategorie
+// erreicht man weiterhin ueber ihre Pille im Pfad.
+function SoftButton({
   dark,
-  left,
-  right,
+  label,
+  hint,
+  onPress,
 }: {
   dark: boolean;
-  left: SplitAction;
-  right: SplitAction;
+  label: string;
+  hint: string;
+  onPress: () => void;
 }) {
   const theme = getTheme(dark);
 
-  const half = (action: SplitAction, side: 'left' | 'right') => (
-    <Pressable
-      onPress={action.onPress}
-      accessibilityRole="button"
-      accessibilityLabel={action.label}
-      accessibilityHint={action.hint}
-      style={({ pressed }) => [
-        styles.splitHalf,
-        side === 'left' ? styles.splitHalfLeft : styles.splitHalfRight,
-        pressed && { backgroundColor: theme.subtleFill },
-      ]}
-    >
-      <Text numberOfLines={2} style={[styles.splitLabel, { color: theme.text }]}>
-        {action.label}
-      </Text>
-    </Pressable>
-  );
-
   return (
-    <View
-      style={[
-        styles.splitButton,
+    <Pressable
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      accessibilityHint={hint}
+      style={({ pressed }) => [
+        styles.softButton,
         {
-          backgroundColor: theme.cardBg,
+          backgroundColor: pressed ? theme.subtleFill : theme.cardBg,
           // Im Darkmode traegt ein Schatten nicht - dort uebernimmt eine
           // dezente Kontur die Abgrenzung vom Untergrund.
           borderColor: dark ? theme.border : 'transparent',
         },
       ]}
     >
-      {half(left, 'left')}
-      {/* Trennstrich zwischen den Haelften (Nutzer-Wunsch 2026-08-18).
-          Bewusst ein eigenes Flex-Element und nicht absolut positioniert: so
-          sitzt er exakt in der Mitte, ohne dass jemand die halbe Breite
-          ausrechnen muss, und die beiden Haelften bleiben gleich breit.
-          `marginVertical` haelt ihn von Ober- und Unterkante fern - er soll
-          die Kapsel nicht durchschneiden, sondern nur die Seiten trennen.
-
-          Farbe bewusst `border` und nicht `dividerColor` (Nutzer-Wunsch
-          2026-08-18): der Strich soll nur angedeutet sein, nicht gelesen
-          werden. `border` ist im Hellen heller und im Dunkeln dunkler als
-          `dividerColor` - in beiden Faellen also kontrastaermer, ohne dass
-          dafuer ein neuer Farbwert noetig waere. */}
-      <View style={[styles.splitDivider, { backgroundColor: theme.border }]} />
-      {half(right, 'right')}
-    </View>
+      <Text numberOfLines={2} style={[styles.softLabel, { color: theme.text }]}>
+        {label}
+      </Text>
+    </Pressable>
   );
 }
 
@@ -683,42 +692,21 @@ const styles = StyleSheet.create({
     paddingTop: SPACING.md,
     marginBottom: SPACING.md,
   },
-  splitButton: {
-    flexDirection: 'row',
+  softButton: {
     borderRadius: RADIUS.pill,
     borderWidth: 1,
-    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: SPACING.lg,
+    paddingHorizontal: SPACING.xl,
+    minHeight: 76,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
     shadowRadius: 18,
     shadowOpacity: 0.12,
     elevation: 5,
   },
-  splitHalf: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: SPACING.lg,
-    paddingHorizontal: SPACING.sm,
-    // Zwei Zeilen Text plus Luft - beide Beschriftungen brechen um.
-    minHeight: 76,
-  },
-  splitDivider: {
-    // Feste 1 statt `hairlineWidth`: die faellt auf dichten Bildschirmen
-    // unter einen Punkt und war bei der Tab-Leiste schon einmal unsichtbar.
-    width: 1,
-    marginVertical: SPACING.lg,
-    alignSelf: 'stretch',
-  },
-  splitHalfLeft: {
-    borderTopLeftRadius: RADIUS.pill,
-    borderBottomLeftRadius: RADIUS.pill,
-  },
-  splitHalfRight: {
-    borderTopRightRadius: RADIUS.pill,
-    borderBottomRightRadius: RADIUS.pill,
-  },
-  splitLabel: {
+  softLabel: {
     fontSize: FONT_SIZE.bodyLg,
     lineHeight: LINE_HEIGHT.bodyLg,
     fontWeight: '700',

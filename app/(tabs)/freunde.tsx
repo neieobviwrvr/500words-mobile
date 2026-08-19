@@ -1,4 +1,4 @@
-import { PlaceholderScreen } from '../src/features/placeholder/PlaceholderScreen';
+import { PlaceholderScreen } from '../../src/features/placeholder/PlaceholderScreen';
 
 // Inhalt noch offen (Stand 2026-08-18).
 //

@@ -1,4 +1,4 @@
-import { RewardsScreen } from '../src/features/rewards/RewardsScreen';
+import { RewardsScreen } from '../../src/features/rewards/RewardsScreen';
 
 // Referral-/Bewertungs-/Feedback-Programm - siehe RewardsScreen.tsx.
 export default function Rewards() {

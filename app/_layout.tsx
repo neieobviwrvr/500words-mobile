@@ -12,12 +12,15 @@ import { getTheme, ACCENT_ORANGE } from '../src/theme/tokens';
 // App.tsx und hat keinen eigenen Header, bekommt den nativen Header daher
 // weiterhin gezeigt.
 //
-// Aufbau seit 2026-08-18: `(tabs)` ist die Gruppe mit der Tab-Leiste
-// (Start, Lektionen, Survival, Freunde, Profil). Alle uebrigen Routen bleiben
-// bewusst Stack-Screens auf DIESER Ebene, also ueber der Leiste - Uebung,
-// Shop und die Cheat-Sheet-Unterseiten sollen die Leiste verdecken, damit
-// waehrend einer Uebung kein Weg danebenfuehrt. Der Startscreen liegt jetzt
-// unter `(tabs)/index.tsx`, das Auth-Gate in `(tabs)/_layout.tsx`.
+// Aufbau seit 2026-08-20: FAST ALLES liegt in der Gruppe `(tabs)`, damit die
+// Tab-Leiste auf jedem Screen sichtbar bleibt (Nutzer-Wunsch). Bis dahin
+// lagen Uebung, Shop, Kategorie-Detail, SRS und die Cheat-Sheet-Unterseiten
+// hier als Stack-Screens und verdeckten die Leiste.
+//
+// Hier bleiben nur die beiden Strecken, die bewusst OHNE Tab-Leiste laufen:
+// das Onboarding (dort gibt es noch keine App-Navigation) und die Dev-Tools.
+// Der Startscreen liegt unter `(tabs)/index.tsx`, das Auth-Gate in
+// `(tabs)/_layout.tsx`.
 //
 // AuthStateProvider aussen um AppStateProvider (2026-08-07) - Auth ist die
 // grundlegendere Ebene (wer bin ich), App-Zustand (Warenkorb etc.) haengt
@@ -72,15 +75,6 @@ function RootStack() {
       >
         <Stack.Screen name="onboarding" />
         <Stack.Screen name="(tabs)" />
-        <Stack.Screen name="shop" />
-        <Stack.Screen name="srs" />
-        <Stack.Screen name="category/[id]" />
-        <Stack.Screen name="exercise" />
-        <Stack.Screen name="cheatsheet/[groupId]" />
-        <Stack.Screen name="cheatsheet/search-results" />
-        <Stack.Screen name="cheatsheet/favorites" />
-        <Stack.Screen name="rewards" />
-        <Stack.Screen name="freunde" />
         <Stack.Screen name="dev-tools" options={{ headerShown: true, title: 'Dev-Tools (Testscreens)' }} />
       </Stack>
     </ThemeProvider>
