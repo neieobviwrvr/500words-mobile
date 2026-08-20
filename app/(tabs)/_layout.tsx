@@ -1,5 +1,13 @@
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import {
+  ActivityIndicator,
+  Platform,
+  Pressable,
+  StyleSheet,
+  Text,
+  useWindowDimensions,
+  View,
+} from 'react-native';
 import { Redirect, Tabs } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
@@ -52,9 +60,8 @@ const CONTENT_GAP = SPACING.md;
 // groessere Abstand daneben macht die Trennung eindeutig.
 const ACTION_SIZE = 52;
 const ACTION_GAP = SPACING.md;
-/** Seitlicher Rand der Leiste. Groesser als der Seitenrand des Inhalts,
- *  damit die Kapsel schmaler wirkt und nicht von Kante zu Kante spannt. */
-const BAR_SIDE = SPACING.xl;
+/** Seitlicher Rand von Leiste UND Plus-Knopf - beide gleich weit vom Rand. */
+const BAR_SIDE = SPACING.xxl;
 
 export default function TabsLayout() {
   const { darkMode } = useAppState();
@@ -64,6 +71,15 @@ export default function TabsLayout() {
   const insets = useSafeAreaInsets();
 
   const bottomOffset = Math.max(insets.bottom, FLOAT_GAP);
+
+  // Breite der Leiste AUSGERECHNET statt ueber `right` gesetzt.
+  //
+  // Grund (Geraete-Fehler vom 2026-08-20): mit `left` + `right` lief die
+  // Leiste auf dem iPhone unter dem Plus-Knopf durch und schnitt den letzten
+  // Tab an - im Browser stimmte es. Eine ausgerechnete Breite haengt nicht
+  // davon ab, ob die Leiste `right` beachtet.
+  const { width: windowWidth } = useWindowDimensions();
+  const barWidth = windowWidth - 2 * BAR_SIDE - ACTION_SIZE - ACTION_GAP;
 
   // Der Knopf hat noch keine Funktion - beim Antippen sagt er das, statt
   // still nichts zu tun (dasselbe Muster wie die Schatzkarte auf S1).
@@ -91,6 +107,15 @@ export default function TabsLayout() {
   return (
     <View style={styles.root}>
     <Tabs
+      // "zurueck" fuehrt dorthin, wo man hergekommen ist - nicht auf den
+      // ersten Tab (Fehler vom 2026-08-20).
+      //
+      // Hintergrund: seit alle Screens in dieser Gruppe liegen, sind sie
+      // Geschwister im Tab-Navigator und kein Stapel mehr. Der Standard
+      // `firstRoute` schickt jedes Zurueck auf den Startscreen - wer von
+      // Lektionen in eine Kategorie ging, landete beim Zurueck auf S1.
+      // `history` merkt sich stattdessen die tatsaechliche Reihenfolge.
+      backBehavior="history"
       screenOptions={{
         headerShown: false,
         // Wie im Stack-Layout: React Navigation faerbt den Untergrund einer
@@ -110,9 +135,7 @@ export default function TabsLayout() {
         tabBarStyle: {
           position: 'absolute',
           left: BAR_SIDE,
-          // Platz fuer die zweite Kapsel - die Leiste endet vor ihr, statt
-          // unter ihr durchzulaufen.
-          right: BAR_SIDE + ACTION_SIZE + ACTION_GAP,
+          width: barWidth,
           bottom: bottomOffset,
           height: BAR_HEIGHT,
           // WARUM DAS HIER STEHEN MUSS (Geraete-Fehler vom 2026-08-20):
@@ -171,6 +194,10 @@ export default function TabsLayout() {
           // die Beschriftung zu wenig, sie wurde abgeschnitten.
           paddingTop: SPACING.xs,
           paddingBottom: SPACING.xs,
+          // Ohne das setzt die Leiste einen eigenen seitlichen Abstand pro
+          // Eintrag - die Symbole stehen dann weiter auseinander, als die
+          // Kapsel breit ist.
+          paddingHorizontal: 0,
         },
         tabBarLabelStyle: {
           fontSize: FONT_SIZE.caption - 2,
@@ -212,6 +239,7 @@ export default function TabsLayout() {
           Navigator zu nehmen. Ohne diese Eintraege haette die Leiste zwoelf
           Symbole statt vier. */}
       <Tabs.Screen name="shop" options={{ href: null }} />
+      <Tabs.Screen name="training/[mode]" options={{ href: null }} />
       <Tabs.Screen name="srs" options={{ href: null }} />
       <Tabs.Screen name="profil" options={{ href: null }} />
       <Tabs.Screen name="exercise" options={{ href: null }} />
@@ -304,7 +332,7 @@ const styles = StyleSheet.create({
   },
   action: {
     position: 'absolute',
-    right: SPACING.lg,
+    right: BAR_SIDE,
     width: ACTION_SIZE,
     height: ACTION_SIZE,
     borderRadius: ACTION_SIZE / 2,

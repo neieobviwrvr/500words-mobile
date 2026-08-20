@@ -5,11 +5,13 @@ import { Feather } from '@expo/vector-icons';
 import { useAppState } from '../../state/AppState';
 import { CATEGORIES, CATEGORY_BY_ID, GRUNDWORTSCHATZ_ID } from '../../data/categories';
 import { scenarioLabel } from '../../data/scenarios';
+import { TRAINING_MODES } from '../../data/trainingModes';
 import { HeaderMenu, Screen } from '../../components';
 import { Situation, useCategorySituations } from './useCategorySituations';
 import {
   getTheme,
   ACCENT_GREEN,
+  ACCENT_ORANGE,
   NODE_LOCKED,
   WORLD_TINTS,
   RADIUS,
@@ -66,11 +68,11 @@ export function LessonsScreen() {
 
   return (
     <Screen dark={darkMode} padHorizontal={false}>
-      {/* Das Kopfzeilen-Menue steht auf allen Tab-Screens (Nutzer-Vorgabe
-          "fuer die gesamte App"), damit Freunde nach dem Umzug aus der
-          Tab-Leiste nicht nur noch von S1 aus erreichbar ist. */}
+      {/* Hier ohne Drei-Punkte-Knopf: Coins und Profil stehen direkt da
+          (Nutzer-Wunsch 2026-08-20). Auf den uebrigen Screens bleibt das
+          ausfahrbare Menue. */}
       <View style={styles.menuSlot}>
-        <HeaderMenu dark={darkMode} overlay />
+        <HeaderMenu dark={darkMode} overlay inline />
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.page}>
@@ -83,6 +85,39 @@ export function LessonsScreen() {
             📴 Offline — letzter gespeicherter Stand
           </Text>
         ) : null}
+
+        {/* Trainingsarten (Nutzer-Vorlage 2026-08-20). Waagerecht scrollend
+            wie die Situationen darunter, aber deutlich anders eingefaerbt -
+            das sind Uebungs-Modi, kein Inhalt.
+
+            Farbe: die Vorlage zeigt sie gruen. Gruen ist bei uns aber fuer
+            Erfolg reserviert (siehe theme/tokens.ts) und markiert unten auf
+            den Situations-Karten "abgeschlossen" - zwei Bedeutungen fuer
+            dieselbe Farbe auf einem Screen. Deshalb hier die Akzentfarbe der
+            Marke, vollflaechig. */}
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.modeRow}
+        >
+          {TRAINING_MODES.map((m) => (
+            <Pressable
+              key={m.id}
+              onPress={() => router.push(`/training/${m.id}`)}
+              accessibilityRole="button"
+              accessibilityLabel={`${m.title}. ${m.description}`}
+              accessibilityHint="Noch nicht gebaut"
+              style={({ pressed }) => [styles.modeCard, { opacity: pressed ? 0.8 : 1 }]}
+            >
+              <Text style={styles.modeTitle} numberOfLines={2}>
+                {m.title}
+              </Text>
+              <Text style={styles.modeText} numberOfLines={3}>
+                {m.description}
+              </Text>
+            </Pressable>
+          ))}
+        </ScrollView>
 
         {situations.loading ? (
           <View style={styles.loading}>
@@ -264,6 +299,32 @@ const styles = StyleSheet.create({
   loading: {
     paddingTop: SPACING.xxl,
     alignItems: 'center',
+  },
+  modeRow: {
+    paddingHorizontal: SPACING.lg,
+    paddingTop: SPACING.lg,
+    gap: SPACING.md,
+  },
+  modeCard: {
+    width: 168,
+    minHeight: 132,
+    borderRadius: RADIUS.lg,
+    backgroundColor: ACCENT_ORANGE,
+    padding: SPACING.md,
+    justifyContent: 'space-between',
+    gap: SPACING.sm,
+  },
+  modeTitle: {
+    color: '#FFFFFF',
+    fontSize: FONT_SIZE.body,
+    lineHeight: LINE_HEIGHT.body,
+    fontWeight: '800',
+  },
+  modeText: {
+    color: '#FFFFFF',
+    fontSize: FONT_SIZE.caption,
+    lineHeight: LINE_HEIGHT.caption,
+    opacity: 0.92,
   },
   group: {
     marginTop: SPACING.xl,

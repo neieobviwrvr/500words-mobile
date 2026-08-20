@@ -1,17 +1,35 @@
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Feather } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { useAppState } from '../../state/AppState';
-import { getTheme, ACCENT_BLUE } from '../../theme/tokens';
+import { speakSentence } from '../tts/speak';
+import { PhraseCard } from './PhraseCard';
+import {
+  getTheme,
+  ACCENT_BLUE,
+  RADIUS,
+  SPACING,
+  FONT_SIZE,
+  FONT_FAMILY,
+  LINE_HEIGHT,
+} from '../../theme/tokens';
 
+// Die gespeicherten Saetze - Ziel des Knopfes "Gespeicherte Saetze" auf dem
+// Survival-Screen.
+//
+// Aufbau nach Simons Vorlage (2026-08-20): Zurueck-Pfeil und zentrierter
+// Titel, darunter ein Kasten mit der Trefferzahl, dann ein Zaehler-Knopf und
+// die Satzliste. Die Saetze selbst rendert `PhraseCard`, damit Favoriten,
+// Kategorie-Liste und Suchergebnisse dieselbe Karte benutzen.
+//
 // Favoriten sind reiner lokaler AppState (saved/savedMeta), seit 2026-08-07
 // via AsyncStorage persistiert - funktioniert dadurch automatisch auch
-// offline und im Gast-Modus, ganz ohne Zusatzaufwand (Nutzer-Frage
-// 2026-08-07 beantwortet: Speichern braucht kein Netzwerk, nur die
-// Anzeige der Saetze selbst muss vorher online geladen worden sein).
+// offline und im Gast-Modus. Speichern braucht kein Netzwerk, nur die Saetze
+// selbst muessen vorher einmal geladen worden sein.
 
 export function FavoritesScreen() {
-  const { darkMode, saved, savedMeta } = useAppState();
+  const { darkMode, saved, savedMeta, toggleSaved } = useAppState();
   const theme = getTheme(darkMode);
   // Der native Header ist app-weit aus (app/_layout.tsx), jeder Screen
   // zeichnet seinen eigenen. Ohne diesen Einsatz liegt die Ueberschrift unter
@@ -28,28 +46,52 @@ export function FavoritesScreen() {
       <View style={styles.header}>
         <Pressable
           onPress={() => router.back()}
-          style={styles.backBtn}
+          hitSlop={10}
           accessibilityRole="button"
           accessibilityLabel="Zurück"
+          style={styles.backBtn}
         >
-          <Text style={[styles.backGlyph, { color: theme.text }]}>‹</Text>
+          <Feather name="arrow-left" size={24} color={theme.text} />
         </Pressable>
-        <Text style={[styles.title, { color: theme.text }]}>Favoriten ({list.length})</Text>
+        <Text style={[styles.title, { color: theme.text }]}>Gespeicherte Sätze</Text>
+        {/* Gleiche Breite wie der Pfeil, damit der Titel wirklich mittig
+            steht und nicht nur ungefaehr. */}
+        <View style={styles.backBtn} />
+      </View>
+
+      <View style={[styles.summary, { borderColor: theme.border }]}>
+        <Text style={[styles.summaryText, { color: theme.sub }]}>
+          {list.length === 1 ? 'Ein gespeicherter Satz' : `Gespeichert: ${list.length} Sätze`}
+        </Text>
+      </View>
+
+      <View style={styles.countRow}>
+        <View style={[styles.countPill, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
+          <Feather name="bookmark" size={14} color={ACCENT_BLUE} />
+          <Text style={[styles.countText, { color: theme.text }]}>
+            Gespeichert (Anzahl {list.length})
+          </Text>
+        </View>
       </View>
 
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        {list.length === 0 && (
-          <Text style={{ color: theme.sub, fontSize: 14, paddingVertical: 20 }}>
-            Noch keine gespeicherten Sätze. Tippe in einem Cheat-Sheet auf „Speichern".
+        {list.length === 0 ? (
+          <Text style={[styles.empty, { color: theme.sub }]}>
+            Noch nichts gespeichert. Tippe bei einem Satz auf das Lesezeichen, dann findest
+            du ihn hier wieder — auch offline.
           </Text>
+        ) : (
+          list.map((f) => (
+            <PhraseCard
+              key={f.id}
+              phrase={f}
+              dark={darkMode}
+              saved
+              onToggleSave={() => toggleSaved(f.id, f)}
+              onSpeak={() => speakSentence({ text: f.text })}
+            />
+          ))
         )}
-        {list.map((f) => (
-          <View key={f.id} style={[styles.card, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
-            <Text style={[styles.context, { color: ACCENT_BLUE }]}>{f.context}</Text>
-            <Text style={[styles.sentenceText, { color: theme.text }]}>{f.text}</Text>
-            {f.gloss && <Text style={[styles.de, { color: theme.sub }]}>{f.gloss}</Text>}
-          </View>
-        ))}
       </ScrollView>
     </View>
   );
@@ -57,13 +99,41 @@ export function FavoritesScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  header: { flexDirection: 'row', alignItems: 'center', gap: 10, padding: 16, paddingBottom: 10 },
-  backBtn: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
-  backGlyph: { fontSize: 26 },
-  title: { fontWeight: '800', fontSize: 21 },
-  scrollContent: { padding: 18, gap: 10 },
-  card: { borderWidth: 1.5, borderRadius: 14, padding: 14, gap: 4 },
-  context: { fontWeight: '700', fontSize: 11, textTransform: 'uppercase', letterSpacing: 0.4, marginBottom: 4 },
-  sentenceText: { fontSize: 15, fontWeight: '700' },
-  de: { fontSize: 13, fontWeight: '500' },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: SPACING.lg,
+    paddingTop: SPACING.sm,
+    paddingBottom: SPACING.md,
+  },
+  backBtn: { width: 32, alignItems: 'flex-start' },
+  title: {
+    flex: 1,
+    fontFamily: FONT_FAMILY.serif,
+    fontSize: FONT_SIZE.h2,
+    lineHeight: LINE_HEIGHT.h2,
+    textAlign: 'center',
+  },
+  summary: {
+    marginHorizontal: SPACING.lg,
+    borderWidth: 1.5,
+    borderRadius: RADIUS.sm,
+    paddingVertical: SPACING.sm,
+    paddingHorizontal: SPACING.md,
+  },
+  summaryText: { fontSize: FONT_SIZE.caption, textAlign: 'center' },
+  countRow: { paddingHorizontal: SPACING.lg, paddingTop: SPACING.md },
+  countPill: {
+    alignSelf: 'flex-start',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: SPACING.xs,
+    borderWidth: 1.5,
+    borderRadius: RADIUS.pill,
+    paddingVertical: SPACING.sm,
+    paddingHorizontal: SPACING.md,
+  },
+  countText: { fontSize: FONT_SIZE.caption, fontWeight: '700' },
+  scrollContent: { padding: SPACING.lg, gap: SPACING.md },
+  empty: { fontSize: FONT_SIZE.body, lineHeight: LINE_HEIGHT.body, paddingVertical: SPACING.xl },
 });

@@ -10,7 +10,7 @@ export default function Freunde() {
     <PlaceholderScreen
       icon="message-circle"
       title="Freunde"
-      description="Was hier hinkommt, steht noch nicht fest. Freunde werben findest du solange über den Coins-Knopf im Menü oben rechts."
+      description="Hier lädst du bald Freunde ein. Gemeinsame Gruppen für einen Trip, Gruppen-Streak und Rangliste sind geplant, aber zurückgestellt."
     />
   );
 }

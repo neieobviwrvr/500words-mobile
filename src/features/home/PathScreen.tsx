@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
-  Image,
+  Animated,
+  Easing,
   PanResponder,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -9,7 +11,7 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
 import { useAppState } from '../../state/AppState';
 import { CATEGORIES, GRUNDWORTSCHATZ_ID } from '../../data/categories';
@@ -17,6 +19,9 @@ import { LANGUAGES, getLanguage } from '../../data/languages';
 import { Card, Dropdown, HeaderMenu, ProgressBar, Screen, PRESS_DEPTH } from '../../components';
 import type { DropdownOption } from '../../components';
 import { useUnlockedProgress } from './useUnlockedProgress';
+import { useCategorySituations } from '../lessons/useCategorySituations';
+import { PathBackdrop } from './PathBackdrop';
+import { scenarioLabel } from '../../data/scenarios';
 import {
   getTheme,
   ACCENT_BLUE,
@@ -69,6 +74,37 @@ const LANG_PILL_W = 150;
 const LANG_PILL_H = 56;
 const ROW_H = 86;
 const CONT_W = 300;
+// Themen-Knoten beim Auffaechern: kleiner als eine Kategorie-Pille, damit auf
+// einen Blick klar ist, was Kategorie und was Thema ist (Zielbild:
+// `Homescreen genaue Uebersicht.png`).
+const THEME_W = 136;
+const THEME_H = 36;
+const THEME_ROW_H = 58;
+// Auffaechern: die Themen materialisieren von OBEN (Nutzer-Wunsch
+// 2026-08-20) - sie sinken aus ihrer Kategorie herab, statt seitlich
+// einzufliegen. Das passt zur Leserichtung des Pfades und laesst sie wie
+// einen Teil der Kategorie wirken statt wie etwas Hereingeschobenes.
+const EXPAND_DURATION = 420;
+const EXPAND_DROP = 14;
+/** Grau der Themen-Pillen - dunkler als das Gesperrten-Grau, damit sie
+ *  lesbar bleiben, aber farblich neutral gegenueber den Kategorien. */
+const THEME_LINE = '#7D7A73';
+const THEME_FILL = '#F4F2ED';
+
+// Wischgeste nach rechts: der Inhalt folgt dem Finger, federt zurueck oder
+// gleitet hinaus. Ohne dieses Mitgehen passiert optisch nichts und die Geste
+// fuehlt sich an, als haette man danebengetippt.
+//
+// `DAMPING` unter 1 laesst den Inhalt LANGSAMER als den Finger laufen - das
+// ist der Gummiband-Eindruck, den iOS ueberall verwendet. Bei 1:1 wirkt es,
+// als wuerde man die Seite wegschieben, nicht ziehen.
+const SWIPE_DAMPING = 0.4;
+/** Weiter als das darf der Inhalt nicht mitwandern. */
+const SWIPE_MAX_DRAG = 64;
+/** Zurueckfedern: klein und weich, absichtlich ohne Zappeln. */
+const SWIPE_SPRING = { friction: 6, tension: 28 };
+/** Hinausgleiten vor dem Screenwechsel - bewusst gemaechlich. */
+const SWIPE_EXIT_DURATION = 320;
 
 // Schwellen der Wischgeste nach rechts.
 // `CLAIM` ist die Strecke, ab der die Geste ueberhaupt als waagerecht gilt -
@@ -102,6 +138,8 @@ type RawNode = {
   state: NodeState;
   /** Groessere, zentrierte Pille - die Sprache an der Spitze des Pfades. */
   lead?: boolean;
+  /** Aufgefaechertes Thema unter seiner Kategorie - kleiner, blendet ein. */
+  theme?: boolean;
   onPress: () => void;
 };
 
@@ -122,8 +160,15 @@ type Connector = { left: number; top: number; length: number; angle: number; col
 // Blau gehoert dem freien Grundwortschatz, Orange den Kaufkategorien, Grau
 // dem Gesperrten - und Gruen steht nach dem Stil-Rezept ausschliesslich fuer
 // Erfolg und schlaegt deshalb alles andere.
-function nodeColors(node: { state: NodeState; lead?: boolean }) {
+function nodeColors(node: { state: NodeState; lead?: boolean; theme?: boolean }) {
+  // Gruen schlaegt alles - nach dem Stil-Rezept ist es die einzige Farbe fuer
+  // Erfolg, und das gilt auch fuer ein abgeschlossenes Thema.
   if (node.state === 'done') return { line: ACCENT_GREEN, fill: ACCENT_GREEN_BG };
+  // Aufgefaecherte Themen sind grau (Nutzer-Wunsch 2026-08-20): sie sollen
+  // sich nicht mit dem Blau des Grundwortschatzes und dem Orange der
+  // Kaufkategorien beissen. Gesperrte Themen bleiben durch das Schloss und
+  // ihren Namen unterscheidbar, nicht durch die Farbe.
+  if (node.theme) return { line: THEME_LINE, fill: THEME_FILL };
   if (node.state === 'locked') return { line: NODE_LOCKED, fill: PILL_FILL_GRAY };
   if (node.lead) return { line: ACCENT_BLUE, fill: PILL_FILL_BLUE };
   return { line: ACCENT_ORANGE, fill: PILL_FILL_ORANGE };
@@ -153,14 +198,58 @@ export function PathScreen() {
   // Die Bedingung ist bewusst streng - der Zug muss deutlich waagerecht sein
   // (doppelt so weit seitlich wie hoch) und nach RECHTS gehen. Sonst wuerde
   // die Geste das senkrechte Scrollen in der Pfad-Box abfangen.
+
+  // Verschiebung des Inhalts waehrend der Geste. Bewusst OHNE nativen
+  // Treiber: der Wert wird bei jeder Fingerbewegung aus JS gesetzt, und das
+  // vertraegt sich mit dem nativen Treiber schlecht. Bei einer Geste von
+  // wenigen hundert Millisekunden faellt das nicht ins Gewicht - anders als
+  // beim Dauer-Schimmer im Fortschrittsbalken.
+  const drag = useRef(new Animated.Value(0)).current;
+
   const swipe = useRef(
     PanResponder.create({
       onMoveShouldSetPanResponder: (_e, g) =>
         g.dx > SWIPE_CLAIM && Math.abs(g.dx) > Math.abs(g.dy) * 2,
+
+      // Der Inhalt geht mit, gedaempft und gedeckelt.
+      onPanResponderMove: (_e, g) => {
+        drag.setValue(Math.min(Math.max(g.dx, 0) * SWIPE_DAMPING, SWIPE_MAX_DRAG));
+      },
+
       onPanResponderRelease: (_e, g) => {
-        if (g.dx > SWIPE_DISTANCE || (g.dx > SWIPE_CLAIM && g.vx > SWIPE_VELOCITY)) {
-          router.push('/rewards');
+        const ausgeloest =
+          g.dx > SWIPE_DISTANCE || (g.dx > SWIPE_CLAIM && g.vx > SWIPE_VELOCITY);
+
+        if (ausgeloest) {
+          // Erst ganz hinausgleiten, dann wechseln - sonst springt der Screen
+          // um, waehrend der Inhalt noch mitten in der Bewegung steht.
+          Animated.timing(drag, {
+            toValue: SWIPE_MAX_DRAG,
+            duration: SWIPE_EXIT_DURATION,
+            easing: Easing.out(Easing.quad),
+            useNativeDriver: false,
+          }).start(() => {
+            router.push('/rewards');
+            // Zurueck auf 0, damit der Screen beim Zurueckkommen nicht
+            // verschoben dasteht.
+            drag.setValue(0);
+          });
+          return;
         }
+
+        // Nicht weit genug: zurueckfedern. Der kleine Nachschwinger ist die
+        // Rueckmeldung "erkannt, aber nicht genug".
+        Animated.spring(drag, {
+          toValue: 0,
+          ...SWIPE_SPRING,
+          useNativeDriver: false,
+        }).start();
+      },
+
+      // Nimmt das System die Geste weg (Anruf, Mitteilung), darf der Inhalt
+      // nicht verschoben liegenbleiben.
+      onPanResponderTerminate: () => {
+        Animated.spring(drag, { toValue: 0, ...SWIPE_SPRING, useNativeDriver: false }).start();
       },
     })
   ).current;
@@ -168,8 +257,70 @@ export function PathScreen() {
   const scrollRef = useRef<ScrollView>(null);
   const didAutoScroll = useRef(false);
 
-  // Platzhalter fuer das Auffaechern im naechsten Schritt - siehe Kopfnotiz.
-  const [expandedIds] = useState<string[]>([]);
+  // Auffaechern: die Schatzkarte klappt ALLE Kategorien auf einmal auf.
+  // `expandedIds` haelt, welche gerade offen sind - vorbereitet dafuer, dass
+  // spaeter auch eine einzelne Pille ihre Themen zeigen kann.
+  const situations = useCategorySituations(targetLanguageId);
+  const [expandedIds, setExpandedIds] = useState<string[]>([]);
+  // Wie beim Menue getrennt vom Zustand: die Knoten sollen das Einfahren zu
+  // Ende spielen, bevor sie aus der Liste verschwinden.
+  const [themesMounted, setThemesMounted] = useState(false);
+  const expand = useRef(new Animated.Value(0)).current;
+  const hasExpanded = useRef(false);
+
+  const alleIds = useMemo(
+    () => [GRUNDWORTSCHATZ_ID, ...CATEGORIES.map((c) => c.id)],
+    []
+  );
+  const istOffen = expandedIds.length > 0;
+
+  // Die Schatzkarte schaltet ALLE Kategorien auf einmal.
+  const toggleExpand = useCallback(() => {
+    setExpandedIds((cur) => (cur.length > 0 ? [] : alleIds));
+  }, [alleIds]);
+
+  // Ein Tipp auf eine Pille faechert nur ihre eigenen Themen auf
+  // (Nutzer-Wunsch 2026-08-20). Damit ist die Pille kein Weg mehr nach S2 -
+  // dorthin fuehren jetzt die Themen darunter.
+  const toggleCategory = useCallback(
+    (categoryId: string) => () =>
+      setExpandedIds((cur) =>
+        cur.includes(categoryId) ? cur.filter((id) => id !== categoryId) : [...cur, categoryId]
+      ),
+    []
+  );
+
+  useEffect(() => {
+    const useNative = Platform.OS !== 'web';
+    if (istOffen) {
+      hasExpanded.current = true;
+      setThemesMounted(true);
+      const anim = Animated.timing(expand, {
+        toValue: 1,
+        duration: EXPAND_DURATION,
+        easing: Easing.out(Easing.quad),
+        useNativeDriver: useNative,
+      });
+      anim.start();
+      return () => anim.stop();
+    }
+
+    if (!hasExpanded.current) return;
+    const anim = Animated.timing(expand, {
+      toValue: 0,
+      duration: EXPAND_DURATION,
+      easing: Easing.out(Easing.quad),
+      useNativeDriver: useNative,
+    });
+    anim.start();
+    // Aushaengen an einer Uhr, nicht am Abschluss-Callback - laeuft die
+    // Animation nicht durch, blieben die Knoten sonst unsichtbar haengen.
+    const timer = setTimeout(() => setThemesMounted(false), EXPAND_DURATION);
+    return () => {
+      anim.stop();
+      clearTimeout(timer);
+    };
+  }, [istOffen, expand]);
   const [notice, setNotice] = useState<string | null>(null);
   const hideNotice = useCallback(() => setNotice(null), []);
 
@@ -193,6 +344,27 @@ export function PathScreen() {
     // bewertet. "Aktuell" ist die erste freigeschaltete Kategorie, die das
     // noch nicht ist - sie bekommt den Ring und gibt dem Abschnitts-Kopf
     // seinen Namen.
+    // Die Themen einer Kategorie, sobald sie aufgefaechert ist. Sie stehen
+    // als eigene Knoten in derselben Liste - deshalb rutschen die folgenden
+    // Kategorien von selbst nach unten, ohne Sonderfall im Layout.
+    //
+    // Gesperrte Kategorien fachern ebenfalls auf: der Pfad soll zeigen, was
+    // es zu holen gibt. Ihre Themen fuehren dann in den Shop.
+    const themenVon = (categoryId: string, locked: boolean): RawNode[] => {
+      if (!themesMounted || !expandedIds.includes(categoryId)) return [];
+      return (situations.byCategory[categoryId] ?? []).map((sit) => ({
+        id: `${categoryId}:${sit.scenario}`,
+        label: scenarioLabel(sit.scenario),
+        state: (locked
+          ? 'locked'
+          : sit.total > 0 && sit.seen >= sit.total
+            ? 'done'
+            : 'open') as NodeState,
+        theme: true,
+        onPress: locked ? goShop : goCategory(categoryId),
+      }));
+    };
+
     const stateFor = (categoryId: string): NodeState => {
       const p = progress.byCategory[categoryId];
       if (p && p.total > 0 && p.seen >= p.total) return 'done';
@@ -205,25 +377,38 @@ export function PathScreen() {
         label: activeLanguage.label,
         state: stateFor(GRUNDWORTSCHATZ_ID),
         lead: true,
-        onPress: goCategory(GRUNDWORTSCHATZ_ID),
+        onPress: toggleCategory(GRUNDWORTSCHATZ_ID),
       },
-      ...purchasedCategories.map((cat, i) => ({
-        id: cat.id,
-        label: cat.name,
-        state: stateFor(cat.id),
-        onPress: goCategory(cat.id),
-      })),
-      ...lockedCategories.map((cat, i) => ({
-        id: cat.id,
-        label: cat.name,
-        state: 'locked' as NodeState,
-        onPress: goShop,
-      })),
+      ...themenVon(GRUNDWORTSCHATZ_ID, false),
+      ...purchasedCategories.flatMap((cat) => [
+        {
+          id: cat.id,
+          label: cat.name,
+          state: stateFor(cat.id),
+          onPress: toggleCategory(cat.id),
+        },
+        ...themenVon(cat.id, false),
+      ]),
+      ...lockedCategories.flatMap((cat) => [
+        {
+          id: cat.id,
+          label: cat.name,
+          state: 'locked' as NodeState,
+          onPress: toggleCategory(cat.id),
+        },
+        ...themenVon(cat.id, true),
+      ]),
     ];
 
-    // Erster nicht fertiger, nicht gesperrter Knoten wird "aktuell".
-    const idx = list.findIndex((n) => n.state === 'open');
-    if (idx >= 0) list[idx].state = 'current';
+    // "Aktuell" ist die zuletzt GELERNTE Kategorie (Nutzer-Wunsch
+    // 2026-08-20) - der Screen soll zeigen, wo man aufgehoert hat, nicht wo
+    // man theoretisch weitermachen sollte. Erst wenn noch nie geuebt wurde,
+    // gilt wieder die erste nicht fertige Kategorie.
+    const zuletzt = progress.lastLearnedCategoryId
+      ? list.findIndex((n) => n.id === progress.lastLearnedCategoryId && n.state !== 'locked')
+      : -1;
+    const idx = zuletzt >= 0 ? zuletzt : list.findIndex((n) => n.state === 'open');
+    if (idx >= 0 && list[idx].state !== 'done') list[idx].state = 'current';
 
     return {
       nodes: list,
@@ -232,18 +417,22 @@ export function PathScreen() {
     };
     // `expandedIds` gehoert schon jetzt in die Abhaengigkeiten - sobald das
     // Auffaechern kommt, muss die Liste sich davon neu bauen.
-  }, [purchased, activeLanguage.label, progress.byCategory, expandedIds]);
+  }, [purchased, activeLanguage.label, progress.byCategory, progress.lastLearnedCategoryId, expandedIds, themesMounted, situations.byCategory]);
 
   // ---------------------------------------------------------------------
   // Zickzack-Layout: Pillen abwechselnd links/rechts, verbunden durch
   // rotierte Linien zwischen den Mittelpunkten.
   // ---------------------------------------------------------------------
   const { pathNodes, connectors, canvasHeight } = useMemo(() => {
+    // Laufende Hoehe statt `index * ROW_H`: Themen-Zeilen sind niedriger als
+    // Kategorie-Zeilen, sonst klaffte beim Auffaechern ueberall eine Luecke.
+    let y = 0;
     const laid: LaidOutNode[] = raw.map((n, i) => {
-      const w = n.lead ? LANG_PILL_W : PILL_W;
-      const h = n.lead ? LANG_PILL_H : PILL_H;
+      const w = n.theme ? THEME_W : n.lead ? LANG_PILL_W : PILL_W;
+      const h = n.theme ? THEME_H : n.lead ? LANG_PILL_H : PILL_H;
       const left = n.lead ? (CONT_W - w) / 2 : i % 2 === 0 ? 0 : CONT_W - w;
-      const top = i * ROW_H;
+      const top = y;
+      y += n.theme ? THEME_ROW_H : ROW_H;
       return { ...n, width: w, height: h, left, top, cx: left + w / 2, cy: top + h / 2 };
     });
 
@@ -272,15 +461,29 @@ export function PathScreen() {
     };
   }, [raw]);
 
-  // Beim Oeffnen zum aktuellen Knoten springen statt oben anzufangen. Nur
-  // einmal pro Mount - wer selbst gescrollt hat, soll nicht zurueckgerissen
-  // werden, wenn der Fortschritt nachlaedt.
+  // Sprung zur zuletzt gelernten Stelle - bei JEDEM Betreten des Screens
+  // (Nutzer-Wunsch 2026-08-20), also auch beim Zurueckkehren aus einer
+  // Uebung, nicht nur beim ersten Aufbau.
+  //
+  // `didAutoScroll` wird beim Verlassen zurueckgesetzt, damit der naechste
+  // Besuch wieder springt. Innerhalb eines Besuchs bleibt es bei einem
+  // Sprung - wer selbst scrollt, soll nicht zurueckgerissen werden, wenn der
+  // Fortschritt nachlaedt.
+  useFocusEffect(
+    useCallback(() => {
+      didAutoScroll.current = false;
+      return () => {
+        didAutoScroll.current = false;
+      };
+    }, [])
+  );
+
   useEffect(() => {
     if (didAutoScroll.current || progress.loading || pathNodes.length === 0) return;
     didAutoScroll.current = true;
     const target = Math.max(0, (pathNodes[currentIndex]?.top ?? 0) - ROW_H);
     // Ohne die Verzoegerung misst die ScrollView ihren Inhalt noch nicht.
-    const timer = setTimeout(() => scrollRef.current?.scrollTo({ y: target, animated: false }), 0);
+    const timer = setTimeout(() => scrollRef.current?.scrollTo({ y: target, animated: true }), 0);
     return () => clearTimeout(timer);
   }, [progress.loading, pathNodes, currentIndex]);
 
@@ -292,23 +495,13 @@ export function PathScreen() {
   }));
 
   return (
-    // ===== TEST-HINTERGRUND (2026-08-20) =================================
-    // Pergament-Textur testweise hinter S1. Zum Entfernen: dieses <View> und
-    // das <Image> loeschen, `style={styles.transparentPage}` am <Screen>
-    // streichen und `pathBoxTestTransparent` unten aus dem Card-Stil nehmen.
-    // Die Datei liegt unter assets/hintergrund-pergament.png.
-    // =====================================================================
     <View style={styles.root} {...swipe.panHandlers}>
-      <Image
-        source={require('../../../assets/hintergrund-pergament.png')}
-        // Volle Fensterhoehe statt 100% des Elternteils: die Tab-Gruppe haelt
-        // unten Platz fuer die schwebende Leiste frei, sonst endete die
-        // Textur 90 Punkte ueber dem Rand und die Leiste schwebte auf
-        // nacktem Untergrund.
-        style={[styles.backdrop, { width: windowWidth, height: windowHeight }]}
-        resizeMode="cover"
-        accessibilityIgnoresInvertColors
-      />
+      {/* Hintergrund in drei Ebenen; die Kartenecken wackeln gelegentlich.
+          Zum Entfernen: diese Zeile loeschen, `styles.transparentPage` am
+          <Screen> streichen und `pathBoxTestTransparent` aus dem Card-Stil
+          nehmen. */}
+      <PathBackdrop width={windowWidth} height={windowHeight} />
+    <Animated.View style={[styles.root, { transform: [{ translateX: drag }] }]}>
     <Screen dark={darkMode} style={styles.transparentPage}>
       {/* Kopfzeile: Sprache links, Geschenk und Coins rechts. */}
       <View style={styles.topBar}>
@@ -364,20 +557,25 @@ export function PathScreen() {
             </Text>
           </View>
           <Pressable
-            onPress={() => setNotice('Das Auffächern der Themen kommt im nächsten Schritt.')}
+            onPress={toggleExpand}
             accessibilityRole="button"
-            accessibilityLabel="Alle Themen auffächern"
-            accessibilityHint="Noch ohne Funktion"
+            accessibilityLabel={istOffen ? 'Themen einklappen' : 'Alle Themen auffächern'}
+            accessibilityState={{ expanded: istOffen }}
+            aria-expanded={istOffen}
             style={({ pressed }) => [
-              styles.mapButton,
-              { borderColor: theme.border, opacity: pressed ? 0.7 : 1 },
+              styles.toggleButton,
+              {
+                borderColor: theme.border,
+                backgroundColor: theme.cardBg,
+                opacity: pressed ? 0.7 : 1,
+              },
             ]}
           >
-            <Image
-              source={require('../../../assets/icon-karte.png')}
-              style={styles.mapImage}
-              accessibilityIgnoresInvertColors
-            />
+            {/* Wechsel-Symbol statt der Schatzkarte (Nutzer-Wunsch
+                2026-08-20). Passt zur Aufgabe: der Knopf schaltet zwischen
+                zusammengeklappt und aufgefaechert hin und her, er fuehrt
+                nicht woandershin. */}
+            <Feather name="repeat" size={24} color={theme.text} />
           </Pressable>
         </View>
 
@@ -403,9 +601,13 @@ export function PathScreen() {
                 ]}
               />
             ))}
-            {pathNodes.map((n) => (
-              <PathNode key={n.id} node={n} />
-            ))}
+            {pathNodes.map((n) =>
+              n.theme ? (
+                <PathNode key={n.id} node={n} progress={expand} />
+              ) : (
+                <PathNode key={n.id} node={n} />
+              )
+            )}
           </View>
         </ScrollView>
       </Card>
@@ -422,6 +624,7 @@ export function PathScreen() {
 
       <Notice text={notice} dark={darkMode} onHide={hideNotice} />
     </Screen>
+    </Animated.View>
     </View>
   );
 }
@@ -432,69 +635,94 @@ export function PathScreen() {
 
 // Ein Knoten im Pfad. Traegt die Druckkante von `PillButton`, damit sich
 // Knoten und Knoepfe gleich anfuehlen - das ist der 30%-Duolingo-Anteil.
-function PathNode({ node }: { node: LaidOutNode }) {
+function PathNode({ node, progress }: { node: LaidOutNode; progress?: Animated.Value }) {
   const colors = nodeColors(node);
   const isLocked = node.state === 'locked';
   const isCurrent = node.state === 'current';
 
-  return (
-    <Pressable
-      onPress={node.onPress}
-      accessibilityRole="button"
-      // Der Zustand darf nicht allein an Farbe und Symbol haengen - Gruen,
-      // Haekchen und Schloss sind fuer VoiceOver unsichtbar, deshalb steht
-      // jeder Zustand im Namen.
-      accessibilityLabel={
-        isLocked
-          ? `${node.label}, gesperrt`
-          : node.state === 'done'
-            ? `${node.label}, abgeschlossen`
-            : isCurrent
-              ? `${node.label}, hier bist du`
-              : node.label
+  // Aufbau in zwei Schichten, und das ist wichtig:
+  //
+  // AUSSEN eine Animated.View, die nur positioniert und animiert. INNEN ein
+  // ganz normales Pressable, das die Flaeche fuellt.
+  //
+  // Warum nicht ein animiertes Pressable mit allem drin: dessen `style` kann
+  // dann keine FUNKTION mehr sein - und genau die brauchen wir fuer den
+  // Gedrueckt-Zustand. Beim ersten Versuch fielen dadurch saemtliche Stile
+  // aus, die Themen standen als nackter Text uebereinander.
+  const anim = progress
+    ? {
+        opacity: progress,
+        transform: [
+          {
+            // Von oben herabsinken statt seitlich hereinfliegen.
+            translateY: progress.interpolate({
+              inputRange: [0, 1],
+              outputRange: [-EXPAND_DROP, 0],
+            }),
+          },
+        ],
       }
-      accessibilityHint={isLocked ? 'Öffnet den Shop zum Freischalten' : 'Öffnet die Kategorie'}
-      style={({ pressed }) => [
-        styles.node,
-        {
-          left: node.left,
-          top: node.top + (pressed ? PRESS_DEPTH : 0),
-          width: node.width,
-          height: node.height - PRESS_DEPTH,
-          borderColor: colors.line,
-          backgroundColor: colors.fill,
-          // Kraeftigerer Rand statt eines Schattens fuer "hier bist du" -
-          // ein Schatten traegt auf hellem Grund kaum und faellt im
-          // Darkmode ganz weg.
-          borderWidth: isCurrent ? 3 : 2,
-          borderBottomWidth: pressed ? 2 : PRESS_DEPTH,
-        },
+    : null;
+
+  return (
+    <Animated.View
+      style={[
+        styles.nodeSlot,
+        { left: node.left, top: node.top, width: node.width, height: node.height },
+        anim,
       ]}
     >
-      {node.state === 'done' && (
-        <Feather name="check" size={14} color={colors.line} accessibilityElementsHidden />
-      )}
-      {isLocked && <Feather name="lock" size={13} color={colors.line} accessibilityElementsHidden />}
-      <Text
-        numberOfLines={2}
-        style={[node.lead ? styles.nodeLabelLead : styles.nodeLabel, { color: colors.line }]}
+      <Pressable
+        onPress={node.onPress}
+        accessibilityRole="button"
+        // Der Zustand darf nicht allein an Farbe und Symbol haengen - Gruen,
+        // Haekchen und Schloss sind fuer VoiceOver unsichtbar, deshalb steht
+        // jeder Zustand im Namen.
+        accessibilityLabel={
+          isLocked
+            ? `${node.label}, gesperrt`
+            : node.state === 'done'
+              ? `${node.label}, abgeschlossen`
+              : isCurrent
+                ? `${node.label}, hier bist du`
+                : node.label
+        }
+        accessibilityHint={isLocked ? 'Öffnet den Shop zum Freischalten' : 'Öffnet die Kategorie'}
+        style={({ pressed }) => [
+          styles.node,
+          node.theme && styles.nodeTheme,
+          {
+            borderColor: colors.line,
+            backgroundColor: colors.fill,
+            // Kraeftigerer Rand statt eines Schattens fuer "hier bist du" -
+            // ein Schatten traegt auf hellem Grund kaum und faellt im
+            // Darkmode ganz weg.
+            borderWidth: isCurrent ? 3 : node.theme ? 1.5 : 2,
+            borderBottomWidth: pressed ? 2 : node.theme ? 2 : PRESS_DEPTH,
+            marginTop: pressed ? PRESS_DEPTH : 0,
+          },
+        ]}
       >
-        {node.label}
-      </Text>
-    </Pressable>
+        {node.state === 'done' && !node.theme ? (
+          <Feather name="check" size={14} color={colors.line} accessibilityElementsHidden />
+        ) : null}
+        {isLocked ? (
+          <Feather name="lock" size={13} color={colors.line} accessibilityElementsHidden />
+        ) : null}
+        <Text
+          numberOfLines={2}
+          style={[
+            node.lead ? styles.nodeLabelLead : node.theme ? styles.nodeLabelTheme : styles.nodeLabel,
+            { color: colors.line },
+          ]}
+        >
+          {node.label}
+        </Text>
+      </Pressable>
+    </Animated.View>
   );
 }
 
-// Der Lern-Einstieg auf S1 (Nutzer-Vorlage 2026-08-18, auf eine Aktion
-// zusammengezogen 2026-08-20).
-//
-// Flache Kapsel mit weichem Aussenschatten - bewusst OHNE die Druckkante von
-// `PillButton`, so gibt es die Vorlage her. Die Rueckmeldung beim Druecken
-// uebernimmt deshalb eine dezente Fuellung.
-//
-// Hier stand bis 2026-08-20 ein geteilter Knopf mit "Weiter durchstarten" in
-// der rechten Haelfte. Der ist auf Nutzer-Entscheidung weg; dieselbe Kategorie
-// erreicht man weiterhin ueber ihre Pille im Pfad.
 function SoftButton({
   dark,
   label,
@@ -590,26 +818,14 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
   },
   // --- gehoert zum TEST-HINTERGRUND, siehe oben ---
-  root: {
-    flex: 1,
-  },
-  backdrop: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    // Hoehe kommt aus dem Fenster (siehe oben). `width/height: 100%` hatte
-    // react-native-web dazu gebracht, das Bild zu STRECKEN statt es
-    // zuzuschneiden - die Textur war dadurch verzerrt.
-  },
   transparentPage: {
-    // Sonst liegt die Seitenfarbe aus dem Theme ueber der Textur.
     backgroundColor: 'transparent',
   },
   pathBoxTestTransparent: {
-    // Die weisse Fuellung der Box wuerde die Textur in der Mitte zudecken -
-    // dann saehe man nur die Raender.
     backgroundColor: 'transparent',
+  },
+  root: {
+    flex: 1,
   },
   sectionBar: {
     flexDirection: 'row',
@@ -636,19 +852,13 @@ const styles = StyleSheet.create({
     fontSize: FONT_SIZE.bodyLg,
     lineHeight: LINE_HEIGHT.bodyLg,
   },
-  mapButton: {
+  toggleButton: {
     width: 56,
     height: 56,
     borderWidth: 1.5,
     borderRadius: RADIUS.md,
-    overflow: 'hidden',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  mapImage: {
-    width: '100%',
-    height: '100%',
-    resizeMode: 'cover',
   },
   pathBoxContent: {
     paddingVertical: SPACING.lg,
@@ -664,8 +874,12 @@ const styles = StyleSheet.create({
     height: 2,
     opacity: 0.45,
   },
-  node: {
+  nodeSlot: {
     position: 'absolute',
+  },
+  node: {
+    width: '100%',
+    height: '100%',
     borderRadius: RADIUS.pill,
     borderWidth: 2,
     alignItems: 'center',
@@ -673,6 +887,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: SPACING.xs,
     paddingHorizontal: SPACING.md,
+  },
+  nodeTheme: {
+    // Kleiner und leiser als eine Kategorie - ein Thema ist ein Teil von ihr,
+    // keine gleichrangige Station.
+    borderWidth: 1.5,
+  },
+  nodeLabelTheme: {
+    fontWeight: '700',
+    fontSize: FONT_SIZE.small,
+    textAlign: 'center',
+    flexShrink: 1,
   },
   nodeLabel: {
     fontWeight: '800',
@@ -693,6 +918,11 @@ const styles = StyleSheet.create({
     marginBottom: SPACING.md,
   },
   softButton: {
+    // Schmiegt sich an den Text statt die volle Zeilenbreite zu nehmen
+    // (Nutzer-Wunsch 2026-08-20). Zentriert, damit er nicht am linken Rand
+    // klebt.
+    alignSelf: 'center',
+    maxWidth: '100%',
     borderRadius: RADIUS.pill,
     borderWidth: 1,
     alignItems: 'center',

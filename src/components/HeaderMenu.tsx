@@ -34,13 +34,20 @@ const BUTTON_MIN = 44;
 type Props = {
   dark: boolean;
   /**
+   * Zeigt Coins und Profil direkt nebeneinander, ohne Drei-Punkte-Knopf und
+   * ohne Ausfahren (Nutzer-Wunsch 2026-08-20 fuer den Lektionen-Screen).
+   * Das Geschenk faellt dabei weg - bei zwei sichtbaren Knoepfen waeren drei
+   * zu viel fuer eine Kopfzeile.
+   */
+  inline?: boolean;
+  /**
    * Legt das Menue absolut oben rechts auf den Screen. Fuer Screens ohne
    * eigene Kopfzeile; S1 setzt es stattdessen in seine Zeile.
    */
   overlay?: boolean;
 };
 
-export function HeaderMenu({ dark, overlay = false }: Props) {
+export function HeaderMenu({ dark, overlay = false, inline = false }: Props) {
   const { coins } = useAppState();
   const theme = getTheme(dark);
 
@@ -105,6 +112,28 @@ export function HeaderMenu({ dark, overlay = false }: Props) {
     const timer = setTimeout(() => setNotice(null), 2600);
     return () => clearTimeout(timer);
   }, [notice]);
+
+  if (inline) {
+    return (
+      <View style={[styles.inlineRow, overlay && styles.anchorOverlay]}>
+        <HeaderButton
+          dark={dark}
+          icon="circle"
+          label="Coins"
+          value={String(coins)}
+          hint="Öffnet Freunde werben, Bewertung und Feedback"
+          onPress={() => router.push('/rewards')}
+        />
+        <HeaderButton
+          dark={dark}
+          icon="user"
+          label="Profil"
+          hint="Öffnet Konto, Sprache und Einstellungen"
+          onPress={() => router.push('/profil')}
+        />
+      </View>
+    );
+  }
 
   return (
     <>
@@ -235,6 +264,10 @@ function HeaderButton({
 const styles = StyleSheet.create({
   anchor: {
     position: 'relative',
+  },
+  inlineRow: {
+    flexDirection: 'row',
+    gap: SPACING.sm,
   },
   anchorOverlay: {
     position: 'absolute',

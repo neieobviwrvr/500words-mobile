@@ -1,28 +1,55 @@
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import {
+  ActivityIndicator,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import { router } from 'expo-router';
+import { Feather } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAppState } from '../../state/AppState';
 import { HeaderMenu } from '../../components';
 import { CATEGORIES } from '../../data/categories';
 import { CheatsheetCategoryGroup, loadCheatsheetGroups } from '../../data/cheatsheetContent';
-import { getTheme, ACCENT_BLUE } from '../../theme/tokens';
+import {
+  getTheme,
+  ACCENT_BLUE,
+  RADIUS,
+  SPACING,
+  FONT_SIZE,
+  FONT_FAMILY,
+  LINE_HEIGHT,
+} from '../../theme/tokens';
 
-// S6 - Cheat-Sheet-Survival. Seit 2026-08-07 auf echtem Supabase-Content
-// (statt Platzhalter) - zeigt alle Saetze aus gekauften Kategorien +
-// Grundwortschatz, offline-cachefaehig (siehe phrasebookContent.ts).
-// Themen-Boxen = echte `scenario`-Werte, nur bei Kategorien mit mehreren
-// unterschiedlichen Szenarien gezeigt (siehe cheatsheetContent.ts). Echte
-// Freitextsuche (z.B. "Arzt suchen") jetzt eingebaut statt Deko-Suchfeld.
+// S6 - Survival-Notizen (Aufbau nach Simons Vorlage vom 2026-08-20).
+//
+// Von oben nach unten: Kopfzeile, der grosse Knopf zu den gespeicherten
+// Saetzen, eine Zeile mit Favoriten-Zaehler und Suche, der Kasten mit den
+// Themen zum Auswaehlen, unten der Suchen-Knopf.
+//
+// Kein Lernmodus, sondern ein Nachschlagewerk: man waehlt Themen und laesst
+// sich die passenden Saetze zeigen. Inhalt kommt aus denselben Supabase-
+// Saetzen wie die Uebung und ist offline-cachefaehig (siehe
+// data/phrasebookContent.ts).
+//
+// Das Suchfeld ist eingeklappt und faehrt erst auf Tippen aus - die Vorlage
+// zeigt an seiner Stelle nur eine Pille. Die Freitextsuche selbst ist
+// unveraendert (siehe searchCheatsheetSentences in cheatsheetContent.ts).
 
 export function CheatsheetScreen() {
-  const { darkMode, selectedThemes, toggleThemeSelect, saved, purchased, targetLanguageId } = useAppState();
+  const { darkMode, selectedThemes, toggleThemeSelect, saved, purchased, targetLanguageId } =
+    useAppState();
   const theme = getTheme(darkMode);
-  // Seit dieser Screen ein Tab-Einstieg ist, liegt er ohne eigenen Einsatz
-  // unter der Statusleiste bzw. der Dynamic Island - vorher fiel das weniger
-  // auf, weil er ueber einen Zurueck-Pfeil betreten wurde.
+  // Der native Header ist app-weit aus - ohne diesen Einsatz liegt die
+  // Ueberschrift unter der Statusleiste bzw. der Kamera-Insel.
   const insets = useSafeAreaInsets();
+
   const [query, setQuery] = useState('');
+  const [searchOpen, setSearchOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [groups, setGroups] = useState<CheatsheetCategoryGroup[]>([]);
@@ -59,113 +86,177 @@ export function CheatsheetScreen() {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.pageBg }]}>
-      <View style={[styles.top, { paddingTop: insets.top + 8 }]}>
-        {/* Kopfzeilen-Menue auf allen Tab-Screens - siehe HeaderMenu. Hier
-            in der Zeile statt darueber gelegt, weil dieser Screen schon eine
-            eigene Kopfzeile hat. */}
-        <View style={styles.header}>
-          {/* Kein Zurueck-Pfeil mehr (2026-08-18): dieser Screen ist seit der
-              Tab-Leiste ein Einstiegspunkt und kein aufgerufener Unterscreen.
-              Ein Pfeil, der aus einem Tab herausfuehrt, waere ein Weg, den es
-              nicht gibt. Die Unterscreens (Kategorie, Suche, Favoriten)
-              behalten ihren Pfeil - die werden weiterhin darueber gelegt. */}
-          <Text style={[styles.title, { color: theme.text }]}>Cheat‑Sheet‑Survival</Text>
-          {offline && <Text style={styles.offlineBadge}>📴 Offline</Text>}
+    <View style={[styles.container, { backgroundColor: theme.pageBg, paddingTop: insets.top }]}>
+      <View style={styles.header}>
+        {/* Zurueck fuehrt hier zum Startscreen, NICHT in die Historie
+            (Nutzer-Entscheidung 2026-08-20): Survival ist ein Tab, kein
+            aufgerufener Unterscreen. Nur die Tab-Screens verhalten sich so -
+            alle uebrigen (Kategorie, Shop, Uebung, Favoriten ...) gehen
+            weiterhin dorthin zurueck, wo man hergekommen ist. */}
+        <Pressable
+          onPress={() => router.navigate('/')}
+          hitSlop={10}
+          accessibilityRole="button"
+          accessibilityLabel="Zum Startscreen"
+          style={styles.headerSide}
+        >
+          <Feather name="arrow-left" size={24} color={theme.text} />
+        </Pressable>
+        <Text style={[styles.title, { color: theme.text }]}>Survival-Notizen</Text>
+        <View style={styles.headerSide}>
           <HeaderMenu dark={darkMode} />
         </View>
-        <View style={styles.searchRow}>
-          <TextInput
-            value={query}
-            onChangeText={setQuery}
-            onSubmitEditing={doTextSearch}
-            placeholder="Wo brauchst du gerade Hilfe? (z.B. „Arzt“)"
-            placeholderTextColor={theme.sub}
-            style={[styles.searchInput, { borderColor: theme.border, backgroundColor: theme.cardBg, color: theme.text }]}
-          />
-          <Pressable
-            onPress={doTextSearch}
-            accessibilityRole="button"
-            accessibilityLabel="Suchen"
-            style={styles.searchButton}
-          >
-            {/* Reines Lupen-Zeichen ohne Text - ohne Label haette VoiceOver
-                hier nur ein Sonderzeichen vorzulesen. */}
-            <Text style={styles.searchButtonText}>⌕</Text>
-          </Pressable>
-        </View>
+      </View>
+
+      {offline ? (
+        <Text style={[styles.offline, { color: theme.sub }]}>
+          📴 Offline — letzter gespeicherter Stand
+        </Text>
+      ) : null}
+
+      {/* Der grosse Weg zu den gespeicherten Saetzen. */}
+      <Pressable
+        onPress={() => router.push('/cheatsheet/favorites')}
+        accessibilityRole="button"
+        accessibilityLabel={`Gespeicherte Sätze, ${favoritesCount}`}
+        style={({ pressed }) => [
+          styles.savedButton,
+          {
+            borderColor: theme.text,
+            backgroundColor: pressed ? theme.subtleFill : theme.cardBg,
+          },
+        ]}
+      >
+        <Feather name="bookmark" size={18} color={theme.text} />
+        <Text style={[styles.savedButtonText, { color: theme.text }]}>Gespeicherte Sätze</Text>
+      </Pressable>
+
+      <View style={styles.pillRow}>
         <Pressable
           onPress={() => router.push('/cheatsheet/favorites')}
           accessibilityRole="button"
           accessibilityLabel={`Favoriten, ${favoritesCount}`}
+          style={({ pressed }) => [
+            styles.pill,
+            { borderColor: theme.border, backgroundColor: theme.cardBg, opacity: pressed ? 0.7 : 1 },
+          ]}
         >
-          <Text style={styles.favLink}>Favoriten (Anzahl {favoritesCount})</Text>
+          <Text style={[styles.pillText, { color: theme.text }]}>
+            Favoriten (Anzahl {favoritesCount})
+          </Text>
+        </Pressable>
+
+        <Pressable
+          onPress={() => setSearchOpen((o) => !o)}
+          accessibilityRole="button"
+          accessibilityLabel="Suchen"
+          accessibilityHint="Öffnet das Suchfeld"
+          aria-expanded={searchOpen}
+          accessibilityState={{ expanded: searchOpen }}
+          style={({ pressed }) => [
+            styles.pill,
+            { borderColor: theme.border, backgroundColor: theme.cardBg, opacity: pressed ? 0.7 : 1 },
+          ]}
+        >
+          <Feather name="search" size={15} color={theme.text} />
+          <Text style={[styles.pillText, { color: theme.text }]}>Suchen</Text>
         </Pressable>
       </View>
 
-      {loading && (
+      {searchOpen ? (
+        <TextInput
+          value={query}
+          onChangeText={setQuery}
+          onSubmitEditing={doTextSearch}
+          autoFocus
+          returnKeyType="search"
+          placeholder={'Wo brauchst du gerade Hilfe? (z.B. „Arzt“)'}
+          placeholderTextColor={theme.sub}
+          accessibilityLabel="Suchbegriff"
+          style={[
+            styles.searchInput,
+            { borderColor: theme.border, backgroundColor: theme.cardBg, color: theme.text },
+          ]}
+        />
+      ) : null}
+
+      {loading ? (
         <View style={styles.centerBox}>
           <ActivityIndicator color={ACCENT_BLUE} />
         </View>
-      )}
-      {!loading && loadError && (
+      ) : loadError ? (
         <View style={styles.centerBox}>
-          <Text style={{ color: theme.sub, textAlign: 'center', paddingHorizontal: 20 }}>{loadError}</Text>
+          <Text style={{ color: theme.sub, textAlign: 'center', paddingHorizontal: SPACING.xl }}>
+            {loadError}
+          </Text>
         </View>
-      )}
+      ) : (
+        // Der umrandete Kasten aus der Vorlage. Er scrollt innen, damit der
+        // Suchen-Knopf unten stehen bleibt.
+        <View style={[styles.themeBox, { borderColor: theme.border }]}>
+          <ScrollView contentContainerStyle={styles.themeBoxContent}>
+            {groups.map((grp) => (
+              <View key={grp.categoryId} style={styles.group}>
+                <Pressable
+                  onPress={() => router.push(`/cheatsheet/${grp.categoryId}`)}
+                  accessibilityRole="button"
+                  accessibilityLabel={
+                    grp.allSentences.length > 0
+                      ? `${grp.title}, ${grp.allSentences.length} Sätze`
+                      : `${grp.title}, noch keine Sätze`
+                  }
+                >
+                  <Text style={[styles.groupTitle, { color: theme.text }]}>{grp.title}</Text>
+                </Pressable>
 
-      {!loading && !loadError && (
-        <ScrollView contentContainerStyle={styles.scrollContent}>
-          {groups.map((grp) => (
-            <View key={grp.categoryId}>
-              <Pressable
-                onPress={() => router.push(`/cheatsheet/${grp.categoryId}`)}
-                accessibilityRole="button"
-                accessibilityLabel={
-                  grp.allSentences.length > 0
-                    ? `${grp.title}, ${grp.allSentences.length} Sätze`
-                    : `${grp.title}, noch keine Sätze`
-                }
-                style={styles.groupHeader}
-              >
-                <Text style={[styles.groupTitle, { color: theme.text }]}>{grp.title}</Text>
-                <Text style={[styles.groupLink, { color: theme.sub }]}>
-                  {grp.allSentences.length > 0 ? `${grp.allSentences.length} Sätze ›` : 'Cheat‑Sheet ›'}
-                </Text>
-              </Pressable>
-              {grp.allSentences.length === 0 && (
-                <Text style={[styles.placeholderText, { color: theme.sub }]}>(Platzhalter - noch keine Sätze für diese Kategorie)</Text>
-              )}
-              {grp.scenarios.length > 0 && (
-                <View style={styles.themeGrid}>
+                {grp.allSentences.length === 0 ? (
+                  <Text style={[styles.placeholder, { color: theme.sub }]}>
+                    Noch keine Sätze in dieser Kategorie
+                  </Text>
+                ) : null}
+
+                <View style={styles.labelGrid}>
                   {grp.scenarios.map((sc) => {
                     const key = `${grp.categoryId}_${sc.key}`;
                     const selected = !!selectedThemes[key];
                     return (
                       <Pressable
                         key={key}
-                        onPress={() => toggleThemeSelect(key, { groupId: grp.categoryId, groupTitle: grp.title, themeLabel: sc.label, key })}
+                        onPress={() =>
+                          toggleThemeSelect(key, {
+                            groupId: grp.categoryId,
+                            groupTitle: grp.title,
+                            themeLabel: sc.label,
+                            key,
+                          })
+                        }
                         accessibilityRole="button"
-                        accessibilityLabel={sc.label}
+                        accessibilityLabel={`${sc.label}, ${sc.sentences.length} Sätze`}
                         // Ausgewaehlt wird sonst nur ueber Rahmen- und
-                        // Hintergrundfarbe gezeigt.
+                        // Fuellfarbe gezeigt.
                         accessibilityState={{ selected }}
                         style={[
-                          styles.themeBox,
-                          { borderColor: selected ? ACCENT_BLUE : theme.border, backgroundColor: selected ? theme.modeBg : theme.cardBg },
+                          styles.label,
+                          {
+                            borderColor: selected ? ACCENT_BLUE : theme.border,
+                            backgroundColor: selected ? theme.modeBg : theme.cardBg,
+                          },
                         ]}
                       >
-                        <Text style={{ color: selected ? ACCENT_BLUE : theme.text, fontWeight: '700', fontSize: 11, textAlign: 'center' }}>
-                          {sc.label} ({sc.sentences.length})
+                        <Text
+                          numberOfLines={1}
+                          style={[styles.labelText, { color: selected ? ACCENT_BLUE : theme.text }]}
+                        >
+                          {sc.label}
                         </Text>
                       </Pressable>
                     );
                   })}
                 </View>
-              )}
-            </View>
-          ))}
-        </ScrollView>
+              </View>
+            ))}
+          </ScrollView>
+        </View>
       )}
 
       <View style={styles.bottom}>
@@ -173,11 +264,24 @@ export function CheatsheetScreen() {
           disabled={selectedCount === 0}
           onPress={() => router.push('/cheatsheet/search-results')}
           accessibilityRole="button"
-          accessibilityLabel={`Ausgewählte anzeigen, ${selectedCount}`}
+          accessibilityLabel={
+            selectedCount === 0
+              ? 'Suchen, erst ein Thema auswählen'
+              : `Suchen, ${selectedCount} Themen ausgewählt`
+          }
           accessibilityState={{ disabled: selectedCount === 0 }}
-          style={[styles.searchAllButton, { borderColor: theme.text, opacity: selectedCount === 0 ? 0.5 : 1 }]}
+          style={({ pressed }) => [
+            styles.searchButton,
+            {
+              borderColor: theme.text,
+              backgroundColor: pressed ? theme.subtleFill : theme.cardBg,
+              opacity: selectedCount === 0 ? 0.45 : 1,
+            },
+          ]}
         >
-          <Text style={[styles.searchAllButtonText, { color: theme.text }]}>Ausgewählte anzeigen ({selectedCount})</Text>
+          <Text style={[styles.searchButtonText, { color: theme.text }]}>
+            {selectedCount === 0 ? 'Suchen' : `Suchen (${selectedCount})`}
+          </Text>
         </Pressable>
       </View>
     </View>
@@ -186,24 +290,100 @@ export function CheatsheetScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  top: { padding: 16, paddingBottom: 10, gap: 10 },
-  header: { flexDirection: 'row', alignItems: 'center', gap: 10 },
-  title: { fontWeight: '800', fontSize: 20, flex: 1 },
-  offlineBadge: { fontSize: 11, fontWeight: '700', color: '#9A5A1E' },
-  searchRow: { flexDirection: 'row', gap: 8, alignItems: 'center' },
-  searchInput: { flex: 1, padding: 12, borderRadius: 100, borderWidth: 1.5 },
-  searchButton: { width: 44, height: 44, borderRadius: 22, backgroundColor: ACCENT_BLUE, alignItems: 'center', justifyContent: 'center' },
-  searchButtonText: { color: '#fff', fontSize: 16 },
-  favLink: { color: ACCENT_BLUE, fontWeight: '700', fontSize: 13, textDecorationLine: 'underline' },
-  centerBox: { alignItems: 'center', justifyContent: 'center', paddingVertical: 40 },
-  scrollContent: { paddingHorizontal: 16, paddingBottom: 8 },
-  groupHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: 14, paddingTop: 14 },
-  groupTitle: { fontWeight: '800', fontSize: 13, letterSpacing: 0.4, textTransform: 'uppercase' },
-  groupLink: { fontSize: 12 },
-  placeholderText: { fontSize: 12, fontStyle: 'italic', marginBottom: 8 },
-  themeGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
-  themeBox: { width: '31%', paddingVertical: 10, paddingHorizontal: 6, borderRadius: 10, borderWidth: 1.5, alignItems: 'center' },
-  bottom: { padding: 18 },
-  searchAllButton: { padding: 14, borderRadius: 12, borderWidth: 2, alignItems: 'center' },
-  searchAllButtonText: { fontWeight: '800', fontSize: 15 },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: SPACING.lg,
+    paddingTop: SPACING.sm,
+    paddingBottom: SPACING.md,
+  },
+  headerSide: { width: 44, alignItems: 'flex-start' },
+  title: {
+    flex: 1,
+    fontFamily: FONT_FAMILY.serif,
+    fontSize: FONT_SIZE.h2,
+    lineHeight: LINE_HEIGHT.h2,
+    textAlign: 'center',
+  },
+  offline: {
+    fontSize: FONT_SIZE.caption,
+    fontWeight: '700',
+    textAlign: 'center',
+    marginBottom: SPACING.sm,
+  },
+  savedButton: {
+    alignSelf: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: SPACING.sm,
+    borderWidth: 2,
+    borderRadius: RADIUS.pill,
+    paddingVertical: SPACING.md,
+    paddingHorizontal: SPACING.xl,
+  },
+  savedButtonText: { fontSize: FONT_SIZE.body, fontWeight: '800' },
+  pillRow: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: SPACING.md,
+    marginTop: SPACING.md,
+  },
+  pill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: SPACING.xs,
+    borderWidth: 1.5,
+    borderRadius: RADIUS.pill,
+    paddingVertical: SPACING.sm,
+    paddingHorizontal: SPACING.md,
+    minHeight: 36,
+  },
+  pillText: { fontSize: FONT_SIZE.caption, fontWeight: '700' },
+  searchInput: {
+    marginTop: SPACING.md,
+    marginHorizontal: SPACING.lg,
+    borderWidth: 1.5,
+    borderRadius: RADIUS.pill,
+    paddingVertical: SPACING.md,
+    paddingHorizontal: SPACING.lg,
+    fontSize: FONT_SIZE.body,
+  },
+  centerBox: { flex: 1, alignItems: 'center', justifyContent: 'center' },
+  themeBox: {
+    flex: 1,
+    marginTop: SPACING.lg,
+    marginHorizontal: SPACING.lg,
+    borderWidth: 1.5,
+    borderRadius: RADIUS.md,
+    overflow: 'hidden',
+  },
+  themeBoxContent: { padding: SPACING.md, paddingBottom: SPACING.lg },
+  group: { marginBottom: SPACING.lg },
+  groupTitle: {
+    fontSize: FONT_SIZE.body,
+    lineHeight: LINE_HEIGHT.body,
+    fontWeight: '800',
+    marginBottom: SPACING.sm,
+  },
+  placeholder: { fontSize: FONT_SIZE.caption, fontStyle: 'italic', marginBottom: SPACING.sm },
+  labelGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACING.sm },
+  label: {
+    borderWidth: 1.5,
+    borderRadius: RADIUS.pill,
+    paddingVertical: SPACING.sm,
+    paddingHorizontal: SPACING.md,
+    minHeight: 36,
+    justifyContent: 'center',
+  },
+  labelText: { fontSize: FONT_SIZE.caption, fontWeight: '700' },
+  bottom: { padding: SPACING.lg, alignItems: 'center' },
+  searchButton: {
+    borderWidth: 2,
+    borderRadius: RADIUS.pill,
+    paddingVertical: SPACING.md,
+    paddingHorizontal: SPACING.xxl,
+    minWidth: 140,
+    alignItems: 'center',
+  },
+  searchButtonText: { fontSize: FONT_SIZE.body, fontWeight: '800' },
 });
