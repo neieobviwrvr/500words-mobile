@@ -4,6 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { useAppState } from '../../state/AppState';
 import { CATEGORIES } from '../../data/categories';
+import { useFaelligeKarten } from '../course/useFaelligeKarten';
 import { getTheme, ACCENT_BLUE, ACCENT_PREMIUM } from '../../theme/tokens';
 
 // S5 - SRS-/Wiederholen-Auswahl-Screen.
@@ -20,7 +21,10 @@ import { getTheme, ACCENT_BLUE, ACCENT_PREMIUM } from '../../theme/tokens';
 // jeder Button einfach eine Uebung ueber alle gekauften Kategorien.
 
 export function SrsScreen() {
-  const { darkMode, purchased } = useAppState();
+  const { darkMode, purchased, targetLanguageId } = useAppState();
+  // Der gefuehrte Kurs hat einen eigenen Wiederholungs-Weg, siehe unten.
+  const kursKarten = useFaelligeKarten(targetLanguageId);
+  const istKurs = targetLanguageId === 'zh';
   const theme = getTheme(darkMode);
   // Der native Header ist app-weit aus (app/_layout.tsx), jeder Screen
   // zeichnet seinen eigenen. Ohne diesen Einsatz liegt die Ueberschrift unter
@@ -32,8 +36,32 @@ export function SrsScreen() {
   const totalCategoryCount = CATEGORIES.length;
 
   const startMode = (mode: 'woerter' | 'saetze') => {
+    // Chinesisch hat kein Phrasebook - `/exercise` faende dort nichts. Die
+    // Karten des gefuehrten Kurses liegen in einem eigenen Namensraum und
+    // werden ueber `/wiederholen` abgespielt (siehe
+    // features/course/CourseReviewScreen.tsx).
+    if (istKurs) {
+      router.push({ pathname: '/wiederholen', params: { modus: mode } });
+      return;
+    }
     router.push({ pathname: '/exercise', params: { mode, categoryId: 'alle', source: 'srs' } });
   };
+
+  /**
+   * Die Unterzeile unter den Modus-Knoepfen.
+   *
+   * Fuer den Kurs sagt "x/13 Kategorien lernbar" nichts - dort gibt es keine
+   * Kaufkategorien. Stattdessen die ehrliche Zahl faelliger Karten.
+   */
+  const unterzeile = istKurs
+    ? kursKarten.loading
+      ? 'wird geladen …'
+      : kursKarten.faellig.length === 0
+        ? kursKarten.bekannt === 0
+          ? 'noch nichts gelernt'
+          : 'alles frisch'
+        : `${kursKarten.faellig.length} ${kursKarten.faellig.length === 1 ? 'Karte' : 'Karten'} dran`
+    : null;
 
   return (
     <View style={[styles.container, { backgroundColor: theme.pageBg, paddingTop: insets.top + CONTAINER_PADDING }]}>
@@ -56,24 +84,24 @@ export function SrsScreen() {
           onPress={() => startMode('woerter')}
           style={[styles.modeButton, { backgroundColor: theme.modeBg }]}
           accessibilityRole="button"
-          accessibilityLabel={`Wörter lernen, ${purchasedCount} von ${totalCategoryCount} Kategorien lernbar`}
+          accessibilityLabel={unterzeile ? `Wörter lernen, ${unterzeile}` : `Wörter lernen, ${purchasedCount} von ${totalCategoryCount} Kategorien lernbar`}
           accessibilityHint="Startet die Wiederholung mit fälligen Wortkarten"
         >
           <Text style={styles.modeButtonText}>Wörter lernen</Text>
           <Text style={[styles.modeSubtext, { color: theme.sub }]}>
-            {purchasedCount}/{totalCategoryCount} Kategorien lernbar
+            {unterzeile ?? `${purchasedCount}/${totalCategoryCount} Kategorien lernbar`}
           </Text>
         </Pressable>
         <Pressable
           onPress={() => startMode('saetze')}
           style={[styles.modeButton, { backgroundColor: theme.modeBg }]}
           accessibilityRole="button"
-          accessibilityLabel={`Sätze lernen, ${purchasedCount} von ${totalCategoryCount} Kategorien lernbar`}
+          accessibilityLabel={unterzeile ? `Sätze lernen, ${unterzeile}` : `Sätze lernen, ${purchasedCount} von ${totalCategoryCount} Kategorien lernbar`}
           accessibilityHint="Startet die Wiederholung mit fälligen Satzkarten"
         >
           <Text style={styles.modeButtonText}>Sätze lernen</Text>
           <Text style={[styles.modeSubtext, { color: theme.sub }]}>
-            {purchasedCount}/{totalCategoryCount} Kategorien lernbar
+            {unterzeile ?? `${purchasedCount}/${totalCategoryCount} Kategorien lernbar`}
           </Text>
         </Pressable>
         <Pressable
@@ -91,7 +119,7 @@ export function SrsScreen() {
             </View>
           </View>
           <Text style={[styles.modeSubtext, { color: theme.sub }]}>
-            {purchasedCount}/{totalCategoryCount} Kategorien lernbar
+            {`${purchasedCount}/${totalCategoryCount} Kategorien lernbar`}
           </Text>
         </Pressable>
         {premiumNoticeOpen && (

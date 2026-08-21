@@ -83,6 +83,12 @@ export const RADIUS = {
 // "serif" auf Android) - kein Download, kein expo-font, kein Ladezustand
 // beim Start. Sobald eine echte Marken-Schrift feststeht, wird sie hier an
 // dieser einen Stelle eingetragen; alle Screens ziehen nach.
+// ACHTUNG bei PINYIN (2026-08-20): `serif` ist auf iOS `Georgia`, und
+// Georgia fehlen die Hatschek-Vokale des dritten Tons - ǎ (U+01CE) und
+// ǒ (U+01D2). Der Renderer zerlegt sie dann sichtbar zu "a" + "ˇ".
+// Pinyin gehoert deshalb in `sans` (Systemschrift), nie in `serif`.
+// Betrifft nur den dritten Ton, weil die Makron-Vokale des ersten
+// (ā ī ū) vorhanden sind - der Fehler faellt also erst spaet auf.
 export const FONT_FAMILY = {
   serif: Platform.select({
     ios: 'Georgia',

@@ -69,6 +69,33 @@ export function speakText(text: string, options: SpeakOptions = {}) {
   }
 }
 
+/**
+ * Hat das Geraet ueberhaupt eine Stimme fuer diese Sprache?
+ *
+ * Wichtig geworden mit Chinesisch (2026-08-20): dafuer gibt es keine
+ * vorgerenderten Audiodateien, `speakText` faellt also immer auf die
+ * Systemstimme zurueck. Fehlt die passende Stimme, passiert beim Antippen
+ * schlicht NICHTS - kein Fehler, kein Ton. Der Nutzer haelt den Knopf dann
+ * fuer kaputt.
+ *
+ * Auf iOS laesst sich eine fehlende Stimme nachladen:
+ * Einstellungen > Bedienungshilfen > Gesprochene Inhalte > Stimmen.
+ *
+ * Vergleicht nur den Sprachteil ("zh" aus "zh-CN"), weil Geraete das
+ * Gebietsschema unterschiedlich schreiben - zh-CN, zh_CN, cmn-Hans-CN.
+ */
+export async function hasVoiceFor(languageId: string): Promise<boolean> {
+  const gesucht = getLanguage(languageId).ttsLocale.slice(0, 2).toLowerCase();
+  try {
+    const stimmen = await Speech.getAvailableVoicesAsync();
+    return stimmen.some((v) => (v.language ?? '').slice(0, 2).toLowerCase() === gesucht);
+  } catch {
+    // Liefert die Abfrage nichts, lieber nichts behaupten - der Knopf
+    // bleibt nutzbar, es gibt nur keine Warnung.
+    return true;
+  }
+}
+
 type Sentence = {
   text: string;
   /** Vorgerenderte Datei aus Supabase, falls vorhanden. */

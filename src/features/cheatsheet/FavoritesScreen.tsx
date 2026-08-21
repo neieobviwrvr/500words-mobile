@@ -4,6 +4,7 @@ import { Feather } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { useAppState } from '../../state/AppState';
 import { speakSentence } from '../tts/speak';
+import { phraseLanguageId } from '../../data/cheatsheetContent';
 import { PhraseCard } from './PhraseCard';
 import {
   getTheme,
@@ -88,7 +89,17 @@ export function FavoritesScreen() {
               dark={darkMode}
               saved
               onToggleSave={() => toggleSaved(f.id, f)}
-              onSpeak={() => speakSentence({ text: f.text })}
+              // Sprache aus der gespeicherten ID, NICHT die gerade
+              // eingestellte: die Favoriten sammeln Saetze aus allen
+              // Sprachen, in denen je etwas gemerkt wurde. Vorher lief
+              // alles ueber die Vorgabe Deutsch - ein schwedischer Satz
+              // wurde also mit deutscher Stimme vorgelesen.
+              onSpeak={() =>
+                speakSentence(
+                  { text: f.text, audioUrl: f.audioUrl },
+                  { languageId: phraseLanguageId(f.id) }
+                )
+              }
             />
           ))
         )}

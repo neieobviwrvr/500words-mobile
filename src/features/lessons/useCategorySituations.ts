@@ -31,10 +31,31 @@ export type CategorySituations = {
   loading: boolean;
   /** Kategorie-ID -> Situationen, absteigend nach Satzanzahl. */
   byCategory: Record<string, Situation[]>;
+  /**
+   * Kategorien nach zuletzt gelernt, juengste zuerst - aus dem `last_review`
+   * der Karten. Leer, solange nichts geuebt wurde.
+   *
+   * Bewusst HIER und nicht in `useUnlockedProgress`: der laedt nur die
+   * freigeschalteten Kategorien, weshalb dort jede andere Kategorie nie
+   * gewinnen konnte - "Du bist hier" blieb dann auf dem Grundwortschatz
+   * stehen, obwohl anderswo gelernt wurde. Dieser Hook sieht alle.
+   *
+   * Eine Liste statt nur der einen juengsten, weil der Aufrufer sie
+   * verwerfen koennen muss: in einer gesperrten Kategorie laesst sich nicht
+   * weiterlernen, "Du bist hier" soll dort also nicht stehen. Mit der Liste
+   * faellt S1 dann auf die naechstjuengere zurueck statt ganz an den Anfang.
+   * Nicht theoretisch - im Abo lassen sich Kategorien abwaehlen.
+   */
+  recentCategoryIds: string[];
   offline: boolean;
 };
 
-const EMPTY: CategorySituations = { loading: true, byCategory: {}, offline: false };
+const EMPTY: CategorySituations = {
+  loading: true,
+  byCategory: {},
+  recentCategoryIds: [],
+  offline: false,
+};
 
 export function useCategorySituations(languageId: string): CategorySituations {
   const [state, setState] = useState<CategorySituations>(EMPTY);
@@ -61,6 +82,8 @@ export function useCategorySituations(languageId: string): CategorySituations {
 
           const byCategory: Record<string, Situation[]> = {};
           const index: Record<string, Record<string, Situation>> = {};
+          // Kategorie -> juengste Bewertung darin.
+          const lastReviewPerCategory: Record<string, number> = {};
 
           for (const sentence of sentences) {
             const perCat = (index[sentence.category] ??= {});
@@ -70,14 +93,27 @@ export function useCategorySituations(languageId: string): CategorySituations {
               seen: 0,
             });
             sit.total += 1;
-            if (cards[cardKey(languageId, lang.table as string, sentence.id)]) sit.seen += 1;
+            const card = cards[cardKey(languageId, lang.table as string, sentence.id)];
+            if (card) {
+              sit.seen += 1;
+              // Karten ohne `last_review` wurden angelegt, aber nie
+              // beantwortet - die zaehlen hier nicht mit.
+              const at = card.last_review ? new Date(card.last_review).getTime() : 0;
+              if (at > (lastReviewPerCategory[sentence.category] ?? 0)) {
+                lastReviewPerCategory[sentence.category] = at;
+              }
+            }
           }
 
           for (const [categoryId, perScenario] of Object.entries(index)) {
             byCategory[categoryId] = Object.values(perScenario).sort((a, b) => b.total - a.total);
           }
 
-          setState({ loading: false, byCategory, offline: fromCache });
+          const recentCategoryIds = Object.entries(lastReviewPerCategory)
+            .sort((a, b) => b[1] - a[1])
+            .map(([categoryId]) => categoryId);
+
+          setState({ loading: false, byCategory, recentCategoryIds, offline: fromCache });
         } catch {
           // Ein leerer Katalog ist besser als ein Screen, der abstuerzt - der
           // Nutzer sieht dann die Kategorien ohne Situationen.

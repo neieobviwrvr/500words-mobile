@@ -25,6 +25,17 @@ export type ExerciseSentence = {
   scenario: string;
   category: string;
   accepted_concepts: AcceptedConcepts;
+  /**
+   * Vorgerenderte Aufnahme des Satzes, falls vorhanden.
+   *
+   * Stand 2026-08-21 ueberall LEER: `phrasebook_master` hat gar keine
+   * Audio-Spalte, `schwedisch_phrasebook` hat `audio_url`, aber 0 von 189
+   * Zeilen sind gefuellt (ElevenLabs-Vertonung ist zurueckgestellt, siehe
+   * CLAUDE.md). Das Feld wird trotzdem durchgereicht, damit die Wiedergabe
+   * von selbst umschaltet, sobald aufgenommen wurde - `speakSentence`
+   * bevorzugt die Datei und faellt sonst auf die Systemstimme zurueck.
+   */
+  audioUrl: string | null;
 };
 
 // categoryIds: explizite Liste statt eines "alle"-Sentinels, der frueher
@@ -48,10 +59,12 @@ export async function loadExerciseSentences(
   if (!lang.table) return { sentences: [], fromCache: false };
 
   const textColumn = lang.id === 'de' ? 'german' : 'target_text';
+  // `audio_url` gibt es NUR in den Nicht-Deutsch-Tabellen - phrasebook_master
+  // hat die Spalte nicht, ein Select darauf wuerde dort scheitern.
   const columns =
     lang.id === 'de'
       ? 'id, german, scenario, category, accepted_concepts'
-      : 'id, target_text, german, scenario, category, accepted_concepts, verb_cluster';
+      : 'id, target_text, german, scenario, category, accepted_concepts, verb_cluster, audio_url';
 
   const cacheKey = `sentences:${lang.id}:${[...categoryIds].sort().join(',')}`;
   const { data: sentences, fromCache } = await cachedFetch(cacheKey, async () => {
@@ -76,6 +89,7 @@ export async function loadExerciseSentences(
         scenario: row.scenario,
         category: row.category,
         accepted_concepts,
+        audioUrl: row.audio_url ?? null,
       };
     });
   });

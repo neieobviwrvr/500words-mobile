@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 import { router } from 'expo-router';
-import { Feather } from '@expo/vector-icons';
+import { Feather, Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAppState } from '../../state/AppState';
 import { HeaderMenu } from '../../components';
@@ -118,7 +118,11 @@ export function CheatsheetScreen() {
       <Pressable
         onPress={() => router.push('/cheatsheet/favorites')}
         accessibilityRole="button"
-        accessibilityLabel={`Gespeicherte Sätze, ${favoritesCount}`}
+        accessibilityLabel={
+          favoritesCount === 0
+            ? 'Gespeicherte Sätze, noch keine'
+            : `Gespeicherte Sätze, ${favoritesCount}`
+        }
         style={({ pressed }) => [
           styles.savedButton,
           {
@@ -127,7 +131,18 @@ export function CheatsheetScreen() {
           },
         ]}
       >
-        <Feather name="bookmark" size={18} color={theme.text} />
+        {/* Gefuelltes Lesezeichen, sobald mindestens ein Satz gespeichert
+            ist (Nutzer-Wunsch 2026-08-21) - der Knopf zeigt damit auf einen
+            Blick, ob dahinter etwas liegt.
+
+            Ionicons statt Feather nur an DIESER Stelle: Feather ist eine
+            reine Strichschrift und hat gar keine gefuellte Variante. Beide
+            Zustaende kommen aus demselben Satz, damit sie zueinander passen. */}
+        <Ionicons
+          name={favoritesCount > 0 ? 'bookmark' : 'bookmark-outline'}
+          size={18}
+          color={theme.text}
+        />
         <Text style={[styles.savedButtonText, { color: theme.text }]}>Gespeicherte Sätze</Text>
       </Pressable>
 

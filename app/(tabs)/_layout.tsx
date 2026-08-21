@@ -240,6 +240,8 @@ export default function TabsLayout() {
           Symbole statt vier. */}
       <Tabs.Screen name="shop" options={{ href: null }} />
       <Tabs.Screen name="training/[mode]" options={{ href: null }} />
+      <Tabs.Screen name="lesson/[id]" options={{ href: null }} />
+      <Tabs.Screen name="wiederholen" options={{ href: null }} />
       <Tabs.Screen name="srs" options={{ href: null }} />
       <Tabs.Screen name="profil" options={{ href: null }} />
       <Tabs.Screen name="exercise" options={{ href: null }} />

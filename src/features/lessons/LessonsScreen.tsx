@@ -142,7 +142,23 @@ export function LessonsScreen() {
                     {name.toUpperCase()}
                   </Text>
                   {locked ? (
-                    <Feather name="lock" size={13} color={NODE_LOCKED} accessibilityElementsHidden />
+                    // Das Schloss fuehrt in den Shop (Nutzer-Wunsch
+                    // 2026-08-21). Vorher war es rein dekorativ und der
+                    // einzige Weg zum Kauf ging ueber eine Situations-Karte
+                    // darunter - das ist genau der Knopf, den man antippt,
+                    // wenn man das Schloss sieht.
+                    //
+                    // Vergroesserte Tippflaeche: 13 Pixel Symbol sind fuer
+                    // einen Finger zu klein (Apple nennt 44 als Minimum).
+                    <Pressable
+                      onPress={() => router.push('/shop')}
+                      accessibilityRole="button"
+                      accessibilityLabel={`${name} ist gesperrt — im Shop freischalten`}
+                      hitSlop={16}
+                      style={({ pressed }) => [styles.schloss, { opacity: pressed ? 0.5 : 1 }]}
+                    >
+                      <Feather name="lock" size={13} color={NODE_LOCKED} />
+                    </Pressable>
                   ) : null}
                 </View>
 
@@ -306,6 +322,12 @@ const styles = StyleSheet.create({
     gap: SPACING.md,
   },
   modeCard: {
+    // Feste Breite, damit alle drei Karten gleich gross sind. Der laengste
+    // Titel ("Konversationstraining") passt nicht ganz hinein und wird
+    // abgeschnitten - das ist so in Ordnung (Nutzer-Entscheidung
+    // 2026-08-20): die Reihe scrollt waagerecht, die Karte ist also
+    // erreichbar, und die Schrift dafuer kleiner zu machen haette alle drei
+    // Karten wegen eines Wortes verkleinert.
     width: 168,
     minHeight: 132,
     borderRadius: RADIUS.lg,
@@ -335,6 +357,7 @@ const styles = StyleSheet.create({
     gap: SPACING.sm,
     paddingHorizontal: SPACING.lg,
   },
+  schloss: { padding: SPACING.xs },
   groupTitle: {
     fontSize: FONT_SIZE.small,
     fontWeight: '800',

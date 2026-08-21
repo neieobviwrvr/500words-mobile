@@ -24,6 +24,35 @@ const STORAGE_KEY = 'app_state_v1';
 
 export type ThemeSelection = { groupId: string; groupTitle: string; themeLabel: string; key: string };
 
+/**
+ * Was das Sperrbildschirm-Widget zeigt (Nutzer-Wunsch 2026-08-20) - alle 5
+ * Stunden ein neues Wort ODER ein neuer Satz, einstellbar im Profil.
+ *
+ * Kein "aus": ob das Widget ueberhaupt erscheint, entscheidet der Nutzer in
+ * iOS selbst, indem er es auf den Sperrbildschirm legt oder herunternimmt.
+ * Ein zweiter Schalter in der App koennte dem nur widersprechen.
+ */
+export type LockscreenContent = 'woerter' | 'saetze';
+
+/**
+ * Die zwei Lernwege auf S1 (Nutzer-Wunsch 2026-08-20). Der Knopf im Kopf der
+ * Pfad-Box schaltet zwischen ihnen um.
+ *
+ * - `speedrun`: Sprach-Pille und Satz-Kategorien mit ihren Situationen, in
+ *   denen fertige Saetze liegen. Der Weg, den es heute gibt.
+ * - `gefuehrt`: ein gefuehrter Kurs durch die Grundwoerter, in eigene
+ *   Lektionen und Themen gegliedert, mit Satzmustern und Nachsprechen.
+ *   Inhalt steht noch aus - siehe features/home/useGuidedCourse.ts.
+ */
+export type LearningMode = 'speedrun' | 'gefuehrt';
+
+/** Beschriftungen an EINER Stelle, damit Knopf-Ansage und der Kasten
+ *  "Du bist hier" nie auseinanderlaufen. */
+export const LEARNING_MODE_LABEL: Record<LearningMode, string> = {
+  speedrun: 'Speed-Run',
+  gefuehrt: 'Geführtes Lernen',
+};
+
 type PersistedState = {
   darkMode: boolean;
   targetLanguageId: string;
@@ -37,6 +66,8 @@ type PersistedState = {
    * Geschenk-Screens einen weiteren Coin.
    */
   coinGrants: Record<string, boolean>;
+  lockscreenContent: LockscreenContent;
+  learningMode: LearningMode;
 };
 
 type AppStateValue = {
@@ -70,6 +101,12 @@ type AppStateValue = {
    */
   grantCoins: (grantId: string, amount: number) => boolean;
 
+  lockscreenContent: LockscreenContent;
+  setLockscreenContent: (value: LockscreenContent) => void;
+
+  learningMode: LearningMode;
+  toggleLearningMode: () => void;
+
   /** true, sobald der gespeicherte Zustand geladen ist. */
   hydrated: boolean;
 };
@@ -86,6 +123,12 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   const [selectedThemes, setSelectedThemes] = useState<Record<string, ThemeSelection>>({});
   const [coins, setCoins] = useState(0);
   const [coinGrants, setCoinGrants] = useState<Record<string, boolean>>({});
+  // Saetze als Vorgabe, nicht Woerter: Saetze gibt es in jeder Sprache mit
+  // Inhalt, eine Wortliste bisher nur fuer Schwedisch und Franzoesisch
+  // (siehe data/vocabContent.ts). Die Vorgabe soll ueberall etwas anzeigen.
+  const [lockscreenContent, setLockscreenContent] = useState<LockscreenContent>('saetze');
+  // Speed-Run als Vorgabe: das ist der Weg, der heute echten Inhalt hat.
+  const [learningMode, setLearningMode] = useState<LearningMode>('speedrun');
   // Spiegel der vergebenen Geschenke. `grantCoins` muss SOFORT wissen, ob ein
   // Geschenk schon vergeben wurde, und darf nicht auf den naechsten Render
   // warten - sonst wuerden zwei schnelle Aufrufe beide gutschreiben.
@@ -112,6 +155,8 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
           if (parsed.saved) setSaved(parsed.saved);
           if (parsed.savedMeta) setSavedMeta(parsed.savedMeta);
           if (parsed.coins !== undefined) setCoins(parsed.coins);
+          if (parsed.lockscreenContent) setLockscreenContent(parsed.lockscreenContent);
+          if (parsed.learningMode) setLearningMode(parsed.learningMode);
           if (parsed.coinGrants) {
             setCoinGrants(parsed.coinGrants);
             // Auch den Spiegel setzen, nicht erst ueber den Render-Umweg -
@@ -131,13 +176,18 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (!hydrated.current) return;
-    const toPersist: PersistedState = { darkMode, targetLanguageId, purchased, saved, savedMeta, coins, coinGrants };
+    const toPersist: PersistedState = { darkMode, targetLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode };
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(toPersist)).catch(() => {
       // Best-effort - ein Speicherfehler soll die laufende Session nicht stoeren.
     });
-  }, [darkMode, targetLanguageId, purchased, saved, savedMeta, coins, coinGrants]);
+  }, [darkMode, targetLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode]);
 
   const toggleDark = useCallback(() => setDarkMode((d) => !d), []);
+
+  const toggleLearningMode = useCallback(
+    () => setLearningMode((m) => (m === 'speedrun' ? 'gefuehrt' : 'speedrun')),
+    []
+  );
 
   const toggleCartItem = useCallback(
     (id: string) => {
@@ -198,9 +248,13 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       clearSelectedThemes,
       coins,
       grantCoins,
+      lockscreenContent,
+      setLockscreenContent,
+      learningMode,
+      toggleLearningMode,
       hydrated: isHydrated,
     }),
-    [darkMode, toggleDark, targetLanguageId, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes, coins, grantCoins, isHydrated]
+    [darkMode, toggleDark, targetLanguageId, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes, coins, grantCoins, lockscreenContent, learningMode, toggleLearningMode, isHydrated]
   );
 
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;

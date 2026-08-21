@@ -13,7 +13,30 @@ export type Phrase = {
   text: string; // Zielsprachen-Satz
   gloss: string | null; // deutsche Uebersetzung, nur gesetzt wenn Zielsprache != Deutsch
   placeholder: boolean; // true nur bei den (noch) leeren Kategorien (siehe unten)
+  /** Vorgerenderte Aufnahme, falls vorhanden - heute ueberall leer. */
+  audioUrl?: string | null;
+  /**
+   * Lautschrift unter dem Satz (fuer Chinesisch das Pinyin).
+   *
+   * Noch nirgends gefuellt: keine Phrasebook-Tabelle hat eine
+   * Umschrift-Spalte, und fuer Chinesisch gibt es ueberhaupt kein
+   * Phrasebook. Die Zeile erscheint nur, wenn wirklich etwas da ist.
+   */
+  phonetic?: string | null;
 };
+
+/**
+ * Aus welcher Sprache stammt ein gespeicherter Satz?
+ *
+ * Die ID ist `sprache:tabelle:satzId` - die Sprache laesst sich also
+ * zurueckgewinnen. Gebraucht bei den Favoriten: die zeigen Saetze aus ALLEN
+ * Sprachen, in denen der Nutzer je etwas gemerkt hat. Ohne diese Angabe
+ * bekaeme ein schwedischer Satz die deutsche Stimme vorgelesen (echter
+ * Fehler, gefunden 2026-08-21).
+ */
+export function phraseLanguageId(phraseIdValue: string): string {
+  return phraseIdValue.split(':')[0] || 'de';
+}
 
 export function phraseId(languageId: string, table: string, sentenceId: number): string {
   return `${languageId}:${table}:${sentenceId}`;
@@ -26,6 +49,7 @@ export function toPhrase(languageId: string, table: string, context: string, s: 
     text: s.text,
     gloss: s.germanGloss,
     placeholder: false,
+    audioUrl: s.audioUrl,
   };
 }
 
@@ -58,9 +82,9 @@ export type CheatsheetScenarioGroup = { key: string; label: string; sentences: E
 export type CheatsheetCategoryGroup = {
   categoryId: string;
   title: string;
-  // Nur gefuellt, wenn die Kategorie >1 unterschiedliche Szenarien hat -
-  // sonst bleibt die Liste leer und die Kategorie wird als Ganzes gezeigt
-  // (kein kuenstliches Aufsplitten in eine einzelne, redundante Box).
+  // Alle Situationen der Kategorie, auch wenn es nur eine ist - sie sind die
+  // waehlbaren Marken fuer die Suche. Leer heisst: die Kategorie hat
+  // ueberhaupt keine Saetze.
   scenarios: CheatsheetScenarioGroup[];
   allSentences: ExerciseSentence[];
 };
@@ -69,7 +93,10 @@ export async function loadCheatsheetGroups(
   languageId: string,
   purchasedCategoryIds: string[]
 ): Promise<{ groups: CheatsheetCategoryGroup[]; fromCache: boolean }> {
-  const categoryIds = [...purchasedCategoryIds, 'grundwortschatz'];
+  // Grundwortschatz ZUERST (Nutzer-Entscheidung 2026-08-21): er ist die
+  // Grundlage und fuer jeden freigeschaltet, gehoert also nach oben und
+  // nicht ans Ende hinter die gekauften Kategorien.
+  const categoryIds = ['grundwortschatz', ...purchasedCategoryIds];
   const { sentences, fromCache } = await loadExerciseSentences(languageId, categoryIds);
 
   const byCategory = new Map<string, ExerciseSentence[]>();
@@ -82,14 +109,16 @@ export async function loadCheatsheetGroups(
     const catSentences = byCategory.get(catId) ?? [];
     const title = catId === 'grundwortschatz' ? 'Grundwortschatz' : (CATEGORY_BY_ID[catId]?.name ?? catId);
     const distinctScenarios = Array.from(new Set(catSentences.map((s) => s.scenario)));
-    const scenarios: CheatsheetScenarioGroup[] =
-      distinctScenarios.length > 1
-        ? distinctScenarios.map((sc) => ({
-            key: sc,
-            label: SCENARIO_LABELS[sc] ?? sc,
-            sentences: catSentences.filter((s) => s.scenario === sc),
-          }))
-        : [];
+    // ALLE Situationen auflisten, auch wenn es nur eine gibt
+    // (Nutzer-Entscheidung 2026-08-21). Frueher wurden einzelne Situationen
+    // unterdrueckt, um keine redundante Box zu erzeugen - dadurch hatten
+    // diese Kategorien aber gar nichts zum Auswaehlen und die Suche kam nie
+    // an ihre Saetze heran.
+    const scenarios: CheatsheetScenarioGroup[] = distinctScenarios.map((sc) => ({
+      key: sc,
+      label: SCENARIO_LABELS[sc] ?? sc,
+      sentences: catSentences.filter((s) => s.scenario === sc),
+    }));
     return { categoryId: catId, title, scenarios, allSentences: catSentences };
   });
 

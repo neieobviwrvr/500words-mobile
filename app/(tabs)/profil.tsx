@@ -1,15 +1,8 @@
-import { PlaceholderScreen } from '../../src/features/placeholder/PlaceholderScreen';
+import { ProfileScreen } from '../../src/features/profile/ProfileScreen';
 
-// Zielbild (noch nicht gebaut): Konto, Darkmode, Sprache, Benachrichtigungen.
-// Alle vier Einstellungen existieren heute schon irgendwo im Zustand, haben
-// aber keinen Ort, an dem der Nutzer sie nachtraeglich aendern kann.
+// Erste echte Einstellung ist das Sperrbildschirm-Widget (2026-08-20).
+// Konto, Darkmode, Sprache und Erinnerungen folgen noch - der Screen sagt
+// das am Ende selbst.
 export default function Profil() {
-  return (
-    <PlaceholderScreen
-      showMenu
-      icon="user"
-      title="Profil"
-      description="Hier verwaltest du später dein Konto, den Darkmode, deine Sprache und die Erinnerungen."
-    />
-  );
+  return <ProfileScreen />;
 }

@@ -15,9 +15,29 @@ const STORAGE_KEY_PREFIX = 'srs_card_v1:';
 // Satz-ID, damit z.B. Deutsch-Satz-47 und Schwedisch-Satz-47 (unabhaengige
 // Tabellen, siehe die id-Verwirrung in schwedisch_phrasebook) nicht
 // kollidieren.
-export function cardKey(languageId: string, table: string, sentenceId: number): string {
-  return `${STORAGE_KEY_PREFIX}${languageId}:${table}:${sentenceId}`;
+//
+// Die ID darf auch ein STRING sein (2026-08-21). Der gefuehrte Kurs hat
+// weder Tabelle noch numerische Satz-IDs - seine Saetze entstehen erst zur
+// Laufzeit aus Rahmen plus Slot-Wort. Der `table`-Platz traegt fuer ihn
+// deshalb einen Namensraum statt eines Tabellennamens:
+//
+//   zh:course-wort:学生     Wortkarte, Schluessel ist das Hanzi
+//   zh:course-rahmen:1.1    Rahmenkarte, Schluessel ist die Lektions-ID
+//
+// Warum Hanzi und nicht die Supabase-ID aus chinesisch_vocab: die steht
+// nicht in chineseCourse.ts, und der Kurs soll offline laufen. Hanzi ist in
+// unseren Daten eindeutig (der Import nutzt es als on_conflict-Schluessel)
+// und ueberlebt einen Neuimport.
+//
+// Zahlen bleiben unveraendert gueltig - bestehende Schluessel verschieben
+// sich durch diese Erweiterung NICHT.
+export function cardKey(languageId: string, table: string, id: string | number): string {
+  return `${STORAGE_KEY_PREFIX}${languageId}:${table}:${id}`;
 }
+
+/** Namensraeume des gefuehrten Kurses - siehe `cardKey`. */
+export const KURS_WORT = 'course-wort';
+export const KURS_RAHMEN = 'course-rahmen';
 
 function deserializeCard(raw: string): Card {
   const parsed = JSON.parse(raw);

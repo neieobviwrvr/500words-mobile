@@ -13,13 +13,14 @@ import {
 } from 'react-native';
 import { router, useFocusEffect } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
-import { useAppState } from '../../state/AppState';
+import { LEARNING_MODE_LABEL, useAppState } from '../../state/AppState';
 import { CATEGORIES, GRUNDWORTSCHATZ_ID } from '../../data/categories';
 import { LANGUAGES, getLanguage } from '../../data/languages';
 import { Card, Dropdown, HeaderMenu, ProgressBar, Screen, PRESS_DEPTH } from '../../components';
 import type { DropdownOption } from '../../components';
 import { useUnlockedProgress } from './useUnlockedProgress';
 import { useCategorySituations } from '../lessons/useCategorySituations';
+import { useGuidedCourse } from './useGuidedCourse';
 import { PathBackdrop } from './PathBackdrop';
 import { scenarioLabel } from '../../data/scenarios';
 import {
@@ -175,7 +176,8 @@ function nodeColors(node: { state: NodeState; lead?: boolean; theme?: boolean })
 }
 
 export function PathScreen() {
-  const { darkMode, purchased, targetLanguageId, setTargetLanguageId, coins } = useAppState();
+  const { darkMode, purchased, targetLanguageId, setTargetLanguageId, coins, learningMode, toggleLearningMode } =
+    useAppState();
   const theme = getTheme(darkMode);
   const activeLanguage = getLanguage(targetLanguageId);
 
@@ -257,10 +259,10 @@ export function PathScreen() {
   const scrollRef = useRef<ScrollView>(null);
   const didAutoScroll = useRef(false);
 
-  // Auffaechern: die Schatzkarte klappt ALLE Kategorien auf einmal auf.
-  // `expandedIds` haelt, welche gerade offen sind - vorbereitet dafuer, dass
-  // spaeter auch eine einzelne Pille ihre Themen zeigen kann.
+  // Auffaechern: ein Tipp auf eine Pille zeigt ihre Themen. `expandedIds`
+  // haelt, welche gerade offen sind.
   const situations = useCategorySituations(targetLanguageId);
+  const course = useGuidedCourse(targetLanguageId);
   const [expandedIds, setExpandedIds] = useState<string[]>([]);
   // Wie beim Menue getrennt vom Zustand: die Knoten sollen das Einfahren zu
   // Ende spielen, bevor sie aus der Liste verschwinden.
@@ -268,16 +270,7 @@ export function PathScreen() {
   const expand = useRef(new Animated.Value(0)).current;
   const hasExpanded = useRef(false);
 
-  const alleIds = useMemo(
-    () => [GRUNDWORTSCHATZ_ID, ...CATEGORIES.map((c) => c.id)],
-    []
-  );
   const istOffen = expandedIds.length > 0;
-
-  // Die Schatzkarte schaltet ALLE Kategorien auf einmal.
-  const toggleExpand = useCallback(() => {
-    setExpandedIds((cur) => (cur.length > 0 ? [] : alleIds));
-  }, [alleIds]);
 
   // Ein Tipp auf eine Pille faechert nur ihre eigenen Themen auf
   // (Nutzer-Wunsch 2026-08-20). Damit ist die Pille kein Weg mehr nach S2 -
@@ -289,6 +282,31 @@ export function PathScreen() {
       ),
     []
   );
+
+  // Der Knopf im Kopf der Pfad-Box wechselt den Lernweg (Nutzer-Wunsch
+  // 2026-08-20). Vorher faecherte er alle Kategorien auf einmal auf - das
+  // faellt weg, der Tipp auf eine einzelne Pille bleibt.
+  const switchMode = useCallback(() => {
+    toggleLearningMode();
+    // Was danach aufgefaechert ist, setzt der Effekt weiter unten - im
+    // gefuehrten Kurs stehen die Lektionen von sich aus offen.
+    // Bewusst OHNE zusaetzliche Notice: der leere Pfad zeigt den Grund schon
+    // als Ruhezeile an. Beides gleichzeitig hiesse denselben Satz doppelt
+    // auf dem Schirm - im Browser gesehen und wieder entfernt.
+  }, [toggleLearningMode]);
+
+  // Im gefuehrten Kurs stehen alle Lektionen von Anfang an offen
+  // (Nutzer-Wunsch 2026-08-20): der Kurs ist eine Strecke, die man
+  // ueberblicken soll, keine Sammlung, in die man hineinsieht. Zuklappen
+  // bleibt jederzeit moeglich, es ist nur nicht mehr der Ausgangszustand.
+  //
+  // Als Effekt und NICHT im Umschalt-Handler, damit es in allen drei Faellen
+  // greift: Moduswechsel, Sprachwechsel und erster Aufbau des Screens.
+  // Die Abhaengigkeiten sind bewusst eng - `expandedIds` steht NICHT darin,
+  // sonst spraenge eine gerade zugeklappte Pille sofort wieder auf.
+  useEffect(() => {
+    setExpandedIds(learningMode === 'gefuehrt' ? course.lessons.map((l) => l.id) : []);
+  }, [learningMode, course.lessons]);
 
   useEffect(() => {
     const useNative = Platform.OS !== 'web';
@@ -337,6 +355,41 @@ export function PathScreen() {
   // Knotenliste
   // ---------------------------------------------------------------------
   const { nodes: raw, currentIndex, currentLabel } = useMemo(() => {
+    // Geführtes Lernen: Lektionen statt Kategorien, Themen statt Situationen.
+    // Solange der Kurs leer ist, bleibt auch die Liste leer - der Pfad zeigt
+    // dann den Grund aus dem Hook (siehe useGuidedCourse.ts).
+    if (learningMode === 'gefuehrt') {
+      const list: RawNode[] = course.lessons.flatMap((lesson) => [
+        {
+          id: lesson.id,
+          label: lesson.label,
+          state: 'open' as NodeState,
+          onPress: toggleCategory(lesson.id),
+        },
+        ...(themesMounted && expandedIds.includes(lesson.id)
+          ? lesson.themes.map((t) => ({
+              id: `${lesson.id}:${t.id}`,
+              label: t.label,
+              state: 'open' as NodeState,
+              theme: true,
+              onPress: () => router.push(`/lesson/${t.id}`),
+            }))
+          : []),
+      ]);
+      return {
+        nodes: list,
+        currentIndex: 0,
+        currentLabel: list.length > 0 ? list[0].label : 'Noch kein Kurs',
+      };
+    }
+
+    // Sprachen ohne Phrasebook-Tabelle (Chinesisch traegt bisher nur den
+    // gefuehrten Kurs) haben im Speed-Run nichts zu zeigen. Ohne diese
+    // Weiche stuenden die Kategorien trotzdem da - mit nichts dahinter.
+    if (!activeLanguage.table) {
+      return { nodes: [] as RawNode[], currentIndex: 0, currentLabel: 'Noch keine Sätze' };
+    }
+
     const purchasedCategories = CATEGORIES.filter((c) => purchased[c.id]);
     const lockedCategories = CATEGORIES.filter((c) => !purchased[c.id]);
 
@@ -404,20 +457,28 @@ export function PathScreen() {
     // 2026-08-20) - der Screen soll zeigen, wo man aufgehoert hat, nicht wo
     // man theoretisch weitermachen sollte. Erst wenn noch nie geuebt wurde,
     // gilt wieder die erste nicht fertige Kategorie.
-    const zuletzt = progress.lastLearnedCategoryId
-      ? list.findIndex((n) => n.id === progress.lastLearnedCategoryId && n.state !== 'locked')
-      : -1;
+    // Gesperrte Kategorien scheiden aus - dort laesst sich nicht
+    // weiterlernen. Dann gilt die naechstjuengere freigeschaltete.
+    let zuletzt = -1;
+    for (const categoryId of situations.recentCategoryIds) {
+      zuletzt = list.findIndex((n) => n.id === categoryId && n.state !== 'locked');
+      if (zuletzt >= 0) break;
+    }
     const idx = zuletzt >= 0 ? zuletzt : list.findIndex((n) => n.state === 'open');
     if (idx >= 0 && list[idx].state !== 'done') list[idx].state = 'current';
 
     return {
       nodes: list,
       currentIndex: idx >= 0 ? idx : 0,
-      currentLabel: idx >= 0 ? list[idx].label : list[0].label,
+      // `list` ist im Speed-Run nie leer (die Sprach-Pille steht immer da),
+      // der Zugriff auf list[0] wird trotzdem abgesichert - der geführte Weg
+      // teilt sich diesen Rueckgabepfad nicht, aber die Annahme soll nicht
+      // still im Code stehen.
+      currentLabel: idx >= 0 ? list[idx].label : (list[0]?.label ?? ''),
     };
     // `expandedIds` gehoert schon jetzt in die Abhaengigkeiten - sobald das
     // Auffaechern kommt, muss die Liste sich davon neu bauen.
-  }, [purchased, activeLanguage.label, progress.byCategory, progress.lastLearnedCategoryId, expandedIds, themesMounted, situations.byCategory]);
+  }, [learningMode, course.lessons, purchased, activeLanguage.label, activeLanguage.table, progress.byCategory, situations.recentCategoryIds, expandedIds, themesMounted, situations.byCategory, toggleCategory]);
 
   // ---------------------------------------------------------------------
   // Zickzack-Layout: Pillen abwechselnd links/rechts, verbunden durch
@@ -551,17 +612,32 @@ export function PathScreen() {
         {/* Abschnitts-Kopf, bleibt beim Scrollen stehen. */}
         <View style={styles.sectionBar}>
           <View style={[styles.sectionField, { borderColor: theme.border, backgroundColor: theme.pageBg }]}>
-            <Text style={[styles.sectionLabel, { color: theme.sub }]}>Du bist hier</Text>
+            {/* Die kleine Zeile nennt den Lernweg (Nutzer-Wunsch
+                2026-08-20), die grosse bleibt die Stelle im Pfad. Der Text
+                kommt aus LEARNING_MODE_LABEL, damit Knopf-Ansage und Kasten
+                nie auseinanderlaufen. `textTransform` im Stil macht die
+                Grossschreibung, der Wortlaut bleibt hier lesbar. */}
+            <Text style={[styles.sectionLabel, { color: theme.sub }]}>
+              {LEARNING_MODE_LABEL[learningMode]}
+            </Text>
             <Text style={[styles.sectionName, { color: theme.text }]} numberOfLines={1}>
               {currentLabel}
             </Text>
           </View>
           <Pressable
-            onPress={toggleExpand}
+            onPress={switchMode}
             accessibilityRole="button"
-            accessibilityLabel={istOffen ? 'Themen einklappen' : 'Alle Themen auffächern'}
-            accessibilityState={{ expanded: istOffen }}
-            aria-expanded={istOffen}
+            // Nennt das ZIEL, nicht den aktuellen Stand - sonst weiss man
+            // beim Vorlesen nicht, was der Knopf bewirkt. Kein
+            // `aria-expanded` mehr: der Knopf klappt nichts mehr auf.
+            //
+            // Doppelpunkt statt "Zu X wechseln": der Modusname stuende dort
+            // im Dativ ("Zu Geführtem Lernen"), muesste also gebeugt werden.
+            // So bleibt LEARNING_MODE_LABEL unveraendert einsetzbar, auch
+            // fuer kuenftige Namen.
+            accessibilityLabel={`Lernweg wechseln zu: ${
+              LEARNING_MODE_LABEL[learningMode === 'speedrun' ? 'gefuehrt' : 'speedrun']
+            }`}
             style={({ pressed }) => [
               styles.toggleButton,
               {
@@ -571,10 +647,9 @@ export function PathScreen() {
               },
             ]}
           >
-            {/* Wechsel-Symbol statt der Schatzkarte (Nutzer-Wunsch
-                2026-08-20). Passt zur Aufgabe: der Knopf schaltet zwischen
-                zusammengeklappt und aufgefaechert hin und her, er fuehrt
-                nicht woandershin. */}
+            {/* Wechsel-Symbol (Nutzer-Wunsch 2026-08-20). Passt weiterhin:
+                der Knopf schaltet zwischen den beiden Lernwegen hin und her,
+                er fuehrt nicht woandershin. */}
             <Feather name="repeat" size={24} color={theme.text} />
           </Pressable>
         </View>
@@ -584,6 +659,18 @@ export function PathScreen() {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.pathBoxContent}
         >
+          {pathNodes.length === 0 ? (
+            // Ehrlich statt leere Flaeche: sagt, woran es liegt. Bleibt
+            // stehen, anders als die Notice, die sich wieder ausblendet.
+            <View style={styles.pathEmpty}>
+              <Feather name="map" size={28} color={theme.sub} />
+              <Text style={[styles.pathEmptyText, { color: theme.sub }]}>
+                {learningMode === 'gefuehrt'
+                  ? (course.unavailable ?? 'Hier ist noch nichts.')
+                  : `Für ${activeLanguage.label} gibt es bisher keine Sätze — probier den geführten Kurs über den Knopf oben rechts.`}
+              </Text>
+            </View>
+          ) : null}
           <View style={[styles.pathCanvas, { height: canvasHeight }]}>
             {connectors.map((c, i) => (
               <View
@@ -618,7 +705,18 @@ export function PathScreen() {
           dark={darkMode}
           label="Tägliches Wiederholen"
           hint="Öffnet die Wiederholung mit fälligen Karten"
-          onPress={() => router.push('/srs')}
+          // Direkt in EINE gemischte Sitzung, ohne Zwischenscreen
+          // (Nutzer-Frage 2026-08-21). Das taegliche Wiederholen ist der
+          // gemeinsame Pool aus Woertern UND Saetzen - wer hier erst
+          // waehlen muss, uebt die Haelfte nicht. Nach Kartenart filtern
+          // kann man weiterhin ueber S5, das ist aber die Ausnahme.
+          onPress={() =>
+            router.push(
+              targetLanguageId === 'zh'
+                ? '/wiederholen'
+                : { pathname: '/exercise', params: { mode: 'spam', categoryId: 'alle', source: 'srs' } }
+            )
+          }
         />
       </View>
 
@@ -863,6 +961,18 @@ const styles = StyleSheet.create({
   pathBoxContent: {
     paddingVertical: SPACING.lg,
     paddingHorizontal: SPACING.sm,
+  },
+  pathEmpty: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: SPACING.md,
+    paddingHorizontal: SPACING.xl,
+    paddingVertical: SPACING.xxxl,
+  },
+  pathEmptyText: {
+    fontSize: FONT_SIZE.body,
+    lineHeight: LINE_HEIGHT.body,
+    textAlign: 'center',
   },
   pathCanvas: {
     width: CONT_W,
