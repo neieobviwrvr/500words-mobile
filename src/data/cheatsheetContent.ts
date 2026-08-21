@@ -30,6 +30,17 @@ export type Phrase = {
   phonetic?: string | null;
   /** Kulturhinweis, siehe ExerciseSentence.cultureNote. */
   cultureNote?: string | null;
+  /**
+   * Situation und Kategorie als Merkmale am Satz selbst (2026-08-21).
+   *
+   * Gebraucht, sobald ein Satz WAEHREND einer Lektion gemerkt wird: die
+   * Favoriten leben allein aus `savedMeta` und werden nie neu geladen. Ohne
+   * diese beiden Angaben waere ein so gemerkter Satz spaeter nicht mehr
+   * ueber seine Situation auffindbar - die Suche gleicht genau darauf ab
+   * (siehe searchCheatsheetSentences).
+   */
+  scenario?: string;
+  category?: string;
 };
 
 /**
@@ -59,6 +70,8 @@ export function toPhrase(languageId: string, table: string, context: string, s: 
     audioUrl: s.audioUrl,
     phonetic: s.pinyin,
     cultureNote: s.cultureNote,
+    scenario: s.scenario,
+    category: s.category,
   };
 }
 

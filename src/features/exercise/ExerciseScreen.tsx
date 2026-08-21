@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { File } from 'expo-file-system';
@@ -9,6 +10,7 @@ import { CATEGORIES, CATEGORY_BY_ID } from '../../data/categories';
 import { scenarioLabel } from '../../data/scenarios';
 import { getLanguage } from '../../data/languages';
 import { ExerciseSentence, loadAnswerClusters, loadExerciseSentences, shuffle } from '../../data/phrasebookContent';
+import { toPhrase } from '../../data/cheatsheetContent';
 import { evaluateConcepts, EvaluationResult } from '../../features/evaluation/evaluateConcepts';
 import { looksLikeGarbageTranscript } from '../../features/stt/transcriptQuality';
 import { useSpeechmatics } from '../../features/stt/useSpeechmatics';
@@ -117,7 +119,7 @@ export function ExerciseScreen({
    */
   scenario?: string;
 }) {
-  const { darkMode, targetLanguageId, purchased } = useAppState();
+  const { darkMode, targetLanguageId, purchased, saved, toggleSaved } = useAppState();
   const theme = getTheme(darkMode);
   // Der native Header ist app-weit aus (app/_layout.tsx), jeder Screen
   // zeichnet seinen eigenen. Ohne diesen Einsatz liegt die Ueberschrift unter
@@ -243,6 +245,13 @@ export function ExerciseScreen({
   }, [targetLanguageId, categoryId, source]);
 
   const sentence = sentences[Math.min(idx, sentences.length - 1)];
+
+  // Der Schluessel ist derselbe wie im Survival (sprache:tabelle:id) - ein
+  // hier gemerkter Satz ist dort sofort derselbe Eintrag, nicht ein zweiter.
+  const merkPhrase = sentence
+    ? toPhrase(targetLanguageId, language.table ?? '', anzeigeName, sentence)
+    : null;
+  const istGemerkt = merkPhrase ? !!saved[merkPhrase.id] : false;
 
   async function handleMicPress() {
     setRecordError(null);
@@ -448,6 +457,12 @@ export function ExerciseScreen({
               {sentence.pinyin ?? sentence.text}
             </Text>
             {sentence.germanGloss && <Text style={[styles.gloss, { color: theme.sub }]}>{sentence.germanGloss}</Text>}
+            {sentence.cultureNote ? (
+              <View style={[styles.hinweis, { borderLeftColor: ACCENT_BLUE }]}>
+                <Text style={[styles.hinweisText, { color: theme.sub }]}>{sentence.cultureNote}</Text>
+              </View>
+            ) : null}
+            <View style={styles.kartenAktionen}>
             <Pressable
               disabled
               accessibilityRole="button"
@@ -458,6 +473,37 @@ export function ExerciseScreen({
             >
               <Text style={{ color: theme.sub, fontWeight: '700', fontSize: 12 }}>▶ Vorlesen (noch kein Audio)</Text>
             </Pressable>
+            {/* Merken mitten in der Uebung (Nutzer-Wunsch 2026-08-21): der
+                Satz landet sofort unter "Gespeicherte Saetze" im Survival.
+                Gefuelltes Lesezeichen heisst gemerkt - dieselbe Sprache wie
+                auf der Survival-Karte und am Favoriten-Knopf. */}
+            <Pressable
+              onPress={() => {
+                if (merkPhrase) toggleSaved(merkPhrase.id, merkPhrase);
+              }}
+              accessibilityRole="button"
+              accessibilityLabel={istGemerkt ? 'Gemerkt' : 'Satz merken'}
+              accessibilityHint={
+                istGemerkt
+                  ? 'Aus den gespeicherten Sätzen entfernen'
+                  : 'Zu den gespeicherten Sätzen im Survival hinzufügen'
+              }
+              accessibilityState={{ selected: istGemerkt }}
+              style={({ pressed }) => [
+                styles.merken,
+                { borderColor: istGemerkt ? ACCENT_GREEN : theme.border, opacity: pressed ? 0.6 : 1 },
+              ]}
+            >
+              <Ionicons
+                name={istGemerkt ? 'bookmark' : 'bookmark-outline'}
+                size={16}
+                color={istGemerkt ? ACCENT_GREEN : theme.sub}
+              />
+              <Text style={{ color: istGemerkt ? ACCENT_GREEN : theme.sub, fontWeight: '700', fontSize: 12 }}>
+                {istGemerkt ? 'Gemerkt' : 'Merken'}
+              </Text>
+            </Pressable>
+            </View>
           </View>
 
           <View style={styles.sttRow}>
@@ -610,9 +656,16 @@ const styles = StyleSheet.create({
   fallbackHint: { fontSize: 12, fontStyle: 'italic', marginBottom: 10 },
   cardLabel: { fontWeight: '700', fontSize: 12, marginBottom: 16 },
   sentenceCard: { borderWidth: 1.5, borderRadius: 16, padding: 18, marginBottom: 14, gap: 10 },
+  kartenAktionen: { flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' },
+  merken: {
+    flexDirection: 'row', alignItems: 'center', gap: 6,
+    paddingVertical: 8, paddingHorizontal: 14, borderRadius: 100, borderWidth: 1.5,
+  },
+  hinweis: { borderLeftWidth: 2, paddingLeft: 10 },
+  hinweisText: { fontSize: 12, lineHeight: 17, fontStyle: 'italic' },
   sentenceText: { fontSize: 19, fontWeight: '700', lineHeight: 26 },
   gloss: { fontSize: 13, fontStyle: 'italic' },
-  ttsButton: { alignSelf: 'flex-start', paddingVertical: 8, paddingHorizontal: 14, borderRadius: 100, borderWidth: 1.5 },
+  ttsButton: { paddingVertical: 8, paddingHorizontal: 14, borderRadius: 100, borderWidth: 1.5 },
   sttRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 8 },
   micButton: { flex: 1, paddingVertical: 14, borderRadius: 100, alignItems: 'center' },
   micButtonText: { color: '#fff', fontWeight: '800', fontSize: 15 },
