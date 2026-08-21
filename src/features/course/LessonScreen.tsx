@@ -166,6 +166,20 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
    * dafuer jedes Mal erneut klicken zu lassen waere Schikane.
    */
   const [tippenErlaubt, setTippenErlaubt] = useState(false);
+
+  /**
+   * Wurde der AKTUELLE Schritt schon einmal beantwortet?
+   *
+   * Nach einer falschen Aussprache darf man es nochmal versuchen
+   * (Nutzer-Wunsch 2026-08-21). Gewertet wird aber nur der ERSTE Versuch -
+   * fuer die Wiederholungs-Karte und fuer die Auswertung am Lektionsende.
+   * Sonst koennte man sich durch Wiederholen zu einem besseren Ergebnis
+   * klicken, und dieselbe FSRS-Karte bekaeme mehrere Bewertungen im
+   * Minutenabstand, womit der Algorithmus nicht rechnet. Der zweite Versuch
+   * aendert also nur, was auf dem Bildschirm steht - er ist Uebung, kein
+   * Nachweis. Anki macht es genauso: die erste Antwort zaehlt.
+   */
+  const versuchtRef = useRef(false);
   /** Wie viele Karten diese Lektion aufgefrischt hat - fuer die Auswertung. */
   const [karten, setKarten] = useState(0);
 
@@ -317,6 +331,7 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
   }, []);
 
   const zuruecksetzen = useCallback(() => {
+    versuchtRef.current = false;
     setEingabe('');
     setUrteil(null);
     setGrund(null);
@@ -363,10 +378,11 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
 
   const schritt = schritte[pos];
 
-  function merke(tier: Tier, neuerGrund: string | null) {
+  function merke(tier: Tier, neuerGrund: string | null, ersterVersuch: boolean) {
     setUrteil(tier);
     setGrund(neuerGrund);
-    setErgebnisse((e) => [...e, tier]);
+    // Nur der erste Versuch geht in die Auswertung am Lektionsende ein.
+    if (ersterVersuch) setErgebnisse((e) => [...e, tier]);
   }
 
   /**
@@ -404,19 +420,30 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
     // Noetige selbst.
     if (!schritt) return;
 
+    const ersterVersuch = !versuchtRef.current;
+    versuchtRef.current = true;
+
     if (schritt.art === 'finisher') {
       const b = bewerteFinisher(antwort, loesungen, quelle);
-      merke(b.tier, b.grund);
+      merke(b.tier, b.grund, ersterVersuch);
       return;
     }
 
-    // Einzelwort bei nachsprechen/abrufen, ganzer Satz beim Satz-Schritt.
+    // Einzelwort bei nachsprechen/abrufen, ganzer Satz beim Teaser und beim
+    // Satz-Schritt. Der Slot ist beim Teaser das neue Wort, das er einfuehrt -
+    // es steht immer an letzter Stelle in `woerter` (siehe Schrittbau oben).
     const ziel =
       schritt.art === 'satz'
         ? { hanzi: schritt.hanzi, pinyin: schritt.pinyin, wort: schritt.wort }
-        : schritt.art === 'nachsprechen' || schritt.art === 'abrufen'
-          ? { hanzi: schritt.wort.hanzi, pinyin: schritt.wort.pinyin, wort: schritt.wort }
-          : null;
+        : schritt.art === 'teaser'
+          ? {
+              hanzi: schritt.hanzi,
+              pinyin: schritt.pinyin,
+              wort: schritt.woerter[schritt.woerter.length - 1],
+            }
+          : schritt.art === 'nachsprechen' || schritt.art === 'abrufen'
+            ? { hanzi: schritt.wort.hanzi, pinyin: schritt.wort.pinyin, wort: schritt.wort }
+            : null;
     if (!ziel) return;
 
     const b = bewerteAntwort({
@@ -427,8 +454,19 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
       slotPinyin: ziel.wort.pinyin,
       quelle,
     });
-    merke(b.tier, b.grund);
+    merke(b.tier, b.grund, ersterVersuch);
 
+    // Nur der erste Versuch schreibt - ein zweiter Anlauf ist Uebung, kein
+    // Nachweis (siehe versuchtRef).
+    if (!ersterVersuch) return;
+
+    // Der TEASER schreibt bewusst KEINE Karte, obwohl er jetzt bewertet wird
+    // (2026-08-21). Zwei Gruende: der Satz steht sichtbar da, das Nachsprechen
+    // beweist also nichts ueber das Abrufen - und er kommt MEHRFACH je Lektion
+    // (einmal vor jedem neuen Wort). Wuerde er auf die Rahmenkarte schreiben,
+    // bekaeme dieselbe Karte vier bis fuenf Bewertungen im Minutenabstand,
+    // womit FSRS nicht rechnet. Jede Kartenart wird von genau EINEM Schritt
+    // bewertet - siehe CLAUDE.md.
     if (schritt.art === 'abrufen') {
       schreibeKarte(KURS_WORT, schritt.wort.hanzi, b.tier);
     } else if (schritt.art === 'satz') {
@@ -461,6 +499,20 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
     } finally {
       setPrueft(false);
     }
+  }
+
+  /**
+   * Nochmal sprechen nach einer misslungenen Antwort.
+   *
+   * Raeumt nur die Rueckmeldung weg, damit das Mikrofon wieder erscheint.
+   * `versuchtRef` bleibt bewusst stehen - siehe dort.
+   */
+  function nochmal() {
+    setUrteil(null);
+    setGrund(null);
+    setGehoert(null);
+    setSttFehler(null);
+    setEingabe('');
   }
 
   function weiter() {
@@ -524,7 +576,36 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
               </Text>
               <HoerKnopf dark={darkMode} onPress={() => sprich(schritt.hanzi)} />
             </Card>
-            <PillButton dark={darkMode} label="Gesagt" onPress={weiter} />
+            {/* Bis 2026-08-21 stand hier nur ein Knopf "Gesagt" - eine reine
+                Selbstauskunft. In einer App, deren Kernprinzip Sprechen ist,
+                war ausgerechnet der erste Schritt jeder Lektion der einzige
+                ohne Mikrofon. */}
+            {urteil ? (
+              <Rueckmeldung
+                dark={darkMode}
+                urteil={urteil}
+                loesung={schritt.pinyin}
+                grund={grund}
+                gehoert={gehoert}
+                onNochmal={nochmal}
+                onHoeren={() => sprich(schritt.hanzi)}
+              />
+            ) : (
+              <AntwortBlock
+                dark={darkMode}
+                nimmtAuf={nimmtAuf}
+                prueft={prueft}
+                sttFehler={sttFehler}
+                eingabe={eingabe}
+                setEingabe={setEingabe}
+                platzhalter={schritt.pinyin.replace(/[^a-zA-Z ]/g, '')}
+                tippenErlaubt={tippenErlaubt}
+                onTippen={() => setTippenErlaubt(true)}
+                onMikro={aufnehmen}
+                onPruefen={() => pruefe(eingabe, 'text')}
+              />
+            )}
+            <PillButton dark={darkMode} label="Weiter" onPress={weiter} disabled={!urteil} />
           </>
         ) : null}
 
@@ -570,6 +651,7 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
                 loesung={schritt.wort.pinyin}
                 grund={grund}
                 gehoert={gehoert}
+                onNochmal={nochmal}
                 onHoeren={() => sprich(schritt.wort.hanzi)}
               />
             ) : (
@@ -587,7 +669,7 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
                 onPruefen={() => pruefe(eingabe, 'text')}
               />
             )}
-            {urteil ? <PillButton dark={darkMode} label="Weiter" onPress={weiter} /> : null}
+            <PillButton dark={darkMode} label="Weiter" onPress={weiter} disabled={!urteil} />
           </>
         ) : null}
 
@@ -628,6 +710,7 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
                 loesung={schritt.wort.pinyin}
                 grund={grund}
                 gehoert={gehoert}
+                onNochmal={nochmal}
                 onHoeren={() => sprich(schritt.wort.hanzi)}
               />
             ) : (
@@ -645,7 +728,7 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
                 onPruefen={() => pruefe(eingabe, 'text')}
               />
             )}
-            {urteil ? <PillButton dark={darkMode} label="Weiter" onPress={weiter} /> : null}
+            <PillButton dark={darkMode} label="Weiter" onPress={weiter} disabled={!urteil} />
           </>
         ) : null}
 
@@ -667,6 +750,7 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
                 loesung={schritt.pinyin}
                 grund={grund}
                 gehoert={gehoert}
+                onNochmal={nochmal}
                 onHoeren={() => sprich(schritt.hanzi)}
               />
             ) : (
@@ -684,7 +768,7 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
                 onPruefen={() => pruefe(eingabe, 'text')}
               />
             )}
-            {urteil ? <PillButton dark={darkMode} label="Weiter" onPress={weiter} /> : null}
+            <PillButton dark={darkMode} label="Weiter" onPress={weiter} disabled={!urteil} />
           </>
         ) : null}
 
@@ -705,6 +789,7 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
                 loesung={loesungen[0]?.pinyin ?? ''}
                 grund={grund}
                 gehoert={gehoert}
+                onNochmal={nochmal}
                 onHoeren={() => sprich(loesungen[0]?.hanzi ?? '')}
               />
             ) : (
@@ -837,10 +922,12 @@ function AntwortBlock({
 
 /** Urteil plus Loesung - beide Schritte benutzen dasselbe. */
 function Rueckmeldung({
-  dark, urteil, loesung, grund, gehoert, onHoeren,
+  dark, urteil, loesung, grund, gehoert, onHoeren, onNochmal,
 }: {
   dark: boolean; urteil: Tier; loesung: string; grund: string | null;
   gehoert: string | null; onHoeren: () => void;
+  /** Fehlt beim Finisher - dort gibt es keinen zweiten Anlauf. */
+  onNochmal?: () => void;
 }) {
   const theme = getTheme(dark);
   return (
@@ -852,7 +939,26 @@ function Rueckmeldung({
       {gehoert ? (
         <Text style={[styles.text, { color: theme.sub }]}>{`Verstanden: ${gehoert}`}</Text>
       ) : null}
-      <HoerKnopf dark={dark} onPress={onHoeren} />
+      <View style={styles.rueckKnoepfe}>
+        <HoerKnopf dark={dark} onPress={onHoeren} />
+        {/* Zweiter Anlauf nur, wenn es etwas zu verbessern gibt
+            (Nutzer-Wunsch 2026-08-21). Bei "richtig" waere der Knopf eine
+            Einladung, an einer schon gelungenen Antwort herumzufeilen. */}
+        {onNochmal && urteil !== 'richtig' ? (
+          <Pressable
+            onPress={onNochmal}
+            accessibilityRole="button"
+            accessibilityLabel="Nochmal sprechen"
+            style={({ pressed }) => [
+              styles.nochmal,
+              { borderColor: theme.border, opacity: pressed ? 0.6 : 1 },
+            ]}
+          >
+            <Feather name="rotate-ccw" size={15} color={theme.text} />
+            <Text style={[styles.nochmalText, { color: theme.text }]}>Nochmal sprechen</Text>
+          </Pressable>
+        ) : null}
+      </View>
     </Card>
   );
 }
@@ -915,6 +1021,17 @@ const styles = StyleSheet.create({
   },
   kopfUnter: { fontSize: FONT_SIZE.caption, lineHeight: LINE_HEIGHT.caption },
   fortschritt: { marginTop: SPACING.md },
+  rueckKnoepfe: { flexDirection: 'row', alignItems: 'center', gap: SPACING.sm, flexWrap: 'wrap' },
+  nochmal: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: SPACING.xs,
+    borderWidth: 1,
+    borderRadius: RADIUS.pill,
+    paddingVertical: SPACING.xs,
+    paddingHorizontal: SPACING.md,
+  },
+  nochmalText: { fontSize: FONT_SIZE.small, fontWeight: '700' },
   inhalt: { paddingTop: SPACING.lg, paddingBottom: SPACING.xxxl, gap: SPACING.md },
   schrittLabel: {
     fontSize: FONT_SIZE.small,
