@@ -242,6 +242,7 @@ export default function TabsLayout() {
       <Tabs.Screen name="training/[mode]" options={{ href: null }} />
       <Tabs.Screen name="lesson/[id]" options={{ href: null }} />
       <Tabs.Screen name="wiederholen" options={{ href: null }} />
+      <Tabs.Screen name="wortliste" options={{ href: null }} />
       <Tabs.Screen name="srs" options={{ href: null }} />
       <Tabs.Screen name="profil" options={{ href: null }} />
       <Tabs.Screen name="exercise" options={{ href: null }} />

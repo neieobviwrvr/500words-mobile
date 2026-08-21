@@ -133,6 +133,9 @@ export function LessonsScreen() {
               categoryId === GRUNDWORTSCHATZ_ID ? 'grundlagen' : TINT_ORDER[i % TINT_ORDER.length];
             const tint = WORLD_TINTS[tintKey];
             const list = situations.byCategory[categoryId] ?? [];
+            // Saetze der ganzen Kategorie, fuer die Beschriftung des
+            // "Alle"-Knopfes.
+            const gesamt = list.reduce((n, sit) => n + sit.total, 0);
             const locked = !isUnlocked(categoryId);
 
             return (
@@ -159,6 +162,50 @@ export function LessonsScreen() {
                     >
                       <Feather name="lock" size={13} color={NODE_LOCKED} />
                     </Pressable>
+                  ) : null}
+
+                  {/* Zwei kleine Knoepfe rechts in der Ueberschriftenzeile
+                      (Nutzer-Entscheidung 2026-08-21). Bewusst NICHT als
+                      Karten vor der Reihe: die Reihe IST der Inhalt, und was
+                      dort vorne steht, wischt man bei jedem Besuch weg, um an
+                      die Situationen zu kommen - eine Abgabe auf die haeufige
+                      Handlung zugunsten einer seltenen. Hier kosten sie
+                      weder Hoehe noch Wisch, weil der Platz neben der
+                      Ueberschrift ohnehin leer war.
+
+                      "Alle" ersetzt zugleich einen Weg, der beim Umbau auf
+                      Situations-Ziele verlorenging: die ganze Kategorie am
+                      Stueck zu ueben gab es vorher nur ueber S2, und S2 hat
+                      seitdem keinen Eingang mehr. */}
+                  {!locked && gesamt > 0 ? (
+                    <View style={styles.kopfKnoepfe}>
+                      <Pressable
+                        onPress={() =>
+                          router.push({
+                            pathname: '/exercise',
+                            params: { mode: 'spam', categoryId, source: 'category' },
+                          })
+                        }
+                        accessibilityRole="button"
+                        accessibilityLabel={`Alle ${gesamt} Sätze von ${name} üben`}
+                        hitSlop={10}
+                        style={({ pressed }) => [styles.kopfKnopf, { opacity: pressed ? 0.5 : 1 }]}
+                      >
+                        <Text style={[styles.kopfKnopfText, { color: theme.sub }]}>{`Alle ${gesamt}`}</Text>
+                      </Pressable>
+                      <Text style={[styles.kopfKnopfText, { color: theme.sub }]}>·</Text>
+                      <Pressable
+                        onPress={() =>
+                          router.push({ pathname: '/wortliste', params: { categoryId } })
+                        }
+                        accessibilityRole="button"
+                        accessibilityLabel={`Wortliste von ${name} ansehen`}
+                        hitSlop={10}
+                        style={({ pressed }) => [styles.kopfKnopf, { opacity: pressed ? 0.5 : 1 }]}
+                      >
+                        <Text style={[styles.kopfKnopfText, { color: theme.sub }]}>Wortliste</Text>
+                      </Pressable>
+                    </View>
                   ) : null}
                 </View>
 
@@ -368,6 +415,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.lg,
   },
   schloss: { padding: SPACING.xs },
+  kopfKnoepfe: { flexDirection: 'row', alignItems: 'center', gap: 6, marginLeft: 'auto' },
+  kopfKnopf: { paddingVertical: 2 },
+  kopfKnopfText: { fontSize: FONT_SIZE.caption, fontWeight: '700' },
   groupTitle: {
     fontSize: FONT_SIZE.small,
     fontWeight: '800',
