@@ -36,6 +36,28 @@ export type ExerciseSentence = {
    * bevorzugt die Datei und faellt sonst auf die Systemstimme zurueck.
    */
   audioUrl: string | null;
+  /**
+   * Pinyin - nur bei Chinesisch gesetzt.
+   *
+   * Fuer Chinesisch ist DAS der Lerntext; `text` traegt die Zeichen, die
+   * passiv mitlaufen (TTS braucht sie, und Speechmatics gibt fuer Mandarin
+   * Zeichen zurueck). Siehe CLAUDE.md, "Gelernt wird ueber PINYIN".
+   */
+  pinyin: string | null;
+  /**
+   * true = nur im Survival-Nachschlagewerk, nie im Lernpfad.
+   *
+   * Fuer Saetze, die man sofort und unter Stress braucht, statt sie ueber
+   * Wochen zu wiederholen ("Bitte rufen Sie die Polizei"). Sie duerfen
+   * deshalb auch Vokabeln benutzen, die der Kurs nicht lehrt.
+   */
+  lookupOnly: boolean;
+  /**
+   * null = fuer alle. Sonst 'frauen' / 'maenner': zeigt die Variante nur,
+   * wenn der Nutzer im Onboarding angegeben hat, wen er ansprechen koennen
+   * will (OnboardingState.addressing).
+   */
+  addressing: string | null;
 };
 
 // categoryIds: explizite Liste statt eines "alle"-Sentinels, der frueher
@@ -53,7 +75,16 @@ export type ExerciseSentence = {
 // anzeigen kann, dass gerade der letzte gespeicherte Stand genutzt wird.
 export async function loadExerciseSentences(
   languageId: string,
-  categoryIds: string[]
+  categoryIds: string[],
+  /**
+   * Nachschlage-Saetze mitliefern? Vorgabe ist NEIN - die sichere Richtung:
+   * ein Satz, der nur zum Vorzeigen gedacht ist, darf nie in einer
+   * Uebungssitzung landen. Nur das Survival-Nachschlagewerk setzt das auf
+   * true. Der Zwischenspeicher haelt immer ALLES, gefiltert wird erst
+   * danach - sonst haetten die beiden Aufrufer verschiedene Staende unter
+   * demselben Schluessel.
+   */
+  optionen?: { mitNachschlage?: boolean }
 ): Promise<{ sentences: ExerciseSentence[]; fromCache: boolean }> {
   const lang = getLanguage(languageId);
   if (!lang.table) return { sentences: [], fromCache: false };
@@ -61,10 +92,14 @@ export async function loadExerciseSentences(
   const textColumn = lang.id === 'de' ? 'german' : 'target_text';
   // `audio_url` gibt es NUR in den Nicht-Deutsch-Tabellen - phrasebook_master
   // hat die Spalte nicht, ein Select darauf wuerde dort scheitern.
+  const gemeinsam = 'scenario, category, accepted_concepts, lookup_only, addressing';
   const columns =
     lang.id === 'de'
-      ? 'id, german, scenario, category, accepted_concepts'
-      : 'id, target_text, german, scenario, category, accepted_concepts, verb_cluster, audio_url';
+      ? `id, german, ${gemeinsam}`
+      // Nur chinesisch_phrasebook hat eine Pinyin-Spalte.
+      : lang.id === 'zh'
+        ? `id, target_text, pinyin, german, ${gemeinsam}, verb_cluster, audio_url`
+        : `id, target_text, german, ${gemeinsam}, verb_cluster, audio_url`;
 
   const cacheKey = `sentences:${lang.id}:${[...categoryIds].sort().join(',')}`;
   const { data: sentences, fromCache } = await cachedFetch(cacheKey, async () => {
@@ -90,11 +125,18 @@ export async function loadExerciseSentences(
         category: row.category,
         accepted_concepts,
         audioUrl: row.audio_url ?? null,
+        pinyin: row.pinyin ?? null,
+        lookupOnly: row.lookup_only === true,
+        addressing: row.addressing ?? null,
       };
     });
   });
 
-  return { sentences, fromCache };
+  const gefiltert = optionen?.mitNachschlage
+    ? sentences
+    : sentences.filter((x) => !x.lookupOnly);
+
+  return { sentences: gefiltert, fromCache };
 }
 
 export async function loadAnswerClusters(): Promise<Record<string, string[]>> {

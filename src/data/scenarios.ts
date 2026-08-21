@@ -17,6 +17,18 @@ export const SCENARIO_LABELS: Record<string, string> = {
   uhrzeit: 'Uhrzeit',
   termin: 'Termine',
   zahlen: 'Zahlen',
+  // Club + Nightlife (2026-08-21). Neun Situationen geplant, drei befuellt -
+  // die uebrigen sechs stehen schon hier, damit die Namen an EINER Stelle
+  // festgelegt sind, wenn Welle 2 kommt.
+  club_einlass: 'Reinkommen',
+  club_bar: 'An der Bar',
+  club_trinkkultur: 'Trinken und Anstoßen',
+  club_ktv: 'Karaoke',
+  club_ansprechen: 'Jemanden ansprechen',
+  club_naeherkommen: 'Näher kommen',
+  club_nachtlogistik: 'Wo schlafen wir',
+  club_sicherheit: 'Grenzen und Hilfe',
+  club_verloren: 'Freunde verloren',
   // Kaufkategorien
   hotel: 'Im Hotel',
   reisen: 'Unterwegs',

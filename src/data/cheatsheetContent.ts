@@ -1,4 +1,5 @@
-import { CATEGORY_BY_ID } from './categories';
+import { CATEGORIES, CATEGORY_BY_ID } from './categories';
+import { SCENARIO_LABELS } from './scenarios';
 import { ExerciseSentence, loadExerciseSentences } from './phrasebookContent';
 
 // S6 Cheat-Sheet-Survival - seit 2026-08-07 auf echtem Supabase-Content
@@ -53,29 +54,11 @@ export function toPhrase(languageId: string, table: string, context: string, s: 
   };
 }
 
-// Anzeigenamen fuer die `scenario`-Spalte - nur bei Kategorien mit MEHREREN
-// unterschiedlichen Szenarien sinnvoll als Unterauswahl (aktuell nur
-// grundwortschatz und travel_transportation, siehe CategoryScenarioGroup
-// unten - der Rest hat genau 1 Szenario pro Kategorie, redundant zum
-// Kategorienamen selbst, deshalb dort keine Unterauswahl noetig).
-const SCENARIO_LABELS: Record<string, string> = {
-  begruessung: 'Begrüßung',
-  vorstellung: 'Vorstellung',
-  abschied: 'Verabschiedung',
-  uhrzeit: 'Uhrzeit',
-  termin: 'Termine',
-  zahlen: 'Zahlen',
-  hotel: 'Hotel',
-  reisen: 'Reisen',
-  wegbeschreibung: 'Wegbeschreibung',
-  gesundheit: 'Gesundheit',
-  restaurant: 'Restaurant',
-  einkaufen: 'Einkaufen',
-  smalltalk: 'Smalltalk',
-  wohnen: 'Wohnen',
-  uni: 'Uni',
-  kultur: 'Kultur',
-};
+// Anzeigenamen kommen aus data/scenarios.ts - EINE Quelle fuer alle
+// Screens. Hier stand bis 2026-08-21 eine zweite, eigene Liste; sie kannte
+// die neuen Club-Situationen nicht und widersprach der anderen bei zwoelf
+// Eintraegen ("Wegbeschreibung" gegen "Nach dem Weg fragen") - Survival
+// und Lektionen-Screen nannten dieselbe Situation verschieden.
 
 export type CheatsheetScenarioGroup = { key: string; label: string; sentences: ExerciseSentence[] };
 
@@ -96,16 +79,43 @@ export async function loadCheatsheetGroups(
   // Grundwortschatz ZUERST (Nutzer-Entscheidung 2026-08-21): er ist die
   // Grundlage und fuer jeden freigeschaltet, gehoert also nach oben und
   // nicht ans Ende hinter die gekauften Kategorien.
-  const categoryIds = ['grundwortschatz', ...purchasedCategoryIds];
-  const { sentences, fromCache } = await loadExerciseSentences(languageId, categoryIds);
+  const freigeschaltet = ['grundwortschatz', ...purchasedCategoryIds];
+
+  // ALLE Kategorien laden, auch die gesperrten - und zwar einschliesslich
+  // der Nachschlage-Saetze (2026-08-21, Nutzer-Entscheidung "Survival
+  // immer").
+  //
+  // Grund: die Sicherheitssaetze ("Bitte rufen Sie die Polizei", "Tu so, als
+  // wuerden wir uns kennen") liegen in Kaufkategorien. Waeren sie erst nach
+  // dem Kauf sichtbar, fehlten sie genau in dem Moment, fuer den sie
+  // gedacht sind. Aus einer GESPERRTEN Kategorie kommen deshalb nur die
+  // Nachschlage-Saetze durch, der Rest bleibt hinter dem Kauf - nebenbei
+  // ein ehrlicher Werbeeffekt: man sieht, was die Kategorie kann.
+  const alleIds = CATEGORIES.map((c) => c.id);
+  const categoryIds = [
+    'grundwortschatz',
+    ...purchasedCategoryIds,
+    ...alleIds.filter((id) => !freigeschaltet.includes(id)),
+  ];
+  const { sentences, fromCache } = await loadExerciseSentences(languageId, categoryIds, {
+    mitNachschlage: true,
+  });
 
   const byCategory = new Map<string, ExerciseSentence[]>();
   for (const s of sentences) {
+    const offen = freigeschaltet.includes(s.category);
+    if (!offen && !s.lookupOnly) continue;
     if (!byCategory.has(s.category)) byCategory.set(s.category, []);
     byCategory.get(s.category)!.push(s);
   }
 
-  const groups: CheatsheetCategoryGroup[] = categoryIds.map((catId) => {
+  // Gesperrte Kategorien ohne einen einzigen Nachschlage-Satz tauchen gar
+  // nicht auf - eine leere Ueberschrift waere nur Rauschen.
+  const sichtbar = categoryIds.filter(
+    (id) => freigeschaltet.includes(id) || (byCategory.get(id)?.length ?? 0) > 0,
+  );
+
+  const groups: CheatsheetCategoryGroup[] = sichtbar.map((catId) => {
     const catSentences = byCategory.get(catId) ?? [];
     const title = catId === 'grundwortschatz' ? 'Grundwortschatz' : (CATEGORY_BY_ID[catId]?.name ?? catId);
     const distinctScenarios = Array.from(new Set(catSentences.map((s) => s.scenario)));

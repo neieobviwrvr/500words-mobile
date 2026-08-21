@@ -33,13 +33,39 @@ function normalize(text: string): string {
     // aus (beobachteter Bug: "Wann öffnet das Museum?" == Transkript, aber
     // als falsch bewertet).
     .toLowerCase()
-    .replace(/[.,!?;:"'`]/g, '')
+    // Chinesische Satzzeichen sind eigene Unicode-Zeichen (Vollbreite) und
+    // wuerden sonst am Wort kleben bleiben.
+    .replace(/[.,!?;:"'`。，！？；：、“”（）]/g, '')
     .replace(/\s+/g, ' ')
     .trim();
 }
 
 function tokenize(text: string): string[] {
   return normalize(text).split(' ').filter(Boolean);
+}
+
+// Chinesisch bricht die Grundannahme dieser Datei (2026-08-21).
+//
+// Alles hier drunter zerlegt Text an LEERZEICHEN und vergleicht Wort gegen
+// Wort. Chinesisch hat keine Wortgrenzen: Speechmatics liefert 我要一杯水 als
+// eine einzige Kette. Ein Konzept "水" faende darin nie ein passendes "Wort",
+// und der Umweg fuzzyContainsMerged() greift nur bei mehrwortigen Synonymen.
+// Ohne diese Weiche waere jede chinesische Antwort "nicht verstanden".
+//
+// Das richtige Mass ist deshalb ENTHALTEN statt Wort-fuer-Wort - und zwar
+// EXAKT, ohne die Levenshtein-Toleranz von wordsAreClose(): in lateinischer
+// Schrift ist ein abweichender Buchstabe meist ein Verhoerer, in chinesischer
+// Schrift ist ein abweichendes Zeichen ein anderes Wort. Toleranz waere hier
+// keine Nachsicht, sondern Falschbewertung.
+const CJK = /[一-鿿㐀-䶿]/;
+
+function hatCJK(text: string): boolean {
+  return CJK.test(text);
+}
+
+/** Normalisiert und entfernt alle Leerzeichen - die Vergleichsform fuer CJK. */
+function cjkForm(text: string): string {
+  return normalize(text).replace(/\s+/g, '');
 }
 
 function levenshtein(a: string, b: string): number {
@@ -117,6 +143,9 @@ function fuzzyContainsMerged(haystack: string, needle: string): boolean {
 }
 
 function synonymMatches(userTokens: string[], userTextConcat: string, synonym: string): boolean {
+  // Chinesisch: enthalten oder nicht, siehe Kommentar bei hatCJK().
+  if (hatCJK(synonym)) return userTextConcat.includes(cjkForm(synonym));
+
   const synonymTokens = tokenize(synonym);
   const strictMatch = synonymTokens.every((synToken) => userTokens.some((userToken) => wordsAreClose(userToken, synToken)));
   if (strictMatch) return true;
@@ -127,8 +156,12 @@ function synonymMatches(userTokens: string[], userTextConcat: string, synonym: s
   return fuzzyContainsMerged(userTextConcat, synonymTokens.join(''));
 }
 
-function clusterMatches(userTokens: string[], clusterForms: string[]): boolean {
-  return clusterForms.some((form) => userTokens.some((userToken) => wordsAreClose(userToken, normalize(form))));
+function clusterMatches(userTokens: string[], userTextConcat: string, clusterForms: string[]): boolean {
+  return clusterForms.some((form) =>
+    hatCJK(form)
+      ? userTextConcat.includes(cjkForm(form))
+      : userTokens.some((userToken) => wordsAreClose(userToken, normalize(form))),
+  );
 }
 
 // clusters: Lookup-Tabelle cluster_id -> Wortformen, kommt aus Supabase
@@ -172,7 +205,7 @@ export function evaluateConcepts(
   let verbClusterMatched: boolean | null = null;
   if (accepted.verb_cluster) {
     const forms = clusters[accepted.verb_cluster] ?? [];
-    verbClusterMatched = clusterMatches(userTokens, forms);
+    verbClusterMatched = clusterMatches(userTokens, userTextConcat, forms);
   }
 
   let tier: Tier = 'nicht_verstanden';
@@ -199,11 +232,24 @@ export function evaluateConcepts(
   // hier ist nur eine zusaetzliche Bremse gegen Zufallstreffer). Nur aktiv,
   // wenn targetText mitgegeben wurde (optional, siehe Aufrufer).
   if (tier === 'richtig' && targetText) {
-    const targetTokens = tokenize(targetText);
-    const unexplained = userTokens.filter(
-      (userToken) => !targetTokens.some((targetToken) => wordsAreClose(userToken, targetToken)),
-    );
-    const unexplainedRatio = userTokens.length > 0 ? unexplained.length / userTokens.length : 0;
+    let unexplainedRatio = 0;
+
+    if (hatCJK(targetText)) {
+      // Chinesisch hat keine Woerter zum Zaehlen - also je ZEICHEN pruefen.
+      // Dieselbe Frage wie unten: wie viel von dem, was der Nutzer gesagt
+      // hat, kommt im Zielsatz ueberhaupt vor?
+      const zielZeichen = new Set([...cjkForm(targetText)]);
+      const gesagt = [...cjkForm(userText)];
+      const fremd = gesagt.filter((z) => !zielZeichen.has(z));
+      unexplainedRatio = gesagt.length > 0 ? fremd.length / gesagt.length : 0;
+    } else {
+      const targetTokens = tokenize(targetText);
+      const unexplained = userTokens.filter(
+        (userToken) => !targetTokens.some((targetToken) => wordsAreClose(userToken, targetToken)),
+      );
+      unexplainedRatio = userTokens.length > 0 ? unexplained.length / userTokens.length : 0;
+    }
+
     if (unexplainedRatio > 0.5) {
       tier = 'ueberlebt';
     }

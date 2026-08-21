@@ -414,7 +414,14 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
           )}
 
           <View style={[styles.sentenceCard, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
-            <Text style={[styles.sentenceText, { color: theme.text }]}>{sentence.text}</Text>
+            {/* Pinyin schlaegt Zeichen, wo es eins gibt (2026-08-21).
+                `sentence.text` traegt fuer Chinesisch die Hanzi - die braucht
+                TTS und die Bewertung, aber NICHT der Lernende: "fuer das
+                Lernen brauchen wir keine Zeichen" (CLAUDE.md). Fuer alle
+                anderen Sprachen ist `pinyin` null und es bleibt beim Text. */}
+            <Text style={[styles.sentenceText, { color: theme.text }]}>
+              {sentence.pinyin ?? sentence.text}
+            </Text>
             {sentence.germanGloss && <Text style={[styles.gloss, { color: theme.sub }]}>{sentence.germanGloss}</Text>}
             <Pressable
               disabled

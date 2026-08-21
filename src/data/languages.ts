@@ -51,7 +51,7 @@ export const LANGUAGES: Language[] = [
   // ausgegraut und der Kurs gar nicht erreichbar. Das Onboarding schliesst
   // sie ueber die zusaetzliche Bedingung `table !== null` weiterhin aus -
   // dort geht es um Satz-Content, den es fuer Chinesisch nicht gibt.
-  { id: 'zh', label: 'Chinesisch', table: null, sttLanguage: 'cmn', sttPrompt: '这是一个中文例句。', ttsLocale: 'zh-CN', hasContent: true, vocabTable: null, vocabColumn: null },
+  { id: 'zh', label: 'Chinesisch', table: 'chinesisch_phrasebook', sttLanguage: 'cmn', sttPrompt: '这是一个中文例句。', ttsLocale: 'zh-CN', hasContent: true, vocabTable: null, vocabColumn: null },
   { id: 'fr', label: 'Französisch', table: null, sttLanguage: 'fr', sttPrompt: 'Voici une phrase d\'exemple en français.', ttsLocale: 'fr-FR', hasContent: false, vocabTable: 'franz_vocab', vocabColumn: 'french' },
 ];
 
