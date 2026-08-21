@@ -38,12 +38,7 @@ export function CheatsheetCategoryScreen({ groupId }: { groupId: string }) {
       setLoading(true);
       setLoadError(null);
       try {
-        // MIT Nachschlage-Saetzen: dieser Screen IST das Nachschlagewerk.
-        // Ohne die Angabe fehlten hier genau die Saetze, die man nie
-        // auswendig koennen soll, aber im Ernstfall vorzeigt.
-        const { sentences, fromCache } = await loadExerciseSentences(targetLanguageId, [groupId], {
-          mitNachschlage: true,
-        });
+        const { sentences, fromCache } = await loadExerciseSentences(targetLanguageId, [groupId]);
         if (cancelled) return;
         setPhrases(sentences.map((s) => toPhrase(targetLanguageId, language.table!, title, s)));
         setOffline(fromCache);

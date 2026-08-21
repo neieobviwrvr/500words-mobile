@@ -87,16 +87,7 @@ export type ExerciseSentence = {
 // anzeigen kann, dass gerade der letzte gespeicherte Stand genutzt wird.
 export async function loadExerciseSentences(
   languageId: string,
-  categoryIds: string[],
-  /**
-   * Nachschlage-Saetze mitliefern? Vorgabe ist NEIN - die sichere Richtung:
-   * ein Satz, der nur zum Vorzeigen gedacht ist, darf nie in einer
-   * Uebungssitzung landen. Nur das Survival-Nachschlagewerk setzt das auf
-   * true. Der Zwischenspeicher haelt immer ALLES, gefiltert wird erst
-   * danach - sonst haetten die beiden Aufrufer verschiedene Staende unter
-   * demselben Schluessel.
-   */
-  optionen?: { mitNachschlage?: boolean }
+  categoryIds: string[]
 ): Promise<{ sentences: ExerciseSentence[]; fromCache: boolean }> {
   const lang = getLanguage(languageId);
   if (!lang.table) return { sentences: [], fromCache: false };
@@ -153,11 +144,20 @@ export async function loadExerciseSentences(
     });
   });
 
-  const gefiltert = optionen?.mitNachschlage
-    ? sentences
-    : sentences.filter((x) => !x.lookupOnly);
-
-  return { sentences: gefiltert, fromCache };
+  // Nachschlage-Saetze kommen UEBERALL mit (Nutzer-Entscheidung 2026-08-21).
+  //
+  // Kurz zuvor filterte diese Funktion sie aus jeder Uebung heraus - die
+  // sichere Richtung, dachte ich: ein Satz wie "Bitte rufen Sie die Polizei"
+  // muss niemand auswendig koennen. Simons Einwand schlaegt das: wer einen
+  // Satz beim Lernen NIE sieht, kann ihn auch nicht merken, und genau das
+  // soll man spaeter koennen (markieren -> landet in "Gespeicherte Saetze").
+  //
+  // `lookupOnly` bleibt als Angabe bestehen und traegt weiterhin zwei
+  // Aufgaben: es macht Sicherheitssaetze im Survival auch bei GESPERRTER
+  // Kategorie sichtbar (siehe cheatsheetContent.ts), und es kennzeichnet
+  // Saetze, die bewusst Vokabeln ausserhalb des gelehrten Wortschatzes
+  // benutzen duerfen.
+  return { sentences, fromCache };
 }
 
 export async function loadAnswerClusters(): Promise<Record<string, string[]>> {

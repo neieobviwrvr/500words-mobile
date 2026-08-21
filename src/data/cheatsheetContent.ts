@@ -105,9 +105,7 @@ export async function loadCheatsheetGroups(
     ...purchasedCategoryIds,
     ...alleIds.filter((id) => !freigeschaltet.includes(id)),
   ];
-  const { sentences, fromCache } = await loadExerciseSentences(languageId, categoryIds, {
-    mitNachschlage: true,
-  });
+  const { sentences, fromCache } = await loadExerciseSentences(languageId, categoryIds);
 
   const byCategory = new Map<string, ExerciseSentence[]>();
   for (const s of sentences) {
