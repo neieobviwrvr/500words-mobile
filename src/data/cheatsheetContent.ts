@@ -17,13 +17,19 @@ export type Phrase = {
   /** Vorgerenderte Aufnahme, falls vorhanden - heute ueberall leer. */
   audioUrl?: string | null;
   /**
-   * Lautschrift unter dem Satz (fuer Chinesisch das Pinyin).
+   * Lautschrift unter dem Satz - fuer Chinesisch das Pinyin.
    *
-   * Noch nirgends gefuellt: keine Phrasebook-Tabelle hat eine
-   * Umschrift-Spalte, und fuer Chinesisch gibt es ueberhaupt kein
-   * Phrasebook. Die Zeile erscheint nur, wenn wirklich etwas da ist.
+   * Seit 2026-08-21 gefuellt: `chinesisch_phrasebook` hat eine
+   * Pinyin-Spalte. Die anderen Sprachen haben weiterhin keine Umschrift,
+   * dort bleibt die Zeile leer und erscheint gar nicht.
+   *
+   * Reihenfolge auf der Karte: Zeichen, Pinyin, Deutsch. Die Zeichen stehen
+   * oben, weil man im Notfall jemandem den Bildschirm hinhaelt - lesen tut
+   * sie der Nutzer nie selbst, dafuer ist das Pinyin da.
    */
   phonetic?: string | null;
+  /** Kulturhinweis, siehe ExerciseSentence.cultureNote. */
+  cultureNote?: string | null;
 };
 
 /**
@@ -51,6 +57,8 @@ export function toPhrase(languageId: string, table: string, context: string, s: 
     gloss: s.germanGloss,
     placeholder: false,
     audioUrl: s.audioUrl,
+    phonetic: s.pinyin,
+    cultureNote: s.cultureNote,
   };
 }
 

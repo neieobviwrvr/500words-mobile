@@ -18,7 +18,7 @@ import { getTheme, ACCENT_BLUE, RADIUS, SPACING, FONT_SIZE, LINE_HEIGHT } from '
 // aufzunehmen und hier durchzureichen - am Aufbau aendert sich nichts.
 
 type Props = {
-  phrase: Phrase & { phonetic?: string | null };
+  phrase: Phrase & { phonetic?: string | null; cultureNote?: string | null };
   dark: boolean;
   saved: boolean;
   onToggleSave: () => void;
@@ -37,6 +37,15 @@ export function PhraseCard({ phrase, dark, saved, onToggleSave, onSpeak }: Props
         ) : null}
         {phrase.gloss ? (
           <Text style={[styles.gloss, { color: theme.sub }]}>{phrase.gloss}</Text>
+        ) : null}
+        {/* Kulturhinweis (2026-08-21). Steht bewusst UNTER der Uebersetzung
+            und in kleinerer Schrift: er erklaert, warum ein Satz dort normal
+            ist, der bei uns seltsam klaenge ("du bist schlank"). Ohne ihn
+            traut sich niemand, den Satz zu benutzen. */}
+        {phrase.cultureNote ? (
+          <View style={[styles.hinweis, { borderLeftColor: ACCENT_BLUE }]}>
+            <Text style={[styles.hinweisText, { color: theme.sub }]}>{phrase.cultureNote}</Text>
+          </View>
         ) : null}
       </View>
 
@@ -74,6 +83,12 @@ export function PhraseCard({ phrase, dark, saved, onToggleSave, onSpeak }: Props
 }
 
 const styles = StyleSheet.create({
+  hinweis: {
+    borderLeftWidth: 2,
+    paddingLeft: SPACING.sm,
+    marginTop: SPACING.xs,
+  },
+  hinweisText: { fontSize: FONT_SIZE.caption, lineHeight: LINE_HEIGHT.caption, fontStyle: 'italic' },
   card: {
     flexDirection: 'row',
     alignItems: 'center',

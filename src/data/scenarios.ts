@@ -25,6 +25,7 @@ export const SCENARIO_LABELS: Record<string, string> = {
   club_trinkkultur: 'Trinken und Anstoßen',
   club_ktv: 'Karaoke',
   club_ansprechen: 'Jemanden ansprechen',
+  club_komplimente: 'Komplimente',
   club_naeherkommen: 'Näher kommen',
   club_nachtlogistik: 'Wo schlafen wir',
   club_sicherheit: 'Grenzen und Hilfe',

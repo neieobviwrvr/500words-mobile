@@ -6,7 +6,9 @@ import { useAppState } from '../../state/AppState';
 import { CATEGORY_BY_ID } from '../../data/categories';
 import { getLanguage } from '../../data/languages';
 import { loadExerciseSentences } from '../../data/phrasebookContent';
-import { Phrase, toPhrase } from '../../data/cheatsheetContent';
+import { Phrase, phraseLanguageId, toPhrase } from '../../data/cheatsheetContent';
+import { speakSentence } from '../../features/tts/speak';
+import { PhraseCard } from './PhraseCard';
 import { getTheme, ACCENT_BLUE, ACCENT_GREEN } from '../../theme/tokens';
 
 // Cheat-Sheet-Kategorie-Screen: alle Saetze EINER Kategorie am Stueck, mit
@@ -36,7 +38,12 @@ export function CheatsheetCategoryScreen({ groupId }: { groupId: string }) {
       setLoading(true);
       setLoadError(null);
       try {
-        const { sentences, fromCache } = await loadExerciseSentences(targetLanguageId, [groupId]);
+        // MIT Nachschlage-Saetzen: dieser Screen IST das Nachschlagewerk.
+        // Ohne die Angabe fehlten hier genau die Saetze, die man nie
+        // auswendig koennen soll, aber im Ernstfall vorzeigt.
+        const { sentences, fromCache } = await loadExerciseSentences(targetLanguageId, [groupId], {
+          mitNachschlage: true,
+        });
         if (cancelled) return;
         setPhrases(sentences.map((s) => toPhrase(targetLanguageId, language.table!, title, s)));
         setOffline(fromCache);
@@ -110,41 +117,26 @@ export function CheatsheetCategoryScreen({ groupId }: { groupId: string }) {
       )}
 
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        {phrases.map((ph) => {
-          const isSaved = !!saved[ph.id];
-          return (
-            <View key={ph.id} style={[styles.card, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
-              <View style={styles.cardBody}>
-                <Text style={[styles.sentenceText, { color: theme.text }]}>{ph.text}</Text>
-                {ph.gloss && <Text style={[styles.de, { color: theme.sub }]}>{ph.gloss}</Text>}
-              </View>
-              <View style={styles.cardActions}>
-                <Pressable
-                  disabled
-                  accessibilityRole="button"
-                  accessibilityLabel="Vorlesen"
-                  accessibilityHint="Für diesen Satz gibt es noch keine Audioaufnahme"
-                  accessibilityState={{ disabled: true }}
-                  style={[styles.smallBtn, { borderColor: theme.border }]}
-                >
-                  <Text style={{ color: theme.sub, fontWeight: '700', fontSize: 11 }}>▶ (kein Audio)</Text>
-                </Pressable>
-                <Pressable
-                  onPress={() => toggleSaved(ph.id, ph)}
-                  accessibilityRole="button"
-                  accessibilityLabel={isSaved ? 'Gespeichert' : 'Speichern'}
-                  accessibilityHint={isSaved ? 'Aus den Favoriten entfernen' : 'Zu den Favoriten hinzufügen'}
-                  accessibilityState={{ selected: isSaved }}
-                  style={[styles.smallBtn, { borderColor: isSaved ? ACCENT_GREEN : theme.border, backgroundColor: isSaved ? theme.buyBg : 'transparent' }]}
-                >
-                  <Text style={{ color: isSaved ? ACCENT_GREEN : theme.sub, fontWeight: '700', fontSize: 11 }}>
-                    {isSaved ? '✓ Gespeichert' : 'Speichern'}
-                  </Text>
-                </Pressable>
-              </View>
-            </View>
-          );
-        })}
+        {/* EINE Karte fuer alle drei Nachschlag-Screens (2026-08-21).
+            Hier stand bis dahin eine zweite, handgezeichnete Fassung, die
+            nur Satz und Uebersetzung kannte - Pinyin und Kulturhinweis
+            fielen dadurch unter den Tisch, obwohl die Daten da waren.
+            Dieselbe Falle wie bei den doppelten Situationsnamen. */}
+        {phrases.map((ph) => (
+          <PhraseCard
+            key={ph.id}
+            phrase={ph}
+            dark={darkMode}
+            saved={!!saved[ph.id]}
+            onToggleSave={() => toggleSaved(ph.id, ph)}
+            onSpeak={() =>
+              speakSentence(
+                { text: ph.text, audioUrl: ph.audioUrl },
+                { languageId: phraseLanguageId(ph.id) }
+              )
+            }
+          />
+        ))}
       </ScrollView>
     </View>
   );

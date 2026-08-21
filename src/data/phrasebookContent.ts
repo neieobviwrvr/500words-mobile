@@ -58,6 +58,18 @@ export type ExerciseSentence = {
    * will (OnboardingState.addressing).
    */
   addressing: string | null;
+  /**
+   * Kurzer deutscher Hinweis, warum die Aeusserung in der Zielkultur anders
+   * funktioniert als bei uns - z.B. dass „du bist schlank" in China ein
+   * Kompliment ist.
+   *
+   * Wo dieser Hinweis steht, ist der Satz kulturspezifisch. Deshalb gibt es
+   * KEIN zusaetzliches Kennzeichen dafuer: ein zweites Feld koennte dem
+   * ersten nur widersprechen. Wer die Kategorie spaeter in eine andere
+   * Sprache uebertraegt, sieht hier, was sich nicht mechanisch uebersetzen
+   * laesst.
+   */
+  cultureNote: string | null;
 };
 
 // categoryIds: explizite Liste statt eines "alle"-Sentinels, der frueher
@@ -92,18 +104,26 @@ export async function loadExerciseSentences(
   const textColumn = lang.id === 'de' ? 'german' : 'target_text';
   // `audio_url` gibt es NUR in den Nicht-Deutsch-Tabellen - phrasebook_master
   // hat die Spalte nicht, ein Select darauf wuerde dort scheitern.
-  const gemeinsam = 'scenario, category, accepted_concepts, lookup_only, addressing';
+  // Ausgeschrieben statt aus Bausteinen zusammengesetzt: Supabase leitet den
+  // Ergebnistyp AUS DIESEM STRING ab, und ein Template-Literal sprengt dabei
+  // den Typpruefer ("union type too complex"). Etwas Wiederholung ist der
+  // Preis dafuer, dass die Typen stimmen.
   const columns =
     lang.id === 'de'
-      ? `id, german, ${gemeinsam}`
+      ? 'id, german, scenario, category, accepted_concepts, lookup_only, addressing, culture_note'
       // Nur chinesisch_phrasebook hat eine Pinyin-Spalte.
       : lang.id === 'zh'
-        ? `id, target_text, pinyin, german, ${gemeinsam}, verb_cluster, audio_url`
-        : `id, target_text, german, ${gemeinsam}, verb_cluster, audio_url`;
+        ? 'id, target_text, pinyin, german, scenario, category, accepted_concepts, lookup_only, addressing, culture_note, verb_cluster, audio_url'
+        : 'id, target_text, german, scenario, category, accepted_concepts, lookup_only, addressing, culture_note, verb_cluster, audio_url';
 
   const cacheKey = `sentences:${lang.id}:${[...categoryIds].sort().join(',')}`;
   const { data: sentences, fromCache } = await cachedFetch(cacheKey, async () => {
-    let query = supabase.from(lang.table as string).select(columns);
+    // `as string` auf dem Ergebnis: Supabase baut den Zeilentyp aus dem
+    // Select-String zusammen, und bei zwoelf Spalten mal drei Sprachzweigen
+    // gibt der Typpruefer auf ("union type too complex"). Der Zeilentyp
+    // bringt uns hier ohnehin nichts - die Zuordnung unten laeuft ueber
+    // `row: any`, weil die Spalten je Sprache verschieden heissen.
+    let query = supabase.from(lang.table as string).select(columns as string);
     if (categoryIds.length > 0) {
       query = query.in('category', categoryIds);
     }
@@ -128,6 +148,7 @@ export async function loadExerciseSentences(
         pinyin: row.pinyin ?? null,
         lookupOnly: row.lookup_only === true,
         addressing: row.addressing ?? null,
+        cultureNote: row.culture_note ?? null,
       };
     });
   });
