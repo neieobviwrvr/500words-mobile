@@ -191,7 +191,17 @@ export function LessonsScreen() {
                         onPress={() =>
                           locked
                             ? router.push('/shop')
-                            : router.push({ pathname: '/category/[id]', params: { id: categoryId } })
+                            : // Genau diese Situation oeffnen, nicht die
+                              // ganze Kategorie (2026-08-21).
+                              router.push({
+                                pathname: '/exercise',
+                                params: {
+                                  mode: 'spam',
+                                  categoryId,
+                                  scenario: situation.scenario,
+                                  source: 'category',
+                                },
+                              })
                         }
                       />
                     ))}

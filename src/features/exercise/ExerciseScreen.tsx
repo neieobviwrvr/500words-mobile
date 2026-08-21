@@ -6,6 +6,7 @@ import { File } from 'expo-file-system';
 import type { Card } from 'ts-fsrs';
 import { useAppState } from '../../state/AppState';
 import { CATEGORIES, CATEGORY_BY_ID } from '../../data/categories';
+import { scenarioLabel } from '../../data/scenarios';
 import { getLanguage } from '../../data/languages';
 import { ExerciseSentence, loadAnswerClusters, loadExerciseSentences, shuffle } from '../../data/phrasebookContent';
 import { evaluateConcepts, EvaluationResult } from '../../features/evaluation/evaluateConcepts';
@@ -96,7 +97,26 @@ function looksLikePromptEcho(transcript: string, prompt: string, recordedSeconds
   return normalizeForCompare(transcript) === normalizeForCompare(prompt);
 }
 
-export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode: string; categoryId: string; source?: 'category' | 'srs' }) {
+export function ExerciseScreen({
+  mode,
+  categoryId,
+  source = 'category',
+  scenario,
+}: {
+  mode: string;
+  categoryId: string;
+  source?: 'category' | 'srs';
+  /**
+   * Auf EINE Situation einschraenken (2026-08-21).
+   *
+   * Ohne das fuehrte ein Tipp auf "Naeher kommen" nur zur Kategorie - man
+   * landete bei den vier Modus-Knoepfen statt bei den Saetzen, die man
+   * angetippt hatte. Die Situationen sind seit Club + Nightlife die
+   * eigentliche Einheit (zehn Stueck je Kategorie), also muessen sie auch
+   * einzeln zu oeffnen sein.
+   */
+  scenario?: string;
+}) {
   const { darkMode, targetLanguageId, purchased } = useAppState();
   const theme = getTheme(darkMode);
   // Der native Header ist app-weit aus (app/_layout.tsx), jeder Screen
@@ -146,10 +166,13 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
   const [showMotivation, setShowMotivation] = useState(false);
 
   const catName = categoryId === 'grundwortschatz' || categoryId === 'alle' ? 'Grundwortschatz' : CATEGORY_BY_ID[categoryId]?.name ?? categoryId;
+  // Bei einer einzelnen Situation deren Namen zeigen, nicht den der
+  // Kategorie - sonst sieht der Screen aus wie der ungefilterte.
+  const anzeigeName = scenario ? scenarioLabel(scenario) : catName;
   // Aus dem 2026-08-06-Design-Update uebernommen: der Header-Titel
   // unterscheidet, ob die Session von S2 (Kategorie) oder S5 (SRS) aus
   // gestartet wurde, statt "srs" als eigenen mode-Wert zu behandeln.
-  const headerTitle = `${source === 'srs' ? 'Wiederholen' : catName} — ${MODE_LABELS[mode] ?? 'Üben'}`;
+  const headerTitle = `${source === 'srs' ? 'Wiederholen' : anzeigeName} — ${MODE_LABELS[mode] ?? 'Üben'}`;
 
   useEffect(() => {
     let cancelled = false;
@@ -172,7 +195,9 @@ export function ExerciseScreen({ mode, categoryId, source = 'category' }: { mode
         ]);
         if (cancelled) return;
         cardsRef.current = cardStates;
-        const sentencesData = sentencesResult.sentences;
+        const sentencesData = scenario
+          ? sentencesResult.sentences.filter((x) => x.scenario === scenario)
+          : sentencesResult.sentences;
         setOffline(sentencesResult.fromCache);
 
         if (sentencesData.length === 0) {

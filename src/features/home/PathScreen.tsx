@@ -349,6 +349,14 @@ export function PathScreen() {
   const progress = useUnlockedProgress(targetLanguageId, unlockedIds);
 
   const goCategory = (id: string) => () => router.push({ pathname: '/category/[id]', params: { id } });
+  // Eine Situation oeffnet GENAU ihre Saetze (2026-08-21). Vorher landete
+  // man auf der Kategorie und damit bei den vier Modus-Knoepfen - man hatte
+  // "Naeher kommen" angetippt und bekam "Komplette Kategorie durchspammen".
+  const goSituation = (categoryId: string, scenario: string) => () =>
+    router.push({
+      pathname: '/exercise',
+      params: { mode: 'spam', categoryId, scenario, source: 'category' },
+    });
   const goShop = () => router.push('/shop');
 
   // ---------------------------------------------------------------------
@@ -414,7 +422,7 @@ export function PathScreen() {
             ? 'done'
             : 'open') as NodeState,
         theme: true,
-        onPress: locked ? goShop : goCategory(categoryId),
+        onPress: locked ? goShop : goSituation(categoryId, sit.scenario),
       }));
     };
 
@@ -704,15 +712,31 @@ export function PathScreen() {
         <SoftButton
           dark={darkMode}
           label="Tägliches Wiederholen"
-          hint="Öffnet die Wiederholung mit fälligen Karten"
+          hint={
+            learningMode === 'gefuehrt'
+              ? 'Wiederholt die Wörter und Satzmuster aus dem Kurs'
+              : 'Wiederholt die fälligen Sätze aus dem Speed-Run'
+          }
           // Direkt in EINE gemischte Sitzung, ohne Zwischenscreen
           // (Nutzer-Frage 2026-08-21). Das taegliche Wiederholen ist der
-          // gemeinsame Pool aus Woertern UND Saetzen - wer hier erst
-          // waehlen muss, uebt die Haelfte nicht. Nach Kartenart filtern
-          // kann man weiterhin ueber S5, das ist aber die Ausnahme.
+          // gemeinsame Pool - wer hier erst waehlen muss, uebt die Haelfte
+          // nicht. Nach Kartenart filtern kann man weiterhin ueber S5, das
+          // ist aber die Ausnahme.
+          //
+          // WOHIN, haengt am LERNWEG, nicht an der Sprache
+          // (Nutzer-Wunsch 2026-08-21): wiederholt wird das, was man auch
+          // lernt. Vorher entschied die Sprache - Chinesisch landete immer
+          // beim Kurs, selbst wenn man gerade im Speed-Run stand. Das ging
+          // durch, solange Chinesisch gar keine Speed-Run-Saetze hatte;
+          // seit `chinesisch_phrasebook` existiert, waere es schlicht der
+          // falsche Stoff.
+          //
+          // Im gefuehrten Modus einer Sprache OHNE Kurs kommt man auf einen
+          // ehrlich leeren Screen - dieselbe Aussage, die der Pfad darueber
+          // schon macht ("gibt es bisher nur fuer Chinesisch").
           onPress={() =>
             router.push(
-              targetLanguageId === 'zh'
+              learningMode === 'gefuehrt'
                 ? '/wiederholen'
                 : { pathname: '/exercise', params: { mode: 'spam', categoryId: 'alle', source: 'srs' } }
             )

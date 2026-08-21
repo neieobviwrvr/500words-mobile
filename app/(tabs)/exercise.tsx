@@ -3,7 +3,23 @@ import { ExerciseScreen } from '../../src/features/exercise/ExerciseScreen';
 
 // S4 - Uebungs-Screen. Ein einziger wiederverwendbarer Screen-Typ (siehe
 // CLAUDE.md), Datenquelle/Modus kommen als Query-Parameter von S2 oder S5.
+//
+// `scenario` schraenkt auf EINE Situation ein - so oeffnet ein Tipp auf
+// "Naeher kommen" im Pfad oder auf dem Lektionen-Screen genau diese Saetze
+// statt der ganzen Kategorie.
 export default function Exercise() {
-  const { mode, categoryId, source } = useLocalSearchParams<{ mode?: string; categoryId?: string; source?: 'category' | 'srs' }>();
-  return <ExerciseScreen mode={mode ?? 'saetze'} categoryId={categoryId ?? 'grundwortschatz'} source={source ?? 'category'} />;
+  const { mode, categoryId, source, scenario } = useLocalSearchParams<{
+    mode?: string;
+    categoryId?: string;
+    source?: 'category' | 'srs';
+    scenario?: string;
+  }>();
+  return (
+    <ExerciseScreen
+      mode={mode ?? 'saetze'}
+      categoryId={categoryId ?? 'grundwortschatz'}
+      source={source ?? 'category'}
+      scenario={scenario}
+    />
+  );
 }
