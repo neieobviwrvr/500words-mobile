@@ -5,8 +5,10 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { useAppState } from '../../state/AppState';
 import { CATEGORIES } from '../../data/categories';
 import { getLanguage } from '../../data/languages';
-import { CheatsheetCategoryGroup, Phrase, loadCheatsheetGroups, searchCheatsheetSentences, toPhrase } from '../../data/cheatsheetContent';
-import { getTheme, ACCENT_ORANGE, ACCENT_GREEN } from '../../theme/tokens';
+import { CheatsheetCategoryGroup, Phrase, loadCheatsheetGroups, phraseLanguageId, searchCheatsheetSentences, toPhrase } from '../../data/cheatsheetContent';
+import { speakSentence } from '../tts/speak';
+import { PhraseCard } from './PhraseCard';
+import { getTheme, ACCENT_ORANGE } from '../../theme/tokens';
 
 // Zwei Wege hierher (2026-08-07, echter Content statt Platzhalter):
 // - Freitextsuche auf S6 -> "query"-Query-Parameter -> Token-Suche ueber
@@ -75,6 +77,18 @@ export function SearchResultsScreen() {
     }
   }
 
+  // "Saetze - Vorstellen, Naeher kommen (aus 2 Kategorien)". Bei vielen
+  // Situationen wuerde die Zeile unlesbar, deshalb ab vier nur noch die
+  // Anzahl.
+  const gewaehlteNamen = Object.values(selectedThemes).map((t) => t.themeLabel);
+  const untertitel = query
+    ? `Sätze zu „${query}" (${sections.reduce((n, s) => n + s.phrases.length, 0)} Treffer)`
+    : `Sätze – ${
+        gewaehlteNamen.length > 3
+          ? `${gewaehlteNamen.length} Situationen`
+          : gewaehlteNamen.join(', ')
+      } (aus ${sections.length} ${sections.length === 1 ? 'Kategorie' : 'Kategorien'})`;
+
   return (
     <View style={[styles.container, { backgroundColor: theme.pageBg, paddingTop: insets.top }]}>
       <View style={styles.header}>
@@ -86,8 +100,16 @@ export function SearchResultsScreen() {
         >
           <Text style={[styles.backGlyph, { color: theme.text }]}>‹</Text>
         </Pressable>
-        <Text style={[styles.title, { color: theme.text }]}>Suchergebnisse</Text>
+        <Text style={[styles.title, { color: theme.text }]}>Survival-Situationen</Text>
       </View>
+
+      {/* Was gesucht wurde, in einer Zeile - nach Simons Vorlage
+          "Saetze - Vorstellen (aus 2 Kategorien)". Ohne sie sieht man auf
+          dem Ergebnis-Screen nicht mehr, wonach man gesucht hat, sobald
+          mehrere Situationen im Spiel sind. */}
+      {!loading && !loadError && sections.length > 0 ? (
+        <Text style={[styles.untertitel, { color: theme.sub }]}>{untertitel}</Text>
+      ) : null}
 
       {loading && (
         <View style={styles.centerBox}>
@@ -110,32 +132,21 @@ export function SearchResultsScreen() {
           {sections.map((sec, si) => (
             <View key={si}>
               <Text style={styles.sectionTitle}>{sec.title}</Text>
-              {sec.phrases.map((ph) => {
-                const isSaved = !!saved[ph.id];
-                return (
-                  <View key={ph.id} style={[styles.card, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
-                    <View style={styles.cardBody}>
-                      <Text style={[styles.context, { color: theme.sub }]}>{ph.context}</Text>
-                      <Text style={[styles.sentenceText, { color: theme.text }]}>{ph.text}</Text>
-                      {ph.gloss && <Text style={[styles.de, { color: theme.sub }]}>{ph.gloss}</Text>}
-                    </View>
-                    <Pressable
-                      onPress={() => toggleSaved(ph.id, ph)}
-                      accessibilityRole="button"
-                      // Im gespeicherten Zustand steht dort nur ein "✓" -
-                      // ohne Label gaebe es nichts Sinnvolles vorzulesen.
-                      accessibilityLabel={isSaved ? 'Gespeichert' : 'Speichern'}
-                      accessibilityHint={isSaved ? 'Aus den Favoriten entfernen' : 'Zu den Favoriten hinzufügen'}
-                      accessibilityState={{ selected: isSaved }}
-                      style={[styles.saveBtn, { borderColor: isSaved ? ACCENT_GREEN : theme.border, backgroundColor: isSaved ? theme.buyBg : 'transparent' }]}
-                    >
-                      <Text style={{ color: isSaved ? ACCENT_GREEN : theme.sub, fontWeight: '700', fontSize: 11 }}>
-                        {isSaved ? '✓' : 'Speichern'}
-                      </Text>
-                    </Pressable>
-                  </View>
-                );
-              })}
+              {sec.phrases.map((ph) => (
+                <PhraseCard
+                  key={ph.id}
+                  phrase={ph}
+                  dark={darkMode}
+                  saved={!!saved[ph.id]}
+                  onToggleSave={() => toggleSaved(ph.id, ph)}
+                  onSpeak={() =>
+                    speakSentence(
+                      { text: ph.text, audioUrl: ph.audioUrl },
+                      { languageId: phraseLanguageId(ph.id) },
+                    )
+                  }
+                />
+              ))}
             </View>
           ))}
         </ScrollView>
@@ -150,13 +161,8 @@ const styles = StyleSheet.create({
   backBtn: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
   backGlyph: { fontSize: 26 },
   title: { fontWeight: '800', fontSize: 20 },
+  untertitel: { fontSize: 13, fontWeight: '700', paddingHorizontal: 18, paddingBottom: 4 },
   centerBox: { alignItems: 'center', justifyContent: 'center', paddingVertical: 40 },
   scrollContent: { padding: 18, gap: 10 },
   sectionTitle: { color: ACCENT_ORANGE, fontWeight: '800', fontSize: 12, letterSpacing: 0.6, marginVertical: 10, textTransform: 'uppercase' },
-  card: { borderWidth: 1.5, borderRadius: 14, padding: 14, marginBottom: 10, flexDirection: 'row', gap: 10, alignItems: 'center' },
-  cardBody: { flex: 1, gap: 4 },
-  context: { fontWeight: '700', fontSize: 11 },
-  sentenceText: { fontSize: 15, fontWeight: '700' },
-  de: { fontSize: 13, fontWeight: '500' },
-  saveBtn: { paddingVertical: 7, paddingHorizontal: 10, borderRadius: 8, borderWidth: 1.5, flexShrink: 0 },
 });

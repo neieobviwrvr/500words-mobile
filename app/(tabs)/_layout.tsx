@@ -252,7 +252,6 @@ export default function TabsLayout() {
       <Tabs.Screen name="category/[id]" options={{ href: null }} />
       <Tabs.Screen name="cheatsheet/[groupId]" options={{ href: null }} />
       <Tabs.Screen name="cheatsheet/search-results" options={{ href: null }} />
-      <Tabs.Screen name="cheatsheet/favorites" options={{ href: null }} />
     </Tabs>
 
     </View>
