@@ -350,8 +350,15 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
    * Erst wenn `hydrated` steht, sonst liefe der Abgleich gegen den leeren
    * Vorgabezustand und schriebe ihn als "lokalen Stand" hoch.
    */
+  const laeuftRef = useRef(false);
   const abgleichen = useCallback(async (nutzerId: string) => {
     if (!hydrated.current) return;
+    // Zwei gleichzeitige Durchgaenge wuerden gegeneinander schreiben: beide
+    // lesen denselben Serverstand, beide verschmelzen dagegen, der zweite
+    // ueberschreibt das Ergebnis des ersten. Beim Wegschalten und
+    // Zurueckkehren kurz hintereinander ist das kein theoretischer Fall.
+    if (laeuftRef.current) return;
+    laeuftRef.current = true;
     setAbgleichStand('laeuft');
     const karten = await loadAllCards();
     const ergebnis = await syncAbgleichen(
@@ -368,13 +375,22 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       karten,
     );
     if (!ergebnis) {
+      laeuftRef.current = false;
       setAbgleichStand('fehlgeschlagen');
       return;
     }
 
     // Ergebnis lokal nachziehen. Die Setter loesen die Speicher-Wirkung aus,
     // der Stand landet also von selbst wieder in AsyncStorage.
+    //
+    // Die zwei Marker MUESSEN vor den Settern stehen: React kann den
+    // Speicher-Effekt schon ausgefuehrt haben, bevor das `await` darunter
+    // zurueckkommt. Stuenden sie danach, haette dieser Schreibvorgang
+    // `geaendertAm` bereits hochgezogen - und der gerade vom Server geholte
+    // Stand gaelte als "eben hier geaendert".
     const s = ergebnis.stand;
+    geaendertAmRef.current = s.geaendertAm;
+    ersterSchreibvorgang.current = true;
     setCoins(s.coins);
     coinGrantsRef.current = s.coinGrants;
     setCoinGrants(s.coinGrants);
@@ -389,6 +405,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     if (e.learningMode) setLearningMode(e.learningMode);
     if (e.uebersprungen) setUebersprungen(e.uebersprungen);
     await saveCards(ergebnis.karten);
+    laeuftRef.current = false;
     setAbgleichStand('fertig');
   }, [coins, fortschritt, darkMode, targetLanguageId, lockscreenContent, learningMode, uebersprungen, saved, savedMeta, purchased]);
 

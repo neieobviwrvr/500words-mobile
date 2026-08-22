@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import {
   ActivityIndicator,
+  AppState as RNAppState,
   Platform,
   StyleSheet,
   useWindowDimensions,
@@ -45,6 +46,22 @@ import { getTheme, ACCENT_ORANGE, FONT_SIZE, RADIUS, SPACING } from '../../src/t
 const FLOAT_GAP = 20;
 const BAR_HEIGHT = 64;
 const BAR_RADIUS = 36;
+
+/**
+ * Wie lange nach einem Abgleich das Zurueckkehren in die App keinen neuen
+ * ausloest.
+ *
+ * Eine Minute: lang genug, dass App-Wechsel im Sekundentakt nichts kosten,
+ * kurz genug, dass ein Wechsel aufs zweite Geraet sich sofort anfuehlt.
+ *
+ * Bewusst KEIN Timer waehrend des Lernens (Nutzer-Entscheidung 2026-08-22):
+ * die Zielgruppe sitzt im Ausland an einem wackeligen Datentarif, und
+ * offline-zuerst ist das Prinzip der App. Der Preis dafuer ist bekannt und
+ * angenommen: wer die App sofort per Wischen killt, schiebt erst beim
+ * naechsten Start hoch. Verloren ist nichts - AsyncStorage behaelt alles -,
+ * das zweite Geraet ist nur bis dahin veraltet.
+ */
+const ZURUECK_DROSSEL_MS = 60_000;
 // Abstand zwischen Bildschirminhalt und Leiste. Ohne das verschwaende der
 // Inhalt unter der Leiste - sie liegt absolut positioniert darueber und
 // reserviert keinen Platz mehr im Layout.
@@ -82,12 +99,45 @@ export default function TabsLayout() {
    * derselben ID liefert) keinen weiteren Durchgang ausloest.
    */
   const nutzerId = session?.user?.id;
+  // Immer die aktuelle Fassung: `abgleichen` haengt am gesamten lokalen Stand
+  // und aendert sich bei jeder Eingabe. Der Listener unten wird EINMAL
+  // angemeldet und griffe sonst dauerhaft auf einen veralteten Stand zu.
+  const abgleichenRef = useRef(abgleichen);
+  abgleichenRef.current = abgleichen;
+  const letzterAbgleichRef = useRef(0);
+
   useEffect(() => {
     if (!nutzerId || !hydrated) return;
-    void abgleichen(nutzerId);
-    // `abgleichen` haengt am gesamten lokalen Stand und aendert sich damit
-    // bei jeder Aenderung - stuende es hier, liefe der Abgleich in einer
-    // Schleife.
+
+    const los = () => {
+      letzterAbgleichRef.current = Date.now();
+      void abgleichenRef.current(nutzerId);
+    };
+
+    los(); // beim Start
+
+    const sub = RNAppState.addEventListener('change', (zustand) => {
+      if (zustand === 'background') {
+        // WEGSCHALTEN ist der wichtige Moment: hier ist alles, was gerade
+        // gelernt wurde, am laengsten ungesichert. Immer abgleichen, ohne
+        // Drossel - wer die App schliesst, soll nichts stehen lassen.
+        //
+        // NUR `background`, nicht `inactive`: letzteres feuert auf iOS bei
+        // jedem Benachrichtigungs-Banner, beim Kontrollzentrum und bei
+        // eingehenden Anrufen. Und beim echten Wegschalten kommt ohnehin
+        // active -> inactive -> background, es liefe also doppelt.
+        los();
+        return;
+      }
+      if (zustand === 'active') {
+        // ZURUECKKEHREN holt, was ein anderes Geraet getan hat. Das ist
+        // nuetzlich, aber nicht dringend - und wer zwischen zwei Apps hin
+        // und her springt, loeste sonst im Sekundentakt Abgleiche aus.
+        if (Date.now() - letzterAbgleichRef.current > ZURUECK_DROSSEL_MS) los();
+      }
+    });
+    return () => sub.remove();
+    // `abgleichen` steht bewusst nicht drin - siehe `abgleichenRef` oben.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nutzerId, hydrated]);
 
