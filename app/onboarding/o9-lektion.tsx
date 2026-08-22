@@ -129,7 +129,7 @@ export default function LessonScreen() {
   if (loading) {
     return (
       <OnboardingScaffold
-        step={stepNumber(9)}
+        step={stepNumber(7)}
         total={ONBOARDING_TOTAL_STEPS}
         dark={darkMode}
         title="Einen Moment"
@@ -145,7 +145,7 @@ export default function LessonScreen() {
   if (!sentence) {
     return (
       <OnboardingScaffold
-        step={stepNumber(9)}
+        step={stepNumber(7)}
         total={ONBOARDING_TOTAL_STEPS}
         dark={darkMode}
         title="Gleich geht's los"
@@ -161,7 +161,7 @@ export default function LessonScreen() {
   if (phase === 'intro') {
     return (
       <OnboardingScaffold
-        step={stepNumber(9)}
+        step={stepNumber(7)}
         total={ONBOARDING_TOTAL_STEPS}
         dark={darkMode}
         title="Deine erste Lektion dauert "
@@ -190,7 +190,7 @@ export default function LessonScreen() {
   if (phase === 'hoeren') {
     return (
       <OnboardingScaffold
-        step={stepNumber(9)}
+        step={stepNumber(7)}
         total={ONBOARDING_TOTAL_STEPS}
         dark={darkMode}
         title="Hör dir das an"
@@ -220,7 +220,7 @@ export default function LessonScreen() {
   if (phase === 'waehlen') {
     return (
       <OnboardingScaffold
-        step={stepNumber(9)}
+        step={stepNumber(7)}
         total={ONBOARDING_TOTAL_STEPS}
         dark={darkMode}
         title="Was heißt das?"
@@ -258,7 +258,7 @@ export default function LessonScreen() {
   if (phase === 'sprechen') {
     return (
       <OnboardingScaffold
-        step={stepNumber(9)}
+        step={stepNumber(7)}
         total={ONBOARDING_TOTAL_STEPS}
         dark={darkMode}
         title="Jetzt du"

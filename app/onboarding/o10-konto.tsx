@@ -72,7 +72,7 @@ export default function AccountScreen() {
 
   return (
     <OnboardingScaffold
-      step={stepNumber(11)}
+      step={stepNumber(9)}
       total={ONBOARDING_TOTAL_STEPS}
       dark={darkMode}
       title={name ? `Fast geschafft, ${name}` : 'Fast geschafft'}

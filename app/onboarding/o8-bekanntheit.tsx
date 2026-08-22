@@ -20,7 +20,7 @@ export default function ReferralScreen() {
 
   return (
     <OnboardingScaffold
-      step={stepNumber(8)}
+      step={stepNumber(6)}
       total={ONBOARDING_TOTAL_STEPS}
       dark={darkMode}
       title="Wie hast du von uns erfahren?"

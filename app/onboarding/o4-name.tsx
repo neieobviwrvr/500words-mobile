@@ -101,7 +101,7 @@ export default function NameScreen() {
           label="Weiter"
           dark={darkMode}
           disabled={trimmed.length === 0}
-          onPress={() => router.push('/onboarding/o5-geschlecht')}
+          onPress={() => router.push('/onboarding/o7-alter')}
         />
       }
     >

@@ -40,7 +40,7 @@ export default function WelcomeScreen() {
 
   return (
     <OnboardingScaffold
-      step={stepNumber(13)}
+      step={stepNumber(11)}
       total={ONBOARDING_TOTAL_STEPS}
       dark={darkMode}
       title={name ? `Willkommen, ${name}` : 'Willkommen'}

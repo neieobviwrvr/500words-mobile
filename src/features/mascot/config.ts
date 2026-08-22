@@ -19,11 +19,16 @@ export const MASCOT_ENABLED = true;
 /**
  * Schritte der Onboarding-Strecke - mit Maskottchen einer mehr.
  *
- * 13 Grundschritte seit 2026-08-18: der Coin-Screen hinter der Beispiel-
- * lektion (o9b, Schritt 10) ist fest dazugekommen, Konto/Benachrichtigungen/
- * Willkommen sind entsprechend auf 11/12/13 gerutscht.
+ * 11 Grundschritte seit 2026-08-22. Vorher 13: Geschlecht (O5) und Ansprache
+ * (O6) sind aus der Strecke geflogen und werden jetzt erst gefragt, wenn es
+ * darauf ankommt - nach dem Kauf einer Kategorie mit geschlechtsspezifischen
+ * Satzvarianten (siehe data/anrede.ts). Nutzer-Entscheidung: im Onboarding
+ * "einen Tick zu aufdringlich".
+ *
+ * Alles ab O7 ist dadurch um zwei nach vorn gerueckt: Alter 5, Bekanntheit 6,
+ * Beispiellektion 7, Coin 8, Konto 9, Benachrichtigungen 10, Willkommen 11.
  */
-export const ONBOARDING_TOTAL_STEPS = MASCOT_ENABLED ? 14 : 13;
+export const ONBOARDING_TOTAL_STEPS = MASCOT_ENABLED ? 12 : 11;
 
 /**
  * Rechnet die Schrittnummer eines Screens um.

@@ -58,7 +58,7 @@ export default function CoinScreen() {
 
   return (
     <OnboardingScaffold
-      step={stepNumber(10)}
+      step={stepNumber(8)}
       total={ONBOARDING_TOTAL_STEPS}
       dark={darkMode}
       title="Das hast du dir "

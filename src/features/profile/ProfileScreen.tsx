@@ -1,6 +1,10 @@
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import { Card, HeaderMenu, Screen } from '../../components';
+import { router } from 'expo-router';
+import { Card, HeaderMenu, PillButton, Screen } from '../../components';
+import { useOnboardingState } from '../../state/OnboardingState';
+import { Herausforderungen } from './Herausforderungen';
+import { ADDRESSING_OPTIONS, GENDERS } from '../../data/onboardingOptions';
 import { LockscreenContent, useAppState } from '../../state/AppState';
 import { useLockscreenPick } from '../widget/useLockscreenPick';
 import { formatCountdown, SLOT_HOURS } from '../widget/lockscreenRotation';
@@ -34,7 +38,17 @@ const OPTIONS: { id: LockscreenContent; title: string; description: string }[] =
   },
 ];
 
+// Beschriftungen aus derselben Quelle wie der Anrede-Screen, damit Profil und
+// Auswahl nie verschiedene Woerter fuer dieselbe Antwort zeigen.
+const ANSPRACHE_LABEL: Record<string, string> = Object.fromEntries(
+  ADDRESSING_OPTIONS.map((a) => [a.id, a.label]),
+);
+const GESCHLECHT_LABEL: Record<string, string> = Object.fromEntries(
+  GENDERS.map((g) => [g.id, g.label]),
+);
+
 export function ProfileScreen() {
+  const { gender: geschlecht, addressing: ansprache } = useOnboardingState();
   const { darkMode, lockscreenContent, setLockscreenContent } = useAppState();
   const theme = getTheme(darkMode);
   const pick = useLockscreenPick();
@@ -110,6 +124,43 @@ export function ProfileScreen() {
               );
             })}
           </View>
+        </Card>
+
+        <Herausforderungen />
+
+        {/* Geschlecht und Ansprache sind seit dem 2026-08-22 nicht mehr Teil
+            des Onboardings, sondern werden nach dem Kauf einer Kategorie mit
+            geschlechtsspezifischen Saetzen gefragt (siehe data/anrede.ts).
+            Damit braucht es eine Stelle zum Nachschauen und Aendern - und der
+            Anrede-Screen verspricht sie ausdruecklich. */}
+        <Text style={[styles.sectionLabel, { color: theme.sub }]}>SÄTZE FÜRS KENNENLERNEN</Text>
+
+        <Card dark={darkMode} style={styles.card}>
+          <Text style={[styles.cardTitle, { color: theme.text }]}>Geschlecht und Ansprache</Text>
+          <View style={styles.anredeZeilen}>
+            <View style={styles.anredeZeile}>
+              <Text style={[styles.anredeLabel, { color: theme.sub }]}>Du bist</Text>
+              <Text style={[styles.anredeWert, { color: theme.text }]}>
+                {geschlecht ? GESCHLECHT_LABEL[geschlecht] ?? geschlecht : 'noch offen'}
+              </Text>
+            </View>
+            <View style={styles.anredeZeile}>
+              <Text style={[styles.anredeLabel, { color: theme.sub }]}>Du sprichst an</Text>
+              <Text style={[styles.anredeWert, { color: theme.text }]}>
+                {ansprache ? ANSPRACHE_LABEL[ansprache] ?? ansprache : 'noch offen'}
+              </Text>
+            </View>
+          </View>
+          <Text style={[styles.cardText, { color: theme.sub }]}>
+            {ansprache && ansprache !== 'alle'
+              ? 'Danach richten sich Komplimente und Anmachsätze — im Chinesischen etwa 漂亮 an Frauen und 帅 an Männer.'
+              : 'Solange nichts festgelegt ist, zeigen wir dir beide Varianten.'}
+          </Text>
+          <PillButton
+            label={ansprache ? 'Ändern' : 'Festlegen'}
+            dark={darkMode}
+            onPress={() => router.push('/anrede')}
+          />
         </Card>
 
         <Text style={[styles.sectionLabel, { color: theme.sub }]}>VORSCHAU</Text>
@@ -277,6 +328,10 @@ const styles = StyleSheet.create({
     fontSize: FONT_SIZE.caption,
     lineHeight: LINE_HEIGHT.caption,
   },
+  anredeZeilen: { gap: SPACING.xs },
+  anredeZeile: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: SPACING.sm },
+  anredeLabel: { fontSize: FONT_SIZE.caption },
+  anredeWert: { fontSize: FONT_SIZE.caption, fontWeight: '800' },
   hint: {
     flexDirection: 'row',
     alignItems: 'flex-start',

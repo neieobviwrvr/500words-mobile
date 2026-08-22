@@ -8,17 +8,12 @@ import { getTheme, RADIUS, SPACING, FONT_SIZE } from '../theme/tokens';
 // Das ausfahrbare Drei-Punkte-Menue der Kopfzeile.
 //
 // Enthaelt die Einstiege, die nicht in die Tab-Leiste passen: Geschenk
-// (taegliche Kiste), Coins und Profil. "Freunde" lag bis 2026-08-18 in der
+// (taegliche Kiste) und Coins. "Freunde" lag bis 2026-08-18 in der
 // Tab-Leiste, ist kurz hierher gewandert und am 2026-08-20 auf Nutzer-Wunsch
-// wieder zurueck - dafuer liegt seitdem "Profil" hier: Konto und
-// Einstellungen sind Monats-, keine Tageshandlungen. Damit die Routen nicht
-// nur noch vom Startscreen aus erreichbar sind, steht dieses Menue auf ALLEN
-// Tab-Screens.
-//
-// Beim Antippen fahren die Knoepfe nach links aus, aus der Richtung, in der
-// der Ausloeser steht. Absolut positioniert, damit das Ausfahren die Kopfzeile
-// nicht umbricht - sonst spraenge auf S1 bei jedem Oeffnen die Sprachauswahl
-// zur Seite.
+// wieder zurueck. "Profil" lag vom 2026-08-18 bis zum 2026-08-22 ebenfalls
+// hier - seitdem ist es der fuenfte Tab in der Leiste und aus dem Menue
+// entfernt (Nutzer-Entscheidung: zwei Wege zum selben Screen, einer davon
+// versteckt, ist einer zu viel).
 
 /** Strecke, aus der die Knoepfe hervorfahren - ein Hervorkommen, kein Flug. */
 const MENU_SLIDE = 28;
@@ -34,10 +29,11 @@ const BUTTON_MIN = 44;
 type Props = {
   dark: boolean;
   /**
-   * Zeigt Coins und Profil direkt nebeneinander, ohne Drei-Punkte-Knopf und
-   * ohne Ausfahren (Nutzer-Wunsch 2026-08-20 fuer den Lektionen-Screen).
-   * Das Geschenk faellt dabei weg - bei zwei sichtbaren Knoepfen waeren drei
-   * zu viel fuer eine Kopfzeile.
+   * Zeigt die Knoepfe direkt nebeneinander, ohne Drei-Punkte-Knopf und ohne
+   * Ausfahren (Nutzer-Wunsch 2026-08-20 fuer den Lektionen-Screen). Das
+   * Geschenk faellt dabei weg - fuer eine Kopfzeile waere es einer zu viel.
+   * Seit dem Umzug von "Profil" in die Tab-Leiste (2026-08-22) bleiben hier
+   * nur noch die Coins.
    */
   inline?: boolean;
   /**
@@ -124,13 +120,6 @@ export function HeaderMenu({ dark, overlay = false, inline = false }: Props) {
           hint="Öffnet Freunde werben, Bewertung und Feedback"
           onPress={() => router.push('/rewards')}
         />
-        <HeaderButton
-          dark={dark}
-          icon="user"
-          label="Profil"
-          hint="Öffnet Konto, Sprache und Einstellungen"
-          onPress={() => router.push('/profil')}
-        />
       </View>
     );
   }
@@ -183,16 +172,6 @@ export function HeaderMenu({ dark, overlay = false, inline = false }: Props) {
                 router.push('/rewards');
               }}
             />
-            <HeaderButton
-              dark={dark}
-              icon="user"
-              label="Profil"
-              hint="Öffnet Konto, Sprache und Einstellungen"
-              onPress={() => {
-                setOpen(false);
-                router.push('/profil');
-              }}
-            />
           </Animated.View>
         ) : null}
 
@@ -200,7 +179,7 @@ export function HeaderMenu({ dark, overlay = false, inline = false }: Props) {
           dark={dark}
           icon="more-horizontal"
           label="Mehr"
-          hint="Zeigt Geschenk, Coins und Profil"
+          hint="Zeigt Geschenk und Coins"
           expanded={open}
           onPress={() => setOpen((o) => !o)}
         />

@@ -3,6 +3,8 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { useAppState } from '../../state/AppState';
+import { useOnboardingState } from '../../state/OnboardingState';
+import { kategorieBrauchtAnrede } from '../../data/anrede';
 import { CATEGORIES } from '../../data/categories';
 import { getTheme, ACCENT_BLUE, ACCENT_ORANGE, ACCENT_GREEN, NODE_LOCKED } from '../../theme/tokens';
 
@@ -19,6 +21,7 @@ import { getTheme, ACCENT_BLUE, ACCENT_ORANGE, ACCENT_GREEN, NODE_LOCKED } from 
 
 export function ShopScreen() {
   const { darkMode, purchased, cart, toggleCartItem, buyCart } = useAppState();
+  const { gender, addressing } = useOnboardingState();
   const theme = getTheme(darkMode);
   // Der native Header ist app-weit aus (app/_layout.tsx), jeder Screen
   // zeichnet seinen eigenen. Ohne diesen Einsatz liegt die Ueberschrift unter
@@ -46,6 +49,18 @@ export function ShopScreen() {
     // 2026-08-05/06 dazu: Nutzer soll nach Kauf an der Stelle landen, von
     // der aus er in den Shop gewechselt ist statt oben bei der Sprachwahl.
     router.back();
+
+    // Erst JETZT nach Geschlecht und Ansprache fragen (2026-08-22) - beide
+    // Fragen standen frueher als O5/O6 im Onboarding, wo sie ohne sichtbaren
+    // Nutzen kamen. Wer gerade Club + Nightlife gekauft hat, sieht dagegen
+    // sofort, wozu: dort lauten 13 Saetze je nach Gegenueber anders.
+    //
+    // Nach dem `back()` gestapelt, nicht davor: so liegt der Screen ueber S1
+    // und gibt beim Schliessen den Pfad mitsamt Scroll-Position frei.
+    const braucht = cart.find(kategorieBrauchtAnrede);
+    if (braucht && (!gender || !addressing)) {
+      router.push({ pathname: '/anrede', params: { categoryId: braucht } });
+    }
   };
 
   return (

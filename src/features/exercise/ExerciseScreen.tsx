@@ -6,9 +6,11 @@ import { router } from 'expo-router';
 import { File } from 'expo-file-system';
 import type { Card } from 'ts-fsrs';
 import { useAppState } from '../../state/AppState';
+import { useOnboardingState } from '../../state/OnboardingState';
 import { CATEGORIES, CATEGORY_BY_ID } from '../../data/categories';
 import { scenarioLabel } from '../../data/scenarios';
 import { leihgeberVon, saetzeFuer } from '../../data/geliehen';
+import { passtZurAnsprache } from '../../data/anrede';
 import { getLanguage } from '../../data/languages';
 import { ExerciseSentence, loadAnswerClusters, loadExerciseSentences, shuffle } from '../../data/phrasebookContent';
 import { toPhrase } from '../../data/cheatsheetContent';
@@ -145,7 +147,8 @@ export function ExerciseScreen({
    */
   scenario?: string;
 }) {
-  const { darkMode, targetLanguageId, purchased, saved, toggleSaved } = useAppState();
+  const { addressing: ansprache } = useOnboardingState();
+  const { darkMode, targetLanguageId, purchased, saved, toggleSaved, zaehle } = useAppState();
   const theme = getTheme(darkMode);
   // Der native Header ist app-weit aus (app/_layout.tsx), jeder Screen
   // zeichnet seinen eigenen. Ohne diesen Einsatz liegt die Ueberschrift unter
@@ -258,9 +261,17 @@ export function ExerciseScreen({
             ? sentencesResult.sentences
             : saetzeFuer(categoryId, sentencesResult.sentences);
 
-        const sentencesData = scenario
+        const nachSituation = scenario
           ? eigeneUndGeliehene.filter((x) => x.scenario === scenario)
           : eigeneUndGeliehene;
+        // Geschlechtsvarianten aussortieren (2026-08-22). 13 Saetze in
+        // Club + Nightlife liegen doppelt vor - 你很漂亮 an Frauen, 你很帅 an
+        // Maenner. Bis hierhin bekam JEDER beide, die Antwort aus dem
+        // Onboarding blieb folgenlos. Ohne Antwort bleiben weiterhin beide
+        // stehen, siehe passtZurAnsprache().
+        const sentencesData = nachSituation.filter((x) =>
+          passtZurAnsprache(x.addressing, ansprache),
+        );
         setOffline(sentencesResult.fromCache);
 
         if (sentencesData.length === 0) {
@@ -324,7 +335,7 @@ export function ExerciseScreen({
     // aendert nur diesen Parameter - ohne ihn in der Liste laeuft der Effekt
     // nicht erneut und es bleiben die Saetze der ERSTEN Situation stehen.
     // Genau so gemeldet: egal welche Situation, immer derselbe erste Satz.
-  }, [targetLanguageId, categoryId, source, scenario]);
+  }, [targetLanguageId, categoryId, source, scenario, ansprache]);
 
   const sentence = sentences[Math.min(idx, sentences.length - 1)];
 
@@ -428,6 +439,11 @@ export function ExerciseScreen({
       aufgedeckt && roh.tier === 'richtig' ? { ...roh, tier: 'ueberlebt' } : roh;
     setFeedback(evaluation);
     setResults((r) => [...r, evaluation.tier]);
+    // Zaehler fuer die Herausforderungen (2026-08-22). Nur "richtig" - der
+    // Ueberlebensmodus zaehlt bewusst nicht mit, sonst hiesse "ohne Fehler"
+    // dasselbe wie "irgendwie verstanden". Aufgedeckte Karten sind schon
+    // oben auf "ueberlebt" gedeckelt und fallen damit von selbst raus.
+    if (evaluation.tier === 'richtig') zaehle('perfekteSaetze');
 
     // FSRS-Update - passiert IMMER, egal ob die Session von S2 oder S5
     // gestartet wurde (siehe Kommentar am Dateianfang: gemeinsamer Pool).

@@ -135,7 +135,7 @@ type Props = {
 };
 
 export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props) {
-  const { darkMode } = useAppState();
+  const { darkMode, zaehle } = useAppState();
   const theme = getTheme(darkMode);
   const sprache = getLanguage('zh');
 
@@ -532,6 +532,27 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
   //
   // Der Ergebnis-Schritt zaehlt nicht mit: er IST das Ende, kein Weg dorthin.
   // Sonst haette die letzte Aufgabe nie 100%.
+  // Eine Lektion gilt als sauber, wenn JEDE bewertete Aufgabe "richtig" war
+  // (2026-08-22, fuer die Herausforderungen auf dem Profil). Bewusst "ohne
+  // Fehler" statt einer Prozentschwelle: die Bewertung liefert drei Stufen
+  // und keinen Punktwert - "98 Prozent" waere ohne Punktzahl gar nicht
+  // bestimmbar, "kein einziger Fehler" schon.
+  //
+  // Genau einmal je Lektion, beim ERREICHEN des Ergebnisses - der Schritt
+  // bleibt danach stehen, ein Zaehlen beim Zeichnen liefe endlos.
+  const gezaehltRef = useRef(false);
+  useEffect(() => {
+    if (schritt?.art !== 'ergebnis') {
+      gezaehltRef.current = false;
+      return;
+    }
+    if (gezaehltRef.current) return;
+    gezaehltRef.current = true;
+    if (ergebnisse.length > 0 && ergebnisse.every((e) => e === 'richtig')) {
+      zaehle('perfekteLektionen');
+    }
+  }, [schritt?.art, ergebnisse, zaehle]);
+
   const gesamtSchritte = schritte.filter((x) => x.art !== 'ergebnis').length;
   const bisher = Math.min(pos + 1, gesamtSchritte);
 

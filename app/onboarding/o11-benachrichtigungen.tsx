@@ -51,7 +51,7 @@ export default function NotificationsScreen() {
 
   return (
     <OnboardingScaffold
-      step={stepNumber(12)}
+      step={stepNumber(10)}
       total={ONBOARDING_TOTAL_STEPS}
       dark={darkMode}
       title="Sollen wir dich erinnern?"

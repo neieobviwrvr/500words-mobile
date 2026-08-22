@@ -1,10 +1,7 @@
-import { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Platform,
-  Pressable,
   StyleSheet,
-  Text,
   useWindowDimensions,
   View,
 } from 'react-native';
@@ -58,8 +55,6 @@ const CONTENT_GAP = SPACING.md;
 // Kleiner als die Leiste hoch ist (Nutzer-Rueckmeldung 2026-08-20): ein
 // gleich grosser Kreis las sich wie ein abgetrennter fuenfter Tab. Der
 // groessere Abstand daneben macht die Trennung eindeutig.
-const ACTION_SIZE = 52;
-const ACTION_GAP = SPACING.md;
 /** Seitlicher Rand von Leiste UND Plus-Knopf - beide gleich weit vom Rand. */
 const BAR_SIDE = SPACING.xxl;
 
@@ -79,16 +74,10 @@ export default function TabsLayout() {
   // Tab an - im Browser stimmte es. Eine ausgerechnete Breite haengt nicht
   // davon ab, ob die Leiste `right` beachtet.
   const { width: windowWidth } = useWindowDimensions();
-  const barWidth = windowWidth - 2 * BAR_SIDE - ACTION_SIZE - ACTION_GAP;
-
-  // Der Knopf hat noch keine Funktion - beim Antippen sagt er das, statt
-  // still nichts zu tun (dasselbe Muster wie die Schatzkarte auf S1).
-  const [notice, setNotice] = useState<string | null>(null);
-  useEffect(() => {
-    if (!notice) return;
-    const timer = setTimeout(() => setNotice(null), 2600);
-    return () => clearTimeout(timer);
-  }, [notice]);
+  // Seit dem 2026-08-22 laeuft die Kapsel wieder ueber die volle Breite:
+  // der abgesetzte runde Knopf daneben ist weg, Profil ist stattdessen der
+  // fuenfte Tab. Vorher endete die Leiste vor ihm.
+  const barWidth = windowWidth - 2 * BAR_SIDE;
 
   // Beide Quellen liegen in AsyncStorage und laden asynchron. Ohne dieses
   // Warten blitzt kurz der Default-Zustand durch und schickt einen fertigen
@@ -233,18 +222,31 @@ export default function TabsLayout() {
           tabBarIcon: ({ color, size }) => <Feather name="message-circle" size={size} color={color} />,
         }}
       />
+      {/* Profil ist seit dem 2026-08-22 wieder ein echter Tab
+          (Nutzer-Entscheidung). Damit sind es fuenf - Apples Obergrenze fuer
+          eine Tab-Leiste, also genau ausgereizt und kein Platz mehr fuer
+          einen sechsten. Ueber das Drei-Punkte-Menue ist er weiterhin
+          erreichbar; doppelt schadet hier nichts, der Weg aus der Kopfzeile
+          war vorher der einzige. */}
+      <Tabs.Screen
+        name="profil"
+        options={{
+          title: 'Profil',
+          tabBarIcon: ({ color, size }) => <Feather name="user" size={size} color={color} />,
+        }}
+      />
       {/* Ab hier: Screens, die in der Gruppe liegen, damit die Tab-Leiste auf
           ihnen sichtbar bleibt (Nutzer-Wunsch 2026-08-20) - aber KEIN eigener
           Tab sind. `href: null` nimmt sie aus der Leiste, ohne sie aus dem
           Navigator zu nehmen. Ohne diese Eintraege haette die Leiste zwoelf
-          Symbole statt vier. */}
+          Symbole statt fuenf. */}
       <Tabs.Screen name="shop" options={{ href: null }} />
       <Tabs.Screen name="training/[mode]" options={{ href: null }} />
       <Tabs.Screen name="lesson/[id]" options={{ href: null }} />
       <Tabs.Screen name="wiederholen" options={{ href: null }} />
       <Tabs.Screen name="wortliste" options={{ href: null }} />
+      <Tabs.Screen name="anrede" options={{ href: null }} />
       <Tabs.Screen name="srs" options={{ href: null }} />
-      <Tabs.Screen name="profil" options={{ href: null }} />
       <Tabs.Screen name="exercise" options={{ href: null }} />
       <Tabs.Screen name="rewards" options={{ href: null }} />
       <Tabs.Screen name="category/[id]" options={{ href: null }} />
@@ -253,43 +255,6 @@ export default function TabsLayout() {
       <Tabs.Screen name="cheatsheet/favorites" options={{ href: null }} />
     </Tabs>
 
-      {/* Zweite Kapsel: eigenes Element neben der Leiste, gleiches Material,
-          gleicher Schatten. Bewusst KEIN fuenfter Tab - sie zeigt keinen
-          Zustand an und gehoert nicht in die Navigations-Reihenfolge. */}
-      <Pressable
-        onPress={() => setNotice('Dieser Knopf bekommt später eine Funktion.')}
-        accessibilityRole="button"
-        accessibilityLabel="Neue Aktion"
-        accessibilityHint="Noch ohne Funktion"
-        style={({ pressed }) => [
-          styles.action,
-          {
-            bottom: bottomOffset,
-            borderColor: darkMode ? 'rgba(255,255,255,0.14)' : 'rgba(0,0,0,0.08)',
-            shadowOpacity: darkMode ? 0.4 : 0.16,
-            opacity: pressed ? 0.75 : 1,
-          },
-        ]}
-      >
-        <TabBarSurface dark={darkMode} radius={ACTION_SIZE / 2} />
-        <Feather name="plus" size={26} color={theme.sub} />
-      </Pressable>
-
-      {notice ? (
-        <View
-          accessibilityLiveRegion="polite"
-          style={[
-            styles.notice,
-            {
-              bottom: bottomOffset + ACTION_SIZE + SPACING.md,
-              backgroundColor: theme.cardBg,
-              borderColor: theme.border,
-            },
-          ]}
-        >
-          <Text style={[styles.noticeText, { color: theme.text }]}>{notice}</Text>
-        </View>
-      ) : null}
     </View>
   );
 }
@@ -332,34 +297,6 @@ function TabBarSurface({ dark, radius = BAR_RADIUS }: { dark: boolean; radius?: 
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-  },
-  action: {
-    position: 'absolute',
-    right: BAR_SIDE,
-    width: ACTION_SIZE,
-    height: ACTION_SIZE,
-    borderRadius: ACTION_SIZE / 2,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 5 },
-    shadowRadius: 25,
-    elevation: 12,
-  },
-  notice: {
-    position: 'absolute',
-    left: SPACING.lg,
-    right: SPACING.lg,
-    borderWidth: 1.5,
-    borderRadius: RADIUS.md,
-    paddingVertical: SPACING.md,
-    paddingHorizontal: SPACING.lg,
-  },
-  noticeText: {
-    fontSize: FONT_SIZE.small,
-    fontWeight: '700',
-    textAlign: 'center',
   },
   surface: {
     position: 'absolute',

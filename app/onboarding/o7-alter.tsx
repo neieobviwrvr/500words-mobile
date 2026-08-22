@@ -27,7 +27,7 @@ export default function AgeScreen() {
 
   return (
     <OnboardingScaffold
-      step={stepNumber(7)}
+      step={stepNumber(5)}
       total={ONBOARDING_TOTAL_STEPS}
       dark={darkMode}
       title="Wie alt bist du?"

@@ -1,5 +1,6 @@
 // Welcher Inhalt gerade auf dem Sperrbildschirm steht (Nutzer-Wunsch
-// 2026-08-20): alle 5 Stunden ein neues Wort oder ein neuer Satz.
+// 2026-08-20, auf 2 Stunden verkuerzt am 2026-08-22): alle 2 Stunden ein
+// neues Wort oder ein neuer Satz.
 //
 // Bewusst reine Rechnung ohne Laden, Speichern oder React - aus zwei Gruenden:
 //
@@ -17,11 +18,20 @@
 // zwei Geraete mit demselben Vorrat zeigen dadurch dasselbe, und es gibt
 // keinen Startzeitpunkt, den irgendjemand speichern muesste.
 
-/** Wie lange ein Eintrag stehen bleibt. */
-export const SLOT_HOURS = 5;
+/**
+ * Wie lange ein Eintrag stehen bleibt.
+ *
+ * Von 5 auf 2 Stunden verkuerzt (2026-08-22, Nutzer-Entscheidung). Die Zahl
+ * steht NUR hier - Profiltext, Countdown und die Widget-Timeline lesen sie,
+ * statt sie zu wiederholen. Nebenwirkung, die man kennen sollte: bei 501
+ * Woertern dauert ein voller Durchgang jetzt rund 42 statt 104 Tage. Der
+ * Mindestabstand zwischen zwei Wiederholungen bleibt trotzdem ein voller
+ * Durchgang - siehe shuffledOrder().
+ */
+export const SLOT_HOURS = 2;
 export const SLOT_MS = SLOT_HOURS * 60 * 60 * 1000;
 
-/** Laufende Nummer des 5-Stunden-Fensters, in dem `at` liegt. */
+/** Laufende Nummer des Zeitfensters, in dem `at` liegt. */
 export function slotFor(at: number): number {
   return Math.floor(at / SLOT_MS);
 }
@@ -52,13 +62,14 @@ function seededRandom(seed: number): () => number {
  * erste Entwurf tat das und hatte damit einen Fehler, den ein Test gefunden
  * hat: an der Nahtstelle zweier Durchgaenge konnte der letzte Eintrag des
  * einen zugleich der erste des naechsten sein, das Wort kam also schon nach
- * 5 Stunden wieder. Mit einer festen Reihenfolge enthaelt JEDES Fenster aus
+ * einem einzigen Fenster wieder. Mit einer festen Reihenfolge enthaelt JEDES Fenster aus
  * `n` aufeinanderfolgenden Zeitscheiben jeden Eintrag genau einmal - der
  * Mindestabstand zwischen zwei Wiederholungen ist damit garantiert ein
  * voller Durchgang, egal wann man hinschaut.
  *
  * Preis dafuer: nach einer vollen Runde laeuft dieselbe Abfolge erneut. Bei
- * 500 Woertern sind das gut 100 Tage - kein Nachteil, der jemandem auffaellt.
+ * 500 Woertern und 2 Stunden je Eintrag sind das gut sechs Wochen - kein
+ * Nachteil, der jemandem auffaellt.
  */
 function shuffledOrder(n: number): number[] {
   const idx = Array.from({ length: n }, (_, i) => i);
@@ -76,7 +87,7 @@ function shuffledOrder(n: number): number[] {
  * Der Eintrag, der im Fenster `slot` gilt. `null` bei leerem Vorrat.
  *
  * Der Vorrat wird vollstaendig durchlaufen, bevor sich etwas wiederholt -
- * bei 500 Woertern und 5 Stunden je Eintrag sind das gut 100 Tage.
+ * bei 500 Woertern und 2 Stunden je Eintrag sind das gut sechs Wochen.
  */
 export function pickForSlot<T>(pool: T[], slot: number): T | null {
   const n = pool.length;

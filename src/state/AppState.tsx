@@ -25,7 +25,7 @@ const STORAGE_KEY = 'app_state_v1';
 export type ThemeSelection = { groupId: string; groupTitle: string; themeLabel: string; key: string };
 
 /**
- * Was das Sperrbildschirm-Widget zeigt (Nutzer-Wunsch 2026-08-20) - alle 5
+ * Was das Sperrbildschirm-Widget zeigt (Nutzer-Wunsch 2026-08-20) - alle 2
  * Stunden ein neues Wort ODER ein neuer Satz, einstellbar im Profil.
  *
  * Kein "aus": ob das Widget ueberhaupt erscheint, entscheidet der Nutzer in
@@ -68,7 +68,31 @@ type PersistedState = {
   coinGrants: Record<string, boolean>;
   lockscreenContent: LockscreenContent;
   learningMode: LearningMode;
+  /**
+   * Zaehler fuer die Herausforderungen auf dem Profil (2026-08-22).
+   *
+   * Bewusst schlichte Summen und keine Ereignisliste: die Herausforderungen
+   * fragen nur "wie viele bisher", niemand will wissen, wann. Eine Liste
+   * waechst ausserdem unbegrenzt in AsyncStorage.
+   *
+   * `perfekteSaetze` zaehlt Antworten der Stufe "richtig" - der
+   * "Ueberlebensmodus" zaehlt bewusst NICHT mit, sonst waere "perfekt"
+   * dasselbe wie "irgendwie verstanden".
+   *
+   * `perfekteLektionen` zaehlt Kurs-Lektionen, in denen JEDE bewertete
+   * Aufgabe "richtig" war. Damit umgeht die App die Luecke aus CLAUDE.md
+   * (die Bewertung liefert drei Stufen, keinen Prozentwert): "ohne Fehler"
+   * ist ohne Punktzahl bestimmbar, "98 Prozent" waere es nicht.
+   */
+  fortschritt: Fortschritt;
 };
+
+export type Fortschritt = {
+  perfekteSaetze: number;
+  perfekteLektionen: number;
+};
+
+const FORTSCHRITT_LEER: Fortschritt = { perfekteSaetze: 0, perfekteLektionen: 0 };
 
 type AppStateValue = {
   darkMode: boolean;
@@ -100,6 +124,17 @@ type AppStateValue = {
    * Default-Zustand geprueft statt gegen den gespeicherten.
    */
   grantCoins: (grantId: string, amount: number) => boolean;
+  /**
+   * Welche Geschenke schon vergeben sind. Die Herausforderungen lesen das,
+   * um "abholen" von "abgeholt" zu unterscheiden - `grantCoins` selbst gibt
+   * das nur beim Aufruf zurueck, nicht beim Zeichnen.
+   */
+  coinGrants: Record<string, boolean>;
+
+  /** Zaehlerstaende fuer die Herausforderungen. */
+  fortschritt: Fortschritt;
+  /** Erhoeht einen Zaehler. Erst aufrufen, wenn `hydrated` true ist. */
+  zaehle: (was: keyof Fortschritt, um?: number) => void;
 
   lockscreenContent: LockscreenContent;
   setLockscreenContent: (value: LockscreenContent) => void;
@@ -122,6 +157,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   const [savedMeta, setSavedMeta] = useState<Record<string, Phrase>>({});
   const [selectedThemes, setSelectedThemes] = useState<Record<string, ThemeSelection>>({});
   const [coins, setCoins] = useState(0);
+  const [fortschritt, setFortschritt] = useState<Fortschritt>(FORTSCHRITT_LEER);
   const [coinGrants, setCoinGrants] = useState<Record<string, boolean>>({});
   // Saetze als Vorgabe, nicht Woerter: Saetze gibt es in jeder Sprache mit
   // Inhalt, eine Wortliste bisher nur fuer Schwedisch und Franzoesisch
@@ -155,6 +191,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
           if (parsed.saved) setSaved(parsed.saved);
           if (parsed.savedMeta) setSavedMeta(parsed.savedMeta);
           if (parsed.coins !== undefined) setCoins(parsed.coins);
+          if (parsed.fortschritt) setFortschritt({ ...FORTSCHRITT_LEER, ...parsed.fortschritt });
           if (parsed.lockscreenContent) setLockscreenContent(parsed.lockscreenContent);
           if (parsed.learningMode) setLearningMode(parsed.learningMode);
           if (parsed.coinGrants) {
@@ -176,11 +213,11 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (!hydrated.current) return;
-    const toPersist: PersistedState = { darkMode, targetLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode };
+    const toPersist: PersistedState = { darkMode, targetLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode, fortschritt };
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(toPersist)).catch(() => {
       // Best-effort - ein Speicherfehler soll die laufende Session nicht stoeren.
     });
-  }, [darkMode, targetLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode]);
+  }, [darkMode, targetLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode, fortschritt]);
 
   const toggleDark = useCallback(() => setDarkMode((d) => !d), []);
 
@@ -230,6 +267,10 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     return true;
   }, []);
 
+  const zaehle = useCallback((was: keyof Fortschritt, um = 1) => {
+    setFortschritt((f) => ({ ...f, [was]: f[was] + um }));
+  }, []);
+
   const value = useMemo<AppStateValue>(
     () => ({
       darkMode,
@@ -248,13 +289,16 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       clearSelectedThemes,
       coins,
       grantCoins,
+      coinGrants,
+      fortschritt,
+      zaehle,
       lockscreenContent,
       setLockscreenContent,
       learningMode,
       toggleLearningMode,
       hydrated: isHydrated,
     }),
-    [darkMode, toggleDark, targetLanguageId, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes, coins, grantCoins, lockscreenContent, learningMode, toggleLearningMode, isHydrated]
+    [darkMode, toggleDark, targetLanguageId, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes, coins, grantCoins, coinGrants, fortschritt, zaehle, lockscreenContent, learningMode, toggleLearningMode, isHydrated]
   );
 
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;
