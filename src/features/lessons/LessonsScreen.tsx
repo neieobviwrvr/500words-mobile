@@ -5,6 +5,7 @@ import { Feather } from '@expo/vector-icons';
 import { useAppState } from '../../state/AppState';
 import { CATEGORIES, CATEGORY_BY_ID, GRUNDWORTSCHATZ_ID } from '../../data/categories';
 import { scenarioLabel } from '../../data/scenarios';
+import { leihName } from '../../data/geliehen';
 import { TRAINING_MODES } from '../../data/trainingModes';
 import { HeaderMenu, Screen } from '../../components';
 import { Situation, useCategorySituations } from './useCategorySituations';
@@ -230,6 +231,7 @@ export function LessonsScreen() {
                       <SituationCard
                         key={`${categoryId}:${situation.scenario}`}
                         situation={situation}
+                        categoryId={categoryId}
                         categoryName={name}
                         locked={locked}
                         dark={darkMode}
@@ -266,6 +268,7 @@ export function LessonsScreen() {
 
 function SituationCard({
   situation,
+  categoryId,
   categoryName,
   locked,
   dark,
@@ -274,6 +277,7 @@ function SituationCard({
   onPress,
 }: {
   situation: Situation;
+  categoryId: string;
   categoryName: string;
   locked: boolean;
   dark: boolean;
@@ -281,7 +285,10 @@ function SituationCard({
   tintInk: string;
   onPress: () => void;
 }) {
-  const label = scenarioLabel(situation.scenario);
+  // Geliehene Situationen tragen den Namen, der zur AUFNEHMENDEN Kategorie
+  // passt (siehe data/geliehen.ts) - sonst begaenne jede Kategorie mit
+  // derselben Karte "Sich verständigen".
+  const label = leihName(categoryId, situation.scenario) ?? scenarioLabel(situation.scenario);
   const isDone = !locked && situation.total > 0 && situation.seen >= situation.total;
   const ink = locked ? NODE_LOCKED : isDone ? ACCENT_GREEN : tintInk;
 

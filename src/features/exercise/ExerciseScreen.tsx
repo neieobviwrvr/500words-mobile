@@ -8,6 +8,7 @@ import type { Card } from 'ts-fsrs';
 import { useAppState } from '../../state/AppState';
 import { CATEGORIES, CATEGORY_BY_ID } from '../../data/categories';
 import { scenarioLabel } from '../../data/scenarios';
+import { leihgeberVon, saetzeFuer } from '../../data/geliehen';
 import { getLanguage } from '../../data/languages';
 import { ExerciseSentence, loadAnswerClusters, loadExerciseSentences, shuffle } from '../../data/phrasebookContent';
 import { toPhrase } from '../../data/cheatsheetContent';
@@ -40,6 +41,9 @@ import { getTheme, ACCENT_BLUE, ACCENT_GREEN } from '../../theme/tokens';
 // Session-Limit (Nutzer-Entscheidung 2026-08-07: "widerspricht dem
 // schnellen Lernen") - stattdessen alle 10 Karten ein kurzer, nicht
 // blockierender Motivations-Einschub statt eines Stopp-Punkts.
+
+/** Wie viele Karten vorgezogen werden, wenn nichts faellig ist. */
+const VORZIEHEN_MAX = 20;
 
 const MODE_LABELS: Record<string, string> = { spam: 'Alles', woerter: 'Wörter', saetze: 'Sätze', konversation: 'Konversation' };
 
@@ -187,8 +191,12 @@ export function ExerciseScreen({
         // immer freien Grundwortschatz hinweg (siehe CLAUDE.md "EIN
         // gemeinsamer Wiederholungs-Pool"); S2 (source="category") bleibt
         // auf die eine angeklickte Kategorie beschraenkt.
-        const categoryIds =
+        const gewaehlt =
           source === 'srs' ? [...CATEGORIES.filter((c) => purchased[c.id]).map((c) => c.id), 'grundwortschatz'] : [categoryId];
+        // Geliehene Situationen mitladen (siehe data/geliehen.ts): Smalltalk
+        // zeigt auch Begruessen und Vorstellen aus dem Grundwortschatz, weil
+        // niemand garantiert, dass der Nutzer den je angesehen hat.
+        const categoryIds = [...gewaehlt, ...leihgeberVon(gewaehlt)];
 
         const [sentencesResult, clusterData, cardStates] = await Promise.all([
           loadExerciseSentences(targetLanguageId, categoryIds),
@@ -197,9 +205,15 @@ export function ExerciseScreen({
         ]);
         if (cancelled) return;
         cardsRef.current = cardStates;
+        // Beim Leihen kaeme sonst der ganze Grundwortschatz mit - `saetzeFuer`
+        // laesst nur die wirklich geliehenen Situationen durch.
+        const eigeneUndGeliehene =
+          source === 'srs'
+            ? sentencesResult.sentences
+            : saetzeFuer(categoryId, sentencesResult.sentences);
         const sentencesData = scenario
-          ? sentencesResult.sentences.filter((x) => x.scenario === scenario)
-          : sentencesResult.sentences;
+          ? eigeneUndGeliehene.filter((x) => x.scenario === scenario)
+          : eigeneUndGeliehene;
         setOffline(sentencesResult.fromCache);
 
         if (sentencesData.length === 0) {
@@ -210,27 +224,43 @@ export function ExerciseScreen({
         }
 
         let pool = sentencesData;
+        // Nur beim Vorziehen wird gedeckelt - siehe unten, warum sonst nicht.
+        let deckeln = false;
         if (source === 'srs') {
           const due = sentencesData.filter((s) => {
             const key = cardKey(targetLanguageId, language.table!, s.id);
             return isDue(cardStates[key]);
           });
           if (due.length > 0) {
+            // Faellig ist faellig: wer 80 Karten offen hat, soll sie auch
+            // bekommen. Ein stiller Deckel liesse den Rueckstand wachsen,
+            // ohne dass jemand merkt, warum er nie aufholt.
             pool = due;
           } else {
             // Todo aus CLAUDE.md umgesetzt: nichts faellig -> ein paar
-            // Karten vorziehen statt eine leere Session zu zeigen.
+            // Karten vorziehen statt eine leere Session zu zeigen. NUR HIER
+            // wird gedeckelt: vorgezogene Karten sind keine Schuld, die man
+            // abarbeiten muss - ein paar reichen.
             pool = sentencesData;
+            deckeln = true;
             setUsedSrsFallback(true);
           }
         }
 
-        // Kein hartes Session-Limit mehr (siehe Kommentar oben) - nur bei
-        // sehr grossen Pools (z.B. "alle Kategorien") auf eine sinnvolle
-        // Session-Groesse begrenzen, damit eine Session nicht aus Versehen
-        // 150+ Karten hat.
-        setSentences(shuffle(pool).slice(0, 40));
+        // KEIN hartes Session-Limit (Nutzer-Entscheidung 2026-08-07:
+        // "widerspricht dem Ziel schneller lernen als Duolingo").
+        //
+        // Bis 2026-08-21 stand hier `.slice(0, 40)` auf JEDER Sitzung - der
+        // Knopf "Alle 131" lieferte also 40 Saetze und log damit. Der
+        // Kommentar daneben behauptete sogar, es gebe kein Limit mehr.
+        // Statt eines Deckels bremst der Motivations-Einschub alle zehn
+        // Karten, ohne die Sitzung zu beenden.
+        setSentences(deckeln ? shuffle(pool).slice(0, VORZIEHEN_MAX) : shuffle(pool));
         setClusters(clusterData);
+        // Zurueck auf Karte 1: sonst startet die neue Situation an der
+        // Position, bis zu der man in der vorigen gekommen war - und bei
+        // einer kuerzeren Liste sofort am Ende.
+        setIdx(0);
       } catch (e) {
         if (!cancelled) setLoadError(e instanceof Error ? e.message : String(e));
       } finally {
@@ -242,7 +272,12 @@ export function ExerciseScreen({
       cancelled = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [targetLanguageId, categoryId, source]);
+    // `scenario` MUSS hier stehen (2026-08-21): der Screen liegt in der
+    // Tab-Gruppe und bleibt gemountet. Wer eine zweite Situation antippt,
+    // aendert nur diesen Parameter - ohne ihn in der Liste laeuft der Effekt
+    // nicht erneut und es bleiben die Saetze der ERSTEN Situation stehen.
+    // Genau so gemeldet: egal welche Situation, immer derselbe erste Satz.
+  }, [targetLanguageId, categoryId, source, scenario]);
 
   const sentence = sentences[Math.min(idx, sentences.length - 1)];
 

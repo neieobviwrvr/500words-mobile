@@ -4,6 +4,7 @@ import { loadExerciseSentences } from '../../data/phrasebookContent';
 import { getLanguage } from '../../data/languages';
 import { CATEGORIES, GRUNDWORTSCHATZ_ID } from '../../data/categories';
 import { cardKey, loadAllCards } from '../srs/srsStorage';
+import { istGeliehen } from '../../data/geliehen';
 
 // Situationen pro Kategorie fuer den Lektionen-Screen.
 //
@@ -25,6 +26,17 @@ export type Situation = {
   total: number;
   /** Saetze mit FSRS-Zustand, also mindestens einmal bewertet. */
   seen: number;
+  /**
+   * true = die Situation gehoert einer anderen Kategorie und wird hier nur
+   * mit angezeigt (siehe data/geliehen.ts).
+   *
+   * Gebraucht fuer zwei Dinge: geliehene Karten stehen HINTEN in der Reihe,
+   * und sie tragen einen eigenen, zur Kategorie passenden Namen. Sonst
+   * beginnt jede Kategorie mit derselben Karte "Sich verstaendigen" - bei
+   * Sprachen ohne eigenen Content ist das sogar die einzige, und dann sieht
+   * jede Kategorie gleich aus.
+   */
+  geliehen: boolean;
 };
 
 export type CategorySituations = {
@@ -85,12 +97,22 @@ export function useCategorySituations(languageId: string): CategorySituations {
           // Kategorie -> juengste Bewertung darin.
           const lastReviewPerCategory: Record<string, number> = {};
 
+          // Geliehene Situationen tauchen in BEIDEN Reihen auf - in ihrer
+          // eigenen Kategorie und in der, die sie leiht. Derselbe Satz,
+          // dieselbe Karte, zwei Wege dorthin (siehe data/geliehen.ts).
+          const zielKategorien = (s: { category: string; scenario: string }) => [
+            s.category,
+            ...allIds.filter((id) => istGeliehen(id, s)),
+          ];
+
           for (const sentence of sentences) {
-            const perCat = (index[sentence.category] ??= {});
+          for (const zielKategorie of zielKategorien(sentence)) {
+            const perCat = (index[zielKategorie] ??= {});
             const sit = (perCat[sentence.scenario] ??= {
               scenario: sentence.scenario,
               total: 0,
               seen: 0,
+              geliehen: zielKategorie !== sentence.category,
             });
             sit.total += 1;
             const card = cards[cardKey(languageId, lang.table as string, sentence.id)];
@@ -99,14 +121,21 @@ export function useCategorySituations(languageId: string): CategorySituations {
               // Karten ohne `last_review` wurden angelegt, aber nie
               // beantwortet - die zaehlen hier nicht mit.
               const at = card.last_review ? new Date(card.last_review).getTime() : 0;
-              if (at > (lastReviewPerCategory[sentence.category] ?? 0)) {
-                lastReviewPerCategory[sentence.category] = at;
+              if (at > (lastReviewPerCategory[zielKategorie] ?? 0)) {
+                lastReviewPerCategory[zielKategorie] = at;
               }
             }
           }
+          }
 
           for (const [categoryId, perScenario] of Object.entries(index)) {
-            byCategory[categoryId] = Object.values(perScenario).sort((a, b) => b.total - a.total);
+            // Eigene Situationen zuerst, danach die geliehenen - innerhalb
+            // beider Gruppen die groesste zuerst. Ohne das eroeffnet jede
+            // Kategorie mit derselben Leihgabe.
+            byCategory[categoryId] = Object.values(perScenario).sort((a, b) => {
+              if (a.geliehen !== b.geliehen) return a.geliehen ? 1 : -1;
+              return b.total - a.total;
+            });
           }
 
           const recentCategoryIds = Object.entries(lastReviewPerCategory)

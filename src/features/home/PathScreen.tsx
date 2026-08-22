@@ -23,6 +23,7 @@ import { useCategorySituations } from '../lessons/useCategorySituations';
 import { useGuidedCourse } from './useGuidedCourse';
 import { PathBackdrop } from './PathBackdrop';
 import { scenarioLabel } from '../../data/scenarios';
+import { leihName } from '../../data/geliehen';
 import {
   getTheme,
   ACCENT_BLUE,
@@ -415,7 +416,7 @@ export function PathScreen() {
       if (!themesMounted || !expandedIds.includes(categoryId)) return [];
       return (situations.byCategory[categoryId] ?? []).map((sit) => ({
         id: `${categoryId}:${sit.scenario}`,
-        label: scenarioLabel(sit.scenario),
+        label: leihName(categoryId, sit.scenario) ?? scenarioLabel(sit.scenario),
         state: (locked
           ? 'locked'
           : sit.total > 0 && sit.seen >= sit.total

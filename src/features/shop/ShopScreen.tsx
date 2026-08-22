@@ -119,6 +119,22 @@ export function ShopScreen() {
           <Text style={[styles.infoText, { color: theme.sub }]}>{selected ? selected.enables : '—'}</Text>
         </View>
 
+        {/* Ueberschneidung VOR dem Kauf sagen (Nutzer-Wunsch 2026-08-21).
+            Grundlagen wie Begruessen oder Nachfragen liegen im
+            Grundwortschatz und werden von vielen Kategorien mit angezeigt -
+            unter einem Namen, der zur jeweiligen Lage passt (siehe
+            data/geliehen.ts). Wer zwei Kategorien kauft, findet dort also
+            dieselben Saetze. Das ist gewollt, weil es dieselbe Karte ist,
+            die man nur einmal lernt - aber es muss vorher dastehen, sonst
+            fuehlt es sich nach dem Kauf wie eine Doppelung an. */}
+        <View style={[styles.hinweisBlock, { borderLeftColor: ACCENT_BLUE }]}>
+          <Text style={[styles.hinweisText, { color: theme.sub }]}>
+            Grundlagen wie Begrüßen, Zahlen oder Nachfragen gehören zum
+            Grundwortschatz und erscheinen in mehreren Kategorien. Manche Sätze
+            überschneiden sich deshalb — gelernt wird jeder trotzdem nur einmal.
+          </Text>
+        </View>
+
         <View style={[styles.cartSummary, { backgroundColor: theme.pathBoxBg, borderColor: theme.border }]}>
           <Text style={[styles.cartLabel, { color: theme.sub }]}>{cart.length} Paket(e) im Warenkorb</Text>
           <Text style={[styles.cartTotal, { color: theme.text }]}>{cartTotal} €</Text>
@@ -157,6 +173,8 @@ const styles = StyleSheet.create({
   infoBlock: { borderTopWidth: 1.5, paddingTop: 14, gap: 4 },
   infoLabel: { fontWeight: '700', fontSize: 14 },
   infoText: { fontSize: 13, lineHeight: 19, marginBottom: 10 },
+  hinweisBlock: { borderLeftWidth: 2, paddingLeft: 10, marginBottom: 14 },
+  hinweisText: { fontSize: 12, lineHeight: 17, fontStyle: 'italic' },
   cartSummary: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 14, borderRadius: 14, borderWidth: 1.5 },
   cartLabel: { fontWeight: '700', fontSize: 13 },
   cartTotal: { fontWeight: '800', fontSize: 16 },
