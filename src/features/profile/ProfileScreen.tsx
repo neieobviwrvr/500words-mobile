@@ -49,8 +49,9 @@ const GESCHLECHT_LABEL: Record<string, string> = Object.fromEntries(
 
 export function ProfileScreen() {
   const { gender: geschlecht, addressing: ansprache } = useOnboardingState();
-  const { darkMode, lockscreenContent, setLockscreenContent } = useAppState();
+  const { uebersprungen, ueberspringenZuruecknehmen, darkMode, lockscreenContent, setLockscreenContent } = useAppState();
   const theme = getTheme(darkMode);
+  const anzahlUebersprungen = Object.values(uebersprungen).filter(Boolean).length;
   const pick = useLockscreenPick();
 
   return (
@@ -125,6 +126,30 @@ export function ProfileScreen() {
             })}
           </View>
         </Card>
+
+        {/* Uebersprungene Saetze zurueckholen (2026-08-22). "Brauch ich
+            nicht" wirkt dauerhaft - ohne diese Stelle waere es eine
+            Einbahnstrasse, und wer versehentlich tippt, bekaeme den Satz nie
+            wieder. Vorerst nur alles auf einmal: eine Einzelliste braucht
+            eine Ansicht, die es noch nicht gibt, und der haeufige Fall ist
+            ohnehin "ich hab mich vertan". */}
+        {anzahlUebersprungen > 0 ? (
+          <>
+            <Text style={[styles.sectionLabel, { color: theme.sub }]}>ÜBERSPRUNGENE SÄTZE</Text>
+            <Card dark={darkMode} style={styles.card}>
+              <Text style={[styles.cardText, { color: theme.sub }]}>
+                {anzahlUebersprungen === 1
+                  ? 'Ein Satz taucht nicht mehr in deinen Übungen auf.'
+                  : `${anzahlUebersprungen} Sätze tauchen nicht mehr in deinen Übungen auf.`}
+              </Text>
+              <PillButton
+                label="Alle zurückholen"
+                dark={darkMode}
+                onPress={ueberspringenZuruecknehmen}
+              />
+            </Card>
+          </>
+        ) : null}
 
         <Herausforderungen />
 

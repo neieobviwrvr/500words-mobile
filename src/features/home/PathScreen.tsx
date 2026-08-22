@@ -15,6 +15,8 @@ import { router, useFocusEffect } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
 import { LEARNING_MODE_LABEL, useAppState } from '../../state/AppState';
 import { CATEGORIES, GRUNDWORTSCHATZ_ID } from '../../data/categories';
+import { sichtbareKategorien, sichtbareSituationen } from '../../data/demo';
+import { useAuthState } from '../../state/AuthState';
 import { LANGUAGES, getLanguage } from '../../data/languages';
 import { Card, Dropdown, HeaderMenu, ProgressBar, Screen, PRESS_DEPTH } from '../../components';
 import type { DropdownOption } from '../../components';
@@ -179,6 +181,7 @@ function nodeColors(node: { state: NodeState; lead?: boolean; theme?: boolean })
 export function PathScreen() {
   const { darkMode, purchased, targetLanguageId, setTargetLanguageId, coins, learningMode, toggleLearningMode } =
     useAppState();
+  const { hatKonto } = useAuthState();
   const theme = getTheme(darkMode);
   const activeLanguage = getLanguage(targetLanguageId);
 
@@ -399,8 +402,13 @@ export function PathScreen() {
       return { nodes: [] as RawNode[], currentIndex: 0, currentLabel: 'Noch keine Sätze' };
     }
 
-    const purchasedCategories = CATEGORIES.filter((c) => purchased[c.id]);
-    const lockedCategories = CATEGORIES.filter((c) => !purchased[c.id]);
+    // Ohne Konto nur der Demo-Umfang (Nutzer-Entscheidung 2026-08-22, siehe
+    // data/demo.ts). Der Gast soll die App ausprobieren koennen, nicht den
+    // ganzen Katalog durchblaettern - und was er gar nicht kaufen kann, muss
+    // ihm der Pfad auch nicht anbieten.
+    const sichtbar = sichtbareKategorien(CATEGORIES, hatKonto);
+    const purchasedCategories = sichtbar.filter((c) => purchased[c.id]);
+    const lockedCategories = sichtbar.filter((c) => !purchased[c.id]);
 
     // "Fertig" heisst: jeder Satz der Kategorie wurde mindestens einmal
     // bewertet. "Aktuell" ist die erste freigeschaltete Kategorie, die das
@@ -414,7 +422,9 @@ export function PathScreen() {
     // es zu holen gibt. Ihre Themen fuehren dann in den Shop.
     const themenVon = (categoryId: string, locked: boolean): RawNode[] => {
       if (!themesMounted || !expandedIds.includes(categoryId)) return [];
-      return (situations.byCategory[categoryId] ?? []).map((sit) => ({
+      // Ohne Konto nur die ersten Situationen je Kategorie - siehe
+      // data/demo.ts.
+      return sichtbareSituationen(situations.byCategory[categoryId] ?? [], hatKonto).map((sit) => ({
         id: `${categoryId}:${sit.scenario}`,
         label: leihName(categoryId, sit.scenario) ?? scenarioLabel(sit.scenario),
         state: (locked
@@ -487,7 +497,7 @@ export function PathScreen() {
     };
     // `expandedIds` gehoert schon jetzt in die Abhaengigkeiten - sobald das
     // Auffaechern kommt, muss die Liste sich davon neu bauen.
-  }, [learningMode, course.lessons, purchased, activeLanguage.label, activeLanguage.table, progress.byCategory, situations.recentCategoryIds, expandedIds, themesMounted, situations.byCategory, toggleCategory]);
+  }, [learningMode, course.lessons, purchased, activeLanguage.label, activeLanguage.table, progress.byCategory, situations.recentCategoryIds, expandedIds, themesMounted, situations.byCategory, toggleCategory, hatKonto]);
 
   // ---------------------------------------------------------------------
   // Zickzack-Layout: Pillen abwechselnd links/rechts, verbunden durch

@@ -4,6 +4,8 @@ import { router } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
 import { useAppState } from '../../state/AppState';
 import { CATEGORIES, CATEGORY_BY_ID, GRUNDWORTSCHATZ_ID } from '../../data/categories';
+import { sichtbareKategorien, sichtbareSituationen } from '../../data/demo';
+import { useAuthState } from '../../state/AuthState';
 import { scenarioLabel } from '../../data/scenarios';
 import { leihName } from '../../data/geliehen';
 import { TRAINING_MODES } from '../../data/trainingModes';
@@ -52,6 +54,7 @@ const TINT_ORDER = ['ankommen', 'essen', 'leute', 'alltag', 'grundlagen'] as con
 
 export function LessonsScreen() {
   const { darkMode, purchased, targetLanguageId } = useAppState();
+  const { hatKonto } = useAuthState();
   const theme = getTheme(darkMode);
   const situations = useCategorySituations(targetLanguageId);
 
@@ -59,7 +62,8 @@ export function LessonsScreen() {
 
   // Grundwortschatz zuerst, dann freigeschaltet, dann gesperrt.
   const orderedIds = useMemo(() => {
-    const paid = CATEGORIES.map((c) => c.id);
+    // Ohne Konto nur der Demo-Umfang - siehe data/demo.ts.
+    const paid = sichtbareKategorien(CATEGORIES, hatKonto).map((c) => c.id);
     return [
       GRUNDWORTSCHATZ_ID,
       ...paid.filter((id) => purchased[id]),
@@ -133,7 +137,11 @@ export function LessonsScreen() {
             const tintKey =
               categoryId === GRUNDWORTSCHATZ_ID ? 'grundlagen' : TINT_ORDER[i % TINT_ORDER.length];
             const tint = WORLD_TINTS[tintKey];
-            const list = situations.byCategory[categoryId] ?? [];
+            // Ohne Konto nur die ersten Situationen je Kategorie
+            // (data/demo.ts). Nicht in `useCategorySituations` gefiltert,
+            // sondern hier: der Hook liefert die Wahrheit ueber den Content,
+            // die Demo-Grenze ist eine Anzeige-Entscheidung.
+            const list = sichtbareSituationen(situations.byCategory[categoryId] ?? [], hatKonto);
             // Saetze der ganzen Kategorie, fuer die Beschriftung des
             // "Alle"-Knopfes.
             const gesamt = list.reduce((n, sit) => n + sit.total, 0);

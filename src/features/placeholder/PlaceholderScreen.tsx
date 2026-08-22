@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useAppState } from '../../state/AppState';
-import { HeaderMenu, Screen } from '../../components';
+import { HeaderMenu, PillButton, Screen } from '../../components';
 import {
   getTheme,
   SPACING,
@@ -24,9 +24,26 @@ type Props = {
   icon: React.ComponentProps<typeof Feather>['name'];
   /** Kopfzeilen-Menue zeigen - nur auf Tab-Screens sinnvoll. */
   showMenu?: boolean;
+  /**
+   * Ein Knopf unter dem Text (2026-08-22).
+   *
+   * Nicht jeder Platzhalter ist eine Sackgasse: der Freunde-Screen zeigt
+   * Gaesten, dass sie ein Konto brauchen - dann muss es von dort auch dorthin
+   * gehen. Ohne Knopf bleibt "Noch nicht gebaut." stehen, was in dem Fall
+   * schlicht falsch waere: das Konto GIBT es.
+   */
+  actionLabel?: string;
+  onAction?: () => void;
 };
 
-export function PlaceholderScreen({ title, description, icon, showMenu = false }: Props) {
+export function PlaceholderScreen({
+  title,
+  description,
+  icon,
+  showMenu = false,
+  actionLabel,
+  onAction,
+}: Props) {
   const { darkMode } = useAppState();
   const theme = getTheme(darkMode);
 
@@ -45,7 +62,11 @@ export function PlaceholderScreen({ title, description, icon, showMenu = false }
         <Feather name={icon} size={40} color={theme.sub} />
         <Text style={[styles.title, { color: theme.text }]}>{title}</Text>
         <Text style={[styles.description, { color: theme.sub }]}>{description}</Text>
-        <Text style={[styles.note, { color: theme.sub }]}>Noch nicht gebaut.</Text>
+        {actionLabel && onAction ? (
+          <PillButton label={actionLabel} dark={darkMode} onPress={onAction} />
+        ) : (
+          <Text style={[styles.note, { color: theme.sub }]}>Noch nicht gebaut.</Text>
+        )}
       </View>
     </Screen>
   );

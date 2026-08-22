@@ -51,7 +51,17 @@ export function SearchResultsScreen() {
     };
   }, [targetLanguageId, purchased]);
 
-  type ResultSection = { title: string; phrases: Phrase[] };
+  /**
+   * Eine Ueberschrift je SITUATION, nicht je Kategorie (Nutzer-Wunsch
+   * 2026-08-22).
+   *
+   * Vorher stand ueber dem Block nur "GRUNDWORTSCHATZ" - wer "Im
+   * Krankenhaus" und "Sich verabreden" angetippt hatte, sah nicht mehr,
+   * welche Saetze zu welcher Auswahl gehoerten, sobald beide aus derselben
+   * Kategorie kamen. Jetzt: "Sich verabreden (Grundwortschatz)", die
+   * Situation farbig, die Kategorie in Klammern und gedaempft.
+   */
+  type ResultSection = { situation: string; kategorie: string | null; phrases: Phrase[] };
   let sections: ResultSection[] = [];
 
   if (query) {
@@ -59,21 +69,30 @@ export function SearchResultsScreen() {
     if (matches.length > 0 && language.table) {
       sections = [
         {
-          title: `„${query}" (${matches.length} Treffer)`,
+          situation: `„${query}"`,
+          kategorie: `${matches.length} Treffer`,
           phrases: matches.map((s) => toPhrase(targetLanguageId, language.table!, groups.find((g) => g.categoryId === s.category)?.title ?? s.category, s)),
         },
       ];
     }
   } else {
-    for (const grp of groups) {
-      const themesInGroup = Object.values(selectedThemes).filter((t) => t.groupId === grp.categoryId);
-      if (themesInGroup.length === 0) continue;
-      const wantsWholeCategory = grp.scenarios.length === 0;
-      const sentences = wantsWholeCategory
-        ? grp.allSentences
-        : themesInGroup.flatMap((t) => grp.scenarios.find((sc) => `${grp.categoryId}_${sc.key}` === t.key)?.sentences ?? []);
-      if (sentences.length === 0 || !language.table) continue;
-      sections.push({ title: grp.title, phrases: sentences.map((s) => toPhrase(targetLanguageId, language.table!, grp.title, s)) });
+    // Ueber die AUSWAHL laufen, nicht ueber die Kategorien - nur so bleibt
+    // die Reihenfolge die des Antippens und jede Situation ihr eigener Block.
+    for (const thema of Object.values(selectedThemes)) {
+      const grp = groups.find((g) => g.categoryId === thema.groupId);
+      if (!grp || !language.table) continue;
+      // Kategorien ohne eigene Szenarien (heute keine mehr, frueher der
+      // Normalfall) liefern ihren ganzen Bestand.
+      const sentences =
+        grp.scenarios.length === 0
+          ? grp.allSentences
+          : (grp.scenarios.find((sc) => `${grp.categoryId}_${sc.key}` === thema.key)?.sentences ?? []);
+      if (sentences.length === 0) continue;
+      sections.push({
+        situation: thema.themeLabel,
+        kategorie: grp.title,
+        phrases: sentences.map((s) => toPhrase(targetLanguageId, language.table!, grp.title, s)),
+      });
     }
   }
 
@@ -81,13 +100,16 @@ export function SearchResultsScreen() {
   // Situationen wuerde die Zeile unlesbar, deshalb ab vier nur noch die
   // Anzahl.
   const gewaehlteNamen = Object.values(selectedThemes).map((t) => t.themeLabel);
+  // Verschiedene Kategorien zaehlen, nicht Abschnitte - seit ein Abschnitt je
+  // Situation entsteht, sind das zwei verschiedene Zahlen.
+  const anzahlKategorien = new Set(sections.map((s) => s.kategorie)).size;
   const untertitel = query
     ? `Sätze zu „${query}" (${sections.reduce((n, s) => n + s.phrases.length, 0)} Treffer)`
     : `Sätze – ${
         gewaehlteNamen.length > 3
           ? `${gewaehlteNamen.length} Situationen`
           : gewaehlteNamen.join(', ')
-      } (aus ${sections.length} ${sections.length === 1 ? 'Kategorie' : 'Kategorien'})`;
+      } (aus ${anzahlKategorien} ${anzahlKategorien === 1 ? 'Kategorie' : 'Kategorien'})`;
 
   return (
     <View style={[styles.container, { backgroundColor: theme.pageBg, paddingTop: insets.top }]}>
@@ -131,7 +153,12 @@ export function SearchResultsScreen() {
           )}
           {sections.map((sec, si) => (
             <View key={si}>
-              <Text style={styles.sectionTitle}>{sec.title}</Text>
+              <Text style={styles.sectionTitle}>
+                {sec.situation}
+                {sec.kategorie ? (
+                  <Text style={[styles.sectionKategorie, { color: theme.sub }]}>{` (${sec.kategorie})`}</Text>
+                ) : null}
+              </Text>
               {sec.phrases.map((ph) => (
                 <PhraseCard
                   key={ph.id}
@@ -165,4 +192,8 @@ const styles = StyleSheet.create({
   centerBox: { alignItems: 'center', justifyContent: 'center', paddingVertical: 40 },
   scrollContent: { padding: 18, gap: 10 },
   sectionTitle: { color: ACCENT_ORANGE, fontWeight: '800', fontSize: 12, letterSpacing: 0.6, marginVertical: 10, textTransform: 'uppercase' },
+  // Die Kategorie tritt zurueck: sie sagt, WO der Satz herkommt, waehrend die
+  // Situation sagt, wonach gesucht wurde. Kein Grossbuchstabensatz, damit die
+  // Klammer nicht mit der Ueberschrift um Aufmerksamkeit streitet.
+  sectionKategorie: { fontWeight: '700', letterSpacing: 0, textTransform: 'none' },
 });

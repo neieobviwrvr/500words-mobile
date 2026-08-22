@@ -13,7 +13,7 @@ import { leihgeberVon, saetzeFuer } from '../../data/geliehen';
 import { passtZurAnsprache } from '../../data/anrede';
 import { getLanguage } from '../../data/languages';
 import { ExerciseSentence, loadAnswerClusters, loadExerciseSentences, shuffle } from '../../data/phrasebookContent';
-import { toPhrase } from '../../data/cheatsheetContent';
+import { phraseId, toPhrase } from '../../data/cheatsheetContent';
 import { evaluateConcepts, EvaluationResult } from '../../features/evaluation/evaluateConcepts';
 import { looksLikeGarbageTranscript } from '../../features/stt/transcriptQuality';
 import { useSpeechmatics } from '../../features/stt/useSpeechmatics';
@@ -148,7 +148,12 @@ export function ExerciseScreen({
   scenario?: string;
 }) {
   const { addressing: ansprache } = useOnboardingState();
-  const { darkMode, targetLanguageId, purchased, saved, toggleSaved, zaehle } = useAppState();
+  const { darkMode, targetLanguageId, purchased, saved, toggleSaved, zaehle, uebersprungen, ueberspringen } =
+    useAppState();
+  // Spiegel fuer den Sessionaufbau - siehe Kommentar an den Abhaengigkeiten
+  // des Lade-Effekts.
+  const uebersprungenRef = useRef(uebersprungen);
+  uebersprungenRef.current = uebersprungen;
   const theme = getTheme(darkMode);
   // Der native Header ist app-weit aus (app/_layout.tsx), jeder Screen
   // zeichnet seinen eigenen. Ohne diesen Einsatz liegt die Ueberschrift unter
@@ -269,8 +274,14 @@ export function ExerciseScreen({
         // Maenner. Bis hierhin bekam JEDER beide, die Antwort aus dem
         // Onboarding blieb folgenlos. Ohne Antwort bleiben weiterhin beide
         // stehen, siehe passtZurAnsprache().
-        const sentencesData = nachSituation.filter((x) =>
-          passtZurAnsprache(x.addressing, ansprache),
+        const sentencesData = nachSituation.filter(
+          (x) =>
+            passtZurAnsprache(x.addressing, ansprache) &&
+            // Uebersprungene Saetze kommen gar nicht erst in die Sitzung
+            // (2026-08-22). Hier und nicht beim Zeichnen, damit auch die
+            // Kartenzahl "Karte 3 von 12" stimmt - sonst zaehlte die Sitzung
+            // Karten mit, die nie erscheinen.
+            !uebersprungenRef.current[phraseId(targetLanguageId, language.table!, x.id)],
         );
         setOffline(sentencesResult.fromCache);
 
@@ -335,6 +346,11 @@ export function ExerciseScreen({
     // aendert nur diesen Parameter - ohne ihn in der Liste laeuft der Effekt
     // nicht erneut und es bleiben die Saetze der ERSTEN Situation stehen.
     // Genau so gemeldet: egal welche Situation, immer derselbe erste Satz.
+    // `uebersprungen` steht bewusst NICHT in den Abhaengigkeiten: es aendert
+    // sich genau dann, wenn der Nutzer mitten in der Sitzung ueberspringt -
+    // die Sitzung wuerde dann neu geladen und bei Karte 1 wieder anfangen.
+    // Gefiltert wird beim Sessionstart, gelesen ueber den Ref darunter.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [targetLanguageId, categoryId, source, scenario, ansprache]);
 
   const sentence = sentences[Math.min(idx, sentences.length - 1)];
@@ -670,6 +686,37 @@ export function ExerciseScreen({
               <Text style={{ color: istGemerkt ? ACCENT_GREEN : theme.sub, fontWeight: '700', fontSize: 12 }}>
                 {istGemerkt ? 'Gemerkt' : 'Merken'}
               </Text>
+            </Pressable>
+
+            {/* Ueberspringen (Nutzer-Wunsch 2026-08-22): "falls der Satz
+                'Wie alt bist du' den User nicht interessiert". Dauerhaft, nicht
+                nur fuer diese Sitzung - das Anliegen ist "betrifft mich nicht",
+                nicht "gerade keine Lust".
+
+                Bewusst OHNE Bewertung: der Satz bekommt keine FSRS-Karte und
+                zaehlt nicht in die Auswertung. Ein Ueberspringen ist keine
+                falsche Antwort. */}
+            <Pressable
+              onPress={() => {
+                if (!sentence || !language.table) return;
+                // Derselbe Schluessel wie beim Merken (`sprache:tabelle:id`),
+                // NICHT der FSRS-Speicherschluessel: sonst gaebe es zwei
+                // Schluesselraeume fuer denselben Satz, und eine spaetere
+                // Liste "uebersprungene Saetze" muesste zwischen ihnen
+                // uebersetzen.
+                ueberspringen(phraseId(targetLanguageId, language.table, sentence.id));
+                nextCard();
+              }}
+              accessibilityRole="button"
+              accessibilityLabel="Diesen Satz überspringen"
+              accessibilityHint="Er taucht nicht mehr auf. Im Profil lässt sich das zurücknehmen."
+              style={({ pressed }) => [
+                styles.merken,
+                { borderColor: theme.border, opacity: pressed ? 0.6 : 1 },
+              ]}
+            >
+              <Ionicons name="close-circle-outline" size={16} color={theme.sub} />
+              <Text style={{ color: theme.sub, fontWeight: '700', fontSize: 12 }}>Brauch ich nicht</Text>
             </Pressable>
             </View>
           </View>

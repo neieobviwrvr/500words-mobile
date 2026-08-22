@@ -4,6 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { useAppState } from '../../state/AppState';
 import { useOnboardingState } from '../../state/OnboardingState';
+import { useAuthState } from '../../state/AuthState';
 import { kategorieBrauchtAnrede } from '../../data/anrede';
 import { CATEGORIES } from '../../data/categories';
 import { getTheme, ACCENT_BLUE, ACCENT_ORANGE, ACCENT_GREEN, NODE_LOCKED } from '../../theme/tokens';
@@ -22,6 +23,7 @@ import { getTheme, ACCENT_BLUE, ACCENT_ORANGE, ACCENT_GREEN, NODE_LOCKED } from 
 export function ShopScreen() {
   const { darkMode, purchased, cart, toggleCartItem, buyCart } = useAppState();
   const { gender, addressing } = useOnboardingState();
+  const { hatKonto } = useAuthState();
   const theme = getTheme(darkMode);
   // Der native Header ist app-weit aus (app/_layout.tsx), jeder Screen
   // zeichnet seinen eigenen. Ohne diesen Einsatz liegt die Ueberschrift unter
@@ -40,6 +42,13 @@ export function ShopScreen() {
 
   const onBuy = () => {
     if (cart.length === 0) return;
+    // Ohne Konto kein Kauf (Nutzer-Entscheidung 2026-08-22). Der Warenkorb
+    // bleibt dabei stehen: nach der Anmeldung landet man wieder hier und
+    // kann abschliessen, statt neu auswaehlen zu muessen.
+    if (!hatKonto) {
+      router.push({ pathname: '/konto', params: { grund: 'kaufen' } });
+      return;
+    }
     buyCart();
     // router.back() statt router.replace('/'): S3 ist laut Navigations-
     // prinzipien nur von S1 aus erreichbar, also bringt back() genauso
@@ -158,10 +167,16 @@ export function ShopScreen() {
           style={styles.buyButton}
           onPress={onBuy}
           accessibilityRole="button"
-          accessibilityLabel={`Kaufen, ${cart.length} Pakete für ${cartTotal} Euro`}
+          accessibilityLabel={
+            hatKonto
+              ? `Kaufen, ${cart.length} Pakete für ${cartTotal} Euro`
+              : 'Weiter zur Anmeldung — zum Kaufen brauchst du ein Konto'
+          }
           accessibilityState={{ disabled: cart.length === 0 }}
         >
-          <Text style={styles.buyButtonText}>Kaufen ▶</Text>
+          {/* Beschriftung sagt vorher, wohin es geht - ein "Kaufen", das
+              zur Anmeldung fuehrt, faellt sonst als Wortbruch auf. */}
+          <Text style={styles.buyButtonText}>{hatKonto ? 'Kaufen ▶' : 'Anmelden zum Kaufen ▶'}</Text>
         </Pressable>
       </ScrollView>
     </View>

@@ -85,6 +85,22 @@ type PersistedState = {
    * ist ohne Punktzahl bestimmbar, "98 Prozent" waere es nicht.
    */
   fortschritt: Fortschritt;
+  /**
+   * Saetze, die der Nutzer nicht lernen will (2026-08-22).
+   *
+   * Nutzer-Wunsch (Simon): "dass wir Saetze skippen koennen falls der Satz
+   * 'Wie alt bist du' den User nicht interessiert".
+   *
+   * Bewusst DAUERHAFT und nicht nur fuer diese Sitzung: das Anliegen ist
+   * nicht "gerade keine Lust", sondern "dieser Satz betrifft mich nicht".
+   * Einer, der jedes Mal wiederkommt, waere keine Antwort darauf.
+   *
+   * Schluessel ist die Satz-ID in derselben Form wie ueberall sonst
+   * (`sprache:tabelle:id`) - damit gilt das Ueberspringen je Sprache, was
+   * richtig ist: wer "Wie alt bist du" auf Chinesisch nicht braucht, kann
+   * ihn auf Schwedisch trotzdem wollen.
+   */
+  uebersprungen: Record<string, boolean>;
 };
 
 export type Fortschritt = {
@@ -136,6 +152,13 @@ type AppStateValue = {
   /** Erhoeht einen Zaehler. Erst aufrufen, wenn `hydrated` true ist. */
   zaehle: (was: keyof Fortschritt, um?: number) => void;
 
+  /** Saetze, die der Nutzer nicht mehr sehen will. */
+  uebersprungen: Record<string, boolean>;
+  /** Diesen Satz nicht mehr zeigen. */
+  ueberspringen: (satzId: string) => void;
+  /** Alle uebersprungenen Saetze wieder zulassen. */
+  ueberspringenZuruecknehmen: () => void;
+
   lockscreenContent: LockscreenContent;
   setLockscreenContent: (value: LockscreenContent) => void;
 
@@ -158,6 +181,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   const [selectedThemes, setSelectedThemes] = useState<Record<string, ThemeSelection>>({});
   const [coins, setCoins] = useState(0);
   const [fortschritt, setFortschritt] = useState<Fortschritt>(FORTSCHRITT_LEER);
+  const [uebersprungen, setUebersprungen] = useState<Record<string, boolean>>({});
   const [coinGrants, setCoinGrants] = useState<Record<string, boolean>>({});
   // Saetze als Vorgabe, nicht Woerter: Saetze gibt es in jeder Sprache mit
   // Inhalt, eine Wortliste bisher nur fuer Schwedisch und Franzoesisch
@@ -192,6 +216,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
           if (parsed.savedMeta) setSavedMeta(parsed.savedMeta);
           if (parsed.coins !== undefined) setCoins(parsed.coins);
           if (parsed.fortschritt) setFortschritt({ ...FORTSCHRITT_LEER, ...parsed.fortschritt });
+          if (parsed.uebersprungen) setUebersprungen(parsed.uebersprungen);
           if (parsed.lockscreenContent) setLockscreenContent(parsed.lockscreenContent);
           if (parsed.learningMode) setLearningMode(parsed.learningMode);
           if (parsed.coinGrants) {
@@ -213,11 +238,11 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (!hydrated.current) return;
-    const toPersist: PersistedState = { darkMode, targetLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode, fortschritt };
+    const toPersist: PersistedState = { darkMode, targetLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode, fortschritt, uebersprungen };
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(toPersist)).catch(() => {
       // Best-effort - ein Speicherfehler soll die laufende Session nicht stoeren.
     });
-  }, [darkMode, targetLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode, fortschritt]);
+  }, [darkMode, targetLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode, fortschritt, uebersprungen]);
 
   const toggleDark = useCallback(() => setDarkMode((d) => !d), []);
 
@@ -271,6 +296,11 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     setFortschritt((f) => ({ ...f, [was]: f[was] + um }));
   }, []);
 
+  const ueberspringen = useCallback((satzId: string) => {
+    setUebersprungen((u) => ({ ...u, [satzId]: true }));
+  }, []);
+  const ueberspringenZuruecknehmen = useCallback(() => setUebersprungen({}), []);
+
   const value = useMemo<AppStateValue>(
     () => ({
       darkMode,
@@ -292,13 +322,16 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       coinGrants,
       fortschritt,
       zaehle,
+      uebersprungen,
+      ueberspringen,
+      ueberspringenZuruecknehmen,
       lockscreenContent,
       setLockscreenContent,
       learningMode,
       toggleLearningMode,
       hydrated: isHydrated,
     }),
-    [darkMode, toggleDark, targetLanguageId, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes, coins, grantCoins, coinGrants, fortschritt, zaehle, lockscreenContent, learningMode, toggleLearningMode, isHydrated]
+    [darkMode, toggleDark, targetLanguageId, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes, coins, grantCoins, coinGrants, fortschritt, zaehle, uebersprungen, ueberspringen, ueberspringenZuruecknehmen, lockscreenContent, learningMode, toggleLearningMode, isHydrated]
   );
 
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;

@@ -246,6 +246,7 @@ export default function TabsLayout() {
       <Tabs.Screen name="wiederholen" options={{ href: null }} />
       <Tabs.Screen name="wortliste" options={{ href: null }} />
       <Tabs.Screen name="anrede" options={{ href: null }} />
+      <Tabs.Screen name="konto" options={{ href: null }} />
       <Tabs.Screen name="srs" options={{ href: null }} />
       <Tabs.Screen name="exercise" options={{ href: null }} />
       <Tabs.Screen name="rewards" options={{ href: null }} />
