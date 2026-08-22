@@ -10,7 +10,7 @@ import { getTheme, ACCENT_BLUE, ACCENT_PREMIUM } from '../../theme/tokens';
 // S5 - SRS-/Wiederholen-Auswahl-Screen.
 // 2026-08-06 aus aktualisiertem Design-Prototyp umgebaut: kein Dropdown mit
 // "alle"/Einzelkategorie-Filter mehr, sondern direkt drei Modus-Buttons
-// (Woerter/Saetze/Konversation) wie auf S2, jeweils mit "x/13 Kategorien
+// (Woerter/Saetze/Konversation) wie auf S2, jeweils mit "x/14 Kategorien
 // lernbar"-Unterzeile aus dem aktuellen Kaufstatus berechnet (Design-
 // Backlog-Notiz: spaeter auf echte Supabase-Kaufdaten umstellen, sobald der
 // Shop wirklich angebunden ist - aktuell laeuft "purchased" nur lokal im
@@ -50,7 +50,7 @@ export function SrsScreen() {
   /**
    * Die Unterzeile unter den Modus-Knoepfen.
    *
-   * Fuer den Kurs sagt "x/13 Kategorien lernbar" nichts - dort gibt es keine
+   * Fuer den Kurs sagt "x/14 Kategorien lernbar" nichts - dort gibt es keine
    * Kaufkategorien. Stattdessen die ehrliche Zahl faelliger Karten.
    */
   const unterzeile = istKurs

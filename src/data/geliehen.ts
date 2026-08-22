@@ -113,6 +113,12 @@ export const LEIH_NAMEN: Record<string, string> = {
 
   // Hoeflichkeit in den zwei geselligen Kategorien
   'smalltalk_socialising:hoeflichkeit': 'Danke und Entschuldigung',
+  'job_work:hoeflichkeit': 'Der Ton bei der Arbeit',
+  'job_work:uhrzeit': 'Wann fängt es an',
+  'job_work:termin': 'Dienstplan absprechen',
+  'job_work:zahlen': 'Stunden und Beträge',
+  'drinking_dining:health_allergie': 'Was ich nicht vertrage',
+  'dating_romance:club_komplimente': 'Etwas Nettes sagen',
   'finding_friends:hoeflichkeit': 'Nicht ins Fettnäpfchen treten',
 };
 
@@ -143,6 +149,26 @@ const KULTUR_GESPRAECH: Leihe = {
 };
 
 const ZAHLEN: Leihe = { category: 'grundwortschatz', scenarios: ['zahlen'] };
+
+/**
+ * Allergien aus Health (2026-08-22).
+ *
+ * "Ich bin allergisch gegen Erdnuesse" ist im Restaurant WORTGLEICH derselbe
+ * Satz wie beim Arzt. Health hat davon 13 fertige; Drinking + Dining hatte
+ * dafuer eine eigene Situation mit zwei Saetzen. Ausleihen statt nachbauen -
+ * und der Nutzer merkt beim Kauf, dass die zwei Kategorien zusammenhaengen.
+ */
+const ALLERGIE: Leihe = { category: 'health_emergency', scenarios: ['health_allergie'] };
+
+/**
+ * Komplimente aus Club (2026-08-22).
+ *
+ * 17 fertige Saetze, die beim Date genauso stimmen wie im Club - inklusive
+ * der geschlechtsspezifischen Varianten (漂亮 / 帅) und der Kulturhinweise,
+ * warum 瘦 und 气质 in China Komplimente sind. Die fuer Dating nachzubauen,
+ * haette dieselben Saetze ein zweites Mal ergeben.
+ */
+const KOMPLIMENTE: Leihe = { category: 'club_nightlife', scenarios: ['club_komplimente'] };
 const ZEIT: Leihe = { category: 'grundwortschatz', scenarios: ['uhrzeit'] };
 const TERMINE: Leihe = { category: 'grundwortschatz', scenarios: ['termin'] };
 
@@ -150,12 +176,12 @@ export const GELIEHEN: Record<string, Leihe[]> = {
   // --- Gesellige Kategorien: Gruessen, Vorstellen, Verabschieden
   smalltalk_socialising: [GESELLIG, HOEFLICH, VERSTAENDIGEN, KULTUR_GESPRAECH],
   finding_friends: [GESELLIG, HOEFLICH, TERMINE, VERSTAENDIGEN],
-  dating_romance: [TERMINE, VERSTAENDIGEN],
+  dating_romance: [TERMINE, KOMPLIMENTE, VERSTAENDIGEN],
   love_relationship: [VERSTAENDIGEN],
 
   // --- Transaktion: ohne Zahlen kommt man nicht durch
   shopping_haggling: [ZAHLEN, VERSTAENDIGEN],
-  drinking_dining: [ZAHLEN, VERSTAENDIGEN],
+  drinking_dining: [ZAHLEN, ALLERGIE, VERSTAENDIGEN],
 
   // --- Unterwegs: Zahlen fuer Preise, Uhrzeit fuer Abfahrten
   travel_transportation: [ZAHLEN, ZEIT, VERSTAENDIGEN],
@@ -168,6 +194,11 @@ export const GELIEHEN: Record<string, Leihe[]> = {
 
   // --- Beim Arzt: nur die Verstaendigung, der Rest steht in eigenen Situationen
   health_emergency: [VERSTAENDIGEN],
+
+  // --- Im Nebenjob: Uhrzeit fuer Schichten, Termine fuer den Dienstplan,
+  //     Zahlen fuer die Bezahlung. Hoeflichkeit kommt dazu, weil sie im
+  //     Umgang mit Kundschaft nicht optional ist.
+  job_work: [ZEIT, TERMINE, ZAHLEN, HOEFLICH, VERSTAENDIGEN],
 
   // club_nightlife leiht bewusst nichts - siehe Kopfkommentar.
 };

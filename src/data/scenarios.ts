@@ -4,7 +4,8 @@
 // nicht auf eine Karte gehoeren. Diese Zuordnung ist reine Anzeige-Logik -
 // die Datenbank bleibt unberuehrt.
 //
-// Stand 2026-08-22: 68 Szenarien. Kommt ein neues dazu, ohne hier
+// Stand 2026-08-22: 101 Szenarien - 68 davon mit Saetzen, der Rest ist der
+// beschlossene Zuschnitt fuer den Chinesisch-Ausbau. Kommt ein neues dazu, ohne hier
 // eingetragen zu werden, zeigt `scenarioLabel()` den Rohwert mit grossem
 // Anfangsbuchstaben - unschoen, aber niemals leer.
 
@@ -41,6 +42,20 @@ export const SCENARIO_LABELS: Record<string, string> = {
   // waere dasselbe gewesen wie die ganze Kategorie freikaufen. Der Inhalt
   // existierte, er stand nur zu grob sortiert da.
   //
+  // ---------------------------------------------------------------------
+  // Ausbau 2026-08-22: Chinesisch soll durchgehend tragfaehig werden.
+  //
+  // Die Namen stehen hier VOLLSTAENDIG, bevor ein einziger Satz geschrieben
+  // ist - so ist der Zuschnitt einmal entschieden und nicht Welle fuer Welle
+  // neu. Situationen ohne Saetze zeigt der Katalog gar nicht an, leere
+  // Eintraege kosten also nichts.
+  //
+  // Zieltiefe gestaffelt statt ueberall gleich (Nutzer-Entscheidung): wo die
+  // Zielgruppe lebt (Travel, Drinking, Hotel, Shopping) rund 80-100 Saetze,
+  // bei University und Love rund 35 - gleiche Tiefe zu erzwingen haette dort
+  // Fuellmaterial ergeben.
+  // ---------------------------------------------------------------------
+
   // Health + Emergency
   health_symptome: 'Was mir fehlt',
   health_krankenhaus: 'Im Krankenhaus',
@@ -48,27 +63,48 @@ export const SCENARIO_LABELS: Record<string, string> = {
   health_allergie: 'Allergien',
   health_bezahlen: 'Versicherung und Bezahlen',
   // Shopping + Haggling
+  shop_handeln: 'Handeln',
+  shop_groesse: 'Größe und Farbe',
+  shop_markt: 'Auf dem Markt',
+  shop_supermarkt: 'Im Supermarkt',
   shop_suchen: 'Suchen und stöbern',
   shop_anprobieren: 'Anprobieren',
   shop_bezahlen: 'Preis und Bezahlen',
   shop_reklamieren: 'Umtauschen',
   // Drinking + Dining
+  essen_strassenessen: 'An der Garküche',
+  essen_schaerfe: 'Wie scharf?',
+  essen_teilen: 'Gemeinsam essen',
+  essen_getraenke: 'Getränke',
   essen_platz: 'Einen Tisch bekommen',
   essen_bestellen: 'Bestellen',
   essen_unvertraeglich: 'Was ich nicht esse',
   essen_bezahlen: 'Rechnung',
   essen_geschmack: 'Über das Essen reden',
-  // Hotel + Accommodation
+  // Hotel + Accommodation. Die Zielgruppe schlaeft im Hostel, nicht im Hotel.
+  hotel_hostel: 'Im Hostel',
+  hotel_gepaeck: 'Gepäck abstellen',
+  hotel_wlan: 'WLAN und Strom',
+  hotel_waesche: 'Wäsche waschen',
+  hotel_registrierung: 'Anmeldung bei der Polizei',
   hotel_einchecken: 'Einchecken',
   hotel_zimmer: 'Im Zimmer',
   hotel_probleme: 'Wenn etwas fehlt',
   hotel_abreise: 'Abreise',
   // Moving + Settling
+  wohnen_sim: 'SIM-Karte und Nummer',
+  wohnen_bezahlapp: 'Bezahl-App einrichten',
+  wohnen_bank: 'Bei der Bank',
+  wohnen_mitbewohner: 'Mitbewohner',
+  wohnen_paket: 'Pakete und Nachbarn',
   wohnen_suchen: 'Wohnung suchen',
   wohnen_vertrag: 'Mietvertrag',
   wohnen_behoerden: 'Behörden',
   wohnen_alltag: 'Im Haus',
   // University + Studying
+  uni_kurswahl: 'Kurse wählen',
+  uni_campus: 'Auf dem Campus',
+  uni_bibliothek: 'In der Bibliothek',
   uni_orientierung: 'Sich zurechtfinden',
   uni_organisation: 'Studium organisieren',
   uni_pruefung: 'Prüfungen',
@@ -78,11 +114,45 @@ export const SCENARIO_LABELS: Record<string, string> = {
   kultur_ausgehen: 'Ausgehen',
   kultur_freizeit: 'Freizeit und Sport',
   kultur_wochenende: 'Wochenende',
+  // Finding Friends. Was Smalltalk NICHT hat: der Schritt vom Reden zum
+  // Wiedersehen. "Gibst du mir dein WeChat?" ist kein Smalltalk - und in
+  // China der Satz, an dem alles haengt.
+  freunde_kontakt: 'Kontakt tauschen',
+  freunde_zusammen: 'Kommst du mit?',
+  freunde_kontakthalten: 'In Kontakt bleiben',
+
+  // Dating + Romance. Beginnt NACH dem Kontakttausch - davor ist es Club
+  // oder Finding Friends (Kategoriengrenze aus CLAUDE.md).
+  dating_verabreden: 'Ein Date ausmachen',
+  dating_beimdate: 'Beim Date',
+  dating_grenzen: 'Absagen und Grenzen',
+  dating_klaeren: 'Sind wir zusammen?',
+
+  // Love + Relationship. Trennt sich von Dating ueber die ZEIT, nicht ueber
+  // das Thema: Dating sind die ersten Wochen, Love ist danach.
+  liebe_gefuehle: 'Gefühle zeigen',
+  liebe_fern: 'Fernbeziehung',
+  liebe_familie: 'Die Familie treffen',
+
+  // Job + Arbeit (Kategorie angelegt 2026-08-22)
+  job_suchen: 'Nach Arbeit fragen',
+  job_gespraech: 'Vorstellungsgespräch',
+  job_schicht: 'Dienstplan und Schichten',
+  job_kollegen: 'Mit Kolleg:innen',
+  job_kunden: 'Kundschaft bedienen',
+  job_abwesend: 'Krankmelden',
+  job_lohn: 'Bezahlung',
+
   // Smalltalk + Socialising
   smalltalk_person: 'Über sich erzählen',
   smalltalk_familie: 'Familie und Status',
   smalltalk_hobbys: 'Hobbys',
   // Travel + Transportation
+  reise_taxi: 'Taxi und DiDi',
+  reise_ubahn: 'Mit der U-Bahn',
+  reise_gepaeck: 'Gepäck unterwegs',
+  reise_probleme: 'Wenn etwas schiefgeht',
+  reise_grenze: 'Einreise und Visum',
   reise_ticket: 'Fahrkarte kaufen',
   reise_zug: 'Mit dem Zug',
   reise_bus: 'Mit dem Bus',

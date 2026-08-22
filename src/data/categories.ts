@@ -1,4 +1,4 @@
-// Die 13 kostenpflichtigen Zusatzkategorien aus CLAUDE.md, inkl. der
+// Die 14 kostenpflichtigen Zusatzkategorien aus CLAUDE.md, inkl. der
 // "beinhalten"/"befaehigt dich zu"-Texte aus dem Claude-Design-Prototyp.
 // Laut App-Overlay-Spec.md liefert EIN Datenbank-Eintrag pro Paket BEIDE
 // Texte - das ist hier als flaches Objekt pro Kategorie abgebildet, bis das
@@ -27,6 +27,14 @@ export const CATEGORIES: Category[] = [
   { id: 'drinking_dining', name: 'Drinking + Dining', initials: 'D·D', includes: 'Bestellen, Restaurant, Getränke.', enables: 'im Restaurant bestellen und Empfehlungen verstehen.' },
   { id: 'culture_immersion', name: 'Culture + Immersion', initials: 'C·I', includes: 'Bräuche, Feiertage, Alltagskultur.', enables: 'kulturelle Situationen einordnen und mitreden.' },
   { id: 'university_studying', name: 'University + Studying', initials: 'U·S', includes: 'Uni-Alltag, WG-Suche, Kurse.', enables: 'dich an der Uni und in der WG zurechtzufinden.' },
+  // Die 14. Kategorie, beschlossen am 2026-08-17, angelegt am 2026-08-22.
+  //
+  // Bewusst NICHT die Lehrbuch-Variante des Themas: Start-ups, New Work und
+  // Fuehrungsstile sind B1/B2 und treffen weder das Versprechen "nach zwei
+  // Monaten einfache Alltagsgespraeche" noch die beiden Personas. Diese hier
+  // zielt auf Work & Travel, Saison- und Nebenjob - deshalb auch "Job +
+  // Arbeit" statt "Beruf und Karriere": "Karriere" klingt nach Ue30 im Buero.
+  { id: 'job_work', name: 'Job + Arbeit', initials: 'J·A', includes: 'Dienstplan, Kolleg:innen, Kundschaft, Krankmeldung.', enables: 'im Nebenjob zurechtzukommen und dich mit dem Team abzustimmen.' },
 ];
 
 export const CATEGORY_BY_ID: Record<string, Category> = Object.fromEntries(
