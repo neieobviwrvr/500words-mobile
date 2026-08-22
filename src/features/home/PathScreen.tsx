@@ -406,7 +406,7 @@ export function PathScreen() {
     // data/demo.ts). Der Gast soll die App ausprobieren koennen, nicht den
     // ganzen Katalog durchblaettern - und was er gar nicht kaufen kann, muss
     // ihm der Pfad auch nicht anbieten.
-    const sichtbar = sichtbareKategorien(CATEGORIES, hatKonto);
+    const sichtbar = sichtbareKategorien(CATEGORIES, hatKonto, purchased);
     const purchasedCategories = sichtbar.filter((c) => purchased[c.id]);
     const lockedCategories = sichtbar.filter((c) => !purchased[c.id]);
 
@@ -424,7 +424,7 @@ export function PathScreen() {
       if (!themesMounted || !expandedIds.includes(categoryId)) return [];
       // Ohne Konto nur die ersten Situationen je Kategorie - siehe
       // data/demo.ts.
-      return sichtbareSituationen(situations.byCategory[categoryId] ?? [], hatKonto).map((sit) => ({
+      return sichtbareSituationen(situations.byCategory[categoryId] ?? [], hatKonto, categoryId, purchased).map((sit) => ({
         id: `${categoryId}:${sit.scenario}`,
         label: leihName(categoryId, sit.scenario) ?? scenarioLabel(sit.scenario),
         state: (locked

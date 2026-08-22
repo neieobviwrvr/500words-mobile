@@ -63,7 +63,7 @@ export function LessonsScreen() {
   // Grundwortschatz zuerst, dann freigeschaltet, dann gesperrt.
   const orderedIds = useMemo(() => {
     // Ohne Konto nur der Demo-Umfang - siehe data/demo.ts.
-    const paid = sichtbareKategorien(CATEGORIES, hatKonto).map((c) => c.id);
+    const paid = sichtbareKategorien(CATEGORIES, hatKonto, purchased).map((c) => c.id);
     return [
       GRUNDWORTSCHATZ_ID,
       ...paid.filter((id) => purchased[id]),
@@ -141,7 +141,7 @@ export function LessonsScreen() {
             // (data/demo.ts). Nicht in `useCategorySituations` gefiltert,
             // sondern hier: der Hook liefert die Wahrheit ueber den Content,
             // die Demo-Grenze ist eine Anzeige-Entscheidung.
-            const list = sichtbareSituationen(situations.byCategory[categoryId] ?? [], hatKonto);
+            const list = sichtbareSituationen(situations.byCategory[categoryId] ?? [], hatKonto, categoryId, purchased);
             // Saetze der ganzen Kategorie, fuer die Beschriftung des
             // "Alle"-Knopfes.
             const gesamt = list.reduce((n, sit) => n + sit.total, 0);

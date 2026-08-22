@@ -79,22 +79,56 @@ export function imDemoUmfang(categoryId: string): boolean {
 }
 
 /**
+ * Die Demo-Grenze NIMMT NIEMANDEM ETWAS WEG (berichtigt 2026-08-22).
+ *
+ * Der erste Entwurf filterte stur auf `DEMO_KATEGORIEN` - und liess damit
+ * auch gekaufte Kategorien verschwinden. Beim Testen fiel es sofort auf:
+ * Smalltalk war bezahlt und trotzdem weg.
+ *
+ * Fuer einen echten Gast kann der Fall heute nicht eintreten (ohne Konto
+ * kein Kauf), aber verlassen darf man sich darauf nicht: wer sich abmeldet,
+ * duerfte sonst seine Kaeufe nicht mehr sehen, und ein Fruehnutzer-Bonus
+ * oder eine mit Coins freigeschaltete Kategorie liegt ohnehin ausserhalb des
+ * Kaufwegs.
+ *
+ * Die Regel lautet deshalb: **Demo-Umfang PLUS alles, was der Nutzer
+ * ohnehin hat.** Eine Grenze, die nur hinzufuegt, kann nie ueberraschen.
+ */
+export function zeigtKategorie(
+  categoryId: string,
+  hatKonto: boolean,
+  purchased: Record<string, boolean>,
+): boolean {
+  return hatKonto || imDemoUmfang(categoryId) || !!purchased[categoryId];
+}
+
+/**
  * Filtert eine Kategorienliste auf das, was der Nutzer sehen darf.
  *
- * `hatKonto` true gibt alles durch - die Demo-Grenze gilt ausschliesslich
- * fuer Gaeste. Bewusst hier und nicht in den Screens: die Regel ist eine,
- * und sie soll an einer Stelle stehen.
+ * Bewusst hier und nicht in den Screens: die Regel ist eine, und sie soll an
+ * einer Stelle stehen.
  */
 export function sichtbareKategorien<T extends { id: string }>(
   kategorien: T[],
   hatKonto: boolean,
+  purchased: Record<string, boolean> = {},
 ): T[] {
   if (hatKonto) return kategorien;
-  return kategorien.filter((k) => imDemoUmfang(k.id));
+  return kategorien.filter((k) => zeigtKategorie(k.id, hatKonto, purchased));
 }
 
-/** Genauso fuer Situationen innerhalb einer Kategorie. */
-export function sichtbareSituationen<T>(situationen: T[], hatKonto: boolean): T[] {
+/**
+ * Genauso fuer Situationen - aber nur in Kategorien, die der Nutzer NICHT
+ * besitzt. Wer eine Kategorie hat, sieht sie ganz; sonst waere die Demo eine
+ * Beschneidung des Gekauften statt eines Vorgeschmacks.
+ */
+export function sichtbareSituationen<T>(
+  situationen: T[],
+  hatKonto: boolean,
+  categoryId?: string,
+  purchased: Record<string, boolean> = {},
+): T[] {
   if (hatKonto) return situationen;
+  if (categoryId && purchased[categoryId]) return situationen;
   return situationen.slice(0, DEMO_SITUATIONEN_JE_KATEGORIE);
 }

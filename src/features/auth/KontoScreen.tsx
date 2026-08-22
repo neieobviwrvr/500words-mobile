@@ -27,15 +27,22 @@ import {
 // erreichbar, und seit der Entscheidung vom 2026-08-22 haengt daran alles:
 // Kaufen, Freunde, Gruppen, Geraeteabgleich.
 //
-// **Die Bestaetigungs-Mail ist kein Sonderfall, sondern der Normalfall.** Das
-// Projekt hat `mailer_autoconfirm` aus; nach dem Anlegen gibt es einen Nutzer,
-// aber KEINE Sitzung. Der Screen sagt das und laesst den Nutzer nicht im
-// Glauben, er sei angemeldet.
+// **Die Bestaetigungs-Mail ist derzeit AUS - nur zum Testen.** Am 2026-08-22
+// wurde `mailer_autoconfirm` auf Simons Bitte eingeschaltet, damit Konten
+// beim Entwickeln sofort nutzbar sind.
 //
-// Bekannte Grenze fuer den Start: Supabases eingebauter Mailversand ist
-// absichtlich stark begrenzt (wenige Mails je Stunde) und nur zum Testen
-// gedacht. Vor dem Launch muss ein eigener SMTP-Anbieter hinterlegt werden,
-// sonst kommen die Bestaetigungen bei echten Nutzern nicht an.
+// !!! VOR DEM LAUNCH ZURUECKDREHEN !!! Zwei Dinge, die zusammengehoeren:
+//   1. `mailer_autoconfirm` wieder aus - sonst registriert sich jeder mit
+//      einer fremden oder erfundenen Adresse, und kein Konto laesst sich
+//      wiederherstellen, weil niemand die Adresse besitzt.
+//   2. Eigenen SMTP-Anbieter hinterlegen. Supabases eingebauter Versand ist
+//      absichtlich stark gedrosselt (wenige Mails je Stunde) und nur zum
+//      Testen gedacht. Punkt 1 ohne Punkt 2 sperrt alle Nutzer aus.
+//
+// Der Code deckt BEIDE Faelle ab und muss dafuer nicht angefasst werden:
+// `signUpWithEmail` erkennt am Fehlen der Sitzung, ob eine Bestaetigung
+// aussteht, und dieser Screen zeigt dann den Postfach-Hinweis. Sobald die
+// Pflicht wieder an ist, erscheint er von selbst.
 
 export function KontoScreen({ grund }: { grund?: KontoGrund }) {
   const { darkMode } = useAppState();
