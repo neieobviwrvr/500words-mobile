@@ -1,5 +1,10 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { abgleichen as syncAbgleichen } from '../lib/sync';
+import { loadAllCards, saveCards } from '../features/srs/srsStorage';
+
+/** Wo der Geraeteabgleich gerade steht. */
+export type AbgleichStand = 'aus' | 'laeuft' | 'fertig' | 'fehlgeschlagen';
 import { Phrase } from '../data/cheatsheetContent';
 import { DEFAULT_LANGUAGE_ID } from '../data/languages';
 
@@ -101,6 +106,21 @@ type PersistedState = {
    * ihn auf Schwedisch trotzdem wollen.
    */
   uebersprungen: Record<string, boolean>;
+  /**
+   * Wann dieses Geraet zuletzt etwas geaendert hat (ms seit Epoche).
+   *
+   * Der Schiedsrichter beim Abgleich fuer ERSETZBARE Werte - Coins,
+   * Einstellungen (siehe lib/merge.ts). Muss mitgespeichert werden, sonst
+   * steht er auf einem frisch eingerichteten Geraet auf "jetzt" und schlaegt
+   * damit jeden Serverwert: die App holt sich ihre Daten, ueberschreibt sie
+   * aber im selben Atemzug mit den leeren Vorgaben. Genau dieser Fehler ist
+   * beim ersten Test aufgetreten - Coins kamen als 0 zurueck, die Zielsprache
+   * als Deutsch.
+   *
+   * Fehlt der Wert (frische Installation), gilt 0: dann verliert das Geraet
+   * jeden Vergleich, was richtig ist - es hat nichts beizutragen.
+   */
+  geaendertAm: number;
 };
 
 export type Fortschritt = {
@@ -159,6 +179,14 @@ type AppStateValue = {
   /** Alle uebersprungenen Saetze wieder zulassen. */
   ueberspringenZuruecknehmen: () => void;
 
+  /**
+   * Geraeteabgleich (2026-08-22). Nur mit Konto - Gaeste lernen rein lokal.
+   * Wird vom Tab-Layout angestossen, sobald Sitzung UND lokaler Stand da
+   * sind.
+   */
+  abgleichen: (nutzerId: string) => Promise<void>;
+  abgleichStand: AbgleichStand;
+
   lockscreenContent: LockscreenContent;
   setLockscreenContent: (value: LockscreenContent) => void;
 
@@ -202,6 +230,11 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   // Coin-Screen darf sein Geschenk erst pruefen, wenn der gespeicherte Stand
   // da ist - ein Ref loest dafuer kein Neu-Rendern aus.
   const [isHydrated, setIsHydrated] = useState(false);
+  // Abgleich mit dem Server (2026-08-22). `null` heisst: noch nie versucht.
+  const [abgleichStand, setAbgleichStand] = useState<AbgleichStand>('aus');
+  // Zeitpunkt der letzten lokalen Aenderung - der Schiedsrichter fuer
+  // ersetzbare Werte beim Verschmelzen (siehe lib/merge.ts).
+  const geaendertAmRef = useRef(0);
 
   useEffect(() => {
     (async () => {
@@ -217,6 +250,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
           if (parsed.coins !== undefined) setCoins(parsed.coins);
           if (parsed.fortschritt) setFortschritt({ ...FORTSCHRITT_LEER, ...parsed.fortschritt });
           if (parsed.uebersprungen) setUebersprungen(parsed.uebersprungen);
+          if (parsed.geaendertAm) geaendertAmRef.current = parsed.geaendertAm;
           if (parsed.lockscreenContent) setLockscreenContent(parsed.lockscreenContent);
           if (parsed.learningMode) setLearningMode(parsed.learningMode);
           if (parsed.coinGrants) {
@@ -236,9 +270,18 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     })();
   }, []);
 
+  // Der erste Durchlauf nach dem Laden ist KEINE Aenderung: der Effekt haengt
+  // an allen Werten, die das Laden gerade gesetzt hat, und laeuft deshalb
+  // einmal von selbst. Wuerde er dabei den Zeitstempel hochziehen, waere der
+  // gerade geladene Stand "eben erst geaendert" - und ein frisches Geraet
+  // gaebe seinen leeren Vorgabezustand als den juengeren aus.
+  const ersterSchreibvorgang = useRef(true);
+
   useEffect(() => {
     if (!hydrated.current) return;
-    const toPersist: PersistedState = { darkMode, targetLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode, fortschritt, uebersprungen };
+    if (ersterSchreibvorgang.current) ersterSchreibvorgang.current = false;
+    else geaendertAmRef.current = Date.now();
+    const toPersist: PersistedState = { darkMode, targetLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode, fortschritt, uebersprungen, geaendertAm: geaendertAmRef.current };
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(toPersist)).catch(() => {
       // Best-effort - ein Speicherfehler soll die laufende Session nicht stoeren.
     });
@@ -296,6 +339,59 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     setFortschritt((f) => ({ ...f, [was]: f[was] + um }));
   }, []);
 
+  /**
+   * Einen Abgleich anstossen.
+   *
+   * Bewusst hier in AppState und nicht in einem eigenen Hook: der Abgleich
+   * muss den lokalen Stand LESEN und das Ergebnis wieder HINEINSCHREIBEN -
+   * beides geht nur von innen. Ein Hook daneben muesste jeden Setter
+   * doppeln.
+   *
+   * Erst wenn `hydrated` steht, sonst liefe der Abgleich gegen den leeren
+   * Vorgabezustand und schriebe ihn als "lokalen Stand" hoch.
+   */
+  const abgleichen = useCallback(async (nutzerId: string) => {
+    if (!hydrated.current) return;
+    setAbgleichStand('laeuft');
+    const karten = await loadAllCards();
+    const ergebnis = await syncAbgleichen(
+      nutzerId,
+      {
+        coins,
+        coinGrants: coinGrantsRef.current,
+        fortschritt,
+        einstellungen: { darkMode, targetLanguageId, lockscreenContent, learningMode, uebersprungen },
+        gemerkt: { saved, savedMeta },
+        purchased,
+        geaendertAm: geaendertAmRef.current,
+      },
+      karten,
+    );
+    if (!ergebnis) {
+      setAbgleichStand('fehlgeschlagen');
+      return;
+    }
+
+    // Ergebnis lokal nachziehen. Die Setter loesen die Speicher-Wirkung aus,
+    // der Stand landet also von selbst wieder in AsyncStorage.
+    const s = ergebnis.stand;
+    setCoins(s.coins);
+    coinGrantsRef.current = s.coinGrants;
+    setCoinGrants(s.coinGrants);
+    setFortschritt({ ...FORTSCHRITT_LEER, ...s.fortschritt } as Fortschritt);
+    setPurchased(s.purchased);
+    setSaved(s.gemerkt.saved);
+    setSavedMeta(s.gemerkt.savedMeta as Record<string, Phrase>);
+    const e = s.einstellungen as Partial<PersistedState>;
+    if (e.darkMode !== undefined) setDarkMode(e.darkMode);
+    if (e.targetLanguageId) setTargetLanguageId(e.targetLanguageId);
+    if (e.lockscreenContent) setLockscreenContent(e.lockscreenContent);
+    if (e.learningMode) setLearningMode(e.learningMode);
+    if (e.uebersprungen) setUebersprungen(e.uebersprungen);
+    await saveCards(ergebnis.karten);
+    setAbgleichStand('fertig');
+  }, [coins, fortschritt, darkMode, targetLanguageId, lockscreenContent, learningMode, uebersprungen, saved, savedMeta, purchased]);
+
   const ueberspringen = useCallback((satzId: string) => {
     setUebersprungen((u) => ({ ...u, [satzId]: true }));
   }, []);
@@ -325,13 +421,15 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       uebersprungen,
       ueberspringen,
       ueberspringenZuruecknehmen,
+      abgleichen,
+      abgleichStand,
       lockscreenContent,
       setLockscreenContent,
       learningMode,
       toggleLearningMode,
       hydrated: isHydrated,
     }),
-    [darkMode, toggleDark, targetLanguageId, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes, coins, grantCoins, coinGrants, fortschritt, zaehle, uebersprungen, ueberspringen, ueberspringenZuruecknehmen, lockscreenContent, learningMode, toggleLearningMode, isHydrated]
+    [darkMode, toggleDark, targetLanguageId, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes, coins, grantCoins, coinGrants, fortschritt, zaehle, uebersprungen, ueberspringen, ueberspringenZuruecknehmen, abgleichen, abgleichStand, lockscreenContent, learningMode, toggleLearningMode, isHydrated]
   );
 
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;

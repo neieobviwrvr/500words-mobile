@@ -1,12 +1,14 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { Card } from 'ts-fsrs';
 
-// Lokaler Speicher fuer die FSRS-Karten-Zustaende - AsyncStorage statt
-// Supabase, weil Supabase Auth noch nicht existiert (siehe CLAUDE.md-
-// Backlog "Gast-Modus = nur lokale Geraete-Speicherung"). Passt zur
-// bereits entschiedenen Architektur, statt darauf zu warten. Wenn spaeter
-// Supabase Auth kommt, kann dieser Speicher 1:1 als Sync-Quelle fuer
-// registrierte Nutzer dienen.
+// Lokaler Speicher fuer die FSRS-Karten-Zustaende.
+//
+// AsyncStorage ist und bleibt die Wahrheit waehrend des Lernens - die App
+// muss offline laufen (Backpacker mit wackeligem Auslandstarif). Seit dem
+// 2026-08-22 wird dieser Speicher zusaetzlich mit Supabase abgeglichen
+// (src/lib/sync.ts), und zwar genau so, wie es hier von Anfang an angelegt
+// war: der `karten_schluessel` in der Tabelle IST der Schluessel von unten,
+// es gibt nichts umzurechnen.
 
 const STORAGE_KEY_PREFIX = 'srs_card_v1:';
 
@@ -60,6 +62,19 @@ export async function loadCard(key: string): Promise<Card | undefined> {
 
 export async function saveCard(key: string, card: Card): Promise<void> {
   await AsyncStorage.setItem(key, JSON.stringify(card));
+}
+
+/**
+ * Viele Karten auf einmal schreiben - fuer das Ergebnis des Abgleichs.
+ *
+ * `multiSet` statt einer Schleife aus `setItem`: bei mehreren hundert Karten
+ * ist der Unterschied zwischen einem Schreibvorgang und Hunderten deutlich
+ * spuerbar, und ein Abbruch mittendrin hinterliesse einen halben Stand.
+ */
+export async function saveCards(karten: Record<string, Card>): Promise<void> {
+  const paare = Object.entries(karten).map(([k, c]) => [k, JSON.stringify(c)] as [string, string]);
+  if (paare.length === 0) return;
+  await AsyncStorage.multiSet(paare);
 }
 
 // Laedt alle gespeicherten Karten-Zustaende auf einmal, fuer die

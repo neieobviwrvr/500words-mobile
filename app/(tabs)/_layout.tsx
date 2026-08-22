@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   ActivityIndicator,
   Platform,
@@ -59,13 +60,36 @@ const CONTENT_GAP = SPACING.md;
 const BAR_SIDE = SPACING.xxl;
 
 export default function TabsLayout() {
-  const { darkMode } = useAppState();
-  const { loading: authLoading } = useAuthState();
+  const { darkMode, hydrated, abgleichen } = useAppState();
+  const { loading: authLoading, session } = useAuthState();
   const { completed, loading: onboardingLoading } = useOnboardingState();
   const theme = getTheme(darkMode);
   const insets = useSafeAreaInsets();
 
   const bottomOffset = Math.max(insets.bottom, FLOAT_GAP);
+
+  /**
+   * Geraeteabgleich anstossen (2026-08-22).
+   *
+   * Hier und nicht in AppState selbst, weil beide Voraussetzungen aus
+   * verschiedenen Ecken kommen: die Sitzung aus AuthState, der geladene
+   * lokale Stand aus AppState. Erst wenn beides steht, darf abgeglichen
+   * werden - vorher liefe der Abgleich gegen den leeren Vorgabezustand und
+   * schriebe ihn als "lokalen Stand" hoch.
+   *
+   * Genau EINMAL je Anmeldung: `session.user.id` in den Abhaengigkeiten
+   * sorgt dafuer, dass ein Token-Refresh (der eine neue Session-Instanz mit
+   * derselben ID liefert) keinen weiteren Durchgang ausloest.
+   */
+  const nutzerId = session?.user?.id;
+  useEffect(() => {
+    if (!nutzerId || !hydrated) return;
+    void abgleichen(nutzerId);
+    // `abgleichen` haengt am gesamten lokalen Stand und aendert sich damit
+    // bei jeder Aenderung - stuende es hier, liefe der Abgleich in einer
+    // Schleife.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nutzerId, hydrated]);
 
   // Breite der Leiste AUSGERECHNET statt ueber `right` gesetzt.
   //
