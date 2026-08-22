@@ -165,7 +165,7 @@ export function LessonsScreen() {
                     </Pressable>
                   ) : null}
 
-                  {/* Zwei kleine Knoepfe rechts in der Ueberschriftenzeile
+                  {/* Drei kleine Knoepfe rechts in der Ueberschriftenzeile
                       (Nutzer-Entscheidung 2026-08-21). Bewusst NICHT als
                       Karten vor der Reihe: die Reihe IST der Inhalt, und was
                       dort vorne steht, wischt man bei jedem Besuch weg, um an
@@ -177,7 +177,16 @@ export function LessonsScreen() {
                       "Alle" ersetzt zugleich einen Weg, der beim Umbau auf
                       Situations-Ziele verlorenging: die ganze Kategorie am
                       Stueck zu ueben gab es vorher nur ueber S2, und S2 hat
-                      seitdem keinen Eingang mehr. */}
+                      seitdem keinen Eingang mehr.
+
+                      "Wiederholen" (2026-08-22) ist der Unterschied, den
+                      "Alle" nicht abdeckt: dieselbe Kategorie, aber nur die
+                      faelligen Karten. Simons Frage war, was jemand tut, der
+                      eine Kategorie gezielt festigen will - mit "Alle"
+                      bekaeme er jedes Mal auch die sechzig Saetze mit, die
+                      laengst sitzen. Genau dafuer war der Kategorie-Filter
+                      auf S5 gedacht, den es seit dem 2026-08-06 nicht mehr
+                      gibt. */}
                   {!locked && gesamt > 0 ? (
                     <View style={styles.kopfKnoepfe}>
                       <Pressable
@@ -193,6 +202,21 @@ export function LessonsScreen() {
                         style={({ pressed }) => [styles.kopfKnopf, { opacity: pressed ? 0.5 : 1 }]}
                       >
                         <Text style={[styles.kopfKnopfText, { color: theme.sub }]}>{`Alle ${gesamt}`}</Text>
+                      </Pressable>
+                      <Text style={[styles.kopfKnopfText, { color: theme.sub }]}>·</Text>
+                      <Pressable
+                        onPress={() =>
+                          router.push({
+                            pathname: '/exercise',
+                            params: { mode: 'spam', categoryId, source: 'srs-kategorie' },
+                          })
+                        }
+                        accessibilityRole="button"
+                        accessibilityLabel={`Fällige Karten von ${name} wiederholen`}
+                        hitSlop={10}
+                        style={({ pressed }) => [styles.kopfKnopf, { opacity: pressed ? 0.5 : 1 }]}
+                      >
+                        <Text style={[styles.kopfKnopfText, { color: theme.sub }]}>Wiederholen</Text>
                       </Pressable>
                       <Text style={[styles.kopfKnopfText, { color: theme.sub }]}>·</Text>
                       <Pressable
@@ -418,10 +442,20 @@ const styles = StyleSheet.create({
   groupHead: {
     flexDirection: 'row',
     alignItems: 'center',
+    // Umbrechen statt quetschen (2026-08-22). Mit drei Knoepfen rechts blieben
+    // auf 375 Pixel nur 141 fuer den Namen - "SMALLTALK + SOCIALISING" braucht
+    // 196 und wurde abgeschnitten. Der Name ist wichtiger als eine einzeilige
+    // Knopfleiste, also rutschen die Knoepfe auf schmalen Geraeten unter ihn.
+    // Auf breiteren bleibt alles in einer Zeile.
+    flexWrap: 'wrap',
+    rowGap: 2,
     gap: SPACING.sm,
     paddingHorizontal: SPACING.lg,
   },
   schloss: { padding: SPACING.xs },
+  // Die Leiste bleibt in EINER Zeile und wandert als Ganzes unter den Titel,
+  // wenn es eng wird - der Umbruch sitzt in `groupHead`. Bräche sie in sich
+  // um, stuende "Wortliste" allein unter "Alle 62 · Wiederholen".
   kopfKnoepfe: { flexDirection: 'row', alignItems: 'center', gap: 6, marginLeft: 'auto' },
   kopfKnopf: { paddingVertical: 2 },
   kopfKnopfText: { fontSize: FONT_SIZE.caption, fontWeight: '700' },
@@ -429,7 +463,11 @@ const styles = StyleSheet.create({
     fontSize: FONT_SIZE.small,
     fontWeight: '800',
     letterSpacing: 0.8,
-    flexShrink: 1,
+    // NICHT schrumpfen (2026-08-22): sonst gewinnt die Knopfleiste den Platz
+    // und der Titel wird gekuerzt, statt dass die Knoepfe umbrechen. Der
+    // laengste Name misst 209 Pixel und passt damit auch auf dem schmalsten
+    // Geraet in eine eigene Zeile.
+    flexShrink: 0,
   },
   row: {
     paddingHorizontal: SPACING.lg,

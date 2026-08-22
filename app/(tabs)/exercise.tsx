@@ -11,7 +11,7 @@ export default function Exercise() {
   const { mode, categoryId, source, scenario } = useLocalSearchParams<{
     mode?: string;
     categoryId?: string;
-    source?: 'category' | 'srs';
+    source?: 'category' | 'srs' | 'srs-kategorie';
     scenario?: string;
   }>();
   return (

@@ -111,7 +111,29 @@ export function ExerciseScreen({
 }: {
   mode: string;
   categoryId: string;
-  source?: 'category' | 'srs';
+  /**
+   * Woher die Sitzung kommt - und damit, WELCHE Karten sie zeigt.
+   *
+   * - `category`      alle Saetze der Kategorie, ohne Ruecksicht auf
+   *                   Faelligkeit. Bewusstes Ueben ("ich fliege naechste
+   *                   Woche, ich gehe Health einmal komplett durch"). Ein
+   *                   Faelligkeitsfilter machte genau das unmoeglich: am Tag
+   *                   danach waere die Kategorie leer.
+   * - `srs`           faellige Karten ueber ALLE freigeschalteten Kategorien
+   *                   ("EIN gemeinsamer Wiederholungs-Pool", siehe CLAUDE.md).
+   * - `srs-kategorie` faellige Karten NUR aus `categoryId` (2026-08-22).
+   *                   Fuer den Fall, den `category` nicht abdeckt: eine
+   *                   einzelne Kategorie gezielt festigen, ohne jedes Mal
+   *                   die 60 Saetze mitzunehmen, die laengst sitzen. Stand
+   *                   schon im Konzept ("Nutzer kann den Wiederholungs-Modus
+   *                   per Kategorie-Dropdown filtern") und war beim Umbau
+   *                   vom 2026-08-06 verlorengegangen.
+   *
+   * Warum ein eigener Wert und nicht "srs plus categoryId": die Route setzt
+   * `categoryId` ersatzweise auf 'grundwortschatz', wenn keiner mitkommt -
+   * an seiner Anwesenheit laesst sich der Umfang also nicht ablesen.
+   */
+  source?: 'category' | 'srs' | 'srs-kategorie';
   /**
    * Auf EINE Situation einschraenken (2026-08-21).
    *
@@ -170,15 +192,37 @@ export function ExerciseScreen({
   const [done, setDone] = useState(false);
   const [results, setResults] = useState<EvaluationResult['tier'][]>([]);
   const [showMotivation, setShowMotivation] = useState(false);
+  /**
+   * Hat der Nutzer die Loesung aufgedeckt, bevor er geantwortet hat?
+   *
+   * Bis zum 2026-08-22 stand der Zielsatz IMMER oben auf der Karte, die
+   * deutsche Uebersetzung darunter - man las also nur vor. Bewertet wird
+   * gegen die Zielsprache, also war Vorlesen zuverlaessig "richtig", und die
+   * Spracherkennung bekam den Satz zusaetzlich als Prompt. Damit uebte der
+   * Screen Aussprache, aber nie Abrufen - Simons Einwand.
+   *
+   * Der gefuehrte Kurs trennt das laengst: `nachsprechen` zeigt das Wort und
+   * wertet NICHT, `abrufen` fragt Deutsch -> Chinesisch aus dem Kopf und
+   * wertet. Hier dieselbe Trennung, nur ohne zwei Schritte: neue Karten
+   * zeigen den Satz (man kann nicht abrufen, was man nie gesehen hat),
+   * bekannte verlangen ihn.
+   */
+  const [aufgedeckt, setAufgedeckt] = useState(false);
 
   const catName = categoryId === 'grundwortschatz' || categoryId === 'alle' ? 'Grundwortschatz' : CATEGORY_BY_ID[categoryId]?.name ?? categoryId;
   // Bei einer einzelnen Situation deren Namen zeigen, nicht den der
   // Kategorie - sonst sieht der Screen aus wie der ungefilterte.
   const anzeigeName = scenario ? scenarioLabel(scenario) : catName;
+  // Faellt beides zusammen: nur der Umfang unterscheidet sich, die Auswahl
+  // nach Faelligkeit ist dieselbe.
+  const istWiederholung = source === 'srs' || source === 'srs-kategorie';
   // Aus dem 2026-08-06-Design-Update uebernommen: der Header-Titel
   // unterscheidet, ob die Session von S2 (Kategorie) oder S5 (SRS) aus
   // gestartet wurde, statt "srs" als eigenen mode-Wert zu behandeln.
-  const headerTitle = `${source === 'srs' ? 'Wiederholen' : anzeigeName} — ${MODE_LABELS[mode] ?? 'Üben'}`;
+  const headerTitle =
+    source === 'srs-kategorie'
+      ? `${anzeigeName} — Wiederholen`
+      : `${source === 'srs' ? 'Wiederholen' : anzeigeName} — ${MODE_LABELS[mode] ?? 'Üben'}`;
 
   useEffect(() => {
     let cancelled = false;
@@ -191,6 +235,8 @@ export function ExerciseScreen({
         // immer freien Grundwortschatz hinweg (siehe CLAUDE.md "EIN
         // gemeinsamer Wiederholungs-Pool"); S2 (source="category") bleibt
         // auf die eine angeklickte Kategorie beschraenkt.
+        // Nur `srs` greift ueber alle Kategorien - `srs-kategorie` bleibt wie
+        // `category` bei der einen, filtert danach aber auf faellig.
         const gewaehlt =
           source === 'srs' ? [...CATEGORIES.filter((c) => purchased[c.id]).map((c) => c.id), 'grundwortschatz'] : [categoryId];
         // Geliehene Situationen mitladen (siehe data/geliehen.ts): Smalltalk
@@ -211,6 +257,7 @@ export function ExerciseScreen({
           source === 'srs'
             ? sentencesResult.sentences
             : saetzeFuer(categoryId, sentencesResult.sentences);
+
         const sentencesData = scenario
           ? eigeneUndGeliehene.filter((x) => x.scenario === scenario)
           : eigeneUndGeliehene;
@@ -226,7 +273,7 @@ export function ExerciseScreen({
         let pool = sentencesData;
         // Nur beim Vorziehen wird gedeckelt - siehe unten, warum sonst nicht.
         let deckeln = false;
-        if (source === 'srs') {
+        if (istWiederholung) {
           const due = sentencesData.filter((s) => {
             const key = cardKey(targetLanguageId, language.table!, s.id);
             return isDue(cardStates[key]);
@@ -371,7 +418,14 @@ export function ExerciseScreen({
 
   function evaluateAnswer(answer: string) {
     if (!sentence || !language.table) return;
-    const evaluation = evaluateConcepts(answer.trim(), sentence.accepted_concepts, clusters, sentence.text);
+    const roh = evaluateConcepts(answer.trim(), sentence.accepted_concepts, clusters, sentence.text);
+    // Wer die Loesung gelesen hat, hat sie nicht abgerufen. Gedeckelt auf
+    // "ueberlebt" - dieselbe Regel wie beim Tippen im gefuehrten Kurs, und
+    // dieselbe Begruendung: die Antwort ist echt, der Nachweis nicht.
+    // Nie HOCHgestuft: aus "nicht_verstanden" wird nichts Besseres, nur weil
+    // der Satz sichtbar war.
+    const evaluation: EvaluationResult =
+      aufgedeckt && roh.tier === 'richtig' ? { ...roh, tier: 'ueberlebt' } : roh;
     setFeedback(evaluation);
     setResults((r) => [...r, evaluation.tier]);
 
@@ -405,6 +459,7 @@ export function ExerciseScreen({
     setPromptEchoSuspected(false);
     setGarbageTranscriptSuspected(false);
     setFeedback(null);
+    setAufgedeckt(false);
     // Kein Session-Stopp, nur ein kurzer, automatisch weiterlaufender
     // Motivations-Einschub alle MOTIVATION_INTERVAL Karten (Nutzer-
     // Entscheidung 2026-08-07: kein Ja/Nein-Checkpoint, kein Abbruchpunkt).
@@ -417,6 +472,27 @@ export function ExerciseScreen({
   const ueberlebtN = results.filter((r) => r === 'ueberlebt').length;
   const nichtN = results.filter((r) => r === 'nicht_verstanden').length;
   const currentAnswer = input.trim() || transcript;
+
+  // Verdecken geht nur, wenn es ueberhaupt etwas zu uebersetzen GIBT. Bei
+  // Deutsch als Zielsprache ist `germanGloss` null - der Satz IST das
+  // Deutsche, es bliebe eine leere Karte uebrig. Dort bleibt es beim
+  // Vorlesen, was fuer einen deutschen Muttersprachler ohnehin die einzige
+  // sinnvolle Uebung an einem deutschen Satz ist.
+  const kannAbfragen = !!sentence?.germanGloss;
+  const kartenSchluessel =
+    sentence && language.table ? cardKey(targetLanguageId, language.table, sentence.id) : null;
+  // Eine Karte ohne FSRS-Zustand hat der Nutzer noch nie gesehen - abrufen
+  // kann er sie also nicht. Sie wird gezeigt, genau wie der Schritt
+  // `nachsprechen` im gefuehrten Kurs.
+  const istNeueKarte = !!kartenSchluessel && !cardsRef.current[kartenSchluessel];
+  // Nachschlage-Saetze bleiben IMMER sichtbar. Sie sind zum Vorzeigen
+  // gedacht, nicht zum Abrufen ("Bitte rufen Sie die Polizei") und benutzen
+  // ausdruecklich Vokabeln, die der Kurs nicht lehrt - 警察, 假装, 烦. Sie zu
+  // verdecken hiesse, einen Anfaenger nach Woertern zu fragen, die er nie
+  // gelernt hat; das Ergebnis waere "nicht verstanden" und ein harter
+  // FSRS-Ruecksetzer. Genau der Vorbehalt steht schon in CLAUDE.md.
+  const zeigeLoesung =
+    !kannAbfragen || sentence?.lookupOnly === true || istNeueKarte || aufgedeckt || !!feedback;
 
   // Motivations-Einschub verschwindet nach kurzer Zeit von selbst, kann
   // aber auch per Tap sofort weggetippt werden (siehe Render unten).
@@ -483,16 +559,57 @@ export function ExerciseScreen({
           )}
 
           <View style={[styles.sentenceCard, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
-            {/* Pinyin schlaegt Zeichen, wo es eins gibt (2026-08-21).
-                `sentence.text` traegt fuer Chinesisch die Hanzi - die braucht
-                TTS und die Bewertung, aber NICHT der Lernende: "fuer das
-                Lernen brauchen wir keine Zeichen" (CLAUDE.md). Fuer alle
-                anderen Sprachen ist `pinyin` null und es bleibt beim Text. */}
+            {/* Oben steht die AUFGABE, nicht die Loesung (2026-08-22).
+                Bis dahin stand der Zielsatz gross oben und die deutsche
+                Uebersetzung klein darunter - man las also ab, und weil gegen
+                die Zielsprache bewertet wird, war Vorlesen zuverlaessig
+                "richtig". Jetzt fuehrt das Deutsche, und die Zielsprache ist
+                das, was der Nutzer produzieren soll. */}
             <Text style={[styles.sentenceText, { color: theme.text }]}>
-              {sentence.pinyin ?? sentence.text}
+              {sentence.germanGloss ?? sentence.pinyin ?? sentence.text}
             </Text>
-            {sentence.germanGloss && <Text style={[styles.gloss, { color: theme.sub }]}>{sentence.germanGloss}</Text>}
-            {sentence.cultureNote ? (
+
+            {zeigeLoesung ? (
+              kannAbfragen ? (
+                <>
+                  {istNeueKarte && !feedback ? (
+                    <Text style={[styles.neuHinweis, { color: theme.sub }]}>
+                      Neu – sprich es einmal nach.
+                    </Text>
+                  ) : null}
+                  {/* Pinyin schlaegt Zeichen, wo es eins gibt (2026-08-21).
+                      `sentence.text` traegt fuer Chinesisch die Hanzi - die
+                      braucht TTS und die Bewertung, aber NICHT der Lernende:
+                      "fuer das Lernen brauchen wir keine Zeichen"
+                      (CLAUDE.md). */}
+                  <Text style={[styles.loesung, { color: ACCENT_BLUE }]}>
+                    {sentence.pinyin ?? sentence.text}
+                  </Text>
+                </>
+              ) : null
+            ) : (
+              // Aufdecken ist erlaubt, kostet aber das "Richtig"-Niveau -
+              // dieselbe Regel wie das Tippen im gefuehrten Kurs. Die
+              // Alternative waere, den Nutzer festhaengen zu lassen.
+              <Pressable
+                onPress={() => setAufgedeckt(true)}
+                accessibilityRole="button"
+                accessibilityLabel="Lösung zeigen"
+                accessibilityHint="Zählt danach höchstens als Überlebensmodus"
+                style={({ pressed }) => [
+                  styles.zeigen,
+                  { borderColor: theme.border, opacity: pressed ? 0.6 : 1 },
+                ]}
+              >
+                <Text style={{ color: theme.sub, fontWeight: '700', fontSize: 12 }}>
+                  Lösung zeigen
+                </Text>
+              </Pressable>
+            )}
+
+            {/* Der Kulturhinweis kann die Loesung verraten ("哪里哪里 hat kein
+                deutsches Gegenstueck") - er erscheint deshalb mit ihr. */}
+            {sentence.cultureNote && zeigeLoesung ? (
               <View style={[styles.hinweis, { borderLeftColor: ACCENT_BLUE }]}>
                 <Text style={[styles.hinweisText, { color: theme.sub }]}>{sentence.cultureNote}</Text>
               </View>
@@ -699,7 +816,22 @@ const styles = StyleSheet.create({
   hinweis: { borderLeftWidth: 2, paddingLeft: 10 },
   hinweisText: { fontSize: 12, lineHeight: 17, fontStyle: 'italic' },
   sentenceText: { fontSize: 19, fontWeight: '700', lineHeight: 26 },
+  // `gloss` traegt seit dem 2026-08-22 nichts mehr - die deutsche Zeile ist
+  // zur Aufgabe aufgestiegen und nutzt `sentenceText`. Bleibt stehen, falls
+  // die Karte spaeter wieder eine Nebenzeile bekommt (etwa die Zeichen unter
+  // dem Pinyin).
   gloss: { fontSize: 13, fontStyle: 'italic' },
+  /** Die Loesung: gross wie die Aufgabe, aber farbig abgesetzt. */
+  loesung: { fontSize: 20, fontWeight: '700', marginTop: 6 },
+  neuHinweis: { fontSize: 12, fontWeight: '700', marginTop: 8 },
+  zeigen: {
+    alignSelf: 'flex-start',
+    marginTop: 10,
+    paddingVertical: 6,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderRadius: 8,
+  },
   ttsButton: { paddingVertical: 8, paddingHorizontal: 14, borderRadius: 100, borderWidth: 1.5 },
   sttRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 8 },
   micButton: { flex: 1, paddingVertical: 14, borderRadius: 100, alignItems: 'center' },
