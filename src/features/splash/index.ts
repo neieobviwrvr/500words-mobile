@@ -1,0 +1,1 @@
+export { SplashGate } from './SplashGate';

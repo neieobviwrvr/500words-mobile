@@ -36,7 +36,19 @@
     "plugins": [
       "expo-audio",
       "expo-router",
-      "expo-web-browser"
+      "expo-web-browser",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 160,
+          "resizeMode": "contain",
+          "backgroundColor": "#FFFFFF",
+          "dark": {
+            "backgroundColor": "#0F0F0E"
+          }
+        }
+      ]
     ]
   }
 }

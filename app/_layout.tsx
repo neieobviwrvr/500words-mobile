@@ -4,6 +4,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AppStateProvider, useAppState } from '../src/state/AppState';
 import { AuthStateProvider } from '../src/state/AuthState';
 import { OnboardingStateProvider } from '../src/state/OnboardingState';
+import { SplashGate } from '../src/features/splash/SplashGate';
 import { getTheme, ACCENT_ORANGE } from '../src/theme/tokens';
 
 // Alle echten Screens (S1-S6) zeichnen ihren eigenen Header (Zurueck-Pfeil,
@@ -87,7 +88,13 @@ export default function RootLayout() {
       <AuthStateProvider>
         <AppStateProvider>
           <OnboardingStateProvider>
-            <RootStack />
+            {/* Der Startbildschirm liegt UEBER allem und geht von selbst weg,
+                sobald Sitzung, Onboarding-Stand und lokaler Zustand geladen
+                sind. Innerhalb aller drei Provider, weil er genau deren
+                Ladezustaende abfragt. */}
+            <SplashGate>
+              <RootStack />
+            </SplashGate>
           </OnboardingStateProvider>
         </AppStateProvider>
       </AuthStateProvider>
