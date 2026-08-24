@@ -668,13 +668,16 @@ export function ExerciseScreen({
             {/* Merken mitten in der Uebung (Nutzer-Wunsch 2026-08-21): der
                 Satz landet sofort unter "Gespeicherte Saetze" im Survival.
                 Gefuelltes Lesezeichen heisst gemerkt - dieselbe Sprache wie
-                auf der Survival-Karte und am Favoriten-Knopf. */}
+                auf der Survival-Karte und am Favoriten-Knopf.
+                Beschriftung "Survival" statt "Merken" (Nutzer-Wunsch
+                2026-08-23) - sagt, WOHIN der Satz geht, nicht nur DASS er
+                gespeichert wird. Position unveraendert, nur der Text. */}
             <Pressable
               onPress={() => {
                 if (merkPhrase) toggleSaved(merkPhrase.id, merkPhrase);
               }}
               accessibilityRole="button"
-              accessibilityLabel={istGemerkt ? 'Gemerkt' : 'Satz merken'}
+              accessibilityLabel={istGemerkt ? 'Gemerkt' : 'Zu Survival hinzufügen'}
               accessibilityHint={
                 istGemerkt
                   ? 'Aus den gespeicherten Sätzen entfernen'
@@ -692,39 +695,8 @@ export function ExerciseScreen({
                 color={istGemerkt ? ACCENT_GREEN : theme.sub}
               />
               <Text style={{ color: istGemerkt ? ACCENT_GREEN : theme.sub, fontWeight: '700', fontSize: 12 }}>
-                {istGemerkt ? 'Gemerkt' : 'Merken'}
+                {istGemerkt ? 'Gemerkt' : 'Survival'}
               </Text>
-            </Pressable>
-
-            {/* Ueberspringen (Nutzer-Wunsch 2026-08-22): "falls der Satz
-                'Wie alt bist du' den User nicht interessiert". Dauerhaft, nicht
-                nur fuer diese Sitzung - das Anliegen ist "betrifft mich nicht",
-                nicht "gerade keine Lust".
-
-                Bewusst OHNE Bewertung: der Satz bekommt keine FSRS-Karte und
-                zaehlt nicht in die Auswertung. Ein Ueberspringen ist keine
-                falsche Antwort. */}
-            <Pressable
-              onPress={() => {
-                if (!sentence || !language.table) return;
-                // Derselbe Schluessel wie beim Merken (`sprache:tabelle:id`),
-                // NICHT der FSRS-Speicherschluessel: sonst gaebe es zwei
-                // Schluesselraeume fuer denselben Satz, und eine spaetere
-                // Liste "uebersprungene Saetze" muesste zwischen ihnen
-                // uebersetzen.
-                ueberspringen(phraseId(targetLanguageId, language.table, sentence.id));
-                nextCard();
-              }}
-              accessibilityRole="button"
-              accessibilityLabel="Diesen Satz überspringen"
-              accessibilityHint="Er taucht nicht mehr auf. Im Profil lässt sich das zurücknehmen."
-              style={({ pressed }) => [
-                styles.merken,
-                { borderColor: theme.border, opacity: pressed ? 0.6 : 1 },
-              ]}
-            >
-              <Ionicons name="close-circle-outline" size={16} color={theme.sub} />
-              <Text style={{ color: theme.sub, fontWeight: '700', fontSize: 12 }}>Brauch ich nicht</Text>
             </Pressable>
             </View>
           </View>
@@ -823,19 +795,54 @@ export function ExerciseScreen({
               const solveDisabled =
                 !currentAnswer || ((!!languageMismatch || promptEchoSuspected || garbageTranscriptSuspected) && !input.trim());
               return (
-                <Pressable
-                  disabled={solveDisabled}
-                  accessibilityRole="button"
-                  accessibilityLabel="Lösen"
-                  // Der Deaktiviert-Zustand wird sonst nur ueber opacity 0.5
-                  // gezeigt - fuer VoiceOver nicht wahrnehmbar.
-                  accessibilityState={{ disabled: solveDisabled }}
-                  accessibilityHint={solveDisabled ? 'Erst antworten, dann auswerten' : 'Wertet deine Antwort aus'}
-                  style={[styles.solveButton, { opacity: solveDisabled ? 0.5 : 1 }]}
-                  onPress={checkAnswer}
-                >
-                  <Text style={styles.solveButtonText}>lösen ▶</Text>
-                </Pressable>
+                <View style={styles.loesenReihe}>
+                  {/* Ueberspringen (Nutzer-Wunsch 2026-08-22, umbenannt und
+                      neben "loesen" gezogen 2026-08-23 - vorher stand es oben
+                      bei Vorlesen/Survival, jetzt bei den Aktionen zur Karte
+                      selbst).
+
+                      Dauerhaft, nicht nur fuer diese Sitzung - das Anliegen
+                      ist "betrifft mich nicht", nicht "gerade keine Lust".
+                      Bewusst OHNE Bewertung: der Satz bekommt keine
+                      FSRS-Karte und zaehlt nicht in die Auswertung. Ein
+                      Ueberspringen ist keine falsche Antwort. Nur VOR der
+                      Bewertung sinnvoll - danach ist "Weiter" der Weg. */}
+                  <Pressable
+                    onPress={() => {
+                      if (!sentence || !language.table) return;
+                      // Derselbe Schluessel wie beim Merken
+                      // (`sprache:tabelle:id`), NICHT der FSRS-
+                      // Speicherschluessel: sonst gaebe es zwei
+                      // Schluesselraeume fuer denselben Satz.
+                      ueberspringen(phraseId(targetLanguageId, language.table, sentence.id));
+                      nextCard();
+                    }}
+                    accessibilityRole="button"
+                    accessibilityLabel="Überspringen"
+                    accessibilityHint="Dieser Satz taucht nicht mehr auf. Im Profil lässt sich das zurücknehmen."
+                    style={({ pressed }) => [
+                      styles.uebespringenButton,
+                      { borderColor: theme.border, opacity: pressed ? 0.6 : 1 },
+                    ]}
+                  >
+                    <Ionicons name="close-circle-outline" size={16} color={theme.sub} />
+                    <Text style={{ color: theme.sub, fontWeight: '700', fontSize: 13 }}>Überspringen</Text>
+                  </Pressable>
+
+                  <Pressable
+                    disabled={solveDisabled}
+                    accessibilityRole="button"
+                    accessibilityLabel="Lösen"
+                    // Der Deaktiviert-Zustand wird sonst nur ueber opacity 0.5
+                    // gezeigt - fuer VoiceOver nicht wahrnehmbar.
+                    accessibilityState={{ disabled: solveDisabled }}
+                    accessibilityHint={solveDisabled ? 'Erst antworten, dann auswerten' : 'Wertet deine Antwort aus'}
+                    style={[styles.solveButton, { opacity: solveDisabled ? 0.5 : 1 }]}
+                    onPress={checkAnswer}
+                  >
+                    <Text style={styles.solveButtonText}>lösen ▶</Text>
+                  </Pressable>
+                </View>
               );
             })()
           ) : (
@@ -923,8 +930,17 @@ const styles = StyleSheet.create({
   inputCard: { borderWidth: 1.5, borderRadius: 16, padding: 14, marginBottom: 16, minHeight: 60 },
   input: { fontSize: 15, flex: 1, textAlignVertical: 'top' },
   feedback: { padding: 12, borderRadius: 12, marginBottom: 14 },
+  // Ueberspringen und Loesen nebeneinander (Nutzer-Wunsch 2026-08-23) - vorher
+  // stand "loesen" allein und zentriert, Ueberspringen lag oben bei der Karte.
+  loesenReihe: {
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 12,
+  },
+  uebespringenButton: {
+    flexDirection: 'row', alignItems: 'center', gap: 6,
+    paddingVertical: 12, paddingHorizontal: 16, borderRadius: 100, borderWidth: 1.5,
+  },
   solveButton: {
-    alignSelf: 'center', paddingVertical: 16, paddingHorizontal: 36, borderRadius: 100,
+    paddingVertical: 16, paddingHorizontal: 36, borderRadius: 100,
     borderWidth: 2, borderColor: ACCENT_GREEN,
   },
   solveButtonText: { color: ACCENT_GREEN, fontWeight: '800', fontSize: 16 },
