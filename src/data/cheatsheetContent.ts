@@ -175,6 +175,44 @@ const FUELLWOERTER = new Set([
   'zu', 'zum', 'zur', 'für', 'von', 'mit', 'bei', 'auf', 'an', 'in',
 ]);
 
+// Themen-Synonyme (2026-08-24, Antwort auf Simons Frage "bekommen wir das so
+// einfach hin oder brauchen wir GPT?"): eine kleine, von Hand gepflegte
+// Liste, die eine Anfrage auf zusaetzliche Suchworte erweitert, BEVOR
+// gescored wird - kein Laufzeit-KI-Aufruf, exakt das Prinzip aus
+// CLAUDE.md ("Uebersetzungsuebungen ohne laufende KI-Kosten") auf die Suche
+// uebertragen. Grund, warum reines Substring-Matching allein zu eng war:
+// "Preis" matcht keinen Satz, weil die Saetze "kostet"/"teuer" sagen; "Nach
+// Alter fragen" matcht nicht, weil kein Satz "Alter" enthaelt, nur "alt".
+// Jeder Eintrag ist gegen den echten Satzbestand geprueft (nicht geraten) -
+// z.B. "notfall" deckt "Hilfe!", "Bitte rufen Sie die Polizei" und die
+// Arzt-Saetze ab, ohne dass "Notfall" selbst irgendwo im Text steht.
+// Bewusst NICHT vollstaendig: "Hunger"/"Durst" fehlen absichtlich - dazu
+// gibt es aktuell KEINEN Satz in keiner Kategorie (geprueft), das waere ein
+// Content-Fehlbestand, keine Suchschwaeche, und eine Synonym-Zeile wuerde
+// nur Treffer vortaeuschen, die es nicht gibt.
+const SUCH_SYNONYME: Record<string, string[]> = {
+  preis: ['teuer', 'kosten', 'kostet'],
+  kosten: ['teuer', 'preis'],
+  geld: ['bezahl', 'bargeld', 'rabatt'],
+  alter: ['alt'],
+  jahre: ['alt'],
+  internet: ['wlan', 'passwort'],
+  wifi: ['wlan', 'passwort'],
+  telefon: ['handy'],
+  nummer: ['handy'],
+  wegbeschreibung: ['geradeaus', 'links', 'rechts'],
+  weg: ['geradeaus', 'links', 'rechts'],
+  notfall: ['hilfe', 'polizei', 'arzt'],
+  unfall: ['hilfe', 'arzt', 'polizei'],
+  feuer: ['hilfe', 'polizei'],
+  dieb: ['polizei', 'verloren'],
+  stehlen: ['polizei', 'verloren'],
+  krankenhaus: ['arzt', 'krank'],
+  uni: ['vorlesung', 'bibliothek', 'hausaufgabe'],
+  universität: ['vorlesung', 'bibliothek', 'hausaufgabe'],
+  job: ['arbeiten'],
+};
+
 // Freitextsuche (z.B. "Arzt suchen", "Leute ansprechen") - kein Server/KI
 // noetig (siehe CLAUDE.md "keine Laufzeitkosten"), reines Token-Matching:
 // JEDES INHALTLICHE Token des Suchbegriffs wird einzeln gegen Satztext/
@@ -210,7 +248,14 @@ export function searchCheatsheetSentences(
   // nach "ich du"), lieber mit den Originaltokens weitersuchen als leer
   // zurueckzugeben.
   const inhaltsworte = alleTokens.filter((t) => !FUELLWOERTER.has(t));
-  const tokens = inhaltsworte.length > 0 ? inhaltsworte : alleTokens;
+  const basisTokens = inhaltsworte.length > 0 ? inhaltsworte : alleTokens;
+
+  // Jedes Basis-Token um seine Themen-Synonyme erweitern (siehe
+  // SUCH_SYNONYME oben) - ODER-verknuepft wie alle anderen Tokens, erhoeht
+  // also nur die Trefferchance, verengt sie nie.
+  const tokens = Array.from(
+    new Set(basisTokens.flatMap((t) => [t, ...(SUCH_SYNONYME[t] ?? [])])),
+  );
 
   const durchsuchen = durchsuchbareKategorien
     ? groups.filter((g) => durchsuchbareKategorien.has(g.categoryId))
@@ -219,8 +264,26 @@ export function searchCheatsheetSentences(
   const scored: { sentence: ExerciseSentence; score: number }[] = [];
   for (const group of durchsuchen) {
     for (const s of group.allSentences) {
-      const haystack = [s.text, s.germanGloss ?? '', s.scenario, s.category].join(' ').toLowerCase();
-      const score = tokens.filter((t) => haystack.includes(t)).length;
+      // Satztext bleibt Teilstring-Suche (bewusst grosszuegig, siehe oben).
+      const textHaystack = [s.text, s.germanGloss ?? ''].join(' ').toLowerCase();
+
+      // Situations-/Kategorie-Name dagegen nur GANZES WORT, nicht Teilstring
+      // (Fehlerbericht 2026-08-24): die Kategorienamen sind teils englisch
+      // ("Health + Emergency", "Hotel + Accommodation") - "Health" enthaelt
+      // zufaellig "alt" als Teilstring ("he-alt-h") und liess "Alter" jeden
+      // einzelnen Satz der Kategorie Health + Emergency treffen, egal welche
+      // Situation. Ganze-Wort-Abgleich lässt "Notfall" weiterhin die
+      // gleichnamige Situation finden, ohne dass kurze Tokens (v.a. die
+      // Themen-Synonyme oben, oft 3-4 Zeichen) in fremden Woertern
+      // untertauchen koennen.
+      const labelWoerter = new Set(
+        `${SCENARIO_LABELS[s.scenario] ?? s.scenario} ${CATEGORY_BY_ID[s.category]?.name ?? s.category}`
+          .toLowerCase()
+          .split(/[^a-zà-öø-ÿ]+/)
+          .filter(Boolean),
+      );
+
+      const score = tokens.filter((t) => textHaystack.includes(t) || labelWoerter.has(t)).length;
       if (score > 0) scored.push({ sentence: s, score });
     }
   }
