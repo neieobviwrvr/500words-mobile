@@ -101,11 +101,21 @@ export function CheatsheetScreen() {
    * dieser Screen offline und auch dann noch, wenn eine Kategorie im Abo
    * abgewaehlt wurde: gemerkt ist gemerkt (CLAUDE.md, Cheat-Sheet als
    * Offline-Notfallhandbuch).
+   *
+   * **Nur die Sprache zeigen, in der man gerade lernt** (Fehlerbericht
+   * 2026-08-23: ein auf Chinesisch gemerkter Satz stand nach dem Wechsel auf
+   * Schwedisch weiter in der Liste). `saved`/`savedMeta` sind SPRACHUEBERGREIFEND
+   * ein einziger Speicher - jede Phrase-ID traegt ihre Sprache als Praefix
+   * (`phraseId()`: "sprache:tabelle:id"), gefiltert wird deshalb rein bei der
+   * ANZEIGE. Der Satz bleibt dabei gespeichert: wer zurueck zu Chinesisch
+   * wechselt, sieht ihn wieder - nichts geht verloren, es wird nur nicht
+   * gleichzeitig mit einer anderen Sprache vermischt gezeigt.
    */
   const gemerkt = useMemo(() => {
     const nach = new Map<string, Phrase[]>();
     for (const id of Object.keys(saved)) {
       if (!saved[id]) continue;
+      if (phraseLanguageId(id) !== targetLanguageId) continue;
       const p = savedMeta[id];
       if (!p) continue;
       // Aeltere Eintraege haben noch keine `category` - sie stammen aus der
@@ -130,7 +140,7 @@ export function CheatsheetScreen() {
       .sort((a, b) =>
         a.id === 'grundwortschatz' ? -1 : b.id === 'grundwortschatz' ? 1 : a.titel.localeCompare(b.titel),
       );
-  }, [saved, savedMeta]);
+  }, [saved, savedMeta, targetLanguageId]);
 
   const suchen = () => {
     // Freitext schlaegt Auswahl: wer etwas eingetippt hat, meint das.
