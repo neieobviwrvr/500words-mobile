@@ -655,6 +655,13 @@ export function ExerciseScreen({
               </View>
             ) : null}
             <View style={styles.kartenAktionen}>
+            {/* Kurzer Text (2026-08-24, vorher "Vorlesen (noch kein Audio)")
+                - der lange Text zwang den Speichern-Knopf bei schmalen
+                Bildschirmen in die naechste Zeile, weil kartenAktionen
+                umbricht (flexWrap). Der Hinweis "noch keine Audioaufnahme"
+                steht weiterhin im accessibilityHint, geht also fuer
+                Screenreader nicht verloren - nur die sichtbare Karte wird
+                kuerzer, damit beide Knoepfe nebeneinander passen. */}
             <Pressable
               disabled
               accessibilityRole="button"
@@ -663,21 +670,23 @@ export function ExerciseScreen({
               accessibilityState={{ disabled: true }}
               style={[styles.ttsButton, { borderColor: theme.border }]}
             >
-              <Text style={{ color: theme.sub, fontWeight: '700', fontSize: 12 }}>▶ Vorlesen (noch kein Audio)</Text>
+              <Text style={{ color: theme.sub, fontWeight: '700', fontSize: 12 }}>▶ Vorlesen</Text>
             </Pressable>
             {/* Merken mitten in der Uebung (Nutzer-Wunsch 2026-08-21): der
                 Satz landet sofort unter "Gespeicherte Saetze" im Survival.
                 Gefuelltes Lesezeichen heisst gemerkt - dieselbe Sprache wie
                 auf der Survival-Karte und am Favoriten-Knopf.
-                Beschriftung "Survival" statt "Merken" (Nutzer-Wunsch
-                2026-08-23) - sagt, WOHIN der Satz geht, nicht nur DASS er
-                gespeichert wird. Position unveraendert, nur der Text. */}
+                Beschriftung "Speichern" (Nutzer-Wunsch 2026-08-24, loest
+                die Zwischenstation "Survival" vom 2026-08-23 ab) - "Survival"
+                benannte das Ziel, "Speichern" die Aktion selbst; neben dem
+                kuerzeren "Vorlesen" passt das jetzt auch in eine Zeile.
+                "Gemerkt" bleibt fuer den gespeicherten Zustand unveraendert. */}
             <Pressable
               onPress={() => {
                 if (merkPhrase) toggleSaved(merkPhrase.id, merkPhrase);
               }}
               accessibilityRole="button"
-              accessibilityLabel={istGemerkt ? 'Gemerkt' : 'Zu Survival hinzufügen'}
+              accessibilityLabel={istGemerkt ? 'Gemerkt' : 'Speichern'}
               accessibilityHint={
                 istGemerkt
                   ? 'Aus den gespeicherten Sätzen entfernen'
@@ -695,7 +704,7 @@ export function ExerciseScreen({
                 color={istGemerkt ? ACCENT_GREEN : theme.sub}
               />
               <Text style={{ color: istGemerkt ? ACCENT_GREEN : theme.sub, fontWeight: '700', fontSize: 12 }}>
-                {istGemerkt ? 'Gemerkt' : 'Survival'}
+                {istGemerkt ? 'Gemerkt' : 'Speichern'}
               </Text>
             </Pressable>
             </View>

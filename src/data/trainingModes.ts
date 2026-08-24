@@ -4,9 +4,16 @@
 // Die Reihenfolge in dieser Liste ist die Reihenfolge auf dem Screen:
 // Woerter, Saetze, Konversation - von der kleinsten Einheit zur groessten.
 //
-// Jede ist ein eigener Uebungs-Modus mit eigenem Screen. **Noch keiner davon
-// ist gebaut** - der Lektionen-Screen zeigt sie trotzdem, damit sichtbar ist,
-// wohin die App geht, und die Screens sagen es beim Oeffnen ehrlich.
+// Jede ist ein eigener Uebungs-Modus mit eigenem Screen. Der Lektionen-
+// Screen zeigt alle drei, damit sichtbar ist, wohin die App geht - fuer
+// Modi ohne echten Screen oeffnet sich ehrlich ein Platzhalter.
+//
+// **"Wörter" hat seit 2026-08-24 einen echten Screen**
+// (`features/training/WordReviewScreen.tsx`, Route `/training/woerter`) -
+// ein Zuordnungsspiel mit Wortart-Filter (Verb/Nomen/Adjektiv/... je nach
+// Sprache), noch ohne Lernkategorie-Filter und noch ohne FSRS-Anbindung
+// (siehe Kommentar im Screen). "Sätze" und "Konversation" laufen weiterhin
+// ueber den generischen Platzhalter in `[mode].tsx`.
 //
 // Verhaeltnis zum vorhandenen Uebungs-Screen: der prueft heute gesprochene
 // Antworten gegen `accepted_concepts` (siehe features/evaluation). Das kommt

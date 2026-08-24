@@ -316,6 +316,7 @@ export default function TabsLayout() {
           Symbole statt fuenf. */}
       <Tabs.Screen name="shop" options={{ href: null }} />
       <Tabs.Screen name="training/[mode]" options={{ href: null }} />
+      <Tabs.Screen name="training/woerter" options={{ href: null }} />
       <Tabs.Screen name="lesson/[id]" options={{ href: null }} />
       <Tabs.Screen name="wiederholen" options={{ href: null }} />
       <Tabs.Screen name="wortliste" options={{ href: null }} />
