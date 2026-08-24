@@ -15,7 +15,7 @@ import { router, useFocusEffect } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
 import { LEARNING_MODE_LABEL, useAppState } from '../../state/AppState';
 import { CATEGORIES, GRUNDWORTSCHATZ_ID } from '../../data/categories';
-import { sichtbareKategorien, sichtbareSituationen } from '../../data/demo';
+import { sichtbareSituationen } from '../../data/demo';
 import { useAuthState } from '../../state/AuthState';
 import { LANGUAGES, getLanguage } from '../../data/languages';
 import { Card, Dropdown, HeaderMenu, ProgressBar, Screen, PRESS_DEPTH } from '../../components';
@@ -402,13 +402,12 @@ export function PathScreen() {
       return { nodes: [] as RawNode[], currentIndex: 0, currentLabel: 'Noch keine Sätze' };
     }
 
-    // Ohne Konto nur der Demo-Umfang (Nutzer-Entscheidung 2026-08-22, siehe
-    // data/demo.ts). Der Gast soll die App ausprobieren koennen, nicht den
-    // ganzen Katalog durchblaettern - und was er gar nicht kaufen kann, muss
-    // ihm der Pfad auch nicht anbieten.
-    const sichtbar = sichtbareKategorien(CATEGORIES, hatKonto, purchased);
-    const purchasedCategories = sichtbar.filter((c) => purchased[c.id]);
-    const lockedCategories = sichtbar.filter((c) => !purchased[c.id]);
+    // ALLE Kategorien, auch ohne Konto (berichtigt 2026-08-23, siehe
+    // data/demo.ts) - gesperrte Kategorien sollen werben, nicht verschwinden.
+    // Die Demo-Grenze wirkt seit der Berichtigung nur noch auf Situationen
+    // innerhalb einzelner Kategorien, siehe `sichtbareSituationen` unten.
+    const purchasedCategories = CATEGORIES.filter((c) => purchased[c.id]);
+    const lockedCategories = CATEGORIES.filter((c) => !purchased[c.id]);
 
     // "Fertig" heisst: jeder Satz der Kategorie wurde mindestens einmal
     // bewertet. "Aktuell" ist die erste freigeschaltete Kategorie, die das

@@ -1,5 +1,7 @@
+import { GRUNDWORTSCHATZ_ID } from './categories';
+
 /**
- * Was jemand OHNE Konto zu sehen bekommt (2026-08-22).
+ * Was jemand OHNE Konto zu sehen bekommt (2026-08-22, berichtigt 2026-08-23).
  *
  * Nutzer-Entscheidung (Simon): "Leute ohne Account sollen nur die
  * 'Demo-Version' der App sehen [...] Man muss sich anmelden und registriert
@@ -24,24 +26,48 @@
  * in derselben Phase bekommt die Demo. Wer die beiden vermischt, baut
  * entweder eine Demo, die sich nach sechs Monaten heimlich aendert, oder ein
  * Teaser-Modell, das Gaeste nicht erreicht.
+ *
+ * ============================================================ Berichtigt 2026-08-23
+ *
+ * **Kategorien werden NICHT mehr aus Pfad/Lektionen gefiltert.** Der erste
+ * Entwurf entfernte Kategorien ausserhalb der Demo-Liste komplett aus der
+ * Anzeige - Simon fand beim Testen mit Chinesisch nur 4 von 14 Kategorien
+ * vor, der Rest war spurlos weg, nicht einmal als gesperrter Knoten. Das
+ * widersprach dem AELTEREN, weiterhin gueltigen Grundsatz aus CLAUDE.md:
+ * "Auch gesperrte Kategorien faechern auf - der Pfad soll zeigen, was es zu
+ * holen gibt" und "der Katalog soll bewerben, nicht verstecken". Kategorien
+ * ausblenden ist das Gegenteil von bewerben.
+ *
+ * Die Demo-Grenze wirkt seitdem nur noch auf SITUATIONEN, und zwar nur
+ * innerhalb der Kategorien in `DEMO_KATEGORIEN` - jede andere gesperrte
+ * Kategorie zeigt weiterhin ALLE ihre Situationen als Werbung, genau wie vor
+ * der Demo-Grenze. `sichtbareKategorien`/`zeigtKategorie` sind damit
+ * entfallen; die Bildschirme zeigen `CATEGORIES` direkt.
  */
 
 /**
  * **VORLAEUFIG - der genaue Umfang ist noch offen.**
  *
  * Simon: "zum Beispiel nur zwei Kategorien und davon zwei Situationen oder so
- * aehnlich (sprechen wir nochmal durch)". Sein Beispiel steht hier als
- * Startwert, damit nichts blockiert ist; die endgueltige Zahl ist EIN Edit an
- * dieser Stelle, weil sonst nirgends eine Zahl steht.
+ * aehnlich (sprechen wir nochmal durch)". Sein Beispiel stand hier als
+ * Startwert; seit der Berichtigung 2026-08-23 ist es nur noch EINE Kategorie,
+ * weil Kategorien nicht mehr gefiltert werden (siehe oben) - `DEMO_KATEGORIEN`
+ * bestimmt jetzt nur noch, welche gesperrte Kategorie eine Situations-
+ * Kostprobe statt der vollen Werbeliste zeigt.
+ *
+ * `grundwortschatz` steht bewusst NICHT (mehr) hier: er ist keine Kaufkategorie,
+ * sondern der immer-freie Grundwortschatz - ihn zu kappen waere keine
+ * Kostprobe, sondern eine Kuerzung von etwas, das laut CLAUDE.md "dauerhaft
+ * gratis" ist. Siehe `sichtbareSituationen` fuer die explizite Ausnahme.
  *
  * Offen und beim Durchsprechen zu klaeren:
- *   - Zaehlt der Grundwortschatz als eine der beiden Kategorien, oder kommt
- *     er obendrauf? (Er ist heute fuer jeden frei.)
+ *   - Soll es ueberhaupt eine Situations-Kostprobe geben, oder reicht die
+ *     jetzt wiederhergestellte volle Kategorie-Sichtbarkeit als Demo?
  *   - Sollen es feste Kategorien sein oder die zum Onboarding passenden?
  *   - Duerfen Gaeste den gefuehrten Kurs sehen? Der haengt an keiner
  *     Kategorie und ist heute komplett offen.
  */
-export const DEMO_KATEGORIEN = ['grundwortschatz', 'club_nightlife'];
+export const DEMO_KATEGORIEN = ['club_nightlife'];
 
 /** Wie viele Situationen je Kategorie im Demo-Umfang sichtbar sind. */
 export const DEMO_SITUATIONEN_JE_KATEGORIE = 2;
@@ -73,54 +99,26 @@ export const KONTO_NOETIG = {
 
 export type KontoGrund = keyof typeof KONTO_NOETIG;
 
-/** Ist diese Kategorie im Demo-Umfang enthalten? */
+/** Ist diese Kategorie eine der wenigen mit Situations-Kostprobe? */
 export function imDemoUmfang(categoryId: string): boolean {
   return DEMO_KATEGORIEN.includes(categoryId);
 }
 
 /**
- * Die Demo-Grenze NIMMT NIEMANDEM ETWAS WEG (berichtigt 2026-08-22).
+ * Sichtbare Situationen einer Kategorie - fuer Gaeste ggf. auf eine
+ * Kostprobe gekuerzt (berichtigt 2026-08-23, siehe Kopfkommentar der Datei).
  *
- * Der erste Entwurf filterte stur auf `DEMO_KATEGORIEN` - und liess damit
- * auch gekaufte Kategorien verschwinden. Beim Testen fiel es sofort auf:
- * Smalltalk war bezahlt und trotzdem weg.
- *
- * Fuer einen echten Gast kann der Fall heute nicht eintreten (ohne Konto
- * kein Kauf), aber verlassen darf man sich darauf nicht: wer sich abmeldet,
- * duerfte sonst seine Kaeufe nicht mehr sehen, und ein Fruehnutzer-Bonus
- * oder eine mit Coins freigeschaltete Kategorie liegt ohnehin ausserhalb des
- * Kaufwegs.
- *
- * Die Regel lautet deshalb: **Demo-Umfang PLUS alles, was der Nutzer
- * ohnehin hat.** Eine Grenze, die nur hinzufuegt, kann nie ueberraschen.
- */
-export function zeigtKategorie(
-  categoryId: string,
-  hatKonto: boolean,
-  purchased: Record<string, boolean>,
-): boolean {
-  return hatKonto || imDemoUmfang(categoryId) || !!purchased[categoryId];
-}
-
-/**
- * Filtert eine Kategorienliste auf das, was der Nutzer sehen darf.
- *
- * Bewusst hier und nicht in den Screens: die Regel ist eine, und sie soll an
- * einer Stelle stehen.
- */
-export function sichtbareKategorien<T extends { id: string }>(
-  kategorien: T[],
-  hatKonto: boolean,
-  purchased: Record<string, boolean> = {},
-): T[] {
-  if (hatKonto) return kategorien;
-  return kategorien.filter((k) => zeigtKategorie(k.id, hatKonto, purchased));
-}
-
-/**
- * Genauso fuer Situationen - aber nur in Kategorien, die der Nutzer NICHT
- * besitzt. Wer eine Kategorie hat, sieht sie ganz; sonst waere die Demo eine
- * Beschneidung des Gekauften statt eines Vorgeschmacks.
+ * Reihenfolge der Ausnahmen, jede davon gibt die VOLLE Liste zurueck:
+ *   1. Mit Konto gilt keine Grenze.
+ *   2. Gekaufte Kategorien sind gekauft - eine Demo wuerde hier etwas
+ *      WEGNEHMEN statt anzupreisen.
+ *   3. Der Grundwortschatz ist keine Kaufkategorie, sondern laut CLAUDE.md
+ *      "dauerhaft gratis" - ihn zu kappen waere keine Kostprobe, sondern
+ *      eine Kuerzung von etwas, das jedem gehoert.
+ *   4. Jede Kategorie AUSSERHALB von `DEMO_KATEGORIEN` zeigt ebenfalls alles:
+ *      sie ist reiner Katalog/Werbung ("was gibt es zu kaufen"), keine
+ *      Kostprobe. Nur die Kategorien IN `DEMO_KATEGORIEN` bekommen die
+ *      Kuerzung - aktuell nur Club + Nightlife.
  */
 export function sichtbareSituationen<T>(
   situationen: T[],
@@ -130,5 +128,7 @@ export function sichtbareSituationen<T>(
 ): T[] {
   if (hatKonto) return situationen;
   if (categoryId && purchased[categoryId]) return situationen;
+  if (categoryId === GRUNDWORTSCHATZ_ID) return situationen;
+  if (!categoryId || !imDemoUmfang(categoryId)) return situationen;
   return situationen.slice(0, DEMO_SITUATIONEN_JE_KATEGORIE);
 }

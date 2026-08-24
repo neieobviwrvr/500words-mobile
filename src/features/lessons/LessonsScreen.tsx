@@ -4,7 +4,7 @@ import { router } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
 import { useAppState } from '../../state/AppState';
 import { CATEGORIES, CATEGORY_BY_ID, GRUNDWORTSCHATZ_ID } from '../../data/categories';
-import { sichtbareKategorien, sichtbareSituationen } from '../../data/demo';
+import { sichtbareSituationen } from '../../data/demo';
 import { useAuthState } from '../../state/AuthState';
 import { scenarioLabel } from '../../data/scenarios';
 import { leihName } from '../../data/geliehen';
@@ -61,9 +61,13 @@ export function LessonsScreen() {
   const isUnlocked = (id: string) => id === GRUNDWORTSCHATZ_ID || !!purchased[id];
 
   // Grundwortschatz zuerst, dann freigeschaltet, dann gesperrt.
+  //
+  // ALLE Kategorien, auch ohne Konto (berichtigt 2026-08-23, siehe
+  // data/demo.ts) - der Katalog soll werben, nicht Kategorien verschwinden
+  // lassen. Die Demo-Grenze wirkt seitdem nur noch auf Situationen innerhalb
+  // einzelner Kategorien, siehe `sichtbareSituationen` weiter unten.
   const orderedIds = useMemo(() => {
-    // Ohne Konto nur der Demo-Umfang - siehe data/demo.ts.
-    const paid = sichtbareKategorien(CATEGORIES, hatKonto, purchased).map((c) => c.id);
+    const paid = CATEGORIES.map((c) => c.id);
     return [
       GRUNDWORTSCHATZ_ID,
       ...paid.filter((id) => purchased[id]),
