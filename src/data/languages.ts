@@ -43,15 +43,21 @@ export const LANGUAGES: Language[] = [
   { id: 'de', label: 'Deutsch', table: 'phrasebook_master', sttLanguage: 'de', sttPrompt: 'Das ist ein Beispielsatz auf Deutsch.', ttsLocale: 'de-DE', hasContent: true, vocabTable: null, vocabColumn: null },
   { id: 'sv', label: 'Schwedisch', table: 'schwedisch_phrasebook', sttLanguage: 'sv', sttPrompt: 'Det här är en exempelmening på svenska.', ttsLocale: 'sv-SE', hasContent: true, vocabTable: 'schwedisch_vocab', vocabColumn: 'swedish' },
   { id: 'es', label: 'Spanisch', table: 'spanisch_phrasebook', sttLanguage: 'es', sttPrompt: 'Esta es una frase de ejemplo en español.', ttsLocale: 'es-ES', hasContent: true, vocabTable: null, vocabColumn: null },
-  // Chinesisch traegt bisher NUR den gefuehrten Kurs (12 Module, siehe
-  // data/chineseCourse.ts) - kein Phrasebook, also `table: null`, und keine
-  // Vokabeltabelle in Supabase, also `vocabTable: null`.
+  // Chinesisch hat KEIN Phrasebook (der gefuehrte Kurs deckt das ab, siehe
+  // data/chineseCourse.ts), also `table: null` bleibt bestehen fuer die
+  // Onboarding-Ausschlussbedingung `table !== null`.
+  //
+  // `vocabTable` zeigt seit 2026-08-24 auf `chinesisch_vocab` (520 Woerter) -
+  // der fruehere Stand "keine Vokabeltabelle" war ueberholt. `vocabColumn`
+  // bleibt trotzdem `null`: die Tabelle hat kein einzelnes "Wort"-Feld wie
+  // `swedish`/`french`, sondern hanzi+pinyin getrennt und eine andersartige
+  // `category`-Spalte (Lernkategorie statt Wortart) - `loadVocabWords()` hat
+  // dafuer einen eigenen Zweig, keinen generischen Spaltennamen (siehe
+  // data/vocabContent.ts).
   //
   // `hasContent: true` trotzdem, sonst waere die Sprache in der Auswahl
-  // ausgegraut und der Kurs gar nicht erreichbar. Das Onboarding schliesst
-  // sie ueber die zusaetzliche Bedingung `table !== null` weiterhin aus -
-  // dort geht es um Satz-Content, den es fuer Chinesisch nicht gibt.
-  { id: 'zh', label: 'Chinesisch', table: 'chinesisch_phrasebook', sttLanguage: 'cmn', sttPrompt: '这是一个中文例句。', ttsLocale: 'zh-CN', hasContent: true, vocabTable: null, vocabColumn: null },
+  // ausgegraut und der Kurs gar nicht erreichbar.
+  { id: 'zh', label: 'Chinesisch', table: 'chinesisch_phrasebook', sttLanguage: 'cmn', sttPrompt: '这是一个中文例句。', ttsLocale: 'zh-CN', hasContent: true, vocabTable: 'chinesisch_vocab', vocabColumn: null },
   { id: 'fr', label: 'Französisch', table: null, sttLanguage: 'fr', sttPrompt: 'Voici une phrase d\'exemple en français.', ttsLocale: 'fr-FR', hasContent: false, vocabTable: 'franz_vocab', vocabColumn: 'french' },
 ];
 

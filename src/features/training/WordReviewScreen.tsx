@@ -63,7 +63,10 @@ function mischen<T>(arr: T[]): T[] {
 }
 
 type Phase = 'auswahl' | 'runde' | 'ergebnis';
-type Kachel = { wordId: number; text: string };
+// `sprich` ist meist gleich `text`, bei Chinesisch aber das Hanzi (siehe
+// VocabWord.hanzi) - Sprachausgabe fuer Mandarin braucht echte Zeichen,
+// das angezeigte Pinyin wuerde falsch oder gar nicht ausgesprochen.
+type Kachel = { wordId: number; text: string; sprich: string };
 type FalschBlitz = { linksId: number; rechtsId: number } | null;
 
 export function WordReviewScreen() {
@@ -134,8 +137,8 @@ export function WordReviewScreen() {
 
   function rundeStarten() {
     const auswahl = mischen(gefiltert).slice(0, Math.min(RUNDENGROESSE, gefiltert.length));
-    setLinks(mischen(auswahl.map((w) => ({ wordId: w.id, text: w.word }))));
-    setRechts(mischen(auswahl.map((w) => ({ wordId: w.id, text: w.german }))));
+    setLinks(mischen(auswahl.map((w) => ({ wordId: w.id, text: w.word, sprich: w.hanzi ?? w.word }))));
+    setRechts(mischen(auswahl.map((w) => ({ wordId: w.id, text: w.german, sprich: w.german }))));
     setGematcht(new Set());
     setGewaehlt(null);
     setFalschBlitz(null);
@@ -151,7 +154,7 @@ export function WordReviewScreen() {
       // Gleich vorlesen, unabhaengig vom Ergebnis - kostenlose Aussprache-
       // hilfe bei jedem Antippen, kein Extra-Lautsprecher-Symbol noetig, das
       // in den kleinen Kacheln kaum Platz haette.
-      speakText(links.find((k) => k.wordId === id)?.text ?? '', { languageId: targetLanguageId });
+      speakText(links.find((k) => k.wordId === id)?.sprich ?? '', { languageId: targetLanguageId });
     }
 
     if (!gewaehlt) {
