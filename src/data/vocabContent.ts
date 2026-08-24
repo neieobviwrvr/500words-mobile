@@ -46,6 +46,16 @@ export type VocabWord = {
    * ausgesprochen (siehe CLAUDE.md "Die Zeichen sind die Infrastruktur").
    */
   hanzi: string | null;
+  /**
+   * Praesensform, NUR wo die Sprache das grammatisch braucht - heute nur
+   * Schwedisch (`forms.present` in schwedisch_vocab, z.B. "har" statt dem
+   * Infinitiv "ha"). Schwedisch konjugiert nicht nach Person (nur nach
+   * Zeit), diese EINE Form gilt also fuer "ich/du/er/wir" gleichermassen -
+   * anders als der rohe Infinitiv waere sie im Satz tatsaechlich richtig.
+   * Chinesisch braucht das nicht (keine Konjugation ueberhaupt, das Pinyin
+   * IST schon die richtige Form), Franzoesisch hat keine `forms`-Spalte.
+   */
+  presentForm: string | null;
 };
 
 /**
@@ -87,6 +97,7 @@ export async function loadVocabWords(
           wordClass: wortartAusDeutsch(row.german),
           genus: null,
           hanzi: row.hanzi,
+          presentForm: null,
         })
       );
     });
@@ -97,11 +108,14 @@ export async function loadVocabWords(
 
   const wordColumn = lang.vocabColumn;
   const cacheKey = `vocab:${lang.id}`;
+  // Nur Schwedisch hat eine `forms`-Spalte - franz_vocab hat keine, die
+  // waere ein 400er beim Anfragen einer nicht existierenden Spalte.
+  const hatFormen = languageId === 'sv';
 
   const { data: words, fromCache } = await cachedFetch(cacheKey, async () => {
     const { data, error } = await supabase
       .from(lang.vocabTable as string)
-      .select(`id, ${wordColumn}, german, category, genus`);
+      .select(`id, ${wordColumn}, german, category, genus${hatFormen ? ', forms' : ''}`);
     if (error) throw error;
 
     return (data ?? []).map(
@@ -112,6 +126,7 @@ export async function loadVocabWords(
         wordClass: row.category,
         genus: row.genus ?? null,
         hanzi: null,
+        presentForm: row.forms?.present ?? null,
       })
     );
   });

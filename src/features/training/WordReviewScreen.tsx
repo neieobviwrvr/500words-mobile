@@ -5,7 +5,7 @@ import { useAppState } from '../../state/AppState';
 import { getLanguage } from '../../data/languages';
 import { loadVocabWords, VocabWord } from '../../data/vocabContent';
 import { speakText } from '../tts/speak';
-import { Screen, PillButton } from '../../components';
+import { Screen, PillButton, ProgressBar } from '../../components';
 import {
   getTheme,
   SPACING,
@@ -53,6 +53,33 @@ const WORTART_FARBE: Record<string, string> = {
 
 const RUNDENGROESSE = 6;
 
+// ---------------------------------------------------------------------------
+// Zweiter Rundentyp (2026-08-24, Simons Vorlage): "Ordne die Personen dem
+// Verb zu" - Personalpronomen antippen, das dann vor die Verbform ins
+// Frame wandert. Fuer den CORE-PFAD gedacht, hier schon als Baustein in
+// die Wiederholungs-Mischung aufgenommen ("mische es zu").
+//
+// EHRLICHE EINSCHRAENKUNG, weil sie den Mechanismus praegt: keine der
+// aktuell lernbaren Sprachen hat Daten fuer eine ECHTE Personenkonjugation.
+// Schwedisch konjugiert grammatisch gar nicht nach Person (nur nach Zeit -
+// `forms.present` gilt fuer "ich/du/er/wir" gleichermassen), Chinesisch
+// konjugiert ueberhaupt nicht, Franzoesisch hat keine Formen-Spalte. Es gibt
+// also nirgends ein "richtiges" Pronomen zu einer bestimmten Verbform, das
+// erraten werden muesste - jedes der vier Pronomen ist fuer die heute
+// verfuegbaren Sprachen tatsaechlich grammatisch richtig. Die Runde testet
+// deshalb (noch) nicht Konjugation, sondern Satzbau/Personen-Wortschatz:
+// jeder Tipp gilt als richtig und vervollstaendigt den Satz. Sobald eine
+// Sprache mit echten Pro-Person-Formen dazukommt (z.B. Franzoesisch mit
+// neuen Daten), wird daraus mit denselben Bausteinen eine echte
+// Konjugations-Pruefung - dafuer bloss `presentForm` durch eine
+// personenabhaengige Form ersetzen und die Immer-richtig-Logik unten durch
+// einen echten Soll/Ist-Vergleich tauschen.
+const PERSONEN = ['Ich', 'Du', 'Er/Sie', 'Wir'] as const;
+type Person = (typeof PERSONEN)[number];
+const PRONOMEN_RUNDENGROESSE = 5;
+
+type Rundentyp = 'zuordnung' | 'pronomen';
+
 function mischen<T>(arr: T[]): T[] {
   const kopie = [...arr];
   for (let i = kopie.length - 1; i > 0; i--) {
@@ -69,6 +96,11 @@ type Phase = 'auswahl' | 'runde' | 'ergebnis';
 type Kachel = { wordId: number; text: string; sprich: string };
 type FalschBlitz = { linksId: number; rechtsId: number } | null;
 
+/** Die Verbform, die im Frame steht - siehe presentForm-Kommentar oben. */
+function frameForm(w: VocabWord): string {
+  return w.presentForm ?? w.word;
+}
+
 export function WordReviewScreen() {
   const { darkMode, targetLanguageId } = useAppState();
   const theme = getTheme(darkMode);
@@ -81,6 +113,7 @@ export function WordReviewScreen() {
 
   const [aktiveWortarten, setAktiveWortarten] = useState<Set<string>>(new Set());
   const [phase, setPhase] = useState<Phase>('auswahl');
+  const [rundentyp, setRundentyp] = useState<Rundentyp>('zuordnung');
 
   const [links, setLinks] = useState<Kachel[]>([]);
   const [rechts, setRechts] = useState<Kachel[]>([]);
@@ -89,6 +122,11 @@ export function WordReviewScreen() {
   const [falschBlitz, setFalschBlitz] = useState<FalschBlitz>(null);
   const [richtig, setRichtig] = useState(0);
   const [falsch, setFalsch] = useState(0);
+
+  // Pronomen-Runde (siehe Kommentar bei PERSONEN oben).
+  const [pronomenVerben, setPronomenVerben] = useState<VocabWord[]>([]);
+  const [pronomenIndex, setPronomenIndex] = useState(0);
+  const [pronomenGewaehlt, setPronomenGewaehlt] = useState<Person | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -126,6 +164,14 @@ export function WordReviewScreen() {
     return words.filter((w) => aktiveWortarten.has(w.wordClass));
   }, [words, aktiveWortarten]);
 
+  // Fuer die Pronomen-Runde: unabhaengig vom Wortart-Filter IMMER aus allen
+  // Verben schoepfen, aber die Runde nur anbieten, wenn Verben ueberhaupt
+  // zur aktuellen Auswahl gehoeren (leer = alle, oder Verb ist mit dabei) -
+  // sonst bekaeme, wer bewusst nur Nomen geuebt hat, ploetzlich ein Verb.
+  const verbPool = useMemo(() => words.filter((w) => w.wordClass === 'Verb'), [words]);
+  const pronomenVerfuegbar =
+    verbPool.length >= 1 && (aktiveWortarten.size === 0 || aktiveWortarten.has('Verb'));
+
   function wortartUmschalten(wortart: string) {
     setAktiveWortarten((prev) => {
       const next = new Set(prev);
@@ -136,6 +182,20 @@ export function WordReviewScreen() {
   }
 
   function rundeStarten() {
+    // "Mische es zu" (Simons Vorgabe): halb-halb, wenn Verben zur Auswahl
+    // gehoeren - sonst bleibt es beim Zuordnungsspiel.
+    const typ: Rundentyp = pronomenVerfuegbar && Math.random() < 0.5 ? 'pronomen' : 'zuordnung';
+    setRundentyp(typ);
+
+    if (typ === 'pronomen') {
+      const auswahl = mischen(verbPool).slice(0, Math.min(PRONOMEN_RUNDENGROESSE, verbPool.length));
+      setPronomenVerben(auswahl);
+      setPronomenIndex(0);
+      setPronomenGewaehlt(null);
+      setPhase('runde');
+      return;
+    }
+
     const auswahl = mischen(gefiltert).slice(0, Math.min(RUNDENGROESSE, gefiltert.length));
     setLinks(mischen(auswahl.map((w) => ({ wordId: w.id, text: w.word, sprich: w.hanzi ?? w.word }))));
     setRechts(mischen(auswahl.map((w) => ({ wordId: w.id, text: w.german, sprich: w.german }))));
@@ -145,6 +205,26 @@ export function WordReviewScreen() {
     setRichtig(0);
     setFalsch(0);
     setPhase('runde');
+  }
+
+  function personTippen(person: Person) {
+    if (pronomenGewaehlt) return; // schon dabei, weiterzuschalten
+    // Jedes Pronomen gilt als richtig (siehe Kommentar bei PERSONEN oben) -
+    // Vorlesen macht daraus trotzdem ein Ausspracheerlebnis, kein reines
+    // Abnicken.
+    const verb = pronomenVerben[pronomenIndex];
+    if (verb) {
+      speakText(`${verb.hanzi ?? frameForm(verb)}`, { languageId: targetLanguageId });
+    }
+    setPronomenGewaehlt(person);
+    setTimeout(() => {
+      setPronomenGewaehlt(null);
+      if (pronomenIndex + 1 >= pronomenVerben.length) {
+        setPhase('ergebnis');
+      } else {
+        setPronomenIndex((i) => i + 1);
+      }
+    }, 700);
   }
 
   function kachelTippen(seite: 'links' | 'rechts', id: number) {
@@ -189,6 +269,9 @@ export function WordReviewScreen() {
   }
 
   const filterZeile = aktiveWortarten.size === 0 ? 'Alle Wortarten' : [...aktiveWortarten].join(', ');
+  const pronomenVerb = pronomenVerben[pronomenIndex];
+  const pronomenFortschritt = pronomenVerben.length > 0 ? pronomenIndex / pronomenVerben.length : 0;
+  const zuordnungFortschritt = links.length > 0 ? gematcht.size / links.length : 0;
 
   return (
     <Screen dark={darkMode}>
@@ -201,8 +284,19 @@ export function WordReviewScreen() {
         >
           <Text style={[styles.backGlyph, { color: theme.text }]}>‹</Text>
         </Pressable>
-        <Text style={[styles.title, { color: theme.text }]}>Wörter-Wiederholung</Text>
+        <Text style={[styles.title, { color: theme.text }]}>
+          Wörter-Wiederholung{phase === 'runde' && rundentyp === 'pronomen' ? ' (Verben)' : ''}
+        </Text>
       </View>
+
+      {phase === 'runde' ? (
+        <View style={styles.progressSlot}>
+          <ProgressBar
+            dark={darkMode}
+            ratio={rundentyp === 'pronomen' ? pronomenFortschritt : zuordnungFortschritt}
+          />
+        </View>
+      ) : null}
 
       {loading && (
         <View style={styles.center}>
@@ -292,7 +386,46 @@ export function WordReviewScreen() {
         </ScrollView>
       )}
 
-      {phase === 'runde' && (
+      {phase === 'runde' && rundentyp === 'pronomen' && pronomenVerb && (
+        <View style={styles.pronomenBereich}>
+          <Text style={[styles.frage, { color: theme.text, fontSize: FONT_SIZE.title, lineHeight: LINE_HEIGHT.title }]}>
+            Ordne die Personen richtig dem Verb zu
+          </Text>
+          <View style={styles.personReihe}>
+            {PERSONEN.map((p) => {
+              const aktiv = pronomenGewaehlt === p;
+              return (
+                <Pressable
+                  key={p}
+                  disabled={!!pronomenGewaehlt}
+                  onPress={() => personTippen(p)}
+                  accessibilityRole="button"
+                  accessibilityLabel={p}
+                  style={[
+                    styles.personChip,
+                    {
+                      borderColor: aktiv ? ACCENT_GREEN : theme.border,
+                      backgroundColor: aktiv ? ACCENT_GREEN : theme.subtleFill,
+                      opacity: pronomenGewaehlt && !aktiv ? 0.5 : 1,
+                    },
+                  ]}
+                >
+                  <Text style={{ color: aktiv ? '#FFFFFF' : theme.text, fontWeight: '700' }}>{p}</Text>
+                </Pressable>
+              );
+            })}
+          </View>
+
+          <View style={[styles.frameBox, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
+            <Text style={[styles.frameText, { color: theme.text }]}>
+              {pronomenGewaehlt ? `${pronomenGewaehlt} ` : ''}
+              {frameForm(pronomenVerb)} ({pronomenVerb.german})
+            </Text>
+          </View>
+        </View>
+      )}
+
+      {phase === 'runde' && rundentyp === 'zuordnung' && (
         <View style={styles.spielBereich}>
           <Text style={[styles.spielHinweis, { color: theme.sub }]}>{filterZeile} · Tippe ein Wort, dann seine Bedeutung</Text>
           <View style={styles.spalten}>
@@ -370,8 +503,9 @@ export function WordReviewScreen() {
         <View style={styles.center}>
           <Text style={[styles.ergebnisTitel, { color: theme.text }]}>Runde geschafft! 🎉</Text>
           <Text style={[styles.ergebnisText, { color: theme.sub }]}>
-            {richtig} von {links.length} beim ersten Versuch
-            {falsch > 0 ? ` · ${falsch} Fehlversuche` : ''}
+            {rundentyp === 'pronomen'
+              ? `${pronomenVerben.length} ${pronomenVerben.length === 1 ? 'Verb' : 'Verben'} geübt`
+              : `${richtig} von ${links.length} beim ersten Versuch${falsch > 0 ? ` · ${falsch} Fehlversuche` : ''}`}
           </Text>
           <View style={styles.ergebnisKnoepfe}>
             <PillButton dark={darkMode} label="Nochmal" onPress={rundeStarten} />
@@ -430,4 +564,21 @@ const styles = StyleSheet.create({
   },
   ergebnisText: { fontSize: FONT_SIZE.body, textAlign: 'center' },
   ergebnisKnoepfe: { width: '100%', gap: SPACING.sm, marginTop: SPACING.md },
+  progressSlot: { paddingVertical: SPACING.sm },
+  pronomenBereich: { flex: 1, paddingTop: SPACING.xl, gap: SPACING.xxl },
+  personReihe: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACING.sm },
+  personChip: {
+    paddingVertical: SPACING.md,
+    paddingHorizontal: SPACING.lg,
+    borderRadius: RADIUS.pill,
+    borderWidth: 1.5,
+  },
+  frameBox: {
+    borderWidth: 1.5,
+    borderRadius: RADIUS.md,
+    paddingVertical: SPACING.lg,
+    paddingHorizontal: SPACING.lg,
+    alignItems: 'center',
+  },
+  frameText: { fontSize: FONT_SIZE.bodyLg, fontWeight: '700' },
 });
