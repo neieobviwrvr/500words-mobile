@@ -41,6 +41,12 @@ import {
 // gekauften Kategorien und ihren Situationen, und unten im Kasten ein
 // zweiter Suchen-Knopf. Beide Knoepfe tun dasselbe - Simons Vorgabe: "wenn
 // er auf suchen unten im Block oder oben neben dem Eingabefeld klickt".
+//
+// **Geaendert 2026-08-23: die Suche startet jetzt OFFEN**, nicht mehr
+// zugeklappt. Der obere Lupe-Knopf schliesst sie wieder - aber NUR, solange
+// das Textfeld leer ist (`kannSchliessen`). Steht schon Text drin, sucht der
+// Knopf stattdessen, genau wie vorher: ein Tipp auf "Suchen" mitten in der
+// Eingabe darf sie nicht kommentarlos verwerfen.
 
 export function CheatsheetScreen() {
   const {
@@ -59,7 +65,12 @@ export function CheatsheetScreen() {
   const insets = useSafeAreaInsets();
 
   const [query, setQuery] = useState('');
-  const [sucheOffen, setSucheOffen] = useState(false);
+  // Beim Oeffnen der Seite immer aufgeklappt (Nutzer-Wunsch 2026-08-23) -
+  // vorher startete die Suche zugeklappt. Schliessen geht seitdem ueber
+  // denselben Lupe-Knopf, aber NUR solange das Textfeld leer ist (siehe
+  // `aufLupeTippen` unten) - sonst wuerde ein Tipp auf "Suchen" mitten im
+  // Tippen die halbe Eingabe verwerfen.
+  const [sucheOffen, setSucheOffen] = useState(true);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [groups, setGroups] = useState<CheatsheetCategoryGroup[]>([]);
@@ -67,9 +78,11 @@ export function CheatsheetScreen() {
 
   const gewaehlt = Object.keys(selectedThemes).length;
 
-  // Der Kasten wird erst gebraucht, wenn die Suche offen ist - vorher gar
-  // nicht zu laden spart beim haeufigen Fall (nur nachsehen) einen
-  // Netzaufruf und die Wartezeit davor.
+  // Der Kasten wird erst geladen, wenn die Suche offen ist. Seit die Suche
+  // beim Betreten der Seite standardmaessig offen startet (2026-08-23) laedt
+  // das faktisch bei jedem Besuch - die Bedingung bleibt trotzdem stehen,
+  // weil sie greift, sobald der Nutzer die Suche schliesst: kein Netzaufruf,
+  // solange sie zu ist.
   useEffect(() => {
     if (!sucheOffen) return;
     let cancelled = false;
@@ -153,6 +166,29 @@ export function CheatsheetScreen() {
 
   const kannSuchen = query.trim().length > 0 || gewaehlt > 0;
 
+  /**
+   * Wird die Lupe geklickt, waehrend die Suche schon offen und das Textfeld
+   * leer ist, schliesst sie die Suche wieder (Nutzer-Wunsch 2026-08-23) -
+   * statt wie vorher gar nichts zu tun (der Knopf war in genau diesem Fall
+   * deaktiviert). "Leer" heisst `.trim()`, nicht nur "laenge 0": ein Feld
+   * voller Leerzeichen ist ebenso wenig echter Nutzerinput.
+   *
+   * Steht Text im Feld, bleibt der Knopf beim Suchen - ein Tipp auf "Suchen"
+   * mitten in der Eingabe darf die Eingabe nicht kommentarlos wegwerfen.
+   */
+  const kannSchliessen = sucheOffen && !query.trim();
+  const aufLupeTippen = () => {
+    if (!sucheOffen) {
+      setSucheOffen(true);
+      return;
+    }
+    if (kannSchliessen) {
+      setSucheOffen(false);
+      return;
+    }
+    suchen();
+  };
+
   return (
     <View style={[styles.container, { backgroundColor: theme.pageBg, paddingTop: insets.top }]}>
       <View style={styles.header}>
@@ -186,23 +222,23 @@ export function CheatsheetScreen() {
           )}
 
           <Pressable
-            onPress={() => (sucheOffen ? suchen() : setSucheOffen(true))}
+            onPress={aufLupeTippen}
             accessibilityRole="button"
-            accessibilityLabel={sucheOffen ? 'Suche starten' : 'Suchen'}
-            accessibilityHint={
-              sucheOffen ? undefined : 'Öffnet das Suchfeld und die Auswahl der Situationen'
+            accessibilityLabel={
+              !sucheOffen ? 'Suchen' : kannSchliessen ? 'Suche schließen' : 'Suche starten'
             }
-            accessibilityState={{ expanded: sucheOffen, disabled: sucheOffen && !kannSuchen }}
-            disabled={sucheOffen && !kannSuchen}
+            accessibilityHint={
+              !sucheOffen ? 'Öffnet das Suchfeld und die Auswahl der Situationen' : undefined
+            }
+            accessibilityState={{ expanded: sucheOffen }}
             style={({ pressed }) => [
               styles.lupe,
-              {
-                borderColor: theme.border,
-                backgroundColor: theme.cardBg,
-                opacity: pressed ? 0.7 : sucheOffen && !kannSuchen ? 0.45 : 1,
-              },
+              { borderColor: theme.border, backgroundColor: theme.cardBg, opacity: pressed ? 0.7 : 1 },
             ]}
           >
+            {/* Bleibt immer die Lupe (Nutzer-Wunsch: "der 'Suchen'-Button mit
+                der Lupe") - nur die Wirkung dahinter wechselt zwischen
+                Oeffnen, Schliessen und Suchen. */}
             <Feather name="search" size={15} color={theme.text} />
             <Text style={[styles.lupeText, { color: theme.text }]}>Suchen</Text>
           </Pressable>
