@@ -11,3 +11,5 @@ export type { DropdownOption } from './Dropdown';
 export { PillButton, PRESS_DEPTH } from './PillButton';
 export { ProgressBar } from './ProgressBar';
 export { Screen } from './Screen';
+export { SwipeBackScreen } from './SwipeBackScreen';
+export { useSwipeBack } from './useSwipeBack';

@@ -1,6 +1,7 @@
 import { useLocalSearchParams } from 'expo-router';
 import { CourseReviewScreen } from '../../src/features/course/CourseReviewScreen';
 import { Kartenart } from '../../src/features/course/useFaelligeKarten';
+import { SwipeBackScreen } from '../../src/components';
 
 // Wiederholungs-Sitzung des gefuehrten Kurses.
 //
@@ -14,5 +15,9 @@ export default function Wiederholen() {
   const { modus } = useLocalSearchParams<{ modus?: string }>();
   const art: Kartenart | undefined =
     modus === 'woerter' ? 'wort' : modus === 'saetze' ? 'rahmen' : undefined;
-  return <CourseReviewScreen modus={art} />;
+  return (
+    <SwipeBackScreen>
+      <CourseReviewScreen modus={art} />
+    </SwipeBackScreen>
+  );
 }
