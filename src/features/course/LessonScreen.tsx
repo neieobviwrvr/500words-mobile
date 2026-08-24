@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { router, useFocusEffect } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
-import { Card, PillButton, ProgressBar, Screen } from '../../components';
+import { Card, PillButton, ProgressBar, SchreibenFeld, Screen } from '../../components';
 import { useAppState } from '../../state/AppState';
 import { CHINESE_COURSE, CourseWord } from '../../data/chineseCourse';
 import { hasVoiceFor, speakText } from '../tts/speak';
@@ -904,39 +904,29 @@ function AntwortBlock({
       </Text>
       {sttFehler ? <Text style={[styles.hinweis, { color: ACCENT_ERROR }]}>{sttFehler}</Text> : null}
 
-      {/* Die Texteingabe liegt hinter einem Knopf und ist NICHT von Anfang an
-          sichtbar (Nutzer-Entscheidung 2026-08-21). Wer das Feld sieht,
-          benutzt es - und hat die Lektion durch, ohne einmal gesprochen zu
-          haben. Einmal aufgedeckt bleibt es fuer die ganze Lektion offen. */}
-      {tippenErlaubt ? (
-        <>
-          <Text style={[styles.schrittLabel, { color: theme.sub, marginTop: SPACING.lg }]}>
-            TIPPEN (PINYIN, OHNE TÖNE)
-          </Text>
-          <TextInput
-            value={eingabe}
-            onChangeText={setEingabe}
-            placeholder={platzhalter}
-            placeholderTextColor={theme.sub}
-            autoCapitalize="none"
-            autoCorrect={false}
-            onSubmitEditing={() => eingabe.trim() && onPruefen()}
-            style={[styles.feld, { borderColor: theme.border, color: theme.text, backgroundColor: theme.cardBg }]}
-          />
-          <PillButton dark={dark} label="Prüfen" disabled={!eingabe.trim()} onPress={onPruefen} />
-        </>
-      ) : (
-        <Pressable
-          onPress={onTippen}
-          accessibilityRole="button"
-          accessibilityLabel="Ich kann gerade nicht sprechen — Eingabefeld einblenden"
-          style={({ pressed }) => [styles.leiser, { opacity: pressed ? 0.6 : 1 }]}
-        >
-          <Text style={[styles.leiserText, { color: theme.sub }]}>
-            Ich kann gerade nicht sprechen
-          </Text>
-        </Pressable>
-      )}
+      {/* Die Texteingabe liegt hinter dem "Schreiben"-Knopf und ist NICHT
+          von Anfang an sichtbar (Nutzer-Entscheidung 2026-08-21, Knopf
+          vereinheitlicht 2026-08-23 - siehe SchreibenFeld.tsx). Wer das Feld
+          sieht, benutzt es - und hat die Lektion durch, ohne einmal
+          gesprochen zu haben. Einmal aufgedeckt bleibt es fuer die ganze
+          Lektion offen (`tippenErlaubt` liegt beim aufrufenden Screen). */}
+      <SchreibenFeld dark={dark} offen={tippenErlaubt} onToggle={onTippen}>
+        <Text style={[styles.schrittLabel, { color: theme.sub }]}>
+          TIPPEN (PINYIN, OHNE TÖNE)
+        </Text>
+        <TextInput
+          value={eingabe}
+          onChangeText={setEingabe}
+          placeholder={platzhalter}
+          placeholderTextColor={theme.sub}
+          autoCapitalize="none"
+          autoCorrect={false}
+          autoFocus
+          onSubmitEditing={() => eingabe.trim() && onPruefen()}
+          style={[styles.feld, { borderColor: theme.border, color: theme.text, backgroundColor: theme.cardBg }]}
+        />
+        <PillButton dark={dark} label="Prüfen" disabled={!eingabe.trim()} onPress={onPruefen} />
+      </SchreibenFeld>
     </>
   );
 }
@@ -1088,12 +1078,6 @@ const styles = StyleSheet.create({
     fontSize: FONT_SIZE.title,
     lineHeight: LINE_HEIGHT.title,
     fontWeight: '700',
-  },
-  leiser: { alignSelf: 'center', paddingVertical: SPACING.md, paddingHorizontal: SPACING.lg },
-  leiserText: {
-    fontSize: FONT_SIZE.caption,
-    // Bewusst unauffaellig: eine Rueckfallebene, kein gleichrangiger Weg.
-    textDecorationLine: 'underline',
   },
   feier: { alignItems: 'center', gap: SPACING.sm, paddingVertical: SPACING.lg },
   feierTitel: {

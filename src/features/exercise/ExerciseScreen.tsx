@@ -7,6 +7,7 @@ import { File } from 'expo-file-system';
 import type { Card } from 'ts-fsrs';
 import { useAppState } from '../../state/AppState';
 import { useOnboardingState } from '../../state/OnboardingState';
+import { SchreibenFeld } from '../../components';
 import { CATEGORIES, CATEGORY_BY_ID } from '../../data/categories';
 import { scenarioLabel } from '../../data/scenarios';
 import { leihgeberVon, saetzeFuer } from '../../data/geliehen';
@@ -172,6 +173,13 @@ export function ExerciseScreen({
   const [clusters, setClusters] = useState<Record<string, string[]>>({});
   const [usedSrsFallback, setUsedSrsFallback] = useState(false);
   const [offline, setOffline] = useState(false);
+  // Texteingabe hinter dem "Schreiben"-Knopf (Nutzer-Wunsch 2026-08-23).
+  // Bewusst KEIN Zuruecksetzen zwischen Karten (siehe nextCard()) und
+  // absichtlich EINWEG: einmal aufgeklappt bleibt sie fuer die ganze Sitzung
+  // offen, dieselbe Regel wie in LessonScreen.tsx seit 2026-08-21 - wer
+  // gerade nicht sprechen kann, kann es bei der naechsten Karte meist auch
+  // nicht, und erneutes Antippen bei jeder Karte waere Schikane.
+  const [schreibenOffen, setSchreibenOffen] = useState(false);
   // Lokaler FSRS-Kartenzustand (AsyncStorage) - als Ref statt State, weil
   // er innerhalb einer Session nur gelesen/geschrieben wird, ohne dass ein
   // Re-Render davon abhaengt.
@@ -774,16 +782,28 @@ export function ExerciseScreen({
           )}
           {!!recordError && <Text style={{ color: '#D9564F', fontSize: 12 }}>{recordError}</Text>}
 
-          <View style={[styles.inputCard, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
-            <TextInput
-              value={input}
-              onChangeText={setInput}
-              placeholder="…oder Antwort tippen (Fallback)"
-              placeholderTextColor={theme.sub}
-              multiline
-              style={[styles.input, { color: theme.text }]}
-            />
-          </View>
+          {/* Hinter einem Knopf statt von Anfang an sichtbar (Nutzer-Wunsch
+              2026-08-23): wer das Feld sofort sieht, tippt - und hat die
+              Karte durch, ohne einmal gesprochen zu haben. Dieselbe Regel
+              wie im gefuehrten Kurs, jetzt an einer gemeinsamen Stelle
+              (SchreibenFeld.tsx). */}
+          <SchreibenFeld
+            dark={darkMode}
+            offen={schreibenOffen}
+            onToggle={() => setSchreibenOffen(true)}
+          >
+            <View style={[styles.inputCard, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
+              <TextInput
+                value={input}
+                onChangeText={setInput}
+                placeholder="Antwort tippen"
+                placeholderTextColor={theme.sub}
+                multiline
+                autoFocus
+                style={[styles.input, { color: theme.text }]}
+              />
+            </View>
+          </SchreibenFeld>
 
           {feedback && (
             <View style={[styles.feedback, { backgroundColor: FEEDBACK_MAP[feedback.tier].bg }]}>
