@@ -11,10 +11,14 @@ import { PhraseCard } from './PhraseCard';
 import { getTheme, ACCENT_ORANGE } from '../../theme/tokens';
 
 // Zwei Wege hierher (2026-08-07, echter Content statt Platzhalter):
-// - Freitextsuche auf S6 -> "query"-Query-Parameter -> Token-Suche ueber
-//   ALLE gekauften Kategorien (searchCheatsheetSentences)
+// - Freitextsuche auf S6 -> "query"-Query-Parameter -> Token-Suche
+//   (searchCheatsheetSentences), beschraenkt auf gekaufte Kategorien plus
+//   Grundwortschatz und Health + Emergency (Nutzer-Wunsch 2026-08-23)
 // - Themen-Boxen ausgewaehlt -> selectedThemes aus AppState -> gruppiert
-//   nach den gewaehlten Kategorie/Szenario-Kombinationen
+//   nach den gewaehlten Kategorie/Szenario-Kombinationen (unveraendert: die
+//   Themen-Auswahl im Kasten zeigt weiterhin auch gesperrte Kategorien mit
+//   ihren Nachschlage-Saetzen, das ist ein bewusster Werbeeffekt und betrifft
+//   nur diese Textsuche nicht)
 
 export function SearchResultsScreen() {
   const { darkMode, selectedThemes, saved, toggleSaved, purchased, targetLanguageId } = useAppState();
@@ -37,7 +41,16 @@ export function SearchResultsScreen() {
       setLoadError(null);
       try {
         const purchasedIds = CATEGORIES.filter((c) => purchased[c.id]).map((c) => c.id);
-        const result = await loadCheatsheetGroups(targetLanguageId, purchasedIds);
+        // `loadCheatsheetGroups` liefert fuer gesperrte Kategorien nur ihre
+        // Nachschlage-Saetze - fuer die TEXTSUCHE reicht das bei Health +
+        // Emergency nicht: "Ich brauche einen Arzt." ist kein Nachschlage-
+        // Satz und waere sonst nie zu finden, obwohl die Kategorie laut
+        // Nutzer-Entscheidung IMMER durchsuchbar sein soll. Sie wird deshalb
+        // hier so geladen, als waere sie gekauft; `durchsuchbareKategorien`
+        // weiter unten sorgt trotzdem dafuer, dass in den ANGEZEIGTEN
+        // Ergebnissen nur sie, Grundwortschatz und echte Kaeufe auftauchen.
+        const ladeAlsOffen = ['health_emergency', ...purchasedIds];
+        const result = await loadCheatsheetGroups(targetLanguageId, ladeAlsOffen);
         if (cancelled) return;
         setGroups(result.groups);
       } catch (e) {
@@ -65,7 +78,19 @@ export function SearchResultsScreen() {
   let sections: ResultSection[] = [];
 
   if (query) {
-    const matches = searchCheatsheetSentences(groups, query);
+    // Freitextsuche nur ueber gekaufte Kategorien plus Grundwortschatz und
+    // Health + Emergency (Nutzer-Wunsch 2026-08-23) - die beiden sind
+    // ausgenommen, weil ihr Inhalt jedem gehoert bzw. im Notfall zaehlt,
+    // unabhaengig vom Kaufstatus. Andere gesperrte Kategorien liefern sonst
+    // nur ihre Nachschlage-Saetze mit (Werbeeffekt in der Themen-Auswahl),
+    // die in einer TEXTSUCHE aber fehl am Platz sind, wenn man sie nicht
+    // gekauft hat.
+    const durchsuchbareKategorien = new Set([
+      'grundwortschatz',
+      'health_emergency',
+      ...CATEGORIES.filter((c) => purchased[c.id]).map((c) => c.id),
+    ]);
+    const matches = searchCheatsheetSentences(groups, query, durchsuchbareKategorien);
     if (matches.length > 0 && language.table) {
       sections = [
         {

@@ -154,25 +154,70 @@ export async function loadCheatsheetGroups(
   return { groups, fromCache };
 }
 
+// Deutsche Fuellwoerter, die praktisch JEDEN Satz treffen und deshalb aus
+// der Bewertung fallen - sonst reisst ein einzelnes "ich" oder "einen" die
+// Trefferliste in die Breite, ohne dass die Saetze thematisch etwas
+// gemeinsam haben.
+//
+// Ausloeser (Fehlerbericht 2026-08-23): "Ich brauche einen Arzt" lieferte
+// 121 Treffer, darunter "Ich habe meinen Schlüssel verloren" - beide Saetze
+// teilen sich nur das Wort "ich", sonst nichts. Ohne Fuellwoerter zaehlte
+// das schon als Treffer.
+const FUELLWOERTER = new Set([
+  'ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr', 'man',
+  'mein', 'meine', 'meinen', 'meiner', 'meinem',
+  'dein', 'deine', 'deinen', 'deiner', 'deinem',
+  'ein', 'eine', 'einen', 'einer', 'einem',
+  'der', 'die', 'das', 'den', 'dem', 'des',
+  'habe', 'hast', 'hat', 'haben', 'habt',
+  'bin', 'bist', 'ist', 'sind', 'seid', 'war', 'wäre',
+  'und', 'oder', 'auch', 'noch', 'nicht', 'kein', 'keine',
+  'zu', 'zum', 'zur', 'für', 'von', 'mit', 'bei', 'auf', 'an', 'in',
+]);
+
 // Freitextsuche (z.B. "Arzt suchen", "Leute ansprechen") - kein Server/KI
 // noetig (siehe CLAUDE.md "keine Laufzeitkosten"), reines Token-Matching:
-// JEDES Token des Suchbegriffs wird einzeln gegen Satztext/Uebersetzung/
-// Szenario/Kategorie geprueft (ODER-Verknuepfung zwischen Treffern,
-// sortiert nach Anzahl passender Tokens) - bewusst grosszuegig statt
-// strikt, weil es dafuer noch keine dedizierten Such-Tags pro Satz gibt
-// (siehe CLAUDE.md-Backlog "S6-Suchfeld: braucht eigentlich einen
+// JEDES INHALTLICHE Token des Suchbegriffs wird einzeln gegen Satztext/
+// Uebersetzung/Szenario/Kategorie geprueft (ODER-Verknuepfung zwischen
+// Treffern, sortiert nach Anzahl passender Tokens) - bewusst grosszuegig
+// statt strikt, weil es dafuer noch keine dedizierten Such-Tags pro Satz
+// gibt (siehe CLAUDE.md-Backlog "S6-Suchfeld: braucht eigentlich einen
 // abgleichbaren Such-/Tag-Text pro Satz" - das hier ist die MVP-Variante
-// ohne neue Datenbank-Spalte).
-export function searchCheatsheetSentences(groups: CheatsheetCategoryGroup[], query: string): ExerciseSentence[] {
-  const tokens = query
+// ohne neue Datenbank-Spalte). "Grosszuegig" gilt aber nur noch fuer
+// INHALTSWORTE - Fuellwoerter zaehlen seit dem 2026-08-23 nicht mehr mit,
+// siehe FUELLWOERTER oben.
+//
+// `durchsuchbareKategorien`: ohne Angabe wird ueber ALLE uebergebenen
+// Gruppen gesucht (z.B. die Themenauswahl, die ohnehin nur gekaufte/
+// beworbene Kategorien enthaelt). Mit Angabe (Nutzer-Wunsch 2026-08-23,
+// gilt fuer die FREITEXTSUCHE) werden nur diese Kategorien durchsucht -
+// `loadCheatsheetGroups` liefert sonst auch gesperrte Kategorien mit ihren
+// Nachschlage-Saetzen zurueck (Werbeeffekt), die hier nicht auftauchen
+// sollen.
+export function searchCheatsheetSentences(
+  groups: CheatsheetCategoryGroup[],
+  query: string,
+  durchsuchbareKategorien?: Set<string>,
+): ExerciseSentence[] {
+  const alleTokens = query
     .trim()
     .toLowerCase()
     .split(/\s+/)
     .filter(Boolean);
-  if (tokens.length === 0) return [];
+  if (alleTokens.length === 0) return [];
+
+  // Fuellwoerter raus - bleibt danach nichts uebrig (z.B. eine Suche nur
+  // nach "ich du"), lieber mit den Originaltokens weitersuchen als leer
+  // zurueckzugeben.
+  const inhaltsworte = alleTokens.filter((t) => !FUELLWOERTER.has(t));
+  const tokens = inhaltsworte.length > 0 ? inhaltsworte : alleTokens;
+
+  const durchsuchen = durchsuchbareKategorien
+    ? groups.filter((g) => durchsuchbareKategorien.has(g.categoryId))
+    : groups;
 
   const scored: { sentence: ExerciseSentence; score: number }[] = [];
-  for (const group of groups) {
+  for (const group of durchsuchen) {
     for (const s of group.allSentences) {
       const haystack = [s.text, s.germanGloss ?? '', s.scenario, s.category].join(' ').toLowerCase();
       const score = tokens.filter((t) => haystack.includes(t)).length;
