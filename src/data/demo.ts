@@ -50,10 +50,12 @@ import { GRUNDWORTSCHATZ_ID } from './categories';
  *
  * Simon: "zum Beispiel nur zwei Kategorien und davon zwei Situationen oder so
  * aehnlich (sprechen wir nochmal durch)". Sein Beispiel stand hier als
- * Startwert; seit der Berichtigung 2026-08-23 ist es nur noch EINE Kategorie,
- * weil Kategorien nicht mehr gefiltert werden (siehe oben) - `DEMO_KATEGORIEN`
- * bestimmt jetzt nur noch, welche gesperrte Kategorie eine Situations-
- * Kostprobe statt der vollen Werbeliste zeigt.
+ * Startwert; seit der Berichtigung 2026-08-23 filtert es keine Kategorien
+ * mehr aus der Anzeige (siehe oben) - `DEMO_KATEGORIEN` bestimmt jetzt nur
+ * noch, WELCHE gesperrten Kategorien eine Situations-Kostprobe statt der
+ * vollen Werbeliste zeigen. Zwei sind es seit dem 2026-08-23: Club +
+ * Nightlife (der urspruengliche Startwert) und Travel + Transportation
+ * (Nutzer-Wunsch, gleicher Tag).
  *
  * `grundwortschatz` steht bewusst NICHT (mehr) hier: er ist keine Kaufkategorie,
  * sondern der immer-freie Grundwortschatz - ihn zu kappen waere keine
@@ -61,13 +63,11 @@ import { GRUNDWORTSCHATZ_ID } from './categories';
  * gratis" ist. Siehe `sichtbareSituationen` fuer die explizite Ausnahme.
  *
  * Offen und beim Durchsprechen zu klaeren:
- *   - Soll es ueberhaupt eine Situations-Kostprobe geben, oder reicht die
- *     jetzt wiederhergestellte volle Kategorie-Sichtbarkeit als Demo?
  *   - Sollen es feste Kategorien sein oder die zum Onboarding passenden?
  *   - Duerfen Gaeste den gefuehrten Kurs sehen? Der haengt an keiner
  *     Kategorie und ist heute komplett offen.
  */
-export const DEMO_KATEGORIEN = ['club_nightlife'];
+export const DEMO_KATEGORIEN = ['club_nightlife', 'travel_transportation'];
 
 /** Wie viele Situationen je Kategorie im Demo-Umfang sichtbar sind. */
 export const DEMO_SITUATIONEN_JE_KATEGORIE = 2;
@@ -118,7 +118,7 @@ export function imDemoUmfang(categoryId: string): boolean {
  *   4. Jede Kategorie AUSSERHALB von `DEMO_KATEGORIEN` zeigt ebenfalls alles:
  *      sie ist reiner Katalog/Werbung ("was gibt es zu kaufen"), keine
  *      Kostprobe. Nur die Kategorien IN `DEMO_KATEGORIEN` bekommen die
- *      Kuerzung - aktuell nur Club + Nightlife.
+ *      Kuerzung.
  */
 export function sichtbareSituationen<T>(
   situationen: T[],
