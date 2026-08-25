@@ -53,6 +53,9 @@ const WORTART_FARBE: Record<string, string> = {
   Pronomen: WORD_COLORS.p,
 };
 
+/** Immer sichtbare Haupt-Chips, in dieser Reihenfolge - siehe Verwendung. */
+const GROSSE_DREI = ['Nomen', 'Verb', 'Adjektiv'];
+
 const RUNDENGROESSE = 6;
 
 // ---------------------------------------------------------------------------
@@ -177,15 +180,31 @@ export function WordReviewScreen() {
     };
   }, [targetLanguageId]);
 
-  // Wortarten nach Haeufigkeit - die "grossen drei" stehen dadurch von
-  // selbst vorn, ohne dass sie hart eingetragen werden muessen. Faellt eine
-  // Sprache mit anderen Wortarten dazu (z.B. Franzoesisch "Artikel"), taucht
-  // sie automatisch mit auf.
+  // Wortarten nach Haeufigkeit - Grundlage fuer beide Chip-Reihen unten.
   const wortartenNachHaeufigkeit = useMemo(() => {
     const zaehler = new Map<string, number>();
     for (const w of words) zaehler.set(w.wordClass, (zaehler.get(w.wordClass) ?? 0) + 1);
     return [...zaehler.entries()].sort((a, b) => b[1] - a[1]);
   }, [words]);
+
+  // Nomen/Verb/Adjektiv immer sichtbar und in DIESER Reihenfolge (Nutzer-
+  // Wunsch 2026-08-25) - der Rest faechert erst hinter "···" auf, damit die
+  // Auswahl nicht mit bis zu neun Chips ueberladen startet. Nur Wortarten,
+  // die es fuer die aktuelle Sprache tatsaechlich gibt (Chinesisch hat kein
+  // "Adjektiv" - siehe wortartAusDeutsch), sonst stuende dort ein Chip mit
+  // "· 0" oder gar keine Zahl.
+  const hauptWortarten = useMemo(
+    () =>
+      GROSSE_DREI.map((w) => wortartenNachHaeufigkeit.find(([name]) => name === w)).filter(
+        (x): x is [string, number] => !!x
+      ),
+    [wortartenNachHaeufigkeit]
+  );
+  const weitereWortarten = useMemo(
+    () => wortartenNachHaeufigkeit.filter(([w]) => !GROSSE_DREI.includes(w)),
+    [wortartenNachHaeufigkeit]
+  );
+  const [weitereOffen, setWeitereOffen] = useState(false);
 
   const gefiltert = useMemo(() => {
     if (aktiveWortarten.size === 0) return words;
@@ -378,6 +397,28 @@ export function WordReviewScreen() {
     router.back();
   }
 
+  /** Ein Wortart-Chip - fuer die Haupt- UND die aufgeklappte Reihe gleich. */
+  function wortartChip(wortart: string, anzahl: number) {
+    const aktiv = aktiveWortarten.has(wortart);
+    const farbe = WORTART_FARBE[wortart] ?? theme.sub;
+    return (
+      <Pressable
+        key={wortart}
+        onPress={() => wortartUmschalten(wortart)}
+        accessibilityRole="button"
+        accessibilityState={{ selected: aktiv }}
+        style={[
+          styles.chip,
+          { borderColor: aktiv ? farbe : theme.border, backgroundColor: aktiv ? farbe : 'transparent' },
+        ]}
+      >
+        <Text style={[styles.chipText, { color: aktiv ? '#FFFFFF' : theme.text }]}>
+          {wortart} · {anzahl}
+        </Text>
+      </Pressable>
+    );
+  }
+
   const filterZeile = aktiveWortarten.size === 0 ? 'Alle Wortarten' : [...aktiveWortarten].join(', ');
   const pronomenVerb = pronomenVerben[pronomenIndex];
   const pronomenFortschritt = pronomenVerben.length > 0 ? pronomenIndex / pronomenVerben.length : 0;
@@ -466,26 +507,18 @@ export function WordReviewScreen() {
                 Alle
               </Text>
             </Pressable>
-            {wortartenNachHaeufigkeit.map(([wortart, anzahl]) => {
-              const aktiv = aktiveWortarten.has(wortart);
-              const farbe = WORTART_FARBE[wortart] ?? theme.sub;
-              return (
-                <Pressable
-                  key={wortart}
-                  onPress={() => wortartUmschalten(wortart)}
-                  accessibilityRole="button"
-                  accessibilityState={{ selected: aktiv }}
-                  style={[
-                    styles.chip,
-                    { borderColor: aktiv ? farbe : theme.border, backgroundColor: aktiv ? farbe : 'transparent' },
-                  ]}
-                >
-                  <Text style={[styles.chipText, { color: aktiv ? '#FFFFFF' : theme.text }]}>
-                    {wortart} · {anzahl}
-                  </Text>
-                </Pressable>
-              );
-            })}
+            {hauptWortarten.map(([wortart, anzahl]) => wortartChip(wortart, anzahl))}
+            {weitereWortarten.length > 0 && !weitereOffen ? (
+              <Pressable
+                onPress={() => setWeitereOffen(true)}
+                accessibilityRole="button"
+                accessibilityLabel="Weitere Wortarten anzeigen"
+                style={[styles.chip, { borderColor: theme.border, backgroundColor: 'transparent' }]}
+              >
+                <Text style={[styles.chipText, { color: theme.sub }]}>···</Text>
+              </Pressable>
+            ) : null}
+            {weitereOffen ? weitereWortarten.map(([wortart, anzahl]) => wortartChip(wortart, anzahl)) : null}
           </View>
 
           <View style={styles.startBox}>
