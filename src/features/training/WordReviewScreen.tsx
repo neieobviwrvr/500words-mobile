@@ -4,6 +4,8 @@ import { router } from 'expo-router';
 import { useAppState } from '../../state/AppState';
 import { getLanguage } from '../../data/languages';
 import { loadVocabWords, VocabWord } from '../../data/vocabContent';
+import { PERSONALPRONOMEN_TEMPLATE } from '../../data/personalpronomenTemplate';
+import { ladeSituationsAufgaben, SituationsAufgabe, VokabelOption } from '../../data/situationsAufgaben';
 import { speakText } from '../tts/speak';
 import { Screen, PillButton, ProgressBar } from '../../components';
 import {
@@ -74,11 +76,27 @@ const RUNDENGROESSE = 6;
 // Konjugations-Pruefung - dafuer bloss `presentForm` durch eine
 // personenabhaengige Form ersetzen und die Immer-richtig-Logik unten durch
 // einen echten Soll/Ist-Vergleich tauschen.
-const PERSONEN = ['Ich', 'Du', 'Er/Sie', 'Wir'] as const;
+//
+// Woher die vier Woerter kommen: aus PERSONALPRONOMEN_TEMPLATE (siehe
+// data/personalpronomenTemplate.ts), fest auf `de` - das Template deckt
+// bereits Englisch/Franzoesisch/Spanisch mit ab, ist aber erst dann live
+// verdrahtbar, wenn `sourceLanguageId` ausserhalb von O1 gespeichert wird
+// UND die Oberflaeche wirklich mehrsprachig ist (siehe Kommentar dort).
+const PERSONEN = PERSONALPRONOMEN_TEMPLATE.de;
 type Person = (typeof PERSONEN)[number];
 const PRONOMEN_RUNDENGROESSE = 5;
 
-type Rundentyp = 'zuordnung' | 'pronomen';
+// ---------------------------------------------------------------------------
+// Dritter Rundentyp (2026-08-24, Simons zweite Vorlage): "Situations-
+// Auswahl" - eine Aufgabe aus einem echten Satz, vier Wortoptionen zur
+// Auswahl, "Lösen" wertet aus. Herleitung/Grenzen siehe
+// data/situationsAufgaben.ts (bewusst NICHTS davon neu getextet, nur aus
+// vorhandenen Saetzen abgeleitet). GENERISCH nach Wortart, deshalb ohne
+// Aenderung fuer Nomen/Sonstiges nutzbar - Simons zweiter Auftrag
+// ("auch fuer Nomen und die anderen Wortkategorien").
+const SITUATION_RUNDENGROESSE = 5;
+
+type Rundentyp = 'zuordnung' | 'pronomen' | 'situation';
 
 function mischen<T>(arr: T[]): T[] {
   const kopie = [...arr];
@@ -127,6 +145,15 @@ export function WordReviewScreen() {
   const [pronomenVerben, setPronomenVerben] = useState<VocabWord[]>([]);
   const [pronomenIndex, setPronomenIndex] = useState(0);
   const [pronomenGewaehlt, setPronomenGewaehlt] = useState<Person | null>(null);
+
+  // Situations-Runde (siehe Kommentar bei SITUATION_RUNDENGROESSE oben).
+  const [situationLadeFehler, setSituationLadeFehler] = useState<string | null>(null);
+  const [situationAufgaben, setSituationAufgaben] = useState<SituationsAufgabe[]>([]);
+  const [situationIndex, setSituationIndex] = useState(0);
+  const [situationWortart, setSituationWortart] = useState('');
+  const [situationGewaehlt, setSituationGewaehlt] = useState<VokabelOption | null>(null);
+  const [situationAusgewertet, setSituationAusgewertet] = useState<'richtig' | 'falsch' | null>(null);
+  const [situationRichtig, setSituationRichtig] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
@@ -181,10 +208,15 @@ export function WordReviewScreen() {
     });
   }
 
-  function rundeStarten() {
-    // "Mische es zu" (Simons Vorgabe): halb-halb, wenn Verben zur Auswahl
-    // gehoeren - sonst bleibt es beim Zuordnungsspiel.
-    const typ: Rundentyp = pronomenVerfuegbar && Math.random() < 0.5 ? 'pronomen' : 'zuordnung';
+  async function rundeStarten() {
+    // "Mische es zu" (Simons Vorgabe): zufaellig unter den verfuegbaren
+    // Rundentypen - Situations-Auswahl nur fuer Chinesisch (siehe
+    // situationsAufgaben.ts), Pronomen-Runde nur wenn Verben zur Auswahl
+    // gehoeren, Zuordnung geht immer.
+    const kandidaten: Rundentyp[] = ['zuordnung'];
+    if (pronomenVerfuegbar) kandidaten.push('pronomen');
+    if (targetLanguageId === 'zh') kandidaten.push('situation');
+    const typ = mischen(kandidaten)[0];
     setRundentyp(typ);
 
     if (typ === 'pronomen') {
@@ -193,6 +225,46 @@ export function WordReviewScreen() {
       setPronomenIndex(0);
       setPronomenGewaehlt(null);
       setPhase('runde');
+      return;
+    }
+
+    if (typ === 'situation') {
+      // Wortart: die eine aktive Auswahl, sonst zufaellig unter den drei
+      // Chinesisch-Eimern (siehe wortartAusDeutsch - nur diese drei gibt es
+      // dort ueberhaupt).
+      const wortart =
+        aktiveWortarten.size === 1
+          ? [...aktiveWortarten][0]
+          : mischen(['Verb', 'Nomen', 'Sonstiges'])[0];
+      setSituationWortart(wortart);
+      setSituationLadeFehler(null);
+      setPhase('runde'); // sofort umschalten, Ladezustand zeigt das Aufgaben-Array leer
+      try {
+        const { aufgaben } = await ladeSituationsAufgaben(targetLanguageId, wortart);
+        const auswahl = mischen(aufgaben).slice(0, Math.min(SITUATION_RUNDENGROESSE, aufgaben.length));
+        if (auswahl.length === 0) {
+          // Fuer diese Wortart kam nichts zusammen - lieber sofort das
+          // Zuordnungsspiel aufsetzen als eine leere Runde zeigen oder
+          // per Rekursion nochmal zufaellig 'situation' zu ziehen.
+          setRundentyp('zuordnung');
+          const ersatz = mischen(gefiltert).slice(0, Math.min(RUNDENGROESSE, gefiltert.length));
+          setLinks(mischen(ersatz.map((w) => ({ wordId: w.id, text: w.word, sprich: w.hanzi ?? w.word }))));
+          setRechts(mischen(ersatz.map((w) => ({ wordId: w.id, text: w.german, sprich: w.german }))));
+          setGematcht(new Set());
+          setGewaehlt(null);
+          setFalschBlitz(null);
+          setRichtig(0);
+          setFalsch(0);
+          return;
+        }
+        setSituationAufgaben(auswahl);
+        setSituationIndex(0);
+        setSituationGewaehlt(null);
+        setSituationAusgewertet(null);
+        setSituationRichtig(0);
+      } catch (e) {
+        setSituationLadeFehler(e instanceof Error ? e.message : String(e));
+      }
       return;
     }
 
@@ -205,6 +277,29 @@ export function WordReviewScreen() {
     setRichtig(0);
     setFalsch(0);
     setPhase('runde');
+  }
+
+  function situationOptionTippen(o: VokabelOption) {
+    if (situationAusgewertet) return;
+    setSituationGewaehlt(o);
+  }
+
+  function situationLoesen() {
+    if (!situationGewaehlt || situationAusgewertet) return;
+    const aufgabe = situationAufgaben[situationIndex];
+    const stimmt = situationGewaehlt.hanzi === aufgabe.richtig.hanzi;
+    setSituationAusgewertet(stimmt ? 'richtig' : 'falsch');
+    speakText(aufgabe.richtig.hanzi, { languageId: targetLanguageId });
+    if (stimmt) setSituationRichtig((r) => r + 1);
+    setTimeout(() => {
+      setSituationGewaehlt(null);
+      setSituationAusgewertet(null);
+      if (situationIndex + 1 >= situationAufgaben.length) {
+        setPhase('ergebnis');
+      } else {
+        setSituationIndex((i) => i + 1);
+      }
+    }, 1400);
   }
 
   function personTippen(person: Person) {
@@ -272,6 +367,18 @@ export function WordReviewScreen() {
   const pronomenVerb = pronomenVerben[pronomenIndex];
   const pronomenFortschritt = pronomenVerben.length > 0 ? pronomenIndex / pronomenVerben.length : 0;
   const zuordnungFortschritt = links.length > 0 ? gematcht.size / links.length : 0;
+  const situationAufgabe = situationAufgaben[situationIndex];
+  const situationFortschritt = situationAufgaben.length > 0 ? situationIndex / situationAufgaben.length : 0;
+  const rundeFortschritt =
+    rundentyp === 'pronomen' ? pronomenFortschritt : rundentyp === 'situation' ? situationFortschritt : zuordnungFortschritt;
+  const titelZusatz =
+    phase === 'runde'
+      ? rundentyp === 'pronomen'
+        ? ' (Verben)'
+        : rundentyp === 'situation'
+          ? ` (${situationWortart})`
+          : ''
+      : '';
 
   return (
     <Screen dark={darkMode}>
@@ -284,17 +391,12 @@ export function WordReviewScreen() {
         >
           <Text style={[styles.backGlyph, { color: theme.text }]}>‹</Text>
         </Pressable>
-        <Text style={[styles.title, { color: theme.text }]}>
-          Wörter-Wiederholung{phase === 'runde' && rundentyp === 'pronomen' ? ' (Verben)' : ''}
-        </Text>
+        <Text style={[styles.title, { color: theme.text }]}>Wörter-Wiederholung{titelZusatz}</Text>
       </View>
 
       {phase === 'runde' ? (
         <View style={styles.progressSlot}>
-          <ProgressBar
-            dark={darkMode}
-            ratio={rundentyp === 'pronomen' ? pronomenFortschritt : zuordnungFortschritt}
-          />
+          <ProgressBar dark={darkMode} ratio={rundeFortschritt} />
         </View>
       ) : null}
 
@@ -384,6 +486,58 @@ export function WordReviewScreen() {
             )}
           </View>
         </ScrollView>
+      )}
+
+      {phase === 'runde' && rundentyp === 'situation' && (
+        <View style={styles.pronomenBereich}>
+          {situationLadeFehler ? (
+            <Text style={{ color: theme.sub, textAlign: 'center' }}>{situationLadeFehler}</Text>
+          ) : !situationAufgabe ? (
+            <ActivityIndicator color={theme.text} />
+          ) : (
+            <>
+              <Text style={[styles.frage, { color: theme.text, fontSize: FONT_SIZE.title, lineHeight: LINE_HEIGHT.title }]}>
+                {situationAufgabe.frage}
+              </Text>
+              <View style={styles.personReihe}>
+                {situationAufgabe.optionen.map((o) => {
+                  const gewaehltHier = situationGewaehlt?.hanzi === o.hanzi;
+                  const zeigeRichtig = situationAusgewertet && o.hanzi === situationAufgabe.richtig.hanzi;
+                  const zeigeFalsch = situationAusgewertet === 'falsch' && gewaehltHier && !zeigeRichtig;
+                  return (
+                    <Pressable
+                      key={o.hanzi}
+                      disabled={!!situationAusgewertet}
+                      onPress={() => situationOptionTippen(o)}
+                      accessibilityRole="button"
+                      accessibilityLabel={`${o.pinyin} (${o.hanzi})`}
+                      style={[
+                        styles.personChip,
+                        {
+                          borderColor: zeigeRichtig ? ACCENT_GREEN : zeigeFalsch ? ACCENT_ERROR : gewaehltHier ? theme.text : theme.border,
+                          backgroundColor: zeigeRichtig ? ACCENT_GREEN : zeigeFalsch ? ACCENT_ERROR : gewaehltHier ? theme.subtleFill : theme.subtleFill,
+                        },
+                      ]}
+                    >
+                      <Text style={{ color: zeigeRichtig || zeigeFalsch ? '#FFFFFF' : theme.text, fontWeight: '700' }}>
+                        {o.pinyin} ({o.hanzi})
+                      </Text>
+                    </Pressable>
+                  );
+                })}
+              </View>
+
+              <View style={[styles.frameBox, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
+                <Text style={[styles.frameText, { color: theme.text }]}>
+                  {situationAufgabe.frameVorher}{' '}
+                  {situationGewaehlt ? situationGewaehlt.pinyin : '...'} {situationAufgabe.frameNachher}
+                </Text>
+              </View>
+
+              <PillButton dark={darkMode} label="Lösen" disabled={!situationGewaehlt || !!situationAusgewertet} onPress={situationLoesen} />
+            </>
+          )}
+        </View>
       )}
 
       {phase === 'runde' && rundentyp === 'pronomen' && pronomenVerb && (
@@ -505,7 +659,9 @@ export function WordReviewScreen() {
           <Text style={[styles.ergebnisText, { color: theme.sub }]}>
             {rundentyp === 'pronomen'
               ? `${pronomenVerben.length} ${pronomenVerben.length === 1 ? 'Verb' : 'Verben'} geübt`
-              : `${richtig} von ${links.length} beim ersten Versuch${falsch > 0 ? ` · ${falsch} Fehlversuche` : ''}`}
+              : rundentyp === 'situation'
+                ? `${situationRichtig} von ${situationAufgaben.length} richtig`
+                : `${richtig} von ${links.length} beim ersten Versuch${falsch > 0 ? ` · ${falsch} Fehlversuche` : ''}`}
           </Text>
           <View style={styles.ergebnisKnoepfe}>
             <PillButton dark={darkMode} label="Nochmal" onPress={rundeStarten} />
