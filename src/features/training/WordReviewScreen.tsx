@@ -147,6 +147,12 @@ export function WordReviewScreen() {
   const [aktiveWortarten, setAktiveWortarten] = useState<Set<string>>(new Set());
   const [phase, setPhase] = useState<Phase>('auswahl');
   const [rundentyp, setRundentyp] = useState<Rundentyp>('zuordnung');
+  // Vorlagen-Wahl (2026-08-25, Simons Wunsch "einfach fuer mich als
+  // Sortierung"): reines Test-/Sortierwerkzeug, damit man gezielt eine der
+  // beiden Vorlagen aus den Mockups oeffnen kann, statt auf den Zufall bei
+  // "Mische es zu" zu warten. 'gemischt' ist die Vorgabe und aendert am
+  // bisherigen Verhalten nichts.
+  const [rundentypWahl, setRundentypWahl] = useState<'gemischt' | 'pronomen' | 'situation'>('gemischt');
 
   const [links, setLinks] = useState<Kachel[]>([]);
   const [rechts, setRechts] = useState<Kachel[]>([]);
@@ -275,10 +281,18 @@ export function WordReviewScreen() {
     // Rundentypen - Situations-Auswahl nur fuer Chinesisch (siehe
     // situationsAufgaben.ts), Pronomen-Runde nur wenn Verben zur Auswahl
     // gehoeren, Zuordnung geht immer.
+    //
+    // Ausnahme: `rundentypWahl` erzwingt eine bestimmte Vorlage (siehe
+    // Kommentar dort) - nur wenn sie fuer die aktuelle Sprache/Auswahl auch
+    // wirklich verfuegbar ist, sonst faellt es ehrlich auf "gemischt"
+    // zurueck statt eine Vorlage zu zeigen, die gar nicht bedienbar waere.
     const kandidaten: Rundentyp[] = ['zuordnung'];
     if (pronomenVerfuegbar) kandidaten.push('pronomen');
     if (targetLanguageId === 'zh') kandidaten.push('situation');
-    const typ = mischen(kandidaten)[0];
+    const typ =
+      rundentypWahl !== 'gemischt' && kandidaten.includes(rundentypWahl)
+        ? rundentypWahl
+        : mischen(kandidaten)[0];
     setRundentyp(typ);
 
     if (typ === 'pronomen') {
@@ -603,6 +617,36 @@ export function WordReviewScreen() {
           {offline ? (
             <Text style={[styles.offline, { color: theme.sub }]}>📴 Offline — letzter gespeicherter Stand</Text>
           ) : null}
+
+          {/* Vorlagen-Wahl (siehe Kommentar bei rundentypWahl oben) - reine
+              Sortierhilfe, kein Nutzer-Feature. */}
+          <Text style={[styles.unterzeile, { color: theme.sub, marginBottom: SPACING.xs }]}>Vorlage</Text>
+          <View style={styles.chipReihe}>
+            {(
+              [
+                ['gemischt', 'Gemischt'],
+                ['pronomen', 'Personen-Zuordnung'],
+                ['situation', 'Situations-Auswahl'],
+              ] as const
+            ).map(([wert, label]) => {
+              const aktiv = rundentypWahl === wert;
+              return (
+                <Pressable
+                  key={wert}
+                  onPress={() => setRundentypWahl(wert)}
+                  accessibilityRole="button"
+                  accessibilityState={{ selected: aktiv }}
+                  style={[
+                    styles.chip,
+                    { borderColor: aktiv ? theme.text : theme.border, backgroundColor: aktiv ? theme.text : 'transparent' },
+                  ]}
+                >
+                  <Text style={[styles.chipText, { color: aktiv ? theme.pageBg : theme.text }]}>{label}</Text>
+                </Pressable>
+              );
+            })}
+          </View>
+
           <Text style={[styles.frage, { color: theme.text }]}>Welche Wörter willst du üben?</Text>
           <Text style={[styles.unterzeile, { color: theme.sub }]}>
             Nichts ausgewählt heißt: alle Wortarten gemischt.
