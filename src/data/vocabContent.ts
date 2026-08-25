@@ -59,20 +59,73 @@ export type VocabWord = {
 };
 
 /**
+ * Was die Infinitiv-Regel unten falsch einsortiert.
+ *
+ * Fehlfall gemeldet 2026-08-25: die Pronomen-Runde zeigte "十 (zehn)" als
+ * Verb, weil "zehn" zufaellig auf "n" endet. Dieselbe Regel-Schwaeche wie
+ * in useCategoryVocab.ts, hier aber gegen den GESAMTEN chinesisch_vocab-
+ * Bestand geprueft statt nur gegen eine Kategorie - deshalb eine laengere
+ * Liste. Drei Gruppen faellt die Regel zum Opfer: Zahlwoerter (sieben/neun/
+ * zehn), Adjektive/Orts-/Zeitwoerter, die zufaellig auf "n" enden (schön,
+ * morgen, drinnen, ...), und ein paar Nomen-Phrasen, deren erstes Wort
+ * klein geschrieben ist ("feste Freundin" - "feste" ist ein Adjektiv vor
+ * dem eigentlichen Nomen, die Grossschreibungs-Regel greift dort nicht).
+ * Wer ein weiteres falsch einsortiertes Wort findet, traegt es hier ein.
+ */
+const WORTART_AUSNAHMEN: Record<string, string> = {
+  // Zahlwoerter, zufaellig auf "-n" endend
+  sieben: 'Sonstiges',
+  neun: 'Sonstiges',
+  zehn: 'Sonstiges',
+  // Adjektive, zufaellig auf "-n" endend
+  'schön / hübsch': 'Sonstiges',
+  klein: 'Sonstiges',
+  dünn: 'Sonstiges',
+  'schön anzusehen': 'Sonstiges',
+  // Orts-/Zeit-/sonstige Woerter, zufaellig auf "-n" endend
+  morgen: 'Sonstiges',
+  hinten: 'Sonstiges',
+  drinnen: 'Sonstiges',
+  draußen: 'Sonstiges',
+  oben: 'Sonstiges',
+  unten: 'Sonstiges',
+  daneben: 'Sonstiges',
+  gestern: 'Sonstiges',
+  'von / ab': 'Sonstiges',
+  'in / drinnen': 'Sonstiges',
+  außen: 'Sonstiges',
+  'am meisten': 'Sonstiges',
+  zusammen: 'Sonstiges',
+  'schon / bereits': 'Sonstiges',
+  'dann / gleich': 'Sonstiges',
+  'am nächsten (örtlich)': 'Sonstiges',
+  'zusammen, insgesamt': 'Sonstiges',
+  wann: 'Sonstiges',
+  'auf Wiedersehen': 'Sonstiges',
+  willkommen: 'Sonstiges',
+  // Nomen-Phrasen mit kleingeschriebenem Adjektiv davor
+  'feste Freundin': 'Nomen',
+  'fester Freund oder feste Freundin': 'Nomen',
+  'westliche Medizin': 'Nomen',
+  'die anderen, andere Leute': 'Nomen',
+};
+
+/**
  * Wortart aus der deutschen Bedeutung raten - nur fuer Chinesisch gebraucht,
  * das keine eigene Wortart-Spalte hat.
  *
  * Bewusst nur DREI Eimer statt der neun echten Wortarten: Grossschreibung
  * ist eine verlaessliche deutsche Regel fuer Nomen ("Musik", "Handy"), der
  * Infinitiv-Verdacht auf "-en"/"-n" trifft Verben meistens (dieselbe Regel
- * wie in useCategoryVocab.ts, mit derselben bekannten Schwaeche - "schön",
- * "fein" enden zufaellig auch auf "n" und landen faelschlich bei Verb).
- * Adjektive, Pronomen, Zahlwoerter & Co. liessen sich aus reinem Fliesstext
- * NICHT verlaesslich auseinanderhalten, ohne Woerter falsch zu behaupten -
- * sie fallen deshalb ehrlich zusammen in "Sonstiges", statt mit falscher
- * Praezision als "Adjektiv" zu erscheinen.
+ * wie in useCategoryVocab.ts). Adjektive, Pronomen, Zahlwoerter & Co.
+ * liessen sich aus reinem Fliesstext NICHT verlaesslich auseinanderhalten,
+ * ohne Woerter falsch zu behaupten - sie fallen deshalb ehrlich zusammen
+ * in "Sonstiges", statt mit falscher Praezision als "Adjektiv" zu
+ * erscheinen. Bekannte Fehltreffer der Regel stehen in WORTART_AUSNAHMEN
+ * oben, gegen den gesamten Bestand geprueft (nicht nur stichprobenartig).
  */
 export function wortartAusDeutsch(german: string): string {
+  if (WORTART_AUSNAHMEN[german]) return WORTART_AUSNAHMEN[german];
   const erste = german.split(/[,/(]/)[0].trim();
   if (/^[A-ZÄÖÜ]/.test(erste)) return 'Nomen';
   const letztes = erste.split(' ').pop() ?? '';
