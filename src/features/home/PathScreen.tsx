@@ -129,11 +129,17 @@ const SWIPE_VELOCITY = 0.3;
  * Luft wachsen, also um rund 44 Punkte auf 466 - das sind 0.573 der
  * Fensterhoehe. Die restliche Luft betraegt danach etwa 65 Punkte.
  *
+ * Nachgezogen (2026-08-25, Nutzer-Wunsch "Tab-Bar und Knopf Richtung
+ * Pfad-Box schieben"): dieselbe Rechnung nochmal, diesmal die Luft um
+ * weitere 40 Punkte verkleinert (von ~72 auf ~32 Punkte, gemessen bei
+ * 812 Punkten Fensterhoehe). Box waechst dafuer um 40 Punkte auf 505,
+ * das sind 0.622 der Fensterhoehe.
+ *
  * Weil es ein Anteil und keine feste Zahl ist, waechst die Box auf groesseren
- * Geraeten mit; die verbleibende Luft ist dort entsprechend etwas groesser
- * als 65, nicht exakt gleich.
+ * Geraeten mit; die verbleibende Luft ist dort entsprechend etwas groesser,
+ * nicht exakt gleich.
  */
-const PATH_BOX_HEIGHT_RATIO = 0.573;
+const PATH_BOX_HEIGHT_RATIO = 0.622;
 
 type NodeState = 'done' | 'current' | 'open' | 'locked';
 
