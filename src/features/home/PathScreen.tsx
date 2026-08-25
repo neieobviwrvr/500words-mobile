@@ -23,7 +23,8 @@ import type { DropdownOption } from '../../components';
 import { useUnlockedProgress } from './useUnlockedProgress';
 import { useCategorySituations } from '../lessons/useCategorySituations';
 import { useGuidedCourse } from './useGuidedCourse';
-import { PathBackdrop } from './PathBackdrop';
+import { PathBackdrop, PATH_BACKDROP_COLOR } from './PathBackdrop';
+import { LinearGradient } from 'expo-linear-gradient';
 import { scenarioLabel } from '../../data/scenarios';
 import { leihName } from '../../data/geliehen';
 import {
@@ -191,6 +192,11 @@ export function PathScreen() {
   // Die Box scrollt ohnehin innen, sie muss also nicht alles zeigen.
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   const pathBoxMaxHeight = Math.round(windowHeight * PATH_BOX_HEIGHT_RATIO);
+  // Ausblenden-Hoehe als Anteil der Box, nicht als feste Zahl (Nutzer-
+  // Wunsch: "zu einem bestimmten Prozentsatz") - skaliert dadurch mit der
+  // Box selbst statt auf kleinen Geraeten unverhaeltnismaessig viel wegzu-
+  // nehmen.
+  const pathFadeHoehe = Math.round(pathBoxMaxHeight * 0.1);
 
   // Nach rechts wischen oeffnet die Geschenk-/Belohnungsseite (Nutzer-Wunsch
   // 2026-08-20). Zusaetzlicher Weg, nicht der einzige: der Coins-Knopf im
@@ -672,49 +678,70 @@ export function PathScreen() {
           </Pressable>
         </View>
 
-        <ScrollView
-          ref={scrollRef}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles.pathBoxContent}
-        >
-          {pathNodes.length === 0 ? (
-            // Ehrlich statt leere Flaeche: sagt, woran es liegt. Bleibt
-            // stehen, anders als die Notice, die sich wieder ausblendet.
-            <View style={styles.pathEmpty}>
-              <Feather name="map" size={28} color={theme.sub} />
-              <Text style={[styles.pathEmptyText, { color: theme.sub }]}>
-                {learningMode === 'gefuehrt'
-                  ? (course.unavailable ?? 'Hier ist noch nichts.')
-                  : `Für ${activeLanguage.label} gibt es bisher keine Sätze — probier den geführten Kurs über den Knopf oben rechts.`}
-              </Text>
+        <View style={styles.pathScrollWrap}>
+          <ScrollView
+            ref={scrollRef}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={styles.pathBoxContent}
+          >
+            {pathNodes.length === 0 ? (
+              // Ehrlich statt leere Flaeche: sagt, woran es liegt. Bleibt
+              // stehen, anders als die Notice, die sich wieder ausblendet.
+              <View style={styles.pathEmpty}>
+                <Feather name="map" size={28} color={theme.sub} />
+                <Text style={[styles.pathEmptyText, { color: theme.sub }]}>
+                  {learningMode === 'gefuehrt'
+                    ? (course.unavailable ?? 'Hier ist noch nichts.')
+                    : `Für ${activeLanguage.label} gibt es bisher keine Sätze — probier den geführten Kurs über den Knopf oben rechts.`}
+                </Text>
+              </View>
+            ) : null}
+            <View style={[styles.pathCanvas, { height: canvasHeight }]}>
+              {connectors.map((c, i) => (
+                <View
+                  key={`conn-${i}`}
+                  style={[
+                    styles.connector,
+                    {
+                      left: c.left,
+                      top: c.top,
+                      width: c.length,
+                      backgroundColor: c.color,
+                      transform: [{ rotate: `${c.angle}deg` }],
+                      transformOrigin: '0% 50%',
+                    },
+                  ]}
+                />
+              ))}
+              {pathNodes.map((n) =>
+                n.theme ? (
+                  <PathNode key={n.id} node={n} progress={expand} />
+                ) : (
+                  <PathNode key={n.id} node={n} />
+                )
+              )}
             </View>
-          ) : null}
-          <View style={[styles.pathCanvas, { height: canvasHeight }]}>
-            {connectors.map((c, i) => (
-              <View
-                key={`conn-${i}`}
-                style={[
-                  styles.connector,
-                  {
-                    left: c.left,
-                    top: c.top,
-                    width: c.length,
-                    backgroundColor: c.color,
-                    transform: [{ rotate: `${c.angle}deg` }],
-                    transformOrigin: '0% 50%',
-                  },
-                ]}
-              />
-            ))}
-            {pathNodes.map((n) =>
-              n.theme ? (
-                <PathNode key={n.id} node={n} progress={expand} />
-              ) : (
-                <PathNode key={n.id} node={n} />
-              )
-            )}
-          </View>
-        </ScrollView>
+          </ScrollView>
+
+          {/* Ausblenden statt hartem Schnitt (Nutzer-Wunsch 2026-08-25):
+              eine angeschnittene Pille direkt am Rand der Scroll-Box sah
+              wie ein Rendering-Fehler aus. Zwei Farbverlaeufe liegen ÜBER
+              der ScrollView (spaetere Geschwister malen in RN darueber),
+              `pointerEvents="none"` laesst Scroll/Tipp-Gesten ungehindert
+              durch. Faerben zu PATH_BACKDROP_COLOR statt einer festen
+              Konstante - dieselbe Farbe wie der Hintergrund dahinter, sonst
+              waere der Uebergang selbst wieder eine harte Kante. */}
+          <LinearGradient
+            pointerEvents="none"
+            colors={[PATH_BACKDROP_COLOR, `${PATH_BACKDROP_COLOR}00`]}
+            style={[styles.pathFade, styles.pathFadeTop, { height: pathFadeHoehe }]}
+          />
+          <LinearGradient
+            pointerEvents="none"
+            colors={[`${PATH_BACKDROP_COLOR}00`, PATH_BACKDROP_COLOR]}
+            style={[styles.pathFade, styles.pathFadeBottom, { height: pathFadeHoehe }]}
+          />
+        </View>
       </Card>
 
       {/* Fester Knopf ausserhalb der Scroll-Box. */}
@@ -996,6 +1023,10 @@ const styles = StyleSheet.create({
     paddingVertical: SPACING.lg,
     paddingHorizontal: SPACING.sm,
   },
+  pathScrollWrap: { flex: 1, position: 'relative' },
+  pathFade: { position: 'absolute', left: 0, right: 0 },
+  pathFadeTop: { top: 0 },
+  pathFadeBottom: { bottom: 0 },
   pathEmpty: {
     alignItems: 'center',
     justifyContent: 'center',
