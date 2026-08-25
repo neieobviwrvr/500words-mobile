@@ -1,11 +1,15 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 import { router, useFocusEffect } from 'expo-router';
 import { useAppState } from '../../state/AppState';
 import { getLanguage } from '../../data/languages';
 import { loadVocabWords, VocabWord } from '../../data/vocabContent';
 import { UI_WORT_TEMPLATES } from '../../data/uiWortTemplates';
 import { ladeSituationsAufgaben, SituationsAufgabe, VokabelOption } from '../../data/situationsAufgaben';
+import { normalisiereHanzi } from '../course/lessonEvaluation';
+import { useSttRecorder } from '../stt/useSttRecorder';
+import { useSpeechmatics } from '../stt/useSpeechmatics';
 import { speakText } from '../tts/speak';
 import { Screen, PillButton, ProgressBar } from '../../components';
 import {
@@ -18,6 +22,7 @@ import {
   WORD_COLORS,
   ACCENT_GREEN,
   ACCENT_ERROR,
+  ACCENT_ORANGE,
 } from '../../theme/tokens';
 
 // "Wörter-Wiederholung" (2026-08-24) - der erste der drei Trainingsmodi aus
@@ -127,6 +132,12 @@ export function WordReviewScreen() {
   const { darkMode, targetLanguageId } = useAppState();
   const theme = getTheme(darkMode);
   const language = getLanguage(targetLanguageId);
+  // Fuer die Situations-Runde (2026-08-25, Simons zweite Vorlage dazu):
+  // "sprich das richtige Wort ein ODER tippe es an" - dasselbe Mikrofon-
+  // Muster wie im gefuehrten Kurs (siehe AntwortBlock in LessonScreen.tsx),
+  // hier nur fuer EIN Wort statt eines ganzen Satzes.
+  const stt = useSpeechmatics();
+  const recorder = useSttRecorder();
 
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -158,6 +169,9 @@ export function WordReviewScreen() {
   const [situationGewaehlt, setSituationGewaehlt] = useState<VokabelOption | null>(null);
   const [situationAusgewertet, setSituationAusgewertet] = useState<'richtig' | 'falsch' | null>(null);
   const [situationRichtig, setSituationRichtig] = useState(0);
+  const [situationNimmtAuf, setSituationNimmtAuf] = useState(false);
+  const [situationPrueft, setSituationPrueft] = useState(false);
+  const [situationSttFehler, setSituationSttFehler] = useState<string | null>(null);
 
   // Zwei Anzeige-Umschalter (2026-08-25, Simons Vorgabe) - BEWUSST NOCH
   // PLATZHALTER, beide schalten nur ihr eigenes Label um, ohne (noch)
@@ -348,6 +362,51 @@ export function WordReviewScreen() {
         setSituationIndex((i) => i + 1);
       }
     }, 1400);
+  }
+
+  /**
+   * Mikrofon fuer die Situations-Runde - "sprich das richtige Wort ein
+   * ODER tippe es an" (Simons Vorlage 2026-08-25). Start/Stopp/Transkription
+   * genau wie `aufnehmen()` in LessonScreen.tsx, aber ausgewertet wird nur
+   * EIN Wort gegen die vier angezeigten Optionen, nicht ein ganzer Satz -
+   * `bewerteAntwort()` dort ist fuer Satzstruktur gebaut, hier reicht der
+   * Homophon-Abgleich aus `normalisiereHanzi()` allein.
+   *
+   * Trifft die Erkennung KEINE der vier Optionen, wird nichts ausgewaehlt -
+   * die Aufgabe bleibt loesbar per Antippen, das Mikrofon ist eine
+   * zusaetzliche Eingabeart, keine Sackgasse.
+   */
+  async function situationMikroTippen() {
+    setSituationSttFehler(null);
+    if (!situationNimmtAuf) {
+      setSituationNimmtAuf(true);
+      try {
+        await recorder.start();
+      } catch {
+        setSituationNimmtAuf(false);
+        setSituationSttFehler('Das Mikrofon ließ sich nicht starten.');
+      }
+      return;
+    }
+    setSituationNimmtAuf(false);
+    setSituationPrueft(true);
+    try {
+      const uri = await recorder.stop();
+      if (!uri) throw new Error('keine Aufnahme');
+      const { text } = await stt.transcribe(uri, targetLanguageId);
+      const gesagt = normalisiereHanzi(text);
+      const aufgabe = situationAufgaben[situationIndex];
+      const treffer = aufgabe?.optionen.find((o) => gesagt.includes(normalisiereHanzi(o.hanzi)));
+      if (treffer) {
+        setSituationGewaehlt(treffer);
+      } else {
+        setSituationSttFehler('Nicht verstanden — tippe eine Option an oder versuch’s nochmal.');
+      }
+    } catch {
+      setSituationSttFehler('Die Spracherkennung hat nicht geantwortet. Tippe eine Option an.');
+    } finally {
+      setSituationPrueft(false);
+    }
   }
 
   function personTippen(person: Person) {
@@ -610,6 +669,17 @@ export function WordReviewScreen() {
               <Text style={[styles.frage, { color: theme.text, fontSize: FONT_SIZE.title, lineHeight: LINE_HEIGHT.title }]}>
                 {situationAufgabe.frage}
               </Text>
+              <Text style={[styles.spielHinweis, { color: theme.sub, textAlign: 'left', marginBottom: 0 }]}>
+                Sprich das richtige Wort ein oder tippe es an
+              </Text>
+
+              <View style={[styles.frameBox, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
+                <Text style={[styles.frameText, { color: theme.text }]}>
+                  {situationAufgabe.frameVorher}{' '}
+                  {situationGewaehlt ? situationGewaehlt.pinyin : '...'} {situationAufgabe.frameNachher}
+                </Text>
+              </View>
+
               <View style={styles.personReihe}>
                 {situationAufgabe.optionen.map((o) => {
                   const gewaehltHier = situationGewaehlt?.hanzi === o.hanzi;
@@ -638,12 +708,30 @@ export function WordReviewScreen() {
                 })}
               </View>
 
-              <View style={[styles.frameBox, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
-                <Text style={[styles.frameText, { color: theme.text }]}>
-                  {situationAufgabe.frameVorher}{' '}
-                  {situationGewaehlt ? situationGewaehlt.pinyin : '...'} {situationAufgabe.frameNachher}
+              <Pressable
+                onPress={situationMikroTippen}
+                disabled={situationPrueft || !!situationAusgewertet}
+                accessibilityRole="button"
+                accessibilityLabel={situationNimmtAuf ? 'Aufnahme beenden' : 'Wort sprechen'}
+                style={({ pressed }) => [
+                  styles.mikro,
+                  {
+                    backgroundColor: situationNimmtAuf ? ACCENT_ERROR : ACCENT_ORANGE,
+                    opacity: pressed || situationPrueft || situationAusgewertet ? 0.7 : 1,
+                  },
+                ]}
+              >
+                {situationPrueft ? (
+                  <ActivityIndicator color="#FFFFFF" />
+                ) : (
+                  <Feather name={situationNimmtAuf ? 'square' : 'mic'} size={26} color="#FFFFFF" />
+                )}
+              </Pressable>
+              {situationSttFehler ? (
+                <Text style={{ color: ACCENT_ERROR, fontSize: FONT_SIZE.caption, textAlign: 'center' }}>
+                  {situationSttFehler}
                 </Text>
-              </View>
+              ) : null}
 
               <PillButton dark={darkMode} label="Lösen" disabled={!situationGewaehlt || !!situationAusgewertet} onPress={situationLoesen} />
             </>
@@ -856,4 +944,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   frameText: { fontSize: FONT_SIZE.bodyLg, fontWeight: '700' },
+  mikro: {
+    width: 72,
+    height: 72,
+    borderRadius: 36,
+    alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
