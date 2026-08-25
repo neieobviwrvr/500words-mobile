@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { useAppState } from '../../state/AppState';
 import { getLanguage } from '../../data/languages';
 import { loadVocabWords, VocabWord } from '../../data/vocabContent';
@@ -159,6 +159,21 @@ export function WordReviewScreen() {
   const [situationAusgewertet, setSituationAusgewertet] = useState<'richtig' | 'falsch' | null>(null);
   const [situationRichtig, setSituationRichtig] = useState(0);
 
+  // Zwei Anzeige-Umschalter (2026-08-25, Simons Vorgabe) - BEWUSST NOCH
+  // PLATZHALTER, beide schalten nur ihr eigenes Label um, ohne (noch)
+  // etwas an der Karte selbst auszublenden. Was sie spaeter genau
+  // ausblenden sollen (Hanzi bei Chinesisch? welches Feld bei "Zeichen"?),
+  // ist noch nicht entschieden - hier steht nur das Geruest.
+  const [zeichenEin, setZeichenEin] = useState(true);
+  const [uebersetzungEin, setUebersetzungEin] = useState(true);
+  // "Übersetzung an/aus" darf nur dort bedient werden, wo die Uebung nicht
+  // SELBST die Uebersetzung abfragt - im Zuordnungsspiel IST das Zuordnen
+  // von Wort zu Bedeutung die Aufgabe, ausblenden wuerde die Uebung
+  // unloesbar machen. Pronomen- und Situations-Runde fragen etwas anderes
+  // ab (Person-zu-Verb bzw. welches Wort passt) und zeigen die Bedeutung
+  // nur als Kontext dazu - dort darf sie optional weg.
+  const uebersetzungKnopfAktiv = rundentyp !== 'zuordnung';
+
   useEffect(() => {
     let cancelled = false;
     (async () => {
@@ -179,6 +194,19 @@ export function WordReviewScreen() {
       cancelled = true;
     };
   }, [targetLanguageId]);
+
+  // Bei jedem Betreten zurueck zur Wortarten-Auswahl (Nutzer-Wunsch
+  // 2026-08-25) - derselbe Fall wie bei LessonScreen.tsx: der Screen liegt
+  // in der Tab-Gruppe und bleibt gemountet, behielte seinen Stand (mitten
+  // in einer Runde) also ueber das Weggehen via Tab-Leiste hinweg. Reicht,
+  // NUR die Phase zurueckzusetzen - die Runden-Daten selbst sind beim
+  // naechsten "Los geht's" ohnehin neu aufgebaut, solange sie nicht
+  // gerendert werden, schaden veraltete Reste nicht.
+  useFocusEffect(
+    useCallback(() => {
+      setPhase('auswahl');
+    }, [])
+  );
 
   // Wortarten nach Haeufigkeit - Grundlage fuer beide Chip-Reihen unten.
   const wortartenNachHaeufigkeit = useMemo(() => {
@@ -453,6 +481,41 @@ export function WordReviewScreen() {
       {phase === 'runde' ? (
         <View style={styles.progressSlot}>
           <ProgressBar dark={darkMode} ratio={rundeFortschritt} />
+        </View>
+      ) : null}
+
+      {phase === 'runde' ? (
+        <View style={styles.umschalterReihe}>
+          <Pressable
+            onPress={() => setZeichenEin((z) => !z)}
+            accessibilityRole="button"
+            accessibilityLabel={zeichenEin ? 'Zeichen ausschalten' : 'Zeichen einschalten'}
+            accessibilityState={{ selected: zeichenEin }}
+            style={[styles.umschalter, { borderColor: theme.border, backgroundColor: theme.subtleFill }]}
+          >
+            <Text style={[styles.umschalterText, { color: theme.text }]}>
+              Zeichen {zeichenEin ? 'ein' : 'aus'}
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => setUebersetzungEin((u) => !u)}
+            disabled={!uebersetzungKnopfAktiv}
+            accessibilityRole="button"
+            accessibilityLabel={uebersetzungEin ? 'Übersetzung ausschalten' : 'Übersetzung einschalten'}
+            accessibilityState={{ selected: uebersetzungEin, disabled: !uebersetzungKnopfAktiv }}
+            style={[
+              styles.umschalter,
+              {
+                borderColor: theme.border,
+                backgroundColor: theme.subtleFill,
+                opacity: uebersetzungKnopfAktiv ? 1 : 0.4,
+              },
+            ]}
+          >
+            <Text style={[styles.umschalterText, { color: theme.text }]}>
+              Übersetzung {uebersetzungEin ? 'an' : 'aus'}
+            </Text>
+          </Pressable>
         </View>
       ) : null}
 
@@ -769,6 +832,14 @@ const styles = StyleSheet.create({
   ergebnisText: { fontSize: FONT_SIZE.body, textAlign: 'center' },
   ergebnisKnoepfe: { width: '100%', gap: SPACING.sm, marginTop: SPACING.md },
   progressSlot: { paddingVertical: SPACING.sm },
+  umschalterReihe: { flexDirection: 'row', gap: SPACING.sm, paddingBottom: SPACING.sm },
+  umschalter: {
+    paddingVertical: SPACING.sm,
+    paddingHorizontal: SPACING.md,
+    borderRadius: RADIUS.pill,
+    borderWidth: 1.5,
+  },
+  umschalterText: { fontWeight: '700', fontSize: FONT_SIZE.small },
   pronomenBereich: { flex: 1, paddingTop: SPACING.xl, gap: SPACING.xxl },
   personReihe: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACING.sm },
   personChip: {
