@@ -23,6 +23,13 @@ import {
 // Zwei bewusste Abweichungen von der Vorlage:
 // - Keine Lernerzahlen auf den Karten ("13,9 Mio."). Die haben wir zum
 //   Launch nicht, und erfundene Zahlen kommen nicht in Frage.
+//
+// "Ich spreche" (sourceLanguageId) wird seit 2026-08-24 zusaetzlich in
+// AppState verankert (siehe chooseSource), nicht nur in OnboardingState -
+// vorher verschwand die Auswahl beim Verlassen der Onboarding-Strecke
+// spurlos, kein anderer Screen konnte sie je lesen. Aendert bewusst NICHTS
+// an der Oberflaeche (die ist weiterhin komplett Deutsch), macht den Wert
+// nur ueberhaupt erst greifbar fuer spaetere Mehrsprachigkeit.
 // - Kompaktere Karten. Bei Babbel bricht "Portugiesisch" mitten im Wort um,
 //   weil drei Spalten auf 375px zu schmal sind; zwei Spalten vermeiden das.
 
@@ -49,13 +56,22 @@ const SOURCE_LANGUAGES: DropdownOption[] = [
 ];
 
 export default function LanguageSelectScreen() {
-  const { darkMode, targetLanguageId, setTargetLanguageId } = useAppState();
+  const { darkMode, targetLanguageId, setTargetLanguageId, setSourceLanguageId: setSourceLanguageIdApp } = useAppState();
   const { sourceLanguageId, setSourceLanguageId } = useOnboardingState();
   const theme = getTheme(darkMode);
 
   const chooseTarget = (id: string) => {
     setTargetLanguageId(id);
     router.push('/onboarding/o2-ziel');
+  };
+
+  // Verankert in AppState, ueberlebt damit einen Neustart - sofort bei der
+  // Auswahl, genau wie targetLanguageId oben (nicht erst am Ende der
+  // Onboarding-Strecke). OnboardingState bleibt zusaetzlich bestehen, weil
+  // dieser Screen selbst nur von dort liest (siehe `sourceLanguageId` oben).
+  const chooseSource = (id: SourceLanguageId) => {
+    setSourceLanguageId(id);
+    setSourceLanguageIdApp(id);
   };
 
   return (
@@ -70,7 +86,7 @@ export default function LanguageSelectScreen() {
       <Dropdown
         options={SOURCE_LANGUAGES}
         selectedId={sourceLanguageId}
-        onSelect={(id) => setSourceLanguageId(id as SourceLanguageId)}
+        onSelect={(id) => chooseSource(id as SourceLanguageId)}
         dark={darkMode}
         title="Welche Sprache sprichst du?"
         accessibilityLabel="Ich spreche"

@@ -61,6 +61,19 @@ export const LEARNING_MODE_LABEL: Record<LearningMode, string> = {
 type PersistedState = {
   darkMode: boolean;
   targetLanguageId: string;
+  /**
+   * Die O1-Auswahl "Ich spreche..." (2026-08-24 hier verankert).
+   *
+   * Vorher lebte dieser Wert nur kurz in OnboardingState und verschwand nach
+   * dem Verlassen der Onboarding-Strecke - kein anderer Screen konnte ihn
+   * je lesen. Jetzt ueberlebt er wie targetLanguageId einen Neustart.
+   * Aendert (noch) NICHTS an der Oberflaeche: die ist komplett Deutsch,
+   * unabhaengig von diesem Wert, und `en` ist bei O1 ohnehin deaktiviert
+   * ("bald verfuegbar") - siehe CLAUDE.md. Der Wert liegt nur schon bereit,
+   * falls/wenn echte Mehrsprachigkeit kommt (siehe PERSONALPRONOMEN_TEMPLATE
+   * in data/personalpronomenTemplate.ts fuer ein Beispiel, das darauf wartet).
+   */
+  sourceLanguageId: string;
   purchased: Record<string, boolean>;
   saved: Record<string, boolean>;
   savedMeta: Record<string, Phrase>;
@@ -137,6 +150,9 @@ type AppStateValue = {
   targetLanguageId: string;
   setTargetLanguageId: (id: string) => void;
 
+  sourceLanguageId: string;
+  setSourceLanguageId: (id: string) => void;
+
   purchased: Record<string, boolean>;
   cart: string[];
   toggleCartItem: (id: string) => void;
@@ -202,6 +218,9 @@ const AppStateContext = createContext<AppStateValue | null>(null);
 export function AppStateProvider({ children }: { children: React.ReactNode }) {
   const [darkMode, setDarkMode] = useState(false);
   const [targetLanguageId, setTargetLanguageId] = useState(DEFAULT_LANGUAGE_ID);
+  // 'de' als Vorgabe, dieselbe wie SourceLanguageId's Default in
+  // OnboardingState.tsx - Deutsch ist die einzige heute waehlbare Option.
+  const [sourceLanguageId, setSourceLanguageId] = useState('de');
   const [purchased, setPurchased] = useState<Record<string, boolean>>({});
   const [cart, setCart] = useState<string[]>([]);
   const [saved, setSaved] = useState<Record<string, boolean>>({});
@@ -244,6 +263,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
           const parsed: Partial<PersistedState> = JSON.parse(raw);
           if (parsed.darkMode !== undefined) setDarkMode(parsed.darkMode);
           if (parsed.targetLanguageId) setTargetLanguageId(parsed.targetLanguageId);
+          if (parsed.sourceLanguageId) setSourceLanguageId(parsed.sourceLanguageId);
           if (parsed.purchased) setPurchased(parsed.purchased);
           if (parsed.saved) setSaved(parsed.saved);
           if (parsed.savedMeta) setSavedMeta(parsed.savedMeta);
@@ -281,11 +301,11 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     if (!hydrated.current) return;
     if (ersterSchreibvorgang.current) ersterSchreibvorgang.current = false;
     else geaendertAmRef.current = Date.now();
-    const toPersist: PersistedState = { darkMode, targetLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode, fortschritt, uebersprungen, geaendertAm: geaendertAmRef.current };
+    const toPersist: PersistedState = { darkMode, targetLanguageId, sourceLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode, fortschritt, uebersprungen, geaendertAm: geaendertAmRef.current };
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(toPersist)).catch(() => {
       // Best-effort - ein Speicherfehler soll die laufende Session nicht stoeren.
     });
-  }, [darkMode, targetLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode, fortschritt, uebersprungen]);
+  }, [darkMode, targetLanguageId, sourceLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode, fortschritt, uebersprungen]);
 
   const toggleDark = useCallback(() => setDarkMode((d) => !d), []);
 
@@ -367,7 +387,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
         coins,
         coinGrants: coinGrantsRef.current,
         fortschritt,
-        einstellungen: { darkMode, targetLanguageId, lockscreenContent, learningMode, uebersprungen },
+        einstellungen: { darkMode, targetLanguageId, sourceLanguageId, lockscreenContent, learningMode, uebersprungen },
         gemerkt: { saved, savedMeta },
         purchased,
         geaendertAm: geaendertAmRef.current,
@@ -401,13 +421,14 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     const e = s.einstellungen as Partial<PersistedState>;
     if (e.darkMode !== undefined) setDarkMode(e.darkMode);
     if (e.targetLanguageId) setTargetLanguageId(e.targetLanguageId);
+    if (e.sourceLanguageId) setSourceLanguageId(e.sourceLanguageId);
     if (e.lockscreenContent) setLockscreenContent(e.lockscreenContent);
     if (e.learningMode) setLearningMode(e.learningMode);
     if (e.uebersprungen) setUebersprungen(e.uebersprungen);
     await saveCards(ergebnis.karten);
     laeuftRef.current = false;
     setAbgleichStand('fertig');
-  }, [coins, fortschritt, darkMode, targetLanguageId, lockscreenContent, learningMode, uebersprungen, saved, savedMeta, purchased]);
+  }, [coins, fortschritt, darkMode, targetLanguageId, sourceLanguageId, lockscreenContent, learningMode, uebersprungen, saved, savedMeta, purchased]);
 
   const ueberspringen = useCallback((satzId: string) => {
     setUebersprungen((u) => ({ ...u, [satzId]: true }));
@@ -420,6 +441,8 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       toggleDark,
       targetLanguageId,
       setTargetLanguageId,
+      sourceLanguageId,
+      setSourceLanguageId,
       purchased,
       cart,
       toggleCartItem,
@@ -446,7 +469,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       toggleLearningMode,
       hydrated: isHydrated,
     }),
-    [darkMode, toggleDark, targetLanguageId, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes, coins, grantCoins, coinGrants, fortschritt, zaehle, uebersprungen, ueberspringen, ueberspringenZuruecknehmen, abgleichen, abgleichStand, lockscreenContent, learningMode, toggleLearningMode, isHydrated]
+    [darkMode, toggleDark, targetLanguageId, sourceLanguageId, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes, coins, grantCoins, coinGrants, fortschritt, zaehle, uebersprungen, ueberspringen, ueberspringenZuruecknehmen, abgleichen, abgleichStand, lockscreenContent, learningMode, toggleLearningMode, isHydrated]
   );
 
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;

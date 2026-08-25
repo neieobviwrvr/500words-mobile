@@ -4,7 +4,7 @@ import { router } from 'expo-router';
 import { useAppState } from '../../state/AppState';
 import { getLanguage } from '../../data/languages';
 import { loadVocabWords, VocabWord } from '../../data/vocabContent';
-import { PERSONALPRONOMEN_TEMPLATE } from '../../data/personalpronomenTemplate';
+import { UI_WORT_TEMPLATES } from '../../data/uiWortTemplates';
 import { ladeSituationsAufgaben, SituationsAufgabe, VokabelOption } from '../../data/situationsAufgaben';
 import { speakText } from '../tts/speak';
 import { Screen, PillButton, ProgressBar } from '../../components';
@@ -77,12 +77,13 @@ const RUNDENGROESSE = 6;
 // personenabhaengige Form ersetzen und die Immer-richtig-Logik unten durch
 // einen echten Soll/Ist-Vergleich tauschen.
 //
-// Woher die vier Woerter kommen: aus PERSONALPRONOMEN_TEMPLATE (siehe
-// data/personalpronomenTemplate.ts), fest auf `de` - das Template deckt
+// Woher die vier Woerter kommen: aus UI_WORT_TEMPLATES.personalpronomen
+// (siehe data/uiWortTemplates.ts), fest auf `de` - das Template deckt
 // bereits Englisch/Franzoesisch/Spanisch mit ab, ist aber erst dann live
-// verdrahtbar, wenn `sourceLanguageId` ausserhalb von O1 gespeichert wird
-// UND die Oberflaeche wirklich mehrsprachig ist (siehe Kommentar dort).
-const PERSONEN = PERSONALPRONOMEN_TEMPLATE.de;
+// verdrahtbar, wenn die Oberflaeche wirklich mehrsprachig ist (siehe
+// Kommentar dort; `sourceLanguageId` selbst liegt seit 2026-08-24 in
+// AppState bereit).
+const PERSONEN = UI_WORT_TEMPLATES.personalpronomen.de;
 type Person = (typeof PERSONEN)[number];
 const PRONOMEN_RUNDENGROESSE = 5;
 
@@ -363,6 +364,20 @@ export function WordReviewScreen() {
     }
   }
 
+  // Zurueck fuehrt WAEHREND einer Runde (egal welcher der drei Rundentypen)
+  // erst zur Wortarten-Auswahl zurueck, nicht gleich aus dem ganzen Screen
+  // hinaus (Nutzer-Wunsch 2026-08-24) - der "Los geht's"-Screen ist die
+  // eigentliche vorherige Seite aus Nutzersicht, auch wenn technisch alles
+  // derselbe Screen ist. Erst AUF der Auswahl fuehrt Zurueck wirklich aus
+  // Woerter-Wiederholung heraus.
+  function zurueckTippen() {
+    if (phase !== 'auswahl') {
+      setPhase('auswahl');
+      return;
+    }
+    router.back();
+  }
+
   const filterZeile = aktiveWortarten.size === 0 ? 'Alle Wortarten' : [...aktiveWortarten].join(', ');
   const pronomenVerb = pronomenVerben[pronomenIndex];
   const pronomenFortschritt = pronomenVerben.length > 0 ? pronomenIndex / pronomenVerben.length : 0;
@@ -384,7 +399,7 @@ export function WordReviewScreen() {
     <Screen dark={darkMode}>
       <View style={styles.header}>
         <Pressable
-          onPress={() => router.back()}
+          onPress={zurueckTippen}
           style={styles.backBtn}
           accessibilityRole="button"
           accessibilityLabel="Zurück"
