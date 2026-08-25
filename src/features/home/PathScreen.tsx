@@ -135,11 +135,17 @@ const SWIPE_VELOCITY = 0.3;
  * 812 Punkten Fensterhoehe). Box waechst dafuer um 40 Punkte auf 505,
  * das sind 0.622 der Fensterhoehe.
  *
+ * Zurueckgenommen, noch am selben Tag (Nutzer-Wunsch: "ein bisschen zu nah,
+ * um die Haelfte der geaenderten Groesse vergroessern"): die Haelfte der
+ * eben gewonnenen 40 Punkte wieder abgegeben, also 20 Punkte. Box damit bei
+ * 485 Punkten (0.598 der Fensterhoehe), die Luft liegt wieder bei ~52 Punkten
+ * statt ~32.
+ *
  * Weil es ein Anteil und keine feste Zahl ist, waechst die Box auf groesseren
  * Geraeten mit; die verbleibende Luft ist dort entsprechend etwas groesser,
  * nicht exakt gleich.
  */
-const PATH_BOX_HEIGHT_RATIO = 0.622;
+const PATH_BOX_HEIGHT_RATIO = 0.598;
 
 type NodeState = 'done' | 'current' | 'open' | 'locked';
 
