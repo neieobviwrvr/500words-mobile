@@ -317,6 +317,11 @@ export default function TabsLayout() {
       <Tabs.Screen name="shop" options={{ href: null }} />
       <Tabs.Screen name="training/[mode]" options={{ href: null }} />
       <Tabs.Screen name="training/woerter" options={{ href: null }} />
+      {/* Fehlte seit dem 26.08. (Bau von SentenceReviewScreen) - fiel bisher
+          nicht auf, weil "Sätze-Wiederholung" ohnehin nur ueber den
+          Trainingsmodi-Kasten erreichbar ist, nie ueber die Leiste selbst.
+          Nachgetragen fuers Konsistenz mit den Geschwistern oben. */}
+      <Tabs.Screen name="training/saetze" options={{ href: null }} />
       <Tabs.Screen name="lesson/[id]" options={{ href: null }} />
       <Tabs.Screen name="wiederholen" options={{ href: null }} />
       <Tabs.Screen name="wortliste" options={{ href: null }} />

@@ -253,15 +253,21 @@ export function LessonsScreen() {
                           locked
                             ? router.push('/shop')
                             : // Genau diese Situation oeffnen, nicht die
-                              // ganze Kategorie (2026-08-21).
+                              // ganze Kategorie (2026-08-21). Seit 2026-08-27
+                              // die 3-Stufen-Leiter aus SentenceReviewScreen.tsx
+                              // statt fester Nachsprech-Reihenfolge ODER reiner
+                              // FSRS-Faelligkeit (Simons Einwand: beides wirkte
+                              // neben Satzliste [Nachschlagen] und Saetze-
+                              // Wiederholen [gepoolter SRS-Review] nicht mehr
+                              // sinnvoll) - `categoryId` + `scenario` filtern
+                              // dort auf genau diese Situation, mit EIGENEM,
+                              // von Saetze-Wiederholung unabhaengigem
+                              // Fortschritt (siehe Kommentar dort). Die Karten
+                              // rotieren dadurch immer, unabhaengig von FSRS-
+                              // Faelligkeit - Simons ausdruecklicher Wunsch.
                               router.push({
-                                pathname: '/exercise',
-                                params: {
-                                  mode: 'spam',
-                                  categoryId,
-                                  scenario: situation.scenario,
-                                  source: 'category',
-                                },
+                                pathname: '/training/saetze',
+                                params: { categoryId, scenario: situation.scenario },
                               })
                         }
                       />
@@ -414,6 +420,16 @@ function KategorieMenu({
   const [mounted, setMounted] = useState(false);
   const hasOpened = useRef(false);
   const reveal = useRef(new Animated.Value(0)).current;
+  // EIN stabiles Interpolations-Objekt statt bei jedem Render neu erzeugt
+  // (2026-08-27, Fehlerbericht Simon: Chevron drehte sich nicht). Anders als
+  // `kopfKnoepfe` unten, das bei JEDEM Aufklappen frisch GEMOUNTET wird
+  // (`{mounted ? <Animated.View>...}`) und dadurch immer eine frische
+  // Anbindung bekommt, bleibt dieses Animated.View die GANZE Zeit im Baum -
+  // eine neu erzeugte Interpolation bei jedem Render haengte sich dort
+  // unzuverlaessig an, `useRef` haelt sie ueber die Lebenszeit stabil.
+  const rotateInterp = useRef(
+    reveal.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '180deg'] })
+  ).current;
 
   useEffect(() => {
     const useNative = Platform.OS !== 'web';
@@ -458,7 +474,13 @@ function KategorieMenu({
         hitSlop={10}
         style={({ pressed }) => [styles.chevronKnopf, { opacity: pressed ? 0.6 : 1 }]}
       >
-        <Feather name="chevron-right" size={16} color={offen ? theme.text : theme.sub} />
+        {/* Dreht sich mit derselben `reveal`-Animation wie die Knopfreihe
+            (2026-08-27, Fehlerbericht Simon: drehte sich nicht) - 0deg bei
+            zu (">"), 180deg bei offen (chevron-right gespiegelt = "<"),
+            statt ein zweites Icon auszutauschen. */}
+        <Animated.View style={{ transform: [{ rotate: rotateInterp }] }}>
+          <Feather name="chevron-right" size={16} color={offen ? theme.text : theme.sub} />
+        </Animated.View>
       </Pressable>
 
       {mounted ? (
@@ -508,9 +530,15 @@ function KategorieMenu({
           <Pressable
             onPress={() => {
               onToggle();
+              // Auch "ueben" laeuft seit 2026-08-27 ueber die 3-Stufen-Leiter
+              // (Simons Antwort auf Rueckfrage: "alle drei Stufen, aber
+              // haerter bewertet") - nur ohne `scenario`, deckt also die
+              // GANZE Kategorie statt einer einzelnen Situation ab. Gesamt
+              // trotzdem in der Kategorie/Situation-eigenen Zaehler-Spur
+              // (`kat_stufe*`), unabhaengig von Saetze-Wiederholung.
               router.push({
-                pathname: '/exercise',
-                params: { mode: 'spam', categoryId, source: 'category' },
+                pathname: '/training/saetze',
+                params: { categoryId },
               });
             }}
             accessibilityRole="button"

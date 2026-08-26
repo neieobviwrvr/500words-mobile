@@ -3,9 +3,13 @@ import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, TextInput, 
 import { Ionicons } from '@expo/vector-icons';
 import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useAppState } from '../../state/AppState';
+import { useOnboardingState } from '../../state/OnboardingState';
 import { getLanguage } from '../../data/languages';
+import { CATEGORY_BY_ID } from '../../data/categories';
+import { leihgeberVon, saetzeFuer } from '../../data/geliehen';
+import { passtZurAnsprache } from '../../data/anrede';
 import { ExerciseSentence, loadAnswerClusters, loadExerciseSentences, hilfeText } from '../../data/phrasebookContent';
-import { toPhrase } from '../../data/cheatsheetContent';
+import { toPhrase, phraseId } from '../../data/cheatsheetContent';
 import { scenarioLabel } from '../../data/scenarios';
 import { evaluateConcepts, EvaluationResult } from '../evaluation/evaluateConcepts';
 import { useSttRecorder } from '../stt/useSttRecorder';
@@ -51,6 +55,17 @@ import { getTheme, SPACING, RADIUS, FONT_SIZE, FONT_FAMILY, LINE_HEIGHT, ACCENT_
 const STUFE1_PRAEFIX = 'satz_stufe1_v1:';
 const STUFE2_PRAEFIX = 'satz_stufe2_v1:';
 const JE_STUFE3_PRAEFIX = 'satz_je_stufe3_v1:';
+// Kategorie/Situation (2026-08-27, Simons Wunsch: "alles aus Kategorie/
+// Situation soll auch durch die drei Stufen laufen koennen, unabhaengig von
+// Saetze-Wiederholung") - EIGENE Praefixe statt der SATZ_*-Praefixe oben, ein
+// Satz traegt dadurch ZWEI unabhaengige Fortschritte: einen fuer die globale
+// Saetze-Wiederholung, einen fuer sein Auftreten in Kategorie/Situation.
+// Keine weitere Verschachtelung noetig (z.B. nach categoryId), weil jeder
+// Satz genau EINER Kategorie/Situation gehoert - der Schluessel bleibt die
+// Satz-ID, es gibt also keine Kollisionsgefahr zwischen Kategorien.
+const KAT_STUFE1_PRAEFIX = 'kat_stufe1_v1:';
+const KAT_STUFE2_PRAEFIX = 'kat_stufe2_v1:';
+const KAT_JE_STUFE3_PRAEFIX = 'kat_je_stufe3_v1:';
 const STUFE1_SCHWELLE = 1;
 const STUFE2_SCHWELLE = 3;
 
@@ -115,7 +130,8 @@ function hilfeTextFuerSatz(satz: ExerciseSentence): string {
 }
 
 export function SentenceReviewScreen() {
-  const { darkMode, targetLanguageId, saved, toggleSaved } = useAppState();
+  const { darkMode, targetLanguageId, saved, toggleSaved, uebersprungen } = useAppState();
+  const { addressing: ansprache } = useOnboardingState();
   const theme = getTheme(darkMode);
   const language = getLanguage(targetLanguageId);
   // Siehe Kommentar bei stufeVon() - Deutsch als Zielsprache hat keine
@@ -123,6 +139,22 @@ export function SentenceReviewScreen() {
   const kannAbfragen = targetLanguageId !== 'de';
   const stt = useSpeechmatics();
   const recorder = useSttRecorder();
+
+  // Kategorie/Situation-Modus (2026-08-27) - derselbe Screen, aber auf EINE
+  // Kategorie (und optional eine einzelne Situation darin) eingeschraenkt,
+  // aufgerufen von LessonsScreen.tsx statt von der globalen "Saetze-
+  // Wiederholung"-Kachel. Ohne `categoryId` bleibt alles exakt wie bisher.
+  const { categoryId, scenario } = useLocalSearchParams<{ categoryId?: string; scenario?: string }>();
+  const kategorieModus = !!categoryId;
+  // Eigene Zaehler-Praefixe im Kategorie-Modus (siehe Konstanten oben) - der
+  // Fortschritt hier ist ausdruecklich NICHT derselbe wie in der globalen
+  // Saetze-Wiederholung.
+  const stufe1Praefix = kategorieModus ? KAT_STUFE1_PRAEFIX : STUFE1_PRAEFIX;
+  const stufe2Praefix = kategorieModus ? KAT_STUFE2_PRAEFIX : STUFE2_PRAEFIX;
+  const jeStufe3Praefix = kategorieModus ? KAT_JE_STUFE3_PRAEFIX : JE_STUFE3_PRAEFIX;
+  const katName =
+    categoryId === 'grundwortschatz' ? 'Grundwortschatz' : (categoryId ? CATEGORY_BY_ID[categoryId]?.name ?? categoryId : '');
+  const anzeigeName = scenario ? scenarioLabel(scenario) : katName;
 
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -170,15 +202,32 @@ export function SentenceReviewScreen() {
       setLoading(true);
       setLoadError(null);
       try {
+        // Im Kategorie-Modus dieselbe Filter-Pipeline wie ExerciseScreen.tsx
+        // (source='category'/'srs-kategorie'): eigene + geliehene Situationen
+        // dieser Kategorie, optional auf EINE Situation eingeschraenkt,
+        // Geschlechtsvarianten und dauerhaft uebersprungene Saetze raus. Ohne
+        // `categoryId` bleibt es beim bisherigen "alles laden" (`[]`).
+        const categoryIds = kategorieModus ? [categoryId as string, ...leihgeberVon([categoryId as string])] : [];
         const [sentencesResult, clusterData, s1, s2, je3] = await Promise.all([
-          loadExerciseSentences(targetLanguageId, []),
+          loadExerciseSentences(targetLanguageId, categoryIds),
           loadAnswerClusters(),
-          ladeZaehler(STUFE1_PRAEFIX, targetLanguageId),
-          ladeZaehler(STUFE2_PRAEFIX, targetLanguageId),
-          ladeJeErreicht(JE_STUFE3_PRAEFIX, targetLanguageId),
+          ladeZaehler(stufe1Praefix, targetLanguageId),
+          ladeZaehler(stufe2Praefix, targetLanguageId),
+          ladeJeErreicht(jeStufe3Praefix, targetLanguageId),
         ]);
         if (cancelled) return;
-        setSentences(sentencesResult.sentences);
+        let geladen = kategorieModus
+          ? saetzeFuer(categoryId as string, sentencesResult.sentences)
+          : sentencesResult.sentences;
+        if (kategorieModus && scenario) geladen = geladen.filter((s) => s.scenario === scenario);
+        if (kategorieModus) {
+          geladen = geladen.filter(
+            (s) =>
+              passtZurAnsprache(s.addressing, ansprache) &&
+              !uebersprungen[phraseId(targetLanguageId, language.table ?? '', s.id)],
+          );
+        }
+        setSentences(geladen);
         setOffline(sentencesResult.fromCache);
         setClusters(clusterData);
         setStufe1(s1);
@@ -193,7 +242,12 @@ export function SentenceReviewScreen() {
     return () => {
       cancelled = true;
     };
-  }, [targetLanguageId]);
+    // `uebersprungen` bewusst NICHT in den Abhaengigkeiten - dieselbe
+    // Begruendung wie in ExerciseScreen.tsx: ein Ueberspringen MITTEN in der
+    // Sitzung soll die laufende Runde nicht neu laden. Gelesen wird ueber den
+    // aktuellen Wert beim Sessionstart.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [targetLanguageId, kategorieModus, categoryId, scenario, stufe1Praefix, stufe2Praefix, jeStufe3Praefix, ansprache]);
 
   function naechsteRundeVorbereiten(
     s1: Record<string, number> = stufe1,
@@ -360,7 +414,7 @@ export function SentenceReviewScreen() {
       const nichtVerstanden = evaluation.tier === 'nicht_verstanden';
       const schreiben = nichtVerstanden
         ? Promise.resolve(stufe1[key] ?? 0)
-        : aendereZaehler(STUFE1_PRAEFIX, targetLanguageId, key, 1, STUFE1_SCHWELLE, stufe1);
+        : aendereZaehler(stufe1Praefix, targetLanguageId, key, 1, STUFE1_SCHWELLE, stufe1);
       void schreiben.then((neu) => {
         const neuStufe1 = nichtVerstanden ? stufe1 : { ...stufe1, [key]: neu };
         if (!nichtVerstanden) setStufe1(neuStufe1);
@@ -369,9 +423,13 @@ export function SentenceReviewScreen() {
       return;
     }
 
-    // Stufe 3: FSRS-Schreibung auf dieselbe Karte wie Speed-Run (Simons
-    // Entscheidung - siehe Kommentar am Dateianfang).
-    if (language.table) {
+    // Stufe 3: FSRS-Schreibung auf dieselbe Karte wie Speed-Run - NUR in der
+    // globalen Saetze-Wiederholung (Simons Entscheidung, siehe Kommentar am
+    // Dateianfang). Im Kategorie-Modus bewusst NICHT (2026-08-27, Simons
+    // Wunsch: "komplett unabhaengig") - dieser Durchlauf berührt weder die
+    // Faelligkeit fuer "Taegliches Wiederholen" noch die von
+    // "srs-kategorie"/ExerciseScreen.tsx.
+    if (language.table && !kategorieModus) {
       const fsrsKey = cardKey(targetLanguageId, language.table, aktuellerSatz.id);
       const bisherige = newCard();
       const aktualisiert = reviewCard(bisherige, evaluation.tier);
@@ -379,10 +437,15 @@ export function SentenceReviewScreen() {
     }
 
     if (evaluation.tier === 'nicht_verstanden') {
-      // Rückfall auf Stufe 2, sanft (Schwelle-1 statt 0) - dieselbe Regel
-      // wie bei den Wörtern.
-      const neuerStand = STUFE2_SCHWELLE - 1;
-      void setzeZaehler(STUFE2_PRAEFIX, targetLanguageId, key, neuerStand);
+      // Ruecksprung von Stufe 3: in der globalen Saetze-Wiederholung sanft
+      // (Schwelle-1, ein Schritt zurueck). Im Kategorie-Modus haerter -
+      // ganz auf 0, die komplette Stufe-2-Leiter muss neu erklommen werden
+      // (2026-08-27, Simons ausdruecklicher Wunsch: "haerterer Set-Back
+      // zwischen Stufe 2 und 3, aber NICHT zurueck auf Stufe 1") - Stufe 1
+      // bleibt unberuehrt (`stufe1` wird hier nicht angefasst), `stufeVon()`
+      // liefert also weiterhin mindestens 2, nie wieder 1.
+      const neuerStand = kategorieModus ? 0 : STUFE2_SCHWELLE - 1;
+      void setzeZaehler(stufe2Praefix, targetLanguageId, key, neuerStand);
       const neuStufe2 = { ...stufe2, [key]: neuerStand };
       setStufe2(neuStufe2);
       setTimeout(() => rundeAbschliessen(0, 1, { s2: neuStufe2 }), 1400);
@@ -406,14 +469,14 @@ export function SentenceReviewScreen() {
       // Zaehler-Aktualisierung geplant, mit explizitem Override statt
       // veralteter Closure-Defaults. Hier zusaetzlich betroffen: `jeStufe3`,
       // weil genau dieser Aufruf die Schwelle erreichen kann.
-      void aendereZaehler(STUFE2_PRAEFIX, targetLanguageId, key, 1, STUFE2_SCHWELLE, stufe2).then(async (neu) => {
+      void aendereZaehler(stufe2Praefix, targetLanguageId, key, 1, STUFE2_SCHWELLE, stufe2).then(async (neu) => {
         const neuStufe2 = { ...stufe2, [key]: neu };
         setStufe2(neuStufe2);
         let neueJe3 = jeStufe3;
         if (neu >= STUFE2_SCHWELLE && !jeStufe3.has(key)) {
           neueJe3 = new Set(jeStufe3).add(key);
           setJeStufe3(neueJe3);
-          await markiereJeErreicht(JE_STUFE3_PRAEFIX, targetLanguageId, key);
+          await markiereJeErreicht(jeStufe3Praefix, targetLanguageId, key);
         }
         setTimeout(() => rundeAbschliessen(1, 1, { s2: neuStufe2, je3: neueJe3 }), 900);
       });
@@ -473,7 +536,9 @@ export function SentenceReviewScreen() {
         <Pressable onPress={zurueckTippen} style={styles.backBtn} accessibilityRole="button" accessibilityLabel="Zurück">
           <Text style={[styles.backGlyph, { color: theme.text }]}>‹</Text>
         </Pressable>
-        <Text style={[styles.title, { color: theme.text }]}>Sätze-Wiederholung</Text>
+        <Text style={[styles.title, { color: theme.text }]} numberOfLines={1}>
+          {kategorieModus ? anzeigeName : 'Sätze-Wiederholung'}
+        </Text>
         <UebungsMenu dark={darkMode} meldenLabel="Satz melden" />
       </View>
 
@@ -507,15 +572,17 @@ export function SentenceReviewScreen() {
       {!loading && !loadError && language.table && phase === 'auswahl' && (
         <ScrollView contentContainerStyle={styles.auswahlScroll}>
           {offline ? <Text style={[styles.offline, { color: theme.sub }]}>📴 Offline — letzter gespeicherter Stand</Text> : null}
-          <Text style={[styles.frage, { color: theme.text }]}>Bereit für ein paar Sätze?</Text>
+          <Text style={[styles.frage, { color: theme.text }]}>
+            {kategorieModus ? `Bereit für ${anzeigeName}?` : 'Bereit für ein paar Sätze?'}
+          </Text>
           <View style={styles.startBox}>
             <Text style={[styles.anzahlText, { color: theme.sub }]}>{sentences.length} Sätze insgesamt</Text>
-            {batchZeile ? (
+            {!kategorieModus && batchZeile ? (
               <Text style={{ color: theme.sub, fontSize: FONT_SIZE.caption, marginTop: SPACING.xs }}>{batchZeile}</Text>
             ) : null}
             {sentences.length < 1 ? (
               <Text style={{ color: theme.sub, fontSize: FONT_SIZE.caption, marginTop: SPACING.xs }}>
-                Für {language.label} sind noch keine Sätze da.
+                {kategorieModus ? 'Für diese Auswahl gibt es noch keine Sätze.' : `Für ${language.label} sind noch keine Sätze da.`}
               </Text>
             ) : (
               <PillButton dark={darkMode} label="Los geht's" onPress={rundeStarten} />
