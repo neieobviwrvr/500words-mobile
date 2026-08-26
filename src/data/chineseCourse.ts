@@ -13,7 +13,7 @@
 // und ist nie der abgefragte Teil - passt zum Kernprinzip der App, dass
 // Lesen und Schreiben nicht trainiert werden.
 //
-// Umfang: 12 Module, 113 Lektionen, 349 Slot-Vokabeln
+// Umfang: 12 Module, 113 Lektionen, 350 Slot-Vokabeln
 // (Wortliste insgesamt: 351 Eintraege - der Rest sind Rahmen- und
 // Funktionswoerter, die in den Satzmustern stecken statt in Slots).
 
@@ -39,6 +39,14 @@ export type CourseLessonData = {
   kind: 'frame' | 'series' | 'finisher';
   /** Satzmuster mit Platzhaltern, in Pinyin und passiv in Zeichen. */
   frame: { pinyin: string; hanzi: string };
+  /**
+   * Deutsches Rahmen-Template mit denselben [Slot]/[Zahl]-Platzhaltern wie
+   * `frame.hanzi` (2026-08-25) - bei `kind: 'frame'` und `'series'`
+   * gesetzt, bei `'finisher'` `null` (der hat schon sein eigenes `task`).
+   * Fuers "Wie sagst du: ...?" der Situations-Auswahl in der
+   * Wörter-Wiederholung, siehe data/situationsAufgaben.ts.
+   */
+  frameDe: string | null;
   /** Welche Pronomen diese Lektion traegt. */
   pronouns: CourseWord[];
   /** Eine Gruppe je Platzhalter im Rahmen. */
@@ -79,6 +87,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ / tā / tā shì [Slot]",
           hanzi: "我 / 他 / 她 是 [Slot]"
         },
+        frameDe: "Ich bin [Slot].",
         pronouns: [
           {
             hanzi: "我",
@@ -147,6 +156,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "tā / tā hěn [Slot]",
           hanzi: "他 / 她 很 [Slot]"
         },
+        frameDe: "Er ist sehr [Slot].",
         pronouns: [
           {
             hanzi: "他",
@@ -205,6 +215,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "zhè shì wǒ de [Slot]，tā / tā hěn shuài",
           hanzi: "这是 我的 [Slot]，他 / 她 很 帅"
         },
+        frameDe: "Das ist mein [Slot], er sieht gut aus.",
         pronouns: [
           {
             hanzi: "他",
@@ -226,12 +237,12 @@ export const CHINESE_COURSE: CourseModuleData[] =
             },
             {
               hanzi: "男朋友",
-              pinyin: "nánpéngyou",
+              pinyin: "nán péngyou",
               de: "fester Freund"
             },
             {
               hanzi: "女朋友",
-              pinyin: "nǚpéngyou",
+              pinyin: "nǚ péngyou",
               de: "feste Freundin"
             },
             {
@@ -263,6 +274,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "zhè shì wǒ de [Slot]",
           hanzi: "这是 我的 [Slot]"
         },
+        frameDe: "Das ist mein [Slot].",
         pronouns: [
           {
             hanzi: "他",
@@ -310,6 +322,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "zhè shì wǒ de [Slot]",
           hanzi: "这是 我的 [Slot]"
         },
+        frameDe: "Das ist mein [Slot].",
         pronouns: [
           {
             hanzi: "他",
@@ -357,6 +370,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "nǐ jiào shénme [Slot 1]？wǒ [Zahl] [Slot 2]",
           hanzi: "你 叫 什么 [Slot 1]？我 [Zahl] [Slot 2]"
         },
+        frameDe: "Wie ist dein [Slot 1]? Ich bin [Zahl] [Slot 2] alt.",
         pronouns: [
           {
             hanzi: "我",
@@ -412,6 +426,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "[Slot] shì nǐ de péngyou？",
           hanzi: "[Slot] 是 你的 朋友？"
         },
+        frameDe: "Ist [Slot] dein Freund?",
         pronouns: [
           {
             hanzi: "你",
@@ -449,6 +464,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ shì [Name]，zhè shì wǒ de [Slot 1]，tā / tā hěn [Slot 2]",
           hanzi: "我是 [Name]，这是 我的 [Slot 1]，他 / 她 很 [Slot 2]"
         },
+        frameDe: null,
         pronouns: [],
         slotGroups: [],
         newCount: 0,
@@ -468,6 +484,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ xiǎng / yào [Slot]",
           hanzi: "我 想 / 要 [Slot]"
         },
+        frameDe: "Ich möchte [Slot].",
         pronouns: [
           {
             hanzi: "我",
@@ -511,6 +528,11 @@ export const CHINESE_COURSE: CourseModuleData[] =
             hanzi: "想",
             pinyin: "xiǎng",
             de: "möchten / wollen"
+          },
+          {
+            hanzi: "要",
+            pinyin: "yào",
+            de: "wollen / brauchen"
           }
         ]
       },
@@ -521,6 +543,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "nǐ kěyǐ [Slot] ma？",
           hanzi: "你 可以 [Slot] 吗？"
         },
+        frameDe: "Kannst du [Slot]?",
         pronouns: [
           {
             hanzi: "你",
@@ -579,6 +602,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ xiǎng [Slot]",
           hanzi: "我 想 [Slot]"
         },
+        frameDe: "Ich möchte [Slot].",
         pronouns: [
           {
             hanzi: "我",
@@ -621,6 +645,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "nǐ kěyǐ [Slot] ma？",
           hanzi: "你 可以 [Slot] 吗？"
         },
+        frameDe: "Kannst du [Slot]?",
         pronouns: [
           {
             hanzi: "你",
@@ -663,6 +688,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ xiǎng [Slot] zhè gè",
           hanzi: "我 想 [Slot] 这个"
         },
+        frameDe: "Ich möchte das [Slot].",
         pronouns: [
           {
             hanzi: "我",
@@ -706,6 +732,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ [Slot 1] nǐ，wǒ [Slot 2] zhè gè hěn hǎo",
           hanzi: "我 [Slot 1] 你，我 [Slot 2] 这个 很 好"
         },
+        frameDe: "Ich [Slot 1] dir, ich [Slot 2] das gut.",
         pronouns: [
           {
             hanzi: "我",
@@ -751,6 +778,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ bù [Slot 1] zhè gè [Slot 2]",
           hanzi: "我 不 [Slot 1] 这个 [Slot 2]"
         },
+        frameDe: "Ich [Slot 1] [Slot 2] nicht.",
         pronouns: [
           {
             hanzi: "我",
@@ -796,6 +824,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ xiǎng [Slot 1] yīfu，zhè gè shì [Slot 2] de",
           hanzi: "我 想 [Slot 1] 衣服，这个 是 [Slot 2] 的"
         },
+        frameDe: "Ich möchte die Kleidung [Slot 1]. Die ist [Slot 2].",
         pronouns: [
           {
             hanzi: "我",
@@ -841,6 +870,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "qǐng [Slot 1] wǒ jìn，wǒ chī [Slot 2] le",
           hanzi: "请 [Slot 1] 我 进，我 吃 [Slot 2] 了"
         },
+        frameDe: "Bitte [Slot 1] mich rein, ich bin [Slot 2] mit dem Essen.",
         pronouns: [
           {
             hanzi: "我",
@@ -886,6 +916,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ xiǎng [Slot]",
           hanzi: "我 想 [Slot]"
         },
+        frameDe: "Ich möchte [Slot].",
         pronouns: [
           {
             hanzi: "我",
@@ -913,6 +944,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ xiǎng [Slot 1]，nǐ kěyǐ [Slot 2] ma？",
           hanzi: "我 想 [Slot 1]，你 可以 [Slot 2] 吗？"
         },
+        frameDe: null,
         pronouns: [],
         slotGroups: [],
         newCount: 0,
@@ -932,6 +964,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ / wǒmen yǒu [Slot]",
           hanzi: "我 / 我们 有 [Slot]"
         },
+        frameDe: "Ich habe [Slot].",
         pronouns: [
           {
             hanzi: "我",
@@ -990,6 +1023,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ / wǒmen yǒu [Zahl] gè píngguǒ",
           hanzi: "我 / 我们 有 [Zahl] 个 苹果"
         },
+        frameDe: "Ich habe [Zahl] Äpfel.",
         pronouns: [
           {
             hanzi: "我",
@@ -1087,6 +1121,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "zhè gè tài [Slot] le",
           hanzi: "这个 太 [Slot] 了"
         },
+        frameDe: "Das ist zu [Slot].",
         pronouns: [],
         slotGroups: [
           [
@@ -1134,6 +1169,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ yǒu [Slot]",
           hanzi: "我 有 [Slot]"
         },
+        frameDe: "Ich habe [Slot].",
         pronouns: [
           {
             hanzi: "我",
@@ -1181,6 +1217,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "zhè gè duōshao [Slot 1]？wǒ yǒu [Zahl] [Slot 2]",
           hanzi: "这个 多少 [Slot 1]？我 有 [Zahl] [Slot 2]"
         },
+        frameDe: "Wie viel [Slot 1] kostet das? Ich habe [Zahl] [Slot 2].",
         pronouns: [
           {
             hanzi: "我",
@@ -1221,6 +1258,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "nǐ yǒu [Slot] gè píngguǒ？",
           hanzi: "你 有 [Slot] 个 苹果？"
         },
+        frameDe: "[Slot] Äpfel hast du?",
         pronouns: [
           {
             hanzi: "你",
@@ -1253,6 +1291,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "zhè gè tài [Slot] le",
           hanzi: "这个 太 [Slot] 了"
         },
+        frameDe: "Das ist zu [Slot].",
         pronouns: [],
         slotGroups: [
           [
@@ -1289,6 +1328,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ xiǎng [Slot 1] zhè gè [Slot 2]",
           hanzi: "我 想 [Slot 1] 这个 [Slot 2]"
         },
+        frameDe: "Ich möchte diesen [Slot 2] [Slot 1].",
         pronouns: [
           {
             hanzi: "我",
@@ -1328,6 +1368,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ xiǎng mǎi [Slot 1] dōngxi，zhè gè [Zahl] [Slot 2]",
           hanzi: "我 想 买 [Slot 1] 东西，这个 [Zahl] [Slot 2]"
         },
+        frameDe: "Ich möchte [Slot 1] Dinge kaufen, das kostet [Zahl] [Slot 2].",
         pronouns: [
           {
             hanzi: "我",
@@ -1362,6 +1403,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒmen [Slot 1] xǐhuan zhè gè，zhè gè [Slot 2] guì",
           hanzi: "我们 [Slot 1] 喜欢 这个，这个 [Slot 2] 贵"
         },
+        frameDe: "Wir [Slot 1] mögen das, das ist [Slot 2] teuer.",
         pronouns: [
           {
             hanzi: "我们",
@@ -1407,6 +1449,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ mǎi píngguǒ [Slot] chá",
           hanzi: "我 买 苹果 [Slot] 茶"
         },
+        frameDe: "Ich kaufe Äpfel [Slot] Tee.",
         pronouns: [
           {
             hanzi: "我",
@@ -1440,6 +1483,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ qù guo yī [Slot]",
           hanzi: "我 去 过 一 [Slot]"
         },
+        frameDe: "Ich war ein [Slot] dort.",
         pronouns: [
           {
             hanzi: "我",
@@ -1478,6 +1522,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "[Slot] gè shì wǒ de",
           hanzi: "[Slot] 个 是 我的"
         },
+        frameDe: "[Slot] gehört mir.",
         pronouns: [
           {
             hanzi: "我",
@@ -1505,6 +1550,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒmen yǒu [Zahl] gè，zhè gè tài [Slot] le",
           hanzi: "我们 有 [Zahl] 个，这个 太 [Slot] 了"
         },
+        frameDe: null,
         pronouns: [],
         slotGroups: [],
         newCount: 0,
@@ -1524,6 +1570,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒmen qù [Aktion]",
           hanzi: "我们 去 [Aktion]"
         },
+        frameDe: "Wir gehen [Aktion].",
         pronouns: [
           {
             hanzi: "我们",
@@ -1566,6 +1613,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒmen [Zeit] qù chīfàn",
           hanzi: "我们 [Zeit] 去 吃饭"
         },
+        frameDe: "Wir gehen [Zeit] essen.",
         pronouns: [
           {
             hanzi: "我们",
@@ -1608,6 +1656,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "nǐ shénme shíhou [Slot]？",
           hanzi: "你 什么时候 [Slot]？"
         },
+        frameDe: "Wann [Slot] du?",
         pronouns: [
           {
             hanzi: "你",
@@ -1661,6 +1710,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒmen [Zeit] qù chīfàn",
           hanzi: "我们 [Zeit] 去 吃饭"
         },
+        frameDe: "Wir gehen [Zeit] essen.",
         pronouns: [
           {
             hanzi: "我们",
@@ -1708,6 +1758,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "jīntiān shì [Zahl] [Slot]",
           hanzi: "今天 是 [Zahl] [Slot]"
         },
+        frameDe: "Heute ist [Zahl] [Slot].",
         pronouns: [],
         slotGroups: [
           [
@@ -1744,6 +1795,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "xiànzài [Zahl] [Slot]",
           hanzi: "现在 [Zahl] [Slot]"
         },
+        frameDe: "Jetzt ist es [Zahl] [Slot].",
         pronouns: [],
         slotGroups: [
           [
@@ -1770,6 +1822,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ zǎoshang [Slot 1]，wǒ de [Slot 2] shì wǔ yuè",
           hanzi: "我 早上 [Slot 1]，我的 [Slot 2] 是 五 月"
         },
+        frameDe: "Ich [Slot 1] morgens, mein [Slot 2] ist im Mai.",
         pronouns: [
           {
             hanzi: "我",
@@ -1804,6 +1857,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "zhè gè [Slot] wǒ zài xuéxiào",
           hanzi: "这个 [Slot] 我 在 学校"
         },
+        frameDe: "Zu dieser [Slot] war ich in der Schule.",
         pronouns: [
           {
             hanzi: "我",
@@ -1842,6 +1896,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "hái yǒu [Zahl] [Slot]",
           hanzi: "还 有 [Zahl] [Slot]"
         },
+        frameDe: "Es sind noch [Zahl] [Slot].",
         pronouns: [],
         slotGroups: [
           [
@@ -1874,6 +1929,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ méi yǒu [Slot 1]，wǒmen [Slot 2] qù",
           hanzi: "我 没 有 [Slot 1]，我们 [Slot 2] 去"
         },
+        frameDe: "Ich habe keine [Slot 1], wir gehen [Slot 2].",
         pronouns: [
           {
             hanzi: "我",
@@ -1919,6 +1975,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "nǐ shénme shíhou [Slot 1]？wǒmen [Zeit] qù",
           hanzi: "你 什么时候 [Slot 1]？我们 [Zeit] 去"
         },
+        frameDe: null,
         pronouns: [],
         slotGroups: [],
         newCount: 0,
@@ -1938,6 +1995,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "nǐ zài nǎli？ / [Slot] zài nǎli？",
           hanzi: "你 在 哪里？ / [Slot] 在 哪里？"
         },
+        frameDe: "Wo ist [Slot]?",
         pronouns: [
           {
             hanzi: "你",
@@ -1991,6 +2049,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒmen zěnme qù [Slot]？",
           hanzi: "我们 怎么 去 [Slot]？"
         },
+        frameDe: "Wie kommen wir zu [Slot]?",
         pronouns: [
           {
             hanzi: "我们",
@@ -2044,6 +2103,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "[Slot] zài nǎli？",
           hanzi: "[Slot] 在 哪里？"
         },
+        frameDe: "Wo ist [Slot]?",
         pronouns: [
           {
             hanzi: "你",
@@ -2091,6 +2151,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ zài [Slot]",
           hanzi: "我 在 [Slot]"
         },
+        frameDe: "Ich bin [Slot].",
         pronouns: [
           {
             hanzi: "我",
@@ -2133,6 +2194,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ zài [Slot]",
           hanzi: "我 在 [Slot]"
         },
+        frameDe: "Ich bin [Slot].",
         pronouns: [
           {
             hanzi: "我",
@@ -2180,6 +2242,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒmen zěnme [Slot]？",
           hanzi: "我们 怎么 [Slot]？"
         },
+        frameDe: "Wie können wir [Slot]?",
         pronouns: [
           {
             hanzi: "我们",
@@ -2217,6 +2280,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "zhèlǐ tài [Slot] le",
           hanzi: "这里 太 [Slot] 了"
         },
+        frameDe: "Hier ist es zu [Slot].",
         pronouns: [],
         slotGroups: [
           [
@@ -2243,6 +2307,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "zài zhuōzi [Slot]",
           hanzi: "在 桌子 [Slot]"
         },
+        frameDe: "[Slot] dem Tisch.",
         pronouns: [],
         slotGroups: [
           [
@@ -2279,6 +2344,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒmen zuò [Slot] qù jīchǎng",
           hanzi: "我们 坐 [Slot] 去 机场"
         },
+        frameDe: "Wir fahren mit [Slot] zum Flughafen.",
         pronouns: [
           {
             hanzi: "我们",
@@ -2316,6 +2382,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "[Slot] zài nǎli？",
           hanzi: "[Slot] 在 哪里？"
         },
+        frameDe: "Wo ist [Slot]?",
         pronouns: [],
         slotGroups: [
           [
@@ -2342,6 +2409,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "[Slot] gè shì nǐ de？",
           hanzi: "[Slot] 个 是 你的？"
         },
+        frameDe: "[Slot] gehört dir?",
         pronouns: [
           {
             hanzi: "你",
@@ -2369,6 +2437,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ [Slot] zài zhèlǐ",
           hanzi: "我 [Slot] 在 这里"
         },
+        frameDe: "Ich möchte hier [Slot].",
         pronouns: [
           {
             hanzi: "我",
@@ -2396,6 +2465,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "nǐ zài nǎli？wǒmen zěnme qù [Slot]？",
           hanzi: "你 在 哪里？我们 怎么 去 [Slot]？"
         },
+        frameDe: null,
         pronouns: [],
         slotGroups: [],
         newCount: 0,
@@ -2415,6 +2485,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "qǐng gěi wǒ / wǒmen [Slot]",
           hanzi: "请 给 我 / 我们 [Slot]"
         },
+        frameDe: "Bitte geben Sie mir [Slot].",
         pronouns: [
           {
             hanzi: "我",
@@ -2473,6 +2544,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "nǐ xǐhuan zhè gè [Slot 1] ma？ / zhè gè fēicháng [Slot 2]",
           hanzi: "你 喜欢 这个 [Slot 1] 吗？ / 这个 非常 [Slot 2]"
         },
+        frameDe: "Magst du [Slot 1]?",
         pronouns: [
           {
             hanzi: "你",
@@ -2538,6 +2610,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "qǐng gěi wǒmen [Slot]",
           hanzi: "请 给 我们 [Slot]"
         },
+        frameDe: "Bitte geben Sie uns [Slot].",
         pronouns: [
           {
             hanzi: "我",
@@ -2585,6 +2658,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "qǐng gěi wǒmen [Slot]",
           hanzi: "请 给 我们 [Slot]"
         },
+        frameDe: "Bitte geben Sie uns [Slot].",
         pronouns: [
           {
             hanzi: "我",
@@ -2632,6 +2706,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ hěn [Slot]",
           hanzi: "我 很 [Slot]"
         },
+        frameDe: "Ich bin sehr [Slot].",
         pronouns: [
           {
             hanzi: "我",
@@ -2664,6 +2739,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "[Slot 1]，qǐng gěi wǒmen càidān。wǒ [Slot 2] le",
           hanzi: "[Slot 1]，请 给 我们 菜单。我 [Slot 2] 了"
         },
+        frameDe: "[Slot 1], bitte geben Sie uns die Speisekarte. Ich bin [Slot 2].",
         pronouns: [
           {
             hanzi: "我",
@@ -2703,6 +2779,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒmen xǐhuan zhè gè [Slot 1]，qǐng gěi wǒmen [Slot 2]",
           hanzi: "我们 喜欢 这个 [Slot 1]，请 给 我们 [Slot 2]"
         },
+        frameDe: null,
         pronouns: [],
         slotGroups: [],
         newCount: 0,
@@ -2722,6 +2799,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "tā / tā bǐ wǒ gèng [Slot]",
           hanzi: "他 / 她 比 我 更 [Slot]"
         },
+        frameDe: "Er ist [Slot] als ich.",
         pronouns: [
           {
             hanzi: "他",
@@ -2790,6 +2868,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "nǐ de [Slot 1] hěn [Slot 2]",
           hanzi: "你 的 [Slot 1] 很 [Slot 2]"
         },
+        frameDe: "Dein [Slot 1] ist sehr [Slot 2].",
         pronouns: [
           {
             hanzi: "你",
@@ -2844,6 +2923,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "tā / tā bǐ wǒ gèng [Slot]",
           hanzi: "他 / 她 比 我 更 [Slot]"
         },
+        frameDe: "Er ist [Slot] als ich.",
         pronouns: [
           {
             hanzi: "他",
@@ -2901,6 +2981,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ hěn [Slot]",
           hanzi: "我 很 [Slot]"
         },
+        frameDe: "Ich bin sehr [Slot].",
         pronouns: [
           {
             hanzi: "我",
@@ -2943,6 +3024,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "nǐ de yīfu shì [Slot] de",
           hanzi: "你 的 衣服 是 [Slot] 的"
         },
+        frameDe: "Deine Kleidung ist [Slot].",
         pronouns: [
           {
             hanzi: "你",
@@ -2985,6 +3067,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "zhè gè [Slot] hěn piàoliang",
           hanzi: "这个 [Slot] 很 漂亮"
         },
+        frameDe: "Diese [Slot] ist sehr schön.",
         pronouns: [],
         slotGroups: [
           [
@@ -3006,6 +3089,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "nǐ [Slot] piàoliang",
           hanzi: "你 [Slot] 漂亮"
         },
+        frameDe: "Du bist [Slot] hübsch.",
         pronouns: [
           {
             hanzi: "你",
@@ -3033,6 +3117,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "nǐ de [Slot 1] hěn [Slot 2]，bǐ wǒ de gèng [Slot 3]",
           hanzi: "你 的 [Slot 1] 很 [Slot 2]，比 我的 更 [Slot 3]"
         },
+        frameDe: null,
         pronouns: [],
         slotGroups: [],
         newCount: 0,
@@ -3052,6 +3137,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "yīnwèi wǒ / tā [Slot 1]，suǒyǐ [Slot 2]",
           hanzi: "因为 我 / 他 [Slot 1]，所以 [Slot 2]"
         },
+        frameDe: "Weil ich [Slot 1] bin, [Slot 2] ich.",
         pronouns: [
           {
             hanzi: "我",
@@ -3122,6 +3208,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒmen / tā zhèngzài [Slot]",
           hanzi: "我们 / 他 正在 [Slot]"
         },
+        frameDe: "Wir sind gerade am [Slot].",
         pronouns: [
           {
             hanzi: "我们",
@@ -3180,6 +3267,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒmen zhèngzài [Slot]",
           hanzi: "我们 正在 [Slot]"
         },
+        frameDe: "Wir sind gerade am [Slot].",
         pronouns: [
           {
             hanzi: "我们",
@@ -3202,7 +3290,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
             {
               hanzi: "上网",
               pinyin: "shàngwǎng",
-              de: "im Internet sein"
+              de: "surfen"
             },
             {
               hanzi: "运动",
@@ -3227,6 +3315,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒmen zhèngzài [Slot]",
           hanzi: "我们 正在 [Slot]"
         },
+        frameDe: "Wir sind gerade am [Slot].",
         pronouns: [
           {
             hanzi: "我们",
@@ -3264,6 +3353,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒmen zhèngzài tīng [Slot]",
           hanzi: "我们 正在 听 [Slot]"
         },
+        frameDe: "Wir hören gerade [Slot].",
         pronouns: [
           {
             hanzi: "我们",
@@ -3291,6 +3381,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ [Slot] qù",
           hanzi: "我 [Slot] 去"
         },
+        frameDe: "Ich gehe [Slot].",
         pronouns: [
           {
             hanzi: "我",
@@ -3328,6 +3419,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ xiǎng qù，[Slot] wǒ hěn máng",
           hanzi: "我 想 去，[Slot] 我 很 忙"
         },
+        frameDe: "Ich möchte gehen, [Slot] ich bin sehr beschäftigt.",
         pronouns: [
           {
             hanzi: "我",
@@ -3355,6 +3447,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ [Slot] qù",
           hanzi: "我 [Slot] 去"
         },
+        frameDe: "Ich [Slot] gehen.",
         pronouns: [
           {
             hanzi: "我",
@@ -3392,6 +3485,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "yīnwèi wǒmen zhèngzài [Slot 1]，suǒyǐ bù néng [Slot 2]",
           hanzi: "因为 我们 正在 [Slot 1]，所以 不能 [Slot 2]"
         },
+        frameDe: null,
         pronouns: [],
         slotGroups: [],
         newCount: 0,
@@ -3417,6 +3511,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ / tā [Slot 1] guo [Slot 2]",
           hanzi: "我 / 他 [Slot 1] 过 [Slot 2]"
         },
+        frameDe: "Ich habe [Slot 1] [Slot 2].",
         pronouns: [
           {
             hanzi: "我",
@@ -3476,6 +3571,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "nǐ kěyǐ bāngzhù wǒ [Slot] ma？",
           hanzi: "你 可以 帮助 我 [Slot] 吗？"
         },
+        frameDe: "Kannst du mir helfen, [Slot]?",
         pronouns: [
           {
             hanzi: "你",
@@ -3528,6 +3624,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ shuō [Slot]",
           hanzi: "我 说 [Slot]"
         },
+        frameDe: "Ich spreche [Slot].",
         pronouns: [
           {
             hanzi: "我",
@@ -3565,6 +3662,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ qù guo [Slot 1]，Zhōngguó shì yī gè [Slot 2]",
           hanzi: "我 去 过 [Slot 1]，中国 是 一 个 [Slot 2]"
         },
+        frameDe: "Ich war schon in [Slot 1], China ist ein [Slot 2].",
         pronouns: [
           {
             hanzi: "我",
@@ -3609,6 +3707,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ [Slot 1] qù Zhōngguó，zhè shì wǒ de [Slot 2]",
           hanzi: "我 [Slot 1] 去 中国，这 是 我的 [Slot 2]"
         },
+        frameDe: "Ich gehe [Slot 1] nach China, das ist mein [Slot 2].",
         pronouns: [
           {
             hanzi: "我",
@@ -3648,6 +3747,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ [Slot] Déguó lái",
           hanzi: "我 [Slot] 德国 来"
         },
+        frameDe: "Ich komme [Slot] Deutschland.",
         pronouns: [
           {
             hanzi: "我",
@@ -3681,6 +3781,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ shì Déguó [Slot]",
           hanzi: "我 是 德国 [Slot]"
         },
+        frameDe: "Ich bin ein deutscher [Slot].",
         pronouns: [
           {
             hanzi: "我",
@@ -3708,6 +3809,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ méi [Slot 1] guo，nǐ kěyǐ bāngzhù wǒ [Slot 2] ma？",
           hanzi: "我 没 [Slot 1] 过，你 可以 帮助 我 [Slot 2] 吗？"
         },
+        frameDe: null,
         pronouns: [],
         slotGroups: [],
         newCount: 0,
@@ -3727,6 +3829,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ / tā [Slot] le",
           hanzi: "我 / 他 [Slot] 了"
         },
+        frameDe: "Ich bin [Slot].",
         pronouns: [
           {
             hanzi: "我",
@@ -3779,6 +3882,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ / tā de [Slot 1] hěn [Slot 2]",
           hanzi: "我 / 他 的 [Slot 1] 很 [Slot 2]"
         },
+        frameDe: "Mein [Slot 1] ist sehr [Slot 2].",
         pronouns: [
           {
             hanzi: "我",
@@ -3838,6 +3942,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ / tā de [Slot] hěn téng",
           hanzi: "我 / 他 的 [Slot] 很 疼"
         },
+        frameDe: "Mein [Slot] tut sehr weh.",
         pronouns: [
           {
             hanzi: "我",
@@ -3885,6 +3990,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ / tā de [Slot 1] hěn [Slot 2]",
           hanzi: "我 / 他 的 [Slot 1] 很 [Slot 2]"
         },
+        frameDe: "Mein [Slot 1] ist sehr [Slot 2].",
         pronouns: [
           {
             hanzi: "我",
@@ -3934,6 +4040,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ zhǎo [Slot]",
           hanzi: "我 找 [Slot]"
         },
+        frameDe: "Ich suche [Slot].",
         pronouns: [
           {
             hanzi: "我",
@@ -3966,6 +4073,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "tā [Slot 1] le，tā de [Slot 2] hěn téng",
           hanzi: "他 [Slot 1] 了，他 的 [Slot 2] 很 疼"
         },
+        frameDe: null,
         pronouns: [],
         slotGroups: [],
         newCount: 0,
@@ -3985,6 +4093,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "nǐ [Zeit] yǒu shénme [Plan]？",
           hanzi: "你 [Zeit] 有 什么 [Plan]？"
         },
+        frameDe: "Was hast du [Zeit] für [Plan]?",
         pronouns: [
           {
             hanzi: "你",
@@ -4034,6 +4143,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒmen hái bù tài [Slot] zhèlǐ",
           hanzi: "我们 还 不 太 [Slot] 这里"
         },
+        frameDe: "Wir sind hier noch nicht so [Slot].",
         pronouns: [
           {
             hanzi: "我们",
@@ -4076,6 +4186,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "jīntiān [Slot]",
           hanzi: "今天 [Slot]"
         },
+        frameDe: "Heute [Slot].",
         pronouns: [],
         slotGroups: [
           [
@@ -4112,6 +4223,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "jīntiān [Slot] hěn hǎo",
           hanzi: "今天 [Slot] 很 好"
         },
+        frameDe: "Heute ist das [Slot] sehr gut.",
         pronouns: [],
         slotGroups: [
           [
@@ -4133,6 +4245,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ xǐhuan [Slot 1]，wǒ de [Slot 2] shì lǚxíng",
           hanzi: "我 喜欢 [Slot 1]，我的 [Slot 2] 是 旅行"
         },
+        frameDe: "Ich mag [Slot 1], mein [Slot 2] ist Reisen.",
         pronouns: [
           {
             hanzi: "我",
@@ -4178,6 +4291,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒ yǒu yī gè [Slot]",
           hanzi: "我 有 一 个 [Slot]"
         },
+        frameDe: "Ich habe einen [Slot].",
         pronouns: [
           {
             hanzi: "我",
@@ -4210,6 +4324,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒmen yìqǐ qù [Slot] ba",
           hanzi: "我们 一起 去 [Slot] 吧"
         },
+        frameDe: "Lass uns zusammen [Slot].",
         pronouns: [
           {
             hanzi: "我们",
@@ -4248,6 +4363,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "jīntiān tiānqì [Slot 1]？wǒ hěn hǎo，nǐ [Slot 2]？",
           hanzi: "今天 天气 [Slot 1]？我 很 好，你 [Slot 2]？"
         },
+        frameDe: "Wie ist das Wetter heute, [Slot 1]? Mir geht's gut, dir [Slot 2]?",
         pronouns: [
           {
             hanzi: "你",
@@ -4282,6 +4398,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒmen hái bù tài [Slot 1]，nǐ zhōumò yǒu shénme [Slot 2]？",
           hanzi: "我们 还 不 太 [Slot 1]，你 周末 有 什么 [Slot 2]？"
         },
+        frameDe: null,
         pronouns: [],
         slotGroups: [],
         newCount: 0,
@@ -4301,6 +4418,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "wǒmen yìqǐ qù [Slot] ba",
           hanzi: "我们 一起 去 [Slot] 吧"
         },
+        frameDe: "Lass uns zusammen [Slot].",
         pronouns: [
           {
             hanzi: "我们",
@@ -4348,6 +4466,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "nǐ kěyǐ [Slot 1] wǒ [Slot 2] ma？",
           hanzi: "你 可以 [Slot 1] 我 [Slot 2] 吗？"
         },
+        frameDe: "Kannst du mich [Slot 1] [Slot 2]?",
         pronouns: [
           {
             hanzi: "你",
@@ -4402,6 +4521,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "[Slot]！",
           hanzi: "[Slot]！"
         },
+        frameDe: "[Slot]!",
         pronouns: [
           {
             hanzi: "你",
@@ -4444,6 +4564,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "[Slot]！",
           hanzi: "[Slot]！"
         },
+        frameDe: "[Slot]!",
         pronouns: [
           {
             hanzi: "你",
@@ -4481,6 +4602,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "nǐ kěyǐ [Slot 1] wǒ [Slot 2] ma？",
           hanzi: "你 可以 [Slot 1] 我 [Slot 2] 吗？"
         },
+        frameDe: "Kannst du mir [Slot 1] [Slot 2]?",
         pronouns: [
           {
             hanzi: "你",
@@ -4515,6 +4637,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "zhè shì nǐ de [Slot]",
           hanzi: "这 是 你的 [Slot]"
         },
+        frameDe: "Das ist dein [Slot].",
         pronouns: [
           {
             hanzi: "你",
@@ -4542,6 +4665,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "[Slot] hǎo！",
           hanzi: "[Slot] 好！"
         },
+        frameDe: "[Slot], hallo!",
         pronouns: [
           {
             hanzi: "你",
@@ -4569,6 +4693,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "[Slot 1]？nǐ hǎo！[Slot 2] zǒu！",
           hanzi: "[Slot 1]？你 好！[Slot 2] 走！"
         },
+        frameDe: "[Slot 1]? Hallo! [Slot 2] weggehen!",
         pronouns: [
           {
             hanzi: "你",
@@ -4603,6 +4728,7 @@ export const CHINESE_COURSE: CourseModuleData[] =
           pinyin: "nǐ kěyǐ jiā wǒ [Slot 1] ma？wǒmen yìqǐ qù [Slot 2] ba",
           hanzi: "你 可以 加 我 [Slot 1] 吗？我们 一起 去 [Slot 2] 吧"
         },
+        frameDe: null,
         pronouns: [],
         slotGroups: [],
         newCount: 0,

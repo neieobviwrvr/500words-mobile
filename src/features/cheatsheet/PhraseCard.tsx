@@ -23,18 +23,36 @@ type Props = {
   saved: boolean;
   onToggleSave: () => void;
   onSpeak: () => void;
+  /**
+   * Zeichen an/aus (2026-08-26, Simons Wunsch) - blendet `phrase.text`
+   * (Zielsprachen-Schriftzeichen, z.B. Hanzi) aus, wenn eine Lautschrift
+   * (`phrase.phonetic`, z.B. Pinyin) vorhanden ist, und macht DIE zur
+   * primaeren Zeile. Ohne Lautschrift bleibt `phrase.text` stehen, egal wie
+   * der Schalter steht - sonst waere die Karte leer. Vorgabe `true` (an) -
+   * die drei bisherigen Aufrufer (Survival-Kategorie, Suchergebnisse,
+   * Favoriten) reichen die Prop noch nicht durch und behalten dadurch ihr
+   * bisheriges Verhalten unveraendert bei.
+   */
+  zeichenEin?: boolean;
 };
 
-export function PhraseCard({ phrase, dark, saved, onToggleSave, onSpeak }: Props) {
+export function PhraseCard({ phrase, dark, saved, onToggleSave, onSpeak, zeichenEin = true }: Props) {
   const theme = getTheme(dark);
+  const zeichenAusblendbar = zeichenEin === false && !!phrase.phonetic;
 
   return (
     <View style={[styles.card, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
       <View style={styles.textBlock}>
-        <Text style={[styles.target, { color: theme.text }]}>{phrase.text}</Text>
-        {phrase.phonetic ? (
-          <Text style={[styles.phonetic, { color: theme.sub }]}>„{phrase.phonetic}"</Text>
-        ) : null}
+        {zeichenAusblendbar ? (
+          <Text style={[styles.target, { color: theme.text }]}>{phrase.phonetic}</Text>
+        ) : (
+          <>
+            <Text style={[styles.target, { color: theme.text }]}>{phrase.text}</Text>
+            {phrase.phonetic ? (
+              <Text style={[styles.phonetic, { color: theme.sub }]}>„{phrase.phonetic}"</Text>
+            ) : null}
+          </>
+        )}
         {phrase.gloss ? (
           <Text style={[styles.gloss, { color: theme.sub }]}>{phrase.gloss}</Text>
         ) : null}

@@ -31,6 +31,17 @@ export function CheatsheetCategoryScreen({ groupId }: { groupId: string }) {
   const [loadError, setLoadError] = useState<string | null>(null);
   const [phrases, setPhrases] = useState<Phrase[]>([]);
   const [offline, setOffline] = useState(false);
+  // Zeichen an/aus (2026-08-26, Simons Wunsch: "bei Chinesisch und generell
+  // allen Sprachen mit Schriftzeichen die Schriftzeichen wieder ein- und
+  // ausschalten"). Aus den echten Daten abgeleitet statt hart auf
+  // `targetLanguageId === 'zh'` geprueft (nur dort ist `phonetic` je
+  // gesetzt) - dieselbe Konvention wie `hatSchriftzeichen` in
+  // WordReviewScreen.tsx, bleibt automatisch richtig, sollte je eine
+  // weitere Sprache mit eigener Schrift dazukommen. Vorgabe AUS, wie beim
+  // selben Umschalter in WordReviewScreen.tsx (Simons frühere Korrektur
+  // dort) - gelernt/nachgeschlagen wird primär ueber Pinyin.
+  const [zeichenEin, setZeichenEin] = useState(false);
+  const hatSchriftzeichen = phrases.some((p) => !!p.phonetic);
 
   useEffect(() => {
     let cancelled = false;
@@ -67,9 +78,31 @@ export function CheatsheetCategoryScreen({ groupId }: { groupId: string }) {
         >
               <Text style={[styles.backGlyph, { color: theme.text }]}>‹</Text>
             </Pressable>
-            <Text style={[styles.title, { color: theme.text }]}>{'Cheat‑Sheet\n' + title}</Text>
+            {/* Berichtigt 2026-08-26 (Simons Fehlerbericht): stand bisher
+                immer "Cheat-Sheet", auch wenn man ueber die neue
+                "Satzliste"-Schaltflaeche im Lektionen-Chevron hierher kam
+                (siehe LessonsScreen.tsx) - niemand fuehrt diesen Screen
+                aktuell noch als "Cheat-Sheet" ein, also traegt er jetzt
+                den Namen, den man tatsaechlich angetippt hat. */}
+            <Text style={[styles.title, { color: theme.text }]}>{'Satzliste\n' + title}</Text>
           </View>
           <View style={styles.headerActions}>
+            {/* Nur sichtbar, wenn ueberhaupt Schriftzeichen da sind (siehe
+                hatSchriftzeichen oben) - fuer Sprachen ohne eigene Schrift
+                gaebe es nichts zum Aus-/Einblenden. */}
+            {hatSchriftzeichen ? (
+              <Pressable
+                onPress={() => setZeichenEin((z) => !z)}
+                accessibilityRole="switch"
+                accessibilityLabel="Zeichen"
+                accessibilityState={{ checked: zeichenEin }}
+                style={[styles.actionBtn, { borderColor: theme.border, backgroundColor: theme.cardBg }]}
+              >
+                <Text style={{ color: theme.text, fontWeight: '700', fontSize: 11 }}>
+                  Zeichen {zeichenEin ? 'aus' : 'ein'}
+                </Text>
+              </Pressable>
+            ) : null}
             <Pressable
               onPress={toggleDark}
               accessibilityRole="switch"
@@ -122,6 +155,7 @@ export function CheatsheetCategoryScreen({ groupId }: { groupId: string }) {
             key={ph.id}
             phrase={ph}
             dark={darkMode}
+            zeichenEin={zeichenEin}
             saved={!!saved[ph.id]}
             onToggleSave={() => toggleSaved(ph.id, ph)}
             onSpeak={() =>

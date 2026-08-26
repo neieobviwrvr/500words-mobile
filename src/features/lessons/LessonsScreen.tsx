@@ -1,5 +1,5 @@
-import { useMemo } from 'react';
-import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { ActivityIndicator, Animated, Easing, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { router } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
 import { useAppState } from '../../state/AppState';
@@ -57,6 +57,11 @@ export function LessonsScreen() {
   const { hatKonto } = useAuthState();
   const theme = getTheme(darkMode);
   const situations = useCategorySituations(targetLanguageId);
+  // Welches Kategorie-Chevron-Dropdown gerade offen ist - EINE Stelle statt
+  // je Kategorie ein eigener State (2026-08-26, Simons Wunsch: "alle
+  // Drop-Downs sollen sich schliessen, sobald ich ein neues oeffne"). `null`
+  // heisst "keins offen".
+  const [offeneKategorieId, setOffeneKategorieId] = useState<string | null>(null);
 
   const isUnlocked = (id: string) => id === GRUNDWORTSCHATZ_ID || !!purchased[id];
 
@@ -150,13 +155,34 @@ export function LessonsScreen() {
             // "Alle"-Knopfes.
             const gesamt = list.reduce((n, sit) => n + sit.total, 0);
             const locked = !isUnlocked(categoryId);
+            // Nur wenn es ueberhaupt ein Chevron-Menue gibt, darf die
+            // Ueberschrift es oeffnen (2026-08-26, Simons Wunsch: "auch die
+            // Ueberschrift antippbar machen, nicht nur das Icon treffen
+            // muessen"). Bei gesperrten/leeren Kategorien existiert kein
+            // Menue - dieselbe Bedingung wie beim `<KategorieMenu>` unten.
+            const kannOeffnen = !locked && gesamt > 0;
+            const toggleMenu = () =>
+              setOffeneKategorieId((cur) => (cur === categoryId ? null : categoryId));
 
             return (
               <View key={categoryId} style={styles.group}>
                 <View style={styles.groupHead}>
-                  <Text style={[styles.groupTitle, { color: theme.text }]} numberOfLines={1}>
-                    {name.toUpperCase()}
-                  </Text>
+                  <Pressable
+                    onPress={kannOeffnen ? toggleMenu : undefined}
+                    disabled={!kannOeffnen}
+                    accessibilityRole={kannOeffnen ? 'button' : 'text'}
+                    accessibilityLabel={kannOeffnen ? `${name}: weitere Optionen` : undefined}
+                    accessibilityState={kannOeffnen ? { expanded: offeneKategorieId === categoryId } : undefined}
+                    hitSlop={6}
+                    style={({ pressed }) => [
+                      styles.groupTitleTreffer,
+                      { opacity: kannOeffnen && pressed ? 0.6 : 1 },
+                    ]}
+                  >
+                    <Text style={[styles.groupTitle, { color: theme.text }]} numberOfLines={1}>
+                      {name.toUpperCase()}
+                    </Text>
+                  </Pressable>
                   {locked ? (
                     // Das Schloss fuehrt in den Shop (Nutzer-Wunsch
                     // 2026-08-21). Vorher war es rein dekorativ und der
@@ -177,72 +203,22 @@ export function LessonsScreen() {
                     </Pressable>
                   ) : null}
 
-                  {/* Drei kleine Knoepfe rechts in der Ueberschriftenzeile
-                      (Nutzer-Entscheidung 2026-08-21). Bewusst NICHT als
-                      Karten vor der Reihe: die Reihe IST der Inhalt, und was
-                      dort vorne steht, wischt man bei jedem Besuch weg, um an
-                      die Situationen zu kommen - eine Abgabe auf die haeufige
-                      Handlung zugunsten einer seltenen. Hier kosten sie
-                      weder Hoehe noch Wisch, weil der Platz neben der
-                      Ueberschrift ohnehin leer war.
-
-                      "Alle" ersetzt zugleich einen Weg, der beim Umbau auf
-                      Situations-Ziele verlorenging: die ganze Kategorie am
-                      Stueck zu ueben gab es vorher nur ueber S2, und S2 hat
-                      seitdem keinen Eingang mehr.
-
-                      "Wiederholen" (2026-08-22) ist der Unterschied, den
-                      "Alle" nicht abdeckt: dieselbe Kategorie, aber nur die
-                      faelligen Karten. Simons Frage war, was jemand tut, der
-                      eine Kategorie gezielt festigen will - mit "Alle"
-                      bekaeme er jedes Mal auch die sechzig Saetze mit, die
-                      laengst sitzen. Genau dafuer war der Kategorie-Filter
-                      auf S5 gedacht, den es seit dem 2026-08-06 nicht mehr
-                      gibt. */}
+                  {/* Chevron-Dropdown statt drei staendig sichtbarer Knoepfe
+                      (2026-08-26, Simons Vorgabe) - siehe KategorieMenu
+                      unten fuers Warum/Wie. Ersetzt die vorherige, immer
+                      offene Knopfleiste ("Alle N · Wiederholen ·
+                      Wortliste"). "Wiederholen" (faellige Karten dieser
+                      Kategorie) faellt dabei weg - Simons neue Vorgabe nennt
+                      nur drei Knoepfe, keinen vierten. */}
                   {!locked && gesamt > 0 ? (
-                    <View style={styles.kopfKnoepfe}>
-                      <Pressable
-                        onPress={() =>
-                          router.push({
-                            pathname: '/exercise',
-                            params: { mode: 'spam', categoryId, source: 'category' },
-                          })
-                        }
-                        accessibilityRole="button"
-                        accessibilityLabel={`Alle ${gesamt} Sätze von ${name} üben`}
-                        hitSlop={10}
-                        style={({ pressed }) => [styles.kopfKnopf, { opacity: pressed ? 0.5 : 1 }]}
-                      >
-                        <Text style={[styles.kopfKnopfText, { color: theme.sub }]}>{`Alle ${gesamt}`}</Text>
-                      </Pressable>
-                      <Text style={[styles.kopfKnopfText, { color: theme.sub }]}>·</Text>
-                      <Pressable
-                        onPress={() =>
-                          router.push({
-                            pathname: '/exercise',
-                            params: { mode: 'spam', categoryId, source: 'srs-kategorie' },
-                          })
-                        }
-                        accessibilityRole="button"
-                        accessibilityLabel={`Fällige Karten von ${name} wiederholen`}
-                        hitSlop={10}
-                        style={({ pressed }) => [styles.kopfKnopf, { opacity: pressed ? 0.5 : 1 }]}
-                      >
-                        <Text style={[styles.kopfKnopfText, { color: theme.sub }]}>Wiederholen</Text>
-                      </Pressable>
-                      <Text style={[styles.kopfKnopfText, { color: theme.sub }]}>·</Text>
-                      <Pressable
-                        onPress={() =>
-                          router.push({ pathname: '/wortliste', params: { categoryId } })
-                        }
-                        accessibilityRole="button"
-                        accessibilityLabel={`Wortliste von ${name} ansehen`}
-                        hitSlop={10}
-                        style={({ pressed }) => [styles.kopfKnopf, { opacity: pressed ? 0.5 : 1 }]}
-                      >
-                        <Text style={[styles.kopfKnopfText, { color: theme.sub }]}>Wortliste</Text>
-                      </Pressable>
-                    </View>
+                    <KategorieMenu
+                      categoryId={categoryId}
+                      categoryName={name}
+                      gesamt={gesamt}
+                      dark={darkMode}
+                      offen={offeneKategorieId === categoryId}
+                      onToggle={toggleMenu}
+                    />
                   ) : null}
                 </View>
 
@@ -383,6 +359,173 @@ function SituationCard({
   );
 }
 
+/** Strecke, um die die Knopfreihe hervorkommt - ein Hervorkommen, kein Flug. */
+const MENU_SLIDE = 24;
+// 260ms, dieselbe "eine Spur langsamer"-Dauer wie HeaderMenu.tsx (Simons
+// Vorgabe dort 2026-08-18) - Simon wollte hier ausdruecklich dieselbe
+// langsame Ausfahr-Animation, kein neues Tempo erfinden.
+const MENU_DURATION = 260;
+
+/**
+ * Chevron-Dropdown pro Kategorie-Ueberschrift (2026-08-26, Simons Vorgabe).
+ * Ersetzt die vorher staendig sichtbare Knopfleiste "Alle N · Wiederholen ·
+ * Wortliste" durch ein eingeklapptes Chevron-Icon - erst bei Antippen fahren
+ * "Satzliste"/"Wortliste"/"üben" (2026-08-26 umbenannt von "alles lernen")
+ * auf DERSELBEN Zeile nach rechts aus
+ * (NICHT als Aufklapp-Liste nach unten/oben, das war ausdruecklich NICHT
+ * gewuenscht).
+ *
+ * Technik 1:1 aus HeaderMenu.tsx uebernommen (Animated translateX + opacity,
+ * `mounted` getrennt von `offen` damit die Einfahr-Animation zu Ende
+ * spielen kann, Zeitgeber statt Animations-Callback fuers Aushaengen - siehe
+ * dortiger Kommentar fuers Warum) - nur die Richtung ist gespiegelt (dort
+ * faehrt es nach LINKS aus dem Anker heraus, hier nach RECHTS, weil der
+ * Chevron am linken statt rechten Rand seiner Reihe sitzt) und der Anker
+ * ist hier eine Kategorie-Ueberschrift statt die App-Kopfzeile.
+ *
+ * Absolut positioniert statt echter Flex-Breiten-Animation (RN kann
+ * "width: auto" nicht animieren) - ueberlagert bei Bedarf nachfolgenden
+ * Platz in der Zeile, stoesst aber nichts um. Bei den kurzen
+ * Kategorienamen und der ohnehin leeren Zeile daneben (siehe Bildvorlage)
+ * ist das der Normalfall, kein Kompromiss.
+ */
+function KategorieMenu({
+  categoryId,
+  categoryName,
+  gesamt,
+  dark,
+  offen,
+  onToggle,
+}: {
+  categoryId: string;
+  categoryName: string;
+  gesamt: number;
+  dark: boolean;
+  /** Gesteuert vom Elternteil (2026-08-26, Simons Wunsch: "alle Drop-Downs
+   *  sollen sich schliessen, sobald ich ein neues oeffne") - genau EIN
+   *  Kategorie-Menue kann gleichzeitig offen sein, siehe
+   *  `offeneKategorieId` in LessonsScreen. Kein eigener `offen`-State mehr
+   *  hier, nur noch die Animations-Zustaende (`mounted`/`reveal`) bleiben
+   *  lokal - die haengen rein an der Optik, nicht am "wer ist gerade offen". */
+  offen: boolean;
+  onToggle: () => void;
+}) {
+  const theme = getTheme(dark);
+  const [mounted, setMounted] = useState(false);
+  const hasOpened = useRef(false);
+  const reveal = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    const useNative = Platform.OS !== 'web';
+
+    if (offen) {
+      hasOpened.current = true;
+      setMounted(true);
+      const anim = Animated.timing(reveal, {
+        toValue: 1,
+        duration: MENU_DURATION,
+        easing: Easing.out(Easing.quad),
+        useNativeDriver: useNative,
+      });
+      anim.start();
+      return () => anim.stop();
+    }
+
+    if (!hasOpened.current) return;
+
+    const anim = Animated.timing(reveal, {
+      toValue: 0,
+      duration: MENU_DURATION,
+      easing: Easing.out(Easing.quad),
+      useNativeDriver: useNative,
+    });
+    anim.start();
+
+    const timer = setTimeout(() => setMounted(false), MENU_DURATION);
+    return () => {
+      anim.stop();
+      clearTimeout(timer);
+    };
+  }, [offen, reveal]);
+
+  return (
+    <View style={styles.chevronAnker}>
+      <Pressable
+        onPress={onToggle}
+        accessibilityRole="button"
+        accessibilityLabel={`${categoryName}: weitere Optionen`}
+        accessibilityState={{ expanded: offen }}
+        hitSlop={10}
+        style={({ pressed }) => [styles.chevronKnopf, { opacity: pressed ? 0.6 : 1 }]}
+      >
+        <Feather name="chevron-right" size={16} color={offen ? theme.text : theme.sub} />
+      </Pressable>
+
+      {mounted ? (
+        <Animated.View
+          pointerEvents={offen ? 'auto' : 'none'}
+          style={[
+            styles.kopfKnoepfe,
+            {
+              opacity: reveal,
+              transform: [
+                {
+                  translateX: reveal.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [-MENU_SLIDE, 0],
+                  }),
+                },
+              ],
+            },
+          ]}
+        >
+          <Pressable
+            onPress={() => {
+              onToggle();
+              router.push({ pathname: '/cheatsheet/[groupId]', params: { groupId: categoryId } });
+            }}
+            accessibilityRole="button"
+            accessibilityLabel={`Satzliste von ${categoryName} ansehen`}
+            hitSlop={10}
+            style={({ pressed }) => [styles.kopfKnopf, { opacity: pressed ? 0.5 : 1 }]}
+          >
+            <Text style={[styles.kopfKnopfText, { color: theme.sub }]}>Satzliste</Text>
+          </Pressable>
+          <Text style={[styles.kopfKnopfText, { color: theme.sub }]}>·</Text>
+          <Pressable
+            onPress={() => {
+              onToggle();
+              router.push({ pathname: '/wortliste', params: { categoryId } });
+            }}
+            accessibilityRole="button"
+            accessibilityLabel={`Wortliste von ${categoryName} ansehen`}
+            hitSlop={10}
+            style={({ pressed }) => [styles.kopfKnopf, { opacity: pressed ? 0.5 : 1 }]}
+          >
+            <Text style={[styles.kopfKnopfText, { color: theme.sub }]}>Wortliste</Text>
+          </Pressable>
+          <Text style={[styles.kopfKnopfText, { color: theme.sub }]}>·</Text>
+          <Pressable
+            onPress={() => {
+              onToggle();
+              router.push({
+                pathname: '/exercise',
+                params: { mode: 'spam', categoryId, source: 'category' },
+              });
+            }}
+            accessibilityRole="button"
+            accessibilityLabel={`Alle ${gesamt} Sätze von ${categoryName} üben`}
+            hitSlop={10}
+            style={({ pressed }) => [styles.kopfKnopf, { opacity: pressed ? 0.5 : 1 }]}
+          >
+            <Text style={[styles.kopfKnopfText, { color: theme.sub }]}>üben</Text>
+          </Pressable>
+        </Animated.View>
+      ) : null}
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   page: {
     paddingBottom: SPACING.xl,
@@ -465,10 +608,28 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.lg,
   },
   schloss: { padding: SPACING.xs },
-  // Die Leiste bleibt in EINER Zeile und wandert als Ganzes unter den Titel,
-  // wenn es eng wird - der Umbruch sitzt in `groupHead`. Bräche sie in sich
-  // um, stuende "Wortliste" allein unter "Alle 62 · Wiederholen".
-  kopfKnoepfe: { flexDirection: 'row', alignItems: 'center', gap: 6, marginLeft: 'auto' },
+  // Traeger der Ueberschrift-Tippflaeche (2026-08-26) - `flexShrink: 0` liegt
+  // hier statt auf dem Text selbst, damit der Pressable genauso wenig
+  // schrumpft wie vorher der nackte Text (siehe Kommentar bei groupTitle).
+  groupTitleTreffer: { flexShrink: 0 },
+  // Anker fuers Chevron-Dropdown (2026-08-26) - `position: relative`, damit
+  // die ausfahrende Knopfreihe absolut RELATIV ZU DIESER Stelle sitzt statt
+  // zum ganzen Screen (1:1 dasselbe Prinzip wie `anchor` in HeaderMenu.tsx).
+  chevronAnker: { position: 'relative', justifyContent: 'center' },
+  chevronKnopf: { padding: SPACING.xs, minWidth: 32, minHeight: 32, alignItems: 'center', justifyContent: 'center' },
+  // Faehrt aus dem Chevron nach RECHTS heraus (Simons Vorgabe: auf derselben
+  // Zeile, nicht nach oben/unten) - absolut positioniert statt echter
+  // Breiten-Animation (siehe Kommentar bei KategorieMenu).
+  kopfKnoepfe: {
+    position: 'absolute',
+    left: '100%',
+    top: 0,
+    bottom: 0,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    paddingLeft: SPACING.sm,
+  },
   kopfKnopf: { paddingVertical: 2 },
   kopfKnopfText: { fontSize: FONT_SIZE.caption, fontWeight: '700' },
   groupTitle: {

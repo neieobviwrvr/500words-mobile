@@ -57,6 +57,12 @@ export function CourseReviewScreen({ modus }: { modus?: Kartenart }) {
     );
   }
 
+  // Kostprobe (2026-08-25, Simons Vorgabe): schon bei `bekannt === 0` frueher
+  // stand hier nur der Hinweis, erst eine Lektion zu machen. Jetzt zeigt
+  // `useFaelligeKarten` in genau diesem Fall stattdessen ein paar zufaellige
+  // Karten aus dem Kurs an ("kostprobe" statt "vorgezogen", siehe dort) -
+  // die "Nichts zu wiederholen"-Seite unten greift deshalb nur noch, wenn
+  // wirklich ALLES schon geuebt UND gerade nichts faellig ist.
   if (schritte.length === 0) {
     return (
       <Screen dark={darkMode} padBottom>
@@ -64,11 +70,7 @@ export function CourseReviewScreen({ modus }: { modus?: Kartenart }) {
           <Feather name="check-circle" size={40} color={theme.sub} />
           <Text style={[styles.titel, { color: theme.text }]}>Nichts zu wiederholen</Text>
           <Text style={[styles.text, { color: theme.sub }]}>
-            {faellig.bekannt === 0
-              ? modus === 'rahmen'
-                ? `Für ${sprache.label} sind noch keine Sätze geübt — die entstehen im Satz-Schritt einer Lektion.`
-                : `Für ${sprache.label} ist noch nichts gelernt — arbeite erst eine Lektion durch, dann sammelt sich hier etwas an.`
-              : 'Alles frisch. Komm später wieder, oder mach eine neue Lektion.'}
+            Alles frisch. Komm später wieder, oder mach eine neue Lektion.
           </Text>
         </View>
       </Screen>
@@ -77,9 +79,19 @@ export function CourseReviewScreen({ modus }: { modus?: Kartenart }) {
 
   return (
     <>
-      {/* Ehrlich benennen, wenn gar nichts wirklich faellig war und nur
-          vorgezogen wurde - sonst haelt der Nutzer es fuer echten Bedarf. */}
-      {faellig.vorgezogen ? (
+      {/* Ehrlich benennen, WARUM diese Karten hier stehen - "vorgezogen"
+          (bekannt, nur noch nicht faellig) und "kostprobe" (noch nie geuebt)
+          sind zwei verschiedene Situationen mit zwei verschiedenen Texten,
+          sonst haelt der Nutzer es fuer echten Wiederholungs-Bedarf. */}
+      {faellig.kostprobe ? (
+        <View style={[styles.banner, { backgroundColor: theme.subtleFill }]}>
+          <Text style={[styles.bannerText, { color: theme.sub }]}>
+            {modus === 'rahmen'
+              ? `Für ${sprache.label} sind noch keine Sätze geübt — hier eine kleine Kostprobe aus dem Kurs.`
+              : `Für ${sprache.label} ist noch nichts gelernt — hier eine kleine Kostprobe aus dem Kurs.`}
+          </Text>
+        </View>
+      ) : faellig.vorgezogen ? (
         <View style={[styles.banner, { backgroundColor: theme.subtleFill }]}>
           <Text style={[styles.bannerText, { color: theme.sub }]}>
             Nichts war fällig — hier sind ein paar Karten vorgezogen.

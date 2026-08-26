@@ -36,6 +36,12 @@ export const SCENARIO_LABELS: Record<string, string> = {
   // ueberall - das gehoert in den Grundwortschatz und wird von dort geliehen
   // (siehe data/geliehen.ts).
   verstaendigen: 'Sich verständigen',
+  // Neu 2026-08-26: Speichern aus der Situations-Auswahl (Wörter-
+  // Wiederholung) - dort gibt es zwei Quellen, echte Phrasebook-Sätze
+  // (behalten ihr echtes Szenario) und Kurs-Rahmen ohne Supabase-Zeile
+  // (siehe situationsAufgaben.ts, ladeKursAufgaben). Category
+  // 'grundwortschatz', weil der gefuehrte Kurs kostenlos ist.
+  kurs: 'Aus dem geführten Kurs',
   // Feinere Situationen (2026-08-21). Bis dahin lag jede Kategorie unter
   // EINER Sammel-Situation ("gesundheit", "einkaufen", "restaurant") - der
   // Grund, warum das Coin-Modell keine Ware hatte: ein Thema freikaufen

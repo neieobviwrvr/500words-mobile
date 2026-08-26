@@ -4,16 +4,16 @@ import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { File } from 'expo-file-system';
-import type { Card } from 'ts-fsrs';
+import { State, type Card } from 'ts-fsrs';
 import { useAppState } from '../../state/AppState';
 import { useOnboardingState } from '../../state/OnboardingState';
-import { SchreibenFeld } from '../../components';
+import { SchreibenFeld, UebungsMenu } from '../../components';
 import { CATEGORIES, CATEGORY_BY_ID } from '../../data/categories';
 import { scenarioLabel } from '../../data/scenarios';
 import { leihgeberVon, saetzeFuer } from '../../data/geliehen';
 import { passtZurAnsprache } from '../../data/anrede';
 import { getLanguage } from '../../data/languages';
-import { ExerciseSentence, loadAnswerClusters, loadExerciseSentences, shuffle } from '../../data/phrasebookContent';
+import { ExerciseSentence, loadAnswerClusters, loadExerciseSentences, shuffle, hilfeText } from '../../data/phrasebookContent';
 import { phraseId, toPhrase } from '../../data/cheatsheetContent';
 import { evaluateConcepts, EvaluationResult } from '../../features/evaluation/evaluateConcepts';
 import { looksLikeGarbageTranscript } from '../../features/stt/transcriptQuality';
@@ -486,6 +486,20 @@ export function ExerciseScreen({
     evaluateAnswer(input.trim() || transcript);
   }
 
+  // Hilfe (2026-08-26, ersetzt das reine "Loesung zeigen"): fuellt nur die
+  // HALBE Loesung ins Eingabefeld statt sie komplett anzuzeigen - dieselbe
+  // Idee wie SentenceReviewScreen.tsx Stufe 3, hier mit 0.5 statt 0.4 (eigene
+  // Zahl fuer einen eigenen Kontext, siehe hilfeText() in
+  // phrasebookContent.ts). `aufgedeckt` bleibt gesetzt und deckelt die
+  // Bewertung weiterhin auf "ueberlebt" (siehe evaluateAnswer oben) -
+  // unveraendert, nur WAS aufgedeckt wird ist jetzt kleiner.
+  function hilfeTippen() {
+    if (!sentence) return;
+    setAufgedeckt(true);
+    setSchreibenOffen(true);
+    setInput(hilfeText(sentence.pinyin ?? sentence.text, 0.5));
+  }
+
   function nextCard() {
     const next = idx + 1;
     if (next >= sentences.length) {
@@ -524,15 +538,31 @@ export function ExerciseScreen({
   // Eine Karte ohne FSRS-Zustand hat der Nutzer noch nie gesehen - abrufen
   // kann er sie also nicht. Sie wird gezeigt, genau wie der Schritt
   // `nachsprechen` im gefuehrten Kurs.
-  const istNeueKarte = !!kartenSchluessel && !cardsRef.current[kartenSchluessel];
+  const aktuelleKarte = kartenSchluessel ? cardsRef.current[kartenSchluessel] : undefined;
+  const istNeueKarte = !!kartenSchluessel && !aktuelleKarte;
+  // FSRS-`state` bewusst nutzen statt eines eigenen Zaehlers (2026-08-26,
+  // Simons Entscheidung) - liegt schon geladen in `cardsRef.current`, wurde
+  // bisher nirgends gelesen. Learning (frisch, noch in den ersten
+  // Wiederholungen) und Relearning (nach einem Rueckfall aus Review) sind
+  // die beiden Zustaende, in denen "sofort volle blinde Produktion"
+  // unfair waere - Review (eingespielt) bleibt unveraendert bei voller
+  // Produktion, New laeuft weiterhin ueber `istNeueKarte` oben.
+  const brauchtUnterstuetzung =
+    !!aktuelleKarte && (aktuelleKarte.state === State.Learning || aktuelleKarte.state === State.Relearning);
   // Nachschlage-Saetze bleiben IMMER sichtbar. Sie sind zum Vorzeigen
   // gedacht, nicht zum Abrufen ("Bitte rufen Sie die Polizei") und benutzen
   // ausdruecklich Vokabeln, die der Kurs nicht lehrt - 警察, 假装, 烦. Sie zu
   // verdecken hiesse, einen Anfaenger nach Woertern zu fragen, die er nie
   // gelernt hat; das Ergebnis waere "nicht verstanden" und ein harter
   // FSRS-Ruecksetzer. Genau der Vorbehalt steht schon in CLAUDE.md.
-  const zeigeLoesung =
-    !kannAbfragen || sentence?.lookupOnly === true || istNeueKarte || aufgedeckt || !!feedback;
+  //
+  // `aufgedeckt` bewusst NICHT mehr Teil dieser Bedingung (2026-08-26): der
+  // Hilfe-Knopf zeigt seitdem nur noch die HALBE Loesung im Eingabefeld
+  // (siehe `hilfeTippen()`), nicht mehr den vollen Satz hier oben - beides
+  // gleichzeitig waere keine Hilfe mehr, sondern die Antwort. Nach dem
+  // Abschicken (`feedback` gesetzt) greift die volle Anzeige weiterhin wie
+  // gehabt, das ist die normale Nachbesprechung, keine Vorab-Erleichterung.
+  const zeigeLoesung = !kannAbfragen || sentence?.lookupOnly === true || istNeueKarte || !!feedback;
 
   // Motivations-Einschub verschwindet nach kurzer Zeit von selbst, kann
   // aber auch per Tap sofort weggetippt werden (siehe Render unten).
@@ -559,6 +589,7 @@ export function ExerciseScreen({
           {headerTitle} ({language.label})
         </Text>
         {offline && <Text style={styles.offlineBadge}>📴 Offline</Text>}
+        <UebungsMenu dark={darkMode} meldenLabel="Satz melden" />
       </View>
 
       {loading && (
@@ -627,25 +658,39 @@ export function ExerciseScreen({
                   </Text>
                 </>
               ) : null
-            ) : (
+            ) : !aufgedeckt ? (
               // Aufdecken ist erlaubt, kostet aber das "Richtig"-Niveau -
               // dieselbe Regel wie das Tippen im gefuehrten Kurs. Die
               // Alternative waere, den Nutzer festhaengen zu lassen.
+              //
+              // Prominenter bei Learning/Relearning (2026-08-26, Simons
+              // Vorgabe): gefuellter statt nur umrandeter Knopf, wenn FSRS
+              // sagt, dass dieser Satz noch nicht sicher sitzt - bei Review
+              // bleibt er dezent wie bisher, der Nutzer muss ihn dort
+              // bewusst suchen statt zu ihm hingefuehrt zu werden.
               <Pressable
-                onPress={() => setAufgedeckt(true)}
+                onPress={hilfeTippen}
                 accessibilityRole="button"
-                accessibilityLabel="Lösung zeigen"
-                accessibilityHint="Zählt danach höchstens als Überlebensmodus"
+                accessibilityLabel="Hilfe"
+                accessibilityHint="Füllt die halbe Lösung ein, zählt danach höchstens als Überlebensmodus"
                 style={({ pressed }) => [
                   styles.zeigen,
-                  { borderColor: theme.border, opacity: pressed ? 0.6 : 1 },
+                  brauchtUnterstuetzung
+                    ? { backgroundColor: ACCENT_BLUE, borderColor: ACCENT_BLUE, opacity: pressed ? 0.7 : 1 }
+                    : { borderColor: theme.border, opacity: pressed ? 0.6 : 1 },
                 ]}
               >
-                <Text style={{ color: theme.sub, fontWeight: '700', fontSize: 12 }}>
-                  Lösung zeigen
+                <Text
+                  style={{
+                    color: brauchtUnterstuetzung ? '#FFFFFF' : theme.sub,
+                    fontWeight: '700',
+                    fontSize: 12,
+                  }}
+                >
+                  Hilfe…
                 </Text>
               </Pressable>
-            )}
+            ) : null}
 
             {/* Der Kulturhinweis kann die Loesung verraten ("哪里哪里 hat kein
                 deutsches Gegenstueck") - er erscheint deshalb mit ihr. */}

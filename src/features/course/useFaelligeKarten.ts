@@ -45,12 +45,32 @@ export type FaelligeKarten = {
    * vorgezogen wurden. Der Screen sagt das dann ehrlich.
    */
   vorgezogen: boolean;
+  /**
+   * true, wenn der Nutzer diese Kartenart noch NIE geuebt hat - anders als
+   * `vorgezogen` (bekannte Karten, nur noch nicht faellig) kommt hier eine
+   * kleine zufaellige Kostprobe aus dem Kurs, mit der noch nie eine Karte
+   * existierte (2026-08-25, Simons Vorgabe: "damit der User direkt am
+   * Anfang was zu sehen hat" statt vor einem leeren Screen zu stehen).
+   * Eigenes Flag statt `vorgezogen` mitzubenutzen, weil der Hinweistext ein
+   * anderer sein muss - "vorgezogen" behauptet faelschlich, es gaebe schon
+   * eine Lernhistorie zum Auffrischen.
+   */
+  kostprobe: boolean;
 };
 
-const LEER: FaelligeKarten = { loading: true, faellig: [], bekannt: 0, vorgezogen: false };
+const LEER: FaelligeKarten = { loading: true, faellig: [], bekannt: 0, vorgezogen: false, kostprobe: false };
 
-/** Wie viele Karten vorgezogen werden, wenn gerade nichts faellig ist. */
+/** Wie viele Karten vorgezogen bzw. als Kostprobe gezeigt werden. */
 const VORZIEHEN = 5;
+
+function mischen<T>(arr: T[]): T[] {
+  const kopie = [...arr];
+  for (let i = kopie.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [kopie[i], kopie[j]] = [kopie[j], kopie[i]];
+  }
+  return kopie;
+}
 
 /**
  * Auf welche Kartenart die Sitzung beschraenkt wird.
@@ -78,20 +98,24 @@ export function useFaelligeKarten(languageId: string, nur?: Kartenart): Faellige
 
         const alle: Faellig[] = [];
         const nichtFaellig: Faellig[] = [];
+        // ALLE moeglichen Karten, unabhaengig davon ob dazu je eine Karte
+        // entstand - nur fuer die Kostprobe unten, wenn `alle`/`nichtFaellig`
+        // beide leer sind (siehe dort).
+        const moeglich: Faellig[] = [];
 
         for (const modul of CHINESE_COURSE) {
           for (const lektion of modul.lessons) {
             const woerter = [...lektion.newFrameWords, ...lektion.slotGroups.flat()];
 
             for (const wort of woerter) {
+              moeglich.push({ art: 'wort', wort });
               const karte = karten[cardKey('zh', KURS_WORT, wort.hanzi)];
               if (!karte) continue; // noch nie geuebt - gehoert nicht in die Wiederholung
               (isDue(karte) ? alle : nichtFaellig).push({ art: 'wort', wort });
             }
 
-            const rahmenKarte = karten[cardKey('zh', KURS_RAHMEN, lektion.id)];
             const ersteSlot = lektion.slotGroups.flat()[0];
-            if (rahmenKarte && ersteSlot) {
+            if (ersteSlot) {
               const eintrag: FaelligeRahmenkarte = {
                 art: 'rahmen',
                 lektionId: lektion.id,
@@ -100,7 +124,9 @@ export function useFaelligeKarten(languageId: string, nur?: Kartenart): Faellige
                 pinyin: fuelleRahmen(lektion.frame.pinyin, ersteSlot.pinyin),
                 rahmenPinyin: lektion.frame.pinyin,
               };
-              (isDue(rahmenKarte) ? alle : nichtFaellig).push(eintrag);
+              moeglich.push(eintrag);
+              const rahmenKarte = karten[cardKey('zh', KURS_RAHMEN, lektion.id)];
+              if (rahmenKarte) (isDue(rahmenKarte) ? alle : nichtFaellig).push(eintrag);
             }
           }
         }
@@ -116,14 +142,26 @@ export function useFaelligeKarten(languageId: string, nur?: Kartenart): Faellige
         const gefiltert = alle.filter(passt);
         const restGefiltert = nichtFaellig.filter(passt);
 
-        const vorgezogen = gefiltert.length === 0 && restGefiltert.length > 0;
-        const liste = vorgezogen ? restGefiltert.slice(0, VORZIEHEN) : gefiltert;
+        // Dritte Stufe (2026-08-25, Simons Vorgabe): gefiltert UND
+        // restGefiltert leer heisst, es existiert noch KEINE einzige Karte
+        // dieser Art - ein brandneuer Nutzer, der noch keine Lektion gemacht
+        // hat. Vorziehen kann hier nichts vorziehen (nichts ist bekannt),
+        // also kommt die Kostprobe aus `moeglich` - denselben Woertern, die
+        // spaeter sowieso als Erstes in einer Lektion drankaemen.
+        const kostprobe = gefiltert.length === 0 && restGefiltert.length === 0;
+        const vorgezogen = !kostprobe && gefiltert.length === 0 && restGefiltert.length > 0;
+        const liste = kostprobe
+          ? mischen(moeglich.filter(passt)).slice(0, VORZIEHEN)
+          : vorgezogen
+            ? restGefiltert.slice(0, VORZIEHEN)
+            : gefiltert;
 
         setState({
           loading: false,
           faellig: liste,
           bekannt: gefiltert.length + restGefiltert.length,
           vorgezogen,
+          kostprobe,
         });
       })().catch(() => {
         if (!abgebrochen) setState({ ...LEER, loading: false });

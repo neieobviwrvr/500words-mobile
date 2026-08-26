@@ -13,4 +13,5 @@ export { ProgressBar } from './ProgressBar';
 export { Screen } from './Screen';
 export { SchreibenFeld } from './SchreibenFeld';
 export { SwipeBackScreen } from './SwipeBackScreen';
+export { UebungsMenu } from './UebungsMenu';
 export { useSwipeBack } from './useSwipeBack';

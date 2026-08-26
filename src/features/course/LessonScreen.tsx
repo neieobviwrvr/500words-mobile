@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { router, useFocusEffect } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
-import { Card, PillButton, ProgressBar, SchreibenFeld, Screen } from '../../components';
+import { Card, PillButton, ProgressBar, SchreibenFeld, Screen, UebungsMenu } from '../../components';
 import { useAppState } from '../../state/AppState';
 import { CHINESE_COURSE, CourseWord } from '../../data/chineseCourse';
 import { hasVoiceFor, speakText } from '../tts/speak';
@@ -994,6 +994,7 @@ function Kopf({ dark, titel, untertitel }: { dark: boolean; titel: string; unter
           </Text>
         ) : null}
       </View>
+      <UebungsMenu dark={dark} meldenLabel="Satz melden" />
     </View>
   );
 }

@@ -178,3 +178,19 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 export { shuffle };
+
+/**
+ * Teil-Lösung fürs Hilfe-Muster (2026-08-26) - schneidet einen Text an
+ * Wortgrenzen ab statt mitten im Wort, nach `anteil` (0..1) der Wörter,
+ * mindestens eins. Von zwei Screens genutzt, mit bewusst unterschiedlichem
+ * `anteil`: `SentenceReviewScreen.tsx`s Stufe 3 (0.4, Simons Vorgabe dort)
+ * und `ExerciseScreen.tsx`s Hilfe-Knopf bei FSRS-`state` Learning/
+ * Relearning (0.5, eigene, spätere Vorgabe - siehe Kommentar dort). EINE
+ * Funktion statt zwei fast identischer Kopien, der Anteil bleibt pro
+ * Aufrufer verschieden.
+ */
+export function hilfeText(text: string, anteil: number): string {
+  const woerter = text.trim().split(/\s+/).filter(Boolean);
+  const anzahl = Math.max(1, Math.ceil(woerter.length * anteil));
+  return woerter.slice(0, anzahl).join(' ');
+}

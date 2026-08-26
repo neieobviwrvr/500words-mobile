@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ActivityIndicator, Button, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { router } from 'expo-router';
 import { useOnboardingState } from '../src/state/OnboardingState';
+import { useAppState } from '../src/state/AppState';
 import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import { File } from 'expo-file-system';
 import { useSpeechmatics } from '../src/features/stt/useSpeechmatics';
@@ -39,6 +40,7 @@ const SAMPLE_TTS_URL =
 
 export default function DevToolsScreen() {
   const onboarding = useOnboardingState();
+  const { setTargetLanguageId } = useAppState();
   const [resetDone, setResetDone] = useState(false);
   const stt = useSpeechmatics();
   const recorder = useSttRecorder();
@@ -233,6 +235,75 @@ export default function DevToolsScreen() {
           router.replace('/onboarding');
         }}
       />
+
+      <View style={styles.spacer} />
+
+      {/* Testbereich Lern-Stufen (2026-08-26, Simons Wunsch: "einfach zu
+          jeder Stufe ein Beispiel zeigen"). Springt direkt in die echten
+          Screens (Sätze-Wiederholung/Wörter-Wiederholung), nur mit einem
+          Debug-Query-Param, der dort einen festen Beispielsatz/-wort auf
+          genau die gewünschte Stufe zwingt - reine Component-State-
+          Fälschung, kein AsyncStorage-Schreiben, verschwindet beim Verlassen
+          des Screens wieder. Setzt vorher gezielt die Zielsprache, weil
+          Personen-Zuordnung nur für Nicht-Chinesisch und Situations-Auswahl
+          nur für Chinesisch existiert (siehe Kommentare in
+          WordReviewScreen.tsx). */}
+      <Text style={styles.heading}>Testbereich: Lern-Stufen</Text>
+      <Text>Sätze-Wiederholung</Text>
+      <View style={styles.row}>
+        <Button
+          title="Stufe 1: Nachsprechen"
+          onPress={() => {
+            setTargetLanguageId('sv');
+            router.push({ pathname: '/training/saetze', params: { debugStufe: '1' } });
+          }}
+        />
+        <Button
+          title="Stufe 2: Zuordnung"
+          onPress={() => {
+            setTargetLanguageId('sv');
+            router.push({ pathname: '/training/saetze', params: { debugStufe: '2' } });
+          }}
+        />
+        <Button
+          title="Stufe 3: Übersetzung"
+          onPress={() => {
+            setTargetLanguageId('sv');
+            router.push({ pathname: '/training/saetze', params: { debugStufe: '3' } });
+          }}
+        />
+      </View>
+      <Text>Wörter-Wiederholung</Text>
+      <View style={styles.row}>
+        <Button
+          title="Stufe 1: Zuordnung"
+          onPress={() => {
+            setTargetLanguageId('sv');
+            router.push({ pathname: '/training/woerter', params: { debugTyp: 'zuordnung' } });
+          }}
+        />
+        <Button
+          title="Stufe 1: Personen-Zuordnung"
+          onPress={() => {
+            setTargetLanguageId('sv');
+            router.push({ pathname: '/training/woerter', params: { debugTyp: 'pronomen' } });
+          }}
+        />
+        <Button
+          title="Stufe 2: Auswahl"
+          onPress={() => {
+            setTargetLanguageId('zh');
+            router.push({ pathname: '/training/woerter', params: { debugTyp: 'situation' } });
+          }}
+        />
+        <Button
+          title="Stufe 3: Freie Eingabe"
+          onPress={() => {
+            setTargetLanguageId('zh');
+            router.push({ pathname: '/training/woerter', params: { debugTyp: 'situation-stt' } });
+          }}
+        />
+      </View>
 
       <View style={styles.spacer} />
 
