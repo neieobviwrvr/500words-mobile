@@ -73,3 +73,7 @@ Sprachlisten/**/__pycache__/
 # Erzeugte Audio-Proben aus TTS-Versuchen. Reproduzierbar, binaer, gross.
 Sprachlisten/**/*.mp3
 Sprachlisten/edge_tts_test_output/
+
+# Persoenliche Claude-Code-Einstellungen (Berechtigungen o.ae.) - gehoert
+# nicht ins Repo, gilt nur fuer diese Maschine.
+.claude/settings.local.json
