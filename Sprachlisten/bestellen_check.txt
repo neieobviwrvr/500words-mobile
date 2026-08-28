@@ -1,0 +1,50 @@
+[
+  {
+    "id": 91,
+    "target_text": "Quisiera pedir algo.",
+    "german": "Ich möchte etwas bestellen.",
+    "scenario": "restaurant",
+    "tense": "present",
+    "difficulty": "A1",
+    "accepted_concepts": {
+      "optional": [],
+      "required": [
+        {
+          "concept": "bestellen",
+          "synonyms": [
+            "pedir algo",
+            "pedir"
+          ]
+        }
+      ]
+    },
+    "audio_url": null,
+    "status": "Neu",
+    "category": "drinking_dining",
+    "verb_cluster": null
+  },
+  {
+    "id": 168,
+    "target_text": "¿Puedo pedir prestado este libro?",
+    "german": "Kann ich dieses Buch ausleihen?",
+    "scenario": "uni",
+    "tense": "present",
+    "difficulty": "A2",
+    "accepted_concepts": {
+      "optional": [],
+      "required": [
+        {
+          "concept": "ausleihen",
+          "synonyms": [
+            "pedir prestado",
+            "prestar"
+          ]
+        }
+      ]
+    },
+    "audio_url": null,
+    "status": "Neu",
+    "category": "university_studying",
+    "verb_cluster": null
+  }
+]

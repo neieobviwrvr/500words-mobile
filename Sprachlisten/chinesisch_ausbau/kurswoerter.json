@@ -1,0 +1,1446 @@
+{
+ "我": {
+  "pinyin": "wǒ",
+  "german": "ich"
+ },
+ "你": {
+  "pinyin": "nǐ",
+  "german": "du"
+ },
+ "他": {
+  "pinyin": "tā",
+  "german": "er"
+ },
+ "她": {
+  "pinyin": "tā",
+  "german": "sie"
+ },
+ "我们": {
+  "pinyin": "wǒmen",
+  "german": "wir"
+ },
+ "是": {
+  "pinyin": "shì",
+  "german": "sein"
+ },
+ "学生": {
+  "pinyin": "xuésheng",
+  "german": "Student / Schüler"
+ },
+ "老师": {
+  "pinyin": "lǎoshī",
+  "german": "Lehrer"
+ },
+ "朋友": {
+  "pinyin": "péngyou",
+  "german": "Freund"
+ },
+ "单身": {
+  "pinyin": "dānshēn",
+  "german": "single"
+ },
+ "同事": {
+  "pinyin": "tóngshì",
+  "german": "Kollege"
+ },
+ "这": {
+  "pinyin": "zhè",
+  "german": "dies / das"
+ },
+ "的": {
+  "pinyin": "de",
+  "german": "Genitiv- / Attributpartikel"
+ },
+ "漂亮": {
+  "pinyin": "piàoliang",
+  "german": "schön / hübsch"
+ },
+ "很": {
+  "pinyin": "hěn",
+  "german": "sehr"
+ },
+ "男朋友": {
+  "pinyin": "nánpéngyou",
+  "german": "fester Freund"
+ },
+ "女朋友": {
+  "pinyin": "nǚpéngyou",
+  "german": "feste Freundin"
+ },
+ "高": {
+  "pinyin": "gāo",
+  "german": "groß (Körpergröße)"
+ },
+ "帅": {
+  "pinyin": "shuài",
+  "german": "cool / gutaussehend"
+ },
+ "有趣": {
+  "pinyin": "yǒuqù",
+  "german": "interessant"
+ },
+ "微信": {
+  "pinyin": "wēixìn",
+  "german": "WeChat"
+ },
+ "想": {
+  "pinyin": "xiǎng",
+  "german": "möchten / wollen"
+ },
+ "要": {
+  "pinyin": "yào",
+  "german": "wollen / brauchen"
+ },
+ "吃": {
+  "pinyin": "chī",
+  "german": "essen"
+ },
+ "喝": {
+  "pinyin": "hē",
+  "german": "trinken"
+ },
+ "买": {
+  "pinyin": "mǎi",
+  "german": "kaufen"
+ },
+ "看": {
+  "pinyin": "kàn",
+  "german": "sehen / schauen"
+ },
+ "坐": {
+  "pinyin": "zuò",
+  "german": "sitzen"
+ },
+ "叫": {
+  "pinyin": "jiào",
+  "german": "rufen / heißen"
+ },
+ "吗": {
+  "pinyin": "ma",
+  "german": "Fragepartikel"
+ },
+ "休息": {
+  "pinyin": "xiūxi",
+  "german": "ausruhen"
+ },
+ "可以": {
+  "pinyin": "kěyǐ",
+  "german": "können / dürfen"
+ },
+ "进": {
+  "pinyin": "jìn",
+  "german": "eintreten"
+ },
+ "帮助": {
+  "pinyin": "bāngzhù",
+  "german": "helfen"
+ },
+ "等": {
+  "pinyin": "děng",
+  "german": "warten"
+ },
+ "有": {
+  "pinyin": "yǒu",
+  "german": "haben"
+ },
+ "个": {
+  "pinyin": "gè",
+  "german": "Zählmarke (allgemein)"
+ },
+ "苹果": {
+  "pinyin": "píngguǒ",
+  "german": "Apfel"
+ },
+ "电脑": {
+  "pinyin": "diànnǎo",
+  "german": "Computer"
+ },
+ "衣服": {
+  "pinyin": "yīfu",
+  "german": "Kleidung"
+ },
+ "太": {
+  "pinyin": "tài",
+  "german": "zu / allzu"
+ },
+ "了": {
+  "pinyin": "le",
+  "german": "Zustandspartikel"
+ },
+ "大": {
+  "pinyin": "dà",
+  "german": "groß"
+ },
+ "小": {
+  "pinyin": "xiǎo",
+  "german": "klein"
+ },
+ "手机": {
+  "pinyin": "shǒujī",
+  "german": "Handy"
+ },
+ "票": {
+  "pinyin": "piào",
+  "german": "Ticket / Karte"
+ },
+ "贵": {
+  "pinyin": "guì",
+  "german": "teuer"
+ },
+ "便宜": {
+  "pinyin": "piányi",
+  "german": "günstig"
+ },
+ "新": {
+  "pinyin": "xīn",
+  "german": "neu"
+ },
+ "一": {
+  "pinyin": "yī",
+  "german": "eins"
+ },
+ "二": {
+  "pinyin": "èr",
+  "german": "zwei"
+ },
+ "三": {
+  "pinyin": "sān",
+  "german": "drei"
+ },
+ "四": {
+  "pinyin": "sì",
+  "german": "vier"
+ },
+ "五": {
+  "pinyin": "wǔ",
+  "german": "fünf"
+ },
+ "六": {
+  "pinyin": "liù",
+  "german": "sechs"
+ },
+ "七": {
+  "pinyin": "qī",
+  "german": "sieben"
+ },
+ "八": {
+  "pinyin": "bā",
+  "german": "acht"
+ },
+ "九": {
+  "pinyin": "jiǔ",
+  "german": "neun"
+ },
+ "十": {
+  "pinyin": "shí",
+  "german": "zehn"
+ },
+ "百": {
+  "pinyin": "bǎi",
+  "german": "hundert"
+ },
+ "千": {
+  "pinyin": "qiān",
+  "german": "tausend"
+ },
+ "今天": {
+  "pinyin": "jīntiān",
+  "german": "heute"
+ },
+ "明天": {
+  "pinyin": "míngtiān",
+  "german": "morgen"
+ },
+ "现在": {
+  "pinyin": "xiànzài",
+  "german": "jetzt"
+ },
+ "去": {
+  "pinyin": "qù",
+  "german": "gehen / fahren"
+ },
+ "吃饭": {
+  "pinyin": "chīfàn",
+  "german": "essen"
+ },
+ "睡觉": {
+  "pinyin": "shuìjiào",
+  "german": "schlafen"
+ },
+ "工作": {
+  "pinyin": "gōngzuò",
+  "german": "arbeiten / Arbeit"
+ },
+ "什么时候": {
+  "pinyin": "shénme shíhou",
+  "german": "wann"
+ },
+ "回家": {
+  "pinyin": "huíjiā",
+  "german": "nach Hause gehen"
+ },
+ "晚上": {
+  "pinyin": "wǎnshang",
+  "german": "abends"
+ },
+ "旅游": {
+  "pinyin": "lǚyóu",
+  "german": "reisen"
+ },
+ "开始": {
+  "pinyin": "kāishǐ",
+  "german": "anfangen / beginnen"
+ },
+ "考试": {
+  "pinyin": "kǎoshì",
+  "german": "Prüfung"
+ },
+ "在": {
+  "pinyin": "zài",
+  "german": "sein (Ort) / in"
+ },
+ "哪里": {
+  "pinyin": "nǎli",
+  "german": "wo"
+ },
+ "饭店": {
+  "pinyin": "fàndiàn",
+  "german": "Restaurant"
+ },
+ "商店": {
+  "pinyin": "shāngdiàn",
+  "german": "Geschäft / Laden"
+ },
+ "医院": {
+  "pinyin": "yīyuàn",
+  "german": "Krankenhaus"
+ },
+ "怎么": {
+  "pinyin": "zěnme",
+  "german": "wie"
+ },
+ "洗手间": {
+  "pinyin": "xǐshǒujiān",
+  "german": "Toilette"
+ },
+ "机场": {
+  "pinyin": "jīchǎng",
+  "german": "Flughafen"
+ },
+ "火车站": {
+  "pinyin": "huǒchēzhàn",
+  "german": "Bahnhof"
+ },
+ "这里": {
+  "pinyin": "zhèlǐ",
+  "german": "hier"
+ },
+ "那里": {
+  "pinyin": "nàlǐ",
+  "german": "dort"
+ },
+ "酒店": {
+  "pinyin": "jiǔdiàn",
+  "german": "Hotel"
+ },
+ "地铁站": {
+  "pinyin": "dìtiězhàn",
+  "german": "U-Bahn-Station"
+ },
+ "请": {
+  "pinyin": "qǐng",
+  "german": "bitte"
+ },
+ "水": {
+  "pinyin": "shuǐ",
+  "german": "Wasser"
+ },
+ "茶": {
+  "pinyin": "chá",
+  "german": "Tee"
+ },
+ "喜欢": {
+  "pinyin": "xǐhuan",
+  "german": "mögen"
+ },
+ "菜": {
+  "pinyin": "cài",
+  "german": "Gericht / Essen"
+ },
+ "给": {
+  "pinyin": "gěi",
+  "german": "geben"
+ },
+ "啤酒": {
+  "pinyin": "píjiǔ",
+  "german": "Bier"
+ },
+ "咖啡": {
+  "pinyin": "kāfēi",
+  "german": "Kaffee"
+ },
+ "非常": {
+  "pinyin": "fēicháng",
+  "german": "außerordentlich"
+ },
+ "好吃": {
+  "pinyin": "hǎochī",
+  "german": "lecker (Essen)"
+ },
+ "好喝": {
+  "pinyin": "hǎohē",
+  "german": "lecker (Getränk)"
+ },
+ "甜": {
+  "pinyin": "tián",
+  "german": "süß"
+ },
+ "棒": {
+  "pinyin": "bàng",
+  "german": "toll / super"
+ },
+ "菜单": {
+  "pinyin": "càidān",
+  "german": "Speisekarte"
+ },
+ "好": {
+  "pinyin": "hǎo",
+  "german": "gut"
+ },
+ "比": {
+  "pinyin": "bǐ",
+  "german": "vergleichen mit / als"
+ },
+ "更": {
+  "pinyin": "gèng",
+  "german": "noch (mehr)"
+ },
+ "快": {
+  "pinyin": "kuài",
+  "german": "schnell"
+ },
+ "不": {
+  "pinyin": "bù",
+  "german": "nicht"
+ },
+ "学习": {
+  "pinyin": "xuéxí",
+  "german": "lernen"
+ },
+ "打电话": {
+  "pinyin": "dǎ diànhuà",
+  "german": "telefonieren"
+ },
+ "因为": {
+  "pinyin": "yīnwèi",
+  "german": "weil"
+ },
+ "所以": {
+  "pinyin": "suǒyǐ",
+  "german": "deshalb"
+ },
+ "生病": {
+  "pinyin": "shēngbìng",
+  "german": "krank sein"
+ },
+ "忙": {
+  "pinyin": "máng",
+  "german": "beschäftigt"
+ },
+ "累": {
+  "pinyin": "lèi",
+  "german": "müde"
+ },
+ "正在": {
+  "pinyin": "zhèngzài",
+  "german": "gerade dabei sein zu"
+ },
+ "准备": {
+  "pinyin": "zhǔnbèi",
+  "german": "vorbereiten"
+ },
+ "中国": {
+  "pinyin": "Zhōngguó",
+  "german": "China"
+ },
+ "北京": {
+  "pinyin": "Běijīng",
+  "german": "Peking"
+ },
+ "没": {
+  "pinyin": "méi",
+  "german": "nicht (Vergangenheit)"
+ },
+ "过": {
+  "pinyin": "guo",
+  "german": "Erfahrungspartikel"
+ },
+ "羊肉": {
+  "pinyin": "yángròu",
+  "german": "Lammfleisch"
+ },
+ "找": {
+  "pinyin": "zhǎo",
+  "german": "suchen"
+ },
+ "拿": {
+  "pinyin": "ná",
+  "german": "nehmen / holen"
+ },
+ "翻译": {
+  "pinyin": "fānyì",
+  "german": "übersetzen"
+ },
+ "解释": {
+  "pinyin": "jiěshì",
+  "german": "erklären"
+ },
+ "冷": {
+  "pinyin": "lěng",
+  "german": "kalt"
+ },
+ "头": {
+  "pinyin": "tóu",
+  "german": "Kopf"
+ },
+ "肚子": {
+  "pinyin": "dùzi",
+  "german": "Bauch"
+ },
+ "腿": {
+  "pinyin": "tuǐ",
+  "german": "Bein"
+ },
+ "感冒": {
+  "pinyin": "gǎnmào",
+  "german": "Erkältung"
+ },
+ "发烧": {
+  "pinyin": "fāshāo",
+  "german": "Fieber haben"
+ },
+ "难受": {
+  "pinyin": "nánshòu",
+  "german": "unwohl / schmerzhaft"
+ },
+ "疼": {
+  "pinyin": "téng",
+  "german": "schmerzen / wehtun"
+ },
+ "认识": {
+  "pinyin": "rènshi",
+  "german": "kennen"
+ },
+ "还": {
+  "pinyin": "hái",
+  "german": "noch"
+ },
+ "清楚": {
+  "pinyin": "qīngchu",
+  "german": "klar / verstehen"
+ },
+ "周末": {
+  "pinyin": "zhōumò",
+  "german": "Wochenende"
+ },
+ "打算": {
+  "pinyin": "dǎsuàn",
+  "german": "vorhaben / Plan"
+ },
+ "安排": {
+  "pinyin": "ānpái",
+  "german": "Programm / Ablauf"
+ },
+ "兴趣": {
+  "pinyin": "xìngqù",
+  "german": "Interesse"
+ },
+ "习惯": {
+  "pinyin": "xíguàn",
+  "german": "gewöhnt sein"
+ },
+ "了解": {
+  "pinyin": "liǎojiě",
+  "german": "vertraut sein"
+ },
+ "吧": {
+  "pinyin": "ba",
+  "german": "Vorschlagspartikel"
+ },
+ "玩": {
+  "pinyin": "wán",
+  "german": "spielen / abhängen"
+ },
+ "一起": {
+  "pinyin": "yìqǐ",
+  "german": "zusammen"
+ },
+ "跳舞": {
+  "pinyin": "tiàowǔ",
+  "german": "tanzen"
+ },
+ "加": {
+  "pinyin": "jiā",
+  "german": "hinzufügen"
+ },
+ "聊天": {
+  "pinyin": "liáotiān",
+  "german": "quatschen"
+ },
+ "逛街": {
+  "pinyin": "guàngjiē",
+  "german": "shoppen"
+ },
+ "介绍": {
+  "pinyin": "jièshào",
+  "german": "vorstellen"
+ },
+ "帮忙": {
+  "pinyin": "bāngmáng",
+  "german": "helfen"
+ },
+ "照顾": {
+  "pinyin": "zhàogù",
+  "german": "kümmern / aufpassen"
+ },
+ "爸爸": {
+  "pinyin": "bàba",
+  "german": "Vater"
+ },
+ "妈妈": {
+  "pinyin": "māma",
+  "german": "Mutter"
+ },
+ "哥哥": {
+  "pinyin": "gēge",
+  "german": "älterer Bruder"
+ },
+ "姐姐": {
+  "pinyin": "jiějie",
+  "german": "ältere Schwester"
+ },
+ "弟弟": {
+  "pinyin": "dìdi",
+  "german": "jüngerer Bruder"
+ },
+ "妹妹": {
+  "pinyin": "mèimei",
+  "german": "jüngere Schwester"
+ },
+ "儿子": {
+  "pinyin": "érzi",
+  "german": "Sohn"
+ },
+ "女儿": {
+  "pinyin": "nǚ'ér",
+  "german": "Tochter"
+ },
+ "名字": {
+  "pinyin": "míngzi",
+  "german": "Name"
+ },
+ "岁": {
+  "pinyin": "suì",
+  "german": "Jahre (alt)"
+ },
+ "谁": {
+  "pinyin": "shéi",
+  "german": "wer"
+ },
+ "家": {
+  "pinyin": "jiā",
+  "german": "Zuhause / Familie"
+ },
+ "先生": {
+  "pinyin": "xiānsheng",
+  "german": "Herr"
+ },
+ "小姐": {
+  "pinyin": "xiǎojiě",
+  "german": "Frau (Anrede)"
+ },
+ "说": {
+  "pinyin": "shuō",
+  "german": "sagen / sprechen"
+ },
+ "写": {
+  "pinyin": "xiě",
+  "german": "schreiben"
+ },
+ "读": {
+  "pinyin": "dú",
+  "german": "lesen"
+ },
+ "听": {
+  "pinyin": "tīng",
+  "german": "hören"
+ },
+ "问": {
+  "pinyin": "wèn",
+  "german": "fragen"
+ },
+ "做": {
+  "pinyin": "zuò",
+  "german": "machen / tun"
+ },
+ "开": {
+  "pinyin": "kāi",
+  "german": "öffnen / fahren"
+ },
+ "关": {
+  "pinyin": "guān",
+  "german": "schließen"
+ },
+ "用": {
+  "pinyin": "yòng",
+  "german": "benutzen"
+ },
+ "送": {
+  "pinyin": "sòng",
+  "german": "bringen / schenken"
+ },
+ "告诉": {
+  "pinyin": "gàosu",
+  "german": "mitteilen / sagen"
+ },
+ "回答": {
+  "pinyin": "huídá",
+  "german": "antworten"
+ },
+ "知道": {
+  "pinyin": "zhīdào",
+  "german": "wissen"
+ },
+ "觉得": {
+  "pinyin": "juéde",
+  "german": "finden / meinen"
+ },
+ "钱": {
+  "pinyin": "qián",
+  "german": "Geld"
+ },
+ "块": {
+  "pinyin": "kuài",
+  "german": "Yuan (Geldeinheit)"
+ },
+ "多少": {
+  "pinyin": "duōshao",
+  "german": "wie viel"
+ },
+ "几": {
+  "pinyin": "jǐ",
+  "german": "wie viele"
+ },
+ "东西": {
+  "pinyin": "dōngxi",
+  "german": "Ding / Sache"
+ },
+ "书": {
+  "pinyin": "shū",
+  "german": "Buch"
+ },
+ "报纸": {
+  "pinyin": "bàozhǐ",
+  "german": "Zeitung"
+ },
+ "桌子": {
+  "pinyin": "zhuōzi",
+  "german": "Tisch"
+ },
+ "椅子": {
+  "pinyin": "yǐzi",
+  "german": "Stuhl"
+ },
+ "杯子": {
+  "pinyin": "bēizi",
+  "german": "Becher / Glas"
+ },
+ "卖": {
+  "pinyin": "mài",
+  "german": "verkaufen"
+ },
+ "多": {
+  "pinyin": "duō",
+  "german": "viel"
+ },
+ "少": {
+  "pinyin": "shǎo",
+  "german": "wenig"
+ },
+ "长": {
+  "pinyin": "cháng",
+  "german": "lang"
+ },
+ "短": {
+  "pinyin": "duǎn",
+  "german": "kurz"
+ },
+ "昨天": {
+  "pinyin": "zuótiān",
+  "german": "gestern"
+ },
+ "早上": {
+  "pinyin": "zǎoshang",
+  "german": "morgens"
+ },
+ "上午": {
+  "pinyin": "shàngwǔ",
+  "german": "vormittags"
+ },
+ "中午": {
+  "pinyin": "zhōngwǔ",
+  "german": "mittags"
+ },
+ "下午": {
+  "pinyin": "xiàwǔ",
+  "german": "nachmittags"
+ },
+ "年": {
+  "pinyin": "nián",
+  "german": "Jahr"
+ },
+ "月": {
+  "pinyin": "yuè",
+  "german": "Monat"
+ },
+ "号": {
+  "pinyin": "hào",
+  "german": "Tag (Datum)"
+ },
+ "星期": {
+  "pinyin": "xīngqī",
+  "german": "Woche"
+ },
+ "点": {
+  "pinyin": "diǎn",
+  "german": "Uhr (Zeitangabe)"
+ },
+ "分": {
+  "pinyin": "fēn",
+  "german": "Minute"
+ },
+ "时候": {
+  "pinyin": "shíhou",
+  "german": "Zeitpunkt"
+ },
+ "生日": {
+  "pinyin": "shēngrì",
+  "german": "Geburtstag"
+ },
+ "起床": {
+  "pinyin": "qǐchuáng",
+  "german": "aufstehen"
+ },
+ "学校": {
+  "pinyin": "xuéxiào",
+  "german": "Schule"
+ },
+ "教室": {
+  "pinyin": "jiàoshì",
+  "german": "Klassenzimmer"
+ },
+ "公司": {
+  "pinyin": "gōngsī",
+  "german": "Firma"
+ },
+ "房间": {
+  "pinyin": "fángjiān",
+  "german": "Zimmer"
+ },
+ "前面": {
+  "pinyin": "qiánmiàn",
+  "german": "vorne"
+ },
+ "后面": {
+  "pinyin": "hòumiàn",
+  "german": "hinten"
+ },
+ "里面": {
+  "pinyin": "lǐmiàn",
+  "german": "drinnen"
+ },
+ "外面": {
+  "pinyin": "wàimiàn",
+  "german": "draußen"
+ },
+ "上面": {
+  "pinyin": "shàngmiàn",
+  "german": "oben"
+ },
+ "下面": {
+  "pinyin": "xiàmiàn",
+  "german": "unten"
+ },
+ "旁边": {
+  "pinyin": "pángbiān",
+  "german": "daneben"
+ },
+ "左边": {
+  "pinyin": "zuǒbiān",
+  "german": "links"
+ },
+ "右边": {
+  "pinyin": "yòubiān",
+  "german": "rechts"
+ },
+ "远": {
+  "pinyin": "yuǎn",
+  "german": "weit"
+ },
+ "近": {
+  "pinyin": "jìn",
+  "german": "nah"
+ },
+ "走": {
+  "pinyin": "zǒu",
+  "german": "gehen / laufen"
+ },
+ "到": {
+  "pinyin": "dào",
+  "german": "ankommen"
+ },
+ "回": {
+  "pinyin": "huí",
+  "german": "zurückkehren"
+ },
+ "米饭": {
+  "pinyin": "mǐfàn",
+  "german": "Reis"
+ },
+ "面条": {
+  "pinyin": "miàntiáo",
+  "german": "Nudeln"
+ },
+ "鸡蛋": {
+  "pinyin": "jīdàn",
+  "german": "Ei"
+ },
+ "牛奶": {
+  "pinyin": "niúnǎi",
+  "german": "Milch"
+ },
+ "面包": {
+  "pinyin": "miànbāo",
+  "german": "Brot"
+ },
+ "水果": {
+  "pinyin": "shuǐguǒ",
+  "german": "Obst"
+ },
+ "西瓜": {
+  "pinyin": "xīguā",
+  "german": "Wassermelone"
+ },
+ "鱼": {
+  "pinyin": "yú",
+  "german": "Fisch"
+ },
+ "服务员": {
+  "pinyin": "fúwùyuán",
+  "german": "Kellner / Bedienung"
+ },
+ "饿": {
+  "pinyin": "è",
+  "german": "hungrig"
+ },
+ "渴": {
+  "pinyin": "kě",
+  "german": "durstig"
+ },
+ "吃饱": {
+  "pinyin": "chībǎo",
+  "german": "satt sein"
+ },
+ "慢": {
+  "pinyin": "màn",
+  "german": "langsam"
+ },
+ "胖": {
+  "pinyin": "pàng",
+  "german": "dick"
+ },
+ "瘦": {
+  "pinyin": "shòu",
+  "german": "dünn"
+ },
+ "老": {
+  "pinyin": "lǎo",
+  "german": "alt"
+ },
+ "年轻": {
+  "pinyin": "niánqīng",
+  "german": "jung"
+ },
+ "聪明": {
+  "pinyin": "cōngming",
+  "german": "klug"
+ },
+ "可爱": {
+  "pinyin": "kě'ài",
+  "german": "niedlich"
+ },
+ "高兴": {
+  "pinyin": "gāoxìng",
+  "german": "froh"
+ },
+ "快乐": {
+  "pinyin": "kuàilè",
+  "german": "fröhlich"
+ },
+ "颜色": {
+  "pinyin": "yánsè",
+  "german": "Farbe"
+ },
+ "白": {
+  "pinyin": "bái",
+  "german": "weiß"
+ },
+ "黑": {
+  "pinyin": "hēi",
+  "german": "schwarz"
+ },
+ "红": {
+  "pinyin": "hóng",
+  "german": "rot"
+ },
+ "蓝": {
+  "pinyin": "lán",
+  "german": "blau"
+ },
+ "但是": {
+  "pinyin": "dànshì",
+  "german": "aber"
+ },
+ "也": {
+  "pinyin": "yě",
+  "german": "auch"
+ },
+ "就": {
+  "pinyin": "jiù",
+  "german": "dann / gleich"
+ },
+ "已经": {
+  "pinyin": "yǐjīng",
+  "german": "schon / bereits"
+ },
+ "会": {
+  "pinyin": "huì",
+  "german": "können (erlernt)"
+ },
+ "可能": {
+  "pinyin": "kěnéng",
+  "german": "vielleicht"
+ },
+ "应该": {
+  "pinyin": "yīnggāi",
+  "german": "sollen"
+ },
+ "看书": {
+  "pinyin": "kànshū",
+  "german": "lesen (Buch)"
+ },
+ "上网": {
+  "pinyin": "shàngwǎng",
+  "german": "im Internet sein"
+ },
+ "运动": {
+  "pinyin": "yùndòng",
+  "german": "Sport treiben"
+ },
+ "跑步": {
+  "pinyin": "pǎobù",
+  "german": "joggen"
+ },
+ "游泳": {
+  "pinyin": "yóuyǒng",
+  "german": "schwimmen"
+ },
+ "唱歌": {
+  "pinyin": "chànggē",
+  "german": "singen"
+ },
+ "音乐": {
+  "pinyin": "yīnyuè",
+  "german": "Musik"
+ },
+ "汉语": {
+  "pinyin": "Hànyǔ",
+  "german": "Chinesisch (Sprache)"
+ },
+ "英语": {
+  "pinyin": "Yīngyǔ",
+  "german": "Englisch"
+ },
+ "国家": {
+  "pinyin": "guójiā",
+  "german": "Land / Staat"
+ },
+ "上海": {
+  "pinyin": "Shànghǎi",
+  "german": "Shanghai"
+ },
+ "德国": {
+  "pinyin": "Déguó",
+  "german": "Deutschland"
+ },
+ "以前": {
+  "pinyin": "yǐqián",
+  "german": "früher"
+ },
+ "以后": {
+  "pinyin": "yǐhòu",
+  "german": "später"
+ },
+ "从": {
+  "pinyin": "cóng",
+  "german": "von / ab"
+ },
+ "来": {
+  "pinyin": "lái",
+  "german": "kommen"
+ },
+ "第一次": {
+  "pinyin": "dì-yī cì",
+  "german": "zum ersten Mal"
+ },
+ "医生": {
+  "pinyin": "yīshēng",
+  "german": "Arzt"
+ },
+ "药": {
+  "pinyin": "yào",
+  "german": "Medizin"
+ },
+ "手": {
+  "pinyin": "shǒu",
+  "german": "Hand"
+ },
+ "眼睛": {
+  "pinyin": "yǎnjing",
+  "german": "Auge"
+ },
+ "耳朵": {
+  "pinyin": "ěrduo",
+  "german": "Ohr"
+ },
+ "鼻子": {
+  "pinyin": "bízi",
+  "german": "Nase"
+ },
+ "嘴": {
+  "pinyin": "zuǐ",
+  "german": "Mund"
+ },
+ "身体": {
+  "pinyin": "shēntǐ",
+  "german": "Körper"
+ },
+ "热": {
+  "pinyin": "rè",
+  "german": "heiß"
+ },
+ "舒服": {
+  "pinyin": "shūfu",
+  "german": "wohl / angenehm"
+ },
+ "天气": {
+  "pinyin": "tiānqì",
+  "german": "Wetter"
+ },
+ "下雨": {
+  "pinyin": "xiàyǔ",
+  "german": "regnen"
+ },
+ "下雪": {
+  "pinyin": "xiàxuě",
+  "german": "schneien"
+ },
+ "晴天": {
+  "pinyin": "qíngtiān",
+  "german": "sonniger Tag"
+ },
+ "阴天": {
+  "pinyin": "yīntiān",
+  "german": "bewölkter Tag"
+ },
+ "电影": {
+  "pinyin": "diànyǐng",
+  "german": "Film"
+ },
+ "爱好": {
+  "pinyin": "àihào",
+  "german": "Hobby"
+ },
+ "猫": {
+  "pinyin": "māo",
+  "german": "Katze"
+ },
+ "狗": {
+  "pinyin": "gǒu",
+  "german": "Hund"
+ },
+ "旅行": {
+  "pinyin": "lǚxíng",
+  "german": "reisen"
+ },
+ "你好": {
+  "pinyin": "nǐhǎo",
+  "german": "hallo"
+ },
+ "再见": {
+  "pinyin": "zàijiàn",
+  "german": "auf Wiedersehen"
+ },
+ "谢谢": {
+  "pinyin": "xièxie",
+  "german": "danke"
+ },
+ "不客气": {
+  "pinyin": "bú kèqi",
+  "german": "gern geschehen"
+ },
+ "对不起": {
+  "pinyin": "duìbuqǐ",
+  "german": "Entschuldigung"
+ },
+ "没关系": {
+  "pinyin": "méi guānxi",
+  "german": "macht nichts"
+ },
+ "欢迎": {
+  "pinyin": "huānyíng",
+  "german": "willkommen"
+ },
+ "礼物": {
+  "pinyin": "lǐwù",
+  "german": "Geschenk"
+ },
+ "一下": {
+  "pinyin": "yíxià",
+  "german": "kurz / mal"
+ },
+ "帮": {
+  "pinyin": "bāng",
+  "german": "helfen"
+ },
+ "和": {
+  "pinyin": "hé",
+  "german": "und"
+ },
+ "都": {
+  "pinyin": "dōu",
+  "german": "alle / beide"
+ },
+ "些": {
+  "pinyin": "xiē",
+  "german": "einige"
+ },
+ "两": {
+  "pinyin": "liǎng",
+  "german": "zwei (vor Zählwort)"
+ },
+ "零": {
+  "pinyin": "líng",
+  "german": "null"
+ },
+ "别": {
+  "pinyin": "bié",
+  "german": "nicht (Aufforderung)"
+ },
+ "真": {
+  "pinyin": "zhēn",
+  "german": "wirklich"
+ },
+ "再": {
+  "pinyin": "zài",
+  "german": "nochmal / wieder"
+ },
+ "最": {
+  "pinyin": "zuì",
+  "german": "am meisten"
+ },
+ "完": {
+  "pinyin": "wán",
+  "german": "fertig / zu Ende"
+ },
+ "次": {
+  "pinyin": "cì",
+  "german": "Mal (Zählwort)"
+ },
+ "让": {
+  "pinyin": "ràng",
+  "german": "lassen"
+ },
+ "人": {
+  "pinyin": "rén",
+  "german": "Mensch / Person"
+ },
+ "呢": {
+  "pinyin": "ne",
+  "german": "und du? (Rückfragepartikel)"
+ },
+ "哪": {
+  "pinyin": "nǎ",
+  "german": "welche(r)"
+ },
+ "那": {
+  "pinyin": "nà",
+  "german": "jene(r) / das da"
+ },
+ "里": {
+  "pinyin": "lǐ",
+  "german": "in / drinnen"
+ },
+ "上": {
+  "pinyin": "shàng",
+  "german": "auf / oben"
+ },
+ "下": {
+  "pinyin": "xià",
+  "german": "unter / unten"
+ },
+ "外": {
+  "pinyin": "wài",
+  "german": "außen"
+ },
+ "懂": {
+  "pinyin": "dǒng",
+  "german": "verstehen"
+ },
+ "说话": {
+  "pinyin": "shuōhuà",
+  "german": "sprechen / reden"
+ },
+ "怎么样": {
+  "pinyin": "zěnmeyàng",
+  "german": "wie ist es?"
+ },
+ "问题": {
+  "pinyin": "wèntí",
+  "german": "Frage / Problem"
+ },
+ "意思": {
+  "pinyin": "yìsi",
+  "german": "Bedeutung / Sinn"
+ },
+ "错": {
+  "pinyin": "cuò",
+  "german": "falsch"
+ },
+ "住": {
+  "pinyin": "zhù",
+  "german": "wohnen"
+ },
+ "穿": {
+  "pinyin": "chuān",
+  "german": "anziehen / tragen"
+ },
+ "洗": {
+  "pinyin": "xǐ",
+  "german": "waschen"
+ },
+ "出租车": {
+  "pinyin": "chūzūchē",
+  "german": "Taxi"
+ },
+ "飞机": {
+  "pinyin": "fēijī",
+  "german": "Flugzeug"
+ },
+ "公共汽车": {
+  "pinyin": "gōnggòng qìchē",
+  "german": "Bus"
+ },
+ "路": {
+  "pinyin": "lù",
+  "german": "Weg / Straße"
+ },
+ "门": {
+  "pinyin": "mén",
+  "german": "Tür"
+ },
+ "元": {
+  "pinyin": "yuán",
+  "german": "Yuan (Währung)"
+ },
+ "分钟": {
+  "pinyin": "fēnzhōng",
+  "german": "Minute"
+ },
+ "小时": {
+  "pinyin": "xiǎoshí",
+  "german": "Stunde"
+ },
+ "时间": {
+  "pinyin": "shíjiān",
+  "german": "Zeit"
+ },
+ "您": {
+  "pinyin": "nín",
+  "german": "Sie (höflich)"
+ },
+ "喂": {
+  "pinyin": "wéi",
+  "german": "hallo (am Telefon)"
+ },
+ "什么": {
+  "pinyin": "shénme",
+  "german": "was"
+ },
+ "能": {
+  "pinyin": "néng",
+  "german": "können"
+ },
+ "不去": {
+  "pinyin": "bú qù",
+  "german": "nicht gehen"
+ },
+ "今天晚上": {
+  "pinyin": "jīntiān wǎnshang",
+  "german": "heute Abend"
+ },
+ "喝一杯": {
+  "pinyin": "hē yī bēi",
+  "german": "etwas trinken gehen"
+ },
+ "国": {
+  "pinyin": "guó",
+  "german": "Land, Staat"
+ },
+ "多大": {
+  "pinyin": "duō dà",
+  "german": "wie alt"
+ },
+ "拜拜": {
+  "pinyin": "báibái",
+  "german": "tschüss (vom englischen bye-bye)"
+ },
+ "一会儿": {
+  "pinyin": "yíhuìr",
+  "german": "gleich, in Kürze"
+ },
+ "安娜": {
+  "pinyin": "Ānnà",
+  "german": "Anna (Vorname, Beispiel)"
+ },
+ "一共": {
+  "pinyin": "yígòng",
+  "german": "zusammen, insgesamt"
+ },
+ "出口": {
+  "pinyin": "chūkǒu",
+  "german": "Ausgang"
+ },
+ "丢": {
+  "pinyin": "diū",
+  "german": "verlieren, verloren gehen"
+ },
+ "事": {
+  "pinyin": "shì",
+  "german": "Sache, etwas vorhaben"
+ },
+ "买单": {
+  "pinyin": "mǎidān",
+  "german": "zahlen, die Rechnung bitte"
+ }
+}

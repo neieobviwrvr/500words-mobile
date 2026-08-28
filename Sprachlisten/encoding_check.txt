@@ -1,0 +1,2 @@
+¿Cuándo sale el próximo tren a Berlín?
+b'\xc2\xbfCu\xc3\xa1ndo sale el pr\xc3\xb3ximo tren a Berl\xc3\xadn?'

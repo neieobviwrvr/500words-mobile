@@ -1,0 +1,26 @@
+[
+  {
+    "id": 55,
+    "target_text": "Mitt rum är inte rent.",
+    "german": "Mein Zimmer ist nicht sauber.",
+    "scenario": "hotel",
+    "tense": "present",
+    "difficulty": "A2",
+    "accepted_concepts": {
+      "optional": [],
+      "required": [
+        {
+          "concept": "nicht_sauber",
+          "synonyms": [
+            "inte rent",
+            "smutsigt"
+          ]
+        }
+      ]
+    },
+    "audio_url": null,
+    "status": "Neu",
+    "category": "hotel_accommodation",
+    "verb_cluster": null
+  }
+]

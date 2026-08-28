@@ -47,3 +47,29 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# ---------------------------------------------------------------------------
+# Sprachlisten/ - Content-Pipeline (2026-08-29 ins Repo gezogen)
+#
+# ACHTUNG, Unterschied zu mobile/.env weiter oben: die .env-Dateien DORT
+# enthalten den SUPABASE_SERVICE_ROLE_KEY, also Vollzugriff auf die Datenbank
+# unter Umgehung von RLS. Die duerfen niemals ins Repo, auch nicht in einem
+# privaten. Deshalb hier explizit - die Regel `.env*.local` oben greift bei
+# einer schlicht `.env` genannten Datei NICHT.
+Sprachlisten/.env
+Sprachlisten/**/.env
+
+# Supabase-CLI-Arbeitsverzeichnis: enthaelt u.a. pooler-url mit Passwort.
+# `**` ist noetig: es gibt diesen Ordner NICHT nur einmal oben, sondern auch
+# in club_nightlife/, chinesisch_ausbau/ und "Chinesisch HSK1 und HSK2" -
+# ueberall dort, wo die CLI schon einmal lief.
+Sprachlisten/**/supabase/.temp/
+Sprachlisten/supabase/.temp/
+
+# Python-Bytecode - laesst das Repo unnoetig wachsen und ist reproduzierbar.
+Sprachlisten/**/__pycache__/
+*.pyc
+
+# Erzeugte Audio-Proben aus TTS-Versuchen. Reproduzierbar, binaer, gross.
+Sprachlisten/**/*.mp3
+Sprachlisten/edge_tts_test_output/

@@ -1,0 +1,501 @@
+ID;Französisch;Deutsch;Kategorie;Status
+1;le, la, les;der, die, das;Artikel;Neu
+2;un, une, des;ein, eine;Artikel;Neu
+3;je;ich;Pronomen;Neu
+4;tu;du;Pronomen;Neu
+5;il;er;Pronomen;Neu
+6;elle;sie (Sg.);Pronomen;Neu
+7;on;man, wir;Pronomen;Neu
+8;nous;wir;Pronomen;Neu
+9;vous;ihr, Sie;Pronomen;Neu
+10;ils;sie (m. Pl.);Pronomen;Neu
+11;elles;sie (f. Pl.);Pronomen;Neu
+12;me;mich, mir;Pronomen;Neu
+13;te;dich, dir;Pronomen;Neu
+14;se;sich;Pronomen;Neu
+15;lui;ihm, ihr;Pronomen;Neu
+16;leur;ihnen;Pronomen;Neu
+17;y;dorthin, daran;Pronomen;Neu
+18;en;davon, daraus;Pronomen;Neu
+19;qui;wer, der/die/das;Pronomen;Neu
+20;que;dass, was;Pronomen;Neu
+21;quoi;was;Pronomen;Neu
+22;dont;dessen, deren;Pronomen;Neu
+23;où;wo, wohin;Pronomen;Neu
+24;ce, cet, cette;dieser, diese, dieses;Pronomen;Neu
+25;mon, ma, mes;mein, meine;Pronomen;Neu
+26;ton, ta, tes;dein, deine;Pronomen;Neu
+27;son, sa, ses;sein/ihr, seine/ihre;Pronomen;Neu
+28;notre, nos;unser, unsere;Pronomen;Neu
+29;votre, vos;euer/Ihr, eure/Ihre;Pronomen;Neu
+30;leur, leurs;ihr, ihre;Pronomen;Neu
+31;être;sein;Verb;Neu
+32;avoir;haben;Verb;Neu
+33;faire;machen, tun;Verb;Neu
+34;dire;sagen;Verb;Neu
+35;pouvoir;können;Verb;Neu
+36;aller;gehen;Verb;Neu
+37;voir;sehen;Verb;Neu
+38;vouloir;wollen;Verb;Neu
+39;venir;kommen;Verb;Neu
+40;devoir;müssen, sollen;Verb;Neu
+41;prendre;nehmen;Verb;Neu
+42;trouver;finden;Verb;Neu
+43;donner;geben;Verb;Neu
+44;falloir;nötig sein, müssen;Verb;Neu
+45;parler;sprechen;Verb;Neu
+46;mettre;setzen, legen, stellen;Verb;Neu
+47;savoir;wissen;Verb;Neu
+48;passer;verbringen, vergehen;Verb;Neu
+49;regarder;schauen, betrachten;Verb;Neu
+50;aimer;lieben, mögen;Verb;Neu
+51;croire;glauben;Verb;Neu
+52;demander;fragen, bitten;Verb;Neu
+53;rester;bleiben;Verb;Neu
+54;répondre;antworten;Verb;Neu
+55;entendre;hören;Verb;Neu
+56;penser;denken;Verb;Neu
+57;arriver;ankommen, passieren;Verb;Neu
+58;connaître;kennen;Verb;Neu
+59;devenir;werden;Verb;Neu
+60;sentir;fühlen, riechen;Verb;Neu
+61;sembler;scheinen;Verb;Neu
+62;tenir;halten;Verb;Neu
+63;comprendre;verstehen;Verb;Neu
+64;rendre;zurückgeben, machen zu;Verb;Neu
+65;attendre;warten;Verb;Neu
+66;sortir;hinausgehen;Verb;Neu
+67;vivre;leben;Verb;Neu
+68;entrer;eintreten;Verb;Neu
+69;reprendre;wieder aufnehmen;Verb;Neu
+70;porter;tragen;Verb;Neu
+71;chercher;suchen;Verb;Neu
+72;revenir;zurückkommen;Verb;Neu
+73;appeler;rufen, nennen;Verb;Neu
+74;mourir;sterben;Verb;Neu
+75;partir;weggehen, abfahren;Verb;Neu
+76;jeter;werfen;Verb;Neu
+77;suivre;folgen;Verb;Neu
+78;écrire;schreiben;Verb;Neu
+79;montrer;zeigen;Verb;Neu
+80;tomber;fallen;Verb;Neu
+81;ouvrir;öffnen;Verb;Neu
+82;arrêter;anhalten, aufhören;Verb;Neu
+83;perdre;verlieren;Verb;Neu
+84;commencer;beginnen;Verb;Neu
+85;paraître;erscheinen;Verb;Neu
+86;marcher;laufen, funktionieren;Verb;Neu
+87;lever;heben, aufstehen;Verb;Neu
+88;permettre;erlauben;Verb;Neu
+89;asseoir;sich setzen;Verb;Neu
+90;écouter;zuhören;Verb;Neu
+91;monter;hinaufsteigen;Verb;Neu
+92;apercevoir;bemerken;Verb;Neu
+93;recevoir;erhalten, empfangen;Verb;Neu
+94;servir;dienen, bedienen;Verb;Neu
+95;finir;beenden;Verb;Neu
+96;rire;lachen;Verb;Neu
+97;crier;schreien;Verb;Neu
+98;jouer;spielen;Verb;Neu
+99;tourner;drehen, abbiegen;Verb;Neu
+100;garder;behalten, hüten;Verb;Neu
+101;offrir;anbieten, schenken;Verb;Neu
+102;excuser;entschuldigen;Verb;Neu
+103;oublier;vergessen;Verb;Neu
+104;travailler;arbeiten;Verb;Neu
+105;chanter;singen;Verb;Neu
+106;essayer;versuchen;Verb;Neu
+107;dormir;schlafen;Verb;Neu
+108;acheter;kaufen;Verb;Neu
+109;ajouter;hinzufügen;Verb;Neu
+110;expliquer;erklären;Verb;Neu
+111;manger;essen;Verb;Neu
+112;boire;trinken;Verb;Neu
+113;payer;bezahlen;Verb;Neu
+114;envoyer;schicken;Verb;Neu
+115;utiliser;benutzen;Verb;Neu
+116;choisir;auswählen;Verb;Neu
+117;apprendre;lernen, erfahren;Verb;Neu
+118;vendre;verkaufen;Verb;Neu
+119;homme;Mann, Mensch;Nomen;Neu
+120;femme;Frau;Nomen;Neu
+121;temps;Zeit, Wetter;Nomen;Neu
+122;jour;Tag;Nomen;Neu
+123;chose;Ding, Sache;Nomen;Neu
+124;monsieur;Herr;Nomen;Neu
+125;raison;Vernunft, Grund;Nomen;Neu
+126;monde;Welt, Leute;Nomen;Neu
+127;vie;Leben;Nomen;Neu
+128;enfant;Kind;Nomen;Neu
+129;fille;Mädchen, Tochter;Nomen;Neu
+130;dieu;Gott;Nomen;Neu
+131;personne;Person;Nomen;Neu
+132;père;Vater;Nomen;Neu
+133;mère;Mutter;Nomen;Neu
+134;ami;Freund;Nomen;Neu
+135;besoin;Bedürfnis;Nomen;Neu
+136;accord;Vereinbarung, Abkommen;Nomen;Neu
+137;nuit;Nacht;Nomen;Neu
+138;peur;Angst;Nomen;Neu
+139;problème;Problem;Nomen;Neu
+140;fait;Tatsache, Fakt;Nomen;Neu
+141;maison;Haus;Nomen;Neu
+142;place;Platz, Ort;Nomen;Neu
+143;mot;Wort;Nomen;Neu
+144;tête;Kopf;Nomen;Neu
+145;argent;Geld, Silber;Nomen;Neu
+146;idée;Idee;Nomen;Neu
+147;eau;Wasser;Nomen;Neu
+148;fin;Ende;Nomen;Neu
+149;chambre;Zimmer;Nomen;Neu
+150;heure;Stunde, Uhrzeit;Nomen;Neu
+151;nom;Name;Nomen;Neu
+152;matin;Morgen;Nomen;Neu
+153;main;Hand;Nomen;Neu
+154;porte;Tür;Nomen;Neu
+155;voiture;Auto;Nomen;Neu
+156;livre;Buch;Nomen;Neu
+157;histoire;Geschichte;Nomen;Neu
+158;famille;Familie;Nomen;Neu
+159;travail;Arbeit;Nomen;Neu
+160;madame;Frau (Anrede);Nomen;Neu
+161;route;Straße, Weg;Nomen;Neu
+162;amour;Liebe;Nomen;Neu
+163;coup;Schlag, Hieb;Nomen;Neu
+164;question;Frage;Nomen;Neu
+165;côté;Seite;Nomen;Neu
+166;œil;Auge;Nomen;Neu
+167;ville;Stadt;Nomen;Neu
+168;mois;Monat;Nomen;Neu
+169;rue;Straße;Nomen;Neu
+170;soir;Abend;Nomen;Neu
+171;droit;Recht;Nomen;Neu
+172;groupe;Gruppe;Nomen;Neu
+173;numéro;Nummer;Nomen;Neu
+174;pays;Land;Nomen;Neu
+175;partie;Teil, Partie;Nomen;Neu
+176;frère;Bruder;Nomen;Neu
+177;sœur;Schwester;Nomen;Neu
+178;garçon;Junge, Kellner;Nomen;Neu
+179;endroit;Ort, Stelle;Nomen;Neu
+180;chemin;Weg;Nomen;Neu
+181;lettre;Brief, Buchstabe;Nomen;Neu
+182;fond;Grund, Boden;Nomen;Neu
+183;bruit;Lärm, Geräusch;Nomen;Neu
+184;cœur;Herz;Nomen;Neu
+185;semaine;Woche;Nomen;Neu
+186;an;Jahr (Zählwort);Nomen;Neu
+187;année;Jahr (Verlauf);Nomen;Neu
+188;ligne;Linie;Nomen;Neu
+189;point;Punkt;Nomen;Neu
+190;forme;Form;Nomen;Neu
+191;cas;Fall;Nomen;Neu
+192;sens;Sinn, Richtung;Nomen;Neu
+193;pied;Fuß;Nomen;Neu
+194;chien;Hund;Nomen;Neu
+195;chat;Katze;Nomen;Neu
+196;école;Schule;Nomen;Neu
+197;lieu;Ort;Nomen;Neu
+198;voix;Stimme;Nomen;Neu
+199;air;Luft, Aussehen;Nomen;Neu
+200;esprit;Geist, Verstand;Nomen;Neu
+201;état;Zustand, Staat;Nomen;Neu
+202;force;Kraft;Nomen;Neu
+203;guerra;Krieg;Nomen;Neu
+204;loi;Gesetz;Nomen;Neu
+205;lumière;Licht;Nomen;Neu
+206;marche;Stufe, Gang;Nomen;Neu
+207;mer;Meer;Nomen;Neu
+208;mort;Tod, Tote(r);Nomen;Neu
+209;moyen;Mittel;Nomen;Neu
+210;paix;Frieden;Nomen;Neu
+211;peuple;Volk;Nomen;Neu
+212;plan;Plan;Nomen;Neu
+213;pouvoir;Macht;Nomen;Neu
+214;rapport;Bericht, Beziehung;Nomen;Neu
+215;regard;Blick;Nomen;Neu
+216;sang;Blut;Nomen;Neu
+217;secret;Geheimnis;Nomen;Neu
+218;service;Dienst;Nomen;Neu
+219;soleil;Sonne;Nomen;Neu
+220;sorte;Art, Sorte;Nomen;Neu
+221;suite;Folge, Fortsetzung;Nomen;Neu
+222;terre;Erde, Boden;Nomen;Neu
+223;train;Zug;Nomen;Neu
+224;vue;Sicht, Aussicht;Nomen;Neu
+225;lit;Bett;Nomen;Neu
+226;table;Tisch;Nomen;Neu
+227;chaise;Stuhl;Nomen;Neu
+228;arbre;Baum;Nomen;Neu
+229;fleur;Blume;Nomen;Neu
+230;animal;Tier;Nomen;Neu
+231;oiseau;Vogel;Nomen;Neu
+232;poisson;Fisch;Nomen;Neu
+233;viande;Fleisch;Nomen;Neu
+234;pain;Brot;Nomen;Neu
+235;vin;Wein;Nomen;Neu
+236;lait;Milch;Nomen;Neu
+237;café;Kaffee;Nomen;Neu
+238;thé;Tee;Nomen;Neu
+239;fruit;Frucht, Obst;Nomen;Neu
+240;pomme;Apfel;Nomen;Neu
+241;légume;Gemüse;Nomen;Neu
+242;repas;Mahlzeit;Nomen;Neu
+243;petit-déjeuner;Frühstück;Nomen;Neu
+244;déjeuner;Mittagessen;Nomen;Neu
+245;dîner;Abendessen;Nomen;Neu
+246;verre;Glas;Nomen;Neu
+247;assiette;Teller;Nomen;Neu
+248;couteau;Messer;Nomen;Neu
+249;fourchette;Gabel;Nomen;Neu
+250;cuillère;Löffel;Nomen;Neu
+251;vêtement;Kleidungsstück;Nomen;Neu
+252;pantalon;Hose;Nomen;Neu
+253;chemise;Hemd;Nomen;Neu
+254;robe;Kleid;Nomen;Neu
+255;chaussure;Schuh;Nomen;Neu
+256;chapeau;Hut;Nomen;Neu
+257;sac;Tasche;Nomen;Neu
+258;couleur;Farbe;Nomen;Neu
+259;musique;Musik;Nomen;Neu
+260;art;Kunst;Nomen;Neu
+261;photo;Foto;Nomen;Neu
+262;film;Film;Nomen;Neu
+263;jeu;Spiel;Nomen;Neu
+264;sport;Sport;Nomen;Neu
+265;équipe;Team, Mannschaft;Nomen;Neu
+266;médecin;Arzt;Nomen;Neu
+267;professeur;Lehrer;Nomen;Neu
+268;étudiant;Student;Nomen;Neu
+269;entreprise;Unternehmen;Nomen;Neu
+270;bureau;Büro, Schreibtisch;Nomen;Neu
+271;réunion;Besprechung;Nomen;Neu
+272;prix;Preis;Nomen;Neu
+273;marché;Markt;Nomen;Neu
+274;magasin;Geschäft;Nomen;Neu
+275;banque;Bank;Nomen;Neu
+276;hôpital;Krankenhaus;Nomen;Neu
+277;église;Kirche;Nomen;Neu
+278;aéroport;Flughafen;Nomen;Neu
+279;gare;Bahnhof;Nomen;Neu
+280;billet;Fahrkarte, Ticket;Nomen;Neu
+281;voyage;Reise;Nomen;Neu
+282;vacances;Urlaub, Ferien;Nomen;Neu
+283;tout;alles, ganz;Adjektiv;Neu
+284;grand;groß;Adjektiv;Neu
+285;petit;klein;Adjektiv;Neu
+286;bon;gut;Adjektiv;Neu
+287;même;gleich, selbe;Adjektiv;Neu
+288;autre;andere;Adjektiv;Neu
+289;seul;allein, einzig;Adjektiv;Neu
+290;jeune;jung;Adjektiv;Neu
+291;premier;erste;Adjektiv;Neu
+292;nouveau;neu;Adjektiv;Neu
+293;dernier;letzte;Adjektiv;Neu
+294;vieux;alt;Adjektiv;Neu
+295;faux;falsch;Adjektiv;Neu
+296;beau;schön;Adjektiv;Neu
+297;mauvais;schlecht;Adjektiv;Neu
+298;sûr;sicher;Adjektiv;Neu
+299;fort;stark, laut;Adjektiv;Neu
+300;blanc;weiß;Adjektiv;Neu
+301;noir;schwarz;Adjektiv;Neu
+302;rouge;rot;Adjektiv;Neu
+303;vert;grün;Adjektiv;Neu
+304;bleu;blau;Adjektiv;Neu
+305;jaune;gelb;Adjektiv;Neu
+306;clair;hell, klar;Adjektiv;Neu
+307;vrai;wahr, echt;Adjektiv;Neu
+308;facile;einfach, leicht;Adjektiv;Neu
+309;difficile;schwierig;Adjektiv;Neu
+310;pauvre;arm;Adjektiv;Neu
+311;riche;reich;Adjektiv;Neu
+312;gros;dick, groß;Adjektiv;Neu
+313;heureux;glücklich;Adjektiv;Neu
+314;libre;frei;Adjektiv;Neu
+315;plein;voll;Adjektiv;Neu
+316;bas;niedrig;Adjektiv;Neu
+317;haut;hoch;Adjektiv;Neu
+318;long;lang;Adjektiv;Neu
+319;court;kurz;Adjektiv;Neu
+320;chaud;warm, heiß;Adjektiv;Neu
+321;froid;kalt;Adjektiv;Neu
+322;gentil;nett;Adjektiv;Neu
+323;triste;traurig;Adjektiv;Neu
+324;malade;krank;Adjektiv;Neu
+325;prêt;bereit;Adjektiv;Neu
+326;pareil;gleich, ähnlich;Adjektiv;Neu
+327;grave;ernst, schlimm;Adjektiv;Neu
+328;cher;teuer, lieb;Adjektiv;Neu
+329;rapide;schnell;Adjektiv;Neu
+330;lent;langsam;Adjektiv;Neu
+331;faible;schwach;Adjektiv;Neu
+332;propre;sauber, eigen;Adjektiv;Neu
+333;sale;schmutzig;Adjektiv;Neu
+334;sec;trocken;Adjektiv;Neu
+335;humide;feucht;Adjektiv;Neu
+336;vide;leer;Adjektiv;Neu
+337;ouvert;offen;Adjektiv;Neu
+338;fermé;geschlossen;Adjektiv;Neu
+339;droit;gerade, recht;Adjektiv;Neu
+340;gauche;links;Adjektiv;Neu
+341;dur;hart;Adjektiv;Neu
+342;doux;weich, süß, sanft;Adjektiv;Neu
+343;lourd;schwer (Gewicht);Adjektiv;Neu
+344;léger;leicht (Gewicht);Adjektiv;Neu
+345;malheureux;unglücklich;Adjektiv;Neu
+346;naturel;natürlich;Adjektiv;Neu
+347;possible;möglich;Adjektiv;Neu
+348;impossible;unmöglich;Adjektiv;Neu
+349;public;öffentlich;Adjektiv;Neu
+350;privé;privat;Adjektiv;Neu
+351;simple;einfach;Adjektiv;Neu
+352;double;doppelt;Adjektiv;Neu
+353;certain;gewiss, sicher;Adjektiv;Neu
+354;différent;verschieden;Adjektiv;Neu
+355;important;wichtig;Adjektiv;Neu
+356;utile;nützlich;Adjektiv;Neu
+357;inutile;nutzlos;Adjektiv;Neu
+358;précis;genau;Adjektiv;Neu
+359;profond;tief;Adjektiv;Neu
+360;tel;solcher;Adjektiv;Neu
+361;vif;lebhaft;Adjektiv;Neu
+362;bien;gut;Adverb;Neu
+363;plus;mehr;Adverb;Neu
+364;pas;nicht;Adverb;Neu
+365;très;sehr;Adverb;Neu
+366;là;dort, da;Adverb;Neu
+367;aussi;auch;Adverb;Neu
+368;oui;ja;Adverb;Neu
+369;non;nein;Adverb;Neu
+370;comment;wie;Adverb;Neu
+371;pourquoi;warum;Adverb;Neu
+372;quand;wann;Adverb;Neu
+373;ici;hier;Adverb;Neu
+374;jamais;nie;Adverb;Neu
+375;toujours;immer;Adverb;Neu
+376;encore;noch;Adverb;Neu
+377;peu;wenig;Adverb;Neu
+378;moins;weniger;Adverb;Neu
+379;beaucoup;viel;Adverb;Neu
+380;souvent;oft;Adverb;Neu
+381;bientôt;bald;Adverb;Neu
+382;alors;dann, also;Adverb;Neu
+383;maintenant;jetzt;Adverb;Neu
+384;aujourd'hui;heute;Adverb;Neu
+385;demain;morgen;Adverb;Neu
+386;hier;gestern;Adverb;Neu
+387;déjà;schon;Adverb;Neu
+388;ensuite;danach;Adverb;Neu
+389;puis;dann;Adverb;Neu
+390;tard;spät;Adverb;Neu
+391;tôt;früh;Adverb;Neu
+392;vite;schnell;Adverb;Neu
+393;seulement;nur;Adverb;Neu
+394;vraiment;wirklich;Adverb;Neu
+395;assez;genug, ziemlich;Adverb;Neu
+396;plutôt;eher, lieber;Adverb;Neu
+397;parfois;manchmal;Adverb;Neu
+398;enfin;endlich, schließlich;Adverb;Neu
+399;d'abord;zuerst;Adverb;Neu
+400;peut-être;vielleicht;Adverb;Neu
+401;surtout;vor allem;Adverb;Neu
+402;presque;fast;Adverb;Neu
+403;tellement;so sehr;Adverb;Neu
+404;environ;ungefähr;Adverb;Neu
+405;dehors;draußen;Adverb;Neu
+406;dedans;drinnen;Adverb;Neu
+407;autour;herum;Adverb;Neu
+408;loin;weit;Adverb;Neu
+409;près;nah;Adverb;Neu
+410;partout;überall;Adverb;Neu
+411;nulle part;nirgendwo;Adverb;Neu
+412;ensemble;zusammen;Adverb;Neu
+413;mieux;besser;Adverb;Neu
+414;à;an, in, zu;Präposition;Neu
+415;de;von, aus;Präposition;Neu
+416;pour;für, um zu;Präposition;Neu
+417;dans;in;Präposition;Neu
+418;sur;auf, über;Präposition;Neu
+419;avec;mit;Präposition;Neu
+420;en;in, aus, nach;Präposition;Neu
+421;par;durch, von;Präposition;Neu
+422;vers;in Richtung, gegen;Präposition;Neu
+423;chez;bei;Präposition;Neu
+424;sans;ohne;Präposition;Neu
+425;sous;unter;Präposition;Neu
+426;avant;vor (zeitlich);Präposition;Neu
+427;après;nach (zeitlich);Präposition;Neu
+428;devant;vor (räumlich);Präposition;Neu
+429;derrière;hinter (räumlich);Präposition;Neu
+430;entre;zwischen;Präposition;Neu
+431;contre;gegen;Präposition;Neu
+432;depuis;seit;Präposition;Neu
+433;pendant;während;Präposition;Neu
+434;jusqu'à;bis zu;Präposition;Neu
+435;sauf;außer;Präposition;Neu
+436;parmi;unter (Menge);Präposition;Neu
+437;selon;laut, gemäß;Präposition;Neu
+438;malgré;trotz;Präposition;Neu
+439;et;und;Konjunktion;Neu
+440;ou;oder;Konjunktion;Neu
+441;mais;aber;Konjunktion;Neu
+442;donc;also, folglich;Konjunktion;Neu
+443;car;denn;Konjunktion;Neu
+444;ni;weder, noch;Konjunktion;Neu
+445;si;wenn, falls, ob;Konjunktion;Neu
+446;comme;wie, da;Konjunktion;Neu
+447;parce que;weil;Konjunktion;Neu
+448;puisque;da ja;Konjunktion;Neu
+449;lorsque;als, wenn;Konjunktion;Neu
+450;bien que;obwohl;Konjunktion;Neu
+451;quoique;obwohl;Konjunktion;Neu
+452;pour que;damit;Konjunktion;Neu
+453;un;eins;Zahlwort;Neu
+454;deux;zwei;Zahlwort;Neu
+455;trois;drei;Zahlwort;Neu
+456;quatre;vier;Zahlwort;Neu
+457;cinq;fünf;Zahlwort;Neu
+458;six;sechs;Zahlwort;Neu
+459;sept;sieben;Zahlwort;Neu
+460;huit;acht;Zahlwort;Neu
+461;neuf;neun;Zahlwort;Neu
+462;dix;zehn;Zahlwort;Neu
+463;onze;elf;Zahlwort;Neu
+464;douze;zwölf;Zahlwort;Neu
+465;treize;dreizehn;Zahlwort;Neu
+466;quatorze;vierzehn;Zahlwort;Neu
+467;quinze;fünfzehn;Zahlwort;Neu
+468;seize;sechzehn;Zahlwort;Neu
+469;vingt;zwanzig;Zahlwort;Neu
+470;trente;dreißig;Zahlwort;Neu
+471;quarante;vierzig;Zahlwort;Neu
+472;cinquante;fünfzig;Zahlwort;Neu
+473;soixante;sechzig;Zahlwort;Neu
+474;cent;hundert;Zahlwort;Neu
+475;mille;tausend;Zahlwort;Neu
+476;lundi;Montag;Zahlwort/Zeit;Neu
+477;mardi;Dienstag;Zahlwort/Zeit;Neu
+478;mercredi;Mittwoch;Zahlwort/Zeit;Neu
+479;jeudi;Donnerstag;Zahlwort/Zeit;Neu
+480;vendredi;Freitag;Zahlwort/Zeit;Neu
+481;samedi;Samstag;Zahlwort/Zeit;Neu
+482;dimanche;Sonntag;Zahlwort/Zeit;Neu
+483;janvier;Januar;Zahlwort/Zeit;Neu
+484;février;Februar;Zahlwort/Zeit;Neu
+485;mars;März;Zahlwort/Zeit;Neu
+486;avril;April;Zahlwort/Zeit;Neu
+487;mai;Mai;Zahlwort/Zeit;Neu
+488;juin;Juni;Zahlwort/Zeit;Neu
+489;juillet;Juli;Zahlwort/Zeit;Neu
+490;août;August;Zahlwort/Zeit;Neu
+491;septembre;September;Zahlwort/Zeit;Neu
+492;octobre;Oktober;Zahlwort/Zeit;Neu
+493;novembre;November;Zahlwort/Zeit;Neu
+494;décembre;Dezember;Zahlwort/Zeit;Neu
+495;printemps;Frühling;Zahlwort/Zeit;Neu
+496;été;Sommer;Zahlwort/Zeit;Neu
+497;automne;Herbst;Zahlwort/Zeit;Neu
+498;hiver;Winter;Zahlwort/Zeit;Neu
+499;Mot_extra_1;Extra_Wort_1;Zusatz;Neu
+500;Mot_extra_2;Extra_Wort_2;Zusatz;Neu
