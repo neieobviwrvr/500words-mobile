@@ -58,7 +58,16 @@ export const LANGUAGES: Language[] = [
   // `hasContent: true` trotzdem, sonst waere die Sprache in der Auswahl
   // ausgegraut und der Kurs gar nicht erreichbar.
   { id: 'zh', label: 'Chinesisch', table: 'chinesisch_phrasebook', sttLanguage: 'cmn', sttPrompt: '这是一个中文例句。', ttsLocale: 'zh-CN', hasContent: true, vocabTable: 'chinesisch_vocab', vocabColumn: null },
-  { id: 'fr', label: 'Französisch', table: null, sttLanguage: 'fr', sttPrompt: 'Voici une phrase d\'exemple en français.', ttsLocale: 'fr-FR', hasContent: false, vocabTable: 'franz_vocab', vocabColumn: 'french' },
+  // Franzoesisch hat seit 2026-08-27 ein eigenes Phrasebook
+  // (Migration 20260827120000_franz_phrasebook.sql) und damit erstmals
+  // Saetze - bis dahin gab es nur `franz_vocab` mit Einzelwoertern, und die
+  // Sprache war im Onboarding ausgegraut.
+  //
+  // `hasContent: true` schaltet sie frei. Vorsicht beim Lesen der Zahlen:
+  // der Grundwortschatz ist vollstaendig (der freie Teil, den jeder
+  // bekommt), die KAUFKATEGORIEN sind es noch nicht - dort zeigt der Pfad
+  // vorerst leere Reihen, genau wie Chinesisch es lange bei den Saetzen tat.
+  { id: 'fr', label: 'Französisch', table: 'franz_phrasebook', sttLanguage: 'fr', sttPrompt: 'Voici une phrase d\'exemple en français.', ttsLocale: 'fr-FR', hasContent: true, vocabTable: 'franz_vocab', vocabColumn: 'french' },
 ];
 
 export const DEFAULT_LANGUAGE_ID = 'de';
