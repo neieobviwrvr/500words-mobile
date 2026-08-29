@@ -38,10 +38,17 @@ TABELLE = {"es": "spanisch_phrasebook", "sv": "schwedisch_phrasebook",
            "fr": "franz_phrasebook", "zh": "chinesisch_phrasebook"}
 
 KATEGORIEN = [
+    # ALLE Kategorien der App, auch die noch leeren (siehe
+    # src/data/categories.ts) - NICHT nur die mit Inhalt. Genau daran
+    # scheiterte es am 2026-08-29: dating_romance fehlte in dieser Liste, und
+    # damit rutschten zwei chinesische Saetze durch jede Pruefung, weil ihre
+    # Kategorie gar nicht abgefragt wurde. Eine leere Kategorie kostet nichts
+    # (sie liefert null Zeilen), eine fehlende kostet Vollstaendigkeit.
     "grundwortschatz", "club_nightlife", "health_emergency", "drinking_dining",
     "travel_transportation", "hotel_accommodation", "moving_settling",
     "shopping_haggling", "university_studying", "culture_immersion",
-    "smalltalk_socialising",
+    "smalltalk_socialising", "dating_romance", "finding_friends",
+    "love_relationship", "job_work",
 ]
 
 # Master-Saetze, die je Zielsprache eine EIGENE deutsche Fassung tragen.

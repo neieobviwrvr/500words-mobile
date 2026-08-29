@@ -139,4 +139,15 @@ NUR_CHINESISCH = [
     # university_studying
     489,  # Ich habe drei Buecher.
     488,  # Ich unterrichte Chinesisch.     (sprachadaptiv, aber ohne Gegenstueck)
+    # dating_romance - NACHTRAG 2026-08-29 (Simons Entscheidung: ins Deutsche
+    # nachtragen statt loeschen). Diese beiden rutschten beim ersten Durchgang
+    # durch, weil dating_romance in der KATEGORIEN-Liste von anwenden.py fehlte
+    # - die Liste enthielt nur Kategorien, die damals Inhalt hatten. Die Liste
+    # deckt jetzt alle Kategorien der App ab, auch die leeren.
+    #
+    # Es sind damit die ERSTEN beiden Saetze der Kategorie ueberhaupt. Die
+    # uebrigen Sprachen erben sie noch nicht - dating_romance bleibt eine der
+    # vier Kategorien ohne echten Content (siehe CLAUDE.md).
+    472,  # Hast du einen festen Freund oder eine feste Freundin?
+    494,  # Wir sind gerade zusammen.
 ]

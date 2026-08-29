@@ -27,10 +27,17 @@ import urllib.request
 HIER = os.path.dirname(os.path.abspath(__file__))
 SPRACHLISTEN = os.path.dirname(HIER)
 KATEGORIEN = [
+    # ALLE Kategorien der App, auch die noch leeren (siehe
+    # src/data/categories.ts) - NICHT nur die mit Inhalt. Genau daran
+    # scheiterte es am 2026-08-29: dating_romance fehlte in dieser Liste, und
+    # damit rutschten zwei chinesische Saetze durch jede Pruefung, weil ihre
+    # Kategorie gar nicht abgefragt wurde. Eine leere Kategorie kostet nichts
+    # (sie liefert null Zeilen), eine fehlende kostet Vollstaendigkeit.
     "grundwortschatz", "club_nightlife", "health_emergency", "drinking_dining",
     "travel_transportation", "hotel_accommodation", "moving_settling",
     "shopping_haggling", "university_studying", "culture_immersion",
-    "smalltalk_socialising",
+    "smalltalk_socialising", "dating_romance", "finding_friends",
+    "love_relationship", "job_work",
 ]
 
 
@@ -89,13 +96,19 @@ def main():
             fehler.append(f"A: {zid}/{mid} liegen in verschiedenen Kategorien "
                           f"({z['category']} vs {m['category']})")
 
+    schon_uebertragen = set()
     for zid in E.NUR_CHINESISCH:
         z = zh_nach_id.get(zid)
         if z is None:
             fehler.append(f"B: chinesische id {zid} gibt es nicht")
             continue
+        # Schon eingespielt -> ueberspringen, nicht abbrechen (2026-08-29).
+        # Vorher war das ein Fehler, wodurch ein zweiter Lauf unmoeglich war:
+        # sobald ein B-Satz einmal im Master stand, brach das ganze Skript ab
+        # und auch die noch offenen Saetze kamen nicht durch. Ein
+        # Reparaturskript, das nur genau einmal laufen darf, ist keins.
         if z["german"] in de_texte:
-            fehler.append(f"B: {zid} {z['german']!r} steht schon im Master")
+            schon_uebertragen.add(zid)
 
     # Rechnung: deckt S+A+B alle nur-chinesischen Zeilen ab?
     behandelt = ({z for z, _, _ in E.SPRACHADAPTIV} | {z for z, _ in E.UMFORMULIERUNG}
@@ -119,7 +132,8 @@ def main():
     print(f"phrasebook_master {len(de)}  |  chinesisch_phrasebook {len(zh)}")
     print(f"S sprachadaptiv (nichts tun): {len(E.SPRACHADAPTIV)}")
     print(f"A Umformulierung (Schluessel angleichen): {len(E.UMFORMULIERUNG)}")
-    print(f"B nur Chinesisch (in Master nachtragen): {len(E.NUR_CHINESISCH)}")
+    print(f"B nur Chinesisch (in Master nachtragen): {len(E.NUR_CHINESISCH)}"
+          f"   davon schon uebertragen: {len(schon_uebertragen)}")
     print(f"C nur Deutsch (offene zh-Uebersetzung, keine Aktion): {len(nur_de_offen)}")
     print()
 
@@ -139,6 +153,8 @@ def main():
     # --- B: neue Master-Zeilen --------------------------------------------
     b_todo = []
     for zid in E.NUR_CHINESISCH:
+        if zid in schon_uebertragen:
+            continue
         z = zh_nach_id[zid]
         b_todo.append({
             "german": z["german"],
