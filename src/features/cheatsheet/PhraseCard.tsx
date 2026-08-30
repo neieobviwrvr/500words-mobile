@@ -55,6 +55,15 @@ export function PhraseCard({ phrase, dark, saved, onToggleSave, onSpeak, zeichen
   return (
     <View style={[styles.card, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
       <View style={styles.textBlock}>
+        {/* Wortart-Farben (2026-08-29/30) - `wordTags` ist IMMER gegen das
+            Pinyin getaggt (bei Nicht-Chinesisch: gegen target_text, das dort
+            der einzige Text ist). Schriftzeichen werden NIE eingefaerbt
+            (Simons ausdrueckliche Vorgabe) - `phrase.text` ist bei
+            Chinesisch Hanzi und bekommt deshalb bewusst nie `wordTags`
+            zugewiesen, egal ob primaer oder sekundaer angezeigt. Ohne diese
+            Trennung wuerden bei "Zeichen ein" (Vorgabe) faelschlich die
+            Pinyin-Woerter statt der Zeichen angezeigt, weil TaggedTokens die
+            uebergebenen `tokens` als Text rendert, nicht nur als Farbe. */}
         {zeichenAusblendbar ? (
           <TaggedTokens
             style={styles.target}
@@ -64,20 +73,22 @@ export function PhraseCard({ phrase, dark, saved, onToggleSave, onSpeak, zeichen
           />
         ) : (
           <>
-            {/* Wortart-Farben (2026-08-29/30) nur auf der Zielsprachen-Zeile -
-                `wordTags` ist gegen genau diesen Text getaggt (target_text/
-                german). Faellt bei ungetaggten Saetzen auf plain zurueck.
-                `showColors` erst mit dem globalen Schalter ODER dem
-                Hilfe-Knopf-Tipp fuer diese eine Karte (Simons Wunsch
-                2026-08-30: standardmaessig aus). */}
-            <TaggedTokens
-              style={styles.target}
-              textColor={theme.text}
-              showColors={zeigeFarben}
-              tokens={(phrase.wordTags ?? [{ w: phrase.text, c: null }]).map((t) => ({ t: t.w, c: t.c }))}
-            />
+            <Text style={[styles.target, { color: theme.text }]}>{phrase.text}</Text>
             {phrase.phonetic ? (
-              <Text style={[styles.phonetic, { color: theme.sub }]}>„{phrase.phonetic}"</Text>
+              phrase.wordTags && phrase.wordTags.length > 0 ? (
+                <Text style={[styles.phonetic, { color: theme.sub }]}>
+                  {'„'}
+                  <TaggedTokens
+                    style={styles.phonetic}
+                    textColor={theme.sub}
+                    showColors={zeigeFarben}
+                    tokens={phrase.wordTags.map((t) => ({ t: t.w, c: t.c }))}
+                  />
+                  {'”'}
+                </Text>
+              ) : (
+                <Text style={[styles.phonetic, { color: theme.sub }]}>{'„'}{phrase.phonetic}{'”'}</Text>
+              )
             ) : null}
           </>
         )}

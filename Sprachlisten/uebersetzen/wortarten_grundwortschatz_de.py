@@ -79,4 +79,14 @@ TAGS = [
     {"id": 479, "tags": [{"w": 'Bitte', "c": None}, {"w": 'sag', "c": 'v'}, {"w": 'es', "c": 'p'}, {"w": 'noch', "c": None}, {"w": 'einmal.', "c": None}]},  # Bitte sag es noch einmal.
     {"id": 480, "tags": [{"w": 'Seid', "c": 'v'}, {"w": 'ihr', "c": 'p'}, {"w": 'Studenten?', "c": 'n'}]},  # Seid ihr Studenten?
     {"id": 481, "tags": [{"w": 'Ich', "c": 'p'}, {"w": 'habe', "c": 'v'}, {"w": 'nur', "c": None}, {"w": 'eins.', "c": None}]},  # Ich habe nur eins.
+    # Nachtrag (2026-08-30): 8 "Kommentarsätze"-Saetze, die beim ersten
+    # Durchgang noch nicht existierten.
+    {"id": 566, "tags": [{"w": "Wirklich?", "c": None}]},  # Wirklich?
+    {"id": 567, "tags": [{"w": "Cool!", "c": "a"}]},  # Cool!
+    {"id": 568, "tags": [{"w": "Macht", "c": "v"}, {"w": "nichts.", "c": None}]},  # Macht nichts.
+    {"id": 569, "tags": [{"w": "Genau!", "c": None}]},  # Genau!
+    {"id": 570, "tags": [{"w": "Stimmt.", "c": "v"}]},  # Stimmt.
+    {"id": 571, "tags": [{"w": "Schade!", "c": "a"}]},  # Schade!
+    {"id": 572, "tags": [{"w": "Na", "c": None}, {"w": "klar!", "c": "a"}]},  # Na klar!
+    {"id": 573, "tags": [{"w": "Auf", "c": None}, {"w": "keinen", "c": None}, {"w": "Fall!", "c": "n"}]},  # Auf keinen Fall!
 ]

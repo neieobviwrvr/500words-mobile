@@ -1,0 +1,45 @@
+# -*- coding: utf-8 -*-
+"""Wort-fuer-Wort-Tagging fuer phrasebook_master/moving_settling (Deutsch).
+
+18 Saetze, keine Konjunktion.
+"""
+
+TAGS = [
+    {"id": 146, "tags": [{"w": "Ich", "c": None}, {"w": "suche", "c": "v"}, {"w": "eine", "c": None},
+                          {"w": "Wohnung.", "c": "n"}]},
+    {"id": 147, "tags": [{"w": "Wie", "c": None}, {"w": "hoch", "c": "a"}, {"w": "ist", "c": "v"},
+                          {"w": "die", "c": None}, {"w": "Miete?", "c": "n"}]},
+    {"id": 148, "tags": [{"w": "Ist", "c": "v"}, {"w": "die", "c": None}, {"w": "Kaution", "c": "n"},
+                          {"w": "im", "c": None}, {"w": "Preis", "c": "n"}, {"w": "enthalten?", "c": "a"}]},
+    {"id": 149, "tags": [{"w": "Wann", "c": None}, {"w": "kann", "c": "v"}, {"w": "ich", "c": None},
+                          {"w": "einziehen?", "c": "v"}]},
+    {"id": 150, "tags": [{"w": "Gibt", "c": "v"}, {"w": "es", "c": None}, {"w": "einen", "c": None},
+                          {"w": "Aufzug", "c": "n"}, {"w": "im", "c": None}, {"w": "Haus?", "c": "n"}]},
+    {"id": 151, "tags": [{"w": "Ich", "c": None}, {"w": "möchte", "c": "v"}, {"w": "den", "c": None},
+                          {"w": "Mietvertrag", "c": "n"}, {"w": "unterschreiben.", "c": "v"}]},
+    {"id": 152, "tags": [{"w": "Ich", "c": None}, {"w": "bin", "c": "v"}, {"w": "letzte", "c": "a"},
+                          {"w": "Woche", "c": "n"}, {"w": "umgezogen.", "c": "v"}]},
+    {"id": 153, "tags": [{"w": "Wo", "c": None}, {"w": "finde", "c": "v"}, {"w": "ich", "c": None},
+                          {"w": "einen", "c": None}, {"w": "Handwerker?", "c": "n"}]},
+    {"id": 154, "tags": [{"w": "Die", "c": None}, {"w": "Heizung", "c": "n"}, {"w": "funktioniert", "c": "v"},
+                          {"w": "nicht.", "c": None}]},
+    {"id": 155, "tags": [{"w": "Ich", "c": None}, {"w": "muss", "c": "v"}, {"w": "den", "c": None},
+                          {"w": "Strom", "c": "n"}, {"w": "anmelden.", "c": "v"}]},
+    {"id": 156, "tags": [{"w": "Wie", "c": None}, {"w": "melde", "c": "v"}, {"w": "ich", "c": None},
+                          {"w": "mich", "c": None}, {"w": "beim", "c": None}, {"w": "Einwohnermeldeamt", "c": "n"},
+                          {"w": "an?", "c": None}]},
+    {"id": 157, "tags": [{"w": "Ich", "c": None}, {"w": "brauche", "c": "v"}, {"w": "eine", "c": None},
+                          {"w": "Bestätigung", "c": "n"}, {"w": "meiner", "c": None}, {"w": "Adresse.", "c": "n"}]},
+    {"id": 158, "tags": [{"w": "Gibt", "c": "v"}, {"w": "es", "c": None}, {"w": "hier", "c": None},
+                          {"w": "einen", "c": None}, {"w": "Waschraum?", "c": "n"}]},
+    {"id": 159, "tags": [{"w": "Meine", "c": None}, {"w": "Nachbarn", "c": "n"}, {"w": "sind", "c": "v"},
+                          {"w": "sehr", "c": None}, {"w": "nett.", "c": "a"}]},
+    {"id": 505, "tags": [{"w": "Das", "c": None}, {"w": "Buch", "c": "n"}, {"w": "liegt", "c": "v"},
+                          {"w": "auf", "c": None}, {"w": "dem", "c": None}, {"w": "Tisch.", "c": "n"}]},
+    {"id": 506, "tags": [{"w": "Hier", "c": None}, {"w": "ist", "c": "v"}, {"w": "es", "c": None},
+                          {"w": "sehr", "c": None}, {"w": "praktisch.", "c": "a"}]},
+    {"id": 507, "tags": [{"w": "Das", "c": None}, {"w": "kann", "c": "v"}, {"w": "ich", "c": None},
+                          {"w": "erledigen.", "c": "v"}]},
+    {"id": 508, "tags": [{"w": "Ich", "c": None}, {"w": "bezahle", "c": "v"}, {"w": "mit", "c": None},
+                          {"w": "dem", "c": None}, {"w": "Handy.", "c": "n"}]},
+]
