@@ -125,13 +125,27 @@ export const LINE_HEIGHT = {
 // ---------------------------------------------------------------------------
 
 // Wortarten-Farben (siehe CLAUDE.md "UI-Design-Entscheidung"):
-// Nomen = blau, Verben = rot, Adjektive = gelb, Pronomen = violett.
-export type WordType = 'v' | 'n' | 'a' | 'p';
+// Nomen = blau, Verben = rot, Adjektive = gelb, Pronomen = violett,
+// Verbindungswoerter/Konjunktion = petrol (2026-08-29, 5. Kategorie
+// dazugekommen - Simons Entscheidung, durchgehend einzufaerben statt nur
+// bei einzelnen Vokabeln).
+//
+// v/n/a teilen sich zufaellig dieselben Hex-Werte wie ACCENT_ERROR/
+// ACCENT_BLUE/ACCENT_PREMIUM weiter unten - das ist Zufall, keine
+// Verknuepfung. Bewusst NICHT zusammengelegt: "Fehler" an "Verb" zu
+// koppeln waere ueberraschend, sobald sich eine der beiden Paletten
+// unabhaengig aendert.
+//
+// Petrol fuer Konjunktion bewusst NICHT gruen (kollidiert mit ACCENT_GREEN,
+// der einzigen Erfolgsfarbe der App) und nicht orange (kollidiert mit der
+// Zielwort-Hervorhebung ACCENT_ORANGE in LessonScreen.tsx).
+export type WordType = 'v' | 'n' | 'a' | 'p' | 'k';
 export const WORD_COLORS: Record<WordType, string> = {
   v: '#D9564F',
   n: '#3E6FD1',
   a: '#C99A2E',
   p: '#8B5FD6',
+  k: '#2E8B84',
 };
 
 export const ACCENT_BLUE = '#3E6FD1';

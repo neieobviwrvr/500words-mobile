@@ -5,6 +5,7 @@ import { getLanguage } from '../../data/languages';
 import { CATEGORIES, GRUNDWORTSCHATZ_ID } from '../../data/categories';
 import { cardKey, loadAllCards } from '../srs/srsStorage';
 import { istGeliehen } from '../../data/geliehen';
+import { SITUATIONS_REIHENFOLGE } from '../../data/situationsReihenfolge';
 
 // Situationen pro Kategorie fuer den Lektionen-Screen.
 //
@@ -129,12 +130,36 @@ export function useCategorySituations(languageId: string): CategorySituations {
           }
 
           for (const [categoryId, perScenario] of Object.entries(index)) {
-            // Eigene Situationen zuerst, danach die geliehenen - innerhalb
+            // Standard-Sortierung (weiterhin der Fallback, siehe unten):
+            // eigene Situationen zuerst, danach die geliehenen - innerhalb
             // beider Gruppen die groesste zuerst. Ohne das eroeffnet jede
             // Kategorie mit derselben Leihgabe.
-            byCategory[categoryId] = Object.values(perScenario).sort((a, b) => {
+            const standardSort = (a: Situation, b: Situation) => {
               if (a.geliehen !== b.geliehen) return a.geliehen ? 1 : -1;
               return b.total - a.total;
+            };
+
+            const reihenfolge = SITUATIONS_REIHENFOLGE[categoryId];
+            if (!reihenfolge) {
+              byCategory[categoryId] = Object.values(perScenario).sort(standardSort);
+              continue;
+            }
+
+            // Feste Reihenfolge (2026-08-29, siehe situationsReihenfolge.ts):
+            // gelistete Situationen zuerst, in genau dieser Position. Was zur
+            // Kategorie gehoert (eigen oder geliehen) aber NICHT in der
+            // Liste steht - z.B. neuer Content, der noch keine Position
+            // zugewiesen bekam - faellt hinten an, in der Standard-Reihenfolge.
+            // So verschwindet neuer Content nie, nur wer ihn platzieren will,
+            // muss ihn hier eintragen.
+            const position = new Map(reihenfolge.map((scenario, i) => [scenario, i]));
+            byCategory[categoryId] = Object.values(perScenario).sort((a, b) => {
+              const pa = position.get(a.scenario);
+              const pb = position.get(b.scenario);
+              if (pa !== undefined && pb !== undefined) return pa - pb;
+              if (pa !== undefined) return -1;
+              if (pb !== undefined) return 1;
+              return standardSort(a, b);
             });
           }
 

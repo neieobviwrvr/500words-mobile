@@ -19,6 +19,7 @@ import { newCard, reviewCard } from '../srs/fsrsEngine';
 import { cardKey, saveCard } from '../srs/srsStorage';
 import { ladeZaehler, aendereZaehler, setzeZaehler, ladeJeErreicht, markiereJeErreicht, aktiverBatchPool } from './batchLeiter';
 import { Screen, PillButton, ProgressBar, SchreibenFeld, UebungsMenu } from '../../components';
+import { TaggedTokens } from '../../components/ColoredTokens';
 import { getTheme, SPACING, RADIUS, FONT_SIZE, FONT_FAMILY, LINE_HEIGHT, ACCENT_GREEN, ACCENT_ERROR, ACCENT_ORANGE } from '../../theme/tokens';
 
 // "Sätze-Wiederholung" (2026-08-26) - der zweite der drei Trainingsmodi aus
@@ -594,7 +595,16 @@ export function SentenceReviewScreen() {
       {phase === 'runde' && aktuellerSatz && stufe === 1 && (
         <ScrollView contentContainerStyle={styles.rundenBereich} showsVerticalScrollIndicator={false}>
           <Text style={[styles.frage, { color: theme.text }]}>Sprich diesen {sprachAdjektiv(targetLanguageId)} Satz nach</Text>
-          <Text style={[styles.hinweis, { color: theme.sub }]}>{aktuellerSatz.pinyin ?? aktuellerSatz.text}</Text>
+          {/* Wortart-Farben (2026-08-29) - wordTags ist gegen genau den hier
+              gezeigten Text getaggt (pinyin bei Chinesisch, sonst text),
+              faellt bei ungetaggten Saetzen auf plain zurueck. */}
+          <TaggedTokens
+            style={styles.hinweis}
+            textColor={theme.sub}
+            tokens={(aktuellerSatz.wordTags ?? [{ w: aktuellerSatz.pinyin ?? aktuellerSatz.text, c: null }]).map(
+              (t) => ({ t: t.w, c: t.c })
+            )}
+          />
           {renderSpeichern()}
           <Pressable
             onPress={() => speakText(aktuellerSatz.text, { languageId: targetLanguageId })}
@@ -634,7 +644,16 @@ export function SentenceReviewScreen() {
       {phase === 'runde' && aktuellerSatz && stufe === 2 && (
         <ScrollView contentContainerStyle={styles.rundenBereich} showsVerticalScrollIndicator={false}>
           <Text style={[styles.frage, { color: theme.text }]}>Ordne diesen {sprachAdjektiv(targetLanguageId)} Satz seiner Bedeutung zu</Text>
-          <Text style={[styles.hinweis, { color: theme.sub }]}>{aktuellerSatz.pinyin ?? aktuellerSatz.text}</Text>
+          {/* Wortart-Farben (2026-08-29) - wordTags ist gegen genau den hier
+              gezeigten Text getaggt (pinyin bei Chinesisch, sonst text),
+              faellt bei ungetaggten Saetzen auf plain zurueck. */}
+          <TaggedTokens
+            style={styles.hinweis}
+            textColor={theme.sub}
+            tokens={(aktuellerSatz.wordTags ?? [{ w: aktuellerSatz.pinyin ?? aktuellerSatz.text, c: null }]).map(
+              (t) => ({ t: t.w, c: t.c })
+            )}
+          />
           {renderSpeichern()}
           <View style={styles.optionenSpalte}>
             {stufe2Optionen.map((o) => {

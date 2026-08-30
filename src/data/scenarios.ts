@@ -36,6 +36,11 @@ export const SCENARIO_LABELS: Record<string, string> = {
   // ueberall - das gehoert in den Grundwortschatz und wird von dort geliehen
   // (siehe data/geliehen.ts).
   verstaendigen: 'Sich verständigen',
+  // Neu 2026-08-29 (Simons Auftrag): kurze reaktive Aeusserungen, die ein
+  // Gespraech am Laufen halten ("Wirklich?", "Stimmt.") - bewusst getrennt
+  // von hoeflichkeit (Hoeflichkeitsformeln) und verstaendigen (Reparatur
+  // eines Missverstaendnisses).
+  kommentar: 'Kommentarsätze',
   // Neu 2026-08-26: Speichern aus der Situations-Auswahl (Wörter-
   // Wiederholung) - dort gibt es zwei Quellen, echte Phrasebook-Sätze
   // (behalten ihr echtes Szenario) und Kurs-Rahmen ohne Supabase-Zeile
@@ -115,6 +120,10 @@ export const SCENARIO_LABELS: Record<string, string> = {
   uni_organisation: 'Studium organisieren',
   uni_pruefung: 'Prüfungen',
   uni_zusammen: 'Zusammen lernen',
+  // Neu 2026-08-29 (Simons Auftrag) - bewusst getrennt von uni_zusammen:
+  // hier der rein soziale Einstieg (dazusetzen, sich vorstellen), dort die
+  // akademische Zusammenarbeit (gemeinsam lernen, Buch ausleihen).
+  uni_freunde: 'Freunde finden',
   // Culture + Immersion
   kultur_wetter: 'Wetter',
   kultur_ausgehen: 'Ausgehen',
@@ -139,6 +148,9 @@ export const SCENARIO_LABELS: Record<string, string> = {
   liebe_gefuehle: 'Gefühle zeigen',
   liebe_fern: 'Fernbeziehung',
   liebe_familie: 'Die Familie treffen',
+  // Neu 2026-08-29 (Simons Auftrag) - erster Content ueberhaupt fuer
+  // love_relationship (stand vorher bei 0 Saetzen).
+  liebe_spitznamen: 'Spitznamen/Rufwörter',
 
   // Job + Arbeit (Kategorie angelegt 2026-08-22)
   job_suchen: 'Nach Arbeit fragen',

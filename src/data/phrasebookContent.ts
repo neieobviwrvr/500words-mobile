@@ -2,6 +2,10 @@ import { supabase } from '../lib/supabase';
 import { cachedFetch } from '../lib/offlineCache';
 import { AcceptedConcepts } from '../features/evaluation/evaluateConcepts';
 import { getLanguage } from './languages';
+import { WordType } from '../theme/tokens';
+
+/** Ein Wort-Tag aus der `word_tags`-Spalte, siehe TaggedTokens in components/ColoredTokens.tsx. */
+export type WordTag = { w: string; c: WordType | null };
 
 // Laedt echte Uebungssaetze aus Supabase (phrasebook_master fuer Deutsch,
 // schwedisch_phrasebook fuer Schwedisch) statt der Platzhalter aus
@@ -70,6 +74,13 @@ export type ExerciseSentence = {
    * laesst.
    */
   cultureNote: string | null;
+  /**
+   * Wort-fuer-Wort-Wortart, in Lesereihenfolge - null bei noch nicht
+   * getaggten Saetzen (die grosse Mehrheit, siehe
+   * Sprachlisten/uebersetzen/pruefe_wortarten.py fuer den Stand). Ein Satz
+   * ohne Tags rendert einfach ungefaerbt weiter, siehe TaggedTokens.
+   */
+  wordTags: WordTag[] | null;
 };
 
 // categoryIds: explizite Liste statt eines "alle"-Sentinels, der frueher
@@ -101,11 +112,11 @@ export async function loadExerciseSentences(
   // Preis dafuer, dass die Typen stimmen.
   const columns =
     lang.id === 'de'
-      ? 'id, german, scenario, category, accepted_concepts, lookup_only, addressing, culture_note'
+      ? 'id, german, scenario, category, accepted_concepts, lookup_only, addressing, culture_note, word_tags'
       // Nur chinesisch_phrasebook hat eine Pinyin-Spalte.
       : lang.id === 'zh'
-        ? 'id, target_text, pinyin, german, scenario, category, accepted_concepts, lookup_only, addressing, culture_note, verb_cluster, audio_url'
-        : 'id, target_text, german, scenario, category, accepted_concepts, lookup_only, addressing, culture_note, verb_cluster, audio_url';
+        ? 'id, target_text, pinyin, german, scenario, category, accepted_concepts, lookup_only, addressing, culture_note, verb_cluster, audio_url, word_tags'
+        : 'id, target_text, german, scenario, category, accepted_concepts, lookup_only, addressing, culture_note, verb_cluster, audio_url, word_tags';
 
   const cacheKey = `sentences:${lang.id}:${[...categoryIds].sort().join(',')}`;
   const { data: sentences, fromCache } = await cachedFetch(cacheKey, async () => {
@@ -140,6 +151,7 @@ export async function loadExerciseSentences(
         lookupOnly: row.lookup_only === true,
         addressing: row.addressing ?? null,
         cultureNote: row.culture_note ?? null,
+        wordTags: row.word_tags ?? null,
       };
     });
   });

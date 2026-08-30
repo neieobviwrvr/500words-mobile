@@ -66,6 +66,7 @@ const WORTART_FARBE: Record<string, string> = {
   Nomen: WORD_COLORS.n,
   Adjektiv: WORD_COLORS.a,
   Pronomen: WORD_COLORS.p,
+  Konjunktion: WORD_COLORS.k,
 };
 
 /** Immer sichtbare Haupt-Chips, in dieser Reihenfolge - siehe Verwendung. */
@@ -250,7 +251,11 @@ type Phase = 'auswahl' | 'runde' | 'ergebnis';
 // das angezeigte Pinyin wuerde falsch oder gar nicht ausgesprochen.
 // `hanzi` nur bei den Wort-Kacheln (links) gesetzt - die Bedeutungs-Kacheln
 // (rechts) haben keins. Steuert die "Zeichen ein/aus"-Anzeige (2026-08-25).
-type Kachel = { wordId: number; text: string; sprich: string; hanzi: string | null };
+// `wordClass` nur bei Links-Kacheln (Wort) mit Bedeutung gefuellt - bei
+// Rechts-Kacheln (deutsche Bedeutung) bleibt sie leer, siehe Rendering
+// weiter unten (2026-08-29, Wortarten-Farben jetzt auch auf den Kacheln
+// selbst, vorher nur auf den Filter-Chips).
+type Kachel = { wordId: number; text: string; sprich: string; hanzi: string | null; wordClass?: string };
 type FalschBlitz = { linksId: number; rechtsId: number } | null;
 
 /** Die Verbform, die im Frame steht - siehe presentForm-Kommentar oben. */
@@ -597,7 +602,7 @@ export function WordReviewScreen() {
           // per Rekursion nochmal zufaellig zu ziehen.
           setRundentyp('zuordnung');
           const ersatz = zuordnungAuswahl(gefiltert, s1, s2, jeStufe3Stand);
-          setLinks(mischen(ersatz.map((w) => ({ wordId: w.id, text: w.word, sprich: w.hanzi ?? w.word, hanzi: w.hanzi }))));
+          setLinks(mischen(ersatz.map((w) => ({ wordId: w.id, text: w.word, sprich: w.hanzi ?? w.word, hanzi: w.hanzi, wordClass: w.wordClass }))));
           setRechts(mischen(ersatz.map((w) => ({ wordId: w.id, text: w.german, sprich: w.german, hanzi: null }))));
           setGematcht(new Set());
           setGewaehlt(null);
@@ -618,7 +623,7 @@ export function WordReviewScreen() {
     }
 
     const auswahl = zuordnungAuswahl(gefiltert, s1, s2, jeStufe3Stand);
-    setLinks(mischen(auswahl.map((w) => ({ wordId: w.id, text: w.word, sprich: w.hanzi ?? w.word, hanzi: w.hanzi }))));
+    setLinks(mischen(auswahl.map((w) => ({ wordId: w.id, text: w.word, sprich: w.hanzi ?? w.word, hanzi: w.hanzi, wordClass: w.wordClass }))));
     setRechts(mischen(auswahl.map((w) => ({ wordId: w.id, text: w.german, sprich: w.german, hanzi: null }))));
     setGematcht(new Set());
     setGewaehlt(null);
@@ -1685,8 +1690,16 @@ export function WordReviewScreen() {
                         statt zwei gestapelter Texte, gleiches Muster wie die
                         Situations-Optionen (siehe dort). `rechts`-Kacheln
                         haben nie ein `hanzi` (siehe Kachel-Aufbau oben),
-                        dort bleibt das ein stiller No-Op. */}
-                    <Text style={[styles.kachelText, { color: theme.text }]}>
+                        dort bleibt das ein stiller No-Op. Farbe nur hier
+                        links (Wort), nicht rechts (deutsche Bedeutung) -
+                        die Bedeutung traegt keine eigene, verlaessliche
+                        Wortart-Zuordnung (2026-08-29). */}
+                    <Text
+                      style={[
+                        styles.kachelText,
+                        { color: (k.wordClass && WORTART_FARBE[k.wordClass]) || theme.text },
+                      ]}
+                    >
                       {k.text}
                       {zeichenEin && k.hanzi ? ` (${k.hanzi})` : ''}
                     </Text>

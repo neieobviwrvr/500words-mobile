@@ -195,10 +195,17 @@ export const GELIEHEN: Record<string, Leihe[]> = {
   // --- Beim Arzt: nur die Verstaendigung, der Rest steht in eigenen Situationen
   health_emergency: [VERSTAENDIGEN],
 
-  // --- Im Nebenjob: Uhrzeit fuer Schichten, Termine fuer den Dienstplan,
-  //     Zahlen fuer die Bezahlung. Hoeflichkeit kommt dazu, weil sie im
-  //     Umgang mit Kundschaft nicht optional ist.
-  job_work: [ZEIT, TERMINE, ZAHLEN, HOEFLICH, VERSTAENDIGEN],
+  // job_work leiht seit dem 2026-08-29 NICHTS MEHR (Simons Entscheidung) -
+  // bis dahin liehen die Zeilen oben (ZEIT/TERMINE/ZAHLEN/HOEFLICH/
+  // VERSTAENDIGEN) generische Grundwortschatz-Saetze mit job-spezifischen
+  // Namen ("Dienstplan absprechen", "Stunden und Beträge" etc.). Seit dem
+  // job_work-Ausbau vom selben Tag (7 eigene Szenarien, 42 Saetze) waere
+  // das eine Doppelung gewesen: `job_schicht` deckt "Dienstplan absprechen"
+  // jetzt mit echten Schicht-Saetzen ab ("Wann fange ich an?", "Kann ich
+  // die Schicht tauschen?"), `job_lohn` "Stunden und Beträge" mit echten
+  // Lohn-Saetzen ("Wie viel verdiene ich pro Stunde?") - beides praeziser
+  // als die generische Leihgabe. Gleicher Fall wie club_nightlife, siehe
+  // dessen Kopfkommentar: eigener Content macht jede Leihgabe ueberfluessig.
 
   // club_nightlife leiht bewusst nichts - siehe Kopfkommentar.
 };

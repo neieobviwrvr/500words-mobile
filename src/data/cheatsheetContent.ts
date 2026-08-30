@@ -1,6 +1,6 @@
 import { CATEGORIES, CATEGORY_BY_ID } from './categories';
 import { SCENARIO_LABELS } from './scenarios';
-import { ExerciseSentence, loadExerciseSentences } from './phrasebookContent';
+import { ExerciseSentence, loadExerciseSentences, WordTag } from './phrasebookContent';
 
 // S6 Cheat-Sheet-Survival - seit 2026-08-07 auf echtem Supabase-Content
 // statt der fruehren Platzhalter-Struktur (1 Beispielsatz + 5 Fake-Karten
@@ -41,6 +41,8 @@ export type Phrase = {
    */
   scenario?: string;
   category?: string;
+  /** Wort-fuer-Wort-Wortart, siehe ExerciseSentence.wordTags. */
+  wordTags?: WordTag[] | null;
 };
 
 /**
@@ -72,6 +74,7 @@ export function toPhrase(languageId: string, table: string, context: string, s: 
     cultureNote: s.cultureNote,
     scenario: s.scenario,
     category: s.category,
+    wordTags: s.wordTags,
   };
 }
 

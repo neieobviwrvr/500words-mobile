@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { Phrase } from '../../data/cheatsheetContent';
+import { TaggedTokens } from '../../components/ColoredTokens';
 import { getTheme, ACCENT_BLUE, RADIUS, SPACING, FONT_SIZE, LINE_HEIGHT } from '../../theme/tokens';
 
 // Ein Satz im Survival-Nachschlagewerk (Nutzer-Vorlage 2026-08-20).
@@ -44,10 +45,21 @@ export function PhraseCard({ phrase, dark, saved, onToggleSave, onSpeak, zeichen
     <View style={[styles.card, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
       <View style={styles.textBlock}>
         {zeichenAusblendbar ? (
-          <Text style={[styles.target, { color: theme.text }]}>{phrase.phonetic}</Text>
+          <TaggedTokens
+            style={styles.target}
+            textColor={theme.text}
+            tokens={(phrase.wordTags ?? [{ w: phrase.phonetic ?? '', c: null }]).map((t) => ({ t: t.w, c: t.c }))}
+          />
         ) : (
           <>
-            <Text style={[styles.target, { color: theme.text }]}>{phrase.text}</Text>
+            {/* Wortart-Farben (2026-08-29) nur auf der Zielsprachen-Zeile -
+                `wordTags` ist gegen genau diesen Text getaggt (target_text/
+                german). Faellt bei ungetaggten Saetzen auf plain zurueck. */}
+            <TaggedTokens
+              style={styles.target}
+              textColor={theme.text}
+              tokens={(phrase.wordTags ?? [{ w: phrase.text, c: null }]).map((t) => ({ t: t.w, c: t.c }))}
+            />
             {phrase.phonetic ? (
               <Text style={[styles.phonetic, { color: theme.sub }]}>„{phrase.phonetic}"</Text>
             ) : null}

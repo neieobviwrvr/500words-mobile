@@ -140,14 +140,19 @@ export async function loadVocabWords(
 
   if (languageId === 'zh') {
     const { data: words, fromCache } = await cachedFetch('vocab:zh', async () => {
-      const { data, error } = await supabase.from('chinesisch_vocab').select('id, hanzi, pinyin, german');
+      const { data, error } = await supabase
+        .from('chinesisch_vocab')
+        .select('id, hanzi, pinyin, german, wortart');
       if (error) throw error;
       return (data ?? []).map(
         (row: any): VocabWord => ({
           id: row.id,
           word: row.pinyin,
           german: row.german,
-          wordClass: wortartAusDeutsch(row.german),
+          // Echte Wortart bevorzugt (siehe wortarten_zh.py, Stand 2026-08-29:
+          // Modul 1+2 klassifiziert) - wortartAusDeutsch() bleibt Fallback
+          // fuer noch nicht klassifizierte Woerter, nicht geloescht.
+          wordClass: row.wortart ?? wortartAusDeutsch(row.german),
           genus: null,
           hanzi: row.hanzi,
           presentForm: null,
