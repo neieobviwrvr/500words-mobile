@@ -5,7 +5,7 @@ import { OnboardingScaffold, OptionRow, PillButton } from '../../src/components/
 import { useAppState } from '../../src/state/AppState';
 import { useOnboardingState, MAX_OCCASIONS } from '../../src/state/OnboardingState';
 import { getLanguage } from '../../src/data/languages';
-import { GOALS, OCCASIONS, ONBOARDING_TOTAL_STEPS, stepNumber } from '../../src/data/onboardingOptions';
+import { GOALS, GOAL_SEITEN_UNTERTITEL, OCCASIONS, ONBOARDING_TOTAL_STEPS, stepNumber } from '../../src/data/onboardingOptions';
 import { getTheme, SPACING, FONT_SIZE, LINE_HEIGHT } from '../../src/theme/tokens';
 
 // O2 - Warum lernst du?
@@ -22,7 +22,11 @@ export default function GoalScreen() {
   const { darkMode, targetLanguageId } = useAppState();
   const { occasions, toggleOccasion, goals, toggleGoal } = useOnboardingState();
   const theme = getTheme(darkMode);
-  const [stage, setStage] = useState<'anlass' | 'ziele'>('anlass');
+  // Drei Stufen seit 2026-08-30: die zwoelf Ziele stehen auf zwei Seiten
+  // (Simons Wunsch). Der Fortschrittsbalken bleibt fuer alle drei auf
+  // Schritt 2 - Simons Nummerierung zaehlt O2 als EINEN Schritt, daran
+  // aendert eine weitere Innenseite nichts.
+  const [stage, setStage] = useState<'anlass' | 'ziele1' | 'ziele2'>('anlass');
 
   const language = getLanguage(targetLanguageId);
   const goNext = () => router.push('/onboarding/o3-mikrofon');
@@ -44,9 +48,9 @@ export default function GoalScreen() {
               label={occasions.length > 0 ? `Weiter (${occasions.length})` : 'Weiter'}
               dark={darkMode}
               disabled={occasions.length === 0}
-              onPress={() => setStage('ziele')}
+              onPress={() => setStage('ziele1')}
             />
-            <Text style={[styles.skip, { color: theme.sub }]} onPress={() => setStage('ziele')}>
+            <Text style={[styles.skip, { color: theme.sub }]} onPress={() => setStage('ziele1')}>
               Überspringen
             </Text>
           </>
@@ -81,6 +85,11 @@ export default function GoalScreen() {
     );
   }
 
+  // Beide Ziel-Seiten sind derselbe Bildschirm mit anderem Ausschnitt -
+  // deshalb EINE Fassung statt zweier fast gleicher Bloecke.
+  const seite: 1 | 2 = stage === 'ziele1' ? 1 : 2;
+  const zieleDieserSeite = GOALS.filter((g) => g.seite === seite);
+
   return (
     <OnboardingScaffold
       step={2}
@@ -89,23 +98,30 @@ export default function GoalScreen() {
       title="Was willst du auf "
       titleAccent={language.label}
       titleAfter=" können?"
-      subtitle="Wähle so viele Ziele aus, wie du willst."
-      onBack={() => setStage('anlass')}
+      subtitle={`${GOAL_SEITEN_UNTERTITEL[seite]} Wähle so viele aus, wie du willst. (${seite} von 2)`}
+      onBack={() => setStage(seite === 1 ? 'anlass' : 'ziele1')}
       footer={
         <>
           <PillButton
+            // Auf Seite 1 fuehrt "Weiter" nur zur zweiten Seite und ist
+            // deshalb IMMER bedienbar: wer hier nichts findet, waehlt
+            // vielleicht drueben - ihn davor zu sperren waere eine
+            // Sackgasse. Erst am Ende gilt die Bedingung.
             label={goals.length > 0 ? `Weiter (${goals.length})` : 'Weiter'}
             dark={darkMode}
-            disabled={goals.length === 0}
-            onPress={goNext}
+            disabled={seite === 2 && goals.length === 0}
+            onPress={() => (seite === 1 ? setStage('ziele2') : goNext())}
           />
-          <Text style={[styles.skip, { color: theme.sub }]} onPress={goNext}>
+          <Text
+            style={[styles.skip, { color: theme.sub }]}
+            onPress={() => (seite === 1 ? setStage('ziele2') : goNext())}
+          >
             Überspringen
           </Text>
         </>
       }
     >
-      {GOALS.map((g) => (
+      {zieleDieserSeite.map((g) => (
         <OptionRow
           key={g.id}
           label={g.label}

@@ -76,6 +76,52 @@ export const RADIUS = {
 } as const;
 
 // ---------------------------------------------------------------------------
+// Erhebung (Schatten)
+// ---------------------------------------------------------------------------
+// Bis 2026-08-30 definierte jede Stelle ihre eigenen Schattenwerte
+// (UebungsMenu, PathScreen, Tab-Leiste) - drei Mal dasselbe Muster mit drei
+// verschiedenen Zahlen. Hier die gemeinsame Skala. Bestehende Stellen sind
+// bewusst NICHT umgestellt (das waere ein eigener Umbau), koennen aber nach
+// und nach hierher wandern.
+//
+// EINE Regel dahinter: der Schatten waechst mit der Hoehe, in die ein Element
+// zu schweben vorgibt. Ein Chip liegt knapp ueber dem Papier, ein Menue
+// deutlich darueber, die Tab-Leiste am hoechsten. Wer einem kleinen Element
+// einen grossen Schatten gibt, laesst es schmutzig aussehen statt erhaben.
+//
+// Der Versatz geht IMMER nach unten (`height` positiv, `width` 0): das Licht
+// kommt von oben, wie in jeder anderen App auch. Ein seitlicher Versatz
+// wirkt sofort wie ein Fehler.
+//
+// Android braucht `elevation` (eigenes System, kennt shadow* nicht), iOS und
+// Web brauchen shadow*. Deshalb immer beides.
+export const ELEVATION = {
+  /**
+   * Chips und kleine Pillen. Bewusst sehr flach - die Abhebung soll man
+   * spueren, nicht sehen. Zusammen mit einer leicht getoenten Fuellung
+   * ersetzt sie den Rahmen: Rahmen UND Schatten waeren eine doppelte
+   * Abgrenzung, die den Knopf schwer und billig wirken laesst.
+   */
+  chip: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 6,
+    shadowOpacity: 0.1,
+    elevation: 2,
+  },
+} as const;
+
+/**
+ * Im Darkmode traegt ein schwarzer Schatten auf dunklem Grund nichts bei -
+ * sichtbar wird Hoehe dort ueber eine HELLERE Flaeche, nicht ueber einen
+ * dunkleren Rand. Diese Funktion gibt deshalb im Darkmode keinen Schatten
+ * zurueck; die Fuellfarbe uebernimmt die Aufgabe (siehe `chipFill`).
+ */
+export function elevation(dark: boolean, stufe: keyof typeof ELEVATION) {
+  return dark ? null : ELEVATION[stufe];
+}
+
+// ---------------------------------------------------------------------------
 // Schrift
 // ---------------------------------------------------------------------------
 // Babbels staerkstes Erkennungsmerkmal ist die Serifen-Headline gegen einen

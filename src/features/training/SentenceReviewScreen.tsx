@@ -8,19 +8,19 @@ import { getLanguage } from '../../data/languages';
 import { CATEGORY_BY_ID } from '../../data/categories';
 import { leihgeberVon, saetzeFuer } from '../../data/geliehen';
 import { passtZurAnsprache } from '../../data/anrede';
-import { ExerciseSentence, loadAnswerClusters, loadExerciseSentences, hilfeText } from '../../data/phrasebookContent';
+import { ExerciseSentence, loadAnswerClusters, loadExerciseSentences } from '../../data/phrasebookContent';
 import { toPhrase, phraseId } from '../../data/cheatsheetContent';
 import { scenarioLabel } from '../../data/scenarios';
 import { evaluateConcepts, EvaluationResult } from '../evaluation/evaluateConcepts';
 import { useSttRecorder } from '../stt/useSttRecorder';
 import { useSpeechmatics } from '../stt/useSpeechmatics';
-import { speakText } from '../tts/speak';
+import { speakSentence, stopSpeaking } from '../tts/speak';
 import { newCard, reviewCard } from '../srs/fsrsEngine';
 import { cardKey, saveCard } from '../srs/srsStorage';
 import { ladeZaehler, aendereZaehler, setzeZaehler, ladeJeErreicht, markiereJeErreicht, aktiverBatchPool } from './batchLeiter';
 import { Screen, PillButton, ProgressBar, SchreibenFeld, UebungsMenu } from '../../components';
 import { TaggedTokens } from '../../components/ColoredTokens';
-import { getTheme, SPACING, RADIUS, FONT_SIZE, FONT_FAMILY, LINE_HEIGHT, ACCENT_GREEN, ACCENT_ERROR, ACCENT_ORANGE } from '../../theme/tokens';
+import { getTheme, elevation, SPACING, RADIUS, FONT_SIZE, FONT_FAMILY, LINE_HEIGHT, ACCENT_GREEN, ACCENT_ERROR, ACCENT_ORANGE, WordType } from '../../theme/tokens';
 
 // "Sätze-Wiederholung" (2026-08-26) - der zweite der drei Trainingsmodi aus
 // trainingModes.ts, der einen echten Screen bekommt. Simons Stufen-Leiter
@@ -95,6 +95,25 @@ function sprachAdjektiv(languageId: string): string {
 }
 
 /**
+ * Hat dieser Satz eine EIGENE Schrift neben der Lautschrift? (2026-08-30)
+ *
+ * Entscheidet, ob der Chip "Zeichen an/aus" ueberhaupt erscheint. Bewusst
+ * aus den DATEN abgeleitet und NICHT aus einer Liste von Sprach-IDs: heute
+ * trifft es nur Chinesisch zu, aber Japanisch, Koreanisch, Russisch,
+ * Arabisch, Thai, Griechisch usw. bringen dieselbe Konstellation mit
+ * (Schriftbild != Lautschrift), sobald sie Inhalte bekommen. Wer eine
+ * solche Sprache ergaenzt, muss hier nichts anfassen - es reicht, dass die
+ * Lautschrift-Spalte belegt ist.
+ *
+ * Die Ungleichheits-Pruefung faengt den Fall ab, dass eine Sprache mit
+ * lateinischer Schrift ihre Lautschrift-Spalte mit demselben Text belegt -
+ * dann waere ein Umschalter sinnlos, weil beide Zustaende gleich aussehen.
+ */
+function hatEigeneSchrift(satz: ExerciseSentence): boolean {
+  return !!satz.pinyin && satz.pinyin !== satz.text;
+}
+
+/**
  * `kannAbfragen`: Stufe 2 (eigene Sprache waehlen) und Stufe 3 (aus dem
  * Deutschen uebersetzen) ergeben nur Sinn, wenn die Zielsprache NICHT
  * Deutsch ist - `germanGloss` ist sonst fuer jeden Satz `null` (siehe
@@ -123,15 +142,55 @@ function mischen<T>(arr: T[]): T[] {
   return kopie;
 }
 
-// hilfeText() ist seit 2026-08-26 domaenenneutral in phrasebookContent.ts
-// (ExerciseScreen.tsx nutzt sie inzwischen auch, mit anderem Anteil) -
-// hier weiterhin fest 0.4 (Simons urspruengliche Vorgabe fuer Stufe 3).
+/**
+ * Wie viel der Loesung die Hilfe zeigt (Simon, 2026-08-30: "knapp 40%").
+ *
+ * **Der Anteil allein reicht dafuer nicht - es haengt an der Rundung.**
+ * `hilfeText()` in phrasebookContent.ts rundet AUF; bei drei Woertern kaeme
+ * damit auch aus 0.4 noch `ceil(1.2) = 2` heraus, also 67% statt der
+ * gewuenschten Groessenordnung. Deshalb rechnet dieser Screen die Wortzahl
+ * selbst und rundet KAUFMAENNISCH. `hilfeText()` bleibt unveraendert -
+ * ExerciseScreen.tsx haengt daran und soll sich nicht mitaendern.
+ *
+ * Ergebnis (Anteil des Satzes, der sichtbar wird):
+ *   2 Woerter -> 1 (50%)   5 -> 2 (40%)   8 -> 3 (38%)
+ *   3 Woerter -> 1 (33%)   6 -> 2 (33%)
+ *   4 Woerter -> 2 (50%)   7 -> 3 (43%)
+ * "Talar du engelska?" zeigt damit "Talar" statt "Talar du".
+ *
+ * Mindestens EIN Wort, sonst waere die Hilfe bei kurzen Saetzen leer und
+ * der Chip liefe ins Nichts.
+ */
+const HILFE_ANTEIL = 0.4;
+
+function hilfeWortzahl(gesamt: number): number {
+  return Math.max(1, Math.round(gesamt * HILFE_ANTEIL));
+}
+
+function hilfeWoerter(satz: ExerciseSentence): string[] {
+  return (satz.pinyin ?? satz.text).trim().split(/\s+/).filter(Boolean);
+}
+
 function hilfeTextFuerSatz(satz: ExerciseSentence): string {
-  return hilfeText(satz.pinyin ?? satz.text, 0.4);
+  const woerter = hilfeWoerter(satz);
+  return woerter.slice(0, hilfeWortzahl(woerter.length)).join(' ');
+}
+
+/**
+ * Derselbe Ausschnitt, aber als Wortart-Tokens statt als Text - damit der
+ * "Farben an"-Chip auch auf der Hilfe-Zeile wirkt.
+ *
+ * Die Kuerzung darf hier genau so gerechnet werden wie oben, weil
+ * `wordTags` gegen exakt denselben Text getaggt ist, der dort zerlegt wird:
+ * bei Chinesisch das Pinyin, sonst der Zielsatz.
+ */
+function hilfeTokensFuerSatz(satz: ExerciseSentence): { t: string; c: WordType | null }[] {
+  const roh = satz.wordTags ?? hilfeWoerter(satz).map((w) => ({ w, c: null }));
+  return roh.slice(0, hilfeWortzahl(roh.length)).map((t) => ({ t: t.w, c: t.c }));
 }
 
 export function SentenceReviewScreen() {
-  const { darkMode, targetLanguageId, saved, toggleSaved, uebersprungen, wortartenFarben } = useAppState();
+  const { darkMode, targetLanguageId, sourceLanguageId, saved, toggleSaved, uebersprungen, wortartenFarben } = useAppState();
   const { addressing: ansprache } = useOnboardingState();
   const theme = getTheme(darkMode);
   const language = getLanguage(targetLanguageId);
@@ -176,11 +235,34 @@ export function SentenceReviewScreen() {
   const [stufe2Optionen, setStufe2Optionen] = useState<ExerciseSentence[]>([]);
   const [stufe2Gewaehlt, setStufe2Gewaehlt] = useState<ExerciseSentence | null>(null);
   const [stufe2Ausgewertet, setStufe2Ausgewertet] = useState<'richtig' | 'falsch' | null>(null);
+  /**
+   * Hilfe auf Stufe 2 (2026-08-30): schliesst EINE falsche Antwort aus,
+   * statt wie auf Stufe 1 eine Textzeile zu zeigen. Ein Satzausschnitt
+   * waere hier sinnlos - der Satz steht ja gross auf dem Bildschirm, gesucht
+   * ist seine Bedeutung. Der Ausschluss ist die einzige Hilfe, die zur
+   * Aufgabe passt, und sie kommt ohne neuen Inhalt aus.
+   *
+   * Die Option wird AUSGEGRAUT, nicht entfernt - Entfernen wuerde die Liste
+   * kuerzen und alles darunter verschieben (Simons Punkt 4).
+   */
+  const [stufe2Ausgeschlossen, setStufe2Ausgeschlossen] = useState<number | null>(null);
 
   const [input, setInput] = useState('');
   const [transcript, setTranscript] = useState('');
   const [schreibenOffen, setSchreibenOffen] = useState(false);
   const [aufgedeckt, setAufgedeckt] = useState(false);
+  // Hilfe ein-/ausklappbar (2026-08-30, Simons Punkt 2: "klicke ich auf Hilfe
+  // hätte ich gerne dass dieser Button auch bleibt und ich die Hilfe wieder
+  // verschwinden lassen kann").
+  //
+  // BEWUSST ZWEI Zustaende, die nicht dasselbe bedeuten:
+  //   `aufgedeckt`    - hat der Nutzer die Hilfe JE gesehen? Deckelt die
+  //                     Bewertung auf "ueberlebt" (siehe loesen()) und wird
+  //                     NIE wieder false innerhalb derselben Runde. Sonst
+  //                     koennte man die Hilfe kurz aufklappen, wieder
+  //                     zuklappen und sich die Deckelung wegklicken.
+  //   `hilfeSichtbar` - reiner Anzeige-Zustand des Chips.
+  const [hilfeSichtbar, setHilfeSichtbar] = useState(false);
   // Uebersetzung anzeigen/ausblenden auf Stufe 1 (2026-08-26, Simons Wunsch:
   // "bei jedem Nachsprechesatz die Uebersetzung sehen koennen"). Nur fuer
   // Stufe 1 gedacht - bei Stufe 2 (Bedeutung zuordnen) waere ein Reveal die
@@ -194,6 +276,15 @@ export function SentenceReviewScreen() {
   // (siehe naechsteRundeVorbereiten) - sonst bliebe sie ab dem ersten Tipp
   // fuer die ganze Sitzung an.
   const [farbenEinmalig, setFarbenEinmalig] = useState(false);
+  // Zeichen an/aus (2026-08-30, Simons Stufe-1-Template) - nur sichtbar bei
+  // Sprachen mit eigener Schrift neben der Lautschrift (siehe
+  // hatEigeneSchrift). Startet AUS: gelernt wird ueber die Lautschrift, die
+  // Zeichen sind Zugabe (CLAUDE.md, "Gelernt wird ueber PINYIN, nicht ueber
+  // Zeichen"). Bleibt bewusst ueber die Runden hinweg stehen und wird NICHT
+  // in naechsteRundeVorbereiten zurueckgesetzt - anders als
+  // `farbenEinmalig`, das ausdruecklich eine "nur diesmal"-Geste ist. Wer
+  // die Zeichen sehen will, will sie fuer die ganze Sitzung sehen.
+  const [zeichenAn, setZeichenAn] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [recordError, setRecordError] = useState<string | null>(null);
@@ -258,6 +349,24 @@ export function SentenceReviewScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [targetLanguageId, kategorieModus, categoryId, scenario, stufe1Praefix, stufe2Praefix, jeStufe3Praefix, ansprache]);
 
+  /**
+   * Die vier Auswahlmoeglichkeiten fuer Stufe 2: der richtige Satz plus drei
+   * Ablenker, bevorzugt aus derselben Kategorie (aehnlicher Kontext macht die
+   * Aufgabe zu einer echten Unterscheidung statt zu einem Ratespiel).
+   *
+   * **Steht seit 2026-08-30 an EINER Stelle.** Vorher war diese Berechnung
+   * doppelt vorhanden - einmal hier, einmal im `debugStufe`-Effekt - und die
+   * beiden Fassungen liefen auseinander: die eine entschied anhand der
+   * TATSAECHLICHEN Stufe, die andere anhand der gewuenschten. Ergebnis war
+   * ein Stufe-2-Bildschirm ganz ohne Auswahl, aus dem es keinen Weg heraus
+   * gab ("Lösen" bleibt ohne Auswahl gesperrt).
+   */
+  function stufe2OptionenFuer(satz: ExerciseSentence): ExerciseSentence[] {
+    const selbeKategorie = sentences.filter((x) => x.id !== satz.id && x.category === satz.category);
+    const pool = selbeKategorie.length >= 3 ? selbeKategorie : sentences.filter((x) => x.id !== satz.id);
+    return mischen([satz, ...mischen(pool).slice(0, 3)]);
+  }
+
   function naechsteRundeVorbereiten(
     s1: Record<string, number> = stufe1,
     s2: Record<string, number> = stufe2,
@@ -272,17 +381,13 @@ export function SentenceReviewScreen() {
     setTranscript('');
     setFeedback(null);
     setAufgedeckt(false);
+    setHilfeSichtbar(false);
     setUebersetzungSichtbar(false);
     setFarbenEinmalig(false);
     setStufe2Gewaehlt(null);
     setStufe2Ausgewertet(null);
-    if (satz && stufeVon(satz, s1, s2, kannAbfragen) === 2) {
-      const selbeKategorie = sentences.filter((x) => x.id !== satz.id && x.category === satz.category);
-      const pool = selbeKategorie.length >= 3 ? selbeKategorie : sentences.filter((x) => x.id !== satz.id);
-      setStufe2Optionen(mischen([satz, ...mischen(pool).slice(0, 3)]));
-    } else {
-      setStufe2Optionen([]);
-    }
+    setStufe2Ausgeschlossen(null);
+    setStufe2Optionen(satz && stufeVon(satz, s1, s2, kannAbfragen) === 2 ? stufe2OptionenFuer(satz) : []);
   }
 
   /**
@@ -293,10 +398,16 @@ export function SentenceReviewScreen() {
    * also kein AsyncStorage-Schreiben - verschwindet mit dem Verlassen des
    * Screens) fuer GENAU einen festen Beispielsatz, damit die Stufe
    * unabhaengig vom echten Lernstand des Testgeraets zuverlaessig zu sehen
-   * ist. Baut die Stufe-2-Optionen mit derselben Logik wie
-   * `naechsteRundeVorbereiten` nach, statt sie zu duplizieren zu vermeiden -
-   * hier bewusst inline, weil es nur eine feste Stufe statt einer echten
-   * Zufallsauswahl braucht.
+   * ist. Die Stufe-2-Optionen kommen aus `stufe2OptionenFuer()`, derselben
+   * Quelle wie im echten Rundenaufbau - siehe dort, warum das keine zweite
+   * Fassung mehr sein darf.
+   *
+   * **Erzwingt seit 2026-08-30 in BEIDE Richtungen.** Vorher hob der Sprung
+   * die Zaehler nur an (`zielStufe >= 2 ? ... : stufe1` liess sie sonst
+   * unberuehrt). Wer den Satz auf dem Geraet schon geuebt hatte, landete mit
+   * `debugStufe=1` deshalb trotzdem auf Stufe 2 - und weil die Optionen am
+   * gewuenschten statt am tatsaechlichen Wert haengen, ohne jede Auswahl.
+   * "Unabhaengig vom echten Lernstand" hiess also nur "nach oben".
    */
   const { debugStufe } = useLocalSearchParams<{ debugStufe?: string }>();
   useEffect(() => {
@@ -304,8 +415,8 @@ export function SentenceReviewScreen() {
     if (!debugStufe || sentences.length === 0 || ![1, 2, 3].includes(zielStufe)) return;
     const satz = [...sentences].sort((a, b) => a.id - b.id)[0];
     const key = SATZ_KEY(satz);
-    const neuStufe1 = zielStufe >= 2 ? { ...stufe1, [key]: STUFE1_SCHWELLE } : stufe1;
-    const neuStufe2 = zielStufe >= 3 ? { ...stufe2, [key]: STUFE2_SCHWELLE } : stufe2;
+    const neuStufe1 = { ...stufe1, [key]: zielStufe >= 2 ? STUFE1_SCHWELLE : 0 };
+    const neuStufe2 = { ...stufe2, [key]: zielStufe >= 3 ? STUFE2_SCHWELLE : 0 };
     setStufe1(neuStufe1);
     setStufe2(neuStufe2);
     setAktuellerSatz(satz);
@@ -313,14 +424,16 @@ export function SentenceReviewScreen() {
     setTranscript('');
     setFeedback(null);
     setAufgedeckt(false);
+    setHilfeSichtbar(false);
     setUebersetzungSichtbar(false);
     setFarbenEinmalig(false);
     setStufe2Gewaehlt(null);
     setStufe2Ausgewertet(null);
-    if (zielStufe === 2) {
-      const selbeKategorie = sentences.filter((x) => x.id !== satz.id && x.category === satz.category);
-      const pool = selbeKategorie.length >= 3 ? selbeKategorie : sentences.filter((x) => x.id !== satz.id);
-      setStufe2Optionen(mischen([satz, ...mischen(pool).slice(0, 3)]));
+    setStufe2Ausgeschlossen(null);
+    // Aus der TATSAECHLICHEN Stufe abgeleitet, nicht aus `zielStufe` - die
+    // beiden koennen auseinanderfallen (siehe Kommentarblock oben).
+    if (stufeVon(satz, neuStufe1, neuStufe2, kannAbfragen) === 2) {
+      setStufe2Optionen(stufe2OptionenFuer(satz));
     } else {
       setStufe2Optionen([]);
     }
@@ -330,6 +443,48 @@ export function SentenceReviewScreen() {
     setPhase('runde');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debugStufe, sentences]);
+
+  /**
+   * Den fremdsprachigen Satz vorlesen (2026-08-30, Simons Vorgabe).
+   *
+   * `speakSentence` statt `speakText`: es nimmt die vorgerenderte Datei aus
+   * Supabase, wenn es eine gibt, und faellt sonst auf die Systemstimme
+   * zurueck. Der Screen rief bisher direkt `speakText` und haette damit jede
+   * kuenftige Audiodatei ignoriert - heute faellt das nicht auf, weil noch
+   * keine Sprache vertont ist (`audio_url` ist ueberall leer).
+   *
+   * Gesprochen wird IMMER `text`, nie die Lautschrift: bei Chinesisch ist
+   * `text` das Hanzi, und nur damit spricht die Stimme Mandarin - Pinyin
+   * waere fuer sie lateinischer Text (derselbe Grund wie im gefuehrten Kurs).
+   */
+  function satzVorlesen(satz: ExerciseSentence) {
+    speakSentence({ text: satz.text, audioUrl: satz.audioUrl }, { languageId: targetLanguageId });
+  }
+
+  /**
+   * Automatisch einmal vorlesen, sobald ein neuer Satz erscheint (Simons
+   * Vorgabe 2026-08-30, Duolingo-Muster) - kein eigener Vorlese-Knopf mehr.
+   * Erneut hoeren geht durch Antippen des Satzes.
+   *
+   * **Stufe 3 ist ausgenommen, und zwar zwingend:** dort steht der DEUTSCHE
+   * Satz auf dem Bildschirm und der fremdsprachige ist die gesuchte Antwort.
+   * Ihn vorzulesen waere die Loesung vorzusagen.
+   *
+   * `rundeNr` gehoert in die Abhaengigkeiten, nicht nur die Satz-ID: sonst
+   * bliebe es stumm, wenn zweimal hintereinander derselbe Satz gezogen wird.
+   * `stufe` steht bewusst NICHT drin - der Wert aendert sich nach dem Loesen
+   * noch einmal, was ein zweites Vorlesen mitten in der Rueckmeldung
+   * ausloesen wuerde; gelesen wird er trotzdem aktuell, weil der Effekt nach
+   * dem Rendern laeuft.
+   */
+  useEffect(() => {
+    if (phase !== 'runde' || !aktuellerSatz || stufe === 3) return;
+    satzVorlesen(aktuellerSatz);
+    // Beim Verlassen bzw. beim naechsten Satz abbrechen, damit nicht zwei
+    // Saetze uebereinander reden.
+    return () => stopSpeaking();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [aktuellerSatz?.id, rundeNr, phase]);
 
   function rundeStarten() {
     setRundeNr(1);
@@ -496,11 +651,43 @@ export function SentenceReviewScreen() {
     }
   }
 
+  /**
+   * Stufe 3: die Hilfe fuellt einen Teil der Loesung ins Schreibfeld und
+   * klappt es auf - dort IST das Tippen die Aufgabe.
+   *
+   * Stufe 1 (2026-08-30, Simons Punkt 3): das Schreibfeld darf sich NUR
+   * ueber "Kein Sprechen möglich?" oeffnen, nie von selbst. Die Hilfe
+   * schreibt deshalb nichts ins Feld und klappt es nicht auf, sondern zeigt
+   * ihren Text als eigene Zeile ueber dem Satz - dieselbe Form wie die
+   * Übersetzung daneben. Beide Chips verhalten sich dadurch gleich: Chip an,
+   * Zeile erscheint; Chip aus, Zeile weg.
+   */
   function hilfeTippen() {
     if (!aktuellerSatz) return;
-    setAufgedeckt(true);
-    setSchreibenOffen(true);
-    setInput(hilfeTextFuerSatz(aktuellerSatz));
+    if (stufe === 2) {
+      // Umschalter wie auf Stufe 1: erneutes Tippen nimmt den Ausschluss
+      // zurueck. `aufgedeckt` bleibt gesetzt - gesehen ist gesehen.
+      if (stufe2Ausgeschlossen !== null) {
+        setStufe2Ausgeschlossen(null);
+        setHilfeSichtbar(false);
+        return;
+      }
+      const falsche = stufe2Optionen.filter((o) => o.id !== aktuellerSatz.id);
+      if (falsche.length === 0) return;
+      setStufe2Ausgeschlossen(mischen(falsche)[0].id);
+      setHilfeSichtbar(true);
+      setAufgedeckt(true);
+      return;
+    }
+    // Stufe 1 UND 3: die Hilfe ist eine eigene Zeile im Layout, kein
+    // vorgefuelltes Schreibfeld mehr (2026-08-30, Simons Punkt 3 - das Feld
+    // darf sich nur ueber "Kein Sprechen möglich?" oeffnen).
+    //
+    // `aufgedeckt` bleibt gesetzt, auch wenn gleich wieder zugeklappt wird -
+    // gesehen ist gesehen (siehe Kommentar bei der State-Deklaration). Auf
+    // Stufe 3 deckelt das die Bewertung auf "ueberlebt".
+    if (!hilfeSichtbar) setAufgedeckt(true);
+    setHilfeSichtbar((v) => !v);
   }
 
   function checkAnswer() {
@@ -553,10 +740,21 @@ export function SentenceReviewScreen() {
         <UebungsMenu dark={darkMode} meldenLabel="Satz melden" />
       </View>
 
+      {/* Sitzungs-Fortschritt (2026-08-30, Simons Punkt 1): nur der Balken,
+          keine "Runde X von Y"-Zeile mehr. Der Balken sagt dasselbe, ohne
+          dass man zaehlen muss - und er stand vorher ohnehin unsichtbar da:
+          `ProgressBar`s Spur hat `flex: 1` und kollabiert in einem
+          SPALTEN-Container auf Hoehe 0. Der Wrapper muss eine ZEILE sein,
+          genau wie in PathScreen.tsx (`progressRow`).
+          Die Rundenzahl bleibt fuer Screenreader als `label` erhalten - dort
+          waere "17 Prozent" die schlechtere Ansage. */}
       {phase === 'runde' ? (
         <View style={styles.progressSlot}>
-          <ProgressBar dark={darkMode} ratio={sessionFortschritt} />
-          <Text style={[styles.rundenZaehler, { color: theme.sub }]}>Runde {rundeNr} von {SESSION_RUNDEN}</Text>
+          <ProgressBar
+            dark={darkMode}
+            ratio={sessionFortschritt}
+            label={`Runde ${rundeNr} von ${SESSION_RUNDEN}`}
+          />
         </View>
       ) : null}
 
@@ -602,152 +800,445 @@ export function SentenceReviewScreen() {
         </ScrollView>
       )}
 
+      {/* ------------------------------------------------------------------
+          STUFE-1-TEMPLATE (2026-08-30, Simons Vorlage - VERBINDLICH)
+
+          Gilt als universelles Layout fuer Stufe 1 in ALLEN Sprachen, mit
+          besonderem Augenmerk auf solche, die eine eigene Schrift UND eine
+          Lautschrift haben (Chinesisch heute; Japanisch, Koreanisch,
+          Russisch, Arabisch, Thai, Griechisch, ... sobald sie Inhalte
+          bekommen - siehe hatEigeneSchrift()).
+
+          Reihenfolge von oben nach unten, so und nicht anders:
+            1. Frage ("Sprich diesen X Satz nach"), linksbuendig
+            2. Chip-Reihe, umbrechend, linksbuendig:
+               Übersetzung · Hilfe · Speichern · Zeichen an/aus · Farben an/aus
+            3. aufgeklappte Übersetzung (nur wenn der Chip aktiv ist)
+            4. der Satz, gross und mittig - bei "Zeichen an" die Schrift
+               oben, die Lautschrift darunter; bei "Zeichen aus" nur die
+               Lautschrift. Eingefaerbt wird IMMER NUR die Lautschrift,
+               nie die Schriftzeichen (Simons Vorgabe, gilt appweit).
+            5. grosses rundes Mikrofon, mittig - die Hauptaktion
+            6. leise Pille "Kein Sprechen möglich?" als Ausweg zum Tippen
+            7. "Weiter" unten rechts
+
+          Chips ersetzen die frueher untereinander gestapelten Knoepfe -
+          dadurch steht der Satz im Blickfeld statt unter einer Knopfleiste.
+          ------------------------------------------------------------------ */}
       {phase === 'runde' && aktuellerSatz && stufe === 1 && (
         <ScrollView contentContainerStyle={styles.rundenBereich} showsVerticalScrollIndicator={false}>
           <Text style={[styles.frage, { color: theme.text }]}>Sprich diesen {sprachAdjektiv(targetLanguageId)} Satz nach</Text>
-          {/* Wortart-Farben (2026-08-29/30) - wordTags ist gegen genau den
-              hier gezeigten Text getaggt (pinyin bei Chinesisch, sonst
-              text), faellt bei ungetaggten Saetzen auf plain zurueck.
-              `showColors` erst mit dem globalen Schalter ODER dem
-              Hilfe-Knopf-Tipp fuer diesen einen Satz (Simons Wunsch
-              2026-08-30: standardmaessig aus). */}
-          <TaggedTokens
-            style={styles.hinweis}
-            textColor={theme.sub}
-            showColors={wortartenFarben || farbenEinmalig}
-            tokens={(aktuellerSatz.wordTags ?? [{ w: aktuellerSatz.pinyin ?? aktuellerSatz.text, c: null }]).map(
-              (t) => ({ t: t.w, c: t.c })
-            )}
-          />
-          {!wortartenFarben && aktuellerSatz.wordTags ? (
-            <Pressable
-              onPress={() => setFarbenEinmalig((v) => !v)}
-              accessibilityRole="button"
-              accessibilityLabel={farbenEinmalig ? 'Wortarten-Farben ausblenden' : 'Wortarten-Farben zeigen'}
-              accessibilityState={{ expanded: farbenEinmalig }}
-              hitSlop={8}
-              style={styles.farbenHilfe}
-            >
-              <Ionicons name="help-circle-outline" size={16} color={theme.sub} />
-              <Text style={[styles.farbenHilfeText, { color: theme.sub }]}>
-                {farbenEinmalig ? 'Farben ausblenden' : 'Wortarten-Farben zeigen'}
+
+          <View style={styles.chipReihe}>
+            {/* Übersetzung - nur wenn es ueberhaupt eine gibt (kein
+                Ziel-ist-Deutsch-Fall, siehe kannAbfragen/germanGloss oben).
+                Nur auf Stufe 1: bei Stufe 2 waere das Zeigen der Bedeutung
+                die Aufgabe selbst, bei Stufe 3 die Lösung. */}
+            {aktuellerSatz.germanGloss
+              ? renderChip({
+                  label: 'Übersetzung',
+                  aktiv: uebersetzungSichtbar,
+                  onPress: () => setUebersetzungSichtbar((v) => !v),
+                  a11y: uebersetzungSichtbar ? 'Übersetzung ausblenden' : 'Übersetzung anzeigen',
+                  expanded: uebersetzungSichtbar,
+                })
+              : null}
+            {/* Hilfe - fuellt einen Teil des Satzes ins Schreibfeld und
+                klappt es auf. Auf Stufe 1 ist der Satz zwar ohnehin
+                sichtbar, aber der Chip hilft beim TIPPEN der Antwort, nicht
+                beim Erraten des Satzes.
+                UMSCHALTER seit 2026-08-30 (Simons Punkt 2): der Chip bleibt
+                stehen und nimmt die Hilfe auf erneutes Tippen wieder weg.
+                Die Bewertungs-Deckelung bleibt davon unberuehrt. */}
+            {renderChip({
+              label: 'Hilfe',
+              aktiv: hilfeSichtbar,
+              onPress: hilfeTippen,
+              a11y: hilfeSichtbar ? 'Hilfe ausblenden' : 'Hilfe anzeigen',
+              hint: 'Füllt einen Teil des Satzes ins Schreibfeld',
+              expanded: hilfeSichtbar,
+            })}
+            {renderChip({
+              label: istGemerkt ? 'Gemerkt' : 'Speichern',
+              aktiv: istGemerkt,
+              aktivFarbe: ACCENT_GREEN,
+              icon: istGemerkt ? 'bookmark' : 'bookmark-outline',
+              onPress: () => {
+                if (merkPhrase) toggleSaved(merkPhrase.id, merkPhrase);
+              },
+              a11y: istGemerkt ? 'Gemerkt' : 'Speichern',
+              hint: istGemerkt ? 'Aus den gespeicherten Sätzen entfernen' : 'Zu den gespeicherten Sätzen im Survival hinzufügen',
+              selected: istGemerkt,
+            })}
+            {/* Zeichen an/aus - nur bei Sprachen mit eigener Schrift. Die
+                Beschriftung nennt die AKTION, nicht den Zustand ("Zeichen
+                an" = sie sind gerade aus), gleiche Regel wie im Survival. */}
+            {hatEigeneSchrift(aktuellerSatz)
+              ? renderChip({
+                  label: zeichenAn ? 'Zeichen aus' : 'Zeichen an',
+                  aktiv: zeichenAn,
+                  onPress: () => setZeichenAn((v) => !v),
+                  a11y: zeichenAn ? 'Schriftzeichen ausblenden' : 'Schriftzeichen anzeigen',
+                  expanded: zeichenAn,
+                })
+              : null}
+            {/* Farben an/aus - "nur diesmal", unabhaengig vom globalen
+                Schalter im Profil. Entfaellt, wenn der globale Schalter
+                ohnehin an ist oder der Satz keine Wortart-Tags hat. */}
+            {!wortartenFarben && aktuellerSatz.wordTags
+              ? renderChip({
+                  label: farbenEinmalig ? 'Farben aus' : 'Farben an',
+                  aktiv: farbenEinmalig,
+                  onPress: () => setFarbenEinmalig((v) => !v),
+                  a11y: farbenEinmalig ? 'Wortarten-Farben ausblenden' : 'Wortarten-Farben zeigen',
+                  expanded: farbenEinmalig,
+                })
+              : null}
+          </View>
+
+          {/* Fester Platz fuer Übersetzung und Hilfe (2026-08-30, Simons
+              Punkt 4: "alles soll statisch bleiben").
+              Beide Zeilen sind IMMER im Layout und werden nur ueber die
+              Deckkraft sichtbar - haengte man sie ein und aus, ruckte alles
+              darunter (Satz, Mikrofon, Knoepfe) bei jedem Tipp nach oben
+              oder unten. Der Platz kostet Leerraum, aber der Screen steht
+              dafuer still.
+              Fuer Screenreader sind die unsichtbaren Zeilen ausgeblendet -
+              reservierter Platz ist kein Inhalt. */}
+          <View style={styles.infoSlot}>
+            {aktuellerSatz.germanGloss ? (
+              <Text
+                style={[styles.uebersetzung, { color: theme.sub, opacity: uebersetzungSichtbar ? 1 : 0 }]}
+                accessibilityElementsHidden={!uebersetzungSichtbar}
+                importantForAccessibility={uebersetzungSichtbar ? 'auto' : 'no-hide-descendants'}
+              >
+                {aktuellerSatz.germanGloss}
               </Text>
-            </Pressable>
-          ) : null}
-          {renderSpeichern()}
+            ) : null}
+            <Text
+              style={[styles.hilfeZeile, { color: theme.sub, opacity: hilfeSichtbar ? 1 : 0 }]}
+              accessibilityElementsHidden={!hilfeSichtbar}
+              importantForAccessibility={hilfeSichtbar ? 'auto' : 'no-hide-descendants'}
+            >
+              {hilfeTextFuerSatz(aktuellerSatz)}
+            </Text>
+          </View>
+
+          {/* Der Satz. Antippen liest ihn vor - das ersetzt den frueheren
+              eigenen "▶ Vorlesen"-Knopf, den die Vorlage nicht mehr zeigt.
+              TTS bleibt damit erreichbar (CLAUDE.md-Kernprinzip: Uebungs-
+              Screens lesen den Ausgangssatz vor), ohne ein Bedienelement
+              einzufuehren, das in Simons Layout nicht vorkommt. */}
           <Pressable
-            onPress={() => speakText(aktuellerSatz.text, { languageId: targetLanguageId })}
+            onPress={() => satzVorlesen(aktuellerSatz)}
             accessibilityRole="button"
-            accessibilityLabel="Vorlesen"
-            style={[styles.ttsButton, { borderColor: theme.border }]}
+            accessibilityLabel={`Vorlesen: ${aktuellerSatz.text}`}
+            style={({ pressed }) => [styles.satzBlock, { opacity: pressed ? 0.6 : 1 }]}
           >
-            <Text style={{ color: theme.text, fontWeight: '700', fontSize: 12 }}>▶ Vorlesen</Text>
-          </Pressable>
-          {/* Uebersetzung anzeigen (2026-08-26, Simons Wunsch) - nur wenn es
-              ueberhaupt eine gibt (kein Ziel-ist-Deutsch-Fall, siehe
-              kannAbfragen/germanGloss-Kommentar oben). Nur auf Stufe 1: bei
-              Stufe 2 waere das Zeigen der Bedeutung die Aufgabe selbst, bei
-              Stufe 3 die Lösung. */}
-          {aktuellerSatz.germanGloss ? (
-            <Pressable
-              onPress={() => setUebersetzungSichtbar((v) => !v)}
-              accessibilityRole="button"
-              accessibilityLabel={uebersetzungSichtbar ? 'Übersetzung ausblenden' : 'Übersetzung anzeigen'}
-              accessibilityState={{ expanded: uebersetzungSichtbar }}
-              style={[styles.ttsButton, { borderColor: theme.border }]}
-            >
-              <Text style={{ color: theme.text, fontWeight: '700', fontSize: 12 }}>
-                {uebersetzungSichtbar ? 'Übersetzung ausblenden' : 'Übersetzung anzeigen'}
+            {/* Schriftzeichen: immer PLAIN, nie eingefaerbt. `wordTags` ist
+                gegen die Lautschrift getaggt und wuerde hier sonst die
+                Zeichen durch Lautschrift-Woerter ERSETZEN (TaggedTokens
+                rendert seine tokens als Text, nicht als Farbschicht) -
+                derselbe Fehler wie 2026-08-30 in PhraseCard.tsx.
+                Wie oben im Info-Slot: bei Sprachen MIT eigener Schrift steht
+                die Zeile immer im Layout und wird nur durchsichtig, damit
+                "Zeichen an/aus" nichts verschiebt. Sprachen ohne eigene
+                Schrift bekommen die Zeile gar nicht erst - dort gibt es
+                nichts umzuschalten, also auch nichts zu reservieren. */}
+            {hatEigeneSchrift(aktuellerSatz) ? (
+              <Text
+                style={[styles.satzSchrift, { color: theme.text, opacity: zeichenAn ? 1 : 0 }]}
+                accessibilityElementsHidden={!zeichenAn}
+                importantForAccessibility={zeichenAn ? 'auto' : 'no-hide-descendants'}
+              >
+                {aktuellerSatz.text}
               </Text>
+            ) : null}
+            {/* Die Lautschrift behaelt IMMER dieselbe Groesse und Farbe.
+                Frueher wechselte sie bei "Zeichen an" auf eine kleinere
+                Stufe - das war ein zweiter, weniger offensichtlicher
+                Sprung: der Satz selbst aenderte seine Hoehe. */}
+            <TaggedTokens
+              style={styles.satzGross}
+              textColor={theme.text}
+              showColors={wortartenFarben || farbenEinmalig}
+              tokens={(aktuellerSatz.wordTags ?? [{ w: aktuellerSatz.pinyin ?? aktuellerSatz.text, c: null }]).map(
+                (t) => ({ t: t.w, c: t.c })
+              )}
+            />
+          </Pressable>
+
+          {renderEingabe(true)}
+          {renderFeedback(true)}
+
+          <View style={styles.weiterZeile}>
+            <Pressable
+              onPress={checkAnswer}
+              disabled={(!input.trim() && !transcript) || !!feedback}
+              accessibilityRole="button"
+              accessibilityLabel="Weiter"
+              accessibilityState={{ disabled: (!input.trim() && !transcript) || !!feedback }}
+              style={({ pressed }) => {
+                const gesperrt = (!input.trim() && !transcript) || !!feedback;
+                return [
+                  styles.weiterKnopf,
+                  // Gesperrt liegt der Knopf FLACH auf der Seite - ein
+                  // schwebender Knopf, der nichts tut, ist ein Widerspruch.
+                  // Die Erhebung kommt erst, wenn er bedienbar wird.
+                  gesperrt ? null : elevation(darkMode, 'chip'),
+                  {
+                    borderColor: 'transparent',
+                    backgroundColor: theme.subtleFill,
+                    opacity: gesperrt ? 0.4 : pressed ? 0.75 : 1,
+                    transform: [{ translateY: !gesperrt && pressed ? 1 : 0 }],
+                  },
+                ];
+              }}
+            >
+              <Text style={{ color: theme.text, fontWeight: '700', fontSize: FONT_SIZE.caption }}>▶ Weiter</Text>
             </Pressable>
-          ) : null}
-          {uebersetzungSichtbar && aktuellerSatz.germanGloss ? (
-            <Text style={[styles.hinweis, { color: theme.sub }]}>{aktuellerSatz.germanGloss}</Text>
-          ) : null}
-          {renderEingabe()}
-          {renderFeedback()}
-          <PillButton dark={darkMode} label="Lösen" disabled={!input.trim() && !transcript || !!feedback} onPress={checkAnswer} />
+          </View>
         </ScrollView>
       )}
 
       {phase === 'runde' && aktuellerSatz && stufe === 2 && (
         <ScrollView contentContainerStyle={styles.rundenBereich} showsVerticalScrollIndicator={false}>
           <Text style={[styles.frage, { color: theme.text }]}>Ordne diesen {sprachAdjektiv(targetLanguageId)} Satz seiner Bedeutung zu</Text>
-          {/* Wortart-Farben (2026-08-29/30), siehe Kommentar bei Stufe 1
-              oben - gleiches Verhalten. */}
-          <TaggedTokens
-            style={styles.hinweis}
-            textColor={theme.sub}
-            showColors={wortartenFarben || farbenEinmalig}
-            tokens={(aktuellerSatz.wordTags ?? [{ w: aktuellerSatz.pinyin ?? aktuellerSatz.text, c: null }]).map(
-              (t) => ({ t: t.w, c: t.c })
-            )}
-          />
-          {!wortartenFarben && aktuellerSatz.wordTags ? (
-            <Pressable
-              onPress={() => setFarbenEinmalig((v) => !v)}
-              accessibilityRole="button"
-              accessibilityLabel={farbenEinmalig ? 'Wortarten-Farben ausblenden' : 'Wortarten-Farben zeigen'}
-              accessibilityState={{ expanded: farbenEinmalig }}
-              hitSlop={8}
-              style={styles.farbenHilfe}
-            >
-              <Ionicons name="help-circle-outline" size={16} color={theme.sub} />
-              <Text style={[styles.farbenHilfeText, { color: theme.sub }]}>
-                {farbenEinmalig ? 'Farben ausblenden' : 'Wortarten-Farben zeigen'}
+
+          {/* Chip-Reihe wie auf Stufe 1 (2026-08-30, Simons zweite Vorlage) -
+              dieselben Bausteine, dieselbe mittige Anordnung, dieselben
+              Beschriftungs-Regeln.
+              ZWEI Unterschiede, beide zwingend aus der Aufgabe:
+              - KEIN "Übersetzung"-Chip. Die Bedeutung zu finden IST hier die
+                Aufgabe; sie anzuzeigen waere die Loesung.
+              - "Hilfe" schliesst eine falsche Antwort aus, statt eine
+                Textzeile zu zeigen (siehe stufe2Ausgeschlossen). */}
+          <View style={styles.chipReihe}>
+            {hatEigeneSchrift(aktuellerSatz)
+              ? renderChip({
+                  label: zeichenAn ? 'Zeichen aus' : 'Zeichen an',
+                  aktiv: zeichenAn,
+                  onPress: () => setZeichenAn((v) => !v),
+                  a11y: zeichenAn ? 'Schriftzeichen ausblenden' : 'Schriftzeichen anzeigen',
+                  expanded: zeichenAn,
+                })
+              : null}
+            {!wortartenFarben && aktuellerSatz.wordTags
+              ? renderChip({
+                  label: farbenEinmalig ? 'Farben aus' : 'Farben an',
+                  aktiv: farbenEinmalig,
+                  onPress: () => setFarbenEinmalig((v) => !v),
+                  a11y: farbenEinmalig ? 'Wortarten-Farben ausblenden' : 'Wortarten-Farben zeigen',
+                  expanded: farbenEinmalig,
+                })
+              : null}
+            {renderChip({
+              label: 'Hilfe',
+              aktiv: stufe2Ausgeschlossen !== null,
+              // Nach dem Auswerten nuetzt der Ausschluss nichts mehr.
+              onPress: stufe2Ausgewertet ? () => {} : hilfeTippen,
+              a11y: stufe2Ausgeschlossen !== null ? 'Hilfe zurücknehmen' : 'Hilfe anzeigen',
+              hint: 'Schließt eine falsche Antwort aus',
+              expanded: stufe2Ausgeschlossen !== null,
+            })}
+            {renderChip({
+              label: istGemerkt ? 'Gemerkt' : 'Speichern',
+              aktiv: istGemerkt,
+              aktivFarbe: ACCENT_GREEN,
+              icon: istGemerkt ? 'bookmark' : 'bookmark-outline',
+              onPress: () => {
+                if (merkPhrase) toggleSaved(merkPhrase.id, merkPhrase);
+              },
+              a11y: istGemerkt ? 'Gemerkt' : 'Speichern',
+              hint: istGemerkt ? 'Aus den gespeicherten Sätzen entfernen' : 'Zu den gespeicherten Sätzen im Survival hinzufügen',
+              selected: istGemerkt,
+            })}
+          </View>
+
+          {/* Der Satz - gleicher Aufbau wie Stufe 1: Schriftzeichen oben
+              (immer im Layout, nur durchsichtig geschaltet, damit "Zeichen
+              an/aus" nichts verschiebt), Lautschrift darunter in konstanter
+              Groesse. Schriftzeichen werden nie eingefaerbt. */}
+          <Pressable
+            onPress={() => satzVorlesen(aktuellerSatz)}
+            accessibilityRole="button"
+            accessibilityLabel={`Vorlesen: ${aktuellerSatz.text}`}
+            style={({ pressed }) => [styles.satzBlock, { opacity: pressed ? 0.6 : 1 }]}
+          >
+            {hatEigeneSchrift(aktuellerSatz) ? (
+              <Text
+                style={[styles.satzSchrift, { color: theme.text, opacity: zeichenAn ? 1 : 0 }]}
+                accessibilityElementsHidden={!zeichenAn}
+                importantForAccessibility={zeichenAn ? 'auto' : 'no-hide-descendants'}
+              >
+                {aktuellerSatz.text}
               </Text>
-            </Pressable>
-          ) : null}
-          {renderSpeichern()}
+            ) : null}
+            <TaggedTokens
+              style={styles.satzGross}
+              textColor={theme.text}
+              showColors={wortartenFarben || farbenEinmalig}
+              tokens={(aktuellerSatz.wordTags ?? [{ w: aktuellerSatz.pinyin ?? aktuellerSatz.text, c: null }]).map(
+                (t) => ({ t: t.w, c: t.c })
+              )}
+            />
+          </Pressable>
+
           <View style={styles.optionenSpalte}>
             {stufe2Optionen.map((o) => {
               const gewaehltHier = stufe2Gewaehlt?.id === o.id;
               const zeigeRichtig = stufe2Ausgewertet && o.id === aktuellerSatz.id;
               const zeigeFalsch = stufe2Ausgewertet === 'falsch' && gewaehltHier && !zeigeRichtig;
+              // Per Hilfe ausgeschlossen: bleibt STEHEN und wird nur blass
+              // und untippbar. Herausnehmen wuerde die Liste kuerzen und
+              // alles darunter verschieben (Simons Punkt 4).
+              const ausgeschlossen = stufe2Ausgeschlossen === o.id && !stufe2Ausgewertet;
               return (
                 <Pressable
                   key={o.id}
-                  disabled={!!stufe2Ausgewertet}
+                  disabled={!!stufe2Ausgewertet || ausgeschlossen}
                   onPress={() => stufe2OptionTippen(o)}
                   accessibilityRole="button"
+                  accessibilityState={{ disabled: ausgeschlossen, selected: gewaehltHier }}
+                  accessibilityHint={ausgeschlossen ? 'Durch die Hilfe ausgeschlossen' : undefined}
                   style={[
                     styles.optionChip,
                     {
                       borderColor: zeigeRichtig ? ACCENT_GREEN : zeigeFalsch ? ACCENT_ERROR : gewaehltHier ? theme.text : theme.border,
                       backgroundColor: zeigeRichtig ? ACCENT_GREEN : zeigeFalsch ? ACCENT_ERROR : theme.subtleFill,
+                      opacity: ausgeschlossen ? 0.35 : 1,
                     },
                   ]}
                 >
-                  <Text style={{ color: zeigeRichtig || zeigeFalsch ? '#FFFFFF' : theme.text, fontWeight: '600' }}>
+                  <Text
+                    style={{
+                      color: zeigeRichtig || zeigeFalsch ? '#FFFFFF' : theme.text,
+                      fontWeight: '600',
+                      textDecorationLine: ausgeschlossen ? 'line-through' : 'none',
+                    }}
+                  >
                     {o.germanGloss ?? o.text}
                   </Text>
                 </Pressable>
               );
             })}
           </View>
-          <PillButton dark={darkMode} label="Lösen" disabled={!stufe2Gewaehlt || !!stufe2Ausgewertet} onPress={stufe2Loesen} />
+          {/* Notausgang (2026-08-30): ohne Auswahlmoeglichkeiten bleibt
+              "Lösen" dauerhaft gesperrt - der Bildschirm waere eine
+              Sackgasse, aus der nur der Zurueck-Pfeil fuehrt. Die Ursache
+              dafuer ist behoben (siehe stufe2OptionenFuer), aber ein
+              Bildschirm, den man nicht verlassen kann, ist ein zu teurer
+              Fehler, um sich allein auf die Ursache zu verlassen. */}
+          {stufe2Optionen.length === 0 ? (
+            <PillButton dark={darkMode} label="Weiter" onPress={() => rundeAbschliessen(0, 0)} />
+          ) : (
+            <PillButton dark={darkMode} label="Lösen" disabled={!stufe2Gewaehlt || !!stufe2Ausgewertet} onPress={stufe2Loesen} />
+          )}
         </ScrollView>
       )}
 
       {phase === 'runde' && aktuellerSatz && stufe === 3 && (
         <ScrollView contentContainerStyle={styles.rundenBereich} showsVerticalScrollIndicator={false}>
-          <Text style={[styles.frage, { color: theme.text }]}>Übersetze den Satz auf {language.label}</Text>
-          <Text style={[styles.hinweis, { color: theme.sub }]}>{aktuellerSatz.germanGloss ?? aktuellerSatz.text}</Text>
-          {renderSpeichern()}
-          {renderEingabe()}
-          {!aufgedeckt ? (
-            <Pressable
-              onPress={hilfeTippen}
-              accessibilityRole="button"
-              accessibilityLabel="Hilfe"
-              accessibilityHint="Zeigt einen Teil des Satzes, zählt danach höchstens als Überlebensmodus"
-              style={[styles.hilfeButton, { borderColor: theme.border }]}
+          {/* Stufe-3-Template (2026-08-30, Simons Vorlage). Gilt AUSDRUECKLICH
+              fuer alle Sprachen gleich - anders als Stufe 1 und 2 gibt es
+              hier keine zweite Fassung fuer Schriftsprachen, weil der
+              angezeigte Satz die AUSGANGSSPRACHE ist. Es gibt also nichts
+              umzuschalten und entsprechend keinen "Zeichen"-Chip. */}
+          <Text style={[styles.frage, { color: theme.text }]}>
+            Übersetze und sprich diesen {sprachAdjektiv(sourceLanguageId)} Satz auf {language.label} aus
+          </Text>
+
+          <View style={styles.chipReihe}>
+            {/* "Farben an" faerbt hier die HILFE-Zeile, nicht den Satz: der
+                angezeigte Satz ist die Ausgangssprache und hat keine
+                Wortart-Daten (`word_tags` gehoert immer zum Zielsatz). Der
+                Chip steht trotzdem immer da - ihn nur mit der Hilfe
+                einzublenden wuerde das Layout verschieben. */}
+            {!wortartenFarben && aktuellerSatz.wordTags
+              ? renderChip({
+                  label: farbenEinmalig ? 'Farben aus' : 'Farben an',
+                  aktiv: farbenEinmalig,
+                  onPress: () => setFarbenEinmalig((v) => !v),
+                  a11y: farbenEinmalig ? 'Wortarten-Farben ausblenden' : 'Wortarten-Farben zeigen',
+                  expanded: farbenEinmalig,
+                })
+              : null}
+            {renderChip({
+              label: 'Hilfe',
+              aktiv: hilfeSichtbar,
+              onPress: hilfeTippen,
+              a11y: hilfeSichtbar ? 'Hilfe ausblenden' : 'Hilfe anzeigen',
+              hint: 'Zeigt die halbe Lösung, zählt danach höchstens als Überlebensmodus',
+              expanded: hilfeSichtbar,
+            })}
+            {renderChip({
+              label: istGemerkt ? 'Gemerkt' : 'Speichern',
+              aktiv: istGemerkt,
+              aktivFarbe: ACCENT_GREEN,
+              icon: istGemerkt ? 'bookmark' : 'bookmark-outline',
+              onPress: () => {
+                if (merkPhrase) toggleSaved(merkPhrase.id, merkPhrase);
+              },
+              a11y: istGemerkt ? 'Gemerkt' : 'Speichern',
+              hint: istGemerkt ? 'Aus den gespeicherten Sätzen entfernen' : 'Zu den gespeicherten Sätzen im Survival hinzufügen',
+              selected: istGemerkt,
+            })}
+          </View>
+
+          {/* Reservierte Hilfe-Zeile - immer im Layout, nur durchsichtig
+              geschaltet (Simons Punkt 4). */}
+          <View style={styles.infoSlot}>
+            <View
+              style={{ opacity: hilfeSichtbar ? 1 : 0 }}
+              accessibilityElementsHidden={!hilfeSichtbar}
+              importantForAccessibility={hilfeSichtbar ? 'auto' : 'no-hide-descendants'}
             >
-              <Text style={{ color: theme.sub, fontWeight: '700', fontSize: 12 }}>Hilfe…</Text>
+              <TaggedTokens
+                style={styles.hilfeZeile}
+                textColor={theme.sub}
+                showColors={wortartenFarben || farbenEinmalig}
+                tokens={hilfeTokensFuerSatz(aktuellerSatz)}
+              />
+            </View>
+          </View>
+
+          {/* Der Ausgangssatz - gross und mittig wie der Zielsatz auf Stufe 1
+              und 2, aber NICHT antippbar: Vorlesen wuerde hier entweder die
+              Ausgangssprache wiederholen (nutzlos) oder die Loesung
+              verraten. */}
+          <View style={styles.satzBlock}>
+            <Text style={[styles.satzGross, { color: theme.text }]}>
+              {aktuellerSatz.germanGloss ?? aktuellerSatz.text}
+            </Text>
+          </View>
+
+          {renderEingabe(true)}
+          {renderFeedback(true)}
+
+          <View style={styles.weiterZeile}>
+            <Pressable
+              onPress={checkAnswer}
+              disabled={(!input.trim() && !transcript) || !!feedback}
+              accessibilityRole="button"
+              accessibilityLabel="Lösen"
+              accessibilityState={{ disabled: (!input.trim() && !transcript) || !!feedback }}
+              style={({ pressed }) => {
+                const gesperrt = (!input.trim() && !transcript) || !!feedback;
+                return [
+                  styles.weiterKnopf,
+                  gesperrt ? null : elevation(darkMode, 'chip'),
+                  {
+                    borderColor: 'transparent',
+                    backgroundColor: theme.subtleFill,
+                    opacity: gesperrt ? 0.4 : pressed ? 0.75 : 1,
+                    transform: [{ translateY: !gesperrt && pressed ? 1 : 0 }],
+                  },
+                ];
+              }}
+            >
+              <Text style={{ color: theme.text, fontWeight: '700', fontSize: FONT_SIZE.caption }}>› Lösen</Text>
             </Pressable>
-          ) : null}
-          {renderFeedback()}
-          <PillButton dark={darkMode} label="Lösen" disabled={(!input.trim() && !transcript) || !!feedback} onPress={checkAnswer} />
+          </View>
         </ScrollView>
       )}
 
@@ -766,30 +1257,156 @@ export function SentenceReviewScreen() {
     </Screen>
   );
 
-  function renderEingabe() {
+  /**
+   * Ein Chip der Stufe-1-Knopfreihe (2026-08-30, Simons Template). Alle
+   * Chips sehen gleich aus und unterscheiden sich nur in Beschriftung,
+   * Symbol und "aktiv"-Zustand - deshalb EIN Helfer statt fuenf fast
+   * gleicher Pressables.
+   */
+  function renderChip({
+    label,
+    aktiv,
+    onPress,
+    a11y,
+    hint,
+    icon,
+    aktivFarbe,
+    expanded,
+    selected,
+  }: {
+    label: string;
+    aktiv: boolean;
+    onPress: () => void;
+    a11y: string;
+    hint?: string;
+    icon?: 'bookmark' | 'bookmark-outline';
+    /** Abweichende Farbe im aktiven Zustand (Speichern nutzt Gruen). */
+    aktivFarbe?: string;
+    expanded?: boolean;
+    selected?: boolean;
+  }) {
+    const farbe = aktiv ? aktivFarbe ?? theme.text : theme.sub;
+    return (
+      <Pressable
+        key={label}
+        onPress={onPress}
+        accessibilityRole="button"
+        accessibilityLabel={a11y}
+        accessibilityHint={hint}
+        accessibilityState={{ expanded, selected }}
+        style={({ pressed }) => [
+          styles.chip,
+          // Erhebung statt Rahmen (2026-08-30, Simons Vorlage). Der Chip
+          // liegt sichtbar UEBER der Seite, statt mit einer Linie von ihr
+          // abgegrenzt zu sein.
+          //
+          // Deshalb ist der Rahmen im Ruhezustand DURCHSICHTIG statt grau -
+          // Rahmen und Schatten zusammen waeren eine doppelte Abgrenzung und
+          // liessen den Knopf schwer wirken. Die Breite bleibt trotzdem
+          // stehen (1.5), damit der aktive Zustand das Layout nicht um
+          // anderthalb Punkte verschiebt.
+          elevation(darkMode, 'chip'),
+          {
+            borderColor: aktiv ? farbe : 'transparent',
+            backgroundColor: theme.subtleFill,
+            // Beim Druecken sinkt der Chip ein: Deckkraft allein liesse den
+            // Schatten unveraendert stehen und den Knopf schweben, obwohl er
+            // gedrueckt ist.
+            opacity: pressed ? 0.75 : 1,
+            transform: [{ translateY: pressed ? 1 : 0 }],
+          },
+        ]}
+      >
+        {icon ? <Ionicons name={icon} size={14} color={farbe} /> : null}
+        <Text style={[styles.chipText, { color: farbe }]}>{label}</Text>
+      </Pressable>
+    );
+  }
+
+  /**
+   * Eingabe-Block. Auf Stufe 1 (Simons Template 2026-08-30) ist das
+   * Mikrofon ein GROSSER RUNDER Knopf in der Mitte und das Schreibfeld
+   * eine leise Pille darunter; auf Stufe 3 bleibt es bei der bisherigen
+   * schmalen Pillen-Zeile samt "Schreiben"-Balken. Beide Wege teilen sich
+   * denselben Aufnahme- und Auswertungs-Code - nur die Form unterscheidet
+   * sich, nicht das Verhalten.
+   */
+  function renderEingabe(gross = false) {
     return (
       <View>
-        <View style={styles.sttRow}>
-          {stt.status === 'ready' ? (
-            <Pressable
-              onPress={handleMicPress}
-              accessibilityRole="button"
-              accessibilityLabel={isRecording ? 'Aufnahme stoppen' : isTranscribing ? 'Wird ausgewertet' : 'Antwort einsprechen'}
-              accessibilityState={{ busy: isTranscribing, disabled: isTranscribing }}
-              style={[styles.micButton, { backgroundColor: isRecording ? ACCENT_ERROR : ACCENT_ORANGE }]}
-            >
-              <Text style={styles.micButtonText}>
-                {isRecording ? '● Aufnahme stoppen' : isTranscribing ? '…' : '🎙 Antwort einsprechen'}
+        {gross ? (
+          <View style={styles.micGrossZeile}>
+            {stt.status === 'ready' ? (
+              <Pressable
+                onPress={handleMicPress}
+                accessibilityRole="button"
+                accessibilityLabel={isRecording ? 'Aufnahme stoppen' : isTranscribing ? 'Wird ausgewertet' : 'Antwort einsprechen'}
+                accessibilityState={{ busy: isTranscribing, disabled: isTranscribing }}
+                style={({ pressed }) => [
+                  styles.micGross,
+                  {
+                    backgroundColor: isRecording ? ACCENT_ERROR : theme.subtleFill,
+                    borderColor: isRecording ? ACCENT_ERROR : theme.border,
+                    opacity: pressed ? 0.7 : 1,
+                  },
+                ]}
+              >
+                {isTranscribing ? (
+                  <ActivityIndicator color={theme.text} />
+                ) : (
+                  <Ionicons name="mic" size={30} color={isRecording ? '#FFFFFF' : theme.text} />
+                )}
+              </Pressable>
+            ) : (
+              <Text style={{ color: theme.sub, fontSize: FONT_SIZE.caption, textAlign: 'center' }}>
+                Spracherkennung nicht verfügbar - bitte Text eingeben.
               </Text>
-            </Pressable>
-          ) : (
-            <Text style={{ color: theme.sub, fontSize: 12 }}>Spracherkennung nicht verfügbar - bitte Text eingeben.</Text>
-          )}
-          {isTranscribing && <ActivityIndicator color={theme.text} style={{ marginLeft: 8 }} />}
-        </View>
-        {!!transcript && <Text style={[styles.transcript, { color: theme.text }]}>Erkannt: „{transcript}"</Text>}
+            )}
+          </View>
+        ) : (
+          <View style={styles.sttRow}>
+            {stt.status === 'ready' ? (
+              <Pressable
+                onPress={handleMicPress}
+                accessibilityRole="button"
+                accessibilityLabel={isRecording ? 'Aufnahme stoppen' : isTranscribing ? 'Wird ausgewertet' : 'Antwort einsprechen'}
+                accessibilityState={{ busy: isTranscribing, disabled: isTranscribing }}
+                style={[styles.micButton, { backgroundColor: isRecording ? ACCENT_ERROR : ACCENT_ORANGE }]}
+              >
+                <Text style={styles.micButtonText}>
+                  {isRecording ? '● Aufnahme stoppen' : isTranscribing ? '…' : '🎙 Antwort einsprechen'}
+                </Text>
+              </Pressable>
+            ) : (
+              <Text style={{ color: theme.sub, fontSize: 12 }}>Spracherkennung nicht verfügbar - bitte Text eingeben.</Text>
+            )}
+            {isTranscribing && <ActivityIndicator color={theme.text} style={{ marginLeft: 8 }} />}
+          </View>
+        )}
+        {/* Im grossen Template haelt die Erkannt-Zeile ihren Platz frei
+            (Simons Punkt 4), sonst springt beim Auswerten alles darunter.
+            `numberOfLines={1}` haelt die reservierte Hoehe konstant, auch
+            wenn ein langes Transkript zurueckkommt. */}
+        {gross ? (
+          <Text
+            numberOfLines={1}
+            style={[styles.transcript, { color: transcript ? theme.text : 'transparent' }]}
+            accessibilityElementsHidden={!transcript}
+            importantForAccessibility={transcript ? 'auto' : 'no-hide-descendants'}
+          >
+            {transcript ? `Erkannt: „${transcript}"` : ' '}
+          </Text>
+        ) : (
+          !!transcript && <Text style={[styles.transcript, { color: theme.text }]}>Erkannt: „{transcript}"</Text>
+        )}
         {!!recordError && <Text style={{ color: ACCENT_ERROR, fontSize: 12 }}>{recordError}</Text>}
-        <SchreibenFeld dark={darkMode} offen={schreibenOffen} onToggle={() => setSchreibenOffen(true)}>
+        <SchreibenFeld
+          dark={darkMode}
+          offen={schreibenOffen}
+          onToggle={() => setSchreibenOffen(true)}
+          label={gross ? 'Kein Sprechen möglich?' : 'Schreiben'}
+          variant={gross ? 'pille' : 'balken'}
+        >
           <TextInput
             value={input}
             onChangeText={setInput}
@@ -803,37 +1420,38 @@ export function SentenceReviewScreen() {
     );
   }
 
-  function renderSpeichern() {
-    return (
-      <Pressable
-        onPress={() => {
-          if (merkPhrase) toggleSaved(merkPhrase.id, merkPhrase);
-        }}
-        accessibilityRole="button"
-        accessibilityLabel={istGemerkt ? 'Gemerkt' : 'Speichern'}
-        accessibilityHint={istGemerkt ? 'Aus den gespeicherten Sätzen entfernen' : 'Zu den gespeicherten Sätzen im Survival hinzufügen'}
-        accessibilityState={{ selected: istGemerkt }}
-        style={({ pressed }) => [
-          styles.merken,
-          { borderColor: istGemerkt ? ACCENT_GREEN : theme.border, opacity: pressed ? 0.6 : 1 },
-        ]}
-      >
-        <Ionicons name={istGemerkt ? 'bookmark' : 'bookmark-outline'} size={16} color={istGemerkt ? ACCENT_GREEN : theme.sub} />
-        <Text style={{ color: istGemerkt ? ACCENT_GREEN : theme.sub, fontWeight: '700', fontSize: 12 }}>
-          {istGemerkt ? 'Gemerkt' : 'Speichern'}
-        </Text>
-      </Pressable>
-    );
-  }
-
-  function renderFeedback() {
-    if (!feedback) return null;
+  /**
+   * `platzHalten` (2026-08-30, Simons Punkt 4): im Stufe-1-Template steht
+   * die Zeile immer im Layout und wird nur durchsichtig, damit der
+   * "Weiter"-Knopf beim Auswerten nicht nach unten springt. Die anderen
+   * Stufen haengen sie weiterhin ein und aus - dort sitzt der Knopf am Ende
+   * einer ohnehin waschsenden Liste, ein reservierter Streifen waere dort
+   * nur Leerraum.
+   */
+  function renderFeedback(platzHalten = false) {
+    if (!feedback && !platzHalten) return null;
     const map: Record<EvaluationResult['tier'], { msg: string; color: string }> = {
       richtig: { msg: '✅ Richtig-Niveau', color: ACCENT_GREEN },
       ueberlebt: { msg: '🟡 Überlebensmodus-Niveau', color: ACCENT_ORANGE },
       nicht_verstanden: { msg: '❌ Nicht verstanden', color: ACCENT_ERROR },
     };
-    return <Text style={{ color: map[feedback.tier].color, fontWeight: '700', marginTop: SPACING.sm }}>{map[feedback.tier].msg}</Text>;
+    const eintrag = feedback ? map[feedback.tier] : null;
+    return (
+      <Text
+        style={{
+          color: eintrag?.color ?? 'transparent',
+          fontWeight: '700',
+          marginTop: SPACING.sm,
+          textAlign: 'center',
+        }}
+        accessibilityElementsHidden={!eintrag}
+        importantForAccessibility={eintrag ? 'auto' : 'no-hide-descendants'}
+      >
+        {/* Ohne Urteil ein Platzhalter in derselben Zeilenhoehe - der Text
+            ist durchsichtig, die Zeile aber vorhanden. */}
+        {eintrag?.msg ?? ' '}
+      </Text>
+    );
   }
 }
 
@@ -844,48 +1462,93 @@ const styles = StyleSheet.create({
   // `flex: 1` neu (2026-08-26, fuers "..."-Menue) - drueckt das Menue an
   // den rechten Rand der Kopfzeile.
   title: { fontWeight: '800', fontSize: FONT_SIZE.title, flex: 1 },
-  progressSlot: { paddingVertical: SPACING.sm },
-  rundenZaehler: { fontSize: FONT_SIZE.caption, textAlign: 'center', marginTop: SPACING.xs },
+  // ZEILE, nicht Spalte - siehe Kommentar an der Verwendung: `ProgressBar`
+  // traegt `flex: 1` und braeuchte in einer Spalte freien Platz, den es hier
+  // nicht gibt.
+  progressSlot: { flexDirection: 'row', alignItems: 'center', paddingVertical: SPACING.sm },
   center: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: SPACING.md, paddingHorizontal: SPACING.xl },
   offline: { fontSize: FONT_SIZE.caption, marginBottom: SPACING.sm },
   auswahlScroll: { paddingBottom: SPACING.xxl },
   frage: { fontFamily: FONT_FAMILY.serif, fontSize: FONT_SIZE.h2, lineHeight: LINE_HEIGHT.h2, marginTop: SPACING.md },
   hinweis: { fontSize: FONT_SIZE.bodyLg, fontWeight: '700', marginTop: SPACING.md, textAlign: 'center' },
-  farbenHilfe: {
+  // `farbenHilfe`/`farbenHilfeText` sind mit dem Chip-Umbau von Stufe 1 und 2
+  // (2026-08-30) weggefallen - der Textlink "Wortarten-Farben zeigen" ist
+  // jetzt ein Chip wie die anderen.
+  // --- Template Stufe 1 UND 2 (2026-08-30, Simons Vorlagen) ----------------
+  // Chip-Reihe: umbrechend und MITTIG (2026-08-30, Simons Vorlage).
+  //
+  // Mit fuenf Chips (Chinesisch) ist der Umbruch der Normalfall, nicht die
+  // Ausnahme - und eine angebrochene zweite Reihe sah linksbuendig aus wie
+  // ein Rest, der uebrig geblieben ist. Zentriert bilden die ein bis zwei
+  // uebrigen Chips eine eigene, bewusst gesetzte Zeile.
+  //
+  // Die Zentrierung gilt technisch fuer JEDE Reihe; bei einer vollen ersten
+  // Reihe sieht man davon nichts, weil sie die Breite ohnehin ausfuellt.
+  // Deshalb braucht es keine Sonderbehandlung fuer "letzte Reihe" - die es
+  // in Flexbox ohne eigenes Nachmessen auch gar nicht gaebe.
+  //
+  // Passt ausserdem zum Rest des Templates: Satz, Mikrofon und Schreib-Pille
+  // stehen ebenfalls mittig. Nur die Frage darueber bleibt linksbuendig.
+  chipReihe: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: SPACING.sm,
+    rowGap: SPACING.sm,
+  },
+  chip: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    gap: 4,
-    alignSelf: 'center',
-  },
-  farbenHilfeText: { fontSize: FONT_SIZE.caption, fontWeight: '600' },
-  startBox: { marginTop: SPACING.xxl, gap: SPACING.sm },
-  anzahlText: { fontSize: FONT_SIZE.body },
-  rundenBereich: { flexGrow: 1, paddingTop: SPACING.xl, paddingBottom: SPACING.xxl, gap: SPACING.lg },
-  ttsButton: {
-    alignSelf: 'center',
+    gap: 5,
     borderWidth: 1.5,
-    borderRadius: RADIUS.md,
+    borderRadius: RADIUS.pill,
+    paddingVertical: 7,
+    paddingHorizontal: 13,
+  },
+  chipText: { fontSize: FONT_SIZE.caption, fontWeight: '700' },
+  // Eigener Container OHNE `gap` - `rundenBereich` setzt eins, das sonst
+  // auch zwischen den beiden reservierten Zeilen laege und den Leerraum
+  // verdoppelte.
+  //
+  // `marginTop` zusaetzlich zum gap der Elternliste (2026-08-30, Simons
+  // Wunsch: die Übersetzung stand zu dicht unter den Chips). Wirkt IMMER,
+  // nicht nur wenn die Zeile sichtbar ist - der Slot ist ja dauerhaft im
+  // Layout (siehe Punkt 4), der Abstand bleibt dadurch konstant und
+  // verschiebt beim Umschalten weiterhin nichts.
+  infoSlot: { alignItems: 'center', marginTop: SPACING.md },
+  uebersetzung: { fontSize: FONT_SIZE.body, lineHeight: LINE_HEIGHT.body, textAlign: 'center' },
+  hilfeZeile: { fontSize: FONT_SIZE.body, lineHeight: LINE_HEIGHT.body, textAlign: 'center', fontStyle: 'italic' },
+  // Der Satz ist das Herzstueck der Seite und bekommt deshalb die
+  // Ueberschriften-Groesse, nicht die Fliesstext-Groesse wie vorher.
+  satzBlock: { alignItems: 'center', gap: SPACING.xs, paddingVertical: SPACING.lg },
+  satzGross: { fontSize: FONT_SIZE.h2, lineHeight: LINE_HEIGHT.h2, fontWeight: '700', textAlign: 'center' },
+  // Schriftzeichen-Zeile: GLEICHE Groesse wie die Lautschrift darunter.
+  // Eine kleinere Lautschrift bei "Zeichen an" haette den Satz beim
+  // Umschalten die Hoehe wechseln lassen (Simons Punkt 4).
+  satzSchrift: { fontSize: FONT_SIZE.h2, lineHeight: LINE_HEIGHT.h2, fontWeight: '700', textAlign: 'center' },
+  micGrossZeile: { alignItems: 'center', marginBottom: SPACING.md },
+  micGross: {
+    width: 76,
+    height: 76,
+    borderRadius: 38,
+    borderWidth: 1.5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  weiterZeile: { flexDirection: 'row', justifyContent: 'flex-end' },
+  weiterKnopf: {
+    borderWidth: 1.5,
+    borderRadius: RADIUS.pill,
     paddingVertical: SPACING.sm,
     paddingHorizontal: SPACING.lg,
   },
-  hilfeButton: {
-    alignSelf: 'center',
-    borderWidth: 1.5,
-    borderRadius: RADIUS.md,
-    paddingVertical: SPACING.xs,
-    paddingHorizontal: SPACING.md,
-  },
-  merken: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'center',
-    gap: 6,
-    paddingVertical: 8,
-    paddingHorizontal: 14,
-    borderRadius: RADIUS.pill,
-    borderWidth: 1.5,
-  },
+  // ------------------------------------------------------------------------
+  startBox: { marginTop: SPACING.xxl, gap: SPACING.sm },
+  anzahlText: { fontSize: FONT_SIZE.body },
+  rundenBereich: { flexGrow: 1, paddingTop: SPACING.xl, paddingBottom: SPACING.xxl, gap: SPACING.lg },
+  // `ttsButton`, `hilfeButton` und `merken` sind mit den drei Vorlagen vom
+  // 2026-08-30 weggefallen: Vorlesen laeuft ueber den Satz selbst, Hilfe und
+  // Speichern sind Chips wie alles andere.
   optionenSpalte: { gap: SPACING.sm },
   optionChip: { borderWidth: 1.5, borderRadius: RADIUS.md, paddingVertical: SPACING.md, paddingHorizontal: SPACING.md },
   sttRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: SPACING.md },
