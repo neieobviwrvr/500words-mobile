@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { Phrase } from '../../data/cheatsheetContent';
 import { TaggedTokens } from '../../components/ColoredTokens';
+import { useAppState } from '../../state/AppState';
 import { getTheme, ACCENT_BLUE, RADIUS, SPACING, FONT_SIZE, LINE_HEIGHT } from '../../theme/tokens';
 
 // Ein Satz im Survival-Nachschlagewerk (Nutzer-Vorlage 2026-08-20).
@@ -40,6 +42,15 @@ type Props = {
 export function PhraseCard({ phrase, dark, saved, onToggleSave, onSpeak, zeichenEin = true }: Props) {
   const theme = getTheme(dark);
   const zeichenAusblendbar = zeichenEin === false && !!phrase.phonetic;
+  const { wortartenFarben } = useAppState();
+  // "Nur diesmal"-Ausnahme (2026-08-30) - eigener Zustand JE KARTE, nicht
+  // global: eine Karte in der Satzliste aufzudecken soll nicht alle anderen
+  // mit aufdecken. Bewusst lokaler State, kein AppState - ueberlebt weder
+  // einen Neustart noch einen erneuten Aufbau der Liste, und das ist richtig
+  // fuer eine reine "kurz nachschauen"-Geste.
+  const [farbenEinmalig, setFarbenEinmalig] = useState(false);
+  const zeigeFarben = wortartenFarben || farbenEinmalig;
+  const hatTags = !!phrase.wordTags;
 
   return (
     <View style={[styles.card, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
@@ -48,16 +59,21 @@ export function PhraseCard({ phrase, dark, saved, onToggleSave, onSpeak, zeichen
           <TaggedTokens
             style={styles.target}
             textColor={theme.text}
+            showColors={zeigeFarben}
             tokens={(phrase.wordTags ?? [{ w: phrase.phonetic ?? '', c: null }]).map((t) => ({ t: t.w, c: t.c }))}
           />
         ) : (
           <>
-            {/* Wortart-Farben (2026-08-29) nur auf der Zielsprachen-Zeile -
+            {/* Wortart-Farben (2026-08-29/30) nur auf der Zielsprachen-Zeile -
                 `wordTags` ist gegen genau diesen Text getaggt (target_text/
-                german). Faellt bei ungetaggten Saetzen auf plain zurueck. */}
+                german). Faellt bei ungetaggten Saetzen auf plain zurueck.
+                `showColors` erst mit dem globalen Schalter ODER dem
+                Hilfe-Knopf-Tipp fuer diese eine Karte (Simons Wunsch
+                2026-08-30: standardmaessig aus). */}
             <TaggedTokens
               style={styles.target}
               textColor={theme.text}
+              showColors={zeigeFarben}
               tokens={(phrase.wordTags ?? [{ w: phrase.text, c: null }]).map((t) => ({ t: t.w, c: t.c }))}
             />
             {phrase.phonetic ? (
@@ -65,6 +81,21 @@ export function PhraseCard({ phrase, dark, saved, onToggleSave, onSpeak, zeichen
             ) : null}
           </>
         )}
+        {!wortartenFarben && hatTags ? (
+          <Pressable
+            onPress={() => setFarbenEinmalig((v) => !v)}
+            accessibilityRole="button"
+            accessibilityLabel={farbenEinmalig ? 'Wortarten-Farben ausblenden' : 'Wortarten-Farben zeigen'}
+            accessibilityState={{ expanded: farbenEinmalig }}
+            hitSlop={6}
+            style={styles.farbenHilfe}
+          >
+            <Feather name="help-circle" size={12} color={theme.sub} />
+            <Text style={[styles.farbenHilfeText, { color: theme.sub }]}>
+              {farbenEinmalig ? 'Farben ausblenden' : 'Wortarten-Farben zeigen'}
+            </Text>
+          </Pressable>
+        ) : null}
         {phrase.gloss ? (
           <Text style={[styles.gloss, { color: theme.sub }]}>{phrase.gloss}</Text>
         ) : null}
@@ -145,6 +176,13 @@ const styles = StyleSheet.create({
     fontSize: FONT_SIZE.small,
     lineHeight: LINE_HEIGHT.body,
   },
+  farbenHilfe: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 3,
+    marginTop: 2,
+  },
+  farbenHilfeText: { fontSize: 11, fontWeight: '600' },
   actions: {
     flexDirection: 'row',
     alignItems: 'center',

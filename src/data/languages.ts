@@ -42,7 +42,10 @@ export type Language = {
 export const LANGUAGES: Language[] = [
   { id: 'de', label: 'Deutsch', table: 'phrasebook_master', sttLanguage: 'de', sttPrompt: 'Das ist ein Beispielsatz auf Deutsch.', ttsLocale: 'de-DE', hasContent: true, vocabTable: null, vocabColumn: null },
   { id: 'sv', label: 'Schwedisch', table: 'schwedisch_phrasebook', sttLanguage: 'sv', sttPrompt: 'Det här är en exempelmening på svenska.', ttsLocale: 'sv-SE', hasContent: true, vocabTable: 'schwedisch_vocab', vocabColumn: 'swedish' },
-  { id: 'es', label: 'Spanisch', table: 'spanisch_phrasebook', sttLanguage: 'es', sttPrompt: 'Esta es una frase de ejemplo en español.', ttsLocale: 'es-ES', hasContent: true, vocabTable: null, vocabColumn: null },
+  // vocabTable zeigt seit 2026-08-30 auf spanisch_vocab (500 Woerter) -
+  // vorher gab es trotz vollstaendigem Phrasebook keine einzige spanische
+  // Vokabel, Woerter-Wiederholung lief fuer Spanisch komplett leer.
+  { id: 'es', label: 'Spanisch', table: 'spanisch_phrasebook', sttLanguage: 'es', sttPrompt: 'Esta es una frase de ejemplo en español.', ttsLocale: 'es-ES', hasContent: true, vocabTable: 'spanisch_vocab', vocabColumn: 'spanish' },
   // Chinesisch hat KEIN Phrasebook (der gefuehrte Kurs deckt das ab, siehe
   // data/chineseCourse.ts), also `table: null` bleibt bestehen fuer die
   // Onboarding-Ausschlussbedingung `table !== null`.

@@ -131,7 +131,7 @@ function hilfeTextFuerSatz(satz: ExerciseSentence): string {
 }
 
 export function SentenceReviewScreen() {
-  const { darkMode, targetLanguageId, saved, toggleSaved, uebersprungen } = useAppState();
+  const { darkMode, targetLanguageId, saved, toggleSaved, uebersprungen, wortartenFarben } = useAppState();
   const { addressing: ansprache } = useOnboardingState();
   const theme = getTheme(darkMode);
   const language = getLanguage(targetLanguageId);
@@ -186,6 +186,14 @@ export function SentenceReviewScreen() {
   // Stufe 1 gedacht - bei Stufe 2 (Bedeutung zuordnen) waere ein Reveal die
   // Aufgabe selbst, bei Stufe 3 (freie Uebersetzung) die Lösung.
   const [uebersetzungSichtbar, setUebersetzungSichtbar] = useState(false);
+  // Wortarten-Farben "nur diesmal" (2026-08-30) - unabhaengig vom globalen
+  // Schalter (AppState.wortartenFarben) zeigt der Hilfe-Knopf die Farben fuer
+  // GENAU diesen Satz. Bewusst lokaler State statt AppState: eine "nur
+  // diesmal"-Ausnahme darf keinen Neustart ueberleben und ist auch nicht mit
+  // anderen Geraeten abzugleichen. Wird bei jeder neuen Runde zurueckgesetzt
+  // (siehe naechsteRundeVorbereiten) - sonst bliebe sie ab dem ersten Tipp
+  // fuer die ganze Sitzung an.
+  const [farbenEinmalig, setFarbenEinmalig] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [recordError, setRecordError] = useState<string | null>(null);
@@ -265,6 +273,7 @@ export function SentenceReviewScreen() {
     setFeedback(null);
     setAufgedeckt(false);
     setUebersetzungSichtbar(false);
+    setFarbenEinmalig(false);
     setStufe2Gewaehlt(null);
     setStufe2Ausgewertet(null);
     if (satz && stufeVon(satz, s1, s2, kannAbfragen) === 2) {
@@ -305,6 +314,7 @@ export function SentenceReviewScreen() {
     setFeedback(null);
     setAufgedeckt(false);
     setUebersetzungSichtbar(false);
+    setFarbenEinmalig(false);
     setStufe2Gewaehlt(null);
     setStufe2Ausgewertet(null);
     if (zielStufe === 2) {
@@ -595,16 +605,35 @@ export function SentenceReviewScreen() {
       {phase === 'runde' && aktuellerSatz && stufe === 1 && (
         <ScrollView contentContainerStyle={styles.rundenBereich} showsVerticalScrollIndicator={false}>
           <Text style={[styles.frage, { color: theme.text }]}>Sprich diesen {sprachAdjektiv(targetLanguageId)} Satz nach</Text>
-          {/* Wortart-Farben (2026-08-29) - wordTags ist gegen genau den hier
-              gezeigten Text getaggt (pinyin bei Chinesisch, sonst text),
-              faellt bei ungetaggten Saetzen auf plain zurueck. */}
+          {/* Wortart-Farben (2026-08-29/30) - wordTags ist gegen genau den
+              hier gezeigten Text getaggt (pinyin bei Chinesisch, sonst
+              text), faellt bei ungetaggten Saetzen auf plain zurueck.
+              `showColors` erst mit dem globalen Schalter ODER dem
+              Hilfe-Knopf-Tipp fuer diesen einen Satz (Simons Wunsch
+              2026-08-30: standardmaessig aus). */}
           <TaggedTokens
             style={styles.hinweis}
             textColor={theme.sub}
+            showColors={wortartenFarben || farbenEinmalig}
             tokens={(aktuellerSatz.wordTags ?? [{ w: aktuellerSatz.pinyin ?? aktuellerSatz.text, c: null }]).map(
               (t) => ({ t: t.w, c: t.c })
             )}
           />
+          {!wortartenFarben && aktuellerSatz.wordTags ? (
+            <Pressable
+              onPress={() => setFarbenEinmalig((v) => !v)}
+              accessibilityRole="button"
+              accessibilityLabel={farbenEinmalig ? 'Wortarten-Farben ausblenden' : 'Wortarten-Farben zeigen'}
+              accessibilityState={{ expanded: farbenEinmalig }}
+              hitSlop={8}
+              style={styles.farbenHilfe}
+            >
+              <Ionicons name="help-circle-outline" size={16} color={theme.sub} />
+              <Text style={[styles.farbenHilfeText, { color: theme.sub }]}>
+                {farbenEinmalig ? 'Farben ausblenden' : 'Wortarten-Farben zeigen'}
+              </Text>
+            </Pressable>
+          ) : null}
           {renderSpeichern()}
           <Pressable
             onPress={() => speakText(aktuellerSatz.text, { languageId: targetLanguageId })}
@@ -644,16 +673,31 @@ export function SentenceReviewScreen() {
       {phase === 'runde' && aktuellerSatz && stufe === 2 && (
         <ScrollView contentContainerStyle={styles.rundenBereich} showsVerticalScrollIndicator={false}>
           <Text style={[styles.frage, { color: theme.text }]}>Ordne diesen {sprachAdjektiv(targetLanguageId)} Satz seiner Bedeutung zu</Text>
-          {/* Wortart-Farben (2026-08-29) - wordTags ist gegen genau den hier
-              gezeigten Text getaggt (pinyin bei Chinesisch, sonst text),
-              faellt bei ungetaggten Saetzen auf plain zurueck. */}
+          {/* Wortart-Farben (2026-08-29/30), siehe Kommentar bei Stufe 1
+              oben - gleiches Verhalten. */}
           <TaggedTokens
             style={styles.hinweis}
             textColor={theme.sub}
+            showColors={wortartenFarben || farbenEinmalig}
             tokens={(aktuellerSatz.wordTags ?? [{ w: aktuellerSatz.pinyin ?? aktuellerSatz.text, c: null }]).map(
               (t) => ({ t: t.w, c: t.c })
             )}
           />
+          {!wortartenFarben && aktuellerSatz.wordTags ? (
+            <Pressable
+              onPress={() => setFarbenEinmalig((v) => !v)}
+              accessibilityRole="button"
+              accessibilityLabel={farbenEinmalig ? 'Wortarten-Farben ausblenden' : 'Wortarten-Farben zeigen'}
+              accessibilityState={{ expanded: farbenEinmalig }}
+              hitSlop={8}
+              style={styles.farbenHilfe}
+            >
+              <Ionicons name="help-circle-outline" size={16} color={theme.sub} />
+              <Text style={[styles.farbenHilfeText, { color: theme.sub }]}>
+                {farbenEinmalig ? 'Farben ausblenden' : 'Wortarten-Farben zeigen'}
+              </Text>
+            </Pressable>
+          ) : null}
           {renderSpeichern()}
           <View style={styles.optionenSpalte}>
             {stufe2Optionen.map((o) => {
@@ -807,6 +851,14 @@ const styles = StyleSheet.create({
   auswahlScroll: { paddingBottom: SPACING.xxl },
   frage: { fontFamily: FONT_FAMILY.serif, fontSize: FONT_SIZE.h2, lineHeight: LINE_HEIGHT.h2, marginTop: SPACING.md },
   hinweis: { fontSize: FONT_SIZE.bodyLg, fontWeight: '700', marginTop: SPACING.md, textAlign: 'center' },
+  farbenHilfe: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 4,
+    alignSelf: 'center',
+  },
+  farbenHilfeText: { fontSize: FONT_SIZE.caption, fontWeight: '600' },
   startBox: { marginTop: SPACING.xxl, gap: SPACING.sm },
   anzahlText: { fontSize: FONT_SIZE.body },
   rundenBereich: { flexGrow: 1, paddingTop: SPACING.xl, paddingBottom: SPACING.xxl, gap: SPACING.lg },

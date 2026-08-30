@@ -49,7 +49,15 @@ const GESCHLECHT_LABEL: Record<string, string> = Object.fromEntries(
 
 export function ProfileScreen() {
   const { gender: geschlecht, addressing: ansprache } = useOnboardingState();
-  const { uebersprungen, ueberspringenZuruecknehmen, darkMode, lockscreenContent, setLockscreenContent } = useAppState();
+  const {
+    uebersprungen,
+    ueberspringenZuruecknehmen,
+    darkMode,
+    lockscreenContent,
+    setLockscreenContent,
+    wortartenFarben,
+    toggleWortartenFarben,
+  } = useAppState();
   const theme = getTheme(darkMode);
   const anzahlUebersprungen = Object.values(uebersprungen).filter(Boolean).length;
   const pick = useLockscreenPick();
@@ -125,6 +133,47 @@ export function ProfileScreen() {
               );
             })}
           </View>
+        </Card>
+
+        {/* Wortarten-Farben (2026-08-30, Simons Wunsch: "erst sehen wenn man
+            sie einschaltet"). Betrifft nur die Satz-Anzeige (Satz-
+            Wiederholung, Cheat-Sheet) - die Woerter-Wiederholung bleibt
+            unveraendert immer eingefaerbt, dort ist die Farbe Teil der
+            Zuordnungs-Mechanik, keine reine Anzeige-Option. */}
+        <Text style={[styles.sectionLabel, { color: theme.sub }]}>SATZ-ANZEIGE</Text>
+
+        <Card dark={darkMode} style={styles.card}>
+          <Pressable
+            onPress={toggleWortartenFarben}
+            accessibilityRole="checkbox"
+            accessibilityState={{ checked: wortartenFarben }}
+            aria-checked={wortartenFarben}
+            accessibilityLabel={`Wortarten-Farben in Sätzen. ${
+              wortartenFarben ? 'Eingeschaltet' : 'Ausgeschaltet'
+            }`}
+            style={({ pressed }) => [styles.option, { borderColor: theme.border, opacity: pressed ? 0.7 : 1 }]}
+          >
+            <View
+              style={[
+                styles.radio,
+                styles.checkbox,
+                {
+                  borderColor: wortartenFarben ? ACCENT_ORANGE : theme.dividerColor,
+                  backgroundColor: wortartenFarben ? ACCENT_ORANGE : 'transparent',
+                },
+              ]}
+            >
+              {wortartenFarben ? <Feather name="check" size={13} color="#FFFFFF" /> : null}
+            </View>
+            <View style={styles.optionBody}>
+              <Text style={[styles.optionTitle, { color: theme.text }]}>Wortarten-Farben</Text>
+              <Text style={[styles.optionText, { color: theme.sub }]}>
+                Nomen, Verben, Adjektive und Verbindungswörter farbig hervorheben, in Satz-Wiederholung
+                und Cheat-Sheet. Unabhängig davon zeigt der Hilfe-Knopf neben einem Satz die Farben
+                einmalig, auch wenn dieser Schalter aus ist.
+              </Text>
+            </View>
+          </Pressable>
         </Card>
 
         {/* Uebersprungene Saetze zurueckholen (2026-08-22). "Brauch ich
@@ -312,6 +361,11 @@ const styles = StyleSheet.create({
     height: 10,
     borderRadius: 5,
     backgroundColor: ACCENT_ORANGE,
+  },
+  // Eckig statt rund (Checkbox statt Radio) - unterscheidet den einzelnen
+  // Ein/Aus-Schalter optisch von der Radiogroup weiter oben.
+  checkbox: {
+    borderRadius: RADIUS.sm,
   },
   optionBody: {
     flex: 1,

@@ -120,6 +120,19 @@ type PersistedState = {
    */
   uebersprungen: Record<string, boolean>;
   /**
+   * Wortarten-Farben in der Satz-Anzeige (Satz-Wiederholung, Cheat-Sheet) an
+   * oder aus - Vorgabe `false` (2026-08-30, Simons Wunsch: "erst sehen wenn
+   * man sie einschaltet"). Betrifft NUR die Satz-Anzeige, nicht die
+   * Woerter-Wiederholung (dort ist die Farbe Teil der Zuordnungs-Mechanik,
+   * kein reines Deko-Element, siehe WordReviewScreen.tsx - bewusst
+   * unveraendert immer eingefaerbt). Unabhaengig von diesem Schalter zeigt
+   * ein Hilfe-Knopf pro Satz die Farben einmalig als Tipp, siehe
+   * `zeigeWortartenFarbenEinmalig` in SentenceReviewScreen.tsx/PhraseCard.tsx
+   * (rein lokaler Komponenten-State, nicht hier - eine "nur diesmal"-
+   * Ausnahme gehoert nicht in den persistierten Zustand).
+   */
+  wortartenFarben: boolean;
+  /**
    * Wann dieses Geraet zuletzt etwas geaendert hat (ms seit Epoche).
    *
    * Der Schiedsrichter beim Abgleich fuer ERSETZBARE Werte - Coins,
@@ -209,6 +222,9 @@ type AppStateValue = {
   learningMode: LearningMode;
   toggleLearningMode: () => void;
 
+  wortartenFarben: boolean;
+  toggleWortartenFarben: () => void;
+
   /** true, sobald der gespeicherte Zustand geladen ist. */
   hydrated: boolean;
 };
@@ -236,6 +252,8 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   const [lockscreenContent, setLockscreenContent] = useState<LockscreenContent>('saetze');
   // Speed-Run als Vorgabe: das ist der Weg, der heute echten Inhalt hat.
   const [learningMode, setLearningMode] = useState<LearningMode>('speedrun');
+  // Aus als Vorgabe (2026-08-30, siehe PersistedState-Kommentar).
+  const [wortartenFarben, setWortartenFarben] = useState(false);
   // Spiegel der vergebenen Geschenke. `grantCoins` muss SOFORT wissen, ob ein
   // Geschenk schon vergeben wurde, und darf nicht auf den naechsten Render
   // warten - sonst wuerden zwei schnelle Aufrufe beide gutschreiben.
@@ -273,6 +291,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
           if (parsed.geaendertAm) geaendertAmRef.current = parsed.geaendertAm;
           if (parsed.lockscreenContent) setLockscreenContent(parsed.lockscreenContent);
           if (parsed.learningMode) setLearningMode(parsed.learningMode);
+          if (parsed.wortartenFarben !== undefined) setWortartenFarben(parsed.wortartenFarben);
           if (parsed.coinGrants) {
             setCoinGrants(parsed.coinGrants);
             // Auch den Spiegel setzen, nicht erst ueber den Render-Umweg -
@@ -301,13 +320,14 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     if (!hydrated.current) return;
     if (ersterSchreibvorgang.current) ersterSchreibvorgang.current = false;
     else geaendertAmRef.current = Date.now();
-    const toPersist: PersistedState = { darkMode, targetLanguageId, sourceLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode, fortschritt, uebersprungen, geaendertAm: geaendertAmRef.current };
+    const toPersist: PersistedState = { darkMode, targetLanguageId, sourceLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode, wortartenFarben, fortschritt, uebersprungen, geaendertAm: geaendertAmRef.current };
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(toPersist)).catch(() => {
       // Best-effort - ein Speicherfehler soll die laufende Session nicht stoeren.
     });
-  }, [darkMode, targetLanguageId, sourceLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode, fortschritt, uebersprungen]);
+  }, [darkMode, targetLanguageId, sourceLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode, wortartenFarben, fortschritt, uebersprungen]);
 
   const toggleDark = useCallback(() => setDarkMode((d) => !d), []);
+  const toggleWortartenFarben = useCallback(() => setWortartenFarben((w) => !w), []);
 
   const toggleLearningMode = useCallback(
     () => setLearningMode((m) => (m === 'speedrun' ? 'gefuehrt' : 'speedrun')),
@@ -387,7 +407,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
         coins,
         coinGrants: coinGrantsRef.current,
         fortschritt,
-        einstellungen: { darkMode, targetLanguageId, sourceLanguageId, lockscreenContent, learningMode, uebersprungen },
+        einstellungen: { darkMode, targetLanguageId, sourceLanguageId, lockscreenContent, learningMode, wortartenFarben, uebersprungen },
         gemerkt: { saved, savedMeta },
         purchased,
         geaendertAm: geaendertAmRef.current,
@@ -424,11 +444,12 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     if (e.sourceLanguageId) setSourceLanguageId(e.sourceLanguageId);
     if (e.lockscreenContent) setLockscreenContent(e.lockscreenContent);
     if (e.learningMode) setLearningMode(e.learningMode);
+    if (e.wortartenFarben !== undefined) setWortartenFarben(e.wortartenFarben);
     if (e.uebersprungen) setUebersprungen(e.uebersprungen);
     await saveCards(ergebnis.karten);
     laeuftRef.current = false;
     setAbgleichStand('fertig');
-  }, [coins, fortschritt, darkMode, targetLanguageId, sourceLanguageId, lockscreenContent, learningMode, uebersprungen, saved, savedMeta, purchased]);
+  }, [coins, fortschritt, darkMode, targetLanguageId, sourceLanguageId, lockscreenContent, learningMode, wortartenFarben, uebersprungen, saved, savedMeta, purchased]);
 
   const ueberspringen = useCallback((satzId: string) => {
     setUebersprungen((u) => ({ ...u, [satzId]: true }));
@@ -467,9 +488,11 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       setLockscreenContent,
       learningMode,
       toggleLearningMode,
+      wortartenFarben,
+      toggleWortartenFarben,
       hydrated: isHydrated,
     }),
-    [darkMode, toggleDark, targetLanguageId, sourceLanguageId, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes, coins, grantCoins, coinGrants, fortschritt, zaehle, uebersprungen, ueberspringen, ueberspringenZuruecknehmen, abgleichen, abgleichStand, lockscreenContent, learningMode, toggleLearningMode, isHydrated]
+    [darkMode, toggleDark, targetLanguageId, sourceLanguageId, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes, coins, grantCoins, coinGrants, fortschritt, zaehle, uebersprungen, ueberspringen, ueberspringenZuruecknehmen, abgleichen, abgleichStand, lockscreenContent, learningMode, toggleLearningMode, wortartenFarben, toggleWortartenFarben, isHydrated]
   );
 
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;

@@ -137,8 +137,10 @@ export const LINE_HEIGHT = {
 // unabhaengig aendert.
 //
 // Petrol fuer Konjunktion bewusst NICHT gruen (kollidiert mit ACCENT_GREEN,
-// der einzigen Erfolgsfarbe der App) und nicht orange (kollidiert mit der
-// Zielwort-Hervorhebung ACCENT_ORANGE in LessonScreen.tsx).
+// der einzigen Erfolgsfarbe der App - Simons Bestaetigung 2026-08-30, nachdem
+// kurz Gruen erwogen wurde: Gruen bleibt "fertig/Erfolg" vorbehalten) und
+// nicht orange (kollidiert mit der Zielwort-Hervorhebung ACCENT_ORANGE in
+// LessonScreen.tsx).
 export type WordType = 'v' | 'n' | 'a' | 'p' | 'k';
 export const WORD_COLORS: Record<WordType, string> = {
   v: '#D9564F',
