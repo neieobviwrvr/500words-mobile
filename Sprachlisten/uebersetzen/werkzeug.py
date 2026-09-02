@@ -23,6 +23,15 @@ import os
 import sys
 import urllib.request
 
+# Windows-Konsole faellt sonst auf cp1252 zurueck und stuerzt beim ERSTEN
+# kyrillischen Zeichen ab (2026-09-03, real passiert): eine Fehlermeldung
+# ueber einen russischen Satz liess das Skript mit UnicodeEncodeError enden,
+# statt den Fehler zu zeigen - also genau dann, wenn man sie braucht.
+# Betrifft jede Sprache mit eigener Schrift, Chinesisch eingeschlossen.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 HIER = os.path.dirname(os.path.abspath(__file__))
 SPRACHLISTEN = os.path.dirname(HIER)
 
