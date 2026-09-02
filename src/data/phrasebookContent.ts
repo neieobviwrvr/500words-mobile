@@ -41,11 +41,18 @@ export type ExerciseSentence = {
    */
   audioUrl: string | null;
   /**
-   * Pinyin - nur bei Chinesisch gesetzt.
+   * Lautschrift - gesetzt bei Sprachen mit eigener Schrift (Chinesisch:
+   * Pinyin, Russisch: Transliteration), sonst `null`.
    *
-   * Fuer Chinesisch ist DAS der Lerntext; `text` traegt die Zeichen, die
-   * passiv mitlaufen (TTS braucht sie, und Speechmatics gibt fuer Mandarin
+   * Wo sie da ist, ist DAS der Lerntext; `text` traegt die Schrift, die
+   * passiv mitlaeuft (TTS braucht sie, und Speechmatics gibt fuer Mandarin
    * Zeichen zurueck). Siehe CLAUDE.md, "Gelernt wird ueber PINYIN".
+   *
+   * Heisst weiterhin `pinyin`, obwohl seit 2026-09-03 auch Russisch sie
+   * fuellt: die Anzeige-Ebene nennt sie ohnehin neutral `phonetic`
+   * (cheatsheetContent.ts), und ein Umbenennen haette den chinesischen
+   * Kurs-Code mitgerissen, wo `pinyin` sachlich richtig ist. WELCHE
+   * DB-Spalte gelesen wird, entscheidet `Language.lautschriftSpalte`.
    */
   pinyin: string | null;
   /**
@@ -110,12 +117,16 @@ export async function loadExerciseSentences(
   // Ergebnistyp AUS DIESEM STRING ab, und ein Template-Literal sprengt dabei
   // den Typpruefer ("union type too complex"). Etwas Wiederholung ist der
   // Preis dafuer, dass die Typen stimmen.
+  // Die Lautschrift-Spalte heisst je Sprache anders (`pinyin` bei Chinesisch,
+  // `lautschrift` bei Russisch) und fehlt bei den lateinisch schreibenden
+  // Sprachen ganz - ein Select auf eine nicht vorhandene Spalte scheitert.
+  // Welche es ist, steht in languages.ts, nicht hier: eine vierte Sprache mit
+  // eigener Schrift soll keinen weiteren Zweig kosten.
   const columns =
     lang.id === 'de'
       ? 'id, german, scenario, category, accepted_concepts, lookup_only, addressing, culture_note, word_tags'
-      // Nur chinesisch_phrasebook hat eine Pinyin-Spalte.
-      : lang.id === 'zh'
-        ? 'id, target_text, pinyin, german, scenario, category, accepted_concepts, lookup_only, addressing, culture_note, verb_cluster, audio_url, word_tags'
+      : lang.lautschriftSpalte
+        ? `id, target_text, ${lang.lautschriftSpalte}, german, scenario, category, accepted_concepts, lookup_only, addressing, culture_note, verb_cluster, audio_url, word_tags`
         : 'id, target_text, german, scenario, category, accepted_concepts, lookup_only, addressing, culture_note, verb_cluster, audio_url, word_tags';
 
   const cacheKey = `sentences:${lang.id}:${[...categoryIds].sort().join(',')}`;
@@ -147,7 +158,7 @@ export async function loadExerciseSentences(
         category: row.category,
         accepted_concepts,
         audioUrl: row.audio_url ?? null,
-        pinyin: row.pinyin ?? null,
+        pinyin: (lang.lautschriftSpalte ? row[lang.lautschriftSpalte] : null) ?? null,
         lookupOnly: row.lookup_only === true,
         addressing: row.addressing ?? null,
         cultureNote: row.culture_note ?? null,

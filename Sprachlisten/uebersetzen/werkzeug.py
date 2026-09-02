@@ -31,8 +31,22 @@ TABELLE = {
     "sv": "schwedisch_phrasebook",
     "fr": "franz_phrasebook",
     "zh": "chinesisch_phrasebook",
+    "it": "italienisch_phrasebook",
+    "no": "norwegisch_phrasebook",
+    "ru": "russisch_phrasebook",
 }
 MASTER = "phrasebook_master"
+
+# Sprachen mit eigener Schrift: die Lautschrift ist der LERNTEXT, die Schrift
+# laeuft passiv mit (TTS braucht sie, STT gibt sie zurueck). Der Wert ist der
+# Spaltenname, der Schluessel im Satz-dict ist immer `py`.
+#
+# Chinesisch heisst die Spalte historisch `pinyin`, Russisch `lautschrift` -
+# "Pinyin" ist ein chinesisches Eigenwort und waere fuer Kyrillisch falsch.
+LAUTSCHRIFT_SPALTE = {
+    "zh": "pinyin",
+    "ru": "lautschrift",
+}
 
 
 def lies_env(name):
@@ -120,6 +134,10 @@ def pruefe(kategorie, sprache):
             fehler.append(f"Kein Treffer in {MASTER}: {s['de']!r}")
         if sprache not in s or not s[sprache].strip():
             fehler.append(f"Keine Uebersetzung ({sprache}) fuer {s['de']!r}")
+        # Bei zh/ru ist die Lautschrift der Lerntext, nicht die Schrift - ein
+        # Satz ohne `py` waere in der App nur als Hanzi/Kyrillisch sichtbar.
+        if sprache in LAUTSCHRIFT_SPALTE and not (s.get("py") or "").strip():
+            fehler.append(f"Keine Lautschrift (py) fuer {s['de']!r}")
         for k, syn in s["k"]:
             if not syn or any(not x.strip() for x in syn):
                 fehler.append(f"Leeres Synonym bei {s['de']!r} / {k}")
@@ -185,12 +203,13 @@ def spiel_ein(kategorie, sprache, echt):
             "culture_note": s.get("h"),
             "status": "Neu",
         })
-        # Nur chinesisch_phrasebook hat eine Pinyin-Spalte, und dort ist sie
-        # der eigentliche LERNTEXT (die Zeichen laufen passiv mit, siehe
-        # CLAUDE.md "Gelernt wird ueber PINYIN"). Ohne sie zeigte die App fuer
-        # neue Saetze nur Hanzi - genau das, was der Kurs vermeiden will.
-        if sprache == "zh":
-            zeilen[-1]["pinyin"] = s.get("py")
+        # Sprachen mit eigener Schrift (zh, ru) tragen die Lautschrift in einer
+        # eigenen Spalte, und DIE ist der eigentliche Lerntext (die Schrift
+        # laeuft passiv mit, siehe CLAUDE.md "Gelernt wird ueber PINYIN").
+        # Ohne sie zeigte die App fuer neue Saetze nur Hanzi bzw. Kyrillisch -
+        # genau das, was vermieden werden soll.
+        if sprache in LAUTSCHRIFT_SPALTE:
+            zeilen[-1][LAUTSCHRIFT_SPALTE[sprache]] = s.get("py")
 
     if schon_da:
         print(f"{len(schon_da)} Saetze sind schon da - werden uebersprungen.")
