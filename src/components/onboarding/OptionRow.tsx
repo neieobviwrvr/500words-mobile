@@ -7,7 +7,8 @@ import {
   RADIUS,
   SPACING,
   FONT_SIZE,
-  LINE_HEIGHT,
+  LINE_HEIGHT, schrift,
+  kachel,
 } from '../../theme/tokens';
 
 // Auswahlzeile im Babbel-Stil: Linien-Icon links, fetter Text in der Mitte,
@@ -59,17 +60,19 @@ export function OptionRow({
       accessibilityState={{ checked: selected, disabled }}
       style={({ pressed }) => [
         styles.row,
+        kachel(dark),
         {
           backgroundColor: selected
             ? dark
               ? SELECTED_FILL_DARK
               : SELECTED_FILL_LIGHT
             : theme.cardBg,
-          borderColor: selected ? ACCENT_ORANGE : theme.border,
-          borderWidth: selected ? 2 : 1,
-          // Bei selected schrumpft der Innenabstand um genau die zusaetzliche
-          // Rahmenstaerke, damit die Zeile beim Auswaehlen nicht springt.
-          padding: selected ? SPACING.lg - 1 : SPACING.lg,
+          // Rahmenstaerken kommen aus `kachel()` (siehe unten im Array) -
+          // hier nur noch die Farbe. Der frueher noetige Ausgleich des
+          // Innenabstands beim Auswaehlen ist damit weg: die Staerke aendert
+          // sich nicht mehr, also springt auch nichts.
+          ...(selected ? { borderColor: ACCENT_ORANGE } : null),
+          padding: SPACING.lg,
           opacity: disabled ? 0.45 : pressed ? 0.7 : 1,
         },
       ]}
@@ -122,7 +125,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: FONT_SIZE.body,
     lineHeight: LINE_HEIGHT.body,
-    fontWeight: '700',
+    ...schrift('700'),
   },
   note: {
     fontSize: FONT_SIZE.caption,

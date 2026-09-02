@@ -8,8 +8,7 @@ import { CATEGORY_BY_ID } from '../../data/categories';
 import { speakSentence } from '../tts/speak';
 import { GRUPPEN_TITEL, Gruppe, useCategoryVocab } from './useCategoryVocab';
 import {
-  ACCENT_BLUE, ACCENT_ORANGE, FONT_FAMILY, FONT_SIZE, getTheme, LINE_HEIGHT, RADIUS, SPACING,
-} from '../../theme/tokens';
+  ACCENT_BLUE, ACCENT_ORANGE, FONT_SIZE, getTheme, LINE_HEIGHT, RADIUS, SPACING, schrift } from '../../theme/tokens';
 
 // Wortliste einer Kategorie (2026-08-21, Nutzer-Wunsch).
 //
@@ -113,22 +112,23 @@ const styles = StyleSheet.create({
   kopf: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: SPACING.lg, paddingVertical: SPACING.md, gap: SPACING.sm },
   zurueck: { padding: SPACING.xs },
   kopfText: { flex: 1 },
-  titel: { fontFamily: FONT_FAMILY.serif, fontSize: FONT_SIZE.h2, lineHeight: LINE_HEIGHT.h2 },
+  // ExtraBold statt Serife (2026-09-01).
+  titel: { ...schrift('800'), fontSize: FONT_SIZE.h2, lineHeight: LINE_HEIGHT.h2 },
   untertitel: { fontSize: FONT_SIZE.caption },
   mitte: { flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: SPACING.xl },
   text: { fontSize: FONT_SIZE.body, lineHeight: LINE_HEIGHT.body, textAlign: 'center' },
   inhalt: { paddingHorizontal: SPACING.lg, gap: SPACING.xs },
   hinweis: { fontSize: FONT_SIZE.caption, lineHeight: LINE_HEIGHT.caption, marginBottom: SPACING.sm },
-  gruppe: { fontSize: FONT_SIZE.small, fontWeight: '800', letterSpacing: 1, marginTop: SPACING.lg, marginBottom: SPACING.xs },
+  gruppe: { fontSize: FONT_SIZE.small, ...schrift('800'), letterSpacing: 1, marginTop: SPACING.lg, marginBottom: SPACING.xs },
   zeile: {
     flexDirection: 'row', alignItems: 'center', gap: SPACING.sm,
     borderWidth: 1, borderRadius: RADIUS.md, paddingVertical: SPACING.sm, paddingHorizontal: SPACING.md,
   },
   zeileText: { flex: 1, gap: 2 },
   pinyinZeile: { flexDirection: 'row', alignItems: 'center', gap: SPACING.sm, flexWrap: 'wrap' },
-  pinyin: { fontSize: FONT_SIZE.body, fontWeight: '700' },
+  pinyin: { fontSize: FONT_SIZE.body, ...schrift('700') },
   hanzi: { fontSize: FONT_SIZE.caption },
-  marke: { fontSize: 10, fontWeight: '800', borderWidth: 1, borderRadius: RADIUS.pill, paddingHorizontal: 6, paddingVertical: 1 },
+  marke: { fontSize: 10, ...schrift('800'), borderWidth: 1, borderRadius: RADIUS.pill, paddingHorizontal: 6, paddingVertical: 1 },
   bedeutung: { fontSize: FONT_SIZE.caption, lineHeight: LINE_HEIGHT.caption },
   hoeren: { borderWidth: 1, borderRadius: RADIUS.pill, padding: SPACING.sm },
 });

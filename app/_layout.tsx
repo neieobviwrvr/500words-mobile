@@ -1,6 +1,15 @@
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Feather, Ionicons } from '@expo/vector-icons';
+import {
+  useFonts,
+  Nunito_400Regular,
+  Nunito_500Medium,
+  Nunito_600SemiBold,
+  Nunito_700Bold,
+  Nunito_800ExtraBold,
+} from '@expo-google-fonts/nunito';
 import { AppStateProvider, useAppState } from '../src/state/AppState';
 import { AuthStateProvider } from '../src/state/AuthState';
 import { OnboardingStateProvider } from '../src/state/OnboardingState';
@@ -83,6 +92,36 @@ function RootStack() {
 }
 
 export default function RootLayout() {
+  // Marken-Schrift (2026-08-31). Alle Schnitte, die `schrift()` in tokens.ts
+  // anbietet - fehlt einer, faellt genau die Stelle stumm auf die
+  // Systemschrift zurueck, und das faellt erst spaet auf.
+  //
+  // Gerendert wird ERST, wenn die Schrift da ist. Sonst zeigt die App einen
+  // Sekundenbruchteil lang die Systemschrift und springt dann um; bei
+  // unterschiedlichen Laufweiten verschiebt das sichtbar das Layout.
+  // Ein eigener Ladebildschirm ist nicht noetig - der SplashGate darunter
+  // wartet ohnehin schon auf Sitzung und lokalen Zustand.
+  //
+  // **Die Symbol-Schriften gehoeren MIT hierher** (2026-08-31, nach Simons
+  // Fehlerbericht "alle Icons sind Vierecke"). `@expo/vector-icons` laedt
+  // seine Schriften sonst selbst und erst NACHDEM dieser Screen gerendert
+  // hat - bis sie ankommen, zeichnet der Renderer Ersatzkaestchen. Vor der
+  // Umstellung auf Nunito fiel das nicht auf, weil die App sofort rendern
+  // durfte und die Symbole ihre Ladezeit unbemerkt im Hintergrund hatten.
+  // Jetzt wartet alles auf denselben Moment, und der muss die Symbole
+  // einschliessen.
+  const [schriftBereit] = useFonts({
+    Nunito_400Regular,
+    Nunito_500Medium,
+    Nunito_600SemiBold,
+    Nunito_700Bold,
+    Nunito_800ExtraBold,
+    ...Feather.font,
+    ...Ionicons.font,
+  });
+
+  if (!schriftBereit) return null;
+
   return (
     <SafeAreaProvider>
       <AuthStateProvider>

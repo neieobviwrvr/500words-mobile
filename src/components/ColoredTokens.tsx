@@ -1,5 +1,5 @@
 import { StyleSheet, Text, TextStyle } from 'react-native';
-import { WORD_COLORS, WordType } from '../theme/tokens';
+import { WORD_COLORS, WordType, schrift } from '../theme/tokens';
 
 // Rendert einen Satz als Folge farbig hervorgehobener Woerter (Wortarten-
 // Farbcodierung, siehe CLAUDE.md). Zwei Varianten:
@@ -38,6 +38,6 @@ export function TaggedTokens({
 const styles = StyleSheet.create({
   sentence: {
     fontSize: 17,
-    fontWeight: '700',
+    ...schrift('700'),
   },
 });

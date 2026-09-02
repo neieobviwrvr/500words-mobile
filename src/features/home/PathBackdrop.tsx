@@ -10,22 +10,45 @@ import { View } from 'react-native';
 // in `assets/`, werden aber nirgends mehr eingebunden und landen dadurch auch
 // nicht mehr im Bundle.
 //
-// TESTWEISE (2026-08-25, Simons Auftrag): die Textur (`bg-textur.png`) ist
-// hier fuer einen Vergleich durch eine Volltonfarbe ersetzt - noch keine
-// endgueltige Entscheidung, die Farbe selbst wechselte schon einmal
-// (erst #F5A25F, jetzt ein helles Grau/#E6E4E0 - derselbe Ton wie
-// `theme.border` in tokens.ts). Fuer die Rueckkehr zur Textur einfach die
-// View unten wieder gegen das Image tauschen:
+// Zwischen dem 2026-08-25 und dem 2026-08-31 stand hier TESTWEISE eine
+// Volltonfarbe statt der Textur (Simons Auftrag, fuer einen Vergleich - erst
+// #F5A25F, dann ein helles Grau). Der Vergleich ist entschieden: die Textur
+// ist zurueck.
+
+// Exportiert, damit der Ausblenden-Farbverlauf am oberen/unteren Rand der
+// Pfad-Box (siehe PathScreen.tsx) IMMER zu genau diesem Ton verblasst - eine
+// Quelle statt zwei Stellen, die auseinanderlaufen koennten.
+//
+// OFF-WHITE (2026-08-31). Warm gehalten, nicht neutral-grau: die Palette der
+// App ist warm (`subtleFill` #F5F4F1, `border` #E6E4E0), ein kuehles Grau
+// stuende quer dazu. Der Ton liegt bewusst zwischen reinem Weiss und
+// `subtleFill` - die Seite soll sich von den weissen Karten darauf absetzen,
+// ohne selbst als Flaeche aufzutreten. Die Pergament-Textur liegt weiterhin als `assets/bg-textur.png`
+// bereit - fuer die Rueckkehr die View unten wieder gegen das Image tauschen:
 //   <Image source={require('../../../assets/bg-textur.png')}
 //     style={[styles.layer, { width, height }]} resizeMode="cover"
 //     accessibilityIgnoresInvertColors />
-
+// und diesen Wert auf den Medianton der Textur (#D5B58E) zuruecksetzen.
+//
 // Exportiert, damit der Ausblenden-Farbverlauf am oberen/unteren Rand der
-// Pfad-Box (siehe PathScreen.tsx) IMMER zu genau dieser Farbe verblasst,
-// egal welche Testfarbe hier gerade steht - eine Quelle statt zwei Stellen,
-// die auseinanderlaufen koennten.
-export const PATH_BACKDROP_COLOR = '#E6E4E0';
+// Pfad-Box (siehe PathScreen.tsx) IMMER zu genau diesem Ton verblasst - eine
+// Quelle statt zwei Stellen, die auseinanderlaufen koennten.
+export const PATH_BACKDROP_COLOR = '#FAF9F6';
+
+/**
+ * Dasselbe in durchsichtig - der Endpunkt beider Verlaeufe.
+ *
+ * Bewusst die Farbe mit Alpha `00` und NICHT das Schluesselwort
+ * `transparent`: das ist in vielen Renderern durchsichtiges SCHWARZ, und ein
+ * Verlauf dorthin zieht einen grauen Schleier ueber die Flaeche, statt
+ * einfach zu verblassen.
+ */
+export const PATH_BACKDROP_TRANSPARENT = `${PATH_BACKDROP_COLOR}00`;
 
 export function PathBackdrop({ width, height }: { width: number; height: number }) {
-  return <View style={{ position: 'absolute', top: 0, left: 0, width, height, backgroundColor: PATH_BACKDROP_COLOR }} />;
+  return (
+    <View
+      style={{ position: 'absolute', top: 0, left: 0, width, height, backgroundColor: PATH_BACKDROP_COLOR }}
+    />
+  );
 }

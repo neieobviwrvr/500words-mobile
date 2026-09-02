@@ -12,6 +12,8 @@ import {
   RADIUS,
   FONT_SIZE,
   LINE_HEIGHT,
+  schrift,
+  kachel,
 } from '../../src/theme/tokens';
 
 // O1 - Sprachauswahl.
@@ -109,10 +111,17 @@ export default function LanguageSelectScreen() {
               accessibilityState={{ selected: active, disabled: !usable }}
               style={({ pressed }) => [
                 styles.card,
+                // Derselbe 3D-Kachel-Look wie auf S1 (2026-09-01). Vorher
+                // war der Dropdown darueber die einzige Flaeche mit Tiefe -
+                // die Karten darunter blieben flach, was den Screen
+                // uneinheitlich aussehen liess.
+                kachel(darkMode),
                 {
                   backgroundColor: theme.cardBg,
-                  borderColor: active ? ACCENT_ORANGE : theme.border,
-                  borderWidth: active ? 2 : 1,
+                  // Die gewaehlte Karte behaelt ihr Orange, bekommt die
+                  // Tiefe aber genauso: die untere Kante ist bei ihr die
+                  // dunklere Rolle der eigenen Farbe, nicht das Grau.
+                  ...(active ? { borderColor: ACCENT_ORANGE } : null),
                   opacity: !usable ? 0.45 : pressed ? 0.7 : 1,
                 },
               ]}
@@ -134,7 +143,7 @@ const styles = StyleSheet.create({
   blockTitle: {
     fontSize: FONT_SIZE.bodyLg,
     lineHeight: LINE_HEIGHT.bodyLg,
-    fontWeight: '800',
+    ...schrift('800'),
     marginBottom: SPACING.md,
   },
   blockTitleSpaced: {
@@ -161,7 +170,7 @@ const styles = StyleSheet.create({
   cardLabel: {
     fontSize: FONT_SIZE.body,
     lineHeight: LINE_HEIGHT.body,
-    fontWeight: '700',
+    ...schrift('700'),
     textAlign: 'center',
   },
   cardNote: {

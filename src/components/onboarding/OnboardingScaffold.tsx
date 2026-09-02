@@ -7,8 +7,8 @@ import {
   ACCENT_ORANGE,
   SPACING,
   FONT_SIZE,
-  FONT_FAMILY,
   LINE_HEIGHT,
+  schrift,
 } from '../../theme/tokens';
 import { ProgressBar } from '../ProgressBar';
 
@@ -76,6 +76,17 @@ export function OnboardingScaffold({
             Strecke mit zwoelf Schritten ist "Schritt 3 von 12" die
             hilfreichere Ansage. */}
         <ProgressBar step={step} total={total} dark={dark} label={`Schritt ${step} von ${total}`} />
+        {/* Gegenstueck zum Zurueck-Pfeil (2026-09-01, Simons Wunsch): der
+            Balken hatte links 32 Punkte Vorlauf und rechts keinen, stand also
+            sichtbar aus der Mitte. Ein leerer Platzhalter derselben Breite
+            zentriert ihn, ohne dass der Pfeil seinen Platz aufgeben muss.
+            `accessibilityElementsHidden`, damit VoiceOver nicht ueber eine
+            leere Flaeche stolpert. */}
+        <View
+          style={styles.backButton}
+          accessibilityElementsHidden
+          importantForAccessibility="no-hide-descendants"
+        />
       </View>
 
       <ScrollView
@@ -135,15 +146,19 @@ const styles = StyleSheet.create({
     paddingBottom: SPACING.xl,
   },
   title: {
-    fontFamily: FONT_FAMILY.serif,
+    // ExtraBold statt Serife (2026-09-01): Ueberschrift jedes
+    // Onboarding-Schritts.
+    ...schrift('800'),
     fontSize: FONT_SIZE.h1,
     lineHeight: LINE_HEIGHT.h1,
     textAlign: 'center',
     marginTop: SPACING.lg,
   },
   titleAccent: {
-    fontFamily: FONT_FAMILY.serif,
-    fontStyle: 'italic',
+    // `fontStyle: 'italic'` ist mit der Serife mitgegangen - Nunito hat
+    // keinen geladenen Kursiv-Schnitt, ein erzwungenes Schraegstellen waere
+    // synthetisch. Die Farbe traegt die Hervorhebung jetzt allein; Gewicht
+    // und Groesse erbt das Element weiterhin von `title` im Array daneben.
     color: ACCENT_ORANGE,
   },
   subtitle: {

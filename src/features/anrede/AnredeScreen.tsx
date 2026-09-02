@@ -8,7 +8,7 @@ import { useAppState } from '../../state/AppState';
 import { useOnboardingState, type Addressing, type Gender } from '../../state/OnboardingState';
 import { ADDRESSING_OPTIONS, GENDERS } from '../../data/onboardingOptions';
 import { CATEGORY_BY_ID } from '../../data/categories';
-import { getTheme, SPACING, FONT_SIZE, LINE_HEIGHT } from '../../theme/tokens';
+import { getTheme, SPACING, FONT_SIZE, LINE_HEIGHT, schrift } from '../../theme/tokens';
 
 // Geschlecht und Ansprache - die frueheren Onboarding-Screens O5 und O6,
 // zusammengelegt und an die Stelle verschoben, an der sie etwas bewirken
@@ -120,11 +120,11 @@ export function AnredeScreen({ categoryId }: { categoryId?: string }) {
 
 const styles = StyleSheet.create({
   inhalt: { paddingBottom: SPACING.xl, gap: SPACING.sm },
-  titel: { fontSize: FONT_SIZE.title, lineHeight: LINE_HEIGHT.title, fontWeight: '800' },
+  titel: { fontSize: FONT_SIZE.title, lineHeight: LINE_HEIGHT.title, ...schrift('800') },
   text: { fontSize: FONT_SIZE.body, lineHeight: LINE_HEIGHT.body },
-  frage: { fontSize: FONT_SIZE.body, fontWeight: '800', marginTop: SPACING.lg },
+  frage: { fontSize: FONT_SIZE.body, ...schrift('800'), marginTop: SPACING.lg },
   hinweis: { fontSize: FONT_SIZE.caption, lineHeight: LINE_HEIGHT.caption, marginTop: SPACING.md },
   fussnote: { fontSize: FONT_SIZE.caption, lineHeight: LINE_HEIGHT.caption, marginTop: SPACING.lg },
   fuss: { gap: SPACING.sm, paddingTop: SPACING.md },
-  spaeter: { textAlign: 'center', fontWeight: '700', fontSize: FONT_SIZE.caption, padding: SPACING.sm },
+  spaeter: { textAlign: 'center', ...schrift('700'), fontSize: FONT_SIZE.caption, padding: SPACING.sm },
 });

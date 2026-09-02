@@ -4,7 +4,17 @@ import { Feather } from '@expo/vector-icons';
 import { Phrase } from '../../data/cheatsheetContent';
 import { TaggedTokens } from '../../components/ColoredTokens';
 import { useAppState } from '../../state/AppState';
-import { getTheme, ACCENT_BLUE, RADIUS, SPACING, FONT_SIZE, LINE_HEIGHT } from '../../theme/tokens';
+import {
+  getTheme,
+  ACCENT_BLUE,
+  FLOATING_SHADOW,
+  FLOATING_BORDER,
+  RADIUS,
+  SPACING,
+  FONT_SIZE,
+  LINE_HEIGHT,
+  schrift,
+} from '../../theme/tokens';
 
 // Ein Satz im Survival-Nachschlagewerk (Nutzer-Vorlage 2026-08-20).
 //
@@ -37,9 +47,26 @@ type Props = {
    * bisheriges Verhalten unveraendert bei.
    */
   zeichenEin?: boolean;
+  /**
+   * Zeigt den kleinen "Wortarten-Farben zeigen"-Knopf (2026-09-02, Simons
+   * Wunsch: auf Survival raus). Vorgabe `true` - die anderen beiden Aufrufer
+   * (Kategorie-Ansicht, Suchergebnisse) reichen die Prop nicht durch und
+   * behalten den Knopf. Nur die gespeicherten Saetze auf Survival sind ein
+   * Nachschlagewerk fuer den schnellen Blick, kein Lernmodus - der Knopf
+   * gehoert dort nicht zur Aufgabe der Karte.
+   */
+  zeigeFarbenKnopf?: boolean;
 };
 
-export function PhraseCard({ phrase, dark, saved, onToggleSave, onSpeak, zeichenEin = true }: Props) {
+export function PhraseCard({
+  phrase,
+  dark,
+  saved,
+  onToggleSave,
+  onSpeak,
+  zeichenEin = true,
+  zeigeFarbenKnopf = true,
+}: Props) {
   const theme = getTheme(dark);
   const zeichenAusblendbar = zeichenEin === false && !!phrase.phonetic;
   const { wortartenFarben } = useAppState();
@@ -53,7 +80,15 @@ export function PhraseCard({ phrase, dark, saved, onToggleSave, onSpeak, zeichen
   const hatTags = !!phrase.wordTags;
 
   return (
-    <View style={[styles.card, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
+    <View
+      style={[
+        styles.card,
+        // "Floating Card" statt 3D-Kante (2026-09-02, nur fuer Survival):
+        // duenner heller Rahmen plus weicher Schatten statt `kachel()`.
+        { borderWidth: 1, borderColor: FLOATING_BORDER, ...FLOATING_SHADOW },
+        { backgroundColor: theme.cardBg },
+      ]}
+    >
       <View style={styles.textBlock}>
         {/* Wortart-Farben (2026-08-29/30) - `wordTags` ist IMMER gegen das
             Pinyin getaggt (bei Nicht-Chinesisch: gegen target_text, das dort
@@ -92,7 +127,7 @@ export function PhraseCard({ phrase, dark, saved, onToggleSave, onSpeak, zeichen
             ) : null}
           </>
         )}
-        {!wortartenFarben && hatTags ? (
+        {zeigeFarbenKnopf && !wortartenFarben && hatTags ? (
           <Pressable
             onPress={() => setFarbenEinmalig((v) => !v)}
             accessibilityRole="button"
@@ -160,12 +195,21 @@ const styles = StyleSheet.create({
     paddingLeft: SPACING.sm,
     marginTop: SPACING.xs,
   },
-  hinweisText: { fontSize: FONT_SIZE.caption, lineHeight: LINE_HEIGHT.caption, fontStyle: 'italic' },
+  hinweisText: {
+    // Fehlte bisher komplett - Systemschrift statt Nunito, gleiche Luecke
+    // wie an mehreren anderen Stellen in dieser Sitzung.
+    ...schrift('500'),
+    fontSize: FONT_SIZE.caption,
+    lineHeight: LINE_HEIGHT.caption,
+    fontStyle: 'italic',
+  },
   card: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: SPACING.md,
-    borderWidth: 1.5,
+    // Rahmen und Schatten kommen aus `FLOATING_BORDER`/`FLOATING_SHADOW` an
+    // der Verwendungsstelle - dieselbe 3D-Kante hielt hier nicht einmal
+    // einen Tag (siehe deren Kommentar in tokens.ts fuer die Geschichte).
     borderRadius: RADIUS.md,
     padding: SPACING.md,
   },
@@ -176,14 +220,17 @@ const styles = StyleSheet.create({
   target: {
     fontSize: FONT_SIZE.body,
     lineHeight: LINE_HEIGHT.body,
-    fontWeight: '800',
+    ...schrift('800'),
   },
   phonetic: {
+    // Fehlte bisher komplett, gleiche Luecke wie bei `hinweisText`.
+    ...schrift('500'),
     fontSize: FONT_SIZE.small,
     lineHeight: LINE_HEIGHT.body,
     fontStyle: 'italic',
   },
   gloss: {
+    ...schrift('500'),
     fontSize: FONT_SIZE.small,
     lineHeight: LINE_HEIGHT.body,
   },
@@ -193,7 +240,7 @@ const styles = StyleSheet.create({
     gap: 3,
     marginTop: 2,
   },
-  farbenHilfeText: { fontSize: 11, fontWeight: '600' },
+  farbenHilfeText: { fontSize: 11, ...schrift('600') },
   actions: {
     flexDirection: 'row',
     alignItems: 'center',

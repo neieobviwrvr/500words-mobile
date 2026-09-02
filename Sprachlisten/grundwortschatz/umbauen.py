@@ -126,11 +126,17 @@ def main():
                 de_neu.append(dict(german=s["de"],
                                    accepted_concepts=konzepte(s["de_konzepte"]), **gemeinsam))
                 schon_de.add(s["de"])
-            if s["de"] not in schon_zh:
-                zh_neu.append(dict(target_text=s["zh"], pinyin=s["py"], german=s["de"],
+            # `de_zh` (optional) setzt den deutschen Text der CHINESISCHEN
+            # Zeile abweichend. Noetig, wo eine woertliche Uebersetzung dem
+            # deutschen Ausgangssatz nicht entspricht - siehe welle1.py bei
+            # 对. Muss auch in die Dubletten-Pruefung, sonst haelt der
+            # Abgleich die Zeile fuer fehlend und legt sie erneut an.
+            de_fuer_zh = s.get("de_zh") or s["de"]
+            if de_fuer_zh not in schon_zh:
+                zh_neu.append(dict(target_text=s["zh"], pinyin=s["py"], german=de_fuer_zh,
                                    culture_note=s.get("hinweis"),
                                    accepted_concepts=konzepte(s["konzepte"]), **gemeinsam))
-                schon_zh.add(s["de"])
+                schon_zh.add(de_fuer_zh)
 
     if de_neu:
         rest(url, key, "phrasebook_master", "POST", de_neu, minimal)

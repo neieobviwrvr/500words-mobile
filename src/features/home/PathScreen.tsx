@@ -18,12 +18,22 @@ import { CATEGORIES, GRUNDWORTSCHATZ_ID } from '../../data/categories';
 import { sichtbareSituationen } from '../../data/demo';
 import { useAuthState } from '../../state/AuthState';
 import { LANGUAGES, getLanguage } from '../../data/languages';
-import { Card, Dropdown, HeaderMenu, ProgressBar, Screen, PRESS_DEPTH } from '../../components';
+import {
+  Card,
+  Dropdown,
+  HeaderMenu,
+  ProgressBar,
+  ProgressProzent,
+  Screen,
+  PRESS_DEPTH,
+} from '../../components';
 import type { DropdownOption } from '../../components';
 import { useUnlockedProgress } from './useUnlockedProgress';
 import { useCategorySituations } from '../lessons/useCategorySituations';
 import { useGuidedCourse } from './useGuidedCourse';
-import { PathBackdrop, PATH_BACKDROP_COLOR } from './PathBackdrop';
+import { PathBackdrop, PATH_BACKDROP_COLOR, PATH_BACKDROP_TRANSPARENT } from './PathBackdrop';
+import { ChinaPfadHintergrund, CHINA_BG, wegAnteilBei } from './ChinaPfadHintergrund';
+import { ladeBesuch, ZuletztBesucht } from './zuletztBesucht';
 import { LinearGradient } from 'expo-linear-gradient';
 import { scenarioLabel } from '../../data/scenarios';
 import { leihName } from '../../data/geliehen';
@@ -33,15 +43,19 @@ import {
   ACCENT_ORANGE,
   ACCENT_GREEN,
   ACCENT_GREEN_BG,
-  NODE_LOCKED,
   PILL_FILL_BLUE,
   PILL_FILL_ORANGE,
-  PILL_FILL_GRAY,
+  KATEGORIE_FARBEN,
+  PATH_LINE_NEUTRAL,
+  PATH_LINE_NEUTRAL_DARK,
+  VEIL_LIGHT,
+  VEIL_DARK,
   RADIUS,
   SPACING,
   FONT_SIZE,
-  FONT_FAMILY,
   LINE_HEIGHT,
+  schrift,
+  kachel,
 } from '../../theme/tokens';
 
 // S1 - Startscreen (Pfad).
@@ -85,6 +99,16 @@ const CONT_W = 300;
 const THEME_W = 136;
 const THEME_H = 36;
 const THEME_ROW_H = 58;
+
+// Bild-Knoten sind am 2026-09-01 restlos wieder raus (Simons Vorgabe): die
+// zehn PNG-Icons aus `assets/lernpfad/` deckten ohnehin nur 10 der 14
+// Kategorien ab (`finding_friends`, `dating_romance`, `drinking_dining` und
+// `job_work` fielen mangels Bild schon vorher auf die Text-Pille zurueck -
+// ein Bruch, der jetzt verschwindet, weil wieder ALLE Kategorien denselben
+// Aufbau haben). An ihre Stelle tritt die Kategorie-Farbe selbst (siehe
+// `KATEGORIE_FARBEN` in tokens.ts) - der Name der Kategorie steht wieder als
+// Text auf der Kachel, wie vor dem Bild-Umbau.
+//
 // Auffaechern: die Themen materialisieren von OBEN (Nutzer-Wunsch
 // 2026-08-20) - sie sinken aus ihrer Kategorie herab, statt seitlich
 // einzufliegen. Das passt zur Leserichtung des Pfades und laesst sie wie
@@ -144,8 +168,22 @@ const SWIPE_VELOCITY = 0.3;
  * Weil es ein Anteil und keine feste Zahl ist, waechst die Box auf groesseren
  * Geraeten mit; die verbleibende Luft ist dort entsprechend etwas groesser,
  * nicht exakt gleich.
+ *
+ * NEU 2026-09-01 - die Rolle des Werts hat sich geaendert, die Rechnungen
+ * oben sind damit Geschichte. Er war bis dahin die BINDENDE Groesse: die Box
+ * traf auf jedem Telefon ihren Deckel, und was uebrig blieb, sammelte sich
+ * als Luft zwischen Pfad und Knopf (gemessen 49 Punkte bei 812) - genau die
+ * Luecke, die Simon stoerte. Verschaerft hat es der Wegfall des zweiten
+ * Knopfes: die Zahlen oben wurden fuer ZWEI Knoepfe eingestellt, seitdem
+ * steht dort nur noch einer und die Luft wuchs entsprechend.
+ *
+ * Jetzt ist der Wert nur noch eine Obergrenze fuer sehr hohe Bildschirme.
+ * Die tatsaechliche Hoehe ergibt sich aus `flex: 1` - also aus dem, was
+ * Kopfzeile und Knopfblock uebrig lassen. Dadurch gibt es keinen Rest mehr,
+ * der sich irgendwo sammeln koennte, und der Abstand zum Knopf ist genau
+ * `actions.marginTop` und sonst nichts.
  */
-const PATH_BOX_HEIGHT_RATIO = 0.598;
+const PATH_BOX_HEIGHT_RATIO = 0.66;
 
 type NodeState = 'done' | 'current' | 'open' | 'locked';
 
@@ -174,20 +212,32 @@ type Connector = { left: number; top: number; length: number; angle: number; col
 // Farbe pro Knoten. Bewusst zentral und nicht am Knoten selbst: der Zustand
 // ist die Information, die Farbe nur ihre Darstellung.
 //
-// Blau gehoert dem freien Grundwortschatz, Orange den Kaufkategorien, Grau
-// dem Gesperrten - und Gruen steht nach dem Stil-Rezept ausschliesslich fuer
-// Erfolg und schlaegt deshalb alles andere.
-function nodeColors(node: { state: NodeState; lead?: boolean; theme?: boolean }) {
+// Blau gehoert dem freien Grundwortschatz, Gruen steht nach dem Stil-Rezept
+// ausschliesslich fuer Erfolg und schlaegt deshalb alles andere. Kategorien
+// tragen seit 2026-09-01 ("Boom"-Vorgabe) ihre EIGENE Farbe statt eines
+// einheitlichen Orange - siehe `KATEGORIE_FARBEN` in tokens.ts.
+//
+// `dark` waehlt zwischen Hell-/Dunkel-Variante der Kategorie-Farbe. Die
+// anderen Faelle (done/theme/lead) waren schon vorher pro Modus flache
+// Konstanten und brauchen dafuer keinen eigenen Zweig.
+function nodeColors(node: { id: string; state: NodeState; lead?: boolean; theme?: boolean }, dark: boolean) {
   // Gruen schlaegt alles - nach dem Stil-Rezept ist es die einzige Farbe fuer
   // Erfolg, und das gilt auch fuer ein abgeschlossenes Thema.
   if (node.state === 'done') return { line: ACCENT_GREEN, fill: ACCENT_GREEN_BG };
   // Aufgefaecherte Themen sind grau (Nutzer-Wunsch 2026-08-20): sie sollen
-  // sich nicht mit dem Blau des Grundwortschatzes und dem Orange der
-  // Kaufkategorien beissen. Gesperrte Themen bleiben durch das Schloss und
-  // ihren Namen unterscheidbar, nicht durch die Farbe.
+  // sich nicht mit dem Blau des Grundwortschatzes und den Kategorie-Farben
+  // beissen. Gesperrte Themen bleiben durch das Schloss und ihren Namen
+  // unterscheidbar, nicht durch die Farbe. UNVERAENDERT vom "Boom"-Umbau -
+  // der galt ausdruecklich nur den Kategorie-KACHELN, nicht den Situationen
+  // darunter.
   if (node.theme) return { line: THEME_LINE, fill: THEME_FILL };
-  if (node.state === 'locked') return { line: NODE_LOCKED, fill: PILL_FILL_GRAY };
   if (node.lead) return { line: ACCENT_BLUE, fill: PILL_FILL_BLUE };
+  // Kategorie-Kachel: eigene Farbe, AUCH gesperrt - der Schleier in
+  // `PathNode` macht daraus "gesperrt", nicht eine ausgetauschte Graufarbe.
+  const t = KATEGORIE_FARBEN[node.id];
+  if (t) return dark ? { line: t.lineDark, fill: t.fillDark } : { line: t.line, fill: t.fill };
+  // Sicherheitsnetz fuer eine Kategorie ohne Eintrag (sollte nicht
+  // vorkommen - alle 14 aus `categories.ts` sind erfasst).
   return { line: ACCENT_ORANGE, fill: PILL_FILL_ORANGE };
 }
 
@@ -203,6 +253,10 @@ export function PathScreen() {
   // iPhone SE waere eine feste Hoehe zu viel, auf einem Pro Max zu wenig.
   // Die Box scrollt ohnehin innen, sie muss also nicht alles zeigen.
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
+  // Bebilderter Pfad: bisher nur Chinesisch (Simons Vorlage 2026-08-31).
+  // Weitere Sprachen bekommen eigene Zeichnungen, sobald es welche gibt -
+  // dann wird daraus eine Zuordnung statt eines Vergleichs.
+  const bebilderterPfad = targetLanguageId === 'zh';
   const pathBoxMaxHeight = Math.round(windowHeight * PATH_BOX_HEIGHT_RATIO);
   // Ausblenden-Hoehe als Anteil der Box, nicht als feste Zahl (Nutzer-
   // Wunsch: "zu einem bestimmten Prozentsatz") - skaliert dadurch mit der
@@ -279,6 +333,17 @@ export function PathScreen() {
   ).current;
 
   const scrollRef = useRef<ScrollView>(null);
+  // Fuer den bebilderten Pfad (2026-08-31): das Bild soll die GANZE Seite
+  // fuellen, nicht nur die Pfad-Box - und trotzdem mit den Knoten wandern,
+  // weil die auf dem gezeichneten Weg sitzen.
+  //
+  // In der Scroll-Flaeche ginge das erste nicht (sie schneidet an ihrem Rand
+  // ab), hinter dem Screen das zweite nicht (dort steht es still). Deshalb
+  // liegt es hinter dem Screen und bekommt den Scroll-Stand als Versatz -
+  // es bewegt sich also mit, ohne beschnitten zu werden.
+  const [besuch, setBesuch] = useState<ZuletztBesucht | null>(null);
+  const [scrollY, setScrollY] = useState(0);
+  const [scrollTop, setScrollTop] = useState(0);
   const didAutoScroll = useRef(false);
 
   // Auffaechern: ein Tipp auf eine Pille zeigt ihre Themen. `expandedIds`
@@ -374,17 +439,19 @@ export function PathScreen() {
   // Eine Situation oeffnet GENAU ihre Saetze (2026-08-21). Vorher landete
   // man auf der Kategorie und damit bei den vier Modus-Knoepfen - man hatte
   // "Naeher kommen" angetippt und bekam "Komplette Kategorie durchspammen".
+  //
+  // Seit 2026-08-31 fuehrt das auf `/training/saetze` statt `/exercise`:
+  // dort liegen die verbindlichen Layout-Vorlagen der drei Satzstufen
+  // (Simons Vorgabe). Der Lektionen-Screen ging schon dorthin, der Pfad
+  // nicht - dieselbe Situation sah je nach Einstieg anders aus.
   const goSituation = (categoryId: string, scenario: string) => () =>
-    router.push({
-      pathname: '/exercise',
-      params: { mode: 'spam', categoryId, scenario, source: 'category' },
-    });
+    router.push({ pathname: '/training/saetze', params: { categoryId, scenario } });
   const goShop = () => router.push('/shop');
 
   // ---------------------------------------------------------------------
   // Knotenliste
   // ---------------------------------------------------------------------
-  const { nodes: raw, currentIndex, currentLabel } = useMemo(() => {
+  const { nodes: raw, currentIndex, currentLabel, currentScenario } = useMemo(() => {
     // Geführtes Lernen: Lektionen statt Kategorien, Themen statt Situationen.
     // Solange der Kurs leer ist, bleibt auch die Liste leer - der Pfad zeigt
     // dann den Grund aus dem Hook (siehe useGuidedCourse.ts).
@@ -410,6 +477,7 @@ export function PathScreen() {
         nodes: list,
         currentIndex: 0,
         currentLabel: list.length > 0 ? list[0].label : 'Noch kein Kurs',
+        currentScenario: null,
       };
     }
 
@@ -417,7 +485,7 @@ export function PathScreen() {
     // gefuehrten Kurs) haben im Speed-Run nichts zu zeigen. Ohne diese
     // Weiche stuenden die Kategorien trotzdem da - mit nichts dahinter.
     if (!activeLanguage.table) {
-      return { nodes: [] as RawNode[], currentIndex: 0, currentLabel: 'Noch keine Sätze' };
+      return { nodes: [] as RawNode[], currentIndex: 0, currentLabel: 'Noch keine Sätze', currentScenario: null };
     }
 
     // ALLE Kategorien, auch ohne Konto (berichtigt 2026-08-23, siehe
@@ -495,8 +563,17 @@ export function PathScreen() {
     // gilt wieder die erste nicht fertige Kategorie.
     // Gesperrte Kategorien scheiden aus - dort laesst sich nicht
     // weiterlernen. Dann gilt die naechstjuengere freigeschaltete.
+    //
+    // Der Merker aus der Uebung geht VOR (2026-08-31): er wird nach jeder
+    // beantworteten Karte geschrieben, die FSRS-Ableitung erst am
+    // Sitzungsende und im Kategorie-Modus gar nicht. Nur wenn er fehlt oder
+    // auf eine andere Sprache zeigt, gilt wieder die FSRS-Reihenfolge.
     let zuletzt = -1;
-    for (const categoryId of situations.recentCategoryIds) {
+    const merkerKategorien =
+      besuch && besuch.languageId === targetLanguageId
+        ? [besuch.categoryId, ...situations.recentCategoryIds]
+        : situations.recentCategoryIds;
+    for (const categoryId of merkerKategorien) {
       zuletzt = list.findIndex((n) => n.id === categoryId && n.state !== 'locked');
       if (zuletzt >= 0) break;
     }
@@ -511,10 +588,27 @@ export function PathScreen() {
       // teilt sich diesen Rueckgabepfad nicht, aber die Annahme soll nicht
       // still im Code stehen.
       currentLabel: idx >= 0 ? list[idx].label : (list[0]?.label ?? ''),
+      // Die Stelle IN der Kategorie (Simons Wunsch 2026-08-31): der Kasten
+      // soll zeigen, woran man zuletzt war, nicht nur in welcher Kategorie.
+      // Nur die juengste Situation zaehlt, und nur wenn sie zur angezeigten
+      // Kategorie gehoert - sonst stuende dort eine Situation aus einer
+      // anderen Kategorie als die darueber genannte.
+      currentScenario: (() => {
+        if (idx < 0) return null;
+        const ausMerker =
+          besuch && besuch.languageId === targetLanguageId && besuch.categoryId === list[idx].id && besuch.scenario
+            ? { categoryId: besuch.categoryId, scenario: besuch.scenario }
+            : null;
+        const sit = ausMerker ?? situations.recentSituations.find((s) => s.categoryId === list[idx].id);
+        if (!sit) return null;
+        // Leih-Namen hier aufloesen, nicht im Render: die aufnehmende
+        // Kategorie ist genau hier bekannt (siehe data/geliehen.ts).
+        return leihName(sit.categoryId, sit.scenario) ?? scenarioLabel(sit.scenario);
+      })(),
     };
     // `expandedIds` gehoert schon jetzt in die Abhaengigkeiten - sobald das
     // Auffaechern kommt, muss die Liste sich davon neu bauen.
-  }, [learningMode, course.lessons, purchased, activeLanguage.label, activeLanguage.table, progress.byCategory, situations.recentCategoryIds, expandedIds, themesMounted, situations.byCategory, toggleCategory, hatKonto]);
+  }, [learningMode, course.lessons, purchased, activeLanguage.label, activeLanguage.table, progress.byCategory, situations.recentCategoryIds, situations.recentSituations, besuch, targetLanguageId, expandedIds, themesMounted, situations.byCategory, toggleCategory, hatKonto]);
 
   // ---------------------------------------------------------------------
   // Zickzack-Layout: Pillen abwechselnd links/rechts, verbunden durch
@@ -524,10 +618,33 @@ export function PathScreen() {
     // Laufende Hoehe statt `index * ROW_H`: Themen-Zeilen sind niedriger als
     // Kategorie-Zeilen, sonst klaffte beim Auffaechern ueberall eine Luecke.
     let y = 0;
+    // Hoehe einer Bildkachel in Pfad-Koordinaten - der Weg wiederholt sich
+    // mit ihr.
+    const kachelHoehe = Math.round(CHINA_BG.hoehe * (windowWidth / CHINA_BG.breite));
     const laid: LaidOutNode[] = raw.map((n, i) => {
       const w = n.theme ? THEME_W : n.lead ? LANG_PILL_W : PILL_W;
       const h = n.theme ? THEME_H : n.lead ? LANG_PILL_H : PILL_H;
-      const left = n.lead ? (CONT_W - w) / 2 : i % 2 === 0 ? 0 : CONT_W - w;
+      // Auf einem bebilderten Pfad folgen die Knoten dem gezeichneten Weg
+      // (2026-08-31, Simons Wunsch) statt dem festen Zickzack. `wegAnteilBei`
+      // liest den Verlauf aus dem Bild; der Wert ist die MITTE des Knotens,
+      // deshalb die halbe Breite abziehen und in den Container klemmen.
+      // Der Weg-Anteil bezieht sich auf die BILDbreite (Fensterbreite), die
+      // Knoten liegen aber im schmaleren Canvas - deshalb den Versatz
+      // zwischen beiden abziehen.
+      const bildVersatz = (windowWidth - CONT_W) / 2;
+      const left = bebilderterPfad
+        ? Math.max(
+            0,
+            Math.min(
+              CONT_W - w,
+              wegAnteilBei(y + h / 2, kachelHoehe) * windowWidth - bildVersatz - w / 2
+            )
+          )
+        : n.lead
+          ? (CONT_W - w) / 2
+          : i % 2 === 0
+            ? 0
+            : CONT_W - w;
       const top = y;
       y += n.theme ? THEME_ROW_H : ROW_H;
       return { ...n, width: w, height: h, left, top, cx: left + w / 2, cy: top + h / 2 };
@@ -544,9 +661,13 @@ export function PathScreen() {
         top: a.cy,
         length: Math.sqrt(dx * dx + dy * dy),
         angle: (Math.atan2(dy, dx) * 180) / Math.PI,
-        // Die Linie gehoert zum Abschnitt, aus dem sie kommt - beim Uebergang
-        // ins Gesperrte wird sie damit von selbst grau.
-        color: nodeColors(a).line,
+        // Neutral-grau fuer JEDE Linie (2026-09-01, Simons Vorgabe) - vorher
+        // trug jede Linie die Farbe des Knotens, aus dem sie kam. Bei 14
+        // verschiedenen Kategorie-Farben waere der Pfad damit ein
+        // Flickenteppich geworden. Der Zustand (gesperrt/fertig/aktuell)
+        // steht jetzt allein an den Knoten - Haken, Schloss, Farbe der
+        // Kachel selbst.
+        color: darkMode ? PATH_LINE_NEUTRAL_DARK : PATH_LINE_NEUTRAL,
       });
     }
 
@@ -556,7 +677,10 @@ export function PathScreen() {
       connectors: conns,
       canvasHeight: last ? last.top + last.height + SPACING.xl : 0,
     };
-  }, [raw]);
+    // `bebilderterPfad` gehoert dazu: davon haengt ab, ob die Knoten dem
+    // gezeichneten Weg folgen oder im Zickzack stehen. `darkMode` seit
+    // 2026-09-01 dazu - die Verbindungslinien-Farbe haengt jetzt vom Modus ab.
+  }, [raw, bebilderterPfad, windowWidth, darkMode]);
 
   // Sprung zur zuletzt gelernten Stelle - bei JEDEM Betreten des Screens
   // (Nutzer-Wunsch 2026-08-20), also auch beim Zurueckkehren aus einer
@@ -569,7 +693,15 @@ export function PathScreen() {
   useFocusEffect(
     useCallback(() => {
       didAutoScroll.current = false;
+      // Bei JEDEM Betreten neu lesen (2026-08-31): der Merker wird in der
+      // Uebung geschrieben, waehrend dieser Screen im Hintergrund liegt -
+      // ein Laden beim ersten Aufbau bliebe fuer immer veraltet.
+      let aktiv = true;
+      void ladeBesuch().then((b) => {
+        if (aktiv) setBesuch(b);
+      });
       return () => {
+        aktiv = false;
         didAutoScroll.current = false;
       };
     }, [])
@@ -598,6 +730,21 @@ export function PathScreen() {
           <Screen> streichen und `pathBoxTestTransparent` aus dem Card-Stil
           nehmen. */}
       <PathBackdrop width={windowWidth} height={windowHeight} />
+      {/* Bebilderte Seite nur fuer Chinesisch (2026-08-31, Simons Vorlage).
+          Volle Fensterbreite und -hoehe, verschoben um den Scroll-Stand -
+          siehe `scrollY` oben, warum weder "in der Scroll-Flaeche" noch
+          "fest hinter dem Screen" allein reicht.
+          `scrollTop` ist die Lage der Scroll-Flaeche im Screen: das Bild
+          soll dort beginnen, wo der Pfad beginnt, nicht am oberen
+          Bildschirmrand - sonst laege der Weg um die Kopfzeile versetzt. */}
+      {bebilderterPfad ? (
+        <View
+          style={[styles.bebildert, { top: scrollTop - scrollY }]}
+          pointerEvents="none"
+        >
+          <ChinaPfadHintergrund breite={windowWidth} hoehe={canvasHeight + windowHeight} />
+        </View>
+      ) : null}
     <Animated.View style={[styles.root, { transform: [{ translateX: drag }] }]}>
     <Screen dark={darkMode} style={styles.transparentPage}>
       {/* Kopfzeile: Sprache links, Geschenk und Coins rechts. */}
@@ -624,9 +771,7 @@ export function PathScreen() {
           ratio={progress.ratio}
           label={`${Math.round(progress.ratio * 100)} Prozent deiner freigeschalteten Inhalte geübt`}
         />
-        <Text style={[styles.progressValue, { color: theme.sub }]}>
-          {Math.round(progress.ratio * 100)}%
-        </Text>
+        <ProgressProzent dark={darkMode} ratio={progress.ratio} />
       </View>
 
       {/* Pfad-Box: NUR dieser Bereich scrollt. */}
@@ -647,17 +792,23 @@ export function PathScreen() {
       >
         {/* Abschnitts-Kopf, bleibt beim Scrollen stehen. */}
         <View style={styles.sectionBar}>
-          <View style={[styles.sectionField, { borderColor: theme.border, backgroundColor: theme.pageBg }]}>
+          <View style={[styles.sectionField, kachel(darkMode), { backgroundColor: theme.cardBg }]}>
             {/* Die kleine Zeile nennt den Lernweg (Nutzer-Wunsch
                 2026-08-20), die grosse bleibt die Stelle im Pfad. Der Text
                 kommt aus LEARNING_MODE_LABEL, damit Knopf-Ansage und Kasten
                 nie auseinanderlaufen. `textTransform` im Stil macht die
                 Grossschreibung, der Wortlaut bleibt hier lesbar. */}
-            <Text style={[styles.sectionLabel, { color: theme.sub }]}>
-              {LEARNING_MODE_LABEL[learningMode]}
+            {/* Steht eine Situation fest, rutscht die Kategorie in die
+                kleine Zeile und die Situation wird zur grossen - so nennt
+                der Kasten beides, ohne eine dritte Zeile zu brauchen. Ohne
+                Situation bleibt es beim bisherigen Aufbau. */}
+            <Text style={[styles.sectionLabel, { color: theme.sub }]} numberOfLines={1}>
+              {currentScenario
+                ? `${LEARNING_MODE_LABEL[learningMode]} · ${currentLabel}`
+                : LEARNING_MODE_LABEL[learningMode]}
             </Text>
             <Text style={[styles.sectionName, { color: theme.text }]} numberOfLines={1}>
-              {currentLabel}
+              {currentScenario ?? currentLabel}
             </Text>
           </View>
           <Pressable
@@ -676,8 +827,8 @@ export function PathScreen() {
             }`}
             style={({ pressed }) => [
               styles.toggleButton,
+              kachel(darkMode),
               {
-                borderColor: theme.border,
                 backgroundColor: theme.cardBg,
                 opacity: pressed ? 0.7 : 1,
               },
@@ -695,6 +846,15 @@ export function PathScreen() {
             ref={scrollRef}
             showsVerticalScrollIndicator={false}
             contentContainerStyle={styles.pathBoxContent}
+            // Nur beim bebilderten Pfad noetig - sonst kostet das Melden
+            // jedes Frames Rechenzeit ohne Gegenwert.
+            scrollEventThrottle={bebilderterPfad ? 16 : 0}
+            onScroll={bebilderterPfad ? (e) => setScrollY(e.nativeEvent.contentOffset.y) : undefined}
+            onLayout={
+              bebilderterPfad
+                ? (e) => setScrollTop(e.nativeEvent.layout.y)
+                : undefined
+            }
           >
             {pathNodes.length === 0 ? (
               // Ehrlich statt leere Flaeche: sagt, woran es liegt. Bleibt
@@ -727,9 +887,9 @@ export function PathScreen() {
               ))}
               {pathNodes.map((n) =>
                 n.theme ? (
-                  <PathNode key={n.id} node={n} progress={expand} />
+                  <PathNode key={n.id} node={n} dark={darkMode} progress={expand} />
                 ) : (
-                  <PathNode key={n.id} node={n} />
+                  <PathNode key={n.id} node={n} dark={darkMode} />
                 )
               )}
             </View>
@@ -743,16 +903,24 @@ export function PathScreen() {
               durch. Faerben zu PATH_BACKDROP_COLOR statt einer festen
               Konstante - dieselbe Farbe wie der Hintergrund dahinter, sonst
               waere der Uebergang selbst wieder eine harte Kante. */}
-          <LinearGradient
-            pointerEvents="none"
-            colors={[PATH_BACKDROP_COLOR, `${PATH_BACKDROP_COLOR}00`]}
-            style={[styles.pathFade, styles.pathFadeTop, { height: pathFadeHoehe }]}
-          />
-          <LinearGradient
-            pointerEvents="none"
-            colors={[`${PATH_BACKDROP_COLOR}00`, PATH_BACKDROP_COLOR]}
-            style={[styles.pathFade, styles.pathFadeBottom, { height: pathFadeHoehe }]}
-          />
+          {/* Auf einem bebilderten Pfad entfallen die Verlaeufe: sie
+              verblassen zur HINTERGRUNDFARBE, und die gibt es dort nicht -
+              ueber der Zeichnung laegen sie als heller Schleier. Die Pillen
+              werden dort vom Bild selbst gerahmt. */}
+          {bebilderterPfad ? null : (
+            <>
+              <LinearGradient
+                pointerEvents="none"
+                colors={[PATH_BACKDROP_COLOR, PATH_BACKDROP_TRANSPARENT]}
+                style={[styles.pathFade, styles.pathFadeTop, { height: pathFadeHoehe }]}
+              />
+              <LinearGradient
+                pointerEvents="none"
+                colors={[PATH_BACKDROP_TRANSPARENT, PATH_BACKDROP_COLOR]}
+                style={[styles.pathFade, styles.pathFadeBottom, { height: pathFadeHoehe }]}
+              />
+            </>
+          )}
         </View>
       </Card>
 
@@ -784,11 +952,11 @@ export function PathScreen() {
           // ehrlich leeren Screen - dieselbe Aussage, die der Pfad darueber
           // schon macht ("gibt es bisher nur fuer Chinesisch").
           onPress={() =>
-            router.push(
-              learningMode === 'gefuehrt'
-                ? '/wiederholen'
-                : { pathname: '/exercise', params: { mode: 'spam', categoryId: 'alle', source: 'srs' } }
-            )
+            // `/training/saetze` OHNE Parameter ist die globale
+            // Satz-Wiederholung ueber alle Kategorien - derselbe Screen wie
+            // bei einer einzelnen Situation, nur ohne Filter, und damit mit
+            // denselben Layout-Vorlagen (2026-08-31).
+            router.push(learningMode === 'gefuehrt' ? '/wiederholen' : '/training/saetze')
           }
         />
       </View>
@@ -806,10 +974,22 @@ export function PathScreen() {
 
 // Ein Knoten im Pfad. Traegt die Druckkante von `PillButton`, damit sich
 // Knoten und Knoepfe gleich anfuehlen - das ist der 30%-Duolingo-Anteil.
-function PathNode({ node, progress }: { node: LaidOutNode; progress?: Animated.Value }) {
-  const colors = nodeColors(node);
+function PathNode({
+  node,
+  dark,
+  progress,
+}: {
+  node: LaidOutNode;
+  dark: boolean;
+  progress?: Animated.Value;
+}) {
+  const colors = nodeColors(node, dark);
   const isLocked = node.state === 'locked';
   const isCurrent = node.state === 'current';
+  // Nur echte Kategorie-Kacheln bekommen den Schleier - Situationen (theme)
+  // und die Sprach-Pille (lead) bleiben bei ihrer bisherigen Darstellung
+  // (siehe Kommentar bei `nodeColors`).
+  const zeigeSchleier = isLocked && !node.theme && !node.lead;
 
   // Aufbau in zwei Schichten, und das ist wichtig:
   //
@@ -869,11 +1049,27 @@ function PathNode({ node, progress }: { node: LaidOutNode; progress?: Animated.V
             // ein Schatten traegt auf hellem Grund kaum und faellt im
             // Darkmode ganz weg.
             borderWidth: isCurrent ? 3 : node.theme ? 1.5 : 2,
+            // PRESS_DEPTH ist seit 2026-09-01 6 (Simons "Boom"-Vorgabe,
+            // dieselbe Konstante wie bei PillButton) - Kategorie-Kacheln
+            // bekommen dadurch automatisch die dickere 3D-Unterkante mit.
             borderBottomWidth: pressed ? 2 : node.theme ? 2 : PRESS_DEPTH,
             marginTop: pressed ? PRESS_DEPTH : 0,
           },
         ]}
       >
+        {/* Schleier fuer gesperrte Kategorie-Kacheln (2026-09-01): die
+            Flaeche behaelt ihre Kategorie-Farbe, wird nur abgedunkelt/
+            aufgehellt - dieselbe Technik wie bei den Lektionen-Kategorie-
+            karten (`VEIL_LIGHT`/`VEIL_DARK`). Zuerst gezeichnet, damit Text
+            und Schloss-Symbol DARUEBER liegen und scharf bleiben - ein
+            flacher `opacity`-Wert haette beides mit ausgeblichen. */}
+        {zeigeSchleier ? (
+          <View
+            accessibilityElementsHidden
+            importantForAccessibility="no"
+            style={[styles.nodeVeil, { backgroundColor: dark ? VEIL_DARK : VEIL_LIGHT }]}
+          />
+        ) : null}
         {node.state === 'done' && !node.theme ? (
           <Feather name="check" size={14} color={colors.line} accessibilityElementsHidden />
         ) : null}
@@ -915,12 +1111,12 @@ function SoftButton({
       accessibilityHint={hint}
       style={({ pressed }) => [
         styles.softButton,
-        {
-          backgroundColor: pressed ? theme.subtleFill : theme.cardBg,
-          // Im Darkmode traegt ein Schatten nicht - dort uebernimmt eine
-          // dezente Kontur die Abgrenzung vom Untergrund.
-          borderColor: dark ? theme.border : 'transparent',
-        },
+        // Tiefe 6 statt 4 (Simons Vorgabe): das Banner ist die groesste
+        // Flaeche auf dem Screen und die eine Handlung, die von hier aus
+        // wirklich weiterfuehrt - es darf schwerer wirken als die kleinen
+        // Kopfzeilen-Knoepfe.
+        kachel(dark, 6),
+        { backgroundColor: pressed ? theme.subtleFill : theme.cardBg },
       ]}
     >
       <Text numberOfLines={2} style={[styles.softLabel, { color: theme.text }]}>
@@ -954,6 +1150,11 @@ function Notice({ text, dark, onHide }: { text: string | null; dark: boolean; on
 
 const styles = StyleSheet.create({
   topBar: {
+    // Luft nach oben (2026-09-01, Simons Wunsch). ACHTUNG beim Nachjustieren:
+    // `Screen` setzt darueber schon `insets.top`, und der ist im Browser 0,
+    // auf einem iPhone mit Notch aber rund 47-59. Was hier steht, kommt also
+    // OBEN DRAUF - im Web wirkt es viel staerker als auf dem Geraet.
+    marginTop: SPACING.md,
     flexDirection: 'row',
     alignItems: 'center',
     gap: SPACING.sm,
@@ -973,17 +1174,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: SPACING.sm,
-    marginTop: SPACING.md,
+    // 2026-09-01: von SPACING.md auf lg - die drei Kopfzeilen-Elemente
+    // standen mit 12 Punkten zu dicht beieinander.
+    marginTop: SPACING.lg,
   },
-  progressValue: {
-    fontSize: FONT_SIZE.caption,
-    fontWeight: '800',
-    minWidth: 34,
-    textAlign: 'right',
-  },
+  // `progressValue` ist am 2026-09-01 weggefallen: die Prozentzahl liegt
+  // jetzt als `ProgressProzent` beim Balken selbst, damit Schrift und Farbe
+  // nicht an zwei Stellen gepflegt werden.
   pathBox: {
     flex: 1,
-    marginTop: SPACING.md,
+    marginTop: SPACING.lg,
   },
   pathBoxFrameless: {
     borderColor: 'transparent',
@@ -998,6 +1198,7 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
   },
+  bebildert: { position: 'absolute', left: 0 },
   sectionBar: {
     flexDirection: 'row',
     alignItems: 'stretch',
@@ -1007,26 +1208,27 @@ const styles = StyleSheet.create({
   sectionField: {
     flex: 1,
     justifyContent: 'center',
-    borderWidth: 1.5,
+    // Rahmen und Tiefe kommen aus `kachel()`.
     borderRadius: RADIUS.md,
     paddingHorizontal: SPACING.md,
     paddingVertical: SPACING.sm,
   },
   sectionLabel: {
     fontSize: FONT_SIZE.caption - 1,
-    fontWeight: '700',
+    ...schrift('700'),
     textTransform: 'uppercase',
     letterSpacing: 0.6,
   },
   sectionName: {
-    fontFamily: FONT_FAMILY.serif,
+    // ExtraBold statt Serife (2026-09-01): die grosse Zeile im
+    // "Du bist hier"-Kasten ist ein Status, keine Ueberschrift zum Lesen.
+    ...schrift('800'),
     fontSize: FONT_SIZE.bodyLg,
     lineHeight: LINE_HEIGHT.bodyLg,
   },
   toggleButton: {
     width: 56,
     height: 56,
-    borderWidth: 1.5,
     borderRadius: RADIUS.md,
     alignItems: 'center',
     justifyContent: 'center',
@@ -1075,33 +1277,50 @@ const styles = StyleSheet.create({
     gap: SPACING.xs,
     paddingHorizontal: SPACING.md,
   },
+  // Schleier fuer gesperrte Kategorie-Kacheln (2026-09-01). Eigener
+  // `borderRadius` statt `overflow: 'hidden'` auf `.node`: so bleibt die
+  // Druckkante (die beim Antippen ihre Breite aendert) unbeschnitten, waehrend
+  // der Schleier trotzdem der Pillenform folgt.
+  nodeVeil: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    borderRadius: RADIUS.pill,
+  },
   nodeTheme: {
     // Kleiner und leiser als eine Kategorie - ein Thema ist ein Teil von ihr,
     // keine gleichrangige Station.
     borderWidth: 1.5,
   },
   nodeLabelTheme: {
-    fontWeight: '700',
+    ...schrift('700'),
     fontSize: FONT_SIZE.small,
     textAlign: 'center',
     flexShrink: 1,
   },
   nodeLabel: {
-    fontWeight: '800',
+    ...schrift('800'),
     fontSize: FONT_SIZE.caption,
     textAlign: 'center',
     flexShrink: 1,
   },
   nodeLabelLead: {
-    fontFamily: FONT_FAMILY.serif,
+    // ExtraBold statt Serife (2026-09-01): die Beschriftung der grossen
+    // Pfad-Pille (Sprache/Kategorie) ist ein Status wie `sectionName` oben.
+    ...schrift('800'),
     fontSize: FONT_SIZE.bodyLg,
     textAlign: 'center',
   },
   actions: {
-    // Haelt die Knoepfe unten, seit die Box gedeckelt ist - der freiwerdende
-    // Platz liegt dadurch zwischen Pfad und Knoepfen und nicht darunter.
-    marginTop: 'auto',
-    paddingTop: SPACING.md,
+    // `marginTop: 'auto'` ist am 2026-09-01 weggefallen. Es schob den Knopf
+    // an die Unterkante und liess den ganzen Rest als Luecke zwischen Pfad
+    // und Knopf stehen - dieselbe Luecke, die Simon als "riesig" beschrieb.
+    // Jetzt folgt der Knopf direkt auf den Pfad, und weil die Box ueber
+    // `flex: 1` waechst, bleibt kein Rest mehr uebrig, den man verschieben
+    // muesste.
+    marginTop: SPACING.lg,
     marginBottom: SPACING.md,
   },
   softButton: {
@@ -1111,22 +1330,20 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     maxWidth: '100%',
     borderRadius: RADIUS.pill,
-    borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: SPACING.lg,
     paddingHorizontal: SPACING.xl,
     minHeight: 76,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowRadius: 18,
-    shadowOpacity: 0.12,
-    elevation: 5,
+    // Rahmen und Tiefe kommen aus `kachel()`. Der weiche graue Schatten
+    // (Y4/Blur18/12%) ist am 2026-09-01 ersatzlos weg: auf dem Off-White
+    // war er kaum zu sehen, und auf Android machte `elevation: 5` daraus
+    // einen grauen Saum.
   },
   softLabel: {
     fontSize: FONT_SIZE.bodyLg,
     lineHeight: LINE_HEIGHT.bodyLg,
-    fontWeight: '700',
+    ...schrift('700'),
     textAlign: 'center',
   },
   notice: {
@@ -1143,7 +1360,7 @@ const styles = StyleSheet.create({
   },
   noticeText: {
     fontSize: FONT_SIZE.small,
-    fontWeight: '700',
+    ...schrift('700'),
     textAlign: 'center',
   },
 });

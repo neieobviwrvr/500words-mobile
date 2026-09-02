@@ -53,7 +53,14 @@ SAETZE = [
       hinweis=None, neu=[], lookup=False, ansprache=None,
       de_konzepte=[('kein_problem', ['kein problem', 'macht nichts'])],
       konzepte=[('macht_nichts', ['没关系'])]),
- dict(sz='hoeflichkeit', de='Ja.', zh='对。', py='duì.',
+ # `de_zh` ueberschreibt den deutschen Text NUR auf der chinesischen Zeile
+ # (Simon, 2026-09-01): 对 heisst woertlich "korrekt". Es als "Ja." zu
+ # beschriften lehrt eine Gleichsetzung, die es nicht gibt - besonders in
+ # einer Zuordnungsuebung. Die deutsche/schwedische/spanische Zeile "Ja."
+ # bleibt unberuehrt, dort stimmt sie.
+ # Bewusst in Kauf genommen: fuer Chinesisch deckt der Grundwortschatz
+ # damit kein "ja" mehr ab. Der Kulturhinweis sagt genau das.
+ dict(sz='hoeflichkeit', de='Ja.', de_zh='Korrekt.', zh='对。', py='duì.',
       hinweis='Chinesisch hat kein allgemeines „ja". Man bestätigt mit 对 („richtig") oder wiederholt das Verb der Frage.',
       neu=['对'], lookup=False, ansprache=None,
       de_konzepte=[('ja', ['ja'])],

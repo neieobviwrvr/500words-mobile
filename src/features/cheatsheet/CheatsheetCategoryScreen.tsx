@@ -9,7 +9,7 @@ import { loadExerciseSentences } from '../../data/phrasebookContent';
 import { Phrase, phraseLanguageId, toPhrase } from '../../data/cheatsheetContent';
 import { speakSentence } from '../../features/tts/speak';
 import { PhraseCard } from './PhraseCard';
-import { getTheme, ACCENT_BLUE, ACCENT_GREEN } from '../../theme/tokens';
+import { getTheme, ACCENT_BLUE, ACCENT_GREEN, schrift } from '../../theme/tokens';
 
 // Cheat-Sheet-Kategorie-Screen: alle Saetze EINER Kategorie am Stueck, mit
 // Vorlesen/Speichern pro Satz - seit 2026-08-07 auf echtem Content statt
@@ -98,7 +98,7 @@ export function CheatsheetCategoryScreen({ groupId }: { groupId: string }) {
                 accessibilityState={{ checked: zeichenEin }}
                 style={[styles.actionBtn, { borderColor: theme.border, backgroundColor: theme.cardBg }]}
               >
-                <Text style={{ color: theme.text, fontWeight: '700', fontSize: 11 }}>
+                <Text style={{ color: theme.text, ...schrift('700'), fontSize: 11 }}>
                   Zeichen {zeichenEin ? 'aus' : 'ein'}
                 </Text>
               </Pressable>
@@ -110,7 +110,7 @@ export function CheatsheetCategoryScreen({ groupId }: { groupId: string }) {
               accessibilityState={{ checked: darkMode }}
               style={[styles.actionBtn, { borderColor: theme.border, backgroundColor: darkMode ? theme.modeBg : theme.cardBg }]}
             >
-              <Text style={{ color: theme.text, fontWeight: '700', fontSize: 11 }}>Darkmode</Text>
+              <Text style={{ color: theme.text, ...schrift('700'), fontSize: 11 }}>Darkmode</Text>
             </Pressable>
             <Pressable
               accessibilityRole="button"
@@ -119,7 +119,7 @@ export function CheatsheetCategoryScreen({ groupId }: { groupId: string }) {
               accessibilityState={{ disabled: true }}
               style={[styles.actionBtn, { borderColor: theme.border }]}
             >
-              <Text style={{ color: theme.text, fontWeight: '700', fontSize: 11 }}>Teilen + Drucken</Text>
+              <Text style={{ color: theme.text, ...schrift('700'), fontSize: 11 }}>Teilen + Drucken</Text>
             </Pressable>
           </View>
         </View>
@@ -178,16 +178,16 @@ const styles = StyleSheet.create({
   headerLeft: { flexDirection: 'row', alignItems: 'center', gap: 10, flexShrink: 1 },
   backBtn: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
   backGlyph: { fontSize: 26 },
-  title: { fontWeight: '800', fontSize: 19, lineHeight: 22 },
+  title: { ...schrift('800'), fontSize: 19, lineHeight: 22 },
   headerActions: { gap: 6 },
   actionBtn: { paddingVertical: 7, paddingHorizontal: 10, borderRadius: 8, borderWidth: 1.5 },
-  count: { fontSize: 13, fontWeight: '500' },
+  count: { fontSize: 13, ...schrift('500') },
   centerBox: { alignItems: 'center', justifyContent: 'center', paddingVertical: 40 },
   scrollContent: { paddingHorizontal: 16, paddingBottom: 18, gap: 10 },
   card: { borderWidth: 1.5, borderRadius: 14, padding: 14, flexDirection: 'row', justifyContent: 'space-between', gap: 10, alignItems: 'center' },
   cardBody: { flex: 1, minWidth: 0, gap: 3 },
-  sentenceText: { fontSize: 15, fontWeight: '700' },
-  de: { fontSize: 13, fontWeight: '500' },
+  sentenceText: { fontSize: 15, ...schrift('700') },
+  de: { fontSize: 13, ...schrift('500') },
   cardActions: { gap: 6, flexShrink: 0 },
   smallBtn: { paddingVertical: 7, paddingHorizontal: 10, borderRadius: 8, borderWidth: 1.5 },
 });

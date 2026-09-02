@@ -6,6 +6,7 @@ import { useAppState } from '../src/state/AppState';
 import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import { File } from 'expo-file-system';
 import { useSpeechmatics } from '../src/features/stt/useSpeechmatics';
+import { schrift } from '../src/theme/tokens';
 import { useSttRecorder } from '../src/features/stt/useSttRecorder';
 import { supabase } from '../src/lib/supabase';
 import { evaluateConcepts, type AcceptedConcepts, type EvaluationResult } from '../src/features/evaluation/evaluateConcepts';
@@ -447,7 +448,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 18,
-    fontWeight: '600',
+    ...schrift('600'),
   },
   row: {
     flexDirection: 'row',
@@ -462,11 +463,11 @@ const styles = StyleSheet.create({
   },
   correct: {
     color: '#1e8449',
-    fontWeight: '600',
+    ...schrift('600'),
   },
   survived: {
     color: '#b7950b',
-    fontWeight: '600',
+    ...schrift('600'),
   },
   transcript: {
     fontSize: 16,
@@ -485,7 +486,7 @@ const styles = StyleSheet.create({
   },
   langChipTextActive: {
     color: '#fff',
-    fontWeight: '600',
+    ...schrift('600'),
   },
   searchInput: {
     borderWidth: 1,

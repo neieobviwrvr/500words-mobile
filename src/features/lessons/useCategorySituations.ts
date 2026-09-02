@@ -60,6 +60,13 @@ export type CategorySituations = {
    * Nicht theoretisch - im Abo lassen sich Kategorien abwaehlen.
    */
   recentCategoryIds: string[];
+  /**
+   * Zuletzt geuebte SITUATION, juengste zuerst - dieselbe Rechnung wie
+   * `recentCategoryIds`, nur eine Ebene feiner. Der Startscreen zeigt damit
+   * nicht nur die Kategorie, sondern die Stelle darin (Simons Wunsch
+   * 2026-08-31: "wo man sich gerade befindet").
+   */
+  recentSituations: { categoryId: string; scenario: string }[];
   offline: boolean;
 };
 
@@ -67,6 +74,7 @@ const EMPTY: CategorySituations = {
   loading: true,
   byCategory: {},
   recentCategoryIds: [],
+  recentSituations: [],
   offline: false,
 };
 
@@ -97,6 +105,7 @@ export function useCategorySituations(languageId: string): CategorySituations {
           const index: Record<string, Record<string, Situation>> = {};
           // Kategorie -> juengste Bewertung darin.
           const lastReviewPerCategory: Record<string, number> = {};
+          const lastReviewPerSituation: Record<string, number> = {};
 
           // Geliehene Situationen tauchen in BEIDEN Reihen auf - in ihrer
           // eigenen Kategorie und in der, die sie leiht. Derselbe Satz,
@@ -124,6 +133,10 @@ export function useCategorySituations(languageId: string): CategorySituations {
               const at = card.last_review ? new Date(card.last_review).getTime() : 0;
               if (at > (lastReviewPerCategory[zielKategorie] ?? 0)) {
                 lastReviewPerCategory[zielKategorie] = at;
+              }
+              const sitKey = `${zielKategorie}:${sentence.scenario}`;
+              if (at > (lastReviewPerSituation[sitKey] ?? 0)) {
+                lastReviewPerSituation[sitKey] = at;
               }
             }
           }
@@ -167,7 +180,17 @@ export function useCategorySituations(languageId: string): CategorySituations {
             .sort((a, b) => b[1] - a[1])
             .map(([categoryId]) => categoryId);
 
-          setState({ loading: false, byCategory, recentCategoryIds, offline: fromCache });
+          // Nur Eintraege mit echtem Zeitstempel: eine 0 hiesse "Karte
+          // angelegt, nie beantwortet" und waere keine besuchte Stelle.
+          const recentSituations = Object.entries(lastReviewPerSituation)
+            .filter(([, at]) => at > 0)
+            .sort((a, b) => b[1] - a[1])
+            .map(([key]) => {
+              const trenner = key.indexOf(':');
+              return { categoryId: key.slice(0, trenner), scenario: key.slice(trenner + 1) };
+            });
+
+          setState({ loading: false, byCategory, recentCategoryIds, recentSituations, offline: fromCache });
         } catch {
           // Ein leerer Katalog ist besser als ein Screen, der abstuerzt - der
           // Nutzer sieht dann die Kategorien ohne Situationen.

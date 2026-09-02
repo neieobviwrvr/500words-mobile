@@ -10,7 +10,8 @@ import {
   RADIUS,
   SPACING,
   FONT_SIZE,
-  LINE_HEIGHT,
+  LINE_HEIGHT, schrift,
+  kachel,
 } from '../../src/theme/tokens';
 
 // Auswahl der Begleitfigur.
@@ -57,11 +58,14 @@ export default function CompanionScreen() {
             accessibilityLabel={`${m.name}. ${m.blurb}`}
             style={({ pressed }) => [
               styles.card,
+              kachel(darkMode),
               {
                 backgroundColor: theme.cardBg,
-                borderColor: selected ? m.accentColor : theme.border,
-                borderWidth: selected ? 2 : 1,
-                padding: selected ? SPACING.lg - 1 : SPACING.lg,
+                // Die gewaehlte Karte traegt die Tiefe in IHRER Farbe -
+                // ein oranger Rahmen mit grauem Fuss saehe aus wie ein
+                // Fehler (gleiche Regel wie bei den Sprachkarten auf O1).
+                ...(selected ? { borderColor: m.accentColor } : null),
+                padding: SPACING.lg,
                 opacity: pressed ? 0.7 : 1,
               },
             ]}
@@ -93,7 +97,7 @@ const styles = StyleSheet.create({
   name: {
     fontSize: FONT_SIZE.bodyLg,
     lineHeight: LINE_HEIGHT.bodyLg,
-    fontWeight: '800',
+    ...schrift('800'),
   },
   blurb: {
     fontSize: FONT_SIZE.small,

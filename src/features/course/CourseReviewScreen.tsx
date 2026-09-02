@@ -6,7 +6,7 @@ import { useAppState } from '../../state/AppState';
 import { getLanguage } from '../../data/languages';
 import { LessonScreen, UebungsSchritt } from './LessonScreen';
 import { Kartenart, useFaelligeKarten } from './useFaelligeKarten';
-import { FONT_FAMILY, FONT_SIZE, getTheme, LINE_HEIGHT, SPACING } from '../../theme/tokens';
+import { FONT_SIZE, getTheme, LINE_HEIGHT, SPACING, schrift } from '../../theme/tokens';
 
 // Wiederholungs-Sitzung des gefuehrten Kurses (2026-08-21).
 //
@@ -110,7 +110,8 @@ export function CourseReviewScreen({ modus }: { modus?: Kartenart }) {
 const styles = StyleSheet.create({
   mitte: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: SPACING.md, paddingHorizontal: SPACING.xl },
   titel: {
-    fontFamily: FONT_FAMILY.serif,
+    // ExtraBold statt Serife (2026-09-01).
+    ...schrift('800'),
     fontSize: FONT_SIZE.h2,
     lineHeight: LINE_HEIGHT.h2,
     textAlign: 'center',

@@ -7,8 +7,9 @@ import {
   RADIUS,
   SPACING,
   FONT_SIZE,
-  FONT_FAMILY,
   LINE_HEIGHT,
+  schrift,
+  kachel,
 } from '../theme/tokens';
 
 // Auswahlfeld im Babbel-Stil: eine ruhige Zeile mit Pfeil, die eine Liste
@@ -69,9 +70,9 @@ export function Dropdown({
         style={({ pressed }) => [
           styles.field,
           compact && styles.fieldCompact,
+          kachel(dark),
           {
             backgroundColor: theme.cardBg,
-            borderColor: theme.border,
             opacity: pressed ? 0.7 : 1,
           },
         ]}
@@ -144,7 +145,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderWidth: 1,
+    // Rahmen und Tiefe kommen aus `kachel()`.
     borderRadius: RADIUS.md,
     paddingHorizontal: SPACING.lg,
     minHeight: 62,
@@ -157,12 +158,12 @@ const styles = StyleSheet.create({
   fieldValue: {
     fontSize: FONT_SIZE.bodyLg,
     lineHeight: LINE_HEIGHT.bodyLg,
-    fontWeight: '700',
+    ...schrift('700'),
   },
   fieldValueCompact: {
     fontSize: FONT_SIZE.body,
     lineHeight: LINE_HEIGHT.body,
-    fontWeight: '700',
+    ...schrift('700'),
   },
   backdrop: {
     flex: 1,
@@ -177,7 +178,8 @@ const styles = StyleSheet.create({
     paddingBottom: SPACING.xxxl,
   },
   sheetTitle: {
-    fontFamily: FONT_FAMILY.serif,
+    // ExtraBold statt Serife (2026-09-01): Ueberschrift des Auswahl-Sheets.
+    ...schrift('800'),
     fontSize: FONT_SIZE.h2,
     lineHeight: LINE_HEIGHT.h2,
     marginBottom: SPACING.lg,
@@ -193,7 +195,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: FONT_SIZE.bodyLg,
     lineHeight: LINE_HEIGHT.bodyLg,
-    fontWeight: '700',
+    ...schrift('700'),
   },
   optionNote: {
     fontSize: FONT_SIZE.caption,

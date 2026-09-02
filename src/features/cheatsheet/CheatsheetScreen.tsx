@@ -18,12 +18,12 @@ import { SuchFeld } from './SuchFeld';
 import {
   getTheme,
   ACCENT_BLUE,
+  FLOATING_SHADOW,
+  FLOATING_BORDER,
   RADIUS,
   SPACING,
   FONT_SIZE,
-  FONT_FAMILY,
-  LINE_HEIGHT,
-} from '../../theme/tokens';
+  LINE_HEIGHT, schrift } from '../../theme/tokens';
 
 // S6 - Survival-Notizen (umgebaut 2026-08-22 nach Simons drei Vorlagen).
 //
@@ -206,7 +206,7 @@ export function CheatsheetScreen() {
         </Pressable>
         <Text style={[styles.title, { color: theme.text }]}>Survival-Notizen</Text>
         <View style={styles.headerSide}>
-          <HeaderMenu dark={darkMode} />
+          <HeaderMenu dark={darkMode} flach />
         </View>
       </View>
 
@@ -233,7 +233,10 @@ export function CheatsheetScreen() {
             accessibilityState={{ expanded: sucheOffen }}
             style={({ pressed }) => [
               styles.lupe,
-              { borderColor: theme.border, backgroundColor: theme.cardBg, opacity: pressed ? 0.7 : 1 },
+              // "Floating Card" statt 3D-Kante (2026-09-02, nur hier): duenner
+              // heller Rahmen plus weicher Schatten statt `kachel()`.
+              { borderWidth: 1, borderColor: FLOATING_BORDER, ...FLOATING_SHADOW },
+              { backgroundColor: theme.cardBg, opacity: pressed ? 0.7 : 1 },
             ]}
           >
             {/* Bleibt immer die Lupe (Nutzer-Wunsch: "der 'Suchen'-Button mit
@@ -252,7 +255,20 @@ export function CheatsheetScreen() {
               </Text>
             ) : null}
 
-            <View style={[styles.kasten, { borderColor: theme.border }]}>
+            {/* Zwei Ebenen, nicht eine: `overflow: 'hidden'` (fuer die
+                abgerundete Scroll-Flaeche darin) und ein Schlagschatten
+                vertragen sich nicht auf derselben View - der Schatten wird
+                mit abgeschnitten. Die AEUSSERE traegt Rahmen und Schatten
+                ohne Beschneidung, die INNERE (`kasten`) beschneidet wie
+                bisher. */}
+            <View
+              style={[
+                styles.kastenAussen,
+                { borderWidth: 1, borderColor: FLOATING_BORDER, ...FLOATING_SHADOW },
+                { backgroundColor: theme.cardBg },
+              ]}
+            >
+            <View style={styles.kasten}>
               {loading ? (
                 <View style={styles.mitte}>
                   <ActivityIndicator color={ACCENT_BLUE} />
@@ -305,14 +321,27 @@ export function CheatsheetScreen() {
                                 style={[
                                   styles.marke,
                                   {
-                                    borderColor: an ? ACCENT_BLUE : theme.border,
-                                    backgroundColor: an ? theme.modeBg : theme.cardBg,
+                                    // Flach statt Rahmen (2026-09-02): der
+                                    // Unterschied liegt allein in der
+                                    // Fuellung. Unausgewaehlt = neutrales
+                                    // `theme.subtleFill` - dasselbe Beige-
+                                    // Grau, das die Chips auf den Lernkarten
+                                    // (Uebersetzung/Hilfe/Speichern) schon
+                                    // benutzen (Korrektur 2026-09-02: das
+                                    // Blaugrau von `theme.modeBg` davor kam
+                                    // bei Simon nicht gut an). Ausgewaehlt
+                                    // bleibt kraeftiges Voll-Blau mit
+                                    // weisser Schrift.
+                                    backgroundColor: an ? ACCENT_BLUE : theme.subtleFill,
                                   },
                                 ]}
                               >
                                 <Text
                                   numberOfLines={1}
-                                  style={[styles.markeText, { color: an ? ACCENT_BLUE : theme.text }]}
+                                  // Weiss auf dem vollen Blau, sonst waere
+                                  // der Text auf der starken Fuellung kaum
+                                  // lesbar.
+                                  style={[styles.markeText, { color: an ? '#FFFFFF' : theme.text }]}
                                 >
                                   {sc.label}
                                 </Text>
@@ -339,8 +368,8 @@ export function CheatsheetScreen() {
                   accessibilityState={{ disabled: !kannSuchen }}
                   style={({ pressed }) => [
                     styles.suchKnopf,
+                    { borderWidth: 1, borderColor: FLOATING_BORDER, ...FLOATING_SHADOW },
                     {
-                      borderColor: theme.text,
                       backgroundColor: theme.cardBg,
                       opacity: !kannSuchen ? 0.45 : pressed ? 0.7 : 1,
                     },
@@ -352,8 +381,11 @@ export function CheatsheetScreen() {
                 </Pressable>
               </View>
             </View>
+            </View>
 
-            <Text style={[styles.abschnitt, { color: theme.text }]}>Gespeicherte Sätze</Text>
+            <Text style={[styles.abschnitt, styles.abschnittNachFilter, { color: theme.text }]}>
+              Gespeicherte Sätze
+            </Text>
           </>
         ) : null}
 
@@ -372,6 +404,10 @@ export function CheatsheetScreen() {
                   phrase={p}
                   dark={darkMode}
                   saved={!!saved[p.id]}
+                  // Kein "Wortarten-Farben zeigen" hier (2026-09-02, Simons
+                  // Wunsch) - Kategorie-Ansicht und Suchergebnisse behalten
+                  // ihn unveraendert.
+                  zeigeFarbenKnopf={false}
                   onToggleSave={() => toggleSaved(p.id, p)}
                   onSpeak={() =>
                     // Sprache aus der Satz-ID ableiten - ohne sie liest die
@@ -404,39 +440,64 @@ const styles = StyleSheet.create({
   title: {
     flex: 1,
     textAlign: 'center',
-    fontFamily: FONT_FAMILY.serif,
+    // ExtraBold statt Serife (2026-09-01).
+    ...schrift('800'),
     fontSize: FONT_SIZE.title,
     lineHeight: LINE_HEIGHT.title,
   },
   scroll: { paddingHorizontal: SPACING.lg, paddingBottom: SPACING.xl, gap: SPACING.sm },
 
   suchZeile: { flexDirection: 'row', alignItems: 'center', gap: SPACING.sm, minHeight: 40 },
-  abschnitt: { flex: 1, fontSize: FONT_SIZE.body, fontWeight: '800' },
+  abschnitt: { flex: 1, fontSize: FONT_SIZE.body, ...schrift('800') },
+  // Nur fuer die Ueberschrift NACH dem Filterkasten (2026-09-02, "Gesetz
+  // der Naehe"): die andere Verwendung von `abschnitt` sitzt inline in der
+  // Kopfzeile neben der Lupe und darf sich nicht verschieben. `scroll`s
+  // eigenes `gap` (8) reichte allein nicht, um Filterbereich und Ergebnisse
+  // sichtbar zu trennen.
+  abschnittNachFilter: { marginTop: SPACING.xl },
   lupe: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 6,
-    borderWidth: 1.5,
+    // Rahmen und Schatten kommen aus `FLOATING_BORDER`/`FLOATING_SHADOW` an
+    // der Verwendungsstelle.
     borderRadius: RADIUS.pill,
     paddingVertical: 8,
     paddingHorizontal: SPACING.md,
     flexShrink: 0,
   },
-  lupeText: { fontSize: FONT_SIZE.caption, fontWeight: '700' },
+  lupeText: { fontSize: FONT_SIZE.caption, ...schrift('700') },
 
-  offline: { fontSize: FONT_SIZE.caption, fontWeight: '700' },
-  kasten: { borderWidth: 1.5, borderRadius: RADIUS.md, overflow: 'hidden' },
+  offline: { fontSize: FONT_SIZE.caption, ...schrift('700') },
+  // Traegt Rahmen und Schatten (siehe Verwendungsstelle), OHNE
+  // `overflow: 'hidden'` - das wuerde den Schatten mit abschneiden. Aus dem
+  // "Container stark, innere Elemente schwach"-Rezept vom Vortag ist damit
+  // am 2026-09-02 "sanfter Schwebe-Schatten statt harter 3D-Kante" geworden
+  // - Simons ausdruecklicher naechster Schritt, siehe `FLOATING_SHADOW` in
+  // tokens.ts fuer den Vorbehalt dazu.
+  kastenAussen: { borderRadius: RADIUS.md },
+  // Innere Ebene: beschneidet die abgerundete Scroll-Flaeche, traegt selbst
+  // keinen Rahmen und keinen Schatten (die liegen auf `kastenAussen`).
+  kasten: { borderRadius: RADIUS.md, overflow: 'hidden' },
   // Feste Hoehe, damit der Fuss sichtbar bleibt und die Liste darunter nicht
   // aus dem Bild rutscht.
   kastenScroll: { maxHeight: 260 },
   kastenInhalt: { padding: SPACING.md, gap: SPACING.md },
   mitte: { alignItems: 'center', justifyContent: 'center', paddingVertical: SPACING.xl },
   gruppe: { gap: SPACING.sm },
-  gruppenTitel: { fontSize: FONT_SIZE.caption, fontWeight: '800' },
-  leer: { fontSize: FONT_SIZE.caption, fontStyle: 'italic' },
+  gruppenTitel: { fontSize: FONT_SIZE.caption, ...schrift('800') },
+  // Fehlte bisher komplett, gleiche Luecke wie an mehreren anderen Stellen
+  // in dieser Sitzung: keine Schriftfamilie, fiel auf die Systemschrift
+  // zurueck.
+  leer: { ...schrift('500'), fontSize: FONT_SIZE.caption, fontStyle: 'italic' },
   marken: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACING.sm },
   marke: {
-    borderWidth: 1.5,
+    // Chips sind bewusst FLACH: kein Rahmen, kein Schatten - der Unterschied
+    // zwischen ausgewaehlt und nicht liegt allein in der Fuellfarbe (siehe
+    // Verwendungsstelle). Gilt unveraendert auch nach dem Wechsel von harter
+    // 3D-Kante zu weichem Schwebe-Schatten beim Rest des Screens
+    // (2026-09-02) - Simons ausdrueckliche Vorgabe beide Male: die Chips
+    // duerfen weder das eine noch das andere tragen.
     borderRadius: RADIUS.pill,
     paddingVertical: 6,
     paddingHorizontal: SPACING.md,
@@ -444,17 +505,23 @@ const styles = StyleSheet.create({
     // Namen duerfen schmaler sein, lange bekommen mehr.
     maxWidth: '100%',
   },
-  markeText: { fontSize: FONT_SIZE.caption, fontWeight: '700' },
+  markeText: { fontSize: FONT_SIZE.caption, ...schrift('700') },
   kastenFuss: { borderTopWidth: 1, padding: SPACING.md, alignItems: 'center' },
   suchKnopf: {
-    borderWidth: 1.5,
+    // Rahmen und Schatten kommen aus `FLOATING_BORDER`/`FLOATING_SHADOW` an
+    // der Verwendungsstelle.
     borderRadius: RADIUS.pill,
     paddingVertical: 8,
     paddingHorizontal: SPACING.xl,
   },
-  suchKnopfText: { fontSize: FONT_SIZE.caption, fontWeight: '800' },
+  suchKnopfText: { fontSize: FONT_SIZE.caption, ...schrift('800') },
 
-  leerHinweis: { fontSize: FONT_SIZE.caption, lineHeight: LINE_HEIGHT.caption, paddingTop: SPACING.md },
+  leerHinweis: {
+    ...schrift('500'),
+    fontSize: FONT_SIZE.caption,
+    lineHeight: LINE_HEIGHT.caption,
+    paddingTop: SPACING.md,
+  },
   gemerktGruppe: { gap: SPACING.sm },
-  gemerktTitel: { fontSize: FONT_SIZE.caption, fontWeight: '800', marginTop: SPACING.sm },
+  gemerktTitel: { fontSize: FONT_SIZE.caption, ...schrift('800'), marginTop: SPACING.sm },
 });

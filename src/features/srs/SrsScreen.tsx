@@ -5,7 +5,7 @@ import { router } from 'expo-router';
 import { useAppState } from '../../state/AppState';
 import { CATEGORIES } from '../../data/categories';
 import { useFaelligeKarten } from '../course/useFaelligeKarten';
-import { getTheme, ACCENT_BLUE, ACCENT_PREMIUM } from '../../theme/tokens';
+import { getTheme, ACCENT_BLUE, ACCENT_PREMIUM, schrift } from '../../theme/tokens';
 
 // S5 - SRS-/Wiederholen-Auswahl-Screen.
 // 2026-08-06 aus aktualisiertem Design-Prototyp umgebaut: kein Dropdown mit
@@ -145,14 +145,14 @@ const styles = StyleSheet.create({
   backBtn: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
   backGlyph: { fontSize: 26 },
   header: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 24 },
-  title: { fontWeight: '800', fontSize: 22 },
+  title: { ...schrift('800'), fontSize: 22 },
   modeList: { gap: 12 },
   modeButton: { padding: 16, paddingVertical: 18, borderRadius: 16, alignItems: 'center', gap: 4 },
-  modeButtonText: { color: ACCENT_BLUE, fontWeight: '800', fontSize: 16, textAlign: 'center' },
-  modeSubtext: { fontWeight: '600', fontSize: 11 },
+  modeButtonText: { color: ACCENT_BLUE, ...schrift('800'), fontSize: 16, textAlign: 'center' },
+  modeSubtext: { ...schrift('600'), fontSize: 11 },
   premiumButton: { padding: 16, paddingVertical: 18, borderRadius: 16, borderWidth: 1.5, alignItems: 'center', gap: 4 },
   premiumRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   premiumBadge: { backgroundColor: ACCENT_PREMIUM, paddingVertical: 3, paddingHorizontal: 7, borderRadius: 100 },
-  premiumBadgeText: { color: '#fff', fontWeight: '800', fontSize: 9 },
+  premiumBadgeText: { color: '#fff', ...schrift('800'), fontSize: 9 },
   notice: { padding: 12, borderRadius: 12 },
 });

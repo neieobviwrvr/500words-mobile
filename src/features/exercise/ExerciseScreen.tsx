@@ -21,7 +21,7 @@ import { useSpeechmatics } from '../../features/stt/useSpeechmatics';
 import { useSttRecorder } from '../../features/stt/useSttRecorder';
 import { newCard, reviewCard, isDue } from '../../features/srs/fsrsEngine';
 import { cardKey, loadAllCards, saveCard } from '../../features/srs/srsStorage';
-import { getTheme, ACCENT_BLUE, ACCENT_GREEN } from '../../theme/tokens';
+import { getTheme, ACCENT_BLUE, ACCENT_GREEN, schrift } from '../../theme/tokens';
 
 // S4 - Uebungs-Screen (generisch fuer Woerter/Saetze/Konversation/SRS).
 // Seit 2026-08-05 mit echtem Supabase-Content (phrasebook_master /
@@ -683,7 +683,7 @@ export function ExerciseScreen({
                 <Text
                   style={{
                     color: brauchtUnterstuetzung ? '#FFFFFF' : theme.sub,
-                    fontWeight: '700',
+                    ...schrift('700'),
                     fontSize: 12,
                   }}
                 >
@@ -715,7 +715,7 @@ export function ExerciseScreen({
               accessibilityState={{ disabled: true }}
               style={[styles.ttsButton, { borderColor: theme.border }]}
             >
-              <Text style={{ color: theme.sub, fontWeight: '700', fontSize: 12 }}>▶ Vorlesen</Text>
+              <Text style={{ color: theme.sub, ...schrift('700'), fontSize: 12 }}>▶ Vorlesen</Text>
             </Pressable>
             {/* Merken mitten in der Uebung (Nutzer-Wunsch 2026-08-21): der
                 Satz landet sofort unter "Gespeicherte Saetze" im Survival.
@@ -748,7 +748,7 @@ export function ExerciseScreen({
                 size={16}
                 color={istGemerkt ? ACCENT_GREEN : theme.sub}
               />
-              <Text style={{ color: istGemerkt ? ACCENT_GREEN : theme.sub, fontWeight: '700', fontSize: 12 }}>
+              <Text style={{ color: istGemerkt ? ACCENT_GREEN : theme.sub, ...schrift('700'), fontSize: 12 }}>
                 {istGemerkt ? 'Gemerkt' : 'Speichern'}
               </Text>
             </Pressable>
@@ -789,19 +789,19 @@ export function ExerciseScreen({
           </View>
           {!!transcript && <Text style={[styles.transcript, { color: theme.text }]}>Erkannt: „{transcript}"</Text>}
           {!!languageMismatch && (
-            <Text style={{ color: '#D9564F', fontSize: 12, fontWeight: '700', marginBottom: 4 }}>
+            <Text style={{ color: '#D9564F', fontSize: 12, ...schrift('700'), marginBottom: 4 }}>
               ⚠️ Die Spracherkennung hat das als „{languageMismatch}" statt „{language.sttLanguage}" erkannt - das zählt nicht als
               Versuch. Bitte nochmal einsprechen (oder Antwort tippen).
             </Text>
           )}
           {promptEchoSuspected && (
-            <Text style={{ color: '#D9564F', fontSize: 12, fontWeight: '700', marginBottom: 4 }}>
+            <Text style={{ color: '#D9564F', fontSize: 12, ...schrift('700'), marginBottom: 4 }}>
               ⚠️ Die Aufnahme war zu kurz, um wirklich ausgewertet zu werden - das zählt nicht als Versuch. Bitte nochmal
               einsprechen (etwas deutlicher/länger) oder Antwort tippen.
             </Text>
           )}
           {garbageTranscriptSuspected && (
-            <Text style={{ color: '#D9564F', fontSize: 12, fontWeight: '700', marginBottom: 4 }}>
+            <Text style={{ color: '#D9564F', fontSize: 12, ...schrift('700'), marginBottom: 4 }}>
               ⚠️ Das hat technisch nicht sauber geklappt - das zählt nicht als Versuch. Bitte nochmal einsprechen oder
               Antwort tippen.
             </Text>
@@ -833,7 +833,7 @@ export function ExerciseScreen({
 
           {feedback && (
             <View style={[styles.feedback, { backgroundColor: FEEDBACK_MAP[feedback.tier].bg }]}>
-              <Text style={{ color: FEEDBACK_MAP[feedback.tier].color, fontWeight: '700', fontSize: 13 }}>
+              <Text style={{ color: FEEDBACK_MAP[feedback.tier].color, ...schrift('700'), fontSize: 13 }}>
                 {FEEDBACK_MAP[feedback.tier].msg}
               </Text>
               {feedback.missed.length > 0 && (
@@ -880,7 +880,7 @@ export function ExerciseScreen({
                     ]}
                   >
                     <Ionicons name="close-circle-outline" size={16} color={theme.sub} />
-                    <Text style={{ color: theme.sub, fontWeight: '700', fontSize: 13 }}>Überspringen</Text>
+                    <Text style={{ color: theme.sub, ...schrift('700'), fontSize: 13 }}>Überspringen</Text>
                   </Pressable>
 
                   <Pressable
@@ -945,12 +945,12 @@ const styles = StyleSheet.create({
   header: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 6 },
   backBtn: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
   backGlyph: { fontSize: 26 },
-  title: { fontWeight: '800', fontSize: 16, flex: 1 },
-  offlineBadge: { fontSize: 11, fontWeight: '700', color: '#9A5A1E' },
+  title: { ...schrift('800'), fontSize: 16, flex: 1 },
+  offlineBadge: { fontSize: 11, ...schrift('700'), color: '#9A5A1E' },
   centerBox: { alignItems: 'center', justifyContent: 'center', paddingVertical: 60 },
-  motivationText: { fontSize: 20, fontWeight: '800', textAlign: 'center' },
+  motivationText: { fontSize: 20, ...schrift('800'), textAlign: 'center' },
   fallbackHint: { fontSize: 12, fontStyle: 'italic', marginBottom: 10 },
-  cardLabel: { fontWeight: '700', fontSize: 12, marginBottom: 16 },
+  cardLabel: { ...schrift('700'), fontSize: 12, marginBottom: 16 },
   sentenceCard: { borderWidth: 1.5, borderRadius: 16, padding: 18, marginBottom: 14, gap: 10 },
   kartenAktionen: { flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' },
   merken: {
@@ -959,15 +959,15 @@ const styles = StyleSheet.create({
   },
   hinweis: { borderLeftWidth: 2, paddingLeft: 10 },
   hinweisText: { fontSize: 12, lineHeight: 17, fontStyle: 'italic' },
-  sentenceText: { fontSize: 19, fontWeight: '700', lineHeight: 26 },
+  sentenceText: { fontSize: 19, ...schrift('700'), lineHeight: 26 },
   // `gloss` traegt seit dem 2026-08-22 nichts mehr - die deutsche Zeile ist
   // zur Aufgabe aufgestiegen und nutzt `sentenceText`. Bleibt stehen, falls
   // die Karte spaeter wieder eine Nebenzeile bekommt (etwa die Zeichen unter
   // dem Pinyin).
   gloss: { fontSize: 13, fontStyle: 'italic' },
   /** Die Loesung: gross wie die Aufgabe, aber farbig abgesetzt. */
-  loesung: { fontSize: 20, fontWeight: '700', marginTop: 6 },
-  neuHinweis: { fontSize: 12, fontWeight: '700', marginTop: 8 },
+  loesung: { fontSize: 20, ...schrift('700'), marginTop: 6 },
+  neuHinweis: { fontSize: 12, ...schrift('700'), marginTop: 8 },
   zeigen: {
     alignSelf: 'flex-start',
     marginTop: 10,
@@ -979,8 +979,8 @@ const styles = StyleSheet.create({
   ttsButton: { paddingVertical: 8, paddingHorizontal: 14, borderRadius: 100, borderWidth: 1.5 },
   sttRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 8 },
   micButton: { flex: 1, paddingVertical: 14, borderRadius: 100, alignItems: 'center' },
-  micButtonText: { color: '#fff', fontWeight: '800', fontSize: 15 },
-  transcript: { fontSize: 14, fontWeight: '600', marginBottom: 8 },
+  micButtonText: { color: '#fff', ...schrift('800'), fontSize: 15 },
+  transcript: { fontSize: 14, ...schrift('600'), marginBottom: 8 },
   inputCard: { borderWidth: 1.5, borderRadius: 16, padding: 14, marginBottom: 16, minHeight: 60 },
   input: { fontSize: 15, flex: 1, textAlignVertical: 'top' },
   feedback: { padding: 12, borderRadius: 12, marginBottom: 14 },
@@ -997,12 +997,12 @@ const styles = StyleSheet.create({
     paddingVertical: 16, paddingHorizontal: 36, borderRadius: 100,
     borderWidth: 2, borderColor: ACCENT_GREEN,
   },
-  solveButtonText: { color: ACCENT_GREEN, fontWeight: '800', fontSize: 16 },
+  solveButtonText: { color: ACCENT_GREEN, ...schrift('800'), fontSize: 16 },
   nextButton: { alignSelf: 'center', paddingVertical: 16, paddingHorizontal: 36, borderRadius: 100, backgroundColor: ACCENT_BLUE },
-  nextButtonText: { color: '#fff', fontWeight: '800', fontSize: 16 },
+  nextButtonText: { color: '#fff', ...schrift('800'), fontSize: 16 },
   doneWrap: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 8, paddingVertical: 60 },
-  doneTitle: { fontWeight: '800', fontSize: 22, marginBottom: 6 },
-  doneSummary: { fontWeight: '600', fontSize: 15, marginBottom: 24 },
+  doneTitle: { ...schrift('800'), fontSize: 22, marginBottom: 6 },
+  doneSummary: { ...schrift('600'), fontSize: 15, marginBottom: 24 },
   finishButton: { paddingVertical: 15, paddingHorizontal: 38, borderRadius: 100, backgroundColor: ACCENT_BLUE },
-  finishButtonText: { color: '#fff', fontWeight: '800', fontSize: 16 },
+  finishButtonText: { color: '#fff', ...schrift('800'), fontSize: 16 },
 });

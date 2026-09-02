@@ -5,7 +5,7 @@ import { useAppState } from '../../state/AppState';
 import { useAuthState } from '../../state/AuthState';
 import { useOnboardingState } from '../../state/OnboardingState';
 import { Mascot } from '../mascot';
-import { getTheme, ACCENT_ORANGE, FONT_FAMILY, FONT_SIZE, SPACING } from '../../theme/tokens';
+import { getTheme, ACCENT_ORANGE, FONT_SIZE, SPACING, schrift } from '../../theme/tokens';
 
 // Der Startbildschirm bei JEDEM Oeffnen (Nutzer-Wunsch 2026-08-22).
 //
@@ -155,9 +155,11 @@ const styles = StyleSheet.create({
     gap: SPACING.md,
   },
   wortmarke: {
-    fontFamily: FONT_FAMILY.serif,
+    // ExtraBold statt Serife (2026-09-01): die App-Wortmarke auf dem
+    // Splash-Screen.
+    ...schrift('800'),
     fontSize: FONT_SIZE.title,
     marginTop: SPACING.sm,
   },
-  zeile: { fontSize: FONT_SIZE.caption, fontWeight: '700', letterSpacing: 0.4 },
+  zeile: { fontSize: FONT_SIZE.caption, ...schrift('700'), letterSpacing: 0.4 },
 });

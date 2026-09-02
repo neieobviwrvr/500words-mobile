@@ -15,8 +15,7 @@ import {
   ACCENT_ORANGE,
   FONT_SIZE,
   LINE_HEIGHT,
-  SPACING,
-} from '../../theme/tokens';
+  SPACING, schrift } from '../../theme/tokens';
 
 // Herausforderungen auf dem Profil (2026-08-22, Nutzer-Wunsch).
 //
@@ -128,7 +127,7 @@ function Zeile({
 const styles = StyleSheet.create({
   sectionLabel: {
     fontSize: FONT_SIZE.caption,
-    fontWeight: '800',
+    ...schrift('800'),
     letterSpacing: 0.8,
     marginHorizontal: SPACING.lg,
     marginTop: SPACING.xl,
@@ -137,13 +136,13 @@ const styles = StyleSheet.create({
   card: { marginHorizontal: SPACING.lg, gap: 0 },
   zeile: { paddingVertical: SPACING.md, gap: SPACING.xs },
   kopf: { flexDirection: 'row', alignItems: 'center', gap: SPACING.sm },
-  titel: { flex: 1, fontSize: FONT_SIZE.body, fontWeight: '800' },
-  lohn: { fontSize: FONT_SIZE.caption, fontWeight: '800' },
+  titel: { flex: 1, fontSize: FONT_SIZE.body, ...schrift('800') },
+  lohn: { fontSize: FONT_SIZE.caption, ...schrift('800') },
   text: { fontSize: FONT_SIZE.caption, lineHeight: LINE_HEIGHT.caption },
-  gesperrt: { fontSize: FONT_SIZE.caption, fontWeight: '700', fontStyle: 'italic' },
+  gesperrt: { fontSize: FONT_SIZE.caption, ...schrift('700'), fontStyle: 'italic' },
   balkenZeile: { flexDirection: 'row', alignItems: 'center', gap: SPACING.sm },
   balken: { flex: 1 },
-  stand: { fontSize: FONT_SIZE.caption, fontWeight: '700', minWidth: 44, textAlign: 'right' },
+  stand: { fontSize: FONT_SIZE.caption, ...schrift('700'), minWidth: 44, textAlign: 'right' },
   abholen: {
     alignSelf: 'flex-start',
     backgroundColor: ACCENT_ORANGE,
@@ -152,5 +151,5 @@ const styles = StyleSheet.create({
     borderRadius: 999,
     marginTop: SPACING.xs,
   },
-  abholenText: { color: '#FFFFFF', fontWeight: '800', fontSize: FONT_SIZE.caption },
+  abholenText: { color: '#FFFFFF', ...schrift('800'), fontSize: FONT_SIZE.caption },
 });

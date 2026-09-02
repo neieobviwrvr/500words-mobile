@@ -14,9 +14,7 @@ import {
   RADIUS,
   SPACING,
   FONT_SIZE,
-  FONT_FAMILY,
-  LINE_HEIGHT,
-} from '../../theme/tokens';
+  LINE_HEIGHT, schrift } from '../../theme/tokens';
 
 // Konto anlegen oder anmelden (2026-08-22).
 //
@@ -237,20 +235,21 @@ const styles = StyleSheet.create({
   titel: {
     flex: 1,
     textAlign: 'center',
-    fontFamily: FONT_FAMILY.serif,
+    // ExtraBold statt Serife (2026-09-01).
+    ...schrift('800'),
     fontSize: FONT_SIZE.title,
     lineHeight: LINE_HEIGHT.title,
   },
   inhalt: { padding: SPACING.lg, gap: SPACING.md, alignItems: 'stretch' },
   anlass: { borderLeftWidth: 3, paddingLeft: SPACING.md, gap: 4, marginBottom: SPACING.sm },
-  anlassTitel: { fontSize: FONT_SIZE.body, fontWeight: '800' },
-  gross: { fontSize: FONT_SIZE.title, fontWeight: '800', textAlign: 'center' },
+  anlassTitel: { fontSize: FONT_SIZE.body, ...schrift('800') },
+  gross: { fontSize: FONT_SIZE.title, ...schrift('800'), textAlign: 'center' },
   text: { fontSize: FONT_SIZE.caption, lineHeight: LINE_HEIGHT.caption },
   klein: { fontSize: FONT_SIZE.caption, textAlign: 'center' },
   feld: { borderWidth: 1.5, borderRadius: RADIUS.md, paddingHorizontal: SPACING.md, paddingVertical: 12, fontSize: FONT_SIZE.body },
-  fehler: { color: '#D9564F', fontSize: FONT_SIZE.caption, fontWeight: '700' },
-  wechsel: { fontSize: FONT_SIZE.caption, fontWeight: '700', textAlign: 'center', paddingVertical: SPACING.sm },
+  fehler: { color: '#D9564F', fontSize: FONT_SIZE.caption, ...schrift('700') },
+  wechsel: { fontSize: FONT_SIZE.caption, ...schrift('700'), textAlign: 'center', paddingVertical: SPACING.sm },
   trenner: { borderTopWidth: 1, marginVertical: SPACING.sm },
   google: { borderWidth: 1.5, borderRadius: RADIUS.pill, paddingVertical: 12, alignItems: 'center' },
-  googleText: { fontSize: FONT_SIZE.body, fontWeight: '700' },
+  googleText: { fontSize: FONT_SIZE.body, ...schrift('700') },
 });

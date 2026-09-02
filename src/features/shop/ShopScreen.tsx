@@ -7,7 +7,7 @@ import { useOnboardingState } from '../../state/OnboardingState';
 import { useAuthState } from '../../state/AuthState';
 import { kategorieBrauchtAnrede } from '../../data/anrede';
 import { CATEGORIES } from '../../data/categories';
-import { getTheme, ACCENT_BLUE, ACCENT_ORANGE, ACCENT_GREEN, NODE_LOCKED } from '../../theme/tokens';
+import { getTheme, ACCENT_BLUE, ACCENT_ORANGE, ACCENT_GREEN, NODE_LOCKED, schrift } from '../../theme/tokens';
 
 // S3 - Shop-Screen ("Pakete + Shop"). Nutzer-Entscheidung (2026-08-05): fuers
 // Erste als 2-spaltiges Grid wie im Claude-Design-Prototyp, langfristig soll
@@ -188,26 +188,26 @@ const styles = StyleSheet.create({
   header: { flexDirection: 'row', alignItems: 'center', gap: 10, padding: 16, paddingBottom: 10 },
   backBtn: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
   backGlyph: { fontSize: 26 },
-  title: { fontWeight: '800', fontSize: 22 },
+  title: { ...schrift('800'), fontSize: 22 },
   scrollContent: { padding: 16, paddingTop: 4, gap: 16 },
   grid: { flexDirection: 'row', flexWrap: 'wrap', gap: 10 },
   card: { width: '47%', padding: 12, borderRadius: 14, borderWidth: 1.5, gap: 6 },
   cardTop: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   avatar: { width: 30, height: 30, borderRadius: 9, alignItems: 'center', justifyContent: 'center' },
-  avatarText: { color: '#fff', fontWeight: '800', fontSize: 11 },
+  avatarText: { color: '#fff', ...schrift('800'), fontSize: 11 },
   lockGlyph: { fontSize: 14 },
   badgeActive: { backgroundColor: ACCENT_ORANGE, paddingVertical: 3, paddingHorizontal: 7, borderRadius: 100 },
   badgeCart: { backgroundColor: ACCENT_BLUE, paddingVertical: 3, paddingHorizontal: 7, borderRadius: 100 },
-  badgeText: { color: '#fff', fontWeight: '800', fontSize: 9 },
-  cardName: { fontWeight: '700', fontSize: 13, lineHeight: 17 },
+  badgeText: { color: '#fff', ...schrift('800'), fontSize: 9 },
+  cardName: { ...schrift('700'), fontSize: 13, lineHeight: 17 },
   infoBlock: { borderTopWidth: 1.5, paddingTop: 14, gap: 4 },
-  infoLabel: { fontWeight: '700', fontSize: 14 },
+  infoLabel: { ...schrift('700'), fontSize: 14 },
   infoText: { fontSize: 13, lineHeight: 19, marginBottom: 10 },
   hinweisBlock: { borderLeftWidth: 2, paddingLeft: 10, marginBottom: 14 },
   hinweisText: { fontSize: 12, lineHeight: 17, fontStyle: 'italic' },
   cartSummary: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 14, borderRadius: 14, borderWidth: 1.5 },
-  cartLabel: { fontWeight: '700', fontSize: 13 },
-  cartTotal: { fontWeight: '800', fontSize: 16 },
+  cartLabel: { ...schrift('700'), fontSize: 13 },
+  cartTotal: { ...schrift('800'), fontSize: 16 },
   buyButton: { padding: 15, borderRadius: 14, borderWidth: 2, borderColor: ACCENT_GREEN, alignItems: 'center' },
-  buyButtonText: { color: ACCENT_GREEN, fontWeight: '800', fontSize: 16 },
+  buyButtonText: { color: ACCENT_GREEN, ...schrift('800'), fontSize: 16 },
 });

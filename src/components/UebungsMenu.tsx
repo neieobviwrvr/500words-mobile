@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { router } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
-import { getTheme, RADIUS, SPACING, FONT_SIZE } from '../theme/tokens';
+import { getTheme, RADIUS, SPACING, FONT_SIZE, schrift } from '../theme/tokens';
 
 // "..."-Dropdown oben rechts auf jedem Uebungsscreen (2026-08-26, Simons
 // Wunsch: "auf jedem Uebungsscreen fuer egal welche Stufe"). Betrifft
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
   },
   eintrag: { paddingVertical: SPACING.md, paddingHorizontal: SPACING.lg },
-  eintragText: { fontSize: FONT_SIZE.body, fontWeight: '600' },
+  eintragText: { fontSize: FONT_SIZE.body, ...schrift('600') },
   trenner: { height: StyleSheet.hairlineWidth, marginHorizontal: SPACING.sm },
   notice: {
     position: 'absolute',
@@ -164,5 +164,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.lg,
     zIndex: 30,
   },
-  noticeText: { fontSize: FONT_SIZE.small, fontWeight: '700', textAlign: 'center' },
+  noticeText: { fontSize: FONT_SIZE.small, ...schrift('700'), textAlign: 'center' },
 });

@@ -1,6 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { Animated, StyleSheet, TextInput, View } from 'react-native';
-import { getTheme, RADIUS, SPACING, FONT_SIZE } from '../../theme/tokens';
+import {
+  getTheme,
+  RADIUS,
+  SPACING,
+  FONT_SIZE,
+  schrift,
+  FLOATING_SHADOW,
+  FLOATING_BORDER,
+} from '../../theme/tokens';
 
 // Das Suchfeld mit laufendem Beispieltext (Nutzer-Vorlage 2026-08-22).
 //
@@ -107,7 +115,13 @@ export function SuchFeld({
   }, [wert.length === 0]);
 
   return (
-    <View style={[styles.rahmen, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
+    <View
+      style={[
+        styles.rahmen,
+        { borderWidth: 1, borderColor: FLOATING_BORDER, ...FLOATING_SHADOW },
+        { backgroundColor: theme.cardBg },
+      ]}
+    >
       <TextInput
         value={wert}
         onChangeText={onChange}
@@ -133,13 +147,23 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: 1.5,
+    // Rahmen und Schatten kommen aus `FLOATING_BORDER`/`FLOATING_SHADOW`
+    // an der Verwendungsstelle ("Floating Card" statt 3D-Kante,
+    // 2026-09-02, nur fuer diesen Screen).
     borderRadius: RADIUS.pill,
     paddingHorizontal: SPACING.md,
     // Feste Hoehe: der Platzhalter wechselt zwischen kurz und lang, ohne das
     // zuckt die ganze Zeile mit.
     height: 40,
   },
-  feld: { flex: 1, fontSize: FONT_SIZE.caption, paddingVertical: 0 },
+  feld: {
+    // Fehlte bisher komplett - dieselbe Luecke wie an mehreren anderen
+    // Stellen in dieser Sitzung: keine Schriftfamilie gesetzt, fiel deshalb
+    // auf die Systemschrift zurueck statt auf Nunito.
+    ...schrift('500'),
+    flex: 1,
+    fontSize: FONT_SIZE.caption,
+    paddingVertical: 0,
+  },
   cursor: { width: 1.5, height: 16, marginLeft: -2 },
 });

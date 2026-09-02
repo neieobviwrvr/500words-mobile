@@ -27,13 +27,11 @@ import {
   SPACING,
   RADIUS,
   FONT_SIZE,
-  FONT_FAMILY,
   LINE_HEIGHT,
   WORD_COLORS,
   ACCENT_GREEN,
   ACCENT_ERROR,
-  ACCENT_ORANGE,
-} from '../../theme/tokens';
+  ACCENT_ORANGE, schrift } from '../../theme/tokens';
 
 // "Wörter-Wiederholung" (2026-08-24) - der erste der drei Trainingsmodi aus
 // trainingModes.ts, der einen echten Screen bekommt (siehe Kommentar dort
@@ -1156,7 +1154,7 @@ export function WordReviewScreen() {
             size={16}
             color={istSituationGemerkt ? ACCENT_GREEN : theme.sub}
           />
-          <Text style={{ color: istSituationGemerkt ? ACCENT_GREEN : theme.sub, fontWeight: '700', fontSize: 12 }}>
+          <Text style={{ color: istSituationGemerkt ? ACCENT_GREEN : theme.sub, ...schrift('700'), fontSize: 12 }}>
             {istSituationGemerkt ? 'Gemerkt' : 'Speichern'}
           </Text>
         </Pressable>
@@ -1489,7 +1487,7 @@ export function WordReviewScreen() {
                         },
                       ]}
                     >
-                      <Text style={{ color: zeigeRichtig || zeigeFalsch ? '#FFFFFF' : theme.text, fontWeight: '700' }}>
+                      <Text style={{ color: zeigeRichtig || zeigeFalsch ? '#FFFFFF' : theme.text, ...schrift('700') }}>
                         {/* Klammer+Zeichen haengen jetzt am selben "Zeichen
                             an/aus"-Schalter wie die Kacheln/Rahmenwoerter
                             (Simons Fehlerbericht 2026-08-26: diese Stelle
@@ -1556,7 +1554,7 @@ export function WordReviewScreen() {
                 <Text
                   style={{
                     color: situationAusgewertet === 'richtig' ? ACCENT_GREEN : ACCENT_ERROR,
-                    fontWeight: '700',
+                    ...schrift('700'),
                     textAlign: 'center',
                   }}
                 >
@@ -1638,7 +1636,7 @@ export function WordReviewScreen() {
                     },
                   ]}
                 >
-                  <Text style={{ color: aktiv ? '#FFFFFF' : theme.text, fontWeight: '700' }}>{p}</Text>
+                  <Text style={{ color: aktiv ? '#FFFFFF' : theme.text, ...schrift('700') }}>{p}</Text>
                 </Pressable>
               );
             })}
@@ -1790,12 +1788,14 @@ const styles = StyleSheet.create({
   // `flex: 1` neu (2026-08-26, fuers "..."-Menue) - drueckt das Menue an
   // den rechten Rand der Kopfzeile, ohne dass der Titel selbst zentriert
   // oder umgebrochen wird.
-  title: { fontWeight: '800', fontSize: FONT_SIZE.title, flex: 1 },
+  title: { ...schrift('800'), fontSize: FONT_SIZE.title, flex: 1 },
   center: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: SPACING.md, paddingHorizontal: SPACING.xl },
   offline: { fontSize: FONT_SIZE.caption, marginBottom: SPACING.sm },
   auswahlScroll: { paddingBottom: SPACING.xxl },
   frage: {
-    fontFamily: FONT_FAMILY.serif,
+    // Bold statt Serife (2026-09-01): volle Aufgabenfrage, siehe gleiche
+    // Begruendung bei `SentenceReviewScreen.tsx`.
+    ...schrift('700'),
     fontSize: FONT_SIZE.h2,
     lineHeight: LINE_HEIGHT.h2,
     marginTop: SPACING.md,
@@ -1808,9 +1808,9 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.pill,
     borderWidth: 1.5,
   },
-  chipText: { fontWeight: '700', fontSize: FONT_SIZE.small },
+  chipText: { ...schrift('700'), fontSize: FONT_SIZE.small },
   startBox: { marginTop: SPACING.xxl, gap: SPACING.sm },
-  anzahlText: { fontSize: FONT_SIZE.small, fontWeight: '600' },
+  anzahlText: { fontSize: FONT_SIZE.small, ...schrift('600') },
   spielBereich: { flex: 1, paddingTop: SPACING.sm },
   spielHinweis: { fontSize: FONT_SIZE.caption, marginBottom: SPACING.md, textAlign: 'center' },
   spalten: { flex: 1, flexDirection: 'row', gap: SPACING.md },
@@ -1824,9 +1824,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  kachelText: { fontSize: FONT_SIZE.small, fontWeight: '700', textAlign: 'center' },
+  kachelText: { fontSize: FONT_SIZE.small, ...schrift('700'), textAlign: 'center' },
   ergebnisTitel: {
-    fontFamily: FONT_FAMILY.serif,
+    // ExtraBold statt Serife: Feier-Ueberschrift am Ende der Runde.
+    ...schrift('800'),
     fontSize: FONT_SIZE.h2,
     lineHeight: LINE_HEIGHT.h2,
     textAlign: 'center',
@@ -1842,7 +1843,7 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.pill,
     borderWidth: 1.5,
   },
-  umschalterText: { fontWeight: '700', fontSize: FONT_SIZE.small },
+  umschalterText: { ...schrift('700'), fontSize: FONT_SIZE.small },
   pronomenScroll: { flex: 1 },
   pronomenBereich: { flexGrow: 1, paddingTop: SPACING.xl, paddingBottom: SPACING.xxl, gap: SPACING.xxl },
   personReihe: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACING.sm },
@@ -1859,7 +1860,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.lg,
     alignItems: 'center',
   },
-  frameText: { fontSize: FONT_SIZE.bodyLg, fontWeight: '700' },
+  frameText: { fontSize: FONT_SIZE.bodyLg, ...schrift('700') },
   frameWoerterReihe: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'flex-end', columnGap: SPACING.xs, rowGap: SPACING.xs },
   frameWortSpalte: { alignItems: 'center' },
   frameHanziText: { fontSize: FONT_SIZE.caption },

@@ -8,7 +8,7 @@ import { getLanguage } from '../../data/languages';
 import { CheatsheetCategoryGroup, Phrase, loadCheatsheetGroups, phraseLanguageId, searchCheatsheetSentences, toPhrase } from '../../data/cheatsheetContent';
 import { speakSentence } from '../tts/speak';
 import { PhraseCard } from './PhraseCard';
-import { getTheme, ACCENT_ORANGE } from '../../theme/tokens';
+import { getTheme, ACCENT_ORANGE, schrift } from '../../theme/tokens';
 
 // Zwei Wege hierher (2026-08-07, echter Content statt Platzhalter):
 // - Freitextsuche auf S6 -> "query"-Query-Parameter -> Token-Suche
@@ -212,13 +212,13 @@ const styles = StyleSheet.create({
   header: { flexDirection: 'row', alignItems: 'center', gap: 10, padding: 16, paddingBottom: 4 },
   backBtn: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
   backGlyph: { fontSize: 26 },
-  title: { fontWeight: '800', fontSize: 20 },
-  untertitel: { fontSize: 13, fontWeight: '700', paddingHorizontal: 18, paddingBottom: 4 },
+  title: { ...schrift('800'), fontSize: 20 },
+  untertitel: { fontSize: 13, ...schrift('700'), paddingHorizontal: 18, paddingBottom: 4 },
   centerBox: { alignItems: 'center', justifyContent: 'center', paddingVertical: 40 },
   scrollContent: { padding: 18, gap: 10 },
-  sectionTitle: { color: ACCENT_ORANGE, fontWeight: '800', fontSize: 12, letterSpacing: 0.6, marginVertical: 10, textTransform: 'uppercase' },
+  sectionTitle: { color: ACCENT_ORANGE, ...schrift('800'), fontSize: 12, letterSpacing: 0.6, marginVertical: 10, textTransform: 'uppercase' },
   // Die Kategorie tritt zurueck: sie sagt, WO der Satz herkommt, waehrend die
   // Situation sagt, wonach gesucht wurde. Kein Grossbuchstabensatz, damit die
   // Klammer nicht mit der Ueberschrift um Aufmerksamkeit streitet.
-  sectionKategorie: { fontWeight: '700', letterSpacing: 0, textTransform: 'none' },
+  sectionKategorie: { ...schrift('700'), letterSpacing: 0, textTransform: 'none' },
 });

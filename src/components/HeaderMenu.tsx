@@ -3,7 +3,16 @@ import { Animated, Easing, Platform, Pressable, StyleSheet, Text, View } from 'r
 import { router } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
 import { useAppState } from '../state/AppState';
-import { getTheme, RADIUS, SPACING, FONT_SIZE } from '../theme/tokens';
+import {
+  getTheme,
+  RADIUS,
+  SPACING,
+  FONT_SIZE,
+  schrift,
+  kachel,
+  FLOATING_SHADOW,
+  FLOATING_BORDER,
+} from '../theme/tokens';
 
 // Das ausfahrbare Drei-Punkte-Menue der Kopfzeile.
 //
@@ -41,9 +50,17 @@ type Props = {
    * eigene Kopfzeile; S1 setzt es stattdessen in seine Zeile.
    */
   overlay?: boolean;
+  /**
+   * "Floating Card" statt 3D-Kante (2026-09-02, nur fuer den Survival-
+   * Screen angefordert) - duenner heller Rahmen plus weicher Schatten
+   * statt `kachel()`. Bewusst eine Prop statt einer Aenderung an `kachel()`
+   * selbst: S1 und Lektionen benutzen denselben Knopf und sollen ihre
+   * bereits bestaetigte Tiefe behalten.
+   */
+  flach?: boolean;
 };
 
-export function HeaderMenu({ dark, overlay = false, inline = false }: Props) {
+export function HeaderMenu({ dark, overlay = false, inline = false, flach = false }: Props) {
   const { coins } = useAppState();
   const theme = getTheme(dark);
 
@@ -149,6 +166,7 @@ export function HeaderMenu({ dark, overlay = false, inline = false }: Props) {
           >
             <HeaderButton
               dark={dark}
+              flach={flach}
               icon="gift"
               label="Geschenk"
               // Ohne Funktion bis die taegliche Kiste existiert - der Knopf
@@ -161,6 +179,7 @@ export function HeaderMenu({ dark, overlay = false, inline = false }: Props) {
             />
             <HeaderButton
               dark={dark}
+              flach={flach}
               icon="circle"
               label="Coins"
               // Echter Kontostand. Der erste Coin kommt aus dem Onboarding,
@@ -177,6 +196,7 @@ export function HeaderMenu({ dark, overlay = false, inline = false }: Props) {
 
         <HeaderButton
           dark={dark}
+          flach={flach}
           icon="more-horizontal"
           label="Mehr"
           hint="Zeigt Geschenk und Coins"
@@ -199,6 +219,7 @@ export function HeaderMenu({ dark, overlay = false, inline = false }: Props) {
 
 function HeaderButton({
   dark,
+  flach = false,
   icon,
   label,
   value,
@@ -207,6 +228,8 @@ function HeaderButton({
   onPress,
 }: {
   dark: boolean;
+  /** Siehe `Props.flach` an `HeaderMenu` - "Floating Card" statt 3D-Kante. */
+  flach?: boolean;
   icon: React.ComponentProps<typeof Feather>['name'];
   label: string;
   value?: string;
@@ -229,7 +252,10 @@ function HeaderButton({
       aria-expanded={expanded}
       style={({ pressed }) => [
         styles.button,
-        { borderColor: theme.border, backgroundColor: theme.cardBg, opacity: pressed ? 0.7 : 1 },
+        flach
+          ? { borderWidth: 1, borderColor: FLOATING_BORDER, ...FLOATING_SHADOW }
+          : kachel(dark),
+        { backgroundColor: theme.cardBg, opacity: pressed ? 0.7 : 1 },
       ]}
     >
       <Feather name={icon} size={15} color={theme.sub} />
@@ -271,12 +297,12 @@ const styles = StyleSheet.create({
     minWidth: BUTTON_MIN,
     justifyContent: 'center',
     paddingHorizontal: SPACING.md,
-    borderWidth: 1.5,
+    // Rahmen und Tiefe kommen aus `kachel()`.
     borderRadius: RADIUS.md,
   },
   buttonValue: {
     fontSize: FONT_SIZE.small,
-    fontWeight: '800',
+    ...schrift('800'),
   },
   notice: {
     position: 'absolute',
@@ -290,7 +316,7 @@ const styles = StyleSheet.create({
   },
   noticeText: {
     fontSize: FONT_SIZE.small,
-    fontWeight: '700',
+    ...schrift('700'),
     textAlign: 'center',
   },
 });

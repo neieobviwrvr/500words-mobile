@@ -2,10 +2,11 @@ import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-nati
 import {
   getTheme,
   ACCENT_ORANGE,
+  ACCENT_ORANGE_EDGE,
+  KACHEL_RAND_LIGHT,
   RADIUS,
   SPACING,
-  FONT_SIZE,
-} from '../theme/tokens';
+  FONT_SIZE, schrift } from '../theme/tokens';
 
 // Vollflaechige Pillen-Knoepfe.
 //
@@ -20,10 +21,11 @@ import {
 // eine Ebene hoeher; `components/onboarding/index.ts` reicht ihn weiter,
 // damit die zwoelf Onboarding-Screens ihre Importe behalten.
 
-const PRESS_DEPTH = 4;
-// Abgedunkeltes Orange fuer die Unterkante. Fest eingetragen statt zur
-// Laufzeit berechnet, damit die Farbe nachschlagbar bleibt.
-const ORANGE_EDGE = '#B75F2C';
+// Von 4 auf 6 (2026-09-01, Simons "Boom"-Vorgabe: "borderBottomWidth ...
+// spuerbar erhoehen, z.B. auf 5 bis 6"). Gilt fuer JEDEN Pillen-Knopf UND -
+// weil `PathScreen.tsx` diese Konstante mitbenutzt - fuer die Bodenkante der
+// Kategorie-Kacheln im Lernpfad.
+const PRESS_DEPTH = 6;
 
 type Variant = 'primary' | 'secondary' | 'ghost';
 
@@ -60,7 +62,13 @@ export function PillButton({
     : isGhost
       ? 'transparent'
       : theme.cardBg;
-  const edge = isPrimary ? ORANGE_EDGE : isGhost ? 'transparent' : theme.border;
+  // Sekundaer-Rahmen (2026-09-01): heller Modus bekommt denselben kraeftigen
+  // Neutralton wie `kachel()`, statt des blasseren `theme.border` - sonst
+  // staende ein Sekundaer-Knopf sichtbar duenner/heller neben einer
+  // Kachel-Flaeche. Dunkler Modus bleibt bei `theme.border`, genau wie bei
+  // `kachel()` selbst (dort ist die Themenkontur schon kraeftig genug).
+  const sekundaerRand = dark ? theme.border : KACHEL_RAND_LIGHT;
+  const edge = isPrimary ? ACCENT_ORANGE_EDGE : isGhost ? 'transparent' : sekundaerRand;
   const labelColor = isPrimary ? '#FFFFFF' : theme.text;
 
   return (
@@ -92,7 +100,7 @@ export function PillButton({
               borderBottomWidth: pressed && !inactive ? 0 : PRESS_DEPTH,
               borderBottomColor: edge,
               borderWidth: isPrimary || isGhost ? 0 : 1.5,
-              borderColor: isPrimary || isGhost ? 'transparent' : theme.border,
+              borderColor: isPrimary || isGhost ? 'transparent' : sekundaerRand,
             },
             // Sekundaer braucht die Unterkante zusaetzlich zum Rahmen -
             // borderWidth setzt sonst alle vier Seiten gleich dick.
@@ -126,7 +134,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: FONT_SIZE.bodyLg,
-    fontWeight: '800',
+    ...schrift('800'),
   },
 });
 

@@ -11,8 +11,9 @@ import {
   RADIUS,
   SPACING,
   FONT_SIZE,
-  FONT_FAMILY,
   LINE_HEIGHT,
+  schrift,
+  kachel,
 } from '../../src/theme/tokens';
 
 // O12 - Begruessung der Gruender.
@@ -50,7 +51,7 @@ export default function WelcomeScreen() {
         <Mascot state="feiert" size="gross" />
       </View>
 
-      <View style={[styles.card, { backgroundColor: theme.cardBg, borderColor: theme.border }]}>
+      <View style={[styles.card, kachel(darkMode), { backgroundColor: theme.cardBg }]}>
         <Text style={[styles.letter, { color: theme.text }]}>
           Wir haben diese App gebaut, weil uns im Ausland immer dasselbe gefehlt
           hat: nicht perfekte Grammatik, sondern die Sätze, die man abends um elf
@@ -73,21 +74,27 @@ const styles = StyleSheet.create({
     marginBottom: SPACING.xl,
   },
   card: {
-    borderWidth: 1,
+    // Rahmen aus `kachel()`.
     borderRadius: RADIUS.lg,
     padding: SPACING.xl,
   },
   letter: {
-    fontFamily: FONT_FAMILY.serif,
+    // Serife raus (2026-09-01, Simons Schnitt). Fliesstext bleibt bewusst
+    // beim leichtesten Nunito-Schnitt statt Bold - ein ganzer Gruendbrief in
+    // 700 waere lauter als ein persoenlicher Brief sein sollte.
+    ...schrift('500'),
     fontSize: FONT_SIZE.bodyLg,
     lineHeight: 26,
     marginBottom: SPACING.lg,
   },
   signature: {
-    fontFamily: FONT_FAMILY.serif,
+    // `fontStyle: 'italic'` ist mit der Serife mitgegangen: Nunito hat
+    // keinen geladenen Kursiv-Schnitt, ein erzwungenes Schraegstellen waere
+    // eine synthetische Schraege statt eines echten Schnitts. Bold traegt
+    // die Unterschrift stattdessen ab.
+    ...schrift('700'),
     fontSize: FONT_SIZE.body,
     lineHeight: LINE_HEIGHT.body,
-    fontStyle: 'italic',
     textAlign: 'right',
   },
 });

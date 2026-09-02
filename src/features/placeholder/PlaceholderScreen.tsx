@@ -6,9 +6,7 @@ import {
   getTheme,
   SPACING,
   FONT_SIZE,
-  FONT_FAMILY,
-  LINE_HEIGHT,
-} from '../../theme/tokens';
+  LINE_HEIGHT, schrift } from '../../theme/tokens';
 
 // Platzhalter fuer Tabs, deren Screen es noch nicht gibt.
 //
@@ -85,7 +83,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.xl,
   },
   title: {
-    fontFamily: FONT_FAMILY.serif,
+    // ExtraBold statt Serife (2026-09-01).
+    ...schrift('800'),
     fontSize: FONT_SIZE.h2,
     lineHeight: LINE_HEIGHT.h2,
     textAlign: 'center',
@@ -97,7 +96,7 @@ const styles = StyleSheet.create({
   },
   note: {
     fontSize: FONT_SIZE.caption,
-    fontWeight: '700',
+    ...schrift('700'),
     marginTop: SPACING.sm,
   },
 });

@@ -4,7 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Feather } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { useAppState } from '../../state/AppState';
-import { getTheme, ACCENT_BLUE, ACCENT_GREEN } from '../../theme/tokens';
+import { getTheme, ACCENT_BLUE, ACCENT_GREEN, schrift } from '../../theme/tokens';
 
 // Referral-/Bewertungs-/Feedback-Programm - reine Platzhalter-Seite
 // (2026-08-06, Nutzer-Anforderung), noch ohne echte Backend-Logik. Ueber
@@ -210,7 +210,7 @@ export function RewardsScreen() {
             accessibilityState={{ disabled: true }}
             style={[styles.actionButton, { borderColor: ACCENT_BLUE, opacity: 0.5 }]}
           >
-            <Text style={{ color: ACCENT_BLUE, fontWeight: '800', fontSize: 14 }}>Bewerten (bald)</Text>
+            <Text style={{ color: ACCENT_BLUE, ...schrift('800'), fontSize: 14 }}>Bewerten (bald)</Text>
           </Pressable>
         </View>
 
@@ -240,7 +240,7 @@ export function RewardsScreen() {
             accessibilityState={{ disabled: true }}
             style={[styles.actionButton, { borderColor: ACCENT_GREEN, opacity: 0.5 }]}
           >
-            <Text style={{ color: ACCENT_GREEN, fontWeight: '800', fontSize: 14 }}>Absenden (bald)</Text>
+            <Text style={{ color: ACCENT_GREEN, ...schrift('800'), fontSize: 14 }}>Absenden (bald)</Text>
           </Pressable>
         </View>
       </ScrollView>
@@ -253,10 +253,10 @@ const styles = StyleSheet.create({
   header: { flexDirection: 'row', alignItems: 'center', gap: 10, padding: 16, paddingBottom: 10 },
   backBtn: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
   backGlyph: { fontSize: 26 },
-  title: { fontWeight: '800', fontSize: 19, flex: 1 },
+  title: { ...schrift('800'), fontSize: 19, flex: 1 },
   scrollContent: { padding: 16, gap: 14, paddingBottom: 32 },
   card: { borderWidth: 1.5, borderRadius: 16, padding: 16, gap: 10 },
-  cardTitle: { fontWeight: '800', fontSize: 17 },
+  cardTitle: { ...schrift('800'), fontSize: 17 },
   explain: { fontSize: 13, lineHeight: 19 },
   actionButton: { alignSelf: 'flex-start', paddingVertical: 10, paddingHorizontal: 16, borderRadius: 100, borderWidth: 2 },
   // --- Referral nach Simons Vorlage (2026-08-30) --------------------------
@@ -268,8 +268,8 @@ const styles = StyleSheet.create({
   stufenReihe: { flexDirection: 'row', alignItems: 'center' },
   stufe: { flex: 1, alignItems: 'center' },
   stufenKreis: { width: 30, height: 30, borderRadius: 15, borderWidth: 1.5, alignItems: 'center', justifyContent: 'center' },
-  stufenSymbol: { fontSize: 11, fontWeight: '800' },
-  stufenZahl: { fontSize: 12, fontWeight: '700' },
+  stufenSymbol: { fontSize: 11, ...schrift('800') },
+  stufenZahl: { fontSize: 12, ...schrift('700') },
   leisteZeile: { marginVertical: 6 },
   leiste: { height: 3, borderRadius: 2, overflow: 'hidden' },
   leisteFuellung: { height: '100%', borderRadius: 2 },
@@ -278,7 +278,7 @@ const styles = StyleSheet.create({
   tick: { width: 2, height: 7, borderRadius: 1 },
   codeZeile: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10 },
   codeFeld: { borderWidth: 1.5, borderRadius: 8, paddingVertical: 8, paddingHorizontal: 14 },
-  codeText: { fontSize: 12, fontWeight: '600' },
+  codeText: { fontSize: 12, ...schrift('600') },
   gruenerButton: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -287,7 +287,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingVertical: 12,
   },
-  gruenerButtonText: { color: '#FFFFFF', fontWeight: '800', fontSize: 14 },
+  gruenerButtonText: { color: '#FFFFFF', ...schrift('800'), fontSize: 14 },
   // ------------------------------------------------------------------------
   starsRow: { flexDirection: 'row', gap: 4 },
   star: { fontSize: 26 },

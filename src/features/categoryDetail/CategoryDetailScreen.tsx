@@ -4,7 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { useAppState } from '../../state/AppState';
 import { CATEGORY_BY_ID } from '../../data/categories';
-import { getTheme, ACCENT_BLUE, ACCENT_ORANGE, ACCENT_PREMIUM } from '../../theme/tokens';
+import { getTheme, ACCENT_BLUE, ACCENT_ORANGE, ACCENT_PREMIUM, schrift } from '../../theme/tokens';
 
 // S2 - Kategorie-Detail-Screen. Existiert laut CLAUDE.md nur fuer bereits
 // freigeschaltete Kategorien (Grundwortschatz zaehlt als immer freigeschaltet).
@@ -114,18 +114,18 @@ const styles = StyleSheet.create({
   header: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 8 },
   backBtn: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
   backGlyph: { fontSize: 26 },
-  title: { fontWeight: '800', fontSize: 21 },
-  themeSubtitle: { fontWeight: '600', fontSize: 14, marginLeft: 42, marginTop: -4, marginBottom: 10 },
-  progress: { color: ACCENT_ORANGE, fontWeight: '700', fontSize: 14, marginBottom: 26 },
+  title: { ...schrift('800'), fontSize: 21 },
+  themeSubtitle: { ...schrift('600'), fontSize: 14, marginLeft: 42, marginTop: -4, marginBottom: 10 },
+  progress: { color: ACCENT_ORANGE, ...schrift('700'), fontSize: 14, marginBottom: 26 },
   modeList: { gap: 12 },
   modeButton: { padding: 18, borderRadius: 16, borderWidth: 1.5, borderColor: ACCENT_BLUE, alignItems: 'center' },
-  modeButtonText: { color: ACCENT_BLUE, fontWeight: '800', fontSize: 15, textAlign: 'center' },
+  modeButtonText: { color: ACCENT_BLUE, ...schrift('800'), fontSize: 15, textAlign: 'center' },
   premiumButton: {
     padding: 18, borderRadius: 16, borderWidth: 1.5, alignItems: 'center', justifyContent: 'center',
     flexDirection: 'row', gap: 8,
   },
-  premiumButtonText: { fontWeight: '800', fontSize: 15, textAlign: 'center' },
+  premiumButtonText: { ...schrift('800'), fontSize: 15, textAlign: 'center' },
   premiumBadge: { backgroundColor: ACCENT_PREMIUM, paddingVertical: 3, paddingHorizontal: 7, borderRadius: 100 },
-  premiumBadgeText: { color: '#fff', fontWeight: '800', fontSize: 9 },
+  premiumBadgeText: { color: '#fff', ...schrift('800'), fontSize: 9 },
   notice: { padding: 12, borderRadius: 12 },
 });

@@ -12,8 +12,8 @@ import {
   RADIUS,
   SPACING,
   FONT_SIZE,
-  FONT_FAMILY,
-  LINE_HEIGHT,
+  LINE_HEIGHT, schrift,
+  kachel,
 } from '../../src/theme/tokens';
 
 // O9b - Der erste Coin.
@@ -86,7 +86,7 @@ export default function CoinScreen() {
       <View
         accessibilityRole="text"
         accessibilityLabel={`Du hast ${coins} von 3 Coins`}
-        style={[styles.coinCard, { backgroundColor: theme.cardBg, borderColor: theme.border }]}
+        style={[styles.coinCard, kachel(darkMode), { backgroundColor: theme.cardBg }]}
       >
         <Feather name="circle" size={28} color={ACCENT_PREMIUM} accessibilityElementsHidden />
         <Text style={[styles.coinCount, { color: theme.text }]}>{coins}</Text>
@@ -111,19 +111,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: SPACING.sm,
-    borderWidth: 1,
+    // Rahmen aus `kachel()`.
     borderRadius: RADIUS.lg,
     paddingVertical: SPACING.xl,
   },
   coinCount: {
-    fontFamily: FONT_FAMILY.serif,
+    // ExtraBold statt Serife (2026-09-01): eine Zahl, kein Fliesstext -
+    // passt zur Vorgabe "Zahlen und Stati auf 800".
+    ...schrift('800'),
     fontSize: FONT_SIZE.h1,
     lineHeight: LINE_HEIGHT.h1,
   },
   coinOf: {
     fontSize: FONT_SIZE.body,
     lineHeight: LINE_HEIGHT.body,
-    fontWeight: '700',
+    ...schrift('700'),
   },
   hint: {
     fontSize: FONT_SIZE.body,

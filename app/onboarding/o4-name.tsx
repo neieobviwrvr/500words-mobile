@@ -17,7 +17,8 @@ import {
   RADIUS,
   SPACING,
   FONT_SIZE,
-  LINE_HEIGHT,
+  LINE_HEIGHT, schrift,
+  kachel,
 } from '../../src/theme/tokens';
 
 // O4 - Name.
@@ -153,7 +154,8 @@ export default function NameScreen() {
         accessibilityLabel="Dein Name"
         style={[
           styles.input,
-          { color: theme.text, borderColor: theme.border, backgroundColor: theme.cardBg },
+          kachel(darkMode),
+          { color: theme.text, backgroundColor: theme.cardBg },
         ]}
       />
 
@@ -196,16 +198,16 @@ const styles = StyleSheet.create({
   },
   fieldLabel: {
     fontSize: FONT_SIZE.body,
-    fontWeight: '700',
+    ...schrift('700'),
     marginBottom: SPACING.sm,
   },
   input: {
-    borderWidth: 1.5,
+    // Rahmen aus `kachel()`.
     borderRadius: RADIUS.md,
     paddingHorizontal: SPACING.lg,
     paddingVertical: SPACING.lg,
     fontSize: FONT_SIZE.bodyLg,
-    fontWeight: '700',
+    ...schrift('700'),
   },
   hint: {
     fontSize: FONT_SIZE.small,

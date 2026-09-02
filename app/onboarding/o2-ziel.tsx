@@ -6,7 +6,7 @@ import { useAppState } from '../../src/state/AppState';
 import { useOnboardingState, MAX_OCCASIONS } from '../../src/state/OnboardingState';
 import { getLanguage } from '../../src/data/languages';
 import { GOALS, GOAL_SEITEN_UNTERTITEL, OCCASIONS, ONBOARDING_TOTAL_STEPS, stepNumber } from '../../src/data/onboardingOptions';
-import { getTheme, SPACING, FONT_SIZE, LINE_HEIGHT } from '../../src/theme/tokens';
+import { getTheme, SPACING, FONT_SIZE, LINE_HEIGHT, schrift } from '../../src/theme/tokens';
 
 // O2 - Warum lernst du?
 //
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
   skip: {
     fontSize: FONT_SIZE.body,
     lineHeight: LINE_HEIGHT.body,
-    fontWeight: '700',
+    ...schrift('700'),
     textAlign: 'center',
     marginTop: SPACING.md,
   },

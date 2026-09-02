@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import { getTheme, elevation, RADIUS, SPACING, FONT_SIZE } from '../theme/tokens';
+import { getTheme, elevation, RADIUS, SPACING, FONT_SIZE, schrift } from '../theme/tokens';
 
 // Die Texteingabe ist ueberall ein FALLBACK, kein gleichwertiger Weg (siehe
 // CLAUDE.md Kernprinzip: Sprechen lernen, nicht Lesen/Schreiben). Bis zum
@@ -100,6 +100,6 @@ const styles = StyleSheet.create({
     paddingVertical: SPACING.sm,
     paddingHorizontal: SPACING.lg,
   },
-  text: { fontSize: FONT_SIZE.caption, fontWeight: '700' },
+  text: { fontSize: FONT_SIZE.caption, ...schrift('700') },
   inhalt: { marginTop: SPACING.sm },
 });

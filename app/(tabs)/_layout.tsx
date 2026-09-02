@@ -14,7 +14,15 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAppState } from '../../src/state/AppState';
 import { useAuthState } from '../../src/state/AuthState';
 import { useOnboardingState } from '../../src/state/OnboardingState';
-import { getTheme, ACCENT_ORANGE, FONT_SIZE, RADIUS, SPACING } from '../../src/theme/tokens';
+import {
+  getTheme,
+  ACCENT_ORANGE,
+  FONT_SIZE,
+  RADIUS,
+  SPACING,
+  schrift,
+  kachel,
+} from '../../src/theme/tokens';
 
 // Tab-Leiste (2026-08-18, seit dem 18. als schwebende Leiste).
 //
@@ -44,7 +52,13 @@ import { getTheme, ACCENT_ORANGE, FONT_SIZE, RADIUS, SPACING } from '../../src/t
 // dann genau auf dessen Oberkante; auf aelteren Geraeten ohne Indikator sorgt
 // FLOAT_GAP fuer den Abstand zum Bildschirmrand.
 const FLOAT_GAP = 20;
-const BAR_HEIGHT = 64;
+// 2026-09-01 von 64 auf 68: der 3D-Kachel-Look kostet oben 1.5 und unten 4
+// Punkte Rahmen, und in React Native liegt der Rahmen INNEN. Bei
+// unveraenderten 64 waeren dem Inhalt 3.5 Punkte verloren gegangen - genau
+// dort, wo die Beschriftung schon einmal abgeschnitten wurde (siehe die
+// `paddingBottom: 0`-Notiz weiter unten). Der sichtbare Koerper waechst also
+// um 4, der nutzbare Innenraum bleibt bei rund 62.
+const BAR_HEIGHT = 68;
 const BAR_RADIUS = 36;
 
 /**
@@ -220,31 +234,25 @@ export default function TabsLayout() {
           // eine Farbe gesetzt, laege sie ueber dem Blur und wuerde ihn
           // zudecken.
           backgroundColor: 'transparent',
-          // Bewusst 1 und nicht `StyleSheet.hairlineWidth`: auf Geraeten mit
-          // hoher Pixeldichte waere die Haarlinie duenner als die geforderte
-          // 1-px-Kontur und auf hellem Grund praktisch weg.
-          //
+          // 3D-Kachel wie ueberall sonst (2026-09-01, Simons Vorgabe):
+          // derselbe `kachel()`-Baustein, den Kopfzeile, Positionskasten,
+          // Wiederholen-Knopf und das Onboarding benutzen. Damit ist die
+          // Leiste kein Sonderfall mehr - aendert sich die Kachel, aendert
+          // sie sich hier mit.
+          ...kachel(darkMode),
           // `borderTopWidth` muss ausdruecklich noch einmal dastehen: React
           // Navigation setzt fuer die angedockte Leiste eine eigene
-          // Trennlinie oben, und diese Einzelangabe schlaegt unsere
-          // Sammelangabe `borderWidth`. Ohne die Zeile hat die Kapsel drei
-          // Seiten Kontur und oben keine.
-          borderWidth: 1,
-          borderTopWidth: 1,
-          // Weisse Kontur nach Simons Vorgabe - aber nur im Darkmode, wo sie
-          // die Kante vom dunklen Untergrund abhebt. Auf hellem Grund waere
-          // weiss auf weiss unsichtbar, dort uebernimmt eine ebenso dezente
-          // dunkle Linie dieselbe Aufgabe.
-          borderColor: darkMode ? 'rgba(255,255,255,0.14)' : 'rgba(0,0,0,0.08)',
-          // Weicher Schatten. Auf Android braucht `elevation` eine deckende
-          // Flaeche, um zu zeichnen - dort bleibt der Schatten bei diesem
-          // durchscheinenden Aufbau schwach. Bewusst hingenommen, iOS ist
-          // die Zielplattform dieses Effekts.
-          shadowColor: '#000',
-          shadowOffset: { width: 0, height: 5 },
-          shadowRadius: 25,
-          shadowOpacity: darkMode ? 0.4 : 0.16,
-          elevation: 12,
+          // Trennlinie oben, und diese Einzelangabe schlaegt jede
+          // Sammelangabe - auch die aus `kachel()`. Ohne die Zeile hat die
+          // Kapsel drei Seiten Kontur und oben keine. (Wert von Hand
+          // gleichgezogen; `kachel()` gibt genau diese 1.5 zurueck.)
+          borderTopWidth: 1.5,
+          // Der weiche Schatten (Y5/Blur25, `elevation: 12`) ist ersatzlos
+          // weg. Die Hoehe entsteht jetzt allein aus der Kantenkombination,
+          // genau wie beim Wiederholen-Knopf. Angenehmer Nebeneffekt: der
+          // Schatten war auf Android ohnehin schwach, weil `elevation` eine
+          // deckende Flaeche braucht und der Untergrund hier durchscheint -
+          // dieser Vorbehalt entfaellt damit.
         },
         // Ausdruecklich, nicht auf den Standard verlassen: ohne
         // Beschriftungen stehen vier gleich aussehende Symbole in einer
@@ -264,7 +272,7 @@ export default function TabsLayout() {
         },
         tabBarLabelStyle: {
           fontSize: FONT_SIZE.caption - 2,
-          fontWeight: '700',
+          ...schrift('700'),
         },
       }}
     >

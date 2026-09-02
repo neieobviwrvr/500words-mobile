@@ -3,7 +3,7 @@ import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-nati
 import { router } from 'expo-router';
 import { useAuthState } from '../../state/AuthState';
 import { useAppState } from '../../state/AppState';
-import { getTheme, ACCENT_BLUE } from '../../theme/tokens';
+import { getTheme, ACCENT_BLUE, schrift } from '../../theme/tokens';
 
 // Erster Screen vor S1 (2026-08-07) - bietet beide in CLAUDE.md
 // festgelegten Wege an: Gast (rein lokale Speicherung) oder echtes Konto.
@@ -97,14 +97,14 @@ export function OnboardingScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 24, justifyContent: 'space-between' },
   top: { marginTop: 80, gap: 10 },
-  title: { fontSize: 34, fontWeight: '800' },
+  title: { fontSize: 34, ...schrift('800') },
   subtitle: { fontSize: 15, lineHeight: 21 },
   buttons: { marginBottom: 40, gap: 12 },
   button: { paddingVertical: 16, borderRadius: 100, alignItems: 'center', justifyContent: 'center' },
   googleButton: { backgroundColor: ACCENT_BLUE },
-  googleButtonText: { color: '#fff', fontWeight: '800', fontSize: 16 },
+  googleButtonText: { color: '#fff', ...schrift('800'), fontSize: 16 },
   guestButton: { borderWidth: 1.5 },
-  guestButtonText: { fontWeight: '800', fontSize: 16 },
+  guestButtonText: { ...schrift('800'), fontSize: 16 },
   guestHint: { fontSize: 12, textAlign: 'center', paddingHorizontal: 10 },
   error: { color: '#D9564F', fontSize: 13, textAlign: 'center', marginTop: 4 },
 });

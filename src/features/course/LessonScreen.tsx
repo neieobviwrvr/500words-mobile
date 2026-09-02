@@ -16,13 +16,11 @@ import {
   ACCENT_ERROR,
   ACCENT_GREEN,
   ACCENT_ORANGE,
-  FONT_FAMILY,
   FONT_SIZE,
   getTheme,
   LINE_HEIGHT,
   RADIUS,
-  SPACING,
-} from '../../theme/tokens';
+  SPACING, schrift } from '../../theme/tokens';
 
 // Uebungs-Screen des gefuehrten Kurses (2026-08-20, erster Testaufbau).
 //
@@ -840,7 +838,7 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
               {(['richtig', 'ueberlebt', 'nicht_verstanden'] as Tier[]).map((t) => (
                 <View key={t} style={styles.zeile}>
                   <Text style={[styles.text, { color: farbeFuer(t) }]}>{textFuer(t)}</Text>
-                  <Text style={[styles.text, { color: theme.text, fontWeight: '800' }]}>
+                  <Text style={[styles.text, { color: theme.text, ...schrift('800') }]}>
                     {ergebnisse.filter((e) => e === t).length}
                   </Text>
                 </View>
@@ -1027,7 +1025,8 @@ const styles = StyleSheet.create({
   zurueck: { padding: SPACING.xs },
   kopfText: { flex: 1 },
   kopfTitel: {
-    fontFamily: FONT_FAMILY.serif,
+    // ExtraBold statt Serife (2026-09-01).
+    ...schrift('800'),
     fontSize: FONT_SIZE.title,
     lineHeight: LINE_HEIGHT.title,
   },
@@ -1043,34 +1042,28 @@ const styles = StyleSheet.create({
     paddingVertical: SPACING.xs,
     paddingHorizontal: SPACING.md,
   },
-  nochmalText: { fontSize: FONT_SIZE.small, fontWeight: '700' },
+  nochmalText: { fontSize: FONT_SIZE.small, ...schrift('700') },
   inhalt: { paddingTop: SPACING.lg, paddingBottom: SPACING.xxxl, gap: SPACING.md },
   schrittLabel: {
     fontSize: FONT_SIZE.small,
-    fontWeight: '800',
+    ...schrift('800'),
     letterSpacing: 0.8,
   },
   karte: { gap: SPACING.sm },
   gross: {
-    // BEWUSST OHNE FONT_FAMILY.serif - hier steht Pinyin.
-    //
-    // Georgia (das ist unsere Serifenschrift auf iOS) hat die
-    // Hatschek-Vokale des DRITTEN Tons nicht: ǎ (U+01CE) und ǒ (U+01D2).
-    // Fehlt der Glyph, zerlegt der Renderer das Zeichen und setzt Buchstabe
-    // und Akzent nebeneinander - aus "lǎoshī" wird sichtbar "la ˇ oshī"
-    // (im Browser nachgemessen: 40 px statt 20 px Zeichenbreite). Die
-    // Makron-Vokale des ersten Tons (ā ī ū) hat Georgia, deshalb faellt es
-    // nur beim dritten Ton auf - also ausgerechnet regelmaessig.
-    //
-    // Die Systemschrift deckt beide vollstaendig ab. Wer hier wieder eine
-    // Serifenschrift einsetzt, muss sie vorher gegen ǎ und ǒ pruefen.
+    // Bis 2026-09-01 stand hier ein Sonderfall-Kommentar: bewusst OHNE
+    // Serife, weil Georgia die Hatschek-Vokale des dritten Pinyin-Tons
+    // nicht abdeckt (ǎ U+01CE, ǒ U+01D2 zerfielen sichtbar in Buchstabe +
+    // Akzent). Seit dem Schnitt zu Nunito als einziger Schrift der App ist
+    // das kein Sonderfall mehr - JEDE Zeile laeuft ueber dieselbe Schrift,
+    // die beide Zeichen abdeckt (per DOM-Breitenvergleich geprueft).
     fontSize: FONT_SIZE.h2,
     lineHeight: LINE_HEIGHT.h2,
-    fontWeight: '600',
+    ...schrift('600'),
   },
   rahmen: { fontSize: FONT_SIZE.bodyLg, lineHeight: LINE_HEIGHT.bodyLg },
   text: { fontSize: FONT_SIZE.body, lineHeight: LINE_HEIGHT.body },
-  urteil: { fontSize: FONT_SIZE.body, fontWeight: '800' },
+  urteil: { fontSize: FONT_SIZE.body, ...schrift('800') },
   hinweis: { fontSize: FONT_SIZE.caption, lineHeight: LINE_HEIGHT.caption, textAlign: 'center' },
   zeile: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: SPACING.md },
   zeileText: { flex: 1, gap: 2 },
@@ -1078,11 +1071,13 @@ const styles = StyleSheet.create({
   mittel: {
     fontSize: FONT_SIZE.title,
     lineHeight: LINE_HEIGHT.title,
-    fontWeight: '700',
+    ...schrift('700'),
   },
   feier: { alignItems: 'center', gap: SPACING.sm, paddingVertical: SPACING.lg },
   feierTitel: {
-    fontFamily: FONT_FAMILY.serif,
+    // ExtraBold statt Serife (2026-09-01): "Modul geschafft"-Feier -
+    // passt zur Vorgabe "Zahlen und Stati auf 800".
+    ...schrift('800'),
     fontSize: FONT_SIZE.h2,
     lineHeight: LINE_HEIGHT.h2,
     textAlign: 'center',
@@ -1096,7 +1091,7 @@ const styles = StyleSheet.create({
     paddingVertical: SPACING.sm,
     paddingHorizontal: SPACING.md,
   },
-  hoerenText: { fontSize: FONT_SIZE.caption, fontWeight: '700' },
+  hoerenText: { fontSize: FONT_SIZE.caption, ...schrift('700') },
   mikro: {
     width: 72,
     height: 72,

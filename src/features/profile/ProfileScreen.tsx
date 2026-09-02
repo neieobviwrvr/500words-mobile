@@ -10,13 +10,11 @@ import { useLockscreenPick } from '../widget/useLockscreenPick';
 import { formatCountdown, SLOT_HOURS } from '../widget/lockscreenRotation';
 import {
   ACCENT_ORANGE,
-  FONT_FAMILY,
   FONT_SIZE,
   getTheme,
   LINE_HEIGHT,
   RADIUS,
-  SPACING,
-} from '../../theme/tokens';
+  SPACING, schrift } from '../../theme/tokens';
 
 // Profil - bisher ein Platzhalter, jetzt echter Screen (2026-08-20).
 //
@@ -305,7 +303,8 @@ const styles = StyleSheet.create({
     gap: SPACING.sm,
   },
   pageTitle: {
-    fontFamily: FONT_FAMILY.serif,
+    // ExtraBold statt Serife (2026-09-01).
+    ...schrift('800'),
     fontSize: FONT_SIZE.h1,
     lineHeight: LINE_HEIGHT.h1,
     paddingHorizontal: SPACING.lg,
@@ -317,7 +316,7 @@ const styles = StyleSheet.create({
   },
   sectionLabel: {
     fontSize: FONT_SIZE.small,
-    fontWeight: '800',
+    ...schrift('800'),
     letterSpacing: 0.8,
     paddingHorizontal: SPACING.lg,
     marginTop: SPACING.lg,
@@ -329,7 +328,7 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: FONT_SIZE.bodyLg,
     lineHeight: LINE_HEIGHT.bodyLg,
-    fontWeight: '800',
+    ...schrift('800'),
   },
   cardText: {
     fontSize: FONT_SIZE.body,
@@ -374,14 +373,17 @@ const styles = StyleSheet.create({
   optionTitle: {
     fontSize: FONT_SIZE.body,
     lineHeight: LINE_HEIGHT.body,
-    fontWeight: '800',
+    ...schrift('800'),
   },
   optionText: {
     fontSize: FONT_SIZE.caption,
     lineHeight: LINE_HEIGHT.caption,
   },
   previewPrimary: {
-    fontFamily: FONT_FAMILY.serif,
+    // Bold statt Serife (2026-09-01): das ist der Inhalt selbst (Wort/Satz
+    // der Widget-Vorschau), keine Ueberschrift - dieselbe Rolle wie der
+    // Zielsatz auf den Uebungsscreens, dort ebenfalls Bold statt ExtraBold.
+    ...schrift('700'),
     fontSize: FONT_SIZE.title,
     lineHeight: LINE_HEIGHT.title,
   },
@@ -400,7 +402,7 @@ const styles = StyleSheet.create({
   },
   previewNote: {
     fontSize: FONT_SIZE.caption,
-    fontWeight: '700',
+    ...schrift('700'),
     flexShrink: 1,
   },
   previewPool: {
@@ -410,7 +412,7 @@ const styles = StyleSheet.create({
   anredeZeilen: { gap: SPACING.xs },
   anredeZeile: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: SPACING.sm },
   anredeLabel: { fontSize: FONT_SIZE.caption },
-  anredeWert: { fontSize: FONT_SIZE.caption, fontWeight: '800' },
+  anredeWert: { fontSize: FONT_SIZE.caption, ...schrift('800') },
   hint: {
     flexDirection: 'row',
     alignItems: 'flex-start',

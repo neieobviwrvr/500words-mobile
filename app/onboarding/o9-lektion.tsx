@@ -18,7 +18,8 @@ import {
   RADIUS,
   SPACING,
   FONT_SIZE,
-  LINE_HEIGHT,
+  LINE_HEIGHT, schrift,
+  kachel,
 } from '../../src/theme/tokens';
 
 // O9 - Beispiellektion.
@@ -39,6 +40,31 @@ import {
 // Schritt zeigt nur, WAS verstanden wurde, und wertet nichts.
 
 type Phase = 'intro' | 'hoeren' | 'waehlen' | 'sprechen' | 'fertig';
+
+/**
+ * So viele Woerter muss der Beispielsatz mindestens haben, damit er Satzbau
+ * zeigt. Drei ist die kleinste Zahl, bei der Subjekt-Verb-Objekt aufgeht
+ * (`wǒ shì xuésheng`). Findet sich keiner, gilt wieder der kuerzeste - eine
+ * leere Lektion waere schlechter als eine kurze.
+ */
+const MIN_WOERTER = 3;
+
+/**
+ * Laenge des LERNTEXTS in Woertern.
+ *
+ * Fuer Chinesisch ist das Pinyin der Lerntext (siehe CLAUDE.md, "Gelernt
+ * wird ueber PINYIN"); die Zeichen laufen nur passiv mit. Sie zu zaehlen
+ * misst etwas anderes - `对。` waere zwei "Zeichen" und damit immer der
+ * Sieger, obwohl es gar kein Satz ist.
+ */
+function woerter(s: ExerciseSentence): number {
+  return lerntext(s).trim().split(/\s+/).filter(Boolean).length;
+}
+
+/** Was der Nutzer lesen und sprechen soll: Pinyin, wo es eins gibt. */
+function lerntext(s: ExerciseSentence): string {
+  return s.pinyin ?? s.text;
+}
 
 export default function LessonScreen() {
   const { darkMode, targetLanguageId } = useAppState();
@@ -64,8 +90,23 @@ export default function LessonScreen() {
         const { sentences } = await loadExerciseSentences(targetLanguageId, ['grundwortschatz']);
         if (cancelled) return;
         // Kurze Saetze zuerst - der erste Kontakt soll leicht sein.
-        const usable = sentences.filter((s) => s.text.length > 0).sort((a, b) => a.text.length - b.text.length);
-        const chosen = usable[0] ?? null;
+        //
+        // BERICHTIGT 2026-09-01. Sortiert wurde nach `text.length`, also nach
+        // ZEICHEN. Bei Chinesisch gewinnt damit zwangslaeufig das kuerzeste
+        // Schriftzeichen-Gebilde: die Beispiellektion zeigte immer nur `对。`
+        // - ein einzelnes Zeichen, kein Satz. Schlimmer im letzten Schritt:
+        // der Nutzer sollte eine einzelne Silbe sprechen, deren Bedeutung
+        // komplett am TON haengt (duì, vierter Ton). Genau das ist fuer einen
+        // Anfaenger das Schwerste und widerspricht dem Grundsatz oben
+        // ("HIER DARF NIEMAND SCHEITERN").
+        //
+        // Jetzt zaehlt die Zahl der WOERTER des Lerntexts (bei Chinesisch das
+        // Pinyin, sonst der Satz selbst), und es gewinnt der kuerzeste Satz,
+        // der ueberhaupt Satzbau zeigt. Ein Ein-Wort-Ausruf demonstriert
+        // nichts - und im Sprech-Schritt traegt bei mehreren Silben der
+        // Kontext, statt dass ein einzelner Ton alles entscheidet.
+        const usable = sentences.filter((s) => s.text.length > 0).sort((a, b) => woerter(a) - woerter(b));
+        const chosen = usable.find((s) => woerter(s) >= MIN_WOERTER) ?? usable[0] ?? null;
         setSentence(chosen);
         if (chosen?.germanGloss) {
           const distractors = usable
@@ -207,12 +248,25 @@ export default function LessonScreen() {
           onPress={playSentence}
           accessibilityRole="button"
           accessibilityLabel="Satz noch einmal anhören"
-          style={[styles.sentenceCard, { backgroundColor: theme.cardBg, borderColor: theme.border }]}
+          style={[styles.sentenceCard, kachel(darkMode), { backgroundColor: theme.cardBg }]}
         >
           <Feather name="volume-2" size={26} color={ACCENT_ORANGE} />
-          <Text style={[styles.sentence, { color: theme.text }]}>{sentence.text}</Text>
+          {/* Pinyin gross, Zeichen klein darunter (2026-09-01, Simons
+              Nachfrage). Vorher stand hier `sentence.text`, also allein das
+              Hanzi - der Screen zeigte die Schrift, die laut CLAUDE.md
+              ausdruecklich NICHT gelernt werden soll, und verschwieg die
+              Lautschrift, die dafuer in der Datenbank steht. */}
+          <Text style={[styles.sentence, { color: theme.text }]}>{lerntext(sentence)}</Text>
+          {sentence.pinyin ? (
+            <Text style={[styles.schriftzeichen, { color: theme.sub }]}>{sentence.text}</Text>
+          ) : null}
         </Pressable>
         <Text style={[styles.hint, { color: theme.sub }]}>Antippen, um es noch einmal zu hören.</Text>
+        {/* Der Kulturhinweis lag bisher ungenutzt im Datensatz. Gerade beim
+            allerersten Satz beantwortet er die Frage, die sich sonst stellt. */}
+        {sentence.cultureNote ? (
+          <Text style={[styles.hinweis, { color: theme.sub }]}>{sentence.cultureNote}</Text>
+        ) : null}
       </OnboardingScaffold>
     );
   }
@@ -224,7 +278,7 @@ export default function LessonScreen() {
         total={ONBOARDING_TOTAL_STEPS}
         dark={darkMode}
         title="Was heißt das?"
-        subtitle={sentence.text}
+        subtitle={lerntext(sentence)}
         onBack={() => setPhase('hoeren')}
         footer={
           <PillButton
@@ -262,7 +316,7 @@ export default function LessonScreen() {
         total={ONBOARDING_TOTAL_STEPS}
         dark={darkMode}
         title="Jetzt du"
-        subtitle={sentence.text}
+        subtitle={lerntext(sentence)}
         onBack={() => setPhase('hoeren')}
         footer={
           <PillButton
@@ -343,7 +397,7 @@ const styles = StyleSheet.create({
     marginBottom: SPACING.xl,
   },
   sentenceCard: {
-    borderWidth: 1,
+    // Rahmen aus `kachel()`.
     borderRadius: RADIUS.md,
     padding: SPACING.xl,
     alignItems: 'center',
@@ -352,7 +406,7 @@ const styles = StyleSheet.create({
   sentence: {
     fontSize: FONT_SIZE.title,
     lineHeight: LINE_HEIGHT.title,
-    fontWeight: '700',
+    ...schrift('700'),
     textAlign: 'center',
   },
   micButton: {
@@ -369,10 +423,26 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: SPACING.md,
   },
+  // Die Zeichen sind hier NICHT der Lernstoff, sondern die Stuetze: kleiner
+  // als das Pinyin und in der gedaempften Farbe. Sie stehen trotzdem da,
+  // weil man im Notfall jemandem den Bildschirm hinhaelt (dieselbe
+  // Ueberlegung wie bei `PhraseCard` im Survival).
+  schriftzeichen: {
+    fontSize: FONT_SIZE.body,
+    lineHeight: LINE_HEIGHT.body,
+    textAlign: 'center',
+  },
+  hinweis: {
+    fontSize: FONT_SIZE.small,
+    lineHeight: LINE_HEIGHT.small,
+    textAlign: 'center',
+    marginTop: SPACING.lg,
+    fontStyle: 'italic',
+  },
   solution: {
     fontSize: FONT_SIZE.body,
     lineHeight: LINE_HEIGHT.body,
-    fontWeight: '700',
+    ...schrift('700'),
     textAlign: 'center',
     marginTop: SPACING.md,
   },
