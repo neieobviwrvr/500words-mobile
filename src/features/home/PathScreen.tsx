@@ -1300,7 +1300,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   pathBoxContent: {
-    paddingVertical: SPACING.lg,
+    // Oben und unten getrennt seit 2026-09-03 (Simon: der Abstand zwischen
+    // dem "Du bist hier"-Kasten und dem Pfad soll um die Haelfte wachsen).
+    // Nur OBEN angehoben - `paddingVertical` haette auch das untere Ende
+    // des Scroll-Inhalts mitgenommen, und das ist eine andere Luecke: die
+    // liegt INNERHALB der Box und wird gescrollt, waehrend der Abstand zum
+    // Wiederholen-Knopf ausserhalb liegt (siehe `actions.marginTop`).
+    //
+    // Sichtbar ist die Summe aus dieser Zahl und `sectionBar.padding` (12),
+    // weil der Kasten in derselben Box sitzt: 12 + 32 = 44, vorher 28.
+    paddingTop: SPACING.xxl,
+    paddingBottom: SPACING.lg,
     paddingHorizontal: SPACING.sm,
   },
   pathScrollWrap: { flex: 1, position: 'relative' },
@@ -1387,7 +1397,12 @@ const styles = StyleSheet.create({
     // Jetzt folgt der Knopf direkt auf den Pfad, und weil die Box ueber
     // `flex: 1` waechst, bleibt kein Rest mehr uebrig, den man verschieben
     // muesste.
-    marginTop: SPACING.lg,
+    //
+    // 2026-09-03 von lg auf xl (Simon: auch diese Luecke um die Haelfte
+    // groesser). Das ist der Abstand zwischen dem unteren Ende der Pfad-Box
+    // und dem Knopf - er liegt AUSSERHALB der Scroll-Flaeche und ist
+    // deshalb immer sichtbar, egal wie weit der Pfad gescrollt ist.
+    marginTop: SPACING.xl,
     marginBottom: SPACING.md,
   },
   softButton: {
