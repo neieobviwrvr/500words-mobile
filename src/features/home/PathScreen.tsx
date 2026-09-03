@@ -759,10 +759,11 @@ export function PathScreen() {
             dark={darkMode}
             title="Welche Sprache lernst du?"
             accessibilityLabel="Sprache"
+            rahmen="karte"
           />
         </View>
 
-        <HeaderMenu dark={darkMode} />
+        <HeaderMenu dark={darkMode} rahmen="karte" />
       </View>
 
       {/* Fortschritt ueber die freigeschalteten Inhalte. */}
@@ -1126,12 +1127,28 @@ function SoftButton({
       accessibilityHint={hint}
       style={({ pressed }) => [
         styles.softButton,
-        // Tiefe 6 statt 4 (Simons Vorgabe): das Banner ist die groesste
-        // Flaeche auf dem Screen und die eine Handlung, die von hier aus
-        // wirklich weiterfuehrt - es darf schwerer wirken als die kleinen
-        // Kopfzeilen-Knoepfe.
-        kachel(dark, 6),
-        { backgroundColor: pressed ? theme.subtleFill : theme.cardBg },
+        // Karten-Look wie der Rest von S1 (2026-09-03, Simons Wunsch).
+        //
+        // ACHTUNG, das nimmt eine aeltere Entscheidung zurueck: hier stand
+        // `kachel(dark, 6)` mit der Begruendung, das Banner sei die
+        // groesste Flaeche und die eine wirklich weiterfuehrende Handlung,
+        // es duerfe schwerer wirken als die Kopfzeilen-Knoepfe. Mit dem
+        // Karten-Look tragen jetzt ALLE Elemente auf S1 dasselbe Gewicht -
+        // der Knopf hebt sich nur noch ueber Groesse und Lage hervor,
+        // nicht mehr ueber die Tiefe.
+        karte(dark),
+        {
+          backgroundColor: pressed ? theme.subtleFill : theme.cardBg,
+          // Die Pillenform zurueckholen: `karte()` bringt RADIUS.lg mit, und
+          // das haette diesen Knopf vom Stadion zum Rechteck gemacht. Bei
+          // den kleinen Elementen der Kopfzeile ist der Sprung 12 -> 16 und
+          // faellt kaum auf, hier waere es 100 -> 16 gewesen.
+          //
+          // Uebernommen wird also das MATERIAL der Karte (Rand, Schatten),
+          // nicht ihre Form - die ist eine eigene Entscheidung und war fuer
+          // diesen Knopf schon getroffen.
+          borderRadius: RADIUS.pill,
+        },
       ]}
     >
       <Text numberOfLines={2} style={[styles.softLabel, { color: theme.text }]}>

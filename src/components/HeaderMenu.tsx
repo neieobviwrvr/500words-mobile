@@ -10,6 +10,7 @@ import {
   FONT_SIZE,
   schrift,
   kachel,
+  karte,
   FLOATING_SHADOW,
   FLOATING_BORDER,
 } from '../theme/tokens';
@@ -51,16 +52,29 @@ type Props = {
    */
   overlay?: boolean;
   /**
-   * "Floating Card" statt 3D-Kante (2026-09-02, nur fuer den Survival-
-   * Screen angefordert) - duenner heller Rahmen plus weicher Schatten
-   * statt `kachel()`. Bewusst eine Prop statt einer Aenderung an `kachel()`
-   * selbst: S1 und Lektionen benutzen denselben Knopf und sollen ihre
-   * bereits bestaetigte Tiefe behalten.
+   * Welchen Rahmen die Knoepfe tragen. Vorgabe ist die 3D-Kachel.
+   *
+   * War bis zum 2026-09-03 die Boolean `flach`. Mit dem Karten-Look kam
+   * ein ZWEITER flacher Rahmen dazu, und zwei Booleans nebeneinander
+   * haetten die Frage aufgeworfen, was gilt, wenn beide gesetzt sind. Ein
+   * benannter Wert kann sich nicht widersprechen.
+   *
+   * - `kachel`: satter Rand, Druckkante unten. Wirkt gedrueckt.
+   * - `flach`:  blasser Rahmen, weicher blaugrauer Schatten ohne Versatz
+   *             (2026-09-02, Survival - dort standen zu viele gleich
+   *             schwere Kacheln nebeneinander).
+   * - `karte`:  der Rahmen der Wiederholen-Karten (2026-09-03, S1) -
+   *             1px 10% Schwarz, groesserer Radius, seitlich versetzter
+   *             Schatten. Wirkt aufgelegt.
+   *
+   * `flach` und `karte` sind NICHT dasselbe, auch wenn beide flach
+   * aussehen: der eine Schatten faellt nach unten, der andere nach
+   * schraeg rechts.
    */
-  flach?: boolean;
+  rahmen?: 'kachel' | 'flach' | 'karte';
 };
 
-export function HeaderMenu({ dark, overlay = false, inline = false, flach = false }: Props) {
+export function HeaderMenu({ dark, overlay = false, inline = false, rahmen = 'kachel' }: Props) {
   const { coins } = useAppState();
   const theme = getTheme(dark);
 
@@ -131,6 +145,7 @@ export function HeaderMenu({ dark, overlay = false, inline = false, flach = fals
       <View style={[styles.inlineRow, overlay && styles.anchorOverlay]}>
         <HeaderButton
           dark={dark}
+          rahmen={rahmen}
           icon="circle"
           label="Coins"
           value={String(coins)}
@@ -166,7 +181,7 @@ export function HeaderMenu({ dark, overlay = false, inline = false, flach = fals
           >
             <HeaderButton
               dark={dark}
-              flach={flach}
+              rahmen={rahmen}
               icon="gift"
               label="Geschenk"
               // Ohne Funktion bis die taegliche Kiste existiert - der Knopf
@@ -179,7 +194,7 @@ export function HeaderMenu({ dark, overlay = false, inline = false, flach = fals
             />
             <HeaderButton
               dark={dark}
-              flach={flach}
+              rahmen={rahmen}
               icon="circle"
               label="Coins"
               // Echter Kontostand. Der erste Coin kommt aus dem Onboarding,
@@ -196,7 +211,7 @@ export function HeaderMenu({ dark, overlay = false, inline = false, flach = fals
 
         <HeaderButton
           dark={dark}
-          flach={flach}
+          rahmen={rahmen}
           icon="more-horizontal"
           label="Mehr"
           hint="Zeigt Geschenk und Coins"
@@ -219,7 +234,7 @@ export function HeaderMenu({ dark, overlay = false, inline = false, flach = fals
 
 function HeaderButton({
   dark,
-  flach = false,
+  rahmen = 'kachel',
   icon,
   label,
   value,
@@ -228,8 +243,8 @@ function HeaderButton({
   onPress,
 }: {
   dark: boolean;
-  /** Siehe `Props.flach` an `HeaderMenu` - "Floating Card" statt 3D-Kante. */
-  flach?: boolean;
+  /** Siehe `Props.rahmen` an `HeaderMenu` - kachel / flach / karte. */
+  rahmen?: 'kachel' | 'flach' | 'karte';
   icon: React.ComponentProps<typeof Feather>['name'];
   label: string;
   value?: string;
@@ -252,9 +267,11 @@ function HeaderButton({
       aria-expanded={expanded}
       style={({ pressed }) => [
         styles.button,
-        flach
+        rahmen === 'flach'
           ? { borderWidth: 1, borderColor: FLOATING_BORDER, ...FLOATING_SHADOW }
-          : kachel(dark),
+          : rahmen === 'karte'
+            ? karte(dark)
+            : kachel(dark),
         { backgroundColor: theme.cardBg, opacity: pressed ? 0.7 : 1 },
       ]}
     >

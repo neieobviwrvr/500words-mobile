@@ -10,6 +10,7 @@ import {
   LINE_HEIGHT,
   schrift,
   kachel,
+  karte,
 } from '../theme/tokens';
 
 // Auswahlfeld im Babbel-Stil: eine ruhige Zeile mit Pfeil, die eine Liste
@@ -45,6 +46,15 @@ type Props = {
    * kleinste sinnvolle Tippziel, darunter faengt das Danebentippen an.
    */
   compact?: boolean;
+  /**
+   * Rahmen des Feldes. Vorgabe ist die 3D-Kachel; `karte` gibt ihm den
+   * Rahmen der Wiederholen-Karten (2026-09-03, S1: die Kopfzeile soll
+   * aussehen wie der Rest des Screens).
+   *
+   * Als Prop und NICHT als Aenderung an `kachel()`: das Onboarding
+   * benutzt denselben Dropdown und behaelt seine Tiefe.
+   */
+  rahmen?: 'kachel' | 'karte';
 };
 
 export function Dropdown({
@@ -55,6 +65,7 @@ export function Dropdown({
   title,
   accessibilityLabel,
   compact = false,
+  rahmen = 'kachel',
 }: Props) {
   const theme = getTheme(dark);
   const [open, setOpen] = useState(false);
@@ -70,7 +81,7 @@ export function Dropdown({
         style={({ pressed }) => [
           styles.field,
           compact && styles.fieldCompact,
-          kachel(dark),
+          rahmen === 'karte' ? karte(dark) : kachel(dark),
           {
             backgroundColor: theme.cardBg,
             opacity: pressed ? 0.7 : 1,

@@ -206,7 +206,7 @@ export function CheatsheetScreen() {
         </Pressable>
         <Text style={[styles.title, { color: theme.text }]}>Survival-Notizen</Text>
         <View style={styles.headerSide}>
-          <HeaderMenu dark={darkMode} flach />
+          <HeaderMenu dark={darkMode} rahmen="flach" />
         </View>
       </View>
 
