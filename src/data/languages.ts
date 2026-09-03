@@ -117,12 +117,12 @@ export const LANGUAGES: Language[] = [
   // Sonderzeichen. Es gibt dort keine zweite Schrift zu verbergen - anders
   // als bei Hanzi und Kyrillisch, die ein Anfaenger gar nicht lesen kann.
   // Eine Lautschrift waere hier nicht abgebildet, sondern erfunden.
-  { id: 'vi', label: 'Vietnamesisch', table: 'vietnamesisch_phrasebook', sttLanguage: 'vi', sttPrompt: 'Đây là một câu ví dụ bằng tiếng Việt.', ttsLocale: 'vi-VN', hasContent: true, vocabTable: null, vocabColumn: null, lautschriftSpalte: null },
-  { id: 'pl', label: 'Polnisch', table: 'polnisch_phrasebook', sttLanguage: 'pl', sttPrompt: 'To jest przykładowe zdanie po polsku.', ttsLocale: 'pl-PL', hasContent: true, vocabTable: null, vocabColumn: null, lautschriftSpalte: null },
+  { id: 'vi', label: 'Vietnamesisch', table: 'vietnamesisch_phrasebook', sttLanguage: 'vi', sttPrompt: 'Đây là một câu ví dụ bằng tiếng Việt.', ttsLocale: 'vi-VN', hasContent: true, vocabTable: 'vietnamesisch_vocab', vocabColumn: 'vietnamese', lautschriftSpalte: null },
+  { id: 'pl', label: 'Polnisch', table: 'polnisch_phrasebook', sttLanguage: 'pl', sttPrompt: 'To jest przykładowe zdanie po polsku.', ttsLocale: 'pl-PL', hasContent: true, vocabTable: 'polnisch_vocab', vocabColumn: 'polish', lautschriftSpalte: null },
   // Britisches Englisch, wo es auseinandergeht (toilet/mobile/bill statt
   // restroom/cell phone/check) - deshalb en-GB als Stimme. Beide Varianten
   // stehen in den accepted_concepts, die Bewertung weist also keine ab.
-  { id: 'en', label: 'Englisch', table: 'englisch_phrasebook', sttLanguage: 'en', sttPrompt: 'This is an example sentence in English.', ttsLocale: 'en-GB', hasContent: true, vocabTable: null, vocabColumn: null, lautschriftSpalte: null },
+  { id: 'en', label: 'Englisch', table: 'englisch_phrasebook', sttLanguage: 'en', sttPrompt: 'This is an example sentence in English.', ttsLocale: 'en-GB', hasContent: true, vocabTable: 'englisch_vocab', vocabColumn: 'english', lautschriftSpalte: null },
 ];
 
 export const DEFAULT_LANGUAGE_ID = 'de';
