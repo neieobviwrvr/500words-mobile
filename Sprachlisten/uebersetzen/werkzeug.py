@@ -43,6 +43,9 @@ TABELLE = {
     "it": "italienisch_phrasebook",
     "no": "norwegisch_phrasebook",
     "ru": "russisch_phrasebook",
+    "vi": "vietnamesisch_phrasebook",
+    "pl": "polnisch_phrasebook",
+    "en": "englisch_phrasebook",
 }
 MASTER = "phrasebook_master"
 

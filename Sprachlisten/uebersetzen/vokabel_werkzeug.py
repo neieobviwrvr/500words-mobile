@@ -52,6 +52,9 @@ TABELLE = {
     "it": ("italienisch_vocab", "italian"),
     "no": ("norwegisch_vocab", "norwegian"),
     "ru": ("russisch_vocab", "russian"),
+    "vi": ("vietnamesisch_vocab", "vietnamese"),
+    "pl": ("polnisch_vocab", "polish"),
+    "en": ("englisch_vocab", "english"),
 }
 # Sprachen mit eigener Schrift: py ist Pflicht und landet in dieser Spalte.
 LAUTSCHRIFT_SPALTE = {"ru": "lautschrift"}

@@ -106,6 +106,23 @@ export const LANGUAGES: Language[] = [
   // Einzige Sprache neben Chinesisch mit eigener Schrift: gelernt wird ueber
   // `lautschrift` (Transliteration), das Kyrillische laeuft passiv mit.
   { id: 'ru', label: 'Russisch', table: 'russisch_phrasebook', sttLanguage: 'ru', sttPrompt: 'Это пример предложения на русском языке.', ttsLocale: 'ru-RU', hasContent: true, vocabTable: 'russisch_vocab', vocabColumn: 'russian', lautschriftSpalte: 'lautschrift' },
+
+  // Vietnamesisch, Polnisch, Englisch (2026-09-03, dritte Welle).
+  // Migration 20260903210000.
+  //
+  // ALLE DREI OHNE `lautschriftSpalte`, obwohl Simon sie fuer Vietnamesisch
+  // und Polnisch ausdruecklich angeboten hat: beide schreiben LATEINISCH.
+  // Vietnamesisch nutzt `quoc ngu` (lateinische Buchstaben mit Ton- und
+  // Vokalzeichen), Polnisch das lateinische Alphabet mit neun
+  // Sonderzeichen. Es gibt dort keine zweite Schrift zu verbergen - anders
+  // als bei Hanzi und Kyrillisch, die ein Anfaenger gar nicht lesen kann.
+  // Eine Lautschrift waere hier nicht abgebildet, sondern erfunden.
+  { id: 'vi', label: 'Vietnamesisch', table: 'vietnamesisch_phrasebook', sttLanguage: 'vi', sttPrompt: 'Đây là một câu ví dụ bằng tiếng Việt.', ttsLocale: 'vi-VN', hasContent: true, vocabTable: null, vocabColumn: null, lautschriftSpalte: null },
+  { id: 'pl', label: 'Polnisch', table: 'polnisch_phrasebook', sttLanguage: 'pl', sttPrompt: 'To jest przykładowe zdanie po polsku.', ttsLocale: 'pl-PL', hasContent: true, vocabTable: null, vocabColumn: null, lautschriftSpalte: null },
+  // Britisches Englisch, wo es auseinandergeht (toilet/mobile/bill statt
+  // restroom/cell phone/check) - deshalb en-GB als Stimme. Beide Varianten
+  // stehen in den accepted_concepts, die Bewertung weist also keine ab.
+  { id: 'en', label: 'Englisch', table: 'englisch_phrasebook', sttLanguage: 'en', sttPrompt: 'This is an example sentence in English.', ttsLocale: 'en-GB', hasContent: true, vocabTable: null, vocabColumn: null, lautschriftSpalte: null },
 ];
 
 export const DEFAULT_LANGUAGE_ID = 'de';
