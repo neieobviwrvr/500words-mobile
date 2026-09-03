@@ -1,8 +1,11 @@
-// Zielsprachen, die die App aktuell anbietet. Nur "de"/"sv" haben echten
-// Supabase-Content (phrasebook_master bzw. schwedisch_phrasebook, siehe
-// CLAUDE.md) - "es"/"fr" sind bewusst als "(bald)" markiert, damit die
-// Sprachauswahl auf S1 nicht etwas als aktiv bewirbt, fuer das es null
-// Inhalte gibt.
+// Zielsprachen, die die App anbietet - seit 2026-09-03 sind es ELF, und
+// alle haben vollstaendigen Satz-Content (rund 580 Saetze in allen 14
+// Kategorien, siehe die Bestandstabelle in CLAUDE.md). Hier stand frueher,
+// nur "de"/"sv" haetten echte Inhalte; das ist lange ueberholt.
+//
+// `hasContent: false` bleibt trotzdem im Typ, weil eine zwoelfte Sprache
+// wieder mit leeren Tabellen anfaengt - dann darf die Sprachauswahl auf S1
+// sie nicht als aktiv bewerben.
 
 export type Language = {
   id: string;
@@ -91,13 +94,12 @@ export const LANGUAGES: Language[] = [
   { id: 'fr', label: 'Französisch', table: 'franz_phrasebook', sttLanguage: 'fr', sttPrompt: 'Voici une phrase d\'exemple en français.', ttsLocale: 'fr-FR', hasContent: true, vocabTable: 'franz_vocab', vocabColumn: 'french', lautschriftSpalte: null },
 
   // Italienisch, Norwegisch, Russisch (2026-09-03, Simons Auftrag "alles
-  // Chinesische uebersetzen"). Tabellen stehen seit Migration
-  // 20260903120000_drei_neue_sprachen.sql, werden aber erst befuellt.
+  // Chinesische uebersetzen"). Migration
+  // 20260903120000_drei_neue_sprachen.sql.
   //
-  // `hasContent: true` seit dem Grundwortschatz-Import am 2026-09-03 (73-75
-  // Saetze je Sprache, der freie Teil, den jeder Nutzer bekommt). Die
-  // KAUFKATEGORIEN sind noch leer - dort zeigt der Pfad vorerst leere
-  // Reihen, genau wie Franzoesisch es nach seinem Start tat.
+  // VOLLSTAENDIG: alle 14 Kategorien, 579-581 Saetze je Sprache, dazu je
+  // 500 Vokabeln und vollstaendige Wortart-Tags. Es fehlen nur noch
+  // answer_clusters, Vertonung und der gefuehrte Kurs.
   { id: 'it', label: 'Italienisch', table: 'italienisch_phrasebook', sttLanguage: 'it', sttPrompt: 'Questa è una frase di esempio in italiano.', ttsLocale: 'it-IT', hasContent: true, vocabTable: 'italienisch_vocab', vocabColumn: 'italian', lautschriftSpalte: null },
   // Bokmaal, nicht Nynorsk - siehe Kopfkommentar der Migration. Das
   // TTS-Gebietsschema sagt es ausdruecklich ("nb"), damit die Systemstimme
@@ -108,7 +110,13 @@ export const LANGUAGES: Language[] = [
   { id: 'ru', label: 'Russisch', table: 'russisch_phrasebook', sttLanguage: 'ru', sttPrompt: 'Это пример предложения на русском языке.', ttsLocale: 'ru-RU', hasContent: true, vocabTable: 'russisch_vocab', vocabColumn: 'russian', lautschriftSpalte: 'lautschrift' },
 
   // Vietnamesisch, Polnisch, Englisch (2026-09-03, dritte Welle).
-  // Migration 20260903210000.
+  // Migration 20260903210000. Ebenfalls vollstaendig (581-584 Saetze,
+  // je 500 Vokabeln, Wortart-Tags).
+  //
+  // Vietnamesisch hat als EINZIGE Sprache alle 584 deutschen Saetze: die
+  // drei, die anderswo ausgelassen sind (westliche Medizin, helle Haut),
+  // sind dort inhaltlich richtig - Vietnam kennt den Gegensatz zur
+  // traditionellen Medizin, und helle Haut gilt als Kompliment.
   //
   // ALLE DREI OHNE `lautschriftSpalte`, obwohl Simon sie fuer Vietnamesisch
   // und Polnisch ausdruecklich angeboten hat: beide schreiben LATEINISCH.

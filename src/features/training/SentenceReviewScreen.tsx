@@ -80,19 +80,32 @@ const SESSION_RUNDEN = 6;
 type Stufe = 1 | 2 | 3;
 
 // Fuer die Ueberschriften "Sprich diesen ___ Satz nach" / "Ordne diesen
-// ___ Satz..." (2026-08-26, Nachtrag) - `language.label` allein passt
-// grammatisch nicht ("diesen Schwedisch Satz"), es braucht die deklinierte
-// Adjektivform. Reine Anzeige-Kosmetik, deshalb eine kleine feste Liste
-// statt einer echten Deklinationsregel - die Sprachenliste waechst selten.
-const SPRACH_ADJEKTIV: Record<string, string> = {
-  de: 'deutschen',
-  sv: 'schwedischen',
-  es: 'spanischen',
-  zh: 'chinesischen',
-  fr: 'französischen',
-};
+// ___ Satz..." (2026-08-26) - `language.label` allein passt grammatisch
+// nicht ("diesen Schwedisch Satz"), es braucht die deklinierte
+// Adjektivform.
+//
+// Das war bis zum 2026-09-03 eine feste Liste mit dem Kommentar "die
+// Sprachenliste waechst selten". Am selben Tag kamen sechs Sprachen auf
+// einmal dazu, und alle sechs zeigten dem Nutzer ihren ROHEN Code:
+// "Sprich diesen pl Satz nach". Eine Liste, die man beim Anlegen einer
+// Sprache vergessen kann, ist genau die falsche Bauform.
+//
+// Deshalb jetzt eine Regel: alle deutschen Sprachbezeichnungen sind
+// Adjektive, die im Akkusativ Singular maskulin ein "-en" anhaengen -
+// "Deutsch" -> "deutschen", "Polnisch" -> "polnischen". Das traegt fuer
+// alle elf Sprachen und fuer jede weitere, die auf "-isch" endet.
+// `SPRACH_ADJEKTIV` bleibt fuer Ausnahmen, falls je eine Bezeichnung
+// dazukommt, die der Regel nicht folgt (etwa "Hindi" oder "Suaheli").
+const SPRACH_ADJEKTIV: Record<string, string> = {};
 function sprachAdjektiv(languageId: string): string {
-  return SPRACH_ADJEKTIV[languageId] ?? languageId;
+  const ausnahme = SPRACH_ADJEKTIV[languageId];
+  if (ausnahme) return ausnahme;
+  const label = getLanguage(languageId).label;
+  // Greift nur, wenn die Bezeichnung wirklich adjektivisch ist. Sonst
+  // lieber die unveraenderte Bezeichnung als eine falsche Beugung.
+  return label.endsWith('isch') || label === 'Deutsch'
+    ? label.toLowerCase() + 'en'
+    : label;
 }
 
 /**
