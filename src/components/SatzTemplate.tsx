@@ -11,6 +11,7 @@ import {
   FONT_SIZE,
   LINE_HEIGHT,
   KACHEL_RAND_LIGHT,
+  karte,
 } from '../theme/tokens';
 
 // Bausteine der verbindlichen Satz-Vorlagen (Simons Templates vom
@@ -195,25 +196,10 @@ export function SatzRahmen({ children, dark }: { children: ReactNode; dark: bool
   const theme = getTheme(dark);
   return (
     <View
-      style={[
-        styles.rahmen,
-        {
-          backgroundColor: theme.cardBg,
-          // Im Darkmode traegt ein schwarzer Schatten nichts bei, und eine
-          // schwarze Linie auf dunklem Grund verschwindet - dort uebernimmt
-          // eine hellere Kante die Abgrenzung.
-          borderColor: dark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.1)',
-          ...(dark
-            ? null
-            : {
-                shadowColor: '#000',
-                shadowOffset: { width: 2, height: 2 },
-                shadowRadius: 4,
-                shadowOpacity: 0.25,
-                elevation: 2,
-              }),
-        },
-      ]}
+      // Rand, Radius und Schatten liegen seit 2026-09-03 als `karte()` in
+      // tokens.ts, weil der "Du bist hier"-Kasten auf S1 denselben Look
+      // teilt. Die Werte sind unveraendert - nur nicht mehr doppelt.
+      style={[styles.rahmen, karte(dark), { backgroundColor: theme.cardBg }]}
     >
       {children}
     </View>
@@ -284,8 +270,8 @@ const styles = StyleSheet.create({
   chipText: { fontSize: FONT_SIZE.caption, ...schrift('700') },
   satzBlock: { alignItems: 'center', gap: SPACING.xs, paddingVertical: SPACING.lg },
   rahmen: {
-    borderWidth: 1,
-    borderRadius: RADIUS.lg,
+    // borderWidth/borderRadius kommen aus `karte()` - hier steht nur noch
+    // die Groesse, nicht mehr das Aussehen.
     paddingHorizontal: SPACING.lg,
     // Oben etwas weniger, weil die Info-Zeile ihren eigenen `marginTop`
     // mitbringt - sonst stuende die Übersetzung zu tief im Kasten.

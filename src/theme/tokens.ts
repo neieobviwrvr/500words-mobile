@@ -216,6 +216,45 @@ export function kachel(dark: boolean, tiefe = 2) {
   } as const;
 }
 
+/**
+ * Der Karten-Look aus dem Wiederholen (2026-09-03).
+ *
+ * Das ist NICHT dasselbe wie `kachel()`: die Kachel traegt einen satten
+ * Rand und die 3D-Druckkante unten, diese Karte einen fast unsichtbaren
+ * Rand, einen groesseren Radius und einen versetzten Schatten. Kachel
+ * wirkt gedrueckt, Karte wirkt aufgelegt.
+ *
+ * Die Werte stammen aus Simons Vorlage fuer den Satz-Rahmen
+ * (`SatzTemplate.tsx`) und standen bis hierher nur dort. Sie sind
+ * hierhergezogen, weil der "Du bist hier"-Kasten auf S1 denselben Look
+ * bekommen hat - zwei Kopien waeren beim naechsten Feinschliff
+ * auseinandergelaufen.
+ *
+ * Der Schatten hat als einziger in der App einen SEITLICHEN Versatz
+ * (X 2). Das ist Absicht und kommt aus der Vorlage - wer ihn an die
+ * ELEVATION-Skala angleicht, nimmt ihm genau sein Merkmal.
+ *
+ * Im Darkmode traegt ein schwarzer Schatten nichts bei, und eine schwarze
+ * Linie auf dunklem Grund verschwindet - dort uebernimmt eine hellere
+ * Kante die Abgrenzung, ganz ohne Schatten.
+ */
+export function karte(dark: boolean) {
+  return {
+    borderWidth: 1,
+    borderRadius: RADIUS.lg,
+    borderColor: dark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.1)',
+    ...(dark
+      ? null
+      : {
+          shadowColor: '#000',
+          shadowOffset: { width: 2, height: 2 },
+          shadowRadius: 4,
+          shadowOpacity: 0.25,
+          elevation: 2,
+        }),
+  } as const;
+}
+
 // ---------------------------------------------------------------------------
 // Schrift
 // ---------------------------------------------------------------------------

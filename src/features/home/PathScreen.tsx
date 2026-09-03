@@ -56,6 +56,7 @@ import {
   LINE_HEIGHT,
   schrift,
   kachel,
+  karte,
 } from '../../theme/tokens';
 
 // S1 - Startscreen (Pfad).
@@ -792,7 +793,12 @@ export function PathScreen() {
       >
         {/* Abschnitts-Kopf, bleibt beim Scrollen stehen. */}
         <View style={styles.sectionBar}>
-          <View style={[styles.sectionField, kachel(darkMode), { backgroundColor: theme.cardBg }]}>
+          {/* Karten-Look statt Kachel (2026-09-03, Simons Test): derselbe
+              Rahmen wie die Saetze beim Wiederholen - blasser Rand, groesserer
+              Radius, versetzter Schatten. `karte()` liegt in tokens.ts, damit
+              beide Stellen dieselbe Definition benutzen. Zum Zuruecknehmen
+              genuegt `kachel(darkMode)` an dieser Stelle. */}
+          <View style={[styles.sectionField, karte(darkMode), { backgroundColor: theme.cardBg }]}>
             {/* Die kleine Zeile nennt den Lernweg (Nutzer-Wunsch
                 2026-08-20), die grosse bleibt die Stelle im Pfad. Der Text
                 kommt aus LEARNING_MODE_LABEL, damit Knopf-Ansage und Kasten
