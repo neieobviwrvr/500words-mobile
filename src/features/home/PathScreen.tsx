@@ -1176,14 +1176,24 @@ const styles = StyleSheet.create({
     gap: SPACING.sm,
     // 2026-09-01: von SPACING.md auf lg - die drei Kopfzeilen-Elemente
     // standen mit 12 Punkten zu dicht beieinander.
-    marginTop: SPACING.lg,
+    // 2026-09-03: von lg auf xl (Simons Wunsch, der Balken soll oben und
+    // unten mehr Luft haben). Der Abstand DARUNTER steht nicht hier,
+    // sondern in `pathBox.marginTop` - beide zusammen ergeben das Bild,
+    // wer nur einen anfasst, macht es schief.
+    marginTop: SPACING.xl,
   },
   // `progressValue` ist am 2026-09-01 weggefallen: die Prozentzahl liegt
   // jetzt als `ProgressProzent` beim Balken selbst, damit Schrift und Farbe
   // nicht an zwei Stellen gepflegt werden.
   pathBox: {
     flex: 1,
-    marginTop: SPACING.lg,
+    // Das ist der Abstand UNTER dem Fortschrittsbalken (2026-09-03, von lg
+    // auf xl). Zu dem, was hier steht, kommt noch `sectionBar.padding`
+    // (SPACING.md) dazu, weil die Box selbst rahmenlos ist - sichtbar ist
+    // also die Summe, heute 24 + 12 = 36. Die Polsterung nicht als
+    // Stellschraube benutzen: sie setzt zugleich den seitlichen Einzug der
+    // Kopfzeile.
+    marginTop: SPACING.xl,
   },
   pathBoxFrameless: {
     borderColor: 'transparent',
