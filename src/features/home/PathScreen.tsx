@@ -1208,11 +1208,15 @@ const styles = StyleSheet.create({
     gap: SPACING.sm,
     // 2026-09-01: von SPACING.md auf lg - die drei Kopfzeilen-Elemente
     // standen mit 12 Punkten zu dicht beieinander.
-    // 2026-09-03: von lg auf xl (Simons Wunsch, der Balken soll oben und
-    // unten mehr Luft haben). Der Abstand DARUNTER steht nicht hier,
-    // sondern in `pathBox.marginTop` - beide zusammen ergeben das Bild,
-    // wer nur einen anfasst, macht es schief.
-    marginTop: SPACING.xl,
+    // 2026-09-03: von lg auf xl, im selben Zug dann auf xxl (Simon wollte
+    // oben nochmal deutlich mehr Luft als unten). Der Abstand DARUNTER
+    // steht nicht hier, sondern in `pathBox.marginTop` - beide zusammen
+    // ergeben das Bild, wer nur einen anfasst, macht es schief.
+    //
+    // Oben ist jetzt bewusst GROESSER als unten (32 gegen 24+12): der
+    // Balken loest sich damit von der Kopfzeile und gehoert optisch zum
+    // Pfad darunter, statt zwischen beidem zu schweben.
+    marginTop: SPACING.xxl,
   },
   // `progressValue` ist am 2026-09-01 weggefallen: die Prozentzahl liegt
   // jetzt als `ProgressProzent` beim Balken selbst, damit Schrift und Farbe
