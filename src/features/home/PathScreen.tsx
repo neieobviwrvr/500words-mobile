@@ -25,7 +25,6 @@ import {
   ProgressBar,
   ProgressProzent,
   Screen,
-  PRESS_DEPTH,
 } from '../../components';
 import type { DropdownOption } from '../../components';
 import { useUnlockedProgress } from './useUnlockedProgress';
@@ -1065,11 +1064,18 @@ function PathNode({
             // ein Schatten traegt auf hellem Grund kaum und faellt im
             // Darkmode ganz weg.
             borderWidth: isCurrent ? 3 : node.theme ? 1.5 : 2,
-            // PRESS_DEPTH ist seit 2026-09-01 6 (Simons "Boom"-Vorgabe,
-            // dieselbe Konstante wie bei PillButton) - Kategorie-Kacheln
-            // bekommen dadurch automatisch die dickere 3D-Unterkante mit.
-            borderBottomWidth: pressed ? 2 : node.theme ? 2 : PRESS_DEPTH,
-            marginTop: pressed ? PRESS_DEPTH : 0,
+            // KEINE 3D-Unterkante mehr (2026-09-03, Simons Wunsch, im Zuge
+            // der Umstellung von S1 auf den flachen Karten-Look). Hier stand
+            // `borderBottomWidth: PRESS_DEPTH` (6, Simons "Boom"-Vorgabe vom
+            // 2026-09-01) - der Rand ist jetzt rundum gleich dick.
+            //
+            // Damit faellt auch die Druck-Verschiebung weg: `marginTop` auf
+            // PRESS_DEPTH ergab nur Sinn, solange eine Kante zum
+            // Zusammendruecken da war. Ohne sie waere es ein Sprung ohne
+            // Grund. Stattdessen dieselbe Rueckmeldung wie bei den anderen
+            // flachen Elementen auf S1 (Dropdown, Menue, Wechsel-Knopf):
+            // kurz durchsichtiger.
+            opacity: pressed ? 0.7 : 1,
           },
         ]}
       >
@@ -1338,9 +1344,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.md,
   },
   // Schleier fuer gesperrte Kategorie-Kacheln (2026-09-01). Eigener
-  // `borderRadius` statt `overflow: 'hidden'` auf `.node`: so bleibt die
-  // Druckkante (die beim Antippen ihre Breite aendert) unbeschnitten, waehrend
-  // der Schleier trotzdem der Pillenform folgt.
+  // `borderRadius` statt `overflow: 'hidden'` auf `.node`: der Schleier
+  // folgt so der Pillenform, ohne dass der Rand beschnitten wird.
+  // (Bis 2026-09-03 stand hier die Druckkante als Begruendung - die gibt
+  // es nicht mehr, der eigene Radius ist aber weiterhin richtig.)
   nodeVeil: {
     position: 'absolute',
     top: 0,
