@@ -59,6 +59,11 @@ TABELLE = {
 # Sprachen mit eigener Schrift: py ist Pflicht und landet in dieser Spalte.
 LAUTSCHRIFT_SPALTE = {"ru": "lautschrift"}
 
+# Sprachen, deren Nomen ein grammatisches Geschlecht tragen - nur dort ist
+# `g` Pflicht. Englisch und Vietnamesisch haben KEINS: "the table" und "cái
+# bàn" sind geschlechtslos, ein erfundenes Genus waere dort schlicht falsch.
+MIT_GENUS = {"it", "no", "ru", "pl"}
+
 # Die App faerbt nur fuenf Wortarten ein (WORD_COLORS in tokens.ts), der
 # Wortart-Filter der Woerter-Wiederholung zeigt aber ALLE, die in der Spalte
 # stehen. Diese Liste haelt die Schreibweise einheitlich - ohne sie stuenden
@@ -129,10 +134,13 @@ def pruefe(sprache):
             fehler.append("Keine deutsche Bedeutung fuer " + repr(w.get("w")))
         if w.get("k") not in WORTARTEN:
             fehler.append("Unbekannte Wortart " + repr(w.get("k")) + " bei " + repr(w.get("w")))
-        if w.get("k") == "Nomen" and not w.get("g"):
+        if sprache in MIT_GENUS and w.get("k") == "Nomen" and not w.get("g"):
             # Ohne Genus ist ein Nomen halb gelernt - "casa" nuetzt wenig,
-            # wenn man nicht weiss, dass es "la casa" heisst.
+            # wenn man nicht weiss, dass es "la casa" heisst. Gilt nur fuer
+            # Sprachen, die ueberhaupt eins haben (siehe MIT_GENUS).
             fehler.append("Nomen ohne Genus: " + repr(w.get("w")))
+        if sprache not in MIT_GENUS and w.get("g"):
+            fehler.append("Genus bei einer Sprache ohne Genus: " + repr(w.get("w")))
         if sprache in LAUTSCHRIFT_SPALTE and not (w.get("py") or "").strip():
             fehler.append("Keine Lautschrift (py) fuer " + repr(w.get("w")))
 
