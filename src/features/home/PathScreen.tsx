@@ -831,9 +831,18 @@ export function PathScreen() {
             accessibilityLabel={`Lernweg wechseln zu: ${
               LEARNING_MODE_LABEL[learningMode === 'speedrun' ? 'gefuehrt' : 'speedrun']
             }`}
+            // Karten-Look wie der Kasten daneben (2026-09-03, Simons Wunsch,
+            // einen Schritt nach dem Kasten). Die beiden sind optisch ein
+            // Paar in einer Zeile - eine Kachel neben einer Karte sah aus
+            // wie zwei verschiedene Materialien.
+            //
+            // Der Knopf verliert damit die Druckkante, die in dieser App
+            // "das kann man druecken" bedeutet. Die Rueckmeldung BEIM
+            // Druecken bleibt aber (opacity unten), es geht also nur das
+            // ruhende Signal verloren, nicht die Bedienbarkeit.
             style={({ pressed }) => [
               styles.toggleButton,
-              kachel(darkMode),
+              karte(darkMode),
               {
                 backgroundColor: theme.cardBg,
                 opacity: pressed ? 0.7 : 1,
@@ -1257,7 +1266,9 @@ const styles = StyleSheet.create({
     // Layout kommen, nicht aus zwei Zahlen, die jemand beim naechsten
     // Schriftwechsel auseinanderlaufen laesst.
     minHeight: 56,
-    borderRadius: RADIUS.md,
+    // borderRadius kommt aus `karte()` (RADIUS.lg) - hier steht er nicht
+    // mehr, sonst muesste man ihn bei jeder Aenderung an der Karte
+    // nachziehen.
     alignItems: 'center',
     justifyContent: 'center',
   },
