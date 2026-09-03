@@ -1228,7 +1228,19 @@ const styles = StyleSheet.create({
   },
   toggleButton: {
     width: 56,
-    height: 56,
+    // minHeight statt height (2026-09-03, Simons Beobachtung: der Knopf
+    // stand 2 px hoeher als der Kasten daneben).
+    //
+    // Die Zeile steht auf `alignItems: 'stretch'` - eine FESTE Hoehe
+    // hebelt das aus, der Knopf blieb also bei 56, waehrend der Kasten
+    // mit seinem Text auf 58 wuchs. Mit minHeight stretcht der Knopf auf
+    // die Zeilenhoehe mit, die 56 wirken nur noch als Untergrenze fuer
+    // die Tippflaeche (Apple verlangt mindestens 44).
+    //
+    // Bewusst KEINE feste Hoehe auf beiden: die Gleichheit soll aus dem
+    // Layout kommen, nicht aus zwei Zahlen, die jemand beim naechsten
+    // Schriftwechsel auseinanderlaufen laesst.
+    minHeight: 56,
     borderRadius: RADIUS.md,
     alignItems: 'center',
     justifyContent: 'center',
