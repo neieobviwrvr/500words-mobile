@@ -98,14 +98,14 @@ export const LANGUAGES: Language[] = [
   // Saetze je Sprache, der freie Teil, den jeder Nutzer bekommt). Die
   // KAUFKATEGORIEN sind noch leer - dort zeigt der Pfad vorerst leere
   // Reihen, genau wie Franzoesisch es nach seinem Start tat.
-  { id: 'it', label: 'Italienisch', table: 'italienisch_phrasebook', sttLanguage: 'it', sttPrompt: 'Questa è una frase di esempio in italiano.', ttsLocale: 'it-IT', hasContent: true, vocabTable: null, vocabColumn: null, lautschriftSpalte: null },
+  { id: 'it', label: 'Italienisch', table: 'italienisch_phrasebook', sttLanguage: 'it', sttPrompt: 'Questa è una frase di esempio in italiano.', ttsLocale: 'it-IT', hasContent: true, vocabTable: 'italienisch_vocab', vocabColumn: 'italian', lautschriftSpalte: null },
   // Bokmaal, nicht Nynorsk - siehe Kopfkommentar der Migration. Das
   // TTS-Gebietsschema sagt es ausdruecklich ("nb"), damit die Systemstimme
   // nicht auf Nynorsk ausweicht.
-  { id: 'no', label: 'Norwegisch', table: 'norwegisch_phrasebook', sttLanguage: 'no', sttPrompt: 'Dette er en eksempelsetning på norsk.', ttsLocale: 'nb-NO', hasContent: true, vocabTable: null, vocabColumn: null, lautschriftSpalte: null },
+  { id: 'no', label: 'Norwegisch', table: 'norwegisch_phrasebook', sttLanguage: 'no', sttPrompt: 'Dette er en eksempelsetning på norsk.', ttsLocale: 'nb-NO', hasContent: true, vocabTable: 'norwegisch_vocab', vocabColumn: 'norwegian', lautschriftSpalte: null },
   // Einzige Sprache neben Chinesisch mit eigener Schrift: gelernt wird ueber
   // `lautschrift` (Transliteration), das Kyrillische laeuft passiv mit.
-  { id: 'ru', label: 'Russisch', table: 'russisch_phrasebook', sttLanguage: 'ru', sttPrompt: 'Это пример предложения на русском языке.', ttsLocale: 'ru-RU', hasContent: true, vocabTable: null, vocabColumn: null, lautschriftSpalte: 'lautschrift' },
+  { id: 'ru', label: 'Russisch', table: 'russisch_phrasebook', sttLanguage: 'ru', sttPrompt: 'Это пример предложения на русском языке.', ttsLocale: 'ru-RU', hasContent: true, vocabTable: 'russisch_vocab', vocabColumn: 'russian', lautschriftSpalte: 'lautschrift' },
 ];
 
 export const DEFAULT_LANGUAGE_ID = 'de';

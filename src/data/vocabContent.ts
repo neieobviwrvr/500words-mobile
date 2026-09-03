@@ -169,21 +169,35 @@ export async function loadVocabWords(
   // Nur Schwedisch hat eine `forms`-Spalte - franz_vocab hat keine, die
   // waere ein 400er beim Anfragen einer nicht existierenden Spalte.
   const hatFormen = languageId === 'sv';
+  // Sprachen mit eigener Schrift (heute Russisch) tragen die Lautschrift in
+  // einer eigenen Spalte, und DIE ist der Lerntext - dieselbe Aufteilung wie
+  // beim Phrasebook, nur datengetrieben statt als zweiter Sonderzweig neben
+  // dem chinesischen. Das Kyrillische wandert nach `hanzi`, weil dieses Feld
+  // die SCHRIFT fuer die Sprachausgabe haelt (siehe dessen Kommentar oben).
+  const lautschrift = lang.lautschriftSpalte;
 
   const { data: words, fromCache } = await cachedFetch(cacheKey, async () => {
     const { data, error } = await supabase
       .from(lang.vocabTable as string)
-      .select(`id, ${wordColumn}, german, category, genus${hatFormen ? ', forms' : ''}`);
+      .select(
+        `id, ${wordColumn}, german, category, genus` +
+          (hatFormen ? ', forms' : '') +
+          (lautschrift ? `, ${lautschrift}` : '')
+      );
     if (error) throw error;
 
     return (data ?? []).map(
       (row: any): VocabWord => ({
         id: row.id,
-        word: row[wordColumn],
+        // Wo es eine Lautschrift gibt, ist sie der angezeigte Text; das
+        // Zielsprachen-Wort laeuft passiv als Schrift mit. Fehlt sie bei
+        // einer einzelnen Zeile, faellt es auf das Wort zurueck - eine
+        // leere Kachel waere schlimmer als eine mit Kyrillisch.
+        word: (lautschrift ? row[lautschrift] : null) ?? row[wordColumn],
         german: row.german,
         wordClass: row.category,
         genus: row.genus ?? null,
-        hanzi: null,
+        hanzi: lautschrift ? row[wordColumn] : null,
         presentForm: row.forms?.present ?? null,
       })
     );
