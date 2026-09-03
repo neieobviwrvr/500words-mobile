@@ -55,6 +55,7 @@ Nutzung:
 import json
 import os
 import sys
+import time
 import unicodedata
 import urllib.request
 from collections import Counter
@@ -154,14 +155,36 @@ def lies_env(name):
     raise SystemExit(name + " nicht gefunden")
 
 
-def rest(url, key, pfad, methode="GET", koerper=None):
+def rest(url, key, pfad, methode="GET", koerper=None, versuche=5):
+    """Eine REST-Anfrage, mit Wiederholung bei Verbindungsabbruch.
+
+    Ein voller Tagging-Lauf schickt EINE PATCH-Anfrage je Satz - bei elf
+    Sprachen sind das ueber 4.500 kurz hintereinander. Supabase kappt die
+    Verbindung dann irgendwann ("WinError 10054, Verbindung vom Remotehost
+    geschlossen"), und ohne Wiederholung bricht der ganze Lauf mitten drin
+    ab: am 2026-09-03 real passiert, Polnisch stand danach bei 508 von 581
+    Saetzen und Vietnamesisch bei null.
+
+    Weil das Schreiben je Satz unabhaengig und wiederholbar ist (dieselbe
+    Eingabe erzeugt dieselben Tags), ist ein erneuter Versuch hier
+    gefahrlos - es gibt nichts doppelt zu zaehlen.
+    """
     kopf = {"apikey": key, "Authorization": "Bearer " + key,
             "Content-Type": "application/json", "Prefer": "return=representation"}
     d = json.dumps(koerper, ensure_ascii=False).encode("utf-8") if koerper is not None else None
-    r = urllib.request.Request(url + "/rest/v1/" + pfad, data=d, headers=kopf, method=methode)
-    with urllib.request.urlopen(r) as a:
-        t = a.read().decode("utf-8")
-        return json.loads(t) if t.strip() else []
+    for versuch in range(versuche):
+        try:
+            r = urllib.request.Request(url + "/rest/v1/" + pfad, data=d,
+                                       headers=kopf, method=methode)
+            with urllib.request.urlopen(r, timeout=60) as a:
+                t = a.read().decode("utf-8")
+                return json.loads(t) if t.strip() else []
+        except (urllib.error.URLError, TimeoutError, ConnectionError) as e:
+            if versuch == versuche - 1:
+                raise
+            # Wachsende Pause: 1, 2, 4, 8 Sekunden. Gibt der Gegenseite Zeit,
+            # sich zu fangen, statt sofort nachzusetzen.
+            time.sleep(2 ** versuch)
 
 
 # Satzzeichen, die an einem Token kleben duerfen, ohne dass es ein anderes
@@ -304,6 +327,8 @@ def verarbeite(sprache, echt):
             rest(url, key, tabelle + "?id=eq." + str(a["id"]), "PATCH",
                  {"word_tags": a["word_tags"]})
         print("  " + str(min(i + 50, len(aenderungen))) + "/" + str(len(aenderungen)))
+        # Verschnaufpause nach jedem Block - billiger als ein Abbruch bei 90%.
+        time.sleep(1)
     print("  fertig.")
 
 
