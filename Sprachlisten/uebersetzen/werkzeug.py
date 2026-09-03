@@ -186,6 +186,18 @@ def spiel_ein(kategorie, sprache, echt):
     kategorien = kategorien_von(inhalt, kategorie)
     url, key, tab, master, schon_da = sammle(kategorien, sprache)
 
+    # Rueckfall-Kategorie fuer Saetze OHNE Master-Eintrag (`neu=True`) und
+    # ohne eigenes `kat=`.
+    #
+    # 2026-09-03 real passiert: `club_it.py` deklariert
+    # KATEGORIEN = ['club_nightlife'], heisst aber `club_*`, und wurde als
+    # `spiel_ein club it` aufgerufen. Die fuenf neuen Saetze landeten
+    # dadurch unter der Kategorie "club" - einem Slug, den es nirgends gibt,
+    # also unsichtbar fuer die App. Der DATEINAME darf nicht bestimmen, wo
+    # Inhalt landet; wenn die Datei genau eine Kategorie deklariert, ist das
+    # die Antwort.
+    vorgabe = kategorien[0] if len(kategorien) == 1 else kategorie
+
     zeilen = []
     for s in inhalt.SAETZE:
         if s["de"] in schon_da:
@@ -201,7 +213,7 @@ def spiel_ein(kategorie, sprache, echt):
             "scenario": meta.get("scenario") or s.get("sz"),
             "tense": meta.get("tense") or "present",
             "difficulty": meta.get("difficulty") or "A1",
-            "category": meta.get("category") or s.get("kat") or kategorie,
+            "category": meta.get("category") or s.get("kat") or vorgabe,
             "accepted_concepts": {
                 "required": [{"concept": k, "synonyms": syn} for k, syn in s["k"]],
                 "optional": [],
