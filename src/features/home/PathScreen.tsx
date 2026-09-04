@@ -1308,8 +1308,12 @@ const styles = StyleSheet.create({
     // Wiederholen-Knopf ausserhalb liegt (siehe `actions.marginTop`).
     //
     // Sichtbar ist die Summe aus dieser Zahl und `sectionBar.padding` (12),
-    // weil der Kasten in derselben Box sitzt: 12 + 32 = 44, vorher 28.
-    paddingTop: SPACING.xxl,
+    // weil der Kasten in derselben Box sitzt: 12 + 24 = 36.
+    //
+    // Der Weg dorthin in zwei Schritten am selben Tag: erst 28 -> 44
+    // (xxl), dann auf Simons Wunsch die Haelfte davon zurueck -> 36 (xl).
+    // 44 war einen Tick zu viel.
+    paddingTop: SPACING.xl,
     paddingBottom: SPACING.lg,
     paddingHorizontal: SPACING.sm,
   },
