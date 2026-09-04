@@ -52,7 +52,24 @@ export function wegAnteilBei(y: number, kachelHoehe: number): number {
 
 export function ChinaPfadHintergrund({ breite, hoehe }: { breite: number; hoehe: number }) {
   const kachelHoehe = Math.round(CHINA_BG.hoehe * (breite / CHINA_BG.breite));
-  const anzahl = Math.ceil(hoehe / kachelHoehe) + 1;
+
+  // Ohne Breite gibt es nichts zu kacheln - und ohne diese Zeile stuerzt
+  // der GANZE Startscreen ab (2026-09-03, real passiert):
+  // `breite` 0 macht `kachelHoehe` 0, `hoehe / 0` ist Infinity,
+  // `Math.ceil(Infinity)` bleibt Infinity, und `Array.from` wirft darauf
+  // "RangeError: Invalid array length". Der Nutzer sieht eine weisse Seite.
+  //
+  // Breite 0 ist kein theoretischer Fall: sie tritt auf, wenn das Fenster
+  // gerade keine Groesse meldet - eingeklappte Ansicht, verborgener Tab,
+  // der allererste Bildaufbau, iPad-Splitview beim Ziehen auf null.
+  // Trifft nur Chinesisch, weil nur dort der bebilderte Pfad laeuft.
+  if (!(kachelHoehe > 0) || !(hoehe > 0)) return null;
+
+  // Obergrenze als zweite Sicherung: selbst wenn `hoehe` einmal absurd
+  // gross ankommt, entstehen hoechstens so viele Bilder. Bei einer Kachel
+  // von rund 400 Punkten sind 200 Stueck ueber 80.000 Punkte Weg - mehr,
+  // als ein Pfad je lang wird.
+  const anzahl = Math.min(Math.ceil(hoehe / kachelHoehe) + 1, 200);
   return (
     <View style={[styles.flaeche, { width: breite, height: hoehe }]} pointerEvents="none">
       {Array.from({ length: anzahl }).map((_, i) => (
