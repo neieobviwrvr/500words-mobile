@@ -18,6 +18,9 @@ import {
   aktiverBatchPool as aktiverBatchPoolGeneric,
 } from './batchLeiter';
 import { normalisiereHanzi } from '../course/lessonEvaluation';
+import { bewerteWort } from '../evaluation/evaluateWord';
+import type { Tier } from '../evaluation/evaluateConcepts';
+import { loadAnswerClusters } from '../../data/phrasebookContent';
 import { useSttRecorder } from '../stt/useSttRecorder';
 import { useSpeechmatics } from '../stt/useSpeechmatics';
 import { speakText } from '../tts/speak';
@@ -320,7 +323,19 @@ export function WordReviewScreen() {
   const [situationIndex, setSituationIndex] = useState(0);
   const [situationWortart, setSituationWortart] = useState('');
   const [situationGewaehlt, setSituationGewaehlt] = useState<VokabelOption | null>(null);
-  const [situationAusgewertet, setSituationAusgewertet] = useState<'richtig' | 'falsch' | null>(null);
+  // Drei Stufen statt richtig/falsch (2026-09-04). Bis dahin kannte die
+  // Wort-Auswertung nur zwei Ausgaenge - ein Wort aus derselben
+  // Bedeutungsgruppe fiel genauso hart durch wie ein voellig falsches.
+  // Dieselben drei Stufen wie ueberall sonst in der App, damit "ueberlebt"
+  // hier dasselbe heisst wie beim Satz.
+  const [situationAusgewertet, setSituationAusgewertet] = useState<Tier | null>(null);
+  // Welches Wort aus der Familie erkannt wurde - fuer die Rueckmeldung
+  // ("„好看" zaehlt auch"), damit die Mittelstufe erklaerbar ist statt nur
+  // andersfarbig.
+  const [situationFamilienTreffer, setSituationFamilienTreffer] = useState<string | null>(null);
+  // Die Bedeutungsgruppen aus `answer_clusters` - dieselbe Tabelle, die der
+  // Satz-Bewerter nutzt (siehe evaluateWord.ts, "kein zweiter Datenbestand").
+  const [clusters, setClusters] = useState<Record<string, string[]>>({});
   const [situationRichtig, setSituationRichtig] = useState(0);
   const [situationNimmtAuf, setSituationNimmtAuf] = useState(false);
   const [situationPrueft, setSituationPrueft] = useState(false);
@@ -384,15 +399,21 @@ export function WordReviewScreen() {
       setLoading(true);
       setLoadError(null);
       try {
-        const [result, s1Stand, s2Stand, jeStand] = await Promise.all([
+        const [result, s1Stand, s2Stand, jeStand, clusterStand] = await Promise.all([
           loadVocabWords(targetLanguageId),
           loadStufe1(targetLanguageId),
           loadStufe2(targetLanguageId),
           loadJeStufe3(targetLanguageId),
+          // Faellt der Abruf aus (offline, noch kein Cache), bleibt es bei
+          // einer leeren Tabelle: dann gibt es keine Mittelstufe, aber auch
+          // keinen Fehler. Eine fehlende Bedeutungsgruppe darf die Uebung
+          // nicht aufhalten.
+          loadAnswerClusters().catch(() => ({}) as Record<string, string[]>),
         ]);
         if (cancelled) return;
         setWords(result.words);
         setOffline(result.fromCache);
+        setClusters(clusterStand);
         setStufe1(s1Stand);
         setStufe2(s2Stand);
         setJeStufe3(jeStand);
@@ -528,8 +549,7 @@ export function WordReviewScreen() {
     // leerem stufe1Pool faellt `zuordnungAuswahl` unten auf bereits weiter
     // fortgeschrittene Woerter zurueck statt eine leere Runde zu zeigen -
     // sichtbarer Rueckfall, kein Absturz). 'situation'/'situation-stt' nur
-    // fuer Chinesisch (siehe situationsAufgaben.ts) UND nur, wenn ihr Pool
-    // wirklich etwas enthaelt.
+    // nur, wenn ihr Pool wirklich etwas enthaelt.
     //
     // Ausnahme: `rundentypWahl` erzwingt eine bestimmte Vorlage (siehe
     // Kommentar dort) - nur wenn sie fuer die aktuelle Sprache/Auswahl auch
@@ -537,8 +557,13 @@ export function WordReviewScreen() {
     // zurueck statt eine Vorlage zu zeigen, die gar nicht bedienbar waere.
     const kandidaten: Rundentyp[] = ['zuordnung'];
     if (pronomenVerfuegbar) kandidaten.push('pronomen');
-    if (targetLanguageId === 'zh' && stufe2Pool.length > 0) kandidaten.push('situation');
-    if (targetLanguageId === 'zh' && stufe3Pool.length > 0) kandidaten.push('situation-stt');
+    // Seit 2026-09-07 ohne Sprach-Abfrage: `ladeSituationsAufgaben` liefert
+    // fuer jede Sprache mit Vokabelliste Aufgaben (vorher nur Chinesisch).
+    // Die Poolgroesse entscheidet allein - hat eine Sprache noch keine
+    // Aufgaben, bleibt es ehrlich bei der Zuordnungsrunde, statt eine leere
+    // Vorlage anzubieten.
+    if (stufe2Pool.length > 0) kandidaten.push('situation');
+    if (stufe3Pool.length > 0) kandidaten.push('situation-stt');
 
     // Erzwingen, wenn Stufe 1 fuer die aktuelle Auswahl nichts mehr Neues
     // haette (alle Woerter schon auf Stufe 2 oder 3) - sonst wuerde
@@ -589,7 +614,7 @@ export function WordReviewScreen() {
         // 2026-08-26) - ein Wort, das noch nicht durch Stufe 1 ist, soll bei
         // Stufe 2 nicht auftauchen, ein Wort, das Stufe 2 noch nicht
         // bestanden hat, nicht bei Stufe 3.
-        const passendeAufgaben = aufgaben.filter((a) => stufeVon(a.richtig.hanzi, s1, s2) === zielStufe);
+        const passendeAufgaben = aufgaben.filter((a) => stufeVon(a.richtig.schrift, s1, s2) === zielStufe);
         const auswahl = mischen(passendeAufgaben).slice(
           0,
           Math.min(SITUATION_RUNDENGROESSE, passendeAufgaben.length)
@@ -668,8 +693,8 @@ export function WordReviewScreen() {
         const s1Override: Record<string, number> = {};
         const s2Override: Record<string, number> = {};
         for (const a of aufgaben) {
-          s1Override[a.richtig.hanzi] = STUFE1_SCHWELLE;
-          if (erzwingeTyp === 'situation-stt') s2Override[a.richtig.hanzi] = STUFE2_SCHWELLE;
+          s1Override[a.richtig.schrift] = STUFE1_SCHWELLE;
+          if (erzwingeTyp === 'situation-stt') s2Override[a.richtig.schrift] = STUFE2_SCHWELLE;
         }
         setStufe1(s1Override);
         setStufe2(s2Override);
@@ -754,7 +779,7 @@ export function WordReviewScreen() {
     // Gleich vorlesen, unabhaengig davon ob die Wahl am Ende stimmt -
     // dieselbe kostenlose Aussprachehilfe bei jedem Antippen wie in der
     // Zuordnungsrunde (2026-08-25, Simons Vorgabe), nicht erst nach "Lösen".
-    speakText(o.hanzi, { languageId: targetLanguageId });
+    speakText(o.schrift, { languageId: targetLanguageId });
   }
 
   /**
@@ -770,13 +795,17 @@ export function WordReviewScreen() {
   function situationLoesen() {
     if (!situationGewaehlt || situationAusgewertet) return;
     const aufgabe = situationAufgaben[situationIndex];
-    const stimmt = situationGewaehlt.hanzi === aufgabe.richtig.hanzi;
-    setSituationAusgewertet(stimmt ? 'richtig' : 'falsch');
+    const stimmt = situationGewaehlt.schrift === aufgabe.richtig.schrift;
+    // Stufe 2 bleibt bewusst zweiwertig: es stehen vier Optionen da, eine
+    // davon ist die richtige. Wer daneben tippt, hat nicht "ungefaehr"
+    // getroffen - er hat eine andere Karte gewaehlt. Die Mittelstufe
+    // entsteht erst, wo frei geantwortet wird (Stufe 3).
+    setSituationAusgewertet(stimmt ? 'richtig' : 'nicht_verstanden');
     // Feste Zahl statt spaeter aus State gelesen - siehe Kommentar bei
     // rundeAbschliessen.
     const richtigJetzt = situationRichtig + (stimmt ? 1 : 0);
     if (stimmt) setSituationRichtig(richtigJetzt);
-    const gefragtesWort = aufgabe.richtig.hanzi;
+    const gefragtesWort = aufgabe.richtig.schrift;
     let neueStufe1 = stufe1;
     let neueStufe2 = stufe2;
     let neueJeStufe3 = jeStufe3;
@@ -843,7 +872,7 @@ export function WordReviewScreen() {
       const { text } = await stt.transcribe(uri, language.sttLanguage);
       const gesagt = normalisiereHanzi(text);
       const aufgabe = situationAufgaben[situationIndex];
-      const treffer = aufgabe?.optionen.find((o) => gesagt.includes(normalisiereHanzi(o.hanzi)));
+      const treffer = aufgabe?.optionen.find((o) => gesagt.includes(normalisiereHanzi(o.schrift)));
       if (treffer) {
         setSituationGewaehlt(treffer);
       } else {
@@ -867,9 +896,20 @@ export function WordReviewScreen() {
   function situationStufe3Auswerten(gesagtRoh: string) {
     const aufgabe = situationAufgaben[situationIndex];
     if (!aufgabe || situationAusgewertet || !gesagtRoh.trim()) return;
-    const gesagt = normalisiereHanzi(gesagtRoh);
-    const stimmt = gesagt.includes(normalisiereHanzi(aufgabe.richtig.hanzi));
-    setSituationAusgewertet(stimmt ? 'richtig' : 'falsch');
+    // Drei Stufen (2026-09-04, Simons Vorgabe: "ob das Wort als Antwort Sinn
+    // macht, grob Sinn macht oder Schwachsinn ist"). `normalisiereHanzi`
+    // wird als Homophon-Falter durchgereicht - fuer Chinesisch faltet es
+    // 做/坐 zusammen, bei lateinischer Schrift laesst es den Text in Ruhe.
+    const urteil = bewerteWort(
+      gesagtRoh,
+      aufgabe.richtig.schrift,
+      clusters,
+      targetLanguageId,
+      normalisiereHanzi,
+    );
+    const stimmt = urteil.tier === 'richtig';
+    setSituationAusgewertet(urteil.tier);
+    setSituationFamilienTreffer(urteil.familienTreffer);
     // Fuellt die Luecke im Rahmen mit der richtigen Antwort (unabhaengig
     // vom Ergebnis) - derselbe Mechanismus, den Stufe 2 schon fuer die
     // ANGETIPPTE Option nutzt (`renderSituationsKopf` prueft nur, ob
@@ -883,9 +923,14 @@ export function WordReviewScreen() {
     // wurde beim Erreichen der Stufe-2-Schwelle gesetzt, siehe
     // situationLoesen). Eine FALSCHE Antwort wirft `stufe2` sanft zurueck
     // (dasselbe Prinzip wie ueberall sonst hier: nicht auf 0, ein Schritt).
-    const gefragtesWort = aufgabe.richtig.hanzi;
+    const gefragtesWort = aufgabe.richtig.schrift;
     let neueStufe2 = stufe2;
-    if (!stimmt) {
+    // Zurueckgestuft wird NUR beim echten Fehlgriff. "Ueberlebt" heisst,
+    // dass das Wort aus der richtigen Bedeutungsgruppe kam - das ist kein
+    // Fehler, sondern ein milder Erfolg (dieselbe Entscheidung wie beim
+    // Tier-zu-Grade-Mapping im FSRS, siehe CLAUDE.md: "soll nicht wie ein
+    // Fehler behandelt werden").
+    if (urteil.tier === 'nicht_verstanden') {
       neueStufe2 = { ...stufe2, [gefragtesWort]: Math.max(0, (stufe2[gefragtesWort] ?? 0) - 1) };
       setStufe2(neueStufe2);
       void aendereStufe2(targetLanguageId, gefragtesWort, -1, stufe2);
@@ -893,6 +938,7 @@ export function WordReviewScreen() {
     setTimeout(() => {
       setSituationGewaehlt(null);
       setSituationAusgewertet(null);
+      setSituationFamilienTreffer(null);
       setSituationInput('');
       if (situationIndex + 1 >= situationAufgaben.length) {
         rundeAbschliessen(richtigJetzt, situationAufgaben.length, undefined, neueStufe2);
@@ -1089,7 +1135,7 @@ export function WordReviewScreen() {
         disabled={!tippbar}
         onPress={() => setOffenesRahmenwort((cur) => (cur === key ? null : key))}
         accessibilityRole={tippbar ? 'button' : undefined}
-        accessibilityLabel={tippbar ? `${wort.pinyin}: Bedeutung anzeigen` : undefined}
+        accessibilityLabel={tippbar ? `${wort.lerntext}: Bedeutung anzeigen` : undefined}
         style={styles.frameWortSpalte}
       >
         {/* Zeile bleibt IMMER gemountet, nur die Sichtbarkeit wechselt
@@ -1101,7 +1147,7 @@ export function WordReviewScreen() {
         <Text
           style={[styles.frameHanziText, { color: theme.sub, opacity: zeichenEin && wort.german !== null ? 1 : 0 }]}
         >
-          {wort.hanzi}
+          {wort.schrift}
         </Text>
         <Text
           style={[
@@ -1110,7 +1156,7 @@ export function WordReviewScreen() {
             aktiv ? { textDecorationLine: 'underline', textDecorationColor: ACCENT_ORANGE } : null,
           ]}
         >
-          {wort.pinyin}
+          {wort.lerntext}
         </Text>
       </Pressable>
     );
@@ -1167,8 +1213,8 @@ export function WordReviewScreen() {
             {aufgabe.frameVorherWoerter.map((w, i) => rahmenwortChip(`v${i}`, w))}
             {situationGewaehlt ? (
               rahmenwortChip('slot', {
-                hanzi: situationGewaehlt.hanzi,
-                pinyin: situationGewaehlt.pinyin,
+                schrift: situationGewaehlt.schrift,
+                lerntext: situationGewaehlt.lerntext,
                 german: situationGewaehlt.german,
               })
             ) : (
@@ -1210,12 +1256,13 @@ export function WordReviewScreen() {
 
   const filterZeile = aktiveWortarten.size === 0 ? 'Alle Wortarten' : [...aktiveWortarten].join(', ');
   // Batch-Anzeige (2026-08-25) - macht die 50er-Haeppchen aus BATCH_GROESSE
-  // sichtbar, statt eine reine Backend-Optimierung zu bleiben. Anzeige nur
-  // fuer Chinesisch (einzige Sprache mit Stufe-2/3-Inhalt, siehe
-  // situationsAufgaben.ts) - der Batch-MECHANISMUS selbst laeuft seit dem
-  // Drei-Stufen-Umbau (2026-08-26) fuer alle Sprachen.
+  // sichtbar, statt eine reine Backend-Optimierung zu bleiben.
+  //
+  // Bis 2026-09-07 nur fuer Chinesisch, weil nur dort eine Stufe 2/3
+  // ueberhaupt erreichbar war. Jetzt fuer jede Sprache - die Leiter gilt
+  // ueberall, also darf auch ueberall stehen, wie weit man ist.
   const batchZeile =
-    targetLanguageId === 'zh' && gefiltert.length > 0
+    gefiltert.length > 0
       ? (() => {
           const sortiert = [...gefiltert].sort((a, b) => a.id - b.id);
           // Grenze ueber die Einweg-Markierung (monoton), die angezeigte
@@ -1252,10 +1299,10 @@ export function WordReviewScreen() {
             ? `${targetLanguageId}:${situationAufgabe.sourceTable}:${situationAufgabe.sourceId}`
             : `${targetLanguageId}:course-situation:${situationAufgabe.id}`,
         context: scenarioLabel(situationAufgabe.scenario),
-        text: situationAufgabe.satzHanzi,
+        text: situationAufgabe.satzSchrift,
         gloss: situationAufgabe.germanGloss,
         placeholder: false,
-        phonetic: situationAufgabe.satzPinyin,
+        phonetic: situationAufgabe.satzLerntext,
         cultureNote: situationAufgabe.cultureNote,
         scenario: situationAufgabe.scenario,
         category: situationAufgabe.category,
@@ -1469,16 +1516,17 @@ export function WordReviewScreen() {
 
               <View style={styles.personReihe}>
                 {situationAufgabe.optionen.map((o) => {
-                  const gewaehltHier = situationGewaehlt?.hanzi === o.hanzi;
-                  const zeigeRichtig = situationAusgewertet && o.hanzi === situationAufgabe.richtig.hanzi;
-                  const zeigeFalsch = situationAusgewertet === 'falsch' && gewaehltHier && !zeigeRichtig;
+                  const gewaehltHier = situationGewaehlt?.schrift === o.schrift;
+                  const zeigeRichtig = situationAusgewertet && o.schrift === situationAufgabe.richtig.schrift;
+                  const zeigeFalsch =
+                    situationAusgewertet === 'nicht_verstanden' && gewaehltHier && !zeigeRichtig;
                   return (
                     <Pressable
-                      key={o.hanzi}
+                      key={o.schrift}
                       disabled={!!situationAusgewertet}
                       onPress={() => situationOptionTippen(o)}
                       accessibilityRole="button"
-                      accessibilityLabel={`${o.pinyin} (${o.hanzi})`}
+                      accessibilityLabel={`${o.lerntext} (${o.schrift})`}
                       style={[
                         styles.personChip,
                         {
@@ -1494,8 +1542,8 @@ export function WordReviewScreen() {
                             hing bisher NICHT dran, zeigte das Hanzi immer) -
                             beide zusammen weg, nicht nur das Zeichen ohne
                             die leere Klammer dahinter. */}
-                        {o.pinyin}
-                        {zeichenEin ? ` (${o.hanzi})` : ''}
+                        {o.lerntext}
+                        {zeichenEin ? ` (${o.schrift})` : ''}
                       </Text>
                     </Pressable>
                   );
@@ -1553,12 +1601,24 @@ export function WordReviewScreen() {
               {situationAusgewertet ? (
                 <Text
                   style={{
-                    color: situationAusgewertet === 'richtig' ? ACCENT_GREEN : ACCENT_ERROR,
+                    // Orange fuer die Mittelstufe - dieselbe Farbe, die der
+                    // Ueberlebensmodus ueberall in der App traegt. Gruen
+                    // bleibt dem vollen Erfolg vorbehalten (Stil-Rezept).
+                    color:
+                      situationAusgewertet === 'richtig'
+                        ? ACCENT_GREEN
+                        : situationAusgewertet === 'ueberlebt'
+                          ? ACCENT_ORANGE
+                          : ACCENT_ERROR,
                     ...schrift('700'),
                     textAlign: 'center',
                   }}
                 >
-                  {situationAusgewertet === 'richtig' ? '✓ Richtig!' : '✗ Leider nicht - die richtige Antwort steht jetzt oben.'}
+                  {situationAusgewertet === 'richtig'
+                    ? '✓ Richtig!'
+                    : situationAusgewertet === 'ueberlebt'
+                      ? `≈ Fast — „${situationFamilienTreffer}" heißt so ähnlich. Gemeint war das Wort oben.`
+                      : '✗ Leider nicht - die richtige Antwort steht jetzt oben.'}
                 </Text>
               ) : null}
 

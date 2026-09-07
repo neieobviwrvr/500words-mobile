@@ -24,6 +24,37 @@ export type EvaluationResult = {
   verbClusterMatched: boolean | null; // null = kein Cluster fuer diesen Satz definiert
 };
 
+/**
+ * Elision: `all'aeroporto` sind ZWEI Woerter, nicht eines (2026-09-04).
+ *
+ * Der Apostroph wurde bis dahin ersatzlos geloescht - aus "all'aeroporto"
+ * wurde "allaeroporto", und das Pflicht-Konzept "aeroporto" fand darin
+ * nichts (Editierdistanz 3, erlaubt sind 2). Fuenf italienische und ein
+ * franzoesischer Satz wurden dadurch abgewertet, obwohl sie richtig waren -
+ * gefunden von `npm run pruefe:konzepte`, nicht von Hand.
+ *
+ * Warum nicht einfach JEDEN Apostroph zum Trennzeichen machen: im Englischen
+ * steht er andersherum. "I'm fine" wuerde zu "i m fine", und wer ohne
+ * Apostroph tippt ("im fine"), traefe es nicht mehr. Die beiden Faelle
+ * lassen sich am Bau unterscheiden:
+ *
+ *   Romanisch  kurzes Woertchen VOR dem Apostroph, volles Wort dahinter
+ *              l'ecole, d'accord, all'aeroporto, qu'est-ce, dell'acqua
+ *   Englisch   volles Wort vor dem Apostroph, Endung dahinter
+ *              I'm, don't, you're, we'll, I'd
+ *
+ * Also: trennen, wenn hinter dem Apostroph mindestens drei Buchstaben
+ * stehen. Das trifft jede Elision und keine englische Zusammenziehung -
+ * die laengste ist "'re" mit zwei.
+ *
+ * Die Zeichenklasse steht ausgeschrieben statt als `\p{L}`: die App laeuft
+ * auf Hermes, und Unicode-Eigenschaften im regulaeren Ausdruck werden dort
+ * sonst nirgends benutzt - also auch nirgends bewiesen. Elision gibt es
+ * ohnehin nur in lateinischer Schrift, `a-z` plus Latin-1 reicht dafuer.
+ * (`ø-ÿ` statt `÷-ÿ`: das Divisionszeichen liegt mitten im Block.)
+ */
+const ELISION = /([a-zà-öø-ÿ]{1,4})'([a-zà-öø-ÿ]{3,})/g;
+
 function normalize(text: string): string {
   return text
     .normalize('NFC') // Supabase-Text und Whisper-Transkript koennen aus
@@ -33,6 +64,12 @@ function normalize(text: string): string {
     // aus (beobachteter Bug: "Wann öffnet das Museum?" == Transkript, aber
     // als falsch bewertet).
     .toLowerCase()
+    .replace(ELISION, '$1 $2')
+    // Bindestrich trennt ebenfalls: franzoesische Fragen haengen das Pronomen
+    // mit Bindestrich an ("Voulez-vous autre chose ?"), und das Konzept
+    // heisst "voulez". Fuer Englisch und Deutsch aendert das nichts Falsches -
+    // "check-in" und "T-Shirt" sind auch als zwei Teile richtig.
+    .replace(/-/g, ' ')
     // Chinesische Satzzeichen sind eigene Unicode-Zeichen (Vollbreite) und
     // wuerden sonst am Wort kleben bleiben.
     .replace(/[.,!?;:"'`。，！？；：、“”（）]/g, '')
@@ -156,12 +193,55 @@ function synonymMatches(userTokens: string[], userTextConcat: string, synonym: s
   return fuzzyContainsMerged(userTextConcat, synonymTokens.join(''));
 }
 
+// Eine Cluster-Form ist nichts anderes als ein Synonym - also dieselbe
+// Pruefung.
+//
+// Bis zum 2026-09-04 stand hier eine eigene, kuerzere Fassung, die jede Form
+// nur gegen EINZELNE Nutzer-Woerter hielt. Mehrwortige Formen konnten damit
+// nie treffen: "would like" wurde mit jedem einzelnen Token verglichen und
+// war von jedem zu weit entfernt. Aufgefallen ist es beim Aufbau der
+// englischen Familien - Englisch besteht zu einem guten Teil aus genau
+// solchen Wendungen ("would like", "look for", "check in", "have got"), und
+// die waeren allesamt stumm geblieben. Fuer Chinesisch aendert sich nichts
+// (dort galt schon vorher ENTHALTEN), fuer Schwedisch faengt es die
+// Partikelverben ("checka in", "gaa ut").
 function clusterMatches(userTokens: string[], userTextConcat: string, clusterForms: string[]): boolean {
-  return clusterForms.some((form) =>
-    hatCJK(form)
-      ? userTextConcat.includes(cjkForm(form))
-      : userTokens.some((userToken) => wordsAreClose(userToken, normalize(form))),
-  );
+  return clusterForms.some((form) => synonymMatches(userTokens, userTextConcat, form));
+}
+
+/**
+ * Ist der Cluster die WEITERE FASSUNG des Schluesselworts - oder nur das
+ * Gerüst drumherum? (2026-09-04)
+ *
+ * Ein Cluster steht in zwei ganz verschiedenen Verhaeltnissen zu seinem Satz,
+ * und davon haengt ab, was ein Treffer bedeutet:
+ *
+ *   GERUEST  "Ich haette gern ein Bier."  Pflicht-Konzept: Bier.
+ *            Cluster: die wollen-Familie. Das Bier traegt den Satz, das
+ *            Verb ist die Hoeflichkeitsform drumherum. Wer "I want a
+ *            coffee" sagt, trifft die Familie und meint trotzdem etwas
+ *            anderes - das ist der falsche Satz, nicht die halbe Miete.
+ *
+ *   SCHLUESSEL  "Bis spaeter!"  Pflicht-Konzept: see you later / see you.
+ *            Cluster: die Abschieds-Familie (bye, goodbye, take care, ...).
+ *            Hier IST die Familie das Schluesselwort, nur weiter gefasst.
+ *            Wer "bye" sagt, hat sich verabschiedet - anderes Wort,
+ *            richtige Absicht. Genau die Mittelstufe.
+ *
+ * Unterscheiden laesst sich das aus den Daten selbst, ohne zusaetzliche
+ * Spalte: beim Schluessel-Fall stehen die Synonyme des Pflicht-Konzepts
+ * SELBST in der Familie, beim Gerüst-Fall nicht. Ein Wort mehr in der
+ * Datenbank waere eine Angabe mehr, die man beim naechsten Satz vergessen
+ * kann; diese Pruefung kann man nicht vergessen.
+ *
+ * Nur bei EINEM Pflicht-Konzept: ab zwei Konzepten gibt es die Mittelstufe
+ * ohnehin ueber die Haelfte-Regel, und "ein Konzept von dreien plus Familie"
+ * waere zu grosszuegig.
+ */
+function istSchluesselFamilie(accepted: AcceptedConcepts, forms: string[]): boolean {
+  if (accepted.required.length !== 1) return false;
+  const inFamilie = new Set(forms.map(normalize));
+  return accepted.required[0].synonyms.some((syn) => inFamilie.has(normalize(syn)));
 }
 
 // clusters: Lookup-Tabelle cluster_id -> Wortformen, kommt aus Supabase
@@ -203,15 +283,21 @@ export function evaluateConcepts(
   const majorityMatched = matched.length > 0 && matched.length >= missed.length;
 
   let verbClusterMatched: boolean | null = null;
+  let clusterIstSchluessel = false;
   if (accepted.verb_cluster) {
     const forms = clusters[accepted.verb_cluster] ?? [];
     verbClusterMatched = clusterMatches(userTokens, userTextConcat, forms);
+    clusterIstSchluessel = istSchluesselFamilie(accepted, forms);
   }
 
   let tier: Tier = 'nicht_verstanden';
   if (survived) {
     tier = verbClusterMatched === false ? 'ueberlebt' : 'richtig';
   } else if (majorityMatched) {
+    tier = 'ueberlebt';
+  } else if (verbClusterMatched && clusterIstSchluessel) {
+    // Der zweite Weg zur Mittelstufe (2026-09-04) - siehe
+    // istSchluesselFamilie() fuer die Begruendung.
     tier = 'ueberlebt';
   }
 

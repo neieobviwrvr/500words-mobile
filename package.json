@@ -44,7 +44,9 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "pruefe:merge": "node --experimental-strip-types scripts/pruefe-merge.mjs"
+    "pruefe:merge": "node --experimental-strip-types scripts/pruefe-merge.mjs",
+    "pruefe:konzepte": "node --experimental-strip-types scripts/pruefe-konzepte.mjs",
+    "pruefe:bewertung": "node scripts/pruefe_bewertung.mjs"
   },
   "private": true
 }
