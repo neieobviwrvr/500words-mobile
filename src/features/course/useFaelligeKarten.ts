@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useFocusEffect } from 'expo-router';
-import { CHINESE_COURSE, CourseWord } from '../../data/chineseCourse';
+import { CourseWord } from '../../data/courseTypes';
+import { courseFor } from '../../data/courses';
 import { isDue } from '../srs/fsrsEngine';
 import { cardKey, KURS_RAHMEN, KURS_WORT, loadAllCards } from '../srs/srsStorage';
 import { fuelleRahmen } from './lessonEvaluation';
@@ -27,10 +28,10 @@ export type FaelligeRahmenkarte = {
   lektionId: string;
   /** Ein bekanntes Wort aus der Lektion als Aufgabe fuer den Rahmen. */
   wort: CourseWord;
-  hanzi: string;
-  pinyin: string;
+  schrift: string;
+  lerntext: string;
   /** Der Rahmen selbst, fuer die Anzeige ueber der Aufgabe. */
-  rahmenPinyin: string;
+  rahmenLerntext: string;
 };
 
 export type Faellig = FaelligeWortkarte | FaelligeRahmenkarte;
@@ -88,7 +89,10 @@ export function useFaelligeKarten(languageId: string, nur?: Kartenart): Faellige
       let abgebrochen = false;
 
       (async () => {
-        if (languageId !== 'zh') {
+        // Kein gefuehrter Kurs fuer diese Sprache -> nichts zu wiederholen.
+        // Frueher stand hier fest 'zh'; seit 2026-09-04 entscheidet die
+        // Kursliste, nicht ein einzelner Sprachcode.
+        if (!courseFor(languageId)) {
           if (!abgebrochen) setState({ ...LEER, loading: false });
           return;
         }
@@ -103,13 +107,13 @@ export function useFaelligeKarten(languageId: string, nur?: Kartenart): Faellige
         // beide leer sind (siehe dort).
         const moeglich: Faellig[] = [];
 
-        for (const modul of CHINESE_COURSE) {
+        for (const modul of (courseFor(languageId) ?? [])) {
           for (const lektion of modul.lessons) {
             const woerter = [...lektion.newFrameWords, ...lektion.slotGroups.flat()];
 
             for (const wort of woerter) {
               moeglich.push({ art: 'wort', wort });
-              const karte = karten[cardKey('zh', KURS_WORT, wort.hanzi)];
+              const karte = karten[cardKey(languageId, KURS_WORT, wort.schrift)];
               if (!karte) continue; // noch nie geuebt - gehoert nicht in die Wiederholung
               (isDue(karte) ? alle : nichtFaellig).push({ art: 'wort', wort });
             }
@@ -120,12 +124,12 @@ export function useFaelligeKarten(languageId: string, nur?: Kartenart): Faellige
                 art: 'rahmen',
                 lektionId: lektion.id,
                 wort: ersteSlot,
-                hanzi: fuelleRahmen(lektion.frame.hanzi, ersteSlot.hanzi),
-                pinyin: fuelleRahmen(lektion.frame.pinyin, ersteSlot.pinyin),
-                rahmenPinyin: lektion.frame.pinyin,
+                schrift: fuelleRahmen(lektion.frame.schrift, ersteSlot.schrift),
+                lerntext: fuelleRahmen(lektion.frame.lerntext, ersteSlot.lerntext),
+                rahmenLerntext: lektion.frame.lerntext,
               };
               moeglich.push(eintrag);
-              const rahmenKarte = karten[cardKey('zh', KURS_RAHMEN, lektion.id)];
+              const rahmenKarte = karten[cardKey(languageId, KURS_RAHMEN, lektion.id)];
               if (rahmenKarte) (isDue(rahmenKarte) ? alle : nichtFaellig).push(eintrag);
             }
           }

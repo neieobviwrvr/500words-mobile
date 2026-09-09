@@ -44,8 +44,19 @@ export type EvaluationResult = {
  *              I'm, don't, you're, we'll, I'd
  *
  * Also: trennen, wenn hinter dem Apostroph mindestens drei Buchstaben
- * stehen. Das trifft jede Elision und keine englische Zusammenziehung -
- * die laengste ist "'re" mit zwei.
+ * stehen.
+ *
+ * **Das reichte nicht** (2026-09-07, gefunden vom Vorab-Test): italienisch
+ * "C'è il wi-fi qui?" und "Dov'è l'ascensore?" haben hinter dem Apostroph
+ * genau EINEN Buchstaben - und der ist das Verb. 35 italienische und ein
+ * franzoesischer Satz wurden dadurch abgewertet.
+ *
+ * Deshalb zusaetzlich der Blick nach VORNE: eine kurze Elisionspartikel
+ * trennt immer, egal was folgt. Die Liste ist aus den Daten gezaehlt, nicht
+ * geraten - im ganzen Bestand stehen vor einem Apostroph romanisch nur
+ * j/s/c/l/d/m/n/t/qu/dov/un/all/dell/po/..., englisch dagegen ausschliesslich
+ * volle Woerter (don, that, it, you, isn) plus "i" und "o". Die beiden
+ * Mengen ueberschneiden sich nicht, "I'm" bleibt also unangetastet.
  *
  * Die Zeichenklasse steht ausgeschrieben statt als `\p{L}`: die App laeuft
  * auf Hermes, und Unicode-Eigenschaften im regulaeren Ausdruck werden dort
@@ -53,7 +64,17 @@ export type EvaluationResult = {
  * ohnehin nur in lateinischer Schrift, `a-z` plus Latin-1 reicht dafuer.
  * (`ø-ÿ` statt `÷-ÿ`: das Divisionszeichen liegt mitten im Block.)
  */
-const ELISION = /([a-zà-öø-ÿ]{1,4})'([a-zà-öø-ÿ]{3,})/g;
+const ELISION = /([a-zà-öø-ÿ]+)'([a-zà-öø-ÿ]*)/g;
+const ELISION_PARTIKEL = new Set([
+  'j', 's', 'c', 'l', 'd', 'm', 'n', 't', 'qu',
+  'un', 'all', 'dall', 'dell', 'nell', 'sull', 'quell',
+  'dov', 'po', 'quant', 'anch', 'cos', 'com', 'va',
+  'aujourd', 'quelqu', 'jusqu', 'presqu', 'lorsqu',
+]);
+
+function trenneElision(treffer: string, vorne: string, hinten: string): string {
+  return hinten.length >= 3 || ELISION_PARTIKEL.has(vorne) ? `${vorne} ${hinten}` : treffer;
+}
 
 function normalize(text: string): string {
   return text
@@ -64,7 +85,7 @@ function normalize(text: string): string {
     // aus (beobachteter Bug: "Wann öffnet das Museum?" == Transkript, aber
     // als falsch bewertet).
     .toLowerCase()
-    .replace(ELISION, '$1 $2')
+    .replace(ELISION, trenneElision)
     // Bindestrich trennt ebenfalls: franzoesische Fragen haengen das Pronomen
     // mit Bindestrich an ("Voulez-vous autre chose ?"), und das Konzept
     // heisst "voulez". Fuer Englisch und Deutsch aendert das nichts Falsches -

@@ -1,0 +1,688 @@
+[
+ {
+  "nr": 15,
+  "titel": "Was hast du gemacht?",
+  "finisher": "Erzähl, was du gestern gemacht hast.",
+  "rahmen": [
+   {
+    "slots": [
+     "schauen",
+     "kaufen",
+     "sehen",
+     "machen",
+     "finden",
+     "nehmen",
+     "lesen",
+     "schreiben",
+     "hören",
+     "verlieren"
+    ],
+    "pronomen": [
+     "ich"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   },
+   {
+    "slots": [
+     "arbeiten",
+     "spielen",
+     "tanzen",
+     "schlafen",
+     "warten",
+     "suchen",
+     "fragen",
+     "antworten",
+     "helfen",
+     "bezahlen"
+    ],
+    "pronomen": [
+     "ich"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   },
+   {
+    "slots": [
+     "gewinnen",
+     "vergessen",
+     "verstehen",
+     "treffen",
+     "geben",
+     "sagen",
+     "sprechen",
+     "öffnen",
+     "schließen",
+     "waschen"
+    ],
+    "pronomen": [
+     "ich"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   }
+  ]
+ },
+ {
+  "nr": 16,
+  "titel": "Du, ihr, sie",
+  "finisher": "Frag jemanden, was er macht - und antworte.",
+  "rahmen": [
+   {
+    "slots": [
+     "schauen",
+     "kaufen",
+     "sehen",
+     "machen",
+     "finden",
+     "nehmen",
+     "lesen",
+     "schreiben"
+    ],
+    "pronomen": [
+     "du"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   },
+   {
+    "slots": [
+     "arbeiten",
+     "spielen",
+     "tanzen",
+     "schlafen",
+     "warten",
+     "suchen",
+     "fragen",
+     "antworten"
+    ],
+    "pronomen": [
+     "er"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   },
+   {
+    "slots": [
+     "gewinnen",
+     "vergessen",
+     "verstehen",
+     "treffen",
+     "geben",
+     "sagen",
+     "sprechen",
+     "öffnen"
+    ],
+    "pronomen": [
+     "wir"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   },
+   {
+    "slots": [
+     "wohnen",
+     "bleiben",
+     "lachen",
+     "weinen",
+     "denken",
+     "glauben",
+     "hoffen",
+     "brauchen"
+    ],
+    "pronomen": [
+     "sie (Pl.)"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   }
+  ]
+ },
+ {
+  "nr": 17,
+  "titel": "Größer, besser, lieber",
+  "finisher": "Vergleich zwei Dinge miteinander.",
+  "rahmen": [
+   {
+    "slots": [
+     "interessant",
+     "schwierig",
+     "wichtig",
+     "gefährlich",
+     "teuer",
+     "schmutzig",
+     "müde",
+     "traurig"
+    ],
+    "pronomen": [],
+    "neu": [
+     "mehr"
+    ],
+    "kind": null,
+    "genus": null
+   },
+   {
+    "slots": [
+     "groß",
+     "klein",
+     "alt",
+     "jung",
+     "teuer",
+     "schön",
+     "warm",
+     "kalt",
+     "neu",
+     "stark"
+    ],
+    "pronomen": [],
+    "neu": [
+     "als"
+    ],
+    "kind": null,
+    "genus": null
+   }
+  ]
+ },
+ {
+  "nr": 18,
+  "titel": "Ich fühle mich",
+  "finisher": "Sag, wie du dich fühlst und warum.",
+  "rahmen": [
+   {
+    "slots": [
+     "müde",
+     "krank",
+     "traurig",
+     "stark",
+     "schwach",
+     "bereit",
+     "jung",
+     "alt",
+     "wütend",
+     "schön"
+    ],
+    "pronomen": [
+     "ich"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   },
+   {
+    "slots": [
+     "heute",
+     "morgen",
+     "jetzt",
+     "bald",
+     "gestern",
+     "oft",
+     "nie",
+     "immer"
+    ],
+    "pronomen": [
+     "wir"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   }
+  ]
+ },
+ {
+  "nr": 19,
+  "titel": "Weil, wenn, obwohl",
+  "finisher": "Sag etwas über dich mit „weil\".",
+  "rahmen": [
+   {
+    "slots": [
+     "weil",
+     "wenn",
+     "obwohl",
+     "während",
+     "als",
+     "aber",
+     "oder",
+     "und"
+    ],
+    "pronomen": [],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   },
+   {
+    "slots": [
+     "einfach",
+     "falsch",
+     "krank",
+     "kurz",
+     "lang",
+     "sauber",
+     "schwach",
+     "schwarz",
+     "süß",
+     "wütend"
+    ],
+    "pronomen": [],
+    "neu": [
+     "dass"
+    ],
+    "kind": null,
+    "genus": null
+   },
+   {
+    "slots": [
+     "wohnen",
+     "bleiben",
+     "lachen",
+     "weinen",
+     "denken",
+     "glauben",
+     "hoffen",
+     "brauchen"
+    ],
+    "pronomen": [],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   }
+  ]
+ },
+ {
+  "nr": 20,
+  "titel": "Bitten und auffordern",
+  "finisher": "Bitte jemanden höflich um etwas.",
+  "rahmen": [
+   {
+    "slots": [
+     "arbeiten",
+     "spielen",
+     "tanzen",
+     "schlafen",
+     "warten",
+     "suchen",
+     "fragen",
+     "antworten",
+     "helfen",
+     "bezahlen"
+    ],
+    "pronomen": [
+     "du"
+    ],
+    "neu": [
+     "bitte"
+    ],
+    "kind": null,
+    "genus": null
+   },
+   {
+    "slots": [
+     "gewinnen",
+     "vergessen",
+     "verstehen",
+     "treffen",
+     "geben",
+     "sagen",
+     "sprechen",
+     "öffnen"
+    ],
+    "pronomen": [
+     "du"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   }
+  ]
+ },
+ {
+  "nr": 21,
+  "titel": "Wem gebe ich was?",
+  "finisher": "Sag, wem du etwas gibst.",
+  "rahmen": [
+   {
+    "slots": [
+     "Freund",
+     "Mutter",
+     "Vater",
+     "Kind",
+     "Student",
+     "Frau",
+     "Schwester",
+     "Bruder"
+    ],
+    "pronomen": [
+     "ich"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   },
+   {
+    "slots": [
+     "Freund",
+     "Mutter",
+     "Vater",
+     "Kind",
+     "Student",
+     "Frau",
+     "Schwester",
+     "Bruder"
+    ],
+    "pronomen": [
+     "ich"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   }
+  ]
+ },
+ {
+  "nr": 22,
+  "titel": "Ein Glas, genug, zu viel",
+  "finisher": "Bestell etwas mit einer Menge.",
+  "rahmen": [
+   {
+    "slots": [
+     "Wasser",
+     "Bier",
+     "Milch",
+     "Kaffee"
+    ],
+    "pronomen": [
+     "ich"
+    ],
+    "neu": [
+     "Glas (Trinkgefäß)"
+    ],
+    "kind": null,
+    "genus": null
+   },
+   {
+    "slots": [
+     "Geld",
+     "Zeit",
+     "Brot",
+     "Obst",
+     "Fleisch",
+     "Fisch",
+     "Zucker",
+     "Milch"
+    ],
+    "pronomen": [
+     "wir"
+    ],
+    "neu": [
+     "genug"
+    ],
+    "kind": null,
+    "genus": null
+   }
+  ]
+ },
+ {
+  "nr": 23,
+  "titel": "Seit, vor, in einer Stunde",
+  "finisher": "Sag, wann du etwas machst.",
+  "rahmen": [
+   {
+    "slots": [
+     "Stunde",
+     "Minute",
+     "Woche",
+     "Nacht",
+     "Tag",
+     "Abend"
+    ],
+    "pronomen": [
+     "ich"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   },
+   {
+    "slots": [
+     "heute",
+     "morgen",
+     "jetzt",
+     "bald",
+     "gestern",
+     "oft",
+     "nie",
+     "immer"
+    ],
+    "pronomen": [
+     "ich"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   }
+  ]
+ },
+ {
+  "nr": 24,
+  "titel": "Ich hätte gern",
+  "finisher": "Bitte höflich um etwas.",
+  "rahmen": [
+   {
+    "slots": [
+     "wohnen",
+     "bleiben",
+     "lachen",
+     "weinen",
+     "denken",
+     "glauben",
+     "hoffen",
+     "brauchen"
+    ],
+    "pronomen": [
+     "ich"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   },
+   {
+    "slots": [
+     "Wasser",
+     "Brot",
+     "Schlüssel",
+     "Buch",
+     "Tasche",
+     "Zucker",
+     "Kaffee",
+     "Milch"
+    ],
+    "pronomen": [
+     "ich"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   }
+  ]
+ },
+ {
+  "nr": 25,
+  "titel": "Ich glaube, dass",
+  "finisher": "Sag deine Meinung zu etwas.",
+  "rahmen": [
+   {
+    "slots": [
+     "groß",
+     "klein",
+     "alt",
+     "jung",
+     "teuer",
+     "schön",
+     "warm",
+     "kalt",
+     "neu",
+     "stark"
+    ],
+    "pronomen": [
+     "ich"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   },
+   {
+    "slots": [
+     "einfach",
+     "falsch",
+     "krank",
+     "kurz",
+     "lang",
+     "sauber",
+     "schwach",
+     "schwarz",
+     "süß",
+     "wütend"
+    ],
+    "pronomen": [
+     "ich"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   }
+  ]
+ },
+ {
+  "nr": 26,
+  "titel": "Was ich vorhabe",
+  "finisher": "Erzähl, was du morgen machst.",
+  "rahmen": [
+   {
+    "slots": [
+     "schauen",
+     "kaufen",
+     "sehen",
+     "machen",
+     "finden",
+     "nehmen",
+     "lesen",
+     "schreiben"
+    ],
+    "pronomen": [
+     "ich"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   },
+   {
+    "slots": [
+     "arbeiten",
+     "spielen",
+     "tanzen",
+     "schlafen",
+     "warten",
+     "suchen",
+     "fragen",
+     "antworten"
+    ],
+    "pronomen": [
+     "ich"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   }
+  ]
+ },
+ {
+  "nr": 27,
+  "titel": "Der Mann, der dort steht",
+  "finisher": "Beschreib jemanden mit einem Nebensatz.",
+  "rahmen": [
+   {
+    "slots": [
+     "wohnen",
+     "bleiben",
+     "lachen",
+     "weinen",
+     "denken",
+     "glauben",
+     "hoffen",
+     "brauchen"
+    ],
+    "pronomen": [],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   },
+   {
+    "slots": [
+     "arbeiten",
+     "spielen",
+     "tanzen",
+     "schlafen",
+     "warten",
+     "suchen",
+     "fragen",
+     "antworten"
+    ],
+    "pronomen": [],
+    "neu": [
+     "wo"
+    ],
+    "kind": null,
+    "genus": null
+   }
+  ]
+ },
+ {
+  "nr": 28,
+  "titel": "Alles zusammen",
+  "finisher": "Erzähl von deinem Tag in drei Sätzen.",
+  "rahmen": [
+   {
+    "slots": [
+     "Restaurant",
+     "Hotel",
+     "Schule",
+     "Universität",
+     "Krankenhaus",
+     "Bahnhof",
+     "Flughafen",
+     "Stadt"
+    ],
+    "pronomen": [
+     "ich"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   },
+   {
+    "slots": [
+     "gewinnen",
+     "vergessen",
+     "verstehen",
+     "treffen",
+     "geben",
+     "sagen",
+     "sprechen",
+     "öffnen"
+    ],
+    "pronomen": [
+     "ich"
+    ],
+    "neu": [],
+    "kind": null,
+    "genus": null
+   }
+  ]
+ }
+]

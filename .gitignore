@@ -77,3 +77,13 @@ Sprachlisten/edge_tts_test_output/
 # Persoenliche Claude-Code-Einstellungen (Berechtigungen o.ae.) - gehoert
 # nicht ins Repo, gilt nur fuer diese Maschine.
 .claude/settings.local.json
+
+# Erzeugte Familien-Vorschlaege aus `bauen.py spiel_ein` (Probelauf). Reine
+# Zwischenstaende zum Gegenpruefen mit `npm run pruefe:konzepte -- --vorschlag`,
+# bei jedem Lauf neu und deshalb nichts fuer die Versionierung.
+Sprachlisten/bewertung/vorschlag/
+
+# Dieselbe Art Probelauf-Zwischenstand, nur fuer Verbformen
+# (`verbformen.py`/`romanisch.py`/`slawisch.py` "Probelauf" vor `spiel_ein
+# --echt`, siehe CLAUDE.md) - bei jedem Lauf neu erzeugt.
+Sprachlisten/kurs/vorschlag/

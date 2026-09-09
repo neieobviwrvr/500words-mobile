@@ -30,6 +30,7 @@ import type { DropdownOption } from '../../components';
 import { useUnlockedProgress } from './useUnlockedProgress';
 import { useCategorySituations } from '../lessons/useCategorySituations';
 import { useGuidedCourse } from './useGuidedCourse';
+import { useGuidedProgress } from './useGuidedProgress';
 import { PathBackdrop, PATH_BACKDROP_COLOR, PATH_BACKDROP_TRANSPARENT } from './PathBackdrop';
 import { ChinaPfadHintergrund, CHINA_BG, wegAnteilBei } from './ChinaPfadHintergrund';
 import { ladeBesuch, ZuletztBesucht } from './zuletztBesucht';
@@ -350,6 +351,11 @@ export function PathScreen() {
   // haelt, welche gerade offen sind.
   const situations = useCategorySituations(targetLanguageId);
   const course = useGuidedCourse(targetLanguageId);
+  // Fortschritt im gefuehrten Pfad: erledigte Lektionen, die aktuelle,
+  // und wohin gescrollt wird. Speist sich aus den FSRS-Karten, die die
+  // Lektion ohnehin schreibt - siehe useGuidedProgress.ts.
+  const guidedProgress = useGuidedProgress(activeLanguage.id);
+
   const [expandedIds, setExpandedIds] = useState<string[]>([]);
   // Wie beim Menue getrennt vom Zustand: die Knoten sollen das Einfahren zu
   // Ende spielen, bevor sie aus der Liste verschwinden.
@@ -434,6 +440,13 @@ export function PathScreen() {
     [purchased]
   );
   const progress = useUnlockedProgress(targetLanguageId, unlockedIds);
+  // Welcher Anteil oben im Balken steht.
+  const anteil =
+    learningMode === 'gefuehrt'
+      ? guidedProgress.gesamt > 0
+        ? guidedProgress.fertig / guidedProgress.gesamt
+        : 0
+      : progress.ratio;
 
   const goCategory = (id: string) => () => router.push({ pathname: '/category/[id]', params: { id } });
   // Eine Situation oeffnet GENAU ihre Saetze (2026-08-21). Vorher landete
@@ -451,33 +464,52 @@ export function PathScreen() {
   // ---------------------------------------------------------------------
   // Knotenliste
   // ---------------------------------------------------------------------
-  const { nodes: raw, currentIndex, currentLabel, currentScenario } = useMemo(() => {
+  const { nodes: raw, currentIndex, currentLabel, currentScenario, currentNiveau } = useMemo(() => {
     // Geführtes Lernen: Lektionen statt Kategorien, Themen statt Situationen.
     // Solange der Kurs leer ist, bleibt auch die Liste leer - der Pfad zeigt
     // dann den Grund aus dem Hook (siehe useGuidedCourse.ts).
     if (learningMode === 'gefuehrt') {
+      // Zustaende aus dem echten Fortschritt statt fest 'open' - erledigte
+      // Lektionen bekommen den Haken, die naechste offene wird
+      // hervorgehoben. Das ist die Duolingo-Mechanik, die dem Kurs bis
+      // 2026-09-04 fehlte.
       const list: RawNode[] = course.lessons.flatMap((lesson) => [
         {
           id: lesson.id,
           label: lesson.label,
-          state: 'open' as NodeState,
+          state: (guidedProgress.module[lesson.id] ?? 'open') as NodeState,
           onPress: toggleCategory(lesson.id),
         },
         ...(themesMounted && expandedIds.includes(lesson.id)
           ? lesson.themes.map((t) => ({
               id: `${lesson.id}:${t.id}`,
               label: t.label,
-              state: 'open' as NodeState,
+              state: (guidedProgress.lektionen[t.id] ?? 'open') as NodeState,
               theme: true,
               onPress: () => router.push(`/lesson/${t.id}`),
             }))
           : []),
       ]);
+
+      // Auto-Scroll und "Du bist hier" zeigen auf die aktuelle Lektion,
+      // sonst auf ihr Modul (zugeklappt gibt es die Lektionszeile nicht).
+      const zielId = guidedProgress.aktuelleLektion
+        ? `${guidedProgress.aktuellesModul}:${guidedProgress.aktuelleLektion}`
+        : null;
+      let index = list.findIndex((n) => n.id === zielId);
+      if (index < 0) index = list.findIndex((n) => n.id === guidedProgress.aktuellesModul);
+      if (index < 0) index = 0;
+
       return {
         nodes: list,
-        currentIndex: 0,
-        currentLabel: list.length > 0 ? list[0].label : 'Noch kein Kurs',
+        currentIndex: index,
+        currentLabel: list.length > 0 ? (list[index]?.label ?? list[0].label) : 'Noch kein Kurs',
         currentScenario: null,
+        // Der Pfad ist eine flache Liste aus bis zu 38 Pillen. Ohne die
+        // Stufe im Kopf saehe der Nutzer nach Modul 24 einfach weitere
+        // Pillen und wuesste nicht, dass dort A2 anfaengt (2026-09-09).
+        currentNiveau:
+          course.lessons.find((m) => m.id === guidedProgress.aktuellesModul)?.niveau ?? null,
       };
     }
 
@@ -485,7 +517,7 @@ export function PathScreen() {
     // gefuehrten Kurs) haben im Speed-Run nichts zu zeigen. Ohne diese
     // Weiche stuenden die Kategorien trotzdem da - mit nichts dahinter.
     if (!activeLanguage.table) {
-      return { nodes: [] as RawNode[], currentIndex: 0, currentLabel: 'Noch keine Sätze', currentScenario: null };
+      return { nodes: [] as RawNode[], currentIndex: 0, currentLabel: 'Noch keine Sätze', currentScenario: null, currentNiveau: null };
     }
 
     // ALLE Kategorien, auch ohne Konto (berichtigt 2026-08-23, siehe
@@ -588,6 +620,7 @@ export function PathScreen() {
       // teilt sich diesen Rueckgabepfad nicht, aber die Annahme soll nicht
       // still im Code stehen.
       currentLabel: idx >= 0 ? list[idx].label : (list[0]?.label ?? ''),
+      currentNiveau: null,
       // Die Stelle IN der Kategorie (Simons Wunsch 2026-08-31): der Kasten
       // soll zeigen, woran man zuletzt war, nicht nur in welcher Kategorie.
       // Nur die juengste Situation zaehlt, und nur wenn sie zur angezeigten
@@ -608,7 +641,8 @@ export function PathScreen() {
     };
     // `expandedIds` gehoert schon jetzt in die Abhaengigkeiten - sobald das
     // Auffaechern kommt, muss die Liste sich davon neu bauen.
-  }, [learningMode, course.lessons, purchased, activeLanguage.label, activeLanguage.table, progress.byCategory, situations.recentCategoryIds, situations.recentSituations, besuch, targetLanguageId, expandedIds, themesMounted, situations.byCategory, toggleCategory, hatKonto]);
+  }, [learningMode, course.lessons, guidedProgress.module, guidedProgress.lektionen,
+      guidedProgress.aktuelleLektion, guidedProgress.aktuellesModul, purchased, activeLanguage.label, activeLanguage.table, progress.byCategory, situations.recentCategoryIds, situations.recentSituations, besuch, targetLanguageId, expandedIds, themesMounted, situations.byCategory, toggleCategory, hatKonto]);
 
   // ---------------------------------------------------------------------
   // Zickzack-Layout: Pillen abwechselnd links/rechts, verbunden durch
@@ -767,12 +801,18 @@ export function PathScreen() {
 
       {/* Fortschritt ueber die freigeschalteten Inhalte. */}
       <View style={styles.progressRow}>
+        {/* Im gefuehrten Modus zaehlt der Kurs, im Speed-Run die
+            freigeschalteten Kategorien - sonst stuende der Balken im Kurs
+            dauerhaft auf dem Wert einer Sammlung, die man dort gar nicht
+            anfasst. */}
         <ProgressBar
           dark={darkMode}
-          ratio={progress.ratio}
-          label={`${Math.round(progress.ratio * 100)} Prozent deiner freigeschalteten Inhalte geübt`}
+          ratio={anteil}
+          label={`${Math.round(anteil * 100)} Prozent ${
+            learningMode === 'gefuehrt' ? 'des Kurses geschafft' : 'deiner freigeschalteten Inhalte geübt'
+          }`}
         />
-        <ProgressProzent dark={darkMode} ratio={progress.ratio} />
+        <ProgressProzent dark={darkMode} ratio={anteil} />
       </View>
 
       {/* Pfad-Box: NUR dieser Bereich scrollt. */}
@@ -811,7 +851,9 @@ export function PathScreen() {
             <Text style={[styles.sectionLabel, { color: theme.sub }]} numberOfLines={1}>
               {currentScenario
                 ? `${LEARNING_MODE_LABEL[learningMode]} · ${currentLabel}`
-                : LEARNING_MODE_LABEL[learningMode]}
+                : currentNiveau
+                  ? `${LEARNING_MODE_LABEL[learningMode]} · ${currentNiveau}`
+                  : LEARNING_MODE_LABEL[learningMode]}
             </Text>
             <Text style={[styles.sectionName, { color: theme.text }]} numberOfLines={1}>
               {currentScenario ?? currentLabel}

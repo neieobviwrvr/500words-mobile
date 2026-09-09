@@ -112,9 +112,17 @@ def pruefe(code):
                 index[z[spalte].lower()] = z
         else:
             index[z[spalte].lower()] = z
+            # ALLE Formen, nicht nur `present` (2026-09-08): seit
+            # englisch_vocab auch Partizipien fuehrt, stehen "finished" und
+            # "begun" als Slots im Kurs. Dieselbe Aenderung wie im
+            # Vokabel-Index von situationsAufgaben.ts - die beiden muessen
+            # dasselbe finden, sonst prueft dieses Skript etwas anderes,
+            # als die App tut.
             f = z.get("forms") or {}
-            if isinstance(f, dict) and f.get("present"):
-                index[f["present"].lower()] = z
+            if isinstance(f, dict):
+                for wert in f.values():
+                    if isinstance(wert, str) and wert.strip():
+                        index.setdefault(wert.lower(), z)
 
     slots = treffer = 0
     fehlend, proWortart = [], Counter()

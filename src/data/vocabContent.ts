@@ -56,6 +56,18 @@ export type VocabWord = {
    * IST schon die richtige Form), Franzoesisch hat keine `forms`-Spalte.
    */
   presentForm: string | null;
+  /**
+   * ALLE Oberflaechenformen aus der `forms`-Spalte, ohne Rollennamen.
+   *
+   * `presentForm` reichte, solange die Spalte nur `present` trug (sv/no).
+   * Seit englisch_vocab auch Praeteritum, Partizip und Verlaufsform fuehrt
+   * (2026-09-08), stehen im Kurs Woerter wie "finished" und "begun" - und
+   * die Wort-Aufgabe fand sie im Vokabel-Index nicht wieder, weil dort nur
+   * Grundform und Praesens standen. 25 Slots fielen dadurch aus.
+   *
+   * Leer, wo die Sprache nicht beugt oder die Spalte nichts hergibt.
+   */
+  alleFormen: string[];
 };
 
 /**
@@ -156,6 +168,7 @@ export async function loadVocabWords(
           genus: null,
           hanzi: row.hanzi,
           presentForm: null,
+          alleFormen: [],
         })
       );
     });
@@ -199,6 +212,9 @@ export async function loadVocabWords(
         genus: row.genus ?? null,
         hanzi: lautschrift ? row[wordColumn] : null,
         presentForm: row.forms?.present ?? null,
+        alleFormen: Object.values(row.forms ?? {}).filter(
+          (f): f is string => typeof f === 'string' && !!f.trim(),
+        ),
       })
     );
   });

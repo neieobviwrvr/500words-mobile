@@ -25,6 +25,26 @@ export type CourseWord = {
   lerntext: string;
   /** Bedeutung in der Sprache des Nutzers. */
   de: string;
+  /**
+   * Ein WIEDERHOLTES Wort, keins, das diese Lektion einfuehrt (2026-09-07).
+   *
+   * Jede Lektion mischt ein paar schon gelernte Woerter in ihre Slots, damit
+   * sie einen zweiten Zusammenhang bekommen (R3 in ENTWURF.md). Bis dahin
+   * behandelte der Uebungs-Screen sie wie neue: Teaser-Satz, Nachsprechen,
+   * Abrufen, Satz - vier Schritte fuer ein Wort, das man schon kennt.
+   *
+   * Das hatte zwei Folgen. Die Lektionen waren mit 33 bis 41 Schritten
+   * doppelt so lang wie geplant (ENTWURF.md rechnet mit ~19), und weil
+   * Wiederholung so teuer war, bekam sie fast kein Wort oft genug.
+   *
+   * Ein wiederholtes Wort braucht nur den SATZ-Schritt: es im neuen Rahmen
+   * selbst produzieren. Genau das ist der zweite Zusammenhang, um den es
+   * geht - alles andere hat die Einfuehrungslektion schon geleistet.
+   *
+   * Fehlt das Feld, gilt das Wort als neu. So bleiben aeltere Kursdateien
+   * lesbar.
+   */
+  wieder?: boolean;
 };
 
 /** Satzrahmen - dieselbe Rollenteilung wie bei CourseWord. */
@@ -62,5 +82,18 @@ export type CourseLessonData = {
 export type CourseModuleData = {
   number: number;
   title: string;
+  /**
+   * Sprachniveau des Moduls - `"A2"` oder `null` fuer die A1-Stufe
+   * (2026-09-09).
+   *
+   * Der Pfad ist eine flache Modul-Liste; ohne diese Angabe saehe der
+   * Nutzer nach Modul 24 einfach weitere Pillen und wuesste nicht, dass
+   * dort eine neue Stufe anfaengt. Der Abschnitts-Kopf auf S1 nennt sie
+   * deshalb neben dem Lernweg ("GEFÜHRTES LERNEN · A2").
+   *
+   * Optional, damit aeltere Kursdateien lesbar bleiben - dasselbe Muster
+   * wie `wieder?: boolean` bei CourseWord.
+   */
+  niveau: 'A2' | null;
   lessons: CourseLessonData[];
 };

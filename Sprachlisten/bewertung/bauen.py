@@ -54,17 +54,42 @@ SPRACHLISTEN = os.path.dirname(HIER)
 sys.path.insert(0, HIER)
 
 import familien as F                                    # noqa: E402
-from formen import englische_formen, schwedische_formen  # noqa: E402
+import ableiten                                          # noqa: E402
+from formen import (englische_formen, schwedische_formen,  # noqa: E402
+                    romanische_formen, slawische_formen, ohne_beugung)
 
-TABELLE = {
-    "sv": "schwedisch_phrasebook",
-    "en": "englisch_phrasebook",
-    "zh": "chinesisch_phrasebook",
+# Je Sprache: Satztabelle, Vokabeltabelle, Wortspalte, wie die Formen
+# entstehen.
+#
+# `formen` ist die eigentliche Aussage dieser Tabelle - sie sagt, WORAN die
+# Wortformen haengen:
+#   daten      aus der `forms`-Spalte der Vokabeltabelle (sv, no)
+#   englisch   Regel plus Liste der Unregelmaessigen
+#   romanisch  Konjugationsendungen plus Liste der Unregelmaessigen
+#   keine      die Sprache beugt nicht (zh, vi)
+#   slawisch   beide Praesens-Konjugationen grosszuegig erzeugt, dazu
+#              eine Liste der Stammwechsler (ru, pl)
+SPRACHEN = {
+    # Deutsch ist die Ausgangssprache und hat KEINE Vokabeltabelle - seine
+    # Familien stehen seit jeher von Hand in clusters_master.py, und zwar
+    # schon als fertige Formenlisten. Deshalb `fertig`.
+    "de": ("phrasebook_master", None, "german", "fertig"),
+    "sv": ("schwedisch_phrasebook", "schwedisch_vocab", "swedish", "daten"),
+    "en": ("englisch_phrasebook", "englisch_vocab", "english", "englisch"),
+    "zh": ("chinesisch_phrasebook", "chinesisch_vocab", "hanzi", "keine"),
+    "es": ("spanisch_phrasebook", "spanisch_vocab", "spanish", "romanisch"),
+    "fr": ("franz_phrasebook", "franz_vocab", "french", "romanisch"),
+    "it": ("italienisch_phrasebook", "italienisch_vocab", "italian", "romanisch"),
+    "no": ("norwegisch_phrasebook", "norwegisch_vocab", "norwegian", "daten"),
+    "ru": ("russisch_phrasebook", "russisch_vocab", "russian", "slawisch"),
+    "vi": ("vietnamesisch_phrasebook", "vietnamesisch_vocab", "vietnamese", "keine"),
+    "pl": ("polnisch_phrasebook", "polnisch_vocab", "polish", "slawisch"),
 }
-VOKABELN = {"sv": "schwedisch_vocab"}
+TABELLE = {k: v[0] for k, v in SPRACHEN.items()}
 
 # Chinesisch hat keine Wortgrenzen - dort wird ENTHALTEN geprueft statt
-# Wort gegen Wort, genau wie in evaluateConcepts.ts.
+# Wort gegen Wort, genau wie in evaluateConcepts.ts. Vietnamesisch beugt zwar
+# auch nicht, schreibt aber mit Leerzeichen und gehoert deshalb NICHT hierher.
 OHNE_WORTGRENZEN = {"zh"}
 
 
@@ -100,55 +125,127 @@ def alle(pfad, seite=1000):
         off += seite
 
 
+def clusterId(sprache, name):
+    """Deutsch bleibt UNPRAEFIXT, alle anderen tragen ihr Sprachkuerzel.
+
+    `answer_clusters.cluster_id` ist ein Primaerschluessel ueber die ganze
+    Tabelle. Die deutschen Cluster heissen seit jeher `sein`, `kosten`, ... und
+    60 Master-Saetze verweisen darauf. Ein Praefix wuerde sie nicht umbenennen,
+    sondern verdoppeln - und die 60 Verweise zeigten ins Leere.
+    """
+    return name if sprache == "de" else f"{sprache}_{name}"
+
+
 # --------------------------------------------------------------------------
 # Familien -> Formen
 # --------------------------------------------------------------------------
 
-def baue_familien(sprache):
+def _wortlisten(sprache, vokabeln, saetze):
+    """Die drei Familienarten - von Hand, wo vorhanden, sonst abgeleitet.
+
+    Fuer Schwedisch, Englisch und Chinesisch stehen sie in familien.py und
+    sind dort ueber mehrere Durchgaenge nachgeschaerft worden (siehe die
+    Kommentare zu `inte`, `tack` und den chinesischen Funktionszeichen). Die
+    behalten Vorrang.
+
+    Fuer alle anderen leitet ableiten.py sie aus der deutschen
+    Bedeutungsspalte und den Floskel-Saetzen ab. Das ist schwaecher als
+    Handarbeit - aber es ist da, und der Unterschied zu "keine Familien" ist
+    der zwischen drei Stufen und zwei.
+    """
+    _, _, wortspalte, _ = SPRACHEN[sprache]
+    if sprache == "de":
+        # Deutsch hat keine Vokabeltabelle, aber seit jeher handgepflegte
+        # Cluster - und die stehen dort schon als Formenlisten.
+        import importlib.util
+        pfad = os.path.join(SPRACHLISTEN, "clusters_master.py")
+        spec = importlib.util.spec_from_file_location("clusters_master", pfad)
+        modul = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(modul)
+        return modul.CLUSTERS, {}, ableiten.ausdruecke_aus_saetzen(saetze), True
+    handVerben = F.VERBEN.get(sprache)
+    handEigen = F.EIGENSCHAFTEN.get(sprache)
+    handAusdruck = F.AUSDRUCK.get(sprache)
+
+    verben = handVerben or ableiten.verben_aus_vokabeln(vokabeln, wortspalte)
+    eigen = handEigen or ableiten.verben_aus_vokabeln(
+        vokabeln, wortspalte, wortart="Adjektiv", trigger=ableiten.TRIGGER_EIGENSCHAFT)
+    ausdruck = handAusdruck or ableiten.ausdruecke_aus_saetzen(saetze)
+    return verben, eigen, ausdruck, (handVerben is not None)
+
+
+def _formen_von(wort, sprache, art, vocab_forms, zusatz, warnungen, cid):
+    """Ein Grundwort -> alle Formen, je nach dem, woran die Sprache haengt."""
+    if art == "daten":
+        f = schwedische_formen(wort, vocab_forms, zusatz)
+        if wort not in vocab_forms and wort not in zusatz:
+            warnungen.append(f"{cid}: keine Formen zu {wort!r} - weder in der "
+                             f"Vokabeltabelle noch in ZUSATZ")
+        return f
+    if art == "englisch":
+        return englische_formen(wort) + zusatz.get(wort, [])
+    if art == "romanisch":
+        return romanische_formen(wort, sprache) + zusatz.get(wort, [])
+    if art == "slawisch":
+        return slawische_formen(wort, sprache) + zusatz.get(wort, [])
+    if art == "fertig":
+        # Schon eine Form, keine Grundform - nichts zu erzeugen.
+        return [wort]
+    # "keine" und "grundform" sehen im Code gleich aus, meinen aber
+    # Verschiedenes: bei zh/vi GIBT es keine weiteren Formen, bei ru/pl gibt
+    # es sie und wir erzeugen sie nur nicht. Der Bericht sagt das offen.
+    return ohne_beugung(wort) + zusatz.get(wort, [])
+
+
+def baue_familien(sprache, vokabeln=None, saetze=None):
     """{cluster_id: [formen]} plus {cluster_id: 'ausdruck'|'stark'|'schwach'}."""
     formen, rang, warnungen = {}, {}, []
+    satzTabelle, vokabelTabelle, wortspalte, art = SPRACHEN[sprache]
+
+    if vokabeln is None:
+        vokabeln = alle(f"{vokabelTabelle}?select=*") if vokabelTabelle else []
+    if saetze is None:
+        _, saetze = lade_saetze(sprache)
 
     vocab_forms = {}
-    if sprache in VOKABELN:
-        for z in alle(f"{VOKABELN[sprache]}?select=swedish,category,forms"):
-            if z["category"] == "Verb":
-                vocab_forms[z["swedish"]] = z["forms"] or {}
+    if art == "daten":
+        for z in vokabeln:
+            if z.get("category") == "Verb":
+                vocab_forms[z[wortspalte]] = z.get("forms") or {}
     zusatz = F.ZUSATZ.get(sprache, {})
 
-    for name, woerter in F.VERBEN.get(sprache, {}).items():
-        cid = f"{sprache}_{name}"
+    verbFamilien, eigenFamilien, ausdruckFamilien, vonHand = _wortlisten(
+        sprache, vokabeln, saetze)
+    if not vonHand:
+        warnungen.append(f"{sprache}: Familien ABGELEITET (ableiten.py), nicht "
+                         f"von Hand - siehe dort, was das bedeutet")
+
+    for name, woerter in verbFamilien.items():
+        cid = clusterId(sprache, name)
         gesammelt = []
         for w in woerter:
-            if sprache == "sv":
-                f = schwedische_formen(w, vocab_forms, zusatz)
-                # Nur melden, wenn ueberhaupt keine Quelle gefragt werden
-                # konnte. Eine einzige Form ist kein Fehler: `maaste` heisst
-                # in jeder Zeit `maaste`, die Vergangenheit wird umschrieben
-                # ("var tvungen att") und ist keine Verbform.
-                if w not in vocab_forms and w not in zusatz:
-                    warnungen.append(f"{cid}: keine Formen zu {w!r} - weder in "
-                                     f"{VOKABELN[sprache]} noch in ZUSATZ")
-            elif sprache == "en":
-                # ZUSATZ traegt hier feste Wendungen bei, die sich nicht aus
-                # dem Grundwort beugen lassen ("i'd like").
-                f = englische_formen(w) + zusatz.get(w, [])
-            else:
-                f = [w] + zusatz.get(w, [])
-            gesammelt += f
-        formen[cid] = sorted(set(gesammelt))
-        rang[cid] = "schwach" if name in F.SCHWACH else "stark"
+            # Eine einzige Form ist bei "daten" kein Fehler: schwedisch
+            # `maaste` heisst in jeder Zeit `maaste`, die Vergangenheit wird
+            # umschrieben ("var tvungen att") und ist keine Verbform.
+            gesammelt += _formen_von(w, sprache, art, vocab_forms, zusatz, warnungen, cid)
+        gesperrt = set(F.MEHRDEUTIG.get(sprache, {}).get(name, []))
+        formen[cid] = sorted(set(gesammelt) - gesperrt)
+        if name in F.NICHT_ZUORDNEN.get(sprache, set()):
+            rang[cid] = "gesperrt"      # existiert, wird aber nie verteilt
+        else:
+            rang[cid] = "schwach" if name in F.SCHWACH else "stark"
 
     # Eigenschaften stehen im selben Rang wie starke Verben - sie sind
     # Inhaltswoerter, nur eben keine Verben. Ein Satz, der beides enthaelt,
     # entscheidet nach der Stelle: "Maten smakar mycket bra" gehoert zu
     # `schmecken`, nicht zu `gut`.
-    for name, woerter in F.EIGENSCHAFTEN.get(sprache, {}).items():
-        cid = f"{sprache}_{name}"
+    for name, woerter in eigenFamilien.items():
+        cid = clusterId(sprache, name)
         formen[cid] = sorted(set(formen.get(cid, [])) | set(woerter))
         rang.setdefault(cid, "stark")
 
-    for name, wendungen in F.AUSDRUCK.get(sprache, {}).items():
-        cid = f"{sprache}_{name}"
+    for name, wendungen in ausdruckFamilien.items():
+        cid = clusterId(sprache, name)
         # Eine Ausdrucks-Familie darf denselben Namen tragen wie eine
         # Verb-Familie (`sv_ja` gibt es nur einmal). Wo doch, gewinnt der
         # Ausdruck - er ist die speziellere Angabe.
@@ -206,7 +303,7 @@ AUSDRUCK_MINDESTANTEIL = 0.5
 
 def zuordnen(satztext, formen, rang, sprache):
     """Welche Familie traegt diesen Satz? Reihenfolge siehe Modulkopf."""
-    treffer = {"ausdruck": [], "stark": [], "schwach": []}
+    treffer = {"ausdruck": [], "stark": [], "schwach": [], "gesperrt": []}
     for cid, fs in formen.items():
         stellen = [(_stelle(satztext, f, sprache), len(f)) for f in fs]
         stellen = [t for t in stellen if t[0] >= 0]
@@ -238,7 +335,19 @@ def zuordnen(satztext, formen, rang, sprache):
 # --------------------------------------------------------------------------
 
 def lade_saetze(sprache):
+    """Satzzeilen mit einheitlichen Feldern - egal welche Tabelle.
+
+    `phrasebook_master` weicht zweifach ab: der Satztext steht in `german`
+    (Deutsch IST dort die Zielsprache), und der Cluster liegt verschachtelt
+    in `accepted_concepts` statt in einer eigenen Spalte. Beides hier
+    eingeebnet, damit der Rest der Datei nur einen Fall kennt.
+    """
     tab = TABELLE[sprache]
+    if sprache == "de":
+        roh = alle(f"{tab}?select=id,german,accepted_concepts")
+        return tab, [dict(z, target_text=z["german"],
+                          verb_cluster=(z.get("accepted_concepts") or {}).get("verb_cluster"))
+                     for z in roh]
     return tab, alle(f"{tab}?select=id,german,target_text,accepted_concepts,verb_cluster")
 
 
@@ -251,6 +360,21 @@ def bericht(sprache, zeige_lang=False):
 
     zugeordnet, ohne = {}, []
     for s in saetze:
+        # Eine BESTEHENDE Zuordnung wird nie ueberschrieben.
+        #
+        # Fuer Deutsch ist das entscheidend: die 60 Master-Saetze mit Cluster
+        # sind einzeln durchgegangen worden, und drei der Cluster
+        # (`fahren_reisen`, `gehen_wegbeschreibung`, `gehen_freizeitweg`)
+        # gelten ausdruecklich nur fuer bestimmte Saetze - "kein pauschales
+        # 'alle Bewegungsverben sind synonym'", siehe CLAUDE.md. Ein
+        # automatischer Lauf wuerde genau diese Feinheit einebnen.
+        #
+        # Fuer die anderen Sprachen aendert die Regel nichts, solange der
+        # Lauf wiederholbar ist: er ordnet ohnehin dasselbe zu. Wer eine
+        # Zuordnung wirklich neu berechnen will, leert die Spalte vorher.
+        if s.get("verb_cluster"):
+            zugeordnet[s["id"]] = s["verb_cluster"]
+            continue
         cid = zuordnen(s["target_text"], formen, rang, sprache)
         if cid:
             zugeordnet[s["id"]] = cid
@@ -324,16 +448,43 @@ def spiel_ein(sprache, echt=False):
         print(f"  verwaist, wird geloescht: {len(verwaist)}  ({', '.join(verwaist[:8])}"
               f"{' ...' if len(verwaist) > 8 else ''})")
     if not echt:
-        print("\n  Probelauf - nichts geschrieben. Mit --echt wiederholen.")
+        # Den Vorschlag als Datei ablegen, damit
+        # `npm run pruefe:konzepte -- --vorschlag` ihn gegen den ECHTEN
+        # Bewerter halten kann, BEVOR etwas in die Datenbank geht. Ohne
+        # diesen Zwischenschritt bliebe nur "einspielen und hoffen" - und die
+        # Datenbank ist live: die App laedt `answer_clusters` bei jedem
+        # Start neu, ein Schreibvorgang aendert also sofort, wie eine
+        # bereits ausgelieferte App bewertet.
+        ziel = os.path.join(HIER, "vorschlag")
+        os.makedirs(ziel, exist_ok=True)
+        datei = os.path.join(ziel, f"{sprache}.json")
+        with open(datei, "w", encoding="utf-8") as f:
+            json.dump({"cluster": {c: formen[c] for c in sorted(gebraucht)},
+                       "zuordnung": {str(k): v for k, v in zugeordnet.items()}},
+                      f, ensure_ascii=False, indent=1)
+        print(f"\n  Probelauf - nichts geschrieben. Vorschlag: {datei}")
+        print("  Pruefen mit: npm run pruefe:konzepte -- --vorschlag")
         return
 
     rest("answer_clusters?on_conflict=cluster_id", "POST", cluster_zeilen,
          {"Prefer": "resolution=merge-duplicates,return=minimal"})
     print("  answer_clusters geschrieben.")
 
+    # WOHIN der Cluster geschrieben wird, ist je Tabelle verschieden.
+    #
+    # `phrasebook_master` hat gar keine `verb_cluster`-Spalte - dort steckt er
+    # verschachtelt in `accepted_concepts`, und genau von dort liest ihn auch
+    # die App (siehe phrasebookContent.ts, `lang.id !== 'de'`). Ein PATCH auf
+    # eine Spalte, die es nicht gibt, haette nichts bewirkt.
+    konzepteVon = {s["id"]: (s.get("accepted_concepts") or {}) for s in saetze}
     for i, (sid, cid) in enumerate(aenderungen, 1):
-        rest(f"{tab}?id=eq.{sid}", "PATCH", {"verb_cluster": cid},
-             {"Prefer": "return=minimal"})
+        if sprache == "de":
+            ac = dict(konzepteVon.get(sid, {}))
+            ac["verb_cluster"] = cid
+            koerper = {"accepted_concepts": ac}
+        else:
+            koerper = {"verb_cluster": cid}
+        rest(f"{tab}?id=eq.{sid}", "PATCH", koerper, {"Prefer": "return=minimal"})
         if i % 100 == 0:
             print(f"    {i}/{len(aenderungen)}")
     print(f"  {len(aenderungen)} Saetze aktualisiert.")

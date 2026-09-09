@@ -38,10 +38,10 @@ export function CourseReviewScreen({ modus }: { modus?: Kartenart }) {
           : {
               art: 'satz' as const,
               wort: k.wort,
-              hanzi: k.hanzi,
-              pinyin: k.pinyin,
+              schrift: k.schrift,
+              lerntext: k.lerntext,
               lektionId: k.lektionId,
-              rahmenPinyin: k.rahmenPinyin,
+              rahmenLerntext: k.rahmenLerntext,
             }
       ),
     [faellig.faellig]

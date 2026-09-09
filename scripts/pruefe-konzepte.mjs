@@ -99,6 +99,26 @@ function clusterVon(zeile) {
 const clusterZeilen = await rest('answer_clusters?select=cluster_id,forms');
 const CLUSTER = Object.fromEntries(clusterZeilen.map((z) => [z.cluster_id, z.forms]));
 
+// --vorschlag: gegen einen NOCH NICHT eingespielten Stand pruefen.
+//
+// `bauen.py spiel_ein <sprache>` legt im Probelauf eine Datei unter
+// Sprachlisten/bewertung/vorschlag/ ab. Mit diesem Schalter wird sie hier
+// ueber die Datenbankwerte gelegt - und zwar bevor irgendetwas geschrieben
+// ist. Der Grund: `answer_clusters` ist live. Eine bereits ausgelieferte App
+// laedt die Tabelle bei jedem Start neu, ein Einspielen aendert also sofort,
+// wie sie bewertet. Erst pruefen, dann schreiben.
+const VORSCHLAG = process.argv.includes('--vorschlag');
+const vorschlagOrdner = path.join(HIER, '..', 'Sprachlisten', 'bewertung', 'vorschlag');
+
+function ladeVorschlag(sprache) {
+  if (!VORSCHLAG) return null;
+  const datei = path.join(vorschlagOrdner, `${sprache}.json`);
+  if (!fs.existsSync(datei)) return null;
+  const roh = JSON.parse(fs.readFileSync(datei, 'utf-8'));
+  Object.assign(CLUSTER, roh.cluster);
+  return roh.zuordnung;
+}
+
 // ---------------------------------------------------------------------------
 // Stichproben: was passiert mit einer ECHTEN Antwort?
 //
@@ -134,6 +154,54 @@ const STICHPROBEN = {
     ['Ich verstehe das nicht.', 'jag förstår inte', 'richtig'],
     ['Ich verstehe das nicht.', 'jag fattar inte', 'nicht_verstanden'], // anderes Verb, nicht gelehrt
     ['Wie viel kostet das?', 'hur mycket kostar det', 'richtig'],
+  ],
+  // Die sieben, deren Familien ABGELEITET sind (siehe ableiten.py) - hier
+  // zeigt sich, ob die Ableitung inhaltlich taugt oder nur Zeilen erzeugt.
+  de: [
+    ['Auf Wiedersehen!', 'auf wiedersehen', 'richtig'],
+    ['Auf Wiedersehen!', 'tschüss', 'ueberlebt'],
+    ['Auf Wiedersehen!', 'ich habe hunger', 'nicht_verstanden'],
+  ],
+  es: [
+    ['Ja.', 'sí', 'richtig'],
+    ['Ja.', 'claro', 'ueberlebt'],
+    ['Ja.', 'no', 'nicht_verstanden'],
+    ['Auf Wiedersehen!', 'adiós', 'richtig'],
+    ['Auf Wiedersehen!', 'chao', 'ueberlebt'],
+  ],
+  fr: [
+    ['Ja.', 'oui', 'richtig'],
+    ['Ja.', 'bien sûr', 'ueberlebt'],
+    ['Ja.', 'non', 'nicht_verstanden'],
+  ],
+  it: [
+    ['Auf Wiedersehen!', 'arrivederci', 'richtig'],
+    ['Auf Wiedersehen!', 'a domani', 'ueberlebt'],
+    ['Auf Wiedersehen!', 'ho fame', 'nicht_verstanden'],
+  ],
+  no: [
+    ['Nein.', 'nei', 'richtig'],
+    ['Nein.', 'aldri i livet', 'ueberlebt'],
+    ['Nein.', 'takk', 'nicht_verstanden'],
+  ],
+  ru: [
+    ['Ja.', 'да', 'richtig'],
+    ['Ja.', 'конечно', 'ueberlebt'],
+    ['Ja.', 'нет', 'nicht_verstanden'],
+  ],
+  vi: [
+    ['Ja.', 'vâng', 'richtig'],
+    // Die Familie traegt, was die Tabelle lehrt: "Na klar!" heisst dort
+    // "Tất nhiên rồi!". Das nackte "tất nhiên" ist eine Verkuerzung, die
+    // in unseren Daten nicht steht - mehrwortige Formen verlangen alle
+    // ihre Woerter, sonst wuerde jede Teilphrase alles anziehen.
+    ['Ja.', 'tất nhiên rồi', 'ueberlebt'],
+    ['Ja.', 'không', 'nicht_verstanden'],
+  ],
+  pl: [
+    ['Ja.', 'tak', 'richtig'],
+    ['Ja.', 'oczywiście', 'ueberlebt'],
+    ['Ja.', 'nie', 'nicht_verstanden'],
   ],
   zh: [
     ['Prost!', '干杯', 'richtig'],
@@ -203,8 +271,10 @@ for (const sprache of sprachen) {
   const spalten = sprache === 'de'
     ? 'id,german,accepted_concepts'
     : 'id,german,target_text,accepted_concepts,verb_cluster';
-  const zeilen = (await rest(`${tabelle}?select=${spalten}`)).map((z) =>
-    sprache === 'de' ? { ...z, target_text: z.german } : z);
+  const vorschlag = ladeVorschlag(sprache);
+  const zeilen = (await rest(`${tabelle}?select=${spalten}`))
+    .map((z) => (sprache === 'de' ? { ...z, target_text: z.german } : z))
+    .map((z) => (vorschlag ? { ...z, verb_cluster: vorschlag[String(z.id)] ?? null } : z));
 
   // --- Pruefung 1: der Zielsatz selbst muss "richtig" ergeben ------------
   //

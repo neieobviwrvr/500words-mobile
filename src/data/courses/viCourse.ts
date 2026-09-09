@@ -3,7 +3,7 @@
 // Neu bauen: python bauplan.py vi --schreib
 //
 // Aufbau und Begruendung: Sprachlisten/kurs/ENTWURF.md
-// 23 Module, 141 Lektionen.
+// 37 Module, 274 Lektionen.
 
 import { CourseModuleData } from '../courseTypes';
 
@@ -12,6 +12,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
   {
     "number": 1,
     "title": "Ich bin, du bist",
+    "niveau": null,
     "lessons": [
       {
         "kind": "frame",
@@ -19,7 +20,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / bạn / nó rất [Slot]",
           "lerntext": "tôi / bạn / nó rất [Slot]"
         },
-        "frameDe": "ich (neutral) / du (Gleichaltrige), Freund / er, sie, es (vertraut) bin [Slot].",
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / er bin [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -29,12 +30,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "bạn",
             "lerntext": "bạn",
-            "de": "du (Gleichaltrige), Freund"
+            "de": "du (Gleichaltrige)"
           },
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           }
         ],
         "slotGroups": [
@@ -88,7 +89,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / bạn / nó rất [Slot]",
           "lerntext": "tôi / bạn / nó rất [Slot]"
         },
-        "frameDe": "ich (neutral) / du (Gleichaltrige), Freund / er, sie, es (vertraut) bin [Slot].",
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / er bin [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -98,12 +99,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "bạn",
             "lerntext": "bạn",
-            "de": "du (Gleichaltrige), Freund"
+            "de": "du (Gleichaltrige)"
           },
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           }
         ],
         "slotGroups": [
@@ -117,15 +118,10 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "schrift": "sẵn sàng",
               "lerntext": "sẵn sàng",
               "de": "bereit"
-            },
-            {
-              "schrift": "cứ",
-              "lerntext": "cứ",
-              "de": "ruhig, einfach"
             }
           ]
         ],
-        "newCount": 3,
+        "newCount": 2,
         "task": null,
         "newFrameWords": [],
         "id": "1.2"
@@ -136,12 +132,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "mình / các bạn / nó là [Slot]",
           "lerntext": "mình / các bạn / nó là [Slot]"
         },
-        "frameDe": "ich, wir (vertraut) / ihr / er, sie, es (vertraut) bin [Slot].",
+        "frameDe": "ich / ihr / er sind [Slot].",
         "pronouns": [
           {
             "schrift": "mình",
             "lerntext": "mình",
-            "de": "ich, wir (vertraut)"
+            "de": "ich"
           },
           {
             "schrift": "các bạn",
@@ -151,7 +147,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           }
         ],
         "slotGroups": [
@@ -179,7 +175,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "bạn",
               "lerntext": "bạn",
-              "de": "du (Gleichaltrige), Freund"
+              "de": "du (Gleichaltrige)"
             }
           ]
         ],
@@ -194,12 +190,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "mình / các bạn / nó là [Slot]",
           "lerntext": "mình / các bạn / nó là [Slot]"
         },
-        "frameDe": "ich, wir (vertraut) / ihr / er, sie, es (vertraut) bin [Slot].",
+        "frameDe": "ich / ihr / er sind [Slot].",
         "pronouns": [
           {
             "schrift": "mình",
             "lerntext": "mình",
-            "de": "ich, wir (vertraut)"
+            "de": "ich"
           },
           {
             "schrift": "các bạn",
@@ -209,7 +205,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           }
         ],
         "slotGroups": [
@@ -217,12 +213,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "bà",
               "lerntext": "bà",
-              "de": "du (alte Frau), Frau"
+              "de": "du (alte Frau)"
             },
             {
               "schrift": "con",
               "lerntext": "con",
-              "de": "ich (zu den Eltern), Kind"
+              "de": "ich (zu den Eltern)"
             }
           ]
         ],
@@ -237,12 +233,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "nó rất [Slot]",
           "lerntext": "nó rất [Slot]"
         },
-        "frameDe": "er, sie, es (vertraut) ist sehr [Slot].",
+        "frameDe": "er ist sehr [Slot].",
         "pronouns": [
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           }
         ],
         "slotGroups": [
@@ -265,7 +261,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "khỏe",
               "lerntext": "khỏe",
-              "de": "gesund, stark"
+              "de": "gesund"
             },
             {
               "schrift": "yếu",
@@ -291,12 +287,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "nó rất [Slot]",
           "lerntext": "nó rất [Slot]"
         },
-        "frameDe": "er, sie, es (vertraut) ist sehr [Slot].",
+        "frameDe": "er ist sehr [Slot].",
         "pronouns": [
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           }
         ],
         "slotGroups": [
@@ -319,6 +315,286 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "id": "1.6"
       },
       {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi / bạn / nó rất [Slot]",
+          "lerntext": "tôi / bạn / nó rất [Slot]"
+        },
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / er bin [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          },
+          {
+            "schrift": "bạn",
+            "lerntext": "bạn",
+            "de": "du (Gleichaltrige)"
+          },
+          {
+            "schrift": "nó",
+            "lerntext": "nó",
+            "de": "er"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "mệt",
+              "lerntext": "mệt",
+              "de": "müde",
+              "wieder": true
+            },
+            {
+              "schrift": "buồn",
+              "lerntext": "buồn",
+              "de": "traurig",
+              "wieder": true
+            },
+            {
+              "schrift": "giận",
+              "lerntext": "giận",
+              "de": "wütend",
+              "wieder": true
+            },
+            {
+              "schrift": "đói",
+              "lerntext": "đói",
+              "de": "hungrig",
+              "wieder": true
+            },
+            {
+              "schrift": "khát",
+              "lerntext": "khát",
+              "de": "durstig",
+              "wieder": true
+            },
+            {
+              "schrift": "ốm",
+              "lerntext": "ốm",
+              "de": "krank",
+              "wieder": true
+            },
+            {
+              "schrift": "sẵn sàng",
+              "lerntext": "sẵn sàng",
+              "de": "bereit",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "1.7"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "nó rất [Slot]",
+          "lerntext": "nó rất [Slot]"
+        },
+        "frameDe": "er ist sehr [Slot].",
+        "pronouns": [
+          {
+            "schrift": "nó",
+            "lerntext": "nó",
+            "de": "er"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "đẹp",
+              "lerntext": "đẹp",
+              "de": "schön",
+              "wieder": true
+            },
+            {
+              "schrift": "buồn cười",
+              "lerntext": "buồn cười",
+              "de": "lustig",
+              "wieder": true
+            },
+            {
+              "schrift": "chán",
+              "lerntext": "chán",
+              "de": "langweilig",
+              "wieder": true
+            },
+            {
+              "schrift": "khỏe",
+              "lerntext": "khỏe",
+              "de": "gesund",
+              "wieder": true
+            },
+            {
+              "schrift": "yếu",
+              "lerntext": "yếu",
+              "de": "schwach",
+              "wieder": true
+            },
+            {
+              "schrift": "trẻ",
+              "lerntext": "trẻ",
+              "de": "jung",
+              "wieder": true
+            },
+            {
+              "schrift": "cũ",
+              "lerntext": "cũ",
+              "de": "alt (Sache)",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "1.8"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi / bạn / nó rất [Slot]",
+          "lerntext": "tôi / bạn / nó rất [Slot]"
+        },
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / er bin [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          },
+          {
+            "schrift": "bạn",
+            "lerntext": "bạn",
+            "de": "du (Gleichaltrige)"
+          },
+          {
+            "schrift": "nó",
+            "lerntext": "nó",
+            "de": "er"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "mệt",
+              "lerntext": "mệt",
+              "de": "müde",
+              "wieder": true
+            },
+            {
+              "schrift": "buồn",
+              "lerntext": "buồn",
+              "de": "traurig",
+              "wieder": true
+            },
+            {
+              "schrift": "giận",
+              "lerntext": "giận",
+              "de": "wütend",
+              "wieder": true
+            },
+            {
+              "schrift": "đói",
+              "lerntext": "đói",
+              "de": "hungrig",
+              "wieder": true
+            },
+            {
+              "schrift": "khát",
+              "lerntext": "khát",
+              "de": "durstig",
+              "wieder": true
+            },
+            {
+              "schrift": "ốm",
+              "lerntext": "ốm",
+              "de": "krank",
+              "wieder": true
+            },
+            {
+              "schrift": "sẵn sàng",
+              "lerntext": "sẵn sàng",
+              "de": "bereit",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "1.9"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "nó rất [Slot]",
+          "lerntext": "nó rất [Slot]"
+        },
+        "frameDe": "er ist sehr [Slot].",
+        "pronouns": [
+          {
+            "schrift": "nó",
+            "lerntext": "nó",
+            "de": "er"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "đẹp",
+              "lerntext": "đẹp",
+              "de": "schön",
+              "wieder": true
+            },
+            {
+              "schrift": "buồn cười",
+              "lerntext": "buồn cười",
+              "de": "lustig",
+              "wieder": true
+            },
+            {
+              "schrift": "chán",
+              "lerntext": "chán",
+              "de": "langweilig",
+              "wieder": true
+            },
+            {
+              "schrift": "khỏe",
+              "lerntext": "khỏe",
+              "de": "gesund",
+              "wieder": true
+            },
+            {
+              "schrift": "yếu",
+              "lerntext": "yếu",
+              "de": "schwach",
+              "wieder": true
+            },
+            {
+              "schrift": "trẻ",
+              "lerntext": "trẻ",
+              "de": "jung",
+              "wieder": true
+            },
+            {
+              "schrift": "cũ",
+              "lerntext": "cũ",
+              "de": "alt (Sache)",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "1.10"
+      },
+      {
         "kind": "finisher",
         "frame": {
           "schrift": "",
@@ -330,13 +606,14 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "newCount": 0,
         "task": "Sag, wer du bist und wie es dir geht.",
         "newFrameWords": [],
-        "id": "1.7"
+        "id": "1.11"
       }
     ]
   },
   {
     "number": 2,
     "title": "Das ist, ich habe",
+    "niveau": null,
     "lessons": [
       {
         "kind": "frame",
@@ -344,69 +621,40 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "đây là [Slot]",
           "lerntext": "đây là [Slot]"
         },
-        "frameDe": "Das ist ein [Slot].",
+        "frameDe": "Das ist eine [Slot].",
         "pronouns": [
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           }
         ],
         "slotGroups": [
           [
             {
-              "schrift": "sách",
-              "lerntext": "sách",
-              "de": "Buch"
-            },
-            {
               "schrift": "túi",
               "lerntext": "túi",
-              "de": "Tasche, Tüte"
+              "de": "Tasche"
             },
             {
-              "schrift": "ghế",
-              "lerntext": "ghế",
-              "de": "Stuhl"
+              "schrift": "cửa",
+              "lerntext": "cửa",
+              "de": "Tür"
             },
             {
-              "schrift": "giường",
-              "lerntext": "giường",
-              "de": "Bett"
+              "schrift": "mẹ",
+              "lerntext": "mẹ",
+              "de": "Mutter"
             },
             {
-              "schrift": "chìa khóa",
-              "lerntext": "chìa khóa",
-              "de": "Schlüssel"
-            },
-            {
-              "schrift": "mình",
-              "lerntext": "mình",
-              "de": "ich, wir (vertraut)"
-            },
-            {
-              "schrift": "các bạn",
-              "lerntext": "các bạn",
-              "de": "ihr"
-            },
-            {
-              "schrift": "tôi",
-              "lerntext": "tôi",
-              "de": "ich (neutral)"
-            },
-            {
-              "schrift": "buồn",
-              "lerntext": "buồn",
-              "de": "traurig"
-            },
-            {
-              "schrift": "buồn cười",
-              "lerntext": "buồn cười",
-              "de": "lustig"
+              "schrift": "công an",
+              "lerntext": "công an",
+              "de": "Polizei",
+              "wieder": true
             }
           ]
         ],
-        "newCount": 5,
+        "newCount": 3,
         "task": null,
         "newFrameWords": [
           {
@@ -428,25 +676,20 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           }
         ],
         "slotGroups": [
           [
             {
-              "schrift": "cửa",
-              "lerntext": "cửa",
-              "de": "Tür"
+              "schrift": "ghế",
+              "lerntext": "ghế",
+              "de": "Stuhl"
             },
             {
-              "schrift": "điện thoại",
-              "lerntext": "điện thoại",
-              "de": "Telefon, Handy"
-            },
-            {
-              "schrift": "mẹ",
-              "lerntext": "mẹ",
-              "de": "Mutter"
+              "schrift": "chìa khóa",
+              "lerntext": "chìa khóa",
+              "de": "Schlüssel"
             },
             {
               "schrift": "bố",
@@ -454,33 +697,26 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Vater"
             },
             {
-              "schrift": "ghế",
-              "lerntext": "ghế",
-              "de": "Stuhl"
-            },
-            {
-              "schrift": "cứ",
-              "lerntext": "cứ",
-              "de": "ruhig, einfach"
+              "schrift": "sinh viên",
+              "lerntext": "sinh viên",
+              "de": "Student",
+              "wieder": true
             },
             {
               "schrift": "đồng nghiệp",
               "lerntext": "đồng nghiệp",
-              "de": "Kollege"
+              "de": "Kollege",
+              "wieder": true
             },
             {
-              "schrift": "đói",
-              "lerntext": "đói",
-              "de": "hungrig"
-            },
-            {
-              "schrift": "chán",
-              "lerntext": "chán",
-              "de": "langweilig"
+              "schrift": "giáo viên",
+              "lerntext": "giáo viên",
+              "de": "Lehrer",
+              "wieder": true
             }
           ]
         ],
-        "newCount": 4,
+        "newCount": 3,
         "task": null,
         "newFrameWords": [],
         "id": "2.2"
@@ -488,78 +724,95 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
       {
         "kind": "frame",
         "frame": {
-          "schrift": "ở đây có [Slot]",
-          "lerntext": "ở đây có [Slot]"
+          "schrift": "đây là [Slot]",
+          "lerntext": "đây là [Slot]"
         },
-        "frameDe": "Hier ist ein [Slot].",
+        "frameDe": "Das ist ein [Slot].",
         "pronouns": [
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           }
         ],
         "slotGroups": [
           [
             {
-              "schrift": "nhà",
-              "lerntext": "nhà",
-              "de": "Haus, Zuhause"
+              "schrift": "sách",
+              "lerntext": "sách",
+              "de": "Buch"
             },
             {
-              "schrift": "phòng",
-              "lerntext": "phòng",
-              "de": "Zimmer"
+              "schrift": "giường",
+              "lerntext": "giường",
+              "de": "Bett"
             },
+            {
+              "schrift": "điện thoại",
+              "lerntext": "điện thoại",
+              "de": "Telefon"
+            }
+          ]
+        ],
+        "newCount": 3,
+        "task": null,
+        "newFrameWords": [],
+        "id": "2.3"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "ở đây có [Slot]",
+          "lerntext": "ở đây có [Slot]"
+        },
+        "frameDe": "Hier ist eine [Slot].",
+        "pronouns": [
+          {
+            "schrift": "nó",
+            "lerntext": "nó",
+            "de": "er"
+          }
+        ],
+        "slotGroups": [
+          [
             {
               "schrift": "bếp",
               "lerntext": "bếp",
               "de": "Küche"
             },
             {
-              "schrift": "bàn",
-              "lerntext": "bàn",
-              "de": "Tisch"
-            },
-            {
-              "schrift": "cửa sổ",
-              "lerntext": "cửa sổ",
-              "de": "Fenster"
+              "schrift": "túi",
+              "lerntext": "túi",
+              "de": "Tasche",
+              "wieder": true
             },
             {
               "schrift": "mẹ",
               "lerntext": "mẹ",
-              "de": "Mutter"
+              "de": "Mutter",
+              "wieder": true
             },
             {
-              "schrift": "điện thoại",
-              "lerntext": "điện thoại",
-              "de": "Telefon, Handy"
+              "schrift": "cửa",
+              "lerntext": "cửa",
+              "de": "Tür",
+              "wieder": true
             },
             {
-              "schrift": "giáo viên",
-              "lerntext": "giáo viên",
-              "de": "Lehrer"
-            },
-            {
-              "schrift": "bà",
-              "lerntext": "bà",
-              "de": "du (alte Frau), Frau"
-            },
-            {
-              "schrift": "mệt",
-              "lerntext": "mệt",
-              "de": "müde"
+              "schrift": "công an",
+              "lerntext": "công an",
+              "de": "Polizei",
+              "wieder": true
             }
           ]
         ],
-        "newCount": 5,
+        "newCount": 1,
         "task": null,
         "newFrameWords": [
           {
             "schrift": "ở",
             "lerntext": "ở",
-            "de": "in, an, bei"
+            "de": "in"
           },
           {
             "schrift": "đây",
@@ -569,10 +822,10 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "có",
             "lerntext": "có",
-            "de": "ja, haben, es gibt"
+            "de": "ja"
           }
         ],
-        "id": "2.3"
+        "id": "2.4"
       },
       {
         "kind": "frame",
@@ -585,15 +838,94 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           }
         ],
         "slotGroups": [
           [
             {
+              "schrift": "bàn",
+              "lerntext": "bàn",
+              "de": "Tisch"
+            },
+            {
+              "schrift": "bố",
+              "lerntext": "bố",
+              "de": "Vater",
+              "wieder": true
+            },
+            {
+              "schrift": "chìa khóa",
+              "lerntext": "chìa khóa",
+              "de": "Schlüssel",
+              "wieder": true
+            },
+            {
+              "schrift": "ghế",
+              "lerntext": "ghế",
+              "de": "Stuhl",
+              "wieder": true
+            },
+            {
+              "schrift": "sinh viên",
+              "lerntext": "sinh viên",
+              "de": "Student",
+              "wieder": true
+            },
+            {
+              "schrift": "đồng nghiệp",
+              "lerntext": "đồng nghiệp",
+              "de": "Kollege",
+              "wieder": true
+            },
+            {
+              "schrift": "giáo viên",
+              "lerntext": "giáo viên",
+              "de": "Lehrer",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 1,
+        "task": null,
+        "newFrameWords": [],
+        "id": "2.5"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "ở đây có [Slot]",
+          "lerntext": "ở đây có [Slot]"
+        },
+        "frameDe": "Hier ist ein [Slot].",
+        "pronouns": [
+          {
+            "schrift": "nó",
+            "lerntext": "nó",
+            "de": "er"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "nhà",
+              "lerntext": "nhà",
+              "de": "Haus"
+            },
+            {
+              "schrift": "phòng",
+              "lerntext": "phòng",
+              "de": "Zimmer"
+            },
+            {
+              "schrift": "cửa sổ",
+              "lerntext": "cửa sổ",
+              "de": "Fenster"
+            },
+            {
               "schrift": "giấy",
               "lerntext": "giấy",
-              "de": "Papier, Dokument"
+              "de": "Papier"
             },
             {
               "schrift": "ly",
@@ -601,41 +933,105 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Glas"
             },
             {
+              "schrift": "sách",
+              "lerntext": "sách",
+              "de": "Buch",
+              "wieder": true
+            },
+            {
+              "schrift": "điện thoại",
+              "lerntext": "điện thoại",
+              "de": "Telefon",
+              "wieder": true
+            },
+            {
+              "schrift": "giường",
+              "lerntext": "giường",
+              "de": "Bett",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 5,
+        "task": null,
+        "newFrameWords": [],
+        "id": "2.6"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "ở đây có [Slot]",
+          "lerntext": "ở đây có [Slot]"
+        },
+        "frameDe": "Hier ist ein [Slot].",
+        "pronouns": [
+          {
+            "schrift": "nó",
+            "lerntext": "nó",
+            "de": "er"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
               "schrift": "khách sạn",
               "lerntext": "khách sạn",
               "de": "Hotel"
             },
             {
-              "schrift": "bếp",
-              "lerntext": "bếp",
-              "de": "Küche"
+              "schrift": "nhà",
+              "lerntext": "nhà",
+              "de": "Haus",
+              "wieder": true
             },
             {
-              "schrift": "công an",
-              "lerntext": "công an",
-              "de": "Polizei"
+              "schrift": "phòng",
+              "lerntext": "phòng",
+              "de": "Zimmer",
+              "wieder": true
             },
             {
-              "schrift": "đẹp",
-              "lerntext": "đẹp",
-              "de": "schön"
+              "schrift": "cửa sổ",
+              "lerntext": "cửa sổ",
+              "de": "Fenster",
+              "wieder": true
             },
             {
-              "schrift": "mình",
-              "lerntext": "mình",
-              "de": "ich, wir (vertraut)"
+              "schrift": "giấy",
+              "lerntext": "giấy",
+              "de": "Papier",
+              "wieder": true
             },
             {
-              "schrift": "trẻ",
-              "lerntext": "trẻ",
-              "de": "jung"
+              "schrift": "ly",
+              "lerntext": "ly",
+              "de": "Glas",
+              "wieder": true
+            },
+            {
+              "schrift": "sách",
+              "lerntext": "sách",
+              "de": "Buch",
+              "wieder": true
+            },
+            {
+              "schrift": "điện thoại",
+              "lerntext": "điện thoại",
+              "de": "Telefon",
+              "wieder": true
+            },
+            {
+              "schrift": "giường",
+              "lerntext": "giường",
+              "de": "Bett",
+              "wieder": true
             }
           ]
         ],
-        "newCount": 3,
+        "newCount": 1,
         "task": null,
         "newFrameWords": [],
-        "id": "2.4"
+        "id": "2.7"
       },
       {
         "kind": "frame",
@@ -643,7 +1039,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / bạn / nó / mình có [Slot]",
           "lerntext": "tôi / bạn / nó / mình có [Slot]"
         },
-        "frameDe": "ich (neutral) / du (Gleichaltrige), Freund / er, sie, es (vertraut) / ich, wir (vertraut) habe einen [Slot].",
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / er / ich habe eine [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -653,17 +1049,17 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "bạn",
             "lerntext": "bạn",
-            "de": "du (Gleichaltrige), Freund"
+            "de": "du (Gleichaltrige)"
           },
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           },
           {
             "schrift": "mình",
             "lerntext": "mình",
-            "de": "ich, wir (vertraut)"
+            "de": "ich"
           }
         ],
         "slotGroups": [
@@ -674,62 +1070,52 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Familie"
             },
             {
-              "schrift": "con gái",
-              "lerntext": "con gái",
-              "de": "Mädchen, Tochter"
-            },
-            {
-              "schrift": "con trai",
-              "lerntext": "con trai",
-              "de": "Junge, Sohn"
-            },
-            {
-              "schrift": "ô tô",
-              "lerntext": "ô tô",
-              "de": "Auto"
-            },
-            {
               "schrift": "tay",
               "lerntext": "tay",
-              "de": "Hand, Arm"
+              "de": "Hand"
             },
             {
-              "schrift": "nhà",
-              "lerntext": "nhà",
-              "de": "Haus, Zuhause"
+              "schrift": "bếp",
+              "lerntext": "bếp",
+              "de": "Küche",
+              "wieder": true
             },
             {
-              "schrift": "ly",
-              "lerntext": "ly",
-              "de": "Glas"
+              "schrift": "túi",
+              "lerntext": "túi",
+              "de": "Tasche",
+              "wieder": true
+            },
+            {
+              "schrift": "mẹ",
+              "lerntext": "mẹ",
+              "de": "Mutter",
+              "wieder": true
             },
             {
               "schrift": "cửa",
               "lerntext": "cửa",
-              "de": "Tür"
+              "de": "Tür",
+              "wieder": true
             },
             {
-              "schrift": "cũ",
-              "lerntext": "cũ",
-              "de": "alt (Sache)"
-            },
-            {
-              "schrift": "giường",
-              "lerntext": "giường",
-              "de": "Bett"
+              "schrift": "công an",
+              "lerntext": "công an",
+              "de": "Polizei",
+              "wieder": true
             }
           ]
         ],
-        "newCount": 5,
+        "newCount": 2,
         "task": null,
         "newFrameWords": [
           {
             "schrift": "có",
             "lerntext": "có",
-            "de": "ja, haben, es gibt"
+            "de": "ja"
           }
         ],
-        "id": "2.5"
+        "id": "2.8"
       },
       {
         "kind": "frame",
@@ -737,7 +1123,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / bạn / nó / mình có [Slot]",
           "lerntext": "tôi / bạn / nó / mình có [Slot]"
         },
-        "frameDe": "ich (neutral) / du (Gleichaltrige), Freund / er, sie, es (vertraut) / ich, wir (vertraut) habe einen [Slot].",
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / er / ich habe einen [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -747,25 +1133,25 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "bạn",
             "lerntext": "bạn",
-            "de": "du (Gleichaltrige), Freund"
+            "de": "du (Gleichaltrige)"
           },
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           },
           {
             "schrift": "mình",
             "lerntext": "mình",
-            "de": "ich, wir (vertraut)"
+            "de": "ich"
           }
         ],
         "slotGroups": [
           [
             {
-              "schrift": "chân",
-              "lerntext": "chân",
-              "de": "Bein, Fuß"
+              "schrift": "con trai",
+              "lerntext": "con trai",
+              "de": "Junge"
             },
             {
               "schrift": "miệng",
@@ -773,36 +1159,160 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Mund"
             },
             {
-              "schrift": "gia đình",
-              "lerntext": "gia đình",
-              "de": "Familie"
-            },
-            {
-              "schrift": "con gái",
-              "lerntext": "con gái",
-              "de": "Mädchen, Tochter"
-            },
-            {
-              "schrift": "con trai",
-              "lerntext": "con trai",
-              "de": "Junge, Sohn"
-            },
-            {
               "schrift": "bàn",
               "lerntext": "bàn",
-              "de": "Tisch"
+              "de": "Tisch",
+              "wieder": true
             },
             {
-              "schrift": "giấy",
-              "lerntext": "giấy",
-              "de": "Papier, Dokument"
+              "schrift": "bố",
+              "lerntext": "bố",
+              "de": "Vater",
+              "wieder": true
+            },
+            {
+              "schrift": "chìa khóa",
+              "lerntext": "chìa khóa",
+              "de": "Schlüssel",
+              "wieder": true
+            },
+            {
+              "schrift": "ghế",
+              "lerntext": "ghế",
+              "de": "Stuhl",
+              "wieder": true
+            },
+            {
+              "schrift": "sinh viên",
+              "lerntext": "sinh viên",
+              "de": "Student",
+              "wieder": true
+            },
+            {
+              "schrift": "đồng nghiệp",
+              "lerntext": "đồng nghiệp",
+              "de": "Kollege",
+              "wieder": true
+            },
+            {
+              "schrift": "giáo viên",
+              "lerntext": "giáo viên",
+              "de": "Lehrer",
+              "wieder": true
             }
           ]
         ],
         "newCount": 2,
         "task": null,
         "newFrameWords": [],
-        "id": "2.6"
+        "id": "2.9"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi / bạn / nó / mình có [Slot]",
+          "lerntext": "tôi / bạn / nó / mình có [Slot]"
+        },
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / er / ich habe ein [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          },
+          {
+            "schrift": "bạn",
+            "lerntext": "bạn",
+            "de": "du (Gleichaltrige)"
+          },
+          {
+            "schrift": "nó",
+            "lerntext": "nó",
+            "de": "er"
+          },
+          {
+            "schrift": "mình",
+            "lerntext": "mình",
+            "de": "ich"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "con gái",
+              "lerntext": "con gái",
+              "de": "Mädchen"
+            },
+            {
+              "schrift": "ô tô",
+              "lerntext": "ô tô",
+              "de": "Auto"
+            },
+            {
+              "schrift": "chân",
+              "lerntext": "chân",
+              "de": "Bein"
+            },
+            {
+              "schrift": "khách sạn",
+              "lerntext": "khách sạn",
+              "de": "Hotel",
+              "wieder": true
+            },
+            {
+              "schrift": "nhà",
+              "lerntext": "nhà",
+              "de": "Haus",
+              "wieder": true
+            },
+            {
+              "schrift": "phòng",
+              "lerntext": "phòng",
+              "de": "Zimmer",
+              "wieder": true
+            },
+            {
+              "schrift": "giấy",
+              "lerntext": "giấy",
+              "de": "Papier",
+              "wieder": true
+            },
+            {
+              "schrift": "ly",
+              "lerntext": "ly",
+              "de": "Glas",
+              "wieder": true
+            },
+            {
+              "schrift": "cửa sổ",
+              "lerntext": "cửa sổ",
+              "de": "Fenster",
+              "wieder": true
+            },
+            {
+              "schrift": "sách",
+              "lerntext": "sách",
+              "de": "Buch",
+              "wieder": true
+            },
+            {
+              "schrift": "điện thoại",
+              "lerntext": "điện thoại",
+              "de": "Telefon",
+              "wieder": true
+            },
+            {
+              "schrift": "giường",
+              "lerntext": "giường",
+              "de": "Bett",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 3,
+        "task": null,
+        "newFrameWords": [],
+        "id": "2.10"
       },
       {
         "kind": "frame",
@@ -825,97 +1335,69 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Vater"
             },
             {
-              "schrift": "bà",
-              "lerntext": "bà",
-              "de": "du (alte Frau), Frau"
-            },
-            {
               "schrift": "đồng nghiệp",
               "lerntext": "đồng nghiệp",
               "de": "Kollege"
             },
             {
-              "schrift": "miệng",
-              "lerntext": "miệng",
-              "de": "Mund"
+              "schrift": "ô tô",
+              "lerntext": "ô tô",
+              "de": "Auto",
+              "wieder": true
             },
             {
-              "schrift": "các bạn",
-              "lerntext": "các bạn",
-              "de": "ihr"
+              "schrift": "con trai",
+              "lerntext": "con trai",
+              "de": "Junge",
+              "wieder": true
             },
             {
-              "schrift": "sinh viên",
-              "lerntext": "sinh viên",
-              "de": "Student"
-            },
-            {
-              "schrift": "con",
-              "lerntext": "con",
-              "de": "ich (zu den Eltern), Kind"
-            },
-            {
-              "schrift": "phòng",
-              "lerntext": "phòng",
-              "de": "Zimmer"
-            }
-          ]
-        ],
-        "newCount": 0,
-        "task": null,
-        "newFrameWords": [
-          {
-            "schrift": "đây",
-            "lerntext": "đây",
-            "de": "hier"
-          },
-          {
-            "schrift": "của",
-            "lerntext": "của",
-            "de": "von (Besitz)"
-          }
-        ],
-        "id": "2.7"
-      },
-      {
-        "kind": "frame",
-        "frame": {
-          "schrift": "đây là nhà của [Slot]",
-          "lerntext": "đây là nhà của [Slot]"
-        },
-        "frameDe": "Das ist [Slot] Haus.",
-        "pronouns": [],
-        "slotGroups": [
-          [
-            {
-              "schrift": "là",
-              "lerntext": "là",
-              "de": "sein"
+              "schrift": "tay",
+              "lerntext": "tay",
+              "de": "Hand",
+              "wieder": true
             },
             {
               "schrift": "chân",
               "lerntext": "chân",
-              "de": "Bein, Fuß"
+              "de": "Bein",
+              "wieder": true
             },
             {
-              "schrift": "túi",
-              "lerntext": "túi",
-              "de": "Tasche, Tüte"
+              "schrift": "miệng",
+              "lerntext": "miệng",
+              "de": "Mund",
+              "wieder": true
             },
             {
-              "schrift": "sách",
-              "lerntext": "sách",
-              "de": "Buch"
+              "schrift": "con gái",
+              "lerntext": "con gái",
+              "de": "Mädchen",
+              "wieder": true
             },
             {
-              "schrift": "giận",
-              "lerntext": "giận",
-              "de": "wütend"
+              "schrift": "gia đình",
+              "lerntext": "gia đình",
+              "de": "Familie",
+              "wieder": true
             },
             {
-              "schrift": "chìa khóa",
-              "lerntext": "chìa khóa",
-              "de": "Schlüssel"
+              "schrift": "bếp",
+              "lerntext": "bếp",
+              "de": "Küche",
+              "wieder": true
+            },
+            {
+              "schrift": "bàn",
+              "lerntext": "bàn",
+              "de": "Tisch",
+              "wieder": true
+            },
+            {
+              "schrift": "khách sạn",
+              "lerntext": "khách sạn",
+              "de": "Hotel",
+              "wieder": true
             }
           ]
         ],
@@ -933,7 +1415,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             "de": "von (Besitz)"
           }
         ],
-        "id": "2.8"
+        "id": "2.11"
       },
       {
         "kind": "frame",
@@ -948,32 +1430,49 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "tất cả",
               "lerntext": "tất cả",
-              "de": "alles, alle"
+              "de": "alles"
             },
             {
-              "schrift": "ốm",
-              "lerntext": "ốm",
-              "de": "krank"
+              "schrift": "các bạn",
+              "lerntext": "các bạn",
+              "de": "ihr",
+              "wieder": true
             },
             {
-              "schrift": "ô tô",
-              "lerntext": "ô tô",
-              "de": "Auto"
+              "schrift": "con",
+              "lerntext": "con",
+              "de": "ich (zu den Eltern)",
+              "wieder": true
             },
             {
-              "schrift": "sẵn sàng",
-              "lerntext": "sẵn sàng",
-              "de": "bereit"
+              "schrift": "bà",
+              "lerntext": "bà",
+              "de": "du (alte Frau)",
+              "wieder": true
             },
             {
-              "schrift": "khỏe",
-              "lerntext": "khỏe",
-              "de": "gesund, stark"
+              "schrift": "mình",
+              "lerntext": "mình",
+              "de": "ich",
+              "wieder": true
             },
             {
-              "schrift": "cửa sổ",
-              "lerntext": "cửa sổ",
-              "de": "Fenster"
+              "schrift": "tôi",
+              "lerntext": "tôi",
+              "de": "ich (neutral)",
+              "wieder": true
+            },
+            {
+              "schrift": "bạn",
+              "lerntext": "bạn",
+              "de": "du (Gleichaltrige)",
+              "wieder": true
+            },
+            {
+              "schrift": "nó",
+              "lerntext": "nó",
+              "de": "er",
+              "wieder": true
             }
           ]
         ],
@@ -991,7 +1490,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             "de": "von (Besitz)"
           }
         ],
-        "id": "2.9"
+        "id": "2.12"
       },
       {
         "kind": "frame",
@@ -1014,29 +1513,58 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "sein"
             },
             {
+              "schrift": "các bạn",
+              "lerntext": "các bạn",
+              "de": "ihr",
+              "wieder": true
+            },
+            {
               "schrift": "tất cả",
               "lerntext": "tất cả",
-              "de": "alles, alle"
+              "de": "alles",
+              "wieder": true
             },
             {
-              "schrift": "yếu",
-              "lerntext": "yếu",
-              "de": "schwach"
+              "schrift": "con",
+              "lerntext": "con",
+              "de": "ich (zu den Eltern)",
+              "wieder": true
             },
             {
-              "schrift": "khách sạn",
-              "lerntext": "khách sạn",
-              "de": "Hotel"
+              "schrift": "bà",
+              "lerntext": "bà",
+              "de": "du (alte Frau)",
+              "wieder": true
             },
             {
-              "schrift": "tay",
-              "lerntext": "tay",
-              "de": "Hand, Arm"
+              "schrift": "mình",
+              "lerntext": "mình",
+              "de": "ich",
+              "wieder": true
             },
             {
-              "schrift": "khát",
-              "lerntext": "khát",
-              "de": "durstig"
+              "schrift": "tôi",
+              "lerntext": "tôi",
+              "de": "ich (neutral)",
+              "wieder": true
+            },
+            {
+              "schrift": "bạn",
+              "lerntext": "bạn",
+              "de": "du (Gleichaltrige)",
+              "wieder": true
+            },
+            {
+              "schrift": "của",
+              "lerntext": "của",
+              "de": "von (Besitz)",
+              "wieder": true
+            },
+            {
+              "schrift": "nó",
+              "lerntext": "nó",
+              "de": "er",
+              "wieder": true
             }
           ]
         ],
@@ -1051,10 +1579,104 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "ở",
             "lerntext": "ở",
-            "de": "in, an, bei"
+            "de": "in"
           }
         ],
-        "id": "2.10"
+        "id": "2.13"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "đây là [Slot] của tôi",
+          "lerntext": "đây là [Slot] của tôi"
+        },
+        "frameDe": "Das ist mein [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "ô tô",
+              "lerntext": "ô tô",
+              "de": "Auto",
+              "wieder": true
+            },
+            {
+              "schrift": "con trai",
+              "lerntext": "con trai",
+              "de": "Junge",
+              "wieder": true
+            },
+            {
+              "schrift": "tay",
+              "lerntext": "tay",
+              "de": "Hand",
+              "wieder": true
+            },
+            {
+              "schrift": "chân",
+              "lerntext": "chân",
+              "de": "Bein",
+              "wieder": true
+            },
+            {
+              "schrift": "miệng",
+              "lerntext": "miệng",
+              "de": "Mund",
+              "wieder": true
+            },
+            {
+              "schrift": "con gái",
+              "lerntext": "con gái",
+              "de": "Mädchen",
+              "wieder": true
+            },
+            {
+              "schrift": "gia đình",
+              "lerntext": "gia đình",
+              "de": "Familie",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "2.14"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "[Slot] ở đây",
+          "lerntext": "[Slot] ở đây"
+        },
+        "frameDe": "[Slot] ist hier.",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "này",
+              "lerntext": "này",
+              "de": "dieser",
+              "wieder": true
+            },
+            {
+              "schrift": "các bạn",
+              "lerntext": "các bạn",
+              "de": "ihr",
+              "wieder": true
+            },
+            {
+              "schrift": "tất cả",
+              "lerntext": "tất cả",
+              "de": "alles",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "2.15"
       },
       {
         "kind": "finisher",
@@ -1068,13 +1690,14 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "newCount": 0,
         "task": "Zeig auf drei Dinge und sag, was sie sind.",
         "newFrameWords": [],
-        "id": "2.11"
+        "id": "2.16"
       }
     ]
   },
   {
     "number": 3,
     "title": "Ich will, ich brauche",
+    "niveau": null,
     "lessons": [
       {
         "kind": "frame",
@@ -1082,7 +1705,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / bạn / mình muốn [Slot]",
           "lerntext": "tôi / bạn / mình muốn [Slot]"
         },
-        "frameDe": "ich (neutral) / du (Gleichaltrige), Freund / ich, wir (vertraut) möchte [Slot].",
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / ich möchte [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -1092,12 +1715,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "bạn",
             "lerntext": "bạn",
-            "de": "du (Gleichaltrige), Freund"
+            "de": "du (Gleichaltrige)"
           },
           {
             "schrift": "mình",
             "lerntext": "mình",
-            "de": "ich, wir (vertraut)"
+            "de": "ich"
           }
         ],
         "slotGroups": [
@@ -1105,7 +1728,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "nước",
               "lerntext": "nước",
-              "de": "Wasser, Land"
+              "de": "Wasser"
             },
             {
               "schrift": "cà phê",
@@ -1128,29 +1751,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "essen"
             },
             {
-              "schrift": "này",
-              "lerntext": "này",
-              "de": "dieser"
+              "schrift": "bếp",
+              "lerntext": "bếp",
+              "de": "Küche",
+              "wieder": true
             },
             {
-              "schrift": "buồn",
-              "lerntext": "buồn",
-              "de": "traurig"
+              "schrift": "bàn",
+              "lerntext": "bàn",
+              "de": "Tisch",
+              "wieder": true
             },
             {
-              "schrift": "buồn cười",
-              "lerntext": "buồn cười",
-              "de": "lustig"
+              "schrift": "ô tô",
+              "lerntext": "ô tô",
+              "de": "Auto",
+              "wieder": true
             },
             {
-              "schrift": "ghế",
-              "lerntext": "ghế",
-              "de": "Stuhl"
+              "schrift": "con trai",
+              "lerntext": "con trai",
+              "de": "Junge",
+              "wieder": true
             },
             {
-              "schrift": "cứ",
-              "lerntext": "cứ",
-              "de": "ruhig, einfach"
+              "schrift": "phòng",
+              "lerntext": "phòng",
+              "de": "Zimmer",
+              "wieder": true
+            },
+            {
+              "schrift": "chìa khóa",
+              "lerntext": "chìa khóa",
+              "de": "Schlüssel",
+              "wieder": true
+            },
+            {
+              "schrift": "túi",
+              "lerntext": "túi",
+              "de": "Tasche",
+              "wieder": true
+            },
+            {
+              "schrift": "khách sạn",
+              "lerntext": "khách sạn",
+              "de": "Hotel",
+              "wieder": true
+            },
+            {
+              "schrift": "giấy",
+              "lerntext": "giấy",
+              "de": "Papier",
+              "wieder": true
+            },
+            {
+              "schrift": "ly",
+              "lerntext": "ly",
+              "de": "Glas",
+              "wieder": true
             }
           ]
         ],
@@ -1171,7 +1829,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / bạn / mình muốn [Slot]",
           "lerntext": "tôi / bạn / mình muốn [Slot]"
         },
-        "frameDe": "ich (neutral) / du (Gleichaltrige), Freund / ich, wir (vertraut) möchte [Slot].",
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / ich möchte [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -1181,12 +1839,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "bạn",
             "lerntext": "bạn",
-            "de": "du (Gleichaltrige), Freund"
+            "de": "du (Gleichaltrige)"
           },
           {
             "schrift": "mình",
             "lerntext": "mình",
-            "de": "ich, wir (vertraut)"
+            "de": "ich"
           }
         ],
         "slotGroups": [
@@ -1194,7 +1852,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "bánh mì",
               "lerntext": "bánh mì",
-              "de": "Brot, Bagütte-Sandwich"
+              "de": "Brot"
             },
             {
               "schrift": "sữa",
@@ -1204,32 +1862,67 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "đường",
               "lerntext": "đường",
-              "de": "Straße, Zucker"
-            },
-            {
-              "schrift": "bia",
-              "lerntext": "bia",
-              "de": "Bier"
-            },
-            {
-              "schrift": "ăn",
-              "lerntext": "ăn",
-              "de": "essen"
-            },
-            {
-              "schrift": "trà",
-              "lerntext": "trà",
-              "de": "Tee"
+              "de": "Straße"
             },
             {
               "schrift": "nước",
               "lerntext": "nước",
-              "de": "Wasser, Land"
+              "de": "Wasser",
+              "wieder": true
             },
             {
               "schrift": "cà phê",
               "lerntext": "cà phê",
-              "de": "Kaffee"
+              "de": "Kaffee",
+              "wieder": true
+            },
+            {
+              "schrift": "trà",
+              "lerntext": "trà",
+              "de": "Tee",
+              "wieder": true
+            },
+            {
+              "schrift": "bia",
+              "lerntext": "bia",
+              "de": "Bier",
+              "wieder": true
+            },
+            {
+              "schrift": "ghế",
+              "lerntext": "ghế",
+              "de": "Stuhl",
+              "wieder": true
+            },
+            {
+              "schrift": "tay",
+              "lerntext": "tay",
+              "de": "Hand",
+              "wieder": true
+            },
+            {
+              "schrift": "chân",
+              "lerntext": "chân",
+              "de": "Bein",
+              "wieder": true
+            },
+            {
+              "schrift": "miệng",
+              "lerntext": "miệng",
+              "de": "Mund",
+              "wieder": true
+            },
+            {
+              "schrift": "con gái",
+              "lerntext": "con gái",
+              "de": "Mädchen",
+              "wieder": true
+            },
+            {
+              "schrift": "gia đình",
+              "lerntext": "gia đình",
+              "de": "Familie",
+              "wieder": true
             }
           ]
         ],
@@ -1244,7 +1937,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / bạn / nó cần [Slot]",
           "lerntext": "tôi / bạn / nó cần [Slot]"
         },
-        "frameDe": "ich (neutral) / du (Gleichaltrige), Freund / er, sie, es (vertraut) brauche [Slot].",
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / er brauche [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -1254,12 +1947,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "bạn",
             "lerntext": "bạn",
-            "de": "du (Gleichaltrige), Freund"
+            "de": "du (Gleichaltrige)"
           },
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           }
         ],
         "slotGroups": [
@@ -1280,29 +1973,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Salz"
             },
             {
-              "schrift": "sữa",
-              "lerntext": "sữa",
-              "de": "Milch"
-            },
-            {
               "schrift": "đường",
               "lerntext": "đường",
-              "de": "Straße, Zucker"
+              "de": "Straße",
+              "wieder": true
+            },
+            {
+              "schrift": "sữa",
+              "lerntext": "sữa",
+              "de": "Milch",
+              "wieder": true
             },
             {
               "schrift": "bánh mì",
               "lerntext": "bánh mì",
-              "de": "Brot, Bagütte-Sandwich"
+              "de": "Brot",
+              "wieder": true
+            },
+            {
+              "schrift": "cà phê",
+              "lerntext": "cà phê",
+              "de": "Kaffee",
+              "wieder": true
+            },
+            {
+              "schrift": "trà",
+              "lerntext": "trà",
+              "de": "Tee",
+              "wieder": true
+            },
+            {
+              "schrift": "nước",
+              "lerntext": "nước",
+              "de": "Wasser",
+              "wieder": true
             },
             {
               "schrift": "bia",
               "lerntext": "bia",
-              "de": "Bier"
+              "de": "Bier",
+              "wieder": true
             },
             {
-              "schrift": "đói",
-              "lerntext": "đói",
-              "de": "hungrig"
+              "schrift": "cửa",
+              "lerntext": "cửa",
+              "de": "Tür",
+              "wieder": true
+            },
+            {
+              "schrift": "cửa sổ",
+              "lerntext": "cửa sổ",
+              "de": "Fenster",
+              "wieder": true
+            },
+            {
+              "schrift": "bếp",
+              "lerntext": "bếp",
+              "de": "Küche",
+              "wieder": true
             }
           ]
         ],
@@ -1323,7 +2051,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi muốn [Slot]",
           "lerntext": "tôi muốn [Slot]"
         },
-        "frameDe": "ich (neutral) möchte einen [Slot], bitte.",
+        "frameDe": "ich (neutral) möchte ein [Slot], bitte.",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -1351,7 +2079,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "đá",
               "lerntext": "đá",
-              "de": "Eis, Stein"
+              "de": "Eis"
             },
             {
               "schrift": "trái cây",
@@ -1359,29 +2087,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Obst"
             },
             {
-              "schrift": "tiền",
-              "lerntext": "tiền",
-              "de": "Geld"
-            },
-            {
-              "schrift": "thời gian",
-              "lerntext": "thời gian",
-              "de": "Zeit"
-            },
-            {
               "schrift": "muối",
               "lerntext": "muối",
-              "de": "Salz"
+              "de": "Salz",
+              "wieder": true
             },
             {
-              "schrift": "gia đình",
-              "lerntext": "gia đình",
-              "de": "Familie"
+              "schrift": "tiền",
+              "lerntext": "tiền",
+              "de": "Geld",
+              "wieder": true
             },
             {
-              "schrift": "ăn",
-              "lerntext": "ăn",
-              "de": "essen"
+              "schrift": "bánh mì",
+              "lerntext": "bánh mì",
+              "de": "Brot",
+              "wieder": true
+            },
+            {
+              "schrift": "nước",
+              "lerntext": "nước",
+              "de": "Wasser",
+              "wieder": true
+            },
+            {
+              "schrift": "bia",
+              "lerntext": "bia",
+              "de": "Bier",
+              "wieder": true
+            },
+            {
+              "schrift": "ô tô",
+              "lerntext": "ô tô",
+              "de": "Auto",
+              "wieder": true
+            },
+            {
+              "schrift": "nhà",
+              "lerntext": "nhà",
+              "de": "Haus",
+              "wieder": true
+            },
+            {
+              "schrift": "phòng",
+              "lerntext": "phòng",
+              "de": "Zimmer",
+              "wieder": true
+            },
+            {
+              "schrift": "điện thoại",
+              "lerntext": "điện thoại",
+              "de": "Telefon",
+              "wieder": true
+            },
+            {
+              "schrift": "khách sạn",
+              "lerntext": "khách sạn",
+              "de": "Hotel",
+              "wieder": true
             }
           ]
         ],
@@ -1396,7 +2159,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / mình ăn [Slot]",
           "lerntext": "tôi / mình ăn [Slot]"
         },
-        "frameDe": "ich (neutral) / ich, wir (vertraut) esse [Slot].",
+        "frameDe": "ich (neutral) / ich esse [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -1406,7 +2169,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "mình",
             "lerntext": "mình",
-            "de": "ich, wir (vertraut)"
+            "de": "ich"
           }
         ],
         "slotGroups": [
@@ -1424,32 +2187,67 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "rau",
               "lerntext": "rau",
-              "de": "Gemüse, Kräuter"
-            },
-            {
-              "schrift": "trái cây",
-              "lerntext": "trái cây",
-              "de": "Obst"
-            },
-            {
-              "schrift": "uống",
-              "lerntext": "uống",
-              "de": "trinken"
-            },
-            {
-              "schrift": "bữa trưa",
-              "lerntext": "bữa trưa",
-              "de": "Mittagessen"
+              "de": "Gemüse"
             },
             {
               "schrift": "đá",
               "lerntext": "đá",
-              "de": "Eis, Stein"
+              "de": "Eis",
+              "wieder": true
+            },
+            {
+              "schrift": "thời gian",
+              "lerntext": "thời gian",
+              "de": "Zeit",
+              "wieder": true
+            },
+            {
+              "schrift": "trái cây",
+              "lerntext": "trái cây",
+              "de": "Obst",
+              "wieder": true
+            },
+            {
+              "schrift": "bữa sáng",
+              "lerntext": "bữa sáng",
+              "de": "Frühstück",
+              "wieder": true
+            },
+            {
+              "schrift": "bữa trưa",
+              "lerntext": "bữa trưa",
+              "de": "Mittagessen",
+              "wieder": true
             },
             {
               "schrift": "bữa tối",
               "lerntext": "bữa tối",
-              "de": "Abendessen"
+              "de": "Abendessen",
+              "wieder": true
+            },
+            {
+              "schrift": "đường",
+              "lerntext": "đường",
+              "de": "Straße",
+              "wieder": true
+            },
+            {
+              "schrift": "muối",
+              "lerntext": "muối",
+              "de": "Salz",
+              "wieder": true
+            },
+            {
+              "schrift": "sữa",
+              "lerntext": "sữa",
+              "de": "Milch",
+              "wieder": true
+            },
+            {
+              "schrift": "tiền",
+              "lerntext": "tiền",
+              "de": "Geld",
+              "wieder": true
             }
           ]
         ],
@@ -1470,6 +2268,134 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "id": "3.5"
       },
       {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi / mình ăn [Slot]",
+          "lerntext": "tôi / mình ăn [Slot]"
+        },
+        "frameDe": "ich (neutral) / ich esse [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          },
+          {
+            "schrift": "mình",
+            "lerntext": "mình",
+            "de": "ich"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "thịt",
+              "lerntext": "thịt",
+              "de": "Fleisch",
+              "wieder": true
+            },
+            {
+              "schrift": "cá",
+              "lerntext": "cá",
+              "de": "Fisch",
+              "wieder": true
+            },
+            {
+              "schrift": "rau",
+              "lerntext": "rau",
+              "de": "Gemüse",
+              "wieder": true
+            },
+            {
+              "schrift": "đá",
+              "lerntext": "đá",
+              "de": "Eis",
+              "wieder": true
+            },
+            {
+              "schrift": "thời gian",
+              "lerntext": "thời gian",
+              "de": "Zeit",
+              "wieder": true
+            },
+            {
+              "schrift": "trái cây",
+              "lerntext": "trái cây",
+              "de": "Obst",
+              "wieder": true
+            },
+            {
+              "schrift": "bữa sáng",
+              "lerntext": "bữa sáng",
+              "de": "Frühstück",
+              "wieder": true
+            },
+            {
+              "schrift": "bữa trưa",
+              "lerntext": "bữa trưa",
+              "de": "Mittagessen",
+              "wieder": true
+            },
+            {
+              "schrift": "bữa tối",
+              "lerntext": "bữa tối",
+              "de": "Abendessen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "3.6"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi / mình ăn [Slot]",
+          "lerntext": "tôi / mình ăn [Slot]"
+        },
+        "frameDe": "ich (neutral) / ich esse [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          },
+          {
+            "schrift": "mình",
+            "lerntext": "mình",
+            "de": "ich"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "thịt",
+              "lerntext": "thịt",
+              "de": "Fleisch",
+              "wieder": true
+            },
+            {
+              "schrift": "cá",
+              "lerntext": "cá",
+              "de": "Fisch",
+              "wieder": true
+            },
+            {
+              "schrift": "rau",
+              "lerntext": "rau",
+              "de": "Gemüse",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "3.7"
+      },
+      {
         "kind": "finisher",
         "frame": {
           "schrift": "",
@@ -1481,13 +2407,14 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "newCount": 0,
         "task": "Bestell dir etwas zu essen und zu trinken.",
         "newFrameWords": [],
-        "id": "3.6"
+        "id": "3.8"
       }
     ]
   },
   {
     "number": 4,
     "title": "Nicht und Frage",
+    "niveau": null,
     "lessons": [
       {
         "kind": "frame",
@@ -1495,7 +2422,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / bạn / nó không [Slot]",
           "lerntext": "tôi / bạn / nó không [Slot]"
         },
-        "frameDe": "ich (neutral) / du (Gleichaltrige), Freund / er, sie, es (vertraut) bin nicht [Slot].",
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / er bin nicht [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -1505,12 +2432,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "bạn",
             "lerntext": "bạn",
-            "de": "du (Gleichaltrige), Freund"
+            "de": "du (Gleichaltrige)"
           },
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           }
         ],
         "slotGroups": [
@@ -1521,29 +2448,16 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "sicher"
             },
             {
-              "schrift": "thịt",
-              "lerntext": "thịt",
-              "de": "Fleisch"
+              "schrift": "rất",
+              "lerntext": "rất",
+              "de": "sehr",
+              "wieder": true
             },
             {
-              "schrift": "rau",
-              "lerntext": "rau",
-              "de": "Gemüse, Kräuter"
-            },
-            {
-              "schrift": "cá",
-              "lerntext": "cá",
-              "de": "Fisch"
-            },
-            {
-              "schrift": "bữa sáng",
-              "lerntext": "bữa sáng",
-              "de": "Frühstück"
-            },
-            {
-              "schrift": "con gái",
-              "lerntext": "con gái",
-              "de": "Mädchen, Tochter"
+              "schrift": "đây",
+              "lerntext": "đây",
+              "de": "hier",
+              "wieder": true
             }
           ]
         ],
@@ -1558,7 +2472,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "có",
             "lerntext": "có",
-            "de": "ja, haben, es gibt"
+            "de": "ja"
           }
         ],
         "id": "4.1"
@@ -1569,17 +2483,17 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "bạn [Slot] không?",
           "lerntext": "bạn [Slot] không?"
         },
-        "frameDe": "Bist du (Gleichaltrige), Freund / er, sie, es (vertraut) / ihr [Slot]?",
+        "frameDe": "Bist du (Gleichaltrige) / er / ihr [Slot]?",
         "pronouns": [
           {
             "schrift": "bạn",
             "lerntext": "bạn",
-            "de": "du (Gleichaltrige), Freund"
+            "de": "du (Gleichaltrige)"
           },
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           },
           {
             "schrift": "các bạn",
@@ -1597,12 +2511,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "mới",
               "lerntext": "mới",
-              "de": "gerade erst, neu"
-            },
-            {
-              "schrift": "hay",
-              "lerntext": "hay",
-              "de": "oder (in Fragen), gut"
+              "de": "gerade erst"
             },
             {
               "schrift": "dở",
@@ -1617,31 +2526,66 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "chắc chắn",
               "lerntext": "chắc chắn",
-              "de": "sicher"
+              "de": "sicher",
+              "wieder": true
             },
             {
-              "schrift": "sữa",
-              "lerntext": "sữa",
-              "de": "Milch"
+              "schrift": "khát",
+              "lerntext": "khát",
+              "de": "durstig",
+              "wieder": true
             },
             {
-              "schrift": "tiền",
-              "lerntext": "tiền",
-              "de": "Geld"
+              "schrift": "mệt",
+              "lerntext": "mệt",
+              "de": "müde",
+              "wieder": true
             },
             {
-              "schrift": "thịt",
-              "lerntext": "thịt",
-              "de": "Fleisch"
+              "schrift": "chán",
+              "lerntext": "chán",
+              "de": "langweilig",
+              "wieder": true
             },
             {
-              "schrift": "con",
-              "lerntext": "con",
-              "de": "ich (zu den Eltern), Kind"
+              "schrift": "giận",
+              "lerntext": "giận",
+              "de": "wütend",
+              "wieder": true
+            },
+            {
+              "schrift": "trẻ",
+              "lerntext": "trẻ",
+              "de": "jung",
+              "wieder": true
+            },
+            {
+              "schrift": "sẵn sàng",
+              "lerntext": "sẵn sàng",
+              "de": "bereit",
+              "wieder": true
+            },
+            {
+              "schrift": "khỏe",
+              "lerntext": "khỏe",
+              "de": "gesund",
+              "wieder": true
+            },
+            {
+              "schrift": "buồn cười",
+              "lerntext": "buồn cười",
+              "de": "lustig",
+              "wieder": true
+            },
+            {
+              "schrift": "ốm",
+              "lerntext": "ốm",
+              "de": "krank",
+              "wieder": true
             }
           ]
         ],
-        "newCount": 4,
+        "newCount": 3,
         "task": null,
         "newFrameWords": [],
         "id": "4.2"
@@ -1657,12 +2601,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "cái gì",
             "lerntext": "cái gì",
-            "de": "etwas, was"
+            "de": "etwas"
           },
           {
             "schrift": "ai",
             "lerntext": "ai",
-            "de": "wer, jemand"
+            "de": "wer"
           },
           {
             "schrift": "thế nào",
@@ -1678,39 +2622,69 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "welcher"
             },
             {
-              "schrift": "cái gì",
-              "lerntext": "cái gì",
-              "de": "etwas, was"
-            },
-            {
               "schrift": "tất cả",
               "lerntext": "tất cả",
-              "de": "alles, alle"
+              "de": "alles"
             },
             {
-              "schrift": "hay",
-              "lerntext": "hay",
-              "de": "oder (in Fragen), gut"
+              "schrift": "không",
+              "lerntext": "không",
+              "de": "nicht (Fragepartikel)",
+              "wieder": true
             },
             {
-              "schrift": "quan trọng",
-              "lerntext": "quan trọng",
-              "de": "wichtig"
+              "schrift": "này",
+              "lerntext": "này",
+              "de": "dieser",
+              "wieder": true
             },
             {
-              "schrift": "dở",
-              "lerntext": "dở",
-              "de": "schlecht"
+              "schrift": "con",
+              "lerntext": "con",
+              "de": "ich (zu den Eltern)",
+              "wieder": true
             },
             {
-              "schrift": "tại sao",
-              "lerntext": "tại sao",
-              "de": "warum"
+              "schrift": "bà",
+              "lerntext": "bà",
+              "de": "du (alte Frau)",
+              "wieder": true
             },
             {
-              "schrift": "mới",
-              "lerntext": "mới",
-              "de": "gerade erst, neu"
+              "schrift": "các bạn",
+              "lerntext": "các bạn",
+              "de": "ihr",
+              "wieder": true
+            },
+            {
+              "schrift": "mình",
+              "lerntext": "mình",
+              "de": "ich",
+              "wieder": true
+            },
+            {
+              "schrift": "của",
+              "lerntext": "của",
+              "de": "von (Besitz)",
+              "wieder": true
+            },
+            {
+              "schrift": "tôi",
+              "lerntext": "tôi",
+              "de": "ich (neutral)",
+              "wieder": true
+            },
+            {
+              "schrift": "bạn",
+              "lerntext": "bạn",
+              "de": "du (Gleichaltrige)",
+              "wieder": true
+            },
+            {
+              "schrift": "nó",
+              "lerntext": "nó",
+              "de": "er",
+              "wieder": true
             }
           ]
         ],
@@ -1720,12 +2694,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "cái gì",
             "lerntext": "cái gì",
-            "de": "etwas, was"
+            "de": "etwas"
           },
           {
             "schrift": "ai",
             "lerntext": "ai",
-            "de": "wer, jemand"
+            "de": "wer"
           },
           {
             "schrift": "thế nào",
@@ -1741,6 +2715,114 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "id": "4.3"
       },
       {
+        "kind": "frame",
+        "frame": {
+          "schrift": "bạn [Slot] không?",
+          "lerntext": "bạn [Slot] không?"
+        },
+        "frameDe": "Bist du (Gleichaltrige) / er / ihr [Slot]?",
+        "pronouns": [
+          {
+            "schrift": "bạn",
+            "lerntext": "bạn",
+            "de": "du (Gleichaltrige)"
+          },
+          {
+            "schrift": "nó",
+            "lerntext": "nó",
+            "de": "er"
+          },
+          {
+            "schrift": "các bạn",
+            "lerntext": "các bạn",
+            "de": "ihr"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "mới",
+              "lerntext": "mới",
+              "de": "gerade erst",
+              "wieder": true
+            },
+            {
+              "schrift": "dở",
+              "lerntext": "dở",
+              "de": "schlecht",
+              "wieder": true
+            },
+            {
+              "schrift": "quan trọng",
+              "lerntext": "quan trọng",
+              "de": "wichtig",
+              "wieder": true
+            },
+            {
+              "schrift": "chắc chắn",
+              "lerntext": "chắc chắn",
+              "de": "sicher",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "4.4"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "bạn [Slot] không?",
+          "lerntext": "bạn [Slot] không?"
+        },
+        "frameDe": "Bist du (Gleichaltrige) / er / ihr [Slot]?",
+        "pronouns": [
+          {
+            "schrift": "bạn",
+            "lerntext": "bạn",
+            "de": "du (Gleichaltrige)"
+          },
+          {
+            "schrift": "nó",
+            "lerntext": "nó",
+            "de": "er"
+          },
+          {
+            "schrift": "các bạn",
+            "lerntext": "các bạn",
+            "de": "ihr"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "mới",
+              "lerntext": "mới",
+              "de": "gerade erst",
+              "wieder": true
+            },
+            {
+              "schrift": "dở",
+              "lerntext": "dở",
+              "de": "schlecht",
+              "wieder": true
+            },
+            {
+              "schrift": "quan trọng",
+              "lerntext": "quan trọng",
+              "de": "wichtig",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "4.5"
+      },
+      {
         "kind": "finisher",
         "frame": {
           "schrift": "",
@@ -1752,13 +2834,14 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "newCount": 0,
         "task": "Frag jemanden etwas und verneine eine Aussage.",
         "newFrameWords": [],
-        "id": "4.4"
+        "id": "4.6"
       }
     ]
   },
   {
     "number": 5,
     "title": "Wo ist das?",
+    "niveau": null,
     "lessons": [
       {
         "kind": "frame",
@@ -1766,7 +2849,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "[Slot] ở đâu?",
           "lerntext": "[Slot] ở đâu?"
         },
-        "frameDe": "Wo gibt es einen [Slot]?",
+        "frameDe": "Wo gibt es eine [Slot]?",
         "pronouns": [
           {
             "schrift": "đâu",
@@ -1777,58 +2860,77 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "slotGroups": [
           [
             {
-              "schrift": "cửa hàng",
-              "lerntext": "cửa hàng",
-              "de": "Laden"
-            },
-            {
-              "schrift": "nhà hàng",
-              "lerntext": "nhà hàng",
-              "de": "Restaurant"
-            },
-            {
               "schrift": "nhà vệ sinh",
               "lerntext": "nhà vệ sinh",
               "de": "Toilette"
             },
             {
-              "schrift": "ga tàu",
-              "lerntext": "ga tàu",
-              "de": "Bahnhof"
+              "schrift": "trường",
+              "lerntext": "trường",
+              "de": "Schule"
             },
             {
-              "schrift": "sân bay",
-              "lerntext": "sân bay",
-              "de": "Flughafen"
+              "schrift": "đường",
+              "lerntext": "đường",
+              "de": "Straße"
             },
             {
-              "schrift": "nào",
-              "lerntext": "nào",
-              "de": "welcher"
+              "schrift": "thời gian",
+              "lerntext": "thời gian",
+              "de": "Zeit",
+              "wieder": true
             },
             {
-              "schrift": "hay",
-              "lerntext": "hay",
-              "de": "oder (in Fragen), gut"
+              "schrift": "sữa",
+              "lerntext": "sữa",
+              "de": "Milch",
+              "wieder": true
             },
             {
-              "schrift": "quan trọng",
-              "lerntext": "quan trọng",
-              "de": "wichtig"
+              "schrift": "công an",
+              "lerntext": "công an",
+              "de": "Polizei",
+              "wieder": true
             },
             {
-              "schrift": "chìa khóa",
-              "lerntext": "chìa khóa",
-              "de": "Schlüssel"
+              "schrift": "túi",
+              "lerntext": "túi",
+              "de": "Tasche",
+              "wieder": true
             },
             {
-              "schrift": "ốm",
-              "lerntext": "ốm",
-              "de": "krank"
+              "schrift": "cửa",
+              "lerntext": "cửa",
+              "de": "Tür",
+              "wieder": true
+            },
+            {
+              "schrift": "tay",
+              "lerntext": "tay",
+              "de": "Hand",
+              "wieder": true
+            },
+            {
+              "schrift": "gia đình",
+              "lerntext": "gia đình",
+              "de": "Familie",
+              "wieder": true
+            },
+            {
+              "schrift": "bếp",
+              "lerntext": "bếp",
+              "de": "Küche",
+              "wieder": true
+            },
+            {
+              "schrift": "mẹ",
+              "lerntext": "mẹ",
+              "de": "Mutter",
+              "wieder": true
             }
           ]
         ],
-        "newCount": 5,
+        "newCount": 2,
         "task": null,
         "newFrameWords": [
           {
@@ -1839,7 +2941,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "ở",
             "lerntext": "ở",
-            "de": "in, an, bei"
+            "de": "in"
           }
         ],
         "id": "5.1"
@@ -1861,29 +2963,9 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "slotGroups": [
           [
             {
-              "schrift": "trường",
-              "lerntext": "trường",
-              "de": "Schule"
-            },
-            {
-              "schrift": "đường",
-              "lerntext": "đường",
-              "de": "Straße, Zucker"
-            },
-            {
-              "schrift": "nhà hàng",
-              "lerntext": "nhà hàng",
-              "de": "Restaurant"
-            },
-            {
-              "schrift": "nhà vệ sinh",
-              "lerntext": "nhà vệ sinh",
-              "de": "Toilette"
-            },
-            {
-              "schrift": "sân bay",
-              "lerntext": "sân bay",
-              "de": "Flughafen"
+              "schrift": "cửa hàng",
+              "lerntext": "cửa hàng",
+              "de": "Laden"
             },
             {
               "schrift": "ga tàu",
@@ -1891,16 +2973,258 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Bahnhof"
             },
             {
-              "schrift": "cửa hàng",
-              "lerntext": "cửa hàng",
-              "de": "Laden"
+              "schrift": "sân bay",
+              "lerntext": "sân bay",
+              "de": "Flughafen"
+            },
+            {
+              "schrift": "cá",
+              "lerntext": "cá",
+              "de": "Fisch",
+              "wieder": true
+            },
+            {
+              "schrift": "cà phê",
+              "lerntext": "cà phê",
+              "de": "Kaffee",
+              "wieder": true
+            },
+            {
+              "schrift": "trà",
+              "lerntext": "trà",
+              "de": "Tee",
+              "wieder": true
+            },
+            {
+              "schrift": "sinh viên",
+              "lerntext": "sinh viên",
+              "de": "Student",
+              "wieder": true
+            },
+            {
+              "schrift": "miệng",
+              "lerntext": "miệng",
+              "de": "Mund",
+              "wieder": true
+            },
+            {
+              "schrift": "ghế",
+              "lerntext": "ghế",
+              "de": "Stuhl",
+              "wieder": true
+            },
+            {
+              "schrift": "bàn",
+              "lerntext": "bàn",
+              "de": "Tisch",
+              "wieder": true
+            },
+            {
+              "schrift": "con trai",
+              "lerntext": "con trai",
+              "de": "Junge",
+              "wieder": true
+            },
+            {
+              "schrift": "giáo viên",
+              "lerntext": "giáo viên",
+              "de": "Lehrer",
+              "wieder": true
+            },
+            {
+              "schrift": "chìa khóa",
+              "lerntext": "chìa khóa",
+              "de": "Schlüssel",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 3,
+        "task": null,
+        "newFrameWords": [],
+        "id": "5.2"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "[Slot] ở đâu?",
+          "lerntext": "[Slot] ở đâu?"
+        },
+        "frameDe": "Wo gibt es ein [Slot]?",
+        "pronouns": [
+          {
+            "schrift": "đâu",
+            "lerntext": "đâu",
+            "de": "wo"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "nhà hàng",
+              "lerntext": "nhà hàng",
+              "de": "Restaurant"
+            },
+            {
+              "schrift": "bữa trưa",
+              "lerntext": "bữa trưa",
+              "de": "Mittagessen",
+              "wieder": true
+            },
+            {
+              "schrift": "thịt",
+              "lerntext": "thịt",
+              "de": "Fleisch",
+              "wieder": true
+            },
+            {
+              "schrift": "đá",
+              "lerntext": "đá",
+              "de": "Eis",
+              "wieder": true
+            },
+            {
+              "schrift": "bữa sáng",
+              "lerntext": "bữa sáng",
+              "de": "Frühstück",
+              "wieder": true
+            },
+            {
+              "schrift": "rau",
+              "lerntext": "rau",
+              "de": "Gemüse",
+              "wieder": true
+            },
+            {
+              "schrift": "trái cây",
+              "lerntext": "trái cây",
+              "de": "Obst",
+              "wieder": true
+            },
+            {
+              "schrift": "tiền",
+              "lerntext": "tiền",
+              "de": "Geld",
+              "wieder": true
+            },
+            {
+              "schrift": "muối",
+              "lerntext": "muối",
+              "de": "Salz",
+              "wieder": true
+            },
+            {
+              "schrift": "bánh mì",
+              "lerntext": "bánh mì",
+              "de": "Brot",
+              "wieder": true
+            },
+            {
+              "schrift": "bữa tối",
+              "lerntext": "bữa tối",
+              "de": "Abendessen",
+              "wieder": true
             }
           ]
         ],
         "newCount": 1,
         "task": null,
         "newFrameWords": [],
-        "id": "5.2"
+        "id": "5.3"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "ở đây có [Slot] không?",
+          "lerntext": "ở đây có [Slot] không?"
+        },
+        "frameDe": "Gibt es hier eine [Slot]?",
+        "pronouns": [
+          {
+            "schrift": "đâu",
+            "lerntext": "đâu",
+            "de": "wo"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "đại học",
+              "lerntext": "đại học",
+              "de": "Universität"
+            },
+            {
+              "schrift": "trường",
+              "lerntext": "trường",
+              "de": "Schule",
+              "wieder": true
+            },
+            {
+              "schrift": "nhà vệ sinh",
+              "lerntext": "nhà vệ sinh",
+              "de": "Toilette",
+              "wieder": true
+            },
+            {
+              "schrift": "thời gian",
+              "lerntext": "thời gian",
+              "de": "Zeit",
+              "wieder": true
+            },
+            {
+              "schrift": "sữa",
+              "lerntext": "sữa",
+              "de": "Milch",
+              "wieder": true
+            },
+            {
+              "schrift": "công an",
+              "lerntext": "công an",
+              "de": "Polizei",
+              "wieder": true
+            },
+            {
+              "schrift": "túi",
+              "lerntext": "túi",
+              "de": "Tasche",
+              "wieder": true
+            },
+            {
+              "schrift": "cửa",
+              "lerntext": "cửa",
+              "de": "Tür",
+              "wieder": true
+            },
+            {
+              "schrift": "tay",
+              "lerntext": "tay",
+              "de": "Hand",
+              "wieder": true
+            },
+            {
+              "schrift": "gia đình",
+              "lerntext": "gia đình",
+              "de": "Familie",
+              "wieder": true
+            },
+            {
+              "schrift": "bếp",
+              "lerntext": "bếp",
+              "de": "Küche",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 1,
+        "task": null,
+        "newFrameWords": [
+          {
+            "schrift": "ở",
+            "lerntext": "ở",
+            "de": "in"
+          }
+        ],
+        "id": "5.4"
       },
       {
         "kind": "frame",
@@ -1924,47 +3248,71 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Krankenhaus"
             },
             {
-              "schrift": "đại học",
-              "lerntext": "đại học",
-              "de": "Universität"
+              "schrift": "nhà hàng",
+              "lerntext": "nhà hàng",
+              "de": "Restaurant",
+              "wieder": true
             },
             {
-              "schrift": "trường",
-              "lerntext": "trường",
-              "de": "Schule"
+              "schrift": "bữa trưa",
+              "lerntext": "bữa trưa",
+              "de": "Mittagessen",
+              "wieder": true
+            },
+            {
+              "schrift": "thịt",
+              "lerntext": "thịt",
+              "de": "Fleisch",
+              "wieder": true
             },
             {
               "schrift": "cửa sổ",
               "lerntext": "cửa sổ",
-              "de": "Fenster"
+              "de": "Fenster",
+              "wieder": true
             },
             {
-              "schrift": "khách sạn",
-              "lerntext": "khách sạn",
-              "de": "Hotel"
+              "schrift": "đá",
+              "lerntext": "đá",
+              "de": "Eis",
+              "wieder": true
+            },
+            {
+              "schrift": "bữa sáng",
+              "lerntext": "bữa sáng",
+              "de": "Frühstück",
+              "wieder": true
             },
             {
               "schrift": "rau",
               "lerntext": "rau",
-              "de": "Gemüse, Kräuter"
+              "de": "Gemüse",
+              "wieder": true
+            },
+            {
+              "schrift": "ly",
+              "lerntext": "ly",
+              "de": "Glas",
+              "wieder": true
             },
             {
               "schrift": "trái cây",
               "lerntext": "trái cây",
-              "de": "Obst"
+              "de": "Obst",
+              "wieder": true
+            },
+            {
+              "schrift": "tiền",
+              "lerntext": "tiền",
+              "de": "Geld",
+              "wieder": true
             }
           ]
         ],
-        "newCount": 2,
+        "newCount": 1,
         "task": null,
-        "newFrameWords": [
-          {
-            "schrift": "ở",
-            "lerntext": "ở",
-            "de": "in, an, bei"
-          }
-        ],
-        "id": "5.3"
+        "newFrameWords": [],
+        "id": "5.5"
       },
       {
         "kind": "frame",
@@ -2003,29 +3351,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Wald"
             },
             {
+              "schrift": "sân bay",
+              "lerntext": "sân bay",
+              "de": "Flughafen",
+              "wieder": true
+            },
+            {
               "schrift": "đại học",
               "lerntext": "đại học",
-              "de": "Universität"
+              "de": "Universität",
+              "wieder": true
+            },
+            {
+              "schrift": "cửa hàng",
+              "lerntext": "cửa hàng",
+              "de": "Laden",
+              "wieder": true
             },
             {
               "schrift": "bệnh viện",
               "lerntext": "bệnh viện",
-              "de": "Krankenhaus"
+              "de": "Krankenhaus",
+              "wieder": true
+            },
+            {
+              "schrift": "ga tàu",
+              "lerntext": "ga tàu",
+              "de": "Bahnhof",
+              "wieder": true
             },
             {
               "schrift": "trường",
               "lerntext": "trường",
-              "de": "Schule"
+              "de": "Schule",
+              "wieder": true
             },
             {
-              "schrift": "dở",
-              "lerntext": "dở",
-              "de": "schlecht"
+              "schrift": "nhà hàng",
+              "lerntext": "nhà hàng",
+              "de": "Restaurant",
+              "wieder": true
             },
             {
-              "schrift": "uống",
-              "lerntext": "uống",
-              "de": "trinken"
+              "schrift": "nhà vệ sinh",
+              "lerntext": "nhà vệ sinh",
+              "de": "Toilette",
+              "wieder": true
+            },
+            {
+              "schrift": "giường",
+              "lerntext": "giường",
+              "de": "Bett",
+              "wieder": true
+            },
+            {
+              "schrift": "giấy",
+              "lerntext": "giấy",
+              "de": "Papier",
+              "wieder": true
             }
           ]
         ],
@@ -2040,10 +3423,10 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "ở",
             "lerntext": "ở",
-            "de": "in, an, bei"
+            "de": "in"
           }
         ],
-        "id": "5.4"
+        "id": "5.6"
       },
       {
         "kind": "frame",
@@ -2056,17 +3439,17 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "ở",
             "lerntext": "ở",
-            "de": "in, an, bei"
+            "de": "in"
           },
           {
             "schrift": "trên",
             "lerntext": "trên",
-            "de": "auf, über"
+            "de": "auf"
           },
           {
             "schrift": "quá",
             "lerntext": "quá",
-            "de": "zu, sehr"
+            "de": "zu"
           }
         ],
         "slotGroups": [
@@ -2077,19 +3460,9 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "unter"
             },
             {
-              "schrift": "trên",
-              "lerntext": "trên",
-              "de": "auf, über"
-            },
-            {
               "schrift": "giữa",
               "lerntext": "giữa",
               "de": "zwischen"
-            },
-            {
-              "schrift": "sau",
-              "lerntext": "sau",
-              "de": "nach, hinter"
             },
             {
               "schrift": "trước",
@@ -2097,49 +3470,34 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "vor"
             },
             {
-              "schrift": "rừng",
-              "lerntext": "rừng",
-              "de": "Wald"
+              "schrift": "bên cạnh",
+              "lerntext": "bên cạnh",
+              "de": "neben"
             },
             {
-              "schrift": "cầu",
-              "lerntext": "cầu",
-              "de": "Brücke"
-            },
-            {
-              "schrift": "với",
-              "lerntext": "với",
-              "de": "mit"
-            },
-            {
-              "schrift": "thành phố",
-              "lerntext": "thành phố",
-              "de": "Stadt"
-            },
-            {
-              "schrift": "bếp",
-              "lerntext": "bếp",
-              "de": "Küche"
+              "schrift": "qua",
+              "lerntext": "qua",
+              "de": "durch"
             }
           ]
         ],
-        "newCount": 3,
+        "newCount": 5,
         "task": null,
         "newFrameWords": [
           {
             "schrift": "ở",
             "lerntext": "ở",
-            "de": "in, an, bei"
+            "de": "in"
           },
           {
             "schrift": "trên",
             "lerntext": "trên",
-            "de": "auf, über"
+            "de": "auf"
           },
           {
             "schrift": "quá",
             "lerntext": "quá",
-            "de": "zu, sehr"
+            "de": "zu"
           },
           {
             "schrift": "của",
@@ -2154,7 +3512,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "trên",
             "lerntext": "trên",
-            "de": "auf, über"
+            "de": "auf"
           },
           {
             "schrift": "của",
@@ -2164,10 +3522,86 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "sau",
             "lerntext": "sau",
-            "de": "nach, hinter"
+            "de": "nach"
           }
         ],
-        "id": "5.5"
+        "id": "5.7"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "[Slot] ở đây",
+          "lerntext": "[Slot] ở đây"
+        },
+        "frameDe": "[Slot] ist hier.",
+        "pronouns": [
+          {
+            "schrift": "đây",
+            "lerntext": "đây",
+            "de": "hier"
+          },
+          {
+            "schrift": "kìa",
+            "lerntext": "kìa",
+            "de": "dort"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "thành phố",
+              "lerntext": "thành phố",
+              "de": "Stadt",
+              "wieder": true
+            },
+            {
+              "schrift": "cầu",
+              "lerntext": "cầu",
+              "de": "Brücke",
+              "wieder": true
+            },
+            {
+              "schrift": "rừng",
+              "lerntext": "rừng",
+              "de": "Wald",
+              "wieder": true
+            },
+            {
+              "schrift": "sân bay",
+              "lerntext": "sân bay",
+              "de": "Flughafen",
+              "wieder": true
+            },
+            {
+              "schrift": "đại học",
+              "lerntext": "đại học",
+              "de": "Universität",
+              "wieder": true
+            },
+            {
+              "schrift": "cửa hàng",
+              "lerntext": "cửa hàng",
+              "de": "Laden",
+              "wieder": true
+            },
+            {
+              "schrift": "bệnh viện",
+              "lerntext": "bệnh viện",
+              "de": "Krankenhaus",
+              "wieder": true
+            },
+            {
+              "schrift": "ga tàu",
+              "lerntext": "ga tàu",
+              "de": "Bahnhof",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "5.8"
       },
       {
         "kind": "frame",
@@ -2180,67 +3614,166 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "ở",
             "lerntext": "ở",
-            "de": "in, an, bei"
+            "de": "in"
           },
           {
             "schrift": "trên",
             "lerntext": "trên",
-            "de": "auf, über"
+            "de": "auf"
           },
           {
             "schrift": "quá",
             "lerntext": "quá",
-            "de": "zu, sehr"
+            "de": "zu"
           }
         ],
         "slotGroups": [
           [
             {
-              "schrift": "bên cạnh",
-              "lerntext": "bên cạnh",
-              "de": "neben"
-            },
-            {
-              "schrift": "qua",
-              "lerntext": "qua",
-              "de": "durch, vorbei"
-            },
-            {
-              "schrift": "ở",
-              "lerntext": "ở",
-              "de": "in, an, bei"
-            },
-            {
               "schrift": "dưới",
               "lerntext": "dưới",
-              "de": "unter"
-            },
-            {
-              "schrift": "trước",
-              "lerntext": "trước",
-              "de": "vor"
+              "de": "unter",
+              "wieder": true
             },
             {
               "schrift": "giữa",
               "lerntext": "giữa",
-              "de": "zwischen"
+              "de": "zwischen",
+              "wieder": true
             },
             {
-              "schrift": "nhà hàng",
-              "lerntext": "nhà hàng",
-              "de": "Restaurant"
+              "schrift": "trước",
+              "lerntext": "trước",
+              "de": "vor",
+              "wieder": true
             },
             {
-              "schrift": "giáo viên",
-              "lerntext": "giáo viên",
-              "de": "Lehrer"
+              "schrift": "bên cạnh",
+              "lerntext": "bên cạnh",
+              "de": "neben",
+              "wieder": true
+            },
+            {
+              "schrift": "qua",
+              "lerntext": "qua",
+              "de": "durch",
+              "wieder": true
             }
           ]
         ],
-        "newCount": 2,
+        "newCount": 0,
         "task": null,
         "newFrameWords": [],
-        "id": "5.6"
+        "id": "5.9"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "[Slot] ở đây",
+          "lerntext": "[Slot] ở đây"
+        },
+        "frameDe": "[Slot] ist hier.",
+        "pronouns": [
+          {
+            "schrift": "đây",
+            "lerntext": "đây",
+            "de": "hier"
+          },
+          {
+            "schrift": "kìa",
+            "lerntext": "kìa",
+            "de": "dort"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "thành phố",
+              "lerntext": "thành phố",
+              "de": "Stadt",
+              "wieder": true
+            },
+            {
+              "schrift": "cầu",
+              "lerntext": "cầu",
+              "de": "Brücke",
+              "wieder": true
+            },
+            {
+              "schrift": "rừng",
+              "lerntext": "rừng",
+              "de": "Wald",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "5.10"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "nó ở [Slot] nhà",
+          "lerntext": "nó ở [Slot] nhà"
+        },
+        "frameDe": "Es liegt [Slot] dem Haus.",
+        "pronouns": [
+          {
+            "schrift": "ở",
+            "lerntext": "ở",
+            "de": "in"
+          },
+          {
+            "schrift": "trên",
+            "lerntext": "trên",
+            "de": "auf"
+          },
+          {
+            "schrift": "quá",
+            "lerntext": "quá",
+            "de": "zu"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "dưới",
+              "lerntext": "dưới",
+              "de": "unter",
+              "wieder": true
+            },
+            {
+              "schrift": "giữa",
+              "lerntext": "giữa",
+              "de": "zwischen",
+              "wieder": true
+            },
+            {
+              "schrift": "trước",
+              "lerntext": "trước",
+              "de": "vor",
+              "wieder": true
+            },
+            {
+              "schrift": "bên cạnh",
+              "lerntext": "bên cạnh",
+              "de": "neben",
+              "wieder": true
+            },
+            {
+              "schrift": "qua",
+              "lerntext": "qua",
+              "de": "durch",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "5.11"
       },
       {
         "kind": "finisher",
@@ -2254,13 +3787,14 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "newCount": 0,
         "task": "Frag nach dem Weg zu drei Orten.",
         "newFrameWords": [],
-        "id": "5.7"
+        "id": "5.12"
       }
     ]
   },
   {
     "number": 6,
     "title": "Zahlen und Preise",
+    "niveau": null,
     "lessons": [
       {
         "kind": "series",
@@ -2300,7 +3834,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "năm",
               "lerntext": "năm",
-              "de": "fünf, Jahr"
+              "de": "fünf"
             },
             {
               "schrift": "sáu",
@@ -2464,7 +3998,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "[Slot] bao nhiêu tiền?",
           "lerntext": "[Slot] bao nhiêu tiền?"
         },
-        "frameDe": "Wie viel kostet ein [Slot]?",
+        "frameDe": "Wie viel kostet eine [Slot]?",
         "pronouns": [
           {
             "schrift": "bao nhiêu",
@@ -2482,7 +4016,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "vé",
               "lerntext": "vé",
-              "de": "Fahrkarte, Ticket"
+              "de": "Fahrkarte"
             },
             {
               "schrift": "bản đồ",
@@ -2490,29 +4024,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Landkarte"
             },
             {
-              "schrift": "ít",
-              "lerntext": "ít",
-              "de": "wenig"
+              "schrift": "trường",
+              "lerntext": "trường",
+              "de": "Schule",
+              "wieder": true
             },
             {
-              "schrift": "năm mươi",
-              "lerntext": "năm mươi",
-              "de": "fünfzig"
+              "schrift": "đại học",
+              "lerntext": "đại học",
+              "de": "Universität",
+              "wieder": true
             },
             {
-              "schrift": "chín",
-              "lerntext": "chín",
-              "de": "neun"
+              "schrift": "nhà vệ sinh",
+              "lerntext": "nhà vệ sinh",
+              "de": "Toilette",
+              "wieder": true
             },
             {
-              "schrift": "mười lăm",
-              "lerntext": "mười lăm",
-              "de": "fünfzehn"
+              "schrift": "cầu",
+              "lerntext": "cầu",
+              "de": "Brücke",
+              "wieder": true
             },
             {
-              "schrift": "cái",
-              "lerntext": "cái",
-              "de": "Stück (Zählwort)"
+              "schrift": "thành phố",
+              "lerntext": "thành phố",
+              "de": "Stadt",
+              "wieder": true
+            },
+            {
+              "schrift": "thời gian",
+              "lerntext": "thời gian",
+              "de": "Zeit",
+              "wieder": true
+            },
+            {
+              "schrift": "sữa",
+              "lerntext": "sữa",
+              "de": "Milch",
+              "wieder": true
+            },
+            {
+              "schrift": "công an",
+              "lerntext": "công an",
+              "de": "Polizei",
+              "wieder": true
+            },
+            {
+              "schrift": "túi",
+              "lerntext": "túi",
+              "de": "Tasche",
+              "wieder": true
+            },
+            {
+              "schrift": "cửa",
+              "lerntext": "cửa",
+              "de": "Tür",
+              "wieder": true
             }
           ]
         ],
@@ -2583,29 +4152,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "lang"
             },
             {
-              "schrift": "mười hai",
-              "lerntext": "mười hai",
-              "de": "zwölf"
+              "schrift": "yếu",
+              "lerntext": "yếu",
+              "de": "schwach",
+              "wieder": true
             },
             {
-              "schrift": "bảy mươi",
-              "lerntext": "bảy mươi",
-              "de": "siebzig"
+              "schrift": "đẹp",
+              "lerntext": "đẹp",
+              "de": "schön",
+              "wieder": true
             },
             {
-              "schrift": "mười bảy",
-              "lerntext": "mười bảy",
-              "de": "siebzehn"
+              "schrift": "quan trọng",
+              "lerntext": "quan trọng",
+              "de": "wichtig",
+              "wieder": true
             },
             {
-              "schrift": "hai mươi",
-              "lerntext": "hai mươi",
-              "de": "zwanzig"
+              "schrift": "đói",
+              "lerntext": "đói",
+              "de": "hungrig",
+              "wieder": true
             },
             {
-              "schrift": "cho",
-              "lerntext": "cho",
-              "de": "für, geben"
+              "schrift": "buồn",
+              "lerntext": "buồn",
+              "de": "traurig",
+              "wieder": true
+            },
+            {
+              "schrift": "khát",
+              "lerntext": "khát",
+              "de": "durstig",
+              "wieder": true
+            },
+            {
+              "schrift": "mệt",
+              "lerntext": "mệt",
+              "de": "müde",
+              "wieder": true
+            },
+            {
+              "schrift": "chán",
+              "lerntext": "chán",
+              "de": "langweilig",
+              "wieder": true
+            },
+            {
+              "schrift": "giận",
+              "lerntext": "giận",
+              "de": "wütend",
+              "wieder": true
+            },
+            {
+              "schrift": "trẻ",
+              "lerntext": "trẻ",
+              "de": "jung",
+              "wieder": true
             }
           ]
         ],
@@ -2615,7 +4219,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "cho",
             "lerntext": "cho",
-            "de": "für, geben"
+            "de": "für"
           }
         ],
         "id": "6.5"
@@ -2638,12 +4242,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "cao",
               "lerntext": "cao",
-              "de": "hoch, groß"
+              "de": "hoch"
             },
             {
               "schrift": "thấp",
               "lerntext": "thấp",
-              "de": "niedrig, klein"
+              "de": "niedrig"
             },
             {
               "schrift": "nặng",
@@ -2656,29 +4260,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "leicht"
             },
             {
-              "schrift": "to",
-              "lerntext": "to",
-              "de": "groß"
-            },
-            {
-              "schrift": "sáu mươi",
-              "lerntext": "sáu mươi",
-              "de": "sechzig"
-            },
-            {
-              "schrift": "nhỏ",
-              "lerntext": "nhỏ",
-              "de": "klein"
-            },
-            {
-              "schrift": "mười một",
-              "lerntext": "mười một",
-              "de": "elf"
+              "schrift": "đắt",
+              "lerntext": "đắt",
+              "de": "teuer",
+              "wieder": true
             },
             {
               "schrift": "rẻ",
               "lerntext": "rẻ",
-              "de": "billig"
+              "de": "billig",
+              "wieder": true
+            },
+            {
+              "schrift": "to",
+              "lerntext": "to",
+              "de": "groß",
+              "wieder": true
+            },
+            {
+              "schrift": "nhỏ",
+              "lerntext": "nhỏ",
+              "de": "klein",
+              "wieder": true
+            },
+            {
+              "schrift": "dài",
+              "lerntext": "dài",
+              "de": "lang",
+              "wieder": true
+            },
+            {
+              "schrift": "sẵn sàng",
+              "lerntext": "sẵn sàng",
+              "de": "bereit",
+              "wieder": true
+            },
+            {
+              "schrift": "khỏe",
+              "lerntext": "khỏe",
+              "de": "gesund",
+              "wieder": true
+            },
+            {
+              "schrift": "buồn cười",
+              "lerntext": "buồn cười",
+              "de": "lustig",
+              "wieder": true
+            },
+            {
+              "schrift": "ốm",
+              "lerntext": "ốm",
+              "de": "krank",
+              "wieder": true
+            },
+            {
+              "schrift": "yếu",
+              "lerntext": "yếu",
+              "de": "schwach",
+              "wieder": true
             }
           ]
         ],
@@ -2686,6 +4325,314 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "task": null,
         "newFrameWords": [],
         "id": "6.6"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "[Slot]",
+          "lerntext": "[Slot]"
+        },
+        "frameDe": "[Slot]",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "không (số)",
+              "lerntext": "không (số)",
+              "de": "null",
+              "wieder": true
+            },
+            {
+              "schrift": "một",
+              "lerntext": "một",
+              "de": "eins",
+              "wieder": true
+            },
+            {
+              "schrift": "hai",
+              "lerntext": "hai",
+              "de": "zwei",
+              "wieder": true
+            },
+            {
+              "schrift": "ba",
+              "lerntext": "ba",
+              "de": "drei",
+              "wieder": true
+            },
+            {
+              "schrift": "bốn",
+              "lerntext": "bốn",
+              "de": "vier",
+              "wieder": true
+            },
+            {
+              "schrift": "năm",
+              "lerntext": "năm",
+              "de": "fünf",
+              "wieder": true
+            },
+            {
+              "schrift": "sáu",
+              "lerntext": "sáu",
+              "de": "sechs",
+              "wieder": true
+            },
+            {
+              "schrift": "bảy",
+              "lerntext": "bảy",
+              "de": "sieben",
+              "wieder": true
+            },
+            {
+              "schrift": "tám",
+              "lerntext": "tám",
+              "de": "acht",
+              "wieder": true
+            },
+            {
+              "schrift": "chín",
+              "lerntext": "chín",
+              "de": "neun",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "6.7"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "[Slot]",
+          "lerntext": "[Slot]"
+        },
+        "frameDe": "[Slot]",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "mười",
+              "lerntext": "mười",
+              "de": "zehn",
+              "wieder": true
+            },
+            {
+              "schrift": "mười một",
+              "lerntext": "mười một",
+              "de": "elf",
+              "wieder": true
+            },
+            {
+              "schrift": "mười hai",
+              "lerntext": "mười hai",
+              "de": "zwölf",
+              "wieder": true
+            },
+            {
+              "schrift": "mười ba",
+              "lerntext": "mười ba",
+              "de": "dreizehn",
+              "wieder": true
+            },
+            {
+              "schrift": "mười bốn",
+              "lerntext": "mười bốn",
+              "de": "vierzehn",
+              "wieder": true
+            },
+            {
+              "schrift": "mười lăm",
+              "lerntext": "mười lăm",
+              "de": "fünfzehn",
+              "wieder": true
+            },
+            {
+              "schrift": "mười sáu",
+              "lerntext": "mười sáu",
+              "de": "sechzehn",
+              "wieder": true
+            },
+            {
+              "schrift": "mười bảy",
+              "lerntext": "mười bảy",
+              "de": "siebzehn",
+              "wieder": true
+            },
+            {
+              "schrift": "mười tám",
+              "lerntext": "mười tám",
+              "de": "achtzehn",
+              "wieder": true
+            },
+            {
+              "schrift": "mười chín",
+              "lerntext": "mười chín",
+              "de": "neunzehn",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "6.8"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "[Slot]",
+          "lerntext": "[Slot]"
+        },
+        "frameDe": "[Slot]",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "hai mươi",
+              "lerntext": "hai mươi",
+              "de": "zwanzig",
+              "wieder": true
+            },
+            {
+              "schrift": "bốn mươi",
+              "lerntext": "bốn mươi",
+              "de": "vierzig",
+              "wieder": true
+            },
+            {
+              "schrift": "năm mươi",
+              "lerntext": "năm mươi",
+              "de": "fünfzig",
+              "wieder": true
+            },
+            {
+              "schrift": "sáu mươi",
+              "lerntext": "sáu mươi",
+              "de": "sechzig",
+              "wieder": true
+            },
+            {
+              "schrift": "bảy mươi",
+              "lerntext": "bảy mươi",
+              "de": "siebzig",
+              "wieder": true
+            },
+            {
+              "schrift": "tám mươi",
+              "lerntext": "tám mươi",
+              "de": "achtzig",
+              "wieder": true
+            },
+            {
+              "schrift": "chín mươi",
+              "lerntext": "chín mươi",
+              "de": "neunzig",
+              "wieder": true
+            },
+            {
+              "schrift": "một trăm",
+              "lerntext": "một trăm",
+              "de": "hundert",
+              "wieder": true
+            },
+            {
+              "schrift": "một nghìn",
+              "lerntext": "một nghìn",
+              "de": "tausend",
+              "wieder": true
+            },
+            {
+              "schrift": "không (số)",
+              "lerntext": "không (số)",
+              "de": "null",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "6.9"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "[Slot]",
+          "lerntext": "[Slot]"
+        },
+        "frameDe": "[Slot]",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "một",
+              "lerntext": "một",
+              "de": "eins",
+              "wieder": true
+            },
+            {
+              "schrift": "hai",
+              "lerntext": "hai",
+              "de": "zwei",
+              "wieder": true
+            },
+            {
+              "schrift": "ba",
+              "lerntext": "ba",
+              "de": "drei",
+              "wieder": true
+            },
+            {
+              "schrift": "bốn",
+              "lerntext": "bốn",
+              "de": "vier",
+              "wieder": true
+            },
+            {
+              "schrift": "năm",
+              "lerntext": "năm",
+              "de": "fünf",
+              "wieder": true
+            },
+            {
+              "schrift": "sáu",
+              "lerntext": "sáu",
+              "de": "sechs",
+              "wieder": true
+            },
+            {
+              "schrift": "bảy",
+              "lerntext": "bảy",
+              "de": "sieben",
+              "wieder": true
+            },
+            {
+              "schrift": "tám",
+              "lerntext": "tám",
+              "de": "acht",
+              "wieder": true
+            },
+            {
+              "schrift": "chín",
+              "lerntext": "chín",
+              "de": "neun",
+              "wieder": true
+            },
+            {
+              "schrift": "mười",
+              "lerntext": "mười",
+              "de": "zehn",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "6.10"
       },
       {
         "kind": "finisher",
@@ -2699,13 +4646,14 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "newCount": 0,
         "task": "Frag nach dem Preis und nenne eine Zahl.",
         "newFrameWords": [],
-        "id": "6.7"
+        "id": "6.11"
       }
     ]
   },
   {
     "number": 7,
     "title": "Ich kann, ich muss",
+    "niveau": null,
     "lessons": [
       {
         "kind": "frame",
@@ -2713,7 +4661,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / bạn / mình / nó có thể [Slot]",
           "lerntext": "tôi / bạn / mình / nó có thể [Slot]"
         },
-        "frameDe": "ich (neutral) / du (Gleichaltrige), Freund / ich, wir (vertraut) / er, sie, es (vertraut) kann [Slot].",
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / ich / er kann [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -2723,17 +4671,17 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "bạn",
             "lerntext": "bạn",
-            "de": "du (Gleichaltrige), Freund"
+            "de": "du (Gleichaltrige)"
           },
           {
             "schrift": "mình",
             "lerntext": "mình",
-            "de": "ich, wir (vertraut)"
+            "de": "ich"
           },
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           }
         ],
         "slotGroups": [
@@ -2741,7 +4689,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "nhảy",
               "lerntext": "nhảy",
-              "de": "tanzen, springen"
+              "de": "tanzen"
             },
             {
               "schrift": "chơi",
@@ -2751,7 +4699,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "đi",
               "lerntext": "đi",
-              "de": "gehen, fahren"
+              "de": "gehen"
             },
             {
               "schrift": "viết",
@@ -2764,29 +4712,34 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "lesen"
             },
             {
-              "schrift": "được",
-              "lerntext": "được",
-              "de": "können, dürfen, bekommen"
+              "schrift": "uống",
+              "lerntext": "uống",
+              "de": "trinken",
+              "wieder": true
             },
             {
-              "schrift": "cao",
-              "lerntext": "cao",
-              "de": "hoch, groß"
+              "schrift": "cần",
+              "lerntext": "cần",
+              "de": "brauchen",
+              "wieder": true
             },
             {
-              "schrift": "nặng",
-              "lerntext": "nặng",
-              "de": "schwer"
+              "schrift": "muốn",
+              "lerntext": "muốn",
+              "de": "wollen",
+              "wieder": true
             },
             {
-              "schrift": "một nghìn",
-              "lerntext": "một nghìn",
-              "de": "tausend"
+              "schrift": "ăn",
+              "lerntext": "ăn",
+              "de": "essen",
+              "wieder": true
             },
             {
-              "schrift": "mười tám",
-              "lerntext": "mười tám",
-              "de": "achtzehn"
+              "schrift": "là",
+              "lerntext": "là",
+              "de": "sein",
+              "wieder": true
             }
           ]
         ],
@@ -2796,7 +4749,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "được",
             "lerntext": "được",
-            "de": "können, dürfen, bekommen"
+            "de": "können"
           }
         ],
         "id": "7.1"
@@ -2807,7 +4760,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / bạn / mình / nó có thể [Slot]",
           "lerntext": "tôi / bạn / mình / nó có thể [Slot]"
         },
-        "frameDe": "ich (neutral) / du (Gleichaltrige), Freund / ich, wir (vertraut) / er, sie, es (vertraut) kann [Slot].",
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / ich / er kann [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -2817,17 +4770,17 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "bạn",
             "lerntext": "bạn",
-            "de": "du (Gleichaltrige), Freund"
+            "de": "du (Gleichaltrige)"
           },
           {
             "schrift": "mình",
             "lerntext": "mình",
-            "de": "ich, wir (vertraut)"
+            "de": "ich"
           },
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           }
         ],
         "slotGroups": [
@@ -2840,12 +4793,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "làm",
               "lerntext": "làm",
-              "de": "machen, arbeiten"
+              "de": "machen"
             },
             {
               "schrift": "nói",
               "lerntext": "nói",
-              "de": "sprechen, sagen"
+              "de": "sprechen"
             },
             {
               "schrift": "dùng",
@@ -2855,27 +4808,62 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "nhảy",
               "lerntext": "nhảy",
-              "de": "tanzen, springen"
+              "de": "tanzen",
+              "wieder": true
             },
             {
               "schrift": "chơi",
               "lerntext": "chơi",
-              "de": "spielen"
+              "de": "spielen",
+              "wieder": true
+            },
+            {
+              "schrift": "đi",
+              "lerntext": "đi",
+              "de": "gehen",
+              "wieder": true
+            },
+            {
+              "schrift": "viết",
+              "lerntext": "viết",
+              "de": "schreiben",
+              "wieder": true
             },
             {
               "schrift": "đọc",
               "lerntext": "đọc",
-              "de": "lesen"
+              "de": "lesen",
+              "wieder": true
             },
             {
-              "schrift": "không (số)",
-              "lerntext": "không (số)",
-              "de": "null"
+              "schrift": "uống",
+              "lerntext": "uống",
+              "de": "trinken",
+              "wieder": true
             },
             {
-              "schrift": "sáu",
-              "lerntext": "sáu",
-              "de": "sechs"
+              "schrift": "cần",
+              "lerntext": "cần",
+              "de": "brauchen",
+              "wieder": true
+            },
+            {
+              "schrift": "muốn",
+              "lerntext": "muốn",
+              "de": "wollen",
+              "wieder": true
+            },
+            {
+              "schrift": "ăn",
+              "lerntext": "ăn",
+              "de": "essen",
+              "wieder": true
+            },
+            {
+              "schrift": "là",
+              "lerntext": "là",
+              "de": "sein",
+              "wieder": true
             }
           ]
         ],
@@ -2890,7 +4878,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / bạn / mình phải [Slot]",
           "lerntext": "tôi / bạn / mình phải [Slot]"
         },
-        "frameDe": "ich (neutral) / du (Gleichaltrige), Freund / ich, wir (vertraut) muss [Slot].",
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / ich muss [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -2900,12 +4888,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "bạn",
             "lerntext": "bạn",
-            "de": "du (Gleichaltrige), Freund"
+            "de": "du (Gleichaltrige)"
           },
           {
             "schrift": "mình",
             "lerntext": "mình",
-            "de": "ich, wir (vertraut)"
+            "de": "ich"
           }
         ],
         "slotGroups": [
@@ -2913,7 +4901,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "làm",
               "lerntext": "làm",
-              "de": "machen, arbeiten"
+              "de": "machen"
             },
             {
               "schrift": "ngủ",
@@ -2928,7 +4916,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "trả",
               "lerntext": "trả",
-              "de": "bezahlen, zurückgeben"
+              "de": "bezahlen"
             },
             {
               "schrift": "rửa",
@@ -2936,29 +4924,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "waschen"
             },
             {
-              "schrift": "bốn",
-              "lerntext": "bốn",
-              "de": "vier"
+              "schrift": "được",
+              "lerntext": "được",
+              "de": "können",
+              "wieder": true
             },
             {
-              "schrift": "ngắn",
-              "lerntext": "ngắn",
-              "de": "kurz"
+              "schrift": "giúp",
+              "lerntext": "giúp",
+              "de": "helfen",
+              "wieder": true
             },
             {
-              "schrift": "một trăm",
-              "lerntext": "một trăm",
-              "de": "hundert"
+              "schrift": "dùng",
+              "lerntext": "dùng",
+              "de": "benutzen",
+              "wieder": true
             },
             {
-              "schrift": "đắt",
-              "lerntext": "đắt",
-              "de": "teuer"
+              "schrift": "nói",
+              "lerntext": "nói",
+              "de": "sprechen",
+              "wieder": true
             },
             {
-              "schrift": "ba",
-              "lerntext": "ba",
-              "de": "drei"
+              "schrift": "chơi",
+              "lerntext": "chơi",
+              "de": "spielen",
+              "wieder": true
+            },
+            {
+              "schrift": "đọc",
+              "lerntext": "đọc",
+              "de": "lesen",
+              "wieder": true
+            },
+            {
+              "schrift": "uống",
+              "lerntext": "uống",
+              "de": "trinken",
+              "wieder": true
+            },
+            {
+              "schrift": "nhảy",
+              "lerntext": "nhảy",
+              "de": "tanzen",
+              "wieder": true
+            },
+            {
+              "schrift": "đi",
+              "lerntext": "đi",
+              "de": "gehen",
+              "wieder": true
+            },
+            {
+              "schrift": "viết",
+              "lerntext": "viết",
+              "de": "schreiben",
+              "wieder": true
             }
           ]
         ],
@@ -2979,7 +5002,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / bạn / nó muốn [Slot]",
           "lerntext": "tôi / bạn / nó muốn [Slot]"
         },
-        "frameDe": "ich (neutral) / du (Gleichaltrige), Freund / er, sie, es (vertraut) will [Slot].",
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / er will [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -2989,12 +5012,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "bạn",
             "lerntext": "bạn",
-            "de": "du (Gleichaltrige), Freund"
+            "de": "du (Gleichaltrige)"
           },
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           }
         ],
         "slotGroups": [
@@ -3022,32 +5045,67 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "nói",
               "lerntext": "nói",
-              "de": "sprechen, sagen"
+              "de": "sprechen"
+            },
+            {
+              "schrift": "đợi",
+              "lerntext": "đợi",
+              "de": "warten",
+              "wieder": true
             },
             {
               "schrift": "rửa",
               "lerntext": "rửa",
-              "de": "waschen"
+              "de": "waschen",
+              "wieder": true
+            },
+            {
+              "schrift": "phải",
+              "lerntext": "phải",
+              "de": "müssen",
+              "wieder": true
+            },
+            {
+              "schrift": "trả",
+              "lerntext": "trả",
+              "de": "bezahlen",
+              "wieder": true
             },
             {
               "schrift": "ngủ",
               "lerntext": "ngủ",
-              "de": "schlafen"
+              "de": "schlafen",
+              "wieder": true
             },
             {
-              "schrift": "thấp",
-              "lerntext": "thấp",
-              "de": "niedrig, klein"
+              "schrift": "được",
+              "lerntext": "được",
+              "de": "können",
+              "wieder": true
+            },
+            {
+              "schrift": "giúp",
+              "lerntext": "giúp",
+              "de": "helfen",
+              "wieder": true
             },
             {
               "schrift": "dùng",
               "lerntext": "dùng",
-              "de": "benutzen"
+              "de": "benutzen",
+              "wieder": true
             },
             {
-              "schrift": "hai",
-              "lerntext": "hai",
-              "de": "zwei"
+              "schrift": "chơi",
+              "lerntext": "chơi",
+              "de": "spielen",
+              "wieder": true
+            },
+            {
+              "schrift": "đọc",
+              "lerntext": "đọc",
+              "de": "lesen",
+              "wieder": true
             }
           ]
         ],
@@ -3062,7 +5120,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / bạn / nó muốn [Slot]",
           "lerntext": "tôi / bạn / nó muốn [Slot]"
         },
-        "frameDe": "ich (neutral) / du (Gleichaltrige), Freund / er, sie, es (vertraut) will [Slot].",
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / er will [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -3072,12 +5130,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "bạn",
             "lerntext": "bạn",
-            "de": "du (Gleichaltrige), Freund"
+            "de": "du (Gleichaltrige)"
           },
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           }
         ],
         "slotGroups": [
@@ -3093,29 +5151,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "sehen"
             },
             {
-              "schrift": "hỏi",
-              "lerntext": "hỏi",
-              "de": "fragen"
-            },
-            {
-              "schrift": "trả lời",
-              "lerntext": "trả lời",
-              "de": "antworten"
-            },
-            {
               "schrift": "nhìn",
               "lerntext": "nhìn",
-              "de": "schauen"
+              "de": "schauen",
+              "wieder": true
             },
             {
               "schrift": "gặp",
               "lerntext": "gặp",
-              "de": "treffen"
+              "de": "treffen",
+              "wieder": true
+            },
+            {
+              "schrift": "hỏi",
+              "lerntext": "hỏi",
+              "de": "fragen",
+              "wieder": true
+            },
+            {
+              "schrift": "trả lời",
+              "lerntext": "trả lời",
+              "de": "antworten",
+              "wieder": true
+            },
+            {
+              "schrift": "nói",
+              "lerntext": "nói",
+              "de": "sprechen",
+              "wieder": true
             },
             {
               "schrift": "đợi",
               "lerntext": "đợi",
-              "de": "warten"
+              "de": "warten",
+              "wieder": true
+            },
+            {
+              "schrift": "rửa",
+              "lerntext": "rửa",
+              "de": "waschen",
+              "wieder": true
+            },
+            {
+              "schrift": "phải",
+              "lerntext": "phải",
+              "de": "müssen",
+              "wieder": true
+            },
+            {
+              "schrift": "trả",
+              "lerntext": "trả",
+              "de": "bezahlen",
+              "wieder": true
+            },
+            {
+              "schrift": "ngủ",
+              "lerntext": "ngủ",
+              "de": "schlafen",
+              "wieder": true
             }
           ]
         ],
@@ -3130,7 +5223,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / bạn không thể [Slot]",
           "lerntext": "tôi / bạn không thể [Slot]"
         },
-        "frameDe": "ich (neutral) / du (Gleichaltrige), Freund darf nicht [Slot].",
+        "frameDe": "ich (neutral) / du (Gleichaltrige) darf nicht [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -3140,7 +5233,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "bạn",
             "lerntext": "bạn",
-            "de": "du (Gleichaltrige), Freund"
+            "de": "du (Gleichaltrige)"
           }
         ],
         "slotGroups": [
@@ -3153,7 +5246,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "mất",
               "lerntext": "mất",
-              "de": "verlieren, dauern"
+              "de": "verlieren"
             },
             {
               "schrift": "khóc",
@@ -3163,7 +5256,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "cười",
               "lerntext": "cười",
-              "de": "lachen, lächeln"
+              "de": "lachen"
             },
             {
               "schrift": "ở lại",
@@ -3173,27 +5266,62 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "nghe",
               "lerntext": "nghe",
-              "de": "hören"
+              "de": "hören",
+              "wieder": true
             },
             {
-              "schrift": "bốn mươi",
-              "lerntext": "bốn mươi",
-              "de": "vierzig"
+              "schrift": "thấy",
+              "lerntext": "thấy",
+              "de": "sehen",
+              "wieder": true
             },
             {
-              "schrift": "trả",
-              "lerntext": "trả",
-              "de": "bezahlen, zurückgeben"
+              "schrift": "nhìn",
+              "lerntext": "nhìn",
+              "de": "schauen",
+              "wieder": true
             },
             {
-              "schrift": "bằng",
-              "lerntext": "bằng",
-              "de": "mit (Mittel), gleich"
+              "schrift": "hỏi",
+              "lerntext": "hỏi",
+              "de": "fragen",
+              "wieder": true
             },
             {
-              "schrift": "tám mươi",
-              "lerntext": "tám mươi",
-              "de": "achtzig"
+              "schrift": "trả lời",
+              "lerntext": "trả lời",
+              "de": "antworten",
+              "wieder": true
+            },
+            {
+              "schrift": "gặp",
+              "lerntext": "gặp",
+              "de": "treffen",
+              "wieder": true
+            },
+            {
+              "schrift": "được",
+              "lerntext": "được",
+              "de": "können",
+              "wieder": true
+            },
+            {
+              "schrift": "giúp",
+              "lerntext": "giúp",
+              "de": "helfen",
+              "wieder": true
+            },
+            {
+              "schrift": "uống",
+              "lerntext": "uống",
+              "de": "trinken",
+              "wieder": true
+            },
+            {
+              "schrift": "đợi",
+              "lerntext": "đợi",
+              "de": "warten",
+              "wieder": true
             }
           ]
         ],
@@ -3203,12 +5331,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "nhận",
             "lerntext": "nhận",
-            "de": "bekommen, annehmen"
+            "de": "bekommen"
           },
           {
             "schrift": "bằng",
             "lerntext": "bằng",
-            "de": "mit (Mittel), gleich"
+            "de": "mit (Mittel)"
           }
         ],
         "id": "7.6"
@@ -3219,7 +5347,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / bạn không thể [Slot]",
           "lerntext": "tôi / bạn không thể [Slot]"
         },
-        "frameDe": "ich (neutral) / du (Gleichaltrige), Freund darf nicht [Slot].",
+        "frameDe": "ich (neutral) / du (Gleichaltrige) darf nicht [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -3229,7 +5357,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "bạn",
             "lerntext": "bạn",
-            "de": "du (Gleichaltrige), Freund"
+            "de": "du (Gleichaltrige)"
           }
         ],
         "slotGroups": [
@@ -3255,29 +5383,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "gewinnen"
             },
             {
-              "schrift": "khóc",
-              "lerntext": "khóc",
-              "de": "weinen"
-            },
-            {
-              "schrift": "cười",
-              "lerntext": "cười",
-              "de": "lachen, lächeln"
+              "schrift": "quên",
+              "lerntext": "quên",
+              "de": "vergessen",
+              "wieder": true
             },
             {
               "schrift": "mất",
               "lerntext": "mất",
-              "de": "verlieren, dauern"
+              "de": "verlieren",
+              "wieder": true
+            },
+            {
+              "schrift": "khóc",
+              "lerntext": "khóc",
+              "de": "weinen",
+              "wieder": true
+            },
+            {
+              "schrift": "cười",
+              "lerntext": "cười",
+              "de": "lachen",
+              "wieder": true
             },
             {
               "schrift": "ở lại",
               "lerntext": "ở lại",
-              "de": "bleiben"
+              "de": "bleiben",
+              "wieder": true
             },
             {
-              "schrift": "mười bốn",
-              "lerntext": "mười bốn",
-              "de": "vierzehn"
+              "schrift": "nghe",
+              "lerntext": "nghe",
+              "de": "hören",
+              "wieder": true
+            },
+            {
+              "schrift": "thấy",
+              "lerntext": "thấy",
+              "de": "sehen",
+              "wieder": true
+            },
+            {
+              "schrift": "rửa",
+              "lerntext": "rửa",
+              "de": "waschen",
+              "wieder": true
+            },
+            {
+              "schrift": "dùng",
+              "lerntext": "dùng",
+              "de": "benutzen",
+              "wieder": true
+            },
+            {
+              "schrift": "nhìn",
+              "lerntext": "nhìn",
+              "de": "schauen",
+              "wieder": true
             }
           ]
         ],
@@ -3285,6 +5448,140 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "task": null,
         "newFrameWords": [],
         "id": "7.7"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi / bạn không thể [Slot]",
+          "lerntext": "tôi / bạn không thể [Slot]"
+        },
+        "frameDe": "ich (neutral) / du (Gleichaltrige) darf nicht [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          },
+          {
+            "schrift": "bạn",
+            "lerntext": "bạn",
+            "de": "du (Gleichaltrige)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "chết",
+              "lerntext": "chết",
+              "de": "sterben",
+              "wieder": true
+            },
+            {
+              "schrift": "mở",
+              "lerntext": "mở",
+              "de": "öffnen",
+              "wieder": true
+            },
+            {
+              "schrift": "đóng",
+              "lerntext": "đóng",
+              "de": "schließen",
+              "wieder": true
+            },
+            {
+              "schrift": "thắng",
+              "lerntext": "thắng",
+              "de": "gewinnen",
+              "wieder": true
+            },
+            {
+              "schrift": "quên",
+              "lerntext": "quên",
+              "de": "vergessen",
+              "wieder": true
+            },
+            {
+              "schrift": "mất",
+              "lerntext": "mất",
+              "de": "verlieren",
+              "wieder": true
+            },
+            {
+              "schrift": "khóc",
+              "lerntext": "khóc",
+              "de": "weinen",
+              "wieder": true
+            },
+            {
+              "schrift": "cười",
+              "lerntext": "cười",
+              "de": "lachen",
+              "wieder": true
+            },
+            {
+              "schrift": "ở lại",
+              "lerntext": "ở lại",
+              "de": "bleiben",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "7.8"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi / bạn không thể [Slot]",
+          "lerntext": "tôi / bạn không thể [Slot]"
+        },
+        "frameDe": "ich (neutral) / du (Gleichaltrige) darf nicht [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          },
+          {
+            "schrift": "bạn",
+            "lerntext": "bạn",
+            "de": "du (Gleichaltrige)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "chết",
+              "lerntext": "chết",
+              "de": "sterben",
+              "wieder": true
+            },
+            {
+              "schrift": "mở",
+              "lerntext": "mở",
+              "de": "öffnen",
+              "wieder": true
+            },
+            {
+              "schrift": "đóng",
+              "lerntext": "đóng",
+              "de": "schließen",
+              "wieder": true
+            },
+            {
+              "schrift": "thắng",
+              "lerntext": "thắng",
+              "de": "gewinnen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "7.9"
       },
       {
         "kind": "finisher",
@@ -3298,13 +5595,14 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "newCount": 0,
         "task": "Sag, was du kannst und was du heute musst.",
         "newFrameWords": [],
-        "id": "7.8"
+        "id": "7.10"
       }
     ]
   },
   {
     "number": 8,
     "title": "Ich gehe, ich komme",
+    "niveau": null,
     "lessons": [
       {
         "kind": "frame",
@@ -3312,7 +5610,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / mình đi bằng [Slot]",
           "lerntext": "tôi / mình đi bằng [Slot]"
         },
-        "frameDe": "ich (neutral) / ich, wir (vertraut) fahre mit [Slot].",
+        "frameDe": "ich (neutral) / ich fahre mit [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -3322,7 +5620,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "mình",
             "lerntext": "mình",
-            "de": "ich, wir (vertraut)"
+            "de": "ich"
           }
         ],
         "slotGroups": [
@@ -3335,7 +5633,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "tàu",
               "lerntext": "tàu",
-              "de": "Zug, Schiff"
+              "de": "Zug"
             },
             {
               "schrift": "ô tô",
@@ -3343,29 +5641,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Auto"
             },
             {
-              "schrift": "mở",
-              "lerntext": "mở",
-              "de": "öffnen"
+              "schrift": "bản đồ",
+              "lerntext": "bản đồ",
+              "de": "Landkarte",
+              "wieder": true
             },
             {
-              "schrift": "du lịch",
-              "lerntext": "du lịch",
-              "de": "reisen"
+              "schrift": "vé",
+              "lerntext": "vé",
+              "de": "Fahrkarte",
+              "wieder": true
             },
             {
-              "schrift": "thắng",
-              "lerntext": "thắng",
-              "de": "gewinnen"
+              "schrift": "sân bay",
+              "lerntext": "sân bay",
+              "de": "Flughafen",
+              "wieder": true
             },
             {
-              "schrift": "quên",
-              "lerntext": "quên",
-              "de": "vergessen"
+              "schrift": "nhà hàng",
+              "lerntext": "nhà hàng",
+              "de": "Restaurant",
+              "wieder": true
             },
             {
-              "schrift": "bảy",
-              "lerntext": "bảy",
-              "de": "sieben"
+              "schrift": "cửa hàng",
+              "lerntext": "cửa hàng",
+              "de": "Laden",
+              "wieder": true
+            },
+            {
+              "schrift": "bệnh viện",
+              "lerntext": "bệnh viện",
+              "de": "Krankenhaus",
+              "wieder": true
+            },
+            {
+              "schrift": "rừng",
+              "lerntext": "rừng",
+              "de": "Wald",
+              "wieder": true
+            },
+            {
+              "schrift": "ga tàu",
+              "lerntext": "ga tàu",
+              "de": "Bahnhof",
+              "wieder": true
+            },
+            {
+              "schrift": "trường",
+              "lerntext": "trường",
+              "de": "Schule",
+              "wieder": true
+            },
+            {
+              "schrift": "đại học",
+              "lerntext": "đại học",
+              "de": "Universität",
+              "wieder": true
             }
           ]
         ],
@@ -3386,7 +5719,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / nó [Slot] bây giờ",
           "lerntext": "tôi / nó [Slot] bây giờ"
         },
-        "frameDe": "ich (neutral) / er, sie, es (vertraut) [Slot] jetzt.",
+        "frameDe": "ich (neutral) / er [Slot] jetzt.",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -3396,7 +5729,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           }
         ],
         "slotGroups": [
@@ -3419,7 +5752,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "chuyển",
               "lerntext": "chuyển",
-              "de": "umziehen, übertragen"
+              "de": "umziehen"
             },
             {
               "schrift": "sống",
@@ -3427,29 +5760,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "leben"
             },
             {
-              "schrift": "vào",
-              "lerntext": "vào",
-              "de": "hineingehen"
+              "schrift": "du lịch",
+              "lerntext": "du lịch",
+              "de": "reisen",
+              "wieder": true
             },
             {
-              "schrift": "tàu",
-              "lerntext": "tàu",
-              "de": "Zug, Schiff"
+              "schrift": "nhận",
+              "lerntext": "nhận",
+              "de": "bekommen",
+              "wieder": true
             },
             {
-              "schrift": "xe buýt",
-              "lerntext": "xe buýt",
-              "de": "Bus"
+              "schrift": "khóc",
+              "lerntext": "khóc",
+              "de": "weinen",
+              "wieder": true
             },
             {
-              "schrift": "lại",
-              "lerntext": "lại",
-              "de": "wieder"
+              "schrift": "chết",
+              "lerntext": "chết",
+              "de": "sterben",
+              "wieder": true
             },
             {
-              "schrift": "về",
-              "lerntext": "về",
-              "de": "über, zurück"
+              "schrift": "nghe",
+              "lerntext": "nghe",
+              "de": "hören",
+              "wieder": true
+            },
+            {
+              "schrift": "cần",
+              "lerntext": "cần",
+              "de": "brauchen",
+              "wieder": true
+            },
+            {
+              "schrift": "đóng",
+              "lerntext": "đóng",
+              "de": "schließen",
+              "wieder": true
+            },
+            {
+              "schrift": "quên",
+              "lerntext": "quên",
+              "de": "vergessen",
+              "wieder": true
+            },
+            {
+              "schrift": "cười",
+              "lerntext": "cười",
+              "de": "lachen",
+              "wieder": true
+            },
+            {
+              "schrift": "hỏi",
+              "lerntext": "hỏi",
+              "de": "fragen",
+              "wieder": true
             }
           ]
         ],
@@ -3459,7 +5827,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "về",
             "lerntext": "về",
-            "de": "über, zurück"
+            "de": "über"
           },
           {
             "schrift": "lại",
@@ -3474,10 +5842,196 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "giờ",
             "lerntext": "giờ",
-            "de": "Stunde, Uhr"
+            "de": "Stunde"
           }
         ],
         "id": "8.2"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi / nó [Slot] bây giờ",
+          "lerntext": "tôi / nó [Slot] bây giờ"
+        },
+        "frameDe": "ich (neutral) / er [Slot] jetzt.",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          },
+          {
+            "schrift": "nó",
+            "lerntext": "nó",
+            "de": "er"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "ngồi",
+              "lerntext": "ngồi",
+              "de": "sitzen",
+              "wieder": true
+            },
+            {
+              "schrift": "đứng",
+              "lerntext": "đứng",
+              "de": "stehen",
+              "wieder": true
+            },
+            {
+              "schrift": "nằm",
+              "lerntext": "nằm",
+              "de": "liegen",
+              "wieder": true
+            },
+            {
+              "schrift": "chuyển",
+              "lerntext": "chuyển",
+              "de": "umziehen",
+              "wieder": true
+            },
+            {
+              "schrift": "sống",
+              "lerntext": "sống",
+              "de": "leben",
+              "wieder": true
+            },
+            {
+              "schrift": "du lịch",
+              "lerntext": "du lịch",
+              "de": "reisen",
+              "wieder": true
+            },
+            {
+              "schrift": "nhận",
+              "lerntext": "nhận",
+              "de": "bekommen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "8.3"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi / mình đi bằng [Slot]",
+          "lerntext": "tôi / mình đi bằng [Slot]"
+        },
+        "frameDe": "ich (neutral) / ich fahre mit [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          },
+          {
+            "schrift": "mình",
+            "lerntext": "mình",
+            "de": "ich"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "xe buýt",
+              "lerntext": "xe buýt",
+              "de": "Bus",
+              "wieder": true
+            },
+            {
+              "schrift": "tàu",
+              "lerntext": "tàu",
+              "de": "Zug",
+              "wieder": true
+            },
+            {
+              "schrift": "bản đồ",
+              "lerntext": "bản đồ",
+              "de": "Landkarte",
+              "wieder": true
+            },
+            {
+              "schrift": "vé",
+              "lerntext": "vé",
+              "de": "Fahrkarte",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "8.4"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi / nó [Slot] bây giờ",
+          "lerntext": "tôi / nó [Slot] bây giờ"
+        },
+        "frameDe": "ich (neutral) / er [Slot] jetzt.",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          },
+          {
+            "schrift": "nó",
+            "lerntext": "nó",
+            "de": "er"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "ngồi",
+              "lerntext": "ngồi",
+              "de": "sitzen",
+              "wieder": true
+            },
+            {
+              "schrift": "đứng",
+              "lerntext": "đứng",
+              "de": "stehen",
+              "wieder": true
+            },
+            {
+              "schrift": "nằm",
+              "lerntext": "nằm",
+              "de": "liegen",
+              "wieder": true
+            },
+            {
+              "schrift": "chuyển",
+              "lerntext": "chuyển",
+              "de": "umziehen",
+              "wieder": true
+            },
+            {
+              "schrift": "sống",
+              "lerntext": "sống",
+              "de": "leben",
+              "wieder": true
+            },
+            {
+              "schrift": "du lịch",
+              "lerntext": "du lịch",
+              "de": "reisen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "8.5"
       },
       {
         "kind": "finisher",
@@ -3491,13 +6045,14 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "newCount": 0,
         "task": "Sag, wohin du gehst und womit du fährst.",
         "newFrameWords": [],
-        "id": "8.3"
+        "id": "8.6"
       }
     ]
   },
   {
     "number": 9,
     "title": "Zeit",
+    "niveau": null,
     "lessons": [
       {
         "kind": "series",
@@ -3532,7 +6087,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "sớm",
               "lerntext": "sớm",
-              "de": "früh, bald"
+              "de": "früh"
             },
             {
               "schrift": "luôn luôn",
@@ -3557,7 +6112,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "rồi",
               "lerntext": "rồi",
-              "de": "dann, schon"
+              "de": "dann"
             },
             {
               "schrift": "thì",
@@ -3598,11 +6153,6 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "slotGroups": [
           [
             {
-              "schrift": "ngày mai",
-              "lerntext": "ngày mai",
-              "de": "morgen"
-            },
-            {
               "schrift": "tối",
               "lerntext": "tối",
               "de": "Abend"
@@ -3623,29 +6173,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Woche"
             },
             {
-              "schrift": "hôm nay",
-              "lerntext": "hôm nay",
-              "de": "heute"
+              "schrift": "giờ",
+              "lerntext": "giờ",
+              "de": "Stunde",
+              "wieder": true
             },
             {
-              "schrift": "nằm",
-              "lerntext": "nằm",
-              "de": "liegen"
+              "schrift": "tàu",
+              "lerntext": "tàu",
+              "de": "Zug",
+              "wieder": true
             },
             {
-              "schrift": "cũng",
-              "lerntext": "cũng",
-              "de": "auch"
+              "schrift": "xe buýt",
+              "lerntext": "xe buýt",
+              "de": "Bus",
+              "wieder": true
             },
             {
-              "schrift": "thì",
-              "lerntext": "thì",
-              "de": "dann (Satzverbinder)"
+              "schrift": "bản đồ",
+              "lerntext": "bản đồ",
+              "de": "Landkarte",
+              "wieder": true
             },
             {
-              "schrift": "hôm qua",
-              "lerntext": "hôm qua",
-              "de": "gestern"
+              "schrift": "vé",
+              "lerntext": "vé",
+              "de": "Fahrkarte",
+              "wieder": true
+            },
+            {
+              "schrift": "sân bay",
+              "lerntext": "sân bay",
+              "de": "Flughafen",
+              "wieder": true
+            },
+            {
+              "schrift": "nhà hàng",
+              "lerntext": "nhà hàng",
+              "de": "Restaurant",
+              "wieder": true
+            },
+            {
+              "schrift": "nhà vệ sinh",
+              "lerntext": "nhà vệ sinh",
+              "de": "Toilette",
+              "wieder": true
+            },
+            {
+              "schrift": "cửa hàng",
+              "lerntext": "cửa hàng",
+              "de": "Laden",
+              "wieder": true
+            },
+            {
+              "schrift": "nước",
+              "lerntext": "nước",
+              "de": "Wasser",
+              "wieder": true
             }
           ]
         ],
@@ -3683,7 +6268,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "giờ",
               "lerntext": "giờ",
-              "de": "Stunde, Uhr"
+              "de": "Stunde"
             },
             {
               "schrift": "phút",
@@ -3691,29 +6276,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Minute"
             },
             {
-              "schrift": "tối",
-              "lerntext": "tối",
-              "de": "Abend"
+              "schrift": "tuần",
+              "lerntext": "tuần",
+              "de": "Woche",
+              "wieder": true
             },
             {
               "schrift": "đêm",
               "lerntext": "đêm",
-              "de": "Nacht"
+              "de": "Nacht",
+              "wieder": true
             },
             {
-              "schrift": "tuần",
-              "lerntext": "tuần",
-              "de": "Woche"
+              "schrift": "bản đồ",
+              "lerntext": "bản đồ",
+              "de": "Landkarte",
+              "wieder": true
             },
             {
-              "schrift": "đôi khi",
-              "lerntext": "đôi khi",
-              "de": "manchmal"
+              "schrift": "cầu",
+              "lerntext": "cầu",
+              "de": "Brücke",
+              "wieder": true
             },
             {
-              "schrift": "chung",
-              "lerntext": "chung",
-              "de": "zusammen"
+              "schrift": "vé",
+              "lerntext": "vé",
+              "de": "Fahrkarte",
+              "wieder": true
+            },
+            {
+              "schrift": "thành phố",
+              "lerntext": "thành phố",
+              "de": "Stadt",
+              "wieder": true
+            },
+            {
+              "schrift": "trường",
+              "lerntext": "trường",
+              "de": "Schule",
+              "wieder": true
+            },
+            {
+              "schrift": "đại học",
+              "lerntext": "đại học",
+              "de": "Universität",
+              "wieder": true
+            },
+            {
+              "schrift": "nhà vệ sinh",
+              "lerntext": "nhà vệ sinh",
+              "de": "Toilette",
+              "wieder": true
+            },
+            {
+              "schrift": "tay",
+              "lerntext": "tay",
+              "de": "Hand",
+              "wieder": true
             }
           ]
         ],
@@ -3721,6 +6341,260 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "task": null,
         "newFrameWords": [],
         "id": "9.3"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "[Slot]",
+          "lerntext": "[Slot]"
+        },
+        "frameDe": "[Slot]",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "hôm nay",
+              "lerntext": "hôm nay",
+              "de": "heute",
+              "wieder": true
+            },
+            {
+              "schrift": "hôm qua",
+              "lerntext": "hôm qua",
+              "de": "gestern",
+              "wieder": true
+            },
+            {
+              "schrift": "ngày mai",
+              "lerntext": "ngày mai",
+              "de": "morgen",
+              "wieder": true
+            },
+            {
+              "schrift": "bây giờ",
+              "lerntext": "bây giờ",
+              "de": "jetzt",
+              "wieder": true
+            },
+            {
+              "schrift": "sớm",
+              "lerntext": "sớm",
+              "de": "früh",
+              "wieder": true
+            },
+            {
+              "schrift": "luôn luôn",
+              "lerntext": "luôn luôn",
+              "de": "immer",
+              "wieder": true
+            },
+            {
+              "schrift": "không bao giờ",
+              "lerntext": "không bao giờ",
+              "de": "nie",
+              "wieder": true
+            },
+            {
+              "schrift": "thường",
+              "lerntext": "thường",
+              "de": "oft",
+              "wieder": true
+            },
+            {
+              "schrift": "đôi khi",
+              "lerntext": "đôi khi",
+              "de": "manchmal",
+              "wieder": true
+            },
+            {
+              "schrift": "rồi",
+              "lerntext": "rồi",
+              "de": "dann",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "9.4"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "hẹn gặp lại vào [Slot]",
+          "lerntext": "hẹn gặp lại vào [Slot]"
+        },
+        "frameDe": "Wir sehen uns am [Slot].",
+        "pronouns": [
+          {
+            "schrift": "khi nào",
+            "lerntext": "khi nào",
+            "de": "wann"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "tối",
+              "lerntext": "tối",
+              "de": "Abend",
+              "wieder": true
+            },
+            {
+              "schrift": "ngày",
+              "lerntext": "ngày",
+              "de": "Tag",
+              "wieder": true
+            },
+            {
+              "schrift": "đêm",
+              "lerntext": "đêm",
+              "de": "Nacht",
+              "wieder": true
+            },
+            {
+              "schrift": "tuần",
+              "lerntext": "tuần",
+              "de": "Woche",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "9.5"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "[Slot]",
+          "lerntext": "[Slot]"
+        },
+        "frameDe": "[Slot]",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "thì",
+              "lerntext": "thì",
+              "de": "dann (Satzverbinder)",
+              "wieder": true
+            },
+            {
+              "schrift": "ngay",
+              "lerntext": "ngay",
+              "de": "sofort",
+              "wieder": true
+            },
+            {
+              "schrift": "chung",
+              "lerntext": "chung",
+              "de": "zusammen",
+              "wieder": true
+            },
+            {
+              "schrift": "hôm nay",
+              "lerntext": "hôm nay",
+              "de": "heute",
+              "wieder": true
+            },
+            {
+              "schrift": "hôm qua",
+              "lerntext": "hôm qua",
+              "de": "gestern",
+              "wieder": true
+            },
+            {
+              "schrift": "ngày mai",
+              "lerntext": "ngày mai",
+              "de": "morgen",
+              "wieder": true
+            },
+            {
+              "schrift": "bây giờ",
+              "lerntext": "bây giờ",
+              "de": "jetzt",
+              "wieder": true
+            },
+            {
+              "schrift": "sớm",
+              "lerntext": "sớm",
+              "de": "früh",
+              "wieder": true
+            },
+            {
+              "schrift": "luôn luôn",
+              "lerntext": "luôn luôn",
+              "de": "immer",
+              "wieder": true
+            },
+            {
+              "schrift": "không bao giờ",
+              "lerntext": "không bao giờ",
+              "de": "nie",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "9.6"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "[Slot]",
+          "lerntext": "[Slot]"
+        },
+        "frameDe": "[Slot]",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "thường",
+              "lerntext": "thường",
+              "de": "oft",
+              "wieder": true
+            },
+            {
+              "schrift": "đôi khi",
+              "lerntext": "đôi khi",
+              "de": "manchmal",
+              "wieder": true
+            },
+            {
+              "schrift": "rồi",
+              "lerntext": "rồi",
+              "de": "dann",
+              "wieder": true
+            },
+            {
+              "schrift": "thì",
+              "lerntext": "thì",
+              "de": "dann (Satzverbinder)",
+              "wieder": true
+            },
+            {
+              "schrift": "ngay",
+              "lerntext": "ngay",
+              "de": "sofort",
+              "wieder": true
+            },
+            {
+              "schrift": "chung",
+              "lerntext": "chung",
+              "de": "zusammen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "9.7"
       },
       {
         "kind": "finisher",
@@ -3734,13 +6608,14 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "newCount": 0,
         "task": "Verabrede dich für morgen.",
         "newFrameWords": [],
-        "id": "9.4"
+        "id": "9.8"
       }
     ]
   },
   {
     "number": 10,
     "title": "Ich mag, mir gefällt",
+    "niveau": null,
     "lessons": [
       {
         "kind": "frame",
@@ -3748,7 +6623,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / bạn / nó / mình thích [Slot]",
           "lerntext": "tôi / bạn / nó / mình thích [Slot]"
         },
-        "frameDe": "ich (neutral) / du (Gleichaltrige), Freund / er, sie, es (vertraut) / ich, wir (vertraut) mag [Slot].",
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / er / ich mag [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -3758,17 +6633,17 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "bạn",
             "lerntext": "bạn",
-            "de": "du (Gleichaltrige), Freund"
+            "de": "du (Gleichaltrige)"
           },
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           },
           {
             "schrift": "mình",
             "lerntext": "mình",
-            "de": "ich, wir (vertraut)"
+            "de": "ich"
           }
         ],
         "slotGroups": [
@@ -3799,29 +6674,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Berg"
             },
             {
-              "schrift": "yêu",
-              "lerntext": "yêu",
-              "de": "lieben"
+              "schrift": "phút",
+              "lerntext": "phút",
+              "de": "Minute",
+              "wieder": true
             },
             {
-              "schrift": "luôn luôn",
-              "lerntext": "luôn luôn",
-              "de": "immer"
+              "schrift": "ngày",
+              "lerntext": "ngày",
+              "de": "Tag",
+              "wieder": true
             },
             {
-              "schrift": "bây giờ",
-              "lerntext": "bây giờ",
-              "de": "jetzt"
+              "schrift": "tối",
+              "lerntext": "tối",
+              "de": "Abend",
+              "wieder": true
             },
             {
-              "schrift": "chuyển",
-              "lerntext": "chuyển",
-              "de": "umziehen, übertragen"
+              "schrift": "tuần",
+              "lerntext": "tuần",
+              "de": "Woche",
+              "wieder": true
             },
             {
-              "schrift": "rồi",
-              "lerntext": "rồi",
-              "de": "dann, schon"
+              "schrift": "tàu",
+              "lerntext": "tàu",
+              "de": "Zug",
+              "wieder": true
+            },
+            {
+              "schrift": "xe buýt",
+              "lerntext": "xe buýt",
+              "de": "Bus",
+              "wieder": true
+            },
+            {
+              "schrift": "đêm",
+              "lerntext": "đêm",
+              "de": "Nacht",
+              "wieder": true
+            },
+            {
+              "schrift": "bệnh viện",
+              "lerntext": "bệnh viện",
+              "de": "Krankenhaus",
+              "wieder": true
+            },
+            {
+              "schrift": "bia",
+              "lerntext": "bia",
+              "de": "Bier",
+              "wieder": true
+            },
+            {
+              "schrift": "muối",
+              "lerntext": "muối",
+              "de": "Salz",
+              "wieder": true
             }
           ]
         ],
@@ -3847,7 +6757,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / bạn / nó / mình thích [Slot]",
           "lerntext": "tôi / bạn / nó / mình thích [Slot]"
         },
-        "frameDe": "ich (neutral) / du (Gleichaltrige), Freund / er, sie, es (vertraut) / ich, wir (vertraut) mag [Slot].",
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / er / ich mag [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -3857,17 +6767,17 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "bạn",
             "lerntext": "bạn",
-            "de": "du (Gleichaltrige), Freund"
+            "de": "du (Gleichaltrige)"
           },
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           },
           {
             "schrift": "mình",
             "lerntext": "mình",
-            "de": "ich, wir (vertraut)"
+            "de": "ich"
           }
         ],
         "slotGroups": [
@@ -3880,27 +6790,62 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "mặt trời",
               "lerntext": "mặt trời",
-              "de": "Sonne"
-            },
-            {
-              "schrift": "thời tiết",
-              "lerntext": "thời tiết",
-              "de": "Wetter"
+              "de": "Sonne",
+              "wieder": true
             },
             {
               "schrift": "mưa",
               "lerntext": "mưa",
-              "de": "Regen"
+              "de": "Regen",
+              "wieder": true
+            },
+            {
+              "schrift": "gió",
+              "lerntext": "gió",
+              "de": "Wind",
+              "wieder": true
+            },
+            {
+              "schrift": "thời tiết",
+              "lerntext": "thời tiết",
+              "de": "Wetter",
+              "wieder": true
             },
             {
               "schrift": "núi",
               "lerntext": "núi",
-              "de": "Berg"
+              "de": "Berg",
+              "wieder": true
             },
             {
-              "schrift": "ngồi",
-              "lerntext": "ngồi",
-              "de": "sitzen"
+              "schrift": "phút",
+              "lerntext": "phút",
+              "de": "Minute",
+              "wieder": true
+            },
+            {
+              "schrift": "ngày",
+              "lerntext": "ngày",
+              "de": "Tag",
+              "wieder": true
+            },
+            {
+              "schrift": "tối",
+              "lerntext": "tối",
+              "de": "Abend",
+              "wieder": true
+            },
+            {
+              "schrift": "tuần",
+              "lerntext": "tuần",
+              "de": "Woche",
+              "wieder": true
+            },
+            {
+              "schrift": "tàu",
+              "lerntext": "tàu",
+              "de": "Zug",
+              "wieder": true
             }
           ]
         ],
@@ -3912,57 +6857,101 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
       {
         "kind": "frame",
         "frame": {
-          "schrift": "tôi / nó thấy [Slot]",
-          "lerntext": "tôi / nó thấy [Slot]"
+          "schrift": "nó màu [Slot]",
+          "lerntext": "nó màu [Slot]"
         },
-        "frameDe": "ich (neutral) / er, sie, es (vertraut) sehe [Slot].",
-        "pronouns": [
-          {
-            "schrift": "tôi",
-            "lerntext": "tôi",
-            "de": "ich (neutral)"
-          },
-          {
-            "schrift": "nó",
-            "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
-          }
-        ],
+        "frameDe": "Sie ist [Slot].",
+        "pronouns": [],
         "slotGroups": [
           [
             {
-              "schrift": "nó",
-              "lerntext": "nó",
-              "de": "er, sie, es (vertraut)"
+              "schrift": "đỏ",
+              "lerntext": "đỏ",
+              "de": "rot"
             },
             {
-              "schrift": "biển",
-              "lerntext": "biển",
-              "de": "Meer"
+              "schrift": "xanh",
+              "lerntext": "xanh",
+              "de": "blau"
             },
             {
-              "schrift": "ngay",
-              "lerntext": "ngay",
-              "de": "sofort"
+              "schrift": "vàng",
+              "lerntext": "vàng",
+              "de": "gelb"
             },
             {
-              "schrift": "thường",
-              "lerntext": "thường",
-              "de": "oft"
+              "schrift": "đen",
+              "lerntext": "đen",
+              "de": "schwarz"
             },
             {
-              "schrift": "gió",
-              "lerntext": "gió",
-              "de": "Wind"
+              "schrift": "trắng",
+              "lerntext": "trắng",
+              "de": "weiß"
             },
             {
-              "schrift": "đóng",
-              "lerntext": "đóng",
-              "de": "schließen"
+              "schrift": "thấp",
+              "lerntext": "thấp",
+              "de": "niedrig",
+              "wieder": true
+            },
+            {
+              "schrift": "cao",
+              "lerntext": "cao",
+              "de": "hoch",
+              "wieder": true
+            },
+            {
+              "schrift": "nặng",
+              "lerntext": "nặng",
+              "de": "schwer",
+              "wieder": true
+            },
+            {
+              "schrift": "ngắn",
+              "lerntext": "ngắn",
+              "de": "kurz",
+              "wieder": true
+            },
+            {
+              "schrift": "nhẹ",
+              "lerntext": "nhẹ",
+              "de": "leicht",
+              "wieder": true
+            },
+            {
+              "schrift": "nhỏ",
+              "lerntext": "nhỏ",
+              "de": "klein",
+              "wieder": true
+            },
+            {
+              "schrift": "dài",
+              "lerntext": "dài",
+              "de": "lang",
+              "wieder": true
+            },
+            {
+              "schrift": "đắt",
+              "lerntext": "đắt",
+              "de": "teuer",
+              "wieder": true
+            },
+            {
+              "schrift": "rẻ",
+              "lerntext": "rẻ",
+              "de": "billig",
+              "wieder": true
+            },
+            {
+              "schrift": "to",
+              "lerntext": "to",
+              "de": "groß",
+              "wieder": true
             }
           ]
         ],
-        "newCount": 0,
+        "newCount": 5,
         "task": null,
         "newFrameWords": [],
         "id": "10.3"
@@ -3978,73 +6967,6 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "slotGroups": [
           [
             {
-              "schrift": "đỏ",
-              "lerntext": "đỏ",
-              "de": "rot"
-            },
-            {
-              "schrift": "xanh",
-              "lerntext": "xanh",
-              "de": "blau, grün"
-            },
-            {
-              "schrift": "vàng",
-              "lerntext": "vàng",
-              "de": "gelb, golden"
-            },
-            {
-              "schrift": "đen",
-              "lerntext": "đen",
-              "de": "schwarz"
-            },
-            {
-              "schrift": "trắng",
-              "lerntext": "trắng",
-              "de": "weiß"
-            },
-            {
-              "schrift": "mười sáu",
-              "lerntext": "mười sáu",
-              "de": "sechzehn"
-            },
-            {
-              "schrift": "sớm",
-              "lerntext": "sớm",
-              "de": "früh, bald"
-            },
-            {
-              "schrift": "phút",
-              "lerntext": "phút",
-              "de": "Minute"
-            },
-            {
-              "schrift": "bên cạnh",
-              "lerntext": "bên cạnh",
-              "de": "neben"
-            },
-            {
-              "schrift": "chết",
-              "lerntext": "chết",
-              "de": "sterben"
-            }
-          ]
-        ],
-        "newCount": 5,
-        "task": null,
-        "newFrameWords": [],
-        "id": "10.4"
-      },
-      {
-        "kind": "frame",
-        "frame": {
-          "schrift": "nó màu [Slot]",
-          "lerntext": "nó màu [Slot]"
-        },
-        "frameDe": "Sie ist [Slot].",
-        "pronouns": [],
-        "slotGroups": [
-          [
-            {
               "schrift": "nâu",
               "lerntext": "nâu",
               "de": "braun"
@@ -4057,34 +6979,69 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "đỏ",
               "lerntext": "đỏ",
-              "de": "rot"
-            },
-            {
-              "schrift": "trắng",
-              "lerntext": "trắng",
-              "de": "weiß"
+              "de": "rot",
+              "wieder": true
             },
             {
               "schrift": "xanh",
               "lerntext": "xanh",
-              "de": "blau, grün"
+              "de": "blau",
+              "wieder": true
             },
             {
               "schrift": "vàng",
               "lerntext": "vàng",
-              "de": "gelb, golden"
+              "de": "gelb",
+              "wieder": true
             },
             {
               "schrift": "đen",
               "lerntext": "đen",
-              "de": "schwarz"
+              "de": "schwarz",
+              "wieder": true
+            },
+            {
+              "schrift": "trắng",
+              "lerntext": "trắng",
+              "de": "weiß",
+              "wieder": true
+            },
+            {
+              "schrift": "thấp",
+              "lerntext": "thấp",
+              "de": "niedrig",
+              "wieder": true
+            },
+            {
+              "schrift": "cao",
+              "lerntext": "cao",
+              "de": "hoch",
+              "wieder": true
+            },
+            {
+              "schrift": "nặng",
+              "lerntext": "nặng",
+              "de": "schwer",
+              "wieder": true
+            },
+            {
+              "schrift": "ngắn",
+              "lerntext": "ngắn",
+              "de": "kurz",
+              "wieder": true
+            },
+            {
+              "schrift": "nhẹ",
+              "lerntext": "nhẹ",
+              "de": "leicht",
+              "wieder": true
             }
           ]
         ],
         "newCount": 2,
         "task": null,
         "newFrameWords": [],
-        "id": "10.5"
+        "id": "10.4"
       },
       {
         "kind": "frame",
@@ -4122,29 +7079,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "sauber"
             },
             {
-              "schrift": "sẽ",
-              "lerntext": "sẽ",
-              "de": "wird (Zukunft)"
-            },
-            {
               "schrift": "nâu",
               "lerntext": "nâu",
-              "de": "braun"
+              "de": "braun",
+              "wieder": true
             },
             {
               "schrift": "xám",
               "lerntext": "xám",
-              "de": "grau"
+              "de": "grau",
+              "wieder": true
             },
             {
-              "schrift": "mười",
-              "lerntext": "mười",
-              "de": "zehn"
+              "schrift": "đỏ",
+              "lerntext": "đỏ",
+              "de": "rot",
+              "wieder": true
             },
             {
-              "schrift": "không bao giờ",
-              "lerntext": "không bao giờ",
-              "de": "nie"
+              "schrift": "vàng",
+              "lerntext": "vàng",
+              "de": "gelb",
+              "wieder": true
+            },
+            {
+              "schrift": "trắng",
+              "lerntext": "trắng",
+              "de": "weiß",
+              "wieder": true
+            },
+            {
+              "schrift": "đen",
+              "lerntext": "đen",
+              "de": "schwarz",
+              "wieder": true
+            },
+            {
+              "schrift": "xanh",
+              "lerntext": "xanh",
+              "de": "blau",
+              "wieder": true
+            },
+            {
+              "schrift": "thấp",
+              "lerntext": "thấp",
+              "de": "niedrig",
+              "wieder": true
+            },
+            {
+              "schrift": "nhỏ",
+              "lerntext": "nhỏ",
+              "de": "klein",
+              "wieder": true
+            },
+            {
+              "schrift": "cao",
+              "lerntext": "cao",
+              "de": "hoch",
+              "wieder": true
             }
           ]
         ],
@@ -4157,7 +7149,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             "de": "wird (Zukunft)"
           }
         ],
-        "id": "10.6"
+        "id": "10.5"
       },
       {
         "kind": "frame",
@@ -4175,36 +7167,198 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "schmutzig"
             },
             {
+              "schrift": "ngọt",
+              "lerntext": "ngọt",
+              "de": "süß (Geschmack)",
+              "wieder": true
+            },
+            {
               "schrift": "chua",
               "lerntext": "chua",
-              "de": "sauer"
+              "de": "sauer",
+              "wieder": true
             },
             {
               "schrift": "ấm",
               "lerntext": "ấm",
-              "de": "warm"
-            },
-            {
-              "schrift": "ngọt",
-              "lerntext": "ngọt",
-              "de": "süß (Geschmack)"
+              "de": "warm",
+              "wieder": true
             },
             {
               "schrift": "lạnh",
               "lerntext": "lạnh",
-              "de": "kalt"
+              "de": "kalt",
+              "wieder": true
             },
             {
               "schrift": "sạch",
               "lerntext": "sạch",
-              "de": "sauber"
+              "de": "sauber",
+              "wieder": true
+            },
+            {
+              "schrift": "nâu",
+              "lerntext": "nâu",
+              "de": "braun",
+              "wieder": true
+            },
+            {
+              "schrift": "xám",
+              "lerntext": "xám",
+              "de": "grau",
+              "wieder": true
+            },
+            {
+              "schrift": "dài",
+              "lerntext": "dài",
+              "de": "lang",
+              "wieder": true
+            },
+            {
+              "schrift": "đỏ",
+              "lerntext": "đỏ",
+              "de": "rot",
+              "wieder": true
+            },
+            {
+              "schrift": "nặng",
+              "lerntext": "nặng",
+              "de": "schwer",
+              "wieder": true
             }
           ]
         ],
         "newCount": 1,
         "task": null,
         "newFrameWords": [],
+        "id": "10.6"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi / bạn / nó / mình thích [Slot]",
+          "lerntext": "tôi / bạn / nó / mình thích [Slot]"
+        },
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / er / ich mag [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          },
+          {
+            "schrift": "bạn",
+            "lerntext": "bạn",
+            "de": "du (Gleichaltrige)"
+          },
+          {
+            "schrift": "nó",
+            "lerntext": "nó",
+            "de": "er"
+          },
+          {
+            "schrift": "mình",
+            "lerntext": "mình",
+            "de": "ich"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "biển",
+              "lerntext": "biển",
+              "de": "Meer",
+              "wieder": true
+            },
+            {
+              "schrift": "mặt trời",
+              "lerntext": "mặt trời",
+              "de": "Sonne",
+              "wieder": true
+            },
+            {
+              "schrift": "mưa",
+              "lerntext": "mưa",
+              "de": "Regen",
+              "wieder": true
+            },
+            {
+              "schrift": "gió",
+              "lerntext": "gió",
+              "de": "Wind",
+              "wieder": true
+            },
+            {
+              "schrift": "thời tiết",
+              "lerntext": "thời tiết",
+              "de": "Wetter",
+              "wieder": true
+            },
+            {
+              "schrift": "núi",
+              "lerntext": "núi",
+              "de": "Berg",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
         "id": "10.7"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "món ăn rất [Slot]",
+          "lerntext": "món ăn rất [Slot]"
+        },
+        "frameDe": "Das Essen ist [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "bẩn",
+              "lerntext": "bẩn",
+              "de": "schmutzig",
+              "wieder": true
+            },
+            {
+              "schrift": "ngọt",
+              "lerntext": "ngọt",
+              "de": "süß (Geschmack)",
+              "wieder": true
+            },
+            {
+              "schrift": "chua",
+              "lerntext": "chua",
+              "de": "sauer",
+              "wieder": true
+            },
+            {
+              "schrift": "ấm",
+              "lerntext": "ấm",
+              "de": "warm",
+              "wieder": true
+            },
+            {
+              "schrift": "lạnh",
+              "lerntext": "lạnh",
+              "de": "kalt",
+              "wieder": true
+            },
+            {
+              "schrift": "sạch",
+              "lerntext": "sạch",
+              "de": "sauber",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "10.8"
       },
       {
         "kind": "finisher",
@@ -4218,13 +7372,14 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "newCount": 0,
         "task": "Sag, was du magst und was nicht.",
         "newFrameWords": [],
-        "id": "10.8"
+        "id": "10.9"
       }
     ]
   },
   {
     "number": 11,
     "title": "Gestern und morgen",
+    "niveau": null,
     "lessons": [
       {
         "kind": "frame",
@@ -4232,7 +7387,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "hôm qua tôi / bạn / nó / mình [Slot]",
           "lerntext": "hôm qua tôi / bạn / nó / mình [Slot]"
         },
-        "frameDe": "ich (neutral) / du (Gleichaltrige), Freund / er, sie, es (vertraut) / ich, wir (vertraut) war gestern [Slot].",
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / er / ich war gestern [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -4242,17 +7397,17 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "bạn",
             "lerntext": "bạn",
-            "de": "du (Gleichaltrige), Freund"
+            "de": "du (Gleichaltrige)"
           },
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           },
           {
             "schrift": "mình",
             "lerntext": "mình",
-            "de": "ich, wir (vertraut)"
+            "de": "ich"
           }
         ],
         "slotGroups": [
@@ -4268,29 +7423,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "krank"
             },
             {
-              "schrift": "nhiều",
-              "lerntext": "nhiều",
-              "de": "viel"
-            },
-            {
               "schrift": "bẩn",
               "lerntext": "bẩn",
-              "de": "schmutzig"
+              "de": "schmutzig",
+              "wieder": true
             },
             {
-              "schrift": "dài",
-              "lerntext": "dài",
-              "de": "lang"
+              "schrift": "ngọt",
+              "lerntext": "ngọt",
+              "de": "süß (Geschmack)",
+              "wieder": true
             },
             {
-              "schrift": "chín mươi",
-              "lerntext": "chín mươi",
-              "de": "neunzig"
+              "schrift": "ấm",
+              "lerntext": "ấm",
+              "de": "warm",
+              "wieder": true
             },
             {
-              "schrift": "nhẹ",
-              "lerntext": "nhẹ",
-              "de": "leicht"
+              "schrift": "chua",
+              "lerntext": "chua",
+              "de": "sauer",
+              "wieder": true
+            },
+            {
+              "schrift": "nâu",
+              "lerntext": "nâu",
+              "de": "braun",
+              "wieder": true
+            },
+            {
+              "schrift": "đắt",
+              "lerntext": "đắt",
+              "de": "teuer",
+              "wieder": true
+            },
+            {
+              "schrift": "vàng",
+              "lerntext": "vàng",
+              "de": "gelb",
+              "wieder": true
+            },
+            {
+              "schrift": "trắng",
+              "lerntext": "trắng",
+              "de": "weiß",
+              "wieder": true
+            },
+            {
+              "schrift": "đen",
+              "lerntext": "đen",
+              "de": "schwarz",
+              "wieder": true
+            },
+            {
+              "schrift": "sạch",
+              "lerntext": "sạch",
+              "de": "sauber",
+              "wieder": true
             }
           ]
         ],
@@ -4311,7 +7501,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "ngày mai tôi / bạn / mình sẽ [Slot]",
           "lerntext": "ngày mai tôi / bạn / mình sẽ [Slot]"
         },
-        "frameDe": "ich (neutral) / du (Gleichaltrige), Freund / ich, wir (vertraut) werde morgen [Slot].",
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / ich werde morgen [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -4321,12 +7511,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "bạn",
             "lerntext": "bạn",
-            "de": "du (Gleichaltrige), Freund"
+            "de": "du (Gleichaltrige)"
           },
           {
             "schrift": "mình",
             "lerntext": "mình",
-            "de": "ich, wir (vertraut)"
+            "de": "ich"
           }
         ],
         "slotGroups": [
@@ -4344,37 +7534,72 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "cho",
               "lerntext": "cho",
-              "de": "für, geben"
+              "de": "für"
             },
             {
               "schrift": "lấy",
               "lerntext": "lấy",
-              "de": "nehmen, holen"
+              "de": "nehmen"
             },
             {
-              "schrift": "nên",
-              "lerntext": "nên",
-              "de": "also, sollte"
+              "schrift": "sau",
+              "lerntext": "sau",
+              "de": "nach",
+              "wieder": true
             },
             {
-              "schrift": "trở thành",
-              "lerntext": "trở thành",
-              "de": "werden"
+              "schrift": "với",
+              "lerntext": "với",
+              "de": "mit",
+              "wieder": true
             },
             {
-              "schrift": "viết",
-              "lerntext": "viết",
-              "de": "schreiben"
+              "schrift": "về",
+              "lerntext": "về",
+              "de": "über",
+              "wieder": true
             },
             {
-              "schrift": "bản đồ",
-              "lerntext": "bản đồ",
-              "de": "Landkarte"
+              "schrift": "vào",
+              "lerntext": "vào",
+              "de": "hineingehen",
+              "wieder": true
             },
             {
-              "schrift": "chỉ",
-              "lerntext": "chỉ",
-              "de": "nur"
+              "schrift": "yêu",
+              "lerntext": "yêu",
+              "de": "lieben",
+              "wieder": true
+            },
+            {
+              "schrift": "bằng",
+              "lerntext": "bằng",
+              "de": "mit (Mittel)",
+              "wieder": true
+            },
+            {
+              "schrift": "nằm",
+              "lerntext": "nằm",
+              "de": "liegen",
+              "wieder": true
+            },
+            {
+              "schrift": "ngồi",
+              "lerntext": "ngồi",
+              "de": "sitzen",
+              "wieder": true
+            },
+            {
+              "schrift": "giữa",
+              "lerntext": "giữa",
+              "de": "zwischen",
+              "wieder": true
+            },
+            {
+              "schrift": "đứng",
+              "lerntext": "đứng",
+              "de": "stehen",
+              "wieder": true
             }
           ]
         ],
@@ -4389,7 +7614,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "nên",
             "lerntext": "nên",
-            "de": "also, sollte"
+            "de": "also"
           }
         ],
         "id": "11.2"
@@ -4400,7 +7625,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / bạn [Slot] nhiều",
           "lerntext": "tôi / bạn [Slot] nhiều"
         },
-        "frameDe": "ich (neutral) / du (Gleichaltrige), Freund [Slot] viel.",
+        "frameDe": "ich (neutral) / du (Gleichaltrige) [Slot] viel.",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -4410,7 +7635,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "bạn",
             "lerntext": "bạn",
-            "de": "du (Gleichaltrige), Freund"
+            "de": "du (Gleichaltrige)"
           }
         ],
         "slotGroups": [
@@ -4423,7 +7648,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "biết",
               "lerntext": "biết",
-              "de": "wissen, kennen"
+              "de": "wissen"
             },
             {
               "schrift": "tin",
@@ -4436,29 +7661,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "denken"
             },
             {
-              "schrift": "việc",
-              "lerntext": "việc",
-              "de": "Arbeit, Sache"
-            },
-            {
-              "schrift": "mua",
-              "lerntext": "mua",
-              "de": "kaufen"
+              "schrift": "trở thành",
+              "lerntext": "trở thành",
+              "de": "werden",
+              "wieder": true
             },
             {
               "schrift": "lấy",
               "lerntext": "lấy",
-              "de": "nehmen, holen"
+              "de": "nehmen",
+              "wieder": true
+            },
+            {
+              "schrift": "mua",
+              "lerntext": "mua",
+              "de": "kaufen",
+              "wieder": true
             },
             {
               "schrift": "bán",
               "lerntext": "bán",
-              "de": "verkaufen"
+              "de": "verkaufen",
+              "wieder": true
             },
             {
-              "schrift": "đứng",
-              "lerntext": "đứng",
-              "de": "stehen"
+              "schrift": "vào",
+              "lerntext": "vào",
+              "de": "hineingehen",
+              "wieder": true
+            },
+            {
+              "schrift": "yêu",
+              "lerntext": "yêu",
+              "de": "lieben",
+              "wieder": true
+            },
+            {
+              "schrift": "nhận",
+              "lerntext": "nhận",
+              "de": "bekommen",
+              "wieder": true
+            },
+            {
+              "schrift": "sống",
+              "lerntext": "sống",
+              "de": "leben",
+              "wieder": true
+            },
+            {
+              "schrift": "nhảy",
+              "lerntext": "nhảy",
+              "de": "tanzen",
+              "wieder": true
+            },
+            {
+              "schrift": "thích",
+              "lerntext": "thích",
+              "de": "mögen",
+              "wieder": true
             }
           ]
         ],
@@ -4468,7 +7728,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "việc",
             "lerntext": "việc",
-            "de": "Arbeit, Sache"
+            "de": "Arbeit"
           }
         ],
         "id": "11.3"
@@ -4479,7 +7739,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "tôi / nó trở nên [Slot]",
           "lerntext": "tôi / nó trở nên [Slot]"
         },
-        "frameDe": "ich (neutral) / er, sie, es (vertraut) werde [Slot].",
+        "frameDe": "ich (neutral) / er werde [Slot].",
         "pronouns": [
           {
             "schrift": "tôi",
@@ -4489,7 +7749,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "nó",
             "lerntext": "nó",
-            "de": "er, sie, es (vertraut)"
+            "de": "er"
           }
         ],
         "slotGroups": [
@@ -4505,29 +7765,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "gefährlich"
             },
             {
-              "schrift": "nghĩ",
-              "lerntext": "nghĩ",
-              "de": "denken"
+              "schrift": "ít",
+              "lerntext": "ít",
+              "de": "wenig",
+              "wieder": true
             },
             {
-              "schrift": "tin",
-              "lerntext": "tin",
-              "de": "glauben"
+              "schrift": "chỉ",
+              "lerntext": "chỉ",
+              "de": "nur",
+              "wieder": true
             },
             {
-              "schrift": "biết",
-              "lerntext": "biết",
-              "de": "wissen, kennen"
+              "schrift": "nhiều",
+              "lerntext": "nhiều",
+              "de": "viel",
+              "wieder": true
             },
             {
-              "schrift": "tìm",
-              "lerntext": "tìm",
-              "de": "suchen"
+              "schrift": "lại",
+              "lerntext": "lại",
+              "de": "wieder",
+              "wieder": true
             },
             {
-              "schrift": "mười chín",
-              "lerntext": "mười chín",
-              "de": "neunzehn"
+              "schrift": "sẽ",
+              "lerntext": "sẽ",
+              "de": "wird (Zukunft)",
+              "wieder": true
+            },
+            {
+              "schrift": "kìa",
+              "lerntext": "kìa",
+              "de": "dort",
+              "wieder": true
+            },
+            {
+              "schrift": "bây giờ",
+              "lerntext": "bây giờ",
+              "de": "jetzt",
+              "wieder": true
+            },
+            {
+              "schrift": "chung",
+              "lerntext": "chung",
+              "de": "zusammen",
+              "wieder": true
+            },
+            {
+              "schrift": "dở",
+              "lerntext": "dở",
+              "de": "schlecht",
+              "wieder": true
+            },
+            {
+              "schrift": "thường",
+              "lerntext": "thường",
+              "de": "oft",
+              "wieder": true
             }
           ]
         ],
@@ -4543,6 +7838,237 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "id": "11.4"
       },
       {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi / bạn [Slot] nhiều",
+          "lerntext": "tôi / bạn [Slot] nhiều"
+        },
+        "frameDe": "ich (neutral) / du (Gleichaltrige) [Slot] viel.",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          },
+          {
+            "schrift": "bạn",
+            "lerntext": "bạn",
+            "de": "du (Gleichaltrige)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "tìm",
+              "lerntext": "tìm",
+              "de": "suchen",
+              "wieder": true
+            },
+            {
+              "schrift": "biết",
+              "lerntext": "biết",
+              "de": "wissen",
+              "wieder": true
+            },
+            {
+              "schrift": "tin",
+              "lerntext": "tin",
+              "de": "glauben",
+              "wieder": true
+            },
+            {
+              "schrift": "nghĩ",
+              "lerntext": "nghĩ",
+              "de": "denken",
+              "wieder": true
+            },
+            {
+              "schrift": "lấy",
+              "lerntext": "lấy",
+              "de": "nehmen",
+              "wieder": true
+            },
+            {
+              "schrift": "mua",
+              "lerntext": "mua",
+              "de": "kaufen",
+              "wieder": true
+            },
+            {
+              "schrift": "bán",
+              "lerntext": "bán",
+              "de": "verkaufen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "11.5"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi / nó trở nên [Slot]",
+          "lerntext": "tôi / nó trở nên [Slot]"
+        },
+        "frameDe": "ich (neutral) / er werde [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          },
+          {
+            "schrift": "nó",
+            "lerntext": "nó",
+            "de": "er"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "nguy hiểm",
+              "lerntext": "nguy hiểm",
+              "de": "gefährlich",
+              "wieder": true
+            },
+            {
+              "schrift": "ít",
+              "lerntext": "ít",
+              "de": "wenig",
+              "wieder": true
+            },
+            {
+              "schrift": "chỉ",
+              "lerntext": "chỉ",
+              "de": "nur",
+              "wieder": true
+            },
+            {
+              "schrift": "nhiều",
+              "lerntext": "nhiều",
+              "de": "viel",
+              "wieder": true
+            },
+            {
+              "schrift": "lại",
+              "lerntext": "lại",
+              "de": "wieder",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "11.6"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi / bạn [Slot] nhiều",
+          "lerntext": "tôi / bạn [Slot] nhiều"
+        },
+        "frameDe": "ich (neutral) / du (Gleichaltrige) [Slot] viel.",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          },
+          {
+            "schrift": "bạn",
+            "lerntext": "bạn",
+            "de": "du (Gleichaltrige)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "tìm",
+              "lerntext": "tìm",
+              "de": "suchen",
+              "wieder": true
+            },
+            {
+              "schrift": "biết",
+              "lerntext": "biết",
+              "de": "wissen",
+              "wieder": true
+            },
+            {
+              "schrift": "tin",
+              "lerntext": "tin",
+              "de": "glauben",
+              "wieder": true
+            },
+            {
+              "schrift": "nghĩ",
+              "lerntext": "nghĩ",
+              "de": "denken",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "11.7"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "ngày mai tôi / bạn / mình sẽ [Slot]",
+          "lerntext": "ngày mai tôi / bạn / mình sẽ [Slot]"
+        },
+        "frameDe": "ich (neutral) / du (Gleichaltrige) / ich werde morgen [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          },
+          {
+            "schrift": "bạn",
+            "lerntext": "bạn",
+            "de": "du (Gleichaltrige)"
+          },
+          {
+            "schrift": "mình",
+            "lerntext": "mình",
+            "de": "ich"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "sau",
+              "lerntext": "sau",
+              "de": "nach",
+              "wieder": true
+            },
+            {
+              "schrift": "với",
+              "lerntext": "với",
+              "de": "mit",
+              "wieder": true
+            },
+            {
+              "schrift": "về",
+              "lerntext": "về",
+              "de": "über",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "11.8"
+      },
+      {
         "kind": "finisher",
         "frame": {
           "schrift": "",
@@ -4554,13 +8080,14 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "newCount": 0,
         "task": "Erzähl, was du gestern gemacht hast.",
         "newFrameWords": [],
-        "id": "11.5"
+        "id": "11.9"
       }
     ]
   },
   {
     "number": 12,
     "title": "Sätze verbinden",
+    "niveau": null,
     "lessons": [
       {
         "kind": "frame",
@@ -4596,7 +8123,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "trên",
               "lerntext": "trên",
-              "de": "auf, über"
+              "de": "auf"
             },
             {
               "schrift": "trong khi",
@@ -4611,32 +8138,67 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "đến",
               "lerntext": "đến",
-              "de": "bis, ankommen"
+              "de": "bis"
             },
             {
-              "schrift": "nguy hiểm",
-              "lerntext": "nguy hiểm",
-              "de": "gefährlich"
+              "schrift": "trước",
+              "lerntext": "trước",
+              "de": "vor",
+              "wieder": true
             },
             {
-              "schrift": "năm",
-              "lerntext": "năm",
-              "de": "fünf, Jahr"
+              "schrift": "cũng",
+              "lerntext": "cũng",
+              "de": "auch",
+              "wieder": true
             },
             {
-              "schrift": "tám",
-              "lerntext": "tám",
-              "de": "acht"
+              "schrift": "sau",
+              "lerntext": "sau",
+              "de": "nach",
+              "wieder": true
             },
             {
-              "schrift": "mười ba",
-              "lerntext": "mười ba",
-              "de": "dreizehn"
+              "schrift": "với",
+              "lerntext": "với",
+              "de": "mit",
+              "wieder": true
             },
             {
-              "schrift": "giúp",
-              "lerntext": "giúp",
-              "de": "helfen"
+              "schrift": "về",
+              "lerntext": "về",
+              "de": "über",
+              "wieder": true
+            },
+            {
+              "schrift": "bằng",
+              "lerntext": "bằng",
+              "de": "mit (Mittel)",
+              "wieder": true
+            },
+            {
+              "schrift": "dưới",
+              "lerntext": "dưới",
+              "de": "unter",
+              "wieder": true
+            },
+            {
+              "schrift": "thì",
+              "lerntext": "thì",
+              "de": "dann (Satzverbinder)",
+              "wieder": true
+            },
+            {
+              "schrift": "rồi",
+              "lerntext": "rồi",
+              "de": "dann",
+              "wieder": true
+            },
+            {
+              "schrift": "bên cạnh",
+              "lerntext": "bên cạnh",
+              "de": "neben",
+              "wieder": true
             }
           ]
         ],
@@ -4661,7 +8223,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           {
             "schrift": "nên",
             "lerntext": "nên",
-            "de": "also, sollte"
+            "de": "also"
           }
         ],
         "id": "12.1"
@@ -4698,38 +8260,68 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "vor"
             },
             {
-              "schrift": "có lẽ",
-              "lerntext": "có lẽ",
-              "de": "vielleicht"
-            },
-            {
-              "schrift": "trong khi",
-              "lerntext": "trong khi",
-              "de": "während"
-            },
-            {
               "schrift": "đến",
               "lerntext": "đến",
-              "de": "bis, ankommen"
+              "de": "bis",
+              "wieder": true
             },
             {
-              "schrift": "vì",
-              "lerntext": "vì",
-              "de": "weil"
+              "schrift": "trên",
+              "lerntext": "trên",
+              "de": "auf",
+              "wieder": true
             },
             {
-              "schrift": "mặc dù",
-              "lerntext": "mặc dù",
-              "de": "obwohl"
+              "schrift": "sau",
+              "lerntext": "sau",
+              "de": "nach",
+              "wieder": true
             },
             {
-              "schrift": "nhận",
-              "lerntext": "nhận",
-              "de": "bekommen, annehmen"
+              "schrift": "với",
+              "lerntext": "với",
+              "de": "mit",
+              "wieder": true
+            },
+            {
+              "schrift": "về",
+              "lerntext": "về",
+              "de": "über",
+              "wieder": true
+            },
+            {
+              "schrift": "bằng",
+              "lerntext": "bằng",
+              "de": "mit (Mittel)",
+              "wieder": true
+            },
+            {
+              "schrift": "giữa",
+              "lerntext": "giữa",
+              "de": "zwischen",
+              "wieder": true
+            },
+            {
+              "schrift": "dưới",
+              "lerntext": "dưới",
+              "de": "unter",
+              "wieder": true
+            },
+            {
+              "schrift": "qua",
+              "lerntext": "qua",
+              "de": "durch",
+              "wieder": true
+            },
+            {
+              "schrift": "bên cạnh",
+              "lerntext": "bên cạnh",
+              "de": "neben",
+              "wieder": true
             }
           ]
         ],
-        "newCount": 1,
+        "newCount": 0,
         "task": null,
         "newFrameWords": [],
         "id": "12.2"
@@ -4760,29 +8352,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "hoffen"
             },
             {
-              "schrift": "có lẽ",
-              "lerntext": "có lẽ",
-              "de": "vielleicht"
+              "schrift": "lấy",
+              "lerntext": "lấy",
+              "de": "nehmen",
+              "wieder": true
             },
             {
-              "schrift": "vé",
-              "lerntext": "vé",
-              "de": "Fahrkarte, Ticket"
+              "schrift": "mua",
+              "lerntext": "mua",
+              "de": "kaufen",
+              "wieder": true
             },
             {
-              "schrift": "sống",
-              "lerntext": "sống",
-              "de": "leben"
+              "schrift": "tin",
+              "lerntext": "tin",
+              "de": "glauben",
+              "wieder": true
             },
             {
-              "schrift": "ít",
-              "lerntext": "ít",
-              "de": "wenig"
+              "schrift": "vào",
+              "lerntext": "vào",
+              "de": "hineingehen",
+              "wieder": true
             },
             {
-              "schrift": "mở",
-              "lerntext": "mở",
-              "de": "öffnen"
+              "schrift": "biết",
+              "lerntext": "biết",
+              "de": "wissen",
+              "wieder": true
+            },
+            {
+              "schrift": "nghĩ",
+              "lerntext": "nghĩ",
+              "de": "denken",
+              "wieder": true
+            },
+            {
+              "schrift": "yêu",
+              "lerntext": "yêu",
+              "de": "lieben",
+              "wieder": true
+            },
+            {
+              "schrift": "tìm",
+              "lerntext": "tìm",
+              "de": "suchen",
+              "wieder": true
+            },
+            {
+              "schrift": "trả lời",
+              "lerntext": "trả lời",
+              "de": "antworten",
+              "wieder": true
+            },
+            {
+              "schrift": "phải",
+              "lerntext": "phải",
+              "de": "müssen",
+              "wieder": true
             }
           ]
         ],
@@ -4809,7 +8436,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "cứ",
               "lerntext": "cứ",
-              "de": "ruhig, einfach"
+              "de": "ruhig"
             },
             {
               "schrift": "thú vị",
@@ -4819,7 +8446,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "đúng",
               "lerntext": "đúng",
-              "de": "genau, richtig"
+              "de": "genau"
             },
             {
               "schrift": "sai",
@@ -4827,33 +8454,68 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "falsch"
             },
             {
-              "schrift": "hiểu",
-              "lerntext": "hiểu",
-              "de": "verstehen"
+              "schrift": "nguy hiểm",
+              "lerntext": "nguy hiểm",
+              "de": "gefährlich",
+              "wieder": true
             },
             {
-              "schrift": "tiếp tục",
-              "lerntext": "tiếp tục",
-              "de": "fortsetzen"
+              "schrift": "ít",
+              "lerntext": "ít",
+              "de": "wenig",
+              "wieder": true
             },
             {
-              "schrift": "hy vọng",
-              "lerntext": "hy vọng",
-              "de": "hoffen"
+              "schrift": "chỉ",
+              "lerntext": "chỉ",
+              "de": "nur",
+              "wieder": true
             },
             {
-              "schrift": "năm mươi",
-              "lerntext": "năm mươi",
-              "de": "fünfzig"
+              "schrift": "ngay",
+              "lerntext": "ngay",
+              "de": "sofort",
+              "wieder": true
             },
             {
-              "schrift": "khóc",
-              "lerntext": "khóc",
-              "de": "weinen"
+              "schrift": "sớm",
+              "lerntext": "sớm",
+              "de": "früh",
+              "wieder": true
+            },
+            {
+              "schrift": "đôi khi",
+              "lerntext": "đôi khi",
+              "de": "manchmal",
+              "wieder": true
+            },
+            {
+              "schrift": "không bao giờ",
+              "lerntext": "không bao giờ",
+              "de": "nie",
+              "wieder": true
+            },
+            {
+              "schrift": "bẩn",
+              "lerntext": "bẩn",
+              "de": "schmutzig",
+              "wieder": true
+            },
+            {
+              "schrift": "ngày mai",
+              "lerntext": "ngày mai",
+              "de": "morgen",
+              "wieder": true
+            },
+            {
+              "schrift": "nhiều",
+              "lerntext": "nhiều",
+              "de": "viel",
+              "wieder": true
             }
           ]
         ],
-        "newCount": 4,
+        "newCount": 5,
         "task": null,
         "newFrameWords": [],
         "id": "12.4"
@@ -4881,32 +8543,67 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "xấu",
               "lerntext": "xấu",
-              "de": "hässlich, schlecht"
-            },
-            {
-              "schrift": "sai",
-              "lerntext": "sai",
-              "de": "falsch"
-            },
-            {
-              "schrift": "thú vị",
-              "lerntext": "thú vị",
-              "de": "interessant"
+              "de": "hässlich"
             },
             {
               "schrift": "khó",
               "lerntext": "khó",
-              "de": "schwierig"
+              "de": "schwierig",
+              "wieder": true
+            },
+            {
+              "schrift": "cứ",
+              "lerntext": "cứ",
+              "de": "ruhig",
+              "wieder": true
+            },
+            {
+              "schrift": "thú vị",
+              "lerntext": "thú vị",
+              "de": "interessant",
+              "wieder": true
             },
             {
               "schrift": "đúng",
               "lerntext": "đúng",
-              "de": "genau, richtig"
+              "de": "genau",
+              "wieder": true
             },
             {
-              "schrift": "hỏi",
-              "lerntext": "hỏi",
-              "de": "fragen"
+              "schrift": "sai",
+              "lerntext": "sai",
+              "de": "falsch",
+              "wieder": true
+            },
+            {
+              "schrift": "hôm nay",
+              "lerntext": "hôm nay",
+              "de": "heute",
+              "wieder": true
+            },
+            {
+              "schrift": "nguy hiểm",
+              "lerntext": "nguy hiểm",
+              "de": "gefährlich",
+              "wieder": true
+            },
+            {
+              "schrift": "sẽ",
+              "lerntext": "sẽ",
+              "de": "wird (Zukunft)",
+              "wieder": true
+            },
+            {
+              "schrift": "luôn luôn",
+              "lerntext": "luôn luôn",
+              "de": "immer",
+              "wieder": true
+            },
+            {
+              "schrift": "xanh",
+              "lerntext": "xanh",
+              "de": "blau",
+              "wieder": true
             }
           ]
         ],
@@ -4928,47 +8625,82 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "nhớ",
               "lerntext": "nhớ",
-              "de": "sich erinnern, vermissen"
+              "de": "sich erinnern"
             },
             {
               "schrift": "gửi",
               "lerntext": "gửi",
-              "de": "schicken, abgeben"
+              "de": "schicken"
             },
             {
               "schrift": "đổi",
               "lerntext": "đổi",
-              "de": "wechseln, tauschen"
+              "de": "wechseln"
             },
             {
               "schrift": "cười",
               "lerntext": "cười",
-              "de": "lachen, lächeln"
+              "de": "lachen"
             },
             {
-              "schrift": "xấu",
-              "lerntext": "xấu",
-              "de": "hässlich, schlecht"
+              "schrift": "tiếp tục",
+              "lerntext": "tiếp tục",
+              "de": "fortsetzen",
+              "wieder": true
             },
             {
-              "schrift": "chậm",
-              "lerntext": "chậm",
-              "de": "langsam"
+              "schrift": "hy vọng",
+              "lerntext": "hy vọng",
+              "de": "hoffen",
+              "wieder": true
             },
             {
-              "schrift": "nhanh",
-              "lerntext": "nhanh",
-              "de": "schnell"
+              "schrift": "hiểu",
+              "lerntext": "hiểu",
+              "de": "verstehen",
+              "wieder": true
             },
             {
-              "schrift": "nhảy",
-              "lerntext": "nhảy",
-              "de": "tanzen, springen"
+              "schrift": "trả",
+              "lerntext": "trả",
+              "de": "bezahlen",
+              "wieder": true
             },
             {
-              "schrift": "trong khi",
-              "lerntext": "trong khi",
-              "de": "während"
+              "schrift": "du lịch",
+              "lerntext": "du lịch",
+              "de": "reisen",
+              "wieder": true
+            },
+            {
+              "schrift": "mở",
+              "lerntext": "mở",
+              "de": "öffnen",
+              "wieder": true
+            },
+            {
+              "schrift": "thắng",
+              "lerntext": "thắng",
+              "de": "gewinnen",
+              "wieder": true
+            },
+            {
+              "schrift": "ở lại",
+              "lerntext": "ở lại",
+              "de": "bleiben",
+              "wieder": true
+            },
+            {
+              "schrift": "ngủ",
+              "lerntext": "ngủ",
+              "de": "schlafen",
+              "wieder": true
+            },
+            {
+              "schrift": "bán",
+              "lerntext": "bán",
+              "de": "verkaufen",
+              "wieder": true
             }
           ]
         ],
@@ -4976,6 +8708,244 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "task": null,
         "newFrameWords": [],
         "id": "12.6"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "nó [Slot] nhưng được",
+          "lerntext": "nó [Slot] nhưng được"
+        },
+        "frameDe": "Es ist [Slot], aber es geht.",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "nhanh",
+              "lerntext": "nhanh",
+              "de": "schnell",
+              "wieder": true
+            },
+            {
+              "schrift": "chậm",
+              "lerntext": "chậm",
+              "de": "langsam",
+              "wieder": true
+            },
+            {
+              "schrift": "xấu",
+              "lerntext": "xấu",
+              "de": "hässlich",
+              "wieder": true
+            },
+            {
+              "schrift": "khó",
+              "lerntext": "khó",
+              "de": "schwierig",
+              "wieder": true
+            },
+            {
+              "schrift": "cứ",
+              "lerntext": "cứ",
+              "de": "ruhig",
+              "wieder": true
+            },
+            {
+              "schrift": "thú vị",
+              "lerntext": "thú vị",
+              "de": "interessant",
+              "wieder": true
+            },
+            {
+              "schrift": "đúng",
+              "lerntext": "đúng",
+              "de": "genau",
+              "wieder": true
+            },
+            {
+              "schrift": "sai",
+              "lerntext": "sai",
+              "de": "falsch",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "12.7"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi [Slot] bạn",
+          "lerntext": "tôi [Slot] bạn"
+        },
+        "frameDe": "Ich [Slot] dich.",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "nhớ",
+              "lerntext": "nhớ",
+              "de": "sich erinnern",
+              "wieder": true
+            },
+            {
+              "schrift": "gửi",
+              "lerntext": "gửi",
+              "de": "schicken",
+              "wieder": true
+            },
+            {
+              "schrift": "đổi",
+              "lerntext": "đổi",
+              "de": "wechseln",
+              "wieder": true
+            },
+            {
+              "schrift": "tiếp tục",
+              "lerntext": "tiếp tục",
+              "de": "fortsetzen",
+              "wieder": true
+            },
+            {
+              "schrift": "hy vọng",
+              "lerntext": "hy vọng",
+              "de": "hoffen",
+              "wieder": true
+            },
+            {
+              "schrift": "hiểu",
+              "lerntext": "hiểu",
+              "de": "verstehen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "12.8"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi mệt [Slot] tôi làm việc",
+          "lerntext": "tôi mệt [Slot] tôi làm việc"
+        },
+        "frameDe": "Ich bin müde, [Slot] ich arbeite.",
+        "pronouns": [
+          {
+            "schrift": "và",
+            "lerntext": "và",
+            "de": "und"
+          },
+          {
+            "schrift": "nhưng",
+            "lerntext": "nhưng",
+            "de": "aber"
+          },
+          {
+            "schrift": "hoặc",
+            "lerntext": "hoặc",
+            "de": "oder"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "vì",
+              "lerntext": "vì",
+              "de": "weil",
+              "wieder": true
+            },
+            {
+              "schrift": "trong khi",
+              "lerntext": "trong khi",
+              "de": "während",
+              "wieder": true
+            },
+            {
+              "schrift": "mặc dù",
+              "lerntext": "mặc dù",
+              "de": "obwohl",
+              "wieder": true
+            },
+            {
+              "schrift": "cũng",
+              "lerntext": "cũng",
+              "de": "auch",
+              "wieder": true
+            },
+            {
+              "schrift": "đến",
+              "lerntext": "đến",
+              "de": "bis",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "12.9"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi mệt [Slot] tôi làm việc",
+          "lerntext": "tôi mệt [Slot] tôi làm việc"
+        },
+        "frameDe": "Ich bin müde, [Slot] ich arbeite.",
+        "pronouns": [
+          {
+            "schrift": "và",
+            "lerntext": "và",
+            "de": "und"
+          },
+          {
+            "schrift": "nhưng",
+            "lerntext": "nhưng",
+            "de": "aber"
+          },
+          {
+            "schrift": "hoặc",
+            "lerntext": "hoặc",
+            "de": "oder"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "vì",
+              "lerntext": "vì",
+              "de": "weil",
+              "wieder": true
+            },
+            {
+              "schrift": "trong khi",
+              "lerntext": "trong khi",
+              "de": "während",
+              "wieder": true
+            },
+            {
+              "schrift": "mặc dù",
+              "lerntext": "mặc dù",
+              "de": "obwohl",
+              "wieder": true
+            },
+            {
+              "schrift": "cũng",
+              "lerntext": "cũng",
+              "de": "auch",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "12.10"
       },
       {
         "kind": "finisher",
@@ -4989,13 +8959,14 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "newCount": 0,
         "task": "Erzähl etwas über dich in drei zusammenhängenden Sätzen.",
         "newFrameWords": [],
-        "id": "12.7"
+        "id": "12.11"
       }
     ]
   },
   {
     "number": 13,
     "title": "Körper und Gesundheit",
+    "niveau": null,
     "lessons": [
       {
         "kind": "frame",
@@ -5018,29 +8989,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Auge"
             },
             {
-              "schrift": "nhớ",
-              "lerntext": "nhớ",
-              "de": "sich erinnern, vermissen"
+              "schrift": "việc",
+              "lerntext": "việc",
+              "de": "Arbeit",
+              "wieder": true
             },
             {
-              "schrift": "gửi",
-              "lerntext": "gửi",
-              "de": "schicken, abgeben"
+              "schrift": "biển",
+              "lerntext": "biển",
+              "de": "Meer",
+              "wieder": true
             },
             {
-              "schrift": "đổi",
-              "lerntext": "đổi",
-              "de": "wechseln, tauschen"
+              "schrift": "mặt trời",
+              "lerntext": "mặt trời",
+              "de": "Sonne",
+              "wieder": true
             },
             {
-              "schrift": "xấu",
-              "lerntext": "xấu",
-              "de": "hässlich, schlecht"
+              "schrift": "mưa",
+              "lerntext": "mưa",
+              "de": "Regen",
+              "wieder": true
             },
             {
-              "schrift": "nguy hiểm",
-              "lerntext": "nguy hiểm",
-              "de": "gefährlich"
+              "schrift": "núi",
+              "lerntext": "núi",
+              "de": "Berg",
+              "wieder": true
+            },
+            {
+              "schrift": "thời tiết",
+              "lerntext": "thời tiết",
+              "de": "Wetter",
+              "wieder": true
+            },
+            {
+              "schrift": "phút",
+              "lerntext": "phút",
+              "de": "Minute",
+              "wieder": true
+            },
+            {
+              "schrift": "gió",
+              "lerntext": "gió",
+              "de": "Wind",
+              "wieder": true
+            },
+            {
+              "schrift": "tối",
+              "lerntext": "tối",
+              "de": "Abend",
+              "wieder": true
+            },
+            {
+              "schrift": "cá",
+              "lerntext": "cá",
+              "de": "Fisch",
+              "wieder": true
             }
           ]
         ],
@@ -5067,32 +9073,67 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "chân",
               "lerntext": "chân",
-              "de": "Bein, Fuß"
+              "de": "Bein"
             },
             {
               "schrift": "mắt",
               "lerntext": "mắt",
-              "de": "Auge"
+              "de": "Auge",
+              "wieder": true
             },
             {
               "schrift": "đầu",
               "lerntext": "đầu",
-              "de": "Kopf"
+              "de": "Kopf",
+              "wieder": true
+            },
+            {
+              "schrift": "việc",
+              "lerntext": "việc",
+              "de": "Arbeit",
+              "wieder": true
+            },
+            {
+              "schrift": "biển",
+              "lerntext": "biển",
+              "de": "Meer",
+              "wieder": true
             },
             {
               "schrift": "mặt trời",
               "lerntext": "mặt trời",
-              "de": "Sonne"
+              "de": "Sonne",
+              "wieder": true
             },
             {
-              "schrift": "hôm nay",
-              "lerntext": "hôm nay",
-              "de": "heute"
+              "schrift": "mưa",
+              "lerntext": "mưa",
+              "de": "Regen",
+              "wieder": true
             },
             {
-              "schrift": "chín",
-              "lerntext": "chín",
-              "de": "neun"
+              "schrift": "núi",
+              "lerntext": "núi",
+              "de": "Berg",
+              "wieder": true
+            },
+            {
+              "schrift": "thời tiết",
+              "lerntext": "thời tiết",
+              "de": "Wetter",
+              "wieder": true
+            },
+            {
+              "schrift": "phút",
+              "lerntext": "phút",
+              "de": "Minute",
+              "wieder": true
+            },
+            {
+              "schrift": "rừng",
+              "lerntext": "rừng",
+              "de": "Wald",
+              "wieder": true
             }
           ]
         ],
@@ -5100,6 +9141,41 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "task": null,
         "newFrameWords": [],
         "id": "13.2"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi đau [Slot]",
+          "lerntext": "tôi đau [Slot]"
+        },
+        "frameDe": "Ich habe Schmerzen im [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "da",
+              "lerntext": "da",
+              "de": "Haut",
+              "wieder": true
+            },
+            {
+              "schrift": "mắt",
+              "lerntext": "mắt",
+              "de": "Auge",
+              "wieder": true
+            },
+            {
+              "schrift": "đầu",
+              "lerntext": "đầu",
+              "de": "Kopf",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "13.3"
       },
       {
         "kind": "finisher",
@@ -5113,13 +9189,14 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "newCount": 0,
         "task": "Sag einem Arzt, was dir weh tut.",
         "newFrameWords": [],
-        "id": "13.3"
+        "id": "13.4"
       }
     ]
   },
   {
     "number": 14,
     "title": "Zuhause, Kleidung und Arbeit",
+    "niveau": null,
     "lessons": [
       {
         "kind": "frame",
@@ -5132,46 +9209,158 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "slotGroups": [
           [
             {
-              "schrift": "áo",
-              "lerntext": "áo",
-              "de": "Oberteil, Hemd"
-            },
-            {
               "schrift": "giày",
               "lerntext": "giày",
               "de": "Schuh"
             },
             {
-              "schrift": "da",
-              "lerntext": "da",
-              "de": "Haut"
+              "schrift": "đầu",
+              "lerntext": "đầu",
+              "de": "Kopf",
+              "wieder": true
             },
             {
-              "schrift": "mười lăm",
-              "lerntext": "mười lăm",
-              "de": "fünfzehn"
+              "schrift": "xe buýt",
+              "lerntext": "xe buýt",
+              "de": "Bus",
+              "wieder": true
             },
             {
-              "schrift": "tối",
-              "lerntext": "tối",
-              "de": "Abend"
+              "schrift": "cà phê",
+              "lerntext": "cà phê",
+              "de": "Kaffee",
+              "wieder": true
             },
             {
-              "schrift": "tàu",
-              "lerntext": "tàu",
-              "de": "Zug, Schiff"
+              "schrift": "trà",
+              "lerntext": "trà",
+              "de": "Tee",
+              "wieder": true
             },
             {
-              "schrift": "mười hai",
-              "lerntext": "mười hai",
-              "de": "zwölf"
+              "schrift": "ga tàu",
+              "lerntext": "ga tàu",
+              "de": "Bahnhof",
+              "wieder": true
+            },
+            {
+              "schrift": "gió",
+              "lerntext": "gió",
+              "de": "Wind",
+              "wieder": true
+            },
+            {
+              "schrift": "sinh viên",
+              "lerntext": "sinh viên",
+              "de": "Student",
+              "wieder": true
+            },
+            {
+              "schrift": "miệng",
+              "lerntext": "miệng",
+              "de": "Mund",
+              "wieder": true
+            },
+            {
+              "schrift": "ngày",
+              "lerntext": "ngày",
+              "de": "Tag",
+              "wieder": true
+            },
+            {
+              "schrift": "sân bay",
+              "lerntext": "sân bay",
+              "de": "Flughafen",
+              "wieder": true
             }
           ]
         ],
-        "newCount": 2,
+        "newCount": 1,
         "task": null,
         "newFrameWords": [],
         "id": "14.1"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi mua [Slot]",
+          "lerntext": "tôi mua [Slot]"
+        },
+        "frameDe": "Ich kaufe ein [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "áo",
+              "lerntext": "áo",
+              "de": "Oberteil"
+            },
+            {
+              "schrift": "mắt",
+              "lerntext": "mắt",
+              "de": "Auge",
+              "wieder": true
+            },
+            {
+              "schrift": "bánh mì",
+              "lerntext": "bánh mì",
+              "de": "Brot",
+              "wieder": true
+            },
+            {
+              "schrift": "con gái",
+              "lerntext": "con gái",
+              "de": "Mädchen",
+              "wieder": true
+            },
+            {
+              "schrift": "bữa tối",
+              "lerntext": "bữa tối",
+              "de": "Abendessen",
+              "wieder": true
+            },
+            {
+              "schrift": "sách",
+              "lerntext": "sách",
+              "de": "Buch",
+              "wieder": true
+            },
+            {
+              "schrift": "bữa trưa",
+              "lerntext": "bữa trưa",
+              "de": "Mittagessen",
+              "wieder": true
+            },
+            {
+              "schrift": "thịt",
+              "lerntext": "thịt",
+              "de": "Fleisch",
+              "wieder": true
+            },
+            {
+              "schrift": "cửa sổ",
+              "lerntext": "cửa sổ",
+              "de": "Fenster",
+              "wieder": true
+            },
+            {
+              "schrift": "đá",
+              "lerntext": "đá",
+              "de": "Eis",
+              "wieder": true
+            },
+            {
+              "schrift": "bữa sáng",
+              "lerntext": "bữa sáng",
+              "de": "Frühstück",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 1,
+        "task": null,
+        "newFrameWords": [],
+        "id": "14.2"
       },
       {
         "kind": "frame",
@@ -5194,29 +9383,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Name"
             },
             {
-              "schrift": "áo",
-              "lerntext": "áo",
-              "de": "Oberteil, Hemd"
-            },
-            {
-              "schrift": "tốt",
-              "lerntext": "tốt",
-              "de": "gut"
-            },
-            {
               "schrift": "giày",
               "lerntext": "giày",
-              "de": "Schuh"
+              "de": "Schuh",
+              "wieder": true
             },
             {
-              "schrift": "bảy mươi",
-              "lerntext": "bảy mươi",
-              "de": "siebzig"
+              "schrift": "áo",
+              "lerntext": "áo",
+              "de": "Oberteil",
+              "wieder": true
             },
             {
-              "schrift": "nằm",
-              "lerntext": "nằm",
-              "de": "liegen"
+              "schrift": "da",
+              "lerntext": "da",
+              "de": "Haut",
+              "wieder": true
+            },
+            {
+              "schrift": "mắt",
+              "lerntext": "mắt",
+              "de": "Auge",
+              "wieder": true
+            },
+            {
+              "schrift": "việc",
+              "lerntext": "việc",
+              "de": "Arbeit",
+              "wieder": true
+            },
+            {
+              "schrift": "biển",
+              "lerntext": "biển",
+              "de": "Meer",
+              "wieder": true
+            },
+            {
+              "schrift": "đầu",
+              "lerntext": "đầu",
+              "de": "Kopf",
+              "wieder": true
+            },
+            {
+              "schrift": "đêm",
+              "lerntext": "đêm",
+              "de": "Nacht",
+              "wieder": true
+            },
+            {
+              "schrift": "mặt trời",
+              "lerntext": "mặt trời",
+              "de": "Sonne",
+              "wieder": true
+            },
+            {
+              "schrift": "mưa",
+              "lerntext": "mưa",
+              "de": "Regen",
+              "wieder": true
             }
           ]
         ],
@@ -5229,7 +9453,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             "de": "gut"
           }
         ],
-        "id": "14.2"
+        "id": "14.3"
       },
       {
         "kind": "frame",
@@ -5244,39 +9468,74 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "việc",
               "lerntext": "việc",
-              "de": "Arbeit, Sache"
+              "de": "Arbeit"
             },
             {
               "schrift": "quần áo",
               "lerntext": "quần áo",
-              "de": "Kleidung"
+              "de": "Kleidung",
+              "wieder": true
             },
             {
               "schrift": "tên",
               "lerntext": "tên",
-              "de": "Name"
+              "de": "Name",
+              "wieder": true
             },
             {
-              "schrift": "sai",
-              "lerntext": "sai",
-              "de": "falsch"
+              "schrift": "giày",
+              "lerntext": "giày",
+              "de": "Schuh",
+              "wieder": true
             },
             {
-              "schrift": "mười bảy",
-              "lerntext": "mười bảy",
-              "de": "siebzehn"
+              "schrift": "áo",
+              "lerntext": "áo",
+              "de": "Oberteil",
+              "wieder": true
             },
             {
-              "schrift": "chơi",
-              "lerntext": "chơi",
-              "de": "spielen"
+              "schrift": "da",
+              "lerntext": "da",
+              "de": "Haut",
+              "wieder": true
+            },
+            {
+              "schrift": "mắt",
+              "lerntext": "mắt",
+              "de": "Auge",
+              "wieder": true
+            },
+            {
+              "schrift": "phòng",
+              "lerntext": "phòng",
+              "de": "Zimmer",
+              "wieder": true
+            },
+            {
+              "schrift": "núi",
+              "lerntext": "núi",
+              "de": "Berg",
+              "wieder": true
+            },
+            {
+              "schrift": "rau",
+              "lerntext": "rau",
+              "de": "Gemüse",
+              "wieder": true
+            },
+            {
+              "schrift": "thời tiết",
+              "lerntext": "thời tiết",
+              "de": "Wetter",
+              "wieder": true
             }
           ]
         ],
         "newCount": 0,
         "task": null,
         "newFrameWords": [],
-        "id": "14.3"
+        "id": "14.4"
       },
       {
         "kind": "frame",
@@ -5291,7 +9550,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "bài",
               "lerntext": "bài",
-              "de": "Lektion, Aufgabe"
+              "de": "Lektion"
             },
             {
               "schrift": "kỳ thi",
@@ -5299,36 +9558,71 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Prüfung"
             },
             {
-              "schrift": "xe buýt",
-              "lerntext": "xe buýt",
-              "de": "Bus"
+              "schrift": "quần áo",
+              "lerntext": "quần áo",
+              "de": "Kleidung",
+              "wieder": true
             },
             {
-              "schrift": "đỏ",
-              "lerntext": "đỏ",
-              "de": "rot"
+              "schrift": "tên",
+              "lerntext": "tên",
+              "de": "Name",
+              "wieder": true
             },
             {
-              "schrift": "chua",
-              "lerntext": "chua",
-              "de": "sauer"
+              "schrift": "giày",
+              "lerntext": "giày",
+              "de": "Schuh",
+              "wieder": true
             },
             {
-              "schrift": "đọc",
-              "lerntext": "đọc",
-              "de": "lesen"
+              "schrift": "áo",
+              "lerntext": "áo",
+              "de": "Oberteil",
+              "wieder": true
             },
             {
-              "schrift": "hai mươi",
-              "lerntext": "hai mươi",
-              "de": "zwanzig"
+              "schrift": "da",
+              "lerntext": "da",
+              "de": "Haut",
+              "wieder": true
+            },
+            {
+              "schrift": "ly",
+              "lerntext": "ly",
+              "de": "Glas",
+              "wieder": true
+            },
+            {
+              "schrift": "ghế",
+              "lerntext": "ghế",
+              "de": "Stuhl",
+              "wieder": true
+            },
+            {
+              "schrift": "biển",
+              "lerntext": "biển",
+              "de": "Meer",
+              "wieder": true
+            },
+            {
+              "schrift": "tuần",
+              "lerntext": "tuần",
+              "de": "Woche",
+              "wieder": true
+            },
+            {
+              "schrift": "bàn",
+              "lerntext": "bàn",
+              "de": "Tisch",
+              "wieder": true
             }
           ]
         ],
         "newCount": 2,
         "task": null,
         "newFrameWords": [],
-        "id": "14.4"
+        "id": "14.5"
       },
       {
         "kind": "frame",
@@ -5343,39 +9637,74 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "đá",
               "lerntext": "đá",
-              "de": "Eis, Stein"
+              "de": "Eis"
             },
             {
               "schrift": "kỳ thi",
               "lerntext": "kỳ thi",
-              "de": "Prüfung"
+              "de": "Prüfung",
+              "wieder": true
             },
             {
               "schrift": "bài",
               "lerntext": "bài",
-              "de": "Lektion, Aufgabe"
+              "de": "Lektion",
+              "wieder": true
             },
             {
-              "schrift": "rửa",
-              "lerntext": "rửa",
-              "de": "waschen"
+              "schrift": "quần áo",
+              "lerntext": "quần áo",
+              "de": "Kleidung",
+              "wieder": true
             },
             {
-              "schrift": "cũng",
-              "lerntext": "cũng",
-              "de": "auch"
+              "schrift": "tên",
+              "lerntext": "tên",
+              "de": "Name",
+              "wieder": true
             },
             {
-              "schrift": "đến",
-              "lerntext": "đến",
-              "de": "bis, ankommen"
+              "schrift": "giày",
+              "lerntext": "giày",
+              "de": "Schuh",
+              "wieder": true
+            },
+            {
+              "schrift": "áo",
+              "lerntext": "áo",
+              "de": "Oberteil",
+              "wieder": true
+            },
+            {
+              "schrift": "bản đồ",
+              "lerntext": "bản đồ",
+              "de": "Landkarte",
+              "wieder": true
+            },
+            {
+              "schrift": "trái cây",
+              "lerntext": "trái cây",
+              "de": "Obst",
+              "wieder": true
+            },
+            {
+              "schrift": "con trai",
+              "lerntext": "con trai",
+              "de": "Junge",
+              "wieder": true
+            },
+            {
+              "schrift": "tối",
+              "lerntext": "tối",
+              "de": "Abend",
+              "wieder": true
             }
           ]
         ],
         "newCount": 0,
         "task": null,
         "newFrameWords": [],
-        "id": "14.5"
+        "id": "14.6"
       },
       {
         "kind": "frame",
@@ -5390,7 +9719,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "nhà",
               "lerntext": "nhà",
-              "de": "Haus, Zuhause"
+              "de": "Haus"
             },
             {
               "schrift": "phòng",
@@ -5403,36 +9732,71 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Tisch"
             },
             {
-              "schrift": "trả lời",
-              "lerntext": "trả lời",
-              "de": "antworten"
+              "schrift": "kỳ thi",
+              "lerntext": "kỳ thi",
+              "de": "Prüfung",
+              "wieder": true
             },
             {
-              "schrift": "dưới",
-              "lerntext": "dưới",
-              "de": "unter"
+              "schrift": "bài",
+              "lerntext": "bài",
+              "de": "Lektion",
+              "wieder": true
             },
             {
-              "schrift": "to",
-              "lerntext": "to",
-              "de": "groß"
+              "schrift": "quần áo",
+              "lerntext": "quần áo",
+              "de": "Kleidung",
+              "wieder": true
             },
             {
-              "schrift": "đêm",
-              "lerntext": "đêm",
-              "de": "Nacht"
+              "schrift": "tên",
+              "lerntext": "tên",
+              "de": "Name",
+              "wieder": true
             },
             {
-              "schrift": "vì",
-              "lerntext": "vì",
-              "de": "weil"
+              "schrift": "giày",
+              "lerntext": "giày",
+              "de": "Schuh",
+              "wieder": true
+            },
+            {
+              "schrift": "nhà hàng",
+              "lerntext": "nhà hàng",
+              "de": "Restaurant",
+              "wieder": true
+            },
+            {
+              "schrift": "tàu",
+              "lerntext": "tàu",
+              "de": "Zug",
+              "wieder": true
+            },
+            {
+              "schrift": "đầu",
+              "lerntext": "đầu",
+              "de": "Kopf",
+              "wieder": true
+            },
+            {
+              "schrift": "điện thoại",
+              "lerntext": "điện thoại",
+              "de": "Telefon",
+              "wieder": true
+            },
+            {
+              "schrift": "giường",
+              "lerntext": "giường",
+              "de": "Bett",
+              "wieder": true
             }
           ]
         ],
         "newCount": 0,
         "task": null,
         "newFrameWords": [],
-        "id": "14.6"
+        "id": "14.7"
       },
       {
         "kind": "finisher",
@@ -5446,14 +9810,425 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "newCount": 0,
         "task": "Beschreib deine Wohnung und was du anhast.",
         "newFrameWords": [],
-        "id": "14.7"
+        "id": "14.8"
       }
     ]
   },
   {
     "number": 15,
     "title": "Weitere Nomen",
+    "niveau": null,
     "lessons": [
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "đây là [Slot]",
+          "lerntext": "đây là [Slot]"
+        },
+        "frameDe": "Hier ist die [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "phụ nữ",
+              "lerntext": "phụ nữ",
+              "de": "Frau"
+            },
+            {
+              "schrift": "vợ",
+              "lerntext": "vợ",
+              "de": "Ehefrau"
+            },
+            {
+              "schrift": "tiếng",
+              "lerntext": "tiếng",
+              "de": "Stunde (Dauer)"
+            },
+            {
+              "schrift": "nhà thuốc",
+              "lerntext": "nhà thuốc",
+              "de": "Apotheke"
+            },
+            {
+              "schrift": "hóa đơn",
+              "lerntext": "hóa đơn",
+              "de": "Rechnung"
+            }
+          ]
+        ],
+        "newCount": 5,
+        "task": null,
+        "newFrameWords": [],
+        "id": "15.1"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "đây là [Slot]",
+          "lerntext": "đây là [Slot]"
+        },
+        "frameDe": "Hier ist die [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "thẻ",
+              "lerntext": "thẻ",
+              "de": "Karte"
+            },
+            {
+              "schrift": "câu hỏi",
+              "lerntext": "câu hỏi",
+              "de": "Frage"
+            },
+            {
+              "schrift": "phở",
+              "lerntext": "phở",
+              "de": "Nudelsuppe"
+            },
+            {
+              "schrift": "nước mắm",
+              "lerntext": "nước mắm",
+              "de": "Fischsauce"
+            },
+            {
+              "schrift": "thực đơn",
+              "lerntext": "thực đơn",
+              "de": "Speisekarte"
+            },
+            {
+              "schrift": "phụ nữ",
+              "lerntext": "phụ nữ",
+              "de": "Frau",
+              "wieder": true
+            },
+            {
+              "schrift": "vợ",
+              "lerntext": "vợ",
+              "de": "Ehefrau",
+              "wieder": true
+            },
+            {
+              "schrift": "tiếng",
+              "lerntext": "tiếng",
+              "de": "Stunde (Dauer)",
+              "wieder": true
+            },
+            {
+              "schrift": "nhà thuốc",
+              "lerntext": "nhà thuốc",
+              "de": "Apotheke",
+              "wieder": true
+            },
+            {
+              "schrift": "hóa đơn",
+              "lerntext": "hóa đơn",
+              "de": "Rechnung",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 5,
+        "task": null,
+        "newFrameWords": [],
+        "id": "15.2"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "đây là [Slot]",
+          "lerntext": "đây là [Slot]"
+        },
+        "frameDe": "Hier ist die [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "chai",
+              "lerntext": "chai",
+              "de": "Flasche"
+            },
+            {
+              "schrift": "số",
+              "lerntext": "số",
+              "de": "Nummer"
+            },
+            {
+              "schrift": "bát",
+              "lerntext": "bát",
+              "de": "Schüssel"
+            },
+            {
+              "schrift": "nhạc",
+              "lerntext": "nhạc",
+              "de": "Musik"
+            },
+            {
+              "schrift": "tiệc",
+              "lerntext": "tiệc",
+              "de": "Party"
+            },
+            {
+              "schrift": "thẻ",
+              "lerntext": "thẻ",
+              "de": "Karte",
+              "wieder": true
+            },
+            {
+              "schrift": "câu hỏi",
+              "lerntext": "câu hỏi",
+              "de": "Frage",
+              "wieder": true
+            },
+            {
+              "schrift": "phở",
+              "lerntext": "phở",
+              "de": "Nudelsuppe",
+              "wieder": true
+            },
+            {
+              "schrift": "nước mắm",
+              "lerntext": "nước mắm",
+              "de": "Fischsauce",
+              "wieder": true
+            },
+            {
+              "schrift": "thực đơn",
+              "lerntext": "thực đơn",
+              "de": "Speisekarte",
+              "wieder": true
+            },
+            {
+              "schrift": "phụ nữ",
+              "lerntext": "phụ nữ",
+              "de": "Frau",
+              "wieder": true
+            },
+            {
+              "schrift": "vợ",
+              "lerntext": "vợ",
+              "de": "Ehefrau",
+              "wieder": true
+            },
+            {
+              "schrift": "tiếng",
+              "lerntext": "tiếng",
+              "de": "Stunde (Dauer)",
+              "wieder": true
+            },
+            {
+              "schrift": "nhà thuốc",
+              "lerntext": "nhà thuốc",
+              "de": "Apotheke",
+              "wieder": true
+            },
+            {
+              "schrift": "hóa đơn",
+              "lerntext": "hóa đơn",
+              "de": "Rechnung",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 5,
+        "task": null,
+        "newFrameWords": [],
+        "id": "15.3"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "đây là [Slot]",
+          "lerntext": "đây là [Slot]"
+        },
+        "frameDe": "Hier ist die [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "thế giới",
+              "lerntext": "thế giới",
+              "de": "Welt"
+            },
+            {
+              "schrift": "mèo",
+              "lerntext": "mèo",
+              "de": "Katze"
+            },
+            {
+              "schrift": "tình yêu",
+              "lerntext": "tình yêu",
+              "de": "Liebe"
+            },
+            {
+              "schrift": "ý tưởng",
+              "lerntext": "ý tưởng",
+              "de": "Idee"
+            },
+            {
+              "schrift": "chuyện",
+              "lerntext": "chuyện",
+              "de": "Geschichte"
+            },
+            {
+              "schrift": "chai",
+              "lerntext": "chai",
+              "de": "Flasche",
+              "wieder": true
+            },
+            {
+              "schrift": "số",
+              "lerntext": "số",
+              "de": "Nummer",
+              "wieder": true
+            },
+            {
+              "schrift": "bát",
+              "lerntext": "bát",
+              "de": "Schüssel",
+              "wieder": true
+            },
+            {
+              "schrift": "nhạc",
+              "lerntext": "nhạc",
+              "de": "Musik",
+              "wieder": true
+            },
+            {
+              "schrift": "tiệc",
+              "lerntext": "tiệc",
+              "de": "Party",
+              "wieder": true
+            },
+            {
+              "schrift": "thẻ",
+              "lerntext": "thẻ",
+              "de": "Karte",
+              "wieder": true
+            },
+            {
+              "schrift": "câu hỏi",
+              "lerntext": "câu hỏi",
+              "de": "Frage",
+              "wieder": true
+            },
+            {
+              "schrift": "phở",
+              "lerntext": "phở",
+              "de": "Nudelsuppe",
+              "wieder": true
+            },
+            {
+              "schrift": "nước mắm",
+              "lerntext": "nước mắm",
+              "de": "Fischsauce",
+              "wieder": true
+            },
+            {
+              "schrift": "thực đơn",
+              "lerntext": "thực đơn",
+              "de": "Speisekarte",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 5,
+        "task": null,
+        "newFrameWords": [],
+        "id": "15.4"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "đây là [Slot]",
+          "lerntext": "đây là [Slot]"
+        },
+        "frameDe": "Hier ist die [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "ca",
+              "lerntext": "ca",
+              "de": "Schicht"
+            },
+            {
+              "schrift": "ngã tư",
+              "lerntext": "ngã tư",
+              "de": "Kreuzung"
+            },
+            {
+              "schrift": "quán",
+              "lerntext": "quán",
+              "de": "Garküche"
+            },
+            {
+              "schrift": "thế giới",
+              "lerntext": "thế giới",
+              "de": "Welt",
+              "wieder": true
+            },
+            {
+              "schrift": "mèo",
+              "lerntext": "mèo",
+              "de": "Katze",
+              "wieder": true
+            },
+            {
+              "schrift": "tình yêu",
+              "lerntext": "tình yêu",
+              "de": "Liebe",
+              "wieder": true
+            },
+            {
+              "schrift": "ý tưởng",
+              "lerntext": "ý tưởng",
+              "de": "Idee",
+              "wieder": true
+            },
+            {
+              "schrift": "chuyện",
+              "lerntext": "chuyện",
+              "de": "Geschichte",
+              "wieder": true
+            },
+            {
+              "schrift": "chai",
+              "lerntext": "chai",
+              "de": "Flasche",
+              "wieder": true
+            },
+            {
+              "schrift": "số",
+              "lerntext": "số",
+              "de": "Nummer",
+              "wieder": true
+            },
+            {
+              "schrift": "bát",
+              "lerntext": "bát",
+              "de": "Schüssel",
+              "wieder": true
+            },
+            {
+              "schrift": "nhạc",
+              "lerntext": "nhạc",
+              "de": "Musik",
+              "wieder": true
+            },
+            {
+              "schrift": "tiệc",
+              "lerntext": "tiệc",
+              "de": "Party",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 3,
+        "task": null,
+        "newFrameWords": [],
+        "id": "15.5"
+      },
       {
         "kind": "frame",
         "frame": {
@@ -5475,93 +10250,9 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Mann"
             },
             {
-              "schrift": "phụ nữ",
-              "lerntext": "phụ nữ",
-              "de": "Frau"
-            },
-            {
-              "schrift": "trẻ con",
-              "lerntext": "trẻ con",
-              "de": "Kind"
-            },
-            {
-              "schrift": "bạn bè",
-              "lerntext": "bạn bè",
-              "de": "Freunde"
-            }
-          ]
-        ],
-        "newCount": 5,
-        "task": null,
-        "newFrameWords": [],
-        "id": "15.1"
-      },
-      {
-        "kind": "frame",
-        "frame": {
-          "schrift": "đây là [Slot]",
-          "lerntext": "đây là [Slot]"
-        },
-        "frameDe": "Hier ist der [Slot].",
-        "pronouns": [],
-        "slotGroups": [
-          [
-            {
-              "schrift": "người yêu",
-              "lerntext": "người yêu",
-              "de": "fester Freund, feste Freundin"
-            },
-            {
               "schrift": "chồng",
               "lerntext": "chồng",
               "de": "Ehemann"
-            },
-            {
-              "schrift": "vợ",
-              "lerntext": "vợ",
-              "de": "Ehefrau"
-            },
-            {
-              "schrift": "anh trai",
-              "lerntext": "anh trai",
-              "de": "älterer Bruder"
-            },
-            {
-              "schrift": "em trai",
-              "lerntext": "em trai",
-              "de": "jüngerer Bruder"
-            }
-          ]
-        ],
-        "newCount": 5,
-        "task": null,
-        "newFrameWords": [],
-        "id": "15.2"
-      },
-      {
-        "kind": "frame",
-        "frame": {
-          "schrift": "đây là [Slot]",
-          "lerntext": "đây là [Slot]"
-        },
-        "frameDe": "Hier ist der [Slot].",
-        "pronouns": [],
-        "slotGroups": [
-          [
-            {
-              "schrift": "chị gái",
-              "lerntext": "chị gái",
-              "de": "ältere Schwester"
-            },
-            {
-              "schrift": "em gái",
-              "lerntext": "em gái",
-              "de": "jüngere Schwester"
-            },
-            {
-              "schrift": "tuổi",
-              "lerntext": "tuổi",
-              "de": "Alter, Jahre alt"
             },
             {
               "schrift": "tháng",
@@ -5569,135 +10260,9 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Monat"
             },
             {
-              "schrift": "tiếng",
-              "lerntext": "tiếng",
-              "de": "Stunde (Dauer), Sprache"
-            }
-          ]
-        ],
-        "newCount": 5,
-        "task": null,
-        "newFrameWords": [],
-        "id": "15.3"
-      },
-      {
-        "kind": "frame",
-        "frame": {
-          "schrift": "đây là [Slot]",
-          "lerntext": "đây là [Slot]"
-        },
-        "frameDe": "Hier ist der [Slot].",
-        "pronouns": [],
-        "slotGroups": [
-          [
-            {
               "schrift": "sáng",
               "lerntext": "sáng",
               "de": "Morgen"
-            },
-            {
-              "schrift": "trưa",
-              "lerntext": "trưa",
-              "de": "Mittag"
-            },
-            {
-              "schrift": "chiều",
-              "lerntext": "chiều",
-              "de": "Nachmittag"
-            },
-            {
-              "schrift": "cuối tuần",
-              "lerntext": "cuối tuần",
-              "de": "Wochenende"
-            },
-            {
-              "schrift": "chỗ",
-              "lerntext": "chỗ",
-              "de": "Platz, Ort"
-            }
-          ]
-        ],
-        "newCount": 5,
-        "task": null,
-        "newFrameWords": [],
-        "id": "15.4"
-      },
-      {
-        "kind": "frame",
-        "frame": {
-          "schrift": "đây là [Slot]",
-          "lerntext": "đây là [Slot]"
-        },
-        "frameDe": "Hier ist der [Slot].",
-        "pronouns": [],
-        "slotGroups": [
-          [
-            {
-              "schrift": "chợ",
-              "lerntext": "chợ",
-              "de": "Markt"
-            },
-            {
-              "schrift": "nhà thuốc",
-              "lerntext": "nhà thuốc",
-              "de": "Apotheke"
-            },
-            {
-              "schrift": "xe máy",
-              "lerntext": "xe máy",
-              "de": "Motorroller"
-            },
-            {
-              "schrift": "hộ chiếu",
-              "lerntext": "hộ chiếu",
-              "de": "Pass"
-            },
-            {
-              "schrift": "giá",
-              "lerntext": "giá",
-              "de": "Preis"
-            }
-          ]
-        ],
-        "newCount": 5,
-        "task": null,
-        "newFrameWords": [],
-        "id": "15.5"
-      },
-      {
-        "kind": "frame",
-        "frame": {
-          "schrift": "đây là [Slot]",
-          "lerntext": "đây là [Slot]"
-        },
-        "frameDe": "Hier ist der [Slot].",
-        "pronouns": [],
-        "slotGroups": [
-          [
-            {
-              "schrift": "hóa đơn",
-              "lerntext": "hóa đơn",
-              "de": "Rechnung"
-            },
-            {
-              "schrift": "thẻ",
-              "lerntext": "thẻ",
-              "de": "Karte"
-            },
-            {
-              "schrift": "chữ",
-              "lerntext": "chữ",
-              "de": "Wort, Schriftzeichen"
-            },
-            {
-              "schrift": "câu",
-              "lerntext": "câu",
-              "de": "Satz"
-            },
-            {
-              "schrift": "câu hỏi",
-              "lerntext": "câu hỏi",
-              "de": "Frage"
             }
           ]
         ],
@@ -5717,29 +10282,59 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "slotGroups": [
           [
             {
-              "schrift": "vấn đề",
-              "lerntext": "vấn đề",
-              "de": "Problem"
+              "schrift": "trưa",
+              "lerntext": "trưa",
+              "de": "Mittag"
             },
             {
-              "schrift": "thứ",
-              "lerntext": "thứ",
-              "de": "Ding, Sache"
+              "schrift": "chiều",
+              "lerntext": "chiều",
+              "de": "Nachmittag"
             },
             {
-              "schrift": "rượu",
-              "lerntext": "rượu",
-              "de": "Alkohol, Schnaps"
+              "schrift": "chợ",
+              "lerntext": "chợ",
+              "de": "Markt"
             },
             {
-              "schrift": "cơm",
-              "lerntext": "cơm",
-              "de": "Reis (gekocht), Mahlzeit"
+              "schrift": "xe máy",
+              "lerntext": "xe máy",
+              "de": "Motorroller"
             },
             {
-              "schrift": "phở",
-              "lerntext": "phở",
-              "de": "Nudelsuppe"
+              "schrift": "hộ chiếu",
+              "lerntext": "hộ chiếu",
+              "de": "Pass"
+            },
+            {
+              "schrift": "người Việt",
+              "lerntext": "người Việt",
+              "de": "Vietnamese",
+              "wieder": true
+            },
+            {
+              "schrift": "đàn ông",
+              "lerntext": "đàn ông",
+              "de": "Mann",
+              "wieder": true
+            },
+            {
+              "schrift": "chồng",
+              "lerntext": "chồng",
+              "de": "Ehemann",
+              "wieder": true
+            },
+            {
+              "schrift": "tháng",
+              "lerntext": "tháng",
+              "de": "Monat",
+              "wieder": true
+            },
+            {
+              "schrift": "sáng",
+              "lerntext": "sáng",
+              "de": "Morgen",
+              "wieder": true
             }
           ]
         ],
@@ -5759,29 +10354,89 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "slotGroups": [
           [
             {
-              "schrift": "nước mắm",
-              "lerntext": "nước mắm",
-              "de": "Fischsauce"
+              "schrift": "giá",
+              "lerntext": "giá",
+              "de": "Preis"
             },
             {
-              "schrift": "đồ ăn",
-              "lerntext": "đồ ăn",
-              "de": "Essen"
+              "schrift": "câu",
+              "lerntext": "câu",
+              "de": "Satz"
             },
             {
-              "schrift": "thực đơn",
-              "lerntext": "thực đơn",
-              "de": "Speisekarte"
+              "schrift": "rượu",
+              "lerntext": "rượu",
+              "de": "Alkohol"
             },
             {
-              "schrift": "chai",
-              "lerntext": "chai",
-              "de": "Flasche"
+              "schrift": "cơm",
+              "lerntext": "cơm",
+              "de": "Reis (gekocht)"
             },
             {
-              "schrift": "tóc",
-              "lerntext": "tóc",
-              "de": "Haare"
+              "schrift": "người bệnh",
+              "lerntext": "người bệnh",
+              "de": "Patient"
+            },
+            {
+              "schrift": "trưa",
+              "lerntext": "trưa",
+              "de": "Mittag",
+              "wieder": true
+            },
+            {
+              "schrift": "chiều",
+              "lerntext": "chiều",
+              "de": "Nachmittag",
+              "wieder": true
+            },
+            {
+              "schrift": "chợ",
+              "lerntext": "chợ",
+              "de": "Markt",
+              "wieder": true
+            },
+            {
+              "schrift": "xe máy",
+              "lerntext": "xe máy",
+              "de": "Motorroller",
+              "wieder": true
+            },
+            {
+              "schrift": "hộ chiếu",
+              "lerntext": "hộ chiếu",
+              "de": "Pass",
+              "wieder": true
+            },
+            {
+              "schrift": "người Việt",
+              "lerntext": "người Việt",
+              "de": "Vietnamese",
+              "wieder": true
+            },
+            {
+              "schrift": "đàn ông",
+              "lerntext": "đàn ông",
+              "de": "Mann",
+              "wieder": true
+            },
+            {
+              "schrift": "chồng",
+              "lerntext": "chồng",
+              "de": "Ehemann",
+              "wieder": true
+            },
+            {
+              "schrift": "tháng",
+              "lerntext": "tháng",
+              "de": "Monat",
+              "wieder": true
+            },
+            {
+              "schrift": "sáng",
+              "lerntext": "sáng",
+              "de": "Morgen",
+              "wieder": true
             }
           ]
         ],
@@ -5801,29 +10456,89 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "slotGroups": [
           [
             {
-              "schrift": "người bệnh",
-              "lerntext": "người bệnh",
-              "de": "Patient"
-            },
-            {
               "schrift": "bác sĩ",
               "lerntext": "bác sĩ",
               "de": "Arzt"
             },
             {
-              "schrift": "thuốc",
-              "lerntext": "thuốc",
-              "de": "Medikament"
+              "schrift": "phim",
+              "lerntext": "phim",
+              "de": "Film"
             },
             {
-              "schrift": "số",
-              "lerntext": "số",
-              "de": "Nummer, Zahl"
+              "schrift": "chó",
+              "lerntext": "chó",
+              "de": "Hund"
             },
             {
-              "schrift": "hành lý",
-              "lerntext": "hành lý",
-              "de": "Gepäck"
+              "schrift": "phần",
+              "lerntext": "phần",
+              "de": "Teil"
+            },
+            {
+              "schrift": "lý do",
+              "lerntext": "lý do",
+              "de": "Grund"
+            },
+            {
+              "schrift": "giá",
+              "lerntext": "giá",
+              "de": "Preis",
+              "wieder": true
+            },
+            {
+              "schrift": "câu",
+              "lerntext": "câu",
+              "de": "Satz",
+              "wieder": true
+            },
+            {
+              "schrift": "rượu",
+              "lerntext": "rượu",
+              "de": "Alkohol",
+              "wieder": true
+            },
+            {
+              "schrift": "cơm",
+              "lerntext": "cơm",
+              "de": "Reis (gekocht)",
+              "wieder": true
+            },
+            {
+              "schrift": "người bệnh",
+              "lerntext": "người bệnh",
+              "de": "Patient",
+              "wieder": true
+            },
+            {
+              "schrift": "trưa",
+              "lerntext": "trưa",
+              "de": "Mittag",
+              "wieder": true
+            },
+            {
+              "schrift": "chiều",
+              "lerntext": "chiều",
+              "de": "Nachmittag",
+              "wieder": true
+            },
+            {
+              "schrift": "chợ",
+              "lerntext": "chợ",
+              "de": "Markt",
+              "wieder": true
+            },
+            {
+              "schrift": "xe máy",
+              "lerntext": "xe máy",
+              "de": "Motorroller",
+              "wieder": true
+            },
+            {
+              "schrift": "hộ chiếu",
+              "lerntext": "hộ chiếu",
+              "de": "Pass",
+              "wieder": true
             }
           ]
         ],
@@ -5843,29 +10558,89 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "slotGroups": [
           [
             {
-              "schrift": "bát",
-              "lerntext": "bát",
-              "de": "Schüssel"
+              "schrift": "khách",
+              "lerntext": "khách",
+              "de": "Kunde"
             },
             {
-              "schrift": "đũa",
-              "lerntext": "đũa",
-              "de": "Essstäbchen"
+              "schrift": "lương",
+              "lerntext": "lương",
+              "de": "Lohn"
             },
             {
-              "schrift": "nhạc",
-              "lerntext": "nhạc",
-              "de": "Musik"
+              "schrift": "hợp đồng",
+              "lerntext": "hợp đồng",
+              "de": "Vertrag"
+            },
+            {
+              "schrift": "chuyến bay",
+              "lerntext": "chuyến bay",
+              "de": "Flug"
+            },
+            {
+              "schrift": "hàng xóm",
+              "lerntext": "hàng xóm",
+              "de": "Nachbar"
+            },
+            {
+              "schrift": "bác sĩ",
+              "lerntext": "bác sĩ",
+              "de": "Arzt",
+              "wieder": true
             },
             {
               "schrift": "phim",
               "lerntext": "phim",
-              "de": "Film"
+              "de": "Film",
+              "wieder": true
             },
             {
-              "schrift": "tiệc",
-              "lerntext": "tiệc",
-              "de": "Party, Fest"
+              "schrift": "chó",
+              "lerntext": "chó",
+              "de": "Hund",
+              "wieder": true
+            },
+            {
+              "schrift": "phần",
+              "lerntext": "phần",
+              "de": "Teil",
+              "wieder": true
+            },
+            {
+              "schrift": "lý do",
+              "lerntext": "lý do",
+              "de": "Grund",
+              "wieder": true
+            },
+            {
+              "schrift": "giá",
+              "lerntext": "giá",
+              "de": "Preis",
+              "wieder": true
+            },
+            {
+              "schrift": "câu",
+              "lerntext": "câu",
+              "de": "Satz",
+              "wieder": true
+            },
+            {
+              "schrift": "rượu",
+              "lerntext": "rượu",
+              "de": "Alkohol",
+              "wieder": true
+            },
+            {
+              "schrift": "cơm",
+              "lerntext": "cơm",
+              "de": "Reis (gekocht)",
+              "wieder": true
+            },
+            {
+              "schrift": "người bệnh",
+              "lerntext": "người bệnh",
+              "de": "Patient",
+              "wieder": true
             }
           ]
         ],
@@ -5880,34 +10655,34 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "đây là [Slot]",
           "lerntext": "đây là [Slot]"
         },
-        "frameDe": "Hier ist der [Slot].",
+        "frameDe": "Hier ist das [Slot].",
         "pronouns": [],
         "slotGroups": [
           [
             {
-              "schrift": "cuộc sống",
-              "lerntext": "cuộc sống",
-              "de": "Leben"
+              "schrift": "trẻ con",
+              "lerntext": "trẻ con",
+              "de": "Kind"
             },
             {
-              "schrift": "thế giới",
-              "lerntext": "thế giới",
-              "de": "Welt"
+              "schrift": "tuổi",
+              "lerntext": "tuổi",
+              "de": "Alter"
             },
             {
-              "schrift": "chó",
-              "lerntext": "chó",
-              "de": "Hund"
+              "schrift": "cuối tuần",
+              "lerntext": "cuối tuần",
+              "de": "Wochenende"
             },
             {
-              "schrift": "mèo",
-              "lerntext": "mèo",
-              "de": "Katze"
+              "schrift": "chữ",
+              "lerntext": "chữ",
+              "de": "Wort"
             },
             {
-              "schrift": "quà",
-              "lerntext": "quà",
-              "de": "Geschenk"
+              "schrift": "vấn đề",
+              "lerntext": "vấn đề",
+              "de": "Problem"
             }
           ]
         ],
@@ -5922,34 +10697,64 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "đây là [Slot]",
           "lerntext": "đây là [Slot]"
         },
-        "frameDe": "Hier ist der [Slot].",
+        "frameDe": "Hier ist das [Slot].",
         "pronouns": [],
         "slotGroups": [
           [
             {
-              "schrift": "tình yêu",
-              "lerntext": "tình yêu",
-              "de": "Liebe"
+              "schrift": "thứ",
+              "lerntext": "thứ",
+              "de": "Ding"
             },
             {
-              "schrift": "phần",
-              "lerntext": "phần",
-              "de": "Teil, Portion"
+              "schrift": "đồ ăn",
+              "lerntext": "đồ ăn",
+              "de": "Essen"
             },
             {
-              "schrift": "lý do",
-              "lerntext": "lý do",
-              "de": "Grund"
+              "schrift": "thuốc",
+              "lerntext": "thuốc",
+              "de": "Medikament"
             },
             {
-              "schrift": "ví dụ",
-              "lerntext": "ví dụ",
-              "de": "Beispiel"
+              "schrift": "hành lý",
+              "lerntext": "hành lý",
+              "de": "Gepäck"
             },
             {
-              "schrift": "ý tưởng",
-              "lerntext": "ý tưởng",
-              "de": "Idee"
+              "schrift": "cuộc sống",
+              "lerntext": "cuộc sống",
+              "de": "Leben"
+            },
+            {
+              "schrift": "trẻ con",
+              "lerntext": "trẻ con",
+              "de": "Kind",
+              "wieder": true
+            },
+            {
+              "schrift": "tuổi",
+              "lerntext": "tuổi",
+              "de": "Alter",
+              "wieder": true
+            },
+            {
+              "schrift": "cuối tuần",
+              "lerntext": "cuối tuần",
+              "de": "Wochenende",
+              "wieder": true
+            },
+            {
+              "schrift": "chữ",
+              "lerntext": "chữ",
+              "de": "Wort",
+              "wieder": true
+            },
+            {
+              "schrift": "vấn đề",
+              "lerntext": "vấn đề",
+              "de": "Problem",
+              "wieder": true
             }
           ]
         ],
@@ -5964,34 +10769,94 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "đây là [Slot]",
           "lerntext": "đây là [Slot]"
         },
-        "frameDe": "Hier ist der [Slot].",
+        "frameDe": "Hier ist das [Slot].",
         "pronouns": [],
         "slotGroups": [
           [
             {
-              "schrift": "chuyện",
-              "lerntext": "chuyện",
-              "de": "Geschichte, Angelegenheit"
+              "schrift": "quà",
+              "lerntext": "quà",
+              "de": "Geschenk"
             },
             {
-              "schrift": "ca",
-              "lerntext": "ca",
-              "de": "Schicht"
+              "schrift": "ví dụ",
+              "lerntext": "ví dụ",
+              "de": "Beispiel"
             },
             {
-              "schrift": "khách",
-              "lerntext": "khách",
-              "de": "Kunde, Gast"
+              "schrift": "lửa",
+              "lerntext": "lửa",
+              "de": "Feuer"
             },
             {
-              "schrift": "lương",
-              "lerntext": "lương",
-              "de": "Lohn"
+              "schrift": "xe ôm",
+              "lerntext": "xe ôm",
+              "de": "Motorradtaxi"
             },
             {
-              "schrift": "hợp đồng",
-              "lerntext": "hợp đồng",
-              "de": "Vertrag"
+              "schrift": "sở thích",
+              "lerntext": "sở thích",
+              "de": "Hobby"
+            },
+            {
+              "schrift": "thứ",
+              "lerntext": "thứ",
+              "de": "Ding",
+              "wieder": true
+            },
+            {
+              "schrift": "đồ ăn",
+              "lerntext": "đồ ăn",
+              "de": "Essen",
+              "wieder": true
+            },
+            {
+              "schrift": "thuốc",
+              "lerntext": "thuốc",
+              "de": "Medikament",
+              "wieder": true
+            },
+            {
+              "schrift": "hành lý",
+              "lerntext": "hành lý",
+              "de": "Gepäck",
+              "wieder": true
+            },
+            {
+              "schrift": "cuộc sống",
+              "lerntext": "cuộc sống",
+              "de": "Leben",
+              "wieder": true
+            },
+            {
+              "schrift": "trẻ con",
+              "lerntext": "trẻ con",
+              "de": "Kind",
+              "wieder": true
+            },
+            {
+              "schrift": "tuổi",
+              "lerntext": "tuổi",
+              "de": "Alter",
+              "wieder": true
+            },
+            {
+              "schrift": "cuối tuần",
+              "lerntext": "cuối tuần",
+              "de": "Wochenende",
+              "wieder": true
+            },
+            {
+              "schrift": "chữ",
+              "lerntext": "chữ",
+              "de": "Wort",
+              "wieder": true
+            },
+            {
+              "schrift": "vấn đề",
+              "lerntext": "vấn đề",
+              "de": "Problem",
+              "wieder": true
             }
           ]
         ],
@@ -6006,38 +10871,28 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
           "schrift": "đây là [Slot]",
           "lerntext": "đây là [Slot]"
         },
-        "frameDe": "Hier ist der [Slot].",
+        "frameDe": "Hier ist die [Slot].",
         "pronouns": [],
         "slotGroups": [
           [
             {
-              "schrift": "lửa",
-              "lerntext": "lửa",
-              "de": "Feuer"
+              "schrift": "bạn bè",
+              "lerntext": "bạn bè",
+              "de": "Freunde"
             },
             {
-              "schrift": "xe ôm",
-              "lerntext": "xe ôm",
-              "de": "Motorradtaxi"
+              "schrift": "tóc",
+              "lerntext": "tóc",
+              "de": "Haare"
             },
             {
-              "schrift": "ngã tư",
-              "lerntext": "ngã tư",
-              "de": "Kreuzung"
-            },
-            {
-              "schrift": "chuyến bay",
-              "lerntext": "chuyến bay",
-              "de": "Flug"
-            },
-            {
-              "schrift": "hàng xóm",
-              "lerntext": "hàng xóm",
-              "de": "Nachbar"
+              "schrift": "đũa",
+              "lerntext": "đũa",
+              "de": "Essstäbchen"
             }
           ]
         ],
-        "newCount": 5,
+        "newCount": 3,
         "task": null,
         "newFrameWords": [],
         "id": "15.14"
@@ -6053,21 +10908,344 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "slotGroups": [
           [
             {
-              "schrift": "sở thích",
-              "lerntext": "sở thích",
-              "de": "Hobby"
+              "schrift": "người yêu",
+              "lerntext": "người yêu",
+              "de": "fester Freund"
+            },
+            {
+              "schrift": "anh trai",
+              "lerntext": "anh trai",
+              "de": "älterer Bruder"
+            },
+            {
+              "schrift": "em trai",
+              "lerntext": "em trai",
+              "de": "jüngerer Bruder"
+            },
+            {
+              "schrift": "chị gái",
+              "lerntext": "chị gái",
+              "de": "ältere Schwester"
+            },
+            {
+              "schrift": "em gái",
+              "lerntext": "em gái",
+              "de": "jüngere Schwester"
+            }
+          ]
+        ],
+        "newCount": 5,
+        "task": null,
+        "newFrameWords": [],
+        "id": "15.15"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "đây là [Slot]",
+          "lerntext": "đây là [Slot]"
+        },
+        "frameDe": "Hier ist die [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "ca",
+              "lerntext": "ca",
+              "de": "Schicht",
+              "wieder": true
+            },
+            {
+              "schrift": "ngã tư",
+              "lerntext": "ngã tư",
+              "de": "Kreuzung",
+              "wieder": true
             },
             {
               "schrift": "quán",
               "lerntext": "quán",
-              "de": "Garküche, Lokal"
+              "de": "Garküche",
+              "wieder": true
+            },
+            {
+              "schrift": "bạn bè",
+              "lerntext": "bạn bè",
+              "de": "Freunde",
+              "wieder": true
+            },
+            {
+              "schrift": "tóc",
+              "lerntext": "tóc",
+              "de": "Haare",
+              "wieder": true
+            },
+            {
+              "schrift": "đũa",
+              "lerntext": "đũa",
+              "de": "Essstäbchen",
+              "wieder": true
+            },
+            {
+              "schrift": "thế giới",
+              "lerntext": "thế giới",
+              "de": "Welt",
+              "wieder": true
+            },
+            {
+              "schrift": "mèo",
+              "lerntext": "mèo",
+              "de": "Katze",
+              "wieder": true
+            },
+            {
+              "schrift": "tình yêu",
+              "lerntext": "tình yêu",
+              "de": "Liebe",
+              "wieder": true
+            },
+            {
+              "schrift": "ý tưởng",
+              "lerntext": "ý tưởng",
+              "de": "Idee",
+              "wieder": true
             }
           ]
         ],
-        "newCount": 2,
+        "newCount": 0,
         "task": null,
         "newFrameWords": [],
-        "id": "15.15"
+        "id": "15.16"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "đây là [Slot]",
+          "lerntext": "đây là [Slot]"
+        },
+        "frameDe": "Hier ist der [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "khách",
+              "lerntext": "khách",
+              "de": "Kunde",
+              "wieder": true
+            },
+            {
+              "schrift": "lương",
+              "lerntext": "lương",
+              "de": "Lohn",
+              "wieder": true
+            },
+            {
+              "schrift": "hợp đồng",
+              "lerntext": "hợp đồng",
+              "de": "Vertrag",
+              "wieder": true
+            },
+            {
+              "schrift": "chuyến bay",
+              "lerntext": "chuyến bay",
+              "de": "Flug",
+              "wieder": true
+            },
+            {
+              "schrift": "hàng xóm",
+              "lerntext": "hàng xóm",
+              "de": "Nachbar",
+              "wieder": true
+            },
+            {
+              "schrift": "người yêu",
+              "lerntext": "người yêu",
+              "de": "fester Freund",
+              "wieder": true
+            },
+            {
+              "schrift": "anh trai",
+              "lerntext": "anh trai",
+              "de": "älterer Bruder",
+              "wieder": true
+            },
+            {
+              "schrift": "em trai",
+              "lerntext": "em trai",
+              "de": "jüngerer Bruder",
+              "wieder": true
+            },
+            {
+              "schrift": "chị gái",
+              "lerntext": "chị gái",
+              "de": "ältere Schwester",
+              "wieder": true
+            },
+            {
+              "schrift": "em gái",
+              "lerntext": "em gái",
+              "de": "jüngere Schwester",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "15.17"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "đây là [Slot]",
+          "lerntext": "đây là [Slot]"
+        },
+        "frameDe": "Hier ist der [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "bác sĩ",
+              "lerntext": "bác sĩ",
+              "de": "Arzt",
+              "wieder": true
+            },
+            {
+              "schrift": "phim",
+              "lerntext": "phim",
+              "de": "Film",
+              "wieder": true
+            },
+            {
+              "schrift": "chó",
+              "lerntext": "chó",
+              "de": "Hund",
+              "wieder": true
+            },
+            {
+              "schrift": "phần",
+              "lerntext": "phần",
+              "de": "Teil",
+              "wieder": true
+            },
+            {
+              "schrift": "lý do",
+              "lerntext": "lý do",
+              "de": "Grund",
+              "wieder": true
+            },
+            {
+              "schrift": "khách",
+              "lerntext": "khách",
+              "de": "Kunde",
+              "wieder": true
+            },
+            {
+              "schrift": "lương",
+              "lerntext": "lương",
+              "de": "Lohn",
+              "wieder": true
+            },
+            {
+              "schrift": "hợp đồng",
+              "lerntext": "hợp đồng",
+              "de": "Vertrag",
+              "wieder": true
+            },
+            {
+              "schrift": "chuyến bay",
+              "lerntext": "chuyến bay",
+              "de": "Flug",
+              "wieder": true
+            },
+            {
+              "schrift": "hàng xóm",
+              "lerntext": "hàng xóm",
+              "de": "Nachbar",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "15.18"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "đây là [Slot]",
+          "lerntext": "đây là [Slot]"
+        },
+        "frameDe": "Hier ist das [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "quà",
+              "lerntext": "quà",
+              "de": "Geschenk",
+              "wieder": true
+            },
+            {
+              "schrift": "ví dụ",
+              "lerntext": "ví dụ",
+              "de": "Beispiel",
+              "wieder": true
+            },
+            {
+              "schrift": "lửa",
+              "lerntext": "lửa",
+              "de": "Feuer",
+              "wieder": true
+            },
+            {
+              "schrift": "xe ôm",
+              "lerntext": "xe ôm",
+              "de": "Motorradtaxi",
+              "wieder": true
+            },
+            {
+              "schrift": "sở thích",
+              "lerntext": "sở thích",
+              "de": "Hobby",
+              "wieder": true
+            },
+            {
+              "schrift": "thứ",
+              "lerntext": "thứ",
+              "de": "Ding",
+              "wieder": true
+            },
+            {
+              "schrift": "đồ ăn",
+              "lerntext": "đồ ăn",
+              "de": "Essen",
+              "wieder": true
+            },
+            {
+              "schrift": "thuốc",
+              "lerntext": "thuốc",
+              "de": "Medikament",
+              "wieder": true
+            },
+            {
+              "schrift": "hành lý",
+              "lerntext": "hành lý",
+              "de": "Gepäck",
+              "wieder": true
+            },
+            {
+              "schrift": "cuộc sống",
+              "lerntext": "cuộc sống",
+              "de": "Leben",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "15.19"
       },
       {
         "kind": "finisher",
@@ -6081,13 +11259,14 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "newCount": 0,
         "task": "Benutze fünf Wörter aus diesem Modul in eigenen Sätzen.",
         "newFrameWords": [],
-        "id": "15.16"
+        "id": "15.20"
       }
     ]
   },
   {
     "number": 16,
     "title": "Weitere Verben",
+    "niveau": null,
     "lessons": [
       {
         "kind": "frame",
@@ -6102,17 +11281,17 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "gọi",
               "lerntext": "gọi",
-              "de": "rufen, bestellen"
+              "de": "rufen"
             },
             {
               "schrift": "mang",
               "lerntext": "mang",
-              "de": "bringen, tragen"
+              "de": "bringen"
             },
             {
               "schrift": "học",
               "lerntext": "học",
-              "de": "lernen, studieren"
+              "de": "lernen"
             },
             {
               "schrift": "dạy",
@@ -6149,7 +11328,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "thử",
               "lerntext": "thử",
-              "de": "versuchen, probieren"
+              "de": "versuchen"
             },
             {
               "schrift": "hát",
@@ -6165,6 +11344,36 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "schrift": "lái",
               "lerntext": "lái",
               "de": "fahren (lenken)"
+            },
+            {
+              "schrift": "gọi",
+              "lerntext": "gọi",
+              "de": "rufen",
+              "wieder": true
+            },
+            {
+              "schrift": "mang",
+              "lerntext": "mang",
+              "de": "bringen",
+              "wieder": true
+            },
+            {
+              "schrift": "học",
+              "lerntext": "học",
+              "de": "lernen",
+              "wieder": true
+            },
+            {
+              "schrift": "dạy",
+              "lerntext": "dạy",
+              "de": "unterrichten",
+              "wieder": true
+            },
+            {
+              "schrift": "bắt đầu",
+              "lerntext": "bắt đầu",
+              "de": "anfangen",
+              "wieder": true
             }
           ]
         ],
@@ -6191,7 +11400,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "quen",
               "lerntext": "quen",
-              "de": "kennenlernen, gewohnt sein"
+              "de": "kennenlernen"
             },
             {
               "schrift": "cưới",
@@ -6206,7 +11415,67 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "đặt",
               "lerntext": "đặt",
-              "de": "bestellen, reservieren"
+              "de": "bestellen"
+            },
+            {
+              "schrift": "kết thúc",
+              "lerntext": "kết thúc",
+              "de": "beenden",
+              "wieder": true
+            },
+            {
+              "schrift": "thử",
+              "lerntext": "thử",
+              "de": "versuchen",
+              "wieder": true
+            },
+            {
+              "schrift": "hát",
+              "lerntext": "hát",
+              "de": "singen",
+              "wieder": true
+            },
+            {
+              "schrift": "chạy",
+              "lerntext": "chạy",
+              "de": "rennen",
+              "wieder": true
+            },
+            {
+              "schrift": "lái",
+              "lerntext": "lái",
+              "de": "fahren (lenken)",
+              "wieder": true
+            },
+            {
+              "schrift": "gọi",
+              "lerntext": "gọi",
+              "de": "rufen",
+              "wieder": true
+            },
+            {
+              "schrift": "mang",
+              "lerntext": "mang",
+              "de": "bringen",
+              "wieder": true
+            },
+            {
+              "schrift": "học",
+              "lerntext": "học",
+              "de": "lernen",
+              "wieder": true
+            },
+            {
+              "schrift": "dạy",
+              "lerntext": "dạy",
+              "de": "unterrichten",
+              "wieder": true
+            },
+            {
+              "schrift": "bắt đầu",
+              "lerntext": "bắt đầu",
+              "de": "anfangen",
+              "wieder": true
             }
           ]
         ],
@@ -6249,6 +11518,66 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "schrift": "xin lỗi",
               "lerntext": "xin lỗi",
               "de": "sich entschuldigen"
+            },
+            {
+              "schrift": "thăm",
+              "lerntext": "thăm",
+              "de": "besuchen",
+              "wieder": true
+            },
+            {
+              "schrift": "quen",
+              "lerntext": "quen",
+              "de": "kennenlernen",
+              "wieder": true
+            },
+            {
+              "schrift": "cưới",
+              "lerntext": "cưới",
+              "de": "heiraten",
+              "wieder": true
+            },
+            {
+              "schrift": "xảy ra",
+              "lerntext": "xảy ra",
+              "de": "geschehen",
+              "wieder": true
+            },
+            {
+              "schrift": "đặt",
+              "lerntext": "đặt",
+              "de": "bestellen",
+              "wieder": true
+            },
+            {
+              "schrift": "kết thúc",
+              "lerntext": "kết thúc",
+              "de": "beenden",
+              "wieder": true
+            },
+            {
+              "schrift": "thử",
+              "lerntext": "thử",
+              "de": "versuchen",
+              "wieder": true
+            },
+            {
+              "schrift": "hát",
+              "lerntext": "hát",
+              "de": "singen",
+              "wieder": true
+            },
+            {
+              "schrift": "chạy",
+              "lerntext": "chạy",
+              "de": "rennen",
+              "wieder": true
+            },
+            {
+              "schrift": "lái",
+              "lerntext": "lái",
+              "de": "fahren (lenken)",
+              "wieder": true
             }
           ]
         ],
@@ -6275,7 +11604,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "giữ",
               "lerntext": "giữ",
-              "de": "halten, behalten"
+              "de": "halten"
             },
             {
               "schrift": "dừng",
@@ -6290,7 +11619,67 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "mời",
               "lerntext": "mời",
-              "de": "einladen, bitten"
+              "de": "einladen"
+            },
+            {
+              "schrift": "thuê",
+              "lerntext": "thuê",
+              "de": "mieten",
+              "wieder": true
+            },
+            {
+              "schrift": "ký",
+              "lerntext": "ký",
+              "de": "unterschreiben",
+              "wieder": true
+            },
+            {
+              "schrift": "nấu",
+              "lerntext": "nấu",
+              "de": "kochen",
+              "wieder": true
+            },
+            {
+              "schrift": "cảm ơn",
+              "lerntext": "cảm ơn",
+              "de": "danken",
+              "wieder": true
+            },
+            {
+              "schrift": "xin lỗi",
+              "lerntext": "xin lỗi",
+              "de": "sich entschuldigen",
+              "wieder": true
+            },
+            {
+              "schrift": "thăm",
+              "lerntext": "thăm",
+              "de": "besuchen",
+              "wieder": true
+            },
+            {
+              "schrift": "quen",
+              "lerntext": "quen",
+              "de": "kennenlernen",
+              "wieder": true
+            },
+            {
+              "schrift": "cưới",
+              "lerntext": "cưới",
+              "de": "heiraten",
+              "wieder": true
+            },
+            {
+              "schrift": "xảy ra",
+              "lerntext": "xảy ra",
+              "de": "geschehen",
+              "wieder": true
+            },
+            {
+              "schrift": "đặt",
+              "lerntext": "đặt",
+              "de": "bestellen",
+              "wieder": true
             }
           ]
         ],
@@ -6310,11 +11699,6 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "slotGroups": [
           [
             {
-              "schrift": "đưa",
-              "lerntext": "đưa",
-              "de": "geben, bringen"
-            },
-            {
               "schrift": "về nhà",
               "lerntext": "về nhà",
               "de": "nach Hause gehen"
@@ -6327,12 +11711,77 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "lên",
               "lerntext": "lên",
-              "de": "hinaufgehen, einsteigen"
+              "de": "hinaufgehen"
             },
             {
               "schrift": "xuống",
               "lerntext": "xuống",
-              "de": "hinuntergehen, aussteigen"
+              "de": "hinuntergehen"
+            },
+            {
+              "schrift": "bị",
+              "lerntext": "bị",
+              "de": "erleiden (Passiv, negativ)"
+            },
+            {
+              "schrift": "chỉ đường",
+              "lerntext": "chỉ đường",
+              "de": "den Weg zeigen",
+              "wieder": true
+            },
+            {
+              "schrift": "giữ",
+              "lerntext": "giữ",
+              "de": "halten",
+              "wieder": true
+            },
+            {
+              "schrift": "dừng",
+              "lerntext": "dừng",
+              "de": "anhalten",
+              "wieder": true
+            },
+            {
+              "schrift": "mặc",
+              "lerntext": "mặc",
+              "de": "anziehen (Kleidung)",
+              "wieder": true
+            },
+            {
+              "schrift": "mời",
+              "lerntext": "mời",
+              "de": "einladen",
+              "wieder": true
+            },
+            {
+              "schrift": "thuê",
+              "lerntext": "thuê",
+              "de": "mieten",
+              "wieder": true
+            },
+            {
+              "schrift": "ký",
+              "lerntext": "ký",
+              "de": "unterschreiben",
+              "wieder": true
+            },
+            {
+              "schrift": "nấu",
+              "lerntext": "nấu",
+              "de": "kochen",
+              "wieder": true
+            },
+            {
+              "schrift": "cảm ơn",
+              "lerntext": "cảm ơn",
+              "de": "danken",
+              "wieder": true
+            },
+            {
+              "schrift": "xin lỗi",
+              "lerntext": "xin lỗi",
+              "de": "sich entschuldigen",
+              "wieder": true
             }
           ]
         ],
@@ -6352,11 +11801,6 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "slotGroups": [
           [
             {
-              "schrift": "bị",
-              "lerntext": "bị",
-              "de": "erleiden (Passiv, negativ)"
-            },
-            {
               "schrift": "sạc",
               "lerntext": "sạc",
               "de": "aufladen"
@@ -6375,6 +11819,71 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "schrift": "khám",
               "lerntext": "khám",
               "de": "untersuchen (Arzt)"
+            },
+            {
+              "schrift": "nghỉ",
+              "lerntext": "nghỉ",
+              "de": "ausruhen"
+            },
+            {
+              "schrift": "về nhà",
+              "lerntext": "về nhà",
+              "de": "nach Hause gehen",
+              "wieder": true
+            },
+            {
+              "schrift": "ra",
+              "lerntext": "ra",
+              "de": "hinausgehen",
+              "wieder": true
+            },
+            {
+              "schrift": "lên",
+              "lerntext": "lên",
+              "de": "hinaufgehen",
+              "wieder": true
+            },
+            {
+              "schrift": "xuống",
+              "lerntext": "xuống",
+              "de": "hinuntergehen",
+              "wieder": true
+            },
+            {
+              "schrift": "bị",
+              "lerntext": "bị",
+              "de": "erleiden (Passiv, negativ)",
+              "wieder": true
+            },
+            {
+              "schrift": "chỉ đường",
+              "lerntext": "chỉ đường",
+              "de": "den Weg zeigen",
+              "wieder": true
+            },
+            {
+              "schrift": "giữ",
+              "lerntext": "giữ",
+              "de": "halten",
+              "wieder": true
+            },
+            {
+              "schrift": "dừng",
+              "lerntext": "dừng",
+              "de": "anhalten",
+              "wieder": true
+            },
+            {
+              "schrift": "mặc",
+              "lerntext": "mặc",
+              "de": "anziehen (Kleidung)",
+              "wieder": true
+            },
+            {
+              "schrift": "mời",
+              "lerntext": "mời",
+              "de": "einladen",
+              "wieder": true
             }
           ]
         ],
@@ -6394,14 +11903,9 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "slotGroups": [
           [
             {
-              "schrift": "nghỉ",
-              "lerntext": "nghỉ",
-              "de": "ausruhen, freihaben"
-            },
-            {
               "schrift": "sinh",
               "lerntext": "sinh",
-              "de": "geboren werden, gebären"
+              "de": "geboren werden"
             },
             {
               "schrift": "dọn",
@@ -6417,13 +11921,185 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "schrift": "kể",
               "lerntext": "kể",
               "de": "erzählen"
+            },
+            {
+              "schrift": "sạc",
+              "lerntext": "sạc",
+              "de": "aufladen",
+              "wieder": true
+            },
+            {
+              "schrift": "tính tiền",
+              "lerntext": "tính tiền",
+              "de": "abrechnen",
+              "wieder": true
+            },
+            {
+              "schrift": "đăng ký",
+              "lerntext": "đăng ký",
+              "de": "sich anmelden",
+              "wieder": true
+            },
+            {
+              "schrift": "khám",
+              "lerntext": "khám",
+              "de": "untersuchen (Arzt)",
+              "wieder": true
+            },
+            {
+              "schrift": "nghỉ",
+              "lerntext": "nghỉ",
+              "de": "ausruhen",
+              "wieder": true
+            },
+            {
+              "schrift": "về nhà",
+              "lerntext": "về nhà",
+              "de": "nach Hause gehen",
+              "wieder": true
+            },
+            {
+              "schrift": "ra",
+              "lerntext": "ra",
+              "de": "hinausgehen",
+              "wieder": true
+            },
+            {
+              "schrift": "lên",
+              "lerntext": "lên",
+              "de": "hinaufgehen",
+              "wieder": true
+            },
+            {
+              "schrift": "xuống",
+              "lerntext": "xuống",
+              "de": "hinuntergehen",
+              "wieder": true
+            },
+            {
+              "schrift": "bị",
+              "lerntext": "bị",
+              "de": "erleiden (Passiv, negativ)",
+              "wieder": true
             }
           ]
         ],
-        "newCount": 5,
+        "newCount": 4,
         "task": null,
         "newFrameWords": [],
         "id": "16.8"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi muốn [Slot]",
+          "lerntext": "tôi muốn [Slot]"
+        },
+        "frameDe": "Ich will [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "sinh",
+              "lerntext": "sinh",
+              "de": "geboren werden",
+              "wieder": true
+            },
+            {
+              "schrift": "dọn",
+              "lerntext": "dọn",
+              "de": "aufräumen",
+              "wieder": true
+            },
+            {
+              "schrift": "chào",
+              "lerntext": "chào",
+              "de": "grüßen",
+              "wieder": true
+            },
+            {
+              "schrift": "kể",
+              "lerntext": "kể",
+              "de": "erzählen",
+              "wieder": true
+            },
+            {
+              "schrift": "sạc",
+              "lerntext": "sạc",
+              "de": "aufladen",
+              "wieder": true
+            },
+            {
+              "schrift": "tính tiền",
+              "lerntext": "tính tiền",
+              "de": "abrechnen",
+              "wieder": true
+            },
+            {
+              "schrift": "đăng ký",
+              "lerntext": "đăng ký",
+              "de": "sich anmelden",
+              "wieder": true
+            },
+            {
+              "schrift": "khám",
+              "lerntext": "khám",
+              "de": "untersuchen (Arzt)",
+              "wieder": true
+            },
+            {
+              "schrift": "nghỉ",
+              "lerntext": "nghỉ",
+              "de": "ausruhen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "16.9"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi muốn [Slot]",
+          "lerntext": "tôi muốn [Slot]"
+        },
+        "frameDe": "Ich will [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "sinh",
+              "lerntext": "sinh",
+              "de": "geboren werden",
+              "wieder": true
+            },
+            {
+              "schrift": "dọn",
+              "lerntext": "dọn",
+              "de": "aufräumen",
+              "wieder": true
+            },
+            {
+              "schrift": "chào",
+              "lerntext": "chào",
+              "de": "grüßen",
+              "wieder": true
+            },
+            {
+              "schrift": "kể",
+              "lerntext": "kể",
+              "de": "erzählen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "16.10"
       },
       {
         "kind": "finisher",
@@ -6437,13 +12113,14 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "newCount": 0,
         "task": "Benutze fünf Wörter aus diesem Modul in eigenen Sätzen.",
         "newFrameWords": [],
-        "id": "16.9"
+        "id": "16.11"
       }
     ]
   },
   {
     "number": 17,
     "title": "Weitere Adjektive",
+    "niveau": null,
     "lessons": [
       {
         "kind": "frame",
@@ -6478,7 +12155,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "trống",
               "lerntext": "trống",
-              "de": "leer, frei"
+              "de": "leer"
             }
           ]
         ],
@@ -6521,6 +12198,36 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "schrift": "cay",
               "lerntext": "cay",
               "de": "scharf"
+            },
+            {
+              "schrift": "già",
+              "lerntext": "già",
+              "de": "alt (Person)",
+              "wieder": true
+            },
+            {
+              "schrift": "dễ",
+              "lerntext": "dễ",
+              "de": "einfach",
+              "wieder": true
+            },
+            {
+              "schrift": "miễn phí",
+              "lerntext": "miễn phí",
+              "de": "kostenlos",
+              "wieder": true
+            },
+            {
+              "schrift": "đầy",
+              "lerntext": "đầy",
+              "de": "voll",
+              "wieder": true
+            },
+            {
+              "schrift": "trống",
+              "lerntext": "trống",
+              "de": "leer",
+              "wieder": true
             }
           ]
         ],
@@ -6547,7 +12254,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "mới mẻ",
               "lerntext": "mới mẻ",
-              "de": "neu, frisch"
+              "de": "neu"
             },
             {
               "schrift": "an toàn",
@@ -6563,6 +12270,66 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "schrift": "yên tĩnh",
               "lerntext": "yên tĩnh",
               "de": "ruhig"
+            },
+            {
+              "schrift": "tử tế",
+              "lerntext": "tử tế",
+              "de": "freundlich",
+              "wieder": true
+            },
+            {
+              "schrift": "mạnh",
+              "lerntext": "mạnh",
+              "de": "stark",
+              "wieder": true
+            },
+            {
+              "schrift": "tươi",
+              "lerntext": "tươi",
+              "de": "frisch",
+              "wieder": true
+            },
+            {
+              "schrift": "mặn",
+              "lerntext": "mặn",
+              "de": "salzig",
+              "wieder": true
+            },
+            {
+              "schrift": "cay",
+              "lerntext": "cay",
+              "de": "scharf",
+              "wieder": true
+            },
+            {
+              "schrift": "già",
+              "lerntext": "già",
+              "de": "alt (Person)",
+              "wieder": true
+            },
+            {
+              "schrift": "dễ",
+              "lerntext": "dễ",
+              "de": "einfach",
+              "wieder": true
+            },
+            {
+              "schrift": "miễn phí",
+              "lerntext": "miễn phí",
+              "de": "kostenlos",
+              "wieder": true
+            },
+            {
+              "schrift": "đầy",
+              "lerntext": "đầy",
+              "de": "voll",
+              "wieder": true
+            },
+            {
+              "schrift": "trống",
+              "lerntext": "trống",
+              "de": "leer",
+              "wieder": true
             }
           ]
         ],
@@ -6605,6 +12372,66 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "schrift": "xinh",
               "lerntext": "xinh",
               "de": "hübsch"
+            },
+            {
+              "schrift": "ngon",
+              "lerntext": "ngon",
+              "de": "lecker",
+              "wieder": true
+            },
+            {
+              "schrift": "mới mẻ",
+              "lerntext": "mới mẻ",
+              "de": "neu",
+              "wieder": true
+            },
+            {
+              "schrift": "an toàn",
+              "lerntext": "an toàn",
+              "de": "sicher",
+              "wieder": true
+            },
+            {
+              "schrift": "ồn",
+              "lerntext": "ồn",
+              "de": "laut",
+              "wieder": true
+            },
+            {
+              "schrift": "yên tĩnh",
+              "lerntext": "yên tĩnh",
+              "de": "ruhig",
+              "wieder": true
+            },
+            {
+              "schrift": "tử tế",
+              "lerntext": "tử tế",
+              "de": "freundlich",
+              "wieder": true
+            },
+            {
+              "schrift": "mạnh",
+              "lerntext": "mạnh",
+              "de": "stark",
+              "wieder": true
+            },
+            {
+              "schrift": "tươi",
+              "lerntext": "tươi",
+              "de": "frisch",
+              "wieder": true
+            },
+            {
+              "schrift": "mặn",
+              "lerntext": "mặn",
+              "de": "salzig",
+              "wieder": true
+            },
+            {
+              "schrift": "cay",
+              "lerntext": "cay",
+              "de": "scharf",
+              "wieder": true
             }
           ]
         ],
@@ -6626,7 +12453,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "lớn",
               "lerntext": "lớn",
-              "de": "groß, erwachsen"
+              "de": "groß"
             },
             {
               "schrift": "nóng",
@@ -6647,6 +12474,66 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "schrift": "tiếp theo",
               "lerntext": "tiếp theo",
               "de": "nächster"
+            },
+            {
+              "schrift": "rảnh",
+              "lerntext": "rảnh",
+              "de": "frei (Zeit)",
+              "wieder": true
+            },
+            {
+              "schrift": "no",
+              "lerntext": "no",
+              "de": "satt",
+              "wieder": true
+            },
+            {
+              "schrift": "ngầu",
+              "lerntext": "ngầu",
+              "de": "cool",
+              "wieder": true
+            },
+            {
+              "schrift": "thật thà",
+              "lerntext": "thật thà",
+              "de": "ehrlich",
+              "wieder": true
+            },
+            {
+              "schrift": "xinh",
+              "lerntext": "xinh",
+              "de": "hübsch",
+              "wieder": true
+            },
+            {
+              "schrift": "ngon",
+              "lerntext": "ngon",
+              "de": "lecker",
+              "wieder": true
+            },
+            {
+              "schrift": "mới mẻ",
+              "lerntext": "mới mẻ",
+              "de": "neu",
+              "wieder": true
+            },
+            {
+              "schrift": "an toàn",
+              "lerntext": "an toàn",
+              "de": "sicher",
+              "wieder": true
+            },
+            {
+              "schrift": "ồn",
+              "lerntext": "ồn",
+              "de": "laut",
+              "wieder": true
+            },
+            {
+              "schrift": "yên tĩnh",
+              "lerntext": "yên tĩnh",
+              "de": "ruhig",
+              "wieder": true
             }
           ]
         ],
@@ -6668,27 +12555,87 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "giống",
               "lerntext": "giống",
-              "de": "gleich, ähnlich"
+              "de": "gleich"
             },
             {
               "schrift": "bình thường",
               "lerntext": "bình thường",
-              "de": "normal, üblich"
+              "de": "normal"
             },
             {
               "schrift": "đông",
               "lerntext": "đông",
-              "de": "voll, überfüllt"
+              "de": "voll"
             },
             {
               "schrift": "giỏi",
               "lerntext": "giỏi",
-              "de": "tüchtig, gut in"
+              "de": "tüchtig"
             },
             {
               "schrift": "trắng trẻo",
               "lerntext": "trắng trẻo",
               "de": "hellhäutig"
+            },
+            {
+              "schrift": "lớn",
+              "lerntext": "lớn",
+              "de": "groß",
+              "wieder": true
+            },
+            {
+              "schrift": "nóng",
+              "lerntext": "nóng",
+              "de": "heiß",
+              "wieder": true
+            },
+            {
+              "schrift": "bận",
+              "lerntext": "bận",
+              "de": "beschäftigt",
+              "wieder": true
+            },
+            {
+              "schrift": "vui",
+              "lerntext": "vui",
+              "de": "fröhlich",
+              "wieder": true
+            },
+            {
+              "schrift": "tiếp theo",
+              "lerntext": "tiếp theo",
+              "de": "nächster",
+              "wieder": true
+            },
+            {
+              "schrift": "rảnh",
+              "lerntext": "rảnh",
+              "de": "frei (Zeit)",
+              "wieder": true
+            },
+            {
+              "schrift": "no",
+              "lerntext": "no",
+              "de": "satt",
+              "wieder": true
+            },
+            {
+              "schrift": "ngầu",
+              "lerntext": "ngầu",
+              "de": "cool",
+              "wieder": true
+            },
+            {
+              "schrift": "thật thà",
+              "lerntext": "thật thà",
+              "de": "ehrlich",
+              "wieder": true
+            },
+            {
+              "schrift": "xinh",
+              "lerntext": "xinh",
+              "de": "hübsch",
+              "wieder": true
             }
           ]
         ],
@@ -6710,7 +12657,67 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "dễ thương",
               "lerntext": "dễ thương",
-              "de": "süß, niedlich"
+              "de": "süß"
+            },
+            {
+              "schrift": "giống",
+              "lerntext": "giống",
+              "de": "gleich",
+              "wieder": true
+            },
+            {
+              "schrift": "bình thường",
+              "lerntext": "bình thường",
+              "de": "normal",
+              "wieder": true
+            },
+            {
+              "schrift": "đông",
+              "lerntext": "đông",
+              "de": "voll",
+              "wieder": true
+            },
+            {
+              "schrift": "giỏi",
+              "lerntext": "giỏi",
+              "de": "tüchtig",
+              "wieder": true
+            },
+            {
+              "schrift": "trắng trẻo",
+              "lerntext": "trắng trẻo",
+              "de": "hellhäutig",
+              "wieder": true
+            },
+            {
+              "schrift": "lớn",
+              "lerntext": "lớn",
+              "de": "groß",
+              "wieder": true
+            },
+            {
+              "schrift": "nóng",
+              "lerntext": "nóng",
+              "de": "heiß",
+              "wieder": true
+            },
+            {
+              "schrift": "bận",
+              "lerntext": "bận",
+              "de": "beschäftigt",
+              "wieder": true
+            },
+            {
+              "schrift": "vui",
+              "lerntext": "vui",
+              "de": "fröhlich",
+              "wieder": true
+            },
+            {
+              "schrift": "tiếp theo",
+              "lerntext": "tiếp theo",
+              "de": "nächster",
+              "wieder": true
             }
           ]
         ],
@@ -6718,6 +12725,59 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "task": null,
         "newFrameWords": [],
         "id": "17.7"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "nó rất [Slot]",
+          "lerntext": "nó rất [Slot]"
+        },
+        "frameDe": "Es ist sehr [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "dễ thương",
+              "lerntext": "dễ thương",
+              "de": "süß",
+              "wieder": true
+            },
+            {
+              "schrift": "giống",
+              "lerntext": "giống",
+              "de": "gleich",
+              "wieder": true
+            },
+            {
+              "schrift": "bình thường",
+              "lerntext": "bình thường",
+              "de": "normal",
+              "wieder": true
+            },
+            {
+              "schrift": "đông",
+              "lerntext": "đông",
+              "de": "voll",
+              "wieder": true
+            },
+            {
+              "schrift": "giỏi",
+              "lerntext": "giỏi",
+              "de": "tüchtig",
+              "wieder": true
+            },
+            {
+              "schrift": "trắng trẻo",
+              "lerntext": "trắng trẻo",
+              "de": "hellhäutig",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "17.8"
       },
       {
         "kind": "finisher",
@@ -6731,13 +12791,14 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "newCount": 0,
         "task": "Benutze fünf Wörter aus diesem Modul in eigenen Sätzen.",
         "newFrameWords": [],
-        "id": "17.8"
+        "id": "17.9"
       }
     ]
   },
   {
     "number": 18,
     "title": "Weitere Pronomen",
+    "niveau": null,
     "lessons": [
       {
         "kind": "frame",
@@ -6752,12 +12813,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "ông",
               "lerntext": "ông",
-              "de": "du (alter Mann), Herr"
+              "de": "du (alter Mann)"
             },
             {
               "schrift": "cô",
               "lerntext": "cô",
-              "de": "du (Frau mittleren Alters), Lehrerin"
+              "de": "du (Frau mittleren Alters)"
             },
             {
               "schrift": "chú",
@@ -6804,7 +12865,7 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "đó",
               "lerntext": "đó",
-              "de": "das, jenes"
+              "de": "das"
             },
             {
               "schrift": "mọi người",
@@ -6815,6 +12876,36 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "schrift": "ai đó",
               "lerntext": "ai đó",
               "de": "irgendjemand"
+            },
+            {
+              "schrift": "ông",
+              "lerntext": "ông",
+              "de": "du (alter Mann)",
+              "wieder": true
+            },
+            {
+              "schrift": "cô",
+              "lerntext": "cô",
+              "de": "du (Frau mittleren Alters)",
+              "wieder": true
+            },
+            {
+              "schrift": "chú",
+              "lerntext": "chú",
+              "de": "du (Mann mittleren Alters)",
+              "wieder": true
+            },
+            {
+              "schrift": "họ",
+              "lerntext": "họ",
+              "de": "sie (Mehrzahl)",
+              "wieder": true
+            },
+            {
+              "schrift": "chúng tôi",
+              "lerntext": "chúng tôi",
+              "de": "wir (ohne dich)",
+              "wieder": true
             }
           ]
         ],
@@ -6854,9 +12945,69 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "beide"
             },
             {
-              "schrift": "nhau",
-              "lerntext": "nhau",
-              "de": "einander"
+              "schrift": "chính mình",
+              "lerntext": "chính mình",
+              "de": "selbst"
+            },
+            {
+              "schrift": "chúng ta",
+              "lerntext": "chúng ta",
+              "de": "wir (mit dir)",
+              "wieder": true
+            },
+            {
+              "schrift": "kia",
+              "lerntext": "kia",
+              "de": "jener",
+              "wieder": true
+            },
+            {
+              "schrift": "đó",
+              "lerntext": "đó",
+              "de": "das",
+              "wieder": true
+            },
+            {
+              "schrift": "mọi người",
+              "lerntext": "mọi người",
+              "de": "alle Leute",
+              "wieder": true
+            },
+            {
+              "schrift": "ai đó",
+              "lerntext": "ai đó",
+              "de": "irgendjemand",
+              "wieder": true
+            },
+            {
+              "schrift": "ông",
+              "lerntext": "ông",
+              "de": "du (alter Mann)",
+              "wieder": true
+            },
+            {
+              "schrift": "cô",
+              "lerntext": "cô",
+              "de": "du (Frau mittleren Alters)",
+              "wieder": true
+            },
+            {
+              "schrift": "chú",
+              "lerntext": "chú",
+              "de": "du (Mann mittleren Alters)",
+              "wieder": true
+            },
+            {
+              "schrift": "họ",
+              "lerntext": "họ",
+              "de": "sie (Mehrzahl)",
+              "wieder": true
+            },
+            {
+              "schrift": "chúng tôi",
+              "lerntext": "chúng tôi",
+              "de": "wir (ohne dich)",
+              "wieder": true
             }
           ]
         ],
@@ -6876,36 +13027,203 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "slotGroups": [
           [
             {
-              "schrift": "chính mình",
-              "lerntext": "chính mình",
-              "de": "selbst"
-            },
-            {
               "schrift": "chị",
               "lerntext": "chị",
-              "de": "du/ich (ältere Frau)"
+              "de": "du"
             },
             {
               "schrift": "em",
               "lerntext": "em",
-              "de": "du/ich (jüngere Person)"
+              "de": "du"
             },
             {
               "schrift": "cháu",
               "lerntext": "cháu",
-              "de": "ich (zu viel Älteren), Enkel"
+              "de": "ich (zu viel Älteren)"
             },
             {
               "schrift": "anh",
               "lerntext": "anh",
-              "de": "du/ich (älterer Mann)"
+              "de": "du"
+            },
+            {
+              "schrift": "không ai",
+              "lerntext": "không ai",
+              "de": "niemand",
+              "wieder": true
+            },
+            {
+              "schrift": "khác",
+              "lerntext": "khác",
+              "de": "anderer",
+              "wieder": true
+            },
+            {
+              "schrift": "mỗi",
+              "lerntext": "mỗi",
+              "de": "jeder",
+              "wieder": true
+            },
+            {
+              "schrift": "cả hai",
+              "lerntext": "cả hai",
+              "de": "beide",
+              "wieder": true
+            },
+            {
+              "schrift": "chính mình",
+              "lerntext": "chính mình",
+              "de": "selbst",
+              "wieder": true
+            },
+            {
+              "schrift": "chúng ta",
+              "lerntext": "chúng ta",
+              "de": "wir (mit dir)",
+              "wieder": true
+            },
+            {
+              "schrift": "kia",
+              "lerntext": "kia",
+              "de": "jener",
+              "wieder": true
+            },
+            {
+              "schrift": "đó",
+              "lerntext": "đó",
+              "de": "das",
+              "wieder": true
+            },
+            {
+              "schrift": "mọi người",
+              "lerntext": "mọi người",
+              "de": "alle Leute",
+              "wieder": true
+            },
+            {
+              "schrift": "ai đó",
+              "lerntext": "ai đó",
+              "de": "irgendjemand",
+              "wieder": true
             }
           ]
         ],
-        "newCount": 5,
+        "newCount": 4,
         "task": null,
         "newFrameWords": [],
         "id": "18.4"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "cái này cho [Slot]",
+          "lerntext": "cái này cho [Slot]"
+        },
+        "frameDe": "Es ist für [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "chị",
+              "lerntext": "chị",
+              "de": "du",
+              "wieder": true
+            },
+            {
+              "schrift": "em",
+              "lerntext": "em",
+              "de": "du",
+              "wieder": true
+            },
+            {
+              "schrift": "cháu",
+              "lerntext": "cháu",
+              "de": "ich (zu viel Älteren)",
+              "wieder": true
+            },
+            {
+              "schrift": "anh",
+              "lerntext": "anh",
+              "de": "du",
+              "wieder": true
+            },
+            {
+              "schrift": "không ai",
+              "lerntext": "không ai",
+              "de": "niemand",
+              "wieder": true
+            },
+            {
+              "schrift": "khác",
+              "lerntext": "khác",
+              "de": "anderer",
+              "wieder": true
+            },
+            {
+              "schrift": "mỗi",
+              "lerntext": "mỗi",
+              "de": "jeder",
+              "wieder": true
+            },
+            {
+              "schrift": "cả hai",
+              "lerntext": "cả hai",
+              "de": "beide",
+              "wieder": true
+            },
+            {
+              "schrift": "chính mình",
+              "lerntext": "chính mình",
+              "de": "selbst",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "18.5"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "cái này cho [Slot]",
+          "lerntext": "cái này cho [Slot]"
+        },
+        "frameDe": "Es ist für [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "chị",
+              "lerntext": "chị",
+              "de": "du",
+              "wieder": true
+            },
+            {
+              "schrift": "em",
+              "lerntext": "em",
+              "de": "du",
+              "wieder": true
+            },
+            {
+              "schrift": "cháu",
+              "lerntext": "cháu",
+              "de": "ich (zu viel Älteren)",
+              "wieder": true
+            },
+            {
+              "schrift": "anh",
+              "lerntext": "anh",
+              "de": "du",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "18.6"
       },
       {
         "kind": "finisher",
@@ -6919,13 +13237,14 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "newCount": 0,
         "task": "Benutze fünf Wörter aus diesem Modul in eigenen Sätzen.",
         "newFrameWords": [],
-        "id": "18.5"
+        "id": "18.7"
       }
     ]
   },
   {
     "number": 19,
     "title": "Weitere Adverbien",
+    "niveau": null,
     "lessons": [
       {
         "kind": "frame",
@@ -6980,14 +13299,14 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "slotGroups": [
           [
             {
-              "schrift": "đã",
-              "lerntext": "đã",
-              "de": "schon (Vergangenheit)"
-            },
-            {
               "schrift": "đang",
               "lerntext": "đang",
               "de": "gerade (Verlaufsform)"
+            },
+            {
+              "schrift": "có lẽ",
+              "lerntext": "có lẽ",
+              "de": "vielleicht"
             },
             {
               "schrift": "thật",
@@ -7000,9 +13319,39 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "so"
             },
             {
-              "schrift": "đủ",
-              "lerntext": "đủ",
-              "de": "genug"
+              "schrift": "gần như",
+              "lerntext": "gần như",
+              "de": "fast"
+            },
+            {
+              "schrift": "vâng",
+              "lerntext": "vâng",
+              "de": "ja (höflich, Norden)",
+              "wieder": true
+            },
+            {
+              "schrift": "dạ",
+              "lerntext": "dạ",
+              "de": "ja (höflich, Süden)",
+              "wieder": true
+            },
+            {
+              "schrift": "một chút",
+              "lerntext": "một chút",
+              "de": "ein bisschen",
+              "wieder": true
+            },
+            {
+              "schrift": "hiếm khi",
+              "lerntext": "hiếm khi",
+              "de": "selten",
+              "wieder": true
+            },
+            {
+              "schrift": "còn",
+              "lerntext": "còn",
+              "de": "noch",
+              "wieder": true
             }
           ]
         ],
@@ -7022,11 +13371,6 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "slotGroups": [
           [
             {
-              "schrift": "gần như",
-              "lerntext": "gần như",
-              "de": "fast"
-            },
-            {
               "schrift": "nữa",
               "lerntext": "nữa",
               "de": "noch mehr"
@@ -7045,6 +13389,71 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "schrift": "thẳng",
               "lerntext": "thẳng",
               "de": "geradeaus"
+            },
+            {
+              "schrift": "hết",
+              "lerntext": "hết",
+              "de": "aufgebraucht"
+            },
+            {
+              "schrift": "đang",
+              "lerntext": "đang",
+              "de": "gerade (Verlaufsform)",
+              "wieder": true
+            },
+            {
+              "schrift": "có lẽ",
+              "lerntext": "có lẽ",
+              "de": "vielleicht",
+              "wieder": true
+            },
+            {
+              "schrift": "thật",
+              "lerntext": "thật",
+              "de": "wirklich",
+              "wieder": true
+            },
+            {
+              "schrift": "vậy",
+              "lerntext": "vậy",
+              "de": "so",
+              "wieder": true
+            },
+            {
+              "schrift": "gần như",
+              "lerntext": "gần như",
+              "de": "fast",
+              "wieder": true
+            },
+            {
+              "schrift": "vâng",
+              "lerntext": "vâng",
+              "de": "ja (höflich, Norden)",
+              "wieder": true
+            },
+            {
+              "schrift": "dạ",
+              "lerntext": "dạ",
+              "de": "ja (höflich, Süden)",
+              "wieder": true
+            },
+            {
+              "schrift": "một chút",
+              "lerntext": "một chút",
+              "de": "ein bisschen",
+              "wieder": true
+            },
+            {
+              "schrift": "hiếm khi",
+              "lerntext": "hiếm khi",
+              "de": "selten",
+              "wieder": true
+            },
+            {
+              "schrift": "còn",
+              "lerntext": "còn",
+              "de": "noch",
+              "wieder": true
             }
           ]
         ],
@@ -7064,14 +13473,9 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "slotGroups": [
           [
             {
-              "schrift": "hết",
-              "lerntext": "hết",
-              "de": "aufgebraucht, ganz"
-            },
-            {
               "schrift": "thôi",
               "lerntext": "thôi",
-              "de": "nur, genug"
+              "de": "nur"
             },
             {
               "schrift": "nhé",
@@ -7086,14 +13490,186 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "từ từ",
               "lerntext": "từ từ",
-              "de": "langsam, gemächlich"
+              "de": "langsam"
+            },
+            {
+              "schrift": "nữa",
+              "lerntext": "nữa",
+              "de": "noch mehr",
+              "wieder": true
+            },
+            {
+              "schrift": "cuối cùng",
+              "lerntext": "cuối cùng",
+              "de": "endlich",
+              "wieder": true
+            },
+            {
+              "schrift": "tiếc là",
+              "lerntext": "tiếc là",
+              "de": "leider",
+              "wieder": true
+            },
+            {
+              "schrift": "thẳng",
+              "lerntext": "thẳng",
+              "de": "geradeaus",
+              "wieder": true
+            },
+            {
+              "schrift": "hết",
+              "lerntext": "hết",
+              "de": "aufgebraucht",
+              "wieder": true
+            },
+            {
+              "schrift": "đang",
+              "lerntext": "đang",
+              "de": "gerade (Verlaufsform)",
+              "wieder": true
+            },
+            {
+              "schrift": "có lẽ",
+              "lerntext": "có lẽ",
+              "de": "vielleicht",
+              "wieder": true
+            },
+            {
+              "schrift": "thật",
+              "lerntext": "thật",
+              "de": "wirklich",
+              "wieder": true
+            },
+            {
+              "schrift": "vậy",
+              "lerntext": "vậy",
+              "de": "so",
+              "wieder": true
+            },
+            {
+              "schrift": "gần như",
+              "lerntext": "gần như",
+              "de": "fast",
+              "wieder": true
             }
           ]
         ],
-        "newCount": 5,
+        "newCount": 4,
         "task": null,
         "newFrameWords": [],
         "id": "19.4"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi làm [Slot]",
+          "lerntext": "tôi làm [Slot]"
+        },
+        "frameDe": "Ich mache es [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "thôi",
+              "lerntext": "thôi",
+              "de": "nur",
+              "wieder": true
+            },
+            {
+              "schrift": "nhé",
+              "lerntext": "nhé",
+              "de": "ja? (freundliche Partikel)",
+              "wieder": true
+            },
+            {
+              "schrift": "muộn",
+              "lerntext": "muộn",
+              "de": "spät",
+              "wieder": true
+            },
+            {
+              "schrift": "từ từ",
+              "lerntext": "từ từ",
+              "de": "langsam",
+              "wieder": true
+            },
+            {
+              "schrift": "nữa",
+              "lerntext": "nữa",
+              "de": "noch mehr",
+              "wieder": true
+            },
+            {
+              "schrift": "cuối cùng",
+              "lerntext": "cuối cùng",
+              "de": "endlich",
+              "wieder": true
+            },
+            {
+              "schrift": "tiếc là",
+              "lerntext": "tiếc là",
+              "de": "leider",
+              "wieder": true
+            },
+            {
+              "schrift": "thẳng",
+              "lerntext": "thẳng",
+              "de": "geradeaus",
+              "wieder": true
+            },
+            {
+              "schrift": "hết",
+              "lerntext": "hết",
+              "de": "aufgebraucht",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "19.5"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi làm [Slot]",
+          "lerntext": "tôi làm [Slot]"
+        },
+        "frameDe": "Ich mache es [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "thôi",
+              "lerntext": "thôi",
+              "de": "nur",
+              "wieder": true
+            },
+            {
+              "schrift": "nhé",
+              "lerntext": "nhé",
+              "de": "ja? (freundliche Partikel)",
+              "wieder": true
+            },
+            {
+              "schrift": "muộn",
+              "lerntext": "muộn",
+              "de": "spät",
+              "wieder": true
+            },
+            {
+              "schrift": "từ từ",
+              "lerntext": "từ từ",
+              "de": "langsam",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "19.6"
       },
       {
         "kind": "finisher",
@@ -7107,13 +13683,14 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "newCount": 0,
         "task": "Benutze fünf Wörter aus diesem Modul in eigenen Sätzen.",
         "newFrameWords": [],
-        "id": "19.5"
+        "id": "19.7"
       }
     ]
   },
   {
     "number": 20,
     "title": "Weitere Zahlen",
+    "niveau": null,
     "lessons": [
       {
         "kind": "frame",
@@ -7143,12 +13720,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "thứ hai",
               "lerntext": "thứ hai",
-              "de": "zweiter, Montag"
+              "de": "zweiter"
             },
             {
               "schrift": "thứ ba",
               "lerntext": "thứ ba",
-              "de": "dritter, Dienstag"
+              "de": "dritter"
             }
           ]
         ],
@@ -7188,9 +13765,39 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
               "de": "Stück (Blätter, Papiere)"
             },
             {
-              "schrift": "người",
-              "lerntext": "người",
-              "de": "Person (Zählwort), Mensch"
+              "schrift": "quyển",
+              "lerntext": "quyển",
+              "de": "Stück (Bücher)"
+            },
+            {
+              "schrift": "ba mươi",
+              "lerntext": "ba mươi",
+              "de": "dreissig",
+              "wieder": true
+            },
+            {
+              "schrift": "triệu",
+              "lerntext": "triệu",
+              "de": "Million",
+              "wieder": true
+            },
+            {
+              "schrift": "thứ nhất",
+              "lerntext": "thứ nhất",
+              "de": "erster",
+              "wieder": true
+            },
+            {
+              "schrift": "thứ hai",
+              "lerntext": "thứ hai",
+              "de": "zweiter",
+              "wieder": true
+            },
+            {
+              "schrift": "thứ ba",
+              "lerntext": "thứ ba",
+              "de": "dritter",
+              "wieder": true
             }
           ]
         ],
@@ -7210,21 +13817,129 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "slotGroups": [
           [
             {
-              "schrift": "quyển",
-              "lerntext": "quyển",
-              "de": "Stück (Bücher)"
-            },
-            {
               "schrift": "chiếc",
               "lerntext": "chiếc",
               "de": "Stück (Fahrzeuge, Einzelstücke)"
+            },
+            {
+              "schrift": "cuối",
+              "lerntext": "cuối",
+              "de": "letzter",
+              "wieder": true
+            },
+            {
+              "schrift": "nửa",
+              "lerntext": "nửa",
+              "de": "halb",
+              "wieder": true
+            },
+            {
+              "schrift": "đôi",
+              "lerntext": "đôi",
+              "de": "Paar",
+              "wieder": true
+            },
+            {
+              "schrift": "tờ",
+              "lerntext": "tờ",
+              "de": "Stück (Blätter, Papiere)",
+              "wieder": true
+            },
+            {
+              "schrift": "quyển",
+              "lerntext": "quyển",
+              "de": "Stück (Bücher)",
+              "wieder": true
+            },
+            {
+              "schrift": "ba mươi",
+              "lerntext": "ba mươi",
+              "de": "dreissig",
+              "wieder": true
+            },
+            {
+              "schrift": "triệu",
+              "lerntext": "triệu",
+              "de": "Million",
+              "wieder": true
+            },
+            {
+              "schrift": "thứ nhất",
+              "lerntext": "thứ nhất",
+              "de": "erster",
+              "wieder": true
+            },
+            {
+              "schrift": "thứ hai",
+              "lerntext": "thứ hai",
+              "de": "zweiter",
+              "wieder": true
+            },
+            {
+              "schrift": "thứ ba",
+              "lerntext": "thứ ba",
+              "de": "dritter",
+              "wieder": true
             }
           ]
         ],
-        "newCount": 2,
+        "newCount": 1,
         "task": null,
         "newFrameWords": [],
         "id": "20.3"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "[Slot]",
+          "lerntext": "[Slot]"
+        },
+        "frameDe": "[Slot]",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "chiếc",
+              "lerntext": "chiếc",
+              "de": "Stück (Fahrzeuge, Einzelstücke)",
+              "wieder": true
+            },
+            {
+              "schrift": "cuối",
+              "lerntext": "cuối",
+              "de": "letzter",
+              "wieder": true
+            },
+            {
+              "schrift": "nửa",
+              "lerntext": "nửa",
+              "de": "halb",
+              "wieder": true
+            },
+            {
+              "schrift": "đôi",
+              "lerntext": "đôi",
+              "de": "Paar",
+              "wieder": true
+            },
+            {
+              "schrift": "tờ",
+              "lerntext": "tờ",
+              "de": "Stück (Blätter, Papiere)",
+              "wieder": true
+            },
+            {
+              "schrift": "quyển",
+              "lerntext": "quyển",
+              "de": "Stück (Bücher)",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "20.4"
       },
       {
         "kind": "finisher",
@@ -7238,13 +13953,14 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "newCount": 0,
         "task": "Benutze fünf Wörter aus diesem Modul in eigenen Sätzen.",
         "newFrameWords": [],
-        "id": "20.4"
+        "id": "20.5"
       }
     ]
   },
   {
     "number": 21,
     "title": "Weitere Präpositionen",
+    "niveau": null,
     "lessons": [
       {
         "kind": "frame",
@@ -7259,12 +13975,12 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "trong",
               "lerntext": "trong",
-              "de": "in, innerhalb"
+              "de": "in"
             },
             {
               "schrift": "từ",
               "lerntext": "từ",
-              "de": "von, aus"
+              "de": "von"
             },
             {
               "schrift": "quanh",
@@ -7311,17 +14027,47 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
             {
               "schrift": "ngoài",
               "lerntext": "ngoài",
-              "de": "außerhalb, draußen"
+              "de": "außerhalb"
             },
             {
               "schrift": "theo",
               "lerntext": "theo",
-              "de": "gemäss, folgen"
+              "de": "gemäss"
             },
             {
               "schrift": "đối với",
               "lerntext": "đối với",
-              "de": "für, gegenüber"
+              "de": "für"
+            },
+            {
+              "schrift": "trong",
+              "lerntext": "trong",
+              "de": "in",
+              "wieder": true
+            },
+            {
+              "schrift": "từ",
+              "lerntext": "từ",
+              "de": "von",
+              "wieder": true
+            },
+            {
+              "schrift": "quanh",
+              "lerntext": "quanh",
+              "de": "um herum",
+              "wieder": true
+            },
+            {
+              "schrift": "gần",
+              "lerntext": "gần",
+              "de": "nahe",
+              "wieder": true
+            },
+            {
+              "schrift": "xa",
+              "lerntext": "xa",
+              "de": "weit",
+              "wieder": true
             }
           ]
         ],
@@ -7329,6 +14075,130 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "task": null,
         "newFrameWords": [],
         "id": "21.2"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "nó ở [Slot] nhà",
+          "lerntext": "nó ở [Slot] nhà"
+        },
+        "frameDe": "Es ist [Slot] dem Haus.",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "cùng",
+              "lerntext": "cùng",
+              "de": "zusammen mit",
+              "wieder": true
+            },
+            {
+              "schrift": "thay vì",
+              "lerntext": "thay vì",
+              "de": "anstatt",
+              "wieder": true
+            },
+            {
+              "schrift": "ngoài",
+              "lerntext": "ngoài",
+              "de": "außerhalb",
+              "wieder": true
+            },
+            {
+              "schrift": "theo",
+              "lerntext": "theo",
+              "de": "gemäss",
+              "wieder": true
+            },
+            {
+              "schrift": "đối với",
+              "lerntext": "đối với",
+              "de": "für",
+              "wieder": true
+            },
+            {
+              "schrift": "trong",
+              "lerntext": "trong",
+              "de": "in",
+              "wieder": true
+            },
+            {
+              "schrift": "từ",
+              "lerntext": "từ",
+              "de": "von",
+              "wieder": true
+            },
+            {
+              "schrift": "quanh",
+              "lerntext": "quanh",
+              "de": "um herum",
+              "wieder": true
+            },
+            {
+              "schrift": "gần",
+              "lerntext": "gần",
+              "de": "nahe",
+              "wieder": true
+            },
+            {
+              "schrift": "xa",
+              "lerntext": "xa",
+              "de": "weit",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "21.3"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "nó ở [Slot] nhà",
+          "lerntext": "nó ở [Slot] nhà"
+        },
+        "frameDe": "Es ist [Slot] dem Haus.",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "cùng",
+              "lerntext": "cùng",
+              "de": "zusammen mit",
+              "wieder": true
+            },
+            {
+              "schrift": "thay vì",
+              "lerntext": "thay vì",
+              "de": "anstatt",
+              "wieder": true
+            },
+            {
+              "schrift": "ngoài",
+              "lerntext": "ngoài",
+              "de": "außerhalb",
+              "wieder": true
+            },
+            {
+              "schrift": "theo",
+              "lerntext": "theo",
+              "de": "gemäss",
+              "wieder": true
+            },
+            {
+              "schrift": "đối với",
+              "lerntext": "đối với",
+              "de": "für",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "21.4"
       },
       {
         "kind": "finisher",
@@ -7342,47 +14212,38 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "newCount": 0,
         "task": "Benutze fünf Wörter aus diesem Modul in eigenen Sätzen.",
         "newFrameWords": [],
-        "id": "21.3"
+        "id": "21.5"
       }
     ]
   },
   {
     "number": 22,
-    "title": "Weitere Bindewörter",
+    "title": "Weitere Fragewörter",
+    "niveau": null,
     "lessons": [
       {
         "kind": "frame",
         "frame": {
-          "schrift": "tôi đến [Slot] tôi có thể",
-          "lerntext": "tôi đến [Slot] tôi có thể"
+          "schrift": "[Slot] vậy?",
+          "lerntext": "[Slot] vậy?"
         },
-        "frameDe": "Ich komme, [Slot] ich kann.",
+        "frameDe": "[Slot] ist es?",
         "pronouns": [],
         "slotGroups": [
           [
             {
-              "schrift": "nếu",
-              "lerntext": "nếu",
-              "de": "wenn, falls"
+              "schrift": "gì",
+              "lerntext": "gì",
+              "de": "was"
             },
             {
-              "schrift": "mà",
-              "lerntext": "mà",
-              "de": "aber, welcher"
-            },
-            {
-              "schrift": "khi",
-              "lerntext": "khi",
-              "de": "als, wenn"
-            },
-            {
-              "schrift": "hơn",
-              "lerntext": "hơn",
-              "de": "als (Vergleich), mehr"
+              "schrift": "chưa",
+              "lerntext": "chưa",
+              "de": "schon?"
             }
           ]
         ],
-        "newCount": 4,
+        "newCount": 2,
         "task": null,
         "newFrameWords": [],
         "id": "22.1"
@@ -7405,27 +14266,28 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
   },
   {
     "number": 23,
-    "title": "Weitere Fragewörter",
+    "title": "Weitere Bindewörter",
+    "niveau": null,
     "lessons": [
       {
         "kind": "frame",
         "frame": {
-          "schrift": "[Slot] vậy?",
-          "lerntext": "[Slot] vậy?"
+          "schrift": "tôi đến [Slot] tôi có thể",
+          "lerntext": "tôi đến [Slot] tôi có thể"
         },
-        "frameDe": "[Slot] ist es?",
+        "frameDe": "Ich komme, [Slot] ich kann.",
         "pronouns": [],
         "slotGroups": [
           [
             {
-              "schrift": "gì",
-              "lerntext": "gì",
-              "de": "was"
+              "schrift": "hay",
+              "lerntext": "hay",
+              "de": "oder (in Fragen)"
             },
             {
-              "schrift": "chưa",
-              "lerntext": "chưa",
-              "de": "schon?, noch nicht"
+              "schrift": "mà",
+              "lerntext": "mà",
+              "de": "aber"
             }
           ]
         ],
@@ -7447,6 +14309,6732 @@ export const VIETNAMESE_COURSE: CourseModuleData[] =
         "task": "Benutze fünf Wörter aus diesem Modul in eigenen Sätzen.",
         "newFrameWords": [],
         "id": "23.2"
+      }
+    ]
+  },
+  {
+    "number": 24,
+    "title": "Was hast du gemacht?",
+    "niveau": "A2",
+    "lessons": [
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi đã [Slot]",
+          "lerntext": "tôi đã [Slot]"
+        },
+        "frameDe": "ich (neutral) habe [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "nhìn",
+              "lerntext": "nhìn",
+              "de": "schauen"
+            },
+            {
+              "schrift": "mua",
+              "lerntext": "mua",
+              "de": "kaufen"
+            },
+            {
+              "schrift": "thấy",
+              "lerntext": "thấy",
+              "de": "sehen"
+            },
+            {
+              "schrift": "làm",
+              "lerntext": "làm",
+              "de": "machen"
+            },
+            {
+              "schrift": "lấy",
+              "lerntext": "lấy",
+              "de": "nehmen"
+            },
+            {
+              "schrift": "viết",
+              "lerntext": "viết",
+              "de": "schreiben",
+              "wieder": true
+            },
+            {
+              "schrift": "đọc",
+              "lerntext": "đọc",
+              "de": "lesen",
+              "wieder": true
+            },
+            {
+              "schrift": "nghe",
+              "lerntext": "nghe",
+              "de": "hören",
+              "wieder": true
+            },
+            {
+              "schrift": "mất",
+              "lerntext": "mất",
+              "de": "verlieren",
+              "wieder": true
+            },
+            {
+              "schrift": "gửi",
+              "lerntext": "gửi",
+              "de": "schicken",
+              "wieder": true
+            },
+            {
+              "schrift": "đổi",
+              "lerntext": "đổi",
+              "de": "wechseln",
+              "wieder": true
+            },
+            {
+              "schrift": "nhớ",
+              "lerntext": "nhớ",
+              "de": "sich erinnern",
+              "wieder": true
+            },
+            {
+              "schrift": "tiếp tục",
+              "lerntext": "tiếp tục",
+              "de": "fortsetzen",
+              "wieder": true
+            },
+            {
+              "schrift": "hy vọng",
+              "lerntext": "hy vọng",
+              "de": "hoffen",
+              "wieder": true
+            },
+            {
+              "schrift": "hiểu",
+              "lerntext": "hiểu",
+              "de": "verstehen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [
+          {
+            "schrift": "đã",
+            "lerntext": "đã",
+            "de": "schon (Vergangenheit)"
+          }
+        ],
+        "id": "24.1"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi đã [Slot]",
+          "lerntext": "tôi đã [Slot]"
+        },
+        "frameDe": "ich (neutral) habe [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "đọc",
+              "lerntext": "đọc",
+              "de": "lesen"
+            },
+            {
+              "schrift": "viết",
+              "lerntext": "viết",
+              "de": "schreiben"
+            },
+            {
+              "schrift": "nghe",
+              "lerntext": "nghe",
+              "de": "hören"
+            },
+            {
+              "schrift": "mất",
+              "lerntext": "mất",
+              "de": "verlieren"
+            },
+            {
+              "schrift": "nhìn",
+              "lerntext": "nhìn",
+              "de": "schauen",
+              "wieder": true
+            },
+            {
+              "schrift": "thấy",
+              "lerntext": "thấy",
+              "de": "sehen",
+              "wieder": true
+            },
+            {
+              "schrift": "lấy",
+              "lerntext": "lấy",
+              "de": "nehmen",
+              "wieder": true
+            },
+            {
+              "schrift": "mua",
+              "lerntext": "mua",
+              "de": "kaufen",
+              "wieder": true
+            },
+            {
+              "schrift": "làm",
+              "lerntext": "làm",
+              "de": "machen",
+              "wieder": true
+            },
+            {
+              "schrift": "gửi",
+              "lerntext": "gửi",
+              "de": "schicken",
+              "wieder": true
+            },
+            {
+              "schrift": "đổi",
+              "lerntext": "đổi",
+              "de": "wechseln",
+              "wieder": true
+            },
+            {
+              "schrift": "nhớ",
+              "lerntext": "nhớ",
+              "de": "sich erinnern",
+              "wieder": true
+            },
+            {
+              "schrift": "chuyển",
+              "lerntext": "chuyển",
+              "de": "umziehen",
+              "wieder": true
+            },
+            {
+              "schrift": "khóc",
+              "lerntext": "khóc",
+              "de": "weinen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "24.2"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "hôm qua tôi đã [Slot]",
+          "lerntext": "hôm qua tôi đã [Slot]"
+        },
+        "frameDe": "Gestern habe ich [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "làm",
+              "lerntext": "làm",
+              "de": "machen"
+            },
+            {
+              "schrift": "chơi",
+              "lerntext": "chơi",
+              "de": "spielen"
+            },
+            {
+              "schrift": "nhảy",
+              "lerntext": "nhảy",
+              "de": "tanzen"
+            },
+            {
+              "schrift": "ngủ",
+              "lerntext": "ngủ",
+              "de": "schlafen"
+            },
+            {
+              "schrift": "đợi",
+              "lerntext": "đợi",
+              "de": "warten"
+            },
+            {
+              "schrift": "tìm",
+              "lerntext": "tìm",
+              "de": "suchen",
+              "wieder": true
+            },
+            {
+              "schrift": "hỏi",
+              "lerntext": "hỏi",
+              "de": "fragen",
+              "wieder": true
+            },
+            {
+              "schrift": "trả lời",
+              "lerntext": "trả lời",
+              "de": "antworten",
+              "wieder": true
+            },
+            {
+              "schrift": "giúp",
+              "lerntext": "giúp",
+              "de": "helfen",
+              "wieder": true
+            },
+            {
+              "schrift": "trả",
+              "lerntext": "trả",
+              "de": "bezahlen",
+              "wieder": true
+            },
+            {
+              "schrift": "tiếp tục",
+              "lerntext": "tiếp tục",
+              "de": "fortsetzen",
+              "wieder": true
+            },
+            {
+              "schrift": "nằm",
+              "lerntext": "nằm",
+              "de": "liegen",
+              "wieder": true
+            },
+            {
+              "schrift": "ngồi",
+              "lerntext": "ngồi",
+              "de": "sitzen",
+              "wieder": true
+            },
+            {
+              "schrift": "gửi",
+              "lerntext": "gửi",
+              "de": "schicken",
+              "wieder": true
+            },
+            {
+              "schrift": "đổi",
+              "lerntext": "đổi",
+              "de": "wechseln",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "24.3"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "hôm qua tôi đã [Slot]",
+          "lerntext": "hôm qua tôi đã [Slot]"
+        },
+        "frameDe": "Gestern habe ich [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "tìm",
+              "lerntext": "tìm",
+              "de": "suchen"
+            },
+            {
+              "schrift": "hỏi",
+              "lerntext": "hỏi",
+              "de": "fragen"
+            },
+            {
+              "schrift": "trả lời",
+              "lerntext": "trả lời",
+              "de": "antworten"
+            },
+            {
+              "schrift": "giúp",
+              "lerntext": "giúp",
+              "de": "helfen"
+            },
+            {
+              "schrift": "trả",
+              "lerntext": "trả",
+              "de": "bezahlen"
+            },
+            {
+              "schrift": "chơi",
+              "lerntext": "chơi",
+              "de": "spielen",
+              "wieder": true
+            },
+            {
+              "schrift": "nhảy",
+              "lerntext": "nhảy",
+              "de": "tanzen",
+              "wieder": true
+            },
+            {
+              "schrift": "ngủ",
+              "lerntext": "ngủ",
+              "de": "schlafen",
+              "wieder": true
+            },
+            {
+              "schrift": "đợi",
+              "lerntext": "đợi",
+              "de": "warten",
+              "wieder": true
+            },
+            {
+              "schrift": "làm",
+              "lerntext": "làm",
+              "de": "machen",
+              "wieder": true
+            },
+            {
+              "schrift": "uống",
+              "lerntext": "uống",
+              "de": "trinken",
+              "wieder": true
+            },
+            {
+              "schrift": "rửa",
+              "lerntext": "rửa",
+              "de": "waschen",
+              "wieder": true
+            },
+            {
+              "schrift": "chết",
+              "lerntext": "chết",
+              "de": "sterben",
+              "wieder": true
+            },
+            {
+              "schrift": "đứng",
+              "lerntext": "đứng",
+              "de": "stehen",
+              "wieder": true
+            },
+            {
+              "schrift": "dùng",
+              "lerntext": "dùng",
+              "de": "benutzen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "24.4"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi đã [Slot] rồi",
+          "lerntext": "tôi đã [Slot] rồi"
+        },
+        "frameDe": "Ich habe schon [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "thắng",
+              "lerntext": "thắng",
+              "de": "gewinnen"
+            },
+            {
+              "schrift": "quên",
+              "lerntext": "quên",
+              "de": "vergessen"
+            },
+            {
+              "schrift": "hiểu",
+              "lerntext": "hiểu",
+              "de": "verstehen"
+            },
+            {
+              "schrift": "gặp",
+              "lerntext": "gặp",
+              "de": "treffen"
+            },
+            {
+              "schrift": "cho",
+              "lerntext": "cho",
+              "de": "für"
+            },
+            {
+              "schrift": "mở",
+              "lerntext": "mở",
+              "de": "öffnen",
+              "wieder": true
+            },
+            {
+              "schrift": "đóng",
+              "lerntext": "đóng",
+              "de": "schließen",
+              "wieder": true
+            },
+            {
+              "schrift": "rửa",
+              "lerntext": "rửa",
+              "de": "waschen",
+              "wieder": true
+            },
+            {
+              "schrift": "nói",
+              "lerntext": "nói",
+              "de": "sprechen",
+              "wieder": true
+            },
+            {
+              "schrift": "đến",
+              "lerntext": "đến",
+              "de": "bis",
+              "wieder": true
+            },
+            {
+              "schrift": "sau",
+              "lerntext": "sau",
+              "de": "nach",
+              "wieder": true
+            },
+            {
+              "schrift": "với",
+              "lerntext": "với",
+              "de": "mit",
+              "wieder": true
+            },
+            {
+              "schrift": "tin",
+              "lerntext": "tin",
+              "de": "glauben",
+              "wieder": true
+            },
+            {
+              "schrift": "vào",
+              "lerntext": "vào",
+              "de": "hineingehen",
+              "wieder": true
+            },
+            {
+              "schrift": "hy vọng",
+              "lerntext": "hy vọng",
+              "de": "hoffen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "24.5"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi đã [Slot] rồi",
+          "lerntext": "tôi đã [Slot] rồi"
+        },
+        "frameDe": "Ich habe schon [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "nói",
+              "lerntext": "nói",
+              "de": "sprechen"
+            },
+            {
+              "schrift": "mở",
+              "lerntext": "mở",
+              "de": "öffnen"
+            },
+            {
+              "schrift": "đóng",
+              "lerntext": "đóng",
+              "de": "schließen"
+            },
+            {
+              "schrift": "rửa",
+              "lerntext": "rửa",
+              "de": "waschen"
+            },
+            {
+              "schrift": "thắng",
+              "lerntext": "thắng",
+              "de": "gewinnen",
+              "wieder": true
+            },
+            {
+              "schrift": "quên",
+              "lerntext": "quên",
+              "de": "vergessen",
+              "wieder": true
+            },
+            {
+              "schrift": "hiểu",
+              "lerntext": "hiểu",
+              "de": "verstehen",
+              "wieder": true
+            },
+            {
+              "schrift": "gặp",
+              "lerntext": "gặp",
+              "de": "treffen",
+              "wieder": true
+            },
+            {
+              "schrift": "biết",
+              "lerntext": "biết",
+              "de": "wissen",
+              "wieder": true
+            },
+            {
+              "schrift": "cần",
+              "lerntext": "cần",
+              "de": "brauchen",
+              "wieder": true
+            },
+            {
+              "schrift": "nhận",
+              "lerntext": "nhận",
+              "de": "bekommen",
+              "wieder": true
+            },
+            {
+              "schrift": "nghĩ",
+              "lerntext": "nghĩ",
+              "de": "denken",
+              "wieder": true
+            },
+            {
+              "schrift": "sống",
+              "lerntext": "sống",
+              "de": "leben",
+              "wieder": true
+            },
+            {
+              "schrift": "yêu",
+              "lerntext": "yêu",
+              "de": "lieben",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "24.6"
+      },
+      {
+        "kind": "finisher",
+        "frame": {
+          "schrift": "",
+          "lerntext": ""
+        },
+        "frameDe": null,
+        "pronouns": [],
+        "slotGroups": [],
+        "newCount": 0,
+        "task": "Erzähl, was du gestern gemacht hast.",
+        "newFrameWords": [],
+        "id": "24.7"
+      }
+    ]
+  },
+  {
+    "number": 25,
+    "title": "Du, ihr, sie",
+    "niveau": "A2",
+    "lessons": [
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "bạn [Slot]",
+          "lerntext": "bạn [Slot]"
+        },
+        "frameDe": "du (Gleichaltrige) [Slot].",
+        "pronouns": [
+          {
+            "schrift": "bạn",
+            "lerntext": "bạn",
+            "de": "du (Gleichaltrige)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "nhìn",
+              "lerntext": "nhìn",
+              "de": "schauen"
+            },
+            {
+              "schrift": "mua",
+              "lerntext": "mua",
+              "de": "kaufen"
+            },
+            {
+              "schrift": "thấy",
+              "lerntext": "thấy",
+              "de": "sehen"
+            },
+            {
+              "schrift": "làm",
+              "lerntext": "làm",
+              "de": "machen"
+            },
+            {
+              "schrift": "lấy",
+              "lerntext": "lấy",
+              "de": "nehmen"
+            },
+            {
+              "schrift": "viết",
+              "lerntext": "viết",
+              "de": "schreiben",
+              "wieder": true
+            },
+            {
+              "schrift": "đọc",
+              "lerntext": "đọc",
+              "de": "lesen",
+              "wieder": true
+            },
+            {
+              "schrift": "trở thành",
+              "lerntext": "trở thành",
+              "de": "werden",
+              "wieder": true
+            },
+            {
+              "schrift": "thích",
+              "lerntext": "thích",
+              "de": "mögen",
+              "wieder": true
+            },
+            {
+              "schrift": "phải",
+              "lerntext": "phải",
+              "de": "müssen",
+              "wieder": true
+            },
+            {
+              "schrift": "đi",
+              "lerntext": "đi",
+              "de": "gehen",
+              "wieder": true
+            },
+            {
+              "schrift": "du lịch",
+              "lerntext": "du lịch",
+              "de": "reisen",
+              "wieder": true
+            },
+            {
+              "schrift": "ở lại",
+              "lerntext": "ở lại",
+              "de": "bleiben",
+              "wieder": true
+            },
+            {
+              "schrift": "bán",
+              "lerntext": "bán",
+              "de": "verkaufen",
+              "wieder": true
+            },
+            {
+              "schrift": "nhớ",
+              "lerntext": "nhớ",
+              "de": "sich erinnern",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "25.1"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "bạn [Slot]",
+          "lerntext": "bạn [Slot]"
+        },
+        "frameDe": "du (Gleichaltrige) [Slot].",
+        "pronouns": [
+          {
+            "schrift": "bạn",
+            "lerntext": "bạn",
+            "de": "du (Gleichaltrige)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "đọc",
+              "lerntext": "đọc",
+              "de": "lesen"
+            },
+            {
+              "schrift": "viết",
+              "lerntext": "viết",
+              "de": "schreiben"
+            },
+            {
+              "schrift": "nhìn",
+              "lerntext": "nhìn",
+              "de": "schauen",
+              "wieder": true
+            },
+            {
+              "schrift": "thấy",
+              "lerntext": "thấy",
+              "de": "sehen",
+              "wieder": true
+            },
+            {
+              "schrift": "lấy",
+              "lerntext": "lấy",
+              "de": "nehmen",
+              "wieder": true
+            },
+            {
+              "schrift": "mua",
+              "lerntext": "mua",
+              "de": "kaufen",
+              "wieder": true
+            },
+            {
+              "schrift": "làm",
+              "lerntext": "làm",
+              "de": "machen",
+              "wieder": true
+            },
+            {
+              "schrift": "chuyển",
+              "lerntext": "chuyển",
+              "de": "umziehen",
+              "wieder": true
+            },
+            {
+              "schrift": "khóc",
+              "lerntext": "khóc",
+              "de": "weinen",
+              "wieder": true
+            },
+            {
+              "schrift": "tiếp tục",
+              "lerntext": "tiếp tục",
+              "de": "fortsetzen",
+              "wieder": true
+            },
+            {
+              "schrift": "nằm",
+              "lerntext": "nằm",
+              "de": "liegen",
+              "wieder": true
+            },
+            {
+              "schrift": "ngồi",
+              "lerntext": "ngồi",
+              "de": "sitzen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "25.2"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "nó [Slot]",
+          "lerntext": "nó [Slot]"
+        },
+        "frameDe": "er [Slot].",
+        "pronouns": [
+          {
+            "schrift": "nó",
+            "lerntext": "nó",
+            "de": "er"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "làm",
+              "lerntext": "làm",
+              "de": "machen"
+            },
+            {
+              "schrift": "chơi",
+              "lerntext": "chơi",
+              "de": "spielen"
+            },
+            {
+              "schrift": "nhảy",
+              "lerntext": "nhảy",
+              "de": "tanzen"
+            },
+            {
+              "schrift": "ngủ",
+              "lerntext": "ngủ",
+              "de": "schlafen"
+            },
+            {
+              "schrift": "đợi",
+              "lerntext": "đợi",
+              "de": "warten"
+            },
+            {
+              "schrift": "tìm",
+              "lerntext": "tìm",
+              "de": "suchen",
+              "wieder": true
+            },
+            {
+              "schrift": "hỏi",
+              "lerntext": "hỏi",
+              "de": "fragen",
+              "wieder": true
+            },
+            {
+              "schrift": "trả lời",
+              "lerntext": "trả lời",
+              "de": "antworten",
+              "wieder": true
+            },
+            {
+              "schrift": "gửi",
+              "lerntext": "gửi",
+              "de": "schicken",
+              "wieder": true
+            },
+            {
+              "schrift": "đổi",
+              "lerntext": "đổi",
+              "de": "wechseln",
+              "wieder": true
+            },
+            {
+              "schrift": "uống",
+              "lerntext": "uống",
+              "de": "trinken",
+              "wieder": true
+            },
+            {
+              "schrift": "chết",
+              "lerntext": "chết",
+              "de": "sterben",
+              "wieder": true
+            },
+            {
+              "schrift": "đứng",
+              "lerntext": "đứng",
+              "de": "stehen",
+              "wieder": true
+            },
+            {
+              "schrift": "dùng",
+              "lerntext": "dùng",
+              "de": "benutzen",
+              "wieder": true
+            },
+            {
+              "schrift": "tin",
+              "lerntext": "tin",
+              "de": "glauben",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "25.3"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "nó [Slot]",
+          "lerntext": "nó [Slot]"
+        },
+        "frameDe": "er [Slot].",
+        "pronouns": [
+          {
+            "schrift": "nó",
+            "lerntext": "nó",
+            "de": "er"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "tìm",
+              "lerntext": "tìm",
+              "de": "suchen"
+            },
+            {
+              "schrift": "hỏi",
+              "lerntext": "hỏi",
+              "de": "fragen"
+            },
+            {
+              "schrift": "trả lời",
+              "lerntext": "trả lời",
+              "de": "antworten"
+            },
+            {
+              "schrift": "chơi",
+              "lerntext": "chơi",
+              "de": "spielen",
+              "wieder": true
+            },
+            {
+              "schrift": "nhảy",
+              "lerntext": "nhảy",
+              "de": "tanzen",
+              "wieder": true
+            },
+            {
+              "schrift": "ngủ",
+              "lerntext": "ngủ",
+              "de": "schlafen",
+              "wieder": true
+            },
+            {
+              "schrift": "đợi",
+              "lerntext": "đợi",
+              "de": "warten",
+              "wieder": true
+            },
+            {
+              "schrift": "làm",
+              "lerntext": "làm",
+              "de": "machen",
+              "wieder": true
+            },
+            {
+              "schrift": "vào",
+              "lerntext": "vào",
+              "de": "hineingehen",
+              "wieder": true
+            },
+            {
+              "schrift": "hy vọng",
+              "lerntext": "hy vọng",
+              "de": "hoffen",
+              "wieder": true
+            },
+            {
+              "schrift": "biết",
+              "lerntext": "biết",
+              "de": "wissen",
+              "wieder": true
+            },
+            {
+              "schrift": "cần",
+              "lerntext": "cần",
+              "de": "brauchen",
+              "wieder": true
+            },
+            {
+              "schrift": "nhận",
+              "lerntext": "nhận",
+              "de": "bekommen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "25.4"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "mình [Slot]",
+          "lerntext": "mình [Slot]"
+        },
+        "frameDe": "ich [Slot].",
+        "pronouns": [
+          {
+            "schrift": "mình",
+            "lerntext": "mình",
+            "de": "ich"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "thắng",
+              "lerntext": "thắng",
+              "de": "gewinnen"
+            },
+            {
+              "schrift": "quên",
+              "lerntext": "quên",
+              "de": "vergessen"
+            },
+            {
+              "schrift": "hiểu",
+              "lerntext": "hiểu",
+              "de": "verstehen"
+            },
+            {
+              "schrift": "gặp",
+              "lerntext": "gặp",
+              "de": "treffen"
+            },
+            {
+              "schrift": "cho",
+              "lerntext": "cho",
+              "de": "für"
+            },
+            {
+              "schrift": "mở",
+              "lerntext": "mở",
+              "de": "öffnen",
+              "wieder": true
+            },
+            {
+              "schrift": "nói",
+              "lerntext": "nói",
+              "de": "sprechen",
+              "wieder": true
+            },
+            {
+              "schrift": "đến",
+              "lerntext": "đến",
+              "de": "bis",
+              "wieder": true
+            },
+            {
+              "schrift": "về",
+              "lerntext": "về",
+              "de": "über",
+              "wieder": true
+            },
+            {
+              "schrift": "sau",
+              "lerntext": "sau",
+              "de": "nach",
+              "wieder": true
+            },
+            {
+              "schrift": "bằng",
+              "lerntext": "bằng",
+              "de": "mit (Mittel)",
+              "wieder": true
+            },
+            {
+              "schrift": "với",
+              "lerntext": "với",
+              "de": "mit",
+              "wieder": true
+            },
+            {
+              "schrift": "giữa",
+              "lerntext": "giữa",
+              "de": "zwischen",
+              "wieder": true
+            },
+            {
+              "schrift": "dưới",
+              "lerntext": "dưới",
+              "de": "unter",
+              "wieder": true
+            },
+            {
+              "schrift": "nghĩ",
+              "lerntext": "nghĩ",
+              "de": "denken",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "25.5"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "mình [Slot]",
+          "lerntext": "mình [Slot]"
+        },
+        "frameDe": "ich [Slot].",
+        "pronouns": [
+          {
+            "schrift": "mình",
+            "lerntext": "mình",
+            "de": "ich"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "nói",
+              "lerntext": "nói",
+              "de": "sprechen"
+            },
+            {
+              "schrift": "mở",
+              "lerntext": "mở",
+              "de": "öffnen"
+            },
+            {
+              "schrift": "thắng",
+              "lerntext": "thắng",
+              "de": "gewinnen",
+              "wieder": true
+            },
+            {
+              "schrift": "quên",
+              "lerntext": "quên",
+              "de": "vergessen",
+              "wieder": true
+            },
+            {
+              "schrift": "hiểu",
+              "lerntext": "hiểu",
+              "de": "verstehen",
+              "wieder": true
+            },
+            {
+              "schrift": "gặp",
+              "lerntext": "gặp",
+              "de": "treffen",
+              "wieder": true
+            },
+            {
+              "schrift": "sống",
+              "lerntext": "sống",
+              "de": "leben",
+              "wieder": true
+            },
+            {
+              "schrift": "yêu",
+              "lerntext": "yêu",
+              "de": "lieben",
+              "wieder": true
+            },
+            {
+              "schrift": "trở thành",
+              "lerntext": "trở thành",
+              "de": "werden",
+              "wieder": true
+            },
+            {
+              "schrift": "thích",
+              "lerntext": "thích",
+              "de": "mögen",
+              "wieder": true
+            },
+            {
+              "schrift": "phải",
+              "lerntext": "phải",
+              "de": "müssen",
+              "wieder": true
+            },
+            {
+              "schrift": "đi",
+              "lerntext": "đi",
+              "de": "gehen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "25.6"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "nó [Slot]",
+          "lerntext": "nó [Slot]"
+        },
+        "frameDe": "er [Slot].",
+        "pronouns": [
+          {
+            "schrift": "nó",
+            "lerntext": "nó",
+            "de": "er"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "ở lại",
+              "lerntext": "ở lại",
+              "de": "bleiben"
+            },
+            {
+              "schrift": "cười",
+              "lerntext": "cười",
+              "de": "lachen"
+            },
+            {
+              "schrift": "khóc",
+              "lerntext": "khóc",
+              "de": "weinen"
+            },
+            {
+              "schrift": "nghĩ",
+              "lerntext": "nghĩ",
+              "de": "denken"
+            },
+            {
+              "schrift": "tin",
+              "lerntext": "tin",
+              "de": "glauben"
+            },
+            {
+              "schrift": "hy vọng",
+              "lerntext": "hy vọng",
+              "de": "hoffen",
+              "wieder": true
+            },
+            {
+              "schrift": "cần",
+              "lerntext": "cần",
+              "de": "brauchen",
+              "wieder": true
+            },
+            {
+              "schrift": "du lịch",
+              "lerntext": "du lịch",
+              "de": "reisen",
+              "wieder": true
+            },
+            {
+              "schrift": "bán",
+              "lerntext": "bán",
+              "de": "verkaufen",
+              "wieder": true
+            },
+            {
+              "schrift": "nhớ",
+              "lerntext": "nhớ",
+              "de": "sich erinnern",
+              "wieder": true
+            },
+            {
+              "schrift": "chuyển",
+              "lerntext": "chuyển",
+              "de": "umziehen",
+              "wieder": true
+            },
+            {
+              "schrift": "tiếp tục",
+              "lerntext": "tiếp tục",
+              "de": "fortsetzen",
+              "wieder": true
+            },
+            {
+              "schrift": "nằm",
+              "lerntext": "nằm",
+              "de": "liegen",
+              "wieder": true
+            },
+            {
+              "schrift": "ngồi",
+              "lerntext": "ngồi",
+              "de": "sitzen",
+              "wieder": true
+            },
+            {
+              "schrift": "gửi",
+              "lerntext": "gửi",
+              "de": "schicken",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "25.7"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "nó [Slot]",
+          "lerntext": "nó [Slot]"
+        },
+        "frameDe": "er [Slot].",
+        "pronouns": [
+          {
+            "schrift": "nó",
+            "lerntext": "nó",
+            "de": "er"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "hy vọng",
+              "lerntext": "hy vọng",
+              "de": "hoffen"
+            },
+            {
+              "schrift": "cần",
+              "lerntext": "cần",
+              "de": "brauchen"
+            },
+            {
+              "schrift": "ở lại",
+              "lerntext": "ở lại",
+              "de": "bleiben",
+              "wieder": true
+            },
+            {
+              "schrift": "khóc",
+              "lerntext": "khóc",
+              "de": "weinen",
+              "wieder": true
+            },
+            {
+              "schrift": "nghĩ",
+              "lerntext": "nghĩ",
+              "de": "denken",
+              "wieder": true
+            },
+            {
+              "schrift": "tin",
+              "lerntext": "tin",
+              "de": "glauben",
+              "wieder": true
+            },
+            {
+              "schrift": "cười",
+              "lerntext": "cười",
+              "de": "lachen",
+              "wieder": true
+            },
+            {
+              "schrift": "đổi",
+              "lerntext": "đổi",
+              "de": "wechseln",
+              "wieder": true
+            },
+            {
+              "schrift": "uống",
+              "lerntext": "uống",
+              "de": "trinken",
+              "wieder": true
+            },
+            {
+              "schrift": "chết",
+              "lerntext": "chết",
+              "de": "sterben",
+              "wieder": true
+            },
+            {
+              "schrift": "đứng",
+              "lerntext": "đứng",
+              "de": "stehen",
+              "wieder": true
+            },
+            {
+              "schrift": "dùng",
+              "lerntext": "dùng",
+              "de": "benutzen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "25.8"
+      },
+      {
+        "kind": "finisher",
+        "frame": {
+          "schrift": "",
+          "lerntext": ""
+        },
+        "frameDe": null,
+        "pronouns": [],
+        "slotGroups": [],
+        "newCount": 0,
+        "task": "Frag jemanden, was er macht - und antworte.",
+        "newFrameWords": [],
+        "id": "25.9"
+      }
+    ]
+  },
+  {
+    "number": 26,
+    "title": "Größer, besser, lieber",
+    "niveau": "A2",
+    "lessons": [
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "cái này [Slot] hơn",
+          "lerntext": "cái này [Slot] hơn"
+        },
+        "frameDe": "Das ist mehr [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "thú vị",
+              "lerntext": "thú vị",
+              "de": "interessant"
+            },
+            {
+              "schrift": "khó",
+              "lerntext": "khó",
+              "de": "schwierig"
+            },
+            {
+              "schrift": "quan trọng",
+              "lerntext": "quan trọng",
+              "de": "wichtig"
+            },
+            {
+              "schrift": "nguy hiểm",
+              "lerntext": "nguy hiểm",
+              "de": "gefährlich"
+            },
+            {
+              "schrift": "đắt",
+              "lerntext": "đắt",
+              "de": "teuer"
+            },
+            {
+              "schrift": "bẩn",
+              "lerntext": "bẩn",
+              "de": "schmutzig",
+              "wieder": true
+            },
+            {
+              "schrift": "buồn",
+              "lerntext": "buồn",
+              "de": "traurig",
+              "wieder": true
+            },
+            {
+              "schrift": "mệt",
+              "lerntext": "mệt",
+              "de": "müde",
+              "wieder": true
+            },
+            {
+              "schrift": "xấu",
+              "lerntext": "xấu",
+              "de": "hässlich",
+              "wieder": true
+            },
+            {
+              "schrift": "sai",
+              "lerntext": "sai",
+              "de": "falsch",
+              "wieder": true
+            },
+            {
+              "schrift": "xám",
+              "lerntext": "xám",
+              "de": "grau",
+              "wieder": true
+            },
+            {
+              "schrift": "rẻ",
+              "lerntext": "rẻ",
+              "de": "billig",
+              "wieder": true
+            },
+            {
+              "schrift": "ngắn",
+              "lerntext": "ngắn",
+              "de": "kurz",
+              "wieder": true
+            },
+            {
+              "schrift": "lạnh",
+              "lerntext": "lạnh",
+              "de": "kalt",
+              "wieder": true
+            },
+            {
+              "schrift": "nhẹ",
+              "lerntext": "nhẹ",
+              "de": "leicht",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [
+          {
+            "schrift": "hơn",
+            "lerntext": "hơn",
+            "de": "als (Vergleich)"
+          }
+        ],
+        "id": "26.1"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "cái này [Slot] hơn",
+          "lerntext": "cái này [Slot] hơn"
+        },
+        "frameDe": "Das ist mehr [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "bẩn",
+              "lerntext": "bẩn",
+              "de": "schmutzig"
+            },
+            {
+              "schrift": "mệt",
+              "lerntext": "mệt",
+              "de": "müde"
+            },
+            {
+              "schrift": "buồn",
+              "lerntext": "buồn",
+              "de": "traurig"
+            },
+            {
+              "schrift": "thú vị",
+              "lerntext": "thú vị",
+              "de": "interessant",
+              "wieder": true
+            },
+            {
+              "schrift": "khó",
+              "lerntext": "khó",
+              "de": "schwierig",
+              "wieder": true
+            },
+            {
+              "schrift": "quan trọng",
+              "lerntext": "quan trọng",
+              "de": "wichtig",
+              "wieder": true
+            },
+            {
+              "schrift": "nguy hiểm",
+              "lerntext": "nguy hiểm",
+              "de": "gefährlich",
+              "wieder": true
+            },
+            {
+              "schrift": "đắt",
+              "lerntext": "đắt",
+              "de": "teuer",
+              "wieder": true
+            },
+            {
+              "schrift": "xấu",
+              "lerntext": "xấu",
+              "de": "hässlich",
+              "wieder": true
+            },
+            {
+              "schrift": "to",
+              "lerntext": "to",
+              "de": "groß",
+              "wieder": true
+            },
+            {
+              "schrift": "ngọt",
+              "lerntext": "ngọt",
+              "de": "süß (Geschmack)",
+              "wieder": true
+            },
+            {
+              "schrift": "thấp",
+              "lerntext": "thấp",
+              "de": "niedrig",
+              "wieder": true
+            },
+            {
+              "schrift": "ấm",
+              "lerntext": "ấm",
+              "de": "warm",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "26.2"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "[Slot] như bạn",
+          "lerntext": "[Slot] như bạn"
+        },
+        "frameDe": "bin so [Slot] wie du.",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "to",
+              "lerntext": "to",
+              "de": "groß"
+            },
+            {
+              "schrift": "nhỏ",
+              "lerntext": "nhỏ",
+              "de": "klein"
+            },
+            {
+              "schrift": "cũ",
+              "lerntext": "cũ",
+              "de": "alt (Sache)"
+            },
+            {
+              "schrift": "trẻ",
+              "lerntext": "trẻ",
+              "de": "jung"
+            },
+            {
+              "schrift": "đắt",
+              "lerntext": "đắt",
+              "de": "teuer"
+            },
+            {
+              "schrift": "đẹp",
+              "lerntext": "đẹp",
+              "de": "schön",
+              "wieder": true
+            },
+            {
+              "schrift": "lạnh",
+              "lerntext": "lạnh",
+              "de": "kalt",
+              "wieder": true
+            },
+            {
+              "schrift": "ấm",
+              "lerntext": "ấm",
+              "de": "warm",
+              "wieder": true
+            },
+            {
+              "schrift": "khỏe",
+              "lerntext": "khỏe",
+              "de": "gesund",
+              "wieder": true
+            },
+            {
+              "schrift": "cao",
+              "lerntext": "cao",
+              "de": "hoch",
+              "wieder": true
+            },
+            {
+              "schrift": "dài",
+              "lerntext": "dài",
+              "de": "lang",
+              "wieder": true
+            },
+            {
+              "schrift": "chua",
+              "lerntext": "chua",
+              "de": "sauer",
+              "wieder": true
+            },
+            {
+              "schrift": "nâu",
+              "lerntext": "nâu",
+              "de": "braun",
+              "wieder": true
+            },
+            {
+              "schrift": "đỏ",
+              "lerntext": "đỏ",
+              "de": "rot",
+              "wieder": true
+            },
+            {
+              "schrift": "nặng",
+              "lerntext": "nặng",
+              "de": "schwer",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [
+          {
+            "schrift": "khi",
+            "lerntext": "khi",
+            "de": "als"
+          }
+        ],
+        "id": "26.3"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "[Slot] như bạn",
+          "lerntext": "[Slot] như bạn"
+        },
+        "frameDe": "bin so [Slot] wie du.",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "đẹp",
+              "lerntext": "đẹp",
+              "de": "schön"
+            },
+            {
+              "schrift": "ấm",
+              "lerntext": "ấm",
+              "de": "warm"
+            },
+            {
+              "schrift": "lạnh",
+              "lerntext": "lạnh",
+              "de": "kalt"
+            },
+            {
+              "schrift": "khỏe",
+              "lerntext": "khỏe",
+              "de": "gesund"
+            },
+            {
+              "schrift": "to",
+              "lerntext": "to",
+              "de": "groß",
+              "wieder": true
+            },
+            {
+              "schrift": "nhỏ",
+              "lerntext": "nhỏ",
+              "de": "klein",
+              "wieder": true
+            },
+            {
+              "schrift": "trẻ",
+              "lerntext": "trẻ",
+              "de": "jung",
+              "wieder": true
+            },
+            {
+              "schrift": "cũ",
+              "lerntext": "cũ",
+              "de": "alt (Sache)",
+              "wieder": true
+            },
+            {
+              "schrift": "đắt",
+              "lerntext": "đắt",
+              "de": "teuer",
+              "wieder": true
+            },
+            {
+              "schrift": "vàng",
+              "lerntext": "vàng",
+              "de": "gelb",
+              "wieder": true
+            },
+            {
+              "schrift": "trắng",
+              "lerntext": "trắng",
+              "de": "weiß",
+              "wieder": true
+            },
+            {
+              "schrift": "sai",
+              "lerntext": "sai",
+              "de": "falsch",
+              "wieder": true
+            },
+            {
+              "schrift": "đen",
+              "lerntext": "đen",
+              "de": "schwarz",
+              "wieder": true
+            },
+            {
+              "schrift": "xấu",
+              "lerntext": "xấu",
+              "de": "hässlich",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "26.4"
+      },
+      {
+        "kind": "finisher",
+        "frame": {
+          "schrift": "",
+          "lerntext": ""
+        },
+        "frameDe": null,
+        "pronouns": [],
+        "slotGroups": [],
+        "newCount": 0,
+        "task": "Vergleich zwei Dinge miteinander.",
+        "newFrameWords": [],
+        "id": "26.5"
+      }
+    ]
+  },
+  {
+    "number": 27,
+    "title": "Ich fühle mich",
+    "niveau": "A2",
+    "lessons": [
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi cảm thấy [Slot]",
+          "lerntext": "tôi cảm thấy [Slot]"
+        },
+        "frameDe": "ich (neutral) fühle mich [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "mệt",
+              "lerntext": "mệt",
+              "de": "müde"
+            },
+            {
+              "schrift": "ốm",
+              "lerntext": "ốm",
+              "de": "krank"
+            },
+            {
+              "schrift": "buồn",
+              "lerntext": "buồn",
+              "de": "traurig"
+            },
+            {
+              "schrift": "khỏe",
+              "lerntext": "khỏe",
+              "de": "gesund"
+            },
+            {
+              "schrift": "yếu",
+              "lerntext": "yếu",
+              "de": "schwach"
+            },
+            {
+              "schrift": "sẵn sàng",
+              "lerntext": "sẵn sàng",
+              "de": "bereit",
+              "wieder": true
+            },
+            {
+              "schrift": "giận",
+              "lerntext": "giận",
+              "de": "wütend",
+              "wieder": true
+            },
+            {
+              "schrift": "đẹp",
+              "lerntext": "đẹp",
+              "de": "schön",
+              "wieder": true
+            },
+            {
+              "schrift": "trẻ",
+              "lerntext": "trẻ",
+              "de": "jung",
+              "wieder": true
+            },
+            {
+              "schrift": "cũ",
+              "lerntext": "cũ",
+              "de": "alt (Sache)",
+              "wieder": true
+            },
+            {
+              "schrift": "sạch",
+              "lerntext": "sạch",
+              "de": "sauber",
+              "wieder": true
+            },
+            {
+              "schrift": "xanh",
+              "lerntext": "xanh",
+              "de": "blau",
+              "wieder": true
+            },
+            {
+              "schrift": "xám",
+              "lerntext": "xám",
+              "de": "grau",
+              "wieder": true
+            },
+            {
+              "schrift": "rẻ",
+              "lerntext": "rẻ",
+              "de": "billig",
+              "wieder": true
+            },
+            {
+              "schrift": "ngắn",
+              "lerntext": "ngắn",
+              "de": "kurz",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "27.1"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi cảm thấy [Slot]",
+          "lerntext": "tôi cảm thấy [Slot]"
+        },
+        "frameDe": "ich (neutral) fühle mich [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "sẵn sàng",
+              "lerntext": "sẵn sàng",
+              "de": "bereit"
+            },
+            {
+              "schrift": "trẻ",
+              "lerntext": "trẻ",
+              "de": "jung"
+            },
+            {
+              "schrift": "cũ",
+              "lerntext": "cũ",
+              "de": "alt (Sache)"
+            },
+            {
+              "schrift": "giận",
+              "lerntext": "giận",
+              "de": "wütend"
+            },
+            {
+              "schrift": "đẹp",
+              "lerntext": "đẹp",
+              "de": "schön"
+            },
+            {
+              "schrift": "yếu",
+              "lerntext": "yếu",
+              "de": "schwach",
+              "wieder": true
+            },
+            {
+              "schrift": "ốm",
+              "lerntext": "ốm",
+              "de": "krank",
+              "wieder": true
+            },
+            {
+              "schrift": "buồn",
+              "lerntext": "buồn",
+              "de": "traurig",
+              "wieder": true
+            },
+            {
+              "schrift": "khỏe",
+              "lerntext": "khỏe",
+              "de": "gesund",
+              "wieder": true
+            },
+            {
+              "schrift": "mệt",
+              "lerntext": "mệt",
+              "de": "müde",
+              "wieder": true
+            },
+            {
+              "schrift": "đói",
+              "lerntext": "đói",
+              "de": "hungrig",
+              "wieder": true
+            },
+            {
+              "schrift": "nhẹ",
+              "lerntext": "nhẹ",
+              "de": "leicht",
+              "wieder": true
+            },
+            {
+              "schrift": "ngọt",
+              "lerntext": "ngọt",
+              "de": "süß (Geschmack)",
+              "wieder": true
+            },
+            {
+              "schrift": "khát",
+              "lerntext": "khát",
+              "de": "durstig",
+              "wieder": true
+            },
+            {
+              "schrift": "thấp",
+              "lerntext": "thấp",
+              "de": "niedrig",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "27.2"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "mình gặp nhau [Slot]",
+          "lerntext": "mình gặp nhau [Slot]"
+        },
+        "frameDe": "ich treffen uns [Slot].",
+        "pronouns": [
+          {
+            "schrift": "mình",
+            "lerntext": "mình",
+            "de": "ich"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "hôm nay",
+              "lerntext": "hôm nay",
+              "de": "heute"
+            },
+            {
+              "schrift": "ngày mai",
+              "lerntext": "ngày mai",
+              "de": "morgen"
+            },
+            {
+              "schrift": "bây giờ",
+              "lerntext": "bây giờ",
+              "de": "jetzt"
+            },
+            {
+              "schrift": "sớm",
+              "lerntext": "sớm",
+              "de": "früh"
+            },
+            {
+              "schrift": "hôm qua",
+              "lerntext": "hôm qua",
+              "de": "gestern"
+            },
+            {
+              "schrift": "thường",
+              "lerntext": "thường",
+              "de": "oft",
+              "wieder": true
+            },
+            {
+              "schrift": "không bao giờ",
+              "lerntext": "không bao giờ",
+              "de": "nie",
+              "wieder": true
+            },
+            {
+              "schrift": "luôn luôn",
+              "lerntext": "luôn luôn",
+              "de": "immer",
+              "wieder": true
+            },
+            {
+              "schrift": "tốt",
+              "lerntext": "tốt",
+              "de": "gut",
+              "wieder": true
+            },
+            {
+              "schrift": "chậm",
+              "lerntext": "chậm",
+              "de": "langsam",
+              "wieder": true
+            },
+            {
+              "schrift": "nhanh",
+              "lerntext": "nhanh",
+              "de": "schnell",
+              "wieder": true
+            },
+            {
+              "schrift": "cứ",
+              "lerntext": "cứ",
+              "de": "ruhig",
+              "wieder": true
+            },
+            {
+              "schrift": "đúng",
+              "lerntext": "đúng",
+              "de": "genau",
+              "wieder": true
+            },
+            {
+              "schrift": "lại",
+              "lerntext": "lại",
+              "de": "wieder",
+              "wieder": true
+            },
+            {
+              "schrift": "kìa",
+              "lerntext": "kìa",
+              "de": "dort",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [
+          {
+            "schrift": "nhau",
+            "lerntext": "nhau",
+            "de": "einander"
+          }
+        ],
+        "id": "27.3"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "mình gặp nhau [Slot]",
+          "lerntext": "mình gặp nhau [Slot]"
+        },
+        "frameDe": "ich treffen uns [Slot].",
+        "pronouns": [
+          {
+            "schrift": "mình",
+            "lerntext": "mình",
+            "de": "ich"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "thường",
+              "lerntext": "thường",
+              "de": "oft"
+            },
+            {
+              "schrift": "không bao giờ",
+              "lerntext": "không bao giờ",
+              "de": "nie"
+            },
+            {
+              "schrift": "luôn luôn",
+              "lerntext": "luôn luôn",
+              "de": "immer"
+            },
+            {
+              "schrift": "hôm qua",
+              "lerntext": "hôm qua",
+              "de": "gestern",
+              "wieder": true
+            },
+            {
+              "schrift": "hôm nay",
+              "lerntext": "hôm nay",
+              "de": "heute",
+              "wieder": true
+            },
+            {
+              "schrift": "ngày mai",
+              "lerntext": "ngày mai",
+              "de": "morgen",
+              "wieder": true
+            },
+            {
+              "schrift": "bây giờ",
+              "lerntext": "bây giờ",
+              "de": "jetzt",
+              "wieder": true
+            },
+            {
+              "schrift": "sớm",
+              "lerntext": "sớm",
+              "de": "früh",
+              "wieder": true
+            },
+            {
+              "schrift": "tốt",
+              "lerntext": "tốt",
+              "de": "gut",
+              "wieder": true
+            },
+            {
+              "schrift": "chậm",
+              "lerntext": "chậm",
+              "de": "langsam",
+              "wieder": true
+            },
+            {
+              "schrift": "nhanh",
+              "lerntext": "nhanh",
+              "de": "schnell",
+              "wieder": true
+            },
+            {
+              "schrift": "mới",
+              "lerntext": "mới",
+              "de": "gerade erst",
+              "wieder": true
+            },
+            {
+              "schrift": "ít",
+              "lerntext": "ít",
+              "de": "wenig",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "27.4"
+      },
+      {
+        "kind": "finisher",
+        "frame": {
+          "schrift": "",
+          "lerntext": ""
+        },
+        "frameDe": null,
+        "pronouns": [],
+        "slotGroups": [],
+        "newCount": 0,
+        "task": "Sag, wie du dich fühlst und warum.",
+        "newFrameWords": [],
+        "id": "27.5"
+      }
+    ]
+  },
+  {
+    "number": 28,
+    "title": "Weil, wenn, obwohl",
+    "niveau": "A2",
+    "lessons": [
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi ở lại đây [Slot] tôi mệt",
+          "lerntext": "tôi ở lại đây [Slot] tôi mệt"
+        },
+        "frameDe": "Ich bleibe hier, [Slot] ich müde bin.",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "vì",
+              "lerntext": "vì",
+              "de": "weil"
+            },
+            {
+              "schrift": "nếu",
+              "lerntext": "nếu",
+              "de": "wenn"
+            },
+            {
+              "schrift": "mặc dù",
+              "lerntext": "mặc dù",
+              "de": "obwohl"
+            },
+            {
+              "schrift": "trong khi",
+              "lerntext": "trong khi",
+              "de": "während"
+            },
+            {
+              "schrift": "khi",
+              "lerntext": "khi",
+              "de": "als"
+            },
+            {
+              "schrift": "hoặc",
+              "lerntext": "hoặc",
+              "de": "oder",
+              "wieder": true
+            },
+            {
+              "schrift": "và",
+              "lerntext": "và",
+              "de": "und",
+              "wieder": true
+            },
+            {
+              "schrift": "nhưng",
+              "lerntext": "nhưng",
+              "de": "aber",
+              "wieder": true
+            },
+            {
+              "schrift": "cũng",
+              "lerntext": "cũng",
+              "de": "auch",
+              "wieder": true
+            },
+            {
+              "schrift": "hơn",
+              "lerntext": "hơn",
+              "de": "als (Vergleich)",
+              "wieder": true
+            },
+            {
+              "schrift": "thì",
+              "lerntext": "thì",
+              "de": "dann (Satzverbinder)",
+              "wieder": true
+            },
+            {
+              "schrift": "nên",
+              "lerntext": "nên",
+              "de": "also",
+              "wieder": true
+            },
+            {
+              "schrift": "rồi",
+              "lerntext": "rồi",
+              "de": "dann",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 1,
+        "task": null,
+        "newFrameWords": [],
+        "id": "28.1"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi ở lại đây [Slot] tôi mệt",
+          "lerntext": "tôi ở lại đây [Slot] tôi mệt"
+        },
+        "frameDe": "Ich bleibe hier, [Slot] ich müde bin.",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "nhưng",
+              "lerntext": "nhưng",
+              "de": "aber"
+            },
+            {
+              "schrift": "hoặc",
+              "lerntext": "hoặc",
+              "de": "oder"
+            },
+            {
+              "schrift": "và",
+              "lerntext": "và",
+              "de": "und"
+            },
+            {
+              "schrift": "nếu",
+              "lerntext": "nếu",
+              "de": "wenn",
+              "wieder": true
+            },
+            {
+              "schrift": "khi",
+              "lerntext": "khi",
+              "de": "als",
+              "wieder": true
+            },
+            {
+              "schrift": "vì",
+              "lerntext": "vì",
+              "de": "weil",
+              "wieder": true
+            },
+            {
+              "schrift": "mặc dù",
+              "lerntext": "mặc dù",
+              "de": "obwohl",
+              "wieder": true
+            },
+            {
+              "schrift": "trong khi",
+              "lerntext": "trong khi",
+              "de": "während",
+              "wieder": true
+            },
+            {
+              "schrift": "cũng",
+              "lerntext": "cũng",
+              "de": "auch",
+              "wieder": true
+            },
+            {
+              "schrift": "hơn",
+              "lerntext": "hơn",
+              "de": "als (Vergleich)",
+              "wieder": true
+            },
+            {
+              "schrift": "thì",
+              "lerntext": "thì",
+              "de": "dann (Satzverbinder)",
+              "wieder": true
+            },
+            {
+              "schrift": "nên",
+              "lerntext": "nên",
+              "de": "also",
+              "wieder": true
+            },
+            {
+              "schrift": "rồi",
+              "lerntext": "rồi",
+              "de": "dann",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "28.2"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi nghĩ rằng nó [Slot]",
+          "lerntext": "tôi nghĩ rằng nó [Slot]"
+        },
+        "frameDe": "Ich glaube, dass es [Slot] ist.",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "sai",
+              "lerntext": "sai",
+              "de": "falsch"
+            },
+            {
+              "schrift": "ốm",
+              "lerntext": "ốm",
+              "de": "krank"
+            },
+            {
+              "schrift": "ngắn",
+              "lerntext": "ngắn",
+              "de": "kurz"
+            },
+            {
+              "schrift": "dài",
+              "lerntext": "dài",
+              "de": "lang"
+            },
+            {
+              "schrift": "sạch",
+              "lerntext": "sạch",
+              "de": "sauber"
+            },
+            {
+              "schrift": "đen",
+              "lerntext": "đen",
+              "de": "schwarz",
+              "wieder": true
+            },
+            {
+              "schrift": "ngọt",
+              "lerntext": "ngọt",
+              "de": "süß (Geschmack)",
+              "wieder": true
+            },
+            {
+              "schrift": "yếu",
+              "lerntext": "yếu",
+              "de": "schwach",
+              "wieder": true
+            },
+            {
+              "schrift": "giận",
+              "lerntext": "giận",
+              "de": "wütend",
+              "wieder": true
+            },
+            {
+              "schrift": "cao",
+              "lerntext": "cao",
+              "de": "hoch",
+              "wieder": true
+            },
+            {
+              "schrift": "chua",
+              "lerntext": "chua",
+              "de": "sauer",
+              "wieder": true
+            },
+            {
+              "schrift": "nâu",
+              "lerntext": "nâu",
+              "de": "braun",
+              "wieder": true
+            },
+            {
+              "schrift": "chán",
+              "lerntext": "chán",
+              "de": "langweilig",
+              "wieder": true
+            },
+            {
+              "schrift": "đỏ",
+              "lerntext": "đỏ",
+              "de": "rot",
+              "wieder": true
+            },
+            {
+              "schrift": "nặng",
+              "lerntext": "nặng",
+              "de": "schwer",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "28.3"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi nghĩ rằng nó [Slot]",
+          "lerntext": "tôi nghĩ rằng nó [Slot]"
+        },
+        "frameDe": "Ich glaube, dass es [Slot] ist.",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "yếu",
+              "lerntext": "yếu",
+              "de": "schwach"
+            },
+            {
+              "schrift": "đen",
+              "lerntext": "đen",
+              "de": "schwarz"
+            },
+            {
+              "schrift": "ngọt",
+              "lerntext": "ngọt",
+              "de": "süß (Geschmack)"
+            },
+            {
+              "schrift": "giận",
+              "lerntext": "giận",
+              "de": "wütend"
+            },
+            {
+              "schrift": "sai",
+              "lerntext": "sai",
+              "de": "falsch",
+              "wieder": true
+            },
+            {
+              "schrift": "ngắn",
+              "lerntext": "ngắn",
+              "de": "kurz",
+              "wieder": true
+            },
+            {
+              "schrift": "dài",
+              "lerntext": "dài",
+              "de": "lang",
+              "wieder": true
+            },
+            {
+              "schrift": "sạch",
+              "lerntext": "sạch",
+              "de": "sauber",
+              "wieder": true
+            },
+            {
+              "schrift": "ốm",
+              "lerntext": "ốm",
+              "de": "krank",
+              "wieder": true
+            },
+            {
+              "schrift": "buồn cười",
+              "lerntext": "buồn cười",
+              "de": "lustig",
+              "wieder": true
+            },
+            {
+              "schrift": "vàng",
+              "lerntext": "vàng",
+              "de": "gelb",
+              "wieder": true
+            },
+            {
+              "schrift": "trắng",
+              "lerntext": "trắng",
+              "de": "weiß",
+              "wieder": true
+            },
+            {
+              "schrift": "xấu",
+              "lerntext": "xấu",
+              "de": "hässlich",
+              "wieder": true
+            },
+            {
+              "schrift": "xanh",
+              "lerntext": "xanh",
+              "de": "blau",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "28.4"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "nếu có thời gian, tôi muốn [Slot]",
+          "lerntext": "nếu có thời gian, tôi muốn [Slot]"
+        },
+        "frameDe": "Wenn ich Zeit habe, will ich [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "ở lại",
+              "lerntext": "ở lại",
+              "de": "bleiben"
+            },
+            {
+              "schrift": "cười",
+              "lerntext": "cười",
+              "de": "lachen"
+            },
+            {
+              "schrift": "khóc",
+              "lerntext": "khóc",
+              "de": "weinen"
+            },
+            {
+              "schrift": "nghĩ",
+              "lerntext": "nghĩ",
+              "de": "denken"
+            },
+            {
+              "schrift": "tin",
+              "lerntext": "tin",
+              "de": "glauben"
+            },
+            {
+              "schrift": "hy vọng",
+              "lerntext": "hy vọng",
+              "de": "hoffen",
+              "wieder": true
+            },
+            {
+              "schrift": "cần",
+              "lerntext": "cần",
+              "de": "brauchen",
+              "wieder": true
+            },
+            {
+              "schrift": "vào",
+              "lerntext": "vào",
+              "de": "hineingehen",
+              "wieder": true
+            },
+            {
+              "schrift": "biết",
+              "lerntext": "biết",
+              "de": "wissen",
+              "wieder": true
+            },
+            {
+              "schrift": "nhận",
+              "lerntext": "nhận",
+              "de": "bekommen",
+              "wieder": true
+            },
+            {
+              "schrift": "sống",
+              "lerntext": "sống",
+              "de": "leben",
+              "wieder": true
+            },
+            {
+              "schrift": "yêu",
+              "lerntext": "yêu",
+              "de": "lieben",
+              "wieder": true
+            },
+            {
+              "schrift": "trở thành",
+              "lerntext": "trở thành",
+              "de": "werden",
+              "wieder": true
+            },
+            {
+              "schrift": "thích",
+              "lerntext": "thích",
+              "de": "mögen",
+              "wieder": true
+            },
+            {
+              "schrift": "phải",
+              "lerntext": "phải",
+              "de": "müssen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "28.5"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "nếu có thời gian, tôi muốn [Slot]",
+          "lerntext": "nếu có thời gian, tôi muốn [Slot]"
+        },
+        "frameDe": "Wenn ich Zeit habe, will ich [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "hy vọng",
+              "lerntext": "hy vọng",
+              "de": "hoffen"
+            },
+            {
+              "schrift": "cần",
+              "lerntext": "cần",
+              "de": "brauchen"
+            },
+            {
+              "schrift": "ở lại",
+              "lerntext": "ở lại",
+              "de": "bleiben",
+              "wieder": true
+            },
+            {
+              "schrift": "khóc",
+              "lerntext": "khóc",
+              "de": "weinen",
+              "wieder": true
+            },
+            {
+              "schrift": "tin",
+              "lerntext": "tin",
+              "de": "glauben",
+              "wieder": true
+            },
+            {
+              "schrift": "cười",
+              "lerntext": "cười",
+              "de": "lachen",
+              "wieder": true
+            },
+            {
+              "schrift": "nghĩ",
+              "lerntext": "nghĩ",
+              "de": "denken",
+              "wieder": true
+            },
+            {
+              "schrift": "đi",
+              "lerntext": "đi",
+              "de": "gehen",
+              "wieder": true
+            },
+            {
+              "schrift": "du lịch",
+              "lerntext": "du lịch",
+              "de": "reisen",
+              "wieder": true
+            },
+            {
+              "schrift": "bán",
+              "lerntext": "bán",
+              "de": "verkaufen",
+              "wieder": true
+            },
+            {
+              "schrift": "nhớ",
+              "lerntext": "nhớ",
+              "de": "sich erinnern",
+              "wieder": true
+            },
+            {
+              "schrift": "chuyển",
+              "lerntext": "chuyển",
+              "de": "umziehen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "28.6"
+      },
+      {
+        "kind": "finisher",
+        "frame": {
+          "schrift": "",
+          "lerntext": ""
+        },
+        "frameDe": null,
+        "pronouns": [],
+        "slotGroups": [],
+        "newCount": 0,
+        "task": "Sag etwas über dich mit „weil\".",
+        "newFrameWords": [],
+        "id": "28.7"
+      }
+    ]
+  },
+  {
+    "number": 29,
+    "title": "Bitten und auffordern",
+    "niveau": "A2",
+    "lessons": [
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "bạn có thể [Slot] không?",
+          "lerntext": "bạn có thể [Slot] không?"
+        },
+        "frameDe": "Kannst du bitte [Slot]?",
+        "pronouns": [
+          {
+            "schrift": "bạn",
+            "lerntext": "bạn",
+            "de": "du (Gleichaltrige)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "làm",
+              "lerntext": "làm",
+              "de": "machen"
+            },
+            {
+              "schrift": "chơi",
+              "lerntext": "chơi",
+              "de": "spielen"
+            },
+            {
+              "schrift": "nhảy",
+              "lerntext": "nhảy",
+              "de": "tanzen"
+            },
+            {
+              "schrift": "ngủ",
+              "lerntext": "ngủ",
+              "de": "schlafen"
+            },
+            {
+              "schrift": "đợi",
+              "lerntext": "đợi",
+              "de": "warten"
+            },
+            {
+              "schrift": "giúp",
+              "lerntext": "giúp",
+              "de": "helfen",
+              "wieder": true
+            },
+            {
+              "schrift": "trả",
+              "lerntext": "trả",
+              "de": "bezahlen",
+              "wieder": true
+            },
+            {
+              "schrift": "tìm",
+              "lerntext": "tìm",
+              "de": "suchen",
+              "wieder": true
+            },
+            {
+              "schrift": "hỏi",
+              "lerntext": "hỏi",
+              "de": "fragen",
+              "wieder": true
+            },
+            {
+              "schrift": "trả lời",
+              "lerntext": "trả lời",
+              "de": "antworten",
+              "wieder": true
+            },
+            {
+              "schrift": "tiếp tục",
+              "lerntext": "tiếp tục",
+              "de": "fortsetzen",
+              "wieder": true
+            },
+            {
+              "schrift": "nằm",
+              "lerntext": "nằm",
+              "de": "liegen",
+              "wieder": true
+            },
+            {
+              "schrift": "ngồi",
+              "lerntext": "ngồi",
+              "de": "sitzen",
+              "wieder": true
+            },
+            {
+              "schrift": "được",
+              "lerntext": "được",
+              "de": "können",
+              "wieder": true
+            },
+            {
+              "schrift": "gửi",
+              "lerntext": "gửi",
+              "de": "schicken",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "29.1"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "bạn có thể [Slot] không?",
+          "lerntext": "bạn có thể [Slot] không?"
+        },
+        "frameDe": "Kannst du bitte [Slot]?",
+        "pronouns": [
+          {
+            "schrift": "bạn",
+            "lerntext": "bạn",
+            "de": "du (Gleichaltrige)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "tìm",
+              "lerntext": "tìm",
+              "de": "suchen"
+            },
+            {
+              "schrift": "hỏi",
+              "lerntext": "hỏi",
+              "de": "fragen"
+            },
+            {
+              "schrift": "trả lời",
+              "lerntext": "trả lời",
+              "de": "antworten"
+            },
+            {
+              "schrift": "giúp",
+              "lerntext": "giúp",
+              "de": "helfen"
+            },
+            {
+              "schrift": "trả",
+              "lerntext": "trả",
+              "de": "bezahlen"
+            },
+            {
+              "schrift": "chơi",
+              "lerntext": "chơi",
+              "de": "spielen",
+              "wieder": true
+            },
+            {
+              "schrift": "nhảy",
+              "lerntext": "nhảy",
+              "de": "tanzen",
+              "wieder": true
+            },
+            {
+              "schrift": "ngủ",
+              "lerntext": "ngủ",
+              "de": "schlafen",
+              "wieder": true
+            },
+            {
+              "schrift": "đợi",
+              "lerntext": "đợi",
+              "de": "warten",
+              "wieder": true
+            },
+            {
+              "schrift": "làm",
+              "lerntext": "làm",
+              "de": "machen",
+              "wieder": true
+            },
+            {
+              "schrift": "đổi",
+              "lerntext": "đổi",
+              "de": "wechseln",
+              "wieder": true
+            },
+            {
+              "schrift": "uống",
+              "lerntext": "uống",
+              "de": "trinken",
+              "wieder": true
+            },
+            {
+              "schrift": "chết",
+              "lerntext": "chết",
+              "de": "sterben",
+              "wieder": true
+            },
+            {
+              "schrift": "đứng",
+              "lerntext": "đứng",
+              "de": "stehen",
+              "wieder": true
+            },
+            {
+              "schrift": "dùng",
+              "lerntext": "dùng",
+              "de": "benutzen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "29.2"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "bạn phải [Slot]",
+          "lerntext": "bạn phải [Slot]"
+        },
+        "frameDe": "du (Gleichaltrige) musst [Slot].",
+        "pronouns": [
+          {
+            "schrift": "bạn",
+            "lerntext": "bạn",
+            "de": "du (Gleichaltrige)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "thắng",
+              "lerntext": "thắng",
+              "de": "gewinnen"
+            },
+            {
+              "schrift": "quên",
+              "lerntext": "quên",
+              "de": "vergessen"
+            },
+            {
+              "schrift": "hiểu",
+              "lerntext": "hiểu",
+              "de": "verstehen"
+            },
+            {
+              "schrift": "gặp",
+              "lerntext": "gặp",
+              "de": "treffen"
+            },
+            {
+              "schrift": "cho",
+              "lerntext": "cho",
+              "de": "für"
+            },
+            {
+              "schrift": "mở",
+              "lerntext": "mở",
+              "de": "öffnen",
+              "wieder": true
+            },
+            {
+              "schrift": "nói",
+              "lerntext": "nói",
+              "de": "sprechen",
+              "wieder": true
+            },
+            {
+              "schrift": "bên cạnh",
+              "lerntext": "bên cạnh",
+              "de": "neben",
+              "wieder": true
+            },
+            {
+              "schrift": "đến",
+              "lerntext": "đến",
+              "de": "bis",
+              "wieder": true
+            },
+            {
+              "schrift": "về",
+              "lerntext": "về",
+              "de": "über",
+              "wieder": true
+            },
+            {
+              "schrift": "sau",
+              "lerntext": "sau",
+              "de": "nach",
+              "wieder": true
+            },
+            {
+              "schrift": "bằng",
+              "lerntext": "bằng",
+              "de": "mit (Mittel)",
+              "wieder": true
+            },
+            {
+              "schrift": "với",
+              "lerntext": "với",
+              "de": "mit",
+              "wieder": true
+            },
+            {
+              "schrift": "giữa",
+              "lerntext": "giữa",
+              "de": "zwischen",
+              "wieder": true
+            },
+            {
+              "schrift": "dưới",
+              "lerntext": "dưới",
+              "de": "unter",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "29.3"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "bạn phải [Slot]",
+          "lerntext": "bạn phải [Slot]"
+        },
+        "frameDe": "du (Gleichaltrige) musst [Slot].",
+        "pronouns": [
+          {
+            "schrift": "bạn",
+            "lerntext": "bạn",
+            "de": "du (Gleichaltrige)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "nói",
+              "lerntext": "nói",
+              "de": "sprechen"
+            },
+            {
+              "schrift": "mở",
+              "lerntext": "mở",
+              "de": "öffnen"
+            },
+            {
+              "schrift": "thắng",
+              "lerntext": "thắng",
+              "de": "gewinnen",
+              "wieder": true
+            },
+            {
+              "schrift": "quên",
+              "lerntext": "quên",
+              "de": "vergessen",
+              "wieder": true
+            },
+            {
+              "schrift": "hiểu",
+              "lerntext": "hiểu",
+              "de": "verstehen",
+              "wieder": true
+            },
+            {
+              "schrift": "gặp",
+              "lerntext": "gặp",
+              "de": "treffen",
+              "wieder": true
+            },
+            {
+              "schrift": "vào",
+              "lerntext": "vào",
+              "de": "hineingehen",
+              "wieder": true
+            },
+            {
+              "schrift": "biết",
+              "lerntext": "biết",
+              "de": "wissen",
+              "wieder": true
+            },
+            {
+              "schrift": "nhận",
+              "lerntext": "nhận",
+              "de": "bekommen",
+              "wieder": true
+            },
+            {
+              "schrift": "sống",
+              "lerntext": "sống",
+              "de": "leben",
+              "wieder": true
+            },
+            {
+              "schrift": "yêu",
+              "lerntext": "yêu",
+              "de": "lieben",
+              "wieder": true
+            },
+            {
+              "schrift": "trở thành",
+              "lerntext": "trở thành",
+              "de": "werden",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "29.4"
+      },
+      {
+        "kind": "finisher",
+        "frame": {
+          "schrift": "",
+          "lerntext": ""
+        },
+        "frameDe": null,
+        "pronouns": [],
+        "slotGroups": [],
+        "newCount": 0,
+        "task": "Bitte jemanden höflich um etwas.",
+        "newFrameWords": [],
+        "id": "29.5"
+      }
+    ]
+  },
+  {
+    "number": 30,
+    "title": "Wem gebe ich was?",
+    "niveau": "A2",
+    "lessons": [
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi đưa sách cho [Slot]",
+          "lerntext": "tôi đưa sách cho [Slot]"
+        },
+        "frameDe": "ich (neutral) gebe [Slot] das Buch.",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "bạn",
+              "lerntext": "bạn",
+              "de": "du (Gleichaltrige)"
+            },
+            {
+              "schrift": "mẹ",
+              "lerntext": "mẹ",
+              "de": "Mutter"
+            },
+            {
+              "schrift": "bố",
+              "lerntext": "bố",
+              "de": "Vater"
+            },
+            {
+              "schrift": "con",
+              "lerntext": "con",
+              "de": "ich (zu den Eltern)"
+            },
+            {
+              "schrift": "sinh viên",
+              "lerntext": "sinh viên",
+              "de": "Student"
+            },
+            {
+              "schrift": "bà",
+              "lerntext": "bà",
+              "de": "du (alte Frau)",
+              "wieder": true
+            },
+            {
+              "schrift": "cái gì",
+              "lerntext": "cái gì",
+              "de": "etwas",
+              "wieder": true
+            },
+            {
+              "schrift": "ai",
+              "lerntext": "ai",
+              "de": "wer",
+              "wieder": true
+            },
+            {
+              "schrift": "kỳ thi",
+              "lerntext": "kỳ thi",
+              "de": "Prüfung",
+              "wieder": true
+            },
+            {
+              "schrift": "bài",
+              "lerntext": "bài",
+              "de": "Lektion",
+              "wieder": true
+            },
+            {
+              "schrift": "nhau",
+              "lerntext": "nhau",
+              "de": "einander",
+              "wieder": true
+            },
+            {
+              "schrift": "quần áo",
+              "lerntext": "quần áo",
+              "de": "Kleidung",
+              "wieder": true
+            },
+            {
+              "schrift": "tên",
+              "lerntext": "tên",
+              "de": "Name",
+              "wieder": true
+            },
+            {
+              "schrift": "các bạn",
+              "lerntext": "các bạn",
+              "de": "ihr",
+              "wieder": true
+            },
+            {
+              "schrift": "cửa hàng",
+              "lerntext": "cửa hàng",
+              "de": "Laden",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [
+          {
+            "schrift": "đưa",
+            "lerntext": "đưa",
+            "de": "geben"
+          }
+        ],
+        "id": "30.1"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi đưa sách cho [Slot]",
+          "lerntext": "tôi đưa sách cho [Slot]"
+        },
+        "frameDe": "ich (neutral) gebe [Slot] das Buch.",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "bà",
+              "lerntext": "bà",
+              "de": "du (alte Frau)"
+            },
+            {
+              "schrift": "con",
+              "lerntext": "con",
+              "de": "ich (zu den Eltern)",
+              "wieder": true
+            },
+            {
+              "schrift": "bạn",
+              "lerntext": "bạn",
+              "de": "du (Gleichaltrige)",
+              "wieder": true
+            },
+            {
+              "schrift": "cái gì",
+              "lerntext": "cái gì",
+              "de": "etwas",
+              "wieder": true
+            },
+            {
+              "schrift": "ai",
+              "lerntext": "ai",
+              "de": "wer",
+              "wieder": true
+            },
+            {
+              "schrift": "nhau",
+              "lerntext": "nhau",
+              "de": "einander",
+              "wieder": true
+            },
+            {
+              "schrift": "các bạn",
+              "lerntext": "các bạn",
+              "de": "ihr",
+              "wieder": true
+            },
+            {
+              "schrift": "này",
+              "lerntext": "này",
+              "de": "dieser",
+              "wieder": true
+            },
+            {
+              "schrift": "tất cả",
+              "lerntext": "tất cả",
+              "de": "alles",
+              "wieder": true
+            },
+            {
+              "schrift": "của",
+              "lerntext": "của",
+              "de": "von (Besitz)",
+              "wieder": true
+            },
+            {
+              "schrift": "mình",
+              "lerntext": "mình",
+              "de": "ich",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "30.2"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi chỉ thành phố cho [Slot]",
+          "lerntext": "tôi chỉ thành phố cho [Slot]"
+        },
+        "frameDe": "ich (neutral) zeige [Slot] die Stadt.",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "bạn",
+              "lerntext": "bạn",
+              "de": "du (Gleichaltrige)"
+            },
+            {
+              "schrift": "mẹ",
+              "lerntext": "mẹ",
+              "de": "Mutter"
+            },
+            {
+              "schrift": "bố",
+              "lerntext": "bố",
+              "de": "Vater"
+            },
+            {
+              "schrift": "con",
+              "lerntext": "con",
+              "de": "ich (zu den Eltern)"
+            },
+            {
+              "schrift": "sinh viên",
+              "lerntext": "sinh viên",
+              "de": "Student"
+            },
+            {
+              "schrift": "bà",
+              "lerntext": "bà",
+              "de": "du (alte Frau)",
+              "wieder": true
+            },
+            {
+              "schrift": "kỳ thi",
+              "lerntext": "kỳ thi",
+              "de": "Prüfung",
+              "wieder": true
+            },
+            {
+              "schrift": "bài",
+              "lerntext": "bài",
+              "de": "Lektion",
+              "wieder": true
+            },
+            {
+              "schrift": "cái gì",
+              "lerntext": "cái gì",
+              "de": "etwas",
+              "wieder": true
+            },
+            {
+              "schrift": "ai",
+              "lerntext": "ai",
+              "de": "wer",
+              "wieder": true
+            },
+            {
+              "schrift": "nhau",
+              "lerntext": "nhau",
+              "de": "einander",
+              "wieder": true
+            },
+            {
+              "schrift": "giấy",
+              "lerntext": "giấy",
+              "de": "Papier",
+              "wieder": true
+            },
+            {
+              "schrift": "nước",
+              "lerntext": "nước",
+              "de": "Wasser",
+              "wieder": true
+            },
+            {
+              "schrift": "áo",
+              "lerntext": "áo",
+              "de": "Oberteil",
+              "wieder": true
+            },
+            {
+              "schrift": "cầu",
+              "lerntext": "cầu",
+              "de": "Brücke",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "30.3"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi chỉ thành phố cho [Slot]",
+          "lerntext": "tôi chỉ thành phố cho [Slot]"
+        },
+        "frameDe": "ich (neutral) zeige [Slot] die Stadt.",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "bà",
+              "lerntext": "bà",
+              "de": "du (alte Frau)"
+            },
+            {
+              "schrift": "con",
+              "lerntext": "con",
+              "de": "ich (zu den Eltern)",
+              "wieder": true
+            },
+            {
+              "schrift": "bạn",
+              "lerntext": "bạn",
+              "de": "du (Gleichaltrige)",
+              "wieder": true
+            },
+            {
+              "schrift": "cái gì",
+              "lerntext": "cái gì",
+              "de": "etwas",
+              "wieder": true
+            },
+            {
+              "schrift": "ai",
+              "lerntext": "ai",
+              "de": "wer",
+              "wieder": true
+            },
+            {
+              "schrift": "nhau",
+              "lerntext": "nhau",
+              "de": "einander",
+              "wieder": true
+            },
+            {
+              "schrift": "các bạn",
+              "lerntext": "các bạn",
+              "de": "ihr",
+              "wieder": true
+            },
+            {
+              "schrift": "này",
+              "lerntext": "này",
+              "de": "dieser",
+              "wieder": true
+            },
+            {
+              "schrift": "tất cả",
+              "lerntext": "tất cả",
+              "de": "alles",
+              "wieder": true
+            },
+            {
+              "schrift": "của",
+              "lerntext": "của",
+              "de": "von (Besitz)",
+              "wieder": true
+            },
+            {
+              "schrift": "mình",
+              "lerntext": "mình",
+              "de": "ich",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "30.4"
+      },
+      {
+        "kind": "finisher",
+        "frame": {
+          "schrift": "",
+          "lerntext": ""
+        },
+        "frameDe": null,
+        "pronouns": [],
+        "slotGroups": [],
+        "newCount": 0,
+        "task": "Sag, wem du etwas gibst.",
+        "newFrameWords": [],
+        "id": "30.5"
+      }
+    ]
+  },
+  {
+    "number": 31,
+    "title": "Ein Glas, genug, zu viel",
+    "niveau": "A2",
+    "lessons": [
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi muốn một ly [Slot]",
+          "lerntext": "tôi muốn một ly [Slot]"
+        },
+        "frameDe": "ich (neutral) möchte ein Glas [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "nước",
+              "lerntext": "nước",
+              "de": "Wasser"
+            },
+            {
+              "schrift": "bia",
+              "lerntext": "bia",
+              "de": "Bier"
+            },
+            {
+              "schrift": "sữa",
+              "lerntext": "sữa",
+              "de": "Milch"
+            },
+            {
+              "schrift": "cà phê",
+              "lerntext": "cà phê",
+              "de": "Kaffee"
+            },
+            {
+              "schrift": "kỳ thi",
+              "lerntext": "kỳ thi",
+              "de": "Prüfung",
+              "wieder": true
+            },
+            {
+              "schrift": "bài",
+              "lerntext": "bài",
+              "de": "Lektion",
+              "wieder": true
+            },
+            {
+              "schrift": "bệnh viện",
+              "lerntext": "bệnh viện",
+              "de": "Krankenhaus",
+              "wieder": true
+            },
+            {
+              "schrift": "phút",
+              "lerntext": "phút",
+              "de": "Minute",
+              "wieder": true
+            },
+            {
+              "schrift": "muối",
+              "lerntext": "muối",
+              "de": "Salz",
+              "wieder": true
+            },
+            {
+              "schrift": "cá",
+              "lerntext": "cá",
+              "de": "Fisch",
+              "wieder": true
+            },
+            {
+              "schrift": "vé",
+              "lerntext": "vé",
+              "de": "Fahrkarte",
+              "wieder": true
+            },
+            {
+              "schrift": "da",
+              "lerntext": "da",
+              "de": "Haut",
+              "wieder": true
+            },
+            {
+              "schrift": "rừng",
+              "lerntext": "rừng",
+              "de": "Wald",
+              "wieder": true
+            },
+            {
+              "schrift": "bánh mì",
+              "lerntext": "bánh mì",
+              "de": "Brot",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [
+          {
+            "schrift": "ly",
+            "lerntext": "ly",
+            "de": "Glas"
+          }
+        ],
+        "id": "31.1"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "mình có đủ [Slot]",
+          "lerntext": "mình có đủ [Slot]"
+        },
+        "frameDe": "ich haben genug [Slot].",
+        "pronouns": [
+          {
+            "schrift": "mình",
+            "lerntext": "mình",
+            "de": "ich"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "tiền",
+              "lerntext": "tiền",
+              "de": "Geld"
+            },
+            {
+              "schrift": "thời gian",
+              "lerntext": "thời gian",
+              "de": "Zeit"
+            },
+            {
+              "schrift": "bánh mì",
+              "lerntext": "bánh mì",
+              "de": "Brot"
+            },
+            {
+              "schrift": "trái cây",
+              "lerntext": "trái cây",
+              "de": "Obst"
+            },
+            {
+              "schrift": "thịt",
+              "lerntext": "thịt",
+              "de": "Fleisch"
+            },
+            {
+              "schrift": "cá",
+              "lerntext": "cá",
+              "de": "Fisch",
+              "wieder": true
+            },
+            {
+              "schrift": "đường",
+              "lerntext": "đường",
+              "de": "Straße",
+              "wieder": true
+            },
+            {
+              "schrift": "sữa",
+              "lerntext": "sữa",
+              "de": "Milch",
+              "wieder": true
+            },
+            {
+              "schrift": "xe buýt",
+              "lerntext": "xe buýt",
+              "de": "Bus",
+              "wieder": true
+            },
+            {
+              "schrift": "đêm",
+              "lerntext": "đêm",
+              "de": "Nacht",
+              "wieder": true
+            },
+            {
+              "schrift": "giáo viên",
+              "lerntext": "giáo viên",
+              "de": "Lehrer",
+              "wieder": true
+            },
+            {
+              "schrift": "chìa khóa",
+              "lerntext": "chìa khóa",
+              "de": "Schlüssel",
+              "wieder": true
+            },
+            {
+              "schrift": "khách sạn",
+              "lerntext": "khách sạn",
+              "de": "Hotel",
+              "wieder": true
+            },
+            {
+              "schrift": "trà",
+              "lerntext": "trà",
+              "de": "Tee",
+              "wieder": true
+            },
+            {
+              "schrift": "thành phố",
+              "lerntext": "thành phố",
+              "de": "Stadt",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [
+          {
+            "schrift": "đủ",
+            "lerntext": "đủ",
+            "de": "genug"
+          }
+        ],
+        "id": "31.2"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "mình có đủ [Slot]",
+          "lerntext": "mình có đủ [Slot]"
+        },
+        "frameDe": "ich haben genug [Slot].",
+        "pronouns": [
+          {
+            "schrift": "mình",
+            "lerntext": "mình",
+            "de": "ich"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "cá",
+              "lerntext": "cá",
+              "de": "Fisch"
+            },
+            {
+              "schrift": "đường",
+              "lerntext": "đường",
+              "de": "Straße"
+            },
+            {
+              "schrift": "sữa",
+              "lerntext": "sữa",
+              "de": "Milch"
+            },
+            {
+              "schrift": "tiền",
+              "lerntext": "tiền",
+              "de": "Geld",
+              "wieder": true
+            },
+            {
+              "schrift": "thời gian",
+              "lerntext": "thời gian",
+              "de": "Zeit",
+              "wieder": true
+            },
+            {
+              "schrift": "bánh mì",
+              "lerntext": "bánh mì",
+              "de": "Brot",
+              "wieder": true
+            },
+            {
+              "schrift": "trái cây",
+              "lerntext": "trái cây",
+              "de": "Obst",
+              "wieder": true
+            },
+            {
+              "schrift": "thịt",
+              "lerntext": "thịt",
+              "de": "Fleisch",
+              "wieder": true
+            },
+            {
+              "schrift": "ga tàu",
+              "lerntext": "ga tàu",
+              "de": "Bahnhof",
+              "wieder": true
+            },
+            {
+              "schrift": "con gái",
+              "lerntext": "con gái",
+              "de": "Mädchen",
+              "wieder": true
+            },
+            {
+              "schrift": "gió",
+              "lerntext": "gió",
+              "de": "Wind",
+              "wieder": true
+            },
+            {
+              "schrift": "bữa tối",
+              "lerntext": "bữa tối",
+              "de": "Abendessen",
+              "wieder": true
+            },
+            {
+              "schrift": "mắt",
+              "lerntext": "mắt",
+              "de": "Auge",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "31.3"
+      },
+      {
+        "kind": "finisher",
+        "frame": {
+          "schrift": "",
+          "lerntext": ""
+        },
+        "frameDe": null,
+        "pronouns": [],
+        "slotGroups": [],
+        "newCount": 0,
+        "task": "Bestell etwas mit einer Menge.",
+        "newFrameWords": [],
+        "id": "31.4"
+      }
+    ]
+  },
+  {
+    "number": 32,
+    "title": "Seit, vor, in einer Stunde",
+    "niveau": "A2",
+    "lessons": [
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi đợi một [Slot] rồi",
+          "lerntext": "tôi đợi một [Slot] rồi"
+        },
+        "frameDe": "ich (neutral) warte seit einer [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "giờ",
+              "lerntext": "giờ",
+              "de": "Stunde"
+            },
+            {
+              "schrift": "phút",
+              "lerntext": "phút",
+              "de": "Minute"
+            },
+            {
+              "schrift": "tuần",
+              "lerntext": "tuần",
+              "de": "Woche"
+            },
+            {
+              "schrift": "đêm",
+              "lerntext": "đêm",
+              "de": "Nacht"
+            },
+            {
+              "schrift": "trường",
+              "lerntext": "trường",
+              "de": "Schule",
+              "wieder": true
+            },
+            {
+              "schrift": "kỳ thi",
+              "lerntext": "kỳ thi",
+              "de": "Prüfung",
+              "wieder": true
+            },
+            {
+              "schrift": "quần áo",
+              "lerntext": "quần áo",
+              "de": "Kleidung",
+              "wieder": true
+            },
+            {
+              "schrift": "đại học",
+              "lerntext": "đại học",
+              "de": "Universität",
+              "wieder": true
+            },
+            {
+              "schrift": "bản đồ",
+              "lerntext": "bản đồ",
+              "de": "Landkarte",
+              "wieder": true
+            },
+            {
+              "schrift": "nhà vệ sinh",
+              "lerntext": "nhà vệ sinh",
+              "de": "Toilette",
+              "wieder": true
+            },
+            {
+              "schrift": "cầu",
+              "lerntext": "cầu",
+              "de": "Brücke",
+              "wieder": true
+            },
+            {
+              "schrift": "gia đình",
+              "lerntext": "gia đình",
+              "de": "Familie",
+              "wieder": true
+            },
+            {
+              "schrift": "vé",
+              "lerntext": "vé",
+              "de": "Fahrkarte",
+              "wieder": true
+            },
+            {
+              "schrift": "da",
+              "lerntext": "da",
+              "de": "Haut",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "32.1"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi đợi một [Slot] rồi",
+          "lerntext": "tôi đợi một [Slot] rồi"
+        },
+        "frameDe": "ich (neutral) warte seit einem [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "ngày",
+              "lerntext": "ngày",
+              "de": "Tag"
+            },
+            {
+              "schrift": "tối",
+              "lerntext": "tối",
+              "de": "Abend"
+            },
+            {
+              "schrift": "miệng",
+              "lerntext": "miệng",
+              "de": "Mund",
+              "wieder": true
+            },
+            {
+              "schrift": "sân bay",
+              "lerntext": "sân bay",
+              "de": "Flughafen",
+              "wieder": true
+            },
+            {
+              "schrift": "ghế",
+              "lerntext": "ghế",
+              "de": "Stuhl",
+              "wieder": true
+            },
+            {
+              "schrift": "giày",
+              "lerntext": "giày",
+              "de": "Schuh",
+              "wieder": true
+            },
+            {
+              "schrift": "con trai",
+              "lerntext": "con trai",
+              "de": "Junge",
+              "wieder": true
+            },
+            {
+              "schrift": "tàu",
+              "lerntext": "tàu",
+              "de": "Zug",
+              "wieder": true
+            },
+            {
+              "schrift": "đầu",
+              "lerntext": "đầu",
+              "de": "Kopf",
+              "wieder": true
+            },
+            {
+              "schrift": "cửa hàng",
+              "lerntext": "cửa hàng",
+              "de": "Laden",
+              "wieder": true
+            },
+            {
+              "schrift": "rừng",
+              "lerntext": "rừng",
+              "de": "Wald",
+              "wieder": true
+            },
+            {
+              "schrift": "xe buýt",
+              "lerntext": "xe buýt",
+              "de": "Bus",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "32.2"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "[Slot] tôi về nhà",
+          "lerntext": "[Slot] tôi về nhà"
+        },
+        "frameDe": "[Slot] gehe ich nach Hause.",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "hôm nay",
+              "lerntext": "hôm nay",
+              "de": "heute"
+            },
+            {
+              "schrift": "ngày mai",
+              "lerntext": "ngày mai",
+              "de": "morgen"
+            },
+            {
+              "schrift": "bây giờ",
+              "lerntext": "bây giờ",
+              "de": "jetzt"
+            },
+            {
+              "schrift": "sớm",
+              "lerntext": "sớm",
+              "de": "früh"
+            },
+            {
+              "schrift": "hôm qua",
+              "lerntext": "hôm qua",
+              "de": "gestern"
+            },
+            {
+              "schrift": "thường",
+              "lerntext": "thường",
+              "de": "oft",
+              "wieder": true
+            },
+            {
+              "schrift": "không bao giờ",
+              "lerntext": "không bao giờ",
+              "de": "nie",
+              "wieder": true
+            },
+            {
+              "schrift": "luôn luôn",
+              "lerntext": "luôn luôn",
+              "de": "immer",
+              "wieder": true
+            },
+            {
+              "schrift": "tốt",
+              "lerntext": "tốt",
+              "de": "gut",
+              "wieder": true
+            },
+            {
+              "schrift": "đủ",
+              "lerntext": "đủ",
+              "de": "genug",
+              "wieder": true
+            },
+            {
+              "schrift": "cứ",
+              "lerntext": "cứ",
+              "de": "ruhig",
+              "wieder": true
+            },
+            {
+              "schrift": "chung",
+              "lerntext": "chung",
+              "de": "zusammen",
+              "wieder": true
+            },
+            {
+              "schrift": "dở",
+              "lerntext": "dở",
+              "de": "schlecht",
+              "wieder": true
+            },
+            {
+              "schrift": "chậm",
+              "lerntext": "chậm",
+              "de": "langsam",
+              "wieder": true
+            },
+            {
+              "schrift": "ngay",
+              "lerntext": "ngay",
+              "de": "sofort",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "32.3"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "[Slot] tôi về nhà",
+          "lerntext": "[Slot] tôi về nhà"
+        },
+        "frameDe": "[Slot] gehe ich nach Hause.",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "thường",
+              "lerntext": "thường",
+              "de": "oft"
+            },
+            {
+              "schrift": "không bao giờ",
+              "lerntext": "không bao giờ",
+              "de": "nie"
+            },
+            {
+              "schrift": "luôn luôn",
+              "lerntext": "luôn luôn",
+              "de": "immer"
+            },
+            {
+              "schrift": "hôm qua",
+              "lerntext": "hôm qua",
+              "de": "gestern",
+              "wieder": true
+            },
+            {
+              "schrift": "hôm nay",
+              "lerntext": "hôm nay",
+              "de": "heute",
+              "wieder": true
+            },
+            {
+              "schrift": "ngày mai",
+              "lerntext": "ngày mai",
+              "de": "morgen",
+              "wieder": true
+            },
+            {
+              "schrift": "bây giờ",
+              "lerntext": "bây giờ",
+              "de": "jetzt",
+              "wieder": true
+            },
+            {
+              "schrift": "sớm",
+              "lerntext": "sớm",
+              "de": "früh",
+              "wieder": true
+            },
+            {
+              "schrift": "tốt",
+              "lerntext": "tốt",
+              "de": "gut",
+              "wieder": true
+            },
+            {
+              "schrift": "đúng",
+              "lerntext": "đúng",
+              "de": "genau",
+              "wieder": true
+            },
+            {
+              "schrift": "đôi khi",
+              "lerntext": "đôi khi",
+              "de": "manchmal",
+              "wieder": true
+            },
+            {
+              "schrift": "nhiều",
+              "lerntext": "nhiều",
+              "de": "viel",
+              "wieder": true
+            },
+            {
+              "schrift": "quá",
+              "lerntext": "quá",
+              "de": "zu",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "32.4"
+      },
+      {
+        "kind": "finisher",
+        "frame": {
+          "schrift": "",
+          "lerntext": ""
+        },
+        "frameDe": null,
+        "pronouns": [],
+        "slotGroups": [],
+        "newCount": 0,
+        "task": "Sag, wann du etwas machst.",
+        "newFrameWords": [],
+        "id": "32.5"
+      }
+    ]
+  },
+  {
+    "number": 33,
+    "title": "Ich hätte gern",
+    "niveau": "A2",
+    "lessons": [
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi muốn [Slot]",
+          "lerntext": "tôi muốn [Slot]"
+        },
+        "frameDe": "ich (neutral) hätte gern [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "ở lại",
+              "lerntext": "ở lại",
+              "de": "bleiben"
+            },
+            {
+              "schrift": "cười",
+              "lerntext": "cười",
+              "de": "lachen"
+            },
+            {
+              "schrift": "khóc",
+              "lerntext": "khóc",
+              "de": "weinen"
+            },
+            {
+              "schrift": "nghĩ",
+              "lerntext": "nghĩ",
+              "de": "denken"
+            },
+            {
+              "schrift": "tin",
+              "lerntext": "tin",
+              "de": "glauben"
+            },
+            {
+              "schrift": "hy vọng",
+              "lerntext": "hy vọng",
+              "de": "hoffen",
+              "wieder": true
+            },
+            {
+              "schrift": "cần",
+              "lerntext": "cần",
+              "de": "brauchen",
+              "wieder": true
+            },
+            {
+              "schrift": "đưa",
+              "lerntext": "đưa",
+              "de": "geben",
+              "wieder": true
+            },
+            {
+              "schrift": "thích",
+              "lerntext": "thích",
+              "de": "mögen",
+              "wieder": true
+            },
+            {
+              "schrift": "đi",
+              "lerntext": "đi",
+              "de": "gehen",
+              "wieder": true
+            },
+            {
+              "schrift": "du lịch",
+              "lerntext": "du lịch",
+              "de": "reisen",
+              "wieder": true
+            },
+            {
+              "schrift": "bán",
+              "lerntext": "bán",
+              "de": "verkaufen",
+              "wieder": true
+            },
+            {
+              "schrift": "nhớ",
+              "lerntext": "nhớ",
+              "de": "sich erinnern",
+              "wieder": true
+            },
+            {
+              "schrift": "chuyển",
+              "lerntext": "chuyển",
+              "de": "umziehen",
+              "wieder": true
+            },
+            {
+              "schrift": "tiếp tục",
+              "lerntext": "tiếp tục",
+              "de": "fortsetzen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "33.1"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi muốn [Slot]",
+          "lerntext": "tôi muốn [Slot]"
+        },
+        "frameDe": "ich (neutral) hätte gern [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "hy vọng",
+              "lerntext": "hy vọng",
+              "de": "hoffen"
+            },
+            {
+              "schrift": "cần",
+              "lerntext": "cần",
+              "de": "brauchen"
+            },
+            {
+              "schrift": "ở lại",
+              "lerntext": "ở lại",
+              "de": "bleiben",
+              "wieder": true
+            },
+            {
+              "schrift": "khóc",
+              "lerntext": "khóc",
+              "de": "weinen",
+              "wieder": true
+            },
+            {
+              "schrift": "tin",
+              "lerntext": "tin",
+              "de": "glauben",
+              "wieder": true
+            },
+            {
+              "schrift": "cười",
+              "lerntext": "cười",
+              "de": "lachen",
+              "wieder": true
+            },
+            {
+              "schrift": "nghĩ",
+              "lerntext": "nghĩ",
+              "de": "denken",
+              "wieder": true
+            },
+            {
+              "schrift": "đưa",
+              "lerntext": "đưa",
+              "de": "geben",
+              "wieder": true
+            },
+            {
+              "schrift": "nằm",
+              "lerntext": "nằm",
+              "de": "liegen",
+              "wieder": true
+            },
+            {
+              "schrift": "ngồi",
+              "lerntext": "ngồi",
+              "de": "sitzen",
+              "wieder": true
+            },
+            {
+              "schrift": "được",
+              "lerntext": "được",
+              "de": "können",
+              "wieder": true
+            },
+            {
+              "schrift": "gửi",
+              "lerntext": "gửi",
+              "de": "schicken",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "33.2"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "bạn cho tôi [Slot] được không?",
+          "lerntext": "bạn cho tôi [Slot] được không?"
+        },
+        "frameDe": "Könnten Sie mir [Slot] geben?",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "nước",
+              "lerntext": "nước",
+              "de": "Wasser"
+            },
+            {
+              "schrift": "bánh mì",
+              "lerntext": "bánh mì",
+              "de": "Brot"
+            },
+            {
+              "schrift": "chìa khóa",
+              "lerntext": "chìa khóa",
+              "de": "Schlüssel"
+            },
+            {
+              "schrift": "sách",
+              "lerntext": "sách",
+              "de": "Buch"
+            },
+            {
+              "schrift": "túi",
+              "lerntext": "túi",
+              "de": "Tasche"
+            },
+            {
+              "schrift": "cà phê",
+              "lerntext": "cà phê",
+              "de": "Kaffee",
+              "wieder": true
+            },
+            {
+              "schrift": "đường",
+              "lerntext": "đường",
+              "de": "Straße",
+              "wieder": true
+            },
+            {
+              "schrift": "sữa",
+              "lerntext": "sữa",
+              "de": "Milch",
+              "wieder": true
+            },
+            {
+              "schrift": "bữa trưa",
+              "lerntext": "bữa trưa",
+              "de": "Mittagessen",
+              "wieder": true
+            },
+            {
+              "schrift": "cửa sổ",
+              "lerntext": "cửa sổ",
+              "de": "Fenster",
+              "wieder": true
+            },
+            {
+              "schrift": "bữa sáng",
+              "lerntext": "bữa sáng",
+              "de": "Frühstück",
+              "wieder": true
+            },
+            {
+              "schrift": "mặt trời",
+              "lerntext": "mặt trời",
+              "de": "Sonne",
+              "wieder": true
+            },
+            {
+              "schrift": "mưa",
+              "lerntext": "mưa",
+              "de": "Regen",
+              "wieder": true
+            },
+            {
+              "schrift": "núi",
+              "lerntext": "núi",
+              "de": "Berg",
+              "wieder": true
+            },
+            {
+              "schrift": "rau",
+              "lerntext": "rau",
+              "de": "Gemüse",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "33.3"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "bạn cho tôi [Slot] được không?",
+          "lerntext": "bạn cho tôi [Slot] được không?"
+        },
+        "frameDe": "Könnten Sie mir [Slot] geben?",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "đường",
+              "lerntext": "đường",
+              "de": "Straße"
+            },
+            {
+              "schrift": "cà phê",
+              "lerntext": "cà phê",
+              "de": "Kaffee"
+            },
+            {
+              "schrift": "sữa",
+              "lerntext": "sữa",
+              "de": "Milch"
+            },
+            {
+              "schrift": "chìa khóa",
+              "lerntext": "chìa khóa",
+              "de": "Schlüssel",
+              "wieder": true
+            },
+            {
+              "schrift": "túi",
+              "lerntext": "túi",
+              "de": "Tasche",
+              "wieder": true
+            },
+            {
+              "schrift": "sách",
+              "lerntext": "sách",
+              "de": "Buch",
+              "wieder": true
+            },
+            {
+              "schrift": "nước",
+              "lerntext": "nước",
+              "de": "Wasser",
+              "wieder": true
+            },
+            {
+              "schrift": "bánh mì",
+              "lerntext": "bánh mì",
+              "de": "Brot",
+              "wieder": true
+            },
+            {
+              "schrift": "thời tiết",
+              "lerntext": "thời tiết",
+              "de": "Wetter",
+              "wieder": true
+            },
+            {
+              "schrift": "tên",
+              "lerntext": "tên",
+              "de": "Name",
+              "wieder": true
+            },
+            {
+              "schrift": "bài",
+              "lerntext": "bài",
+              "de": "Lektion",
+              "wieder": true
+            },
+            {
+              "schrift": "biển",
+              "lerntext": "biển",
+              "de": "Meer",
+              "wieder": true
+            },
+            {
+              "schrift": "nhà hàng",
+              "lerntext": "nhà hàng",
+              "de": "Restaurant",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "33.4"
+      },
+      {
+        "kind": "finisher",
+        "frame": {
+          "schrift": "",
+          "lerntext": ""
+        },
+        "frameDe": null,
+        "pronouns": [],
+        "slotGroups": [],
+        "newCount": 0,
+        "task": "Bitte höflich um etwas.",
+        "newFrameWords": [],
+        "id": "33.5"
+      }
+    ]
+  },
+  {
+    "number": 34,
+    "title": "Ich glaube, dass",
+    "niveau": "A2",
+    "lessons": [
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi nghĩ cái này [Slot]",
+          "lerntext": "tôi nghĩ cái này [Slot]"
+        },
+        "frameDe": "ich (neutral) denke, das ist [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "to",
+              "lerntext": "to",
+              "de": "groß"
+            },
+            {
+              "schrift": "nhỏ",
+              "lerntext": "nhỏ",
+              "de": "klein"
+            },
+            {
+              "schrift": "cũ",
+              "lerntext": "cũ",
+              "de": "alt (Sache)"
+            },
+            {
+              "schrift": "trẻ",
+              "lerntext": "trẻ",
+              "de": "jung"
+            },
+            {
+              "schrift": "đắt",
+              "lerntext": "đắt",
+              "de": "teuer"
+            },
+            {
+              "schrift": "lạnh",
+              "lerntext": "lạnh",
+              "de": "kalt",
+              "wieder": true
+            },
+            {
+              "schrift": "ấm",
+              "lerntext": "ấm",
+              "de": "warm",
+              "wieder": true
+            },
+            {
+              "schrift": "đẹp",
+              "lerntext": "đẹp",
+              "de": "schön",
+              "wieder": true
+            },
+            {
+              "schrift": "khỏe",
+              "lerntext": "khỏe",
+              "de": "gesund",
+              "wieder": true
+            },
+            {
+              "schrift": "xám",
+              "lerntext": "xám",
+              "de": "grau",
+              "wieder": true
+            },
+            {
+              "schrift": "rẻ",
+              "lerntext": "rẻ",
+              "de": "billig",
+              "wieder": true
+            },
+            {
+              "schrift": "đói",
+              "lerntext": "đói",
+              "de": "hungrig",
+              "wieder": true
+            },
+            {
+              "schrift": "nhẹ",
+              "lerntext": "nhẹ",
+              "de": "leicht",
+              "wieder": true
+            },
+            {
+              "schrift": "khát",
+              "lerntext": "khát",
+              "de": "durstig",
+              "wieder": true
+            },
+            {
+              "schrift": "thấp",
+              "lerntext": "thấp",
+              "de": "niedrig",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "34.1"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi nghĩ cái này [Slot]",
+          "lerntext": "tôi nghĩ cái này [Slot]"
+        },
+        "frameDe": "ich (neutral) denke, das ist [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "đẹp",
+              "lerntext": "đẹp",
+              "de": "schön"
+            },
+            {
+              "schrift": "ấm",
+              "lerntext": "ấm",
+              "de": "warm"
+            },
+            {
+              "schrift": "lạnh",
+              "lerntext": "lạnh",
+              "de": "kalt"
+            },
+            {
+              "schrift": "khỏe",
+              "lerntext": "khỏe",
+              "de": "gesund"
+            },
+            {
+              "schrift": "to",
+              "lerntext": "to",
+              "de": "groß",
+              "wieder": true
+            },
+            {
+              "schrift": "nhỏ",
+              "lerntext": "nhỏ",
+              "de": "klein",
+              "wieder": true
+            },
+            {
+              "schrift": "đắt",
+              "lerntext": "đắt",
+              "de": "teuer",
+              "wieder": true
+            },
+            {
+              "schrift": "trẻ",
+              "lerntext": "trẻ",
+              "de": "jung",
+              "wieder": true
+            },
+            {
+              "schrift": "cũ",
+              "lerntext": "cũ",
+              "de": "alt (Sache)",
+              "wieder": true
+            },
+            {
+              "schrift": "cao",
+              "lerntext": "cao",
+              "de": "hoch",
+              "wieder": true
+            },
+            {
+              "schrift": "chua",
+              "lerntext": "chua",
+              "de": "sauer",
+              "wieder": true
+            },
+            {
+              "schrift": "nâu",
+              "lerntext": "nâu",
+              "de": "braun",
+              "wieder": true
+            },
+            {
+              "schrift": "chán",
+              "lerntext": "chán",
+              "de": "langweilig",
+              "wieder": true
+            },
+            {
+              "schrift": "đỏ",
+              "lerntext": "đỏ",
+              "de": "rot",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "34.2"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi thấy cái này rất [Slot]",
+          "lerntext": "tôi thấy cái này rất [Slot]"
+        },
+        "frameDe": "ich (neutral) finde das sehr [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "sai",
+              "lerntext": "sai",
+              "de": "falsch"
+            },
+            {
+              "schrift": "ốm",
+              "lerntext": "ốm",
+              "de": "krank"
+            },
+            {
+              "schrift": "ngắn",
+              "lerntext": "ngắn",
+              "de": "kurz"
+            },
+            {
+              "schrift": "dài",
+              "lerntext": "dài",
+              "de": "lang"
+            },
+            {
+              "schrift": "sạch",
+              "lerntext": "sạch",
+              "de": "sauber"
+            },
+            {
+              "schrift": "đen",
+              "lerntext": "đen",
+              "de": "schwarz",
+              "wieder": true
+            },
+            {
+              "schrift": "ngọt",
+              "lerntext": "ngọt",
+              "de": "süß (Geschmack)",
+              "wieder": true
+            },
+            {
+              "schrift": "yếu",
+              "lerntext": "yếu",
+              "de": "schwach",
+              "wieder": true
+            },
+            {
+              "schrift": "giận",
+              "lerntext": "giận",
+              "de": "wütend",
+              "wieder": true
+            },
+            {
+              "schrift": "nặng",
+              "lerntext": "nặng",
+              "de": "schwer",
+              "wieder": true
+            },
+            {
+              "schrift": "buồn cười",
+              "lerntext": "buồn cười",
+              "de": "lustig",
+              "wieder": true
+            },
+            {
+              "schrift": "vàng",
+              "lerntext": "vàng",
+              "de": "gelb",
+              "wieder": true
+            },
+            {
+              "schrift": "trắng",
+              "lerntext": "trắng",
+              "de": "weiß",
+              "wieder": true
+            },
+            {
+              "schrift": "xấu",
+              "lerntext": "xấu",
+              "de": "hässlich",
+              "wieder": true
+            },
+            {
+              "schrift": "xanh",
+              "lerntext": "xanh",
+              "de": "blau",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "34.3"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi thấy cái này rất [Slot]",
+          "lerntext": "tôi thấy cái này rất [Slot]"
+        },
+        "frameDe": "ich (neutral) finde das sehr [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "yếu",
+              "lerntext": "yếu",
+              "de": "schwach"
+            },
+            {
+              "schrift": "đen",
+              "lerntext": "đen",
+              "de": "schwarz"
+            },
+            {
+              "schrift": "ngọt",
+              "lerntext": "ngọt",
+              "de": "süß (Geschmack)"
+            },
+            {
+              "schrift": "giận",
+              "lerntext": "giận",
+              "de": "wütend"
+            },
+            {
+              "schrift": "sai",
+              "lerntext": "sai",
+              "de": "falsch",
+              "wieder": true
+            },
+            {
+              "schrift": "ngắn",
+              "lerntext": "ngắn",
+              "de": "kurz",
+              "wieder": true
+            },
+            {
+              "schrift": "dài",
+              "lerntext": "dài",
+              "de": "lang",
+              "wieder": true
+            },
+            {
+              "schrift": "sạch",
+              "lerntext": "sạch",
+              "de": "sauber",
+              "wieder": true
+            },
+            {
+              "schrift": "ốm",
+              "lerntext": "ốm",
+              "de": "krank",
+              "wieder": true
+            },
+            {
+              "schrift": "xám",
+              "lerntext": "xám",
+              "de": "grau",
+              "wieder": true
+            },
+            {
+              "schrift": "rẻ",
+              "lerntext": "rẻ",
+              "de": "billig",
+              "wieder": true
+            },
+            {
+              "schrift": "đói",
+              "lerntext": "đói",
+              "de": "hungrig",
+              "wieder": true
+            },
+            {
+              "schrift": "nhẹ",
+              "lerntext": "nhẹ",
+              "de": "leicht",
+              "wieder": true
+            },
+            {
+              "schrift": "khát",
+              "lerntext": "khát",
+              "de": "durstig",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "34.4"
+      },
+      {
+        "kind": "finisher",
+        "frame": {
+          "schrift": "",
+          "lerntext": ""
+        },
+        "frameDe": null,
+        "pronouns": [],
+        "slotGroups": [],
+        "newCount": 0,
+        "task": "Sag deine Meinung zu etwas.",
+        "newFrameWords": [],
+        "id": "34.5"
+      }
+    ]
+  },
+  {
+    "number": 35,
+    "title": "Was ich vorhabe",
+    "niveau": "A2",
+    "lessons": [
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "ngày mai tôi sẽ [Slot]",
+          "lerntext": "ngày mai tôi sẽ [Slot]"
+        },
+        "frameDe": "Morgen werde ich [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "nhìn",
+              "lerntext": "nhìn",
+              "de": "schauen"
+            },
+            {
+              "schrift": "mua",
+              "lerntext": "mua",
+              "de": "kaufen"
+            },
+            {
+              "schrift": "thấy",
+              "lerntext": "thấy",
+              "de": "sehen"
+            },
+            {
+              "schrift": "làm",
+              "lerntext": "làm",
+              "de": "machen"
+            },
+            {
+              "schrift": "lấy",
+              "lerntext": "lấy",
+              "de": "nehmen"
+            },
+            {
+              "schrift": "viết",
+              "lerntext": "viết",
+              "de": "schreiben",
+              "wieder": true
+            },
+            {
+              "schrift": "đọc",
+              "lerntext": "đọc",
+              "de": "lesen",
+              "wieder": true
+            },
+            {
+              "schrift": "đưa",
+              "lerntext": "đưa",
+              "de": "geben",
+              "wieder": true
+            },
+            {
+              "schrift": "đổi",
+              "lerntext": "đổi",
+              "de": "wechseln",
+              "wieder": true
+            },
+            {
+              "schrift": "uống",
+              "lerntext": "uống",
+              "de": "trinken",
+              "wieder": true
+            },
+            {
+              "schrift": "chết",
+              "lerntext": "chết",
+              "de": "sterben",
+              "wieder": true
+            },
+            {
+              "schrift": "đứng",
+              "lerntext": "đứng",
+              "de": "stehen",
+              "wieder": true
+            },
+            {
+              "schrift": "dùng",
+              "lerntext": "dùng",
+              "de": "benutzen",
+              "wieder": true
+            },
+            {
+              "schrift": "vào",
+              "lerntext": "vào",
+              "de": "hineingehen",
+              "wieder": true
+            },
+            {
+              "schrift": "biết",
+              "lerntext": "biết",
+              "de": "wissen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "35.1"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "ngày mai tôi sẽ [Slot]",
+          "lerntext": "ngày mai tôi sẽ [Slot]"
+        },
+        "frameDe": "Morgen werde ich [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "đọc",
+              "lerntext": "đọc",
+              "de": "lesen"
+            },
+            {
+              "schrift": "viết",
+              "lerntext": "viết",
+              "de": "schreiben"
+            },
+            {
+              "schrift": "nhìn",
+              "lerntext": "nhìn",
+              "de": "schauen",
+              "wieder": true
+            },
+            {
+              "schrift": "lấy",
+              "lerntext": "lấy",
+              "de": "nehmen",
+              "wieder": true
+            },
+            {
+              "schrift": "mua",
+              "lerntext": "mua",
+              "de": "kaufen",
+              "wieder": true
+            },
+            {
+              "schrift": "thấy",
+              "lerntext": "thấy",
+              "de": "sehen",
+              "wieder": true
+            },
+            {
+              "schrift": "làm",
+              "lerntext": "làm",
+              "de": "machen",
+              "wieder": true
+            },
+            {
+              "schrift": "đưa",
+              "lerntext": "đưa",
+              "de": "geben",
+              "wieder": true
+            },
+            {
+              "schrift": "nhận",
+              "lerntext": "nhận",
+              "de": "bekommen",
+              "wieder": true
+            },
+            {
+              "schrift": "sống",
+              "lerntext": "sống",
+              "de": "leben",
+              "wieder": true
+            },
+            {
+              "schrift": "yêu",
+              "lerntext": "yêu",
+              "de": "lieben",
+              "wieder": true
+            },
+            {
+              "schrift": "trở thành",
+              "lerntext": "trở thành",
+              "de": "werden",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "35.2"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi muốn [Slot] sớm",
+          "lerntext": "tôi muốn [Slot] sớm"
+        },
+        "frameDe": "ich (neutral) will bald [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "làm",
+              "lerntext": "làm",
+              "de": "machen"
+            },
+            {
+              "schrift": "chơi",
+              "lerntext": "chơi",
+              "de": "spielen"
+            },
+            {
+              "schrift": "nhảy",
+              "lerntext": "nhảy",
+              "de": "tanzen"
+            },
+            {
+              "schrift": "ngủ",
+              "lerntext": "ngủ",
+              "de": "schlafen"
+            },
+            {
+              "schrift": "đợi",
+              "lerntext": "đợi",
+              "de": "warten"
+            },
+            {
+              "schrift": "tìm",
+              "lerntext": "tìm",
+              "de": "suchen",
+              "wieder": true
+            },
+            {
+              "schrift": "hỏi",
+              "lerntext": "hỏi",
+              "de": "fragen",
+              "wieder": true
+            },
+            {
+              "schrift": "trả lời",
+              "lerntext": "trả lời",
+              "de": "antworten",
+              "wieder": true
+            },
+            {
+              "schrift": "đưa",
+              "lerntext": "đưa",
+              "de": "geben",
+              "wieder": true
+            },
+            {
+              "schrift": "thích",
+              "lerntext": "thích",
+              "de": "mögen",
+              "wieder": true
+            },
+            {
+              "schrift": "đi",
+              "lerntext": "đi",
+              "de": "gehen",
+              "wieder": true
+            },
+            {
+              "schrift": "du lịch",
+              "lerntext": "du lịch",
+              "de": "reisen",
+              "wieder": true
+            },
+            {
+              "schrift": "bán",
+              "lerntext": "bán",
+              "de": "verkaufen",
+              "wieder": true
+            },
+            {
+              "schrift": "nhớ",
+              "lerntext": "nhớ",
+              "de": "sich erinnern",
+              "wieder": true
+            },
+            {
+              "schrift": "chuyển",
+              "lerntext": "chuyển",
+              "de": "umziehen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "35.3"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi muốn [Slot] sớm",
+          "lerntext": "tôi muốn [Slot] sớm"
+        },
+        "frameDe": "ich (neutral) will bald [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "tìm",
+              "lerntext": "tìm",
+              "de": "suchen"
+            },
+            {
+              "schrift": "hỏi",
+              "lerntext": "hỏi",
+              "de": "fragen"
+            },
+            {
+              "schrift": "trả lời",
+              "lerntext": "trả lời",
+              "de": "antworten"
+            },
+            {
+              "schrift": "chơi",
+              "lerntext": "chơi",
+              "de": "spielen",
+              "wieder": true
+            },
+            {
+              "schrift": "nhảy",
+              "lerntext": "nhảy",
+              "de": "tanzen",
+              "wieder": true
+            },
+            {
+              "schrift": "ngủ",
+              "lerntext": "ngủ",
+              "de": "schlafen",
+              "wieder": true
+            },
+            {
+              "schrift": "đợi",
+              "lerntext": "đợi",
+              "de": "warten",
+              "wieder": true
+            },
+            {
+              "schrift": "làm",
+              "lerntext": "làm",
+              "de": "machen",
+              "wieder": true
+            },
+            {
+              "schrift": "đưa",
+              "lerntext": "đưa",
+              "de": "geben",
+              "wieder": true
+            },
+            {
+              "schrift": "tiếp tục",
+              "lerntext": "tiếp tục",
+              "de": "fortsetzen",
+              "wieder": true
+            },
+            {
+              "schrift": "nằm",
+              "lerntext": "nằm",
+              "de": "liegen",
+              "wieder": true
+            },
+            {
+              "schrift": "ngồi",
+              "lerntext": "ngồi",
+              "de": "sitzen",
+              "wieder": true
+            },
+            {
+              "schrift": "gửi",
+              "lerntext": "gửi",
+              "de": "schicken",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "35.4"
+      },
+      {
+        "kind": "finisher",
+        "frame": {
+          "schrift": "",
+          "lerntext": ""
+        },
+        "frameDe": null,
+        "pronouns": [],
+        "slotGroups": [],
+        "newCount": 0,
+        "task": "Erzähl, was du morgen machst.",
+        "newFrameWords": [],
+        "id": "35.5"
+      }
+    ]
+  },
+  {
+    "number": 36,
+    "title": "Der Mann, der dort steht",
+    "niveau": "A2",
+    "lessons": [
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "đây là người [Slot]",
+          "lerntext": "đây là người [Slot]"
+        },
+        "frameDe": "Das ist der Mann, der [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "ở lại",
+              "lerntext": "ở lại",
+              "de": "bleiben"
+            },
+            {
+              "schrift": "cười",
+              "lerntext": "cười",
+              "de": "lachen"
+            },
+            {
+              "schrift": "khóc",
+              "lerntext": "khóc",
+              "de": "weinen"
+            },
+            {
+              "schrift": "nghĩ",
+              "lerntext": "nghĩ",
+              "de": "denken"
+            },
+            {
+              "schrift": "tin",
+              "lerntext": "tin",
+              "de": "glauben"
+            },
+            {
+              "schrift": "hy vọng",
+              "lerntext": "hy vọng",
+              "de": "hoffen",
+              "wieder": true
+            },
+            {
+              "schrift": "cần",
+              "lerntext": "cần",
+              "de": "brauchen",
+              "wieder": true
+            },
+            {
+              "schrift": "đổi",
+              "lerntext": "đổi",
+              "de": "wechseln",
+              "wieder": true
+            },
+            {
+              "schrift": "uống",
+              "lerntext": "uống",
+              "de": "trinken",
+              "wieder": true
+            },
+            {
+              "schrift": "chết",
+              "lerntext": "chết",
+              "de": "sterben",
+              "wieder": true
+            },
+            {
+              "schrift": "đứng",
+              "lerntext": "đứng",
+              "de": "stehen",
+              "wieder": true
+            },
+            {
+              "schrift": "dùng",
+              "lerntext": "dùng",
+              "de": "benutzen",
+              "wieder": true
+            },
+            {
+              "schrift": "nghe",
+              "lerntext": "nghe",
+              "de": "hören",
+              "wieder": true
+            },
+            {
+              "schrift": "đưa",
+              "lerntext": "đưa",
+              "de": "geben",
+              "wieder": true
+            },
+            {
+              "schrift": "vào",
+              "lerntext": "vào",
+              "de": "hineingehen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [
+          {
+            "schrift": "người",
+            "lerntext": "người",
+            "de": "Person (Zählwort)"
+          }
+        ],
+        "id": "36.1"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "đây là người [Slot]",
+          "lerntext": "đây là người [Slot]"
+        },
+        "frameDe": "Das ist der Mann, der [Slot].",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "hy vọng",
+              "lerntext": "hy vọng",
+              "de": "hoffen"
+            },
+            {
+              "schrift": "cần",
+              "lerntext": "cần",
+              "de": "brauchen"
+            },
+            {
+              "schrift": "ở lại",
+              "lerntext": "ở lại",
+              "de": "bleiben",
+              "wieder": true
+            },
+            {
+              "schrift": "khóc",
+              "lerntext": "khóc",
+              "de": "weinen",
+              "wieder": true
+            },
+            {
+              "schrift": "tin",
+              "lerntext": "tin",
+              "de": "glauben",
+              "wieder": true
+            },
+            {
+              "schrift": "cười",
+              "lerntext": "cười",
+              "de": "lachen",
+              "wieder": true
+            },
+            {
+              "schrift": "nghĩ",
+              "lerntext": "nghĩ",
+              "de": "denken",
+              "wieder": true
+            },
+            {
+              "schrift": "biết",
+              "lerntext": "biết",
+              "de": "wissen",
+              "wieder": true
+            },
+            {
+              "schrift": "nhận",
+              "lerntext": "nhận",
+              "de": "bekommen",
+              "wieder": true
+            },
+            {
+              "schrift": "đóng",
+              "lerntext": "đóng",
+              "de": "schließen",
+              "wieder": true
+            },
+            {
+              "schrift": "sống",
+              "lerntext": "sống",
+              "de": "leben",
+              "wieder": true
+            },
+            {
+              "schrift": "yêu",
+              "lerntext": "yêu",
+              "de": "lieben",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "36.2"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi tìm chỗ có thể [Slot]",
+          "lerntext": "tôi tìm chỗ có thể [Slot]"
+        },
+        "frameDe": "Ich suche einen Ort, wo man [Slot] kann.",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "làm",
+              "lerntext": "làm",
+              "de": "machen"
+            },
+            {
+              "schrift": "chơi",
+              "lerntext": "chơi",
+              "de": "spielen"
+            },
+            {
+              "schrift": "nhảy",
+              "lerntext": "nhảy",
+              "de": "tanzen"
+            },
+            {
+              "schrift": "ngủ",
+              "lerntext": "ngủ",
+              "de": "schlafen"
+            },
+            {
+              "schrift": "đợi",
+              "lerntext": "đợi",
+              "de": "warten"
+            },
+            {
+              "schrift": "hỏi",
+              "lerntext": "hỏi",
+              "de": "fragen",
+              "wieder": true
+            },
+            {
+              "schrift": "trả lời",
+              "lerntext": "trả lời",
+              "de": "antworten",
+              "wieder": true
+            },
+            {
+              "schrift": "ăn",
+              "lerntext": "ăn",
+              "de": "essen",
+              "wieder": true
+            },
+            {
+              "schrift": "trở thành",
+              "lerntext": "trở thành",
+              "de": "werden",
+              "wieder": true
+            },
+            {
+              "schrift": "thích",
+              "lerntext": "thích",
+              "de": "mögen",
+              "wieder": true
+            },
+            {
+              "schrift": "phải",
+              "lerntext": "phải",
+              "de": "müssen",
+              "wieder": true
+            },
+            {
+              "schrift": "đi",
+              "lerntext": "đi",
+              "de": "gehen",
+              "wieder": true
+            },
+            {
+              "schrift": "du lịch",
+              "lerntext": "du lịch",
+              "de": "reisen",
+              "wieder": true
+            },
+            {
+              "schrift": "bán",
+              "lerntext": "bán",
+              "de": "verkaufen",
+              "wieder": true
+            },
+            {
+              "schrift": "mất",
+              "lerntext": "mất",
+              "de": "verlieren",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [
+          {
+            "schrift": "đâu",
+            "lerntext": "đâu",
+            "de": "wo"
+          },
+          {
+            "schrift": "chỗ",
+            "lerntext": "chỗ",
+            "de": "Platz"
+          }
+        ],
+        "id": "36.3"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi tìm chỗ có thể [Slot]",
+          "lerntext": "tôi tìm chỗ có thể [Slot]"
+        },
+        "frameDe": "Ich suche einen Ort, wo man [Slot] kann.",
+        "pronouns": [],
+        "slotGroups": [
+          [
+            {
+              "schrift": "hỏi",
+              "lerntext": "hỏi",
+              "de": "fragen"
+            },
+            {
+              "schrift": "trả lời",
+              "lerntext": "trả lời",
+              "de": "antworten"
+            },
+            {
+              "schrift": "chơi",
+              "lerntext": "chơi",
+              "de": "spielen",
+              "wieder": true
+            },
+            {
+              "schrift": "nhảy",
+              "lerntext": "nhảy",
+              "de": "tanzen",
+              "wieder": true
+            },
+            {
+              "schrift": "ngủ",
+              "lerntext": "ngủ",
+              "de": "schlafen",
+              "wieder": true
+            },
+            {
+              "schrift": "đợi",
+              "lerntext": "đợi",
+              "de": "warten",
+              "wieder": true
+            },
+            {
+              "schrift": "làm",
+              "lerntext": "làm",
+              "de": "machen",
+              "wieder": true
+            },
+            {
+              "schrift": "nhớ",
+              "lerntext": "nhớ",
+              "de": "sich erinnern",
+              "wieder": true
+            },
+            {
+              "schrift": "chuyển",
+              "lerntext": "chuyển",
+              "de": "umziehen",
+              "wieder": true
+            },
+            {
+              "schrift": "tiếp tục",
+              "lerntext": "tiếp tục",
+              "de": "fortsetzen",
+              "wieder": true
+            },
+            {
+              "schrift": "nằm",
+              "lerntext": "nằm",
+              "de": "liegen",
+              "wieder": true
+            },
+            {
+              "schrift": "ngồi",
+              "lerntext": "ngồi",
+              "de": "sitzen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "36.4"
+      },
+      {
+        "kind": "finisher",
+        "frame": {
+          "schrift": "",
+          "lerntext": ""
+        },
+        "frameDe": null,
+        "pronouns": [],
+        "slotGroups": [],
+        "newCount": 0,
+        "task": "Beschreib jemanden mit einem Nebensatz.",
+        "newFrameWords": [],
+        "id": "36.5"
+      }
+    ]
+  },
+  {
+    "number": 37,
+    "title": "Alles zusammen",
+    "niveau": "A2",
+    "lessons": [
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "hôm qua tôi ở [Slot]",
+          "lerntext": "hôm qua tôi ở [Slot]"
+        },
+        "frameDe": "Gestern war ich im [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "nhà hàng",
+              "lerntext": "nhà hàng",
+              "de": "Restaurant"
+            },
+            {
+              "schrift": "khách sạn",
+              "lerntext": "khách sạn",
+              "de": "Hotel"
+            },
+            {
+              "schrift": "trường",
+              "lerntext": "trường",
+              "de": "Schule"
+            },
+            {
+              "schrift": "đại học",
+              "lerntext": "đại học",
+              "de": "Universität"
+            },
+            {
+              "schrift": "bệnh viện",
+              "lerntext": "bệnh viện",
+              "de": "Krankenhaus"
+            },
+            {
+              "schrift": "ga tàu",
+              "lerntext": "ga tàu",
+              "de": "Bahnhof",
+              "wieder": true
+            },
+            {
+              "schrift": "thành phố",
+              "lerntext": "thành phố",
+              "de": "Stadt",
+              "wieder": true
+            },
+            {
+              "schrift": "sân bay",
+              "lerntext": "sân bay",
+              "de": "Flughafen",
+              "wieder": true
+            },
+            {
+              "schrift": "chỗ",
+              "lerntext": "chỗ",
+              "de": "Platz",
+              "wieder": true
+            },
+            {
+              "schrift": "điện thoại",
+              "lerntext": "điện thoại",
+              "de": "Telefon",
+              "wieder": true
+            },
+            {
+              "schrift": "giường",
+              "lerntext": "giường",
+              "de": "Bett",
+              "wieder": true
+            },
+            {
+              "schrift": "giấy",
+              "lerntext": "giấy",
+              "de": "Papier",
+              "wieder": true
+            },
+            {
+              "schrift": "áo",
+              "lerntext": "áo",
+              "de": "Oberteil",
+              "wieder": true
+            },
+            {
+              "schrift": "muối",
+              "lerntext": "muối",
+              "de": "Salz",
+              "wieder": true
+            },
+            {
+              "schrift": "giáo viên",
+              "lerntext": "giáo viên",
+              "de": "Lehrer",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "37.1"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "hôm qua tôi ở [Slot]",
+          "lerntext": "hôm qua tôi ở [Slot]"
+        },
+        "frameDe": "Gestern war ich im [Slot].",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "ga tàu",
+              "lerntext": "ga tàu",
+              "de": "Bahnhof"
+            },
+            {
+              "schrift": "sân bay",
+              "lerntext": "sân bay",
+              "de": "Flughafen"
+            },
+            {
+              "schrift": "thành phố",
+              "lerntext": "thành phố",
+              "de": "Stadt"
+            },
+            {
+              "schrift": "khách sạn",
+              "lerntext": "khách sạn",
+              "de": "Hotel",
+              "wieder": true
+            },
+            {
+              "schrift": "bệnh viện",
+              "lerntext": "bệnh viện",
+              "de": "Krankenhaus",
+              "wieder": true
+            },
+            {
+              "schrift": "nhà hàng",
+              "lerntext": "nhà hàng",
+              "de": "Restaurant",
+              "wieder": true
+            },
+            {
+              "schrift": "trường",
+              "lerntext": "trường",
+              "de": "Schule",
+              "wieder": true
+            },
+            {
+              "schrift": "đại học",
+              "lerntext": "đại học",
+              "de": "Universität",
+              "wieder": true
+            },
+            {
+              "schrift": "chỗ",
+              "lerntext": "chỗ",
+              "de": "Platz",
+              "wieder": true
+            },
+            {
+              "schrift": "trà",
+              "lerntext": "trà",
+              "de": "Tee",
+              "wieder": true
+            },
+            {
+              "schrift": "con gái",
+              "lerntext": "con gái",
+              "de": "Mädchen",
+              "wieder": true
+            },
+            {
+              "schrift": "gió",
+              "lerntext": "gió",
+              "de": "Wind",
+              "wieder": true
+            },
+            {
+              "schrift": "bữa tối",
+              "lerntext": "bữa tối",
+              "de": "Abendessen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "37.2"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi muốn [Slot] vì tôi có thời gian",
+          "lerntext": "tôi muốn [Slot] vì tôi có thời gian"
+        },
+        "frameDe": "Ich möchte [Slot], weil ich Zeit habe.",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "thắng",
+              "lerntext": "thắng",
+              "de": "gewinnen"
+            },
+            {
+              "schrift": "quên",
+              "lerntext": "quên",
+              "de": "vergessen"
+            },
+            {
+              "schrift": "hiểu",
+              "lerntext": "hiểu",
+              "de": "verstehen"
+            },
+            {
+              "schrift": "gặp",
+              "lerntext": "gặp",
+              "de": "treffen"
+            },
+            {
+              "schrift": "cho",
+              "lerntext": "cho",
+              "de": "für"
+            },
+            {
+              "schrift": "mở",
+              "lerntext": "mở",
+              "de": "öffnen",
+              "wieder": true
+            },
+            {
+              "schrift": "nói",
+              "lerntext": "nói",
+              "de": "sprechen",
+              "wieder": true
+            },
+            {
+              "schrift": "bên cạnh",
+              "lerntext": "bên cạnh",
+              "de": "neben",
+              "wieder": true
+            },
+            {
+              "schrift": "đến",
+              "lerntext": "đến",
+              "de": "bis",
+              "wieder": true
+            },
+            {
+              "schrift": "sau",
+              "lerntext": "sau",
+              "de": "nach",
+              "wieder": true
+            },
+            {
+              "schrift": "bằng",
+              "lerntext": "bằng",
+              "de": "mit (Mittel)",
+              "wieder": true
+            },
+            {
+              "schrift": "với",
+              "lerntext": "với",
+              "de": "mit",
+              "wieder": true
+            },
+            {
+              "schrift": "giữa",
+              "lerntext": "giữa",
+              "de": "zwischen",
+              "wieder": true
+            },
+            {
+              "schrift": "dưới",
+              "lerntext": "dưới",
+              "de": "unter",
+              "wieder": true
+            },
+            {
+              "schrift": "trước",
+              "lerntext": "trước",
+              "de": "vor",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "37.3"
+      },
+      {
+        "kind": "frame",
+        "frame": {
+          "schrift": "tôi muốn [Slot] vì tôi có thời gian",
+          "lerntext": "tôi muốn [Slot] vì tôi có thời gian"
+        },
+        "frameDe": "Ich möchte [Slot], weil ich Zeit habe.",
+        "pronouns": [
+          {
+            "schrift": "tôi",
+            "lerntext": "tôi",
+            "de": "ich (neutral)"
+          }
+        ],
+        "slotGroups": [
+          [
+            {
+              "schrift": "nói",
+              "lerntext": "nói",
+              "de": "sprechen"
+            },
+            {
+              "schrift": "mở",
+              "lerntext": "mở",
+              "de": "öffnen"
+            },
+            {
+              "schrift": "thắng",
+              "lerntext": "thắng",
+              "de": "gewinnen",
+              "wieder": true
+            },
+            {
+              "schrift": "quên",
+              "lerntext": "quên",
+              "de": "vergessen",
+              "wieder": true
+            },
+            {
+              "schrift": "hiểu",
+              "lerntext": "hiểu",
+              "de": "verstehen",
+              "wieder": true
+            },
+            {
+              "schrift": "gặp",
+              "lerntext": "gặp",
+              "de": "treffen",
+              "wieder": true
+            },
+            {
+              "schrift": "gửi",
+              "lerntext": "gửi",
+              "de": "schicken",
+              "wieder": true
+            },
+            {
+              "schrift": "đổi",
+              "lerntext": "đổi",
+              "de": "wechseln",
+              "wieder": true
+            },
+            {
+              "schrift": "uống",
+              "lerntext": "uống",
+              "de": "trinken",
+              "wieder": true
+            },
+            {
+              "schrift": "rửa",
+              "lerntext": "rửa",
+              "de": "waschen",
+              "wieder": true
+            },
+            {
+              "schrift": "chết",
+              "lerntext": "chết",
+              "de": "sterben",
+              "wieder": true
+            },
+            {
+              "schrift": "đứng",
+              "lerntext": "đứng",
+              "de": "stehen",
+              "wieder": true
+            }
+          ]
+        ],
+        "newCount": 0,
+        "task": null,
+        "newFrameWords": [],
+        "id": "37.4"
+      },
+      {
+        "kind": "finisher",
+        "frame": {
+          "schrift": "",
+          "lerntext": ""
+        },
+        "frameDe": null,
+        "pronouns": [],
+        "slotGroups": [],
+        "newCount": 0,
+        "task": "Erzähl von deinem Tag in drei Sätzen.",
+        "newFrameWords": [],
+        "id": "37.5"
       }
     ]
   }

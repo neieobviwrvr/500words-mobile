@@ -51,7 +51,23 @@ import { ersteVariante } from '../features/course/lessonEvaluation';
  * Bei lateinischer Schrift sind beide gleich. Das ist keine Redundanz,
  * sondern der Grund, warum dieselbe Aufgabe alle Sprachen abspielt.
  */
-export type VokabelOption = { schrift: string; lerntext: string; german: string };
+export type VokabelOption = {
+  schrift: string;
+  lerntext: string;
+  german: string;
+  /**
+   * Andere Formen DESSELBEN Worts - "tycka" neben "tycker".
+   *
+   * Sie zaehlen bei der Bewertung voll, nicht bloss als Mittelstufe:
+   * "richtiges Verb erkannt, Konjugation egal" ist die aeltere Regel dieses
+   * Projekts (siehe clusters_master.py). Wer auf eine Verb-Luecke mit der
+   * Woerterbuchform antwortet, hat das Wort gewusst - nur die Zeitform passt
+   * nicht zum Satz, und Zeitformen prueft diese Uebung nicht.
+   *
+   * Leer, wo die Sprache nicht beugt oder wir die Formen nicht haben.
+   */
+  formen?: string[];
+};
 
 /**
  * Ein Wort im Rahmensatz, tippbar fuer eine Uebersetzung (Duolingo-Vorbild:
@@ -330,9 +346,12 @@ function baueVokabelIndex(vocab: VocabWord[], languageId: string): Map<string, V
       continue;
     }
     index.set(v.word.toLowerCase(), v);
-    // Die Satzform mit aufnehmen, sonst findet ein Rahmen sein eigenes Verb
-    // nicht wieder ("jag har" gegen den Infinitiv "ha").
-    if (v.presentForm) index.set(v.presentForm.toLowerCase(), v);
+    // ALLE Satzformen mit aufnehmen, sonst findet ein Rahmen sein eigenes
+    // Verb nicht wieder ("jag har" gegen den Infinitiv "ha", "I have
+    // finished" gegen "finish"). Bis zum 2026-09-08 stand hier nur die
+    // Praesensform - das reichte, solange nur sv/no eine forms-Spalte
+    // hatten und der Kurs nur Praesens baute.
+    for (const f of v.alleFormen) index.set(f.toLowerCase(), v);
   }
   return index;
 }
@@ -357,7 +376,12 @@ function optionVon(v: VocabWord, languageId: string): VokabelOption {
     return { schrift: v.hanzi ?? v.word, lerntext: v.word, german: v.german };
   }
   const imSatz = v.presentForm ?? v.word;
-  return { schrift: imSatz, lerntext: imSatz, german: v.german };
+  return { schrift: imSatz, lerntext: imSatz, german: v.german, formen: andereFormen(v) };
+}
+
+/** Die uebrigen Formen eines Worts - Grundform plus alles aus `forms`. */
+function andereFormen(v: VocabWord): string[] {
+  return [...new Set([v.word, ...v.alleFormen].filter((f): f is string => !!f))];
 }
 
 /** Unter welchem Schluessel ein Kurs-Wort im Vokabel-Index steht. */
@@ -434,6 +458,7 @@ function ladeKursAufgaben(
             schrift: wort.schrift,
             lerntext: wort.lerntext,
             german: wort.de || vokabel.german,
+            formen: andereFormen(vokabel),
           };
           const ablenker = mischen(wortartPool.filter((v) => v.schrift !== richtig.schrift)).slice(0, 3);
           if (ablenker.length < 3) continue;
@@ -551,7 +576,8 @@ export async function ladeSituationsAufgaben(
         const imSatz = p.target_text.slice(stelle, stelle + synonym.length);
         const richtig: VokabelOption = eigeneSchrift(languageId)
           ? { schrift: imSatz, lerntext: wort.word, german: wort.german }
-          : { schrift: imSatz, lerntext: imSatz, german: wort.german };
+          : { schrift: imSatz, lerntext: imSatz, german: wort.german,
+              formen: andereFormen(wort) };
         const ablenker = mischen(wortartPool.filter((v) => v.schrift !== richtig.schrift)).slice(0, 3);
         if (ablenker.length < 3) continue; // zu wenig Ablenker dieser Wortart
 

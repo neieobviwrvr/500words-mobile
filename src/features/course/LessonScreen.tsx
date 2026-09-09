@@ -4,7 +4,8 @@ import { router, useFocusEffect } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
 import { Card, PillButton, ProgressBar, SchreibenFeld, Screen, UebungsMenu } from '../../components';
 import { useAppState } from '../../state/AppState';
-import { CHINESE_COURSE, CourseWord } from '../../data/chineseCourse';
+import { CourseWord } from '../../data/courseTypes';
+import { courseFor } from '../../data/courses';
 import { hasVoiceFor, speakText } from '../tts/speak';
 import { useSttRecorder } from '../stt/useSttRecorder';
 import { useSpeechmatics } from '../stt/useSpeechmatics';
@@ -12,6 +13,7 @@ import { getLanguage } from '../../data/languages';
 import { newCard, reviewCard } from '../srs/fsrsEngine';
 import { cardKey, KURS_RAHMEN, KURS_WORT, loadAllCards, saveCard } from '../srs/srsStorage';
 import { bewerteAntwort, bewerteFinisher, fuelleRahmen, ersteVariante, Tier } from './lessonEvaluation';
+import { tippHinweis, tippPlatzhalter } from './sprachProfil';
 import {
   ACCENT_ERROR,
   ACCENT_GREEN,
@@ -88,8 +90,8 @@ type Ergebnis = { tier: Tier; art: Teil };
 
 type DrillPunkt = {
   wort: CourseWord;
-  satzHanzi: string;
-  satzPinyin: string;
+  satzSchrift: string;
+  satzLerntext: string;
 };
 
 /**
@@ -98,19 +100,19 @@ type DrillPunkt = {
  * denselben Ablauf, ohne dass irgendetwas doppelt existiert.
  */
 export type UebungsSchritt =
-  | { art: 'teaser'; hanzi: string; pinyin: string; woerter: CourseWord[] }
+  | { art: 'teaser'; schrift: string; lerntext: string; woerter: CourseWord[] }
   | { art: 'auszeichnung'; woerter: CourseWord[] }
   | { art: 'nachsprechen'; wort: CourseWord }
   | { art: 'abrufen'; wort: CourseWord }
   | {
       art: 'satz';
       wort: CourseWord;
-      hanzi: string;
-      pinyin: string;
+      schrift: string;
+      lerntext: string;
       /** Fuer die Rahmenkarte im Wiederholungs-Rhythmus. */
       lektionId: string;
       /** Das Muster ueber der Aufgabe - der Schritt braucht dafuer keine Lektion. */
-      rahmenPinyin: string;
+      rahmenLerntext: string;
     }
   | { art: 'finisher'; aufgabe: string }
   | { art: 'ergebnis' };
@@ -133,9 +135,12 @@ type Props = {
 };
 
 export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props) {
-  const { darkMode, zaehle } = useAppState();
+  const { darkMode, zaehle, targetLanguageId } = useAppState();
   const theme = getTheme(darkMode);
-  const sprache = getLanguage('zh');
+  // Der gefuehrte Pfad gehoert immer zur gewaehlten Zielsprache -
+  // deshalb kommt sie aus dem App-Zustand statt fest aus 'zh'.
+  const sprache = getLanguage(targetLanguageId);
+  const tippLabel = tippHinweis(targetLanguageId, Boolean(sprache.lautschriftSpalte));
 
   const recorder = useSttRecorder();
   const stt = useSpeechmatics();
@@ -193,22 +198,22 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
 
   useEffect(() => {
     let aktiv = true;
-    hasVoiceFor('zh').then((da) => {
+    hasVoiceFor(targetLanguageId).then((da) => {
       if (aktiv) setHatStimme(da);
     });
     return () => {
       aktiv = false;
     };
-  }, []);
+  }, [targetLanguageId]);
 
   const lektion = useMemo(() => {
     if (!lessonId) return null;
-    for (const modul of CHINESE_COURSE) {
+    for (const modul of courseFor(targetLanguageId) ?? []) {
       const treffer = modul.lessons.find((l) => l.id === lessonId);
       if (treffer) return { modul, lektion: treffer };
     }
     return null;
-  }, [lessonId]);
+  }, [lessonId, targetLanguageId]);
 
   /**
    * Der ganze Lektionsablauf als flache Liste - ein Schritt je Seite.
@@ -249,14 +254,17 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
     const slots = l.slotGroups.flat();
     if (slots.length === 0) return [{ art: 'ergebnis' }];
 
-    const erstes = slots[0];
+    // Der Teaser gehoert einem NEUEN Wort. Steht ein wiederholtes vorn,
+    // bekaeme es die Einfuehrung, die es nicht braucht - und das neue Wort
+    // gar keine.
+    const erstes = slots.find((w) => !w.wieder) ?? slots[0];
     const teaserWoerter = [...l.newFrameWords, erstes];
 
     const liste: UebungsSchritt[] = [
       {
         art: 'teaser',
-        hanzi: fuelleRahmen(l.frame.hanzi, erstes.hanzi),
-        pinyin: fuelleRahmen(l.frame.pinyin, erstes.pinyin),
+        schrift: fuelleRahmen(l.frame.schrift, erstes.schrift),
+        lerntext: fuelleRahmen(l.frame.lerntext, erstes.lerntext),
         woerter: teaserWoerter,
       },
       { art: 'auszeichnung', woerter: teaserWoerter },
@@ -273,10 +281,10 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
     liste.push({
       art: 'satz',
       wort: erstes,
-      hanzi: fuelleRahmen(l.frame.hanzi, erstes.hanzi),
-      pinyin: fuelleRahmen(l.frame.pinyin, erstes.pinyin),
+      schrift: fuelleRahmen(l.frame.schrift, erstes.schrift),
+      lerntext: fuelleRahmen(l.frame.lerntext, erstes.lerntext),
       lektionId: l.id,
-      rahmenPinyin: l.frame.pinyin,
+      rahmenLerntext: l.frame.lerntext,
     });
 
     // Die uebrigen Slot-Woerter bekommen JEDES einen eigenen Teaser-Satz
@@ -290,19 +298,28 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
     //   Wort nachsprechen-> isoliert, hier greift die Tonpruefung
     //   Wort abrufen     -> nur Deutsch, das Chinesische aus dem Kopf
     //   Satz bilden      -> dasselbe Wort selbst in den Rahmen setzen
-    for (const w of slots.slice(1)) {
-      const satzHanzi = fuelleRahmen(l.frame.hanzi, w.hanzi);
-      const satzPinyin = fuelleRahmen(l.frame.pinyin, w.pinyin);
-      liste.push({ art: 'teaser', hanzi: satzHanzi, pinyin: satzPinyin, woerter: [w] });
-      liste.push({ art: 'nachsprechen', wort: w });
-      liste.push({ art: 'abrufen', wort: w });
+    //
+    // WIEDERHOLTE Woerter bekommen davon nur den letzten Schritt (2026-09-07,
+    // `wieder` in courseTypes.ts). Sie sind eingefuehrt; was ihnen fehlt, ist
+    // ein zweiter Zusammenhang - genau das ist der Satz. Sie noch einmal
+    // vorzustellen, nachsprechen und abrufen zu lassen, machte die Lektion
+    // vier- statt einmal so teuer und war der Grund, warum Wiederholung so
+    // sparsam ausfiel.
+    for (const w of slots.filter((x) => x !== erstes)) {
+      const satzSchrift = fuelleRahmen(l.frame.schrift, w.schrift);
+      const satzLerntext = fuelleRahmen(l.frame.lerntext, w.lerntext);
+      if (!w.wieder) {
+        liste.push({ art: 'teaser', schrift: satzSchrift, lerntext: satzLerntext, woerter: [w] });
+        liste.push({ art: 'nachsprechen', wort: w });
+        liste.push({ art: 'abrufen', wort: w });
+      }
       liste.push({
         art: 'satz',
         wort: w,
-        hanzi: satzHanzi,
-        pinyin: satzPinyin,
+        schrift: satzSchrift,
+        lerntext: satzLerntext,
         lektionId: l.id,
-        rahmenPinyin: l.frame.pinyin,
+        rahmenLerntext: l.frame.lerntext,
       });
     }
 
@@ -316,17 +333,17 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
       .filter((l) => l.kind !== 'finisher')
       .flatMap((l) =>
         l.slotGroups.flat().map((w) => ({
-          hanzi: fuelleRahmen(l.frame.hanzi, w.hanzi),
-          pinyin: fuelleRahmen(l.frame.pinyin, w.pinyin),
-          slotHanzi: w.hanzi,
-          slotPinyin: w.pinyin,
+          schrift: fuelleRahmen(l.frame.schrift, w.schrift),
+          lerntext: fuelleRahmen(l.frame.lerntext, w.lerntext),
+          slotSchrift: w.schrift,
+          slotLerntext: w.lerntext,
         }))
       );
   }, [lektion]);
 
   const sprich = useCallback((text: string) => {
-    speakText(text, { languageId: 'zh' });
-  }, []);
+    speakText(text, { languageId: targetLanguageId });
+  }, [targetLanguageId]);
 
   const zuruecksetzen = useCallback(() => {
     versuchtRef.current = false;
@@ -401,7 +418,7 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
    * Bewertungen im Abstand von Minuten - damit rechnet FSRS nicht.
    */
   function schreibeKarte(namensraum: string, id: string, tier: Tier) {
-    const key = cardKey('zh', namensraum, id);
+    const key = cardKey(targetLanguageId, namensraum, id);
     const aktualisiert = reviewCard(kartenRef.current[key] ?? newCard(), tier);
     kartenRef.current = { ...kartenRef.current, [key]: aktualisiert };
     setKarten((n) => n + 1);
@@ -422,7 +439,7 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
     versuchtRef.current = true;
 
     if (schritt.art === 'finisher') {
-      const b = bewerteFinisher(antwort, loesungen, quelle);
+      const b = bewerteFinisher(antwort, loesungen, quelle, targetLanguageId);
       merke(b.tier, b.grund, ersterVersuch);
       return;
     }
@@ -432,25 +449,26 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
     // es steht immer an letzter Stelle in `woerter` (siehe Schrittbau oben).
     const ziel =
       schritt.art === 'satz'
-        ? { hanzi: schritt.hanzi, pinyin: schritt.pinyin, wort: schritt.wort }
+        ? { schrift: schritt.schrift, lerntext: schritt.lerntext, wort: schritt.wort }
         : schritt.art === 'teaser'
           ? {
-              hanzi: schritt.hanzi,
-              pinyin: schritt.pinyin,
+              schrift: schritt.schrift,
+              lerntext: schritt.lerntext,
               wort: schritt.woerter[schritt.woerter.length - 1],
             }
           : schritt.art === 'nachsprechen' || schritt.art === 'abrufen'
-            ? { hanzi: schritt.wort.hanzi, pinyin: schritt.wort.pinyin, wort: schritt.wort }
+            ? { schrift: schritt.wort.schrift, lerntext: schritt.wort.lerntext, wort: schritt.wort }
             : null;
     if (!ziel) return;
 
     const b = bewerteAntwort({
       antwort,
-      erwartetHanzi: ziel.hanzi,
-      erwartetPinyin: ziel.pinyin,
-      slotHanzi: ziel.wort.hanzi,
-      slotPinyin: ziel.wort.pinyin,
+      erwartetSchrift: ziel.schrift,
+      erwartetLerntext: ziel.lerntext,
+      slotSchrift: ziel.wort.schrift,
+      slotLerntext: ziel.wort.lerntext,
       quelle,
+      sprache: targetLanguageId,
     });
     merke(b.tier, b.grund, ersterVersuch);
 
@@ -466,9 +484,22 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
     // womit FSRS nicht rechnet. Jede Kartenart wird von genau EINEM Schritt
     // bewertet - siehe CLAUDE.md.
     if (schritt.art === 'abrufen') {
-      schreibeKarte(KURS_WORT, schritt.wort.hanzi, b.tier);
+      schreibeKarte(KURS_WORT, schritt.wort.schrift, b.tier);
     } else if (schritt.art === 'satz') {
       schreibeKarte(KURS_RAHMEN, schritt.lektionId, b.tier);
+      // Bei einem WIEDERHOLTEN Wort schreibt der Satz zusaetzlich auf dessen
+      // Wortkarte (2026-09-07). Das bricht die Regel "eine Karte, ein
+      // Schritt" NICHT: ein wiederholtes Wort hat in dieser Lektion gar
+      // keinen Abrufen-Schritt mehr, der Satz ist also der einzige, der es
+      // bewertet - und er bewertet es echt, denn `bewerteAntwort` prueft
+      // ausdruecklich, ob das Slot-Wort vorkam.
+      //
+      // Ohne das bekaeme ein wiederholtes Wort zwar Uebung, aber keine
+      // FSRS-Bewertung mehr; seine Karte staende weiter allein auf dem Tag
+      // ihrer Einfuehrung. Genau das soll die Wiederholung ja beheben.
+      if (schritt.wort.wieder) {
+        schreibeKarte(KURS_WORT, schritt.wort.schrift, b.tier);
+      }
     }
   }
 
@@ -564,7 +595,7 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
 
       {hatStimme === false ? (
         <Text style={[styles.hinweis, { color: ACCENT_ERROR, marginTop: SPACING.sm }]}>
-          Auf diesem Gerät ist keine chinesische Stimme installiert — „Anhören" bleibt stumm.
+          Auf diesem Gerät ist keine Stimme für {sprache.label} installiert — „Anhören" bleibt stumm.
           Nachladen: Einstellungen › Bedienungshilfen › Gesprochene Inhalte › Stimmen.
         </Text>
       ) : null}
@@ -586,14 +617,14 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
           <>
             <Text style={[styles.schrittLabel, { color: theme.sub }]}>SPRICH DAS NACH</Text>
             <Card dark={darkMode} style={styles.karte}>
-              <Text style={[styles.gross, { color: theme.text }]}>{schritt.pinyin}</Text>
+              <Text style={[styles.gross, { color: theme.text }]}>{schritt.lerntext}</Text>
               {/* Bewusst OHNE deutsche Uebersetzung: was der Satz heisst,
                   loest sich gleich ueber die Einzelwoerter auf. Vorher
                   verraten waere die Pointe weg. */}
               <Text style={[styles.text, { color: theme.sub }]}>
                 Noch nicht verstehen — einfach nachsprechen.
               </Text>
-              <HoerKnopf dark={darkMode} onPress={() => sprich(schritt.hanzi)} />
+              <HoerKnopf dark={darkMode} onPress={() => sprich(schritt.schrift)} />
             </Card>
             {/* Bis 2026-08-21 stand hier nur ein Knopf "Gesagt" - eine reine
                 Selbstauskunft. In einer App, deren Kernprinzip Sprechen ist,
@@ -603,11 +634,11 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
               <Rueckmeldung
                 dark={darkMode}
                 urteil={urteil}
-                loesung={schritt.pinyin}
+                loesung={schritt.lerntext}
                 grund={grund}
                 gehoert={gehoert}
                 onNochmal={nochmal}
-                onHoeren={() => sprich(schritt.hanzi)}
+                onHoeren={() => sprich(schritt.schrift)}
               />
             ) : (
               <AntwortBlock
@@ -617,7 +648,8 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
                 sttFehler={sttFehler}
                 eingabe={eingabe}
                 setEingabe={setEingabe}
-                platzhalter={schritt.pinyin.replace(/[^a-zA-Z ]/g, '')}
+                platzhalter={tippPlatzhalter(schritt.lerntext, targetLanguageId)}
+                tippLabel={tippLabel}
                 tippenErlaubt={tippenErlaubt}
                 onTippen={() => setTippenErlaubt(true)}
                 onMikro={aufnehmen}
@@ -641,12 +673,12 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
             </View>
             <Card dark={darkMode} style={styles.karte}>
               {schritt.woerter.map((w) => (
-                <View key={w.hanzi} style={styles.zeile}>
+                <View key={w.schrift} style={styles.zeile}>
                   <View style={styles.zeileText}>
-                    <Text style={[styles.mittel, { color: theme.text }]}>{w.pinyin}</Text>
+                    <Text style={[styles.mittel, { color: theme.text }]}>{w.lerntext}</Text>
                     <Text style={[styles.text, { color: theme.sub }]}>{w.de}</Text>
                   </View>
-                  <HoerKnopf dark={darkMode} onPress={() => sprich(w.hanzi)} klein />
+                  <HoerKnopf dark={darkMode} onPress={() => sprich(w.schrift)} klein />
                 </View>
               ))}
             </Card>
@@ -659,19 +691,19 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
           <>
             <Text style={[styles.schrittLabel, { color: theme.sub }]}>SPRICH ES NACH</Text>
             <Card dark={darkMode} style={styles.karte}>
-              <Text style={[styles.gross, { color: theme.text }]}>{schritt.wort.pinyin}</Text>
+              <Text style={[styles.gross, { color: theme.text }]}>{schritt.wort.lerntext}</Text>
               <Text style={[styles.text, { color: theme.sub }]}>{schritt.wort.de}</Text>
-              <HoerKnopf dark={darkMode} onPress={() => sprich(schritt.wort.hanzi)} />
+              <HoerKnopf dark={darkMode} onPress={() => sprich(schritt.wort.schrift)} />
             </Card>
             {urteil ? (
               <Rueckmeldung
                 dark={darkMode}
                 urteil={urteil}
-                loesung={schritt.wort.pinyin}
+                loesung={schritt.wort.lerntext}
                 grund={grund}
                 gehoert={gehoert}
                 onNochmal={nochmal}
-                onHoeren={() => sprich(schritt.wort.hanzi)}
+                onHoeren={() => sprich(schritt.wort.schrift)}
               />
             ) : (
               <AntwortBlock
@@ -681,7 +713,8 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
                 sttFehler={sttFehler}
                 eingabe={eingabe}
                 setEingabe={setEingabe}
-                platzhalter={schritt.wort.pinyin.replace(/[^a-zA-Z ]/g, '')}
+                platzhalter={tippPlatzhalter(schritt.wort.lerntext, targetLanguageId)}
+                tippLabel={tippLabel}
                 tippenErlaubt={tippenErlaubt}
                 onTippen={() => setTippenErlaubt(true)}
                 onMikro={aufnehmen}
@@ -702,7 +735,7 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
                   nicht, uebt echten Abruf. Ohne den Knopf waere die Huerde
                   fuer Anfaenger zu hoch und sie wuerden nur raten. */}
               {hilfe ? (
-                <Text style={[styles.mittel, { color: theme.sub }]}>{schritt.wort.pinyin}</Text>
+                <Text style={[styles.mittel, { color: theme.sub }]}>{schritt.wort.lerntext}</Text>
               ) : (
                 <Pressable
                   onPress={() => setHilfe(true)}
@@ -726,11 +759,11 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
               <Rueckmeldung
                 dark={darkMode}
                 urteil={urteil}
-                loesung={schritt.wort.pinyin}
+                loesung={schritt.wort.lerntext}
                 grund={grund}
                 gehoert={gehoert}
                 onNochmal={nochmal}
-                onHoeren={() => sprich(schritt.wort.hanzi)}
+                onHoeren={() => sprich(schritt.wort.schrift)}
               />
             ) : (
               <AntwortBlock
@@ -740,7 +773,8 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
                 sttFehler={sttFehler}
                 eingabe={eingabe}
                 setEingabe={setEingabe}
-                platzhalter="auf Chinesisch"
+                platzhalter={`auf ${sprache.label}`}
+                tippLabel={tippLabel}
                 tippenErlaubt={tippenErlaubt}
                 onTippen={() => setTippenErlaubt(true)}
                 onMikro={aufnehmen}
@@ -757,20 +791,20 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
             <Text style={[styles.schrittLabel, { color: theme.sub }]}>JETZT IM GANZEN SATZ</Text>
             <Card dark={darkMode} style={styles.karte}>
               <Text style={[styles.rahmen, { color: theme.sub }]}>
-                {ersteVariante(schritt.rahmenPinyin)}
+                {ersteVariante(schritt.rahmenLerntext)}
               </Text>
               <Text style={[styles.gross, { color: ACCENT_ORANGE }]}>{schritt.wort.de}</Text>
-              <HoerKnopf dark={darkMode} onPress={() => sprich(schritt.hanzi)} />
+              <HoerKnopf dark={darkMode} onPress={() => sprich(schritt.schrift)} />
             </Card>
             {urteil ? (
               <Rueckmeldung
                 dark={darkMode}
                 urteil={urteil}
-                loesung={schritt.pinyin}
+                loesung={schritt.lerntext}
                 grund={grund}
                 gehoert={gehoert}
                 onNochmal={nochmal}
-                onHoeren={() => sprich(schritt.hanzi)}
+                onHoeren={() => sprich(schritt.schrift)}
               />
             ) : (
               <AntwortBlock
@@ -780,7 +814,8 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
                 sttFehler={sttFehler}
                 eingabe={eingabe}
                 setEingabe={setEingabe}
-                platzhalter={schritt.pinyin.replace(/[^a-zA-Z ]/g, '')}
+                platzhalter={tippPlatzhalter(schritt.lerntext, targetLanguageId)}
+                tippLabel={tippLabel}
                 tippenErlaubt={tippenErlaubt}
                 onTippen={() => setTippenErlaubt(true)}
                 onMikro={aufnehmen}
@@ -798,18 +833,18 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
             <Card dark={darkMode} style={styles.karte}>
               <Text style={[styles.gross, { color: theme.text }]}>{schritt.aufgabe}</Text>
               <Text style={[styles.text, { color: theme.sub }]}>
-                Auf Chinesisch — ohne Vorlage. Es gibt mehrere richtige Antworten.
+                Auf {sprache.label} — ohne Vorlage. Es gibt mehrere richtige Antworten.
               </Text>
             </Card>
             {urteil ? (
               <Rueckmeldung
                 dark={darkMode}
                 urteil={urteil}
-                loesung={loesungen[0]?.pinyin ?? ''}
+                loesung={loesungen[0]?.lerntext ?? ''}
                 grund={grund}
                 gehoert={gehoert}
                 onNochmal={nochmal}
-                onHoeren={() => sprich(loesungen[0]?.hanzi ?? '')}
+                onHoeren={() => sprich(loesungen[0]?.schrift ?? '')}
               />
             ) : (
               <AntwortBlock
@@ -820,6 +855,7 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
                 eingabe={eingabe}
                 setEingabe={setEingabe}
                 platzhalter="frei sprechen"
+                tippLabel={tippLabel}
                 tippenErlaubt={tippenErlaubt}
                 onTippen={() => setTippenErlaubt(true)}
                 onMikro={aufnehmen}
@@ -873,11 +909,13 @@ function textFuer(t: Tier) {
 
 /** Mikrofon plus Texteingabe - beide Schritte benutzen dasselbe. */
 function AntwortBlock({
-  dark, nimmtAuf, prueft, sttFehler, eingabe, setEingabe, platzhalter,
+  dark, nimmtAuf, prueft, sttFehler, eingabe, setEingabe, platzhalter, tippLabel,
   tippenErlaubt, onTippen, onMikro, onPruefen,
 }: {
   dark: boolean; nimmtAuf: boolean; prueft: boolean; sttFehler: string | null;
   eingabe: string; setEingabe: (v: string) => void; platzhalter: string;
+  /** Was ueber dem Tippfeld steht - je Sprache anders, siehe sprachProfil.ts. */
+  tippLabel: string;
   tippenErlaubt: boolean; onTippen: () => void;
   onMikro: () => void; onPruefen: () => void;
 }) {
@@ -910,7 +948,7 @@ function AntwortBlock({
           Lektion offen (`tippenErlaubt` liegt beim aufrufenden Screen). */}
       <SchreibenFeld dark={dark} offen={tippenErlaubt} onToggle={onTippen}>
         <Text style={[styles.schrittLabel, { color: theme.sub }]}>
-          TIPPEN (PINYIN, OHNE TÖNE)
+          {tippLabel}
         </Text>
         <TextInput
           value={eingabe}

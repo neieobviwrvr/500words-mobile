@@ -906,6 +906,9 @@ export function WordReviewScreen() {
       clusters,
       targetLanguageId,
       normalisiereHanzi,
+      // Andere Formen desselben Worts zaehlen voll - siehe
+      // `VokabelOption.formen`.
+      aufgabe.richtig.formen,
     );
     const stimmt = urteil.tier === 'richtig';
     setSituationAusgewertet(urteil.tier);

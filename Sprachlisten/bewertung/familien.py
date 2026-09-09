@@ -603,6 +603,68 @@ AUSDRUCK = {
 # nicht - dort gibt es keine.
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# MEHRDEUTIG - Formen, die einer Familie NICHT als Beleg dienen duerfen
+#
+# Manche Wortform gehoert grammatisch zu einer Familie, wird im Alltag aber
+# fast immer in einer anderen Bedeutung gebraucht. Sie zieht dann Saetze an
+# sich, mit denen sie nichts zu tun hat.
+#
+# Der Fall, der es ans Licht brachte: russisch `есть` ist der Infinitiv von
+# "essen" UND die Gegenwartsform von "sein" ("У меня есть сестра" - ich habe
+# eine Schwester). Es war mit 38 Saetzen die haeufigste russische Familie
+# ueberhaupt, und kein einziger handelte vom Essen.
+#
+# Die Form bleibt in der Sein-Familie, wo sie hingehoert - sie wird nur aus
+# der genannten gestrichen.
+# ---------------------------------------------------------------------------
+
+MEHRDEUTIG = {
+    "ru": {
+        "essen": ["есть"],
+    },
+    "de": {
+        # `schliessen` fuehrt "zu" als Form ("die Tuer ist zu"). Als
+        # Familienbeleg ist das unbrauchbar - "zu" steht in jedem dritten
+        # deutschen Satz und zog 18 Saetze an sich, die nichts mit Schliessen
+        # zu tun haben.
+        "schliessen": ["zu"],
+    },
+}
+
+# ---------------------------------------------------------------------------
+# NICHT_ZUORDNEN - Familien, die es GIBT, die aber kein Satz automatisch
+# bekommt.
+#
+# Beim Aufraeumen der deutschen Cluster (2026-08-08) wurde einzeln
+# entschieden, welcher Satz welchen Cluster traegt. Zwei blieben ausdruecklich
+# unverknuepft, und der automatische Lauf haette genau das rueckgaengig
+# gemacht:
+#
+#   wunsch_bedarf   enthaelt auch die haben-Formen und passt dadurch auf fast
+#                   jeden Satz. Er wirkt schon ueber die Synonyme in den
+#                   Pflicht-Konzepten, nicht ueber `verb_cluster`.
+#   moegen_lieben   kein einziger Satz benutzt "moegen"/"lieben" wirklich als
+#                   Verb; die "gerne + Verb"-Saetze sind grammatisch etwas
+#                   anderes.
+#
+# Sie bleiben in `answer_clusters`, damit die 60 handverknuepften Saetze und
+# die Zusatzlogik weiter funktionieren - sie werden nur nicht mehr verteilt.
+# ---------------------------------------------------------------------------
+
+NICHT_ZUORDNEN = {
+    "de": {
+        "wunsch_bedarf", "moegen_lieben",
+        # Die drei engen Kontext-Cluster von 2026-08-08. Sie sind ausdruecklich
+        # NUR fuer die Saetze gedacht, bei denen die Verben im Kontext
+        # wirklich austauschbar sind ("Gehen Sie geradeaus" - da zaehlt auch
+        # fahren; "Ich gehe gerne ins Kino" - das Verkehrsmittel ist egal).
+        # Ihre Formen ueberschneiden sich mit `gehen` und `fahren`, ein
+        # automatischer Lauf verteilte sie also willkuerlich.
+        "fahren_reisen", "gehen_wegbeschreibung", "gehen_freizeitweg",
+    },
+}
+
 ZUSATZ = {
     "sv": {
         "kosta": ["kostar", "kostade", "kostat"],

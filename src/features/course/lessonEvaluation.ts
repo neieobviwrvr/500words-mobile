@@ -1,5 +1,12 @@
 // Bewertung einer Aeusserung im gefuehrten Kurs (2026-08-20).
 //
+// **Sprachabhaengig seit 2026-09-04.** Was hier passiert, haengt am
+// `SprachProfil` der Zielsprache (siehe sprachProfil.ts): ob zeichen- oder
+// wortweise verglichen wird, ob Diakritika beim Tippen fehlen duerfen,
+// welche Zeichen als gleichklingend gelten und ob die Wortstellung
+// verhandelbar ist. Ohne das war die Bewertung fuer Chinesisch geschrieben
+// und loeschte zum Beispiel jede kyrillische Eingabe restlos.
+//
 // Zwei Eingabewege, ein Ergebnis:
 //   * Spracherkennung liefert fuer Mandarin ZEICHEN (我是学生) - dann wird
 //     gegen das hinterlegte Hanzi verglichen.
@@ -15,72 +22,96 @@
 // Ergebnis sind dieselben drei Stufen wie ueberall in der App, damit der
 // Kurs spaeter ohne Uebersetzungsschicht an FSRS haengt.
 
+import { profilFuer, SprachProfil } from './sprachProfil';
+
 export type Tier = 'richtig' | 'ueberlebt' | 'nicht_verstanden';
 
-/**
- * Acht Paare mit gleichem Pinyin INKLUSIVE Ton. Da hilft auch perfekte
- * Aussprache nicht - gesprochenes Chinesisch unterscheidet sie schlicht
- * nicht, nur die Schrift tut es, und die lehren wir nicht.
- *
- * Gibt die Erkennung 做 zurueck, wo 坐 erwartet war, war die AUSSPRACHE
- * richtig - nur der Kontext hat anders entschieden. Beide gelten deshalb.
- */
-const HOMOPHONE: readonly (readonly string[])[] = [
-  ['他', '她'], // tā   er / sie
-  ['要', '药'], // yào  wollen / Medizin
-  ['在', '再'], // zài  in / nochmal
-  ['坐', '做'], // zuò  sitzen / machen
-  ['玩', '完'], // wán  spielen / fertig
-  ['快', '块'], // kuài schnell / Yuan
-  ['进', '近'], // jìn  eintreten / nah
-  ['加', '家'], // jiā  hinzufuegen / Zuhause
-];
-
-// Jedes Zeichen auf einen gemeinsamen Vertreter seiner Gruppe abbilden.
-const VERTRETER: Record<string, string> = {};
-for (const gruppe of HOMOPHONE) {
-  for (const zeichen of gruppe) VERTRETER[zeichen] = gruppe[0];
-}
-
-/** Satzzeichen und Leerraum weg - die traegt keine Bedeutung fuers Sprechen. */
+/** Satzzeichen und Leerraum weg - die tragen keine Bedeutung fuers Sprechen. */
 function nurInhalt(text: string): string {
-  return text.replace(/[\s，。？！、,.?!·]/g, '');
-}
-
-/** Homophone vereinheitlichen, damit 做 und 坐 gleich zaehlen. */
-export function normalisiereHanzi(text: string): string {
-  return [...nurInhalt(text)].map((z) => VERTRETER[z] ?? z).join('');
+  return text.replace(/[\s，。？！、,.?!·¿¡;:]/g, '');
 }
 
 /**
- * Tonzeichen entfernen: "wǒ shì xuésheng" -> "woshixuesheng".
+ * Chinesische Homophone vereinheitlichen: 做 und 坐 zaehlen als gleich.
  *
- * Niemand tippt Tonzeichen, und die Tastatur bietet sie nicht an. Beim
- * Sprechen prueft die Erkennung die Toene ohnehin ueber die Zeichen - dieser
- * Weg ist die Rueckfallebene, solange Mandarin-Spracherkennung nicht
- * bestaetigt ist.
+ * Bleibt als eigene Funktion erhalten, weil die Woerter-Wiederholung sie
+ * direkt benutzt (WordReviewScreen) - dort geht es um EIN Wort, nicht um
+ * eine Satzstruktur, und die volle Bewertung waere ueberdimensioniert.
  */
-export function ohneToene(pinyin: string): string {
-  return pinyin
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '') // kombinierende Tonzeichen
-    .toLowerCase()
-    .replace(/[^a-z]/g, '');
+export function normalisiereHanzi(text: string): string {
+  const vertreter = vertreterTabelle(profilFuer('zh'));
+  return [...nurInhalt(text)].map((z) => vertreter[z] ?? z).join('');
+}
+
+/** Homophone der Sprache auf einen gemeinsamen Vertreter abbilden. */
+function vertreterTabelle(profil: SprachProfil): Record<string, string> {
+  const tabelle: Record<string, string> = {};
+  for (const gruppe of profil.homophone) {
+    for (const zeichen of gruppe) tabelle[zeichen] = gruppe[0];
+  }
+  return tabelle;
+}
+
+/**
+ * Diakritika abstreifen: "wǒ shì" -> "wo shi", "está" -> "esta".
+ *
+ * NUR beim Tippen, und nur wo das Profil es erlaubt. Fuer Schwedisch,
+ * Norwegisch, Polnisch und Vietnamesisch ist es ausdruecklich verboten -
+ * dort sind das eigene Buchstaben bzw. bedeutungstragende Toene, und
+ * `här` zu `har` zu machen hiesse, einen Fehler durchgehen zu lassen.
+ */
+export function ohneDiakritika(text: string): string {
+  return text.normalize('NFD').replace(/[̀-ͯ]/g, '');
+}
+
+/**
+ * Bringt eine Aeusserung in die Form, in der verglichen wird.
+ *
+ * `gesprochen` entscheidet ueber die Strenge: die Erkennung liefert
+ * richtige Rechtschreibung, dort wird nichts abgestreift. Getippt ist die
+ * Rueckfallebene und zaehlt hoechstens als "ueberlebt" - da darf die
+ * Tastatur fehlen, was sie nicht hergibt.
+ */
+function teile(text: string, profil: SprachProfil, gesprochen: boolean): string[] {
+  let roh = text.toLowerCase().trim();
+  if (!gesprochen && profil.diakritikaBeimTippenEgal) {
+    roh = ohneDiakritika(roh);
+  }
+  if (profil.einheit === 'zeichen') {
+    const vertreter = vertreterTabelle(profil);
+    return [...nurInhalt(roh)].map((z) => vertreter[z] ?? z);
+  }
+  return roh
+    .split(/[\s，。？！、,.?!·¿¡;:]+/)
+    .map((w) => w.trim())
+    .filter(Boolean);
+}
+
+/** Dieselben Teile, aber als eine Zeichenkette - fuer den Gesamtvergleich. */
+function ganz(text: string, profil: SprachProfil, gesprochen: boolean): string {
+  return teile(text, profil, gesprochen).join(profil.einheit === 'zeichen' ? '' : ' ');
 }
 
 type Eingabe = {
   /** Was gesagt bzw. getippt wurde. */
   antwort: string;
   /** Der erwartete Satz in Zeichen. */
-  erwartetHanzi: string;
+  erwartetSchrift: string;
   /** Der erwartete Satz in Pinyin. */
-  erwartetPinyin: string;
+  erwartetLerntext: string;
   /** Das Wort, um das es in dieser Wiederholung geht - in Zeichen. */
-  slotHanzi: string;
+  slotSchrift: string;
   /** Dasselbe Wort in Pinyin. */
-  slotPinyin: string;
-  /** Kam die Antwort aus der Spracherkennung (Zeichen) oder der Tastatur? */
+  slotLerntext: string;
+  /** Kam die Antwort aus der Spracherkennung oder der Tastatur? */
   quelle: 'sprache' | 'text';
+  /**
+   * Zielsprache - entscheidet, WIE verglichen wird (sprachProfil.ts).
+   * Fehlt sie, gilt das nachsichtige Latein-Profil; das ist der richtige
+   * Rueckfall, weil zu strenges Urteilen den Nutzer bestraft, zu mildes
+   * nur die Karte etwas zu frueh reifen laesst.
+   */
+  sprache?: string;
 };
 
 /**
@@ -104,15 +135,67 @@ export type Bewertung = {
   grund: string | null;
 };
 
-export function bewerteAntwort(e: Eingabe): Bewertung {
-  const gesprochen = e.quelle === 'sprache';
-  const anpassen = gesprochen ? normalisiereHanzi : ohneToene;
+/** "cansado / cansada" -> ["cansado", "cansada"];  ohne Schraegstrich leer. */
+function variantenVon(text: string): string[] {
+  if (!text.includes('/')) return [];
+  return text.split('/').map((t) => t.trim()).filter(Boolean);
+}
 
-  const antwort = anpassen(e.antwort);
+/**
+ * Ein Slot-Wort darf mehrere Formen tragen - jede davon zaehlt (2026-09-07).
+ *
+ * Spanisch fuehrt Genus-Paare als EIN Vokabeleintrag: "cansado / cansada",
+ * "jefe / jefa", "amigo / amiga". Das ist paedagogisch richtig - man lernt
+ * das Paar - aber der Bewerter verglich gegen die ganze Zeichenkette. Wer
+ * "yo estoy cansado" sagte, also richtiges Spanisch, bekam "cansado /
+ * cansada kam nicht vor".
+ *
+ * Betrifft 151 der 822 spanischen Slots (18%), also fast jede fuenfte
+ * Aufgabe, und ausserdem zwei schwedische Artikelpaare ("en/ett"). Gefunden
+ * beim ersten Durchspielen einer spanischen Lektion.
+ *
+ * Geprueft wird deshalb gegen JEDE Variante, und die beste Bewertung
+ * gewinnt - dasselbe Vorgehen wie bei `bewerteFinisher`, wo es ebenfalls
+ * mehrere gleich richtige Antworten gibt. Der erwartete Satz wird
+ * mitgezogen, sonst passte die Variante zwar zum Slot, aber nicht mehr zum
+ * Satz drumherum.
+ */
+export function bewerteAntwort(e: Eingabe): Bewertung {
+  const lerntextVarianten = variantenVon(e.slotLerntext);
+  const schriftVarianten = variantenVon(e.slotSchrift);
+  // Nur wenn beide Seiten gleich viele Varianten haben, laesst sich Paar fuer
+  // Paar zuordnen. Sonst lieber unveraendert bewerten als falsch raten.
+  if (lerntextVarianten.length > 1 && lerntextVarianten.length === schriftVarianten.length) {
+    const rang: Record<Tier, number> = { nicht_verstanden: 0, ueberlebt: 1, richtig: 2 };
+    let beste: Bewertung = { tier: 'nicht_verstanden', grund: null };
+    lerntextVarianten.forEach((lerntext, i) => {
+      const schrift = schriftVarianten[i];
+      const b = bewerteEineForm({
+        ...e,
+        slotLerntext: lerntext,
+        slotSchrift: schrift,
+        erwartetLerntext: e.erwartetLerntext.split(e.slotLerntext).join(lerntext),
+        erwartetSchrift: e.erwartetSchrift.split(e.slotSchrift).join(schrift),
+      });
+      if (rang[b.tier] > rang[beste.tier]) beste = b;
+    });
+    return beste;
+  }
+  return bewerteEineForm(e);
+}
+
+function bewerteEineForm(e: Eingabe): Bewertung {
+  const gesprochen = e.quelle === 'sprache';
+  const profil = profilFuer(e.sprache ?? '');
+
+  const antwort = ganz(e.antwort, profil, gesprochen);
   if (!antwort) return { tier: 'nicht_verstanden', grund: 'Da kam nichts an.' };
 
-  const ziel = anpassen(gesprochen ? e.erwartetHanzi : e.erwartetPinyin);
-  const slot = anpassen(gesprochen ? e.slotHanzi : e.slotPinyin);
+  // Gesprochen wird gegen die SCHRIFT verglichen (die Erkennung liefert
+  // sie: Hanzi, Kyrillisch, lateinische Rechtschreibung), getippt gegen
+  // den LERNTEXT - bei Chinesisch das Pinyin, bei Russisch die Umschrift.
+  const ziel = ganz(gesprochen ? e.erwartetSchrift : e.erwartetLerntext, profil, gesprochen);
+  const slot = ganz(gesprochen ? e.slotSchrift : e.slotLerntext, profil, gesprochen);
 
   if (antwort === ziel) {
     // Getippt zaehlt bewusst NICHT als voller Erfolg: wer die Woerter tippt,
@@ -128,20 +211,18 @@ export function bewerteAntwort(e: Eingabe): Bewertung {
   if (!slot || !antwort.includes(slot)) {
     return {
       tier: 'nicht_verstanden',
-      grund: `„${e.slotPinyin}" kam nicht vor.`,
+      grund: `„${e.slotLerntext}" kam nicht vor.`,
     };
   }
 
-  if (enthaeltFremdes(e, gesprochen)) {
+  if (enthaeltFremdes(e, profil, gesprochen)) {
     return {
       tier: 'nicht_verstanden',
       grund: 'Das Wort stimmt, aber im Satz stand etwas, das nicht dazugehört.',
     };
   }
 
-  if (!inRichtigerReihenfolge(e, gesprochen)) {
-    // Chinesisch hat feste Wortstellung - "xuésheng shì wǒ" ist kein
-    // holpriger Satz, sondern ein falscher.
+  if (profil.reihenfolgeStreng && !inRichtigerReihenfolge(e, profil, gesprochen)) {
     return { tier: 'nicht_verstanden', grund: 'Die Wörter standen in der falschen Reihenfolge.' };
   }
 
@@ -151,34 +232,33 @@ export function bewerteAntwort(e: Eingabe): Bewertung {
 /**
  * Steht in der Antwort Material, das im Zielsatz gar nicht vorkommt?
  *
- * Gesprochen wird zeichenweise verglichen, getippt silbenweise entlang der
- * Leerzeichen. Fehlen die Leerzeichen ("woshixuesheng"), laesst sich nicht
- * zerlegen - dann wird nachsichtig geurteilt, statt zu raten.
+ * Faengt den Fall ab, in dem das Slot-Wort zwar faellt, aber in einem
+ * ganz anderen Satz - "wo jiao xuesheng" galt frueher als richtig, weil
+ * die erwarteten Zeichen enthalten waren.
  */
-function enthaeltFremdes(e: Eingabe, gesprochen: boolean): boolean {
-  if (gesprochen) {
-    const erlaubt = new Set(normalisiereHanzi(e.erwartetHanzi));
-    return [...normalisiereHanzi(e.antwort)].some((z) => !erlaubt.has(z));
-  }
-  const gesagt = silben(e.antwort);
+function enthaeltFremdes(e: Eingabe, profil: SprachProfil, gesprochen: boolean): boolean {
+  const gesagt = teile(e.antwort, profil, gesprochen);
   if (gesagt.length < 2) return false; // nicht zerlegbar - nicht raten
-  const erlaubt = new Set(silben(e.erwartetPinyin));
-  return gesagt.some((s) => !erlaubt.has(s));
+  const quelle = gesprochen ? e.erwartetSchrift : e.erwartetLerntext;
+  const erlaubt = new Set(teile(quelle, profil, gesprochen));
+  return gesagt.some((t) => !erlaubt.has(t));
 }
 
 /**
  * Kommen die gesagten Teile in derselben Ordnung wie im Zielsatz?
  *
- * Ohne diese Pruefung kaeme "xuésheng shì wǒ" durch - es enthaelt nur
- * erlaubte Teile und das Slot-Wort. Im Chinesischen ist die Wortstellung
- * aber nicht verhandelbar.
+ * Nur bei Sprachen mit fester Wortstellung (`reihenfolgeStreng`). Im
+ * Chinesischen ist "xuésheng shì wǒ" kein holpriger, sondern ein falscher
+ * Satz. Russisch und Polnisch markieren ihre Satzglieder dagegen ueber
+ * Faelle und duerfen umstellen - dort wird gar nicht erst geprueft.
  *
  * Teilfolge-Pruefung: WENIGER sagen ist erlaubt (das ist "ueberlebt"),
  * umsortieren nicht.
  */
-function inRichtigerReihenfolge(e: Eingabe, gesprochen: boolean): boolean {
-  const gesagt = gesprochen ? [...normalisiereHanzi(e.antwort)] : silben(e.antwort);
-  const ziel = gesprochen ? [...normalisiereHanzi(e.erwartetHanzi)] : silben(e.erwartetPinyin);
+function inRichtigerReihenfolge(e: Eingabe, profil: SprachProfil, gesprochen: boolean): boolean {
+  const gesagt = teile(e.antwort, profil, gesprochen);
+  const quelle = gesprochen ? e.erwartetSchrift : e.erwartetLerntext;
+  const ziel = teile(quelle, profil, gesprochen);
   if (gesagt.length < 2) return true;
 
   let i = 0;
@@ -186,10 +266,6 @@ function inRichtigerReihenfolge(e: Eingabe, gesprochen: boolean): boolean {
     if (i < gesagt.length && gesagt[i] === teil) i += 1;
   }
   return i === gesagt.length;
-}
-
-function silben(text: string): string[] {
-  return text.trim().split(/\s+/).map(ohneToene).filter(Boolean);
 }
 
 /**
@@ -222,8 +298,9 @@ export function fuelleRahmen(rahmen: string, wort: string): string {
  */
 export function bewerteFinisher(
   antwort: string,
-  moeglichkeiten: { hanzi: string; pinyin: string; slotHanzi: string; slotPinyin: string }[],
-  quelle: 'sprache' | 'text'
+  moeglichkeiten: { schrift: string; lerntext: string; slotSchrift: string; slotLerntext: string }[],
+  quelle: 'sprache' | 'text',
+  sprache?: string
 ): Bewertung {
   if (moeglichkeiten.length === 0) {
     return { tier: 'nicht_verstanden', grund: 'Für diese Lektion fehlen noch Beispielsätze.' };
@@ -235,11 +312,12 @@ export function bewerteFinisher(
   for (const m of moeglichkeiten) {
     const b = bewerteAntwort({
       antwort,
-      erwartetHanzi: m.hanzi,
-      erwartetPinyin: m.pinyin,
-      slotHanzi: m.slotHanzi,
-      slotPinyin: m.slotPinyin,
+      erwartetSchrift: m.schrift,
+      erwartetLerntext: m.lerntext,
+      slotSchrift: m.slotSchrift,
+      slotLerntext: m.slotLerntext,
       quelle,
+      sprache,
     });
     if (rang[b.tier] > rang[beste.tier]) beste = b;
     if (beste.tier === 'richtig') break;
