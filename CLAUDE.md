@@ -2629,6 +2629,10 @@ Supabase Auth (die noch nicht existiert), beide lokal auf dem Geraet:
   Sideloadly-Signing mit kostenloser Apple-ID (kein bezahltes Apple Developer
   Program noetig). Downloadete Test-IPAs landen in `Ipa-Datei/` (nicht
   `mobile/dist/`).
+  **Der Workflow baut Expo-Module aus QUELLCODE** und prueft das fertige
+  Bundle auf framework-uebergreifend unaufloesbare Symbole - beides seit
+  dem 2026-09-10 und beides nicht optional, siehe "Die App startete zwei
+  Tage lang nicht" weiter unten.
 - Meilenstein (2026-08-03): End-to-End-Machbarkeit auf echtem iPhone 12
   bestaetigt - TTS-Wiedergabe + Transkription funktionieren (damals noch
   on-device Whisper, seit 2026-08-12 Speechmatics, siehe oben).
@@ -2665,6 +2669,74 @@ Supabase Auth (die noch nicht existiert), beide lokal auf dem Geraet:
   greifen wie erwartet, und alte gegen neue Fassung ueber alle 567
   vorhandenen Saetze (deutsch/schwedisch/spanisch) ergaben **null
   Abweichungen**.
+
+## Die App startete zwei Tage lang nicht (2026-09-10)
+
+Splash-Screen, dann weg. **Nicht am Geraet:** der Absturz trat auf einem neu
+gekauften iPhone 12 genauso auf, die IPA war fuer jedes Geraet kaputt. dyld
+bricht ab, NOCH VOR DER ERSTEN ZEILE JS - kein React-Native-Fehler, kein
+Fehler im App-Code.
+
+**Das mitgelieferte ExpoFont rief vier Methoden auf, die es in
+ExpoModulesCore 57.0.8 nicht mehr gibt** - `didCreate`, `willDestroy`,
+`didStartListening`, `didStopListening`, je einmal als Dispatch-Thunk auf
+`BaseModule` und einmal als Protokoll-Eintrag auf `AnyModule`. Acht
+undefinierte Symbole, keines davon in den 15.366 des Core.
+
+**Der Fehler steckt im npm-PAKET, nicht im Build.** Expo SDK 54+ kompiliert
+einen Teil der Module gar nicht, sondern liefert fertige Binaries als
+Tarballs mit, unter
+`node_modules/<paket>/prebuilds/output/<debug|release>/xcframeworks/`.
+Im Build-Log stehen sie als `[Expo-precompiled] Precompiled modules:`.
+Nachpruefbar ohne CI und ohne Mac: Tarball entpacken, Symboltabellen
+gegeneinanderhalten.
+
+**Der erste Erklaerungsversuch war falsch, und das ist die eigentliche
+Lehre.** Der Commit "CI: Cache-Schluessel haerten" nahm einen veralteten
+CocoaPods-/DerivedData-Cache als Ursache an. Der Build danach lief mit
+LEEREN Caches - beide meldeten `Cache not found` - und lieferte trotzdem
+**byte-identisch dasselbe kaputte ExpoFont**. Ein Cache-Miss laedt die
+kaputten Frameworks nur neu herunter, statt sie wiederzuverwenden. Der
+Cache-Fix bleibt trotzdem drin, er ist fuer sich richtig.
+
+Zwei naheliegende Auswege wurden geprueft und sind KEINE:
+
+| Vermutung | Befund |
+|---|---|
+| nur die `debug`-Variante ist kaputt (Standard-Flavor) | `release` ist gleich kaputt |
+| ein Versionswechsel hilft | `expo-font` 57.0.3 bringt binaergleich dasselbe mit |
+
+**Der Schalter: `EXPO_USE_PRECOMPILED_MODULES: '0'`** als Job-Env in
+`.github/workflows/ios-build.yml`. Damit werden alle Expo-Module aus
+Quellcode gebaut und stammen zwangslaeufig aus demselben Stand. Der von
+`expo prebuild` erzeugte Podfile schaltet das Verfahren selbst ein
+(`ENV['EXPO_USE_PRECOMPILED_MODULES'] ||= '1'`, aus
+`expo-template-bare-minimum`) - weil das ein `||=` ist und `'0'` in Ruby
+wahr ist, gewinnt ein von aussen gesetzter Wert. **Kein Paket in
+node_modules setzt die Variable**, geprueft per Volltextsuche; diese eine
+Zeile im Workflow traegt die ganze Wirkung. Weglassen faellt auf `'1'`
+zurueck, und der Absturz ist zurueck - die Binaries bei Expo sind
+weiterhin kaputt.
+
+**Aus Quellcode gebaut sind die Expo-Module statisch** (`static_framework`
+in den Podspecs) und landen im Hauptbinary, statt als eigene Frameworks
+nebeneinanderzuliegen. Im Bundle sind es dadurch vier Frameworks statt
+acht, und zwei Bauzustaende koennen strukturell nicht mehr auseinander-
+laufen. Die Bauzeit aendert sich praktisch nicht (13m54s gegen 13m50s) -
+das Kompilieren kostet etwa so viel wie vorher das Herunterladen und
+Entpacken der Tarballs, allein der Core-Tarball ist 15 MB.
+
+**Der Prueflauf im Workflow ist der wichtigere Teil.** Beide kaputten
+Builds waren GRUEN: xcodebuild meldet nichts, wenn ein Framework ein Symbol
+anfordert, das keines liefert - das faellt erst dyld auf dem Geraet auf.
+Der Schritt "Frameworks gegeneinander pruefen" sammelt alle definierten
+Symbole des fertigen Bundles ein und haelt jede offene Anforderung dagegen,
+die per Swift-Modulname auf ein Framework AUS DIESEM BUNDLE zeigt. Er
+laeuft nach dem Verpacken, prueft also das Auslieferungsergebnis und nicht
+den Bauvorgang. Gegen die kaputte IPA getestet: er schlaegt an. Im
+Reparatur-Lauf: 136.318 Symbole, alles aufloesbar.
+
+**Bestaetigt am 2026-09-10:** die App startet wieder.
 
 ## Backlog: Geplant, aber noch nicht gebaut (Stand 2026-08-04)
 
