@@ -2437,6 +2437,68 @@ die Quittung von Apple/Google.
 Saetze werden vereinigt) - dafuer braeuchte es Grabsteine. Lieber ein Satz zu
 viel in der Liste als ein verlorener.
 
+## Acht Tabellen hatten kein RLS (2026-09-10)
+
+Gefunden beim Nachdenken ueber eine ganz andere Frage - Simon: "Ich dachte
+.env ist die einzige Datei die nie commitet werden darf". Die Antwort
+darauf ("mobile/.env traegt nur EXPO_PUBLIC_*, der anon-Key ist oeffentlich
+und RLS schuetzt") stimmte nur zur Haelfte, und die Nachpruefung deckte die
+andere auf: **acht Tabellen hatten gar kein Row Level Security**, waren also
+mit dem oeffentlichen anon-Key beschreibbar.
+
+| offen gewesen | |
+|---|---|
+| `phrasebook_master` | 584 deutsche Master-Saetze |
+| `schwedisch_phrasebook`, `spanisch_phrasebook` | |
+| `schwedisch_vocab`, `spanisch_vocab`, `franz_vocab` | |
+| `answer_clusters` | **alle 716 Antwort-Familien** |
+| `verb_conjugations` | wird von keiner Zeile Code gelesen |
+
+**Warum das ein echtes Loch war, kein theoretisches:** der anon-Key ist
+nicht geheim und soll es nicht sein - er wird beim Build ins App-Bundle
+kompiliert (`EXPO_PUBLIC_*`) und steckt in jeder ausgelieferten IPA. Der
+Schutz kommt von RLS, nicht von der Geheimhaltung. Ohne RLS greifen nur die
+Standard-Grants, und die geben `anon` vollen Zugriff. Ein DELETE auf
+`answer_clusters` haette die Mittelstufe der Bewertung in allen elf Sprachen
+gleichzeitig entfernt - und weil die App den Content bei jedem Start frisch
+laedt, ohne dass ein Update noetig gewesen waere.
+
+**Die Ursache ist geklickt gegen migriert.** Die frueheste Migration ist vom
+2026-08-21; alle acht offenen Tabellen sind AELTER und wurden von Hand im
+Dashboard angelegt. Alles, was seit dem per Migration entstand - die neun
+Nutzerdaten-Tabellen und die sieben September-Sprachen - traegt RLS von
+Geburt an. Kein Versaeumnis einer bestimmten Datei, sondern der Unterschied
+zwischen zwei Arbeitsweisen. Wer kuenftig eine Tabelle im Dashboard anlegt,
+hat dieses Loch sofort wieder.
+
+Behoben mit Migration `20260910120000_rls_content_tabellen.sql`: RLS an,
+dazu je eine Policy `for select using (true)`. **Das Schreibverbot steht
+nirgends im SQL** - es entsteht daraus, dass keine INSERT/UPDATE/DELETE-
+Policy existiert, und RLS ohne passende Policy ablehnt. Wer spaeter
+Schreibrechte braucht, fuegt eine eigene Policy hinzu, statt diese
+aufzuweichen. Fuer App und Pipeline aendert sich nichts: die App liest
+Content nur (ihr einziger Schreibzugriff geht auf `profil`, siehe
+`sync.ts`), und die Skripte unter `Sprachlisten/` benutzen den
+Service-Role-Key, der RLS grundsaetzlich umgeht.
+
+**Wie man das nachprueft - der Test, der zaehlt.** Ein UPDATE mit einer
+Bedingung, die keine Zeile trifft, taugt NICHT: es meldet auch bei
+greifendem RLS Erfolg, weil RLS filtert statt abzulehnen. Der erste
+Messversuch tat genau das und meldete "21 von 21 Tabellen offen" - falsch,
+und auffaellig wurde es erst, als derselbe Test auch `profil` als offen
+auswies, das kurz zuvor als gesperrt gemessen worden war.
+
+Richtig ist ein INSERT ohne Pflichtfelder:
+
+    401/403  -> RLS lehnt ab, Tabelle ist dicht
+    400      -> Schreiben WAERE erlaubt, nur die Daten sind ungueltig
+
+Danach gemessen: 8 von 32 offen, nach der Migration 0 von 32. Gegengeprueft
+wurde beides - dass nicht mehr geschrieben werden kann UND dass mit dem
+anon-Key weiterhin alles LESBAR ist (716 Cluster, 584 Master-Saetze, die
+Vokabellisten). Eine zu strenge Policy legt die App genauso lahm wie eine
+fehlende sie offen laesst.
+
 ## Konto noetig, Demo fuer Gaeste (2026-08-22)
 
 Nutzer-Entscheidung: **ohne Konto nur eine Demo-Version** - kein Kauf, keine
