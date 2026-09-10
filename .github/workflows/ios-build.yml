@@ -35,20 +35,28 @@ jobs:
       - name: Native iOS-Projekt generieren (Continuous Native Generation)
         run: npx expo prebuild --platform ios --no-install
 
-      # Cache-Keys haengen an ios/Podfile (von "expo prebuild" gerade eben
-      # generiert) statt an package-lock.json/app.json direkt - das ist die
-      # praeziseste verfuegbare Signatur der tatsaechlichen nativen
-      # Abhaengigkeiten. restore-keys als Praefix-Fallback: bei geaenderten
-      # Deps gibt's trotzdem einen "nahen" Cache-Stand statt komplett leer.
+      # Cache-Key haengt an Podfile UND package-lock.json (2026-09-10,
+      # korrigiert nach einem echten Absturzfund - siehe unten).
+      # frueher nur am Podfile: das listet Paketpfade, keine Versionen, also
+      # blieb der Hash oft identisch, obwohl sich eine npm-Abhaengigkeit
+      # geaendert hatte. Ein Build vom 2026-09-07 blieb dadurch bis zum
+      # 2026-09-10 im Cache und wurde bei JEDEM Build seitdem stillschweigend
+      # wiederverwendet - trotz drei zwischenzeitlicher Commits. Ergebnis:
+      # ExpoFont.framework und ExpoModulesCore.framework aus zwei
+      # verschiedenen Bauzustaenden im selben .app-Bundle, die App stuerzte
+      # noch vor der ersten Zeile JS ab ("Symbol not found", dyld-Fehler,
+      # kein React-Native-Bug). KEINE restore-keys mehr: ein Praefix-Treffer
+      # haette denselben Fehler reproduziert, nur mit anderem Wortlaut - bei
+      # einem manuell ausgeloesten, selten laufenden Workflow ist ein
+      # sauberer Cache-Miss (paar Minuten laenger) die richtige Abwaegung
+      # gegenueber einem schnellen, aber kaputten Build.
       - name: CocoaPods cachen
         uses: actions/cache@v4
         with:
           path: |
             mobile/ios/Pods
             ~/Library/Caches/CocoaPods
-          key: ${{ runner.os }}-pods-${{ hashFiles('mobile/ios/Podfile') }}
-          restore-keys: |
-            ${{ runner.os }}-pods-
+          key: ${{ runner.os }}-pods-${{ hashFiles('mobile/package-lock.json', 'mobile/ios/Podfile') }}
 
       - name: CocoaPods installieren
         working-directory: mobile/ios
@@ -56,17 +64,17 @@ jobs:
 
       # Xcode-DerivedData cachen, damit xcodebuild inkrementell kompiliert
       # statt jedes Mal Hermes/React-Native-Core/alle nativen Module von
-      # null neu zu bauen. Unklar/noch nicht ueber mehrere Builds verifiziert,
-      # wie gut das greift, weil "expo prebuild" den ios/-Ordner jedes Mal
-      # frisch generiert (andere Datei-Zeitstempel als beim letzten Run) -
-      # aber rein additiv: schlimmstenfalls kein Speedup, nie ein kaputter Build.
+      # null neu zu bauen. Derselbe Schluessel-Fix wie beim CocoaPods-Cache
+      # oben, aus demselben Fund: "rein additiv, schlimmstenfalls kein
+      # Speedup" stimmte nicht - ein veralteter DerivedData-Stand kann
+      # Frameworks gegen einen inzwischen anderen ExpoModulesCore linken und
+      # die App schon vor dem ersten JS-Aufruf abstuerzen lassen. Deshalb
+      # ebenfalls package-lock.json im Schluessel und keine restore-keys.
       - name: Xcode DerivedData cachen
         uses: actions/cache@v4
         with:
           path: mobile/ios/build
-          key: ${{ runner.os }}-xcode-derived-${{ hashFiles('mobile/ios/Podfile') }}
-          restore-keys: |
-            ${{ runner.os }}-xcode-derived-
+          key: ${{ runner.os }}-xcode-derived-${{ hashFiles('mobile/package-lock.json', 'mobile/ios/Podfile') }}
 
       # Bewusst UNSIGNED gebaut - es werden keine Apple-Zertifikate/Secrets in
       # der CI gebraucht. Sideloadly signiert die .app anschliessend lokal mit
