@@ -20,6 +20,46 @@ jobs:
     defaults:
       run:
         working-directory: mobile
+    # Expo-Module aus QUELLCODE bauen statt vorkompilierte Binaries zu ziehen
+    # (2026-09-10, nach dem zweiten Anlauf am selben Absturz).
+    #
+    # Expo SDK 54+ laedt fuer einen Teil der Module fertige XCFrameworks
+    # herunter, statt sie zu kompilieren - im Log als "[Expo-precompiled]
+    # Precompiled modules: ExpoFileSystem, ExpoFont, ExpoModulesCore,
+    # ExpoModulesWorklets" zu sehen. Genau daran lag der Absturz: das
+    # heruntergeladene ExpoFont 57.0.2 verlangt vier Methoden von
+    # BaseModule/AnyModule (didCreate, willDestroy, didStartListening,
+    # didStopListening), die es in ExpoModulesCore 57.0.8 nicht mehr gibt.
+    # Zwei Binaries aus verschiedenen Bauzustaenden, dyld bricht beim Start
+    # ab - noch vor der ersten Zeile JS.
+    #
+    # Der Fehler steckt im npm-PAKET, nicht im Build: die fertigen
+    # Frameworks liegen als Tarballs unter
+    # node_modules/<paket>/prebuilds/output/<debug|release>/xcframeworks/.
+    # Beide Varianten, debug wie release, sind gleich kaputt, und
+    # expo-font 57.0.3 bringt binaergleich dasselbe mit - ein
+    # Versionswechsel hilft also nicht. Nachpruefbar ohne CI: Tarball
+    # entpacken und die Symboltabellen gegeneinanderhalten.
+    #
+    # Der erste Erklaerungsversuch (veralteter CI-Cache, Commit
+    # "CI: Cache-Schluessel haerten") war falsch: der Build danach lief mit
+    # LEEREN Caches - beide Schluessel meldeten "Cache not found" - und
+    # lieferte trotzdem byte-identisch dasselbe kaputte ExpoFont. Ein
+    # Cache-Miss laedt die kaputten Frameworks nur neu herunter, statt sie
+    # wiederzuverwenden. Aus Quellcode gebaut stammen dagegen alle Module
+    # zwangslaeufig aus demselben Stand.
+    #
+    # Warum die Variable ueberhaupt noetig ist, obwohl sie hier nie gesetzt
+    # war: der von `expo prebuild` erzeugte Podfile schaltet das Verfahren
+    # selbst ein (`ENV['EXPO_USE_PRECOMPILED_MODULES'] ||= '1'`, aus
+    # expo-template-bare-minimum). Weil das ein `||=` ist und '0' in Ruby
+    # wahr ist, gewinnt ein hier gesetzter Wert - ein blosses Weglassen
+    # wuerde dagegen wieder auf '1' fallen.
+    #
+    # Preis: der Build dauert laenger. Bei einem manuell ausgeloesten
+    # Workflow ist das die richtige Abwaegung.
+    env:
+      EXPO_USE_PRECOMPILED_MODULES: '0'
     steps:
       - uses: actions/checkout@v4
 
@@ -100,6 +140,58 @@ jobs:
           mkdir -p Payload
           cp -r "$APP_PATH" Payload/
           zip -r mobile-unsigned.ipa Payload
+
+      # Prueft das FERTIGE Bundle, nicht den Bauvorgang (2026-09-10).
+      # Der Absturz oben kam durch einen gruenen Build: xcodebuild meldet
+      # nichts, wenn ein Framework ein Symbol anfordert, das ein anderes
+      # nicht mehr liefert - das faellt erst dyld auf dem Geraet auf. Dieser
+      # Schritt sammelt alle definierten Symbole des Bundles ein und haelt
+      # jede offene Anforderung dagegen, die auf ein Framework AUS DIESEM
+      # BUNDLE zeigt (erkennbar am Swift-Modulnamen im Symbol). Fremde
+      # Symbole aus dem System bleiben aussen vor.
+      - name: Frameworks gegeneinander pruefen
+        working-directory: mobile/ios
+        run: |
+          APP="build/Build/Products/Release-iphoneos/mobile.app"
+          FW="$APP/Frameworks"
+          DEF="$(mktemp)"
+
+          for f in "$FW"/*.framework; do
+            n="$(basename "$f" .framework)"
+            if [ -f "$f/$n" ]; then
+              nm -j --defined-only "$f/$n" 2>/dev/null >> "$DEF" || true
+            fi
+          done
+          nm -j --defined-only "$APP/mobile" 2>/dev/null >> "$DEF" || true
+          sort -u -o "$DEF" "$DEF"
+          echo "Definierte Symbole im Bundle: $(wc -l < "$DEF")"
+
+          # Swift codiert den Modulnamen laengenpraefigiert: ExpoFont -> 8ExpoFont
+          PAT=""
+          for f in "$FW"/*.framework; do
+            n="$(basename "$f" .framework)"
+            PAT="$PAT${#n}$n|"
+          done
+          PAT="${PAT%|}"
+
+          FEHLER=0
+          for f in "$FW"/*.framework; do
+            n="$(basename "$f" .framework)"
+            [ -f "$f/$n" ] || continue
+            for s in $(nm -j -u "$f/$n" 2>/dev/null | grep -E '^_\$s('"$PAT"')' || true); do
+              if ! grep -qxF "$s" "$DEF"; then
+                echo "  FEHLT: $s"
+                echo "         angefordert von $n, von keinem Framework geliefert"
+                FEHLER=1
+              fi
+            done
+          done
+
+          if [ "$FEHLER" -ne 0 ]; then
+            echo "::error::Frameworks im Bundle passen nicht zusammen - die App wuerde beim Start abstuerzen (dyld), noch vor der ersten Zeile JS."
+            exit 1
+          fi
+          echo "Alle framework-uebergreifenden Symbole sind aufloesbar."
 
       - uses: actions/upload-artifact@v4
         with:
