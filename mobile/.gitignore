@@ -1,0 +1,89 @@
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# dependencies
+node_modules/
+
+# lokal heruntergeladene CLI-Binaries (nicht versioniert, siehe README)
+tools/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+*.pem
+
+# local env files
+# .env bewusst NICHT ignoriert: enthaelt nur EXPO_PUBLIC_*-Werte (Supabase
+# Projekt-URL + anon-Key), die ohnehin im ausgelieferten App-Bundle landen.
+# CI (GitHub Actions) braucht die Datei, sonst wirft src/lib/supabase.ts beim
+# App-Start eine Exception -> weisser Screen. NIEMALS den Service/Secret-Key
+# hier eintragen.
+.env*.local
+
+# typescript
+*.tsbuildinfo
+
+# generated native folders
+/ios
+/android
+
+# ---------------------------------------------------------------------------
+# Sprachlisten/ - Content-Pipeline (2026-08-29 ins Repo gezogen)
+#
+# ACHTUNG, Unterschied zu mobile/.env weiter oben: die .env-Dateien DORT
+# enthalten den SUPABASE_SERVICE_ROLE_KEY, also Vollzugriff auf die Datenbank
+# unter Umgehung von RLS. Die duerfen niemals ins Repo, auch nicht in einem
+# privaten. Deshalb hier explizit - die Regel `.env*.local` oben greift bei
+# einer schlicht `.env` genannten Datei NICHT.
+Sprachlisten/.env
+Sprachlisten/**/.env
+
+# Supabase-CLI-Arbeitsverzeichnis: enthaelt u.a. pooler-url mit Passwort.
+# `**` ist noetig: es gibt diesen Ordner NICHT nur einmal oben, sondern auch
+# in club_nightlife/, chinesisch_ausbau/ und "Chinesisch HSK1 und HSK2" -
+# ueberall dort, wo die CLI schon einmal lief.
+Sprachlisten/**/supabase/.temp/
+Sprachlisten/supabase/.temp/
+
+# Python-Bytecode - laesst das Repo unnoetig wachsen und ist reproduzierbar.
+Sprachlisten/**/__pycache__/
+*.pyc
+
+# Erzeugte Audio-Proben aus TTS-Versuchen. Reproduzierbar, binaer, gross.
+Sprachlisten/**/*.mp3
+Sprachlisten/edge_tts_test_output/
+
+# Persoenliche Claude-Code-Einstellungen (Berechtigungen o.ae.) - gehoert
+# nicht ins Repo, gilt nur fuer diese Maschine.
+.claude/settings.local.json
+
+# Erzeugte Familien-Vorschlaege aus `bauen.py spiel_ein` (Probelauf). Reine
+# Zwischenstaende zum Gegenpruefen mit `npm run pruefe:konzepte -- --vorschlag`,
+# bei jedem Lauf neu und deshalb nichts fuer die Versionierung.
+Sprachlisten/bewertung/vorschlag/
+
+# Dieselbe Art Probelauf-Zwischenstand, nur fuer Verbformen
+# (`verbformen.py`/`romanisch.py`/`slawisch.py` "Probelauf" vor `spiel_ein
+# --echt`, siehe CLAUDE.md) - bei jedem Lauf neu erzeugt.
+Sprachlisten/kurs/vorschlag/

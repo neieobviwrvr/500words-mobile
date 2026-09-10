@@ -1,89 +1,52 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+# ---------------------------------------------------------------------------
+# Wurzel-Ignoreliste (2026-09-10, als der Git-Root von mobile/ hierher zog)
+#
+# ACHTUNG, DIESE DATEI ARBEITET ANDERSHERUM ALS UEBLICH: sie sperrt ERST
+# ALLES und gibt dann einzeln frei. Der Grund steht in diesem Ordner
+# herum - vertone.py, vertone_azure.py, vertone_schwedisch_phrasebook.py
+# und Notizen.txt tragen KLARTEXT-SCHLUESSEL (Supabase Service Key,
+# ElevenLabs, Azure). Genau deswegen lag der Git-Root frueher eine Ebene
+# tiefer.
+#
+# Eine Blockliste haette dieselben vier Dateien ausgeschlossen und die
+# fuenfte, die morgen jemand hier ablegt, nicht. Mit `/*` ist die Vorgabe
+# "kommt NICHT ins Repo", und wer etwas sichern will, traegt es unten
+# ausdruecklich ein. Wer diese Datei umbaut, behaelt das bitte bei.
+#
+# Was unter mobile/ gilt, regelt weiterhin mobile/.gitignore - Git liest je
+# Verzeichnis. Dort steht auch, warum mobile/.env als einzige .env ins Repo
+# darf (nur EXPO_PUBLIC_*, landet ohnehin im App-Bundle).
+# ---------------------------------------------------------------------------
 
-# dependencies
-node_modules/
+# Erst alles sperren.
+/*
 
-# lokal heruntergeladene CLI-Binaries (nicht versioniert, siehe README)
-tools/
+# Dann einzeln freigeben.
+!/.gitignore
+!/CLAUDE.md
+!/mobile/
 
-# Expo
-.expo/
-dist/
-web-build/
-expo-env.d.ts
+# NICHT freigegeben: /supabase/ im Wurzelordner. Das sieht nach den
+# Migrationen aus, ist aber nur ein leeres Arbeitsverzeichnis der
+# Supabase-CLI (eine .temp-Datei). Die 17 echten Migrationen liegen unter
+# mobile/supabase/migrations/ und sind dort laengst versioniert. Ein
+# .temp-Ordner der CLI kann ausserdem eine pooler-url MIT PASSWORT
+# enthalten - siehe die Warnung in mobile/.gitignore.
 
-# Native
-.kotlin/
-*.orig.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
-
-# Metro
-.metro-health-check*
-
-# debug
-npm-debug.*
-yarn-debug.*
-yarn-error.*
-
-# macOS
-.DS_Store
-*.pem
-
-# local env files
-# .env bewusst NICHT ignoriert: enthaelt nur EXPO_PUBLIC_*-Werte (Supabase
-# Projekt-URL + anon-Key), die ohnehin im ausgelieferten App-Bundle landen.
-# CI (GitHub Actions) braucht die Datei, sonst wirft src/lib/supabase.ts beim
-# App-Start eine Exception -> weisser Screen. NIEMALS den Service/Secret-Key
-# hier eintragen.
-.env*.local
-
-# typescript
-*.tsbuildinfo
-
-# generated native folders
-/ios
-/android
+# Simons Vorlagen - Bilder und Dokumente, auf die CLAUDE.md verweist
+# ("Screenplanung/UI - Rest/Homepage/..."). Unersetzlich, weil von Hand
+# entstanden; deshalb gehoeren sie in die Sicherung.
+!/Screenplanung/
+!/UI-Planung/
+!/design/
 
 # ---------------------------------------------------------------------------
-# Sprachlisten/ - Content-Pipeline (2026-08-29 ins Repo gezogen)
+# Bewusst DRAUSSEN, damit niemand es fuer ein Versehen haelt:
 #
-# ACHTUNG, Unterschied zu mobile/.env weiter oben: die .env-Dateien DORT
-# enthalten den SUPABASE_SERVICE_ROLE_KEY, also Vollzugriff auf die Datenbank
-# unter Umgehung von RLS. Die duerfen niemals ins Repo, auch nicht in einem
-# privaten. Deshalb hier explizit - die Regel `.env*.local` oben greift bei
-# einer schlicht `.env` genannten Datei NICHT.
-Sprachlisten/.env
-Sprachlisten/**/.env
-
-# Supabase-CLI-Arbeitsverzeichnis: enthaelt u.a. pooler-url mit Passwort.
-# `**` ist noetig: es gibt diesen Ordner NICHT nur einmal oben, sondern auch
-# in club_nightlife/, chinesisch_ausbau/ und "Chinesisch HSK1 und HSK2" -
-# ueberall dort, wo die CLI schon einmal lief.
-Sprachlisten/**/supabase/.temp/
-Sprachlisten/supabase/.temp/
-
-# Python-Bytecode - laesst das Repo unnoetig wachsen und ist reproduzierbar.
-Sprachlisten/**/__pycache__/
-*.pyc
-
-# Erzeugte Audio-Proben aus TTS-Versuchen. Reproduzierbar, binaer, gross.
-Sprachlisten/**/*.mp3
-Sprachlisten/edge_tts_test_output/
-
-# Persoenliche Claude-Code-Einstellungen (Berechtigungen o.ae.) - gehoert
-# nicht ins Repo, gilt nur fuer diese Maschine.
-.claude/settings.local.json
-
-# Erzeugte Familien-Vorschlaege aus `bauen.py spiel_ein` (Probelauf). Reine
-# Zwischenstaende zum Gegenpruefen mit `npm run pruefe:konzepte -- --vorschlag`,
-# bei jedem Lauf neu und deshalb nichts fuer die Versionierung.
-Sprachlisten/bewertung/vorschlag/
-
-# Dieselbe Art Probelauf-Zwischenstand, nur fuer Verbformen
-# (`verbformen.py`/`romanisch.py`/`slawisch.py` "Probelauf" vor `spiel_ein
-# --echt`, siehe CLAUDE.md) - bei jedem Lauf neu erzeugt.
-Sprachlisten/kurs/vorschlag/
+#   vertone*.py, Notizen.txt   Klartext-Schluessel (siehe oben)
+#   Ipa-Datei/                 344 MB Build-Artefakte, bei jedem Build neu
+#   Claude/                    Build-Ausgabe des Design-Prototyps (196 .map)
+#   .claude/                   Sitzungsdaten dieser Maschine
+#   __pycache__/, .Rhistory    reproduzierbar
+#   *.xlsx, openapi.json       Datenexporte, jederzeit neu ziehbar
+# ---------------------------------------------------------------------------
