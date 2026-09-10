@@ -26,6 +26,14 @@
 !/CLAUDE.md
 !/mobile/
 
+# CI-Workflow (2026-09-10, nach dem Umzug hierher verschoben - GitHub
+# Actions sucht Workflows ausschliesslich unter .github/workflows/ am
+# ECHTEN Repo-Root, mobile/.github/workflows/ war fuer `gh workflow list`
+# unsichtbar geworden).
+!/.github/
+!/.github/workflows/
+!/.github/workflows/ios-build.yml
+
 # NICHT freigegeben: /supabase/ im Wurzelordner. Das sieht nach den
 # Migrationen aus, ist aber nur ein leeres Arbeitsverzeichnis der
 # Supabase-CLI (eine .temp-Datei). Die 17 echten Migrationen liegen unter
