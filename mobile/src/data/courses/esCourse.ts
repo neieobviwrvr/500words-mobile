@@ -18,29 +18,37 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo estoy [Slot]",
-          "lerntext": "yo estoy [Slot]"
+          "lerntext": "yo estoy [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "estoy": "v"
+          }
         },
         "frameDe": "ich bin [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -48,12 +56,14 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "cansado / cansada",
               "lerntext": "cansado / cansada",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "triste",
               "lerntext": "triste",
-              "de": "traurig"
+              "de": "traurig",
+              "c": "a"
             }
           ]
         ],
@@ -63,7 +73,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "soy",
             "lerntext": "soy",
-            "de": "sein (dauerhaft)"
+            "de": "sein (dauerhaft)",
+            "c": "v"
           }
         ],
         "id": "1.1"
@@ -72,29 +83,38 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "nosotros / nosotras somos [Slot]",
-          "lerntext": "nosotros / nosotras somos [Slot]"
+          "lerntext": "nosotros / nosotras somos [Slot]",
+          "wortarten": {
+            "nosotros": "p",
+            "nosotras": "p",
+            "somos": "v"
+          }
         },
         "frameDe": "wir sind [Slot].",
         "pronouns": [
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "vosotros / vosotras",
             "lerntext": "vosotros / vosotras",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           },
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -102,22 +122,26 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "jefe / jefa",
               "lerntext": "jefe / jefa",
-              "de": "Chef"
+              "de": "Chef",
+              "c": "n"
             },
             {
               "schrift": "amigo / amiga",
               "lerntext": "amigo / amiga",
-              "de": "Freund"
+              "de": "Freund",
+              "c": "n"
             },
             {
               "schrift": "mujer",
               "lerntext": "mujer",
-              "de": "Frau"
+              "de": "Frau",
+              "c": "n"
             },
             {
               "schrift": "niño / niña",
               "lerntext": "niño / niña",
-              "de": "Kind"
+              "de": "Kind",
+              "c": "n"
             }
           ]
         ],
@@ -130,19 +154,25 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "él es muy [Slot]",
-          "lerntext": "él es muy [Slot]"
+          "lerntext": "él es muy [Slot]",
+          "wortarten": {
+            "él": "p",
+            "es": "v"
+          }
         },
         "frameDe": "er ist sehr [Slot].",
         "pronouns": [
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -150,27 +180,32 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "simpático / simpática",
               "lerntext": "simpático / simpática",
-              "de": "sympathisch"
+              "de": "sympathisch",
+              "c": "a"
             },
             {
               "schrift": "tonto / tonta",
               "lerntext": "tonto / tonta",
-              "de": "dumm"
+              "de": "dumm",
+              "c": "a"
             },
             {
               "schrift": "bonito / bonita",
               "lerntext": "bonito / bonita",
-              "de": "hübsch"
+              "de": "hübsch",
+              "c": "a"
             },
             {
               "schrift": "aburrido / aburrida",
               "lerntext": "aburrido / aburrida",
-              "de": "langweilig"
+              "de": "langweilig",
+              "c": "a"
             },
             {
               "schrift": "fuerte",
               "lerntext": "fuerte",
-              "de": "stark"
+              "de": "stark",
+              "c": "a"
             }
           ]
         ],
@@ -189,19 +224,25 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "él es muy [Slot]",
-          "lerntext": "él es muy [Slot]"
+          "lerntext": "él es muy [Slot]",
+          "wortarten": {
+            "él": "p",
+            "es": "v"
+          }
         },
         "frameDe": "er ist sehr [Slot].",
         "pronouns": [
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -209,22 +250,26 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "débil",
               "lerntext": "débil",
-              "de": "schwach"
+              "de": "schwach",
+              "c": "a"
             },
             {
               "schrift": "joven",
               "lerntext": "joven",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "viejo / vieja",
               "lerntext": "viejo / vieja",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "feliz",
               "lerntext": "feliz",
-              "de": "glücklich"
+              "de": "glücklich",
+              "c": "a"
             }
           ]
         ],
@@ -237,19 +282,25 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "él es muy [Slot]",
-          "lerntext": "él es muy [Slot]"
+          "lerntext": "él es muy [Slot]",
+          "wortarten": {
+            "él": "p",
+            "es": "v"
+          }
         },
         "frameDe": "er ist sehr [Slot].",
         "pronouns": [
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -258,54 +309,63 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "simpático / simpática",
               "lerntext": "simpático / simpática",
               "de": "sympathisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tonto / tonta",
               "lerntext": "tonto / tonta",
               "de": "dumm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bonito / bonita",
               "lerntext": "bonito / bonita",
               "de": "hübsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "aburrido / aburrida",
               "lerntext": "aburrido / aburrida",
               "de": "langweilig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fuerte",
               "lerntext": "fuerte",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "débil",
               "lerntext": "débil",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "joven",
               "lerntext": "joven",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "viejo / vieja",
               "lerntext": "viejo / vieja",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "feliz",
               "lerntext": "feliz",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -319,29 +379,38 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "nosotros / nosotras somos [Slot]",
-          "lerntext": "nosotros / nosotras somos [Slot]"
+          "lerntext": "nosotros / nosotras somos [Slot]",
+          "wortarten": {
+            "nosotros": "p",
+            "nosotras": "p",
+            "somos": "v"
+          }
         },
         "frameDe": "wir sind [Slot].",
         "pronouns": [
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "vosotros / vosotras",
             "lerntext": "vosotros / vosotras",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           },
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -350,24 +419,28 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "jefe / jefa",
               "lerntext": "jefe / jefa",
               "de": "Chef",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amigo / amiga",
               "lerntext": "amigo / amiga",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mujer",
               "lerntext": "mujer",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "niño / niña",
               "lerntext": "niño / niña",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -381,19 +454,25 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "él es muy [Slot]",
-          "lerntext": "él es muy [Slot]"
+          "lerntext": "él es muy [Slot]",
+          "wortarten": {
+            "él": "p",
+            "es": "v"
+          }
         },
         "frameDe": "er ist sehr [Slot].",
         "pronouns": [
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -402,54 +481,63 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "simpático / simpática",
               "lerntext": "simpático / simpática",
               "de": "sympathisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tonto / tonta",
               "lerntext": "tonto / tonta",
               "de": "dumm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bonito / bonita",
               "lerntext": "bonito / bonita",
               "de": "hübsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "aburrido / aburrida",
               "lerntext": "aburrido / aburrida",
               "de": "langweilig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fuerte",
               "lerntext": "fuerte",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "débil",
               "lerntext": "débil",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "joven",
               "lerntext": "joven",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "viejo / vieja",
               "lerntext": "viejo / vieja",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "feliz",
               "lerntext": "feliz",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -463,29 +551,38 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "nosotros / nosotras somos [Slot]",
-          "lerntext": "nosotros / nosotras somos [Slot]"
+          "lerntext": "nosotros / nosotras somos [Slot]",
+          "wortarten": {
+            "nosotros": "p",
+            "nosotras": "p",
+            "somos": "v"
+          }
         },
         "frameDe": "wir sind [Slot].",
         "pronouns": [
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "vosotros / vosotras",
             "lerntext": "vosotros / vosotras",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           },
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -494,24 +591,28 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "jefe / jefa",
               "lerntext": "jefe / jefa",
               "de": "Chef",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amigo / amiga",
               "lerntext": "amigo / amiga",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mujer",
               "lerntext": "mujer",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "niño / niña",
               "lerntext": "niño / niña",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -546,14 +647,19 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "esto es una [Slot]",
-          "lerntext": "esto es una [Slot]"
+          "lerntext": "esto es una [Slot]",
+          "wortarten": {
+            "esto": "p",
+            "es": "v"
+          }
         },
         "frameDe": "Das ist eine [Slot].",
         "pronouns": [
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -561,17 +667,20 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "puerta",
               "lerntext": "puerta",
-              "de": "Tür"
+              "de": "Tür",
+              "c": "n"
             },
             {
               "schrift": "madre",
               "lerntext": "madre",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "mujer",
               "lerntext": "mujer",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -582,7 +691,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "esto",
             "lerntext": "esto",
-            "de": "dies (neutral)"
+            "de": "dies (neutral)",
+            "c": "p"
           }
         ],
         "id": "2.1"
@@ -591,14 +701,19 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "esto es una [Slot]",
-          "lerntext": "esto es una [Slot]"
+          "lerntext": "esto es una [Slot]",
+          "wortarten": {
+            "esto": "p",
+            "es": "v"
+          }
         },
         "frameDe": "Das ist ein [Slot].",
         "pronouns": [
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -606,18 +721,21 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "silla",
               "lerntext": "silla",
-              "de": "Stuhl"
+              "de": "Stuhl",
+              "c": "n"
             },
             {
               "schrift": "jefe / jefa",
               "lerntext": "jefe / jefa",
               "de": "Chef",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amigo / amiga",
               "lerntext": "amigo / amiga",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -631,14 +749,19 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "esto es una [Slot]",
-          "lerntext": "esto es una [Slot]"
+          "lerntext": "esto es una [Slot]",
+          "wortarten": {
+            "esto": "p",
+            "es": "v"
+          }
         },
         "frameDe": "Das ist ein [Slot].",
         "pronouns": [
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -646,12 +769,14 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "cama",
               "lerntext": "cama",
-              "de": "Bett"
+              "de": "Bett",
+              "c": "n"
             },
             {
               "schrift": "niño / niña",
               "lerntext": "niño / niña",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -665,14 +790,19 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "esto es un [Slot]",
-          "lerntext": "esto es un [Slot]"
+          "lerntext": "esto es un [Slot]",
+          "wortarten": {
+            "esto": "p",
+            "es": "v"
+          }
         },
         "frameDe": "Das ist ein [Slot].",
         "pronouns": [
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -680,29 +810,34 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "padre",
               "lerntext": "padre",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "hermano / hermana",
               "lerntext": "hermano / hermana",
-              "de": "Bruder"
+              "de": "Bruder",
+              "c": "n"
             },
             {
               "schrift": "silla",
               "lerntext": "silla",
               "de": "Stuhl",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "jefe / jefa",
               "lerntext": "jefe / jefa",
               "de": "Chef",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amigo / amiga",
               "lerntext": "amigo / amiga",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -716,14 +851,19 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "esto es un [Slot]",
-          "lerntext": "esto es un [Slot]"
+          "lerntext": "esto es un [Slot]",
+          "wortarten": {
+            "esto": "p",
+            "es": "v"
+          }
         },
         "frameDe": "Das ist ein [Slot].",
         "pronouns": [
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -731,23 +871,27 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "libro",
               "lerntext": "libro",
-              "de": "Buch"
+              "de": "Buch",
+              "c": "n"
             },
             {
               "schrift": "teléfono",
               "lerntext": "teléfono",
-              "de": "Telefon"
+              "de": "Telefon",
+              "c": "n"
             },
             {
               "schrift": "cama",
               "lerntext": "cama",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "niño / niña",
               "lerntext": "niño / niña",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -768,7 +912,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -776,24 +921,28 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "cocina",
               "lerntext": "cocina",
-              "de": "Küche"
+              "de": "Küche",
+              "c": "n"
             },
             {
               "schrift": "puerta",
               "lerntext": "puerta",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "madre",
               "lerntext": "madre",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mujer",
               "lerntext": "mujer",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -820,7 +969,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -828,36 +978,42 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "mesa",
               "lerntext": "mesa",
-              "de": "Tisch"
+              "de": "Tisch",
+              "c": "n"
             },
             {
               "schrift": "padre",
               "lerntext": "padre",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hermano / hermana",
               "lerntext": "hermano / hermana",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "silla",
               "lerntext": "silla",
               "de": "Stuhl",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "jefe / jefa",
               "lerntext": "jefe / jefa",
               "de": "Chef",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amigo / amiga",
               "lerntext": "amigo / amiga",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -878,7 +1034,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -886,45 +1043,53 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "casa",
               "lerntext": "casa",
-              "de": "Haus"
+              "de": "Haus",
+              "c": "n"
             },
             {
               "schrift": "habitación",
               "lerntext": "habitación",
-              "de": "Zimmer"
+              "de": "Zimmer",
+              "c": "n"
             },
             {
               "schrift": "ventana",
               "lerntext": "ventana",
-              "de": "Fenster"
+              "de": "Fenster",
+              "c": "n"
             },
             {
               "schrift": "oficina",
               "lerntext": "oficina",
-              "de": "Büro"
+              "de": "Büro",
+              "c": "n"
             },
             {
               "schrift": "teléfono",
               "lerntext": "teléfono",
               "de": "Telefon",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "libro",
               "lerntext": "libro",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cama",
               "lerntext": "cama",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "niño / niña",
               "lerntext": "niño / niña",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -945,7 +1110,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -953,59 +1119,69 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "papel",
               "lerntext": "papel",
-              "de": "Papier"
+              "de": "Papier",
+              "c": "n"
             },
             {
               "schrift": "hotel",
               "lerntext": "hotel",
-              "de": "Hotel"
+              "de": "Hotel",
+              "c": "n"
             },
             {
               "schrift": "casa",
               "lerntext": "casa",
               "de": "Haus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "habitación",
               "lerntext": "habitación",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ventana",
               "lerntext": "ventana",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "oficina",
               "lerntext": "oficina",
               "de": "Büro",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "teléfono",
               "lerntext": "teléfono",
               "de": "Telefon",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "libro",
               "lerntext": "libro",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cama",
               "lerntext": "cama",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "niño / niña",
               "lerntext": "niño / niña",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1019,29 +1195,37 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo tengo una [Slot]",
-          "lerntext": "yo tengo una [Slot]"
+          "lerntext": "yo tengo una [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "tengo": "v"
+          }
         },
         "frameDe": "ich habe eine [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1049,35 +1233,41 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "familia",
               "lerntext": "familia",
-              "de": "Familie"
+              "de": "Familie",
+              "c": "n"
             },
             {
               "schrift": "mano",
               "lerntext": "mano",
-              "de": "Hand"
+              "de": "Hand",
+              "c": "n"
             },
             {
               "schrift": "cocina",
               "lerntext": "cocina",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "puerta",
               "lerntext": "puerta",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "madre",
               "lerntext": "madre",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mujer",
               "lerntext": "mujer",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1088,7 +1278,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "tengo",
             "lerntext": "tengo",
-            "de": "haben"
+            "de": "haben",
+            "c": "v"
           }
         ],
         "id": "2.10"
@@ -1097,29 +1288,37 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo tengo una [Slot]",
-          "lerntext": "yo tengo una [Slot]"
+          "lerntext": "yo tengo una [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "tengo": "v"
+          }
         },
         "frameDe": "ich habe einen [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1127,42 +1326,49 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "boca",
               "lerntext": "boca",
-              "de": "Mund"
+              "de": "Mund",
+              "c": "n"
             },
             {
               "schrift": "mesa",
               "lerntext": "mesa",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "padre",
               "lerntext": "padre",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hermano / hermana",
               "lerntext": "hermano / hermana",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "silla",
               "lerntext": "silla",
               "de": "Stuhl",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "jefe / jefa",
               "lerntext": "jefe / jefa",
               "de": "Chef",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amigo / amiga",
               "lerntext": "amigo / amiga",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1176,29 +1382,37 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo tengo un [Slot]",
-          "lerntext": "yo tengo un [Slot]"
+          "lerntext": "yo tengo un [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "tengo": "v"
+          }
         },
         "frameDe": "ich habe einen [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1206,63 +1420,74 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "hijo / hija",
               "lerntext": "hijo / hija",
-              "de": "Sohn"
+              "de": "Sohn",
+              "c": "n"
             },
             {
               "schrift": "brazo",
               "lerntext": "brazo",
-              "de": "Arm"
+              "de": "Arm",
+              "c": "n"
             },
             {
               "schrift": "pie",
               "lerntext": "pie",
-              "de": "Fuß"
+              "de": "Fuß",
+              "c": "n"
             },
             {
               "schrift": "cuerpo",
               "lerntext": "cuerpo",
-              "de": "Körper"
+              "de": "Körper",
+              "c": "n"
             },
             {
               "schrift": "boca",
               "lerntext": "boca",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mesa",
               "lerntext": "mesa",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "padre",
               "lerntext": "padre",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hermano / hermana",
               "lerntext": "hermano / hermana",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "silla",
               "lerntext": "silla",
               "de": "Stuhl",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "jefe / jefa",
               "lerntext": "jefe / jefa",
               "de": "Chef",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amigo / amiga",
               "lerntext": "amigo / amiga",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1276,29 +1501,37 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo tengo un [Slot]",
-          "lerntext": "yo tengo un [Slot]"
+          "lerntext": "yo tengo un [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "tengo": "v"
+          }
         },
         "frameDe": "ich habe ein [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1306,66 +1539,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "coche",
               "lerntext": "coche",
-              "de": "Auto"
+              "de": "Auto",
+              "c": "n"
             },
             {
               "schrift": "papel",
               "lerntext": "papel",
               "de": "Papier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hotel",
               "lerntext": "hotel",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ventana",
               "lerntext": "ventana",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "oficina",
               "lerntext": "oficina",
               "de": "Büro",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "habitación",
               "lerntext": "habitación",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "casa",
               "lerntext": "casa",
               "de": "Haus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "teléfono",
               "lerntext": "teléfono",
               "de": "Telefon",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "libro",
               "lerntext": "libro",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cama",
               "lerntext": "cama",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "niño / niña",
               "lerntext": "niño / niña",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1379,24 +1623,32 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "esta es mi [Slot]",
-          "lerntext": "esta es mi [Slot]"
+          "lerntext": "esta es mi [Slot]",
+          "wortarten": {
+            "esta": "p",
+            "es": "v",
+            "mi": "p"
+          }
         },
         "frameDe": "Das ist mein [Slot].",
         "pronouns": [
           {
             "schrift": "mi / mis",
             "lerntext": "mi / mis",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           },
           {
             "schrift": "tu / tus",
             "lerntext": "tu / tus",
-            "de": "dein"
+            "de": "dein",
+            "c": "p"
           },
           {
             "schrift": "nuestro / nuestra",
             "lerntext": "nuestro / nuestra",
-            "de": "unser"
+            "de": "unser",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1404,81 +1656,95 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "madre",
               "lerntext": "madre",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "padre",
               "lerntext": "padre",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "mujer",
               "lerntext": "mujer",
-              "de": "Frau"
+              "de": "Frau",
+              "c": "n"
             },
             {
               "schrift": "jefe / jefa",
               "lerntext": "jefe / jefa",
-              "de": "Chef"
+              "de": "Chef",
+              "c": "n"
             },
             {
               "schrift": "brazo",
               "lerntext": "brazo",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mano",
               "lerntext": "mano",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "coche",
               "lerntext": "coche",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cuerpo",
               "lerntext": "cuerpo",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "familia",
               "lerntext": "familia",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hijo / hija",
               "lerntext": "hijo / hija",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pie",
               "lerntext": "pie",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "papel",
               "lerntext": "papel",
               "de": "Papier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hotel",
               "lerntext": "hotel",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cocina",
               "lerntext": "cocina",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1492,24 +1758,32 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "esta es [Slot] casa",
-          "lerntext": "esta es [Slot] casa"
+          "lerntext": "esta es [Slot] casa",
+          "wortarten": {
+            "esta": "p",
+            "es": "v",
+            "casa": "n"
+          }
         },
         "frameDe": "Das ist [Slot] Haus.",
         "pronouns": [
           {
             "schrift": "mi / mis",
             "lerntext": "mi / mis",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           },
           {
             "schrift": "tu / tus",
             "lerntext": "tu / tus",
-            "de": "dein"
+            "de": "dein",
+            "c": "p"
           },
           {
             "schrift": "nuestro / nuestra",
             "lerntext": "nuestro / nuestra",
-            "de": "unser"
+            "de": "unser",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1517,12 +1791,14 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "ser",
               "lerntext": "ser",
-              "de": "sein (dauerhaft)"
+              "de": "sein (dauerhaft)",
+              "c": "v"
             },
             {
               "schrift": "tener",
               "lerntext": "tener",
               "de": "haben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -1536,24 +1812,30 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "estos son [Slot] libros",
-          "lerntext": "estos son [Slot] libros"
+          "lerntext": "estos son [Slot] libros",
+          "wortarten": {
+            "son": "v"
+          }
         },
         "frameDe": "Das sind [Slot] Bücher.",
         "pronouns": [
           {
             "schrift": "mi / mis",
             "lerntext": "mi / mis",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           },
           {
             "schrift": "tu / tus",
             "lerntext": "tu / tus",
-            "de": "dein"
+            "de": "dein",
+            "c": "p"
           },
           {
             "schrift": "nuestro / nuestra",
             "lerntext": "nuestro / nuestra",
-            "de": "unser"
+            "de": "unser",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1561,48 +1843,56 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "este / esta",
               "lerntext": "este / esta",
-              "de": "dieser"
+              "de": "dieser",
+              "c": "p"
             },
             {
               "schrift": "vosotros / vosotras",
               "lerntext": "vosotros / vosotras",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "yo",
               "lerntext": "yo",
               "de": "ich",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "tú",
               "lerntext": "tú",
               "de": "du",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "nosotros / nosotras",
               "lerntext": "nosotros / nosotras",
               "de": "wir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ella",
               "lerntext": "ella",
               "de": "sie",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "esto",
               "lerntext": "esto",
               "de": "dies (neutral)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "él",
               "lerntext": "él",
               "de": "er",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -1616,14 +1906,18 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] está aquí",
-          "lerntext": "[Slot] está aquí"
+          "lerntext": "[Slot] está aquí",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "[Slot] ist hier.",
         "pronouns": [
           {
             "schrift": "ninguno / ninguna",
             "lerntext": "ninguno / ninguna",
-            "de": "keiner"
+            "de": "keiner",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1631,71 +1925,83 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "este / esta",
               "lerntext": "este / esta",
-              "de": "dieser"
+              "de": "dieser",
+              "c": "p"
             },
             {
               "schrift": "os",
               "lerntext": "os",
-              "de": "euch"
+              "de": "euch",
+              "c": "p"
             },
             {
               "schrift": "vosotros / vosotras",
               "lerntext": "vosotros / vosotras",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "yo",
               "lerntext": "yo",
               "de": "ich",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "tú",
               "lerntext": "tú",
               "de": "du",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "nosotros / nosotras",
               "lerntext": "nosotros / nosotras",
               "de": "wir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "nuestro / nuestra",
               "lerntext": "nuestro / nuestra",
               "de": "unser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "mi / mis",
               "lerntext": "mi / mis",
               "de": "mein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "tu / tus",
               "lerntext": "tu / tus",
               "de": "dein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ella",
               "lerntext": "ella",
               "de": "sie",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "esto",
               "lerntext": "esto",
               "de": "dies (neutral)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "él",
               "lerntext": "él",
               "de": "er",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -1715,24 +2021,32 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "esta es mi [Slot]",
-          "lerntext": "esta es mi [Slot]"
+          "lerntext": "esta es mi [Slot]",
+          "wortarten": {
+            "esta": "p",
+            "es": "v",
+            "mi": "p"
+          }
         },
         "frameDe": "Das ist mein [Slot].",
         "pronouns": [
           {
             "schrift": "mi / mis",
             "lerntext": "mi / mis",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           },
           {
             "schrift": "tu / tus",
             "lerntext": "tu / tus",
-            "de": "dein"
+            "de": "dein",
+            "c": "p"
           },
           {
             "schrift": "nuestro / nuestra",
             "lerntext": "nuestro / nuestra",
-            "de": "unser"
+            "de": "unser",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1741,42 +2055,49 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "brazo",
               "lerntext": "brazo",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mano",
               "lerntext": "mano",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "coche",
               "lerntext": "coche",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cuerpo",
               "lerntext": "cuerpo",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "familia",
               "lerntext": "familia",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hijo / hija",
               "lerntext": "hijo / hija",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pie",
               "lerntext": "pie",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1811,24 +2132,31 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo quiero [Slot]",
-          "lerntext": "yo quiero [Slot]"
+          "lerntext": "yo quiero [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "quiero": "v"
+          }
         },
         "frameDe": "ich möchte [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1836,71 +2164,83 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "agua",
               "lerntext": "agua",
-              "de": "Wasser"
+              "de": "Wasser",
+              "c": "n"
             },
             {
               "schrift": "comer",
               "lerntext": "comer",
-              "de": "essen"
+              "de": "essen",
+              "c": "v"
             },
             {
               "schrift": "boca",
               "lerntext": "boca",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "brazo",
               "lerntext": "brazo",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ventana",
               "lerntext": "ventana",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mano",
               "lerntext": "mano",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "papel",
               "lerntext": "papel",
               "de": "Papier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "coche",
               "lerntext": "coche",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "puerta",
               "lerntext": "puerta",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hotel",
               "lerntext": "hotel",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cocina",
               "lerntext": "cocina",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "oficina",
               "lerntext": "oficina",
               "de": "Büro",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1911,7 +2251,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "quiero",
             "lerntext": "quiero",
-            "de": "wollen"
+            "de": "wollen",
+            "c": "v"
           }
         ],
         "id": "3.1"
@@ -1920,24 +2261,31 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo necesito [Slot]",
-          "lerntext": "yo necesito [Slot]"
+          "lerntext": "yo necesito [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "necesito": "v"
+          }
         },
         "frameDe": "ich brauche [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1945,71 +2293,83 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "tiempo",
               "lerntext": "tiempo",
-              "de": "Zeit"
+              "de": "Zeit",
+              "c": "n"
             },
             {
               "schrift": "dinero",
               "lerntext": "dinero",
-              "de": "Geld"
+              "de": "Geld",
+              "c": "n"
             },
             {
               "schrift": "agua",
               "lerntext": "agua",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "habitación",
               "lerntext": "habitación",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cuerpo",
               "lerntext": "cuerpo",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "familia",
               "lerntext": "familia",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "boca",
               "lerntext": "boca",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hijo / hija",
               "lerntext": "hijo / hija",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pie",
               "lerntext": "pie",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mesa",
               "lerntext": "mesa",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "brazo",
               "lerntext": "brazo",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ventana",
               "lerntext": "ventana",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2020,7 +2380,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "necesito",
             "lerntext": "necesito",
-            "de": "brauchen"
+            "de": "brauchen",
+            "c": "v"
           }
         ],
         "id": "3.2"
@@ -2029,24 +2390,31 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo necesito [Slot]",
-          "lerntext": "yo necesito [Slot]"
+          "lerntext": "yo necesito [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "necesito": "v"
+          }
         },
         "frameDe": "ich brauche [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2055,18 +2423,21 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "tiempo",
               "lerntext": "tiempo",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dinero",
               "lerntext": "dinero",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "agua",
               "lerntext": "agua",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2101,29 +2472,37 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo no estoy [Slot]",
-          "lerntext": "yo no estoy [Slot]"
+          "lerntext": "yo no estoy [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "estoy": "v"
+          }
         },
         "frameDe": "ich bin nicht [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2131,71 +2510,83 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "listo / lista",
               "lerntext": "listo / lista",
-              "de": "fertig"
+              "de": "fertig",
+              "c": "a"
             },
             {
               "schrift": "seguro / segura",
               "lerntext": "seguro / segura",
-              "de": "sicher"
+              "de": "sicher",
+              "c": "a"
             },
             {
               "schrift": "triste",
               "lerntext": "triste",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "cansado / cansada",
               "lerntext": "cansado / cansada",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "feliz",
               "lerntext": "feliz",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tonto / tonta",
               "lerntext": "tonto / tonta",
               "de": "dumm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bonito / bonita",
               "lerntext": "bonito / bonita",
               "de": "hübsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "viejo / vieja",
               "lerntext": "viejo / vieja",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "joven",
               "lerntext": "joven",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "simpático / simpática",
               "lerntext": "simpático / simpática",
               "de": "sympathisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fuerte",
               "lerntext": "fuerte",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "débil",
               "lerntext": "débil",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -2225,29 +2616,37 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "¿eres tú [Slot]?",
-          "lerntext": "¿eres tú [Slot]?"
+          "lerntext": "¿eres tú [Slot]?",
+          "wortarten": {
+            "¿eres": "v",
+            "tú": "p"
+          }
         },
         "frameDe": "Bist du [Slot]?",
         "pronouns": [
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "vosotros / vosotras",
             "lerntext": "vosotros / vosotras",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2255,12 +2654,14 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "viejo / vieja",
               "lerntext": "viejo / vieja",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "nuevo / nueva",
               "lerntext": "nuevo / nueva",
-              "de": "neu"
+              "de": "neu",
+              "c": "a"
             },
             {
               "schrift": "bien",
@@ -2275,7 +2676,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "importante",
               "lerntext": "importante",
-              "de": "wichtig"
+              "de": "wichtig",
+              "c": "a"
             },
             {
               "schrift": "sí",
@@ -2287,24 +2689,28 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "seguro / segura",
               "lerntext": "seguro / segura",
               "de": "sicher",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "listo / lista",
               "lerntext": "listo / lista",
               "de": "fertig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "triste",
               "lerntext": "triste",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "cansado / cansada",
               "lerntext": "cansado / cansada",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
@@ -2317,24 +2723,28 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "aburrido / aburrida",
               "lerntext": "aburrido / aburrida",
               "de": "langweilig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "feliz",
               "lerntext": "feliz",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tonto / tonta",
               "lerntext": "tonto / tonta",
               "de": "dumm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bonito / bonita",
               "lerntext": "bonito / bonita",
               "de": "hübsch",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -2348,7 +2758,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "¿[Slot] es esto?",
-          "lerntext": "¿[Slot] es esto?"
+          "lerntext": "¿[Slot] es esto?",
+          "wortarten": {
+            "es": "v",
+            "esto?": "p"
+          }
         },
         "frameDe": "[Slot] ist das?",
         "pronouns": [
@@ -2360,7 +2774,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "quien",
             "lerntext": "quien",
-            "de": "wer (Relativpronomen)"
+            "de": "wer (Relativpronomen)",
+            "c": "p"
           },
           {
             "schrift": "cómo",
@@ -2373,71 +2788,83 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "algo",
               "lerntext": "algo",
-              "de": "etwas"
+              "de": "etwas",
+              "c": "p"
             },
             {
               "schrift": "todo / toda",
               "lerntext": "todo / toda",
-              "de": "alles"
+              "de": "alles",
+              "c": "p"
             },
             {
               "schrift": "ninguno / ninguna",
               "lerntext": "ninguno / ninguna",
               "de": "keiner",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "os",
               "lerntext": "os",
               "de": "euch",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "vosotros / vosotras",
               "lerntext": "vosotros / vosotras",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "nuestro / nuestra",
               "lerntext": "nuestro / nuestra",
               "de": "unser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "mi / mis",
               "lerntext": "mi / mis",
               "de": "mein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "tu / tus",
               "lerntext": "tu / tus",
               "de": "dein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "este / esta",
               "lerntext": "este / esta",
               "de": "dieser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "nosotros / nosotras",
               "lerntext": "nosotros / nosotras",
               "de": "wir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "yo",
               "lerntext": "yo",
               "de": "ich",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ella",
               "lerntext": "ella",
               "de": "sie",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -2453,7 +2880,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "quien",
             "lerntext": "quien",
-            "de": "wer (Relativpronomen)"
+            "de": "wer (Relativpronomen)",
+            "c": "p"
           },
           {
             "schrift": "cómo",
@@ -2472,29 +2900,37 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "¿eres tú [Slot]?",
-          "lerntext": "¿eres tú [Slot]?"
+          "lerntext": "¿eres tú [Slot]?",
+          "wortarten": {
+            "¿eres": "v",
+            "tú": "p"
+          }
         },
         "frameDe": "Bist du [Slot]?",
         "pronouns": [
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "vosotros / vosotras",
             "lerntext": "vosotros / vosotras",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2503,6 +2939,7 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "nuevo / nueva",
               "lerntext": "nuevo / nueva",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
@@ -2521,6 +2958,7 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "importante",
               "lerntext": "importante",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             },
             {
@@ -2533,12 +2971,14 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "seguro / segura",
               "lerntext": "seguro / segura",
               "de": "sicher",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "listo / lista",
               "lerntext": "listo / lista",
               "de": "fertig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -2552,7 +2992,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "¿[Slot] es esto?",
-          "lerntext": "¿[Slot] es esto?"
+          "lerntext": "¿[Slot] es esto?",
+          "wortarten": {
+            "es": "v",
+            "esto?": "p"
+          }
         },
         "frameDe": "[Slot] ist das?",
         "pronouns": [
@@ -2564,7 +3008,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "quien",
             "lerntext": "quien",
-            "de": "wer (Relativpronomen)"
+            "de": "wer (Relativpronomen)",
+            "c": "p"
           },
           {
             "schrift": "cómo",
@@ -2578,24 +3023,28 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "ninguno / ninguna",
               "lerntext": "ninguno / ninguna",
               "de": "keiner",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "algo",
               "lerntext": "algo",
               "de": "etwas",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "todo / toda",
               "lerntext": "todo / toda",
               "de": "alles",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "os",
               "lerntext": "os",
               "de": "euch",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -2609,29 +3058,37 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "¿eres tú [Slot]?",
-          "lerntext": "¿eres tú [Slot]?"
+          "lerntext": "¿eres tú [Slot]?",
+          "wortarten": {
+            "¿eres": "v",
+            "tú": "p"
+          }
         },
         "frameDe": "Bist du [Slot]?",
         "pronouns": [
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "vosotros / vosotras",
             "lerntext": "vosotros / vosotras",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2640,6 +3097,7 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "nuevo / nueva",
               "lerntext": "nuevo / nueva",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
@@ -2658,6 +3116,7 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "importante",
               "lerntext": "importante",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             },
             {
@@ -2677,7 +3136,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "¿[Slot] es esto?",
-          "lerntext": "¿[Slot] es esto?"
+          "lerntext": "¿[Slot] es esto?",
+          "wortarten": {
+            "es": "v",
+            "esto?": "p"
+          }
         },
         "frameDe": "[Slot] ist das?",
         "pronouns": [
@@ -2689,7 +3152,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "quien",
             "lerntext": "quien",
-            "de": "wer (Relativpronomen)"
+            "de": "wer (Relativpronomen)",
+            "c": "p"
           },
           {
             "schrift": "cómo",
@@ -2703,18 +3167,21 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "ninguno / ninguna",
               "lerntext": "ninguno / ninguna",
               "de": "keiner",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "algo",
               "lerntext": "algo",
               "de": "etwas",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "todo / toda",
               "lerntext": "todo / toda",
               "de": "alles",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -2769,58 +3236,68 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "iglesia",
               "lerntext": "iglesia",
-              "de": "Kirche"
+              "de": "Kirche",
+              "c": "n"
             },
             {
               "schrift": "escuela",
               "lerntext": "escuela",
-              "de": "Schule"
+              "de": "Schule",
+              "c": "n"
             },
             {
               "schrift": "calle",
               "lerntext": "calle",
-              "de": "Straße"
+              "de": "Straße",
+              "c": "n"
             },
             {
               "schrift": "tiempo",
               "lerntext": "tiempo",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mano",
               "lerntext": "mano",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cocina",
               "lerntext": "cocina",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "familia",
               "lerntext": "familia",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "puerta",
               "lerntext": "puerta",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "madre",
               "lerntext": "madre",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mujer",
               "lerntext": "mujer",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2860,66 +3337,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "estación",
               "lerntext": "estación",
-              "de": "Bahnhof"
+              "de": "Bahnhof",
+              "c": "n"
             },
             {
               "schrift": "cuerpo",
               "lerntext": "cuerpo",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hermano / hermana",
               "lerntext": "hermano / hermana",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pie",
               "lerntext": "pie",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hijo / hija",
               "lerntext": "hijo / hija",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "boca",
               "lerntext": "boca",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mesa",
               "lerntext": "mesa",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "silla",
               "lerntext": "silla",
               "de": "Stuhl",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "brazo",
               "lerntext": "brazo",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "padre",
               "lerntext": "padre",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amigo / amiga",
               "lerntext": "amigo / amiga",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2953,66 +3441,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "tienda",
               "lerntext": "tienda",
-              "de": "Geschäft"
+              "de": "Geschäft",
+              "c": "n"
             },
             {
               "schrift": "dinero",
               "lerntext": "dinero",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "agua",
               "lerntext": "agua",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "papel",
               "lerntext": "papel",
               "de": "Papier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "teléfono",
               "lerntext": "teléfono",
               "de": "Telefon",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "libro",
               "lerntext": "libro",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hotel",
               "lerntext": "hotel",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "coche",
               "lerntext": "coche",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "oficina",
               "lerntext": "oficina",
               "de": "Büro",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "habitación",
               "lerntext": "habitación",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "casa",
               "lerntext": "casa",
               "de": "Haus",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3046,66 +3545,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "aeropuerto",
               "lerntext": "aeropuerto",
-              "de": "Flughafen"
+              "de": "Flughafen",
+              "c": "n"
             },
             {
               "schrift": "estación",
               "lerntext": "estación",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cuerpo",
               "lerntext": "cuerpo",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hermano / hermana",
               "lerntext": "hermano / hermana",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pie",
               "lerntext": "pie",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hijo / hija",
               "lerntext": "hijo / hija",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "boca",
               "lerntext": "boca",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mesa",
               "lerntext": "mesa",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "silla",
               "lerntext": "silla",
               "de": "Stuhl",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "brazo",
               "lerntext": "brazo",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "padre",
               "lerntext": "padre",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3139,71 +3649,83 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "restaurante",
               "lerntext": "restaurante",
-              "de": "Restaurant"
+              "de": "Restaurant",
+              "c": "n"
             },
             {
               "schrift": "baño",
               "lerntext": "baño",
-              "de": "Bad"
+              "de": "Bad",
+              "c": "n"
             },
             {
               "schrift": "tienda",
               "lerntext": "tienda",
               "de": "Geschäft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dinero",
               "lerntext": "dinero",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "agua",
               "lerntext": "agua",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cama",
               "lerntext": "cama",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "papel",
               "lerntext": "papel",
               "de": "Papier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "teléfono",
               "lerntext": "teléfono",
               "de": "Telefon",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "libro",
               "lerntext": "libro",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hotel",
               "lerntext": "hotel",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ventana",
               "lerntext": "ventana",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "coche",
               "lerntext": "coche",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3232,66 +3754,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "universidad",
               "lerntext": "universidad",
-              "de": "Universität"
+              "de": "Universität",
+              "c": "n"
             },
             {
               "schrift": "iglesia",
               "lerntext": "iglesia",
               "de": "Kirche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "calle",
               "lerntext": "calle",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "escuela",
               "lerntext": "escuela",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tiempo",
               "lerntext": "tiempo",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mano",
               "lerntext": "mano",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cocina",
               "lerntext": "cocina",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "familia",
               "lerntext": "familia",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "puerta",
               "lerntext": "puerta",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "madre",
               "lerntext": "madre",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mujer",
               "lerntext": "mujer",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3320,71 +3853,83 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "hospital",
               "lerntext": "hospital",
-              "de": "Krankenhaus"
+              "de": "Krankenhaus",
+              "c": "n"
             },
             {
               "schrift": "museo",
               "lerntext": "museo",
-              "de": "Museum"
+              "de": "Museum",
+              "c": "n"
             },
             {
               "schrift": "baño",
               "lerntext": "baño",
               "de": "Bad",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "restaurante",
               "lerntext": "restaurante",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tienda",
               "lerntext": "tienda",
               "de": "Geschäft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dinero",
               "lerntext": "dinero",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "agua",
               "lerntext": "agua",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "oficina",
               "lerntext": "oficina",
               "de": "Büro",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "habitación",
               "lerntext": "habitación",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "casa",
               "lerntext": "casa",
               "de": "Haus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cama",
               "lerntext": "cama",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "papel",
               "lerntext": "papel",
               "de": "Papier",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3398,7 +3943,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] está aquí",
-          "lerntext": "[Slot] está aquí"
+          "lerntext": "[Slot] está aquí",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "[Slot] ist hier.",
         "pronouns": [
@@ -3418,76 +3966,89 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "ciudad",
               "lerntext": "ciudad",
-              "de": "Stadt"
+              "de": "Stadt",
+              "c": "n"
             },
             {
               "schrift": "parque",
               "lerntext": "parque",
-              "de": "Park"
+              "de": "Park",
+              "c": "n"
             },
             {
               "schrift": "playa",
               "lerntext": "playa",
-              "de": "Strand"
+              "de": "Strand",
+              "c": "n"
             },
             {
               "schrift": "museo",
               "lerntext": "museo",
               "de": "Museum",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aeropuerto",
               "lerntext": "aeropuerto",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "universidad",
               "lerntext": "universidad",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hospital",
               "lerntext": "hospital",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "iglesia",
               "lerntext": "iglesia",
               "de": "Kirche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "baño",
               "lerntext": "baño",
               "de": "Bad",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "calle",
               "lerntext": "calle",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "escuela",
               "lerntext": "escuela",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "restaurante",
               "lerntext": "restaurante",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "estación",
               "lerntext": "estación",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3507,7 +4068,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "está [Slot] la casa",
-          "lerntext": "está [Slot] la casa"
+          "lerntext": "está [Slot] la casa",
+          "wortarten": {
+            "está": "v",
+            "casa": "n"
+          }
         },
         "frameDe": "Es liegt [Slot] dem Haus.",
         "pronouns": [
@@ -3601,7 +4166,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "está [Slot] la casa",
-          "lerntext": "está [Slot] la casa"
+          "lerntext": "está [Slot] la casa",
+          "wortarten": {
+            "está": "v",
+            "casa": "n"
+          }
         },
         "frameDe": "Es liegt [Slot] dem Haus.",
         "pronouns": [
@@ -3664,7 +4233,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] está aquí",
-          "lerntext": "[Slot] está aquí"
+          "lerntext": "[Slot] está aquí",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "[Slot] ist hier.",
         "pronouns": [
@@ -3685,42 +4257,49 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "ciudad",
               "lerntext": "ciudad",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "parque",
               "lerntext": "parque",
               "de": "Park",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "playa",
               "lerntext": "playa",
               "de": "Strand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "museo",
               "lerntext": "museo",
               "de": "Museum",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aeropuerto",
               "lerntext": "aeropuerto",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "universidad",
               "lerntext": "universidad",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hospital",
               "lerntext": "hospital",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3734,7 +4313,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "está [Slot] la casa",
-          "lerntext": "está [Slot] la casa"
+          "lerntext": "está [Slot] la casa",
+          "wortarten": {
+            "está": "v",
+            "casa": "n"
+          }
         },
         "frameDe": "Es liegt [Slot] dem Haus.",
         "pronouns": [
@@ -3798,7 +4381,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] está aquí",
-          "lerntext": "[Slot] está aquí"
+          "lerntext": "[Slot] está aquí",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "[Slot] ist hier.",
         "pronouns": [
@@ -3819,18 +4405,21 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "ciudad",
               "lerntext": "ciudad",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "parque",
               "lerntext": "parque",
               "de": "Park",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "playa",
               "lerntext": "playa",
               "de": "Strand",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -4061,7 +4650,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es la [Slot] vez",
-          "lerntext": "es la [Slot] vez"
+          "lerntext": "es la [Slot] vez",
+          "wortarten": {
+            "es": "v",
+            "vez": "n"
+          }
         },
         "frameDe": "Das ist das [Slot] Mal.",
         "pronouns": [],
@@ -4145,7 +4738,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "vez",
             "lerntext": "vez",
-            "de": "Mal (z.B. 'eine Mal')"
+            "de": "Mal (z.B. 'eine Mal')",
+            "c": "n"
           }
         ],
         "id": "6.4"
@@ -4154,7 +4748,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es demasiado [Slot]",
-          "lerntext": "es demasiado [Slot]"
+          "lerntext": "es demasiado [Slot]",
+          "wortarten": {
+            "es": "v"
+          }
         },
         "frameDe": "Das ist zu [Slot].",
         "pronouns": [],
@@ -4163,86 +4760,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "caro / cara",
               "lerntext": "caro / cara",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "barato / barata",
               "lerntext": "barato / barata",
-              "de": "billig"
+              "de": "billig",
+              "c": "a"
             },
             {
               "schrift": "grande",
               "lerntext": "grande",
-              "de": "groß"
+              "de": "groß",
+              "c": "a"
             },
             {
               "schrift": "pequeño / pequeña",
               "lerntext": "pequeño / pequeña",
-              "de": "klein"
+              "de": "klein",
+              "c": "a"
             },
             {
               "schrift": "largo / larga",
               "lerntext": "largo / larga",
-              "de": "lang"
+              "de": "lang",
+              "c": "a"
             },
             {
               "schrift": "seguro / segura",
               "lerntext": "seguro / segura",
               "de": "sicher",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "cansado / cansada",
               "lerntext": "cansado / cansada",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "importante",
               "lerntext": "importante",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "listo / lista",
               "lerntext": "listo / lista",
               "de": "fertig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "triste",
               "lerntext": "triste",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "nuevo / nueva",
               "lerntext": "nuevo / nueva",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "joven",
               "lerntext": "joven",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "débil",
               "lerntext": "débil",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fuerte",
               "lerntext": "fuerte",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "simpático / simpática",
               "lerntext": "simpático / simpática",
               "de": "sympathisch",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -4272,7 +4884,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es demasiado [Slot]",
-          "lerntext": "es demasiado [Slot]"
+          "lerntext": "es demasiado [Slot]",
+          "wortarten": {
+            "es": "v"
+          }
         },
         "frameDe": "Das ist zu [Slot].",
         "pronouns": [],
@@ -4281,86 +4896,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "corto / corta",
               "lerntext": "corto / corta",
-              "de": "kurz"
+              "de": "kurz",
+              "c": "a"
             },
             {
               "schrift": "alto / alta",
               "lerntext": "alto / alta",
-              "de": "groß"
+              "de": "groß",
+              "c": "a"
             },
             {
               "schrift": "bajo / baja",
               "lerntext": "bajo / baja",
-              "de": "niedrig"
+              "de": "niedrig",
+              "c": "a"
             },
             {
               "schrift": "ancho / ancha",
               "lerntext": "ancho / ancha",
-              "de": "breit"
+              "de": "breit",
+              "c": "a"
             },
             {
               "schrift": "estrecho / estrecha",
               "lerntext": "estrecho / estrecha",
-              "de": "eng"
+              "de": "eng",
+              "c": "a"
             },
             {
               "schrift": "caro / cara",
               "lerntext": "caro / cara",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "barato / barata",
               "lerntext": "barato / barata",
               "de": "billig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grande",
               "lerntext": "grande",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pequeño / pequeña",
               "lerntext": "pequeño / pequeña",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "largo / larga",
               "lerntext": "largo / larga",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "seguro / segura",
               "lerntext": "seguro / segura",
               "de": "sicher",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "cansado / cansada",
               "lerntext": "cansado / cansada",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "importante",
               "lerntext": "importante",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "listo / lista",
               "lerntext": "listo / lista",
               "de": "fertig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "triste",
               "lerntext": "triste",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -4374,7 +5004,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es demasiado [Slot]",
-          "lerntext": "es demasiado [Slot]"
+          "lerntext": "es demasiado [Slot]",
+          "wortarten": {
+            "es": "v"
+          }
         },
         "frameDe": "Das ist zu [Slot].",
         "pronouns": [],
@@ -4383,66 +5016,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "gordo / gorda",
               "lerntext": "gordo / gorda",
-              "de": "dick"
+              "de": "dick",
+              "c": "a"
             },
             {
               "schrift": "corto / corta",
               "lerntext": "corto / corta",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "alto / alta",
               "lerntext": "alto / alta",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bajo / baja",
               "lerntext": "bajo / baja",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ancho / ancha",
               "lerntext": "ancho / ancha",
               "de": "breit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "estrecho / estrecha",
               "lerntext": "estrecho / estrecha",
               "de": "eng",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "caro / cara",
               "lerntext": "caro / cara",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "barato / barata",
               "lerntext": "barato / barata",
               "de": "billig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grande",
               "lerntext": "grande",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pequeño / pequeña",
               "lerntext": "pequeño / pequeña",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "largo / larga",
               "lerntext": "largo / larga",
               "de": "lang",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -4785,29 +5429,37 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo puedo [Slot]",
-          "lerntext": "yo puedo [Slot]"
+          "lerntext": "yo puedo [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "puedo": "v"
+          }
         },
         "frameDe": "ich kann [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -4815,56 +5467,66 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "bailar",
               "lerntext": "bailar",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "jugar",
               "lerntext": "jugar",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "ir",
               "lerntext": "ir",
-              "de": "gehen"
+              "de": "gehen",
+              "c": "v"
             },
             {
               "schrift": "escribir",
               "lerntext": "escribir",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "leer",
               "lerntext": "leer",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "necesitar",
               "lerntext": "necesitar",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "querer",
               "lerntext": "querer",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comer",
               "lerntext": "comer",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tener",
               "lerntext": "tener",
               "de": "haben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ser",
               "lerntext": "ser",
               "de": "sein (dauerhaft)",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -4875,7 +5537,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "puedo",
             "lerntext": "puedo",
-            "de": "können"
+            "de": "können",
+            "c": "v"
           }
         ],
         "id": "7.1"
@@ -4884,29 +5547,37 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo puedo [Slot]",
-          "lerntext": "yo puedo [Slot]"
+          "lerntext": "yo puedo [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "puedo": "v"
+          }
         },
         "frameDe": "ich kann [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -4914,86 +5585,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "ayudar",
               "lerntext": "ayudar",
-              "de": "helfen"
+              "de": "helfen",
+              "c": "v"
             },
             {
               "schrift": "explicar",
               "lerntext": "explicar",
-              "de": "erklären"
+              "de": "erklären",
+              "c": "v"
             },
             {
               "schrift": "hacer",
               "lerntext": "hacer",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "decir",
               "lerntext": "decir",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "usar",
               "lerntext": "usar",
-              "de": "benutzen"
+              "de": "benutzen",
+              "c": "v"
             },
             {
               "schrift": "bailar",
               "lerntext": "bailar",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "jugar",
               "lerntext": "jugar",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ir",
               "lerntext": "ir",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "escribir",
               "lerntext": "escribir",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "leer",
               "lerntext": "leer",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "necesitar",
               "lerntext": "necesitar",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "querer",
               "lerntext": "querer",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comer",
               "lerntext": "comer",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tener",
               "lerntext": "tener",
               "de": "haben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ser",
               "lerntext": "ser",
               "de": "sein (dauerhaft)",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5007,29 +5693,37 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo puedo [Slot]",
-          "lerntext": "yo puedo [Slot]"
+          "lerntext": "yo puedo [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "puedo": "v"
+          }
         },
         "frameDe": "ich kann [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5037,66 +5731,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "crear",
               "lerntext": "crear",
-              "de": "erschaffen"
+              "de": "erschaffen",
+              "c": "v"
             },
             {
               "schrift": "ayudar",
               "lerntext": "ayudar",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "explicar",
               "lerntext": "explicar",
               "de": "erklären",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hacer",
               "lerntext": "hacer",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "decir",
               "lerntext": "decir",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "usar",
               "lerntext": "usar",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bailar",
               "lerntext": "bailar",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "jugar",
               "lerntext": "jugar",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ir",
               "lerntext": "ir",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "escribir",
               "lerntext": "escribir",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "leer",
               "lerntext": "leer",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5110,24 +5815,31 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo tengo que [Slot]",
-          "lerntext": "yo tengo que [Slot]"
+          "lerntext": "yo tengo que [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "tengo": "v"
+          }
         },
         "frameDe": "ich muss [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5135,86 +5847,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "trabajar",
               "lerntext": "trabajar",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "dormir",
               "lerntext": "dormir",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "esperar",
               "lerntext": "esperar",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "pagar",
               "lerntext": "pagar",
-              "de": "bezahlen"
+              "de": "bezahlen",
+              "c": "v"
             },
             {
               "schrift": "comenzar",
               "lerntext": "comenzar",
-              "de": "beginnen"
+              "de": "beginnen",
+              "c": "v"
             },
             {
               "schrift": "crear",
               "lerntext": "crear",
               "de": "erschaffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ayudar",
               "lerntext": "ayudar",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "necesitar",
               "lerntext": "necesitar",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "usar",
               "lerntext": "usar",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "decir",
               "lerntext": "decir",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hacer",
               "lerntext": "hacer",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "poder",
               "lerntext": "poder",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "explicar",
               "lerntext": "explicar",
               "de": "erklären",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "querer",
               "lerntext": "querer",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "jugar",
               "lerntext": "jugar",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5225,12 +5952,14 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "deber",
             "lerntext": "deber",
-            "de": "sollen"
+            "de": "sollen",
+            "c": "v"
           },
           {
             "schrift": "que",
             "lerntext": "que",
-            "de": "der"
+            "de": "der",
+            "c": "p"
           }
         ],
         "id": "7.4"
@@ -5239,24 +5968,31 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo tengo que [Slot]",
-          "lerntext": "yo tengo que [Slot]"
+          "lerntext": "yo tengo que [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "tengo": "v"
+          }
         },
         "frameDe": "ich muss [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5264,76 +6000,89 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "ducharse",
               "lerntext": "ducharse",
-              "de": "duschen"
+              "de": "duschen",
+              "c": "v"
             },
             {
               "schrift": "lavar",
               "lerntext": "lavar",
-              "de": "waschen"
+              "de": "waschen",
+              "c": "v"
             },
             {
               "schrift": "limpiar",
               "lerntext": "limpiar",
-              "de": "putzen"
+              "de": "putzen",
+              "c": "v"
             },
             {
               "schrift": "trabajar",
               "lerntext": "trabajar",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dormir",
               "lerntext": "dormir",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "esperar",
               "lerntext": "esperar",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pagar",
               "lerntext": "pagar",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comenzar",
               "lerntext": "comenzar",
               "de": "beginnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "crear",
               "lerntext": "crear",
               "de": "erschaffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ayudar",
               "lerntext": "ayudar",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "necesitar",
               "lerntext": "necesitar",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "leer",
               "lerntext": "leer",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comer",
               "lerntext": "comer",
               "de": "essen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5347,29 +6096,37 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo quiero [Slot]",
-          "lerntext": "yo quiero [Slot]"
+          "lerntext": "yo quiero [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "quiero": "v"
+          }
         },
         "frameDe": "ich will [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5377,86 +6134,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "hablar",
               "lerntext": "hablar",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "escuchar",
               "lerntext": "escuchar",
-              "de": "zuhören"
+              "de": "zuhören",
+              "c": "v"
             },
             {
               "schrift": "mirar",
               "lerntext": "mirar",
-              "de": "schauen"
+              "de": "schauen",
+              "c": "v"
             },
             {
               "schrift": "llamar",
               "lerntext": "llamar",
-              "de": "rufen"
+              "de": "rufen",
+              "c": "v"
             },
             {
               "schrift": "preguntar",
               "lerntext": "preguntar",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "lavar",
               "lerntext": "lavar",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "deber",
               "lerntext": "deber",
               "de": "sollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "limpiar",
               "lerntext": "limpiar",
               "de": "putzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ducharse",
               "lerntext": "ducharse",
               "de": "duschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comenzar",
               "lerntext": "comenzar",
               "de": "beginnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pagar",
               "lerntext": "pagar",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "trabajar",
               "lerntext": "trabajar",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dormir",
               "lerntext": "dormir",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "esperar",
               "lerntext": "esperar",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "usar",
               "lerntext": "usar",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5470,29 +6242,37 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo quiero [Slot]",
-          "lerntext": "yo quiero [Slot]"
+          "lerntext": "yo quiero [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "quiero": "v"
+          }
         },
         "frameDe": "ich will [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5500,71 +6280,83 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "oír",
               "lerntext": "oír",
-              "de": "hören"
+              "de": "hören",
+              "c": "v"
             },
             {
               "schrift": "ver",
               "lerntext": "ver",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "hablar",
               "lerntext": "hablar",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "escuchar",
               "lerntext": "escuchar",
               "de": "zuhören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mirar",
               "lerntext": "mirar",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "llamar",
               "lerntext": "llamar",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "preguntar",
               "lerntext": "preguntar",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lavar",
               "lerntext": "lavar",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "deber",
               "lerntext": "deber",
               "de": "sollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "limpiar",
               "lerntext": "limpiar",
               "de": "putzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ducharse",
               "lerntext": "ducharse",
               "de": "duschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comenzar",
               "lerntext": "comenzar",
               "de": "beginnen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5578,19 +6370,25 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo no puedo [Slot]",
-          "lerntext": "yo no puedo [Slot]"
+          "lerntext": "yo no puedo [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "puedo": "v"
+          }
         },
         "frameDe": "ich darf nicht [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5598,86 +6396,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "perder",
               "lerntext": "perder",
-              "de": "verlieren"
+              "de": "verlieren",
+              "c": "v"
             },
             {
               "schrift": "llorar",
               "lerntext": "llorar",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "reír",
               "lerntext": "reír",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "quedar",
               "lerntext": "quedar",
-              "de": "bleiben"
+              "de": "bleiben",
+              "c": "v"
             },
             {
               "schrift": "morir",
               "lerntext": "morir",
-              "de": "sterben"
+              "de": "sterben",
+              "c": "v"
             },
             {
               "schrift": "oír",
               "lerntext": "oír",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ver",
               "lerntext": "ver",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "preguntar",
               "lerntext": "preguntar",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mirar",
               "lerntext": "mirar",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "escuchar",
               "lerntext": "escuchar",
               "de": "zuhören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "llamar",
               "lerntext": "llamar",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hablar",
               "lerntext": "hablar",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lavar",
               "lerntext": "lavar",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pagar",
               "lerntext": "pagar",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "decir",
               "lerntext": "decir",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5688,7 +6501,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "consigo",
             "lerntext": "consigo",
-            "de": "erreichen"
+            "de": "erreichen",
+            "c": "v"
           }
         ],
         "id": "7.8"
@@ -5697,19 +6511,25 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo no puedo [Slot]",
-          "lerntext": "yo no puedo [Slot]"
+          "lerntext": "yo no puedo [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "puedo": "v"
+          }
         },
         "frameDe": "ich darf nicht [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5717,81 +6537,95 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "abrir",
               "lerntext": "abrir",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "cerrar",
               "lerntext": "cerrar",
-              "de": "schließen"
+              "de": "schließen",
+              "c": "v"
             },
             {
               "schrift": "dejar",
               "lerntext": "dejar",
-              "de": "lassen"
+              "de": "lassen",
+              "c": "v"
             },
             {
               "schrift": "ganar",
               "lerntext": "ganar",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "perder",
               "lerntext": "perder",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "llorar",
               "lerntext": "llorar",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "reír",
               "lerntext": "reír",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "quedar",
               "lerntext": "quedar",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "morir",
               "lerntext": "morir",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "oír",
               "lerntext": "oír",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ver",
               "lerntext": "ver",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "preguntar",
               "lerntext": "preguntar",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mirar",
               "lerntext": "mirar",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hacer",
               "lerntext": "hacer",
               "de": "machen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5805,19 +6639,25 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo no puedo [Slot]",
-          "lerntext": "yo no puedo [Slot]"
+          "lerntext": "yo no puedo [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "puedo": "v"
+          }
         },
         "frameDe": "ich darf nicht [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5826,54 +6666,63 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "abrir",
               "lerntext": "abrir",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cerrar",
               "lerntext": "cerrar",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dejar",
               "lerntext": "dejar",
               "de": "lassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ganar",
               "lerntext": "ganar",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "perder",
               "lerntext": "perder",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "llorar",
               "lerntext": "llorar",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "reír",
               "lerntext": "reír",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "quedar",
               "lerntext": "quedar",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "morir",
               "lerntext": "morir",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5887,19 +6736,25 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo no puedo [Slot]",
-          "lerntext": "yo no puedo [Slot]"
+          "lerntext": "yo no puedo [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "puedo": "v"
+          }
         },
         "frameDe": "ich darf nicht [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5908,24 +6763,28 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "abrir",
               "lerntext": "abrir",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cerrar",
               "lerntext": "cerrar",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dejar",
               "lerntext": "dejar",
               "de": "lassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ganar",
               "lerntext": "ganar",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5960,29 +6819,37 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo voy a una [Slot]",
-          "lerntext": "yo voy a una [Slot]"
+          "lerntext": "yo voy a una [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "voy": "v"
+          }
         },
         "frameDe": "ich gehe zu einem [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5990,66 +6857,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "tienda",
               "lerntext": "tienda",
-              "de": "Geschäft"
+              "de": "Geschäft",
+              "c": "n"
             },
             {
               "schrift": "baño",
               "lerntext": "baño",
               "de": "Bad",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "museo",
               "lerntext": "museo",
               "de": "Museum",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "restaurante",
               "lerntext": "restaurante",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hospital",
               "lerntext": "hospital",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dinero",
               "lerntext": "dinero",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "teléfono",
               "lerntext": "teléfono",
               "de": "Telefon",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "libro",
               "lerntext": "libro",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hotel",
               "lerntext": "hotel",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "agua",
               "lerntext": "agua",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ventana",
               "lerntext": "ventana",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -6060,12 +6938,14 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "camino",
             "lerntext": "camino",
-            "de": "gehen"
+            "de": "gehen",
+            "c": "v"
           },
           {
             "schrift": "vengo",
             "lerntext": "vengo",
-            "de": "kommen"
+            "de": "kommen",
+            "c": "v"
           }
         ],
         "id": "8.1"
@@ -6074,19 +6954,25 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo viajo en [Slot]",
-          "lerntext": "yo viajo en [Slot]"
+          "lerntext": "yo viajo en [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "viajo": "v"
+          }
         },
         "frameDe": "ich fahre mit [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6094,81 +6980,95 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "autobús",
               "lerntext": "autobús",
-              "de": "Bus"
+              "de": "Bus",
+              "c": "n"
             },
             {
               "schrift": "tren",
               "lerntext": "tren",
-              "de": "Zug"
+              "de": "Zug",
+              "c": "n"
             },
             {
               "schrift": "coche",
               "lerntext": "coche",
-              "de": "Auto"
+              "de": "Auto",
+              "c": "n"
             },
             {
               "schrift": "avión",
               "lerntext": "avión",
-              "de": "Flugzeug"
+              "de": "Flugzeug",
+              "c": "n"
             },
             {
               "schrift": "vez",
               "lerntext": "vez",
               "de": "Mal (z.B. 'eine Mal')",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "iglesia",
               "lerntext": "iglesia",
               "de": "Kirche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "parque",
               "lerntext": "parque",
               "de": "Park",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "playa",
               "lerntext": "playa",
               "de": "Strand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "calle",
               "lerntext": "calle",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ciudad",
               "lerntext": "ciudad",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "escuela",
               "lerntext": "escuela",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aeropuerto",
               "lerntext": "aeropuerto",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "estación",
               "lerntext": "estación",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "universidad",
               "lerntext": "universidad",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -6179,7 +7079,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "viajo",
             "lerntext": "viajo",
-            "de": "reisen"
+            "de": "reisen",
+            "c": "v"
           }
         ],
         "id": "8.2"
@@ -6188,24 +7089,31 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo quiero [Slot] ahora",
-          "lerntext": "yo quiero [Slot] ahora"
+          "lerntext": "yo quiero [Slot] ahora",
+          "wortarten": {
+            "yo": "p",
+            "quiero": "v"
+          }
         },
         "frameDe": "ich will jetzt [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6213,76 +7121,89 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "caminar",
               "lerntext": "caminar",
-              "de": "gehen"
+              "de": "gehen",
+              "c": "v"
             },
             {
               "schrift": "vivir",
               "lerntext": "vivir",
-              "de": "leben"
+              "de": "leben",
+              "c": "v"
             },
             {
               "schrift": "poner",
               "lerntext": "poner",
-              "de": "stellen"
+              "de": "stellen",
+              "c": "v"
             },
             {
               "schrift": "venir",
               "lerntext": "venir",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viajar",
               "lerntext": "viajar",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "conseguir",
               "lerntext": "conseguir",
               "de": "erreichen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "llorar",
               "lerntext": "llorar",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "abrir",
               "lerntext": "abrir",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "reír",
               "lerntext": "reír",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "oír",
               "lerntext": "oír",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ver",
               "lerntext": "ver",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "perder",
               "lerntext": "perder",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "morir",
               "lerntext": "morir",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6302,24 +7223,31 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo quiero [Slot] ahora",
-          "lerntext": "yo quiero [Slot] ahora"
+          "lerntext": "yo quiero [Slot] ahora",
+          "wortarten": {
+            "yo": "p",
+            "quiero": "v"
+          }
         },
         "frameDe": "ich will jetzt [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6328,30 +7256,35 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "vivir",
               "lerntext": "vivir",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "poner",
               "lerntext": "poner",
               "de": "stellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "venir",
               "lerntext": "venir",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viajar",
               "lerntext": "viajar",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "conseguir",
               "lerntext": "conseguir",
               "de": "erreichen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6365,19 +7298,25 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo viajo en [Slot]",
-          "lerntext": "yo viajo en [Slot]"
+          "lerntext": "yo viajo en [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "viajo": "v"
+          }
         },
         "frameDe": "ich fahre mit [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6386,24 +7325,28 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "autobús",
               "lerntext": "autobús",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tren",
               "lerntext": "tren",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "avión",
               "lerntext": "avión",
               "de": "Flugzeug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vez",
               "lerntext": "vez",
               "de": "Mal (z.B. 'eine Mal')",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -6417,24 +7360,31 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo quiero [Slot] ahora",
-          "lerntext": "yo quiero [Slot] ahora"
+          "lerntext": "yo quiero [Slot] ahora",
+          "wortarten": {
+            "yo": "p",
+            "quiero": "v"
+          }
         },
         "frameDe": "ich will jetzt [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6443,24 +7393,28 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "vivir",
               "lerntext": "vivir",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "poner",
               "lerntext": "poner",
               "de": "stellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "venir",
               "lerntext": "venir",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viajar",
               "lerntext": "viajar",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6474,19 +7428,25 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo viajo en [Slot]",
-          "lerntext": "yo viajo en [Slot]"
+          "lerntext": "yo viajo en [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "viajo": "v"
+          }
         },
         "frameDe": "ich fahre mit [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6495,18 +7455,21 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "autobús",
               "lerntext": "autobús",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tren",
               "lerntext": "tren",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "avión",
               "lerntext": "avión",
               "de": "Flugzeug",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -6590,7 +7553,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "entonces",
               "lerntext": "entonces",
-              "de": "also"
+              "de": "also",
+              "c": "k"
             },
             {
               "schrift": "todavía",
@@ -6608,7 +7572,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "nos vemos por la [Slot]",
-          "lerntext": "nos vemos por la [Slot]"
+          "lerntext": "nos vemos por la [Slot]",
+          "wortarten": {
+            "nos": "p",
+            "vemos": "v"
+          }
         },
         "frameDe": "Wir sehen uns am [Slot].",
         "pronouns": [
@@ -6628,17 +7596,20 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "noche",
               "lerntext": "noche",
-              "de": "Nacht"
+              "de": "Nacht",
+              "c": "n"
             },
             {
               "schrift": "día",
               "lerntext": "día",
-              "de": "Tag"
+              "de": "Tag",
+              "c": "n"
             },
             {
               "schrift": "semana",
               "lerntext": "semana",
-              "de": "Woche"
+              "de": "Woche",
+              "c": "n"
             },
             {
               "schrift": "hoy",
@@ -6723,7 +7694,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "nos",
             "lerntext": "nos",
-            "de": "uns"
+            "de": "uns",
+            "c": "p"
           }
         ],
         "id": "9.2"
@@ -6741,66 +7713,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "hora",
               "lerntext": "hora",
-              "de": "Stunde"
+              "de": "Stunde",
+              "c": "n"
             },
             {
               "schrift": "semana",
               "lerntext": "semana",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "noche",
               "lerntext": "noche",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "iglesia",
               "lerntext": "iglesia",
               "de": "Kirche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "calle",
               "lerntext": "calle",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ciudad",
               "lerntext": "ciudad",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "escuela",
               "lerntext": "escuela",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "universidad",
               "lerntext": "universidad",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tiempo",
               "lerntext": "tiempo",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mano",
               "lerntext": "mano",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cocina",
               "lerntext": "cocina",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -6823,71 +7806,83 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "minuto",
               "lerntext": "minuto",
-              "de": "Minute"
+              "de": "Minute",
+              "c": "n"
             },
             {
               "schrift": "segundo",
               "lerntext": "segundo",
-              "de": "Sekunde"
+              "de": "Sekunde",
+              "c": "n"
             },
             {
               "schrift": "hora",
               "lerntext": "hora",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "semana",
               "lerntext": "semana",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "noche",
               "lerntext": "noche",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "iglesia",
               "lerntext": "iglesia",
               "de": "Kirche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "calle",
               "lerntext": "calle",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ciudad",
               "lerntext": "ciudad",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "escuela",
               "lerntext": "escuela",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "universidad",
               "lerntext": "universidad",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tiempo",
               "lerntext": "tiempo",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "familia",
               "lerntext": "familia",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -6911,6 +7906,7 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "entonces",
               "lerntext": "entonces",
               "de": "also",
+              "c": "k",
               "wieder": true
             },
             {
@@ -6976,18 +7972,21 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "minuto",
               "lerntext": "minuto",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "segundo",
               "lerntext": "segundo",
               "de": "Sekunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hora",
               "lerntext": "hora",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7022,29 +8021,36 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo amo [Slot]",
-          "lerntext": "yo amo [Slot]"
+          "lerntext": "yo amo [Slot]",
+          "wortarten": {
+            "yo": "p"
+          }
         },
         "frameDe": "ich mag [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7052,86 +8058,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "sol",
               "lerntext": "sol",
-              "de": "Sonne"
+              "de": "Sonne",
+              "c": "n"
             },
             {
               "schrift": "lluvia",
               "lerntext": "lluvia",
-              "de": "Regen"
+              "de": "Regen",
+              "c": "n"
             },
             {
               "schrift": "nieve",
               "lerntext": "nieve",
-              "de": "Schnee"
+              "de": "Schnee",
+              "c": "n"
             },
             {
               "schrift": "viento",
               "lerntext": "viento",
-              "de": "Wind"
+              "de": "Wind",
+              "c": "n"
             },
             {
               "schrift": "tiempo",
               "lerntext": "tiempo",
-              "de": "Zeit"
+              "de": "Zeit",
+              "c": "n"
             },
             {
               "schrift": "día",
               "lerntext": "día",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "minuto",
               "lerntext": "minuto",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "segundo",
               "lerntext": "segundo",
               "de": "Sekunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hora",
               "lerntext": "hora",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "semana",
               "lerntext": "semana",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "noche",
               "lerntext": "noche",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tren",
               "lerntext": "tren",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vez",
               "lerntext": "vez",
               "de": "Mal (z.B. 'eine Mal')",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "avión",
               "lerntext": "avión",
               "de": "Flugzeug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "autobús",
               "lerntext": "autobús",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7142,12 +8163,14 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "quiero",
             "lerntext": "quiero",
-            "de": "wollen"
+            "de": "wollen",
+            "c": "v"
           },
           {
             "schrift": "quiero",
             "lerntext": "quiero",
-            "de": "wollen"
+            "de": "wollen",
+            "c": "v"
           }
         ],
         "id": "10.1"
@@ -7156,29 +8179,36 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo amo [Slot]",
-          "lerntext": "yo amo [Slot]"
+          "lerntext": "yo amo [Slot]",
+          "wortarten": {
+            "yo": "p"
+          }
         },
         "frameDe": "ich mag [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7186,71 +8216,83 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "montaña",
               "lerntext": "montaña",
-              "de": "Berg"
+              "de": "Berg",
+              "c": "n"
             },
             {
               "schrift": "mar",
               "lerntext": "mar",
-              "de": "Meer"
+              "de": "Meer",
+              "c": "n"
             },
             {
               "schrift": "sol",
               "lerntext": "sol",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lluvia",
               "lerntext": "lluvia",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nieve",
               "lerntext": "nieve",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "viento",
               "lerntext": "viento",
               "de": "Wind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tiempo",
               "lerntext": "tiempo",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "día",
               "lerntext": "día",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "minuto",
               "lerntext": "minuto",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "segundo",
               "lerntext": "segundo",
               "de": "Sekunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "parque",
               "lerntext": "parque",
               "de": "Park",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "baño",
               "lerntext": "baño",
               "de": "Bad",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7264,19 +8306,25 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo veo a [Slot]",
-          "lerntext": "yo veo a [Slot]"
+          "lerntext": "yo veo a [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "veo": "v"
+          }
         },
         "frameDe": "ich sehe [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7284,81 +8332,95 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "me",
               "lerntext": "me",
-              "de": "mich"
+              "de": "mich",
+              "c": "p"
             },
             {
               "schrift": "te",
               "lerntext": "te",
-              "de": "dich"
+              "de": "dich",
+              "c": "p"
             },
             {
               "schrift": "lo / la",
               "lerntext": "lo / la",
-              "de": "ihn"
+              "de": "ihn",
+              "c": "p"
             },
             {
               "schrift": "nos",
               "lerntext": "nos",
-              "de": "uns"
+              "de": "uns",
+              "c": "p"
             },
             {
               "schrift": "ninguno / ninguna",
               "lerntext": "ninguno / ninguna",
               "de": "keiner",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "quien",
               "lerntext": "quien",
               "de": "wer (Relativpronomen)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "todo / toda",
               "lerntext": "todo / toda",
               "de": "alles",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "que",
               "lerntext": "que",
               "de": "der",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "os",
               "lerntext": "os",
               "de": "euch",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "algo",
               "lerntext": "algo",
               "de": "etwas",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "vosotros / vosotras",
               "lerntext": "vosotros / vosotras",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "nuestro / nuestra",
               "lerntext": "nuestro / nuestra",
               "de": "unser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "mi / mis",
               "lerntext": "mi / mis",
               "de": "mein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "tu / tus",
               "lerntext": "tu / tus",
               "de": "dein",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -7369,7 +8431,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "encuentro",
             "lerntext": "encuentro",
-            "de": "finden"
+            "de": "finden",
+            "c": "v"
           }
         ],
         "id": "10.3"
@@ -7378,7 +8441,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "la comida está [Slot]",
-          "lerntext": "la comida está [Slot]"
+          "lerntext": "la comida está [Slot]",
+          "wortarten": {
+            "comida": "n",
+            "está": "v"
+          }
         },
         "frameDe": "Das Essen ist [Slot].",
         "pronouns": [],
@@ -7387,86 +8454,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "dulce",
               "lerntext": "dulce",
-              "de": "süß"
+              "de": "süß",
+              "c": "a"
             },
             {
               "schrift": "caliente",
               "lerntext": "caliente",
-              "de": "heiß"
+              "de": "heiß",
+              "c": "a"
             },
             {
               "schrift": "frío / fría",
               "lerntext": "frío / fría",
-              "de": "kalt"
+              "de": "kalt",
+              "c": "a"
             },
             {
               "schrift": "limpio / limpia",
               "lerntext": "limpio / limpia",
-              "de": "sauber"
+              "de": "sauber",
+              "c": "a"
             },
             {
               "schrift": "sucio / sucia",
               "lerntext": "sucio / sucia",
-              "de": "schmutzig"
+              "de": "schmutzig",
+              "c": "a"
             },
             {
               "schrift": "gordo / gorda",
               "lerntext": "gordo / gorda",
               "de": "dick",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "corto / corta",
               "lerntext": "corto / corta",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bajo / baja",
               "lerntext": "bajo / baja",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ancho / ancha",
               "lerntext": "ancho / ancha",
               "de": "breit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "estrecho / estrecha",
               "lerntext": "estrecho / estrecha",
               "de": "eng",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "alto / alta",
               "lerntext": "alto / alta",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "caro / cara",
               "lerntext": "caro / cara",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "largo / larga",
               "lerntext": "largo / larga",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "barato / barata",
               "lerntext": "barato / barata",
               "de": "billig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pequeño / pequeña",
               "lerntext": "pequeño / pequeña",
               "de": "klein",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -7477,7 +8559,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "comida",
             "lerntext": "comida",
-            "de": "Essen"
+            "de": "Essen",
+            "c": "n"
           }
         ],
         "id": "10.4"
@@ -7486,29 +8569,36 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo amo [Slot]",
-          "lerntext": "yo amo [Slot]"
+          "lerntext": "yo amo [Slot]",
+          "wortarten": {
+            "yo": "p"
+          }
         },
         "frameDe": "ich mag [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7517,36 +8607,42 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "montaña",
               "lerntext": "montaña",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mar",
               "lerntext": "mar",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sol",
               "lerntext": "sol",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lluvia",
               "lerntext": "lluvia",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nieve",
               "lerntext": "nieve",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "viento",
               "lerntext": "viento",
               "de": "Wind",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7560,7 +8656,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "la comida está [Slot]",
-          "lerntext": "la comida está [Slot]"
+          "lerntext": "la comida está [Slot]",
+          "wortarten": {
+            "comida": "n",
+            "está": "v"
+          }
         },
         "frameDe": "Das Essen ist [Slot].",
         "pronouns": [],
@@ -7570,36 +8670,42 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "dulce",
               "lerntext": "dulce",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "caliente",
               "lerntext": "caliente",
               "de": "heiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "frío / fría",
               "lerntext": "frío / fría",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "limpio / limpia",
               "lerntext": "limpio / limpia",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sucio / sucia",
               "lerntext": "sucio / sucia",
               "de": "schmutzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gordo / gorda",
               "lerntext": "gordo / gorda",
               "de": "dick",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -7613,19 +8719,25 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo veo a [Slot]",
-          "lerntext": "yo veo a [Slot]"
+          "lerntext": "yo veo a [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "veo": "v"
+          }
         },
         "frameDe": "ich sehe [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7634,18 +8746,21 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "me",
               "lerntext": "me",
               "de": "mich",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "te",
               "lerntext": "te",
               "de": "dich",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "lo / la",
               "lerntext": "lo / la",
               "de": "ihn",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -7659,7 +8774,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "la comida está [Slot]",
-          "lerntext": "la comida está [Slot]"
+          "lerntext": "la comida está [Slot]",
+          "wortarten": {
+            "comida": "n",
+            "está": "v"
+          }
         },
         "frameDe": "Das Essen ist [Slot].",
         "pronouns": [],
@@ -7669,30 +8788,35 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "dulce",
               "lerntext": "dulce",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "caliente",
               "lerntext": "caliente",
               "de": "heiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "frío / fría",
               "lerntext": "frío / fría",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "limpio / limpia",
               "lerntext": "limpio / limpia",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sucio / sucia",
               "lerntext": "sucio / sucia",
               "de": "schmutzig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -7727,29 +8851,36 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo estaba [Slot] ayer",
-          "lerntext": "yo estaba [Slot] ayer"
+          "lerntext": "yo estaba [Slot] ayer",
+          "wortarten": {
+            "yo": "p"
+          }
         },
         "frameDe": "ich war gestern [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7757,66 +8888,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "cansado / cansada",
               "lerntext": "cansado / cansada",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "corto / corta",
               "lerntext": "corto / corta",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "limpio / limpia",
               "lerntext": "limpio / limpia",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bajo / baja",
               "lerntext": "bajo / baja",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "caliente",
               "lerntext": "caliente",
               "de": "heiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dulce",
               "lerntext": "dulce",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ancho / ancha",
               "lerntext": "ancho / ancha",
               "de": "breit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "estrecho / estrecha",
               "lerntext": "estrecho / estrecha",
               "de": "eng",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gordo / gorda",
               "lerntext": "gordo / gorda",
               "de": "dick",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "frío / fría",
               "lerntext": "frío / fría",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "alto / alta",
               "lerntext": "alto / alta",
               "de": "groß",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -7830,24 +8972,31 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo voy a [Slot] mañana",
-          "lerntext": "yo voy a [Slot] mañana"
+          "lerntext": "yo voy a [Slot] mañana",
+          "wortarten": {
+            "yo": "p",
+            "voy": "v"
+          }
         },
         "frameDe": "ich werde morgen [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7855,86 +9004,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "comprar",
               "lerntext": "comprar",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "vender",
               "lerntext": "vender",
-              "de": "verkaufen"
+              "de": "verkaufen",
+              "c": "v"
             },
             {
               "schrift": "dar",
               "lerntext": "dar",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "tomar",
               "lerntext": "tomar",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "encontrar",
               "lerntext": "encontrar",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "vivir",
               "lerntext": "vivir",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "poner",
               "lerntext": "poner",
               "de": "stellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "quedar",
               "lerntext": "quedar",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "poder",
               "lerntext": "poder",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "deber",
               "lerntext": "deber",
               "de": "sollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "escuchar",
               "lerntext": "escuchar",
               "de": "zuhören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "conseguir",
               "lerntext": "conseguir",
               "de": "erreichen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "trabajar",
               "lerntext": "trabajar",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "llamar",
               "lerntext": "llamar",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "venir",
               "lerntext": "venir",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -7948,19 +9112,25 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo quiero [Slot] mucho",
-          "lerntext": "yo quiero [Slot] mucho"
+          "lerntext": "yo quiero [Slot] mucho",
+          "wortarten": {
+            "yo": "p",
+            "quiero": "v"
+          }
         },
         "frameDe": "ich [Slot] viel.",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7968,86 +9138,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "buscar",
               "lerntext": "buscar",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "saber",
               "lerntext": "saber",
-              "de": "wissen"
+              "de": "wissen",
+              "c": "v"
             },
             {
               "schrift": "creer",
               "lerntext": "creer",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "pensar",
               "lerntext": "pensar",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "sentir",
               "lerntext": "sentir",
-              "de": "fühlen"
+              "de": "fühlen",
+              "c": "v"
             },
             {
               "schrift": "tomar",
               "lerntext": "tomar",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vender",
               "lerntext": "vender",
               "de": "verkaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dar",
               "lerntext": "dar",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comprar",
               "lerntext": "comprar",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cerrar",
               "lerntext": "cerrar",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "limpiar",
               "lerntext": "limpiar",
               "de": "putzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ir",
               "lerntext": "ir",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "crear",
               "lerntext": "crear",
               "de": "erschaffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "explicar",
               "lerntext": "explicar",
               "de": "erklären",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dormir",
               "lerntext": "dormir",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8061,19 +9246,26 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo me pongo [Slot]",
-          "lerntext": "yo me pongo [Slot]"
+          "lerntext": "yo me pongo [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "me": "p",
+            "pongo": "v"
+          }
         },
         "frameDe": "ich werde [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8081,86 +9273,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "abierto / abierta",
               "lerntext": "abierto / abierta",
-              "de": "offen"
+              "de": "offen",
+              "c": "a"
             },
             {
               "schrift": "cerrado / cerrada",
               "lerntext": "cerrado / cerrada",
-              "de": "geschlossen"
+              "de": "geschlossen",
+              "c": "a"
             },
             {
               "schrift": "listo / lista",
               "lerntext": "listo / lista",
-              "de": "fertig"
+              "de": "fertig",
+              "c": "a"
             },
             {
               "schrift": "seguro / segura",
               "lerntext": "seguro / segura",
-              "de": "sicher"
+              "de": "sicher",
+              "c": "a"
             },
             {
               "schrift": "peligroso / peligrosa",
               "lerntext": "peligroso / peligrosa",
-              "de": "gefährlich"
+              "de": "gefährlich",
+              "c": "a"
             },
             {
               "schrift": "sucio / sucia",
               "lerntext": "sucio / sucia",
               "de": "schmutzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grande",
               "lerntext": "grande",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "corto / corta",
               "lerntext": "corto / corta",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "limpio / limpia",
               "lerntext": "limpio / limpia",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "caro / cara",
               "lerntext": "caro / cara",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bajo / baja",
               "lerntext": "bajo / baja",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "largo / larga",
               "lerntext": "largo / larga",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "caliente",
               "lerntext": "caliente",
               "de": "heiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dulce",
               "lerntext": "dulce",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ancho / ancha",
               "lerntext": "ancho / ancha",
               "de": "breit",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8174,19 +9381,25 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo quiero [Slot] mucho",
-          "lerntext": "yo quiero [Slot] mucho"
+          "lerntext": "yo quiero [Slot] mucho",
+          "wortarten": {
+            "yo": "p",
+            "quiero": "v"
+          }
         },
         "frameDe": "ich [Slot] viel.",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8195,54 +9408,63 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "buscar",
               "lerntext": "buscar",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "saber",
               "lerntext": "saber",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "creer",
               "lerntext": "creer",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pensar",
               "lerntext": "pensar",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sentir",
               "lerntext": "sentir",
               "de": "fühlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tomar",
               "lerntext": "tomar",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vender",
               "lerntext": "vender",
               "de": "verkaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dar",
               "lerntext": "dar",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comprar",
               "lerntext": "comprar",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8256,19 +9478,26 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo me pongo [Slot]",
-          "lerntext": "yo me pongo [Slot]"
+          "lerntext": "yo me pongo [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "me": "p",
+            "pongo": "v"
+          }
         },
         "frameDe": "ich werde [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8277,18 +9506,21 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "abierto / abierta",
               "lerntext": "abierto / abierta",
               "de": "offen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "cerrado / cerrada",
               "lerntext": "cerrado / cerrada",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "peligroso / peligrosa",
               "lerntext": "peligroso / peligrosa",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8302,19 +9534,25 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo quiero [Slot] mucho",
-          "lerntext": "yo quiero [Slot] mucho"
+          "lerntext": "yo quiero [Slot] mucho",
+          "wortarten": {
+            "yo": "p",
+            "quiero": "v"
+          }
         },
         "frameDe": "ich [Slot] viel.",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8323,30 +9561,35 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "buscar",
               "lerntext": "buscar",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "saber",
               "lerntext": "saber",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "creer",
               "lerntext": "creer",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pensar",
               "lerntext": "pensar",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sentir",
               "lerntext": "sentir",
               "de": "fühlen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8360,19 +9603,26 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo me pongo [Slot]",
-          "lerntext": "yo me pongo [Slot]"
+          "lerntext": "yo me pongo [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "me": "p",
+            "pongo": "v"
+          }
         },
         "frameDe": "ich werde [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8381,18 +9631,21 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "abierto / abierta",
               "lerntext": "abierto / abierta",
               "de": "offen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "cerrado / cerrada",
               "lerntext": "cerrado / cerrada",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "peligroso / peligrosa",
               "lerntext": "peligroso / peligrosa",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8427,24 +9680,31 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "estoy cansado [Slot] trabajo",
-          "lerntext": "estoy cansado [Slot] trabajo"
+          "lerntext": "estoy cansado [Slot] trabajo",
+          "wortarten": {
+            "estoy": "v",
+            "cansado": "a"
+          }
         },
         "frameDe": "Ich bin müde, [Slot] ich arbeite.",
         "pronouns": [
           {
             "schrift": "y",
             "lerntext": "y",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "pero",
             "lerntext": "pero",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           },
           {
             "schrift": "o",
             "lerntext": "o",
-            "de": "oder"
+            "de": "oder",
+            "c": "k"
           }
         ],
         "slotGroups": [
@@ -8452,7 +9712,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "porque",
               "lerntext": "porque",
-              "de": "weil"
+              "de": "weil",
+              "c": "k"
             },
             {
               "schrift": "sobre",
@@ -8467,7 +9728,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "aunque",
               "lerntext": "aunque",
-              "de": "obwohl"
+              "de": "obwohl",
+              "c": "k"
             },
             {
               "schrift": "hasta",
@@ -8542,32 +9804,38 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "y",
             "lerntext": "y",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "pero",
             "lerntext": "pero",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           },
           {
             "schrift": "o",
             "lerntext": "o",
-            "de": "oder"
+            "de": "oder",
+            "c": "k"
           },
           {
             "schrift": "entonces",
             "lerntext": "entonces",
-            "de": "also"
+            "de": "also",
+            "c": "k"
           },
           {
             "schrift": "que",
             "lerntext": "que",
-            "de": "der"
+            "de": "der",
+            "c": "p"
           },
           {
             "schrift": "trabajo",
             "lerntext": "trabajo",
-            "de": "Arbeit"
+            "de": "Arbeit",
+            "c": "n"
           }
         ],
         "id": "12.1"
@@ -8576,24 +9844,31 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "estoy cansado [Slot] trabajo",
-          "lerntext": "estoy cansado [Slot] trabajo"
+          "lerntext": "estoy cansado [Slot] trabajo",
+          "wortarten": {
+            "estoy": "v",
+            "cansado": "a"
+          }
         },
         "frameDe": "Ich bin müde, [Slot] ich arbeite.",
         "pronouns": [
           {
             "schrift": "y",
             "lerntext": "y",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "pero",
             "lerntext": "pero",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           },
           {
             "schrift": "o",
             "lerntext": "o",
-            "de": "oder"
+            "de": "oder",
+            "c": "k"
           }
         ],
         "slotGroups": [
@@ -8684,7 +9959,12 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "quiero [Slot] pero no puedo",
-          "lerntext": "quiero [Slot] pero no puedo"
+          "lerntext": "quiero [Slot] pero no puedo",
+          "wortarten": {
+            "quiero": "v",
+            "pero": "k",
+            "puedo": "v"
+          }
         },
         "frameDe": "Ich will [Slot], aber ich kann nicht.",
         "pronouns": [],
@@ -8693,71 +9973,83 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "entender",
               "lerntext": "entender",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "esperar",
               "lerntext": "esperar",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "tomar",
               "lerntext": "tomar",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vender",
               "lerntext": "vender",
               "de": "verkaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "saber",
               "lerntext": "saber",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dar",
               "lerntext": "dar",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comprar",
               "lerntext": "comprar",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "buscar",
               "lerntext": "buscar",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sentir",
               "lerntext": "sentir",
               "de": "fühlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pensar",
               "lerntext": "pensar",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ducharse",
               "lerntext": "ducharse",
               "de": "duschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bailar",
               "lerntext": "bailar",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8771,7 +10063,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es [Slot] pero funciona",
-          "lerntext": "es [Slot] pero funciona"
+          "lerntext": "es [Slot] pero funciona",
+          "wortarten": {
+            "es": "v",
+            "pero": "k"
+          }
         },
         "frameDe": "Es ist [Slot], aber es geht.",
         "pronouns": [],
@@ -8780,86 +10076,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "difícil",
               "lerntext": "difícil",
-              "de": "schwierig"
+              "de": "schwierig",
+              "c": "a"
             },
             {
               "schrift": "fácil",
               "lerntext": "fácil",
-              "de": "einfach"
+              "de": "einfach",
+              "c": "a"
             },
             {
               "schrift": "interesante",
               "lerntext": "interesante",
-              "de": "interessant"
+              "de": "interessant",
+              "c": "a"
             },
             {
               "schrift": "correcto / correcta",
               "lerntext": "correcto / correcta",
-              "de": "richtig"
+              "de": "richtig",
+              "c": "a"
             },
             {
               "schrift": "falso / falsa",
               "lerntext": "falso / falsa",
-              "de": "falsch"
+              "de": "falsch",
+              "c": "a"
             },
             {
               "schrift": "peligroso / peligrosa",
               "lerntext": "peligroso / peligrosa",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "cerrado / cerrada",
               "lerntext": "cerrado / cerrada",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "abierto / abierta",
               "lerntext": "abierto / abierta",
               "de": "offen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "barato / barata",
               "lerntext": "barato / barata",
               "de": "billig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "estrecho / estrecha",
               "lerntext": "estrecho / estrecha",
               "de": "eng",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gordo / gorda",
               "lerntext": "gordo / gorda",
               "de": "dick",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "frío / fría",
               "lerntext": "frío / fría",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "alto / alta",
               "lerntext": "alto / alta",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pequeño / pequeña",
               "lerntext": "pequeño / pequeña",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sucio / sucia",
               "lerntext": "sucio / sucia",
               "de": "schmutzig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8873,7 +10184,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es [Slot] pero funciona",
-          "lerntext": "es [Slot] pero funciona"
+          "lerntext": "es [Slot] pero funciona",
+          "wortarten": {
+            "es": "v",
+            "pero": "k"
+          }
         },
         "frameDe": "Es ist [Slot], aber es geht.",
         "pronouns": [],
@@ -8882,76 +10197,89 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "rápido / rápida",
               "lerntext": "rápido / rápida",
-              "de": "schnell"
+              "de": "schnell",
+              "c": "a"
             },
             {
               "schrift": "lento / lenta",
               "lerntext": "lento / lenta",
-              "de": "langsam"
+              "de": "langsam",
+              "c": "a"
             },
             {
               "schrift": "feo / fea",
               "lerntext": "feo / fea",
-              "de": "hässlich"
+              "de": "hässlich",
+              "c": "a"
             },
             {
               "schrift": "difícil",
               "lerntext": "difícil",
               "de": "schwierig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fácil",
               "lerntext": "fácil",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "interesante",
               "lerntext": "interesante",
               "de": "interessant",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "correcto / correcta",
               "lerntext": "correcto / correcta",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "falso / falsa",
               "lerntext": "falso / falsa",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "peligroso / peligrosa",
               "lerntext": "peligroso / peligrosa",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "cerrado / cerrada",
               "lerntext": "cerrado / cerrada",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "nuevo / nueva",
               "lerntext": "nuevo / nueva",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grande",
               "lerntext": "grande",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "abierto / abierta",
               "lerntext": "abierto / abierta",
               "de": "offen",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8965,7 +10293,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "quiero [Slot]",
-          "lerntext": "quiero [Slot]"
+          "lerntext": "quiero [Slot]",
+          "wortarten": {
+            "quiero": "v"
+          }
         },
         "frameDe": "Ich will dich [Slot].",
         "pronouns": [],
@@ -8974,71 +10305,83 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "enviar",
               "lerntext": "enviar",
-              "de": "senden"
+              "de": "senden",
+              "c": "v"
             },
             {
               "schrift": "cambiar",
               "lerntext": "cambiar",
-              "de": "ändern"
+              "de": "ändern",
+              "c": "v"
             },
             {
               "schrift": "entender",
               "lerntext": "entender",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ganar",
               "lerntext": "ganar",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viajar",
               "lerntext": "viajar",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "creer",
               "lerntext": "creer",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "escribir",
               "lerntext": "escribir",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hablar",
               "lerntext": "hablar",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dejar",
               "lerntext": "dejar",
               "de": "lassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "llorar",
               "lerntext": "llorar",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "abrir",
               "lerntext": "abrir",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "jugar",
               "lerntext": "jugar",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -9052,24 +10395,31 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "estoy cansado [Slot] trabajo",
-          "lerntext": "estoy cansado [Slot] trabajo"
+          "lerntext": "estoy cansado [Slot] trabajo",
+          "wortarten": {
+            "estoy": "v",
+            "cansado": "a"
+          }
         },
         "frameDe": "Ich bin müde, [Slot] ich arbeite.",
         "pronouns": [
           {
             "schrift": "y",
             "lerntext": "y",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "pero",
             "lerntext": "pero",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           },
           {
             "schrift": "o",
             "lerntext": "o",
-            "de": "oder"
+            "de": "oder",
+            "c": "k"
           }
         ],
         "slotGroups": [
@@ -9078,12 +10428,14 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "porque",
               "lerntext": "porque",
               "de": "weil",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "aunque",
               "lerntext": "aunque",
               "de": "obwohl",
+              "c": "k",
               "wieder": true
             },
             {
@@ -9133,7 +10485,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es [Slot] pero funciona",
-          "lerntext": "es [Slot] pero funciona"
+          "lerntext": "es [Slot] pero funciona",
+          "wortarten": {
+            "es": "v",
+            "pero": "k"
+          }
         },
         "frameDe": "Es ist [Slot], aber es geht.",
         "pronouns": [],
@@ -9143,48 +10499,56 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "rápido / rápida",
               "lerntext": "rápido / rápida",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lento / lenta",
               "lerntext": "lento / lenta",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "feo / fea",
               "lerntext": "feo / fea",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "difícil",
               "lerntext": "difícil",
               "de": "schwierig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fácil",
               "lerntext": "fácil",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "interesante",
               "lerntext": "interesante",
               "de": "interessant",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "correcto / correcta",
               "lerntext": "correcto / correcta",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "falso / falsa",
               "lerntext": "falso / falsa",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -9198,24 +10562,31 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "estoy cansado [Slot] trabajo",
-          "lerntext": "estoy cansado [Slot] trabajo"
+          "lerntext": "estoy cansado [Slot] trabajo",
+          "wortarten": {
+            "estoy": "v",
+            "cansado": "a"
+          }
         },
         "frameDe": "Ich bin müde, [Slot] ich arbeite.",
         "pronouns": [
           {
             "schrift": "y",
             "lerntext": "y",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "pero",
             "lerntext": "pero",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           },
           {
             "schrift": "o",
             "lerntext": "o",
-            "de": "oder"
+            "de": "oder",
+            "c": "k"
           }
         ],
         "slotGroups": [
@@ -9224,12 +10595,14 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "porque",
               "lerntext": "porque",
               "de": "weil",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "aunque",
               "lerntext": "aunque",
               "de": "obwohl",
+              "c": "k",
               "wieder": true
             },
             {
@@ -9267,7 +10640,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es [Slot] pero funciona",
-          "lerntext": "es [Slot] pero funciona"
+          "lerntext": "es [Slot] pero funciona",
+          "wortarten": {
+            "es": "v",
+            "pero": "k"
+          }
         },
         "frameDe": "Es ist [Slot], aber es geht.",
         "pronouns": [],
@@ -9277,18 +10654,21 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "rápido / rápida",
               "lerntext": "rápido / rápida",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lento / lenta",
               "lerntext": "lento / lenta",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "feo / fea",
               "lerntext": "feo / fea",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -9323,14 +10703,18 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "me duele una [Slot]",
-          "lerntext": "me duele una [Slot]"
+          "lerntext": "me duele una [Slot]",
+          "wortarten": {
+            "me": "p"
+          }
         },
         "frameDe": "[Slot] tut weh.",
         "pronouns": [
           {
             "schrift": "mi / mis",
             "lerntext": "mi / mis",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -9338,66 +10722,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "cabeza",
               "lerntext": "cabeza",
-              "de": "Kopf"
+              "de": "Kopf",
+              "c": "n"
             },
             {
               "schrift": "comida",
               "lerntext": "comida",
               "de": "Essen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mar",
               "lerntext": "mar",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "montaña",
               "lerntext": "montaña",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lluvia",
               "lerntext": "lluvia",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nieve",
               "lerntext": "nieve",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "día",
               "lerntext": "día",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "trabajo",
               "lerntext": "trabajo",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sol",
               "lerntext": "sol",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "viento",
               "lerntext": "viento",
               "de": "Wind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "minuto",
               "lerntext": "minuto",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9411,14 +10806,18 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "me duele un [Slot]",
-          "lerntext": "me duele un [Slot]"
+          "lerntext": "me duele un [Slot]",
+          "wortarten": {
+            "me": "p"
+          }
         },
         "frameDe": "[Slot] tut weh.",
         "pronouns": [
           {
             "schrift": "mi / mis",
             "lerntext": "mi / mis",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -9426,76 +10825,89 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "corazón",
               "lerntext": "corazón",
-              "de": "Herz"
+              "de": "Herz",
+              "c": "n"
             },
             {
               "schrift": "ojo",
               "lerntext": "ojo",
-              "de": "Auge"
+              "de": "Auge",
+              "c": "n"
             },
             {
               "schrift": "dedo",
               "lerntext": "dedo",
-              "de": "Finger"
+              "de": "Finger",
+              "c": "n"
             },
             {
               "schrift": "cabeza",
               "lerntext": "cabeza",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "comida",
               "lerntext": "comida",
               "de": "Essen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mar",
               "lerntext": "mar",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "montaña",
               "lerntext": "montaña",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "playa",
               "lerntext": "playa",
               "de": "Strand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lluvia",
               "lerntext": "lluvia",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nieve",
               "lerntext": "nieve",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hora",
               "lerntext": "hora",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "museo",
               "lerntext": "museo",
               "de": "Museum",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "semana",
               "lerntext": "semana",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9509,7 +10921,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "tengo dolor en una [Slot]",
-          "lerntext": "tengo dolor en una [Slot]"
+          "lerntext": "tengo dolor en una [Slot]",
+          "wortarten": {
+            "tengo": "v",
+            "dolor": "n"
+          }
         },
         "frameDe": "Ich habe Schmerzen im [Slot].",
         "pronouns": [],
@@ -9518,66 +10934,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "pierna",
               "lerntext": "pierna",
-              "de": "Bein"
+              "de": "Bein",
+              "c": "n"
             },
             {
               "schrift": "dedo",
               "lerntext": "dedo",
               "de": "Finger",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "corazón",
               "lerntext": "corazón",
               "de": "Herz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ojo",
               "lerntext": "ojo",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cabeza",
               "lerntext": "cabeza",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "comida",
               "lerntext": "comida",
               "de": "Essen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mar",
               "lerntext": "mar",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "montaña",
               "lerntext": "montaña",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "segundo",
               "lerntext": "segundo",
               "de": "Sekunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aeropuerto",
               "lerntext": "aeropuerto",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "noche",
               "lerntext": "noche",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9588,7 +11015,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "dolor",
             "lerntext": "dolor",
-            "de": "Schmerz"
+            "de": "Schmerz",
+            "c": "n"
           }
         ],
         "id": "13.3"
@@ -9597,7 +11025,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "tengo dolor en un [Slot]",
-          "lerntext": "tengo dolor en un [Slot]"
+          "lerntext": "tengo dolor en un [Slot]",
+          "wortarten": {
+            "tengo": "v",
+            "dolor": "n"
+          }
         },
         "frameDe": "Ich habe Schmerzen im [Slot].",
         "pronouns": [],
@@ -9606,66 +11038,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "pelo",
               "lerntext": "pelo",
-              "de": "Haar"
+              "de": "Haar",
+              "c": "n"
             },
             {
               "schrift": "pierna",
               "lerntext": "pierna",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dedo",
               "lerntext": "dedo",
               "de": "Finger",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "corazón",
               "lerntext": "corazón",
               "de": "Herz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ojo",
               "lerntext": "ojo",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cabeza",
               "lerntext": "cabeza",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "comida",
               "lerntext": "comida",
               "de": "Essen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "restaurante",
               "lerntext": "restaurante",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "estación",
               "lerntext": "estación",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "día",
               "lerntext": "día",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "trabajo",
               "lerntext": "trabajo",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9709,66 +11152,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "plato",
               "lerntext": "plato",
-              "de": "Teller"
+              "de": "Teller",
+              "c": "n"
             },
             {
               "schrift": "dedo",
               "lerntext": "dedo",
               "de": "Finger",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dolor",
               "lerntext": "dolor",
               "de": "Schmerz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cabeza",
               "lerntext": "cabeza",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tren",
               "lerntext": "tren",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "viento",
               "lerntext": "viento",
               "de": "Wind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "autobús",
               "lerntext": "autobús",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "parque",
               "lerntext": "parque",
               "de": "Park",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "playa",
               "lerntext": "playa",
               "de": "Strand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aeropuerto",
               "lerntext": "aeropuerto",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "estación",
               "lerntext": "estación",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9782,7 +11236,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "compro un [Slot]",
-          "lerntext": "compro un [Slot]"
+          "lerntext": "compro un [Slot]",
+          "wortarten": {
+            "compro": "v"
+          }
         },
         "frameDe": "Ich kaufe einen [Slot].",
         "pronouns": [],
@@ -9791,66 +11248,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "zapato",
               "lerntext": "zapato",
-              "de": "Schuh"
+              "de": "Schuh",
+              "c": "n"
             },
             {
               "schrift": "plato",
               "lerntext": "plato",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dedo",
               "lerntext": "dedo",
               "de": "Finger",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dolor",
               "lerntext": "dolor",
               "de": "Schmerz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cabeza",
               "lerntext": "cabeza",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "día",
               "lerntext": "día",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tren",
               "lerntext": "tren",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "viento",
               "lerntext": "viento",
               "de": "Wind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "autobús",
               "lerntext": "autobús",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "parque",
               "lerntext": "parque",
               "de": "Park",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cuerpo",
               "lerntext": "cuerpo",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9864,7 +11332,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "tengo [Slot]",
-          "lerntext": "tengo [Slot]"
+          "lerntext": "tengo [Slot]",
+          "wortarten": {
+            "tengo": "v"
+          }
         },
         "frameDe": "Ich habe [Slot].",
         "pronouns": [],
@@ -9873,76 +11344,89 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "ropa",
               "lerntext": "ropa",
-              "de": "Kleidung"
+              "de": "Kleidung",
+              "c": "n"
             },
             {
               "schrift": "pasaporte",
               "lerntext": "pasaporte",
-              "de": "Reisepass"
+              "de": "Reisepass",
+              "c": "n"
             },
             {
               "schrift": "nombre",
               "lerntext": "nombre",
-              "de": "Name"
+              "de": "Name",
+              "c": "n"
             },
             {
               "schrift": "zapato",
               "lerntext": "zapato",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pelo",
               "lerntext": "pelo",
               "de": "Haar",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "plato",
               "lerntext": "plato",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pierna",
               "lerntext": "pierna",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "corazón",
               "lerntext": "corazón",
               "de": "Herz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ojo",
               "lerntext": "ojo",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sol",
               "lerntext": "sol",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vez",
               "lerntext": "vez",
               "de": "Mal (z.B. 'eine Mal')",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "avión",
               "lerntext": "avión",
               "de": "Flugzeug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hospital",
               "lerntext": "hospital",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9956,7 +11440,12 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "este es mi [Slot]",
-          "lerntext": "este es mi [Slot]"
+          "lerntext": "este es mi [Slot]",
+          "wortarten": {
+            "este": "p",
+            "es": "v",
+            "mi": "p"
+          }
         },
         "frameDe": "Das ist meine [Slot].",
         "pronouns": [],
@@ -9965,66 +11454,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "trabajo",
               "lerntext": "trabajo",
-              "de": "Arbeit"
+              "de": "Arbeit",
+              "c": "n"
             },
             {
               "schrift": "pasaporte",
               "lerntext": "pasaporte",
               "de": "Reisepass",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nombre",
               "lerntext": "nombre",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ropa",
               "lerntext": "ropa",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "zapato",
               "lerntext": "zapato",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pelo",
               "lerntext": "pelo",
               "de": "Haar",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "plato",
               "lerntext": "plato",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pierna",
               "lerntext": "pierna",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "corazón",
               "lerntext": "corazón",
               "de": "Herz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ojo",
               "lerntext": "ojo",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "baño",
               "lerntext": "baño",
               "de": "Bad",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10038,7 +11538,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "espero una [Slot]",
-          "lerntext": "espero una [Slot]"
+          "lerntext": "espero una [Slot]",
+          "wortarten": {
+            "espero": "v"
+          }
         },
         "frameDe": "Ich warte auf [Slot].",
         "pronouns": [],
@@ -10047,66 +11550,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "respuesta",
               "lerntext": "respuesta",
-              "de": "Antwort"
+              "de": "Antwort",
+              "c": "n"
             },
             {
               "schrift": "pasaporte",
               "lerntext": "pasaporte",
               "de": "Reisepass",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nombre",
               "lerntext": "nombre",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ropa",
               "lerntext": "ropa",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "zapato",
               "lerntext": "zapato",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pelo",
               "lerntext": "pelo",
               "de": "Haar",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "plato",
               "lerntext": "plato",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pierna",
               "lerntext": "pierna",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "minuto",
               "lerntext": "minuto",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dedo",
               "lerntext": "dedo",
               "de": "Finger",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "corazón",
               "lerntext": "corazón",
               "de": "Herz",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10129,66 +11643,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "cielo",
               "lerntext": "cielo",
-              "de": "Himmel"
+              "de": "Himmel",
+              "c": "n"
             },
             {
               "schrift": "respuesta",
               "lerntext": "respuesta",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pasaporte",
               "lerntext": "pasaporte",
               "de": "Reisepass",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nombre",
               "lerntext": "nombre",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ropa",
               "lerntext": "ropa",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "zapato",
               "lerntext": "zapato",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pelo",
               "lerntext": "pelo",
               "de": "Haar",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lluvia",
               "lerntext": "lluvia",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nieve",
               "lerntext": "nieve",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mar",
               "lerntext": "mar",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "montaña",
               "lerntext": "montaña",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10202,7 +11727,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "he sacado una buen [Slot]",
-          "lerntext": "he sacado una buen [Slot]"
+          "lerntext": "he sacado una buen [Slot]",
+          "wortarten": {
+            "sacado": "v"
+          }
         },
         "frameDe": "Ich habe eine gute [Slot] bekommen.",
         "pronouns": [],
@@ -10211,76 +11739,89 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "casa",
               "lerntext": "casa",
-              "de": "Haus"
+              "de": "Haus",
+              "c": "n"
             },
             {
               "schrift": "habitación",
               "lerntext": "habitación",
-              "de": "Zimmer"
+              "de": "Zimmer",
+              "c": "n"
             },
             {
               "schrift": "mesa",
               "lerntext": "mesa",
-              "de": "Tisch"
+              "de": "Tisch",
+              "c": "n"
             },
             {
               "schrift": "cielo",
               "lerntext": "cielo",
               "de": "Himmel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "respuesta",
               "lerntext": "respuesta",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pasaporte",
               "lerntext": "pasaporte",
               "de": "Reisepass",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nombre",
               "lerntext": "nombre",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ropa",
               "lerntext": "ropa",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hora",
               "lerntext": "hora",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "museo",
               "lerntext": "museo",
               "de": "Museum",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "semana",
               "lerntext": "semana",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "segundo",
               "lerntext": "segundo",
               "de": "Sekunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dolor",
               "lerntext": "dolor",
               "de": "Schmerz",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10315,7 +11856,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "aquí está el [Slot]",
-          "lerntext": "aquí está el [Slot]"
+          "lerntext": "aquí está el [Slot]",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "Hier ist die [Slot].",
         "pronouns": [],
@@ -10324,27 +11868,32 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "mundo",
               "lerntext": "mundo",
-              "de": "Welt"
+              "de": "Welt",
+              "c": "n"
             },
             {
               "schrift": "gobierno",
               "lerntext": "gobierno",
-              "de": "Regierung"
+              "de": "Regierung",
+              "c": "n"
             },
             {
               "schrift": "número",
               "lerntext": "número",
-              "de": "Nummer"
+              "de": "Nummer",
+              "c": "n"
             },
             {
               "schrift": "tarjeta",
               "lerntext": "tarjeta",
-              "de": "Karte"
+              "de": "Karte",
+              "c": "n"
             },
             {
               "schrift": "cuenta",
               "lerntext": "cuenta",
-              "de": "Rechnung"
+              "de": "Rechnung",
+              "c": "n"
             }
           ]
         ],
@@ -10357,7 +11906,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "aquí está el [Slot]",
-          "lerntext": "aquí está el [Slot]"
+          "lerntext": "aquí está el [Slot]",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "Hier ist die [Slot].",
         "pronouns": [],
@@ -10366,56 +11918,66 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "metro",
               "lerntext": "metro",
-              "de": "U-Bahn"
+              "de": "U-Bahn",
+              "c": "n"
             },
             {
               "schrift": "música",
               "lerntext": "música",
-              "de": "Musik"
+              "de": "Musik",
+              "c": "n"
             },
             {
               "schrift": "fiesta",
               "lerntext": "fiesta",
-              "de": "Party"
+              "de": "Party",
+              "c": "n"
             },
             {
               "schrift": "correo",
               "lerntext": "correo",
-              "de": "Post"
+              "de": "Post",
+              "c": "n"
             },
             {
               "schrift": "mensaje",
               "lerntext": "mensaje",
-              "de": "Nachricht"
+              "de": "Nachricht",
+              "c": "n"
             },
             {
               "schrift": "mundo",
               "lerntext": "mundo",
               "de": "Welt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gobierno",
               "lerntext": "gobierno",
               "de": "Regierung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "número",
               "lerntext": "número",
               "de": "Nummer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tarjeta",
               "lerntext": "tarjeta",
               "de": "Karte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cuenta",
               "lerntext": "cuenta",
               "de": "Rechnung",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10429,7 +11991,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "aquí está el [Slot]",
-          "lerntext": "aquí está el [Slot]"
+          "lerntext": "aquí está el [Slot]",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "Hier ist die [Slot].",
         "pronouns": [],
@@ -10438,86 +12003,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "miedo",
               "lerntext": "miedo",
-              "de": "Angst"
+              "de": "Angst",
+              "c": "n"
             },
             {
               "schrift": "alegría",
               "lerntext": "alegría",
-              "de": "Freude"
+              "de": "Freude",
+              "c": "n"
             },
             {
               "schrift": "verdad",
               "lerntext": "verdad",
-              "de": "Wahrheit"
+              "de": "Wahrheit",
+              "c": "n"
             },
             {
               "schrift": "idea",
               "lerntext": "idea",
-              "de": "Idee"
+              "de": "Idee",
+              "c": "n"
             },
             {
               "schrift": "opinión",
               "lerntext": "opinión",
-              "de": "Meinung"
+              "de": "Meinung",
+              "c": "n"
             },
             {
               "schrift": "metro",
               "lerntext": "metro",
               "de": "U-Bahn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "música",
               "lerntext": "música",
               "de": "Musik",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fiesta",
               "lerntext": "fiesta",
               "de": "Party",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "correo",
               "lerntext": "correo",
               "de": "Post",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mensaje",
               "lerntext": "mensaje",
               "de": "Nachricht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mundo",
               "lerntext": "mundo",
               "de": "Welt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gobierno",
               "lerntext": "gobierno",
               "de": "Regierung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "número",
               "lerntext": "número",
               "de": "Nummer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tarjeta",
               "lerntext": "tarjeta",
               "de": "Karte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cuenta",
               "lerntext": "cuenta",
               "de": "Rechnung",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10531,7 +12111,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "aquí está el [Slot]",
-          "lerntext": "aquí está el [Slot]"
+          "lerntext": "aquí está el [Slot]",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "Hier ist die [Slot].",
         "pronouns": [],
@@ -10540,86 +12123,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "pregunta",
               "lerntext": "pregunta",
-              "de": "Frage"
+              "de": "Frage",
+              "c": "n"
             },
             {
               "schrift": "futuro",
               "lerntext": "futuro",
-              "de": "Zukunft"
+              "de": "Zukunft",
+              "c": "n"
             },
             {
               "schrift": "historia",
               "lerntext": "historia",
-              "de": "Geschichte"
+              "de": "Geschichte",
+              "c": "n"
             },
             {
               "schrift": "cosa",
               "lerntext": "cosa",
-              "de": "Sache"
+              "de": "Sache",
+              "c": "n"
             },
             {
               "schrift": "salud",
               "lerntext": "salud",
-              "de": "Gesundheit"
+              "de": "Gesundheit",
+              "c": "n"
             },
             {
               "schrift": "miedo",
               "lerntext": "miedo",
               "de": "Angst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "alegría",
               "lerntext": "alegría",
               "de": "Freude",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "verdad",
               "lerntext": "verdad",
               "de": "Wahrheit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "idea",
               "lerntext": "idea",
               "de": "Idee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "opinión",
               "lerntext": "opinión",
               "de": "Meinung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "metro",
               "lerntext": "metro",
               "de": "U-Bahn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "música",
               "lerntext": "música",
               "de": "Musik",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fiesta",
               "lerntext": "fiesta",
               "de": "Party",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "correo",
               "lerntext": "correo",
               "de": "Post",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mensaje",
               "lerntext": "mensaje",
               "de": "Nachricht",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10633,7 +12231,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "aquí está el [Slot]",
-          "lerntext": "aquí está el [Slot]"
+          "lerntext": "aquí está el [Slot]",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "Hier ist die [Slot].",
         "pronouns": [],
@@ -10642,81 +12243,95 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "enfermedad",
               "lerntext": "enfermedad",
-              "de": "Krankheit"
+              "de": "Krankheit",
+              "c": "n"
             },
             {
               "schrift": "amor",
               "lerntext": "amor",
-              "de": "Liebe"
+              "de": "Liebe",
+              "c": "n"
             },
             {
               "schrift": "grupo",
               "lerntext": "grupo",
-              "de": "Gruppe"
+              "de": "Gruppe",
+              "c": "n"
             },
             {
               "schrift": "aire",
               "lerntext": "aire",
-              "de": "Luft"
+              "de": "Luft",
+              "c": "n"
             },
             {
               "schrift": "pregunta",
               "lerntext": "pregunta",
               "de": "Frage",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "futuro",
               "lerntext": "futuro",
               "de": "Zukunft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "historia",
               "lerntext": "historia",
               "de": "Geschichte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cosa",
               "lerntext": "cosa",
               "de": "Sache",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "salud",
               "lerntext": "salud",
               "de": "Gesundheit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "miedo",
               "lerntext": "miedo",
               "de": "Angst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "alegría",
               "lerntext": "alegría",
               "de": "Freude",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "verdad",
               "lerntext": "verdad",
               "de": "Wahrheit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "idea",
               "lerntext": "idea",
               "de": "Idee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "opinión",
               "lerntext": "opinión",
               "de": "Meinung",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10730,7 +12345,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "aquí está el [Slot]",
-          "lerntext": "aquí está el [Slot]"
+          "lerntext": "aquí está el [Slot]",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "Hier ist der [Slot].",
         "pronouns": [],
@@ -10739,27 +12357,32 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "parte",
               "lerntext": "parte",
-              "de": "Teil"
+              "de": "Teil",
+              "c": "n"
             },
             {
               "schrift": "punto",
               "lerntext": "punto",
-              "de": "Punkt"
+              "de": "Punkt",
+              "c": "n"
             },
             {
               "schrift": "momento",
               "lerntext": "momento",
-              "de": "Moment"
+              "de": "Moment",
+              "c": "n"
             },
             {
               "schrift": "precio",
               "lerntext": "precio",
-              "de": "Preis"
+              "de": "Preis",
+              "c": "n"
             },
             {
               "schrift": "mercado",
               "lerntext": "mercado",
-              "de": "Markt"
+              "de": "Markt",
+              "c": "n"
             }
           ]
         ],
@@ -10772,7 +12395,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "aquí está el [Slot]",
-          "lerntext": "aquí está el [Slot]"
+          "lerntext": "aquí está el [Slot]",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "Hier ist der [Slot].",
         "pronouns": [],
@@ -10781,56 +12407,66 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "billete",
               "lerntext": "billete",
-              "de": "Fahrschein"
+              "de": "Fahrschein",
+              "c": "n"
             },
             {
               "schrift": "cumpleaños",
               "lerntext": "cumpleaños",
-              "de": "Geburtstag"
+              "de": "Geburtstag",
+              "c": "n"
             },
             {
               "schrift": "empleado / empleada",
               "lerntext": "empleado / empleada",
-              "de": "Angestellter"
+              "de": "Angestellter",
+              "c": "n"
             },
             {
               "schrift": "sueldo",
               "lerntext": "sueldo",
-              "de": "Lohn"
+              "de": "Lohn",
+              "c": "n"
             },
             {
               "schrift": "cita",
               "lerntext": "cita",
-              "de": "Termin"
+              "de": "Termin",
+              "c": "n"
             },
             {
               "schrift": "parte",
               "lerntext": "parte",
               "de": "Teil",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "punto",
               "lerntext": "punto",
               "de": "Punkt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "momento",
               "lerntext": "momento",
               "de": "Moment",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "precio",
               "lerntext": "precio",
               "de": "Preis",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mercado",
               "lerntext": "mercado",
               "de": "Markt",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10844,7 +12480,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "aquí está el [Slot]",
-          "lerntext": "aquí está el [Slot]"
+          "lerntext": "aquí está el [Slot]",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "Hier ist der [Slot].",
         "pronouns": [],
@@ -10853,86 +12492,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "razón",
               "lerntext": "razón",
-              "de": "Grund"
+              "de": "Grund",
+              "c": "n"
             },
             {
               "schrift": "error",
               "lerntext": "error",
-              "de": "Fehler"
+              "de": "Fehler",
+              "c": "n"
             },
             {
               "schrift": "lugar",
               "lerntext": "lugar",
-              "de": "Ort"
+              "de": "Ort",
+              "c": "n"
             },
             {
               "schrift": "mes",
               "lerntext": "mes",
-              "de": "Monat"
+              "de": "Monat",
+              "c": "n"
             },
             {
               "schrift": "río",
               "lerntext": "río",
-              "de": "Fluss"
+              "de": "Fluss",
+              "c": "n"
             },
             {
               "schrift": "billete",
               "lerntext": "billete",
               "de": "Fahrschein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cumpleaños",
               "lerntext": "cumpleaños",
               "de": "Geburtstag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "empleado / empleada",
               "lerntext": "empleado / empleada",
               "de": "Angestellter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sueldo",
               "lerntext": "sueldo",
               "de": "Lohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cita",
               "lerntext": "cita",
               "de": "Termin",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "parte",
               "lerntext": "parte",
               "de": "Teil",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "punto",
               "lerntext": "punto",
               "de": "Punkt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "momento",
               "lerntext": "momento",
               "de": "Moment",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "precio",
               "lerntext": "precio",
               "de": "Preis",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mercado",
               "lerntext": "mercado",
               "de": "Markt",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10946,7 +12600,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "aquí está el [Slot]",
-          "lerntext": "aquí está el [Slot]"
+          "lerntext": "aquí está el [Slot]",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "Hier ist der [Slot].",
         "pronouns": [],
@@ -10955,86 +12612,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "luna",
               "lerntext": "luna",
-              "de": "Mond"
+              "de": "Mond",
+              "c": "n"
             },
             {
               "schrift": "estrella",
               "lerntext": "estrella",
-              "de": "Stern"
+              "de": "Stern",
+              "c": "n"
             },
             {
               "schrift": "plaza",
               "lerntext": "plaza",
-              "de": "Platz (Ort)"
+              "de": "Platz (Ort)",
+              "c": "n"
             },
             {
               "schrift": "médico / médica",
               "lerntext": "médico / médica",
-              "de": "Arzt"
+              "de": "Arzt",
+              "c": "n"
             },
             {
               "schrift": "sueño",
               "lerntext": "sueño",
-              "de": "Traum"
+              "de": "Traum",
+              "c": "n"
             },
             {
               "schrift": "razón",
               "lerntext": "razón",
               "de": "Grund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "error",
               "lerntext": "error",
               "de": "Fehler",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lugar",
               "lerntext": "lugar",
               "de": "Ort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mes",
               "lerntext": "mes",
               "de": "Monat",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "río",
               "lerntext": "río",
               "de": "Fluss",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "billete",
               "lerntext": "billete",
               "de": "Fahrschein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cumpleaños",
               "lerntext": "cumpleaños",
               "de": "Geburtstag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "empleado / empleada",
               "lerntext": "empleado / empleada",
               "de": "Angestellter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sueldo",
               "lerntext": "sueldo",
               "de": "Lohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cita",
               "lerntext": "cita",
               "de": "Termin",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11048,7 +12720,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "aquí está el [Slot]",
-          "lerntext": "aquí está el [Slot]"
+          "lerntext": "aquí está el [Slot]",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "Hier ist der [Slot].",
         "pronouns": [],
@@ -11057,86 +12732,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "hambre",
               "lerntext": "hambre",
-              "de": "Hunger"
+              "de": "Hunger",
+              "c": "n"
             },
             {
               "schrift": "sed",
               "lerntext": "sed",
-              "de": "Durst"
+              "de": "Durst",
+              "c": "n"
             },
             {
               "schrift": "cambio",
               "lerntext": "cambio",
-              "de": "Wechsel"
+              "de": "Wechsel",
+              "c": "n"
             },
             {
               "schrift": "diferencia",
               "lerntext": "diferencia",
-              "de": "Unterschied"
+              "de": "Unterschied",
+              "c": "n"
             },
             {
               "schrift": "tipo",
               "lerntext": "tipo",
-              "de": "Typ"
+              "de": "Typ",
+              "c": "n"
             },
             {
               "schrift": "luna",
               "lerntext": "luna",
               "de": "Mond",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "estrella",
               "lerntext": "estrella",
               "de": "Stern",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "plaza",
               "lerntext": "plaza",
               "de": "Platz (Ort)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "médico / médica",
               "lerntext": "médico / médica",
               "de": "Arzt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sueño",
               "lerntext": "sueño",
               "de": "Traum",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "razón",
               "lerntext": "razón",
               "de": "Grund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "error",
               "lerntext": "error",
               "de": "Fehler",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lugar",
               "lerntext": "lugar",
               "de": "Ort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mes",
               "lerntext": "mes",
               "de": "Monat",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "río",
               "lerntext": "río",
               "de": "Fluss",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11150,7 +12840,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "aquí está el [Slot]",
-          "lerntext": "aquí está el [Slot]"
+          "lerntext": "aquí está el [Slot]",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "Hier ist der [Slot].",
         "pronouns": [],
@@ -11159,66 +12852,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "estado",
               "lerntext": "estado",
-              "de": "Zustand"
+              "de": "Zustand",
+              "c": "n"
             },
             {
               "schrift": "hambre",
               "lerntext": "hambre",
               "de": "Hunger",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sed",
               "lerntext": "sed",
               "de": "Durst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cambio",
               "lerntext": "cambio",
               "de": "Wechsel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "diferencia",
               "lerntext": "diferencia",
               "de": "Unterschied",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tipo",
               "lerntext": "tipo",
               "de": "Typ",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "luna",
               "lerntext": "luna",
               "de": "Mond",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "estrella",
               "lerntext": "estrella",
               "de": "Stern",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "plaza",
               "lerntext": "plaza",
               "de": "Platz (Ort)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "médico / médica",
               "lerntext": "médico / médica",
               "de": "Arzt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sueño",
               "lerntext": "sueño",
               "de": "Traum",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11232,7 +12936,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "aquí está el [Slot]",
-          "lerntext": "aquí está el [Slot]"
+          "lerntext": "aquí está el [Slot]",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "Hier ist das [Slot].",
         "pronouns": [],
@@ -11241,27 +12948,32 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "año",
               "lerntext": "año",
-              "de": "Jahr"
+              "de": "Jahr",
+              "c": "n"
             },
             {
               "schrift": "vida",
               "lerntext": "vida",
-              "de": "Leben"
+              "de": "Leben",
+              "c": "n"
             },
             {
               "schrift": "país",
               "lerntext": "país",
-              "de": "Land (Staat)"
+              "de": "Land (Staat)",
+              "c": "n"
             },
             {
               "schrift": "problema",
               "lerntext": "problema",
-              "de": "Problem"
+              "de": "Problem",
+              "c": "n"
             },
             {
               "schrift": "palabra",
               "lerntext": "palabra",
-              "de": "Wort"
+              "de": "Wort",
+              "c": "n"
             }
           ]
         ],
@@ -11274,7 +12986,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "aquí está el [Slot]",
-          "lerntext": "aquí está el [Slot]"
+          "lerntext": "aquí está el [Slot]",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "Hier ist das [Slot].",
         "pronouns": [],
@@ -11283,56 +12998,66 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "taxi",
               "lerntext": "taxi",
-              "de": "Taxi"
+              "de": "Taxi",
+              "c": "n"
             },
             {
               "schrift": "canción",
               "lerntext": "canción",
-              "de": "Lied"
+              "de": "Lied",
+              "c": "n"
             },
             {
               "schrift": "regalo",
               "lerntext": "regalo",
-              "de": "Geschenk"
+              "de": "Geschenk",
+              "c": "n"
             },
             {
               "schrift": "foto",
               "lerntext": "foto",
-              "de": "Foto"
+              "de": "Foto",
+              "c": "n"
             },
             {
               "schrift": "teléfono móvil",
               "lerntext": "teléfono móvil",
-              "de": "Handy"
+              "de": "Handy",
+              "c": "n"
             },
             {
               "schrift": "año",
               "lerntext": "año",
               "de": "Jahr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vida",
               "lerntext": "vida",
               "de": "Leben",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "país",
               "lerntext": "país",
               "de": "Land (Staat)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "problema",
               "lerntext": "problema",
               "de": "Problem",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "palabra",
               "lerntext": "palabra",
               "de": "Wort",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11346,7 +13071,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "aquí está el [Slot]",
-          "lerntext": "aquí está el [Slot]"
+          "lerntext": "aquí está el [Slot]",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "Hier ist das [Slot].",
         "pronouns": [],
@@ -11355,86 +13083,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "internet",
               "lerntext": "internet",
-              "de": "Internet"
+              "de": "Internet",
+              "c": "n"
             },
             {
               "schrift": "reunión",
               "lerntext": "reunión",
-              "de": "Treffen"
+              "de": "Treffen",
+              "c": "n"
             },
             {
               "schrift": "cara",
               "lerntext": "cara",
-              "de": "Gesicht"
+              "de": "Gesicht",
+              "c": "n"
             },
             {
               "schrift": "suerte",
               "lerntext": "suerte",
-              "de": "Glück (Zufall)"
+              "de": "Glück (Zufall)",
+              "c": "n"
             },
             {
               "schrift": "tema",
               "lerntext": "tema",
-              "de": "Thema"
+              "de": "Thema",
+              "c": "n"
             },
             {
               "schrift": "taxi",
               "lerntext": "taxi",
               "de": "Taxi",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "canción",
               "lerntext": "canción",
               "de": "Lied",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "regalo",
               "lerntext": "regalo",
               "de": "Geschenk",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "foto",
               "lerntext": "foto",
               "de": "Foto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "teléfono móvil",
               "lerntext": "teléfono móvil",
               "de": "Handy",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "año",
               "lerntext": "año",
               "de": "Jahr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vida",
               "lerntext": "vida",
               "de": "Leben",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "país",
               "lerntext": "país",
               "de": "Land (Staat)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "problema",
               "lerntext": "problema",
               "de": "Problem",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "palabra",
               "lerntext": "palabra",
               "de": "Wort",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11448,7 +13191,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "aquí está el [Slot]",
-          "lerntext": "aquí está el [Slot]"
+          "lerntext": "aquí está el [Slot]",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "Hier ist das [Slot].",
         "pronouns": [],
@@ -11457,86 +13203,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "ejemplo",
               "lerntext": "ejemplo",
-              "de": "Beispiel"
+              "de": "Beispiel",
+              "c": "n"
             },
             {
               "schrift": "pueblo",
               "lerntext": "pueblo",
-              "de": "Dorf"
+              "de": "Dorf",
+              "c": "n"
             },
             {
               "schrift": "barrio",
               "lerntext": "barrio",
-              "de": "Stadtviertel"
+              "de": "Stadtviertel",
+              "c": "n"
             },
             {
               "schrift": "final",
               "lerntext": "final",
-              "de": "Ende"
+              "de": "Ende",
+              "c": "n"
             },
             {
               "schrift": "equipo",
               "lerntext": "equipo",
-              "de": "Team"
+              "de": "Team",
+              "c": "n"
             },
             {
               "schrift": "internet",
               "lerntext": "internet",
               "de": "Internet",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "reunión",
               "lerntext": "reunión",
               "de": "Treffen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cara",
               "lerntext": "cara",
               "de": "Gesicht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "suerte",
               "lerntext": "suerte",
               "de": "Glück (Zufall)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tema",
               "lerntext": "tema",
               "de": "Thema",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "taxi",
               "lerntext": "taxi",
               "de": "Taxi",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "canción",
               "lerntext": "canción",
               "de": "Lied",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "regalo",
               "lerntext": "regalo",
               "de": "Geschenk",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "foto",
               "lerntext": "foto",
               "de": "Foto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "teléfono móvil",
               "lerntext": "teléfono móvil",
               "de": "Handy",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11550,7 +13311,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "aquí está el [Slot]",
-          "lerntext": "aquí está el [Slot]"
+          "lerntext": "aquí está el [Slot]",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "Hier ist das [Slot].",
         "pronouns": [],
@@ -11559,66 +13323,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "fin",
               "lerntext": "fin",
-              "de": "Ende"
+              "de": "Ende",
+              "c": "n"
             },
             {
               "schrift": "ejemplo",
               "lerntext": "ejemplo",
               "de": "Beispiel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pueblo",
               "lerntext": "pueblo",
               "de": "Dorf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "barrio",
               "lerntext": "barrio",
               "de": "Stadtviertel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "final",
               "lerntext": "final",
               "de": "Ende",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "equipo",
               "lerntext": "equipo",
               "de": "Team",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "internet",
               "lerntext": "internet",
               "de": "Internet",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "reunión",
               "lerntext": "reunión",
               "de": "Treffen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cara",
               "lerntext": "cara",
               "de": "Gesicht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "suerte",
               "lerntext": "suerte",
               "de": "Glück (Zufall)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tema",
               "lerntext": "tema",
               "de": "Thema",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11632,7 +13407,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "aquí está el [Slot]",
-          "lerntext": "aquí está el [Slot]"
+          "lerntext": "aquí está el [Slot]",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "Hier ist die [Slot].",
         "pronouns": [],
@@ -11641,12 +13419,14 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "padres",
               "lerntext": "padres",
-              "de": "Eltern"
+              "de": "Eltern",
+              "c": "n"
             },
             {
               "schrift": "gente",
               "lerntext": "gente",
-              "de": "Leute"
+              "de": "Leute",
+              "c": "n"
             }
           ]
         ],
@@ -11659,7 +13439,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "aquí está el [Slot]",
-          "lerntext": "aquí está el [Slot]"
+          "lerntext": "aquí está el [Slot]",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "Hier ist die [Slot].",
         "pronouns": [],
@@ -11669,60 +13452,70 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "enfermedad",
               "lerntext": "enfermedad",
               "de": "Krankheit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amor",
               "lerntext": "amor",
               "de": "Liebe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "grupo",
               "lerntext": "grupo",
               "de": "Gruppe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aire",
               "lerntext": "aire",
               "de": "Luft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "padres",
               "lerntext": "padres",
               "de": "Eltern",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gente",
               "lerntext": "gente",
               "de": "Leute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pregunta",
               "lerntext": "pregunta",
               "de": "Frage",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "futuro",
               "lerntext": "futuro",
               "de": "Zukunft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "historia",
               "lerntext": "historia",
               "de": "Geschichte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cosa",
               "lerntext": "cosa",
               "de": "Sache",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11736,7 +13529,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "aquí está el [Slot]",
-          "lerntext": "aquí está el [Slot]"
+          "lerntext": "aquí está el [Slot]",
+          "wortarten": {
+            "está": "v"
+          }
         },
         "frameDe": "Hier ist die [Slot].",
         "pronouns": [],
@@ -11746,42 +13542,49 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "salud",
               "lerntext": "salud",
               "de": "Gesundheit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "enfermedad",
               "lerntext": "enfermedad",
               "de": "Krankheit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amor",
               "lerntext": "amor",
               "de": "Liebe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "grupo",
               "lerntext": "grupo",
               "de": "Gruppe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aire",
               "lerntext": "aire",
               "de": "Luft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "padres",
               "lerntext": "padres",
               "de": "Eltern",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gente",
               "lerntext": "gente",
               "de": "Leute",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11816,7 +13619,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "quiero [Slot]",
-          "lerntext": "quiero [Slot]"
+          "lerntext": "quiero [Slot]",
+          "wortarten": {
+            "quiero": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -11825,27 +13631,32 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "seguir",
               "lerntext": "seguir",
-              "de": "folgen"
+              "de": "folgen",
+              "c": "v"
             },
             {
               "schrift": "cocinar",
               "lerntext": "cocinar",
-              "de": "kochen"
+              "de": "kochen",
+              "c": "v"
             },
             {
               "schrift": "levantarse",
               "lerntext": "levantarse",
-              "de": "aufstehen"
+              "de": "aufstehen",
+              "c": "v"
             },
             {
               "schrift": "acostarse",
               "lerntext": "acostarse",
-              "de": "sich hinlegen"
+              "de": "sich hinlegen",
+              "c": "v"
             },
             {
               "schrift": "vestirse",
               "lerntext": "vestirse",
-              "de": "sich anziehen"
+              "de": "sich anziehen",
+              "c": "v"
             }
           ]
         ],
@@ -11858,7 +13669,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "quiero [Slot]",
-          "lerntext": "quiero [Slot]"
+          "lerntext": "quiero [Slot]",
+          "wortarten": {
+            "quiero": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -11867,56 +13681,66 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "mandar",
               "lerntext": "mandar",
-              "de": "schicken"
+              "de": "schicken",
+              "c": "v"
             },
             {
               "schrift": "salir",
               "lerntext": "salir",
-              "de": "hinausgehen"
+              "de": "hinausgehen",
+              "c": "v"
             },
             {
               "schrift": "estar",
               "lerntext": "estar",
-              "de": "sein (Zustand, Ort)"
+              "de": "sein (Zustand, Ort)",
+              "c": "v"
             },
             {
               "schrift": "llegar",
               "lerntext": "llegar",
-              "de": "ankommen"
+              "de": "ankommen",
+              "c": "v"
             },
             {
               "schrift": "pasar",
               "lerntext": "pasar",
-              "de": "passieren"
+              "de": "passieren",
+              "c": "v"
             },
             {
               "schrift": "seguir",
               "lerntext": "seguir",
               "de": "folgen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cocinar",
               "lerntext": "cocinar",
               "de": "kochen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "levantarse",
               "lerntext": "levantarse",
               "de": "aufstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "acostarse",
               "lerntext": "acostarse",
               "de": "sich hinlegen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vestirse",
               "lerntext": "vestirse",
               "de": "sich anziehen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -11930,7 +13754,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "quiero [Slot]",
-          "lerntext": "quiero [Slot]"
+          "lerntext": "quiero [Slot]",
+          "wortarten": {
+            "quiero": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -11939,86 +13766,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "parecer",
               "lerntext": "parecer",
-              "de": "scheinen"
+              "de": "scheinen",
+              "c": "v"
             },
             {
               "schrift": "llevar",
               "lerntext": "llevar",
-              "de": "tragen"
+              "de": "tragen",
+              "c": "v"
             },
             {
               "schrift": "tratar",
               "lerntext": "tratar",
-              "de": "behandeln"
+              "de": "behandeln",
+              "c": "v"
             },
             {
               "schrift": "contar",
               "lerntext": "contar",
-              "de": "erzählen"
+              "de": "erzählen",
+              "c": "v"
             },
             {
               "schrift": "estudiar",
               "lerntext": "estudiar",
-              "de": "studieren"
+              "de": "studieren",
+              "c": "v"
             },
             {
               "schrift": "mandar",
               "lerntext": "mandar",
               "de": "schicken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "salir",
               "lerntext": "salir",
               "de": "hinausgehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "estar",
               "lerntext": "estar",
               "de": "sein (Zustand, Ort)",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "llegar",
               "lerntext": "llegar",
               "de": "ankommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pasar",
               "lerntext": "pasar",
               "de": "passieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "seguir",
               "lerntext": "seguir",
               "de": "folgen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cocinar",
               "lerntext": "cocinar",
               "de": "kochen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "levantarse",
               "lerntext": "levantarse",
               "de": "aufstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "acostarse",
               "lerntext": "acostarse",
               "de": "sich hinlegen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vestirse",
               "lerntext": "vestirse",
               "de": "sich anziehen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12032,7 +13874,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "quiero [Slot]",
-          "lerntext": "quiero [Slot]"
+          "lerntext": "quiero [Slot]",
+          "wortarten": {
+            "quiero": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12041,86 +13886,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "nacer",
               "lerntext": "nacer",
-              "de": "geboren werden"
+              "de": "geboren werden",
+              "c": "v"
             },
             {
               "schrift": "correr",
               "lerntext": "correr",
-              "de": "laufen"
+              "de": "laufen",
+              "c": "v"
             },
             {
               "schrift": "gustar",
               "lerntext": "gustar",
-              "de": "gefallen"
+              "de": "gefallen",
+              "c": "v"
             },
             {
               "schrift": "beber",
               "lerntext": "beber",
-              "de": "trinken"
+              "de": "trinken",
+              "c": "v"
             },
             {
               "schrift": "conducir",
               "lerntext": "conducir",
-              "de": "fahren"
+              "de": "fahren",
+              "c": "v"
             },
             {
               "schrift": "parecer",
               "lerntext": "parecer",
               "de": "scheinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "llevar",
               "lerntext": "llevar",
               "de": "tragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tratar",
               "lerntext": "tratar",
               "de": "behandeln",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "contar",
               "lerntext": "contar",
               "de": "erzählen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "estudiar",
               "lerntext": "estudiar",
               "de": "studieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mandar",
               "lerntext": "mandar",
               "de": "schicken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "salir",
               "lerntext": "salir",
               "de": "hinausgehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "estar",
               "lerntext": "estar",
               "de": "sein (Zustand, Ort)",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "llegar",
               "lerntext": "llegar",
               "de": "ankommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pasar",
               "lerntext": "pasar",
               "de": "passieren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12134,7 +13994,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "quiero [Slot]",
-          "lerntext": "quiero [Slot]"
+          "lerntext": "quiero [Slot]",
+          "wortarten": {
+            "quiero": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12143,86 +14006,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "cantar",
               "lerntext": "cantar",
-              "de": "singen"
+              "de": "singen",
+              "c": "v"
             },
             {
               "schrift": "volver",
               "lerntext": "volver",
-              "de": "zurückkommen"
+              "de": "zurückkommen",
+              "c": "v"
             },
             {
               "schrift": "conocer",
               "lerntext": "conocer",
-              "de": "kennen"
+              "de": "kennen",
+              "c": "v"
             },
             {
               "schrift": "empezar",
               "lerntext": "empezar",
-              "de": "anfangen"
+              "de": "anfangen",
+              "c": "v"
             },
             {
               "schrift": "entrar",
               "lerntext": "entrar",
-              "de": "eintreten"
+              "de": "eintreten",
+              "c": "v"
             },
             {
               "schrift": "nacer",
               "lerntext": "nacer",
               "de": "geboren werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "correr",
               "lerntext": "correr",
               "de": "laufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gustar",
               "lerntext": "gustar",
               "de": "gefallen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "beber",
               "lerntext": "beber",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "conducir",
               "lerntext": "conducir",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "parecer",
               "lerntext": "parecer",
               "de": "scheinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "llevar",
               "lerntext": "llevar",
               "de": "tragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tratar",
               "lerntext": "tratar",
               "de": "behandeln",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "contar",
               "lerntext": "contar",
               "de": "erzählen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "estudiar",
               "lerntext": "estudiar",
               "de": "studieren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12236,7 +14114,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "quiero [Slot]",
-          "lerntext": "quiero [Slot]"
+          "lerntext": "quiero [Slot]",
+          "wortarten": {
+            "quiero": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12245,86 +14126,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "pedir",
               "lerntext": "pedir",
-              "de": "bitten"
+              "de": "bitten",
+              "c": "v"
             },
             {
               "schrift": "recordar",
               "lerntext": "recordar",
-              "de": "sich erinnern"
+              "de": "sich erinnern",
+              "c": "v"
             },
             {
               "schrift": "terminar",
               "lerntext": "terminar",
-              "de": "beenden"
+              "de": "beenden",
+              "c": "v"
             },
             {
               "schrift": "servir",
               "lerntext": "servir",
-              "de": "dienen"
+              "de": "dienen",
+              "c": "v"
             },
             {
               "schrift": "recibir",
               "lerntext": "recibir",
-              "de": "empfangen"
+              "de": "empfangen",
+              "c": "v"
             },
             {
               "schrift": "cantar",
               "lerntext": "cantar",
               "de": "singen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "volver",
               "lerntext": "volver",
               "de": "zurückkommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "conocer",
               "lerntext": "conocer",
               "de": "kennen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "empezar",
               "lerntext": "empezar",
               "de": "anfangen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "entrar",
               "lerntext": "entrar",
               "de": "eintreten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "nacer",
               "lerntext": "nacer",
               "de": "geboren werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "correr",
               "lerntext": "correr",
               "de": "laufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gustar",
               "lerntext": "gustar",
               "de": "gefallen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "beber",
               "lerntext": "beber",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "conducir",
               "lerntext": "conducir",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12338,7 +14234,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "quiero [Slot]",
-          "lerntext": "quiero [Slot]"
+          "lerntext": "quiero [Slot]",
+          "wortarten": {
+            "quiero": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12347,86 +14246,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "permitir",
               "lerntext": "permitir",
-              "de": "erlauben"
+              "de": "erlauben",
+              "c": "v"
             },
             {
               "schrift": "sacar",
               "lerntext": "sacar",
-              "de": "herausnehmen"
+              "de": "herausnehmen",
+              "c": "v"
             },
             {
               "schrift": "caer",
               "lerntext": "caer",
-              "de": "fallen"
+              "de": "fallen",
+              "c": "v"
             },
             {
               "schrift": "considerar",
               "lerntext": "considerar",
-              "de": "betrachten"
+              "de": "betrachten",
+              "c": "v"
             },
             {
               "schrift": "acabar",
               "lerntext": "acabar",
-              "de": "beenden"
+              "de": "beenden",
+              "c": "v"
             },
             {
               "schrift": "pedir",
               "lerntext": "pedir",
               "de": "bitten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "recordar",
               "lerntext": "recordar",
               "de": "sich erinnern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "terminar",
               "lerntext": "terminar",
               "de": "beenden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "servir",
               "lerntext": "servir",
               "de": "dienen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "recibir",
               "lerntext": "recibir",
               "de": "empfangen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cantar",
               "lerntext": "cantar",
               "de": "singen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "volver",
               "lerntext": "volver",
               "de": "zurückkommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "conocer",
               "lerntext": "conocer",
               "de": "kennen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "empezar",
               "lerntext": "empezar",
               "de": "anfangen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "entrar",
               "lerntext": "entrar",
               "de": "eintreten",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12440,7 +14354,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "quiero [Slot]",
-          "lerntext": "quiero [Slot]"
+          "lerntext": "quiero [Slot]",
+          "wortarten": {
+            "quiero": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12449,76 +14366,89 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "traer",
               "lerntext": "traer",
-              "de": "bringen"
+              "de": "bringen",
+              "c": "v"
             },
             {
               "schrift": "aceptar",
               "lerntext": "aceptar",
-              "de": "akzeptieren"
+              "de": "akzeptieren",
+              "c": "v"
             },
             {
               "schrift": "tocar",
               "lerntext": "tocar",
-              "de": "berühren"
+              "de": "berühren",
+              "c": "v"
             },
             {
               "schrift": "permitir",
               "lerntext": "permitir",
               "de": "erlauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sacar",
               "lerntext": "sacar",
               "de": "herausnehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "caer",
               "lerntext": "caer",
               "de": "fallen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "considerar",
               "lerntext": "considerar",
               "de": "betrachten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "acabar",
               "lerntext": "acabar",
               "de": "beenden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pedir",
               "lerntext": "pedir",
               "de": "bitten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "recordar",
               "lerntext": "recordar",
               "de": "sich erinnern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "terminar",
               "lerntext": "terminar",
               "de": "beenden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "servir",
               "lerntext": "servir",
               "de": "dienen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "recibir",
               "lerntext": "recibir",
               "de": "empfangen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12532,7 +14462,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "quiero [Slot]",
-          "lerntext": "quiero [Slot]"
+          "lerntext": "quiero [Slot]",
+          "wortarten": {
+            "quiero": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12542,48 +14475,56 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "traer",
               "lerntext": "traer",
               "de": "bringen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "aceptar",
               "lerntext": "aceptar",
               "de": "akzeptieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tocar",
               "lerntext": "tocar",
               "de": "berühren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "permitir",
               "lerntext": "permitir",
               "de": "erlauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sacar",
               "lerntext": "sacar",
               "de": "herausnehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "caer",
               "lerntext": "caer",
               "de": "fallen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "considerar",
               "lerntext": "considerar",
               "de": "betrachten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "acabar",
               "lerntext": "acabar",
               "de": "beenden",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12597,7 +14538,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "quiero [Slot]",
-          "lerntext": "quiero [Slot]"
+          "lerntext": "quiero [Slot]",
+          "wortarten": {
+            "quiero": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12607,18 +14551,21 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "traer",
               "lerntext": "traer",
               "de": "bringen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "aceptar",
               "lerntext": "aceptar",
               "de": "akzeptieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tocar",
               "lerntext": "tocar",
               "de": "berühren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12653,7 +14600,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es muy [Slot]",
-          "lerntext": "es muy [Slot]"
+          "lerntext": "es muy [Slot]",
+          "wortarten": {
+            "es": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -12662,27 +14612,32 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "bueno / buena",
               "lerntext": "bueno / buena",
-              "de": "gut"
+              "de": "gut",
+              "c": "a"
             },
             {
               "schrift": "malo / mala",
               "lerntext": "malo / mala",
-              "de": "schlecht"
+              "de": "schlecht",
+              "c": "a"
             },
             {
               "schrift": "mayor",
               "lerntext": "mayor",
-              "de": "älter"
+              "de": "älter",
+              "c": "a"
             },
             {
               "schrift": "libre",
               "lerntext": "libre",
-              "de": "frei"
+              "de": "frei",
+              "c": "a"
             },
             {
               "schrift": "perfecto / perfecta",
               "lerntext": "perfecto / perfecta",
-              "de": "perfekt"
+              "de": "perfekt",
+              "c": "a"
             }
           ]
         ],
@@ -12695,7 +14650,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es muy [Slot]",
-          "lerntext": "es muy [Slot]"
+          "lerntext": "es muy [Slot]",
+          "wortarten": {
+            "es": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -12704,56 +14662,66 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "verdadero / verdadera",
               "lerntext": "verdadero / verdadera",
-              "de": "wahr"
+              "de": "wahr",
+              "c": "a"
             },
             {
               "schrift": "claro / clara",
               "lerntext": "claro / clara",
-              "de": "klar"
+              "de": "klar",
+              "c": "a"
             },
             {
               "schrift": "oscuro / oscura",
               "lerntext": "oscuro / oscura",
-              "de": "dunkel"
+              "de": "dunkel",
+              "c": "a"
             },
             {
               "schrift": "salado / salada",
               "lerntext": "salado / salada",
-              "de": "salzig"
+              "de": "salzig",
+              "c": "a"
             },
             {
               "schrift": "picante",
               "lerntext": "picante",
-              "de": "scharf (Geschmack)"
+              "de": "scharf (Geschmack)",
+              "c": "a"
             },
             {
               "schrift": "bueno / buena",
               "lerntext": "bueno / buena",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "malo / mala",
               "lerntext": "malo / mala",
               "de": "schlecht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "mayor",
               "lerntext": "mayor",
               "de": "älter",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "libre",
               "lerntext": "libre",
               "de": "frei",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "perfecto / perfecta",
               "lerntext": "perfecto / perfecta",
               "de": "perfekt",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -12767,7 +14735,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es muy [Slot]",
-          "lerntext": "es muy [Slot]"
+          "lerntext": "es muy [Slot]",
+          "wortarten": {
+            "es": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -12776,86 +14747,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "menor",
               "lerntext": "menor",
-              "de": "jünger"
+              "de": "jünger",
+              "c": "a"
             },
             {
               "schrift": "mejor",
               "lerntext": "mejor",
-              "de": "besser"
+              "de": "besser",
+              "c": "a"
             },
             {
               "schrift": "peor",
               "lerntext": "peor",
-              "de": "schlechter"
+              "de": "schlechter",
+              "c": "a"
             },
             {
               "schrift": "delgado / delgada",
               "lerntext": "delgado / delgada",
-              "de": "schlank"
+              "de": "schlank",
+              "c": "a"
             },
             {
               "schrift": "ocupado / ocupada",
               "lerntext": "ocupado / ocupada",
-              "de": "beschäftigt"
+              "de": "beschäftigt",
+              "c": "a"
             },
             {
               "schrift": "verdadero / verdadera",
               "lerntext": "verdadero / verdadera",
               "de": "wahr",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "claro / clara",
               "lerntext": "claro / clara",
               "de": "klar",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "oscuro / oscura",
               "lerntext": "oscuro / oscura",
               "de": "dunkel",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "salado / salada",
               "lerntext": "salado / salada",
               "de": "salzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "picante",
               "lerntext": "picante",
               "de": "scharf (Geschmack)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bueno / buena",
               "lerntext": "bueno / buena",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "malo / mala",
               "lerntext": "malo / mala",
               "de": "schlecht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "mayor",
               "lerntext": "mayor",
               "de": "älter",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "libre",
               "lerntext": "libre",
               "de": "frei",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "perfecto / perfecta",
               "lerntext": "perfecto / perfecta",
               "de": "perfekt",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -12869,7 +14855,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es muy [Slot]",
-          "lerntext": "es muy [Slot]"
+          "lerntext": "es muy [Slot]",
+          "wortarten": {
+            "es": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -12878,86 +14867,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "lleno / llena",
               "lerntext": "lleno / llena",
-              "de": "voll"
+              "de": "voll",
+              "c": "a"
             },
             {
               "schrift": "vacío / vacía",
               "lerntext": "vacío / vacía",
-              "de": "leer"
+              "de": "leer",
+              "c": "a"
             },
             {
               "schrift": "rico / rica",
               "lerntext": "rico / rica",
-              "de": "reich"
+              "de": "reich",
+              "c": "a"
             },
             {
               "schrift": "pobre",
               "lerntext": "pobre",
-              "de": "arm"
+              "de": "arm",
+              "c": "a"
             },
             {
               "schrift": "guapo / guapa",
               "lerntext": "guapo / guapa",
-              "de": "gutaussehend"
+              "de": "gutaussehend",
+              "c": "a"
             },
             {
               "schrift": "menor",
               "lerntext": "menor",
               "de": "jünger",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "mejor",
               "lerntext": "mejor",
               "de": "besser",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "peor",
               "lerntext": "peor",
               "de": "schlechter",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "delgado / delgada",
               "lerntext": "delgado / delgada",
               "de": "schlank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ocupado / ocupada",
               "lerntext": "ocupado / ocupada",
               "de": "beschäftigt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "verdadero / verdadera",
               "lerntext": "verdadero / verdadera",
               "de": "wahr",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "claro / clara",
               "lerntext": "claro / clara",
               "de": "klar",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "oscuro / oscura",
               "lerntext": "oscuro / oscura",
               "de": "dunkel",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "salado / salada",
               "lerntext": "salado / salada",
               "de": "salzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "picante",
               "lerntext": "picante",
               "de": "scharf (Geschmack)",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -12971,7 +14975,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es muy [Slot]",
-          "lerntext": "es muy [Slot]"
+          "lerntext": "es muy [Slot]",
+          "wortarten": {
+            "es": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -12980,86 +14987,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "amable",
               "lerntext": "amable",
-              "de": "freundlich"
+              "de": "freundlich",
+              "c": "a"
             },
             {
               "schrift": "inteligente",
               "lerntext": "inteligente",
-              "de": "intelligent"
+              "de": "intelligent",
+              "c": "a"
             },
             {
               "schrift": "loco / loca",
               "lerntext": "loco / loca",
-              "de": "verrückt"
+              "de": "verrückt",
+              "c": "a"
             },
             {
               "schrift": "extraño / extraña",
               "lerntext": "extraño / extraña",
-              "de": "seltsam"
+              "de": "seltsam",
+              "c": "a"
             },
             {
               "schrift": "normal",
               "lerntext": "normal",
-              "de": "normal"
+              "de": "normal",
+              "c": "a"
             },
             {
               "schrift": "lleno / llena",
               "lerntext": "lleno / llena",
               "de": "voll",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "vacío / vacía",
               "lerntext": "vacío / vacía",
               "de": "leer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "rico / rica",
               "lerntext": "rico / rica",
               "de": "reich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pobre",
               "lerntext": "pobre",
               "de": "arm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "guapo / guapa",
               "lerntext": "guapo / guapa",
               "de": "gutaussehend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "menor",
               "lerntext": "menor",
               "de": "jünger",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "mejor",
               "lerntext": "mejor",
               "de": "besser",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "peor",
               "lerntext": "peor",
               "de": "schlechter",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "delgado / delgada",
               "lerntext": "delgado / delgada",
               "de": "schlank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ocupado / ocupada",
               "lerntext": "ocupado / ocupada",
               "de": "beschäftigt",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -13073,7 +15095,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es muy [Slot]",
-          "lerntext": "es muy [Slot]"
+          "lerntext": "es muy [Slot]",
+          "wortarten": {
+            "es": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -13082,86 +15107,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "especial",
               "lerntext": "especial",
-              "de": "besonders"
+              "de": "besonders",
+              "c": "a"
             },
             {
               "schrift": "diferente",
               "lerntext": "diferente",
-              "de": "anders"
+              "de": "anders",
+              "c": "a"
             },
             {
               "schrift": "igual",
               "lerntext": "igual",
-              "de": "gleich"
+              "de": "gleich",
+              "c": "a"
             },
             {
               "schrift": "posible",
               "lerntext": "posible",
-              "de": "möglich"
+              "de": "möglich",
+              "c": "a"
             },
             {
               "schrift": "imposible",
               "lerntext": "imposible",
-              "de": "unmöglich"
+              "de": "unmöglich",
+              "c": "a"
             },
             {
               "schrift": "amable",
               "lerntext": "amable",
               "de": "freundlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "inteligente",
               "lerntext": "inteligente",
               "de": "intelligent",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "loco / loca",
               "lerntext": "loco / loca",
               "de": "verrückt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "extraño / extraña",
               "lerntext": "extraño / extraña",
               "de": "seltsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "normal",
               "lerntext": "normal",
               "de": "normal",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lleno / llena",
               "lerntext": "lleno / llena",
               "de": "voll",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "vacío / vacía",
               "lerntext": "vacío / vacía",
               "de": "leer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "rico / rica",
               "lerntext": "rico / rica",
               "de": "reich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pobre",
               "lerntext": "pobre",
               "de": "arm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "guapo / guapa",
               "lerntext": "guapo / guapa",
               "de": "gutaussehend",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -13175,7 +15215,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es muy [Slot]",
-          "lerntext": "es muy [Slot]"
+          "lerntext": "es muy [Slot]",
+          "wortarten": {
+            "es": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -13184,66 +15227,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "necesario / necesaria",
               "lerntext": "necesario / necesaria",
-              "de": "nötig"
+              "de": "nötig",
+              "c": "a"
             },
             {
               "schrift": "especial",
               "lerntext": "especial",
               "de": "besonders",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "diferente",
               "lerntext": "diferente",
               "de": "anders",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "igual",
               "lerntext": "igual",
               "de": "gleich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "posible",
               "lerntext": "posible",
               "de": "möglich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "imposible",
               "lerntext": "imposible",
               "de": "unmöglich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "amable",
               "lerntext": "amable",
               "de": "freundlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "inteligente",
               "lerntext": "inteligente",
               "de": "intelligent",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "loco / loca",
               "lerntext": "loco / loca",
               "de": "verrückt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "extraño / extraña",
               "lerntext": "extraño / extraña",
               "de": "seltsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "normal",
               "lerntext": "normal",
               "de": "normal",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -13257,7 +15311,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es muy [Slot]",
-          "lerntext": "es muy [Slot]"
+          "lerntext": "es muy [Slot]",
+          "wortarten": {
+            "es": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -13267,36 +15324,42 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "necesario / necesaria",
               "lerntext": "necesario / necesaria",
               "de": "nötig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "especial",
               "lerntext": "especial",
               "de": "besonders",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "diferente",
               "lerntext": "diferente",
               "de": "anders",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "igual",
               "lerntext": "igual",
               "de": "gleich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "posible",
               "lerntext": "posible",
               "de": "möglich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "imposible",
               "lerntext": "imposible",
               "de": "unmöglich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -13331,7 +15394,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "lo hago [Slot]",
-          "lerntext": "lo hago [Slot]"
+          "lerntext": "lo hago [Slot]",
+          "wortarten": {
+            "hago": "v"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -13373,7 +15439,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "lo hago [Slot]",
-          "lerntext": "lo hago [Slot]"
+          "lerntext": "lo hago [Slot]",
+          "wortarten": {
+            "hago": "v"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -13445,7 +15514,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "lo hago [Slot]",
-          "lerntext": "lo hago [Slot]"
+          "lerntext": "lo hago [Slot]",
+          "wortarten": {
+            "hago": "v"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -13547,7 +15619,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "lo hago [Slot]",
-          "lerntext": "lo hago [Slot]"
+          "lerntext": "lo hago [Slot]",
+          "wortarten": {
+            "hago": "v"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -13649,7 +15724,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "lo hago [Slot]",
-          "lerntext": "lo hago [Slot]"
+          "lerntext": "lo hago [Slot]",
+          "wortarten": {
+            "hago": "v"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -13751,7 +15829,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "lo hago [Slot]",
-          "lerntext": "lo hago [Slot]"
+          "lerntext": "lo hago [Slot]",
+          "wortarten": {
+            "hago": "v"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -13828,7 +15909,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "lo hago [Slot]",
-          "lerntext": "lo hago [Slot]"
+          "lerntext": "lo hago [Slot]",
+          "wortarten": {
+            "hago": "v"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -13896,7 +15980,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es para [Slot]",
-          "lerntext": "es para [Slot]"
+          "lerntext": "es para [Slot]",
+          "wortarten": {
+            "es": "v"
+          }
         },
         "frameDe": "Es ist für [Slot].",
         "pronouns": [],
@@ -13905,27 +15992,32 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "otro / otra",
               "lerntext": "otro / otra",
-              "de": "anderer"
+              "de": "anderer",
+              "c": "p"
             },
             {
               "schrift": "mismo / misma",
               "lerntext": "mismo / misma",
-              "de": "derselbe"
+              "de": "derselbe",
+              "c": "p"
             },
             {
               "schrift": "usted",
               "lerntext": "usted",
-              "de": "Sie (Höflichkeitsform)"
+              "de": "Sie (Höflichkeitsform)",
+              "c": "p"
             },
             {
               "schrift": "ellos / ellas",
               "lerntext": "ellos / ellas",
-              "de": "sie (Plural)"
+              "de": "sie (Plural)",
+              "c": "p"
             },
             {
               "schrift": "ustedes",
               "lerntext": "ustedes",
-              "de": "Sie (Plural, Höflichkeitsform)"
+              "de": "Sie (Plural, Höflichkeitsform)",
+              "c": "p"
             }
           ]
         ],
@@ -13938,7 +16030,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es para [Slot]",
-          "lerntext": "es para [Slot]"
+          "lerntext": "es para [Slot]",
+          "wortarten": {
+            "es": "v"
+          }
         },
         "frameDe": "Es ist für [Slot].",
         "pronouns": [],
@@ -13947,56 +16042,66 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "los / las",
               "lerntext": "los / las",
-              "de": "sie (Objektpronomen, Plural)"
+              "de": "sie (Objektpronomen, Plural)",
+              "c": "p"
             },
             {
               "schrift": "le / les",
               "lerntext": "le / les",
-              "de": "ihm"
+              "de": "ihm",
+              "c": "p"
             },
             {
               "schrift": "su / sus",
               "lerntext": "su / sus",
-              "de": "sein"
+              "de": "sein",
+              "c": "p"
             },
             {
               "schrift": "vuestro / vuestra",
               "lerntext": "vuestro / vuestra",
-              "de": "euer"
+              "de": "euer",
+              "c": "p"
             },
             {
               "schrift": "ese / esa",
               "lerntext": "ese / esa",
-              "de": "dieser"
+              "de": "dieser",
+              "c": "p"
             },
             {
               "schrift": "otro / otra",
               "lerntext": "otro / otra",
               "de": "anderer",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "mismo / misma",
               "lerntext": "mismo / misma",
               "de": "derselbe",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "usted",
               "lerntext": "usted",
               "de": "Sie (Höflichkeitsform)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ellos / ellas",
               "lerntext": "ellos / ellas",
               "de": "sie (Plural)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ustedes",
               "lerntext": "ustedes",
               "de": "Sie (Plural, Höflichkeitsform)",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -14010,7 +16115,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es para [Slot]",
-          "lerntext": "es para [Slot]"
+          "lerntext": "es para [Slot]",
+          "wortarten": {
+            "es": "v"
+          }
         },
         "frameDe": "Es ist für [Slot].",
         "pronouns": [],
@@ -14019,86 +16127,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "aquel / aquella",
               "lerntext": "aquel / aquella",
-              "de": "jener"
+              "de": "jener",
+              "c": "p"
             },
             {
               "schrift": "eso",
               "lerntext": "eso",
-              "de": "das (neutral)"
+              "de": "das (neutral)",
+              "c": "p"
             },
             {
               "schrift": "alguien",
               "lerntext": "alguien",
-              "de": "jemand"
+              "de": "jemand",
+              "c": "p"
             },
             {
               "schrift": "nada",
               "lerntext": "nada",
-              "de": "nichts"
+              "de": "nichts",
+              "c": "p"
             },
             {
               "schrift": "nadie",
               "lerntext": "nadie",
-              "de": "niemand"
+              "de": "niemand",
+              "c": "p"
             },
             {
               "schrift": "los / las",
               "lerntext": "los / las",
               "de": "sie (Objektpronomen, Plural)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "le / les",
               "lerntext": "le / les",
               "de": "ihm",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "su / sus",
               "lerntext": "su / sus",
               "de": "sein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "vuestro / vuestra",
               "lerntext": "vuestro / vuestra",
               "de": "euer",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ese / esa",
               "lerntext": "ese / esa",
               "de": "dieser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "otro / otra",
               "lerntext": "otro / otra",
               "de": "anderer",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "mismo / misma",
               "lerntext": "mismo / misma",
               "de": "derselbe",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "usted",
               "lerntext": "usted",
               "de": "Sie (Höflichkeitsform)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ellos / ellas",
               "lerntext": "ellos / ellas",
               "de": "sie (Plural)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ustedes",
               "lerntext": "ustedes",
               "de": "Sie (Plural, Höflichkeitsform)",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -14112,7 +16235,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es para [Slot]",
-          "lerntext": "es para [Slot]"
+          "lerntext": "es para [Slot]",
+          "wortarten": {
+            "es": "v"
+          }
         },
         "frameDe": "Es ist für [Slot].",
         "pronouns": [],
@@ -14121,66 +16247,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "alguno / alguna",
               "lerntext": "alguno / alguna",
-              "de": "irgendein"
+              "de": "irgendein",
+              "c": "p"
             },
             {
               "schrift": "aquel / aquella",
               "lerntext": "aquel / aquella",
               "de": "jener",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "eso",
               "lerntext": "eso",
               "de": "das (neutral)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "alguien",
               "lerntext": "alguien",
               "de": "jemand",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "nada",
               "lerntext": "nada",
               "de": "nichts",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "nadie",
               "lerntext": "nadie",
               "de": "niemand",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "los / las",
               "lerntext": "los / las",
               "de": "sie (Objektpronomen, Plural)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "le / les",
               "lerntext": "le / les",
               "de": "ihm",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "su / sus",
               "lerntext": "su / sus",
               "de": "sein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "vuestro / vuestra",
               "lerntext": "vuestro / vuestra",
               "de": "euer",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ese / esa",
               "lerntext": "ese / esa",
               "de": "dieser",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -14194,7 +16331,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es para [Slot]",
-          "lerntext": "es para [Slot]"
+          "lerntext": "es para [Slot]",
+          "wortarten": {
+            "es": "v"
+          }
         },
         "frameDe": "Es ist für [Slot].",
         "pronouns": [],
@@ -14204,36 +16344,42 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "alguno / alguna",
               "lerntext": "alguno / alguna",
               "de": "irgendein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "aquel / aquella",
               "lerntext": "aquel / aquella",
               "de": "jener",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "eso",
               "lerntext": "eso",
               "de": "das (neutral)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "alguien",
               "lerntext": "alguien",
               "de": "jemand",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "nada",
               "lerntext": "nada",
               "de": "nichts",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "nadie",
               "lerntext": "nadie",
               "de": "niemand",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -14268,7 +16414,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "está [Slot] la casa",
-          "lerntext": "está [Slot] la casa"
+          "lerntext": "está [Slot] la casa",
+          "wortarten": {
+            "está": "v",
+            "casa": "n"
+          }
         },
         "frameDe": "Es ist [Slot] dem Haus.",
         "pronouns": [],
@@ -14310,7 +16460,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "está [Slot] la casa",
-          "lerntext": "está [Slot] la casa"
+          "lerntext": "está [Slot] la casa",
+          "wortarten": {
+            "está": "v",
+            "casa": "n"
+          }
         },
         "frameDe": "Es ist [Slot] dem Haus.",
         "pronouns": [],
@@ -14372,7 +16526,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "está [Slot] la casa",
-          "lerntext": "está [Slot] la casa"
+          "lerntext": "está [Slot] la casa",
+          "wortarten": {
+            "está": "v",
+            "casa": "n"
+          }
         },
         "frameDe": "Es ist [Slot] dem Haus.",
         "pronouns": [],
@@ -14437,7 +16595,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "está [Slot] la casa",
-          "lerntext": "está [Slot] la casa"
+          "lerntext": "está [Slot] la casa",
+          "wortarten": {
+            "está": "v",
+            "casa": "n"
+          }
         },
         "frameDe": "Es ist [Slot] dem Haus.",
         "pronouns": [],
@@ -14672,7 +16834,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "vengo [Slot] puedo",
-          "lerntext": "vengo [Slot] puedo"
+          "lerntext": "vengo [Slot] puedo",
+          "wortarten": {
+            "vengo": "v",
+            "puedo": "v"
+          }
         },
         "frameDe": "Ich komme, [Slot] ich kann.",
         "pronouns": [],
@@ -14681,27 +16847,32 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "mientras",
               "lerntext": "mientras",
-              "de": "während"
+              "de": "während",
+              "c": "k"
             },
             {
               "schrift": "además",
               "lerntext": "además",
-              "de": "außerdem"
+              "de": "außerdem",
+              "c": "k"
             },
             {
               "schrift": "sin embargo",
               "lerntext": "sin embargo",
-              "de": "trotzdem"
+              "de": "trotzdem",
+              "c": "k"
             },
             {
               "schrift": "por eso",
               "lerntext": "por eso",
-              "de": "deshalb"
+              "de": "deshalb",
+              "c": "k"
             },
             {
               "schrift": "así que",
               "lerntext": "así que",
-              "de": "also"
+              "de": "also",
+              "c": "k"
             }
           ]
         ],
@@ -14714,7 +16885,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "vengo [Slot] puedo",
-          "lerntext": "vengo [Slot] puedo"
+          "lerntext": "vengo [Slot] puedo",
+          "wortarten": {
+            "vengo": "v",
+            "puedo": "v"
+          }
         },
         "frameDe": "Ich komme, [Slot] ich kann.",
         "pronouns": [],
@@ -14723,36 +16898,42 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "ni",
               "lerntext": "ni",
-              "de": "noch"
+              "de": "noch",
+              "c": "k"
             },
             {
               "schrift": "mientras",
               "lerntext": "mientras",
               "de": "während",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "además",
               "lerntext": "además",
               "de": "außerdem",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "sin embargo",
               "lerntext": "sin embargo",
               "de": "trotzdem",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "por eso",
               "lerntext": "por eso",
               "de": "deshalb",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "así que",
               "lerntext": "así que",
               "de": "also",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -14766,7 +16947,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "vengo [Slot] puedo",
-          "lerntext": "vengo [Slot] puedo"
+          "lerntext": "vengo [Slot] puedo",
+          "wortarten": {
+            "vengo": "v",
+            "puedo": "v"
+          }
         },
         "frameDe": "Ich komme, [Slot] ich kann.",
         "pronouns": [],
@@ -14776,36 +16961,42 @@ export const SPANISH_COURSE: CourseModuleData[] =
               "schrift": "ni",
               "lerntext": "ni",
               "de": "noch",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "mientras",
               "lerntext": "mientras",
               "de": "während",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "además",
               "lerntext": "además",
               "de": "außerdem",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "sin embargo",
               "lerntext": "sin embargo",
               "de": "trotzdem",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "por eso",
               "lerntext": "por eso",
               "de": "deshalb",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "así que",
               "lerntext": "así que",
               "de": "also",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -14840,7 +17031,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "¿[Slot] es?",
-          "lerntext": "¿[Slot] es?"
+          "lerntext": "¿[Slot] es?",
+          "wortarten": {
+            "es?": "v"
+          }
         },
         "frameDe": "[Slot] ist es?",
         "pronouns": [],
@@ -14882,7 +17076,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "¿[Slot] es?",
-          "lerntext": "¿[Slot] es?"
+          "lerntext": "¿[Slot] es?",
+          "wortarten": {
+            "es?": "v"
+          }
         },
         "frameDe": "[Slot] ist es?",
         "pronouns": [],
@@ -14929,7 +17126,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "¿[Slot] es?",
-          "lerntext": "¿[Slot] es?"
+          "lerntext": "¿[Slot] es?",
+          "wortarten": {
+            "es?": "v"
+          }
         },
         "frameDe": "[Slot] ist es?",
         "pronouns": [],
@@ -14997,7 +17197,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] libro",
-          "lerntext": "[Slot] libro"
+          "lerntext": "[Slot] libro",
+          "wortarten": {
+            "libro": "n"
+          }
         },
         "frameDe": "[Slot] Buch.",
         "pronouns": [],
@@ -15039,7 +17242,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] libro",
-          "lerntext": "[Slot] libro"
+          "lerntext": "[Slot] libro",
+          "wortarten": {
+            "libro": "n"
+          }
         },
         "frameDe": "[Slot] Buch.",
         "pronouns": [],
@@ -15086,7 +17292,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] libro",
-          "lerntext": "[Slot] libro"
+          "lerntext": "[Slot] libro",
+          "wortarten": {
+            "libro": "n"
+          }
         },
         "frameDe": "[Slot] Buch.",
         "pronouns": [],
@@ -15154,14 +17363,18 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo he [Slot]",
-          "lerntext": "yo he [Slot]"
+          "lerntext": "yo he [Slot]",
+          "wortarten": {
+            "yo": "p"
+          }
         },
         "frameDe": "ich habe [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15169,86 +17382,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "mirado",
               "lerntext": "mirado",
-              "de": "schauen"
+              "de": "schauen",
+              "c": "v"
             },
             {
               "schrift": "comprado",
               "lerntext": "comprado",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "visto",
               "lerntext": "visto",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "hecho",
               "lerntext": "hecho",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "encontrado",
               "lerntext": "encontrado",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "tomado",
               "lerntext": "tomado",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "leído",
               "lerntext": "leído",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "escrito",
               "lerntext": "escrito",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "oído",
               "lerntext": "oído",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "perdido",
               "lerntext": "perdido",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "enviado",
               "lerntext": "enviado",
               "de": "senden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cambiado",
               "lerntext": "cambiado",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "entendido",
               "lerntext": "entendido",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lavado",
               "lerntext": "lavado",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vendido",
               "lerntext": "vendido",
               "de": "verkaufen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15262,14 +17490,18 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo he [Slot]",
-          "lerntext": "yo he [Slot]"
+          "lerntext": "yo he [Slot]",
+          "wortarten": {
+            "yo": "p"
+          }
         },
         "frameDe": "ich habe [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15277,86 +17509,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "tomado",
               "lerntext": "tomado",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "leído",
               "lerntext": "leído",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "escrito",
               "lerntext": "escrito",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "oído",
               "lerntext": "oído",
-              "de": "hören"
+              "de": "hören",
+              "c": "v"
             },
             {
               "schrift": "perdido",
               "lerntext": "perdido",
-              "de": "verlieren"
+              "de": "verlieren",
+              "c": "v"
             },
             {
               "schrift": "mirado",
               "lerntext": "mirado",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comprado",
               "lerntext": "comprado",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "visto",
               "lerntext": "visto",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hecho",
               "lerntext": "hecho",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "encontrado",
               "lerntext": "encontrado",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "enviado",
               "lerntext": "enviado",
               "de": "senden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cambiado",
               "lerntext": "cambiado",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "entendido",
               "lerntext": "entendido",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ayudado",
               "lerntext": "ayudado",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vivido",
               "lerntext": "vivido",
               "de": "leben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15377,7 +17624,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15385,86 +17633,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "trabajado",
               "lerntext": "trabajado",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "jugado",
               "lerntext": "jugado",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "bailado",
               "lerntext": "bailado",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "dormido",
               "lerntext": "dormido",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "esperado",
               "lerntext": "esperado",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "buscado",
               "lerntext": "buscado",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "preguntado",
               "lerntext": "preguntado",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pagado",
               "lerntext": "pagado",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ayudado",
               "lerntext": "ayudado",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "enviado",
               "lerntext": "enviado",
               "de": "senden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cambiado",
               "lerntext": "cambiado",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "reído",
               "lerntext": "reído",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "necesitado",
               "lerntext": "necesitado",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sabido",
               "lerntext": "sabido",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "puesto",
               "lerntext": "puesto",
               "de": "stellen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15485,7 +17748,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15493,81 +17757,95 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "buscado",
               "lerntext": "buscado",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "preguntado",
               "lerntext": "preguntado",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "ayudado",
               "lerntext": "ayudado",
-              "de": "helfen"
+              "de": "helfen",
+              "c": "v"
             },
             {
               "schrift": "pagado",
               "lerntext": "pagado",
-              "de": "bezahlen"
+              "de": "bezahlen",
+              "c": "v"
             },
             {
               "schrift": "trabajado",
               "lerntext": "trabajado",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bailado",
               "lerntext": "bailado",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dormido",
               "lerntext": "dormido",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "jugado",
               "lerntext": "jugado",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "esperado",
               "lerntext": "esperado",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "enviado",
               "lerntext": "enviado",
               "de": "senden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dado",
               "lerntext": "dado",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comido",
               "lerntext": "comido",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "usado",
               "lerntext": "usado",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comenzado",
               "lerntext": "comenzado",
               "de": "beginnen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15588,7 +17866,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15596,86 +17875,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "ganado",
               "lerntext": "ganado",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "entendido",
               "lerntext": "entendido",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "dado",
               "lerntext": "dado",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "dicho",
               "lerntext": "dicho",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "hablado",
               "lerntext": "hablado",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "cerrado",
               "lerntext": "cerrado",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "abierto",
               "lerntext": "abierto",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lavado",
               "lerntext": "lavado",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "muerto",
               "lerntext": "muerto",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "quedado",
               "lerntext": "quedado",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "podido",
               "lerntext": "podido",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "debido",
               "lerntext": "debido",
               "de": "sollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cambiado",
               "lerntext": "cambiado",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "escuchado",
               "lerntext": "escuchado",
               "de": "zuhören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sentido",
               "lerntext": "sentido",
               "de": "fühlen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15696,7 +17990,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15704,76 +17999,89 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "abierto",
               "lerntext": "abierto",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "cerrado",
               "lerntext": "cerrado",
-              "de": "schließen"
+              "de": "schließen",
+              "c": "v"
             },
             {
               "schrift": "lavado",
               "lerntext": "lavado",
-              "de": "waschen"
+              "de": "waschen",
+              "c": "v"
             },
             {
               "schrift": "ganado",
               "lerntext": "ganado",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "entendido",
               "lerntext": "entendido",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dicho",
               "lerntext": "dicho",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hablado",
               "lerntext": "hablado",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dado",
               "lerntext": "dado",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "conseguido",
               "lerntext": "conseguido",
               "de": "erreichen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "llamado",
               "lerntext": "llamado",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "venido",
               "lerntext": "venido",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pensado",
               "lerntext": "pensado",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "limpiado",
               "lerntext": "limpiado",
               "de": "putzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15808,14 +18116,18 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "tú [Slot]",
-          "lerntext": "tú [Slot]"
+          "lerntext": "tú [Slot]",
+          "wortarten": {
+            "tú": "p"
+          }
         },
         "frameDe": "du [Slot].",
         "pronouns": [
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15823,86 +18135,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "miras",
               "lerntext": "miras",
-              "de": "schauen"
+              "de": "schauen",
+              "c": "v"
             },
             {
               "schrift": "compras",
               "lerntext": "compras",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "ves",
               "lerntext": "ves",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "haces",
               "lerntext": "haces",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "encuentras",
               "lerntext": "encuentras",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "tomas",
               "lerntext": "tomas",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lees",
               "lerntext": "lees",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "escribes",
               "lerntext": "escribes",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vas",
               "lerntext": "vas",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "creas",
               "lerntext": "creas",
               "de": "erschaffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "explicas",
               "lerntext": "explicas",
               "de": "erklären",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "te duchas",
               "lerntext": "te duchas",
               "de": "duschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viajas",
               "lerntext": "viajas",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "crees",
               "lerntext": "crees",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dejas",
               "lerntext": "dejas",
               "de": "lassen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15916,14 +18243,18 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "tú [Slot]",
-          "lerntext": "tú [Slot]"
+          "lerntext": "tú [Slot]",
+          "wortarten": {
+            "tú": "p"
+          }
         },
         "frameDe": "du [Slot].",
         "pronouns": [
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15931,76 +18262,89 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "tomas",
               "lerntext": "tomas",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "lees",
               "lerntext": "lees",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "escribes",
               "lerntext": "escribes",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "miras",
               "lerntext": "miras",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "compras",
               "lerntext": "compras",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ves",
               "lerntext": "ves",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "haces",
               "lerntext": "haces",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "encuentras",
               "lerntext": "encuentras",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "caminas",
               "lerntext": "caminas",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "envías",
               "lerntext": "envías",
               "de": "senden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lloras",
               "lerntext": "lloras",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vendes",
               "lerntext": "vendes",
               "de": "verkaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vives",
               "lerntext": "vives",
               "de": "leben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16014,14 +18358,18 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "él [Slot]",
-          "lerntext": "él [Slot]"
+          "lerntext": "él [Slot]",
+          "wortarten": {
+            "él": "p"
+          }
         },
         "frameDe": "er [Slot].",
         "pronouns": [
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16029,86 +18377,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "trabaja",
               "lerntext": "trabaja",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "juega",
               "lerntext": "juega",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "baila",
               "lerntext": "baila",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "duerme",
               "lerntext": "duerme",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "espera",
               "lerntext": "espera",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "busca",
               "lerntext": "busca",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pregunta",
               "lerntext": "pregunta",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ríe",
               "lerntext": "ríe",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "necesita",
               "lerntext": "necesita",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sabe",
               "lerntext": "sabe",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pone",
               "lerntext": "pone",
               "de": "stellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "come",
               "lerntext": "come",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "usa",
               "lerntext": "usa",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comienza",
               "lerntext": "comienza",
               "de": "beginnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "muere",
               "lerntext": "muere",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16122,14 +18485,18 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "él [Slot]",
-          "lerntext": "él [Slot]"
+          "lerntext": "él [Slot]",
+          "wortarten": {
+            "él": "p"
+          }
         },
         "frameDe": "er [Slot].",
         "pronouns": [
           {
             "schrift": "él",
             "lerntext": "él",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16137,71 +18504,83 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "busca",
               "lerntext": "busca",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "pregunta",
               "lerntext": "pregunta",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "trabaja",
               "lerntext": "trabaja",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "baila",
               "lerntext": "baila",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "duerme",
               "lerntext": "duerme",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "juega",
               "lerntext": "juega",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "espera",
               "lerntext": "espera",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "queda",
               "lerntext": "queda",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "puede",
               "lerntext": "puede",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "debe",
               "lerntext": "debe",
               "de": "sollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cambia",
               "lerntext": "cambia",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "escucha",
               "lerntext": "escucha",
               "de": "zuhören",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16215,14 +18594,19 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "nosotros / nosotras [Slot]",
-          "lerntext": "nosotros / nosotras [Slot]"
+          "lerntext": "nosotros / nosotras [Slot]",
+          "wortarten": {
+            "nosotros": "p",
+            "nosotras": "p"
+          }
         },
         "frameDe": "wir [Slot].",
         "pronouns": [
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16230,86 +18614,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "ganamos",
               "lerntext": "ganamos",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "entendemos",
               "lerntext": "entendemos",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "damos",
               "lerntext": "damos",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "decimos",
               "lerntext": "decimos",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "hablamos",
               "lerntext": "hablamos",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "abrimos",
               "lerntext": "abrimos",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sentimos",
               "lerntext": "sentimos",
               "de": "fühlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "conseguimos",
               "lerntext": "conseguimos",
               "de": "erreichen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "llamamos",
               "lerntext": "llamamos",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "venimos",
               "lerntext": "venimos",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pensamos",
               "lerntext": "pensamos",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "limpiamos",
               "lerntext": "limpiamos",
               "de": "putzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vamos",
               "lerntext": "vamos",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "creamos",
               "lerntext": "creamos",
               "de": "erschaffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "explicamos",
               "lerntext": "explicamos",
               "de": "erklären",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16323,14 +18722,19 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "nosotros / nosotras [Slot]",
-          "lerntext": "nosotros / nosotras [Slot]"
+          "lerntext": "nosotros / nosotras [Slot]",
+          "wortarten": {
+            "nosotros": "p",
+            "nosotras": "p"
+          }
         },
         "frameDe": "wir [Slot].",
         "pronouns": [
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16338,66 +18742,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "abrimos",
               "lerntext": "abrimos",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "ganamos",
               "lerntext": "ganamos",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "entendemos",
               "lerntext": "entendemos",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "decimos",
               "lerntext": "decimos",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hablamos",
               "lerntext": "hablamos",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "damos",
               "lerntext": "damos",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "nos duchamos",
               "lerntext": "nos duchamos",
               "de": "duschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viajamos",
               "lerntext": "viajamos",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "creemos",
               "lerntext": "creemos",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dejamos",
               "lerntext": "dejamos",
               "de": "lassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "caminamos",
               "lerntext": "caminamos",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16411,14 +18826,18 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ella [Slot]",
-          "lerntext": "ella [Slot]"
+          "lerntext": "ella [Slot]",
+          "wortarten": {
+            "ella": "p"
+          }
         },
         "frameDe": "sie [Slot].",
         "pronouns": [
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16426,86 +18845,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "viven",
               "lerntext": "viven",
-              "de": "leben"
+              "de": "leben",
+              "c": "v"
             },
             {
               "schrift": "quedan",
               "lerntext": "quedan",
-              "de": "bleiben"
+              "de": "bleiben",
+              "c": "v"
             },
             {
               "schrift": "ríen",
               "lerntext": "ríen",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "lloran",
               "lerntext": "lloran",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "piensan",
               "lerntext": "piensan",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "creen",
               "lerntext": "creen",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "necesitan",
               "lerntext": "necesitan",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "esperan",
               "lerntext": "esperan",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "envían",
               "lerntext": "envían",
               "de": "senden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tienen",
               "lerntext": "tienen",
               "de": "haben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "venden",
               "lerntext": "venden",
               "de": "verkaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "saben",
               "lerntext": "saben",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ponen",
               "lerntext": "ponen",
               "de": "stellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comen",
               "lerntext": "comen",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "usan",
               "lerntext": "usan",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16519,14 +18953,18 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ella [Slot]",
-          "lerntext": "ella [Slot]"
+          "lerntext": "ella [Slot]",
+          "wortarten": {
+            "ella": "p"
+          }
         },
         "frameDe": "sie [Slot].",
         "pronouns": [
           {
             "schrift": "ella",
             "lerntext": "ella",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16534,76 +18972,89 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "creen",
               "lerntext": "creen",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "esperan",
               "lerntext": "esperan",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "necesitan",
               "lerntext": "necesitan",
-              "de": "brauchen"
+              "de": "brauchen",
+              "c": "v"
             },
             {
               "schrift": "viven",
               "lerntext": "viven",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "quedan",
               "lerntext": "quedan",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ríen",
               "lerntext": "ríen",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lloran",
               "lerntext": "lloran",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "piensan",
               "lerntext": "piensan",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comienzan",
               "lerntext": "comienzan",
               "de": "beginnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mueren",
               "lerntext": "mueren",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pueden",
               "lerntext": "pueden",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "deben",
               "lerntext": "deben",
               "de": "sollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cambian",
               "lerntext": "cambian",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16638,7 +19089,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es más [Slot]",
-          "lerntext": "es más [Slot]"
+          "lerntext": "es más [Slot]",
+          "wortarten": {
+            "es": "v"
+          }
         },
         "frameDe": "Das ist mehr [Slot].",
         "pronouns": [],
@@ -16647,86 +19101,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "interesante",
               "lerntext": "interesante",
-              "de": "interessant"
+              "de": "interessant",
+              "c": "a"
             },
             {
               "schrift": "difícil",
               "lerntext": "difícil",
-              "de": "schwierig"
+              "de": "schwierig",
+              "c": "a"
             },
             {
               "schrift": "importante",
               "lerntext": "importante",
-              "de": "wichtig"
+              "de": "wichtig",
+              "c": "a"
             },
             {
               "schrift": "peligroso / peligrosa",
               "lerntext": "peligroso / peligrosa",
-              "de": "gefährlich"
+              "de": "gefährlich",
+              "c": "a"
             },
             {
               "schrift": "caro / cara",
               "lerntext": "caro / cara",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "sucio / sucia",
               "lerntext": "sucio / sucia",
               "de": "schmutzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "triste",
               "lerntext": "triste",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "cansado / cansada",
               "lerntext": "cansado / cansada",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "falso / falsa",
               "lerntext": "falso / falsa",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lento / lenta",
               "lerntext": "lento / lenta",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "rápido / rápida",
               "lerntext": "rápido / rápida",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "feo / fea",
               "lerntext": "feo / fea",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "correcto / correcta",
               "lerntext": "correcto / correcta",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fácil",
               "lerntext": "fácil",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "aburrido / aburrida",
               "lerntext": "aburrido / aburrida",
               "de": "langweilig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -16746,7 +19215,10 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "es más [Slot]",
-          "lerntext": "es más [Slot]"
+          "lerntext": "es más [Slot]",
+          "wortarten": {
+            "es": "v"
+          }
         },
         "frameDe": "Das ist mehr [Slot].",
         "pronouns": [],
@@ -16755,76 +19227,89 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "sucio / sucia",
               "lerntext": "sucio / sucia",
-              "de": "schmutzig"
+              "de": "schmutzig",
+              "c": "a"
             },
             {
               "schrift": "cansado / cansada",
               "lerntext": "cansado / cansada",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "triste",
               "lerntext": "triste",
-              "de": "traurig"
+              "de": "traurig",
+              "c": "a"
             },
             {
               "schrift": "interesante",
               "lerntext": "interesante",
               "de": "interessant",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "difícil",
               "lerntext": "difícil",
               "de": "schwierig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "importante",
               "lerntext": "importante",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "peligroso / peligrosa",
               "lerntext": "peligroso / peligrosa",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "caro / cara",
               "lerntext": "caro / cara",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "falso / falsa",
               "lerntext": "falso / falsa",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lento / lenta",
               "lerntext": "lento / lenta",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "rápido / rápida",
               "lerntext": "rápido / rápida",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "feo / fea",
               "lerntext": "feo / fea",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "correcto / correcta",
               "lerntext": "correcto / correcta",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -16838,7 +19323,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "soy tan [Slot] como tú",
-          "lerntext": "soy tan [Slot] como tú"
+          "lerntext": "soy tan [Slot] como tú",
+          "wortarten": {
+            "soy": "v",
+            "tú": "p"
+          }
         },
         "frameDe": "bin so [Slot] wie du.",
         "pronouns": [],
@@ -16847,86 +19336,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "grande",
               "lerntext": "grande",
-              "de": "groß"
+              "de": "groß",
+              "c": "a"
             },
             {
               "schrift": "pequeño / pequeña",
               "lerntext": "pequeño / pequeña",
-              "de": "klein"
+              "de": "klein",
+              "c": "a"
             },
             {
               "schrift": "viejo / vieja",
               "lerntext": "viejo / vieja",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "joven",
               "lerntext": "joven",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "caro / cara",
               "lerntext": "caro / cara",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "bonito / bonita",
               "lerntext": "bonito / bonita",
               "de": "hübsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "caliente",
               "lerntext": "caliente",
               "de": "heiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "frío / fría",
               "lerntext": "frío / fría",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "nuevo / nueva",
               "lerntext": "nuevo / nueva",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fuerte",
               "lerntext": "fuerte",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fácil",
               "lerntext": "fácil",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "corto / corta",
               "lerntext": "corto / corta",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "feliz",
               "lerntext": "feliz",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "falso / falsa",
               "lerntext": "falso / falsa",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "limpio / limpia",
               "lerntext": "limpio / limpia",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -16937,7 +19441,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "cuando",
             "lerntext": "cuando",
-            "de": "wenn"
+            "de": "wenn",
+            "c": "k"
           }
         ],
         "id": "27.3"
@@ -16946,7 +19451,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "soy tan [Slot] como tú",
-          "lerntext": "soy tan [Slot] como tú"
+          "lerntext": "soy tan [Slot] como tú",
+          "wortarten": {
+            "soy": "v",
+            "tú": "p"
+          }
         },
         "frameDe": "bin so [Slot] wie du.",
         "pronouns": [],
@@ -16955,86 +19464,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "bonito / bonita",
               "lerntext": "bonito / bonita",
-              "de": "hübsch"
+              "de": "hübsch",
+              "c": "a"
             },
             {
               "schrift": "caliente",
               "lerntext": "caliente",
-              "de": "heiß"
+              "de": "heiß",
+              "c": "a"
             },
             {
               "schrift": "frío / fría",
               "lerntext": "frío / fría",
-              "de": "kalt"
+              "de": "kalt",
+              "c": "a"
             },
             {
               "schrift": "nuevo / nueva",
               "lerntext": "nuevo / nueva",
-              "de": "neu"
+              "de": "neu",
+              "c": "a"
             },
             {
               "schrift": "fuerte",
               "lerntext": "fuerte",
-              "de": "stark"
+              "de": "stark",
+              "c": "a"
             },
             {
               "schrift": "grande",
               "lerntext": "grande",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pequeño / pequeña",
               "lerntext": "pequeño / pequeña",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "joven",
               "lerntext": "joven",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "viejo / vieja",
               "lerntext": "viejo / vieja",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "caro / cara",
               "lerntext": "caro / cara",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lento / lenta",
               "lerntext": "lento / lenta",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bajo / baja",
               "lerntext": "bajo / baja",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "largo / larga",
               "lerntext": "largo / larga",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "rápido / rápida",
               "lerntext": "rápido / rápida",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tonto / tonta",
               "lerntext": "tonto / tonta",
               "de": "dumm",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17069,14 +19593,20 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo me siento [Slot]",
-          "lerntext": "yo me siento [Slot]"
+          "lerntext": "yo me siento [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "me": "p",
+            "siento": "v"
+          }
         },
         "frameDe": "ich fühle mich [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17084,86 +19614,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "cansado / cansada",
               "lerntext": "cansado / cansada",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "triste",
               "lerntext": "triste",
-              "de": "traurig"
+              "de": "traurig",
+              "c": "a"
             },
             {
               "schrift": "fuerte",
               "lerntext": "fuerte",
-              "de": "stark"
+              "de": "stark",
+              "c": "a"
             },
             {
               "schrift": "débil",
               "lerntext": "débil",
-              "de": "schwach"
+              "de": "schwach",
+              "c": "a"
             },
             {
               "schrift": "joven",
               "lerntext": "joven",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "bonito / bonita",
               "lerntext": "bonito / bonita",
               "de": "hübsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "viejo / vieja",
               "lerntext": "viejo / vieja",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dulce",
               "lerntext": "dulce",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ancho / ancha",
               "lerntext": "ancho / ancha",
               "de": "breit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "barato / barata",
               "lerntext": "barato / barata",
               "de": "billig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "feo / fea",
               "lerntext": "feo / fea",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "estrecho / estrecha",
               "lerntext": "estrecho / estrecha",
               "de": "eng",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "correcto / correcta",
               "lerntext": "correcto / correcta",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gordo / gorda",
               "lerntext": "gordo / gorda",
               "de": "dick",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fácil",
               "lerntext": "fácil",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17177,14 +19722,20 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo me siento [Slot]",
-          "lerntext": "yo me siento [Slot]"
+          "lerntext": "yo me siento [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "me": "p",
+            "siento": "v"
+          }
         },
         "frameDe": "ich fühle mich [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17192,71 +19743,83 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "viejo / vieja",
               "lerntext": "viejo / vieja",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "bonito / bonita",
               "lerntext": "bonito / bonita",
-              "de": "hübsch"
+              "de": "hübsch",
+              "c": "a"
             },
             {
               "schrift": "débil",
               "lerntext": "débil",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "triste",
               "lerntext": "triste",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fuerte",
               "lerntext": "fuerte",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "joven",
               "lerntext": "joven",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "cansado / cansada",
               "lerntext": "cansado / cansada",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "alto / alta",
               "lerntext": "alto / alta",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "simpático / simpática",
               "lerntext": "simpático / simpática",
               "de": "sympathisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "cerrado / cerrada",
               "lerntext": "cerrado / cerrada",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "abierto / abierta",
               "lerntext": "abierto / abierta",
               "de": "offen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "aburrido / aburrida",
               "lerntext": "aburrido / aburrida",
               "de": "langweilig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17270,14 +19833,21 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "nosotros / nosotras nos vemos [Slot]",
-          "lerntext": "nosotros / nosotras nos vemos [Slot]"
+          "lerntext": "nosotros / nosotras nos vemos [Slot]",
+          "wortarten": {
+            "nosotros": "p",
+            "nosotras": "p",
+            "nos": "p",
+            "vemos": "v"
+          }
         },
         "frameDe": "wir treffen uns [Slot].",
         "pronouns": [
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17378,14 +19948,21 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "nosotros / nosotras nos vemos [Slot]",
-          "lerntext": "nosotros / nosotras nos vemos [Slot]"
+          "lerntext": "nosotros / nosotras nos vemos [Slot]",
+          "wortarten": {
+            "nosotros": "p",
+            "nosotras": "p",
+            "nos": "p",
+            "vemos": "v"
+          }
         },
         "frameDe": "wir treffen uns [Slot].",
         "pronouns": [
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17492,7 +20069,13 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "me quedo aquí [Slot] estoy cansado",
-          "lerntext": "me quedo aquí [Slot] estoy cansado"
+          "lerntext": "me quedo aquí [Slot] estoy cansado",
+          "wortarten": {
+            "me": "p",
+            "quedo": "v",
+            "estoy": "v",
+            "cansado": "a"
+          }
         },
         "frameDe": "Ich bleibe hier, [Slot] ich müde bin.",
         "pronouns": [],
@@ -17501,44 +20084,52 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "porque",
               "lerntext": "porque",
-              "de": "weil"
+              "de": "weil",
+              "c": "k"
             },
             {
               "schrift": "si",
               "lerntext": "si",
-              "de": "wenn"
+              "de": "wenn",
+              "c": "k"
             },
             {
               "schrift": "aunque",
               "lerntext": "aunque",
-              "de": "obwohl"
+              "de": "obwohl",
+              "c": "k"
             },
             {
               "schrift": "cuando",
               "lerntext": "cuando",
-              "de": "wenn"
+              "de": "wenn",
+              "c": "k"
             },
             {
               "schrift": "pero",
               "lerntext": "pero",
-              "de": "aber"
+              "de": "aber",
+              "c": "k"
             },
             {
               "schrift": "o",
               "lerntext": "o",
               "de": "oder",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "y",
               "lerntext": "y",
               "de": "und",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "entonces",
               "lerntext": "entonces",
               "de": "also",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -17552,7 +20143,13 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "me quedo aquí [Slot] estoy cansado",
-          "lerntext": "me quedo aquí [Slot] estoy cansado"
+          "lerntext": "me quedo aquí [Slot] estoy cansado",
+          "wortarten": {
+            "me": "p",
+            "quedo": "v",
+            "estoy": "v",
+            "cansado": "a"
+          }
         },
         "frameDe": "Ich bleibe hier, [Slot] ich müde bin.",
         "pronouns": [],
@@ -17561,47 +20158,55 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "o",
               "lerntext": "o",
-              "de": "oder"
+              "de": "oder",
+              "c": "k"
             },
             {
               "schrift": "y",
               "lerntext": "y",
-              "de": "und"
+              "de": "und",
+              "c": "k"
             },
             {
               "schrift": "si",
               "lerntext": "si",
               "de": "wenn",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "cuando",
               "lerntext": "cuando",
               "de": "wenn",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "porque",
               "lerntext": "porque",
               "de": "weil",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "aunque",
               "lerntext": "aunque",
               "de": "obwohl",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "pero",
               "lerntext": "pero",
               "de": "aber",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "entonces",
               "lerntext": "entonces",
               "de": "also",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -17615,7 +20220,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "creo que es [Slot]",
-          "lerntext": "creo que es [Slot]"
+          "lerntext": "creo que es [Slot]",
+          "wortarten": {
+            "creo": "v",
+            "es": "v"
+          }
         },
         "frameDe": "Ich glaube, dass es [Slot] ist.",
         "pronouns": [],
@@ -17624,86 +20233,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "fácil",
               "lerntext": "fácil",
-              "de": "einfach"
+              "de": "einfach",
+              "c": "a"
             },
             {
               "schrift": "falso / falsa",
               "lerntext": "falso / falsa",
-              "de": "falsch"
+              "de": "falsch",
+              "c": "a"
             },
             {
               "schrift": "corto / corta",
               "lerntext": "corto / corta",
-              "de": "kurz"
+              "de": "kurz",
+              "c": "a"
             },
             {
               "schrift": "largo / larga",
               "lerntext": "largo / larga",
-              "de": "lang"
+              "de": "lang",
+              "c": "a"
             },
             {
               "schrift": "limpio / limpia",
               "lerntext": "limpio / limpia",
-              "de": "sauber"
+              "de": "sauber",
+              "c": "a"
             },
             {
               "schrift": "dulce",
               "lerntext": "dulce",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "débil",
               "lerntext": "débil",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "feliz",
               "lerntext": "feliz",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lento / lenta",
               "lerntext": "lento / lenta",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bajo / baja",
               "lerntext": "bajo / baja",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "rápido / rápida",
               "lerntext": "rápido / rápida",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tonto / tonta",
               "lerntext": "tonto / tonta",
               "de": "dumm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ancho / ancha",
               "lerntext": "ancho / ancha",
               "de": "breit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "barato / barata",
               "lerntext": "barato / barata",
               "de": "billig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "feo / fea",
               "lerntext": "feo / fea",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17714,7 +20338,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "que",
             "lerntext": "que",
-            "de": "der"
+            "de": "der",
+            "c": "p"
           }
         ],
         "id": "29.3"
@@ -17723,7 +20348,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "creo que es [Slot]",
-          "lerntext": "creo que es [Slot]"
+          "lerntext": "creo que es [Slot]",
+          "wortarten": {
+            "creo": "v",
+            "es": "v"
+          }
         },
         "frameDe": "Ich glaube, dass es [Slot] ist.",
         "pronouns": [],
@@ -17732,71 +20361,83 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "débil",
               "lerntext": "débil",
-              "de": "schwach"
+              "de": "schwach",
+              "c": "a"
             },
             {
               "schrift": "dulce",
               "lerntext": "dulce",
-              "de": "süß"
+              "de": "süß",
+              "c": "a"
             },
             {
               "schrift": "fácil",
               "lerntext": "fácil",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "falso / falsa",
               "lerntext": "falso / falsa",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "corto / corta",
               "lerntext": "corto / corta",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "largo / larga",
               "lerntext": "largo / larga",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "limpio / limpia",
               "lerntext": "limpio / limpia",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "estrecho / estrecha",
               "lerntext": "estrecho / estrecha",
               "de": "eng",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "correcto / correcta",
               "lerntext": "correcto / correcta",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gordo / gorda",
               "lerntext": "gordo / gorda",
               "de": "dick",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "alto / alta",
               "lerntext": "alto / alta",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "simpático / simpática",
               "lerntext": "simpático / simpática",
               "de": "sympathisch",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17810,7 +20451,13 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "si tengo tiempo, quiero [Slot]",
-          "lerntext": "si tengo tiempo, quiero [Slot]"
+          "lerntext": "si tengo tiempo, quiero [Slot]",
+          "wortarten": {
+            "si": "k",
+            "tengo": "v",
+            "tiempo,": "n",
+            "quiero": "v"
+          }
         },
         "frameDe": "Wenn ich Zeit habe, will ich [Slot].",
         "pronouns": [],
@@ -17819,86 +20466,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "vivir",
               "lerntext": "vivir",
-              "de": "leben"
+              "de": "leben",
+              "c": "v"
             },
             {
               "schrift": "quedar",
               "lerntext": "quedar",
-              "de": "bleiben"
+              "de": "bleiben",
+              "c": "v"
             },
             {
               "schrift": "reír",
               "lerntext": "reír",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "llorar",
               "lerntext": "llorar",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "pensar",
               "lerntext": "pensar",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "creer",
               "lerntext": "creer",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "necesitar",
               "lerntext": "necesitar",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "esperar",
               "lerntext": "esperar",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "escuchar",
               "lerntext": "escuchar",
               "de": "zuhören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sentir",
               "lerntext": "sentir",
               "de": "fühlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ser",
               "lerntext": "ser",
               "de": "sein (dauerhaft)",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "conseguir",
               "lerntext": "conseguir",
               "de": "erreichen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "llamar",
               "lerntext": "llamar",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "venir",
               "lerntext": "venir",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "limpiar",
               "lerntext": "limpiar",
               "de": "putzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -17912,7 +20574,13 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "si tengo tiempo, quiero [Slot]",
-          "lerntext": "si tengo tiempo, quiero [Slot]"
+          "lerntext": "si tengo tiempo, quiero [Slot]",
+          "wortarten": {
+            "si": "k",
+            "tengo": "v",
+            "tiempo,": "n",
+            "quiero": "v"
+          }
         },
         "frameDe": "Wenn ich Zeit habe, will ich [Slot].",
         "pronouns": [],
@@ -17921,76 +20589,89 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "creer",
               "lerntext": "creer",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "esperar",
               "lerntext": "esperar",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "necesitar",
               "lerntext": "necesitar",
-              "de": "brauchen"
+              "de": "brauchen",
+              "c": "v"
             },
             {
               "schrift": "vivir",
               "lerntext": "vivir",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "quedar",
               "lerntext": "quedar",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "reír",
               "lerntext": "reír",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "llorar",
               "lerntext": "llorar",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pensar",
               "lerntext": "pensar",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ir",
               "lerntext": "ir",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "crear",
               "lerntext": "crear",
               "de": "erschaffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "explicar",
               "lerntext": "explicar",
               "de": "erklären",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ducharse",
               "lerntext": "ducharse",
               "de": "duschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viajar",
               "lerntext": "viajar",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18025,14 +20706,18 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "¿puedes [Slot], por favor?",
-          "lerntext": "¿puedes [Slot], por favor?"
+          "lerntext": "¿puedes [Slot], por favor?",
+          "wortarten": {
+            "¿puedes": "v"
+          }
         },
         "frameDe": "Kannst du bitte [Slot]?",
         "pronouns": [
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18040,86 +20725,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "trabajar",
               "lerntext": "trabajar",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "jugar",
               "lerntext": "jugar",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "bailar",
               "lerntext": "bailar",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "dormir",
               "lerntext": "dormir",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "esperar",
               "lerntext": "esperar",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "pagar",
               "lerntext": "pagar",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ayudar",
               "lerntext": "ayudar",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "buscar",
               "lerntext": "buscar",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "preguntar",
               "lerntext": "preguntar",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dejar",
               "lerntext": "dejar",
               "de": "lassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "caminar",
               "lerntext": "caminar",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "enviar",
               "lerntext": "enviar",
               "de": "senden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tener",
               "lerntext": "tener",
               "de": "haben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vender",
               "lerntext": "vender",
               "de": "verkaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "saber",
               "lerntext": "saber",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18133,14 +20833,18 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "¿puedes [Slot], por favor?",
-          "lerntext": "¿puedes [Slot], por favor?"
+          "lerntext": "¿puedes [Slot], por favor?",
+          "wortarten": {
+            "¿puedes": "v"
+          }
         },
         "frameDe": "Kannst du bitte [Slot]?",
         "pronouns": [
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18148,81 +20852,95 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "buscar",
               "lerntext": "buscar",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "preguntar",
               "lerntext": "preguntar",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "ayudar",
               "lerntext": "ayudar",
-              "de": "helfen"
+              "de": "helfen",
+              "c": "v"
             },
             {
               "schrift": "pagar",
               "lerntext": "pagar",
-              "de": "bezahlen"
+              "de": "bezahlen",
+              "c": "v"
             },
             {
               "schrift": "trabajar",
               "lerntext": "trabajar",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bailar",
               "lerntext": "bailar",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dormir",
               "lerntext": "dormir",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "jugar",
               "lerntext": "jugar",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "esperar",
               "lerntext": "esperar",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "poner",
               "lerntext": "poner",
               "de": "stellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comer",
               "lerntext": "comer",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "usar",
               "lerntext": "usar",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comenzar",
               "lerntext": "comenzar",
               "de": "beginnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "morir",
               "lerntext": "morir",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18236,14 +20954,19 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "tú tienes que [Slot]",
-          "lerntext": "tú tienes que [Slot]"
+          "lerntext": "tú tienes que [Slot]",
+          "wortarten": {
+            "tú": "p",
+            "tienes": "v"
+          }
         },
         "frameDe": "du musst [Slot].",
         "pronouns": [
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18251,86 +20974,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "ganar",
               "lerntext": "ganar",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "entender",
               "lerntext": "entender",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "dar",
               "lerntext": "dar",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "decir",
               "lerntext": "decir",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "hablar",
               "lerntext": "hablar",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "abrir",
               "lerntext": "abrir",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "poder",
               "lerntext": "poder",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "deber",
               "lerntext": "deber",
               "de": "sollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cambiar",
               "lerntext": "cambiar",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "escuchar",
               "lerntext": "escuchar",
               "de": "zuhören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sentir",
               "lerntext": "sentir",
               "de": "fühlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ser",
               "lerntext": "ser",
               "de": "sein (dauerhaft)",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "conseguir",
               "lerntext": "conseguir",
               "de": "erreichen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "llamar",
               "lerntext": "llamar",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "venir",
               "lerntext": "venir",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18344,14 +21082,19 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "tú tienes que [Slot]",
-          "lerntext": "tú tienes que [Slot]"
+          "lerntext": "tú tienes que [Slot]",
+          "wortarten": {
+            "tú": "p",
+            "tienes": "v"
+          }
         },
         "frameDe": "du musst [Slot].",
         "pronouns": [
           {
             "schrift": "tú",
             "lerntext": "tú",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18359,66 +21102,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "abrir",
               "lerntext": "abrir",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "ganar",
               "lerntext": "ganar",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "entender",
               "lerntext": "entender",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "decir",
               "lerntext": "decir",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hablar",
               "lerntext": "hablar",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dar",
               "lerntext": "dar",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "limpiar",
               "lerntext": "limpiar",
               "de": "putzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ir",
               "lerntext": "ir",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "crear",
               "lerntext": "crear",
               "de": "erschaffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "explicar",
               "lerntext": "explicar",
               "de": "erklären",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ducharse",
               "lerntext": "ducharse",
               "de": "duschen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18453,14 +21207,20 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo doy el libro a [Slot]",
-          "lerntext": "yo doy el libro a [Slot]"
+          "lerntext": "yo doy el libro a [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "doy": "v",
+            "libro": "n"
+          }
         },
         "frameDe": "ich gebe [Slot] das Buch.",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18468,86 +21228,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "amigo / amiga",
               "lerntext": "amigo / amiga",
-              "de": "Freund"
+              "de": "Freund",
+              "c": "n"
             },
             {
               "schrift": "madre",
               "lerntext": "madre",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "padre",
               "lerntext": "padre",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "niño / niña",
               "lerntext": "niño / niña",
-              "de": "Kind"
+              "de": "Kind",
+              "c": "n"
             },
             {
               "schrift": "mujer",
               "lerntext": "mujer",
-              "de": "Frau"
+              "de": "Frau",
+              "c": "n"
             },
             {
               "schrift": "hermano / hermana",
               "lerntext": "hermano / hermana",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cielo",
               "lerntext": "cielo",
               "de": "Himmel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "respuesta",
               "lerntext": "respuesta",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pasaporte",
               "lerntext": "pasaporte",
               "de": "Reisepass",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "zapato",
               "lerntext": "zapato",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "noche",
               "lerntext": "noche",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pelo",
               "lerntext": "pelo",
               "de": "Haar",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "plato",
               "lerntext": "plato",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "comida",
               "lerntext": "comida",
               "de": "Essen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "restaurante",
               "lerntext": "restaurante",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18561,14 +21336,20 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo doy el libro a [Slot]",
-          "lerntext": "yo doy el libro a [Slot]"
+          "lerntext": "yo doy el libro a [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "doy": "v",
+            "libro": "n"
+          }
         },
         "frameDe": "ich gebe [Slot] das Buch.",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18576,66 +21357,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "hermano / hermana",
               "lerntext": "hermano / hermana",
-              "de": "Bruder"
+              "de": "Bruder",
+              "c": "n"
             },
             {
               "schrift": "niño / niña",
               "lerntext": "niño / niña",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amigo / amiga",
               "lerntext": "amigo / amiga",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "madre",
               "lerntext": "madre",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "padre",
               "lerntext": "padre",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mujer",
               "lerntext": "mujer",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cielo",
               "lerntext": "cielo",
               "de": "Himmel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "respuesta",
               "lerntext": "respuesta",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sol",
               "lerntext": "sol",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nombre",
               "lerntext": "nombre",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vez",
               "lerntext": "vez",
               "de": "Mal (z.B. 'eine Mal')",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18649,14 +21441,19 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo enseño la ciudad a [Slot]",
-          "lerntext": "yo enseño la ciudad a [Slot]"
+          "lerntext": "yo enseño la ciudad a [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "ciudad": "n"
+          }
         },
         "frameDe": "ich zeige [Slot] die Stadt.",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18664,86 +21461,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "amigo / amiga",
               "lerntext": "amigo / amiga",
-              "de": "Freund"
+              "de": "Freund",
+              "c": "n"
             },
             {
               "schrift": "madre",
               "lerntext": "madre",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "padre",
               "lerntext": "padre",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "niño / niña",
               "lerntext": "niño / niña",
-              "de": "Kind"
+              "de": "Kind",
+              "c": "n"
             },
             {
               "schrift": "mujer",
               "lerntext": "mujer",
-              "de": "Frau"
+              "de": "Frau",
+              "c": "n"
             },
             {
               "schrift": "hermano / hermana",
               "lerntext": "hermano / hermana",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cielo",
               "lerntext": "cielo",
               "de": "Himmel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "respuesta",
               "lerntext": "respuesta",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "avión",
               "lerntext": "avión",
               "de": "Flugzeug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ojo",
               "lerntext": "ojo",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hospital",
               "lerntext": "hospital",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ropa",
               "lerntext": "ropa",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pierna",
               "lerntext": "pierna",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "iglesia",
               "lerntext": "iglesia",
               "de": "Kirche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "baño",
               "lerntext": "baño",
               "de": "Bad",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18757,14 +21569,19 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo enseño la ciudad a [Slot]",
-          "lerntext": "yo enseño la ciudad a [Slot]"
+          "lerntext": "yo enseño la ciudad a [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "ciudad": "n"
+          }
         },
         "frameDe": "ich zeige [Slot] die Stadt.",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18772,66 +21589,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "hermano / hermana",
               "lerntext": "hermano / hermana",
-              "de": "Bruder"
+              "de": "Bruder",
+              "c": "n"
             },
             {
               "schrift": "niño / niña",
               "lerntext": "niño / niña",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amigo / amiga",
               "lerntext": "amigo / amiga",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "madre",
               "lerntext": "madre",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "padre",
               "lerntext": "padre",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mujer",
               "lerntext": "mujer",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cielo",
               "lerntext": "cielo",
               "de": "Himmel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "minuto",
               "lerntext": "minuto",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dedo",
               "lerntext": "dedo",
               "de": "Finger",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cabeza",
               "lerntext": "cabeza",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "playa",
               "lerntext": "playa",
               "de": "Strand",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18866,14 +21694,19 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo quiero un vaso de [Slot]",
-          "lerntext": "yo quiero un vaso de [Slot]"
+          "lerntext": "yo quiero un vaso de [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "quiero": "v"
+          }
         },
         "frameDe": "ich möchte ein Glas [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18881,66 +21714,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "agua",
               "lerntext": "agua",
-              "de": "Wasser"
+              "de": "Wasser",
+              "c": "n"
             },
             {
               "schrift": "calle",
               "lerntext": "calle",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "corazón",
               "lerntext": "corazón",
               "de": "Herz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lluvia",
               "lerntext": "lluvia",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pie",
               "lerntext": "pie",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nieve",
               "lerntext": "nieve",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dinero",
               "lerntext": "dinero",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mar",
               "lerntext": "mar",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "montaña",
               "lerntext": "montaña",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "escuela",
               "lerntext": "escuela",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cielo",
               "lerntext": "cielo",
               "de": "Himmel",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18954,14 +21798,20 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "nosotros / nosotras tenemos suficiente [Slot]",
-          "lerntext": "nosotros / nosotras tenemos suficiente [Slot]"
+          "lerntext": "nosotros / nosotras tenemos suficiente [Slot]",
+          "wortarten": {
+            "nosotros": "p",
+            "nosotras": "p",
+            "tenemos": "v"
+          }
         },
         "frameDe": "wir haben genug [Slot].",
         "pronouns": [
           {
             "schrift": "nosotros / nosotras",
             "lerntext": "nosotros / nosotras",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18969,71 +21819,83 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "dinero",
               "lerntext": "dinero",
-              "de": "Geld"
+              "de": "Geld",
+              "c": "n"
             },
             {
               "schrift": "tiempo",
               "lerntext": "tiempo",
-              "de": "Zeit"
+              "de": "Zeit",
+              "c": "n"
             },
             {
               "schrift": "hora",
               "lerntext": "hora",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pasaporte",
               "lerntext": "pasaporte",
               "de": "Reisepass",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "respuesta",
               "lerntext": "respuesta",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "museo",
               "lerntext": "museo",
               "de": "Museum",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hijo / hija",
               "lerntext": "hijo / hija",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "semana",
               "lerntext": "semana",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "segundo",
               "lerntext": "segundo",
               "de": "Sekunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dolor",
               "lerntext": "dolor",
               "de": "Schmerz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "zapato",
               "lerntext": "zapato",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aeropuerto",
               "lerntext": "aeropuerto",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -19074,14 +21936,20 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo espero desde hace una [Slot]",
-          "lerntext": "yo espero desde hace una [Slot]"
+          "lerntext": "yo espero desde hace una [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "espero": "v",
+            "hace": "v"
+          }
         },
         "frameDe": "ich warte seit einer [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19089,81 +21957,95 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "hora",
               "lerntext": "hora",
-              "de": "Stunde"
+              "de": "Stunde",
+              "c": "n"
             },
             {
               "schrift": "minuto",
               "lerntext": "minuto",
-              "de": "Minute"
+              "de": "Minute",
+              "c": "n"
             },
             {
               "schrift": "semana",
               "lerntext": "semana",
-              "de": "Woche"
+              "de": "Woche",
+              "c": "n"
             },
             {
               "schrift": "noche",
               "lerntext": "noche",
-              "de": "Nacht"
+              "de": "Nacht",
+              "c": "n"
             },
             {
               "schrift": "puerta",
               "lerntext": "puerta",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "universidad",
               "lerntext": "universidad",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ropa",
               "lerntext": "ropa",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "iglesia",
               "lerntext": "iglesia",
               "de": "Kirche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mano",
               "lerntext": "mano",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "calle",
               "lerntext": "calle",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "escuela",
               "lerntext": "escuela",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "respuesta",
               "lerntext": "respuesta",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "segundo",
               "lerntext": "segundo",
               "de": "Sekunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cocina",
               "lerntext": "cocina",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -19183,14 +22065,20 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo espero desde hace una [Slot]",
-          "lerntext": "yo espero desde hace una [Slot]"
+          "lerntext": "yo espero desde hace una [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "espero": "v",
+            "hace": "v"
+          }
         },
         "frameDe": "ich warte seit einem [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19198,66 +22086,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "día",
               "lerntext": "día",
-              "de": "Tag"
+              "de": "Tag",
+              "c": "n"
             },
             {
               "schrift": "boca",
               "lerntext": "boca",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "plato",
               "lerntext": "plato",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "estación",
               "lerntext": "estación",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tren",
               "lerntext": "tren",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "viento",
               "lerntext": "viento",
               "de": "Wind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "autobús",
               "lerntext": "autobús",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "parque",
               "lerntext": "parque",
               "de": "Park",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dedo",
               "lerntext": "dedo",
               "de": "Finger",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cuerpo",
               "lerntext": "cuerpo",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cabeza",
               "lerntext": "cabeza",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -19271,14 +22170,19 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] voy a casa",
-          "lerntext": "[Slot] voy a casa"
+          "lerntext": "[Slot] voy a casa",
+          "wortarten": {
+            "voy": "v",
+            "casa": "n"
+          }
         },
         "frameDe": "[Slot] gehe ich nach Hause.",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19379,14 +22283,19 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] voy a casa",
-          "lerntext": "[Slot] voy a casa"
+          "lerntext": "[Slot] voy a casa",
+          "wortarten": {
+            "voy": "v",
+            "casa": "n"
+          }
         },
         "frameDe": "[Slot] gehe ich nach Hause.",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19493,14 +22402,19 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo me gustaría [Slot]",
-          "lerntext": "yo me gustaría [Slot]"
+          "lerntext": "yo me gustaría [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "me": "p"
+          }
         },
         "frameDe": "ich hätte gern [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19508,86 +22422,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "vivir",
               "lerntext": "vivir",
-              "de": "leben"
+              "de": "leben",
+              "c": "v"
             },
             {
               "schrift": "quedar",
               "lerntext": "quedar",
-              "de": "bleiben"
+              "de": "bleiben",
+              "c": "v"
             },
             {
               "schrift": "reír",
               "lerntext": "reír",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "llorar",
               "lerntext": "llorar",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "pensar",
               "lerntext": "pensar",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "creer",
               "lerntext": "creer",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "necesitar",
               "lerntext": "necesitar",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "esperar",
               "lerntext": "esperar",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viajar",
               "lerntext": "viajar",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dejar",
               "lerntext": "dejar",
               "de": "lassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "caminar",
               "lerntext": "caminar",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "enviar",
               "lerntext": "enviar",
               "de": "senden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tener",
               "lerntext": "tener",
               "de": "haben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vender",
               "lerntext": "vender",
               "de": "verkaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "saber",
               "lerntext": "saber",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -19601,14 +22530,19 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo me gustaría [Slot]",
-          "lerntext": "yo me gustaría [Slot]"
+          "lerntext": "yo me gustaría [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "me": "p"
+          }
         },
         "frameDe": "ich hätte gern [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19616,76 +22550,89 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "creer",
               "lerntext": "creer",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "esperar",
               "lerntext": "esperar",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "necesitar",
               "lerntext": "necesitar",
-              "de": "brauchen"
+              "de": "brauchen",
+              "c": "v"
             },
             {
               "schrift": "vivir",
               "lerntext": "vivir",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "quedar",
               "lerntext": "quedar",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "reír",
               "lerntext": "reír",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "llorar",
               "lerntext": "llorar",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pensar",
               "lerntext": "pensar",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "poner",
               "lerntext": "poner",
               "de": "stellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comer",
               "lerntext": "comer",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "usar",
               "lerntext": "usar",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comenzar",
               "lerntext": "comenzar",
               "de": "beginnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "morir",
               "lerntext": "morir",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -19706,7 +22653,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19714,71 +22662,83 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "agua",
               "lerntext": "agua",
-              "de": "Wasser"
+              "de": "Wasser",
+              "c": "n"
             },
             {
               "schrift": "libro",
               "lerntext": "libro",
-              "de": "Buch"
+              "de": "Buch",
+              "c": "n"
             },
             {
               "schrift": "pelo",
               "lerntext": "pelo",
               "de": "Haar",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "comida",
               "lerntext": "comida",
               "de": "Essen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "restaurante",
               "lerntext": "restaurante",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sol",
               "lerntext": "sol",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nombre",
               "lerntext": "nombre",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vez",
               "lerntext": "vez",
               "de": "Mal (z.B. 'eine Mal')",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "oficina",
               "lerntext": "oficina",
               "de": "Büro",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "avión",
               "lerntext": "avión",
               "de": "Flugzeug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ojo",
               "lerntext": "ojo",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hospital",
               "lerntext": "hospital",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -19813,14 +22773,20 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo pienso que es [Slot]",
-          "lerntext": "yo pienso que es [Slot]"
+          "lerntext": "yo pienso que es [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "pienso": "v",
+            "es": "v"
+          }
         },
         "frameDe": "ich denke, das ist [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19828,86 +22794,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "grande",
               "lerntext": "grande",
-              "de": "groß"
+              "de": "groß",
+              "c": "a"
             },
             {
               "schrift": "pequeño / pequeña",
               "lerntext": "pequeño / pequeña",
-              "de": "klein"
+              "de": "klein",
+              "c": "a"
             },
             {
               "schrift": "viejo / vieja",
               "lerntext": "viejo / vieja",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "joven",
               "lerntext": "joven",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "caro / cara",
               "lerntext": "caro / cara",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "caliente",
               "lerntext": "caliente",
               "de": "heiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "frío / fría",
               "lerntext": "frío / fría",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "nuevo / nueva",
               "lerntext": "nuevo / nueva",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bonito / bonita",
               "lerntext": "bonito / bonita",
               "de": "hübsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fuerte",
               "lerntext": "fuerte",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "cerrado / cerrada",
               "lerntext": "cerrado / cerrada",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "abierto / abierta",
               "lerntext": "abierto / abierta",
               "de": "offen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "aburrido / aburrida",
               "lerntext": "aburrido / aburrida",
               "de": "langweilig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "feliz",
               "lerntext": "feliz",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lento / lenta",
               "lerntext": "lento / lenta",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -19921,14 +22902,20 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo pienso que es [Slot]",
-          "lerntext": "yo pienso que es [Slot]"
+          "lerntext": "yo pienso que es [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "pienso": "v",
+            "es": "v"
+          }
         },
         "frameDe": "ich denke, das ist [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19936,86 +22923,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "bonito / bonita",
               "lerntext": "bonito / bonita",
-              "de": "hübsch"
+              "de": "hübsch",
+              "c": "a"
             },
             {
               "schrift": "caliente",
               "lerntext": "caliente",
-              "de": "heiß"
+              "de": "heiß",
+              "c": "a"
             },
             {
               "schrift": "frío / fría",
               "lerntext": "frío / fría",
-              "de": "kalt"
+              "de": "kalt",
+              "c": "a"
             },
             {
               "schrift": "nuevo / nueva",
               "lerntext": "nuevo / nueva",
-              "de": "neu"
+              "de": "neu",
+              "c": "a"
             },
             {
               "schrift": "fuerte",
               "lerntext": "fuerte",
-              "de": "stark"
+              "de": "stark",
+              "c": "a"
             },
             {
               "schrift": "grande",
               "lerntext": "grande",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pequeño / pequeña",
               "lerntext": "pequeño / pequeña",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "joven",
               "lerntext": "joven",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "caro / cara",
               "lerntext": "caro / cara",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "viejo / vieja",
               "lerntext": "viejo / vieja",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bajo / baja",
               "lerntext": "bajo / baja",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "rápido / rápida",
               "lerntext": "rápido / rápida",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tonto / tonta",
               "lerntext": "tonto / tonta",
               "de": "dumm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ancho / ancha",
               "lerntext": "ancho / ancha",
               "de": "breit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "barato / barata",
               "lerntext": "barato / barata",
               "de": "billig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -20029,14 +23031,19 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo lo encuentro muy [Slot]",
-          "lerntext": "yo lo encuentro muy [Slot]"
+          "lerntext": "yo lo encuentro muy [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "encuentro": "v"
+          }
         },
         "frameDe": "ich finde das sehr [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20044,86 +23051,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "fácil",
               "lerntext": "fácil",
-              "de": "einfach"
+              "de": "einfach",
+              "c": "a"
             },
             {
               "schrift": "falso / falsa",
               "lerntext": "falso / falsa",
-              "de": "falsch"
+              "de": "falsch",
+              "c": "a"
             },
             {
               "schrift": "corto / corta",
               "lerntext": "corto / corta",
-              "de": "kurz"
+              "de": "kurz",
+              "c": "a"
             },
             {
               "schrift": "largo / larga",
               "lerntext": "largo / larga",
-              "de": "lang"
+              "de": "lang",
+              "c": "a"
             },
             {
               "schrift": "limpio / limpia",
               "lerntext": "limpio / limpia",
-              "de": "sauber"
+              "de": "sauber",
+              "c": "a"
             },
             {
               "schrift": "dulce",
               "lerntext": "dulce",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "débil",
               "lerntext": "débil",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "feo / fea",
               "lerntext": "feo / fea",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "estrecho / estrecha",
               "lerntext": "estrecho / estrecha",
               "de": "eng",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "correcto / correcta",
               "lerntext": "correcto / correcta",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gordo / gorda",
               "lerntext": "gordo / gorda",
               "de": "dick",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "alto / alta",
               "lerntext": "alto / alta",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "simpático / simpática",
               "lerntext": "simpático / simpática",
               "de": "sympathisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "cerrado / cerrada",
               "lerntext": "cerrado / cerrada",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "abierto / abierta",
               "lerntext": "abierto / abierta",
               "de": "offen",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -20143,14 +23165,19 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo lo encuentro muy [Slot]",
-          "lerntext": "yo lo encuentro muy [Slot]"
+          "lerntext": "yo lo encuentro muy [Slot]",
+          "wortarten": {
+            "yo": "p",
+            "encuentro": "v"
+          }
         },
         "frameDe": "ich finde das sehr [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20158,71 +23185,83 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "débil",
               "lerntext": "débil",
-              "de": "schwach"
+              "de": "schwach",
+              "c": "a"
             },
             {
               "schrift": "dulce",
               "lerntext": "dulce",
-              "de": "süß"
+              "de": "süß",
+              "c": "a"
             },
             {
               "schrift": "fácil",
               "lerntext": "fácil",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "falso / falsa",
               "lerntext": "falso / falsa",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "corto / corta",
               "lerntext": "corto / corta",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "largo / larga",
               "lerntext": "largo / larga",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "limpio / limpia",
               "lerntext": "limpio / limpia",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "aburrido / aburrida",
               "lerntext": "aburrido / aburrida",
               "de": "langweilig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "feliz",
               "lerntext": "feliz",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lento / lenta",
               "lerntext": "lento / lenta",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bajo / baja",
               "lerntext": "bajo / baja",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "rápido / rápida",
               "lerntext": "rápido / rápida",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -20257,14 +23296,18 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "mañana voy a [Slot]",
-          "lerntext": "mañana voy a [Slot]"
+          "lerntext": "mañana voy a [Slot]",
+          "wortarten": {
+            "voy": "v"
+          }
         },
         "frameDe": "Morgen werde ich [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20272,86 +23315,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "mirar",
               "lerntext": "mirar",
-              "de": "schauen"
+              "de": "schauen",
+              "c": "v"
             },
             {
               "schrift": "comprar",
               "lerntext": "comprar",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "ver",
               "lerntext": "ver",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "hacer",
               "lerntext": "hacer",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "encontrar",
               "lerntext": "encontrar",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "tomar",
               "lerntext": "tomar",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "leer",
               "lerntext": "leer",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "escribir",
               "lerntext": "escribir",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "poder",
               "lerntext": "poder",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "deber",
               "lerntext": "deber",
               "de": "sollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cambiar",
               "lerntext": "cambiar",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "escuchar",
               "lerntext": "escuchar",
               "de": "zuhören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sentir",
               "lerntext": "sentir",
               "de": "fühlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ser",
               "lerntext": "ser",
               "de": "sein (dauerhaft)",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "conseguir",
               "lerntext": "conseguir",
               "de": "erreichen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20365,14 +23423,18 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "mañana voy a [Slot]",
-          "lerntext": "mañana voy a [Slot]"
+          "lerntext": "mañana voy a [Slot]",
+          "wortarten": {
+            "voy": "v"
+          }
         },
         "frameDe": "Morgen werde ich [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20380,76 +23442,89 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "tomar",
               "lerntext": "tomar",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "leer",
               "lerntext": "leer",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "escribir",
               "lerntext": "escribir",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "mirar",
               "lerntext": "mirar",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comprar",
               "lerntext": "comprar",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ver",
               "lerntext": "ver",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hacer",
               "lerntext": "hacer",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "encontrar",
               "lerntext": "encontrar",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "llamar",
               "lerntext": "llamar",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "venir",
               "lerntext": "venir",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "limpiar",
               "lerntext": "limpiar",
               "de": "putzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ir",
               "lerntext": "ir",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "crear",
               "lerntext": "crear",
               "de": "erschaffen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20463,14 +23538,19 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo quiero [Slot] pronto",
-          "lerntext": "yo quiero [Slot] pronto"
+          "lerntext": "yo quiero [Slot] pronto",
+          "wortarten": {
+            "yo": "p",
+            "quiero": "v"
+          }
         },
         "frameDe": "ich will bald [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20478,86 +23558,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "trabajar",
               "lerntext": "trabajar",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "jugar",
               "lerntext": "jugar",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "bailar",
               "lerntext": "bailar",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "dormir",
               "lerntext": "dormir",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "esperar",
               "lerntext": "esperar",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "buscar",
               "lerntext": "buscar",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "preguntar",
               "lerntext": "preguntar",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "explicar",
               "lerntext": "explicar",
               "de": "erklären",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ducharse",
               "lerntext": "ducharse",
               "de": "duschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viajar",
               "lerntext": "viajar",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dejar",
               "lerntext": "dejar",
               "de": "lassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "caminar",
               "lerntext": "caminar",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "enviar",
               "lerntext": "enviar",
               "de": "senden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tener",
               "lerntext": "tener",
               "de": "haben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vender",
               "lerntext": "vender",
               "de": "verkaufen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20571,14 +23666,19 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yo quiero [Slot] pronto",
-          "lerntext": "yo quiero [Slot] pronto"
+          "lerntext": "yo quiero [Slot] pronto",
+          "wortarten": {
+            "yo": "p",
+            "quiero": "v"
+          }
         },
         "frameDe": "ich will bald [Slot].",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20586,71 +23686,83 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "buscar",
               "lerntext": "buscar",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "preguntar",
               "lerntext": "preguntar",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "trabajar",
               "lerntext": "trabajar",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bailar",
               "lerntext": "bailar",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dormir",
               "lerntext": "dormir",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "jugar",
               "lerntext": "jugar",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "esperar",
               "lerntext": "esperar",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "saber",
               "lerntext": "saber",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "poner",
               "lerntext": "poner",
               "de": "stellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comer",
               "lerntext": "comer",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "usar",
               "lerntext": "usar",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "oír",
               "lerntext": "oír",
               "de": "hören",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20685,7 +23797,12 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "este es el hombre que [Slot]",
-          "lerntext": "este es el hombre que [Slot]"
+          "lerntext": "este es el hombre que [Slot]",
+          "wortarten": {
+            "este": "p",
+            "es": "v",
+            "hombre": "n"
+          }
         },
         "frameDe": "Das ist der Mann, der [Slot].",
         "pronouns": [],
@@ -20694,86 +23811,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "vive",
               "lerntext": "vive",
-              "de": "leben"
+              "de": "leben",
+              "c": "v"
             },
             {
               "schrift": "queda",
               "lerntext": "queda",
-              "de": "bleiben"
+              "de": "bleiben",
+              "c": "v"
             },
             {
               "schrift": "ríe",
               "lerntext": "ríe",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "llora",
               "lerntext": "llora",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "piensa",
               "lerntext": "piensa",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "cree",
               "lerntext": "cree",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "necesita",
               "lerntext": "necesita",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "espera",
               "lerntext": "espera",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comienza",
               "lerntext": "comienza",
               "de": "beginnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pierde",
               "lerntext": "pierde",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "muere",
               "lerntext": "muere",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "puede",
               "lerntext": "puede",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "debe",
               "lerntext": "debe",
               "de": "sollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cambia",
               "lerntext": "cambia",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "escucha",
               "lerntext": "escucha",
               "de": "zuhören",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20784,7 +23916,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "hombre",
             "lerntext": "hombre",
-            "de": "Mann"
+            "de": "Mann",
+            "c": "n"
           }
         ],
         "id": "37.1"
@@ -20793,7 +23926,12 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "este es el hombre que [Slot]",
-          "lerntext": "este es el hombre que [Slot]"
+          "lerntext": "este es el hombre que [Slot]",
+          "wortarten": {
+            "este": "p",
+            "es": "v",
+            "hombre": "n"
+          }
         },
         "frameDe": "Das ist der Mann, der [Slot].",
         "pronouns": [],
@@ -20802,76 +23940,89 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "cree",
               "lerntext": "cree",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "espera",
               "lerntext": "espera",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "necesita",
               "lerntext": "necesita",
-              "de": "brauchen"
+              "de": "brauchen",
+              "c": "v"
             },
             {
               "schrift": "vive",
               "lerntext": "vive",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "queda",
               "lerntext": "queda",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ríe",
               "lerntext": "ríe",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "llora",
               "lerntext": "llora",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "piensa",
               "lerntext": "piensa",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "siente",
               "lerntext": "siente",
               "de": "fühlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "consigue",
               "lerntext": "consigue",
               "de": "erreichen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "llama",
               "lerntext": "llama",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viene",
               "lerntext": "viene",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cierra",
               "lerntext": "cierra",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20885,7 +24036,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "busco un sitio donde se puede [Slot]",
-          "lerntext": "busco un sitio donde se puede [Slot]"
+          "lerntext": "busco un sitio donde se puede [Slot]",
+          "wortarten": {
+            "busco": "v",
+            "puede": "v"
+          }
         },
         "frameDe": "Ich suche einen Ort, wo man [Slot] kann.",
         "pronouns": [],
@@ -20894,86 +24049,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "trabajar",
               "lerntext": "trabajar",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "jugar",
               "lerntext": "jugar",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "bailar",
               "lerntext": "bailar",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "dormir",
               "lerntext": "dormir",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "esperar",
               "lerntext": "esperar",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "buscar",
               "lerntext": "buscar",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "preguntar",
               "lerntext": "preguntar",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ser",
               "lerntext": "ser",
               "de": "sein (dauerhaft)",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "limpiar",
               "lerntext": "limpiar",
               "de": "putzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ir",
               "lerntext": "ir",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "crear",
               "lerntext": "crear",
               "de": "erschaffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "explicar",
               "lerntext": "explicar",
               "de": "erklären",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ducharse",
               "lerntext": "ducharse",
               "de": "duschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viajar",
               "lerntext": "viajar",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dejar",
               "lerntext": "dejar",
               "de": "lassen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20989,7 +24159,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "se",
             "lerntext": "se",
-            "de": "sich"
+            "de": "sich",
+            "c": "p"
           }
         ],
         "id": "37.3"
@@ -20998,7 +24169,11 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "busco un sitio donde se puede [Slot]",
-          "lerntext": "busco un sitio donde se puede [Slot]"
+          "lerntext": "busco un sitio donde se puede [Slot]",
+          "wortarten": {
+            "busco": "v",
+            "puede": "v"
+          }
         },
         "frameDe": "Ich suche einen Ort, wo man [Slot] kann.",
         "pronouns": [],
@@ -21007,71 +24182,83 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "buscar",
               "lerntext": "buscar",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "preguntar",
               "lerntext": "preguntar",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "trabajar",
               "lerntext": "trabajar",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bailar",
               "lerntext": "bailar",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dormir",
               "lerntext": "dormir",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "jugar",
               "lerntext": "jugar",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "esperar",
               "lerntext": "esperar",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "caminar",
               "lerntext": "caminar",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "enviar",
               "lerntext": "enviar",
               "de": "senden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lavar",
               "lerntext": "lavar",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tener",
               "lerntext": "tener",
               "de": "haben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vender",
               "lerntext": "vender",
               "de": "verkaufen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -21113,7 +24300,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -21121,86 +24309,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "restaurante",
               "lerntext": "restaurante",
-              "de": "Restaurant"
+              "de": "Restaurant",
+              "c": "n"
             },
             {
               "schrift": "hotel",
               "lerntext": "hotel",
-              "de": "Hotel"
+              "de": "Hotel",
+              "c": "n"
             },
             {
               "schrift": "escuela",
               "lerntext": "escuela",
-              "de": "Schule"
+              "de": "Schule",
+              "c": "n"
             },
             {
               "schrift": "universidad",
               "lerntext": "universidad",
-              "de": "Universität"
+              "de": "Universität",
+              "c": "n"
             },
             {
               "schrift": "hospital",
               "lerntext": "hospital",
-              "de": "Krankenhaus"
+              "de": "Krankenhaus",
+              "c": "n"
             },
             {
               "schrift": "estación",
               "lerntext": "estación",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aeropuerto",
               "lerntext": "aeropuerto",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ciudad",
               "lerntext": "ciudad",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hombre",
               "lerntext": "hombre",
               "de": "Mann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pierna",
               "lerntext": "pierna",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cama",
               "lerntext": "cama",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "papel",
               "lerntext": "papel",
               "de": "Papier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "baño",
               "lerntext": "baño",
               "de": "Bad",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "playa",
               "lerntext": "playa",
               "de": "Strand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "corazón",
               "lerntext": "corazón",
               "de": "Herz",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -21221,7 +24424,8 @@ export const SPANISH_COURSE: CourseModuleData[] =
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -21229,76 +24433,89 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "estación",
               "lerntext": "estación",
-              "de": "Bahnhof"
+              "de": "Bahnhof",
+              "c": "n"
             },
             {
               "schrift": "aeropuerto",
               "lerntext": "aeropuerto",
-              "de": "Flughafen"
+              "de": "Flughafen",
+              "c": "n"
             },
             {
               "schrift": "ciudad",
               "lerntext": "ciudad",
-              "de": "Stadt"
+              "de": "Stadt",
+              "c": "n"
             },
             {
               "schrift": "restaurante",
               "lerntext": "restaurante",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hotel",
               "lerntext": "hotel",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "universidad",
               "lerntext": "universidad",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hospital",
               "lerntext": "hospital",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "escuela",
               "lerntext": "escuela",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hombre",
               "lerntext": "hombre",
               "de": "Mann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lluvia",
               "lerntext": "lluvia",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pie",
               "lerntext": "pie",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "teléfono",
               "lerntext": "teléfono",
               "de": "Telefon",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "silla",
               "lerntext": "silla",
               "de": "Stuhl",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -21312,14 +24529,21 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "quiero [Slot] porque tengo tiempo",
-          "lerntext": "quiero [Slot] porque tengo tiempo"
+          "lerntext": "quiero [Slot] porque tengo tiempo",
+          "wortarten": {
+            "quiero": "v",
+            "porque": "k",
+            "tengo": "v",
+            "tiempo": "n"
+          }
         },
         "frameDe": "Ich möchte [Slot], weil ich Zeit habe.",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -21327,86 +24551,101 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "ganar",
               "lerntext": "ganar",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "entender",
               "lerntext": "entender",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "dar",
               "lerntext": "dar",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "decir",
               "lerntext": "decir",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "hablar",
               "lerntext": "hablar",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "abrir",
               "lerntext": "abrir",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "saber",
               "lerntext": "saber",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "poner",
               "lerntext": "poner",
               "de": "stellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comer",
               "lerntext": "comer",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "usar",
               "lerntext": "usar",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "oír",
               "lerntext": "oír",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comenzar",
               "lerntext": "comenzar",
               "de": "beginnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "perder",
               "lerntext": "perder",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "morir",
               "lerntext": "morir",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "poder",
               "lerntext": "poder",
               "de": "können",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -21420,14 +24659,21 @@ export const SPANISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "quiero [Slot] porque tengo tiempo",
-          "lerntext": "quiero [Slot] porque tengo tiempo"
+          "lerntext": "quiero [Slot] porque tengo tiempo",
+          "wortarten": {
+            "quiero": "v",
+            "porque": "k",
+            "tengo": "v",
+            "tiempo": "n"
+          }
         },
         "frameDe": "Ich möchte [Slot], weil ich Zeit habe.",
         "pronouns": [
           {
             "schrift": "yo",
             "lerntext": "yo",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -21435,66 +24681,77 @@ export const SPANISH_COURSE: CourseModuleData[] =
             {
               "schrift": "abrir",
               "lerntext": "abrir",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "ganar",
               "lerntext": "ganar",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "entender",
               "lerntext": "entender",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "decir",
               "lerntext": "decir",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hablar",
               "lerntext": "hablar",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dar",
               "lerntext": "dar",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "deber",
               "lerntext": "deber",
               "de": "sollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cambiar",
               "lerntext": "cambiar",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "escuchar",
               "lerntext": "escuchar",
               "de": "zuhören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sentir",
               "lerntext": "sentir",
               "de": "fühlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ser",
               "lerntext": "ser",
               "de": "sein (dauerhaft)",
+              "c": "v",
               "wieder": true
             }
           ]

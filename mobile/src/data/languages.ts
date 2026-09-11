@@ -138,3 +138,35 @@ export const DEFAULT_LANGUAGE_ID = 'de';
 export function getLanguage(id: string): Language {
   return LANGUAGES.find((l) => l.id === id) ?? LANGUAGES[0];
 }
+
+// Fuer die Ueberschriften "Sprich diesen ___ Satz nach" / "Ordne diesen
+// ___ Satz..." (2026-08-26) - `language.label` allein passt grammatisch
+// nicht ("diesen Schwedisch Satz"), es braucht die deklinierte
+// Adjektivform.
+//
+// Das war bis zum 2026-09-03 eine feste Liste mit dem Kommentar "die
+// Sprachenliste waechst selten". Am selben Tag kamen sechs Sprachen auf
+// einmal dazu, und alle sechs zeigten dem Nutzer ihren ROHEN Code:
+// "Sprich diesen pl Satz nach". Eine Liste, die man beim Anlegen einer
+// Sprache vergessen kann, ist genau die falsche Bauform.
+//
+// Deshalb jetzt eine Regel: alle deutschen Sprachbezeichnungen sind
+// Adjektive, die im Akkusativ Singular maskulin ein "-en" anhaengen -
+// "Deutsch" -> "deutschen", "Polnisch" -> "polnischen". Das traegt fuer
+// alle elf Sprachen und fuer jede weitere, die auf "-isch" endet.
+// `SPRACH_ADJEKTIV` bleibt fuer Ausnahmen, falls je eine Bezeichnung
+// dazukommt, die der Regel nicht folgt (etwa "Hindi" oder "Suaheli").
+//
+// Liegt seit 2026-09-11 hier statt in SentenceReviewScreen.tsx: der
+// gefuehrte Kurs stellt dieselbe Frage ueber seinen Saetzen.
+const SPRACH_ADJEKTIV: Record<string, string> = {};
+export function sprachAdjektiv(languageId: string): string {
+  const ausnahme = SPRACH_ADJEKTIV[languageId];
+  if (ausnahme) return ausnahme;
+  const label = getLanguage(languageId).label;
+  // Greift nur, wenn die Bezeichnung wirklich adjektivisch ist. Sonst
+  // lieber die unveraenderte Bezeichnung als eine falsche Beugung.
+  return label.endsWith('isch') || label === 'Deutsch'
+    ? label.toLowerCase() + 'en'
+    : label;
+}

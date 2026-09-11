@@ -23,6 +23,7 @@
 // Kurs spaeter ohne Uebersetzungsschicht an FSRS haengt.
 
 import { profilFuer, SprachProfil } from './sprachProfil';
+import type { WordType } from '../../theme/tokens';
 
 export type Tier = 'richtig' | 'ueberlebt' | 'nicht_verstanden';
 
@@ -282,6 +283,75 @@ export function ersteVariante(rahmen: string): string {
 /** Platzhalter durch das Slot-Wort ersetzen. */
 export function fuelleRahmen(rahmen: string, wort: string): string {
   return ersteVariante(rahmen).replace(/\[[^\]]*\]/, wort);
+}
+
+/**
+ * Die erste Bedeutung eines deutschen Eintrags - fuer den deutschen Satz.
+ *
+ * Die Vokabelspalte fuehrt oft mehrere ("Weg / Straße", "Papier, Rolle");
+ * alle in den Satz gesetzt ergaebe "Das ist Weg / Straße Buch". Getrennt wird
+ * nur AUSSERHALB von Klammern - "Pluralpartikel (bei Personen: wir, ihr,
+ * sie)" bleibt ganz, der Zusatz unterscheidet ja gerade.
+ */
+export function ersteBedeutung(de: string): string {
+  let tiefe = 0;
+  for (let i = 0; i < de.length; i++) {
+    const z = de[i];
+    if (z === '(') tiefe += 1;
+    else if (z === ')') tiefe = Math.max(0, tiefe - 1);
+    else if (tiefe === 0 && (z === ',' || z === '/')) return de.slice(0, i).trim();
+  }
+  return de.trim();
+}
+
+/**
+ * Der Satz auf Deutsch (2026-09-11) - fuer den "Übersetzung"-Chip im Teaser
+ * und als Ausgangssatz im Satz-Schritt. Derselbe Weg wie bei den
+ * Wort-Aufgaben in situationsAufgaben.ts: der deutsche Rahmen der Lektion,
+ * gefuellt mit der Bedeutung des Slot-Worts. Grossgeschrieben, weil manche
+ * Rahmen klein beginnen ("wir sind [Slot].").
+ *
+ * Liegt hier neben `fuelleRahmen`, weil Lektion UND Wiederholung
+ * (useFaelligeKarten.ts) Satz-Schritte bauen.
+ */
+export function deutscherSatz(frameDe: string | null, wort: { de: string }): string | null {
+  if (!frameDe) return null;
+  const satz = fuelleRahmen(frameDe, ersteBedeutung(wort.de));
+  return satz.charAt(0).toUpperCase() + satz.slice(1);
+}
+
+export type SatzToken = { t: string; c: WordType | null };
+
+/**
+ * Ein Kurs-Satz als Wortart-Tokens fuer die Farben (2026-09-11).
+ *
+ * Geht den Rahmen genau so durch wie `fuelleRahmen`: erste Variante, der
+ * ERSTE Platzhalter wird das Slot-Wort. Die festen Woerter schlagen in
+ * `wortarten` nach (geschrieben von bauplan.py, woertlich mit
+ * Satzzeichen), die Luecke bekommt die Wortart des Slot-Worts - auch wenn
+ * es mehrteilig ist ("per favore", "cansado / cansada").
+ *
+ * Ohne Slot-Wort steht an der Luecke "___" - fuer die Rahmenzeile im
+ * Satz-Schritt.
+ */
+export function satzTokens(
+  rahmen: string,
+  wortarten: Record<string, WordType> | undefined,
+  slot?: { lerntext: string; c?: WordType | null }
+): SatzToken[] {
+  let gefuellt = false;
+  return ersteVariante(rahmen)
+    .split(' ')
+    .filter(Boolean)
+    .map((tok) => {
+      if (!gefuellt && /\[[^\]]*\]/.test(tok)) {
+        gefuellt = true;
+        return slot
+          ? { t: tok.replace(/\[[^\]]*\]/, slot.lerntext), c: slot.c ?? null }
+          : { t: tok.replace(/\[[^\]]*\]/, '___'), c: null };
+      }
+      return { t: tok, c: wortarten?.[tok] ?? null };
+    });
 }
 
 /**

@@ -1,10 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useAppState } from '../../state/AppState';
 import { useOnboardingState } from '../../state/OnboardingState';
-import { getLanguage } from '../../data/languages';
+import { getLanguage, sprachAdjektiv } from '../../data/languages';
 import { CATEGORY_BY_ID } from '../../data/categories';
 import { leihgeberVon, leihName, saetzeFuer } from '../../data/geliehen';
 import { passtZurAnsprache } from '../../data/anrede';
@@ -19,9 +18,23 @@ import { newCard, reviewCard } from '../srs/fsrsEngine';
 import { cardKey, saveCard } from '../srs/srsStorage';
 import { merkeBesuch } from '../home/zuletztBesucht';
 import { ladeZaehler, aendereZaehler, setzeZaehler, ladeJeErreicht, markiereJeErreicht, aktiverBatchPool } from './batchLeiter';
-import { Screen, PillButton, ProgressBar, SchreibenFeld, UebungsMenu, SatzChip, SatzChipReihe, SatzAnzeige, SatzRahmen } from '../../components';
+import {
+  Screen,
+  PillButton,
+  ProgressBar,
+  SchreibenFeld,
+  UebungsMenu,
+  SatzChip,
+  SatzChipReihe,
+  SatzAnzeige,
+  SatzRahmen,
+  SatzMikrofon,
+  SatzWeiterKnopf,
+  hilfeWortzahl,
+  hilfeAusschnitt,
+} from '../../components';
 import { TaggedTokens } from '../../components/ColoredTokens';
-import { getTheme, elevation, SPACING, RADIUS, FONT_SIZE, LINE_HEIGHT, ACCENT_GREEN, ACCENT_ERROR, ACCENT_ORANGE, WordType, schrift } from '../../theme/tokens';
+import { getTheme, SPACING, RADIUS, FONT_SIZE, LINE_HEIGHT, ACCENT_GREEN, ACCENT_ERROR, ACCENT_ORANGE, WordType, schrift } from '../../theme/tokens';
 
 // "Sätze-Wiederholung" (2026-08-26) - der zweite der drei Trainingsmodi aus
 // trainingModes.ts, der einen echten Screen bekommt. Simons Stufen-Leiter
@@ -79,34 +92,9 @@ const SESSION_RUNDEN = 6;
 
 type Stufe = 1 | 2 | 3;
 
-// Fuer die Ueberschriften "Sprich diesen ___ Satz nach" / "Ordne diesen
-// ___ Satz..." (2026-08-26) - `language.label` allein passt grammatisch
-// nicht ("diesen Schwedisch Satz"), es braucht die deklinierte
-// Adjektivform.
-//
-// Das war bis zum 2026-09-03 eine feste Liste mit dem Kommentar "die
-// Sprachenliste waechst selten". Am selben Tag kamen sechs Sprachen auf
-// einmal dazu, und alle sechs zeigten dem Nutzer ihren ROHEN Code:
-// "Sprich diesen pl Satz nach". Eine Liste, die man beim Anlegen einer
-// Sprache vergessen kann, ist genau die falsche Bauform.
-//
-// Deshalb jetzt eine Regel: alle deutschen Sprachbezeichnungen sind
-// Adjektive, die im Akkusativ Singular maskulin ein "-en" anhaengen -
-// "Deutsch" -> "deutschen", "Polnisch" -> "polnischen". Das traegt fuer
-// alle elf Sprachen und fuer jede weitere, die auf "-isch" endet.
-// `SPRACH_ADJEKTIV` bleibt fuer Ausnahmen, falls je eine Bezeichnung
-// dazukommt, die der Regel nicht folgt (etwa "Hindi" oder "Suaheli").
-const SPRACH_ADJEKTIV: Record<string, string> = {};
-function sprachAdjektiv(languageId: string): string {
-  const ausnahme = SPRACH_ADJEKTIV[languageId];
-  if (ausnahme) return ausnahme;
-  const label = getLanguage(languageId).label;
-  // Greift nur, wenn die Bezeichnung wirklich adjektivisch ist. Sonst
-  // lieber die unveraenderte Bezeichnung als eine falsche Beugung.
-  return label.endsWith('isch') || label === 'Deutsch'
-    ? label.toLowerCase() + 'en'
-    : label;
-}
+// `sprachAdjektiv()` (fuer "Sprich diesen polnischen Satz nach") liegt seit
+// 2026-09-11 in data/languages.ts - der gefuehrte Kurs braucht dieselbe
+// Ueberschrift.
 
 /**
  * Hat dieser Satz eine EIGENE Schrift neben der Lautschrift? (2026-08-30)
@@ -156,38 +144,16 @@ function mischen<T>(arr: T[]): T[] {
   return kopie;
 }
 
-/**
- * Wie viel der Loesung die Hilfe zeigt (Simon, 2026-08-30: "knapp 40%").
- *
- * **Der Anteil allein reicht dafuer nicht - es haengt an der Rundung.**
- * `hilfeText()` in phrasebookContent.ts rundet AUF; bei drei Woertern kaeme
- * damit auch aus 0.4 noch `ceil(1.2) = 2` heraus, also 67% statt der
- * gewuenschten Groessenordnung. Deshalb rechnet dieser Screen die Wortzahl
- * selbst und rundet KAUFMAENNISCH. `hilfeText()` bleibt unveraendert -
- * ExerciseScreen.tsx haengt daran und soll sich nicht mitaendern.
- *
- * Ergebnis (Anteil des Satzes, der sichtbar wird):
- *   2 Woerter -> 1 (50%)   5 -> 2 (40%)   8 -> 3 (38%)
- *   3 Woerter -> 1 (33%)   6 -> 2 (33%)
- *   4 Woerter -> 2 (50%)   7 -> 3 (43%)
- * "Talar du engelska?" zeigt damit "Talar" statt "Talar du".
- *
- * Mindestens EIN Wort, sonst waere die Hilfe bei kurzen Saetzen leer und
- * der Chip liefe ins Nichts.
- */
-const HILFE_ANTEIL = 0.4;
-
-function hilfeWortzahl(gesamt: number): number {
-  return Math.max(1, Math.round(gesamt * HILFE_ANTEIL));
-}
+// Wie viel der Loesung die Hilfe zeigt ("knapp 40%", kaufmaennisch
+// gerundet) steht seit 2026-09-11 in components/SatzTemplate.tsx
+// (`hilfeWortzahl`) - der gefuehrte Kurs zeigt dieselbe Hilfe.
 
 function hilfeWoerter(satz: ExerciseSentence): string[] {
   return (satz.pinyin ?? satz.text).trim().split(/\s+/).filter(Boolean);
 }
 
 function hilfeTextFuerSatz(satz: ExerciseSentence): string {
-  const woerter = hilfeWoerter(satz);
-  return woerter.slice(0, hilfeWortzahl(woerter.length)).join(' ');
+  return hilfeAusschnitt(satz.pinyin ?? satz.text);
 }
 
 /**
@@ -994,33 +960,13 @@ export function SentenceReviewScreen() {
           </SatzRahmen>
           {renderFeedback(true)}
 
-          <View style={styles.weiterZeile}>
-            <Pressable
-              onPress={checkAnswer}
-              disabled={(!input.trim() && !transcript) || !!feedback}
-              accessibilityRole="button"
-              accessibilityLabel="Weiter"
-              accessibilityState={{ disabled: (!input.trim() && !transcript) || !!feedback }}
-              style={({ pressed }) => {
-                const gesperrt = (!input.trim() && !transcript) || !!feedback;
-                return [
-                  styles.weiterKnopf,
-                  // Gesperrt liegt der Knopf FLACH auf der Seite - ein
-                  // schwebender Knopf, der nichts tut, ist ein Widerspruch.
-                  // Die Erhebung kommt erst, wenn er bedienbar wird.
-                  gesperrt ? null : elevation(darkMode, 'chip'),
-                  {
-                    borderColor: 'transparent',
-                    backgroundColor: theme.subtleFill,
-                    opacity: gesperrt ? 0.4 : pressed ? 0.75 : 1,
-                    transform: [{ translateY: !gesperrt && pressed ? 1 : 0 }],
-                  },
-                ];
-              }}
-            >
-              <Text style={{ color: theme.text, ...schrift('700'), fontSize: FONT_SIZE.caption }}>▶ Weiter</Text>
-            </Pressable>
-          </View>
+          <SatzWeiterKnopf
+            dark={darkMode}
+            label="▶ Weiter"
+            a11y="Weiter"
+            gesperrt={(!input.trim() && !transcript) || !!feedback}
+            onPress={checkAnswer}
+          />
         </ScrollView>
       )}
 
@@ -1227,30 +1173,13 @@ export function SentenceReviewScreen() {
           </SatzRahmen>
           {renderFeedback(true)}
 
-          <View style={styles.weiterZeile}>
-            <Pressable
-              onPress={checkAnswer}
-              disabled={(!input.trim() && !transcript) || !!feedback}
-              accessibilityRole="button"
-              accessibilityLabel="Lösen"
-              accessibilityState={{ disabled: (!input.trim() && !transcript) || !!feedback }}
-              style={({ pressed }) => {
-                const gesperrt = (!input.trim() && !transcript) || !!feedback;
-                return [
-                  styles.weiterKnopf,
-                  gesperrt ? null : elevation(darkMode, 'chip'),
-                  {
-                    borderColor: 'transparent',
-                    backgroundColor: theme.subtleFill,
-                    opacity: gesperrt ? 0.4 : pressed ? 0.75 : 1,
-                    transform: [{ translateY: !gesperrt && pressed ? 1 : 0 }],
-                  },
-                ];
-              }}
-            >
-              <Text style={{ color: theme.text, ...schrift('700'), fontSize: FONT_SIZE.caption }}>› Lösen</Text>
-            </Pressable>
-          </View>
+          <SatzWeiterKnopf
+            dark={darkMode}
+            label="› Lösen"
+            a11y="Lösen"
+            gesperrt={(!input.trim() && !transcript) || !!feedback}
+            onPress={checkAnswer}
+          />
         </ScrollView>
       )}
 
@@ -1307,34 +1236,17 @@ export function SentenceReviewScreen() {
     return (
       <View>
         {gross ? (
-          <View style={styles.micGrossZeile}>
-            {stt.status === 'ready' ? (
-              <Pressable
-                onPress={handleMicPress}
-                accessibilityRole="button"
-                accessibilityLabel={isRecording ? 'Aufnahme stoppen' : isTranscribing ? 'Wird ausgewertet' : 'Antwort einsprechen'}
-                accessibilityState={{ busy: isTranscribing, disabled: isTranscribing }}
-                style={({ pressed }) => [
-                  styles.micGross,
-                  {
-                    backgroundColor: isRecording ? ACCENT_ERROR : theme.subtleFill,
-                    borderColor: isRecording ? ACCENT_ERROR : theme.border,
-                    opacity: pressed ? 0.7 : 1,
-                  },
-                ]}
-              >
-                {isTranscribing ? (
-                  <ActivityIndicator color={theme.text} />
-                ) : (
-                  <Ionicons name="mic" size={30} color={isRecording ? '#FFFFFF' : theme.text} />
-                )}
-              </Pressable>
-            ) : (
-              <Text style={{ color: theme.sub, fontSize: FONT_SIZE.caption, textAlign: 'center' }}>
-                Spracherkennung nicht verfügbar - bitte Text eingeben.
-              </Text>
-            )}
-          </View>
+          // Grosses Mikrofon samt reservierter Erkannt-Zeile - seit
+          // 2026-09-11 in SatzTemplate.tsx, weil der gefuehrte Kurs dieselbe
+          // Vorlage benutzt.
+          <SatzMikrofon
+            dark={darkMode}
+            verfuegbar={stt.status === 'ready'}
+            nimmtAuf={isRecording}
+            wertetAus={isTranscribing}
+            onPress={handleMicPress}
+            erkannt={transcript || null}
+          />
         ) : (
           <View style={styles.sttRow}>
             {stt.status === 'ready' ? (
@@ -1355,21 +1267,10 @@ export function SentenceReviewScreen() {
             {isTranscribing && <ActivityIndicator color={theme.text} style={{ marginLeft: 8 }} />}
           </View>
         )}
-        {/* Im grossen Template haelt die Erkannt-Zeile ihren Platz frei
-            (Simons Punkt 4), sonst springt beim Auswerten alles darunter.
-            `numberOfLines={1}` haelt die reservierte Hoehe konstant, auch
-            wenn ein langes Transkript zurueckkommt. */}
-        {gross ? (
-          <Text
-            numberOfLines={1}
-            style={[styles.transcript, { color: transcript ? theme.text : 'transparent' }]}
-            accessibilityElementsHidden={!transcript}
-            importantForAccessibility={transcript ? 'auto' : 'no-hide-descendants'}
-          >
-            {transcript ? `Erkannt: „${transcript}"` : ' '}
-          </Text>
-        ) : (
-          !!transcript && <Text style={[styles.transcript, { color: theme.text }]}>Erkannt: „{transcript}"</Text>
+        {/* Im grossen Template steckt die Erkannt-Zeile schon in
+            SatzMikrofon (dort mit reserviertem Platz). */}
+        {!gross && !!transcript && (
+          <Text style={[styles.transcript, { color: theme.text }]}>Erkannt: „{transcript}"</Text>
         )}
         {!!recordError && <Text style={{ color: ACCENT_ERROR, fontSize: 12 }}>{recordError}</Text>}
         <SchreibenFeld
@@ -1482,22 +1383,8 @@ const styles = StyleSheet.create({
   // Schriftzeichen-Zeile: GLEICHE Groesse wie die Lautschrift darunter.
   // Eine kleinere Lautschrift bei "Zeichen an" haette den Satz beim
   // Umschalten die Hoehe wechseln lassen (Simons Punkt 4).
-  micGrossZeile: { alignItems: 'center', marginBottom: SPACING.md },
-  micGross: {
-    width: 76,
-    height: 76,
-    borderRadius: 38,
-    borderWidth: 1.5,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  weiterZeile: { flexDirection: 'row', justifyContent: 'flex-end' },
-  weiterKnopf: {
-    borderWidth: 1.5,
-    borderRadius: RADIUS.pill,
-    paddingVertical: SPACING.sm,
-    paddingHorizontal: SPACING.lg,
-  },
+  // Grosses Mikrofon und "Weiter"/"Lösen" liegen seit 2026-09-11 als
+  // SatzMikrofon/SatzWeiterKnopf in components/SatzTemplate.tsx.
   // ------------------------------------------------------------------------
   startBox: { marginTop: SPACING.xxl, gap: SPACING.sm },
   anzahlText: { fontSize: FONT_SIZE.body },

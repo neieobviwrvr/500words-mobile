@@ -18,29 +18,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io sono [Slot]",
-          "lerntext": "io sono [Slot]"
+          "lerntext": "io sono [Slot]",
+          "wortarten": {
+            "io": "p",
+            "sono": "v"
+          }
         },
         "frameDe": "ich bin [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -48,27 +56,32 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "stanco",
               "lerntext": "stanco",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "triste",
               "lerntext": "triste",
-              "de": "traurig"
+              "de": "traurig",
+              "c": "a"
             },
             {
               "schrift": "arrabbiato",
               "lerntext": "arrabbiato",
-              "de": "wütend"
+              "de": "wütend",
+              "c": "a"
             },
             {
               "schrift": "contento",
               "lerntext": "contento",
-              "de": "zufrieden"
+              "de": "zufrieden",
+              "c": "a"
             },
             {
               "schrift": "malato",
               "lerntext": "malato",
-              "de": "krank"
+              "de": "krank",
+              "c": "a"
             }
           ]
         ],
@@ -78,7 +91,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "sono",
             "lerntext": "sono",
-            "de": "sein"
+            "de": "sein",
+            "c": "v"
           }
         ],
         "id": "1.1"
@@ -87,29 +101,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io sono [Slot]",
-          "lerntext": "io sono [Slot]"
+          "lerntext": "io sono [Slot]",
+          "wortarten": {
+            "io": "p",
+            "sono": "v"
+          }
         },
         "frameDe": "ich bin [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -117,7 +139,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "pronto",
               "lerntext": "pronto",
-              "de": "bereit"
+              "de": "bereit",
+              "c": "a"
             }
           ]
         ],
@@ -130,29 +153,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "noi siamo [Slot]",
-          "lerntext": "noi siamo [Slot]"
+          "lerntext": "noi siamo [Slot]",
+          "wortarten": {
+            "noi": "p",
+            "siamo": "v"
+          }
         },
         "frameDe": "wir sind [Slot].",
         "pronouns": [
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "voi",
             "lerntext": "voi",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -160,27 +191,32 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "studente",
               "lerntext": "studente",
-              "de": "Student"
+              "de": "Student",
+              "c": "n"
             },
             {
               "schrift": "collega",
               "lerntext": "collega",
-              "de": "Kollege"
+              "de": "Kollege",
+              "c": "n"
             },
             {
               "schrift": "polizia",
               "lerntext": "polizia",
-              "de": "Polizei"
+              "de": "Polizei",
+              "c": "n"
             },
             {
               "schrift": "amico",
               "lerntext": "amico",
-              "de": "Freund"
+              "de": "Freund",
+              "c": "n"
             },
             {
               "schrift": "donna",
               "lerntext": "donna",
-              "de": "Frau"
+              "de": "Frau",
+              "c": "n"
             }
           ]
         ],
@@ -193,29 +229,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "noi siamo [Slot]",
-          "lerntext": "noi siamo [Slot]"
+          "lerntext": "noi siamo [Slot]",
+          "wortarten": {
+            "noi": "p",
+            "siamo": "v"
+          }
         },
         "frameDe": "wir sind [Slot].",
         "pronouns": [
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "voi",
             "lerntext": "voi",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -223,7 +267,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "bambino",
               "lerntext": "bambino",
-              "de": "Kind"
+              "de": "Kind",
+              "c": "n"
             }
           ]
         ],
@@ -236,19 +281,25 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "lui è molto [Slot]",
-          "lerntext": "lui è molto [Slot]"
+          "lerntext": "lui è molto [Slot]",
+          "wortarten": {
+            "lui": "p",
+            "è": "v"
+          }
         },
         "frameDe": "er ist sehr [Slot].",
         "pronouns": [
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -256,27 +307,32 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "bello",
               "lerntext": "bello",
-              "de": "schön"
+              "de": "schön",
+              "c": "a"
             },
             {
               "schrift": "forte",
               "lerntext": "forte",
-              "de": "stark"
+              "de": "stark",
+              "c": "a"
             },
             {
               "schrift": "debole",
               "lerntext": "debole",
-              "de": "schwach"
+              "de": "schwach",
+              "c": "a"
             },
             {
               "schrift": "giovane",
               "lerntext": "giovane",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "vecchio",
               "lerntext": "vecchio",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             }
           ]
         ],
@@ -295,19 +351,25 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "lui è molto [Slot]",
-          "lerntext": "lui è molto [Slot]"
+          "lerntext": "lui è molto [Slot]",
+          "wortarten": {
+            "lui": "p",
+            "è": "v"
+          }
         },
         "frameDe": "er ist sehr [Slot].",
         "pronouns": [
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -315,7 +377,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "felice",
               "lerntext": "felice",
-              "de": "glücklich"
+              "de": "glücklich",
+              "c": "a"
             }
           ]
         ],
@@ -328,29 +391,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io sono [Slot]",
-          "lerntext": "io sono [Slot]"
+          "lerntext": "io sono [Slot]",
+          "wortarten": {
+            "io": "p",
+            "sono": "v"
+          }
         },
         "frameDe": "ich bin [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -359,36 +430,42 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "stanco",
               "lerntext": "stanco",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "triste",
               "lerntext": "triste",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "arrabbiato",
               "lerntext": "arrabbiato",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "contento",
               "lerntext": "contento",
               "de": "zufrieden",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "malato",
               "lerntext": "malato",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pronto",
               "lerntext": "pronto",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -402,29 +479,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "noi siamo [Slot]",
-          "lerntext": "noi siamo [Slot]"
+          "lerntext": "noi siamo [Slot]",
+          "wortarten": {
+            "noi": "p",
+            "siamo": "v"
+          }
         },
         "frameDe": "wir sind [Slot].",
         "pronouns": [
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "voi",
             "lerntext": "voi",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -433,36 +518,42 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "studente",
               "lerntext": "studente",
               "de": "Student",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "collega",
               "lerntext": "collega",
               "de": "Kollege",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "polizia",
               "lerntext": "polizia",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amico",
               "lerntext": "amico",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "donna",
               "lerntext": "donna",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bambino",
               "lerntext": "bambino",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -476,29 +567,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io sono [Slot]",
-          "lerntext": "io sono [Slot]"
+          "lerntext": "io sono [Slot]",
+          "wortarten": {
+            "io": "p",
+            "sono": "v"
+          }
         },
         "frameDe": "ich bin [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -507,36 +606,42 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "stanco",
               "lerntext": "stanco",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "triste",
               "lerntext": "triste",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "arrabbiato",
               "lerntext": "arrabbiato",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "contento",
               "lerntext": "contento",
               "de": "zufrieden",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "malato",
               "lerntext": "malato",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pronto",
               "lerntext": "pronto",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -550,29 +655,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "noi siamo [Slot]",
-          "lerntext": "noi siamo [Slot]"
+          "lerntext": "noi siamo [Slot]",
+          "wortarten": {
+            "noi": "p",
+            "siamo": "v"
+          }
         },
         "frameDe": "wir sind [Slot].",
         "pronouns": [
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "voi",
             "lerntext": "voi",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -581,36 +694,42 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "studente",
               "lerntext": "studente",
               "de": "Student",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "collega",
               "lerntext": "collega",
               "de": "Kollege",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "polizia",
               "lerntext": "polizia",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amico",
               "lerntext": "amico",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "donna",
               "lerntext": "donna",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bambino",
               "lerntext": "bambino",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -645,14 +764,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "questo è una [Slot]",
-          "lerntext": "questo è una [Slot]"
+          "lerntext": "questo è una [Slot]",
+          "wortarten": {
+            "questo": "p",
+            "è": "v"
+          }
         },
         "frameDe": "Das ist eine [Slot].",
         "pronouns": [
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -660,33 +784,39 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "borsa",
               "lerntext": "borsa",
-              "de": "Tasche"
+              "de": "Tasche",
+              "c": "n"
             },
             {
               "schrift": "porta",
               "lerntext": "porta",
-              "de": "Tür"
+              "de": "Tür",
+              "c": "n"
             },
             {
               "schrift": "madre",
               "lerntext": "madre",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "sorella",
               "lerntext": "sorella",
-              "de": "Schwester"
+              "de": "Schwester",
+              "c": "n"
             },
             {
               "schrift": "donna",
               "lerntext": "donna",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "polizia",
               "lerntext": "polizia",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -697,7 +827,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "questo",
             "lerntext": "questo",
-            "de": "dieser"
+            "de": "dieser",
+            "c": "p"
           }
         ],
         "id": "2.1"
@@ -706,14 +837,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "questo è una [Slot]",
-          "lerntext": "questo è una [Slot]"
+          "lerntext": "questo è una [Slot]",
+          "wortarten": {
+            "questo": "p",
+            "è": "v"
+          }
         },
         "frameDe": "Das ist ein [Slot].",
         "pronouns": [
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -721,24 +857,28 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "chiave",
               "lerntext": "chiave",
-              "de": "Schlüssel"
+              "de": "Schlüssel",
+              "c": "n"
             },
             {
               "schrift": "collega",
               "lerntext": "collega",
               "de": "Kollege",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amico",
               "lerntext": "amico",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "studente",
               "lerntext": "studente",
               "de": "Student",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -752,14 +892,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "questo è un [Slot]",
-          "lerntext": "questo è un [Slot]"
+          "lerntext": "questo è un [Slot]",
+          "wortarten": {
+            "questo": "p",
+            "è": "v"
+          }
         },
         "frameDe": "Das ist ein [Slot].",
         "pronouns": [
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -767,35 +912,41 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "padre",
               "lerntext": "padre",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "fratello",
               "lerntext": "fratello",
-              "de": "Bruder"
+              "de": "Bruder",
+              "c": "n"
             },
             {
               "schrift": "chiave",
               "lerntext": "chiave",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "collega",
               "lerntext": "collega",
               "de": "Kollege",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amico",
               "lerntext": "amico",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "studente",
               "lerntext": "studente",
               "de": "Student",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -809,14 +960,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "questo è un [Slot]",
-          "lerntext": "questo è un [Slot]"
+          "lerntext": "questo è un [Slot]",
+          "wortarten": {
+            "questo": "p",
+            "è": "v"
+          }
         },
         "frameDe": "Das ist ein [Slot].",
         "pronouns": [
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -824,22 +980,26 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "libro",
               "lerntext": "libro",
-              "de": "Buch"
+              "de": "Buch",
+              "c": "n"
             },
             {
               "schrift": "letto",
               "lerntext": "letto",
-              "de": "Bett"
+              "de": "Bett",
+              "c": "n"
             },
             {
               "schrift": "telefono",
               "lerntext": "telefono",
-              "de": "Telefon"
+              "de": "Telefon",
+              "c": "n"
             },
             {
               "schrift": "bambino",
               "lerntext": "bambino",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -860,7 +1020,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -868,47 +1029,55 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "cucina",
               "lerntext": "cucina",
-              "de": "Küche"
+              "de": "Küche",
+              "c": "n"
             },
             {
               "schrift": "carta",
               "lerntext": "carta",
-              "de": "Karte"
+              "de": "Karte",
+              "c": "n"
             },
             {
               "schrift": "porta",
               "lerntext": "porta",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "borsa",
               "lerntext": "borsa",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "madre",
               "lerntext": "madre",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sorella",
               "lerntext": "sorella",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "donna",
               "lerntext": "donna",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "polizia",
               "lerntext": "polizia",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -935,7 +1104,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -943,40 +1113,47 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "casa",
               "lerntext": "casa",
-              "de": "Haus"
+              "de": "Haus",
+              "c": "n"
             },
             {
               "schrift": "camera",
               "lerntext": "camera",
-              "de": "Zimmer"
+              "de": "Zimmer",
+              "c": "n"
             },
             {
               "schrift": "finestra",
               "lerntext": "finestra",
-              "de": "Fenster"
+              "de": "Fenster",
+              "c": "n"
             },
             {
               "schrift": "telefono",
               "lerntext": "telefono",
               "de": "Telefon",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "libro",
               "lerntext": "libro",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "letto",
               "lerntext": "letto",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bambino",
               "lerntext": "bambino",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -997,7 +1174,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1005,42 +1183,49 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "tavolo",
               "lerntext": "tavolo",
-              "de": "Tisch"
+              "de": "Tisch",
+              "c": "n"
             },
             {
               "schrift": "fratello",
               "lerntext": "fratello",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "padre",
               "lerntext": "padre",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "chiave",
               "lerntext": "chiave",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "collega",
               "lerntext": "collega",
               "de": "Kollege",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amico",
               "lerntext": "amico",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "studente",
               "lerntext": "studente",
               "de": "Student",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1061,7 +1246,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1069,53 +1255,62 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "bicchiere",
               "lerntext": "bicchiere",
-              "de": "Glas"
+              "de": "Glas",
+              "c": "n"
             },
             {
               "schrift": "albergo",
               "lerntext": "albergo",
-              "de": "Hotel"
+              "de": "Hotel",
+              "c": "n"
             },
             {
               "schrift": "casa",
               "lerntext": "casa",
               "de": "Haus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "camera",
               "lerntext": "camera",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "finestra",
               "lerntext": "finestra",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "telefono",
               "lerntext": "telefono",
               "de": "Telefon",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "libro",
               "lerntext": "libro",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "letto",
               "lerntext": "letto",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bambino",
               "lerntext": "bambino",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1129,29 +1324,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io ho una [Slot]",
-          "lerntext": "io ho una [Slot]"
+          "lerntext": "io ho una [Slot]",
+          "wortarten": {
+            "io": "p",
+            "ho": "v"
+          }
         },
         "frameDe": "ich habe eine [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1159,64 +1362,75 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "famiglia",
               "lerntext": "famiglia",
-              "de": "Familie"
+              "de": "Familie",
+              "c": "n"
             },
             {
               "schrift": "figlia",
               "lerntext": "figlia",
-              "de": "Tochter"
+              "de": "Tochter",
+              "c": "n"
             },
             {
               "schrift": "mano",
               "lerntext": "mano",
-              "de": "Hand"
+              "de": "Hand",
+              "c": "n"
             },
             {
               "schrift": "carta",
               "lerntext": "carta",
               "de": "Karte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cucina",
               "lerntext": "cucina",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "porta",
               "lerntext": "porta",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "borsa",
               "lerntext": "borsa",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "madre",
               "lerntext": "madre",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sorella",
               "lerntext": "sorella",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "donna",
               "lerntext": "donna",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "polizia",
               "lerntext": "polizia",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1227,7 +1441,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "ho",
             "lerntext": "ho",
-            "de": "haben"
+            "de": "haben",
+            "c": "v"
           }
         ],
         "id": "2.9"
@@ -1236,29 +1451,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io ho una [Slot]",
-          "lerntext": "io ho una [Slot]"
+          "lerntext": "io ho una [Slot]",
+          "wortarten": {
+            "io": "p",
+            "ho": "v"
+          }
         },
         "frameDe": "ich habe einen [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1266,48 +1489,56 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "bocca",
               "lerntext": "bocca",
-              "de": "Mund"
+              "de": "Mund",
+              "c": "n"
             },
             {
               "schrift": "tavolo",
               "lerntext": "tavolo",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fratello",
               "lerntext": "fratello",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "padre",
               "lerntext": "padre",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "chiave",
               "lerntext": "chiave",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "collega",
               "lerntext": "collega",
               "de": "Kollege",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amico",
               "lerntext": "amico",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "studente",
               "lerntext": "studente",
               "de": "Student",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1321,29 +1552,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io ho una [Slot]",
-          "lerntext": "io ho una [Slot]"
+          "lerntext": "io ho una [Slot]",
+          "wortarten": {
+            "io": "p",
+            "ho": "v"
+          }
         },
         "frameDe": "ich habe ein [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1351,60 +1590,70 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "macchina",
               "lerntext": "macchina",
-              "de": "Auto"
+              "de": "Auto",
+              "c": "n"
             },
             {
               "schrift": "bicchiere",
               "lerntext": "bicchiere",
               "de": "Glas",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "albergo",
               "lerntext": "albergo",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "finestra",
               "lerntext": "finestra",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "casa",
               "lerntext": "casa",
               "de": "Haus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "camera",
               "lerntext": "camera",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "telefono",
               "lerntext": "telefono",
               "de": "Telefon",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "libro",
               "lerntext": "libro",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "letto",
               "lerntext": "letto",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bambino",
               "lerntext": "bambino",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1418,29 +1667,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io ho un [Slot]",
-          "lerntext": "io ho un [Slot]"
+          "lerntext": "io ho un [Slot]",
+          "wortarten": {
+            "io": "p",
+            "ho": "v"
+          }
         },
         "frameDe": "ich habe eine [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1448,66 +1705,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "appartamento",
               "lerntext": "appartamento",
-              "de": "Wohnung"
+              "de": "Wohnung",
+              "c": "n"
             },
             {
               "schrift": "famiglia",
               "lerntext": "famiglia",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "figlia",
               "lerntext": "figlia",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mano",
               "lerntext": "mano",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "carta",
               "lerntext": "carta",
               "de": "Karte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cucina",
               "lerntext": "cucina",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "porta",
               "lerntext": "porta",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "borsa",
               "lerntext": "borsa",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "madre",
               "lerntext": "madre",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sorella",
               "lerntext": "sorella",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "donna",
               "lerntext": "donna",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1521,29 +1789,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io ho un [Slot]",
-          "lerntext": "io ho un [Slot]"
+          "lerntext": "io ho un [Slot]",
+          "wortarten": {
+            "io": "p",
+            "ho": "v"
+          }
         },
         "frameDe": "ich habe einen [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1551,69 +1827,81 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "figlio",
               "lerntext": "figlio",
-              "de": "Sohn"
+              "de": "Sohn",
+              "c": "n"
             },
             {
               "schrift": "braccio",
               "lerntext": "braccio",
-              "de": "Arm"
+              "de": "Arm",
+              "c": "n"
             },
             {
               "schrift": "piede",
               "lerntext": "piede",
-              "de": "Fuß"
+              "de": "Fuß",
+              "c": "n"
             },
             {
               "schrift": "corpo",
               "lerntext": "corpo",
-              "de": "Körper"
+              "de": "Körper",
+              "c": "n"
             },
             {
               "schrift": "bocca",
               "lerntext": "bocca",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tavolo",
               "lerntext": "tavolo",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fratello",
               "lerntext": "fratello",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "padre",
               "lerntext": "padre",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "chiave",
               "lerntext": "chiave",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "collega",
               "lerntext": "collega",
               "de": "Kollege",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amico",
               "lerntext": "amico",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "studente",
               "lerntext": "studente",
               "de": "Student",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1627,24 +1915,31 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "questa è mia [Slot]",
-          "lerntext": "questa è mia [Slot]"
+          "lerntext": "questa è mia [Slot]",
+          "wortarten": {
+            "è": "v",
+            "mia": "p"
+          }
         },
         "frameDe": "Das ist mein [Slot].",
         "pronouns": [
           {
             "schrift": "mio",
             "lerntext": "mio",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           },
           {
             "schrift": "tuo",
             "lerntext": "tuo",
-            "de": "dein"
+            "de": "dein",
+            "c": "p"
           },
           {
             "schrift": "nostro",
             "lerntext": "nostro",
-            "de": "unser"
+            "de": "unser",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1652,81 +1947,95 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "madre",
               "lerntext": "madre",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "padre",
               "lerntext": "padre",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "donna",
               "lerntext": "donna",
-              "de": "Frau"
+              "de": "Frau",
+              "c": "n"
             },
             {
               "schrift": "collega",
               "lerntext": "collega",
-              "de": "Kollege"
+              "de": "Kollege",
+              "c": "n"
             },
             {
               "schrift": "macchina",
               "lerntext": "macchina",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "appartamento",
               "lerntext": "appartamento",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "corpo",
               "lerntext": "corpo",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "braccio",
               "lerntext": "braccio",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "figlio",
               "lerntext": "figlio",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "piede",
               "lerntext": "piede",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bicchiere",
               "lerntext": "bicchiere",
               "de": "Glas",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mano",
               "lerntext": "mano",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "figlia",
               "lerntext": "figlia",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bocca",
               "lerntext": "bocca",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1740,24 +2049,31 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "questa è [Slot] casa",
-          "lerntext": "questa è [Slot] casa"
+          "lerntext": "questa è [Slot] casa",
+          "wortarten": {
+            "è": "v",
+            "casa": "n"
+          }
         },
         "frameDe": "Das ist [Slot] Haus.",
         "pronouns": [
           {
             "schrift": "mio",
             "lerntext": "mio",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           },
           {
             "schrift": "tuo",
             "lerntext": "tuo",
-            "de": "dein"
+            "de": "dein",
+            "c": "p"
           },
           {
             "schrift": "nostro",
             "lerntext": "nostro",
-            "de": "unser"
+            "de": "unser",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1765,48 +2081,56 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "suo",
               "lerntext": "suo",
-              "de": "sein"
+              "de": "sein",
+              "c": "p"
             },
             {
               "schrift": "voi",
               "lerntext": "voi",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "io",
               "lerntext": "io",
               "de": "ich",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "noi",
               "lerntext": "noi",
               "de": "wir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "tu",
               "lerntext": "tu",
               "de": "du",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "lei",
               "lerntext": "lei",
               "de": "sie",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "questo",
               "lerntext": "questo",
               "de": "dieser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "lui",
               "lerntext": "lui",
               "de": "er",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -1820,7 +2144,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] è qui",
-          "lerntext": "[Slot] è qui"
+          "lerntext": "[Slot] è qui",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "[Slot] ist hier.",
         "pronouns": [],
@@ -1829,70 +2156,82 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "questo",
               "lerntext": "questo",
-              "de": "dieser"
+              "de": "dieser",
+              "c": "p"
             },
             {
               "schrift": "suo",
               "lerntext": "suo",
-              "de": "sein"
+              "de": "sein",
+              "c": "p"
             },
             {
               "schrift": "vi",
               "lerntext": "vi",
-              "de": "euch"
+              "de": "euch",
+              "c": "p"
             },
             {
               "schrift": "voi",
               "lerntext": "voi",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "nostro",
               "lerntext": "nostro",
               "de": "unser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "tuo",
               "lerntext": "tuo",
               "de": "dein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "mio",
               "lerntext": "mio",
               "de": "mein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "io",
               "lerntext": "io",
               "de": "ich",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "noi",
               "lerntext": "noi",
               "de": "wir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "tu",
               "lerntext": "tu",
               "de": "du",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "lei",
               "lerntext": "lei",
               "de": "sie",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "lui",
               "lerntext": "lui",
               "de": "er",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -1912,24 +2251,31 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "questa è mia [Slot]",
-          "lerntext": "questa è mia [Slot]"
+          "lerntext": "questa è mia [Slot]",
+          "wortarten": {
+            "è": "v",
+            "mia": "p"
+          }
         },
         "frameDe": "Das ist mein [Slot].",
         "pronouns": [
           {
             "schrift": "mio",
             "lerntext": "mio",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           },
           {
             "schrift": "tuo",
             "lerntext": "tuo",
-            "de": "dein"
+            "de": "dein",
+            "c": "p"
           },
           {
             "schrift": "nostro",
             "lerntext": "nostro",
-            "de": "unser"
+            "de": "unser",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1938,36 +2284,42 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "macchina",
               "lerntext": "macchina",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "appartamento",
               "lerntext": "appartamento",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "corpo",
               "lerntext": "corpo",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "braccio",
               "lerntext": "braccio",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "figlio",
               "lerntext": "figlio",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "piede",
               "lerntext": "piede",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1981,7 +2333,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] è qui",
-          "lerntext": "[Slot] è qui"
+          "lerntext": "[Slot] è qui",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "[Slot] ist hier.",
         "pronouns": [],
@@ -1991,30 +2346,35 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "vi",
               "lerntext": "vi",
               "de": "euch",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "voi",
               "lerntext": "voi",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "nostro",
               "lerntext": "nostro",
               "de": "unser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "tuo",
               "lerntext": "tuo",
               "de": "dein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "mio",
               "lerntext": "mio",
               "de": "mein",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -2049,24 +2409,31 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io voglio [Slot]",
-          "lerntext": "io voglio [Slot]"
+          "lerntext": "io voglio [Slot]",
+          "wortarten": {
+            "io": "p",
+            "voglio": "v"
+          }
         },
         "frameDe": "ich möchte [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2074,86 +2441,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "acqua",
               "lerntext": "acqua",
-              "de": "Wasser"
+              "de": "Wasser",
+              "c": "n"
             },
             {
               "schrift": "caffe",
               "lerntext": "caffe",
-              "de": "Kaffee"
+              "de": "Kaffee",
+              "c": "n"
             },
             {
               "schrift": "birra",
               "lerntext": "birra",
-              "de": "Bier"
+              "de": "Bier",
+              "c": "n"
             },
             {
               "schrift": "vino",
               "lerntext": "vino",
-              "de": "Wein"
+              "de": "Wein",
+              "c": "n"
             },
             {
               "schrift": "cibo",
               "lerntext": "cibo",
-              "de": "Essen"
+              "de": "Essen",
+              "c": "n"
             },
             {
               "schrift": "albergo",
               "lerntext": "albergo",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "famiglia",
               "lerntext": "famiglia",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bicchiere",
               "lerntext": "bicchiere",
               "de": "Glas",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "macchina",
               "lerntext": "macchina",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mano",
               "lerntext": "mano",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "figlia",
               "lerntext": "figlia",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "appartamento",
               "lerntext": "appartamento",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bocca",
               "lerntext": "bocca",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "finestra",
               "lerntext": "finestra",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "carta",
               "lerntext": "carta",
               "de": "Karte",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2164,7 +2546,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "voglio",
             "lerntext": "voglio",
-            "de": "wollen"
+            "de": "wollen",
+            "c": "v"
           },
           {
             "schrift": "di",
@@ -2178,24 +2561,31 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io voglio [Slot]",
-          "lerntext": "io voglio [Slot]"
+          "lerntext": "io voglio [Slot]",
+          "wortarten": {
+            "io": "p",
+            "voglio": "v"
+          }
         },
         "frameDe": "ich möchte [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2203,81 +2593,95 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "pane",
               "lerntext": "pane",
-              "de": "Brot"
+              "de": "Brot",
+              "c": "n"
             },
             {
               "schrift": "formaggio",
               "lerntext": "formaggio",
-              "de": "Käse"
+              "de": "Käse",
+              "c": "n"
             },
             {
               "schrift": "latte",
               "lerntext": "latte",
-              "de": "Milch"
+              "de": "Milch",
+              "c": "n"
             },
             {
               "schrift": "zucchero",
               "lerntext": "zucchero",
-              "de": "Zucker"
+              "de": "Zucker",
+              "c": "n"
             },
             {
               "schrift": "acqua",
               "lerntext": "acqua",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "caffe",
               "lerntext": "caffe",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "birra",
               "lerntext": "birra",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vino",
               "lerntext": "vino",
               "de": "Wein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cibo",
               "lerntext": "cibo",
               "de": "Essen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "albergo",
               "lerntext": "albergo",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cucina",
               "lerntext": "cucina",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tavolo",
               "lerntext": "tavolo",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "famiglia",
               "lerntext": "famiglia",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "corpo",
               "lerntext": "corpo",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2291,24 +2695,31 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io ho bisogno di [Slot]",
-          "lerntext": "io ho bisogno di [Slot]"
+          "lerntext": "io ho bisogno di [Slot]",
+          "wortarten": {
+            "io": "p",
+            "ho": "v"
+          }
         },
         "frameDe": "ich brauche [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2316,81 +2727,95 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "aiuto",
               "lerntext": "aiuto",
-              "de": "Hilfe"
+              "de": "Hilfe",
+              "c": "n"
             },
             {
               "schrift": "tempo",
               "lerntext": "tempo",
-              "de": "Zeit"
+              "de": "Zeit",
+              "c": "n"
             },
             {
               "schrift": "soldi",
               "lerntext": "soldi",
-              "de": "Geld"
+              "de": "Geld",
+              "c": "n"
             },
             {
               "schrift": "sale",
               "lerntext": "sale",
-              "de": "Salz"
+              "de": "Salz",
+              "c": "n"
             },
             {
               "schrift": "zucchero",
               "lerntext": "zucchero",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pane",
               "lerntext": "pane",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "formaggio",
               "lerntext": "formaggio",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "latte",
               "lerntext": "latte",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "caffe",
               "lerntext": "caffe",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vino",
               "lerntext": "vino",
               "de": "Wein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cibo",
               "lerntext": "cibo",
               "de": "Essen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "birra",
               "lerntext": "birra",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "acqua",
               "lerntext": "acqua",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "braccio",
               "lerntext": "braccio",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2401,7 +2826,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "servo",
             "lerntext": "servo",
-            "de": "dienen"
+            "de": "dienen",
+            "c": "v"
           }
         ],
         "id": "3.3"
@@ -2410,14 +2836,18 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io vorrei una [Slot]",
-          "lerntext": "io vorrei una [Slot]"
+          "lerntext": "io vorrei una [Slot]",
+          "wortarten": {
+            "io": "p"
+          }
         },
         "frameDe": "ich möchte ein [Slot], bitte.",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2425,76 +2855,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "colazione",
               "lerntext": "colazione",
-              "de": "Frühstück"
+              "de": "Frühstück",
+              "c": "n"
             },
             {
               "schrift": "cena",
               "lerntext": "cena",
-              "de": "Abendessen"
+              "de": "Abendessen",
+              "c": "n"
             },
             {
               "schrift": "frutta",
               "lerntext": "frutta",
-              "de": "Obst"
+              "de": "Obst",
+              "c": "n"
             },
             {
               "schrift": "soldi",
               "lerntext": "soldi",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sale",
               "lerntext": "sale",
               "de": "Salz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pane",
               "lerntext": "pane",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "acqua",
               "lerntext": "acqua",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "birra",
               "lerntext": "birra",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cibo",
               "lerntext": "cibo",
               "de": "Essen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "camera",
               "lerntext": "camera",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "macchina",
               "lerntext": "macchina",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "libro",
               "lerntext": "libro",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "letto",
               "lerntext": "letto",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2508,14 +2951,18 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io vorrei un [Slot]",
-          "lerntext": "io vorrei un [Slot]"
+          "lerntext": "io vorrei un [Slot]",
+          "wortarten": {
+            "io": "p"
+          }
         },
         "frameDe": "ich möchte ein [Slot], bitte.",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2523,66 +2970,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "pranzo",
               "lerntext": "pranzo",
-              "de": "Mittagessen"
+              "de": "Mittagessen",
+              "c": "n"
             },
             {
               "schrift": "colazione",
               "lerntext": "colazione",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cena",
               "lerntext": "cena",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "frutta",
               "lerntext": "frutta",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "soldi",
               "lerntext": "soldi",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sale",
               "lerntext": "sale",
               "de": "Salz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pane",
               "lerntext": "pane",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "acqua",
               "lerntext": "acqua",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bicchiere",
               "lerntext": "bicchiere",
               "de": "Glas",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "telefono",
               "lerntext": "telefono",
               "de": "Telefon",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "albergo",
               "lerntext": "albergo",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2596,19 +3054,25 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io mangio [Slot]",
-          "lerntext": "io mangio [Slot]"
+          "lerntext": "io mangio [Slot]",
+          "wortarten": {
+            "io": "p",
+            "mangio": "v"
+          }
         },
         "frameDe": "ich esse [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2616,76 +3080,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "carne",
               "lerntext": "carne",
-              "de": "Fleisch"
+              "de": "Fleisch",
+              "c": "n"
             },
             {
               "schrift": "pesce",
               "lerntext": "pesce",
-              "de": "Fisch"
+              "de": "Fisch",
+              "c": "n"
             },
             {
               "schrift": "verdura",
               "lerntext": "verdura",
-              "de": "Gemüse"
+              "de": "Gemüse",
+              "c": "n"
             },
             {
               "schrift": "pranzo",
               "lerntext": "pranzo",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tempo",
               "lerntext": "tempo",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aiuto",
               "lerntext": "aiuto",
               "de": "Hilfe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "formaggio",
               "lerntext": "formaggio",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "zucchero",
               "lerntext": "zucchero",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cena",
               "lerntext": "cena",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "colazione",
               "lerntext": "colazione",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "frutta",
               "lerntext": "frutta",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "latte",
               "lerntext": "latte",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "caffe",
               "lerntext": "caffe",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2696,12 +3173,14 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "mangio",
             "lerntext": "mangio",
-            "de": "essen"
+            "de": "essen",
+            "c": "v"
           },
           {
             "schrift": "bevo",
             "lerntext": "bevo",
-            "de": "trinken"
+            "de": "trinken",
+            "c": "v"
           }
         ],
         "id": "3.6"
@@ -2710,19 +3189,25 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io mangio [Slot]",
-          "lerntext": "io mangio [Slot]"
+          "lerntext": "io mangio [Slot]",
+          "wortarten": {
+            "io": "p",
+            "mangio": "v"
+          }
         },
         "frameDe": "ich esse [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2731,36 +3216,42 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "carne",
               "lerntext": "carne",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pesce",
               "lerntext": "pesce",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "verdura",
               "lerntext": "verdura",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pranzo",
               "lerntext": "pranzo",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tempo",
               "lerntext": "tempo",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aiuto",
               "lerntext": "aiuto",
               "de": "Hilfe",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2774,19 +3265,25 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io mangio [Slot]",
-          "lerntext": "io mangio [Slot]"
+          "lerntext": "io mangio [Slot]",
+          "wortarten": {
+            "io": "p",
+            "mangio": "v"
+          }
         },
         "frameDe": "ich esse [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2795,18 +3292,21 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "carne",
               "lerntext": "carne",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pesce",
               "lerntext": "pesce",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "verdura",
               "lerntext": "verdura",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2841,29 +3341,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io non sono [Slot]",
-          "lerntext": "io non sono [Slot]"
+          "lerntext": "io non sono [Slot]",
+          "wortarten": {
+            "io": "p",
+            "sono": "v"
+          }
         },
         "frameDe": "ich bin nicht [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2871,7 +3379,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "pronto",
               "lerntext": "pronto",
-              "de": "bereit"
+              "de": "bereit",
+              "c": "a"
             },
             {
               "schrift": "certo",
@@ -2882,60 +3391,70 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "giovane",
               "lerntext": "giovane",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "forte",
               "lerntext": "forte",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bello",
               "lerntext": "bello",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "vecchio",
               "lerntext": "vecchio",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "felice",
               "lerntext": "felice",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "debole",
               "lerntext": "debole",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "arrabbiato",
               "lerntext": "arrabbiato",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "contento",
               "lerntext": "contento",
               "de": "zufrieden",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "stanco",
               "lerntext": "stanco",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "malato",
               "lerntext": "malato",
               "de": "krank",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -2951,7 +3470,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "si",
             "lerntext": "si",
-            "de": "ja"
+            "de": "ja",
+            "c": "p"
           },
           {
             "schrift": "no",
@@ -2970,29 +3490,36 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "sei [Slot]?",
-          "lerntext": "sei [Slot]?"
+          "lerntext": "sei [Slot]?",
+          "wortarten": {
+            "sei": "v"
+          }
         },
         "frameDe": "Bist du [Slot]?",
         "pronouns": [
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "voi",
             "lerntext": "voi",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -3000,12 +3527,14 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "vecchio",
               "lerntext": "vecchio",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "nuovo",
               "lerntext": "nuovo",
-              "de": "neu"
+              "de": "neu",
+              "c": "a"
             },
             {
               "schrift": "bene",
@@ -3020,12 +3549,14 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "importante",
               "lerntext": "importante",
-              "de": "wichtig"
+              "de": "wichtig",
+              "c": "a"
             },
             {
               "schrift": "si",
               "lerntext": "si",
               "de": "ja",
+              "c": "p",
               "wieder": true
             },
             {
@@ -3050,36 +3581,42 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "giovane",
               "lerntext": "giovane",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "forte",
               "lerntext": "forte",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bello",
               "lerntext": "bello",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "felice",
               "lerntext": "felice",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "debole",
               "lerntext": "debole",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "triste",
               "lerntext": "triste",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -3093,7 +3630,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] è questo?",
-          "lerntext": "[Slot] è questo?"
+          "lerntext": "[Slot] è questo?",
+          "wortarten": {
+            "è": "v",
+            "questo?": "p"
+          }
         },
         "frameDe": "[Slot] ist das?",
         "pronouns": [
@@ -3105,7 +3646,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "chi",
             "lerntext": "chi",
-            "de": "wer"
+            "de": "wer",
+            "c": "p"
           },
           {
             "schrift": "come",
@@ -3118,71 +3660,83 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "qualcosa",
               "lerntext": "qualcosa",
-              "de": "etwas"
+              "de": "etwas",
+              "c": "p"
             },
             {
               "schrift": "tutto",
               "lerntext": "tutto",
-              "de": "alles"
+              "de": "alles",
+              "c": "p"
             },
             {
               "schrift": "vi",
               "lerntext": "vi",
               "de": "euch",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "nostro",
               "lerntext": "nostro",
               "de": "unser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "mio",
               "lerntext": "mio",
               "de": "mein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "tuo",
               "lerntext": "tuo",
               "de": "dein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "voi",
               "lerntext": "voi",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "suo",
               "lerntext": "suo",
               "de": "sein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "noi",
               "lerntext": "noi",
               "de": "wir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "lei",
               "lerntext": "lei",
               "de": "sie",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "tu",
               "lerntext": "tu",
               "de": "du",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "io",
               "lerntext": "io",
               "de": "ich",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -3198,7 +3752,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "chi",
             "lerntext": "chi",
-            "de": "wer"
+            "de": "wer",
+            "c": "p"
           },
           {
             "schrift": "come",
@@ -3217,29 +3772,36 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "sei [Slot]?",
-          "lerntext": "sei [Slot]?"
+          "lerntext": "sei [Slot]?",
+          "wortarten": {
+            "sei": "v"
+          }
         },
         "frameDe": "Bist du [Slot]?",
         "pronouns": [
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "voi",
             "lerntext": "voi",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -3248,6 +3810,7 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "nuovo",
               "lerntext": "nuovo",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
@@ -3266,12 +3829,14 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "importante",
               "lerntext": "importante",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "si",
               "lerntext": "si",
               "de": "ja",
+              "c": "p",
               "wieder": true
             },
             {
@@ -3303,29 +3868,36 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "sei [Slot]?",
-          "lerntext": "sei [Slot]?"
+          "lerntext": "sei [Slot]?",
+          "wortarten": {
+            "sei": "v"
+          }
         },
         "frameDe": "Bist du [Slot]?",
         "pronouns": [
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "voi",
             "lerntext": "voi",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -3334,6 +3906,7 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "nuovo",
               "lerntext": "nuovo",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
@@ -3352,12 +3925,14 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "importante",
               "lerntext": "importante",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "si",
               "lerntext": "si",
               "de": "ja",
+              "c": "p",
               "wieder": true
             },
             {
@@ -3413,71 +3988,83 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "scuola",
               "lerntext": "scuola",
-              "de": "Schule"
+              "de": "Schule",
+              "c": "n"
             },
             {
               "schrift": "via",
               "lerntext": "via",
-              "de": "Straße"
+              "de": "Straße",
+              "c": "n"
             },
             {
               "schrift": "tempo",
               "lerntext": "tempo",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aiuto",
               "lerntext": "aiuto",
               "de": "Hilfe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "latte",
               "lerntext": "latte",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mano",
               "lerntext": "mano",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "borsa",
               "lerntext": "borsa",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sorella",
               "lerntext": "sorella",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "figlia",
               "lerntext": "figlia",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "appartamento",
               "lerntext": "appartamento",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "porta",
               "lerntext": "porta",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "carta",
               "lerntext": "carta",
               "de": "Karte",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3512,66 +4099,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "stazione",
               "lerntext": "stazione",
-              "de": "Bahnhof"
+              "de": "Bahnhof",
+              "c": "n"
             },
             {
               "schrift": "pesce",
               "lerntext": "pesce",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "formaggio",
               "lerntext": "formaggio",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "piede",
               "lerntext": "piede",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "zucchero",
               "lerntext": "zucchero",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "figlio",
               "lerntext": "figlio",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vino",
               "lerntext": "vino",
               "de": "Wein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "caffe",
               "lerntext": "caffe",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tavolo",
               "lerntext": "tavolo",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "braccio",
               "lerntext": "braccio",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fratello",
               "lerntext": "fratello",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3600,66 +4198,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "aeroporto",
               "lerntext": "aeroporto",
-              "de": "Flughafen"
+              "de": "Flughafen",
+              "c": "n"
             },
             {
               "schrift": "stazione",
               "lerntext": "stazione",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pesce",
               "lerntext": "pesce",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "formaggio",
               "lerntext": "formaggio",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "piede",
               "lerntext": "piede",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "zucchero",
               "lerntext": "zucchero",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "figlio",
               "lerntext": "figlio",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vino",
               "lerntext": "vino",
               "de": "Wein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bocca",
               "lerntext": "bocca",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "corpo",
               "lerntext": "corpo",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "chiave",
               "lerntext": "chiave",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3688,76 +4297,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "negozio",
               "lerntext": "negozio",
-              "de": "Geschäft"
+              "de": "Geschäft",
+              "c": "n"
             },
             {
               "schrift": "ristorante",
               "lerntext": "ristorante",
-              "de": "Restaurant"
+              "de": "Restaurant",
+              "c": "n"
             },
             {
               "schrift": "bagno",
               "lerntext": "bagno",
-              "de": "Bad"
+              "de": "Bad",
+              "c": "n"
             },
             {
               "schrift": "pranzo",
               "lerntext": "pranzo",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "verdura",
               "lerntext": "verdura",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "soldi",
               "lerntext": "soldi",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cena",
               "lerntext": "cena",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "colazione",
               "lerntext": "colazione",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sale",
               "lerntext": "sale",
               "de": "Salz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "frutta",
               "lerntext": "frutta",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "carne",
               "lerntext": "carne",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "finestra",
               "lerntext": "finestra",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "birra",
               "lerntext": "birra",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3786,66 +4408,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "universita",
               "lerntext": "universita",
-              "de": "Universität"
+              "de": "Universität",
+              "c": "n"
             },
             {
               "schrift": "scuola",
               "lerntext": "scuola",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "via",
               "lerntext": "via",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tempo",
               "lerntext": "tempo",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aiuto",
               "lerntext": "aiuto",
               "de": "Hilfe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "famiglia",
               "lerntext": "famiglia",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cucina",
               "lerntext": "cucina",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "latte",
               "lerntext": "latte",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mano",
               "lerntext": "mano",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "borsa",
               "lerntext": "borsa",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sorella",
               "lerntext": "sorella",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3874,66 +4507,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "ospedale",
               "lerntext": "ospedale",
-              "de": "Krankenhaus"
+              "de": "Krankenhaus",
+              "c": "n"
             },
             {
               "schrift": "negozio",
               "lerntext": "negozio",
               "de": "Geschäft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bagno",
               "lerntext": "bagno",
               "de": "Bad",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ristorante",
               "lerntext": "ristorante",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pranzo",
               "lerntext": "pranzo",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pane",
               "lerntext": "pane",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "verdura",
               "lerntext": "verdura",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "soldi",
               "lerntext": "soldi",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cena",
               "lerntext": "cena",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "colazione",
               "lerntext": "colazione",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sale",
               "lerntext": "sale",
               "de": "Salz",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3947,7 +4591,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] è qui",
-          "lerntext": "[Slot] è qui"
+          "lerntext": "[Slot] è qui",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "[Slot] ist hier.",
         "pronouns": [
@@ -3967,71 +4614,83 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "citta",
               "lerntext": "citta",
-              "de": "Stadt"
+              "de": "Stadt",
+              "c": "n"
             },
             {
               "schrift": "strada",
               "lerntext": "strada",
-              "de": "Weg"
+              "de": "Weg",
+              "c": "n"
             },
             {
               "schrift": "universita",
               "lerntext": "universita",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aeroporto",
               "lerntext": "aeroporto",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ospedale",
               "lerntext": "ospedale",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "scuola",
               "lerntext": "scuola",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "stazione",
               "lerntext": "stazione",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "negozio",
               "lerntext": "negozio",
               "de": "Geschäft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bagno",
               "lerntext": "bagno",
               "de": "Bad",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "via",
               "lerntext": "via",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ristorante",
               "lerntext": "ristorante",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cibo",
               "lerntext": "cibo",
               "de": "Essen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -4056,7 +4715,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è [Slot] la casa",
-          "lerntext": "è [Slot] la casa"
+          "lerntext": "è [Slot] la casa",
+          "wortarten": {
+            "è": "v",
+            "casa": "n"
+          }
         },
         "frameDe": "Es liegt [Slot] dem Haus.",
         "pronouns": [
@@ -4155,7 +4818,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è [Slot] la casa",
-          "lerntext": "è [Slot] la casa"
+          "lerntext": "è [Slot] la casa",
+          "wortarten": {
+            "è": "v",
+            "casa": "n"
+          }
         },
         "frameDe": "Es liegt [Slot] dem Haus.",
         "pronouns": [
@@ -4223,7 +4890,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è [Slot] la casa",
-          "lerntext": "è [Slot] la casa"
+          "lerntext": "è [Slot] la casa",
+          "wortarten": {
+            "è": "v",
+            "casa": "n"
+          }
         },
         "frameDe": "Es liegt [Slot] dem Haus.",
         "pronouns": [
@@ -4292,7 +4963,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] è qui",
-          "lerntext": "[Slot] è qui"
+          "lerntext": "[Slot] è qui",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "[Slot] ist hier.",
         "pronouns": [
@@ -4313,30 +4987,35 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "citta",
               "lerntext": "citta",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "strada",
               "lerntext": "strada",
               "de": "Weg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "universita",
               "lerntext": "universita",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aeroporto",
               "lerntext": "aeroporto",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ospedale",
               "lerntext": "ospedale",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -4567,7 +5246,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "quanto costa una [Slot]?",
-          "lerntext": "quanto costa una [Slot]?"
+          "lerntext": "quanto costa una [Slot]?",
+          "wortarten": {
+            "costa": "v"
+          }
         },
         "frameDe": "Wie viel kostet ein [Slot]?",
         "pronouns": [
@@ -4587,66 +5269,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "valigia",
               "lerntext": "valigia",
-              "de": "Koffer"
+              "de": "Koffer",
+              "c": "n"
             },
             {
               "schrift": "strada",
               "lerntext": "strada",
               "de": "Weg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "stazione",
               "lerntext": "stazione",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aeroporto",
               "lerntext": "aeroporto",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "caffe",
               "lerntext": "caffe",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pesce",
               "lerntext": "pesce",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tavolo",
               "lerntext": "tavolo",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "formaggio",
               "lerntext": "formaggio",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "braccio",
               "lerntext": "braccio",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "piede",
               "lerntext": "piede",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "zucchero",
               "lerntext": "zucchero",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -4681,7 +5374,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "quanto costa un [Slot]?",
-          "lerntext": "quanto costa un [Slot]?"
+          "lerntext": "quanto costa un [Slot]?",
+          "wortarten": {
+            "costa": "v"
+          }
         },
         "frameDe": "Wie viel kostet eine [Slot]?",
         "pronouns": [
@@ -4701,66 +5397,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "biglietto",
               "lerntext": "biglietto",
-              "de": "Fahrkarte"
+              "de": "Fahrkarte",
+              "c": "n"
             },
             {
               "schrift": "citta",
               "lerntext": "citta",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "scuola",
               "lerntext": "scuola",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "universita",
               "lerntext": "universita",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "via",
               "lerntext": "via",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "figlia",
               "lerntext": "figlia",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "appartamento",
               "lerntext": "appartamento",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "porta",
               "lerntext": "porta",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "carta",
               "lerntext": "carta",
               "de": "Karte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tempo",
               "lerntext": "tempo",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aiuto",
               "lerntext": "aiuto",
               "de": "Hilfe",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -4774,7 +5481,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è troppo [Slot]",
-          "lerntext": "è troppo [Slot]"
+          "lerntext": "è troppo [Slot]",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "Das ist zu [Slot].",
         "pronouns": [],
@@ -4783,86 +5493,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "caro",
               "lerntext": "caro",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "grande",
               "lerntext": "grande",
-              "de": "groß"
+              "de": "groß",
+              "c": "a"
             },
             {
               "schrift": "piccolo",
               "lerntext": "piccolo",
-              "de": "klein"
+              "de": "klein",
+              "c": "a"
             },
             {
               "schrift": "lungo",
               "lerntext": "lungo",
-              "de": "lang"
+              "de": "lang",
+              "c": "a"
             },
             {
               "schrift": "corto",
               "lerntext": "corto",
-              "de": "kurz"
+              "de": "kurz",
+              "c": "a"
             },
             {
               "schrift": "giovane",
               "lerntext": "giovane",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "forte",
               "lerntext": "forte",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bello",
               "lerntext": "bello",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "importante",
               "lerntext": "importante",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "nuovo",
               "lerntext": "nuovo",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "felice",
               "lerntext": "felice",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "debole",
               "lerntext": "debole",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "arrabbiato",
               "lerntext": "arrabbiato",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "contento",
               "lerntext": "contento",
               "de": "zufrieden",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "stanco",
               "lerntext": "stanco",
               "de": "müde",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -4892,7 +5617,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è troppo [Slot]",
-          "lerntext": "è troppo [Slot]"
+          "lerntext": "è troppo [Slot]",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "Das ist zu [Slot].",
         "pronouns": [],
@@ -4901,81 +5629,95 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "alto",
               "lerntext": "alto",
-              "de": "hoch"
+              "de": "hoch",
+              "c": "a"
             },
             {
               "schrift": "basso",
               "lerntext": "basso",
-              "de": "niedrig"
+              "de": "niedrig",
+              "c": "a"
             },
             {
               "schrift": "pesante",
               "lerntext": "pesante",
-              "de": "schwer"
+              "de": "schwer",
+              "c": "a"
             },
             {
               "schrift": "leggero",
               "lerntext": "leggero",
-              "de": "leicht"
+              "de": "leicht",
+              "c": "a"
             },
             {
               "schrift": "caro",
               "lerntext": "caro",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grande",
               "lerntext": "grande",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "piccolo",
               "lerntext": "piccolo",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lungo",
               "lerntext": "lungo",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "corto",
               "lerntext": "corto",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "giovane",
               "lerntext": "giovane",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "forte",
               "lerntext": "forte",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bello",
               "lerntext": "bello",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "importante",
               "lerntext": "importante",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "nuovo",
               "lerntext": "nuovo",
               "de": "neu",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -5318,29 +6060,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io posso [Slot]",
-          "lerntext": "io posso [Slot]"
+          "lerntext": "io posso [Slot]",
+          "wortarten": {
+            "io": "p",
+            "posso": "v"
+          }
         },
         "frameDe": "ich kann [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5348,62 +6098,73 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "ballare",
               "lerntext": "ballare",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "giocare",
               "lerntext": "giocare",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "guidare",
               "lerntext": "guidare",
-              "de": "fahren"
+              "de": "fahren",
+              "c": "v"
             },
             {
               "schrift": "scrivere",
               "lerntext": "scrivere",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "leggere",
               "lerntext": "leggere",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "servire",
               "lerntext": "servire",
               "de": "dienen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mangiare",
               "lerntext": "mangiare",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bere",
               "lerntext": "bere",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "volere",
               "lerntext": "volere",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "essere",
               "lerntext": "essere",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "avere",
               "lerntext": "avere",
               "de": "haben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5414,7 +6175,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "posso",
             "lerntext": "posso",
-            "de": "können"
+            "de": "können",
+            "c": "v"
           }
         ],
         "id": "7.1"
@@ -5423,29 +6185,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io posso [Slot]",
-          "lerntext": "io posso [Slot]"
+          "lerntext": "io posso [Slot]",
+          "wortarten": {
+            "io": "p",
+            "posso": "v"
+          }
         },
         "frameDe": "ich kann [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5453,81 +6223,95 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "aiutare",
               "lerntext": "aiutare",
-              "de": "helfen"
+              "de": "helfen",
+              "c": "v"
             },
             {
               "schrift": "fare",
               "lerntext": "fare",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "dire",
               "lerntext": "dire",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "usare",
               "lerntext": "usare",
-              "de": "benutzen"
+              "de": "benutzen",
+              "c": "v"
             },
             {
               "schrift": "ballare",
               "lerntext": "ballare",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "giocare",
               "lerntext": "giocare",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "guidare",
               "lerntext": "guidare",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "scrivere",
               "lerntext": "scrivere",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "leggere",
               "lerntext": "leggere",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "servire",
               "lerntext": "servire",
               "de": "dienen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mangiare",
               "lerntext": "mangiare",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bere",
               "lerntext": "bere",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "volere",
               "lerntext": "volere",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "essere",
               "lerntext": "essere",
               "de": "sein",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5541,24 +6325,31 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io devo [Slot]",
-          "lerntext": "io devo [Slot]"
+          "lerntext": "io devo [Slot]",
+          "wortarten": {
+            "io": "p",
+            "devo": "v"
+          }
         },
         "frameDe": "ich muss [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5566,86 +6357,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "lavorare",
               "lerntext": "lavorare",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "dormire",
               "lerntext": "dormire",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "aspettare",
               "lerntext": "aspettare",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "pagare",
               "lerntext": "pagare",
-              "de": "bezahlen"
+              "de": "bezahlen",
+              "c": "v"
             },
             {
               "schrift": "lavare",
               "lerntext": "lavare",
-              "de": "waschen"
+              "de": "waschen",
+              "c": "v"
             },
             {
               "schrift": "dire",
               "lerntext": "dire",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "fare",
               "lerntext": "fare",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "usare",
               "lerntext": "usare",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "aiutare",
               "lerntext": "aiutare",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "potere",
               "lerntext": "potere",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "servire",
               "lerntext": "servire",
               "de": "dienen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "giocare",
               "lerntext": "giocare",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "leggere",
               "lerntext": "leggere",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "guidare",
               "lerntext": "guidare",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mangiare",
               "lerntext": "mangiare",
               "de": "essen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5656,7 +6462,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "dovere",
             "lerntext": "dovere",
-            "de": "müssen"
+            "de": "müssen",
+            "c": "v"
           }
         ],
         "id": "7.3"
@@ -5665,24 +6472,31 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io devo [Slot]",
-          "lerntext": "io devo [Slot]"
+          "lerntext": "io devo [Slot]",
+          "wortarten": {
+            "io": "p",
+            "devo": "v"
+          }
         },
         "frameDe": "ich muss [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5690,66 +6504,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "pulire",
               "lerntext": "pulire",
-              "de": "putzen"
+              "de": "putzen",
+              "c": "v"
             },
             {
               "schrift": "lavorare",
               "lerntext": "lavorare",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dormire",
               "lerntext": "dormire",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "aspettare",
               "lerntext": "aspettare",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pagare",
               "lerntext": "pagare",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lavare",
               "lerntext": "lavare",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dire",
               "lerntext": "dire",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "fare",
               "lerntext": "fare",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "usare",
               "lerntext": "usare",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "aiutare",
               "lerntext": "aiutare",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bere",
               "lerntext": "bere",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5763,29 +6588,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io voglio [Slot]",
-          "lerntext": "io voglio [Slot]"
+          "lerntext": "io voglio [Slot]",
+          "wortarten": {
+            "io": "p",
+            "voglio": "v"
+          }
         },
         "frameDe": "ich will [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5793,86 +6626,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "guardare",
               "lerntext": "guardare",
-              "de": "schauen"
+              "de": "schauen",
+              "c": "v"
             },
             {
               "schrift": "incontrare",
               "lerntext": "incontrare",
-              "de": "treffen"
+              "de": "treffen",
+              "c": "v"
             },
             {
               "schrift": "chiedere",
               "lerntext": "chiedere",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "rispondere",
               "lerntext": "rispondere",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "parlare",
               "lerntext": "parlare",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "dovere",
               "lerntext": "dovere",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pulire",
               "lerntext": "pulire",
               "de": "putzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lavare",
               "lerntext": "lavare",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "aspettare",
               "lerntext": "aspettare",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dormire",
               "lerntext": "dormire",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lavorare",
               "lerntext": "lavorare",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "scrivere",
               "lerntext": "scrivere",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pagare",
               "lerntext": "pagare",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "potere",
               "lerntext": "potere",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ballare",
               "lerntext": "ballare",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5886,29 +6734,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io voglio [Slot]",
-          "lerntext": "io voglio [Slot]"
+          "lerntext": "io voglio [Slot]",
+          "wortarten": {
+            "io": "p",
+            "voglio": "v"
+          }
         },
         "frameDe": "ich will [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5916,71 +6772,83 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "sentire",
               "lerntext": "sentire",
-              "de": "hören"
+              "de": "hören",
+              "c": "v"
             },
             {
               "schrift": "vedere",
               "lerntext": "vedere",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "guardare",
               "lerntext": "guardare",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "incontrare",
               "lerntext": "incontrare",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "chiedere",
               "lerntext": "chiedere",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "rispondere",
               "lerntext": "rispondere",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "parlare",
               "lerntext": "parlare",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dovere",
               "lerntext": "dovere",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pulire",
               "lerntext": "pulire",
               "de": "putzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "volere",
               "lerntext": "volere",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "servire",
               "lerntext": "servire",
               "de": "dienen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "giocare",
               "lerntext": "giocare",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5994,19 +6862,25 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io non posso [Slot]",
-          "lerntext": "io non posso [Slot]"
+          "lerntext": "io non posso [Slot]",
+          "wortarten": {
+            "io": "p",
+            "posso": "v"
+          }
         },
         "frameDe": "ich darf nicht [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6014,86 +6888,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "dimenticare",
               "lerntext": "dimenticare",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "perdere",
               "lerntext": "perdere",
-              "de": "verlieren"
+              "de": "verlieren",
+              "c": "v"
             },
             {
               "schrift": "piangere",
               "lerntext": "piangere",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "ridere",
               "lerntext": "ridere",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "stare",
               "lerntext": "stare",
-              "de": "sein"
+              "de": "sein",
+              "c": "v"
             },
             {
               "schrift": "sentire",
               "lerntext": "sentire",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vedere",
               "lerntext": "vedere",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "chiedere",
               "lerntext": "chiedere",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "parlare",
               "lerntext": "parlare",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "incontrare",
               "lerntext": "incontrare",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "rispondere",
               "lerntext": "rispondere",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "guardare",
               "lerntext": "guardare",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lavare",
               "lerntext": "lavare",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dire",
               "lerntext": "dire",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "aspettare",
               "lerntext": "aspettare",
               "de": "warten",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6107,19 +6996,25 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io non posso [Slot]",
-          "lerntext": "io non posso [Slot]"
+          "lerntext": "io non posso [Slot]",
+          "wortarten": {
+            "io": "p",
+            "posso": "v"
+          }
         },
         "frameDe": "ich darf nicht [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6127,81 +7022,95 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "morire",
               "lerntext": "morire",
-              "de": "sterben"
+              "de": "sterben",
+              "c": "v"
             },
             {
               "schrift": "aprire",
               "lerntext": "aprire",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "chiudere",
               "lerntext": "chiudere",
-              "de": "schließen"
+              "de": "schließen",
+              "c": "v"
             },
             {
               "schrift": "vincere",
               "lerntext": "vincere",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "dimenticare",
               "lerntext": "dimenticare",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "perdere",
               "lerntext": "perdere",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "piangere",
               "lerntext": "piangere",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ridere",
               "lerntext": "ridere",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stare",
               "lerntext": "stare",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sentire",
               "lerntext": "sentire",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vedere",
               "lerntext": "vedere",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "chiedere",
               "lerntext": "chiedere",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "leggere",
               "lerntext": "leggere",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "parlare",
               "lerntext": "parlare",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6215,19 +7124,25 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io non posso [Slot]",
-          "lerntext": "io non posso [Slot]"
+          "lerntext": "io non posso [Slot]",
+          "wortarten": {
+            "io": "p",
+            "posso": "v"
+          }
         },
         "frameDe": "ich darf nicht [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6236,54 +7151,63 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "morire",
               "lerntext": "morire",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "aprire",
               "lerntext": "aprire",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "chiudere",
               "lerntext": "chiudere",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vincere",
               "lerntext": "vincere",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dimenticare",
               "lerntext": "dimenticare",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "perdere",
               "lerntext": "perdere",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "piangere",
               "lerntext": "piangere",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ridere",
               "lerntext": "ridere",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stare",
               "lerntext": "stare",
               "de": "sein",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6297,19 +7221,25 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io non posso [Slot]",
-          "lerntext": "io non posso [Slot]"
+          "lerntext": "io non posso [Slot]",
+          "wortarten": {
+            "io": "p",
+            "posso": "v"
+          }
         },
         "frameDe": "ich darf nicht [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6318,24 +7248,28 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "morire",
               "lerntext": "morire",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "aprire",
               "lerntext": "aprire",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "chiudere",
               "lerntext": "chiudere",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vincere",
               "lerntext": "vincere",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6370,29 +7304,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io vado a un [Slot]",
-          "lerntext": "io vado a un [Slot]"
+          "lerntext": "io vado a un [Slot]",
+          "wortarten": {
+            "io": "p",
+            "vado": "v"
+          }
         },
         "frameDe": "ich gehe zu einem [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6400,66 +7342,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "negozio",
               "lerntext": "negozio",
-              "de": "Geschäft"
+              "de": "Geschäft",
+              "c": "n"
             },
             {
               "schrift": "bagno",
               "lerntext": "bagno",
               "de": "Bad",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ospedale",
               "lerntext": "ospedale",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ristorante",
               "lerntext": "ristorante",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "frutta",
               "lerntext": "frutta",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "carne",
               "lerntext": "carne",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "camera",
               "lerntext": "camera",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "macchina",
               "lerntext": "macchina",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "libro",
               "lerntext": "libro",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "letto",
               "lerntext": "letto",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "acqua",
               "lerntext": "acqua",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -6470,12 +7423,14 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "vado",
             "lerntext": "vado",
-            "de": "gehen"
+            "de": "gehen",
+            "c": "v"
           },
           {
             "schrift": "vengo",
             "lerntext": "vengo",
-            "de": "kommen"
+            "de": "kommen",
+            "c": "v"
           }
         ],
         "id": "8.1"
@@ -6484,19 +7439,25 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io viaggio in [Slot]",
-          "lerntext": "io viaggio in [Slot]"
+          "lerntext": "io viaggio in [Slot]",
+          "wortarten": {
+            "io": "p",
+            "viaggio": "v"
+          }
         },
         "frameDe": "ich fahre mit [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6504,81 +7465,95 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "autobus",
               "lerntext": "autobus",
-              "de": "Bus"
+              "de": "Bus",
+              "c": "n"
             },
             {
               "schrift": "treno",
               "lerntext": "treno",
-              "de": "Zug"
+              "de": "Zug",
+              "c": "n"
             },
             {
               "schrift": "macchina",
               "lerntext": "macchina",
-              "de": "Auto"
+              "de": "Auto",
+              "c": "n"
             },
             {
               "schrift": "strada",
               "lerntext": "strada",
-              "de": "Weg"
+              "de": "Weg",
+              "c": "n"
             },
             {
               "schrift": "valigia",
               "lerntext": "valigia",
               "de": "Koffer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "biglietto",
               "lerntext": "biglietto",
               "de": "Fahrkarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "citta",
               "lerntext": "citta",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "scuola",
               "lerntext": "scuola",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "stazione",
               "lerntext": "stazione",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "universita",
               "lerntext": "universita",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aeroporto",
               "lerntext": "aeroporto",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bagno",
               "lerntext": "bagno",
               "de": "Bad",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ospedale",
               "lerntext": "ospedale",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "via",
               "lerntext": "via",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -6589,7 +7564,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "viaggio",
             "lerntext": "viaggio",
-            "de": "reisen"
+            "de": "reisen",
+            "c": "v"
           }
         ],
         "id": "8.2"
@@ -6598,24 +7574,31 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io voglio [Slot] adesso",
-          "lerntext": "io voglio [Slot] adesso"
+          "lerntext": "io voglio [Slot] adesso",
+          "wortarten": {
+            "io": "p",
+            "voglio": "v"
+          }
         },
         "frameDe": "ich will jetzt [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6623,76 +7606,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "camminare",
               "lerntext": "camminare",
-              "de": "laufen"
+              "de": "laufen",
+              "c": "v"
             },
             {
               "schrift": "abitare",
               "lerntext": "abitare",
-              "de": "wohnen"
+              "de": "wohnen",
+              "c": "v"
             },
             {
               "schrift": "mettere",
               "lerntext": "mettere",
-              "de": "setzen"
+              "de": "setzen",
+              "c": "v"
             },
             {
               "schrift": "viaggiare",
               "lerntext": "viaggiare",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "venire",
               "lerntext": "venire",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "andare",
               "lerntext": "andare",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "aprire",
               "lerntext": "aprire",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "chiudere",
               "lerntext": "chiudere",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "perdere",
               "lerntext": "perdere",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stare",
               "lerntext": "stare",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ridere",
               "lerntext": "ridere",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "morire",
               "lerntext": "morire",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dormire",
               "lerntext": "dormire",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6703,7 +7699,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "ci",
             "lerntext": "ci",
-            "de": "uns"
+            "de": "uns",
+            "c": "p"
           },
           {
             "schrift": "la",
@@ -6722,24 +7719,31 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io voglio [Slot] adesso",
-          "lerntext": "io voglio [Slot] adesso"
+          "lerntext": "io voglio [Slot] adesso",
+          "wortarten": {
+            "io": "p",
+            "voglio": "v"
+          }
         },
         "frameDe": "ich will jetzt [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6748,36 +7752,42 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "camminare",
               "lerntext": "camminare",
               "de": "laufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "abitare",
               "lerntext": "abitare",
               "de": "wohnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mettere",
               "lerntext": "mettere",
               "de": "setzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viaggiare",
               "lerntext": "viaggiare",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "venire",
               "lerntext": "venire",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "andare",
               "lerntext": "andare",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6791,19 +7801,25 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io viaggio in [Slot]",
-          "lerntext": "io viaggio in [Slot]"
+          "lerntext": "io viaggio in [Slot]",
+          "wortarten": {
+            "io": "p",
+            "viaggio": "v"
+          }
         },
         "frameDe": "ich fahre mit [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6812,24 +7828,28 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "autobus",
               "lerntext": "autobus",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "treno",
               "lerntext": "treno",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "valigia",
               "lerntext": "valigia",
               "de": "Koffer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "biglietto",
               "lerntext": "biglietto",
               "de": "Fahrkarte",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -6843,24 +7863,31 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io voglio [Slot] adesso",
-          "lerntext": "io voglio [Slot] adesso"
+          "lerntext": "io voglio [Slot] adesso",
+          "wortarten": {
+            "io": "p",
+            "voglio": "v"
+          }
         },
         "frameDe": "ich will jetzt [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6869,36 +7896,42 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "camminare",
               "lerntext": "camminare",
               "de": "laufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "abitare",
               "lerntext": "abitare",
               "de": "wohnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mettere",
               "lerntext": "mettere",
               "de": "setzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viaggiare",
               "lerntext": "viaggiare",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "venire",
               "lerntext": "venire",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "andare",
               "lerntext": "andare",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6987,7 +8020,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "allora",
               "lerntext": "allora",
-              "de": "dann"
+              "de": "dann",
+              "c": "k"
             },
             {
               "schrift": "insieme",
@@ -7005,7 +8039,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ci vediamo la [Slot]",
-          "lerntext": "ci vediamo la [Slot]"
+          "lerntext": "ci vediamo la [Slot]",
+          "wortarten": {
+            "ci": "p",
+            "vediamo": "v"
+          }
         },
         "frameDe": "Wir sehen uns am [Slot].",
         "pronouns": [
@@ -7025,22 +8063,26 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "sera",
               "lerntext": "sera",
-              "de": "Abend"
+              "de": "Abend",
+              "c": "n"
             },
             {
               "schrift": "notte",
               "lerntext": "notte",
-              "de": "Nacht"
+              "de": "Nacht",
+              "c": "n"
             },
             {
               "schrift": "giorno",
               "lerntext": "giorno",
-              "de": "Tag"
+              "de": "Tag",
+              "c": "n"
             },
             {
               "schrift": "settimana",
               "lerntext": "settimana",
-              "de": "Woche"
+              "de": "Woche",
+              "c": "n"
             },
             {
               "schrift": "sempre",
@@ -7100,6 +8142,7 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "treno",
               "lerntext": "treno",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7115,7 +8158,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "anche",
             "lerntext": "anche",
-            "de": "auch"
+            "de": "auch",
+            "c": "k"
           },
           {
             "schrift": "solo",
@@ -7138,66 +8182,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "ora",
               "lerntext": "ora",
-              "de": "Stunde"
+              "de": "Stunde",
+              "c": "n"
             },
             {
               "schrift": "notte",
               "lerntext": "notte",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "settimana",
               "lerntext": "settimana",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "biglietto",
               "lerntext": "biglietto",
               "de": "Fahrkarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "citta",
               "lerntext": "citta",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "scuola",
               "lerntext": "scuola",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "universita",
               "lerntext": "universita",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "famiglia",
               "lerntext": "famiglia",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "via",
               "lerntext": "via",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cucina",
               "lerntext": "cucina",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "latte",
               "lerntext": "latte",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7220,66 +8275,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "minuto",
               "lerntext": "minuto",
-              "de": "Minute"
+              "de": "Minute",
+              "c": "n"
             },
             {
               "schrift": "ora",
               "lerntext": "ora",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "notte",
               "lerntext": "notte",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "settimana",
               "lerntext": "settimana",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "biglietto",
               "lerntext": "biglietto",
               "de": "Fahrkarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "citta",
               "lerntext": "citta",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mano",
               "lerntext": "mano",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "scuola",
               "lerntext": "scuola",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "borsa",
               "lerntext": "borsa",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sorella",
               "lerntext": "sorella",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "figlia",
               "lerntext": "figlia",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7293,7 +8359,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ci vediamo la [Slot]",
-          "lerntext": "ci vediamo la [Slot]"
+          "lerntext": "ci vediamo la [Slot]",
+          "wortarten": {
+            "ci": "p",
+            "vediamo": "v"
+          }
         },
         "frameDe": "Wir sehen uns am [Slot].",
         "pronouns": [
@@ -7309,12 +8379,14 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "sera",
               "lerntext": "sera",
               "de": "Abend",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "giorno",
               "lerntext": "giorno",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
@@ -7376,7 +8448,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ci vediamo la [Slot]",
-          "lerntext": "ci vediamo la [Slot]"
+          "lerntext": "ci vediamo la [Slot]",
+          "wortarten": {
+            "ci": "p",
+            "vediamo": "v"
+          }
         },
         "frameDe": "Wir sehen uns am [Slot].",
         "pronouns": [
@@ -7392,12 +8468,14 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "sera",
               "lerntext": "sera",
               "de": "Abend",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "giorno",
               "lerntext": "giorno",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
@@ -7438,29 +8516,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io amo [Slot]",
-          "lerntext": "io amo [Slot]"
+          "lerntext": "io amo [Slot]",
+          "wortarten": {
+            "io": "p",
+            "amo": "v"
+          }
         },
         "frameDe": "ich mag [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7468,86 +8554,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "sole",
               "lerntext": "sole",
-              "de": "Sonne"
+              "de": "Sonne",
+              "c": "n"
             },
             {
               "schrift": "pioggia",
               "lerntext": "pioggia",
-              "de": "Regen"
+              "de": "Regen",
+              "c": "n"
             },
             {
               "schrift": "vento",
               "lerntext": "vento",
-              "de": "Wind"
+              "de": "Wind",
+              "c": "n"
             },
             {
               "schrift": "tempo",
               "lerntext": "tempo",
-              "de": "Zeit"
+              "de": "Zeit",
+              "c": "n"
             },
             {
               "schrift": "montagna",
               "lerntext": "montagna",
-              "de": "Berg"
+              "de": "Berg",
+              "c": "n"
             },
             {
               "schrift": "minuto",
               "lerntext": "minuto",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ora",
               "lerntext": "ora",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "autobus",
               "lerntext": "autobus",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "notte",
               "lerntext": "notte",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "valigia",
               "lerntext": "valigia",
               "de": "Koffer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sera",
               "lerntext": "sera",
               "de": "Abend",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "treno",
               "lerntext": "treno",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "settimana",
               "lerntext": "settimana",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "giorno",
               "lerntext": "giorno",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ristorante",
               "lerntext": "ristorante",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7558,7 +8659,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "amo",
             "lerntext": "amo",
-            "de": "lieben"
+            "de": "lieben",
+            "c": "v"
           }
         ],
         "id": "10.1"
@@ -7567,29 +8669,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io amo [Slot]",
-          "lerntext": "io amo [Slot]"
+          "lerntext": "io amo [Slot]",
+          "wortarten": {
+            "io": "p",
+            "amo": "v"
+          }
         },
         "frameDe": "ich mag [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7597,66 +8707,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "mare",
               "lerntext": "mare",
-              "de": "Meer"
+              "de": "Meer",
+              "c": "n"
             },
             {
               "schrift": "sole",
               "lerntext": "sole",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pioggia",
               "lerntext": "pioggia",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vento",
               "lerntext": "vento",
               "de": "Wind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "montagna",
               "lerntext": "montagna",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tempo",
               "lerntext": "tempo",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "minuto",
               "lerntext": "minuto",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ora",
               "lerntext": "ora",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "autobus",
               "lerntext": "autobus",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "notte",
               "lerntext": "notte",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "valigia",
               "lerntext": "valigia",
               "de": "Koffer",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7670,19 +8791,25 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io vedo [Slot]",
-          "lerntext": "io vedo [Slot]"
+          "lerntext": "io vedo [Slot]",
+          "wortarten": {
+            "io": "p",
+            "vedo": "v"
+          }
         },
         "frameDe": "ich sehe [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7690,76 +8817,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "mi",
               "lerntext": "mi",
-              "de": "mir"
+              "de": "mir",
+              "c": "p"
             },
             {
               "schrift": "ti",
               "lerntext": "ti",
-              "de": "dir"
+              "de": "dir",
+              "c": "p"
             },
             {
               "schrift": "ci",
               "lerntext": "ci",
-              "de": "uns"
+              "de": "uns",
+              "c": "p"
             },
             {
               "schrift": "tutto",
               "lerntext": "tutto",
               "de": "alles",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "qualcosa",
               "lerntext": "qualcosa",
               "de": "etwas",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "chi",
               "lerntext": "chi",
               "de": "wer",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "vi",
               "lerntext": "vi",
               "de": "euch",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "nostro",
               "lerntext": "nostro",
               "de": "unser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "mio",
               "lerntext": "mio",
               "de": "mein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "tuo",
               "lerntext": "tuo",
               "de": "dein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "voi",
               "lerntext": "voi",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "suo",
               "lerntext": "suo",
               "de": "sein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "questo",
               "lerntext": "questo",
               "de": "dieser",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -7770,7 +8910,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "trovo",
             "lerntext": "trovo",
-            "de": "finden"
+            "de": "finden",
+            "c": "v"
           },
           {
             "schrift": "il",
@@ -7780,7 +8921,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "cibo",
             "lerntext": "cibo",
-            "de": "Essen"
+            "de": "Essen",
+            "c": "n"
           }
         ],
         "id": "10.3"
@@ -7789,7 +8931,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è [Slot]",
-          "lerntext": "è [Slot]"
+          "lerntext": "è [Slot]",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "Sie ist [Slot].",
         "pronouns": [],
@@ -7798,86 +8943,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "rosso",
               "lerntext": "rosso",
-              "de": "rot"
+              "de": "rot",
+              "c": "a"
             },
             {
               "schrift": "blu",
               "lerntext": "blu",
-              "de": "blau"
+              "de": "blau",
+              "c": "a"
             },
             {
               "schrift": "giallo",
               "lerntext": "giallo",
-              "de": "gelb"
+              "de": "gelb",
+              "c": "a"
             },
             {
               "schrift": "verde",
               "lerntext": "verde",
-              "de": "grün"
+              "de": "grün",
+              "c": "a"
             },
             {
               "schrift": "nero",
               "lerntext": "nero",
-              "de": "schwarz"
+              "de": "schwarz",
+              "c": "a"
             },
             {
               "schrift": "alto",
               "lerntext": "alto",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "leggero",
               "lerntext": "leggero",
               "de": "leicht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "basso",
               "lerntext": "basso",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pesante",
               "lerntext": "pesante",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "corto",
               "lerntext": "corto",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lungo",
               "lerntext": "lungo",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "piccolo",
               "lerntext": "piccolo",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "caro",
               "lerntext": "caro",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grande",
               "lerntext": "grande",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "felice",
               "lerntext": "felice",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -7891,7 +9051,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è [Slot]",
-          "lerntext": "è [Slot]"
+          "lerntext": "è [Slot]",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "Sie ist [Slot].",
         "pronouns": [],
@@ -7900,76 +9063,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "bianco",
               "lerntext": "bianco",
-              "de": "weiß"
+              "de": "weiß",
+              "c": "a"
             },
             {
               "schrift": "marrone",
               "lerntext": "marrone",
-              "de": "braun"
+              "de": "braun",
+              "c": "a"
             },
             {
               "schrift": "grigio",
               "lerntext": "grigio",
-              "de": "grau"
+              "de": "grau",
+              "c": "a"
             },
             {
               "schrift": "rosso",
               "lerntext": "rosso",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "blu",
               "lerntext": "blu",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "giallo",
               "lerntext": "giallo",
               "de": "gelb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "verde",
               "lerntext": "verde",
               "de": "grün",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "nero",
               "lerntext": "nero",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "alto",
               "lerntext": "alto",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "leggero",
               "lerntext": "leggero",
               "de": "leicht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "basso",
               "lerntext": "basso",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pesante",
               "lerntext": "pesante",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "corto",
               "lerntext": "corto",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -7983,7 +9159,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "il cibo è [Slot]",
-          "lerntext": "il cibo è [Slot]"
+          "lerntext": "il cibo è [Slot]",
+          "wortarten": {
+            "cibo": "n",
+            "è": "v"
+          }
         },
         "frameDe": "Das Essen ist [Slot].",
         "pronouns": [],
@@ -7992,86 +9172,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "dolce",
               "lerntext": "dolce",
-              "de": "süß"
+              "de": "süß",
+              "c": "a"
             },
             {
               "schrift": "caldo",
               "lerntext": "caldo",
-              "de": "warm"
+              "de": "warm",
+              "c": "a"
             },
             {
               "schrift": "freddo",
               "lerntext": "freddo",
-              "de": "kalt"
+              "de": "kalt",
+              "c": "a"
             },
             {
               "schrift": "pulito",
               "lerntext": "pulito",
-              "de": "sauber"
+              "de": "sauber",
+              "c": "a"
             },
             {
               "schrift": "sporco",
               "lerntext": "sporco",
-              "de": "schmutzig"
+              "de": "schmutzig",
+              "c": "a"
             },
             {
               "schrift": "marrone",
               "lerntext": "marrone",
               "de": "braun",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grigio",
               "lerntext": "grigio",
               "de": "grau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bianco",
               "lerntext": "bianco",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "rosso",
               "lerntext": "rosso",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "nero",
               "lerntext": "nero",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "blu",
               "lerntext": "blu",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "verde",
               "lerntext": "verde",
               "de": "grün",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "giallo",
               "lerntext": "giallo",
               "de": "gelb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "alto",
               "lerntext": "alto",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "leggero",
               "lerntext": "leggero",
               "de": "leicht",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8085,7 +9280,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "il cibo è [Slot]",
-          "lerntext": "il cibo è [Slot]"
+          "lerntext": "il cibo è [Slot]",
+          "wortarten": {
+            "cibo": "n",
+            "è": "v"
+          }
         },
         "frameDe": "Das Essen ist [Slot].",
         "pronouns": [],
@@ -8095,48 +9294,56 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "dolce",
               "lerntext": "dolce",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "caldo",
               "lerntext": "caldo",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "freddo",
               "lerntext": "freddo",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pulito",
               "lerntext": "pulito",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sporco",
               "lerntext": "sporco",
               "de": "schmutzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "marrone",
               "lerntext": "marrone",
               "de": "braun",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grigio",
               "lerntext": "grigio",
               "de": "grau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bianco",
               "lerntext": "bianco",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8150,29 +9357,37 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io amo [Slot]",
-          "lerntext": "io amo [Slot]"
+          "lerntext": "io amo [Slot]",
+          "wortarten": {
+            "io": "p",
+            "amo": "v"
+          }
         },
         "frameDe": "ich mag [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8181,30 +9396,35 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "mare",
               "lerntext": "mare",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sole",
               "lerntext": "sole",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pioggia",
               "lerntext": "pioggia",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vento",
               "lerntext": "vento",
               "de": "Wind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "montagna",
               "lerntext": "montagna",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -8218,7 +9438,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "il cibo è [Slot]",
-          "lerntext": "il cibo è [Slot]"
+          "lerntext": "il cibo è [Slot]",
+          "wortarten": {
+            "cibo": "n",
+            "è": "v"
+          }
         },
         "frameDe": "Das Essen ist [Slot].",
         "pronouns": [],
@@ -8228,30 +9452,35 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "dolce",
               "lerntext": "dolce",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "caldo",
               "lerntext": "caldo",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "freddo",
               "lerntext": "freddo",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pulito",
               "lerntext": "pulito",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sporco",
               "lerntext": "sporco",
               "de": "schmutzig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8265,19 +9494,25 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io vedo [Slot]",
-          "lerntext": "io vedo [Slot]"
+          "lerntext": "io vedo [Slot]",
+          "wortarten": {
+            "io": "p",
+            "vedo": "v"
+          }
         },
         "frameDe": "ich sehe [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8286,24 +9521,28 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "mi",
               "lerntext": "mi",
               "de": "mir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ti",
               "lerntext": "ti",
               "de": "dir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "tutto",
               "lerntext": "tutto",
               "de": "alles",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "qualcosa",
               "lerntext": "qualcosa",
               "de": "etwas",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -8338,29 +9577,36 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io ero [Slot] ieri",
-          "lerntext": "io ero [Slot] ieri"
+          "lerntext": "io ero [Slot] ieri",
+          "wortarten": {
+            "io": "p"
+          }
         },
         "frameDe": "ich war gestern [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8368,76 +9614,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "stanco",
               "lerntext": "stanco",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "malato",
               "lerntext": "malato",
-              "de": "krank"
+              "de": "krank",
+              "c": "a"
             },
             {
               "schrift": "contento",
               "lerntext": "contento",
-              "de": "zufrieden"
+              "de": "zufrieden",
+              "c": "a"
             },
             {
               "schrift": "marrone",
               "lerntext": "marrone",
               "de": "braun",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "caldo",
               "lerntext": "caldo",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "freddo",
               "lerntext": "freddo",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "rosso",
               "lerntext": "rosso",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lungo",
               "lerntext": "lungo",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "piccolo",
               "lerntext": "piccolo",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sporco",
               "lerntext": "sporco",
               "de": "schmutzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "basso",
               "lerntext": "basso",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dolce",
               "lerntext": "dolce",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "nero",
               "lerntext": "nero",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8451,24 +9710,30 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io [Slot] domani",
-          "lerntext": "io [Slot] domani"
+          "lerntext": "io [Slot] domani",
+          "wortarten": {
+            "io": "p"
+          }
         },
         "frameDe": "ich werde morgen [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8476,81 +9741,95 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "comprare",
               "lerntext": "comprare",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "dare",
               "lerntext": "dare",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "prendere",
               "lerntext": "prendere",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "trovare",
               "lerntext": "trovare",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "amare",
               "lerntext": "amare",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "camminare",
               "lerntext": "camminare",
               "de": "laufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viaggiare",
               "lerntext": "viaggiare",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "abitare",
               "lerntext": "abitare",
               "de": "wohnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dovere",
               "lerntext": "dovere",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "fare",
               "lerntext": "fare",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sentire",
               "lerntext": "sentire",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "incontrare",
               "lerntext": "incontrare",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "usare",
               "lerntext": "usare",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pulire",
               "lerntext": "pulire",
               "de": "putzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8561,7 +9840,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "diventare",
             "lerntext": "diventare",
-            "de": "werden"
+            "de": "werden",
+            "c": "v"
           }
         ],
         "id": "11.2"
@@ -8570,19 +9850,25 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io voglio [Slot] molto",
-          "lerntext": "io voglio [Slot] molto"
+          "lerntext": "io voglio [Slot] molto",
+          "wortarten": {
+            "io": "p",
+            "voglio": "v"
+          }
         },
         "frameDe": "ich will viel [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8590,86 +9876,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "cercare",
               "lerntext": "cercare",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "sapere",
               "lerntext": "sapere",
-              "de": "wissen"
+              "de": "wissen",
+              "c": "v"
             },
             {
               "schrift": "credere",
               "lerntext": "credere",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "pensare",
               "lerntext": "pensare",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "sentire",
               "lerntext": "sentire",
-              "de": "hören"
+              "de": "hören",
+              "c": "v"
             },
             {
               "schrift": "diventare",
               "lerntext": "diventare",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dare",
               "lerntext": "dare",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "prendere",
               "lerntext": "prendere",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comprare",
               "lerntext": "comprare",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "amare",
               "lerntext": "amare",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "aiutare",
               "lerntext": "aiutare",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vincere",
               "lerntext": "vincere",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "guidare",
               "lerntext": "guidare",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "rispondere",
               "lerntext": "rispondere",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lavorare",
               "lerntext": "lavorare",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8680,7 +9981,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "lavoro",
             "lerntext": "lavoro",
-            "de": "Arbeit"
+            "de": "Arbeit",
+            "c": "n"
           }
         ],
         "id": "11.3"
@@ -8689,19 +9991,25 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io divento [Slot]",
-          "lerntext": "io divento [Slot]"
+          "lerntext": "io divento [Slot]",
+          "wortarten": {
+            "io": "p",
+            "divento": "v"
+          }
         },
         "frameDe": "ich werde [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8709,76 +10017,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "aperto",
               "lerntext": "aperto",
-              "de": "offen"
+              "de": "offen",
+              "c": "a"
             },
             {
               "schrift": "chiuso",
               "lerntext": "chiuso",
-              "de": "geschlossen"
+              "de": "geschlossen",
+              "c": "a"
             },
             {
               "schrift": "pronto",
               "lerntext": "pronto",
-              "de": "bereit"
+              "de": "bereit",
+              "c": "a"
             },
             {
               "schrift": "pesante",
               "lerntext": "pesante",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grigio",
               "lerntext": "grigio",
               "de": "grau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bianco",
               "lerntext": "bianco",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "caro",
               "lerntext": "caro",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "blu",
               "lerntext": "blu",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "verde",
               "lerntext": "verde",
               "de": "grün",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grande",
               "lerntext": "grande",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "giallo",
               "lerntext": "giallo",
               "de": "gelb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pulito",
               "lerntext": "pulito",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "marrone",
               "lerntext": "marrone",
               "de": "braun",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8789,7 +10110,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "divento",
             "lerntext": "divento",
-            "de": "werden"
+            "de": "werden",
+            "c": "v"
           }
         ],
         "id": "11.4"
@@ -8798,19 +10120,25 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io voglio [Slot] molto",
-          "lerntext": "io voglio [Slot] molto"
+          "lerntext": "io voglio [Slot] molto",
+          "wortarten": {
+            "io": "p",
+            "voglio": "v"
+          }
         },
         "frameDe": "ich will viel [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8819,42 +10147,49 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "cercare",
               "lerntext": "cercare",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sapere",
               "lerntext": "sapere",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "credere",
               "lerntext": "credere",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pensare",
               "lerntext": "pensare",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dare",
               "lerntext": "dare",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "prendere",
               "lerntext": "prendere",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comprare",
               "lerntext": "comprare",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8868,19 +10203,25 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io voglio [Slot] molto",
-          "lerntext": "io voglio [Slot] molto"
+          "lerntext": "io voglio [Slot] molto",
+          "wortarten": {
+            "io": "p",
+            "voglio": "v"
+          }
         },
         "frameDe": "ich will viel [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8889,24 +10230,28 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "cercare",
               "lerntext": "cercare",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sapere",
               "lerntext": "sapere",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "credere",
               "lerntext": "credere",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pensare",
               "lerntext": "pensare",
               "de": "denken",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8941,24 +10286,31 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "sono stanco [Slot] lavoro",
-          "lerntext": "sono stanco [Slot] lavoro"
+          "lerntext": "sono stanco [Slot] lavoro",
+          "wortarten": {
+            "sono": "v",
+            "stanco": "a"
+          }
         },
         "frameDe": "Ich bin müde, [Slot] ich arbeite.",
         "pronouns": [
           {
             "schrift": "e",
             "lerntext": "e",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "ma",
             "lerntext": "ma",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           },
           {
             "schrift": "o",
             "lerntext": "o",
-            "de": "oder"
+            "de": "oder",
+            "c": "k"
           }
         ],
         "slotGroups": [
@@ -8966,7 +10318,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "siccome",
               "lerntext": "siccome",
-              "de": "da"
+              "de": "da",
+              "c": "k"
             },
             {
               "schrift": "sopra",
@@ -8976,12 +10329,14 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "mentre",
               "lerntext": "mentre",
-              "de": "während"
+              "de": "während",
+              "c": "k"
             },
             {
               "schrift": "benche",
               "lerntext": "benche",
-              "de": "obwohl"
+              "de": "obwohl",
+              "c": "k"
             },
             {
               "schrift": "fino",
@@ -8998,12 +10353,14 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "anche",
               "lerntext": "anche",
               "de": "auch",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "allora",
               "lerntext": "allora",
               "de": "dann",
+              "c": "k",
               "wieder": true
             },
             {
@@ -9056,22 +10413,26 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "e",
             "lerntext": "e",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "ma",
             "lerntext": "ma",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           },
           {
             "schrift": "o",
             "lerntext": "o",
-            "de": "oder"
+            "de": "oder",
+            "c": "k"
           },
           {
             "schrift": "quindi",
             "lerntext": "quindi",
-            "de": "also"
+            "de": "also",
+            "c": "k"
           }
         ],
         "id": "12.1"
@@ -9080,24 +10441,31 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "sono stanco [Slot] lavoro",
-          "lerntext": "sono stanco [Slot] lavoro"
+          "lerntext": "sono stanco [Slot] lavoro",
+          "wortarten": {
+            "sono": "v",
+            "stanco": "a"
+          }
         },
         "frameDe": "Ich bin müde, [Slot] ich arbeite.",
         "pronouns": [
           {
             "schrift": "e",
             "lerntext": "e",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "ma",
             "lerntext": "ma",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           },
           {
             "schrift": "o",
             "lerntext": "o",
-            "de": "oder"
+            "de": "oder",
+            "c": "k"
           }
         ],
         "slotGroups": [
@@ -9178,7 +10546,12 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "voglio [Slot] ma non posso",
-          "lerntext": "voglio [Slot] ma non posso"
+          "lerntext": "voglio [Slot] ma non posso",
+          "wortarten": {
+            "voglio": "v",
+            "ma": "k",
+            "posso": "v"
+          }
         },
         "frameDe": "Ich will [Slot], aber ich kann nicht.",
         "pronouns": [],
@@ -9187,76 +10560,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "capire",
               "lerntext": "capire",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "continuare",
               "lerntext": "continuare",
-              "de": "fortsetzen"
+              "de": "fortsetzen",
+              "c": "v"
             },
             {
               "schrift": "sperare",
               "lerntext": "sperare",
-              "de": "hoffen"
+              "de": "hoffen",
+              "c": "v"
             },
             {
               "schrift": "pensare",
               "lerntext": "pensare",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sapere",
               "lerntext": "sapere",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dare",
               "lerntext": "dare",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "credere",
               "lerntext": "credere",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cercare",
               "lerntext": "cercare",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "amare",
               "lerntext": "amare",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "prendere",
               "lerntext": "prendere",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "guardare",
               "lerntext": "guardare",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dimenticare",
               "lerntext": "dimenticare",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mangiare",
               "lerntext": "mangiare",
               "de": "essen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -9270,7 +10656,12 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è [Slot] ma va bene",
-          "lerntext": "è [Slot] ma va bene"
+          "lerntext": "è [Slot] ma va bene",
+          "wortarten": {
+            "è": "v",
+            "ma": "k",
+            "va": "v"
+          }
         },
         "frameDe": "Es ist [Slot], aber es geht.",
         "pronouns": [],
@@ -9279,22 +10670,26 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "difficile",
               "lerntext": "difficile",
-              "de": "schwierig"
+              "de": "schwierig",
+              "c": "a"
             },
             {
               "schrift": "facile",
               "lerntext": "facile",
-              "de": "einfach"
+              "de": "einfach",
+              "c": "a"
             },
             {
               "schrift": "giusto",
               "lerntext": "giusto",
-              "de": "richtig"
+              "de": "richtig",
+              "c": "a"
             },
             {
               "schrift": "falso",
               "lerntext": "falso",
-              "de": "falsch"
+              "de": "falsch",
+              "c": "a"
             },
             {
               "schrift": "velocemente",
@@ -9311,12 +10706,14 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "chiuso",
               "lerntext": "chiuso",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "aperto",
               "lerntext": "aperto",
               "de": "offen",
+              "c": "a",
               "wieder": true
             },
             {
@@ -9372,7 +10769,12 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è [Slot] ma va bene",
-          "lerntext": "è [Slot] ma va bene"
+          "lerntext": "è [Slot] ma va bene",
+          "wortarten": {
+            "è": "v",
+            "ma": "k",
+            "va": "v"
+          }
         },
         "frameDe": "Es ist [Slot], aber es geht.",
         "pronouns": [],
@@ -9386,30 +10788,35 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "brutto",
               "lerntext": "brutto",
-              "de": "hässlich"
+              "de": "hässlich",
+              "c": "a"
             },
             {
               "schrift": "difficile",
               "lerntext": "difficile",
               "de": "schwierig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "facile",
               "lerntext": "facile",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "giusto",
               "lerntext": "giusto",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "falso",
               "lerntext": "falso",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
@@ -9428,12 +10835,14 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "chiuso",
               "lerntext": "chiuso",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "aperto",
               "lerntext": "aperto",
               "de": "offen",
+              "c": "a",
               "wieder": true
             },
             {
@@ -9459,7 +10868,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "voglio [Slot]",
-          "lerntext": "voglio [Slot]"
+          "lerntext": "voglio [Slot]",
+          "wortarten": {
+            "voglio": "v"
+          }
         },
         "frameDe": "Ich will dich [Slot].",
         "pronouns": [],
@@ -9468,66 +10880,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "cambiare",
               "lerntext": "cambiare",
-              "de": "ändern"
+              "de": "ändern",
+              "c": "v"
             },
             {
               "schrift": "continuare",
               "lerntext": "continuare",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sperare",
               "lerntext": "sperare",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "capire",
               "lerntext": "capire",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "venire",
               "lerntext": "venire",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bere",
               "lerntext": "bere",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "scrivere",
               "lerntext": "scrivere",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "andare",
               "lerntext": "andare",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pagare",
               "lerntext": "pagare",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vedere",
               "lerntext": "vedere",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "piangere",
               "lerntext": "piangere",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -9541,7 +10964,12 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è [Slot] ma va bene",
-          "lerntext": "è [Slot] ma va bene"
+          "lerntext": "è [Slot] ma va bene",
+          "wortarten": {
+            "è": "v",
+            "ma": "k",
+            "va": "v"
+          }
         },
         "frameDe": "Es ist [Slot], aber es geht.",
         "pronouns": [],
@@ -9557,30 +10985,35 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "brutto",
               "lerntext": "brutto",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "difficile",
               "lerntext": "difficile",
               "de": "schwierig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "facile",
               "lerntext": "facile",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "giusto",
               "lerntext": "giusto",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "falso",
               "lerntext": "falso",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
@@ -9606,24 +11039,31 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "sono stanco [Slot] lavoro",
-          "lerntext": "sono stanco [Slot] lavoro"
+          "lerntext": "sono stanco [Slot] lavoro",
+          "wortarten": {
+            "sono": "v",
+            "stanco": "a"
+          }
         },
         "frameDe": "Ich bin müde, [Slot] ich arbeite.",
         "pronouns": [
           {
             "schrift": "e",
             "lerntext": "e",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "ma",
             "lerntext": "ma",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           },
           {
             "schrift": "o",
             "lerntext": "o",
-            "de": "oder"
+            "de": "oder",
+            "c": "k"
           }
         ],
         "slotGroups": [
@@ -9632,24 +11072,28 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "siccome",
               "lerntext": "siccome",
               "de": "da",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "mentre",
               "lerntext": "mentre",
               "de": "während",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "benche",
               "lerntext": "benche",
               "de": "obwohl",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "anche",
               "lerntext": "anche",
               "de": "auch",
+              "c": "k",
               "wieder": true
             },
             {
@@ -9662,6 +11106,7 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "allora",
               "lerntext": "allora",
               "de": "dann",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -9675,7 +11120,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "voglio [Slot]",
-          "lerntext": "voglio [Slot]"
+          "lerntext": "voglio [Slot]",
+          "wortarten": {
+            "voglio": "v"
+          }
         },
         "frameDe": "Ich will dich [Slot].",
         "pronouns": [],
@@ -9685,24 +11133,28 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "cambiare",
               "lerntext": "cambiare",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "continuare",
               "lerntext": "continuare",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sperare",
               "lerntext": "sperare",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "capire",
               "lerntext": "capire",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -9716,24 +11168,31 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "sono stanco [Slot] lavoro",
-          "lerntext": "sono stanco [Slot] lavoro"
+          "lerntext": "sono stanco [Slot] lavoro",
+          "wortarten": {
+            "sono": "v",
+            "stanco": "a"
+          }
         },
         "frameDe": "Ich bin müde, [Slot] ich arbeite.",
         "pronouns": [
           {
             "schrift": "e",
             "lerntext": "e",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "ma",
             "lerntext": "ma",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           },
           {
             "schrift": "o",
             "lerntext": "o",
-            "de": "oder"
+            "de": "oder",
+            "c": "k"
           }
         ],
         "slotGroups": [
@@ -9742,24 +11201,28 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "siccome",
               "lerntext": "siccome",
               "de": "da",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "mentre",
               "lerntext": "mentre",
               "de": "während",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "benche",
               "lerntext": "benche",
               "de": "obwohl",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "anche",
               "lerntext": "anche",
               "de": "auch",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -9794,14 +11257,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "una [Slot] mi fa male",
-          "lerntext": "una [Slot] mi fa male"
+          "lerntext": "una [Slot] mi fa male",
+          "wortarten": {
+            "mi": "p",
+            "fa": "v"
+          }
         },
         "frameDe": "[Slot] tut weh.",
         "pronouns": [
           {
             "schrift": "mio",
             "lerntext": "mio",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -9809,66 +11277,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "testa",
               "lerntext": "testa",
-              "de": "Kopf"
+              "de": "Kopf",
+              "c": "n"
             },
             {
               "schrift": "lavoro",
               "lerntext": "lavoro",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mare",
               "lerntext": "mare",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "minuto",
               "lerntext": "minuto",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sole",
               "lerntext": "sole",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "montagna",
               "lerntext": "montagna",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vento",
               "lerntext": "vento",
               "de": "Wind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pioggia",
               "lerntext": "pioggia",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ora",
               "lerntext": "ora",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sera",
               "lerntext": "sera",
               "de": "Abend",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "treno",
               "lerntext": "treno",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9882,14 +11361,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "un [Slot] mi fa male",
-          "lerntext": "un [Slot] mi fa male"
+          "lerntext": "un [Slot] mi fa male",
+          "wortarten": {
+            "mi": "p",
+            "fa": "v"
+          }
         },
         "frameDe": "[Slot] tut weh.",
         "pronouns": [
           {
             "schrift": "mio",
             "lerntext": "mio",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -9897,66 +11381,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "occhio",
               "lerntext": "occhio",
-              "de": "Auge"
+              "de": "Auge",
+              "c": "n"
             },
             {
               "schrift": "testa",
               "lerntext": "testa",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lavoro",
               "lerntext": "lavoro",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mare",
               "lerntext": "mare",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "minuto",
               "lerntext": "minuto",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sole",
               "lerntext": "sole",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "montagna",
               "lerntext": "montagna",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vento",
               "lerntext": "vento",
               "de": "Wind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "settimana",
               "lerntext": "settimana",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "giorno",
               "lerntext": "giorno",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "autobus",
               "lerntext": "autobus",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9970,7 +11465,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ho male a una [Slot]",
-          "lerntext": "ho male a una [Slot]"
+          "lerntext": "ho male a una [Slot]",
+          "wortarten": {
+            "ho": "v"
+          }
         },
         "frameDe": "Ich habe Schmerzen im [Slot].",
         "pronouns": [],
@@ -9979,66 +11477,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "gamba",
               "lerntext": "gamba",
-              "de": "Bein"
+              "de": "Bein",
+              "c": "n"
             },
             {
               "schrift": "occhio",
               "lerntext": "occhio",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "testa",
               "lerntext": "testa",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lavoro",
               "lerntext": "lavoro",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mare",
               "lerntext": "mare",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pioggia",
               "lerntext": "pioggia",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "minuto",
               "lerntext": "minuto",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sole",
               "lerntext": "sole",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "stazione",
               "lerntext": "stazione",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pranzo",
               "lerntext": "pranzo",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bicchiere",
               "lerntext": "bicchiere",
               "de": "Glas",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10082,66 +11591,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "piatto",
               "lerntext": "piatto",
-              "de": "Teller"
+              "de": "Teller",
+              "c": "n"
             },
             {
               "schrift": "testa",
               "lerntext": "testa",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "valigia",
               "lerntext": "valigia",
               "de": "Koffer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sera",
               "lerntext": "sera",
               "de": "Abend",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vento",
               "lerntext": "vento",
               "de": "Wind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "treno",
               "lerntext": "treno",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "giorno",
               "lerntext": "giorno",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "autobus",
               "lerntext": "autobus",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fratello",
               "lerntext": "fratello",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aeroporto",
               "lerntext": "aeroporto",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "figlio",
               "lerntext": "figlio",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10161,7 +11681,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "compro una [Slot]",
-          "lerntext": "compro una [Slot]"
+          "lerntext": "compro una [Slot]",
+          "wortarten": {
+            "compro": "v"
+          }
         },
         "frameDe": "Ich kaufe einen [Slot].",
         "pronouns": [],
@@ -10170,66 +11693,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "scarpa",
               "lerntext": "scarpa",
-              "de": "Schuh"
+              "de": "Schuh",
+              "c": "n"
             },
             {
               "schrift": "piatto",
               "lerntext": "piatto",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "testa",
               "lerntext": "testa",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vino",
               "lerntext": "vino",
               "de": "Wein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bocca",
               "lerntext": "bocca",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "corpo",
               "lerntext": "corpo",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "chiave",
               "lerntext": "chiave",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "caffe",
               "lerntext": "caffe",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pesce",
               "lerntext": "pesce",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tavolo",
               "lerntext": "tavolo",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "stazione",
               "lerntext": "stazione",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10243,7 +11777,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "compro un [Slot]",
-          "lerntext": "compro un [Slot]"
+          "lerntext": "compro un [Slot]",
+          "wortarten": {
+            "compro": "v"
+          }
         },
         "frameDe": "Ich kaufe ein [Slot].",
         "pronouns": [],
@@ -10252,66 +11789,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "vestito",
               "lerntext": "vestito",
-              "de": "Kleid"
+              "de": "Kleid",
+              "c": "n"
             },
             {
               "schrift": "gamba",
               "lerntext": "gamba",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "occhio",
               "lerntext": "occhio",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "telefono",
               "lerntext": "telefono",
               "de": "Telefon",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "albergo",
               "lerntext": "albergo",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "finestra",
               "lerntext": "finestra",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "birra",
               "lerntext": "birra",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pane",
               "lerntext": "pane",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "verdura",
               "lerntext": "verdura",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bagno",
               "lerntext": "bagno",
               "de": "Bad",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "soldi",
               "lerntext": "soldi",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10325,7 +11873,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ho [Slot]",
-          "lerntext": "ho [Slot]"
+          "lerntext": "ho [Slot]",
+          "wortarten": {
+            "ho": "v"
+          }
         },
         "frameDe": "Ich habe [Slot].",
         "pronouns": [],
@@ -10334,66 +11885,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "nome",
               "lerntext": "nome",
-              "de": "Name"
+              "de": "Name",
+              "c": "n"
             },
             {
               "schrift": "vestito",
               "lerntext": "vestito",
               "de": "Kleid",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "scarpa",
               "lerntext": "scarpa",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gamba",
               "lerntext": "gamba",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "piatto",
               "lerntext": "piatto",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "occhio",
               "lerntext": "occhio",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "testa",
               "lerntext": "testa",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ora",
               "lerntext": "ora",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lavoro",
               "lerntext": "lavoro",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "notte",
               "lerntext": "notte",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "montagna",
               "lerntext": "montagna",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10407,7 +11969,12 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "questo è il mio [Slot]",
-          "lerntext": "questo è il mio [Slot]"
+          "lerntext": "questo è il mio [Slot]",
+          "wortarten": {
+            "questo": "p",
+            "è": "v",
+            "mio": "p"
+          }
         },
         "frameDe": "Das ist meine [Slot].",
         "pronouns": [],
@@ -10416,66 +11983,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "lavoro",
               "lerntext": "lavoro",
-              "de": "Arbeit"
+              "de": "Arbeit",
+              "c": "n"
             },
             {
               "schrift": "nome",
               "lerntext": "nome",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vestito",
               "lerntext": "vestito",
               "de": "Kleid",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "scarpa",
               "lerntext": "scarpa",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gamba",
               "lerntext": "gamba",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "piatto",
               "lerntext": "piatto",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "occhio",
               "lerntext": "occhio",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "settimana",
               "lerntext": "settimana",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "biglietto",
               "lerntext": "biglietto",
               "de": "Fahrkarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mare",
               "lerntext": "mare",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ospedale",
               "lerntext": "ospedale",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10489,7 +12067,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "aspetto una [Slot]",
-          "lerntext": "aspetto una [Slot]"
+          "lerntext": "aspetto una [Slot]",
+          "wortarten": {
+            "aspetto": "v"
+          }
         },
         "frameDe": "Ich warte auf [Slot].",
         "pronouns": [],
@@ -10498,66 +12079,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "risposta",
               "lerntext": "risposta",
-              "de": "Antwort"
+              "de": "Antwort",
+              "c": "n"
             },
             {
               "schrift": "nome",
               "lerntext": "nome",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vestito",
               "lerntext": "vestito",
               "de": "Kleid",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "scarpa",
               "lerntext": "scarpa",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gamba",
               "lerntext": "gamba",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "piatto",
               "lerntext": "piatto",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "occhio",
               "lerntext": "occhio",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cena",
               "lerntext": "cena",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "colazione",
               "lerntext": "colazione",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sale",
               "lerntext": "sale",
               "de": "Salz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "frutta",
               "lerntext": "frutta",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10571,7 +12163,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "aspetto un [Slot]",
-          "lerntext": "aspetto un [Slot]"
+          "lerntext": "aspetto un [Slot]",
+          "wortarten": {
+            "aspetto": "v"
+          }
         },
         "frameDe": "Ich warte auf [Slot].",
         "pronouns": [],
@@ -10580,66 +12175,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "esame",
               "lerntext": "esame",
-              "de": "Prüfung"
+              "de": "Prüfung",
+              "c": "n"
             },
             {
               "schrift": "risposta",
               "lerntext": "risposta",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nome",
               "lerntext": "nome",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vestito",
               "lerntext": "vestito",
               "de": "Kleid",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "scarpa",
               "lerntext": "scarpa",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gamba",
               "lerntext": "gamba",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "piatto",
               "lerntext": "piatto",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "carne",
               "lerntext": "carne",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pioggia",
               "lerntext": "pioggia",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "camera",
               "lerntext": "camera",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ristorante",
               "lerntext": "ristorante",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10653,7 +12259,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ho preso una buon [Slot]",
-          "lerntext": "ho preso una buon [Slot]"
+          "lerntext": "ho preso una buon [Slot]",
+          "wortarten": {
+            "ho": "v",
+            "preso": "v"
+          }
         },
         "frameDe": "Ich habe eine gute [Slot] bekommen.",
         "pronouns": [],
@@ -10662,71 +12272,83 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "casa",
               "lerntext": "casa",
-              "de": "Haus"
+              "de": "Haus",
+              "c": "n"
             },
             {
               "schrift": "camera",
               "lerntext": "camera",
-              "de": "Zimmer"
+              "de": "Zimmer",
+              "c": "n"
             },
             {
               "schrift": "tavolo",
               "lerntext": "tavolo",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "esame",
               "lerntext": "esame",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "risposta",
               "lerntext": "risposta",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nome",
               "lerntext": "nome",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vestito",
               "lerntext": "vestito",
               "de": "Kleid",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "scarpa",
               "lerntext": "scarpa",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "minuto",
               "lerntext": "minuto",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sole",
               "lerntext": "sole",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "testa",
               "lerntext": "testa",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "libro",
               "lerntext": "libro",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10740,7 +12362,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ho preso un buon [Slot]",
-          "lerntext": "ho preso un buon [Slot]"
+          "lerntext": "ho preso un buon [Slot]",
+          "wortarten": {
+            "ho": "v",
+            "preso": "v"
+          }
         },
         "frameDe": "Ich habe eine gute [Slot] bekommen.",
         "pronouns": [],
@@ -10749,66 +12375,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "tavolo",
               "lerntext": "tavolo",
-              "de": "Tisch"
+              "de": "Tisch",
+              "c": "n"
             },
             {
               "schrift": "casa",
               "lerntext": "casa",
               "de": "Haus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "camera",
               "lerntext": "camera",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "esame",
               "lerntext": "esame",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "risposta",
               "lerntext": "risposta",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nome",
               "lerntext": "nome",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "letto",
               "lerntext": "letto",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "acqua",
               "lerntext": "acqua",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pranzo",
               "lerntext": "pranzo",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "citta",
               "lerntext": "citta",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bicchiere",
               "lerntext": "bicchiere",
               "de": "Glas",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10852,27 +12489,32 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "persona",
               "lerntext": "persona",
-              "de": "Person"
+              "de": "Person",
+              "c": "n"
             },
             {
               "schrift": "moglie",
               "lerntext": "moglie",
-              "de": "Ehefrau"
+              "de": "Ehefrau",
+              "c": "n"
             },
             {
               "schrift": "bar",
               "lerntext": "bar",
-              "de": "Bar"
+              "de": "Bar",
+              "c": "n"
             },
             {
               "schrift": "farmacia",
               "lerntext": "farmacia",
-              "de": "Apotheke"
+              "de": "Apotheke",
+              "c": "n"
             },
             {
               "schrift": "conto",
               "lerntext": "conto",
-              "de": "Rechnung"
+              "de": "Rechnung",
+              "c": "n"
             }
           ]
         ],
@@ -10894,56 +12536,66 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "lezione",
               "lerntext": "lezione",
-              "de": "Vorlesung"
+              "de": "Vorlesung",
+              "c": "n"
             },
             {
               "schrift": "lingua",
               "lerntext": "lingua",
-              "de": "Sprache"
+              "de": "Sprache",
+              "c": "n"
             },
             {
               "schrift": "domanda",
               "lerntext": "domanda",
-              "de": "Frage"
+              "de": "Frage",
+              "c": "n"
             },
             {
               "schrift": "pizza",
               "lerntext": "pizza",
-              "de": "Pizza"
+              "de": "Pizza",
+              "c": "n"
             },
             {
               "schrift": "menu",
               "lerntext": "menu",
-              "de": "Speisekarte"
+              "de": "Speisekarte",
+              "c": "n"
             },
             {
               "schrift": "persona",
               "lerntext": "persona",
               "de": "Person",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "moglie",
               "lerntext": "moglie",
               "de": "Ehefrau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bar",
               "lerntext": "bar",
               "de": "Bar",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "farmacia",
               "lerntext": "farmacia",
               "de": "Apotheke",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "conto",
               "lerntext": "conto",
               "de": "Rechnung",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10966,86 +12618,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "bottiglia",
               "lerntext": "bottiglia",
-              "de": "Flasche"
+              "de": "Flasche",
+              "c": "n"
             },
             {
               "schrift": "medicina",
               "lerntext": "medicina",
-              "de": "Medizin"
+              "de": "Medizin",
+              "c": "n"
             },
             {
               "schrift": "numero",
               "lerntext": "numero",
-              "de": "Nummer"
+              "de": "Nummer",
+              "c": "n"
             },
             {
               "schrift": "musica",
               "lerntext": "musica",
-              "de": "Musik"
+              "de": "Musik",
+              "c": "n"
             },
             {
               "schrift": "mondo",
               "lerntext": "mondo",
-              "de": "Welt"
+              "de": "Welt",
+              "c": "n"
             },
             {
               "schrift": "lezione",
               "lerntext": "lezione",
               "de": "Vorlesung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lingua",
               "lerntext": "lingua",
               "de": "Sprache",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "domanda",
               "lerntext": "domanda",
               "de": "Frage",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pizza",
               "lerntext": "pizza",
               "de": "Pizza",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "menu",
               "lerntext": "menu",
               "de": "Speisekarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "persona",
               "lerntext": "persona",
               "de": "Person",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "moglie",
               "lerntext": "moglie",
               "de": "Ehefrau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bar",
               "lerntext": "bar",
               "de": "Bar",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "farmacia",
               "lerntext": "farmacia",
               "de": "Apotheke",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "conto",
               "lerntext": "conto",
               "de": "Rechnung",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11068,86 +12735,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "aria",
               "lerntext": "aria",
-              "de": "Luft"
+              "de": "Luft",
+              "c": "n"
             },
             {
               "schrift": "gatto",
               "lerntext": "gatto",
-              "de": "Katze"
+              "de": "Katze",
+              "c": "n"
             },
             {
               "schrift": "amore",
               "lerntext": "amore",
-              "de": "Liebe"
+              "de": "Liebe",
+              "c": "n"
             },
             {
               "schrift": "modo",
               "lerntext": "modo",
-              "de": "Art"
+              "de": "Art",
+              "c": "n"
             },
             {
               "schrift": "idea",
               "lerntext": "idea",
-              "de": "Idee"
+              "de": "Idee",
+              "c": "n"
             },
             {
               "schrift": "bottiglia",
               "lerntext": "bottiglia",
               "de": "Flasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "medicina",
               "lerntext": "medicina",
               "de": "Medizin",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "numero",
               "lerntext": "numero",
               "de": "Nummer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "musica",
               "lerntext": "musica",
               "de": "Musik",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mondo",
               "lerntext": "mondo",
               "de": "Welt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lezione",
               "lerntext": "lezione",
               "de": "Vorlesung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lingua",
               "lerntext": "lingua",
               "de": "Sprache",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "domanda",
               "lerntext": "domanda",
               "de": "Frage",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pizza",
               "lerntext": "pizza",
               "de": "Pizza",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "menu",
               "lerntext": "menu",
               "de": "Speisekarte",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11170,81 +12852,95 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "storia",
               "lerntext": "storia",
-              "de": "Geschichte"
+              "de": "Geschichte",
+              "c": "n"
             },
             {
               "schrift": "paura",
               "lerntext": "paura",
-              "de": "Angst"
+              "de": "Angst",
+              "c": "n"
             },
             {
               "schrift": "turno",
               "lerntext": "turno",
-              "de": "Schicht"
+              "de": "Schicht",
+              "c": "n"
             },
             {
               "schrift": "taglia",
               "lerntext": "taglia",
-              "de": "Kleidergrösse"
+              "de": "Kleidergrösse",
+              "c": "n"
             },
             {
               "schrift": "aria",
               "lerntext": "aria",
               "de": "Luft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gatto",
               "lerntext": "gatto",
               "de": "Katze",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amore",
               "lerntext": "amore",
               "de": "Liebe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "modo",
               "lerntext": "modo",
               "de": "Art",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "idea",
               "lerntext": "idea",
               "de": "Idee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bottiglia",
               "lerntext": "bottiglia",
               "de": "Flasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "medicina",
               "lerntext": "medicina",
               "de": "Medizin",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "numero",
               "lerntext": "numero",
               "de": "Nummer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "musica",
               "lerntext": "musica",
               "de": "Musik",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mondo",
               "lerntext": "mondo",
               "de": "Welt",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11267,27 +12963,32 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "uomo",
               "lerntext": "uomo",
-              "de": "Mann"
+              "de": "Mann",
+              "c": "n"
             },
             {
               "schrift": "ragazzo",
               "lerntext": "ragazzo",
-              "de": "Junge"
+              "de": "Junge",
+              "c": "n"
             },
             {
               "schrift": "marito",
               "lerntext": "marito",
-              "de": "Ehemann"
+              "de": "Ehemann",
+              "c": "n"
             },
             {
               "schrift": "mese",
               "lerntext": "mese",
-              "de": "Monat"
+              "de": "Monat",
+              "c": "n"
             },
             {
               "schrift": "mattina",
               "lerntext": "mattina",
-              "de": "Morgen"
+              "de": "Morgen",
+              "c": "n"
             }
           ]
         ],
@@ -11309,56 +13010,66 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "pomeriggio",
               "lerntext": "pomeriggio",
-              "de": "Nachmittag"
+              "de": "Nachmittag",
+              "c": "n"
             },
             {
               "schrift": "piazza",
               "lerntext": "piazza",
-              "de": "Platz"
+              "de": "Platz",
+              "c": "n"
             },
             {
               "schrift": "mercato",
               "lerntext": "mercato",
-              "de": "Markt"
+              "de": "Markt",
+              "c": "n"
             },
             {
               "schrift": "passaporto",
               "lerntext": "passaporto",
-              "de": "Pass"
+              "de": "Pass",
+              "c": "n"
             },
             {
               "schrift": "prezzo",
               "lerntext": "prezzo",
-              "de": "Preis"
+              "de": "Preis",
+              "c": "n"
             },
             {
               "schrift": "uomo",
               "lerntext": "uomo",
               "de": "Mann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ragazzo",
               "lerntext": "ragazzo",
               "de": "Junge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "marito",
               "lerntext": "marito",
               "de": "Ehemann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mese",
               "lerntext": "mese",
               "de": "Monat",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mattina",
               "lerntext": "mattina",
               "de": "Morgen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11381,86 +13092,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "momento",
               "lerntext": "momento",
-              "de": "Moment"
+              "de": "Moment",
+              "c": "n"
             },
             {
               "schrift": "medico",
               "lerntext": "medico",
-              "de": "Arzt"
+              "de": "Arzt",
+              "c": "n"
             },
             {
               "schrift": "dolore",
               "lerntext": "dolore",
-              "de": "Schmerz"
+              "de": "Schmerz",
+              "c": "n"
             },
             {
               "schrift": "film",
               "lerntext": "film",
-              "de": "Film"
+              "de": "Film",
+              "c": "n"
             },
             {
               "schrift": "cane",
               "lerntext": "cane",
-              "de": "Hund"
+              "de": "Hund",
+              "c": "n"
             },
             {
               "schrift": "pomeriggio",
               "lerntext": "pomeriggio",
               "de": "Nachmittag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "piazza",
               "lerntext": "piazza",
               "de": "Platz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mercato",
               "lerntext": "mercato",
               "de": "Markt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "passaporto",
               "lerntext": "passaporto",
               "de": "Pass",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "prezzo",
               "lerntext": "prezzo",
               "de": "Preis",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "uomo",
               "lerntext": "uomo",
               "de": "Mann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ragazzo",
               "lerntext": "ragazzo",
               "de": "Junge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "marito",
               "lerntext": "marito",
               "de": "Ehemann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mese",
               "lerntext": "mese",
               "de": "Monat",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mattina",
               "lerntext": "mattina",
               "de": "Morgen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11483,86 +13209,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "parte",
               "lerntext": "parte",
-              "de": "Teil"
+              "de": "Teil",
+              "c": "n"
             },
             {
               "schrift": "inizio",
               "lerntext": "inizio",
-              "de": "Anfang"
+              "de": "Anfang",
+              "c": "n"
             },
             {
               "schrift": "motivo",
               "lerntext": "motivo",
-              "de": "Grund"
+              "de": "Grund",
+              "c": "n"
             },
             {
               "schrift": "fame",
               "lerntext": "fame",
-              "de": "Hunger"
+              "de": "Hunger",
+              "c": "n"
             },
             {
               "schrift": "sete",
               "lerntext": "sete",
-              "de": "Durst"
+              "de": "Durst",
+              "c": "n"
             },
             {
               "schrift": "momento",
               "lerntext": "momento",
               "de": "Moment",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "medico",
               "lerntext": "medico",
               "de": "Arzt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dolore",
               "lerntext": "dolore",
               "de": "Schmerz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "film",
               "lerntext": "film",
               "de": "Film",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cane",
               "lerntext": "cane",
               "de": "Hund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pomeriggio",
               "lerntext": "pomeriggio",
               "de": "Nachmittag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "piazza",
               "lerntext": "piazza",
               "de": "Platz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mercato",
               "lerntext": "mercato",
               "de": "Markt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "passaporto",
               "lerntext": "passaporto",
               "de": "Pass",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "prezzo",
               "lerntext": "prezzo",
               "de": "Preis",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11585,86 +13326,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "sonno",
               "lerntext": "sonno",
-              "de": "Schlaf"
+              "de": "Schlaf",
+              "c": "n"
             },
             {
               "schrift": "sconto",
               "lerntext": "sconto",
-              "de": "Rabatt"
+              "de": "Rabatt",
+              "c": "n"
             },
             {
               "schrift": "ingresso",
               "lerntext": "ingresso",
-              "de": "Eintritt"
+              "de": "Eintritt",
+              "c": "n"
             },
             {
               "schrift": "uscita",
               "lerntext": "uscita",
-              "de": "Ausgang"
+              "de": "Ausgang",
+              "c": "n"
             },
             {
               "schrift": "lavoratore",
               "lerntext": "lavoratore",
-              "de": "Arbeiter"
+              "de": "Arbeiter",
+              "c": "n"
             },
             {
               "schrift": "parte",
               "lerntext": "parte",
               "de": "Teil",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "inizio",
               "lerntext": "inizio",
               "de": "Anfang",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "motivo",
               "lerntext": "motivo",
               "de": "Grund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fame",
               "lerntext": "fame",
               "de": "Hunger",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sete",
               "lerntext": "sete",
               "de": "Durst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "momento",
               "lerntext": "momento",
               "de": "Moment",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "medico",
               "lerntext": "medico",
               "de": "Arzt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dolore",
               "lerntext": "dolore",
               "de": "Schmerz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "film",
               "lerntext": "film",
               "de": "Film",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cane",
               "lerntext": "cane",
               "de": "Hund",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11687,66 +13443,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "cliente",
               "lerntext": "cliente",
-              "de": "Kunde"
+              "de": "Kunde",
+              "c": "n"
             },
             {
               "schrift": "sonno",
               "lerntext": "sonno",
               "de": "Schlaf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sconto",
               "lerntext": "sconto",
               "de": "Rabatt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ingresso",
               "lerntext": "ingresso",
               "de": "Eintritt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "uscita",
               "lerntext": "uscita",
               "de": "Ausgang",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lavoratore",
               "lerntext": "lavoratore",
               "de": "Arbeiter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "parte",
               "lerntext": "parte",
               "de": "Teil",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "inizio",
               "lerntext": "inizio",
               "de": "Anfang",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "motivo",
               "lerntext": "motivo",
               "de": "Grund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fame",
               "lerntext": "fame",
               "de": "Hunger",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sete",
               "lerntext": "sete",
               "de": "Durst",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11769,27 +13536,32 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "anno",
               "lerntext": "anno",
-              "de": "Jahr"
+              "de": "Jahr",
+              "c": "n"
             },
             {
               "schrift": "paese",
               "lerntext": "paese",
-              "de": "Dorf"
+              "de": "Dorf",
+              "c": "n"
             },
             {
               "schrift": "ragazza",
               "lerntext": "ragazza",
-              "de": "Mädchen"
+              "de": "Mädchen",
+              "c": "n"
             },
             {
               "schrift": "parola",
               "lerntext": "parola",
-              "de": "Wort"
+              "de": "Wort",
+              "c": "n"
             },
             {
               "schrift": "problema",
               "lerntext": "problema",
-              "de": "Problem"
+              "de": "Problem",
+              "c": "n"
             }
           ]
         ],
@@ -11811,56 +13583,66 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "febbre",
               "lerntext": "febbre",
-              "de": "Fieber"
+              "de": "Fieber",
+              "c": "n"
             },
             {
               "schrift": "festa",
               "lerntext": "festa",
-              "de": "Fest"
+              "de": "Fest",
+              "c": "n"
             },
             {
               "schrift": "vita",
               "lerntext": "vita",
-              "de": "Leben"
+              "de": "Leben",
+              "c": "n"
             },
             {
               "schrift": "fuoco",
               "lerntext": "fuoco",
-              "de": "Feuer"
+              "de": "Feuer",
+              "c": "n"
             },
             {
               "schrift": "regalo",
               "lerntext": "regalo",
-              "de": "Geschenk"
+              "de": "Geschenk",
+              "c": "n"
             },
             {
               "schrift": "anno",
               "lerntext": "anno",
               "de": "Jahr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "paese",
               "lerntext": "paese",
               "de": "Dorf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ragazza",
               "lerntext": "ragazza",
               "de": "Mädchen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "parola",
               "lerntext": "parola",
               "de": "Wort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "problema",
               "lerntext": "problema",
               "de": "Problem",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11883,76 +13665,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "fine",
               "lerntext": "fine",
-              "de": "Ende"
+              "de": "Ende",
+              "c": "n"
             },
             {
               "schrift": "esempio",
               "lerntext": "esempio",
-              "de": "Beispiel"
+              "de": "Beispiel",
+              "c": "n"
             },
             {
               "schrift": "documento",
               "lerntext": "documento",
-              "de": "Dokument"
+              "de": "Dokument",
+              "c": "n"
             },
             {
               "schrift": "febbre",
               "lerntext": "febbre",
               "de": "Fieber",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "festa",
               "lerntext": "festa",
               "de": "Fest",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vita",
               "lerntext": "vita",
               "de": "Leben",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fuoco",
               "lerntext": "fuoco",
               "de": "Feuer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "regalo",
               "lerntext": "regalo",
               "de": "Geschenk",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "anno",
               "lerntext": "anno",
               "de": "Jahr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "paese",
               "lerntext": "paese",
               "de": "Dorf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ragazza",
               "lerntext": "ragazza",
               "de": "Mädchen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "parola",
               "lerntext": "parola",
               "de": "Wort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "problema",
               "lerntext": "problema",
               "de": "Problem",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11975,17 +13770,20 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "gente",
               "lerntext": "gente",
-              "de": "Leute"
+              "de": "Leute",
+              "c": "n"
             },
             {
               "schrift": "pasta",
               "lerntext": "pasta",
-              "de": "Nudeln"
+              "de": "Nudeln",
+              "c": "n"
             },
             {
               "schrift": "capelli",
               "lerntext": "capelli",
-              "de": "Haare"
+              "de": "Haare",
+              "c": "n"
             }
           ]
         ],
@@ -12008,60 +13806,70 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "storia",
               "lerntext": "storia",
               "de": "Geschichte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "paura",
               "lerntext": "paura",
               "de": "Angst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "turno",
               "lerntext": "turno",
               "de": "Schicht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "taglia",
               "lerntext": "taglia",
               "de": "Kleidergrösse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gente",
               "lerntext": "gente",
               "de": "Leute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pasta",
               "lerntext": "pasta",
               "de": "Nudeln",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "capelli",
               "lerntext": "capelli",
               "de": "Haare",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aria",
               "lerntext": "aria",
               "de": "Luft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gatto",
               "lerntext": "gatto",
               "de": "Katze",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amore",
               "lerntext": "amore",
               "de": "Liebe",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -12085,54 +13893,63 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "modo",
               "lerntext": "modo",
               "de": "Art",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "idea",
               "lerntext": "idea",
               "de": "Idee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "storia",
               "lerntext": "storia",
               "de": "Geschichte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "paura",
               "lerntext": "paura",
               "de": "Angst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "turno",
               "lerntext": "turno",
               "de": "Schicht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "taglia",
               "lerntext": "taglia",
               "de": "Kleidergrösse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gente",
               "lerntext": "gente",
               "de": "Leute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pasta",
               "lerntext": "pasta",
               "de": "Nudeln",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "capelli",
               "lerntext": "capelli",
               "de": "Haare",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -12156,48 +13973,56 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "fine",
               "lerntext": "fine",
               "de": "Ende",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "esempio",
               "lerntext": "esempio",
               "de": "Beispiel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "documento",
               "lerntext": "documento",
               "de": "Dokument",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "febbre",
               "lerntext": "febbre",
               "de": "Fieber",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "festa",
               "lerntext": "festa",
               "de": "Fest",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vita",
               "lerntext": "vita",
               "de": "Leben",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fuoco",
               "lerntext": "fuoco",
               "de": "Feuer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "regalo",
               "lerntext": "regalo",
               "de": "Geschenk",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -12221,36 +14046,42 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "cliente",
               "lerntext": "cliente",
               "de": "Kunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sonno",
               "lerntext": "sonno",
               "de": "Schlaf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sconto",
               "lerntext": "sconto",
               "de": "Rabatt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ingresso",
               "lerntext": "ingresso",
               "de": "Eintritt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "uscita",
               "lerntext": "uscita",
               "de": "Ausgang",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lavoratore",
               "lerntext": "lavoratore",
               "de": "Arbeiter",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -12285,7 +14116,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "voglio [Slot]",
-          "lerntext": "voglio [Slot]"
+          "lerntext": "voglio [Slot]",
+          "wortarten": {
+            "voglio": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12294,27 +14128,32 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "chiamare",
               "lerntext": "chiamare",
-              "de": "rufen"
+              "de": "rufen",
+              "c": "v"
             },
             {
               "schrift": "bisognare",
               "lerntext": "bisognare",
-              "de": "nötig sein"
+              "de": "nötig sein",
+              "c": "v"
             },
             {
               "schrift": "costare",
               "lerntext": "costare",
-              "de": "kosten"
+              "de": "kosten",
+              "c": "v"
             },
             {
               "schrift": "entrare",
               "lerntext": "entrare",
-              "de": "hineingehen"
+              "de": "hineingehen",
+              "c": "v"
             },
             {
               "schrift": "portare",
               "lerntext": "portare",
-              "de": "bringen"
+              "de": "bringen",
+              "c": "v"
             }
           ]
         ],
@@ -12327,7 +14166,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "voglio [Slot]",
-          "lerntext": "voglio [Slot]"
+          "lerntext": "voglio [Slot]",
+          "wortarten": {
+            "voglio": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12336,56 +14178,66 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "piacere",
               "lerntext": "piacere",
-              "de": "gefallen"
+              "de": "gefallen",
+              "c": "v"
             },
             {
               "schrift": "studiare",
               "lerntext": "studiare",
-              "de": "studieren"
+              "de": "studieren",
+              "c": "v"
             },
             {
               "schrift": "finire",
               "lerntext": "finire",
-              "de": "beenden"
+              "de": "beenden",
+              "c": "v"
             },
             {
               "schrift": "riuscire",
               "lerntext": "riuscire",
-              "de": "schaffen"
+              "de": "schaffen",
+              "c": "v"
             },
             {
               "schrift": "cantare",
               "lerntext": "cantare",
-              "de": "singen"
+              "de": "singen",
+              "c": "v"
             },
             {
               "schrift": "chiamare",
               "lerntext": "chiamare",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bisognare",
               "lerntext": "bisognare",
               "de": "nötig sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "costare",
               "lerntext": "costare",
               "de": "kosten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "entrare",
               "lerntext": "entrare",
               "de": "hineingehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "portare",
               "lerntext": "portare",
               "de": "bringen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12399,7 +14251,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "voglio [Slot]",
-          "lerntext": "voglio [Slot]"
+          "lerntext": "voglio [Slot]",
+          "wortarten": {
+            "voglio": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12408,86 +14263,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "conoscersi",
               "lerntext": "conoscersi",
-              "de": "sich kennenlernen"
+              "de": "sich kennenlernen",
+              "c": "v"
             },
             {
               "schrift": "succedere",
               "lerntext": "succedere",
-              "de": "geschehen"
+              "de": "geschehen",
+              "c": "v"
             },
             {
               "schrift": "firmare",
               "lerntext": "firmare",
-              "de": "unterschreiben"
+              "de": "unterschreiben",
+              "c": "v"
             },
             {
               "schrift": "dispiacere",
               "lerntext": "dispiacere",
-              "de": "leidtun"
+              "de": "leidtun",
+              "c": "v"
             },
             {
               "schrift": "tornare",
               "lerntext": "tornare",
-              "de": "zurückkehren"
+              "de": "zurückkehren",
+              "c": "v"
             },
             {
               "schrift": "piacere",
               "lerntext": "piacere",
               "de": "gefallen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "studiare",
               "lerntext": "studiare",
               "de": "studieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "finire",
               "lerntext": "finire",
               "de": "beenden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "riuscire",
               "lerntext": "riuscire",
               "de": "schaffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cantare",
               "lerntext": "cantare",
               "de": "singen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "chiamare",
               "lerntext": "chiamare",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bisognare",
               "lerntext": "bisognare",
               "de": "nötig sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "costare",
               "lerntext": "costare",
               "de": "kosten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "entrare",
               "lerntext": "entrare",
               "de": "hineingehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "portare",
               "lerntext": "portare",
               "de": "bringen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12501,7 +14371,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "voglio [Slot]",
-          "lerntext": "voglio [Slot]"
+          "lerntext": "voglio [Slot]",
+          "wortarten": {
+            "voglio": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12510,86 +14383,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "vivere",
               "lerntext": "vivere",
-              "de": "leben"
+              "de": "leben",
+              "c": "v"
             },
             {
               "schrift": "partire",
               "lerntext": "partire",
-              "de": "abfahren"
+              "de": "abfahren",
+              "c": "v"
             },
             {
               "schrift": "arrivare",
               "lerntext": "arrivare",
-              "de": "ankommen"
+              "de": "ankommen",
+              "c": "v"
             },
             {
               "schrift": "uscire",
               "lerntext": "uscire",
-              "de": "hinausgehen"
+              "de": "hinausgehen",
+              "c": "v"
             },
             {
               "schrift": "restare",
               "lerntext": "restare",
-              "de": "bleiben"
+              "de": "bleiben",
+              "c": "v"
             },
             {
               "schrift": "conoscersi",
               "lerntext": "conoscersi",
               "de": "sich kennenlernen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "succedere",
               "lerntext": "succedere",
               "de": "geschehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "firmare",
               "lerntext": "firmare",
               "de": "unterschreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dispiacere",
               "lerntext": "dispiacere",
               "de": "leidtun",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tornare",
               "lerntext": "tornare",
               "de": "zurückkehren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "piacere",
               "lerntext": "piacere",
               "de": "gefallen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "studiare",
               "lerntext": "studiare",
               "de": "studieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "finire",
               "lerntext": "finire",
               "de": "beenden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "riuscire",
               "lerntext": "riuscire",
               "de": "schaffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cantare",
               "lerntext": "cantare",
               "de": "singen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12603,7 +14491,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "voglio [Slot]",
-          "lerntext": "voglio [Slot]"
+          "lerntext": "voglio [Slot]",
+          "wortarten": {
+            "voglio": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12612,86 +14503,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "conoscere",
               "lerntext": "conoscere",
-              "de": "kennen"
+              "de": "kennen",
+              "c": "v"
             },
             {
               "schrift": "imparare",
               "lerntext": "imparare",
-              "de": "lernen"
+              "de": "lernen",
+              "c": "v"
             },
             {
               "schrift": "insegnare",
               "lerntext": "insegnare",
-              "de": "unterrichten"
+              "de": "unterrichten",
+              "c": "v"
             },
             {
               "schrift": "ricordare",
               "lerntext": "ricordare",
-              "de": "sich erinnern"
+              "de": "sich erinnern",
+              "c": "v"
             },
             {
               "schrift": "cominciare",
               "lerntext": "cominciare",
-              "de": "anfangen"
+              "de": "anfangen",
+              "c": "v"
             },
             {
               "schrift": "vivere",
               "lerntext": "vivere",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "partire",
               "lerntext": "partire",
               "de": "abfahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "arrivare",
               "lerntext": "arrivare",
               "de": "ankommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "uscire",
               "lerntext": "uscire",
               "de": "hinausgehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "restare",
               "lerntext": "restare",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "conoscersi",
               "lerntext": "conoscersi",
               "de": "sich kennenlernen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "succedere",
               "lerntext": "succedere",
               "de": "geschehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "firmare",
               "lerntext": "firmare",
               "de": "unterschreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dispiacere",
               "lerntext": "dispiacere",
               "de": "leidtun",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tornare",
               "lerntext": "tornare",
               "de": "zurückkehren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12705,7 +14611,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "voglio [Slot]",
-          "lerntext": "voglio [Slot]"
+          "lerntext": "voglio [Slot]",
+          "wortarten": {
+            "voglio": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12714,86 +14623,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "provare",
               "lerntext": "provare",
-              "de": "versuchen"
+              "de": "versuchen",
+              "c": "v"
             },
             {
               "schrift": "correre",
               "lerntext": "correre",
-              "de": "rennen"
+              "de": "rennen",
+              "c": "v"
             },
             {
               "schrift": "visitare",
               "lerntext": "visitare",
-              "de": "besuchen"
+              "de": "besuchen",
+              "c": "v"
             },
             {
               "schrift": "sposare",
               "lerntext": "sposare",
-              "de": "heiraten"
+              "de": "heiraten",
+              "c": "v"
             },
             {
               "schrift": "nascere",
               "lerntext": "nascere",
-              "de": "geboren werden"
+              "de": "geboren werden",
+              "c": "v"
             },
             {
               "schrift": "conoscere",
               "lerntext": "conoscere",
               "de": "kennen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "imparare",
               "lerntext": "imparare",
               "de": "lernen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "insegnare",
               "lerntext": "insegnare",
               "de": "unterrichten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ricordare",
               "lerntext": "ricordare",
               "de": "sich erinnern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cominciare",
               "lerntext": "cominciare",
               "de": "anfangen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vivere",
               "lerntext": "vivere",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "partire",
               "lerntext": "partire",
               "de": "abfahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "arrivare",
               "lerntext": "arrivare",
               "de": "ankommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "uscire",
               "lerntext": "uscire",
               "de": "hinausgehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "restare",
               "lerntext": "restare",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12807,7 +14731,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "voglio [Slot]",
-          "lerntext": "voglio [Slot]"
+          "lerntext": "voglio [Slot]",
+          "wortarten": {
+            "voglio": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12816,86 +14743,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "sembrare",
               "lerntext": "sembrare",
-              "de": "scheinen"
+              "de": "scheinen",
+              "c": "v"
             },
             {
               "schrift": "preferire",
               "lerntext": "preferire",
-              "de": "bevorzugen"
+              "de": "bevorzugen",
+              "c": "v"
             },
             {
               "schrift": "ordinare",
               "lerntext": "ordinare",
-              "de": "bestellen"
+              "de": "bestellen",
+              "c": "v"
             },
             {
               "schrift": "prenotare",
               "lerntext": "prenotare",
-              "de": "reservieren"
+              "de": "reservieren",
+              "c": "v"
             },
             {
               "schrift": "affittare",
               "lerntext": "affittare",
-              "de": "mieten"
+              "de": "mieten",
+              "c": "v"
             },
             {
               "schrift": "provare",
               "lerntext": "provare",
               "de": "versuchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "correre",
               "lerntext": "correre",
               "de": "rennen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "visitare",
               "lerntext": "visitare",
               "de": "besuchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sposare",
               "lerntext": "sposare",
               "de": "heiraten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "nascere",
               "lerntext": "nascere",
               "de": "geboren werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "conoscere",
               "lerntext": "conoscere",
               "de": "kennen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "imparare",
               "lerntext": "imparare",
               "de": "lernen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "insegnare",
               "lerntext": "insegnare",
               "de": "unterrichten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ricordare",
               "lerntext": "ricordare",
               "de": "sich erinnern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cominciare",
               "lerntext": "cominciare",
               "de": "anfangen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12909,7 +14851,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "voglio [Slot]",
-          "lerntext": "voglio [Slot]"
+          "lerntext": "voglio [Slot]",
+          "wortarten": {
+            "voglio": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12918,86 +14863,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "cucinare",
               "lerntext": "cucinare",
-              "de": "kochen"
+              "de": "kochen",
+              "c": "v"
             },
             {
               "schrift": "scusare",
               "lerntext": "scusare",
-              "de": "entschuldigen"
+              "de": "entschuldigen",
+              "c": "v"
             },
             {
               "schrift": "ringraziare",
               "lerntext": "ringraziare",
-              "de": "danken"
+              "de": "danken",
+              "c": "v"
             },
             {
               "schrift": "telefonare",
               "lerntext": "telefonare",
-              "de": "telefonieren"
+              "de": "telefonieren",
+              "c": "v"
             },
             {
               "schrift": "salutare",
               "lerntext": "salutare",
-              "de": "grüßen"
+              "de": "grüßen",
+              "c": "v"
             },
             {
               "schrift": "sembrare",
               "lerntext": "sembrare",
               "de": "scheinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "preferire",
               "lerntext": "preferire",
               "de": "bevorzugen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ordinare",
               "lerntext": "ordinare",
               "de": "bestellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "prenotare",
               "lerntext": "prenotare",
               "de": "reservieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "affittare",
               "lerntext": "affittare",
               "de": "mieten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "provare",
               "lerntext": "provare",
               "de": "versuchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "correre",
               "lerntext": "correre",
               "de": "rennen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "visitare",
               "lerntext": "visitare",
               "de": "besuchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sposare",
               "lerntext": "sposare",
               "de": "heiraten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "nascere",
               "lerntext": "nascere",
               "de": "geboren werden",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -13011,7 +14971,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "voglio [Slot]",
-          "lerntext": "voglio [Slot]"
+          "lerntext": "voglio [Slot]",
+          "wortarten": {
+            "voglio": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -13021,60 +14984,70 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "cucinare",
               "lerntext": "cucinare",
               "de": "kochen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "scusare",
               "lerntext": "scusare",
               "de": "entschuldigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ringraziare",
               "lerntext": "ringraziare",
               "de": "danken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "telefonare",
               "lerntext": "telefonare",
               "de": "telefonieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "salutare",
               "lerntext": "salutare",
               "de": "grüßen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sembrare",
               "lerntext": "sembrare",
               "de": "scheinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "preferire",
               "lerntext": "preferire",
               "de": "bevorzugen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ordinare",
               "lerntext": "ordinare",
               "de": "bestellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "prenotare",
               "lerntext": "prenotare",
               "de": "reservieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "affittare",
               "lerntext": "affittare",
               "de": "mieten",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -13088,7 +15061,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "voglio [Slot]",
-          "lerntext": "voglio [Slot]"
+          "lerntext": "voglio [Slot]",
+          "wortarten": {
+            "voglio": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -13098,30 +15074,35 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "cucinare",
               "lerntext": "cucinare",
               "de": "kochen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "scusare",
               "lerntext": "scusare",
               "de": "entschuldigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ringraziare",
               "lerntext": "ringraziare",
               "de": "danken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "telefonare",
               "lerntext": "telefonare",
               "de": "telefonieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "salutare",
               "lerntext": "salutare",
               "de": "grüßen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -13156,7 +15137,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è molto [Slot]",
-          "lerntext": "è molto [Slot]"
+          "lerntext": "è molto [Slot]",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -13165,27 +15149,32 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "buono",
               "lerntext": "buono",
-              "de": "gut"
+              "de": "gut",
+              "c": "a"
             },
             {
               "schrift": "vero",
               "lerntext": "vero",
-              "de": "wahr"
+              "de": "wahr",
+              "c": "a"
             },
             {
               "schrift": "sbagliato",
               "lerntext": "sbagliato",
-              "de": "verkehrt"
+              "de": "verkehrt",
+              "c": "a"
             },
             {
               "schrift": "gratis",
               "lerntext": "gratis",
-              "de": "kostenlos"
+              "de": "kostenlos",
+              "c": "a"
             },
             {
               "schrift": "pieno",
               "lerntext": "pieno",
-              "de": "voll"
+              "de": "voll",
+              "c": "a"
             }
           ]
         ],
@@ -13198,7 +15187,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è molto [Slot]",
-          "lerntext": "è molto [Slot]"
+          "lerntext": "è molto [Slot]",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -13207,56 +15199,66 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "vuoto",
               "lerntext": "vuoto",
-              "de": "leer"
+              "de": "leer",
+              "c": "a"
             },
             {
               "schrift": "libero",
               "lerntext": "libero",
-              "de": "frei"
+              "de": "frei",
+              "c": "a"
             },
             {
               "schrift": "occupato",
               "lerntext": "occupato",
-              "de": "besetzt"
+              "de": "besetzt",
+              "c": "a"
             },
             {
               "schrift": "cattivo",
               "lerntext": "cattivo",
-              "de": "schlecht"
+              "de": "schlecht",
+              "c": "a"
             },
             {
               "schrift": "possibile",
               "lerntext": "possibile",
-              "de": "möglich"
+              "de": "möglich",
+              "c": "a"
             },
             {
               "schrift": "buono",
               "lerntext": "buono",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "vero",
               "lerntext": "vero",
               "de": "wahr",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sbagliato",
               "lerntext": "sbagliato",
               "de": "verkehrt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gratis",
               "lerntext": "gratis",
               "de": "kostenlos",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pieno",
               "lerntext": "pieno",
               "de": "voll",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -13270,7 +15272,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è molto [Slot]",
-          "lerntext": "è molto [Slot]"
+          "lerntext": "è molto [Slot]",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -13279,86 +15284,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "economico",
               "lerntext": "economico",
-              "de": "günstig"
+              "de": "günstig",
+              "c": "a"
             },
             {
               "schrift": "sano",
               "lerntext": "sano",
-              "de": "gesund"
+              "de": "gesund",
+              "c": "a"
             },
             {
               "schrift": "simpatico",
               "lerntext": "simpatico",
-              "de": "sympathisch"
+              "de": "sympathisch",
+              "c": "a"
             },
             {
               "schrift": "gentile",
               "lerntext": "gentile",
-              "de": "freundlich"
+              "de": "freundlich",
+              "c": "a"
             },
             {
               "schrift": "veloce",
               "lerntext": "veloce",
-              "de": "schnell"
+              "de": "schnell",
+              "c": "a"
             },
             {
               "schrift": "vuoto",
               "lerntext": "vuoto",
               "de": "leer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "libero",
               "lerntext": "libero",
               "de": "frei",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "occupato",
               "lerntext": "occupato",
               "de": "besetzt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "cattivo",
               "lerntext": "cattivo",
               "de": "schlecht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "possibile",
               "lerntext": "possibile",
               "de": "möglich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "buono",
               "lerntext": "buono",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "vero",
               "lerntext": "vero",
               "de": "wahr",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sbagliato",
               "lerntext": "sbagliato",
               "de": "verkehrt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gratis",
               "lerntext": "gratis",
               "de": "kostenlos",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pieno",
               "lerntext": "pieno",
               "de": "voll",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -13372,7 +15392,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è molto [Slot]",
-          "lerntext": "è molto [Slot]"
+          "lerntext": "è molto [Slot]",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -13381,86 +15404,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "lento",
               "lerntext": "lento",
-              "de": "langsam"
+              "de": "langsam",
+              "c": "a"
             },
             {
               "schrift": "salato",
               "lerntext": "salato",
-              "de": "salzig"
+              "de": "salzig",
+              "c": "a"
             },
             {
               "schrift": "piccante",
               "lerntext": "piccante",
-              "de": "scharf"
+              "de": "scharf",
+              "c": "a"
             },
             {
               "schrift": "buonissimo",
               "lerntext": "buonissimo",
-              "de": "sehr gut"
+              "de": "sehr gut",
+              "c": "a"
             },
             {
               "schrift": "primo piano",
               "lerntext": "primo piano",
-              "de": "erster Stock"
+              "de": "erster Stock",
+              "c": "a"
             },
             {
               "schrift": "economico",
               "lerntext": "economico",
               "de": "günstig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sano",
               "lerntext": "sano",
               "de": "gesund",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "simpatico",
               "lerntext": "simpatico",
               "de": "sympathisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gentile",
               "lerntext": "gentile",
               "de": "freundlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "veloce",
               "lerntext": "veloce",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "vuoto",
               "lerntext": "vuoto",
               "de": "leer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "libero",
               "lerntext": "libero",
               "de": "frei",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "occupato",
               "lerntext": "occupato",
               "de": "besetzt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "cattivo",
               "lerntext": "cattivo",
               "de": "schlecht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "possibile",
               "lerntext": "possibile",
               "de": "möglich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -13474,7 +15512,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è molto [Slot]",
-          "lerntext": "è molto [Slot]"
+          "lerntext": "è molto [Slot]",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -13483,86 +15524,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "ultimo posto",
               "lerntext": "ultimo posto",
-              "de": "letzter Platz"
+              "de": "letzter Platz",
+              "c": "a"
             },
             {
               "schrift": "italiano",
               "lerntext": "italiano",
-              "de": "italienisch"
+              "de": "italienisch",
+              "c": "a"
             },
             {
               "schrift": "tedesco",
               "lerntext": "tedesco",
-              "de": "deutsch"
+              "de": "deutsch",
+              "c": "a"
             },
             {
               "schrift": "inglese",
               "lerntext": "inglese",
-              "de": "englisch"
+              "de": "englisch",
+              "c": "a"
             },
             {
               "schrift": "scorso",
               "lerntext": "scorso",
-              "de": "letzter"
+              "de": "letzter",
+              "c": "a"
             },
             {
               "schrift": "lento",
               "lerntext": "lento",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "salato",
               "lerntext": "salato",
               "de": "salzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "piccante",
               "lerntext": "piccante",
               "de": "scharf",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "buonissimo",
               "lerntext": "buonissimo",
               "de": "sehr gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "primo piano",
               "lerntext": "primo piano",
               "de": "erster Stock",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "economico",
               "lerntext": "economico",
               "de": "günstig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sano",
               "lerntext": "sano",
               "de": "gesund",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "simpatico",
               "lerntext": "simpatico",
               "de": "sympathisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gentile",
               "lerntext": "gentile",
               "de": "freundlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "veloce",
               "lerntext": "veloce",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -13576,7 +15632,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è molto [Slot]",
-          "lerntext": "è molto [Slot]"
+          "lerntext": "è molto [Slot]",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -13585,86 +15644,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "fresco",
               "lerntext": "fresco",
-              "de": "frisch"
+              "de": "frisch",
+              "c": "a"
             },
             {
               "schrift": "straniero",
               "lerntext": "straniero",
-              "de": "ausländisch"
+              "de": "ausländisch",
+              "c": "a"
             },
             {
               "schrift": "prossimo",
               "lerntext": "prossimo",
-              "de": "nächster"
+              "de": "nächster",
+              "c": "a"
             },
             {
               "schrift": "solito",
               "lerntext": "solito",
-              "de": "üblich"
+              "de": "üblich",
+              "c": "a"
             },
             {
               "schrift": "bravo",
               "lerntext": "bravo",
-              "de": "tüchtig"
+              "de": "tüchtig",
+              "c": "a"
             },
             {
               "schrift": "ultimo posto",
               "lerntext": "ultimo posto",
               "de": "letzter Platz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "italiano",
               "lerntext": "italiano",
               "de": "italienisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tedesco",
               "lerntext": "tedesco",
               "de": "deutsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "inglese",
               "lerntext": "inglese",
               "de": "englisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "scorso",
               "lerntext": "scorso",
               "de": "letzter",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lento",
               "lerntext": "lento",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "salato",
               "lerntext": "salato",
               "de": "salzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "piccante",
               "lerntext": "piccante",
               "de": "scharf",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "buonissimo",
               "lerntext": "buonissimo",
               "de": "sehr gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "primo piano",
               "lerntext": "primo piano",
               "de": "erster Stock",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -13678,7 +15752,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è molto [Slot]",
-          "lerntext": "è molto [Slot]"
+          "lerntext": "è molto [Slot]",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -13688,60 +15765,70 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "fresco",
               "lerntext": "fresco",
               "de": "frisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "straniero",
               "lerntext": "straniero",
               "de": "ausländisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "prossimo",
               "lerntext": "prossimo",
               "de": "nächster",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "solito",
               "lerntext": "solito",
               "de": "üblich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bravo",
               "lerntext": "bravo",
               "de": "tüchtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ultimo posto",
               "lerntext": "ultimo posto",
               "de": "letzter Platz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "italiano",
               "lerntext": "italiano",
               "de": "italienisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tedesco",
               "lerntext": "tedesco",
               "de": "deutsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "inglese",
               "lerntext": "inglese",
               "de": "englisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "scorso",
               "lerntext": "scorso",
               "de": "letzter",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -13755,7 +15842,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è molto [Slot]",
-          "lerntext": "è molto [Slot]"
+          "lerntext": "è molto [Slot]",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -13765,30 +15855,35 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "fresco",
               "lerntext": "fresco",
               "de": "frisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "straniero",
               "lerntext": "straniero",
               "de": "ausländisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "prossimo",
               "lerntext": "prossimo",
               "de": "nächster",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "solito",
               "lerntext": "solito",
               "de": "üblich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bravo",
               "lerntext": "bravo",
               "de": "tüchtig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -13823,7 +15918,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "lo faccio [Slot]",
-          "lerntext": "lo faccio [Slot]"
+          "lerntext": "lo faccio [Slot]",
+          "wortarten": {
+            "faccio": "v"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -13865,7 +15963,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "lo faccio [Slot]",
-          "lerntext": "lo faccio [Slot]"
+          "lerntext": "lo faccio [Slot]",
+          "wortarten": {
+            "faccio": "v"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -13937,7 +16038,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "lo faccio [Slot]",
-          "lerntext": "lo faccio [Slot]"
+          "lerntext": "lo faccio [Slot]",
+          "wortarten": {
+            "faccio": "v"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -14039,7 +16143,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "lo faccio [Slot]",
-          "lerntext": "lo faccio [Slot]"
+          "lerntext": "lo faccio [Slot]",
+          "wortarten": {
+            "faccio": "v"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -14141,7 +16248,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "lo faccio [Slot]",
-          "lerntext": "lo faccio [Slot]"
+          "lerntext": "lo faccio [Slot]",
+          "wortarten": {
+            "faccio": "v"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -14223,7 +16333,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "lo faccio [Slot]",
-          "lerntext": "lo faccio [Slot]"
+          "lerntext": "lo faccio [Slot]",
+          "wortarten": {
+            "faccio": "v"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -14297,7 +16410,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è per [Slot]",
-          "lerntext": "è per [Slot]"
+          "lerntext": "è per [Slot]",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "Es ist für [Slot].",
         "pronouns": [],
@@ -14306,27 +16422,32 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "loro",
               "lerntext": "loro",
-              "de": "sie (Mehrzahl)"
+              "de": "sie (Mehrzahl)",
+              "c": "p"
             },
             {
               "schrift": "entrambi",
               "lerntext": "entrambi",
-              "de": "beide"
+              "de": "beide",
+              "c": "p"
             },
             {
               "schrift": "ne",
               "lerntext": "ne",
-              "de": "davon"
+              "de": "davon",
+              "c": "p"
             },
             {
               "schrift": "quello",
               "lerntext": "quello",
-              "de": "jener"
+              "de": "jener",
+              "c": "p"
             },
             {
               "schrift": "qualcuno",
               "lerntext": "qualcuno",
-              "de": "jemand"
+              "de": "jemand",
+              "c": "p"
             }
           ]
         ],
@@ -14339,7 +16460,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è per [Slot]",
-          "lerntext": "è per [Slot]"
+          "lerntext": "è per [Slot]",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "Es ist für [Slot].",
         "pronouns": [],
@@ -14348,56 +16472,66 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "niente",
               "lerntext": "niente",
-              "de": "nichts"
+              "de": "nichts",
+              "c": "p"
             },
             {
               "schrift": "nessuno",
               "lerntext": "nessuno",
-              "de": "niemand"
+              "de": "niemand",
+              "c": "p"
             },
             {
               "schrift": "altro",
               "lerntext": "altro",
-              "de": "anderer"
+              "de": "anderer",
+              "c": "p"
             },
             {
               "schrift": "stesso",
               "lerntext": "stesso",
-              "de": "selbe"
+              "de": "selbe",
+              "c": "p"
             },
             {
               "schrift": "ognuno",
               "lerntext": "ognuno",
-              "de": "jeder"
+              "de": "jeder",
+              "c": "p"
             },
             {
               "schrift": "loro",
               "lerntext": "loro",
               "de": "sie (Mehrzahl)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "entrambi",
               "lerntext": "entrambi",
               "de": "beide",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ne",
               "lerntext": "ne",
               "de": "davon",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "quello",
               "lerntext": "quello",
               "de": "jener",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "qualcuno",
               "lerntext": "qualcuno",
               "de": "jemand",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -14411,7 +16545,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è per [Slot]",
-          "lerntext": "è per [Slot]"
+          "lerntext": "è per [Slot]",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "Es ist für [Slot].",
         "pronouns": [],
@@ -14420,76 +16557,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "vostro",
               "lerntext": "vostro",
-              "de": "euer"
+              "de": "euer",
+              "c": "p"
             },
             {
               "schrift": "ciascuno",
               "lerntext": "ciascuno",
-              "de": "jeder einzelne"
+              "de": "jeder einzelne",
+              "c": "p"
             },
             {
               "schrift": "alcuni",
               "lerntext": "alcuni",
-              "de": "einige"
+              "de": "einige",
+              "c": "p"
             },
             {
               "schrift": "niente",
               "lerntext": "niente",
               "de": "nichts",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "nessuno",
               "lerntext": "nessuno",
               "de": "niemand",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "altro",
               "lerntext": "altro",
               "de": "anderer",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "stesso",
               "lerntext": "stesso",
               "de": "selbe",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ognuno",
               "lerntext": "ognuno",
               "de": "jeder",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "loro",
               "lerntext": "loro",
               "de": "sie (Mehrzahl)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "entrambi",
               "lerntext": "entrambi",
               "de": "beide",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ne",
               "lerntext": "ne",
               "de": "davon",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "quello",
               "lerntext": "quello",
               "de": "jener",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "qualcuno",
               "lerntext": "qualcuno",
               "de": "jemand",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -14503,7 +16653,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è per [Slot]",
-          "lerntext": "è per [Slot]"
+          "lerntext": "è per [Slot]",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "Es ist für [Slot].",
         "pronouns": [],
@@ -14513,48 +16666,56 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "vostro",
               "lerntext": "vostro",
               "de": "euer",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ciascuno",
               "lerntext": "ciascuno",
               "de": "jeder einzelne",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "alcuni",
               "lerntext": "alcuni",
               "de": "einige",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "niente",
               "lerntext": "niente",
               "de": "nichts",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "nessuno",
               "lerntext": "nessuno",
               "de": "niemand",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "altro",
               "lerntext": "altro",
               "de": "anderer",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "stesso",
               "lerntext": "stesso",
               "de": "selbe",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ognuno",
               "lerntext": "ognuno",
               "de": "jeder",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -14568,7 +16729,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è per [Slot]",
-          "lerntext": "è per [Slot]"
+          "lerntext": "è per [Slot]",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "Es ist für [Slot].",
         "pronouns": [],
@@ -14578,18 +16742,21 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "vostro",
               "lerntext": "vostro",
               "de": "euer",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ciascuno",
               "lerntext": "ciascuno",
               "de": "jeder einzelne",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "alcuni",
               "lerntext": "alcuni",
               "de": "einige",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -14866,7 +17033,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è [Slot] la casa",
-          "lerntext": "è [Slot] la casa"
+          "lerntext": "è [Slot] la casa",
+          "wortarten": {
+            "è": "v",
+            "casa": "n"
+          }
         },
         "frameDe": "Es ist [Slot] dem Haus.",
         "pronouns": [],
@@ -14908,7 +17079,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è [Slot] la casa",
-          "lerntext": "è [Slot] la casa"
+          "lerntext": "è [Slot] la casa",
+          "wortarten": {
+            "è": "v",
+            "casa": "n"
+          }
         },
         "frameDe": "Es ist [Slot] dem Haus.",
         "pronouns": [],
@@ -14965,7 +17140,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è [Slot] la casa",
-          "lerntext": "è [Slot] la casa"
+          "lerntext": "è [Slot] la casa",
+          "wortarten": {
+            "è": "v",
+            "casa": "n"
+          }
         },
         "frameDe": "Es ist [Slot] dem Haus.",
         "pronouns": [],
@@ -15045,7 +17224,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "vengo [Slot] posso",
-          "lerntext": "vengo [Slot] posso"
+          "lerntext": "vengo [Slot] posso",
+          "wortarten": {
+            "vengo": "v",
+            "posso": "v"
+          }
         },
         "frameDe": "Ich komme, [Slot] ich kann.",
         "pronouns": [],
@@ -15054,22 +17237,26 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "pero",
               "lerntext": "pero",
-              "de": "jedoch"
+              "de": "jedoch",
+              "c": "k"
             },
             {
               "schrift": "oppure",
               "lerntext": "oppure",
-              "de": "oder aber"
+              "de": "oder aber",
+              "c": "k"
             },
             {
               "schrift": "invece",
               "lerntext": "invece",
-              "de": "stattdessen"
+              "de": "stattdessen",
+              "c": "k"
             },
             {
               "schrift": "comunque",
               "lerntext": "comunque",
-              "de": "jedenfalls"
+              "de": "jedenfalls",
+              "c": "k"
             }
           ]
         ],
@@ -15082,7 +17269,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "vengo [Slot] posso",
-          "lerntext": "vengo [Slot] posso"
+          "lerntext": "vengo [Slot] posso",
+          "wortarten": {
+            "vengo": "v",
+            "posso": "v"
+          }
         },
         "frameDe": "Ich komme, [Slot] ich kann.",
         "pronouns": [],
@@ -15092,24 +17283,28 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "pero",
               "lerntext": "pero",
               "de": "jedoch",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "oppure",
               "lerntext": "oppure",
               "de": "oder aber",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "invece",
               "lerntext": "invece",
               "de": "stattdessen",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "comunque",
               "lerntext": "comunque",
               "de": "jedenfalls",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -15123,7 +17318,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "vengo [Slot] posso",
-          "lerntext": "vengo [Slot] posso"
+          "lerntext": "vengo [Slot] posso",
+          "wortarten": {
+            "vengo": "v",
+            "posso": "v"
+          }
         },
         "frameDe": "Ich komme, [Slot] ich kann.",
         "pronouns": [],
@@ -15133,24 +17332,28 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "pero",
               "lerntext": "pero",
               "de": "jedoch",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "oppure",
               "lerntext": "oppure",
               "de": "oder aber",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "invece",
               "lerntext": "invece",
               "de": "stattdessen",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "comunque",
               "lerntext": "comunque",
               "de": "jedenfalls",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -15185,7 +17388,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] libro",
-          "lerntext": "[Slot] libro"
+          "lerntext": "[Slot] libro",
+          "wortarten": {
+            "libro": "n"
+          }
         },
         "frameDe": "[Slot] Buch.",
         "pronouns": [],
@@ -15217,7 +17423,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] libro",
-          "lerntext": "[Slot] libro"
+          "lerntext": "[Slot] libro",
+          "wortarten": {
+            "libro": "n"
+          }
         },
         "frameDe": "[Slot] Buch.",
         "pronouns": [],
@@ -15252,7 +17461,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] libro",
-          "lerntext": "[Slot] libro"
+          "lerntext": "[Slot] libro",
+          "wortarten": {
+            "libro": "n"
+          }
         },
         "frameDe": "[Slot] Buch.",
         "pronouns": [],
@@ -15308,7 +17520,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] è?",
-          "lerntext": "[Slot] è?"
+          "lerntext": "[Slot] è?",
+          "wortarten": {
+            "è?": "v"
+          }
         },
         "frameDe": "[Slot] ist es?",
         "pronouns": [],
@@ -15356,14 +17571,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io ho [Slot]",
-          "lerntext": "io ho [Slot]"
+          "lerntext": "io ho [Slot]",
+          "wortarten": {
+            "io": "p",
+            "ho": "v"
+          }
         },
         "frameDe": "ich habe [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15371,86 +17591,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "guardato",
               "lerntext": "guardato",
-              "de": "schauen"
+              "de": "schauen",
+              "c": "v"
             },
             {
               "schrift": "comprato",
               "lerntext": "comprato",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "visto",
               "lerntext": "visto",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "fatto",
               "lerntext": "fatto",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "trovato",
               "lerntext": "trovato",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "preso",
               "lerntext": "preso",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "letto",
               "lerntext": "letto",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "scritto",
               "lerntext": "scritto",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "perso",
               "lerntext": "perso",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sentito",
               "lerntext": "sentito",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cambiato",
               "lerntext": "cambiato",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "continuato",
               "lerntext": "continuato",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sperato",
               "lerntext": "sperato",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "capito",
               "lerntext": "capito",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stato",
               "lerntext": "stato",
               "de": "sein",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15464,14 +17699,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io ho [Slot]",
-          "lerntext": "io ho [Slot]"
+          "lerntext": "io ho [Slot]",
+          "wortarten": {
+            "io": "p",
+            "ho": "v"
+          }
         },
         "frameDe": "ich habe [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15479,86 +17719,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "preso",
               "lerntext": "preso",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "letto",
               "lerntext": "letto",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "scritto",
               "lerntext": "scritto",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "sentito",
               "lerntext": "sentito",
-              "de": "hören"
+              "de": "hören",
+              "c": "v"
             },
             {
               "schrift": "perso",
               "lerntext": "perso",
-              "de": "verlieren"
+              "de": "verlieren",
+              "c": "v"
             },
             {
               "schrift": "comprato",
               "lerntext": "comprato",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "guardato",
               "lerntext": "guardato",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "visto",
               "lerntext": "visto",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "fatto",
               "lerntext": "fatto",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "trovato",
               "lerntext": "trovato",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cambiato",
               "lerntext": "cambiato",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "potuto",
               "lerntext": "potuto",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "messo",
               "lerntext": "messo",
               "de": "setzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ballato",
               "lerntext": "ballato",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "aperto",
               "lerntext": "aperto",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15572,14 +17827,18 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ieri ho [Slot]",
-          "lerntext": "ieri ho [Slot]"
+          "lerntext": "ieri ho [Slot]",
+          "wortarten": {
+            "ho": "v"
+          }
         },
         "frameDe": "Gestern habe ich [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15587,86 +17846,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "lavorato",
               "lerntext": "lavorato",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "giocato",
               "lerntext": "giocato",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "ballato",
               "lerntext": "ballato",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "dormito",
               "lerntext": "dormito",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "aspettato",
               "lerntext": "aspettato",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "cercato",
               "lerntext": "cercato",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "chiesto",
               "lerntext": "chiesto",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "risposto",
               "lerntext": "risposto",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "aiutato",
               "lerntext": "aiutato",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pagato",
               "lerntext": "pagato",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "chiuso",
               "lerntext": "chiuso",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pensato",
               "lerntext": "pensato",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "continuato",
               "lerntext": "continuato",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cambiato",
               "lerntext": "cambiato",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "voluto",
               "lerntext": "voluto",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15680,14 +17954,18 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ieri ho [Slot]",
-          "lerntext": "ieri ho [Slot]"
+          "lerntext": "ieri ho [Slot]",
+          "wortarten": {
+            "ho": "v"
+          }
         },
         "frameDe": "Gestern habe ich [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15695,86 +17973,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "cercato",
               "lerntext": "cercato",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "chiesto",
               "lerntext": "chiesto",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "risposto",
               "lerntext": "risposto",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "aiutato",
               "lerntext": "aiutato",
-              "de": "helfen"
+              "de": "helfen",
+              "c": "v"
             },
             {
               "schrift": "pagato",
               "lerntext": "pagato",
-              "de": "bezahlen"
+              "de": "bezahlen",
+              "c": "v"
             },
             {
               "schrift": "lavorato",
               "lerntext": "lavorato",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "giocato",
               "lerntext": "giocato",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ballato",
               "lerntext": "ballato",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dormito",
               "lerntext": "dormito",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "aspettato",
               "lerntext": "aspettato",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "camminato",
               "lerntext": "camminato",
               "de": "laufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "saputo",
               "lerntext": "saputo",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viaggiato",
               "lerntext": "viaggiato",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dato",
               "lerntext": "dato",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stato",
               "lerntext": "stato",
               "de": "sein",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15788,14 +18081,18 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ho già [Slot]",
-          "lerntext": "ho già [Slot]"
+          "lerntext": "ho già [Slot]",
+          "wortarten": {
+            "ho": "v"
+          }
         },
         "frameDe": "Ich habe schon [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15803,86 +18100,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "vinto",
               "lerntext": "vinto",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "dimenticato",
               "lerntext": "dimenticato",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "capito",
               "lerntext": "capito",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "incontrato",
               "lerntext": "incontrato",
-              "de": "treffen"
+              "de": "treffen",
+              "c": "v"
             },
             {
               "schrift": "dato",
               "lerntext": "dato",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "detto",
               "lerntext": "detto",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "parlato",
               "lerntext": "parlato",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lavato",
               "lerntext": "lavato",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "aperto",
               "lerntext": "aperto",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "chiuso",
               "lerntext": "chiuso",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "servito",
               "lerntext": "servito",
               "de": "dienen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "creduto",
               "lerntext": "creduto",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "riso",
               "lerntext": "riso",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "morto",
               "lerntext": "morto",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "abitato",
               "lerntext": "abitato",
               "de": "wohnen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15896,14 +18208,18 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ho già [Slot]",
-          "lerntext": "ho già [Slot]"
+          "lerntext": "ho già [Slot]",
+          "wortarten": {
+            "ho": "v"
+          }
         },
         "frameDe": "Ich habe schon [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15911,86 +18227,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "detto",
               "lerntext": "detto",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "parlato",
               "lerntext": "parlato",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "aperto",
               "lerntext": "aperto",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "chiuso",
               "lerntext": "chiuso",
-              "de": "schließen"
+              "de": "schließen",
+              "c": "v"
             },
             {
               "schrift": "lavato",
               "lerntext": "lavato",
-              "de": "waschen"
+              "de": "waschen",
+              "c": "v"
             },
             {
               "schrift": "vinto",
               "lerntext": "vinto",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dimenticato",
               "lerntext": "dimenticato",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "capito",
               "lerntext": "capito",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "incontrato",
               "lerntext": "incontrato",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dato",
               "lerntext": "dato",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dovuto",
               "lerntext": "dovuto",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "amato",
               "lerntext": "amato",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "usato",
               "lerntext": "usato",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pulito",
               "lerntext": "pulito",
               "de": "putzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "guidato",
               "lerntext": "guidato",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16025,14 +18356,18 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "tu [Slot]",
-          "lerntext": "tu [Slot]"
+          "lerntext": "tu [Slot]",
+          "wortarten": {
+            "tu": "p"
+          }
         },
         "frameDe": "du [Slot].",
         "pronouns": [
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16040,86 +18375,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "guardi",
               "lerntext": "guardi",
-              "de": "schauen"
+              "de": "schauen",
+              "c": "v"
             },
             {
               "schrift": "compri",
               "lerntext": "compri",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "vedi",
               "lerntext": "vedi",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "fai",
               "lerntext": "fai",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "trovi",
               "lerntext": "trovi",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "prendi",
               "lerntext": "prendi",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "leggi",
               "lerntext": "leggi",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "scrivi",
               "lerntext": "scrivi",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mangi",
               "lerntext": "mangi",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vieni",
               "lerntext": "vieni",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bevi",
               "lerntext": "bevi",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "speri",
               "lerntext": "speri",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vai",
               "lerntext": "vai",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "diventi",
               "lerntext": "diventi",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "piangi",
               "lerntext": "piangi",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16133,14 +18483,18 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "tu [Slot]",
-          "lerntext": "tu [Slot]"
+          "lerntext": "tu [Slot]",
+          "wortarten": {
+            "tu": "p"
+          }
         },
         "frameDe": "du [Slot].",
         "pronouns": [
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16148,76 +18502,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "prendi",
               "lerntext": "prendi",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "leggi",
               "lerntext": "leggi",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "scrivi",
               "lerntext": "scrivi",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "compri",
               "lerntext": "compri",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "guardi",
               "lerntext": "guardi",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vedi",
               "lerntext": "vedi",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "fai",
               "lerntext": "fai",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "trovi",
               "lerntext": "trovi",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sei",
               "lerntext": "sei",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "puoi",
               "lerntext": "puoi",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "metti",
               "lerntext": "metti",
               "de": "setzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hai",
               "lerntext": "hai",
               "de": "haben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pensi",
               "lerntext": "pensi",
               "de": "denken",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16231,14 +18598,18 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "lui [Slot]",
-          "lerntext": "lui [Slot]"
+          "lerntext": "lui [Slot]",
+          "wortarten": {
+            "lui": "p"
+          }
         },
         "frameDe": "er [Slot].",
         "pronouns": [
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16246,86 +18617,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "lavora",
               "lerntext": "lavora",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "gioca",
               "lerntext": "gioca",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "balla",
               "lerntext": "balla",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "dorme",
               "lerntext": "dorme",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "aspetta",
               "lerntext": "aspetta",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "cerca",
               "lerntext": "cerca",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "chiede",
               "lerntext": "chiede",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "risponde",
               "lerntext": "risponde",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "continua",
               "lerntext": "continua",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cambia",
               "lerntext": "cambia",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vuole",
               "lerntext": "vuole",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cammina",
               "lerntext": "cammina",
               "de": "laufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sa",
               "lerntext": "sa",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viaggia",
               "lerntext": "viaggia",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sta",
               "lerntext": "sta",
               "de": "sein",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16339,14 +18725,18 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "lui [Slot]",
-          "lerntext": "lui [Slot]"
+          "lerntext": "lui [Slot]",
+          "wortarten": {
+            "lui": "p"
+          }
         },
         "frameDe": "er [Slot].",
         "pronouns": [
           {
             "schrift": "lui",
             "lerntext": "lui",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16354,76 +18744,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "cerca",
               "lerntext": "cerca",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "chiede",
               "lerntext": "chiede",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "risponde",
               "lerntext": "risponde",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "lavora",
               "lerntext": "lavora",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gioca",
               "lerntext": "gioca",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "balla",
               "lerntext": "balla",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dorme",
               "lerntext": "dorme",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "aspetta",
               "lerntext": "aspetta",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "serve",
               "lerntext": "serve",
               "de": "dienen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "crede",
               "lerntext": "crede",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ride",
               "lerntext": "ride",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "muore",
               "lerntext": "muore",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "abita",
               "lerntext": "abita",
               "de": "wohnen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16437,14 +18840,18 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "noi [Slot]",
-          "lerntext": "noi [Slot]"
+          "lerntext": "noi [Slot]",
+          "wortarten": {
+            "noi": "p"
+          }
         },
         "frameDe": "wir [Slot].",
         "pronouns": [
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16452,86 +18859,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "vinciamo",
               "lerntext": "vinciamo",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "dimentichiamo",
               "lerntext": "dimentichiamo",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "capiamo",
               "lerntext": "capiamo",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "incontriamo",
               "lerntext": "incontriamo",
-              "de": "treffen"
+              "de": "treffen",
+              "c": "v"
             },
             {
               "schrift": "diamo",
               "lerntext": "diamo",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "diciamo",
               "lerntext": "diciamo",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "parliamo",
               "lerntext": "parliamo",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "apriamo",
               "lerntext": "apriamo",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dobbiamo",
               "lerntext": "dobbiamo",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "amiamo",
               "lerntext": "amiamo",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "usiamo",
               "lerntext": "usiamo",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "puliamo",
               "lerntext": "puliamo",
               "de": "putzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "guidiamo",
               "lerntext": "guidiamo",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mangiamo",
               "lerntext": "mangiamo",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "veniamo",
               "lerntext": "veniamo",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16545,14 +18967,18 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "noi [Slot]",
-          "lerntext": "noi [Slot]"
+          "lerntext": "noi [Slot]",
+          "wortarten": {
+            "noi": "p"
+          }
         },
         "frameDe": "wir [Slot].",
         "pronouns": [
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16560,76 +18986,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "diciamo",
               "lerntext": "diciamo",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "parliamo",
               "lerntext": "parliamo",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "apriamo",
               "lerntext": "apriamo",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "vinciamo",
               "lerntext": "vinciamo",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dimentichiamo",
               "lerntext": "dimentichiamo",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "capiamo",
               "lerntext": "capiamo",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "incontriamo",
               "lerntext": "incontriamo",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "diamo",
               "lerntext": "diamo",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "beviamo",
               "lerntext": "beviamo",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "speriamo",
               "lerntext": "speriamo",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "andiamo",
               "lerntext": "andiamo",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "diventiamo",
               "lerntext": "diventiamo",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "piangiamo",
               "lerntext": "piangiamo",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16643,14 +19082,18 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "lei [Slot]",
-          "lerntext": "lei [Slot]"
+          "lerntext": "lei [Slot]",
+          "wortarten": {
+            "lei": "p"
+          }
         },
         "frameDe": "sie [Slot].",
         "pronouns": [
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16658,86 +19101,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "abitano",
               "lerntext": "abitano",
-              "de": "wohnen"
+              "de": "wohnen",
+              "c": "v"
             },
             {
               "schrift": "stanno",
               "lerntext": "stanno",
-              "de": "sein"
+              "de": "sein",
+              "c": "v"
             },
             {
               "schrift": "ridono",
               "lerntext": "ridono",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "piangono",
               "lerntext": "piangono",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "pensano",
               "lerntext": "pensano",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "credono",
               "lerntext": "credono",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sperano",
               "lerntext": "sperano",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "servono",
               "lerntext": "servono",
               "de": "dienen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sono",
               "lerntext": "sono",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "possono",
               "lerntext": "possono",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mettono",
               "lerntext": "mettono",
               "de": "setzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hanno",
               "lerntext": "hanno",
               "de": "haben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "continuano",
               "lerntext": "continuano",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cambiano",
               "lerntext": "cambiano",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vogliono",
               "lerntext": "vogliono",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16751,14 +19209,18 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "lei [Slot]",
-          "lerntext": "lei [Slot]"
+          "lerntext": "lei [Slot]",
+          "wortarten": {
+            "lei": "p"
+          }
         },
         "frameDe": "sie [Slot].",
         "pronouns": [
           {
             "schrift": "lei",
             "lerntext": "lei",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16766,76 +19228,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "credono",
               "lerntext": "credono",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "sperano",
               "lerntext": "sperano",
-              "de": "hoffen"
+              "de": "hoffen",
+              "c": "v"
             },
             {
               "schrift": "servono",
               "lerntext": "servono",
-              "de": "dienen"
+              "de": "dienen",
+              "c": "v"
             },
             {
               "schrift": "abitano",
               "lerntext": "abitano",
               "de": "wohnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stanno",
               "lerntext": "stanno",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ridono",
               "lerntext": "ridono",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "piangono",
               "lerntext": "piangono",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pensano",
               "lerntext": "pensano",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "camminano",
               "lerntext": "camminano",
               "de": "laufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sanno",
               "lerntext": "sanno",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viaggiano",
               "lerntext": "viaggiano",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "muoiono",
               "lerntext": "muoiono",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "devono",
               "lerntext": "devono",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16870,7 +19345,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è più [Slot]",
-          "lerntext": "è più [Slot]"
+          "lerntext": "è più [Slot]",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "Das ist mehr [Slot].",
         "pronouns": [],
@@ -16879,86 +19357,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "difficile",
               "lerntext": "difficile",
-              "de": "schwierig"
+              "de": "schwierig",
+              "c": "a"
             },
             {
               "schrift": "importante",
               "lerntext": "importante",
-              "de": "wichtig"
+              "de": "wichtig",
+              "c": "a"
             },
             {
               "schrift": "caro",
               "lerntext": "caro",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "sporco",
               "lerntext": "sporco",
-              "de": "schmutzig"
+              "de": "schmutzig",
+              "c": "a"
             },
             {
               "schrift": "stanco",
               "lerntext": "stanco",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "triste",
               "lerntext": "triste",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "brutto",
               "lerntext": "brutto",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "falso",
               "lerntext": "falso",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "giusto",
               "lerntext": "giusto",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "facile",
               "lerntext": "facile",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "chiuso",
               "lerntext": "chiuso",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "aperto",
               "lerntext": "aperto",
               "de": "offen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "alto",
               "lerntext": "alto",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "corto",
               "lerntext": "corto",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "caldo",
               "lerntext": "caldo",
               "de": "warm",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -16978,7 +19471,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "è più [Slot]",
-          "lerntext": "è più [Slot]"
+          "lerntext": "è più [Slot]",
+          "wortarten": {
+            "è": "v"
+          }
         },
         "frameDe": "Das ist mehr [Slot].",
         "pronouns": [],
@@ -16987,66 +19483,77 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "triste",
               "lerntext": "triste",
-              "de": "traurig"
+              "de": "traurig",
+              "c": "a"
             },
             {
               "schrift": "difficile",
               "lerntext": "difficile",
               "de": "schwierig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "caro",
               "lerntext": "caro",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sporco",
               "lerntext": "sporco",
               "de": "schmutzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "importante",
               "lerntext": "importante",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "stanco",
               "lerntext": "stanco",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "brutto",
               "lerntext": "brutto",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "falso",
               "lerntext": "falso",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "giusto",
               "lerntext": "giusto",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "freddo",
               "lerntext": "freddo",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "rosso",
               "lerntext": "rosso",
               "de": "rot",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17060,7 +19567,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "sono [Slot] come te",
-          "lerntext": "sono [Slot] come te"
+          "lerntext": "sono [Slot] come te",
+          "wortarten": {
+            "sono": "v",
+            "te": "p"
+          }
         },
         "frameDe": "bin so [Slot] wie du.",
         "pronouns": [],
@@ -17069,86 +19580,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "grande",
               "lerntext": "grande",
-              "de": "groß"
+              "de": "groß",
+              "c": "a"
             },
             {
               "schrift": "piccolo",
               "lerntext": "piccolo",
-              "de": "klein"
+              "de": "klein",
+              "c": "a"
             },
             {
               "schrift": "vecchio",
               "lerntext": "vecchio",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "giovane",
               "lerntext": "giovane",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "caro",
               "lerntext": "caro",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "bello",
               "lerntext": "bello",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "caldo",
               "lerntext": "caldo",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "freddo",
               "lerntext": "freddo",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "nuovo",
               "lerntext": "nuovo",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "forte",
               "lerntext": "forte",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "facile",
               "lerntext": "facile",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "leggero",
               "lerntext": "leggero",
               "de": "leicht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lungo",
               "lerntext": "lungo",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "chiuso",
               "lerntext": "chiuso",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "aperto",
               "lerntext": "aperto",
               "de": "offen",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17162,7 +19688,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "sono [Slot] come te",
-          "lerntext": "sono [Slot] come te"
+          "lerntext": "sono [Slot] come te",
+          "wortarten": {
+            "sono": "v",
+            "te": "p"
+          }
         },
         "frameDe": "bin so [Slot] wie du.",
         "pronouns": [],
@@ -17171,86 +19701,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "bello",
               "lerntext": "bello",
-              "de": "schön"
+              "de": "schön",
+              "c": "a"
             },
             {
               "schrift": "caldo",
               "lerntext": "caldo",
-              "de": "warm"
+              "de": "warm",
+              "c": "a"
             },
             {
               "schrift": "freddo",
               "lerntext": "freddo",
-              "de": "kalt"
+              "de": "kalt",
+              "c": "a"
             },
             {
               "schrift": "nuovo",
               "lerntext": "nuovo",
-              "de": "neu"
+              "de": "neu",
+              "c": "a"
             },
             {
               "schrift": "forte",
               "lerntext": "forte",
-              "de": "stark"
+              "de": "stark",
+              "c": "a"
             },
             {
               "schrift": "grande",
               "lerntext": "grande",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "piccolo",
               "lerntext": "piccolo",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "giovane",
               "lerntext": "giovane",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "vecchio",
               "lerntext": "vecchio",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "caro",
               "lerntext": "caro",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "basso",
               "lerntext": "basso",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dolce",
               "lerntext": "dolce",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "nero",
               "lerntext": "nero",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pesante",
               "lerntext": "pesante",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grigio",
               "lerntext": "grigio",
               "de": "grau",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17285,14 +19830,20 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io mi sento [Slot]",
-          "lerntext": "io mi sento [Slot]"
+          "lerntext": "io mi sento [Slot]",
+          "wortarten": {
+            "io": "p",
+            "mi": "p",
+            "sento": "v"
+          }
         },
         "frameDe": "ich fühle mich [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17300,86 +19851,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "stanco",
               "lerntext": "stanco",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "malato",
               "lerntext": "malato",
-              "de": "krank"
+              "de": "krank",
+              "c": "a"
             },
             {
               "schrift": "triste",
               "lerntext": "triste",
-              "de": "traurig"
+              "de": "traurig",
+              "c": "a"
             },
             {
               "schrift": "forte",
               "lerntext": "forte",
-              "de": "stark"
+              "de": "stark",
+              "c": "a"
             },
             {
               "schrift": "debole",
               "lerntext": "debole",
-              "de": "schwach"
+              "de": "schwach",
+              "c": "a"
             },
             {
               "schrift": "arrabbiato",
               "lerntext": "arrabbiato",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "giovane",
               "lerntext": "giovane",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bello",
               "lerntext": "bello",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pronto",
               "lerntext": "pronto",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "vecchio",
               "lerntext": "vecchio",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bianco",
               "lerntext": "bianco",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "brutto",
               "lerntext": "brutto",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "blu",
               "lerntext": "blu",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "verde",
               "lerntext": "verde",
               "de": "grün",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "giallo",
               "lerntext": "giallo",
               "de": "gelb",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17393,14 +19959,20 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io mi sento [Slot]",
-          "lerntext": "io mi sento [Slot]"
+          "lerntext": "io mi sento [Slot]",
+          "wortarten": {
+            "io": "p",
+            "mi": "p",
+            "sento": "v"
+          }
         },
         "frameDe": "ich fühle mich [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17408,86 +19980,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "pronto",
               "lerntext": "pronto",
-              "de": "bereit"
+              "de": "bereit",
+              "c": "a"
             },
             {
               "schrift": "giovane",
               "lerntext": "giovane",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "vecchio",
               "lerntext": "vecchio",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "arrabbiato",
               "lerntext": "arrabbiato",
-              "de": "wütend"
+              "de": "wütend",
+              "c": "a"
             },
             {
               "schrift": "bello",
               "lerntext": "bello",
-              "de": "schön"
+              "de": "schön",
+              "c": "a"
             },
             {
               "schrift": "debole",
               "lerntext": "debole",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "malato",
               "lerntext": "malato",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "triste",
               "lerntext": "triste",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "forte",
               "lerntext": "forte",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "stanco",
               "lerntext": "stanco",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pulito",
               "lerntext": "pulito",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "marrone",
               "lerntext": "marrone",
               "de": "braun",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "alto",
               "lerntext": "alto",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "falso",
               "lerntext": "falso",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "corto",
               "lerntext": "corto",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17501,14 +20088,20 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "noi ci vediamo [Slot]",
-          "lerntext": "noi ci vediamo [Slot]"
+          "lerntext": "noi ci vediamo [Slot]",
+          "wortarten": {
+            "noi": "p",
+            "ci": "p",
+            "vediamo": "v"
+          }
         },
         "frameDe": "wir treffen uns [Slot].",
         "pronouns": [
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17584,6 +20177,7 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "si",
               "lerntext": "si",
               "de": "ja",
+              "c": "p",
               "wieder": true
             },
             {
@@ -17609,14 +20203,20 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "noi ci vediamo [Slot]",
-          "lerntext": "noi ci vediamo [Slot]"
+          "lerntext": "noi ci vediamo [Slot]",
+          "wortarten": {
+            "noi": "p",
+            "ci": "p",
+            "vediamo": "v"
+          }
         },
         "frameDe": "wir treffen uns [Slot].",
         "pronouns": [
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17728,7 +20328,12 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "resto qui [Slot] sono stanco",
-          "lerntext": "resto qui [Slot] sono stanco"
+          "lerntext": "resto qui [Slot] sono stanco",
+          "wortarten": {
+            "resto": "v",
+            "sono": "v",
+            "stanco": "a"
+          }
         },
         "frameDe": "Ich bleibe hier, [Slot] ich müde bin.",
         "pronouns": [],
@@ -17737,56 +20342,66 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "siccome",
               "lerntext": "siccome",
-              "de": "da"
+              "de": "da",
+              "c": "k"
             },
             {
               "schrift": "se",
               "lerntext": "se",
-              "de": "wenn"
+              "de": "wenn",
+              "c": "k"
             },
             {
               "schrift": "benche",
               "lerntext": "benche",
-              "de": "obwohl"
+              "de": "obwohl",
+              "c": "k"
             },
             {
               "schrift": "mentre",
               "lerntext": "mentre",
-              "de": "während"
+              "de": "während",
+              "c": "k"
             },
             {
               "schrift": "ma",
               "lerntext": "ma",
-              "de": "aber"
+              "de": "aber",
+              "c": "k"
             },
             {
               "schrift": "o",
               "lerntext": "o",
               "de": "oder",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "e",
               "lerntext": "e",
               "de": "und",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "quindi",
               "lerntext": "quindi",
               "de": "also",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "allora",
               "lerntext": "allora",
               "de": "dann",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "anche",
               "lerntext": "anche",
               "de": "auch",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -17800,7 +20415,12 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "resto qui [Slot] sono stanco",
-          "lerntext": "resto qui [Slot] sono stanco"
+          "lerntext": "resto qui [Slot] sono stanco",
+          "wortarten": {
+            "resto": "v",
+            "sono": "v",
+            "stanco": "a"
+          }
         },
         "frameDe": "Ich bleibe hier, [Slot] ich müde bin.",
         "pronouns": [],
@@ -17809,59 +20429,69 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "o",
               "lerntext": "o",
-              "de": "oder"
+              "de": "oder",
+              "c": "k"
             },
             {
               "schrift": "e",
               "lerntext": "e",
-              "de": "und"
+              "de": "und",
+              "c": "k"
             },
             {
               "schrift": "se",
               "lerntext": "se",
               "de": "wenn",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "siccome",
               "lerntext": "siccome",
               "de": "da",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "benche",
               "lerntext": "benche",
               "de": "obwohl",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "mentre",
               "lerntext": "mentre",
               "de": "während",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "ma",
               "lerntext": "ma",
               "de": "aber",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "quindi",
               "lerntext": "quindi",
               "de": "also",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "allora",
               "lerntext": "allora",
               "de": "dann",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "anche",
               "lerntext": "anche",
               "de": "auch",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -17875,7 +20505,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "credo che sia [Slot]",
-          "lerntext": "credo che sia [Slot]"
+          "lerntext": "credo che sia [Slot]",
+          "wortarten": {
+            "credo": "v"
+          }
         },
         "frameDe": "Ich glaube, dass es [Slot] ist.",
         "pronouns": [],
@@ -17884,86 +20517,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "facile",
               "lerntext": "facile",
-              "de": "einfach"
+              "de": "einfach",
+              "c": "a"
             },
             {
               "schrift": "falso",
               "lerntext": "falso",
-              "de": "falsch"
+              "de": "falsch",
+              "c": "a"
             },
             {
               "schrift": "malato",
               "lerntext": "malato",
-              "de": "krank"
+              "de": "krank",
+              "c": "a"
             },
             {
               "schrift": "corto",
               "lerntext": "corto",
-              "de": "kurz"
+              "de": "kurz",
+              "c": "a"
             },
             {
               "schrift": "lungo",
               "lerntext": "lungo",
-              "de": "lang"
+              "de": "lang",
+              "c": "a"
             },
             {
               "schrift": "pulito",
               "lerntext": "pulito",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "nero",
               "lerntext": "nero",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dolce",
               "lerntext": "dolce",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "debole",
               "lerntext": "debole",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "arrabbiato",
               "lerntext": "arrabbiato",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "giusto",
               "lerntext": "giusto",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "rosso",
               "lerntext": "rosso",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "leggero",
               "lerntext": "leggero",
               "de": "leicht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "chiuso",
               "lerntext": "chiuso",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "aperto",
               "lerntext": "aperto",
               "de": "offen",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17974,7 +20622,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "che",
             "lerntext": "che",
-            "de": "der"
+            "de": "der",
+            "c": "p"
           }
         ],
         "id": "29.3"
@@ -17983,7 +20632,10 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "credo che sia [Slot]",
-          "lerntext": "credo che sia [Slot]"
+          "lerntext": "credo che sia [Slot]",
+          "wortarten": {
+            "credo": "v"
+          }
         },
         "frameDe": "Ich glaube, dass es [Slot] ist.",
         "pronouns": [],
@@ -17992,86 +20644,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "pulito",
               "lerntext": "pulito",
-              "de": "sauber"
+              "de": "sauber",
+              "c": "a"
             },
             {
               "schrift": "debole",
               "lerntext": "debole",
-              "de": "schwach"
+              "de": "schwach",
+              "c": "a"
             },
             {
               "schrift": "nero",
               "lerntext": "nero",
-              "de": "schwarz"
+              "de": "schwarz",
+              "c": "a"
             },
             {
               "schrift": "dolce",
               "lerntext": "dolce",
-              "de": "süß"
+              "de": "süß",
+              "c": "a"
             },
             {
               "schrift": "arrabbiato",
               "lerntext": "arrabbiato",
-              "de": "wütend"
+              "de": "wütend",
+              "c": "a"
             },
             {
               "schrift": "facile",
               "lerntext": "facile",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lungo",
               "lerntext": "lungo",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "falso",
               "lerntext": "falso",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "corto",
               "lerntext": "corto",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "malato",
               "lerntext": "malato",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "basso",
               "lerntext": "basso",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "felice",
               "lerntext": "felice",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pesante",
               "lerntext": "pesante",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grigio",
               "lerntext": "grigio",
               "de": "grau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bianco",
               "lerntext": "bianco",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -18085,7 +20752,13 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "se ho tempo, voglio [Slot]",
-          "lerntext": "se ho tempo, voglio [Slot]"
+          "lerntext": "se ho tempo, voglio [Slot]",
+          "wortarten": {
+            "se": "k",
+            "ho": "v",
+            "tempo,": "n",
+            "voglio": "v"
+          }
         },
         "frameDe": "Wenn ich Zeit habe, will ich [Slot].",
         "pronouns": [],
@@ -18094,86 +20767,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "abitare",
               "lerntext": "abitare",
-              "de": "wohnen"
+              "de": "wohnen",
+              "c": "v"
             },
             {
               "schrift": "stare",
               "lerntext": "stare",
-              "de": "sein"
+              "de": "sein",
+              "c": "v"
             },
             {
               "schrift": "ridere",
               "lerntext": "ridere",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "piangere",
               "lerntext": "piangere",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "pensare",
               "lerntext": "pensare",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "credere",
               "lerntext": "credere",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sperare",
               "lerntext": "sperare",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "servire",
               "lerntext": "servire",
               "de": "dienen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "amare",
               "lerntext": "amare",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "usare",
               "lerntext": "usare",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pulire",
               "lerntext": "pulire",
               "de": "putzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "guidare",
               "lerntext": "guidare",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mangiare",
               "lerntext": "mangiare",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "venire",
               "lerntext": "venire",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bere",
               "lerntext": "bere",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18187,7 +20875,13 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "se ho tempo, voglio [Slot]",
-          "lerntext": "se ho tempo, voglio [Slot]"
+          "lerntext": "se ho tempo, voglio [Slot]",
+          "wortarten": {
+            "se": "k",
+            "ho": "v",
+            "tempo,": "n",
+            "voglio": "v"
+          }
         },
         "frameDe": "Wenn ich Zeit habe, will ich [Slot].",
         "pronouns": [],
@@ -18196,76 +20890,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "credere",
               "lerntext": "credere",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "sperare",
               "lerntext": "sperare",
-              "de": "hoffen"
+              "de": "hoffen",
+              "c": "v"
             },
             {
               "schrift": "servire",
               "lerntext": "servire",
-              "de": "dienen"
+              "de": "dienen",
+              "c": "v"
             },
             {
               "schrift": "abitare",
               "lerntext": "abitare",
               "de": "wohnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stare",
               "lerntext": "stare",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ridere",
               "lerntext": "ridere",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "piangere",
               "lerntext": "piangere",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pensare",
               "lerntext": "pensare",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "andare",
               "lerntext": "andare",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "diventare",
               "lerntext": "diventare",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "essere",
               "lerntext": "essere",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "potere",
               "lerntext": "potere",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mettere",
               "lerntext": "mettere",
               "de": "setzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18300,14 +21007,18 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "puoi [Slot], per favore?",
-          "lerntext": "puoi [Slot], per favore?"
+          "lerntext": "puoi [Slot], per favore?",
+          "wortarten": {
+            "puoi": "v"
+          }
         },
         "frameDe": "Kannst du bitte [Slot]?",
         "pronouns": [
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18315,86 +21026,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "lavorare",
               "lerntext": "lavorare",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "giocare",
               "lerntext": "giocare",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "ballare",
               "lerntext": "ballare",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "dormire",
               "lerntext": "dormire",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "aspettare",
               "lerntext": "aspettare",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "aiutare",
               "lerntext": "aiutare",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pagare",
               "lerntext": "pagare",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cercare",
               "lerntext": "cercare",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "chiedere",
               "lerntext": "chiedere",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "rispondere",
               "lerntext": "rispondere",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "avere",
               "lerntext": "avere",
               "de": "haben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "continuare",
               "lerntext": "continuare",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cambiare",
               "lerntext": "cambiare",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "volere",
               "lerntext": "volere",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "camminare",
               "lerntext": "camminare",
               "de": "laufen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18408,14 +21134,18 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "puoi [Slot], per favore?",
-          "lerntext": "puoi [Slot], per favore?"
+          "lerntext": "puoi [Slot], per favore?",
+          "wortarten": {
+            "puoi": "v"
+          }
         },
         "frameDe": "Kannst du bitte [Slot]?",
         "pronouns": [
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18423,86 +21153,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "cercare",
               "lerntext": "cercare",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "chiedere",
               "lerntext": "chiedere",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "rispondere",
               "lerntext": "rispondere",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "aiutare",
               "lerntext": "aiutare",
-              "de": "helfen"
+              "de": "helfen",
+              "c": "v"
             },
             {
               "schrift": "pagare",
               "lerntext": "pagare",
-              "de": "bezahlen"
+              "de": "bezahlen",
+              "c": "v"
             },
             {
               "schrift": "lavorare",
               "lerntext": "lavorare",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "giocare",
               "lerntext": "giocare",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ballare",
               "lerntext": "ballare",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dormire",
               "lerntext": "dormire",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "aspettare",
               "lerntext": "aspettare",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sapere",
               "lerntext": "sapere",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viaggiare",
               "lerntext": "viaggiare",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "morire",
               "lerntext": "morire",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dovere",
               "lerntext": "dovere",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "amare",
               "lerntext": "amare",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18516,14 +21261,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "tu devi [Slot]",
-          "lerntext": "tu devi [Slot]"
+          "lerntext": "tu devi [Slot]",
+          "wortarten": {
+            "tu": "p",
+            "devi": "v"
+          }
         },
         "frameDe": "du musst [Slot].",
         "pronouns": [
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18531,86 +21281,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "vincere",
               "lerntext": "vincere",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "dimenticare",
               "lerntext": "dimenticare",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "capire",
               "lerntext": "capire",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "incontrare",
               "lerntext": "incontrare",
-              "de": "treffen"
+              "de": "treffen",
+              "c": "v"
             },
             {
               "schrift": "dare",
               "lerntext": "dare",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "dire",
               "lerntext": "dire",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "parlare",
               "lerntext": "parlare",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "aprire",
               "lerntext": "aprire",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "usare",
               "lerntext": "usare",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pulire",
               "lerntext": "pulire",
               "de": "putzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "guidare",
               "lerntext": "guidare",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mangiare",
               "lerntext": "mangiare",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "venire",
               "lerntext": "venire",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bere",
               "lerntext": "bere",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "andare",
               "lerntext": "andare",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18624,14 +21389,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "tu devi [Slot]",
-          "lerntext": "tu devi [Slot]"
+          "lerntext": "tu devi [Slot]",
+          "wortarten": {
+            "tu": "p",
+            "devi": "v"
+          }
         },
         "frameDe": "du musst [Slot].",
         "pronouns": [
           {
             "schrift": "tu",
             "lerntext": "tu",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18639,76 +21409,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "dire",
               "lerntext": "dire",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "parlare",
               "lerntext": "parlare",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "aprire",
               "lerntext": "aprire",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "vincere",
               "lerntext": "vincere",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dimenticare",
               "lerntext": "dimenticare",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "capire",
               "lerntext": "capire",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "incontrare",
               "lerntext": "incontrare",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dare",
               "lerntext": "dare",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "diventare",
               "lerntext": "diventare",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "essere",
               "lerntext": "essere",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "potere",
               "lerntext": "potere",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mettere",
               "lerntext": "mettere",
               "de": "setzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "avere",
               "lerntext": "avere",
               "de": "haben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18743,14 +21526,20 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io do il libro a [Slot]",
-          "lerntext": "io do il libro a [Slot]"
+          "lerntext": "io do il libro a [Slot]",
+          "wortarten": {
+            "io": "p",
+            "do": "v",
+            "libro": "n"
+          }
         },
         "frameDe": "ich gebe [Slot] das Buch.",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18758,86 +21547,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "amico",
               "lerntext": "amico",
-              "de": "Freund"
+              "de": "Freund",
+              "c": "n"
             },
             {
               "schrift": "madre",
               "lerntext": "madre",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "padre",
               "lerntext": "padre",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "bambino",
               "lerntext": "bambino",
-              "de": "Kind"
+              "de": "Kind",
+              "c": "n"
             },
             {
               "schrift": "studente",
               "lerntext": "studente",
-              "de": "Student"
+              "de": "Student",
+              "c": "n"
             },
             {
               "schrift": "fratello",
               "lerntext": "fratello",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sorella",
               "lerntext": "sorella",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "donna",
               "lerntext": "donna",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "esame",
               "lerntext": "esame",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "risposta",
               "lerntext": "risposta",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ora",
               "lerntext": "ora",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "notte",
               "lerntext": "notte",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "montagna",
               "lerntext": "montagna",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "appartamento",
               "lerntext": "appartamento",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "valigia",
               "lerntext": "valigia",
               "de": "Koffer",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18851,14 +21655,20 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io do il libro a [Slot]",
-          "lerntext": "io do il libro a [Slot]"
+          "lerntext": "io do il libro a [Slot]",
+          "wortarten": {
+            "io": "p",
+            "do": "v",
+            "libro": "n"
+          }
         },
         "frameDe": "ich gebe [Slot] das Buch.",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18866,76 +21676,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "donna",
               "lerntext": "donna",
-              "de": "Frau"
+              "de": "Frau",
+              "c": "n"
             },
             {
               "schrift": "sorella",
               "lerntext": "sorella",
-              "de": "Schwester"
+              "de": "Schwester",
+              "c": "n"
             },
             {
               "schrift": "fratello",
               "lerntext": "fratello",
-              "de": "Bruder"
+              "de": "Bruder",
+              "c": "n"
             },
             {
               "schrift": "bambino",
               "lerntext": "bambino",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amico",
               "lerntext": "amico",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "madre",
               "lerntext": "madre",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "padre",
               "lerntext": "padre",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "studente",
               "lerntext": "studente",
               "de": "Student",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "esame",
               "lerntext": "esame",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "risposta",
               "lerntext": "risposta",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "telefono",
               "lerntext": "telefono",
               "de": "Telefon",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "albergo",
               "lerntext": "albergo",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sera",
               "lerntext": "sera",
               "de": "Abend",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18949,14 +21772,18 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io mostro la città a [Slot]",
-          "lerntext": "io mostro la città a [Slot]"
+          "lerntext": "io mostro la città a [Slot]",
+          "wortarten": {
+            "io": "p"
+          }
         },
         "frameDe": "ich zeige [Slot] die Stadt.",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18964,86 +21791,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "amico",
               "lerntext": "amico",
-              "de": "Freund"
+              "de": "Freund",
+              "c": "n"
             },
             {
               "schrift": "madre",
               "lerntext": "madre",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "padre",
               "lerntext": "padre",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "bambino",
               "lerntext": "bambino",
-              "de": "Kind"
+              "de": "Kind",
+              "c": "n"
             },
             {
               "schrift": "studente",
               "lerntext": "studente",
-              "de": "Student"
+              "de": "Student",
+              "c": "n"
             },
             {
               "schrift": "fratello",
               "lerntext": "fratello",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sorella",
               "lerntext": "sorella",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "donna",
               "lerntext": "donna",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "esame",
               "lerntext": "esame",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "risposta",
               "lerntext": "risposta",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vento",
               "lerntext": "vento",
               "de": "Wind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "finestra",
               "lerntext": "finestra",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "porta",
               "lerntext": "porta",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "treno",
               "lerntext": "treno",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "carta",
               "lerntext": "carta",
               "de": "Karte",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -19057,14 +21899,18 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io mostro la città a [Slot]",
-          "lerntext": "io mostro la città a [Slot]"
+          "lerntext": "io mostro la città a [Slot]",
+          "wortarten": {
+            "io": "p"
+          }
         },
         "frameDe": "ich zeige [Slot] die Stadt.",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19072,76 +21918,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "donna",
               "lerntext": "donna",
-              "de": "Frau"
+              "de": "Frau",
+              "c": "n"
             },
             {
               "schrift": "sorella",
               "lerntext": "sorella",
-              "de": "Schwester"
+              "de": "Schwester",
+              "c": "n"
             },
             {
               "schrift": "fratello",
               "lerntext": "fratello",
-              "de": "Bruder"
+              "de": "Bruder",
+              "c": "n"
             },
             {
               "schrift": "bambino",
               "lerntext": "bambino",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "amico",
               "lerntext": "amico",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "madre",
               "lerntext": "madre",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "padre",
               "lerntext": "padre",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "studente",
               "lerntext": "studente",
               "de": "Student",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "settimana",
               "lerntext": "settimana",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "esame",
               "lerntext": "esame",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "universita",
               "lerntext": "universita",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "formaggio",
               "lerntext": "formaggio",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aiuto",
               "lerntext": "aiuto",
               "de": "Hilfe",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -19176,14 +22035,20 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io voglio un bicchiere di [Slot]",
-          "lerntext": "io voglio un bicchiere di [Slot]"
+          "lerntext": "io voglio un bicchiere di [Slot]",
+          "wortarten": {
+            "io": "p",
+            "voglio": "v",
+            "bicchiere": "n"
+          }
         },
         "frameDe": "ich möchte ein Glas [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19191,81 +22056,95 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "acqua",
               "lerntext": "acqua",
-              "de": "Wasser"
+              "de": "Wasser",
+              "c": "n"
             },
             {
               "schrift": "birra",
               "lerntext": "birra",
-              "de": "Bier"
+              "de": "Bier",
+              "c": "n"
             },
             {
               "schrift": "latte",
               "lerntext": "latte",
-              "de": "Milch"
+              "de": "Milch",
+              "c": "n"
             },
             {
               "schrift": "caffe",
               "lerntext": "caffe",
-              "de": "Kaffee"
+              "de": "Kaffee",
+              "c": "n"
             },
             {
               "schrift": "braccio",
               "lerntext": "braccio",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "giorno",
               "lerntext": "giorno",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "autobus",
               "lerntext": "autobus",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "piede",
               "lerntext": "piede",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "occhio",
               "lerntext": "occhio",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gamba",
               "lerntext": "gamba",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "piatto",
               "lerntext": "piatto",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "zucchero",
               "lerntext": "zucchero",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pane",
               "lerntext": "pane",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "verdura",
               "lerntext": "verdura",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -19276,7 +22155,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "bicchiere",
             "lerntext": "bicchiere",
-            "de": "Glas"
+            "de": "Glas",
+            "c": "n"
           },
           {
             "schrift": "un",
@@ -19290,14 +22170,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "noi abbiamo abbastanza [Slot]",
-          "lerntext": "noi abbiamo abbastanza [Slot]"
+          "lerntext": "noi abbiamo abbastanza [Slot]",
+          "wortarten": {
+            "noi": "p",
+            "abbiamo": "v"
+          }
         },
         "frameDe": "wir haben genug [Slot].",
         "pronouns": [
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19305,86 +22190,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "soldi",
               "lerntext": "soldi",
-              "de": "Geld"
+              "de": "Geld",
+              "c": "n"
             },
             {
               "schrift": "tempo",
               "lerntext": "tempo",
-              "de": "Zeit"
+              "de": "Zeit",
+              "c": "n"
             },
             {
               "schrift": "pane",
               "lerntext": "pane",
-              "de": "Brot"
+              "de": "Brot",
+              "c": "n"
             },
             {
               "schrift": "frutta",
               "lerntext": "frutta",
-              "de": "Obst"
+              "de": "Obst",
+              "c": "n"
             },
             {
               "schrift": "carne",
               "lerntext": "carne",
-              "de": "Fleisch"
+              "de": "Fleisch",
+              "c": "n"
             },
             {
               "schrift": "pesce",
               "lerntext": "pesce",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "zucchero",
               "lerntext": "zucchero",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "latte",
               "lerntext": "latte",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vestito",
               "lerntext": "vestito",
               "de": "Kleid",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "scarpa",
               "lerntext": "scarpa",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aeroporto",
               "lerntext": "aeroporto",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "biglietto",
               "lerntext": "biglietto",
               "de": "Fahrkarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bagno",
               "lerntext": "bagno",
               "de": "Bad",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mare",
               "lerntext": "mare",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "famiglia",
               "lerntext": "famiglia",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -19404,14 +22304,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "noi abbiamo abbastanza [Slot]",
-          "lerntext": "noi abbiamo abbastanza [Slot]"
+          "lerntext": "noi abbiamo abbastanza [Slot]",
+          "wortarten": {
+            "noi": "p",
+            "abbiamo": "v"
+          }
         },
         "frameDe": "wir haben genug [Slot].",
         "pronouns": [
           {
             "schrift": "noi",
             "lerntext": "noi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19419,76 +22324,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "pesce",
               "lerntext": "pesce",
-              "de": "Fisch"
+              "de": "Fisch",
+              "c": "n"
             },
             {
               "schrift": "zucchero",
               "lerntext": "zucchero",
-              "de": "Zucker"
+              "de": "Zucker",
+              "c": "n"
             },
             {
               "schrift": "latte",
               "lerntext": "latte",
-              "de": "Milch"
+              "de": "Milch",
+              "c": "n"
             },
             {
               "schrift": "soldi",
               "lerntext": "soldi",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "frutta",
               "lerntext": "frutta",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "carne",
               "lerntext": "carne",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pane",
               "lerntext": "pane",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tempo",
               "lerntext": "tempo",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "polizia",
               "lerntext": "polizia",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "figlio",
               "lerntext": "figlio",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ospedale",
               "lerntext": "ospedale",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nome",
               "lerntext": "nome",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vino",
               "lerntext": "vino",
               "de": "Wein",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -19523,14 +22441,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io aspetto da una [Slot]",
-          "lerntext": "io aspetto da una [Slot]"
+          "lerntext": "io aspetto da una [Slot]",
+          "wortarten": {
+            "io": "p",
+            "aspetto": "v"
+          }
         },
         "frameDe": "ich warte seit einer [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19538,81 +22461,95 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "ora",
               "lerntext": "ora",
-              "de": "Stunde"
+              "de": "Stunde",
+              "c": "n"
             },
             {
               "schrift": "minuto",
               "lerntext": "minuto",
-              "de": "Minute"
+              "de": "Minute",
+              "c": "n"
             },
             {
               "schrift": "settimana",
               "lerntext": "settimana",
-              "de": "Woche"
+              "de": "Woche",
+              "c": "n"
             },
             {
               "schrift": "notte",
               "lerntext": "notte",
-              "de": "Nacht"
+              "de": "Nacht",
+              "c": "n"
             },
             {
               "schrift": "via",
               "lerntext": "via",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cucina",
               "lerntext": "cucina",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mano",
               "lerntext": "mano",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "scuola",
               "lerntext": "scuola",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "risposta",
               "lerntext": "risposta",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "borsa",
               "lerntext": "borsa",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "citta",
               "lerntext": "citta",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "figlia",
               "lerntext": "figlia",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "appartamento",
               "lerntext": "appartamento",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "porta",
               "lerntext": "porta",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -19637,14 +22574,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io aspetto da una [Slot]",
-          "lerntext": "io aspetto da una [Slot]"
+          "lerntext": "io aspetto da una [Slot]",
+          "wortarten": {
+            "io": "p",
+            "aspetto": "v"
+          }
         },
         "frameDe": "ich warte seit einem [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19652,71 +22594,83 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "giorno",
               "lerntext": "giorno",
-              "de": "Tag"
+              "de": "Tag",
+              "c": "n"
             },
             {
               "schrift": "sera",
               "lerntext": "sera",
-              "de": "Abend"
+              "de": "Abend",
+              "c": "n"
             },
             {
               "schrift": "bocca",
               "lerntext": "bocca",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "corpo",
               "lerntext": "corpo",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "chiave",
               "lerntext": "chiave",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "testa",
               "lerntext": "testa",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "stazione",
               "lerntext": "stazione",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "valigia",
               "lerntext": "valigia",
               "de": "Koffer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vento",
               "lerntext": "vento",
               "de": "Wind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "treno",
               "lerntext": "treno",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "formaggio",
               "lerntext": "formaggio",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "strada",
               "lerntext": "strada",
               "de": "Weg",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -19730,14 +22684,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] vado a casa",
-          "lerntext": "[Slot] vado a casa"
+          "lerntext": "[Slot] vado a casa",
+          "wortarten": {
+            "vado": "v",
+            "casa": "n"
+          }
         },
         "frameDe": "[Slot] gehe ich nach Hause.",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19838,14 +22797,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] vado a casa",
-          "lerntext": "[Slot] vado a casa"
+          "lerntext": "[Slot] vado a casa",
+          "wortarten": {
+            "vado": "v",
+            "casa": "n"
+          }
         },
         "frameDe": "[Slot] gehe ich nach Hause.",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19911,6 +22875,7 @@ export const ITALIAN_COURSE: CourseModuleData[] =
               "schrift": "si",
               "lerntext": "si",
               "de": "ja",
+              "c": "p",
               "wieder": true
             },
             {
@@ -19957,14 +22922,18 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io vorrei [Slot]",
-          "lerntext": "io vorrei [Slot]"
+          "lerntext": "io vorrei [Slot]",
+          "wortarten": {
+            "io": "p"
+          }
         },
         "frameDe": "ich hätte gern [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19972,86 +22941,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "abitare",
               "lerntext": "abitare",
-              "de": "wohnen"
+              "de": "wohnen",
+              "c": "v"
             },
             {
               "schrift": "stare",
               "lerntext": "stare",
-              "de": "sein"
+              "de": "sein",
+              "c": "v"
             },
             {
               "schrift": "ridere",
               "lerntext": "ridere",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "piangere",
               "lerntext": "piangere",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "pensare",
               "lerntext": "pensare",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "credere",
               "lerntext": "credere",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sperare",
               "lerntext": "sperare",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "servire",
               "lerntext": "servire",
               "de": "dienen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "continuare",
               "lerntext": "continuare",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cambiare",
               "lerntext": "cambiare",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "volere",
               "lerntext": "volere",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "camminare",
               "lerntext": "camminare",
               "de": "laufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sapere",
               "lerntext": "sapere",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viaggiare",
               "lerntext": "viaggiare",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "morire",
               "lerntext": "morire",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20065,14 +23049,18 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io vorrei [Slot]",
-          "lerntext": "io vorrei [Slot]"
+          "lerntext": "io vorrei [Slot]",
+          "wortarten": {
+            "io": "p"
+          }
         },
         "frameDe": "ich hätte gern [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20080,76 +23068,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "credere",
               "lerntext": "credere",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "sperare",
               "lerntext": "sperare",
-              "de": "hoffen"
+              "de": "hoffen",
+              "c": "v"
             },
             {
               "schrift": "servire",
               "lerntext": "servire",
-              "de": "dienen"
+              "de": "dienen",
+              "c": "v"
             },
             {
               "schrift": "abitare",
               "lerntext": "abitare",
               "de": "wohnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stare",
               "lerntext": "stare",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ridere",
               "lerntext": "ridere",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "piangere",
               "lerntext": "piangere",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pensare",
               "lerntext": "pensare",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dovere",
               "lerntext": "dovere",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "amare",
               "lerntext": "amare",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "usare",
               "lerntext": "usare",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pulire",
               "lerntext": "pulire",
               "de": "putzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "guidare",
               "lerntext": "guidare",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20170,7 +23171,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20178,86 +23180,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "acqua",
               "lerntext": "acqua",
-              "de": "Wasser"
+              "de": "Wasser",
+              "c": "n"
             },
             {
               "schrift": "pane",
               "lerntext": "pane",
-              "de": "Brot"
+              "de": "Brot",
+              "c": "n"
             },
             {
               "schrift": "chiave",
               "lerntext": "chiave",
-              "de": "Schlüssel"
+              "de": "Schlüssel",
+              "c": "n"
             },
             {
               "schrift": "libro",
               "lerntext": "libro",
-              "de": "Buch"
+              "de": "Buch",
+              "c": "n"
             },
             {
               "schrift": "borsa",
               "lerntext": "borsa",
-              "de": "Tasche"
+              "de": "Tasche",
+              "c": "n"
             },
             {
               "schrift": "caffe",
               "lerntext": "caffe",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "zucchero",
               "lerntext": "zucchero",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "latte",
               "lerntext": "latte",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cena",
               "lerntext": "cena",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "colazione",
               "lerntext": "colazione",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sale",
               "lerntext": "sale",
               "de": "Salz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pioggia",
               "lerntext": "pioggia",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ristorante",
               "lerntext": "ristorante",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sole",
               "lerntext": "sole",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "letto",
               "lerntext": "letto",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -20278,7 +23295,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20286,76 +23304,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "zucchero",
               "lerntext": "zucchero",
-              "de": "Zucker"
+              "de": "Zucker",
+              "c": "n"
             },
             {
               "schrift": "caffe",
               "lerntext": "caffe",
-              "de": "Kaffee"
+              "de": "Kaffee",
+              "c": "n"
             },
             {
               "schrift": "latte",
               "lerntext": "latte",
-              "de": "Milch"
+              "de": "Milch",
+              "c": "n"
             },
             {
               "schrift": "chiave",
               "lerntext": "chiave",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "borsa",
               "lerntext": "borsa",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "libro",
               "lerntext": "libro",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "acqua",
               "lerntext": "acqua",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pane",
               "lerntext": "pane",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pranzo",
               "lerntext": "pranzo",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "montagna",
               "lerntext": "montagna",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "telefono",
               "lerntext": "telefono",
               "de": "Telefon",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "albergo",
               "lerntext": "albergo",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "finestra",
               "lerntext": "finestra",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -20390,14 +23421,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io penso che sia [Slot]",
-          "lerntext": "io penso che sia [Slot]"
+          "lerntext": "io penso che sia [Slot]",
+          "wortarten": {
+            "io": "p",
+            "penso": "v"
+          }
         },
         "frameDe": "ich denke, das ist [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20405,86 +23441,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "grande",
               "lerntext": "grande",
-              "de": "groß"
+              "de": "groß",
+              "c": "a"
             },
             {
               "schrift": "piccolo",
               "lerntext": "piccolo",
-              "de": "klein"
+              "de": "klein",
+              "c": "a"
             },
             {
               "schrift": "vecchio",
               "lerntext": "vecchio",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "giovane",
               "lerntext": "giovane",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "caro",
               "lerntext": "caro",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "caldo",
               "lerntext": "caldo",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "freddo",
               "lerntext": "freddo",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "nuovo",
               "lerntext": "nuovo",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bello",
               "lerntext": "bello",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "forte",
               "lerntext": "forte",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "brutto",
               "lerntext": "brutto",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "blu",
               "lerntext": "blu",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "verde",
               "lerntext": "verde",
               "de": "grün",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "giallo",
               "lerntext": "giallo",
               "de": "gelb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "marrone",
               "lerntext": "marrone",
               "de": "braun",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -20498,14 +23549,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io penso che sia [Slot]",
-          "lerntext": "io penso che sia [Slot]"
+          "lerntext": "io penso che sia [Slot]",
+          "wortarten": {
+            "io": "p",
+            "penso": "v"
+          }
         },
         "frameDe": "ich denke, das ist [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20513,86 +23569,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "bello",
               "lerntext": "bello",
-              "de": "schön"
+              "de": "schön",
+              "c": "a"
             },
             {
               "schrift": "caldo",
               "lerntext": "caldo",
-              "de": "warm"
+              "de": "warm",
+              "c": "a"
             },
             {
               "schrift": "freddo",
               "lerntext": "freddo",
-              "de": "kalt"
+              "de": "kalt",
+              "c": "a"
             },
             {
               "schrift": "nuovo",
               "lerntext": "nuovo",
-              "de": "neu"
+              "de": "neu",
+              "c": "a"
             },
             {
               "schrift": "forte",
               "lerntext": "forte",
-              "de": "stark"
+              "de": "stark",
+              "c": "a"
             },
             {
               "schrift": "grande",
               "lerntext": "grande",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "piccolo",
               "lerntext": "piccolo",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "caro",
               "lerntext": "caro",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "giovane",
               "lerntext": "giovane",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "vecchio",
               "lerntext": "vecchio",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "alto",
               "lerntext": "alto",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "giusto",
               "lerntext": "giusto",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "rosso",
               "lerntext": "rosso",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "leggero",
               "lerntext": "leggero",
               "de": "leicht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "chiuso",
               "lerntext": "chiuso",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -20606,14 +23677,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io lo trovo molto [Slot]",
-          "lerntext": "io lo trovo molto [Slot]"
+          "lerntext": "io lo trovo molto [Slot]",
+          "wortarten": {
+            "io": "p",
+            "trovo": "v"
+          }
         },
         "frameDe": "ich finde das sehr [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20621,86 +23697,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "facile",
               "lerntext": "facile",
-              "de": "einfach"
+              "de": "einfach",
+              "c": "a"
             },
             {
               "schrift": "falso",
               "lerntext": "falso",
-              "de": "falsch"
+              "de": "falsch",
+              "c": "a"
             },
             {
               "schrift": "malato",
               "lerntext": "malato",
-              "de": "krank"
+              "de": "krank",
+              "c": "a"
             },
             {
               "schrift": "corto",
               "lerntext": "corto",
-              "de": "kurz"
+              "de": "kurz",
+              "c": "a"
             },
             {
               "schrift": "lungo",
               "lerntext": "lungo",
-              "de": "lang"
+              "de": "lang",
+              "c": "a"
             },
             {
               "schrift": "pulito",
               "lerntext": "pulito",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "nero",
               "lerntext": "nero",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dolce",
               "lerntext": "dolce",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "debole",
               "lerntext": "debole",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "arrabbiato",
               "lerntext": "arrabbiato",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "aperto",
               "lerntext": "aperto",
               "de": "offen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "basso",
               "lerntext": "basso",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "felice",
               "lerntext": "felice",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pesante",
               "lerntext": "pesante",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grigio",
               "lerntext": "grigio",
               "de": "grau",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -20720,14 +23811,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io lo trovo molto [Slot]",
-          "lerntext": "io lo trovo molto [Slot]"
+          "lerntext": "io lo trovo molto [Slot]",
+          "wortarten": {
+            "io": "p",
+            "trovo": "v"
+          }
         },
         "frameDe": "ich finde das sehr [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20735,86 +23831,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "pulito",
               "lerntext": "pulito",
-              "de": "sauber"
+              "de": "sauber",
+              "c": "a"
             },
             {
               "schrift": "debole",
               "lerntext": "debole",
-              "de": "schwach"
+              "de": "schwach",
+              "c": "a"
             },
             {
               "schrift": "nero",
               "lerntext": "nero",
-              "de": "schwarz"
+              "de": "schwarz",
+              "c": "a"
             },
             {
               "schrift": "dolce",
               "lerntext": "dolce",
-              "de": "süß"
+              "de": "süß",
+              "c": "a"
             },
             {
               "schrift": "arrabbiato",
               "lerntext": "arrabbiato",
-              "de": "wütend"
+              "de": "wütend",
+              "c": "a"
             },
             {
               "schrift": "facile",
               "lerntext": "facile",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lungo",
               "lerntext": "lungo",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "falso",
               "lerntext": "falso",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "corto",
               "lerntext": "corto",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "malato",
               "lerntext": "malato",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bianco",
               "lerntext": "bianco",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "brutto",
               "lerntext": "brutto",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "blu",
               "lerntext": "blu",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "verde",
               "lerntext": "verde",
               "de": "grün",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "giallo",
               "lerntext": "giallo",
               "de": "gelb",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -20856,7 +23967,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20864,86 +23976,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "guardare",
               "lerntext": "guardare",
-              "de": "schauen"
+              "de": "schauen",
+              "c": "v"
             },
             {
               "schrift": "comprare",
               "lerntext": "comprare",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "vedere",
               "lerntext": "vedere",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "fare",
               "lerntext": "fare",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "trovare",
               "lerntext": "trovare",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "prendere",
               "lerntext": "prendere",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "leggere",
               "lerntext": "leggere",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "scrivere",
               "lerntext": "scrivere",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mangiare",
               "lerntext": "mangiare",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "venire",
               "lerntext": "venire",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bere",
               "lerntext": "bere",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "andare",
               "lerntext": "andare",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "diventare",
               "lerntext": "diventare",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "essere",
               "lerntext": "essere",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "potere",
               "lerntext": "potere",
               "de": "können",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20964,7 +24091,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20972,76 +24100,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "prendere",
               "lerntext": "prendere",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "leggere",
               "lerntext": "leggere",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "scrivere",
               "lerntext": "scrivere",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "comprare",
               "lerntext": "comprare",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "guardare",
               "lerntext": "guardare",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vedere",
               "lerntext": "vedere",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "fare",
               "lerntext": "fare",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "trovare",
               "lerntext": "trovare",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mettere",
               "lerntext": "mettere",
               "de": "setzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "avere",
               "lerntext": "avere",
               "de": "haben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "continuare",
               "lerntext": "continuare",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cambiare",
               "lerntext": "cambiare",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "perdere",
               "lerntext": "perdere",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -21055,14 +24196,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io voglio [Slot] presto",
-          "lerntext": "io voglio [Slot] presto"
+          "lerntext": "io voglio [Slot] presto",
+          "wortarten": {
+            "io": "p",
+            "voglio": "v"
+          }
         },
         "frameDe": "ich will bald [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -21070,86 +24216,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "lavorare",
               "lerntext": "lavorare",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "giocare",
               "lerntext": "giocare",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "ballare",
               "lerntext": "ballare",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "dormire",
               "lerntext": "dormire",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "aspettare",
               "lerntext": "aspettare",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "cercare",
               "lerntext": "cercare",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "chiedere",
               "lerntext": "chiedere",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "rispondere",
               "lerntext": "rispondere",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "volere",
               "lerntext": "volere",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "camminare",
               "lerntext": "camminare",
               "de": "laufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sapere",
               "lerntext": "sapere",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viaggiare",
               "lerntext": "viaggiare",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lavare",
               "lerntext": "lavare",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "morire",
               "lerntext": "morire",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dovere",
               "lerntext": "dovere",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -21163,14 +24324,19 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "io voglio [Slot] presto",
-          "lerntext": "io voglio [Slot] presto"
+          "lerntext": "io voglio [Slot] presto",
+          "wortarten": {
+            "io": "p",
+            "voglio": "v"
+          }
         },
         "frameDe": "ich will bald [Slot].",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -21178,76 +24344,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "cercare",
               "lerntext": "cercare",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "chiedere",
               "lerntext": "chiedere",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "rispondere",
               "lerntext": "rispondere",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "lavorare",
               "lerntext": "lavorare",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "giocare",
               "lerntext": "giocare",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ballare",
               "lerntext": "ballare",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dormire",
               "lerntext": "dormire",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "aspettare",
               "lerntext": "aspettare",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "amare",
               "lerntext": "amare",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "usare",
               "lerntext": "usare",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pulire",
               "lerntext": "pulire",
               "de": "putzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "guidare",
               "lerntext": "guidare",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mangiare",
               "lerntext": "mangiare",
               "de": "essen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -21282,7 +24461,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "questo è l'uomo che [Slot]",
-          "lerntext": "questo è l'uomo che [Slot]"
+          "lerntext": "questo è l'uomo che [Slot]",
+          "wortarten": {
+            "questo": "p",
+            "è": "v"
+          }
         },
         "frameDe": "Das ist der Mann, der [Slot].",
         "pronouns": [],
@@ -21291,86 +24474,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "abita",
               "lerntext": "abita",
-              "de": "wohnen"
+              "de": "wohnen",
+              "c": "v"
             },
             {
               "schrift": "sta",
               "lerntext": "sta",
-              "de": "sein"
+              "de": "sein",
+              "c": "v"
             },
             {
               "schrift": "ride",
               "lerntext": "ride",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "piange",
               "lerntext": "piange",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "pensa",
               "lerntext": "pensa",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "crede",
               "lerntext": "crede",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spera",
               "lerntext": "spera",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "serve",
               "lerntext": "serve",
               "de": "dienen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viene",
               "lerntext": "viene",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "beve",
               "lerntext": "beve",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "va",
               "lerntext": "va",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "diventa",
               "lerntext": "diventa",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "può",
               "lerntext": "può",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mette",
               "lerntext": "mette",
               "de": "setzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "chiude",
               "lerntext": "chiude",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -21384,7 +24582,11 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "questo è l'uomo che [Slot]",
-          "lerntext": "questo è l'uomo che [Slot]"
+          "lerntext": "questo è l'uomo che [Slot]",
+          "wortarten": {
+            "questo": "p",
+            "è": "v"
+          }
         },
         "frameDe": "Das ist der Mann, der [Slot].",
         "pronouns": [],
@@ -21393,76 +24595,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "crede",
               "lerntext": "crede",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "spera",
               "lerntext": "spera",
-              "de": "hoffen"
+              "de": "hoffen",
+              "c": "v"
             },
             {
               "schrift": "serve",
               "lerntext": "serve",
-              "de": "dienen"
+              "de": "dienen",
+              "c": "v"
             },
             {
               "schrift": "abita",
               "lerntext": "abita",
               "de": "wohnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sta",
               "lerntext": "sta",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ride",
               "lerntext": "ride",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "piange",
               "lerntext": "piange",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pensa",
               "lerntext": "pensa",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ha",
               "lerntext": "ha",
               "de": "haben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "continua",
               "lerntext": "continua",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cambia",
               "lerntext": "cambia",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "perde",
               "lerntext": "perde",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vuole",
               "lerntext": "vuole",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -21476,7 +24691,12 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "cerco un posto dove si può [Slot]",
-          "lerntext": "cerco un posto dove si può [Slot]"
+          "lerntext": "cerco un posto dove si può [Slot]",
+          "wortarten": {
+            "cerco": "v",
+            "posto": "n",
+            "può": "v"
+          }
         },
         "frameDe": "Ich suche einen Ort, wo man [Slot] kann.",
         "pronouns": [],
@@ -21485,86 +24705,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "lavorare",
               "lerntext": "lavorare",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "giocare",
               "lerntext": "giocare",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "ballare",
               "lerntext": "ballare",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "dormire",
               "lerntext": "dormire",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "aspettare",
               "lerntext": "aspettare",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "cercare",
               "lerntext": "cercare",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "chiedere",
               "lerntext": "chiedere",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "rispondere",
               "lerntext": "rispondere",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "essere",
               "lerntext": "essere",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "camminare",
               "lerntext": "camminare",
               "de": "laufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sapere",
               "lerntext": "sapere",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viaggiare",
               "lerntext": "viaggiare",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lavare",
               "lerntext": "lavare",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "morire",
               "lerntext": "morire",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dovere",
               "lerntext": "dovere",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -21580,7 +24815,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "posto",
             "lerntext": "posto",
-            "de": "Platz"
+            "de": "Platz",
+            "c": "n"
           }
         ],
         "id": "37.3"
@@ -21589,7 +24825,12 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "cerco un posto dove si può [Slot]",
-          "lerntext": "cerco un posto dove si può [Slot]"
+          "lerntext": "cerco un posto dove si può [Slot]",
+          "wortarten": {
+            "cerco": "v",
+            "posto": "n",
+            "può": "v"
+          }
         },
         "frameDe": "Ich suche einen Ort, wo man [Slot] kann.",
         "pronouns": [],
@@ -21598,76 +24839,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "cercare",
               "lerntext": "cercare",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "chiedere",
               "lerntext": "chiedere",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "rispondere",
               "lerntext": "rispondere",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "lavorare",
               "lerntext": "lavorare",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "giocare",
               "lerntext": "giocare",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ballare",
               "lerntext": "ballare",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dormire",
               "lerntext": "dormire",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "aspettare",
               "lerntext": "aspettare",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "amare",
               "lerntext": "amare",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "usare",
               "lerntext": "usare",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pulire",
               "lerntext": "pulire",
               "de": "putzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "guidare",
               "lerntext": "guidare",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mangiare",
               "lerntext": "mangiare",
               "de": "essen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -21709,7 +24963,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -21717,86 +24972,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "ristorante",
               "lerntext": "ristorante",
-              "de": "Restaurant"
+              "de": "Restaurant",
+              "c": "n"
             },
             {
               "schrift": "albergo",
               "lerntext": "albergo",
-              "de": "Hotel"
+              "de": "Hotel",
+              "c": "n"
             },
             {
               "schrift": "scuola",
               "lerntext": "scuola",
-              "de": "Schule"
+              "de": "Schule",
+              "c": "n"
             },
             {
               "schrift": "universita",
               "lerntext": "universita",
-              "de": "Universität"
+              "de": "Universität",
+              "c": "n"
             },
             {
               "schrift": "ospedale",
               "lerntext": "ospedale",
-              "de": "Krankenhaus"
+              "de": "Krankenhaus",
+              "c": "n"
             },
             {
               "schrift": "aeroporto",
               "lerntext": "aeroporto",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "stazione",
               "lerntext": "stazione",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "citta",
               "lerntext": "citta",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "posto",
               "lerntext": "posto",
               "de": "Platz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "carta",
               "lerntext": "carta",
               "de": "Karte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "negozio",
               "lerntext": "negozio",
               "de": "Geschäft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "esame",
               "lerntext": "esame",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "aiuto",
               "lerntext": "aiuto",
               "de": "Hilfe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "braccio",
               "lerntext": "braccio",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "autobus",
               "lerntext": "autobus",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -21817,7 +25087,8 @@ export const ITALIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -21825,76 +25096,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "stazione",
               "lerntext": "stazione",
-              "de": "Bahnhof"
+              "de": "Bahnhof",
+              "c": "n"
             },
             {
               "schrift": "aeroporto",
               "lerntext": "aeroporto",
-              "de": "Flughafen"
+              "de": "Flughafen",
+              "c": "n"
             },
             {
               "schrift": "citta",
               "lerntext": "citta",
-              "de": "Stadt"
+              "de": "Stadt",
+              "c": "n"
             },
             {
               "schrift": "ristorante",
               "lerntext": "ristorante",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "universita",
               "lerntext": "universita",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ospedale",
               "lerntext": "ospedale",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "albergo",
               "lerntext": "albergo",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "scuola",
               "lerntext": "scuola",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "posto",
               "lerntext": "posto",
               "de": "Platz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "piede",
               "lerntext": "piede",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "occhio",
               "lerntext": "occhio",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gamba",
               "lerntext": "gamba",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "piatto",
               "lerntext": "piatto",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -21908,14 +25192,20 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "voglio [Slot] perché ho tempo",
-          "lerntext": "voglio [Slot] perché ho tempo"
+          "lerntext": "voglio [Slot] perché ho tempo",
+          "wortarten": {
+            "voglio": "v",
+            "ho": "v",
+            "tempo": "n"
+          }
         },
         "frameDe": "Ich möchte [Slot], weil ich Zeit habe.",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -21923,86 +25213,101 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "vincere",
               "lerntext": "vincere",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "dimenticare",
               "lerntext": "dimenticare",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "capire",
               "lerntext": "capire",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "incontrare",
               "lerntext": "incontrare",
-              "de": "treffen"
+              "de": "treffen",
+              "c": "v"
             },
             {
               "schrift": "dare",
               "lerntext": "dare",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "dire",
               "lerntext": "dire",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "parlare",
               "lerntext": "parlare",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "aprire",
               "lerntext": "aprire",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "venire",
               "lerntext": "venire",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bere",
               "lerntext": "bere",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "andare",
               "lerntext": "andare",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "diventare",
               "lerntext": "diventare",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "essere",
               "lerntext": "essere",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "potere",
               "lerntext": "potere",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mettere",
               "lerntext": "mettere",
               "de": "setzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -22016,14 +25321,20 @@ export const ITALIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "voglio [Slot] perché ho tempo",
-          "lerntext": "voglio [Slot] perché ho tempo"
+          "lerntext": "voglio [Slot] perché ho tempo",
+          "wortarten": {
+            "voglio": "v",
+            "ho": "v",
+            "tempo": "n"
+          }
         },
         "frameDe": "Ich möchte [Slot], weil ich Zeit habe.",
         "pronouns": [
           {
             "schrift": "io",
             "lerntext": "io",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -22031,76 +25342,89 @@ export const ITALIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "dire",
               "lerntext": "dire",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "parlare",
               "lerntext": "parlare",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "aprire",
               "lerntext": "aprire",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "vincere",
               "lerntext": "vincere",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dimenticare",
               "lerntext": "dimenticare",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "capire",
               "lerntext": "capire",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "incontrare",
               "lerntext": "incontrare",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dare",
               "lerntext": "dare",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "chiudere",
               "lerntext": "chiudere",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "avere",
               "lerntext": "avere",
               "de": "haben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "continuare",
               "lerntext": "continuare",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cambiare",
               "lerntext": "cambiare",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "perdere",
               "lerntext": "perdere",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             }
           ]

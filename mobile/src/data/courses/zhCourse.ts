@@ -18,29 +18,38 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 你 / 他 / 她 是 [Slot]",
-          "lerntext": "wǒ / nǐ / tā / tā shì [Slot]"
+          "lerntext": "wǒ / nǐ / tā / tā shì [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "tā": "p"
+          }
         },
         "frameDe": "ich / du / er / sie bin [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "她",
             "lerntext": "tā",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -48,27 +57,32 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "学生",
               "lerntext": "xuésheng",
-              "de": "Student"
+              "de": "Student",
+              "c": "n"
             },
             {
               "schrift": "老师",
               "lerntext": "lǎoshī",
-              "de": "Lehrer"
+              "de": "Lehrer",
+              "c": "n"
             },
             {
               "schrift": "朋友",
               "lerntext": "péngyou",
-              "de": "Freund"
+              "de": "Freund",
+              "c": "n"
             },
             {
               "schrift": "医生",
               "lerntext": "yīshēng",
-              "de": "Arzt"
+              "de": "Arzt",
+              "c": "n"
             },
             {
               "schrift": "服务员",
               "lerntext": "fúwùyuán",
-              "de": "Kellner"
+              "de": "Kellner",
+              "c": "n"
             }
           ]
         ],
@@ -78,7 +92,8 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "是",
             "lerntext": "shì",
-            "de": "sein"
+            "de": "sein",
+            "c": "v"
           }
         ],
         "id": "1.1"
@@ -87,29 +102,38 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 你 / 他 / 她 是 [Slot]",
-          "lerntext": "wǒ / nǐ / tā / tā shì [Slot]"
+          "lerntext": "wǒ / nǐ / tā / tā shì [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "tā": "p"
+          }
         },
         "frameDe": "ich / du / er / sie bin [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "她",
             "lerntext": "tā",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -117,27 +141,32 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "男人",
               "lerntext": "nánrén",
-              "de": "Mann"
+              "de": "Mann",
+              "c": "n"
             },
             {
               "schrift": "孩子",
               "lerntext": "háizi",
-              "de": "Kind"
+              "de": "Kind",
+              "c": "n"
             },
             {
               "schrift": "先生",
               "lerntext": "xiānsheng",
-              "de": "Herr"
+              "de": "Herr",
+              "c": "n"
             },
             {
               "schrift": "小姐",
               "lerntext": "xiǎojiě",
-              "de": "Frau (Anrede)"
+              "de": "Frau (Anrede)",
+              "c": "n"
             },
             {
               "schrift": "人",
               "lerntext": "rén",
-              "de": "Mensch"
+              "de": "Mensch",
+              "c": "n"
             }
           ]
         ],
@@ -150,29 +179,39 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 你 / 他 / 我们 很 [Slot]",
-          "lerntext": "wǒ / nǐ / tā / wǒmen hěn [Slot]"
+          "lerntext": "wǒ / nǐ / tā / wǒmen hěn [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "tā": "p",
+            "wǒmen": "p"
+          }
         },
         "frameDe": "ich / du / er / wir bin [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -180,27 +219,32 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "累",
               "lerntext": "lèi",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "高兴",
               "lerntext": "gāoxìng",
-              "de": "froh"
+              "de": "froh",
+              "c": "a"
             },
             {
               "schrift": "忙",
               "lerntext": "máng",
-              "de": "beschäftigt"
+              "de": "beschäftigt",
+              "c": "a"
             },
             {
               "schrift": "难过",
               "lerntext": "nánguò",
-              "de": "traurig"
+              "de": "traurig",
+              "c": "a"
             },
             {
               "schrift": "生气",
               "lerntext": "shēngqì",
-              "de": "wütend"
+              "de": "wütend",
+              "c": "a"
             }
           ]
         ],
@@ -219,29 +263,39 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 你 / 他 / 我们 很 [Slot]",
-          "lerntext": "wǒ / nǐ / tā / wǒmen hěn [Slot]"
+          "lerntext": "wǒ / nǐ / tā / wǒmen hěn [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "tā": "p",
+            "wǒmen": "p"
+          }
         },
         "frameDe": "ich / du / er / wir bin [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -249,27 +303,32 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "好",
               "lerntext": "hǎo",
-              "de": "gut"
+              "de": "gut",
+              "c": "a"
             },
             {
               "schrift": "大",
               "lerntext": "dà",
-              "de": "groß"
+              "de": "groß",
+              "c": "a"
             },
             {
               "schrift": "小",
               "lerntext": "xiǎo",
-              "de": "klein"
+              "de": "klein",
+              "c": "a"
             },
             {
               "schrift": "高",
               "lerntext": "gāo",
-              "de": "groß (Körpergröße)"
+              "de": "groß (Körpergröße)",
+              "c": "a"
             },
             {
               "schrift": "长",
               "lerntext": "cháng",
-              "de": "lang"
+              "de": "lang",
+              "c": "a"
             }
           ]
         ],
@@ -282,7 +341,12 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "的 / 您 / 谁 是 我的 [Slot]",
-          "lerntext": "de / nín / shéi shì wǒ de [Slot]"
+          "lerntext": "de / nín / shéi shì wǒ de [Slot]",
+          "wortarten": {
+            "nín": "p",
+            "shéi": "p",
+            "wǒ": "p"
+          }
         },
         "frameDe": "Genitiv- / Sie (höflich) / wer ist mein [Slot].",
         "pronouns": [
@@ -294,12 +358,14 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "您",
             "lerntext": "nín",
-            "de": "Sie (höflich)"
+            "de": "Sie (höflich)",
+            "c": "p"
           },
           {
             "schrift": "谁",
             "lerntext": "shéi",
-            "de": "wer"
+            "de": "wer",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -307,27 +373,32 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "爸爸",
               "lerntext": "bàba",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "妈妈",
               "lerntext": "māma",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "儿子",
               "lerntext": "érzi",
-              "de": "Sohn"
+              "de": "Sohn",
+              "c": "n"
             },
             {
               "schrift": "女儿",
               "lerntext": "nǚ'ér",
-              "de": "Tochter"
+              "de": "Tochter",
+              "c": "n"
             },
             {
               "schrift": "哥哥",
               "lerntext": "gēge",
-              "de": "älterer Bruder"
+              "de": "älterer Bruder",
+              "c": "n"
             }
           ]
         ],
@@ -346,7 +417,12 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "的 / 您 / 谁 是 我的 [Slot]",
-          "lerntext": "de / nín / shéi shì wǒ de [Slot]"
+          "lerntext": "de / nín / shéi shì wǒ de [Slot]",
+          "wortarten": {
+            "nín": "p",
+            "shéi": "p",
+            "wǒ": "p"
+          }
         },
         "frameDe": "Genitiv- / Sie (höflich) / wer ist mein [Slot].",
         "pronouns": [
@@ -358,12 +434,14 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "您",
             "lerntext": "nín",
-            "de": "Sie (höflich)"
+            "de": "Sie (höflich)",
+            "c": "p"
           },
           {
             "schrift": "谁",
             "lerntext": "shéi",
-            "de": "wer"
+            "de": "wer",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -371,27 +449,32 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "姐姐",
               "lerntext": "jiějie",
-              "de": "ältere Schwester"
+              "de": "ältere Schwester",
+              "c": "n"
             },
             {
               "schrift": "弟弟",
               "lerntext": "dìdi",
-              "de": "jüngerer Bruder"
+              "de": "jüngerer Bruder",
+              "c": "n"
             },
             {
               "schrift": "妹妹",
               "lerntext": "mèimei",
-              "de": "jüngere Schwester"
+              "de": "jüngere Schwester",
+              "c": "n"
             },
             {
               "schrift": "男朋友",
               "lerntext": "nán péngyou",
-              "de": "fester Freund"
+              "de": "fester Freund",
+              "c": "n"
             },
             {
               "schrift": "女朋友",
               "lerntext": "nǚ péngyou",
-              "de": "feste Freundin"
+              "de": "feste Freundin",
+              "c": "n"
             }
           ]
         ],
@@ -404,29 +487,38 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 你 / 他 / 她 是 [Slot]",
-          "lerntext": "wǒ / nǐ / tā / tā shì [Slot]"
+          "lerntext": "wǒ / nǐ / tā / tā shì [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "tā": "p"
+          }
         },
         "frameDe": "ich / du / er / sie bin [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "她",
             "lerntext": "tā",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -435,60 +527,70 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "学生",
               "lerntext": "xuésheng",
               "de": "Student",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "老师",
               "lerntext": "lǎoshī",
               "de": "Lehrer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "朋友",
               "lerntext": "péngyou",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "医生",
               "lerntext": "yīshēng",
               "de": "Arzt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "服务员",
               "lerntext": "fúwùyuán",
               "de": "Kellner",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "男人",
               "lerntext": "nánrén",
               "de": "Mann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "孩子",
               "lerntext": "háizi",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "先生",
               "lerntext": "xiānsheng",
               "de": "Herr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "小姐",
               "lerntext": "xiǎojiě",
               "de": "Frau (Anrede)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "人",
               "lerntext": "rén",
               "de": "Mensch",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -502,29 +604,39 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 你 / 他 / 我们 很 [Slot]",
-          "lerntext": "wǒ / nǐ / tā / wǒmen hěn [Slot]"
+          "lerntext": "wǒ / nǐ / tā / wǒmen hěn [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "tā": "p",
+            "wǒmen": "p"
+          }
         },
         "frameDe": "ich / du / er / wir bin [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -533,60 +645,70 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "累",
               "lerntext": "lèi",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "高兴",
               "lerntext": "gāoxìng",
               "de": "froh",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "忙",
               "lerntext": "máng",
               "de": "beschäftigt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "难过",
               "lerntext": "nánguò",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "生气",
               "lerntext": "shēngqì",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "好",
               "lerntext": "hǎo",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "大",
               "lerntext": "dà",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "小",
               "lerntext": "xiǎo",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "高",
               "lerntext": "gāo",
               "de": "groß (Körpergröße)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "长",
               "lerntext": "cháng",
               "de": "lang",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -600,29 +722,38 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 你 / 他 / 她 是 [Slot]",
-          "lerntext": "wǒ / nǐ / tā / tā shì [Slot]"
+          "lerntext": "wǒ / nǐ / tā / tā shì [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "tā": "p"
+          }
         },
         "frameDe": "ich / du / er / sie bin [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "她",
             "lerntext": "tā",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -631,60 +762,70 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "学生",
               "lerntext": "xuésheng",
               "de": "Student",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "老师",
               "lerntext": "lǎoshī",
               "de": "Lehrer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "朋友",
               "lerntext": "péngyou",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "医生",
               "lerntext": "yīshēng",
               "de": "Arzt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "服务员",
               "lerntext": "fúwùyuán",
               "de": "Kellner",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "男人",
               "lerntext": "nánrén",
               "de": "Mann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "孩子",
               "lerntext": "háizi",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "先生",
               "lerntext": "xiānsheng",
               "de": "Herr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "小姐",
               "lerntext": "xiǎojiě",
               "de": "Frau (Anrede)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "人",
               "lerntext": "rén",
               "de": "Mensch",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -698,29 +839,39 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 你 / 他 / 我们 很 [Slot]",
-          "lerntext": "wǒ / nǐ / tā / wǒmen hěn [Slot]"
+          "lerntext": "wǒ / nǐ / tā / wǒmen hěn [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "tā": "p",
+            "wǒmen": "p"
+          }
         },
         "frameDe": "ich / du / er / wir bin [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -729,60 +880,70 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "累",
               "lerntext": "lèi",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "高兴",
               "lerntext": "gāoxìng",
               "de": "froh",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "忙",
               "lerntext": "máng",
               "de": "beschäftigt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "难过",
               "lerntext": "nánguò",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "生气",
               "lerntext": "shēngqì",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "好",
               "lerntext": "hǎo",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "大",
               "lerntext": "dà",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "小",
               "lerntext": "xiǎo",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "高",
               "lerntext": "gāo",
               "de": "groß (Körpergröße)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "长",
               "lerntext": "cháng",
               "de": "lang",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -817,24 +978,30 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "这 是 [Slot]",
-          "lerntext": "zhè shì [Slot]"
+          "lerntext": "zhè shì [Slot]",
+          "wortarten": {
+            "zhè": "p"
+          }
         },
         "frameDe": "Das ist [Slot].",
         "pronouns": [
           {
             "schrift": "这",
             "lerntext": "zhè",
-            "de": "dies"
+            "de": "dies",
+            "c": "p"
           },
           {
             "schrift": "那",
             "lerntext": "nà",
-            "de": "jene(r)"
+            "de": "jene(r)",
+            "c": "p"
           },
           {
             "schrift": "哪",
             "lerntext": "nǎ",
-            "de": "welche(r)"
+            "de": "welche(r)",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -842,86 +1009,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "书",
               "lerntext": "shū",
-              "de": "Buch"
+              "de": "Buch",
+              "c": "n"
             },
             {
               "schrift": "桌子",
               "lerntext": "zhuōzi",
-              "de": "Tisch"
+              "de": "Tisch",
+              "c": "n"
             },
             {
               "schrift": "椅子",
               "lerntext": "yǐzi",
-              "de": "Stuhl"
+              "de": "Stuhl",
+              "c": "n"
             },
             {
               "schrift": "杯子",
               "lerntext": "bēizi",
-              "de": "Becher"
+              "de": "Becher",
+              "c": "n"
             },
             {
               "schrift": "手机",
               "lerntext": "shǒujī",
-              "de": "Handy"
+              "de": "Handy",
+              "c": "n"
             },
             {
               "schrift": "男朋友",
               "lerntext": "nán péngyou",
               "de": "fester Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "姐姐",
               "lerntext": "jiějie",
               "de": "ältere Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "妈妈",
               "lerntext": "māma",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "哥哥",
               "lerntext": "gēge",
               "de": "älterer Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "女朋友",
               "lerntext": "nǚ péngyou",
               "de": "feste Freundin",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "女儿",
               "lerntext": "nǚ'ér",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "妹妹",
               "lerntext": "mèimei",
               "de": "jüngere Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "弟弟",
               "lerntext": "dìdi",
               "de": "jüngerer Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "儿子",
               "lerntext": "érzi",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "爸爸",
               "lerntext": "bàba",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -932,12 +1114,14 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "这",
             "lerntext": "zhè",
-            "de": "dies"
+            "de": "dies",
+            "c": "p"
           },
           {
             "schrift": "那",
             "lerntext": "nà",
-            "de": "jene(r)"
+            "de": "jene(r)",
+            "c": "p"
           }
         ],
         "id": "2.1"
@@ -946,24 +1130,30 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "这 是 [Slot]",
-          "lerntext": "zhè shì [Slot]"
+          "lerntext": "zhè shì [Slot]",
+          "wortarten": {
+            "zhè": "p"
+          }
         },
         "frameDe": "Das ist [Slot].",
         "pronouns": [
           {
             "schrift": "这",
             "lerntext": "zhè",
-            "de": "dies"
+            "de": "dies",
+            "c": "p"
           },
           {
             "schrift": "那",
             "lerntext": "nà",
-            "de": "jene(r)"
+            "de": "jene(r)",
+            "c": "p"
           },
           {
             "schrift": "哪",
             "lerntext": "nǎ",
-            "de": "welche(r)"
+            "de": "welche(r)",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -971,86 +1161,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "电脑",
               "lerntext": "diànnǎo",
-              "de": "Computer"
+              "de": "Computer",
+              "c": "n"
             },
             {
               "schrift": "衣服",
               "lerntext": "yīfu",
-              "de": "Kleidung"
+              "de": "Kleidung",
+              "c": "n"
             },
             {
               "schrift": "东西",
               "lerntext": "dōngxi",
-              "de": "Ding"
+              "de": "Ding",
+              "c": "n"
             },
             {
               "schrift": "报纸",
               "lerntext": "bàozhǐ",
-              "de": "Zeitung"
+              "de": "Zeitung",
+              "c": "n"
             },
             {
               "schrift": "包",
               "lerntext": "bāo",
-              "de": "Tasche"
+              "de": "Tasche",
+              "c": "n"
             },
             {
               "schrift": "书",
               "lerntext": "shū",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "桌子",
               "lerntext": "zhuōzi",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "椅子",
               "lerntext": "yǐzi",
               "de": "Stuhl",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "杯子",
               "lerntext": "bēizi",
               "de": "Becher",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "手机",
               "lerntext": "shǒujī",
               "de": "Handy",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "男朋友",
               "lerntext": "nán péngyou",
               "de": "fester Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "姐姐",
               "lerntext": "jiějie",
               "de": "ältere Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "妈妈",
               "lerntext": "māma",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "哥哥",
               "lerntext": "gēge",
               "de": "älterer Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "女朋友",
               "lerntext": "nǚ péngyou",
               "de": "feste Freundin",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1064,29 +1269,40 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 你 / 他 / 我们 有 [Slot]",
-          "lerntext": "wǒ / nǐ / tā / wǒmen yǒu [Slot]"
+          "lerntext": "wǒ / nǐ / tā / wǒmen yǒu [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "tā": "p",
+            "wǒmen": "p",
+            "yǒu": "v"
+          }
         },
         "frameDe": "ich / du / er / wir habe [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1094,86 +1310,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "钱",
               "lerntext": "qián",
-              "de": "Geld"
+              "de": "Geld",
+              "c": "n"
             },
             {
               "schrift": "时间",
               "lerntext": "shíjiān",
-              "de": "Zeit"
+              "de": "Zeit",
+              "c": "n"
             },
             {
               "schrift": "问题",
               "lerntext": "wèntí",
-              "de": "Frage"
+              "de": "Frage",
+              "c": "n"
             },
             {
               "schrift": "家",
               "lerntext": "jiā",
-              "de": "Zuhause"
+              "de": "Zuhause",
+              "c": "n"
             },
             {
               "schrift": "房间",
               "lerntext": "fángjiān",
-              "de": "Zimmer"
+              "de": "Zimmer",
+              "c": "n"
             },
             {
               "schrift": "衣服",
               "lerntext": "yīfu",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "包",
               "lerntext": "bāo",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "东西",
               "lerntext": "dōngxi",
               "de": "Ding",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "电脑",
               "lerntext": "diànnǎo",
               "de": "Computer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "报纸",
               "lerntext": "bàozhǐ",
               "de": "Zeitung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "书",
               "lerntext": "shū",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "杯子",
               "lerntext": "bēizi",
               "de": "Becher",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "桌子",
               "lerntext": "zhuōzi",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "女儿",
               "lerntext": "nǚ'ér",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "妹妹",
               "lerntext": "mèimei",
               "de": "jüngere Schwester",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1184,7 +1415,8 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "有",
             "lerntext": "yǒu",
-            "de": "haben"
+            "de": "haben",
+            "c": "v"
           }
         ],
         "id": "2.3"
@@ -1193,29 +1425,40 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 你 / 他 / 我们 有 [Slot]",
-          "lerntext": "wǒ / nǐ / tā / wǒmen yǒu [Slot]"
+          "lerntext": "wǒ / nǐ / tā / wǒmen yǒu [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "tā": "p",
+            "wǒmen": "p",
+            "yǒu": "v"
+          }
         },
         "frameDe": "ich / du / er / wir habe [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1223,81 +1466,95 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "公司",
               "lerntext": "gōngsī",
-              "de": "Firma"
+              "de": "Firma",
+              "c": "n"
             },
             {
               "schrift": "生日",
               "lerntext": "shēngrì",
-              "de": "Geburtstag"
+              "de": "Geburtstag",
+              "c": "n"
             },
             {
               "schrift": "名字",
               "lerntext": "míngzi",
-              "de": "Name"
+              "de": "Name",
+              "c": "n"
             },
             {
               "schrift": "颜色",
               "lerntext": "yánsè",
-              "de": "Farbe"
+              "de": "Farbe",
+              "c": "n"
             },
             {
               "schrift": "钱",
               "lerntext": "qián",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "时间",
               "lerntext": "shíjiān",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "问题",
               "lerntext": "wèntí",
               "de": "Frage",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "家",
               "lerntext": "jiā",
               "de": "Zuhause",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "房间",
               "lerntext": "fángjiān",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "衣服",
               "lerntext": "yīfu",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "包",
               "lerntext": "bāo",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "东西",
               "lerntext": "dōngxi",
               "de": "Ding",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "电脑",
               "lerntext": "diànnǎo",
               "de": "Computer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "弟弟",
               "lerntext": "dìdi",
               "de": "jüngerer Bruder",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1311,29 +1568,40 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 你 / 他 / 我们 有 [Slot]",
-          "lerntext": "wǒ / nǐ / tā / wǒmen yǒu [Slot]"
+          "lerntext": "wǒ / nǐ / tā / wǒmen yǒu [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "tā": "p",
+            "wǒmen": "p",
+            "yǒu": "v"
+          }
         },
         "frameDe": "ich / du / er / wir habe [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1341,12 +1609,14 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "工作",
               "lerntext": "gōngzuò",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "是",
               "lerntext": "shì",
               "de": "sein",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -1360,7 +1630,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "这 是 [Slot] 的 书",
-          "lerntext": "zhè shì [Slot] de shū"
+          "lerntext": "zhè shì [Slot] de shū",
+          "wortarten": {
+            "zhè": "p",
+            "shū": "n"
+          }
         },
         "frameDe": "Das ist [Slot] Buch.",
         "pronouns": [],
@@ -1369,86 +1643,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "猫",
               "lerntext": "māo",
-              "de": "Katze"
+              "de": "Katze",
+              "c": "n"
             },
             {
               "schrift": "狗",
               "lerntext": "gǒu",
-              "de": "Hund"
+              "de": "Hund",
+              "c": "n"
             },
             {
               "schrift": "票",
               "lerntext": "piào",
-              "de": "Ticket"
+              "de": "Ticket",
+              "c": "n"
             },
             {
               "schrift": "门",
               "lerntext": "mén",
-              "de": "Tür"
+              "de": "Tür",
+              "c": "n"
             },
             {
               "schrift": "路",
               "lerntext": "lù",
-              "de": "Weg"
+              "de": "Weg",
+              "c": "n"
             },
             {
               "schrift": "生日",
               "lerntext": "shēngrì",
               "de": "Geburtstag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "公司",
               "lerntext": "gōngsī",
               "de": "Firma",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "名字",
               "lerntext": "míngzi",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "颜色",
               "lerntext": "yánsè",
               "de": "Farbe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "房间",
               "lerntext": "fángjiān",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "家",
               "lerntext": "jiā",
               "de": "Zuhause",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "问题",
               "lerntext": "wèntí",
               "de": "Frage",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "钱",
               "lerntext": "qián",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "手机",
               "lerntext": "shǒujī",
               "de": "Handy",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "儿子",
               "lerntext": "érzi",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1462,7 +1751,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "这 是 [Slot] 的 书",
-          "lerntext": "zhè shì [Slot] de shū"
+          "lerntext": "zhè shì [Slot] de shū",
+          "wortarten": {
+            "zhè": "p",
+            "shū": "n"
+          }
         },
         "frameDe": "Das ist [Slot] Buch.",
         "pronouns": [],
@@ -1472,54 +1765,63 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "猫",
               "lerntext": "māo",
               "de": "Katze",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "狗",
               "lerntext": "gǒu",
               "de": "Hund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "票",
               "lerntext": "piào",
               "de": "Ticket",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "门",
               "lerntext": "mén",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "路",
               "lerntext": "lù",
               "de": "Weg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "生日",
               "lerntext": "shēngrì",
               "de": "Geburtstag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "公司",
               "lerntext": "gōngsī",
               "de": "Firma",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "名字",
               "lerntext": "míngzi",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "颜色",
               "lerntext": "yánsè",
               "de": "Farbe",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1533,24 +1835,30 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "这 是 [Slot]",
-          "lerntext": "zhè shì [Slot]"
+          "lerntext": "zhè shì [Slot]",
+          "wortarten": {
+            "zhè": "p"
+          }
         },
         "frameDe": "Das ist [Slot].",
         "pronouns": [
           {
             "schrift": "这",
             "lerntext": "zhè",
-            "de": "dies"
+            "de": "dies",
+            "c": "p"
           },
           {
             "schrift": "那",
             "lerntext": "nà",
-            "de": "jene(r)"
+            "de": "jene(r)",
+            "c": "p"
           },
           {
             "schrift": "哪",
             "lerntext": "nǎ",
-            "de": "welche(r)"
+            "de": "welche(r)",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1559,18 +1867,21 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "椅子",
               "lerntext": "yǐzi",
               "de": "Stuhl",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "爸爸",
               "lerntext": "bàba",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "报纸",
               "lerntext": "bàozhǐ",
               "de": "Zeitung",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1584,7 +1895,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "这 是 [Slot] 的 书",
-          "lerntext": "zhè shì [Slot] de shū"
+          "lerntext": "zhè shì [Slot] de shū",
+          "wortarten": {
+            "zhè": "p",
+            "shū": "n"
+          }
         },
         "frameDe": "Das ist [Slot] Buch.",
         "pronouns": [],
@@ -1594,30 +1909,35 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "猫",
               "lerntext": "māo",
               "de": "Katze",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "狗",
               "lerntext": "gǒu",
               "de": "Hund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "票",
               "lerntext": "piào",
               "de": "Ticket",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "门",
               "lerntext": "mén",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "路",
               "lerntext": "lù",
               "de": "Weg",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1652,24 +1972,33 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 你 / 我们 想 [Slot]",
-          "lerntext": "wǒ / nǐ / wǒmen xiǎng [Slot]"
+          "lerntext": "wǒ / nǐ / wǒmen xiǎng [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "wǒmen": "p",
+            "xiǎng": "v"
+          }
         },
         "frameDe": "ich / du / wir möchte [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1677,44 +2006,52 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "吃",
               "lerntext": "chī",
-              "de": "essen"
+              "de": "essen",
+              "c": "v"
             },
             {
               "schrift": "喝",
               "lerntext": "hē",
-              "de": "trinken"
+              "de": "trinken",
+              "c": "v"
             },
             {
               "schrift": "买",
               "lerntext": "mǎi",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "看",
               "lerntext": "kàn",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "坐",
               "lerntext": "zuò",
-              "de": "sitzen"
+              "de": "sitzen",
+              "c": "v"
             },
             {
               "schrift": "工作",
               "lerntext": "gōngzuò",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "有",
               "lerntext": "yǒu",
               "de": "haben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "是",
               "lerntext": "shì",
               "de": "sein",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -1725,12 +2062,14 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "想",
             "lerntext": "xiǎng",
-            "de": "möchten"
+            "de": "möchten",
+            "c": "v"
           },
           {
             "schrift": "要",
             "lerntext": "yào",
-            "de": "wollen"
+            "de": "wollen",
+            "c": "v"
           }
         ],
         "id": "3.1"
@@ -1739,24 +2078,33 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 你 / 我们 想 [Slot]",
-          "lerntext": "wǒ / nǐ / wǒmen xiǎng [Slot]"
+          "lerntext": "wǒ / nǐ / wǒmen xiǎng [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "wǒmen": "p",
+            "xiǎng": "v"
+          }
         },
         "frameDe": "ich / du / wir möchte [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1764,74 +2112,87 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "去",
               "lerntext": "qù",
-              "de": "gehen"
+              "de": "gehen",
+              "c": "v"
             },
             {
               "schrift": "来",
               "lerntext": "lái",
-              "de": "kommen"
+              "de": "kommen",
+              "c": "v"
             },
             {
               "schrift": "走",
               "lerntext": "zǒu",
-              "de": "gehen"
+              "de": "gehen",
+              "c": "v"
             },
             {
               "schrift": "问",
               "lerntext": "wèn",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "找",
               "lerntext": "zhǎo",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "吃",
               "lerntext": "chī",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "喝",
               "lerntext": "hē",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "买",
               "lerntext": "mǎi",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "看",
               "lerntext": "kàn",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "坐",
               "lerntext": "zuò",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "工作",
               "lerntext": "gōngzuò",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "有",
               "lerntext": "yǒu",
               "de": "haben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "是",
               "lerntext": "shì",
               "de": "sein",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -1845,19 +2206,25 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 他 要 [Slot]",
-          "lerntext": "wǒ / tā yào [Slot]"
+          "lerntext": "wǒ / tā yào [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "tā": "p"
+          }
         },
         "frameDe": "ich / er möchte [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1865,86 +2232,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "水",
               "lerntext": "shuǐ",
-              "de": "Wasser"
+              "de": "Wasser",
+              "c": "n"
             },
             {
               "schrift": "茶",
               "lerntext": "chá",
-              "de": "Tee"
+              "de": "Tee",
+              "c": "n"
             },
             {
               "schrift": "咖啡",
               "lerntext": "kāfēi",
-              "de": "Kaffee"
+              "de": "Kaffee",
+              "c": "n"
             },
             {
               "schrift": "啤酒",
               "lerntext": "píjiǔ",
-              "de": "Bier"
+              "de": "Bier",
+              "c": "n"
             },
             {
               "schrift": "牛奶",
               "lerntext": "niúnǎi",
-              "de": "Milch"
+              "de": "Milch",
+              "c": "n"
             },
             {
               "schrift": "时间",
               "lerntext": "shíjiān",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "杯子",
               "lerntext": "bēizi",
               "de": "Becher",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "先生",
               "lerntext": "xiānsheng",
               "de": "Herr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "家",
               "lerntext": "jiā",
               "de": "Zuhause",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "哥哥",
               "lerntext": "gēge",
               "de": "älterer Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "朋友",
               "lerntext": "péngyou",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "桌子",
               "lerntext": "zhuōzi",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "老师",
               "lerntext": "lǎoshī",
               "de": "Lehrer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "包",
               "lerntext": "bāo",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "问题",
               "lerntext": "wèntí",
               "de": "Frage",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1958,19 +2340,25 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 他 要 [Slot]",
-          "lerntext": "wǒ / tā yào [Slot]"
+          "lerntext": "wǒ / tā yào [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "tā": "p"
+          }
         },
         "frameDe": "ich / er möchte [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1978,86 +2366,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "米饭",
               "lerntext": "mǐfàn",
-              "de": "Reis"
+              "de": "Reis",
+              "c": "n"
             },
             {
               "schrift": "菜",
               "lerntext": "cài",
-              "de": "Gericht"
+              "de": "Gericht",
+              "c": "n"
             },
             {
               "schrift": "水果",
               "lerntext": "shuǐguǒ",
-              "de": "Obst"
+              "de": "Obst",
+              "c": "n"
             },
             {
               "schrift": "苹果",
               "lerntext": "píngguǒ",
-              "de": "Apfel"
+              "de": "Apfel",
+              "c": "n"
             },
             {
               "schrift": "鸡蛋",
               "lerntext": "jīdàn",
-              "de": "Ei"
+              "de": "Ei",
+              "c": "n"
             },
             {
               "schrift": "水",
               "lerntext": "shuǐ",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "茶",
               "lerntext": "chá",
               "de": "Tee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "咖啡",
               "lerntext": "kāfēi",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "啤酒",
               "lerntext": "píjiǔ",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "牛奶",
               "lerntext": "niúnǎi",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "东西",
               "lerntext": "dōngxi",
               "de": "Ding",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "公司",
               "lerntext": "gōngsī",
               "de": "Firma",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "猫",
               "lerntext": "māo",
               "de": "Katze",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "颜色",
               "lerntext": "yánsè",
               "de": "Farbe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "名字",
               "lerntext": "míngzi",
               "de": "Name",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2071,7 +2474,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "请 给 我 [Slot]",
-          "lerntext": "qǐng gěi wǒ [Slot]"
+          "lerntext": "qǐng gěi wǒ [Slot]",
+          "wortarten": {
+            "gěi": "v",
+            "wǒ": "p"
+          }
         },
         "frameDe": "Bitte gib mir [Slot].",
         "pronouns": [
@@ -2083,7 +2490,8 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "给",
             "lerntext": "gěi",
-            "de": "geben"
+            "de": "geben",
+            "c": "v"
           }
         ],
         "slotGroups": [
@@ -2091,86 +2499,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "药",
               "lerntext": "yào",
-              "de": "Medizin"
+              "de": "Medizin",
+              "c": "n"
             },
             {
               "schrift": "鱼",
               "lerntext": "yú",
-              "de": "Fisch"
+              "de": "Fisch",
+              "c": "n"
             },
             {
               "schrift": "羊肉",
               "lerntext": "yángròu",
-              "de": "Lammfleisch"
+              "de": "Lammfleisch",
+              "c": "n"
             },
             {
               "schrift": "西瓜",
               "lerntext": "xīguā",
-              "de": "Wassermelone"
+              "de": "Wassermelone",
+              "c": "n"
             },
             {
               "schrift": "钱",
               "lerntext": "qián",
-              "de": "Geld"
+              "de": "Geld",
+              "c": "n"
             },
             {
               "schrift": "鸡蛋",
               "lerntext": "jīdàn",
               "de": "Ei",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "菜",
               "lerntext": "cài",
               "de": "Gericht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "水果",
               "lerntext": "shuǐguǒ",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "苹果",
               "lerntext": "píngguǒ",
               "de": "Apfel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "米饭",
               "lerntext": "mǐfàn",
               "de": "Reis",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "咖啡",
               "lerntext": "kāfēi",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "牛奶",
               "lerntext": "niúnǎi",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "茶",
               "lerntext": "chá",
               "de": "Tee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "水",
               "lerntext": "shuǐ",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "啤酒",
               "lerntext": "píjiǔ",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2186,7 +2609,8 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "给",
             "lerntext": "gěi",
-            "de": "geben"
+            "de": "geben",
+            "c": "v"
           }
         ],
         "id": "3.5"
@@ -2195,24 +2619,33 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 你 / 我们 想 [Slot]",
-          "lerntext": "wǒ / nǐ / wǒmen xiǎng [Slot]"
+          "lerntext": "wǒ / nǐ / wǒmen xiǎng [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "wǒmen": "p",
+            "xiǎng": "v"
+          }
         },
         "frameDe": "ich / du / wir möchte [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2221,60 +2654,70 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "去",
               "lerntext": "qù",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "来",
               "lerntext": "lái",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "走",
               "lerntext": "zǒu",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "问",
               "lerntext": "wèn",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "找",
               "lerntext": "zhǎo",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "吃",
               "lerntext": "chī",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "喝",
               "lerntext": "hē",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "买",
               "lerntext": "mǎi",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "看",
               "lerntext": "kàn",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "坐",
               "lerntext": "zuò",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -2288,7 +2731,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "请 给 我 [Slot]",
-          "lerntext": "qǐng gěi wǒ [Slot]"
+          "lerntext": "qǐng gěi wǒ [Slot]",
+          "wortarten": {
+            "gěi": "v",
+            "wǒ": "p"
+          }
         },
         "frameDe": "Bitte gib mir [Slot].",
         "pronouns": [
@@ -2300,7 +2747,8 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "给",
             "lerntext": "gěi",
-            "de": "geben"
+            "de": "geben",
+            "c": "v"
           }
         ],
         "slotGroups": [
@@ -2309,54 +2757,63 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "药",
               "lerntext": "yào",
               "de": "Medizin",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "鱼",
               "lerntext": "yú",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "羊肉",
               "lerntext": "yángròu",
               "de": "Lammfleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "西瓜",
               "lerntext": "xīguā",
               "de": "Wassermelone",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "鸡蛋",
               "lerntext": "jīdàn",
               "de": "Ei",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "菜",
               "lerntext": "cài",
               "de": "Gericht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "水果",
               "lerntext": "shuǐguǒ",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "苹果",
               "lerntext": "píngguǒ",
               "de": "Apfel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "米饭",
               "lerntext": "mǐfàn",
               "de": "Reis",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2370,24 +2827,33 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 你 / 我们 想 [Slot]",
-          "lerntext": "wǒ / nǐ / wǒmen xiǎng [Slot]"
+          "lerntext": "wǒ / nǐ / wǒmen xiǎng [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "wǒmen": "p",
+            "xiǎng": "v"
+          }
         },
         "frameDe": "ich / du / wir möchte [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2396,30 +2862,35 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "去",
               "lerntext": "qù",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "来",
               "lerntext": "lái",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "走",
               "lerntext": "zǒu",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "问",
               "lerntext": "wèn",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "找",
               "lerntext": "zhǎo",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -2433,7 +2904,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "请 给 我 [Slot]",
-          "lerntext": "qǐng gěi wǒ [Slot]"
+          "lerntext": "qǐng gěi wǒ [Slot]",
+          "wortarten": {
+            "gěi": "v",
+            "wǒ": "p"
+          }
         },
         "frameDe": "Bitte gib mir [Slot].",
         "pronouns": [
@@ -2445,7 +2920,8 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "给",
             "lerntext": "gěi",
-            "de": "geben"
+            "de": "geben",
+            "c": "v"
           }
         ],
         "slotGroups": [
@@ -2454,24 +2930,28 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "药",
               "lerntext": "yào",
               "de": "Medizin",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "鱼",
               "lerntext": "yú",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "羊肉",
               "lerntext": "yángròu",
               "de": "Lammfleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "西瓜",
               "lerntext": "xīguā",
               "de": "Wassermelone",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2531,66 +3011,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "错",
               "lerntext": "cuò",
-              "de": "falsch"
+              "de": "falsch",
+              "c": "a"
             },
             {
               "schrift": "累",
               "lerntext": "lèi",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "高",
               "lerntext": "gāo",
               "de": "groß (Körpergröße)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "好",
               "lerntext": "hǎo",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "高兴",
               "lerntext": "gāoxìng",
               "de": "froh",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "长",
               "lerntext": "cháng",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "忙",
               "lerntext": "máng",
               "de": "beschäftigt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "难过",
               "lerntext": "nánguò",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "小",
               "lerntext": "xiǎo",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "大",
               "lerntext": "dà",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "生气",
               "lerntext": "shēngqì",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -2645,86 +3136,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "知道",
               "lerntext": "zhīdào",
-              "de": "wissen"
+              "de": "wissen",
+              "c": "v"
             },
             {
               "schrift": "认识",
               "lerntext": "rènshi",
-              "de": "kennen"
+              "de": "kennen",
+              "c": "v"
             },
             {
               "schrift": "懂",
               "lerntext": "dǒng",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "喜欢",
               "lerntext": "xǐhuan",
-              "de": "mögen"
+              "de": "mögen",
+              "c": "v"
             },
             {
               "schrift": "会",
               "lerntext": "huì",
-              "de": "können (erlernt)"
+              "de": "können (erlernt)",
+              "c": "v"
             },
             {
               "schrift": "给",
               "lerntext": "gěi",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "问",
               "lerntext": "wèn",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "来",
               "lerntext": "lái",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "工作",
               "lerntext": "gōngzuò",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "看",
               "lerntext": "kàn",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "吃",
               "lerntext": "chī",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "买",
               "lerntext": "mǎi",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "走",
               "lerntext": "zǒu",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "去",
               "lerntext": "qù",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "坐",
               "lerntext": "zuò",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -2738,24 +3244,31 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "你 / 他 / 她 [Slot] 吗?",
-          "lerntext": "nǐ / tā / tā [Slot] ma?"
+          "lerntext": "nǐ / tā / tā [Slot] ma?",
+          "wortarten": {
+            "nǐ": "p",
+            "tā": "p"
+          }
         },
         "frameDe": "[Slot] du / er / sie?",
         "pronouns": [
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "她",
             "lerntext": "tā",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2763,86 +3276,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "学习",
               "lerntext": "xuéxí",
-              "de": "lernen"
+              "de": "lernen",
+              "c": "v"
             },
             {
               "schrift": "工作",
               "lerntext": "gōngzuò",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "休息",
               "lerntext": "xiūxi",
-              "de": "ausruhen"
+              "de": "ausruhen",
+              "c": "v"
             },
             {
               "schrift": "回",
               "lerntext": "huí",
-              "de": "zurückkehren"
+              "de": "zurückkehren",
+              "c": "v"
             },
             {
               "schrift": "住",
               "lerntext": "zhù",
-              "de": "wohnen"
+              "de": "wohnen",
+              "c": "v"
             },
             {
               "schrift": "懂",
               "lerntext": "dǒng",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "认识",
               "lerntext": "rènshi",
               "de": "kennen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "喜欢",
               "lerntext": "xǐhuan",
               "de": "mögen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "知道",
               "lerntext": "zhīdào",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "会",
               "lerntext": "huì",
               "de": "können (erlernt)",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "要",
               "lerntext": "yào",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "想",
               "lerntext": "xiǎng",
               "de": "möchten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "找",
               "lerntext": "zhǎo",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "喝",
               "lerntext": "hē",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "给",
               "lerntext": "gěi",
               "de": "geben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -2862,19 +3390,25 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "这 是 什么 [Slot]?",
-          "lerntext": "zhè shì shénme [Slot]?"
+          "lerntext": "zhè shì shénme [Slot]?",
+          "wortarten": {
+            "zhè": "p",
+            "shénme": "p"
+          }
         },
         "frameDe": "Was für [Slot] ist das?",
         "pronouns": [
           {
             "schrift": "什么",
             "lerntext": "shénme",
-            "de": "was"
+            "de": "was",
+            "c": "p"
           },
           {
             "schrift": "谁",
             "lerntext": "shéi",
-            "de": "wer"
+            "de": "wer",
+            "c": "p"
           },
           {
             "schrift": "为什么",
@@ -2887,66 +3421,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "意思",
               "lerntext": "yìsi",
-              "de": "Bedeutung"
+              "de": "Bedeutung",
+              "c": "n"
             },
             {
               "schrift": "咖啡",
               "lerntext": "kāfēi",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "羊肉",
               "lerntext": "yángròu",
               "de": "Lammfleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "鱼",
               "lerntext": "yú",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "鸡蛋",
               "lerntext": "jīdàn",
               "de": "Ei",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "牛奶",
               "lerntext": "niúnǎi",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "椅子",
               "lerntext": "yǐzi",
               "de": "Stuhl",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "学生",
               "lerntext": "xuésheng",
               "de": "Student",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "房间",
               "lerntext": "fángjiān",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "路",
               "lerntext": "lù",
               "de": "Weg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "衣服",
               "lerntext": "yīfu",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2957,12 +3502,14 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "什么",
             "lerntext": "shénme",
-            "de": "was"
+            "de": "was",
+            "c": "p"
           },
           {
             "schrift": "谁",
             "lerntext": "shéi",
-            "de": "wer"
+            "de": "wer",
+            "c": "p"
           },
           {
             "schrift": "为什么",
@@ -2986,24 +3533,31 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "你 / 他 / 她 [Slot] 吗?",
-          "lerntext": "nǐ / tā / tā [Slot] ma?"
+          "lerntext": "nǐ / tā / tā [Slot] ma?",
+          "wortarten": {
+            "nǐ": "p",
+            "tā": "p"
+          }
         },
         "frameDe": "[Slot] du / er / sie?",
         "pronouns": [
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "她",
             "lerntext": "tā",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -3012,54 +3566,63 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "学习",
               "lerntext": "xuéxí",
               "de": "lernen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "休息",
               "lerntext": "xiūxi",
               "de": "ausruhen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "回",
               "lerntext": "huí",
               "de": "zurückkehren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "住",
               "lerntext": "zhù",
               "de": "wohnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "懂",
               "lerntext": "dǒng",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "认识",
               "lerntext": "rènshi",
               "de": "kennen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "喜欢",
               "lerntext": "xǐhuan",
               "de": "mögen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "知道",
               "lerntext": "zhīdào",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "会",
               "lerntext": "huì",
               "de": "können (erlernt)",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -3073,24 +3636,31 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "你 / 他 / 她 [Slot] 吗?",
-          "lerntext": "nǐ / tā / tā [Slot] ma?"
+          "lerntext": "nǐ / tā / tā [Slot] ma?",
+          "wortarten": {
+            "nǐ": "p",
+            "tā": "p"
+          }
         },
         "frameDe": "[Slot] du / er / sie?",
         "pronouns": [
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "她",
             "lerntext": "tā",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -3099,24 +3669,28 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "学习",
               "lerntext": "xuéxí",
               "de": "lernen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "休息",
               "lerntext": "xiūxi",
               "de": "ausruhen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "回",
               "lerntext": "huí",
               "de": "zurückkehren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "住",
               "lerntext": "zhù",
               "de": "wohnen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -3151,14 +3725,18 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] 在 哪里?",
-          "lerntext": "[Slot] zài nǎli?"
+          "lerntext": "[Slot] zài nǎli?",
+          "wortarten": {
+            "zài": "v"
+          }
         },
         "frameDe": "Wo ist [Slot]?",
         "pronouns": [
           {
             "schrift": "在",
             "lerntext": "zài",
-            "de": "sein (Ort)"
+            "de": "sein (Ort)",
+            "c": "v"
           },
           {
             "schrift": "哪里",
@@ -3171,86 +3749,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "洗手间",
               "lerntext": "xǐshǒujiān",
-              "de": "Toilette"
+              "de": "Toilette",
+              "c": "n"
             },
             {
               "schrift": "医院",
               "lerntext": "yīyuàn",
-              "de": "Krankenhaus"
+              "de": "Krankenhaus",
+              "c": "n"
             },
             {
               "schrift": "银行",
               "lerntext": "yínháng",
-              "de": "Bank (Geldinstitut)"
+              "de": "Bank (Geldinstitut)",
+              "c": "n"
             },
             {
               "schrift": "饭店",
               "lerntext": "fàndiàn",
-              "de": "Restaurant"
+              "de": "Restaurant",
+              "c": "n"
             },
             {
               "schrift": "商店",
               "lerntext": "shāngdiàn",
-              "de": "Geschäft"
+              "de": "Geschäft",
+              "c": "n"
             },
             {
               "schrift": "意思",
               "lerntext": "yìsi",
               "de": "Bedeutung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "茶",
               "lerntext": "chá",
               "de": "Tee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "菜",
               "lerntext": "cài",
               "de": "Gericht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "小姐",
               "lerntext": "xiǎojiě",
               "de": "Frau (Anrede)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "妹妹",
               "lerntext": "mèimei",
               "de": "jüngere Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "手机",
               "lerntext": "shǒujī",
               "de": "Handy",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "儿子",
               "lerntext": "érzi",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "报纸",
               "lerntext": "bàozhǐ",
               "de": "Zeitung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "门",
               "lerntext": "mén",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "姐姐",
               "lerntext": "jiějie",
               "de": "ältere Schwester",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3261,7 +3854,8 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "在",
             "lerntext": "zài",
-            "de": "sein (Ort)"
+            "de": "sein (Ort)",
+            "c": "v"
           },
           {
             "schrift": "哪里",
@@ -3275,14 +3869,18 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] 在 哪里?",
-          "lerntext": "[Slot] zài nǎli?"
+          "lerntext": "[Slot] zài nǎli?",
+          "wortarten": {
+            "zài": "v"
+          }
         },
         "frameDe": "Wo ist [Slot]?",
         "pronouns": [
           {
             "schrift": "在",
             "lerntext": "zài",
-            "de": "sein (Ort)"
+            "de": "sein (Ort)",
+            "c": "v"
           },
           {
             "schrift": "哪里",
@@ -3295,86 +3893,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "学校",
               "lerntext": "xuéxiào",
-              "de": "Schule"
+              "de": "Schule",
+              "c": "n"
             },
             {
               "schrift": "机场",
               "lerntext": "jīchǎng",
-              "de": "Flughafen"
+              "de": "Flughafen",
+              "c": "n"
             },
             {
               "schrift": "火车站",
               "lerntext": "huǒchēzhàn",
-              "de": "Bahnhof"
+              "de": "Bahnhof",
+              "c": "n"
             },
             {
               "schrift": "酒店",
               "lerntext": "jiǔdiàn",
-              "de": "Hotel"
+              "de": "Hotel",
+              "c": "n"
             },
             {
               "schrift": "教室",
               "lerntext": "jiàoshì",
-              "de": "Klassenzimmer"
+              "de": "Klassenzimmer",
+              "c": "n"
             },
             {
               "schrift": "洗手间",
               "lerntext": "xǐshǒujiān",
               "de": "Toilette",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "医院",
               "lerntext": "yīyuàn",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "银行",
               "lerntext": "yínháng",
               "de": "Bank (Geldinstitut)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "饭店",
               "lerntext": "fàndiàn",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "商店",
               "lerntext": "shāngdiàn",
               "de": "Geschäft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "意思",
               "lerntext": "yìsi",
               "de": "Bedeutung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "狗",
               "lerntext": "gǒu",
               "de": "Hund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "女朋友",
               "lerntext": "nǚ péngyou",
               "de": "feste Freundin",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "女儿",
               "lerntext": "nǚ'ér",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "药",
               "lerntext": "yào",
               "de": "Medizin",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3388,7 +4001,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "在 [Slot]",
-          "lerntext": "zài [Slot]"
+          "lerntext": "zài [Slot]",
+          "wortarten": {
+            "zài": "v"
+          }
         },
         "frameDe": "Es ist [Slot].",
         "pronouns": [
@@ -3408,66 +4024,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "城市",
               "lerntext": "chéngshì",
-              "de": "Stadt"
+              "de": "Stadt",
+              "c": "n"
             },
             {
               "schrift": "学校",
               "lerntext": "xuéxiào",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "酒店",
               "lerntext": "jiǔdiàn",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "教室",
               "lerntext": "jiàoshì",
               "de": "Klassenzimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "机场",
               "lerntext": "jīchǎng",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "火车站",
               "lerntext": "huǒchēzhàn",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "医院",
               "lerntext": "yīyuàn",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "饭店",
               "lerntext": "fàndiàn",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "洗手间",
               "lerntext": "xǐshǒujiān",
               "de": "Toilette",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "银行",
               "lerntext": "yínháng",
               "de": "Bank (Geldinstitut)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "商店",
               "lerntext": "shāngdiàn",
               "de": "Geschäft",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3492,7 +4119,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "在 [Slot]",
-          "lerntext": "zài [Slot]"
+          "lerntext": "zài [Slot]",
+          "wortarten": {
+            "zài": "v"
+          }
         },
         "frameDe": "Es ist [Slot].",
         "pronouns": [
@@ -3605,7 +4235,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "在 [Slot]",
-          "lerntext": "zài [Slot]"
+          "lerntext": "zài [Slot]",
+          "wortarten": {
+            "zài": "v"
+          }
         },
         "frameDe": "Es ist [Slot].",
         "pronouns": [
@@ -3733,86 +4366,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "远",
               "lerntext": "yuǎn",
-              "de": "weit"
+              "de": "weit",
+              "c": "a"
             },
             {
               "schrift": "近",
               "lerntext": "jìn",
-              "de": "nah"
+              "de": "nah",
+              "c": "a"
             },
             {
               "schrift": "快",
               "lerntext": "kuài",
-              "de": "schnell"
+              "de": "schnell",
+              "c": "a"
             },
             {
               "schrift": "慢",
               "lerntext": "màn",
-              "de": "langsam"
+              "de": "langsam",
+              "c": "a"
             },
             {
               "schrift": "新",
               "lerntext": "xīn",
-              "de": "neu"
+              "de": "neu",
+              "c": "a"
             },
             {
               "schrift": "错",
               "lerntext": "cuò",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "累",
               "lerntext": "lèi",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "高",
               "lerntext": "gāo",
               "de": "groß (Körpergröße)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "好",
               "lerntext": "hǎo",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "高兴",
               "lerntext": "gāoxìng",
               "de": "froh",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "长",
               "lerntext": "cháng",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "忙",
               "lerntext": "máng",
               "de": "beschäftigt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "难过",
               "lerntext": "nánguò",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "小",
               "lerntext": "xiǎo",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "大",
               "lerntext": "dà",
               "de": "groß",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -3837,7 +4485,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "在 [Slot]",
-          "lerntext": "zài [Slot]"
+          "lerntext": "zài [Slot]",
+          "wortarten": {
+            "zài": "v"
+          }
         },
         "frameDe": "Es ist [Slot].",
         "pronouns": [
@@ -3858,6 +4509,7 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "城市",
               "lerntext": "chéngshì",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
@@ -3888,30 +4540,35 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "学校",
               "lerntext": "xuéxiào",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "酒店",
               "lerntext": "jiǔdiàn",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "教室",
               "lerntext": "jiàoshì",
               "de": "Klassenzimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "机场",
               "lerntext": "jīchǎng",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "火车站",
               "lerntext": "huǒchēzhàn",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3946,36 +4603,42 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "远",
               "lerntext": "yuǎn",
               "de": "weit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "近",
               "lerntext": "jìn",
               "de": "nah",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "快",
               "lerntext": "kuài",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "慢",
               "lerntext": "màn",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "新",
               "lerntext": "xīn",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "错",
               "lerntext": "cuò",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -3989,7 +4652,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "在 [Slot]",
-          "lerntext": "zài [Slot]"
+          "lerntext": "zài [Slot]",
+          "wortarten": {
+            "zài": "v"
+          }
         },
         "frameDe": "Es ist [Slot].",
         "pronouns": [
@@ -4010,6 +4676,7 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "城市",
               "lerntext": "chéngshì",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
@@ -4098,30 +4765,35 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "远",
               "lerntext": "yuǎn",
               "de": "weit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "近",
               "lerntext": "jìn",
               "de": "nah",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "快",
               "lerntext": "kuài",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "慢",
               "lerntext": "màn",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "新",
               "lerntext": "xīn",
               "de": "neu",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -4238,7 +4910,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] 个 人",
-          "lerntext": "[Slot] ge rén"
+          "lerntext": "[Slot] ge rén",
+          "wortarten": {
+            "ge": "n",
+            "rén": "n"
+          }
         },
         "frameDe": "[Slot] Personen.",
         "pronouns": [
@@ -4362,7 +5038,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "这个 [Slot] 钱?",
-          "lerntext": "zhège [Slot] qián?"
+          "lerntext": "zhège [Slot] qián?",
+          "wortarten": {
+            "qián?": "n"
+          }
         },
         "frameDe": "Wie viel kostet das?",
         "pronouns": [],
@@ -4371,71 +5050,83 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "贵",
               "lerntext": "guì",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "便宜",
               "lerntext": "piányi",
-              "de": "günstig"
+              "de": "günstig",
+              "c": "a"
             },
             {
               "schrift": "近",
               "lerntext": "jìn",
               "de": "nah",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "慢",
               "lerntext": "màn",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "快",
               "lerntext": "kuài",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "远",
               "lerntext": "yuǎn",
               "de": "weit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "新",
               "lerntext": "xīn",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "错",
               "lerntext": "cuò",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "生气",
               "lerntext": "shēngqì",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "累",
               "lerntext": "lèi",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "高",
               "lerntext": "gāo",
               "de": "groß (Körpergröße)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "好",
               "lerntext": "hǎo",
               "de": "gut",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -4449,7 +5140,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "这个 [Slot] 钱?",
-          "lerntext": "zhège [Slot] qián?"
+          "lerntext": "zhège [Slot] qián?",
+          "wortarten": {
+            "qián?": "n"
+          }
         },
         "frameDe": "Wie viel kostet das?",
         "pronouns": [],
@@ -4458,76 +5152,89 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "块",
               "lerntext": "kuài",
-              "de": "Yuan (Geldeinheit)"
+              "de": "Yuan (Geldeinheit)",
+              "c": "n"
             },
             {
               "schrift": "元",
               "lerntext": "yuán",
-              "de": "Yuan (Währung)"
+              "de": "Yuan (Währung)",
+              "c": "n"
             },
             {
               "schrift": "票",
               "lerntext": "piào",
-              "de": "Ticket"
+              "de": "Ticket",
+              "c": "n"
             },
             {
               "schrift": "学校",
               "lerntext": "xuéxiào",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "酒店",
               "lerntext": "jiǔdiàn",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "医院",
               "lerntext": "yīyuàn",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "教室",
               "lerntext": "jiàoshì",
               "de": "Klassenzimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "机场",
               "lerntext": "jīchǎng",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "饭店",
               "lerntext": "fàndiàn",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "洗手间",
               "lerntext": "xǐshǒujiān",
               "de": "Toilette",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "火车站",
               "lerntext": "huǒchēzhàn",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "城市",
               "lerntext": "chéngshì",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "意思",
               "lerntext": "yìsi",
               "de": "Bedeutung",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -4561,86 +5268,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "热",
               "lerntext": "rè",
-              "de": "heiß"
+              "de": "heiß",
+              "c": "a"
             },
             {
               "schrift": "冷",
               "lerntext": "lěng",
-              "de": "kalt"
+              "de": "kalt",
+              "c": "a"
             },
             {
               "schrift": "暖和",
               "lerntext": "nuǎnhuo",
-              "de": "warm"
+              "de": "warm",
+              "c": "a"
             },
             {
               "schrift": "难",
               "lerntext": "nán",
-              "de": "schwierig"
+              "de": "schwierig",
+              "c": "a"
             },
             {
               "schrift": "容易",
               "lerntext": "róngyì",
-              "de": "einfach"
+              "de": "einfach",
+              "c": "a"
             },
             {
               "schrift": "便宜",
               "lerntext": "piányi",
               "de": "günstig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "贵",
               "lerntext": "guì",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "近",
               "lerntext": "jìn",
               "de": "nah",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "慢",
               "lerntext": "màn",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "快",
               "lerntext": "kuài",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "远",
               "lerntext": "yuǎn",
               "de": "weit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "新",
               "lerntext": "xīn",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "错",
               "lerntext": "cuò",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "高兴",
               "lerntext": "gāoxìng",
               "de": "froh",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "长",
               "lerntext": "cháng",
               "de": "lang",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -4757,7 +5479,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] 个 人",
-          "lerntext": "[Slot] ge rén"
+          "lerntext": "[Slot] ge rén",
+          "wortarten": {
+            "ge": "n",
+            "rén": "n"
+          }
         },
         "frameDe": "[Slot] Personen.",
         "pronouns": [
@@ -4854,42 +5580,49 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "热",
               "lerntext": "rè",
               "de": "heiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "冷",
               "lerntext": "lěng",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "暖和",
               "lerntext": "nuǎnhuo",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "难",
               "lerntext": "nán",
               "de": "schwierig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "容易",
               "lerntext": "róngyì",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "便宜",
               "lerntext": "piányi",
               "de": "günstig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "贵",
               "lerntext": "guì",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -4903,7 +5636,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] 个 人",
-          "lerntext": "[Slot] ge rén"
+          "lerntext": "[Slot] ge rén",
+          "wortarten": {
+            "ge": "n",
+            "rén": "n"
+          }
         },
         "frameDe": "[Slot] Personen.",
         "pronouns": [
@@ -4982,24 +5719,33 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 你 / 他 会 [Slot]",
-          "lerntext": "wǒ / nǐ / tā huì [Slot]"
+          "lerntext": "wǒ / nǐ / tā huì [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "tā": "p",
+            "huì": "v"
+          }
         },
         "frameDe": "ich / du / er kann [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5007,86 +5753,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "说话",
               "lerntext": "shuōhuà",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "写",
               "lerntext": "xiě",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "读",
               "lerntext": "dú",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "听",
               "lerntext": "tīng",
-              "de": "hören"
+              "de": "hören",
+              "c": "v"
             },
             {
               "schrift": "做",
               "lerntext": "zuò",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "学习",
               "lerntext": "xuéxí",
               "de": "lernen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "懂",
               "lerntext": "dǒng",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "认识",
               "lerntext": "rènshi",
               "de": "kennen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "回",
               "lerntext": "huí",
               "de": "zurückkehren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "喜欢",
               "lerntext": "xǐhuan",
               "de": "mögen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "休息",
               "lerntext": "xiūxi",
               "de": "ausruhen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "知道",
               "lerntext": "zhīdào",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "住",
               "lerntext": "zhù",
               "de": "wohnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "问",
               "lerntext": "wèn",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "来",
               "lerntext": "lái",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5097,17 +5858,20 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "会",
             "lerntext": "huì",
-            "de": "können (erlernt)"
+            "de": "können (erlernt)",
+            "c": "v"
           },
           {
             "schrift": "能",
             "lerntext": "néng",
-            "de": "können"
+            "de": "können",
+            "c": "v"
           },
           {
             "schrift": "可以",
             "lerntext": "kěyǐ",
-            "de": "können"
+            "de": "können",
+            "c": "v"
           }
         ],
         "id": "7.1"
@@ -5116,24 +5880,33 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 你 / 他 会 [Slot]",
-          "lerntext": "wǒ / nǐ / tā huì [Slot]"
+          "lerntext": "wǒ / nǐ / tā huì [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "tā": "p",
+            "huì": "v"
+          }
         },
         "frameDe": "ich / du / er kann [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5141,86 +5914,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "游泳",
               "lerntext": "yóuyǒng",
-              "de": "schwimmen"
+              "de": "schwimmen",
+              "c": "v"
             },
             {
               "schrift": "跳舞",
               "lerntext": "tiàowǔ",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "唱歌",
               "lerntext": "chànggē",
-              "de": "singen"
+              "de": "singen",
+              "c": "v"
             },
             {
               "schrift": "跑步",
               "lerntext": "pǎobù",
-              "de": "joggen"
+              "de": "joggen",
+              "c": "v"
             },
             {
               "schrift": "运动",
               "lerntext": "yùndòng",
-              "de": "Sport treiben"
+              "de": "Sport treiben",
+              "c": "v"
             },
             {
               "schrift": "说话",
               "lerntext": "shuōhuà",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "写",
               "lerntext": "xiě",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "读",
               "lerntext": "dú",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "听",
               "lerntext": "tīng",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "做",
               "lerntext": "zuò",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "学习",
               "lerntext": "xuéxí",
               "de": "lernen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "懂",
               "lerntext": "dǒng",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "认识",
               "lerntext": "rènshi",
               "de": "kennen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "看",
               "lerntext": "kàn",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "回",
               "lerntext": "huí",
               "de": "zurückkehren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5234,19 +6022,26 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 你 必须 [Slot]",
-          "lerntext": "wǒ / nǐ bìxū [Slot]"
+          "lerntext": "wǒ / nǐ bìxū [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "bìxū": "v"
+          }
         },
         "frameDe": "ich / du muss [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5254,86 +6049,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "等",
               "lerntext": "děng",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "准备",
               "lerntext": "zhǔnbèi",
-              "de": "vorbereiten"
+              "de": "vorbereiten",
+              "c": "v"
             },
             {
               "schrift": "开始",
               "lerntext": "kāishǐ",
-              "de": "anfangen"
+              "de": "anfangen",
+              "c": "v"
             },
             {
               "schrift": "起床",
               "lerntext": "qǐchuáng",
-              "de": "aufstehen"
+              "de": "aufstehen",
+              "c": "v"
             },
             {
               "schrift": "洗",
               "lerntext": "xǐ",
-              "de": "waschen"
+              "de": "waschen",
+              "c": "v"
             },
             {
               "schrift": "跳舞",
               "lerntext": "tiàowǔ",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "能",
               "lerntext": "néng",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "运动",
               "lerntext": "yùndòng",
               "de": "Sport treiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "游泳",
               "lerntext": "yóuyǒng",
               "de": "schwimmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "跑步",
               "lerntext": "pǎobù",
               "de": "joggen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "唱歌",
               "lerntext": "chànggē",
               "de": "singen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "可以",
               "lerntext": "kěyǐ",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "听",
               "lerntext": "tīng",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "读",
               "lerntext": "dú",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "说话",
               "lerntext": "shuōhuà",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5344,7 +6154,8 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "必须",
             "lerntext": "bìxū",
-            "de": "müssen"
+            "de": "müssen",
+            "c": "v"
           }
         ],
         "id": "7.3"
@@ -5353,19 +6164,26 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 我们 可以 [Slot] 吗?",
-          "lerntext": "wǒ / wǒmen kěyǐ [Slot] ma?"
+          "lerntext": "wǒ / wǒmen kěyǐ [Slot] ma?",
+          "wortarten": {
+            "wǒ": "p",
+            "wǒmen": "p",
+            "kěyǐ": "v"
+          }
         },
         "frameDe": "Darf ich / wir [Slot]?",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5373,86 +6191,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "进",
               "lerntext": "jìn",
-              "de": "eintreten"
+              "de": "eintreten",
+              "c": "v"
             },
             {
               "schrift": "开",
               "lerntext": "kāi",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "帮助",
               "lerntext": "bāngzhù",
-              "de": "helfen"
+              "de": "helfen",
+              "c": "v"
             },
             {
               "schrift": "打电话",
               "lerntext": "dǎ diànhuà",
-              "de": "telefonieren"
+              "de": "telefonieren",
+              "c": "v"
             },
             {
               "schrift": "穿",
               "lerntext": "chuān",
-              "de": "anziehen"
+              "de": "anziehen",
+              "c": "v"
             },
             {
               "schrift": "开始",
               "lerntext": "kāishǐ",
               "de": "anfangen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "准备",
               "lerntext": "zhǔnbèi",
               "de": "vorbereiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "洗",
               "lerntext": "xǐ",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "起床",
               "lerntext": "qǐchuáng",
               "de": "aufstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "等",
               "lerntext": "děng",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "必须",
               "lerntext": "bìxū",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "跳舞",
               "lerntext": "tiàowǔ",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "能",
               "lerntext": "néng",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "运动",
               "lerntext": "yùndòng",
               "de": "Sport treiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "游泳",
               "lerntext": "yóuyǒng",
               "de": "schwimmen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5466,19 +6299,26 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 我们 可以 [Slot] 吗?",
-          "lerntext": "wǒ / wǒmen kěyǐ [Slot] ma?"
+          "lerntext": "wǒ / wǒmen kěyǐ [Slot] ma?",
+          "wortarten": {
+            "wǒ": "p",
+            "wǒmen": "p",
+            "kěyǐ": "v"
+          }
         },
         "frameDe": "Darf ich / wir [Slot]?",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5487,60 +6327,70 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "进",
               "lerntext": "jìn",
               "de": "eintreten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "开",
               "lerntext": "kāi",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "帮助",
               "lerntext": "bāngzhù",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "打电话",
               "lerntext": "dǎ diànhuà",
               "de": "telefonieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "穿",
               "lerntext": "chuān",
               "de": "anziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "开始",
               "lerntext": "kāishǐ",
               "de": "anfangen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "准备",
               "lerntext": "zhǔnbèi",
               "de": "vorbereiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "洗",
               "lerntext": "xǐ",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "起床",
               "lerntext": "qǐchuáng",
               "de": "aufstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "等",
               "lerntext": "děng",
               "de": "warten",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5554,24 +6404,33 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 你 / 他 会 [Slot]",
-          "lerntext": "wǒ / nǐ / tā huì [Slot]"
+          "lerntext": "wǒ / nǐ / tā huì [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "tā": "p",
+            "huì": "v"
+          }
         },
         "frameDe": "ich / du / er kann [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5580,24 +6439,28 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "写",
               "lerntext": "xiě",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "做",
               "lerntext": "zuò",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "唱歌",
               "lerntext": "chànggē",
               "de": "singen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "跑步",
               "lerntext": "pǎobù",
               "de": "joggen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5611,19 +6474,26 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 我们 可以 [Slot] 吗?",
-          "lerntext": "wǒ / wǒmen kěyǐ [Slot] ma?"
+          "lerntext": "wǒ / wǒmen kěyǐ [Slot] ma?",
+          "wortarten": {
+            "wǒ": "p",
+            "wǒmen": "p",
+            "kěyǐ": "v"
+          }
         },
         "frameDe": "Darf ich / wir [Slot]?",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5632,36 +6502,42 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "进",
               "lerntext": "jìn",
               "de": "eintreten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "开",
               "lerntext": "kāi",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "帮助",
               "lerntext": "bāngzhù",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "打电话",
               "lerntext": "dǎ diànhuà",
               "de": "telefonieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "穿",
               "lerntext": "chuān",
               "de": "anziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "必须",
               "lerntext": "bìxū",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5696,24 +6572,33 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 我们 / 他 去 [Slot]",
-          "lerntext": "wǒ / wǒmen / tā qù [Slot]"
+          "lerntext": "wǒ / wǒmen / tā qù [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "wǒmen": "p",
+            "tā": "p",
+            "qù": "v"
+          }
         },
         "frameDe": "ich / wir / er gehe nach [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5721,76 +6606,89 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "中国",
               "lerntext": "Zhōngguó",
-              "de": "China"
+              "de": "China",
+              "c": "n"
             },
             {
               "schrift": "北京",
               "lerntext": "Běijīng",
-              "de": "Peking"
+              "de": "Peking",
+              "c": "n"
             },
             {
               "schrift": "考试",
               "lerntext": "kǎoshì",
-              "de": "Prüfung"
+              "de": "Prüfung",
+              "c": "n"
             },
             {
               "schrift": "块",
               "lerntext": "kuài",
               "de": "Yuan (Geldeinheit)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "元",
               "lerntext": "yuán",
               "de": "Yuan (Währung)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "水果",
               "lerntext": "shuǐguǒ",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "银行",
               "lerntext": "yínháng",
               "de": "Bank (Geldinstitut)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "男人",
               "lerntext": "nánrén",
               "de": "Mann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "爸爸",
               "lerntext": "bàba",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "苹果",
               "lerntext": "píngguǒ",
               "de": "Apfel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "男朋友",
               "lerntext": "nán péngyou",
               "de": "fester Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "水",
               "lerntext": "shuǐ",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "妈妈",
               "lerntext": "māma",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -5804,24 +6702,33 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 我们 / 他 去 [Slot]",
-          "lerntext": "wǒ / wǒmen / tā qù [Slot]"
+          "lerntext": "wǒ / wǒmen / tā qù [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "wǒmen": "p",
+            "tā": "p",
+            "qù": "v"
+          }
         },
         "frameDe": "ich / wir / er gehe nach [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5829,71 +6736,83 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "回家",
               "lerntext": "huíjiā",
-              "de": "nach Hause gehen"
+              "de": "nach Hause gehen",
+              "c": "v"
             },
             {
               "schrift": "旅游",
               "lerntext": "lǚyóu",
-              "de": "reisen"
+              "de": "reisen",
+              "c": "v"
             },
             {
               "schrift": "听",
               "lerntext": "tīng",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "开始",
               "lerntext": "kāishǐ",
               "de": "anfangen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "跳舞",
               "lerntext": "tiàowǔ",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "读",
               "lerntext": "dú",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "能",
               "lerntext": "néng",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "准备",
               "lerntext": "zhǔnbèi",
               "de": "vorbereiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "运动",
               "lerntext": "yùndòng",
               "de": "Sport treiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "游泳",
               "lerntext": "yóuyǒng",
               "de": "schwimmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "洗",
               "lerntext": "xǐ",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "开",
               "lerntext": "kāi",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5907,19 +6826,26 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 你 坐 [Slot]",
-          "lerntext": "wǒ / nǐ zuò [Slot]"
+          "lerntext": "wǒ / nǐ zuò [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "zuò": "v"
+          }
         },
         "frameDe": "ich / du fahre mit [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5927,76 +6853,89 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "出租车",
               "lerntext": "chūzūchē",
-              "de": "Taxi"
+              "de": "Taxi",
+              "c": "n"
             },
             {
               "schrift": "飞机",
               "lerntext": "fēijī",
-              "de": "Flugzeug"
+              "de": "Flugzeug",
+              "c": "n"
             },
             {
               "schrift": "公共汽车",
               "lerntext": "gōnggòng qìchē",
-              "de": "Bus"
+              "de": "Bus",
+              "c": "n"
             },
             {
               "schrift": "中国",
               "lerntext": "Zhōngguó",
               "de": "China",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "北京",
               "lerntext": "Běijīng",
               "de": "Peking",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "考试",
               "lerntext": "kǎoshì",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "块",
               "lerntext": "kuài",
               "de": "Yuan (Geldeinheit)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "元",
               "lerntext": "yuán",
               "de": "Yuan (Währung)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "生日",
               "lerntext": "shēngrì",
               "de": "Geburtstag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "商店",
               "lerntext": "shāngdiàn",
               "de": "Geschäft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "西瓜",
               "lerntext": "xīguā",
               "de": "Wassermelone",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "医生",
               "lerntext": "yīshēng",
               "de": "Arzt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "啤酒",
               "lerntext": "píjiǔ",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -6101,66 +7040,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "到",
               "lerntext": "dào",
-              "de": "ankommen"
+              "de": "ankommen",
+              "c": "v"
             },
             {
               "schrift": "回家",
               "lerntext": "huíjiā",
               "de": "nach Hause gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "旅游",
               "lerntext": "lǚyóu",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "跑步",
               "lerntext": "pǎobù",
               "de": "joggen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "唱歌",
               "lerntext": "chànggē",
               "de": "singen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "打电话",
               "lerntext": "dǎ diànhuà",
               "de": "telefonieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "起床",
               "lerntext": "qǐchuáng",
               "de": "aufstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "穿",
               "lerntext": "chuān",
               "de": "anziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "等",
               "lerntext": "děng",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "帮助",
               "lerntext": "bāngzhù",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "说话",
               "lerntext": "shuōhuà",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6174,7 +7124,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "正在 / 已经 在 [Slot]",
-          "lerntext": "zhèngzài / yǐjīng zài [Slot]"
+          "lerntext": "zhèngzài / yǐjīng zài [Slot]",
+          "wortarten": {
+            "zài": "v"
+          }
         },
         "frameDe": "gerade dabei sein zu / schon bin am [Slot].",
         "pronouns": [
@@ -6194,86 +7147,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "吃饭",
               "lerntext": "chīfàn",
-              "de": "essen"
+              "de": "essen",
+              "c": "v"
             },
             {
               "schrift": "睡觉",
               "lerntext": "shuìjiào",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "玩",
               "lerntext": "wán",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "看",
               "lerntext": "kàn",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "拿",
               "lerntext": "ná",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "到",
               "lerntext": "dào",
               "de": "ankommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "回家",
               "lerntext": "huíjiā",
               "de": "nach Hause gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "旅游",
               "lerntext": "lǚyóu",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "可以",
               "lerntext": "kěyǐ",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "进",
               "lerntext": "jìn",
               "de": "eintreten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "写",
               "lerntext": "xiě",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "做",
               "lerntext": "zuò",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "必须",
               "lerntext": "bìxū",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "听",
               "lerntext": "tīng",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "开始",
               "lerntext": "kāishǐ",
               "de": "anfangen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6313,19 +7281,26 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 你 坐 [Slot]",
-          "lerntext": "wǒ / nǐ zuò [Slot]"
+          "lerntext": "wǒ / nǐ zuò [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "zuò": "v"
+          }
         },
         "frameDe": "ich / du fahre mit [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6334,36 +7309,42 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "出租车",
               "lerntext": "chūzūchē",
               "de": "Taxi",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "飞机",
               "lerntext": "fēijī",
               "de": "Flugzeug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "公共汽车",
               "lerntext": "gōnggòng qìchē",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "中国",
               "lerntext": "Zhōngguó",
               "de": "China",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "北京",
               "lerntext": "Běijīng",
               "de": "Peking",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "考试",
               "lerntext": "kǎoshì",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -6411,6 +7392,7 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "到",
               "lerntext": "dào",
               "de": "ankommen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6424,7 +7406,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "正在 / 已经 在 [Slot]",
-          "lerntext": "zhèngzài / yǐjīng zài [Slot]"
+          "lerntext": "zhèngzài / yǐjīng zài [Slot]",
+          "wortarten": {
+            "zài": "v"
+          }
         },
         "frameDe": "gerade dabei sein zu / schon bin am [Slot].",
         "pronouns": [
@@ -6445,24 +7430,28 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "吃饭",
               "lerntext": "chīfàn",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "睡觉",
               "lerntext": "shuìjiào",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "玩",
               "lerntext": "wán",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "拿",
               "lerntext": "ná",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6587,7 +7576,8 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "夜里",
               "lerntext": "yèli",
-              "de": "Nacht"
+              "de": "Nacht",
+              "c": "n"
             }
           ]
         ],
@@ -6606,7 +7596,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 [Slot] 去",
-          "lerntext": "wǒ [Slot] qù"
+          "lerntext": "wǒ [Slot] qù",
+          "wortarten": {
+            "wǒ": "p",
+            "qù": "v"
+          }
         },
         "frameDe": "Ich gehe [Slot].",
         "pronouns": [
@@ -6618,7 +7612,8 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "时候",
             "lerntext": "shíhou",
-            "de": "Zeitpunkt"
+            "de": "Zeitpunkt",
+            "c": "n"
           }
         ],
         "slotGroups": [
@@ -6721,7 +7716,8 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "时候",
             "lerntext": "shíhou",
-            "de": "Zeitpunkt"
+            "de": "Zeitpunkt",
+            "c": "n"
           }
         ],
         "id": "9.2"
@@ -6739,86 +7735,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "分钟",
               "lerntext": "fēnzhōng",
-              "de": "Minute"
+              "de": "Minute",
+              "c": "n"
             },
             {
               "schrift": "小时",
               "lerntext": "xiǎoshí",
-              "de": "Stunde"
+              "de": "Stunde",
+              "c": "n"
             },
             {
               "schrift": "年",
               "lerntext": "nián",
-              "de": "Jahr"
+              "de": "Jahr",
+              "c": "n"
             },
             {
               "schrift": "月",
               "lerntext": "yuè",
-              "de": "Monat"
+              "de": "Monat",
+              "c": "n"
             },
             {
               "schrift": "星期",
               "lerntext": "xīngqī",
-              "de": "Woche"
+              "de": "Woche",
+              "c": "n"
             },
             {
               "schrift": "夜里",
               "lerntext": "yèli",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "出租车",
               "lerntext": "chūzūchē",
               "de": "Taxi",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "公共汽车",
               "lerntext": "gōnggòng qìchē",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "飞机",
               "lerntext": "fēijī",
               "de": "Flugzeug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "时候",
               "lerntext": "shíhou",
               "de": "Zeitpunkt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "块",
               "lerntext": "kuài",
               "de": "Yuan (Geldeinheit)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "中国",
               "lerntext": "Zhōngguó",
               "de": "China",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "元",
               "lerntext": "yuán",
               "de": "Yuan (Währung)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "北京",
               "lerntext": "Běijīng",
               "de": "Peking",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "考试",
               "lerntext": "kǎoshì",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -6841,71 +7852,83 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "号",
               "lerntext": "hào",
-              "de": "Tag (Datum)"
+              "de": "Tag (Datum)",
+              "c": "n"
             },
             {
               "schrift": "点",
               "lerntext": "diǎn",
-              "de": "Uhr (Zeitangabe)"
+              "de": "Uhr (Zeitangabe)",
+              "c": "n"
             },
             {
               "schrift": "分钟",
               "lerntext": "fēnzhōng",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "小时",
               "lerntext": "xiǎoshí",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "年",
               "lerntext": "nián",
               "de": "Jahr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "月",
               "lerntext": "yuè",
               "de": "Monat",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "星期",
               "lerntext": "xīngqī",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "夜里",
               "lerntext": "yèli",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "出租车",
               "lerntext": "chūzūchē",
               "de": "Taxi",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "公共汽车",
               "lerntext": "gōnggòng qìchē",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "飞机",
               "lerntext": "fēijī",
               "de": "Flugzeug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "电脑",
               "lerntext": "diànnǎo",
               "de": "Computer",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7083,7 +8106,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 吃 [Slot]",
-          "lerntext": "wǒ chī [Slot]"
+          "lerntext": "wǒ chī [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "chī": "v"
+          }
         },
         "frameDe": "Ich esse [Slot].",
         "pronouns": [],
@@ -7092,66 +8119,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "完",
               "lerntext": "wán",
-              "de": "fertig"
+              "de": "fertig",
+              "c": "a"
             },
             {
               "schrift": "冷",
               "lerntext": "lěng",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "暖和",
               "lerntext": "nuǎnhuo",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "热",
               "lerntext": "rè",
               "de": "heiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "难",
               "lerntext": "nán",
               "de": "schwierig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "容易",
               "lerntext": "róngyì",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "便宜",
               "lerntext": "piányi",
               "de": "günstig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "贵",
               "lerntext": "guì",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "近",
               "lerntext": "jìn",
               "de": "nah",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "慢",
               "lerntext": "màn",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "快",
               "lerntext": "kuài",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -7175,42 +8213,49 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "号",
               "lerntext": "hào",
               "de": "Tag (Datum)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "点",
               "lerntext": "diǎn",
               "de": "Uhr (Zeitangabe)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "分钟",
               "lerntext": "fēnzhōng",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "小时",
               "lerntext": "xiǎoshí",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "年",
               "lerntext": "nián",
               "de": "Jahr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "月",
               "lerntext": "yuè",
               "de": "Monat",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "星期",
               "lerntext": "xīngqī",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
@@ -7242,7 +8287,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 [Slot] 去",
-          "lerntext": "wǒ [Slot] qù"
+          "lerntext": "wǒ [Slot] qù",
+          "wortarten": {
+            "wǒ": "p",
+            "qù": "v"
+          }
         },
         "frameDe": "Ich gehe [Slot].",
         "pronouns": [
@@ -7254,7 +8303,8 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "时候",
             "lerntext": "shíhou",
-            "de": "Zeitpunkt"
+            "de": "Zeitpunkt",
+            "c": "n"
           }
         ],
         "slotGroups": [
@@ -7298,12 +8348,14 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "号",
               "lerntext": "hào",
               "de": "Tag (Datum)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "点",
               "lerntext": "diǎn",
               "de": "Uhr (Zeitangabe)",
+              "c": "n",
               "wieder": true
             },
             {
@@ -7368,24 +8420,32 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 他 / 她 喜欢 [Slot]",
-          "lerntext": "wǒ / tā / tā xǐhuan [Slot]"
+          "lerntext": "wǒ / tā / tā xǐhuan [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "tā": "p",
+            "xǐhuan": "v"
+          }
         },
         "frameDe": "ich / er / sie mag [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "她",
             "lerntext": "tā",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7393,86 +8453,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "电影",
               "lerntext": "diànyǐng",
-              "de": "Film"
+              "de": "Film",
+              "c": "n"
             },
             {
               "schrift": "天气",
               "lerntext": "tiānqì",
-              "de": "Wetter"
+              "de": "Wetter",
+              "c": "n"
             },
             {
               "schrift": "猫",
               "lerntext": "māo",
-              "de": "Katze"
+              "de": "Katze",
+              "c": "n"
             },
             {
               "schrift": "狗",
               "lerntext": "gǒu",
-              "de": "Hund"
+              "de": "Hund",
+              "c": "n"
             },
             {
               "schrift": "眼睛",
               "lerntext": "yǎnjing",
-              "de": "Auge"
+              "de": "Auge",
+              "c": "n"
             },
             {
               "schrift": "月",
               "lerntext": "yuè",
               "de": "Monat",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "分钟",
               "lerntext": "fēnzhōng",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "点",
               "lerntext": "diǎn",
               "de": "Uhr (Zeitangabe)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "号",
               "lerntext": "hào",
               "de": "Tag (Datum)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "夜里",
               "lerntext": "yèli",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "年",
               "lerntext": "nián",
               "de": "Jahr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "小时",
               "lerntext": "xiǎoshí",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "星期",
               "lerntext": "xīngqī",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "时候",
               "lerntext": "shíhou",
               "de": "Zeitpunkt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "服务员",
               "lerntext": "fúwùyuán",
               "de": "Kellner",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7483,12 +8558,14 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "喜欢",
             "lerntext": "xǐhuan",
-            "de": "mögen"
+            "de": "mögen",
+            "c": "v"
           },
           {
             "schrift": "爱",
             "lerntext": "ài",
-            "de": "lieben"
+            "de": "lieben",
+            "c": "v"
           }
         ],
         "id": "10.1"
@@ -7497,24 +8574,32 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 他 / 她 喜欢 [Slot]",
-          "lerntext": "wǒ / tā / tā xǐhuan [Slot]"
+          "lerntext": "wǒ / tā / tā xǐhuan [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "tā": "p",
+            "xǐhuan": "v"
+          }
         },
         "frameDe": "ich / er / sie mag [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "她",
             "lerntext": "tā",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7522,86 +8607,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "身体",
               "lerntext": "shēntǐ",
-              "de": "Körper"
+              "de": "Körper",
+              "c": "n"
             },
             {
               "schrift": "头",
               "lerntext": "tóu",
-              "de": "Kopf"
+              "de": "Kopf",
+              "c": "n"
             },
             {
               "schrift": "肚子",
               "lerntext": "dùzi",
-              "de": "Bauch"
+              "de": "Bauch",
+              "c": "n"
             },
             {
               "schrift": "腿",
               "lerntext": "tuǐ",
-              "de": "Bein"
+              "de": "Bein",
+              "c": "n"
             },
             {
               "schrift": "微信",
               "lerntext": "wēixìn",
-              "de": "WeChat"
+              "de": "WeChat",
+              "c": "n"
             },
             {
               "schrift": "电影",
               "lerntext": "diànyǐng",
               "de": "Film",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "天气",
               "lerntext": "tiānqì",
               "de": "Wetter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "眼睛",
               "lerntext": "yǎnjing",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "猫",
               "lerntext": "māo",
               "de": "Katze",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "狗",
               "lerntext": "gǒu",
               "de": "Hund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "弟弟",
               "lerntext": "dìdi",
               "de": "jüngerer Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "时间",
               "lerntext": "shíjiān",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "孩子",
               "lerntext": "háizi",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "米饭",
               "lerntext": "mǐfàn",
               "de": "Reis",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "咖啡",
               "lerntext": "kāfēi",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7624,86 +8724,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "好吃",
               "lerntext": "hǎochī",
-              "de": "lecker (Essen)"
+              "de": "lecker (Essen)",
+              "c": "a"
             },
             {
               "schrift": "好喝",
               "lerntext": "hǎohē",
-              "de": "lecker (Getränk)"
+              "de": "lecker (Getränk)",
+              "c": "a"
             },
             {
               "schrift": "甜",
               "lerntext": "tián",
-              "de": "süß"
+              "de": "süß",
+              "c": "a"
             },
             {
               "schrift": "棒",
               "lerntext": "bàng",
-              "de": "toll"
+              "de": "toll",
+              "c": "a"
             },
             {
               "schrift": "漂亮",
               "lerntext": "piàoliang",
-              "de": "schön"
+              "de": "schön",
+              "c": "a"
             },
             {
               "schrift": "完",
               "lerntext": "wán",
               "de": "fertig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "冷",
               "lerntext": "lěng",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "暖和",
               "lerntext": "nuǎnhuo",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "热",
               "lerntext": "rè",
               "de": "heiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "难",
               "lerntext": "nán",
               "de": "schwierig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "容易",
               "lerntext": "róngyì",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "便宜",
               "lerntext": "piányi",
               "de": "günstig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "贵",
               "lerntext": "guì",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "远",
               "lerntext": "yuǎn",
               "de": "weit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "忙",
               "lerntext": "máng",
               "de": "beschäftigt",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -7717,7 +8832,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] 的 衣服",
-          "lerntext": "[Slot] de yīfu"
+          "lerntext": "[Slot] de yīfu",
+          "wortarten": {
+            "yīfu": "n"
+          }
         },
         "frameDe": "[Slot] Kleidung.",
         "pronouns": [],
@@ -7726,86 +8844,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "白",
               "lerntext": "bái",
-              "de": "weiß"
+              "de": "weiß",
+              "c": "a"
             },
             {
               "schrift": "黑",
               "lerntext": "hēi",
-              "de": "schwarz"
+              "de": "schwarz",
+              "c": "a"
             },
             {
               "schrift": "红",
               "lerntext": "hóng",
-              "de": "rot"
+              "de": "rot",
+              "c": "a"
             },
             {
               "schrift": "快乐",
               "lerntext": "kuàilè",
-              "de": "fröhlich"
+              "de": "fröhlich",
+              "c": "a"
             },
             {
               "schrift": "清楚",
               "lerntext": "qīngchu",
-              "de": "klar"
+              "de": "klar",
+              "c": "a"
             },
             {
               "schrift": "漂亮",
               "lerntext": "piàoliang",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "好喝",
               "lerntext": "hǎohē",
               "de": "lecker (Getränk)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "甜",
               "lerntext": "tián",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "好吃",
               "lerntext": "hǎochī",
               "de": "lecker (Essen)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "棒",
               "lerntext": "bàng",
               "de": "toll",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "完",
               "lerntext": "wán",
               "de": "fertig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "冷",
               "lerntext": "lěng",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "暖和",
               "lerntext": "nuǎnhuo",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "热",
               "lerntext": "rè",
               "de": "heiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "难",
               "lerntext": "nán",
               "de": "schwierig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -7819,7 +8952,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] 的 衣服",
-          "lerntext": "[Slot] de yīfu"
+          "lerntext": "[Slot] de yīfu",
+          "wortarten": {
+            "yīfu": "n"
+          }
         },
         "frameDe": "[Slot] Kleidung.",
         "pronouns": [],
@@ -7829,60 +8965,70 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "白",
               "lerntext": "bái",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "黑",
               "lerntext": "hēi",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "红",
               "lerntext": "hóng",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "快乐",
               "lerntext": "kuàilè",
               "de": "fröhlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "清楚",
               "lerntext": "qīngchu",
               "de": "klar",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "漂亮",
               "lerntext": "piàoliang",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "好喝",
               "lerntext": "hǎohē",
               "de": "lecker (Getränk)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "甜",
               "lerntext": "tián",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "好吃",
               "lerntext": "hǎochī",
               "de": "lecker (Essen)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "棒",
               "lerntext": "bàng",
               "de": "toll",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -7896,24 +9042,32 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 他 / 她 喜欢 [Slot]",
-          "lerntext": "wǒ / tā / tā xǐhuan [Slot]"
+          "lerntext": "wǒ / tā / tā xǐhuan [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "tā": "p",
+            "xǐhuan": "v"
+          }
         },
         "frameDe": "ich / er / sie mag [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "她",
             "lerntext": "tā",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7922,48 +9076,56 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "身体",
               "lerntext": "shēntǐ",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "头",
               "lerntext": "tóu",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "肚子",
               "lerntext": "dùzi",
               "de": "Bauch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "腿",
               "lerntext": "tuǐ",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "微信",
               "lerntext": "wēixìn",
               "de": "WeChat",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "电影",
               "lerntext": "diànyǐng",
               "de": "Film",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "天气",
               "lerntext": "tiānqì",
               "de": "Wetter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "眼睛",
               "lerntext": "yǎnjing",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7977,7 +9139,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] 的 衣服",
-          "lerntext": "[Slot] de yīfu"
+          "lerntext": "[Slot] de yīfu",
+          "wortarten": {
+            "yīfu": "n"
+          }
         },
         "frameDe": "[Slot] Kleidung.",
         "pronouns": [],
@@ -7987,30 +9152,35 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "白",
               "lerntext": "bái",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "黑",
               "lerntext": "hēi",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "红",
               "lerntext": "hóng",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "快乐",
               "lerntext": "kuàilè",
               "de": "fröhlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "清楚",
               "lerntext": "qīngchu",
               "de": "klar",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8024,24 +9194,32 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 / 他 / 她 喜欢 [Slot]",
-          "lerntext": "wǒ / tā / tā xǐhuan [Slot]"
+          "lerntext": "wǒ / tā / tā xǐhuan [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "tā": "p",
+            "xǐhuan": "v"
+          }
         },
         "frameDe": "ich / er / sie mag [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "她",
             "lerntext": "tā",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8050,30 +9228,35 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "身体",
               "lerntext": "shēntǐ",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "头",
               "lerntext": "tóu",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "肚子",
               "lerntext": "dùzi",
               "de": "Bauch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "腿",
               "lerntext": "tuǐ",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "微信",
               "lerntext": "wēixìn",
               "de": "WeChat",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -8108,7 +9291,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 昨天 [Slot] 了",
-          "lerntext": "wǒ zuótiān [Slot] le"
+          "lerntext": "wǒ zuótiān [Slot] le",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Ich habe gestern [Slot].",
         "pronouns": [],
@@ -8117,86 +9303,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "买",
               "lerntext": "mǎi",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "卖",
               "lerntext": "mài",
-              "de": "verkaufen"
+              "de": "verkaufen",
+              "c": "v"
             },
             {
               "schrift": "看",
               "lerntext": "kàn",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "做",
               "lerntext": "zuò",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "学习",
               "lerntext": "xuéxí",
-              "de": "lernen"
+              "de": "lernen",
+              "c": "v"
             },
             {
               "schrift": "爱",
               "lerntext": "ài",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "玩",
               "lerntext": "wán",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "拿",
               "lerntext": "ná",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "吃饭",
               "lerntext": "chīfàn",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "睡觉",
               "lerntext": "shuìjiào",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "回家",
               "lerntext": "huíjiā",
               "de": "nach Hause gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "到",
               "lerntext": "dào",
               "de": "ankommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "旅游",
               "lerntext": "lǚyóu",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "跳舞",
               "lerntext": "tiàowǔ",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "读",
               "lerntext": "dú",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8210,7 +9411,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 [Slot] 过",
-          "lerntext": "wǒ [Slot] guo"
+          "lerntext": "wǒ [Slot] guo",
+          "wortarten": {
+            "wǒ": "p",
+            "guo": "n"
+          }
         },
         "frameDe": "Ich habe schon mal [Slot].",
         "pronouns": [],
@@ -8219,86 +9424,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "去",
               "lerntext": "qù",
-              "de": "gehen"
+              "de": "gehen",
+              "c": "v"
             },
             {
               "schrift": "吃",
               "lerntext": "chī",
-              "de": "essen"
+              "de": "essen",
+              "c": "v"
             },
             {
               "schrift": "喝",
               "lerntext": "hē",
-              "de": "trinken"
+              "de": "trinken",
+              "c": "v"
             },
             {
               "schrift": "玩",
               "lerntext": "wán",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "住",
               "lerntext": "zhù",
-              "de": "wohnen"
+              "de": "wohnen",
+              "c": "v"
             },
             {
               "schrift": "卖",
               "lerntext": "mài",
               "de": "verkaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "爱",
               "lerntext": "ài",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "拿",
               "lerntext": "ná",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "吃饭",
               "lerntext": "chīfàn",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "睡觉",
               "lerntext": "shuìjiào",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "回家",
               "lerntext": "huíjiā",
               "de": "nach Hause gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "到",
               "lerntext": "dào",
               "de": "ankommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "旅游",
               "lerntext": "lǚyóu",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "能",
               "lerntext": "néng",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "准备",
               "lerntext": "zhǔnbèi",
               "de": "vorbereiten",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8312,7 +9532,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "他 [Slot] 我",
-          "lerntext": "tā [Slot] wǒ"
+          "lerntext": "tā [Slot] wǒ",
+          "wortarten": {
+            "tā": "p",
+            "wǒ": "p"
+          }
         },
         "frameDe": "Er [Slot] mir.",
         "pronouns": [],
@@ -8321,86 +9545,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "告诉",
               "lerntext": "gàosu",
-              "de": "mitteilen"
+              "de": "mitteilen",
+              "c": "v"
             },
             {
               "schrift": "回答",
               "lerntext": "huídá",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "送",
               "lerntext": "sòng",
-              "de": "bringen"
+              "de": "bringen",
+              "c": "v"
             },
             {
               "schrift": "让",
               "lerntext": "ràng",
-              "de": "lassen"
+              "de": "lassen",
+              "c": "v"
             },
             {
               "schrift": "帮助",
               "lerntext": "bāngzhù",
-              "de": "helfen"
+              "de": "helfen",
+              "c": "v"
             },
             {
               "schrift": "卖",
               "lerntext": "mài",
               "de": "verkaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "爱",
               "lerntext": "ài",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "拿",
               "lerntext": "ná",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "运动",
               "lerntext": "yùndòng",
               "de": "Sport treiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "游泳",
               "lerntext": "yóuyǒng",
               "de": "schwimmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "洗",
               "lerntext": "xǐ",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "开",
               "lerntext": "kāi",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "跑步",
               "lerntext": "pǎobù",
               "de": "joggen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "唱歌",
               "lerntext": "chànggē",
               "de": "singen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "打电话",
               "lerntext": "dǎ diànhuà",
               "de": "telefonieren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8414,7 +9653,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 [Slot] 了",
-          "lerntext": "wǒ [Slot] le"
+          "lerntext": "wǒ [Slot] le",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Ich bin [Slot].",
         "pronouns": [],
@@ -8423,66 +9665,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "准备好",
               "lerntext": "zhǔnbèi hǎo",
-              "de": "bereit"
+              "de": "bereit",
+              "c": "a"
             },
             {
               "schrift": "漂亮",
               "lerntext": "piàoliang",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "好喝",
               "lerntext": "hǎohē",
               "de": "lecker (Getränk)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "清楚",
               "lerntext": "qīngchu",
               "de": "klar",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "甜",
               "lerntext": "tián",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "完",
               "lerntext": "wán",
               "de": "fertig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "好吃",
               "lerntext": "hǎochī",
               "de": "lecker (Essen)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "黑",
               "lerntext": "hēi",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "白",
               "lerntext": "bái",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "棒",
               "lerntext": "bàng",
               "de": "toll",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "红",
               "lerntext": "hóng",
               "de": "rot",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8496,7 +9749,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 [Slot] 了",
-          "lerntext": "wǒ [Slot] le"
+          "lerntext": "wǒ [Slot] le",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Ich bin [Slot].",
         "pronouns": [],
@@ -8505,81 +9761,95 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "生病",
               "lerntext": "shēngbìng",
-              "de": "krank sein"
+              "de": "krank sein",
+              "c": "v"
             },
             {
               "schrift": "觉得",
               "lerntext": "juéde",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "认识",
               "lerntext": "rènshi",
-              "de": "kennen"
+              "de": "kennen",
+              "c": "v"
             },
             {
               "schrift": "下雨",
               "lerntext": "xiàyǔ",
-              "de": "regnen"
+              "de": "regnen",
+              "c": "v"
             },
             {
               "schrift": "让",
               "lerntext": "ràng",
               "de": "lassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "送",
               "lerntext": "sòng",
               "de": "bringen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "告诉",
               "lerntext": "gàosu",
               "de": "mitteilen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "回答",
               "lerntext": "huídá",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "卖",
               "lerntext": "mài",
               "de": "verkaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "起床",
               "lerntext": "qǐchuáng",
               "de": "aufstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "穿",
               "lerntext": "chuān",
               "de": "anziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "走",
               "lerntext": "zǒu",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "等",
               "lerntext": "děng",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "休息",
               "lerntext": "xiūxi",
               "de": "ausruhen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8593,7 +9863,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 [Slot] 了",
-          "lerntext": "wǒ [Slot] le"
+          "lerntext": "wǒ [Slot] le",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Ich bin [Slot].",
         "pronouns": [],
@@ -8603,48 +9876,56 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "准备好",
               "lerntext": "zhǔnbèi hǎo",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "生病",
               "lerntext": "shēngbìng",
               "de": "krank sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "觉得",
               "lerntext": "juéde",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "下雨",
               "lerntext": "xiàyǔ",
               "de": "regnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "让",
               "lerntext": "ràng",
               "de": "lassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "送",
               "lerntext": "sòng",
               "de": "bringen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "告诉",
               "lerntext": "gàosu",
               "de": "mitteilen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "回答",
               "lerntext": "huídá",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8658,7 +9939,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 [Slot] 了",
-          "lerntext": "wǒ [Slot] le"
+          "lerntext": "wǒ [Slot] le",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Ich bin [Slot].",
         "pronouns": [],
@@ -8668,24 +9952,28 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "准备好",
               "lerntext": "zhǔnbèi hǎo",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "生病",
               "lerntext": "shēngbìng",
               "de": "krank sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "觉得",
               "lerntext": "juéde",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "下雨",
               "lerntext": "xiàyǔ",
               "de": "regnen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8720,19 +10008,26 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 很 累 [Slot] 我 工作",
-          "lerntext": "wǒ hěn lèi [Slot] wǒ gōngzuò"
+          "lerntext": "wǒ hěn lèi [Slot] wǒ gōngzuò",
+          "wortarten": {
+            "wǒ": "p",
+            "lèi": "a",
+            "gōngzuò": "v"
+          }
         },
         "frameDe": "Ich bin müde, [Slot] ich arbeite.",
         "pronouns": [
           {
             "schrift": "和",
             "lerntext": "hé",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "但是",
             "lerntext": "dànshì",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           }
         ],
         "slotGroups": [
@@ -8740,12 +10035,14 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "因为",
               "lerntext": "yīnwèi",
-              "de": "weil"
+              "de": "weil",
+              "c": "k"
             },
             {
               "schrift": "所以",
               "lerntext": "suǒyǐ",
-              "de": "deshalb"
+              "de": "deshalb",
+              "c": "k"
             }
           ]
         ],
@@ -8755,12 +10052,14 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "和",
             "lerntext": "hé",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "但是",
             "lerntext": "dànshì",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           }
         ],
         "id": "12.1"
@@ -8769,7 +10068,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 [Slot] 累",
-          "lerntext": "wǒ [Slot] lèi"
+          "lerntext": "wǒ [Slot] lèi",
+          "wortarten": {
+            "wǒ": "p",
+            "lèi": "a"
+          }
         },
         "frameDe": "Ich bin [Slot] müde.",
         "pronouns": [],
@@ -8856,7 +10159,12 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 [Slot] 你 高",
-          "lerntext": "wǒ [Slot] nǐ gāo"
+          "lerntext": "wǒ [Slot] nǐ gāo",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p",
+            "gāo": "a"
+          }
         },
         "frameDe": "Ich bin größer als du.",
         "pronouns": [],
@@ -8938,7 +10246,12 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 [Slot] 有 时间",
-          "lerntext": "wǒ [Slot] yǒu shíjiān"
+          "lerntext": "wǒ [Slot] yǒu shíjiān",
+          "wortarten": {
+            "wǒ": "p",
+            "yǒu": "v",
+            "shíjiān": "n"
+          }
         },
         "frameDe": "Ich habe [Slot] Zeit.",
         "pronouns": [
@@ -9032,7 +10345,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "今天 我 [Slot]",
-          "lerntext": "jīntiān wǒ [Slot]"
+          "lerntext": "jīntiān wǒ [Slot]",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Heute [Slot] ich.",
         "pronouns": [],
@@ -9041,71 +10357,83 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "喝一杯",
               "lerntext": "hē yī bēi",
-              "de": "etwas trinken gehen"
+              "de": "etwas trinken gehen",
+              "c": "v"
             },
             {
               "schrift": "不去",
               "lerntext": "bú qù",
-              "de": "nicht gehen"
+              "de": "nicht gehen",
+              "c": "v"
             },
             {
               "schrift": "生病",
               "lerntext": "shēngbìng",
               "de": "krank sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "下雨",
               "lerntext": "xiàyǔ",
               "de": "regnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "让",
               "lerntext": "ràng",
               "de": "lassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "觉得",
               "lerntext": "juéde",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "送",
               "lerntext": "sòng",
               "de": "bringen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "告诉",
               "lerntext": "gàosu",
               "de": "mitteilen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "回答",
               "lerntext": "huídá",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "吃饭",
               "lerntext": "chīfàn",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "卖",
               "lerntext": "mài",
               "de": "verkaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "知道",
               "lerntext": "zhīdào",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -9119,7 +10447,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 喜欢 [Slot]",
-          "lerntext": "wǒ xǐhuan [Slot]"
+          "lerntext": "wǒ xǐhuan [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "xǐhuan": "v"
+          }
         },
         "frameDe": "Ich mag [Slot].",
         "pronouns": [],
@@ -9128,66 +10460,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "汉语",
               "lerntext": "Hànyǔ",
-              "de": "Chinesisch (Sprache)"
+              "de": "Chinesisch (Sprache)",
+              "c": "n"
             },
             {
               "schrift": "电影",
               "lerntext": "diànyǐng",
               "de": "Film",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "肚子",
               "lerntext": "dùzi",
               "de": "Bauch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "腿",
               "lerntext": "tuǐ",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "头",
               "lerntext": "tóu",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "身体",
               "lerntext": "shēntǐ",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "天气",
               "lerntext": "tiānqì",
               "de": "Wetter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "眼睛",
               "lerntext": "yǎnjing",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "微信",
               "lerntext": "wēixìn",
               "de": "WeChat",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "书",
               "lerntext": "shū",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "杯子",
               "lerntext": "bēizi",
               "de": "Becher",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9394,71 +10737,83 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "加",
               "lerntext": "jiā",
-              "de": "hinzufügen"
+              "de": "hinzufügen",
+              "c": "v"
             },
             {
               "schrift": "欢迎",
               "lerntext": "huānyíng",
-              "de": "willkommen"
+              "de": "willkommen",
+              "c": "v"
             },
             {
               "schrift": "喝一杯",
               "lerntext": "hē yī bēi",
               "de": "etwas trinken gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "不去",
               "lerntext": "bú qù",
               "de": "nicht gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "生病",
               "lerntext": "shēngbìng",
               "de": "krank sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "下雨",
               "lerntext": "xiàyǔ",
               "de": "regnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "让",
               "lerntext": "ràng",
               "de": "lassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "觉得",
               "lerntext": "juéde",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "送",
               "lerntext": "sòng",
               "de": "bringen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "告诉",
               "lerntext": "gàosu",
               "de": "mitteilen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "回答",
               "lerntext": "huídá",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "睡觉",
               "lerntext": "shuìjiào",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -9472,7 +10827,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 十 [Slot]",
-          "lerntext": "wǒ shí [Slot]"
+          "lerntext": "wǒ shí [Slot]",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Ich bin zehn [Slot] alt.",
         "pronouns": [],
@@ -9481,66 +10839,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "岁",
               "lerntext": "suì",
-              "de": "Jahre (alt)"
+              "de": "Jahre (alt)",
+              "c": "n"
             },
             {
               "schrift": "汉语",
               "lerntext": "Hànyǔ",
               "de": "Chinesisch (Sprache)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "羊肉",
               "lerntext": "yángròu",
               "de": "Lammfleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "月",
               "lerntext": "yuè",
               "de": "Monat",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "先生",
               "lerntext": "xiānsheng",
               "de": "Herr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "学校",
               "lerntext": "xuéxiào",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "分钟",
               "lerntext": "fēnzhōng",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "块",
               "lerntext": "kuài",
               "de": "Yuan (Geldeinheit)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "哥哥",
               "lerntext": "gēge",
               "de": "älterer Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "朋友",
               "lerntext": "péngyou",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "电影",
               "lerntext": "diànyǐng",
               "de": "Film",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9570,12 +10939,14 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "加",
               "lerntext": "jiā",
               "de": "hinzufügen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "欢迎",
               "lerntext": "huānyíng",
               "de": "willkommen",
+              "c": "v",
               "wieder": true
             },
             {
@@ -9612,12 +10983,14 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "喝一杯",
               "lerntext": "hē yī bēi",
               "de": "etwas trinken gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "不去",
               "lerntext": "bú qù",
               "de": "nicht gehen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -9647,12 +11020,14 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "加",
               "lerntext": "jiā",
               "de": "hinzufügen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "欢迎",
               "lerntext": "huānyíng",
               "de": "willkommen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -9687,7 +11062,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我的 [Slot] 疼",
-          "lerntext": "wǒ de [Slot] téng"
+          "lerntext": "wǒ de [Slot] téng",
+          "wortarten": {
+            "wǒ": "p",
+            "téng": "v"
+          }
         },
         "frameDe": "Mein [Slot] tut weh.",
         "pronouns": [],
@@ -9696,86 +11075,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "手",
               "lerntext": "shǒu",
-              "de": "Hand"
+              "de": "Hand",
+              "c": "n"
             },
             {
               "schrift": "耳朵",
               "lerntext": "ěrduo",
-              "de": "Ohr"
+              "de": "Ohr",
+              "c": "n"
             },
             {
               "schrift": "鼻子",
               "lerntext": "bízi",
-              "de": "Nase"
+              "de": "Nase",
+              "c": "n"
             },
             {
               "schrift": "嘴",
               "lerntext": "zuǐ",
-              "de": "Mund"
+              "de": "Mund",
+              "c": "n"
             },
             {
               "schrift": "头",
               "lerntext": "tóu",
-              "de": "Kopf"
+              "de": "Kopf",
+              "c": "n"
             },
             {
               "schrift": "岁",
               "lerntext": "suì",
               "de": "Jahre (alt)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "汉语",
               "lerntext": "Hànyǔ",
               "de": "Chinesisch (Sprache)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "桌子",
               "lerntext": "zhuōzi",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "老师",
               "lerntext": "lǎoshī",
               "de": "Lehrer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "包",
               "lerntext": "bāo",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "出租车",
               "lerntext": "chūzūchē",
               "de": "Taxi",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "问题",
               "lerntext": "wèntí",
               "de": "Frage",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "鱼",
               "lerntext": "yú",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "酒店",
               "lerntext": "jiǔdiàn",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "东西",
               "lerntext": "dōngxi",
               "de": "Ding",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9786,7 +11180,8 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "疼",
             "lerntext": "téng",
-            "de": "schmerzen"
+            "de": "schmerzen",
+            "c": "v"
           }
         ],
         "id": "13.1"
@@ -9795,7 +11190,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 很 [Slot]",
-          "lerntext": "wǒ hěn [Slot]"
+          "lerntext": "wǒ hěn [Slot]",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Ich bin [Slot].",
         "pronouns": [],
@@ -9804,81 +11202,95 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "饿",
               "lerntext": "è",
-              "de": "hungrig"
+              "de": "hungrig",
+              "c": "a"
             },
             {
               "schrift": "渴",
               "lerntext": "kě",
-              "de": "durstig"
+              "de": "durstig",
+              "c": "a"
             },
             {
               "schrift": "难受",
               "lerntext": "nánshòu",
-              "de": "unwohl"
+              "de": "unwohl",
+              "c": "a"
             },
             {
               "schrift": "舒服",
               "lerntext": "shūfu",
-              "de": "wohl"
+              "de": "wohl",
+              "c": "a"
             },
             {
               "schrift": "准备好",
               "lerntext": "zhǔnbèi hǎo",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "快乐",
               "lerntext": "kuàilè",
               "de": "fröhlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "漂亮",
               "lerntext": "piàoliang",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "好喝",
               "lerntext": "hǎohē",
               "de": "lecker (Getränk)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "清楚",
               "lerntext": "qīngchu",
               "de": "klar",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "甜",
               "lerntext": "tián",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "完",
               "lerntext": "wán",
               "de": "fertig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "好吃",
               "lerntext": "hǎochī",
               "de": "lecker (Essen)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "黑",
               "lerntext": "hēi",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "白",
               "lerntext": "bái",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -9892,7 +11304,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 [Slot] 了",
-          "lerntext": "wǒ [Slot] le"
+          "lerntext": "wǒ [Slot] le",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Ich habe [Slot].",
         "pronouns": [],
@@ -9901,66 +11316,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "感冒",
               "lerntext": "gǎnmào",
-              "de": "Erkältung"
+              "de": "Erkältung",
+              "c": "n"
             },
             {
               "schrift": "耳朵",
               "lerntext": "ěrduo",
               "de": "Ohr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "嘴",
               "lerntext": "zuǐ",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "手",
               "lerntext": "shǒu",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "鼻子",
               "lerntext": "bízi",
               "de": "Nase",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "岁",
               "lerntext": "suì",
               "de": "Jahre (alt)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "汉语",
               "lerntext": "Hànyǔ",
               "de": "Chinesisch (Sprache)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "公司",
               "lerntext": "gōngsī",
               "de": "Firma",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "颜色",
               "lerntext": "yánsè",
               "de": "Farbe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "点",
               "lerntext": "diǎn",
               "de": "Uhr (Zeitangabe)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "号",
               "lerntext": "hào",
               "de": "Tag (Datum)",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9974,7 +11400,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 [Slot] 了",
-          "lerntext": "wǒ [Slot] le"
+          "lerntext": "wǒ [Slot] le",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Ich habe [Slot].",
         "pronouns": [],
@@ -9983,86 +11412,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "发烧",
               "lerntext": "fāshāo",
-              "de": "Fieber haben"
+              "de": "Fieber haben",
+              "c": "v"
             },
             {
               "schrift": "报警",
               "lerntext": "bàojǐng",
-              "de": "die Polizei rufen"
+              "de": "die Polizei rufen",
+              "c": "v"
             },
             {
               "schrift": "退房",
               "lerntext": "tuìfáng",
-              "de": "auschecken"
+              "de": "auschecken",
+              "c": "v"
             },
             {
               "schrift": "支付",
               "lerntext": "zhīfù",
-              "de": "bezahlen"
+              "de": "bezahlen",
+              "c": "v"
             },
             {
               "schrift": "吃饱",
               "lerntext": "chībǎo",
-              "de": "satt sein"
+              "de": "satt sein",
+              "c": "v"
             },
             {
               "schrift": "疼",
               "lerntext": "téng",
               "de": "schmerzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "喝一杯",
               "lerntext": "hē yī bēi",
               "de": "etwas trinken gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "不去",
               "lerntext": "bú qù",
               "de": "nicht gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "加",
               "lerntext": "jiā",
               "de": "hinzufügen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "欢迎",
               "lerntext": "huānyíng",
               "de": "willkommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "可以",
               "lerntext": "kěyǐ",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "爱",
               "lerntext": "ài",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "想",
               "lerntext": "xiǎng",
               "de": "möchten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "进",
               "lerntext": "jìn",
               "de": "eintreten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "必须",
               "lerntext": "bìxū",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -10076,7 +11520,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 [Slot] 了",
-          "lerntext": "wǒ [Slot] le"
+          "lerntext": "wǒ [Slot] le",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Ich habe [Slot].",
         "pronouns": [],
@@ -10086,60 +11533,70 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "感冒",
               "lerntext": "gǎnmào",
               "de": "Erkältung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "发烧",
               "lerntext": "fāshāo",
               "de": "Fieber haben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "报警",
               "lerntext": "bàojǐng",
               "de": "die Polizei rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "退房",
               "lerntext": "tuìfáng",
               "de": "auschecken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "支付",
               "lerntext": "zhīfù",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "吃饱",
               "lerntext": "chībǎo",
               "de": "satt sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "耳朵",
               "lerntext": "ěrduo",
               "de": "Ohr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "嘴",
               "lerntext": "zuǐ",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "手",
               "lerntext": "shǒu",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "鼻子",
               "lerntext": "bízi",
               "de": "Nase",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10153,7 +11610,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 很 [Slot]",
-          "lerntext": "wǒ hěn [Slot]"
+          "lerntext": "wǒ hěn [Slot]",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Ich bin [Slot].",
         "pronouns": [],
@@ -10163,24 +11623,28 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "饿",
               "lerntext": "è",
               "de": "hungrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "渴",
               "lerntext": "kě",
               "de": "durstig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "难受",
               "lerntext": "nánshòu",
               "de": "unwohl",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "舒服",
               "lerntext": "shūfu",
               "de": "wohl",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -10194,7 +11658,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 [Slot] 了",
-          "lerntext": "wǒ [Slot] le"
+          "lerntext": "wǒ [Slot] le",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Ich habe [Slot].",
         "pronouns": [],
@@ -10204,42 +11671,49 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "感冒",
               "lerntext": "gǎnmào",
               "de": "Erkältung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "发烧",
               "lerntext": "fāshāo",
               "de": "Fieber haben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "报警",
               "lerntext": "bàojǐng",
               "de": "die Polizei rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "退房",
               "lerntext": "tuìfáng",
               "de": "auschecken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "支付",
               "lerntext": "zhīfù",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "吃饱",
               "lerntext": "chībǎo",
               "de": "satt sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "疼",
               "lerntext": "téng",
               "de": "schmerzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -10253,7 +11727,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 很 [Slot]",
-          "lerntext": "wǒ hěn [Slot]"
+          "lerntext": "wǒ hěn [Slot]",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Ich bin [Slot].",
         "pronouns": [],
@@ -10263,24 +11740,28 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "饿",
               "lerntext": "è",
               "de": "hungrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "渴",
               "lerntext": "kě",
               "de": "durstig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "难受",
               "lerntext": "nánshòu",
               "de": "unwohl",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "舒服",
               "lerntext": "shūfu",
               "de": "wohl",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -10315,7 +11796,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "他 很 [Slot]",
-          "lerntext": "tā hěn [Slot]"
+          "lerntext": "tā hěn [Slot]",
+          "wortarten": {
+            "tā": "p"
+          }
         },
         "frameDe": "Er ist sehr [Slot].",
         "pronouns": [],
@@ -10324,86 +11808,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "帅",
               "lerntext": "shuài",
-              "de": "cool"
+              "de": "cool",
+              "c": "a"
             },
             {
               "schrift": "胖",
               "lerntext": "pàng",
-              "de": "dick"
+              "de": "dick",
+              "c": "a"
             },
             {
               "schrift": "瘦",
               "lerntext": "shòu",
-              "de": "dünn"
+              "de": "dünn",
+              "c": "a"
             },
             {
               "schrift": "老",
               "lerntext": "lǎo",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "年轻",
               "lerntext": "niánqīng",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "舒服",
               "lerntext": "shūfu",
               "de": "wohl",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "饿",
               "lerntext": "è",
               "de": "hungrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "渴",
               "lerntext": "kě",
               "de": "durstig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "难受",
               "lerntext": "nánshòu",
               "de": "unwohl",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "棒",
               "lerntext": "bàng",
               "de": "toll",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "红",
               "lerntext": "hóng",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "准备好",
               "lerntext": "zhǔnbèi hǎo",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "容易",
               "lerntext": "róngyì",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "快乐",
               "lerntext": "kuàilè",
               "de": "fröhlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "冷",
               "lerntext": "lěng",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -10417,7 +11916,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "他 很 [Slot]",
-          "lerntext": "tā hěn [Slot]"
+          "lerntext": "tā hěn [Slot]",
+          "wortarten": {
+            "tā": "p"
+          }
         },
         "frameDe": "Er ist sehr [Slot].",
         "pronouns": [],
@@ -10426,86 +11928,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "聪明",
               "lerntext": "cōngming",
-              "de": "klug"
+              "de": "klug",
+              "c": "a"
             },
             {
               "schrift": "可爱",
               "lerntext": "kě'ài",
-              "de": "niedlich"
+              "de": "niedlich",
+              "c": "a"
             },
             {
               "schrift": "有趣",
               "lerntext": "yǒuqù",
-              "de": "interessant"
+              "de": "interessant",
+              "c": "a"
             },
             {
               "schrift": "方便",
               "lerntext": "fāngbiàn",
-              "de": "praktisch"
+              "de": "praktisch",
+              "c": "a"
             },
             {
               "schrift": "短",
               "lerntext": "duǎn",
-              "de": "kurz"
+              "de": "kurz",
+              "c": "a"
             },
             {
               "schrift": "帅",
               "lerntext": "shuài",
               "de": "cool",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "胖",
               "lerntext": "pàng",
               "de": "dick",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "瘦",
               "lerntext": "shòu",
               "de": "dünn",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "老",
               "lerntext": "lǎo",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "年轻",
               "lerntext": "niánqīng",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "舒服",
               "lerntext": "shūfu",
               "de": "wohl",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "饿",
               "lerntext": "è",
               "de": "hungrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "渴",
               "lerntext": "kě",
               "de": "durstig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "难受",
               "lerntext": "nánshòu",
               "de": "unwohl",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "暖和",
               "lerntext": "nuǎnhuo",
               "de": "warm",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -10519,7 +12036,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "他 是 我的 [Slot]",
-          "lerntext": "tā shì wǒ de [Slot]"
+          "lerntext": "tā shì wǒ de [Slot]",
+          "wortarten": {
+            "tā": "p",
+            "wǒ": "p"
+          }
         },
         "frameDe": "Er ist mein [Slot].",
         "pronouns": [
@@ -10534,86 +12055,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "同事",
               "lerntext": "tóngshì",
-              "de": "Kollege"
+              "de": "Kollege",
+              "c": "n"
             },
             {
               "schrift": "朋友",
               "lerntext": "péngyou",
-              "de": "Freund"
+              "de": "Freund",
+              "c": "n"
             },
             {
               "schrift": "老师",
               "lerntext": "lǎoshī",
-              "de": "Lehrer"
+              "de": "Lehrer",
+              "c": "n"
             },
             {
               "schrift": "医生",
               "lerntext": "yīshēng",
-              "de": "Arzt"
+              "de": "Arzt",
+              "c": "n"
             },
             {
               "schrift": "学生",
               "lerntext": "xuésheng",
-              "de": "Student"
+              "de": "Student",
+              "c": "n"
             },
             {
               "schrift": "岁",
               "lerntext": "suì",
               "de": "Jahre (alt)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "耳朵",
               "lerntext": "ěrduo",
               "de": "Ohr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "嘴",
               "lerntext": "zuǐ",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "感冒",
               "lerntext": "gǎnmào",
               "de": "Erkältung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "手",
               "lerntext": "shǒu",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "鼻子",
               "lerntext": "bízi",
               "de": "Nase",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "教室",
               "lerntext": "jiàoshì",
               "de": "Klassenzimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "机场",
               "lerntext": "jīchǎng",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "小姐",
               "lerntext": "xiǎojiě",
               "de": "Frau (Anrede)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "身体",
               "lerntext": "shēntǐ",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10633,7 +12169,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 是 [Slot]",
-          "lerntext": "wǒ shì [Slot]"
+          "lerntext": "wǒ shì [Slot]",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Ich bin [Slot].",
         "pronouns": [],
@@ -10642,66 +12181,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "单身",
               "lerntext": "dānshēn",
-              "de": "single"
+              "de": "single",
+              "c": "a"
             },
             {
               "schrift": "聪明",
               "lerntext": "cōngming",
               "de": "klug",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "短",
               "lerntext": "duǎn",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "方便",
               "lerntext": "fāngbiàn",
               "de": "praktisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "可爱",
               "lerntext": "kě'ài",
               "de": "niedlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "有趣",
               "lerntext": "yǒuqù",
               "de": "interessant",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "帅",
               "lerntext": "shuài",
               "de": "cool",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "老",
               "lerntext": "lǎo",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "胖",
               "lerntext": "pàng",
               "de": "dick",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "瘦",
               "lerntext": "shòu",
               "de": "dünn",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "年轻",
               "lerntext": "niánqīng",
               "de": "jung",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -10715,7 +12265,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 是 [Slot]",
-          "lerntext": "wǒ shì [Slot]"
+          "lerntext": "wǒ shì [Slot]",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Ich bin [Slot].",
         "pronouns": [],
@@ -10724,81 +12277,95 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "德国",
               "lerntext": "Déguó",
-              "de": "Deutschland"
+              "de": "Deutschland",
+              "c": "n"
             },
             {
               "schrift": "中国",
               "lerntext": "Zhōngguó",
-              "de": "China"
+              "de": "China",
+              "c": "n"
             },
             {
               "schrift": "国家",
               "lerntext": "guójiā",
-              "de": "Land"
+              "de": "Land",
+              "c": "n"
             },
             {
               "schrift": "上海",
               "lerntext": "Shànghǎi",
-              "de": "Shanghai"
+              "de": "Shanghai",
+              "c": "n"
             },
             {
               "schrift": "同事",
               "lerntext": "tóngshì",
               "de": "Kollege",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "门",
               "lerntext": "mén",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "夜里",
               "lerntext": "yèli",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "岁",
               "lerntext": "suì",
               "de": "Jahre (alt)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "女朋友",
               "lerntext": "nǚ péngyou",
               "de": "feste Freundin",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "水果",
               "lerntext": "shuǐguǒ",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "银行",
               "lerntext": "yínháng",
               "de": "Bank (Geldinstitut)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "耳朵",
               "lerntext": "ěrduo",
               "de": "Ohr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "妈妈",
               "lerntext": "māma",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "微信",
               "lerntext": "wēixìn",
               "de": "WeChat",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10821,81 +12388,95 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "蓝",
               "lerntext": "lán",
-              "de": "blau"
+              "de": "blau",
+              "c": "a"
             },
             {
               "schrift": "白",
               "lerntext": "bái",
-              "de": "weiß"
+              "de": "weiß",
+              "c": "a"
             },
             {
               "schrift": "黑",
               "lerntext": "hēi",
-              "de": "schwarz"
+              "de": "schwarz",
+              "c": "a"
             },
             {
               "schrift": "红",
               "lerntext": "hóng",
-              "de": "rot"
+              "de": "rot",
+              "c": "a"
             },
             {
               "schrift": "单身",
               "lerntext": "dānshēn",
               "de": "single",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "聪明",
               "lerntext": "cōngming",
               "de": "klug",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "短",
               "lerntext": "duǎn",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "方便",
               "lerntext": "fāngbiàn",
               "de": "praktisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "可爱",
               "lerntext": "kě'ài",
               "de": "niedlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "有趣",
               "lerntext": "yǒuqù",
               "de": "interessant",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "帅",
               "lerntext": "shuài",
               "de": "cool",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "老",
               "lerntext": "lǎo",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "胖",
               "lerntext": "pàng",
               "de": "dick",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "瘦",
               "lerntext": "shòu",
               "de": "dünn",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -10918,66 +12499,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "颜色",
               "lerntext": "yánsè",
-              "de": "Farbe"
+              "de": "Farbe",
+              "c": "n"
             },
             {
               "schrift": "国家",
               "lerntext": "guójiā",
               "de": "Land",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "上海",
               "lerntext": "Shànghǎi",
               "de": "Shanghai",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "德国",
               "lerntext": "Déguó",
               "de": "Deutschland",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "同事",
               "lerntext": "tóngshì",
               "de": "Kollege",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "啤酒",
               "lerntext": "píjiǔ",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "星期",
               "lerntext": "xīngqī",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "汉语",
               "lerntext": "Hànyǔ",
               "de": "Chinesisch (Sprache)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "医院",
               "lerntext": "yīyuàn",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "名字",
               "lerntext": "míngzi",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "手机",
               "lerntext": "shǒujī",
               "de": "Handy",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11001,30 +12593,35 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "蓝",
               "lerntext": "lán",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "单身",
               "lerntext": "dānshēn",
               "de": "single",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "国家",
               "lerntext": "guójiā",
               "de": "Land",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "上海",
               "lerntext": "Shànghǎi",
               "de": "Shanghai",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "德国",
               "lerntext": "Déguó",
               "de": "Deutschland",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11059,7 +12656,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 喜欢 [Slot]",
-          "lerntext": "wǒ xǐhuan [Slot]"
+          "lerntext": "wǒ xǐhuan [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "xǐhuan": "v"
+          }
         },
         "frameDe": "Ich mag [Slot].",
         "pronouns": [],
@@ -11068,81 +12669,95 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "音乐",
               "lerntext": "yīnyuè",
-              "de": "Musik"
+              "de": "Musik",
+              "c": "n"
             },
             {
               "schrift": "爱好",
               "lerntext": "àihào",
-              "de": "Hobby"
+              "de": "Hobby",
+              "c": "n"
             },
             {
               "schrift": "兴趣",
               "lerntext": "xìngqù",
-              "de": "Interesse"
+              "de": "Interesse",
+              "c": "n"
             },
             {
               "schrift": "礼物",
               "lerntext": "lǐwù",
-              "de": "Geschenk"
+              "de": "Geschenk",
+              "c": "n"
             },
             {
               "schrift": "国家",
               "lerntext": "guójiā",
               "de": "Land",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "上海",
               "lerntext": "Shànghǎi",
               "de": "Shanghai",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "同事",
               "lerntext": "tóngshì",
               "de": "Kollege",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "德国",
               "lerntext": "Déguó",
               "de": "Deutschland",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "饭店",
               "lerntext": "fàndiàn",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "洗手间",
               "lerntext": "xǐshǒujiān",
               "de": "Toilette",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "考试",
               "lerntext": "kǎoshì",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "城市",
               "lerntext": "chéngshì",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "爸爸",
               "lerntext": "bàba",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "苹果",
               "lerntext": "píngguǒ",
               "de": "Apfel",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11156,7 +12771,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 喜欢 [Slot]",
-          "lerntext": "wǒ xǐhuan [Slot]"
+          "lerntext": "wǒ xǐhuan [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "xǐhuan": "v"
+          }
         },
         "frameDe": "Ich mag [Slot].",
         "pronouns": [],
@@ -11165,86 +12784,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "旅行",
               "lerntext": "lǚxíng",
-              "de": "reisen"
+              "de": "reisen",
+              "c": "v"
             },
             {
               "schrift": "看书",
               "lerntext": "kànshū",
-              "de": "lesen (Buch)"
+              "de": "lesen (Buch)",
+              "c": "v"
             },
             {
               "schrift": "上网",
               "lerntext": "shàngwǎng",
-              "de": "im Internet sein"
+              "de": "im Internet sein",
+              "c": "v"
             },
             {
               "schrift": "聊天",
               "lerntext": "liáotiān",
-              "de": "quatschen"
+              "de": "quatschen",
+              "c": "v"
             },
             {
               "schrift": "逛街",
               "lerntext": "guàngjiē",
-              "de": "shoppen"
+              "de": "shoppen",
+              "c": "v"
             },
             {
               "schrift": "吃饱",
               "lerntext": "chībǎo",
               "de": "satt sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "退房",
               "lerntext": "tuìfáng",
               "de": "auschecken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "发烧",
               "lerntext": "fāshāo",
               "de": "Fieber haben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "支付",
               "lerntext": "zhīfù",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "疼",
               "lerntext": "téng",
               "de": "schmerzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "报警",
               "lerntext": "bàojǐng",
               "de": "die Polizei rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "喝一杯",
               "lerntext": "hē yī bēi",
               "de": "etwas trinken gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "不去",
               "lerntext": "bú qù",
               "de": "nicht gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "加",
               "lerntext": "jiā",
               "de": "hinzufügen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "欢迎",
               "lerntext": "huānyíng",
               "de": "willkommen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -11258,7 +12892,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 喜欢 [Slot]",
-          "lerntext": "wǒ xǐhuan [Slot]"
+          "lerntext": "wǒ xǐhuan [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "xǐhuan": "v"
+          }
         },
         "frameDe": "Ich mag [Slot].",
         "pronouns": [],
@@ -11267,66 +12905,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "跳",
               "lerntext": "tiào",
-              "de": "springen"
+              "de": "springen",
+              "c": "v"
             },
             {
               "schrift": "旅行",
               "lerntext": "lǚxíng",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "看书",
               "lerntext": "kànshū",
               "de": "lesen (Buch)",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "上网",
               "lerntext": "shàngwǎng",
               "de": "im Internet sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "聊天",
               "lerntext": "liáotiān",
               "de": "quatschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "逛街",
               "lerntext": "guàngjiē",
               "de": "shoppen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "吃饱",
               "lerntext": "chībǎo",
               "de": "satt sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "退房",
               "lerntext": "tuìfáng",
               "de": "auschecken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "发烧",
               "lerntext": "fāshāo",
               "de": "Fieber haben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "支付",
               "lerntext": "zhīfù",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "疼",
               "lerntext": "téng",
               "de": "schmerzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -11340,7 +12989,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 [Slot] 一下",
-          "lerntext": "wǒ [Slot] yíxià"
+          "lerntext": "wǒ [Slot] yíxià",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Ich [Slot] kurz.",
         "pronouns": [
@@ -11355,86 +13007,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "说",
               "lerntext": "shuō",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "用",
               "lerntext": "yòng",
-              "de": "benutzen"
+              "de": "benutzen",
+              "c": "v"
             },
             {
               "schrift": "关",
               "lerntext": "guān",
-              "de": "schließen"
+              "de": "schließen",
+              "c": "v"
             },
             {
               "schrift": "帮",
               "lerntext": "bāng",
-              "de": "helfen"
+              "de": "helfen",
+              "c": "v"
             },
             {
               "schrift": "打",
               "lerntext": "dǎ",
-              "de": "schlagen"
+              "de": "schlagen",
+              "c": "v"
             },
             {
               "schrift": "跳",
               "lerntext": "tiào",
               "de": "springen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "旅行",
               "lerntext": "lǚxíng",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "上网",
               "lerntext": "shàngwǎng",
               "de": "im Internet sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "看书",
               "lerntext": "kànshū",
               "de": "lesen (Buch)",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "聊天",
               "lerntext": "liáotiān",
               "de": "quatschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "逛街",
               "lerntext": "guàngjiē",
               "de": "shoppen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "报警",
               "lerntext": "bàojǐng",
               "de": "die Polizei rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "说话",
               "lerntext": "shuōhuà",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "写",
               "lerntext": "xiě",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "找",
               "lerntext": "zhǎo",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -11454,7 +13121,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 [Slot] 一下",
-          "lerntext": "wǒ [Slot] yíxià"
+          "lerntext": "wǒ [Slot] yíxià",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Ich [Slot] kurz.",
         "pronouns": [
@@ -11469,86 +13139,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "叫",
               "lerntext": "jiào",
-              "de": "rufen"
+              "de": "rufen",
+              "c": "v"
             },
             {
               "schrift": "待",
               "lerntext": "dāi",
-              "de": "bleiben"
+              "de": "bleiben",
+              "c": "v"
             },
             {
               "schrift": "介绍",
               "lerntext": "jièshào",
-              "de": "vorstellen"
+              "de": "vorstellen",
+              "c": "v"
             },
             {
               "schrift": "解释",
               "lerntext": "jiěshì",
-              "de": "erklären"
+              "de": "erklären",
+              "c": "v"
             },
             {
               "schrift": "翻译",
               "lerntext": "fānyì",
-              "de": "übersetzen"
+              "de": "übersetzen",
+              "c": "v"
             },
             {
               "schrift": "说",
               "lerntext": "shuō",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "用",
               "lerntext": "yòng",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "关",
               "lerntext": "guān",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "帮",
               "lerntext": "bāng",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "打",
               "lerntext": "dǎ",
               "de": "schlagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "跳",
               "lerntext": "tiào",
               "de": "springen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "旅行",
               "lerntext": "lǚxíng",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "上网",
               "lerntext": "shàngwǎng",
               "de": "im Internet sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "看书",
               "lerntext": "kànshū",
               "de": "lesen (Buch)",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "聊天",
               "lerntext": "liáotiān",
               "de": "quatschen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -11562,7 +13247,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 [Slot] 去",
-          "lerntext": "wǒ [Slot] qù"
+          "lerntext": "wǒ [Slot] qù",
+          "wortarten": {
+            "wǒ": "p",
+            "qù": "v"
+          }
         },
         "frameDe": "Ich gehe [Slot].",
         "pronouns": [
@@ -11582,71 +13271,83 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "周末",
               "lerntext": "zhōumò",
-              "de": "Wochenende"
+              "de": "Wochenende",
+              "c": "n"
             },
             {
               "schrift": "安排",
               "lerntext": "ānpái",
-              "de": "Programm"
+              "de": "Programm",
+              "c": "n"
             },
             {
               "schrift": "礼物",
               "lerntext": "lǐwù",
               "de": "Geschenk",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "兴趣",
               "lerntext": "xìngqù",
               "de": "Interesse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "爱好",
               "lerntext": "àihào",
               "de": "Hobby",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "音乐",
               "lerntext": "yīnyuè",
               "de": "Musik",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "国家",
               "lerntext": "guójiā",
               "de": "Land",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "上海",
               "lerntext": "Shànghǎi",
               "de": "Shanghai",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "同事",
               "lerntext": "tóngshì",
               "de": "Kollege",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "水",
               "lerntext": "shuǐ",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "生日",
               "lerntext": "shēngrì",
               "de": "Geburtstag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "西瓜",
               "lerntext": "xīguā",
               "de": "Wassermelone",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11671,7 +13372,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 [Slot] 去",
-          "lerntext": "wǒ [Slot] qù"
+          "lerntext": "wǒ [Slot] qù",
+          "wortarten": {
+            "wǒ": "p",
+            "qù": "v"
+          }
         },
         "frameDe": "Ich gehe [Slot].",
         "pronouns": [
@@ -11769,7 +13474,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 [Slot] 去",
-          "lerntext": "wǒ [Slot] qù"
+          "lerntext": "wǒ [Slot] qù",
+          "wortarten": {
+            "wǒ": "p",
+            "qù": "v"
+          }
         },
         "frameDe": "Ich gehe [Slot].",
         "pronouns": [
@@ -11789,66 +13498,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "打算",
               "lerntext": "dǎsuàn",
-              "de": "vorhaben"
+              "de": "vorhaben",
+              "c": "v"
             },
             {
               "schrift": "介绍",
               "lerntext": "jièshào",
               "de": "vorstellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "叫",
               "lerntext": "jiào",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "翻译",
               "lerntext": "fānyì",
               "de": "übersetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "解释",
               "lerntext": "jiěshì",
               "de": "erklären",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "待",
               "lerntext": "dāi",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "说",
               "lerntext": "shuō",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "打",
               "lerntext": "dǎ",
               "de": "schlagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "帮",
               "lerntext": "bāng",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "用",
               "lerntext": "yòng",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "关",
               "lerntext": "guān",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -11862,7 +13582,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "在 [Slot]",
-          "lerntext": "zài [Slot]"
+          "lerntext": "zài [Slot]",
+          "wortarten": {
+            "zài": "v"
+          }
         },
         "frameDe": "Es ist [Slot].",
         "pronouns": [],
@@ -11871,66 +13594,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "地铁站",
               "lerntext": "dìtiězhàn",
-              "de": "U-Bahn-Station"
+              "de": "U-Bahn-Station",
+              "c": "n"
             },
             {
               "schrift": "安排",
               "lerntext": "ānpái",
               "de": "Programm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "周末",
               "lerntext": "zhōumò",
               "de": "Wochenende",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "礼物",
               "lerntext": "lǐwù",
               "de": "Geschenk",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "兴趣",
               "lerntext": "xìngqù",
               "de": "Interesse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "爱好",
               "lerntext": "àihào",
               "de": "Hobby",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "音乐",
               "lerntext": "yīnyuè",
               "de": "Musik",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "时候",
               "lerntext": "shíhou",
               "de": "Zeitpunkt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "米饭",
               "lerntext": "mǐfàn",
               "de": "Reis",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "肚子",
               "lerntext": "dùzi",
               "de": "Bauch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "牛奶",
               "lerntext": "niúnǎi",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11944,7 +13678,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "在 [Slot]",
-          "lerntext": "zài [Slot]"
+          "lerntext": "zài [Slot]",
+          "wortarten": {
+            "zài": "v"
+          }
         },
         "frameDe": "Es ist [Slot].",
         "pronouns": [],
@@ -12041,7 +13778,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 要 [Slot]",
-          "lerntext": "wǒ yào [Slot]"
+          "lerntext": "wǒ yào [Slot]",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Ich möchte [Slot].",
         "pronouns": [],
@@ -12050,86 +13790,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "面条",
               "lerntext": "miàntiáo",
-              "de": "Nudeln"
+              "de": "Nudeln",
+              "c": "n"
             },
             {
               "schrift": "面包",
               "lerntext": "miànbāo",
-              "de": "Brot"
+              "de": "Brot",
+              "c": "n"
             },
             {
               "schrift": "菜单",
               "lerntext": "càidān",
-              "de": "Speisekarte"
+              "de": "Speisekarte",
+              "c": "n"
             },
             {
               "schrift": "英语",
               "lerntext": "Yīngyǔ",
-              "de": "Englisch"
+              "de": "Englisch",
+              "c": "n"
             },
             {
               "schrift": "分",
               "lerntext": "fēn",
-              "de": "Minute"
+              "de": "Minute",
+              "c": "n"
             },
             {
               "schrift": "地铁站",
               "lerntext": "dìtiězhàn",
               "de": "U-Bahn-Station",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "安排",
               "lerntext": "ānpái",
               "de": "Programm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "周末",
               "lerntext": "zhōumò",
               "de": "Wochenende",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "礼物",
               "lerntext": "lǐwù",
               "de": "Geschenk",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "兴趣",
               "lerntext": "xìngqù",
               "de": "Interesse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "爱好",
               "lerntext": "àihào",
               "de": "Hobby",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "音乐",
               "lerntext": "yīnyuè",
               "de": "Musik",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "嘴",
               "lerntext": "zuǐ",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "房间",
               "lerntext": "fángjiān",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "路",
               "lerntext": "lù",
               "de": "Weg",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -12158,71 +13913,83 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "晴天",
               "lerntext": "qíngtiān",
-              "de": "sonniger Tag"
+              "de": "sonniger Tag",
+              "c": "n"
             },
             {
               "schrift": "阴天",
               "lerntext": "yīntiān",
-              "de": "bewölkter Tag"
+              "de": "bewölkter Tag",
+              "c": "n"
             },
             {
               "schrift": "英语",
               "lerntext": "Yīngyǔ",
               "de": "Englisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "分",
               "lerntext": "fēn",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "面包",
               "lerntext": "miànbāo",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "菜单",
               "lerntext": "càidān",
               "de": "Speisekarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "面条",
               "lerntext": "miàntiáo",
               "de": "Nudeln",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "地铁站",
               "lerntext": "dìtiězhàn",
               "de": "U-Bahn-Station",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "安排",
               "lerntext": "ānpái",
               "de": "Programm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "周末",
               "lerntext": "zhōumò",
               "de": "Wochenende",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "礼物",
               "lerntext": "lǐwù",
               "de": "Geschenk",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "兴趣",
               "lerntext": "xìngqù",
               "de": "Interesse",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -12257,76 +14024,89 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "下雪",
               "lerntext": "xiàxuě",
-              "de": "schneien"
+              "de": "schneien",
+              "c": "v"
             },
             {
               "schrift": "习惯",
               "lerntext": "xíguàn",
-              "de": "gewöhnt sein"
+              "de": "gewöhnt sein",
+              "c": "v"
             },
             {
               "schrift": "了解",
               "lerntext": "liǎojiě",
-              "de": "vertraut sein"
+              "de": "vertraut sein",
+              "c": "v"
             },
             {
               "schrift": "打算",
               "lerntext": "dǎsuàn",
               "de": "vorhaben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "介绍",
               "lerntext": "jièshào",
               "de": "vorstellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "叫",
               "lerntext": "jiào",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "翻译",
               "lerntext": "fānyì",
               "de": "übersetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "解释",
               "lerntext": "jiěshì",
               "de": "erklären",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "待",
               "lerntext": "dāi",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "说",
               "lerntext": "shuō",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "打",
               "lerntext": "dǎ",
               "de": "schlagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "帮",
               "lerntext": "bāng",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "跳",
               "lerntext": "tiào",
               "de": "springen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12340,14 +14120,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 想 [Slot]",
-          "lerntext": "wǒ xiǎng [Slot]"
+          "lerntext": "wǒ xiǎng [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "xiǎng": "v"
+          }
         },
         "frameDe": "Ich möchte [Slot].",
         "pronouns": [
           {
             "schrift": "应该",
             "lerntext": "yīnggāi",
-            "de": "sollen"
+            "de": "sollen",
+            "c": "v"
           }
         ],
         "slotGroups": [
@@ -12355,66 +14140,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "帅",
               "lerntext": "shuài",
-              "de": "cool"
+              "de": "cool",
+              "c": "a"
             },
             {
               "schrift": "蓝",
               "lerntext": "lán",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "聪明",
               "lerntext": "cōngming",
               "de": "klug",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "短",
               "lerntext": "duǎn",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "年轻",
               "lerntext": "niánqīng",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "方便",
               "lerntext": "fāngbiàn",
               "de": "praktisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "单身",
               "lerntext": "dānshēn",
               "de": "single",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "可爱",
               "lerntext": "kě'ài",
               "de": "niedlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "有趣",
               "lerntext": "yǒuqù",
               "de": "interessant",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "老",
               "lerntext": "lǎo",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "胖",
               "lerntext": "pàng",
               "de": "dick",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -12425,7 +14221,8 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "应该",
             "lerntext": "yīnggāi",
-            "de": "sollen"
+            "de": "sollen",
+            "c": "v"
           }
         ],
         "id": "15.14"
@@ -12434,14 +14231,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 想 [Slot]",
-          "lerntext": "wǒ xiǎng [Slot]"
+          "lerntext": "wǒ xiǎng [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "xiǎng": "v"
+          }
         },
         "frameDe": "Ich möchte [Slot].",
         "pronouns": [
           {
             "schrift": "应该",
             "lerntext": "yīnggāi",
-            "de": "sollen"
+            "de": "sollen",
+            "c": "v"
           }
         ],
         "slotGroups": [
@@ -12449,66 +14251,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "发型",
               "lerntext": "fàxíng",
-              "de": "Frisur"
+              "de": "Frisur",
+              "c": "n"
             },
             {
               "schrift": "阴天",
               "lerntext": "yīntiān",
               "de": "bewölkter Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "晴天",
               "lerntext": "qíngtiān",
               "de": "sonniger Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "英语",
               "lerntext": "Yīngyǔ",
               "de": "Englisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "分",
               "lerntext": "fēn",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "面包",
               "lerntext": "miànbāo",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "菜单",
               "lerntext": "càidān",
               "de": "Speisekarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "面条",
               "lerntext": "miàntiáo",
               "de": "Nudeln",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "地铁站",
               "lerntext": "dìtiězhàn",
               "de": "U-Bahn-Station",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "安排",
               "lerntext": "ānpái",
               "de": "Programm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "爱好",
               "lerntext": "àihào",
               "de": "Hobby",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -12522,14 +14335,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 想 [Slot]",
-          "lerntext": "wǒ xiǎng [Slot]"
+          "lerntext": "wǒ xiǎng [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "xiǎng": "v"
+          }
         },
         "frameDe": "Ich möchte [Slot].",
         "pronouns": [
           {
             "schrift": "应该",
             "lerntext": "yīnggāi",
-            "de": "sollen"
+            "de": "sollen",
+            "c": "v"
           }
         ],
         "slotGroups": [
@@ -12537,76 +14355,89 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "谈恋爱",
               "lerntext": "tán liàn'ài",
-              "de": "daten"
+              "de": "daten",
+              "c": "v"
             },
             {
               "schrift": "帮忙",
               "lerntext": "bāngmáng",
-              "de": "helfen"
+              "de": "helfen",
+              "c": "v"
             },
             {
               "schrift": "照顾",
               "lerntext": "zhàogù",
-              "de": "kümmern"
+              "de": "kümmern",
+              "c": "v"
             },
             {
               "schrift": "习惯",
               "lerntext": "xíguàn",
               "de": "gewöhnt sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "下雪",
               "lerntext": "xiàxuě",
               "de": "schneien",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "了解",
               "lerntext": "liǎojiě",
               "de": "vertraut sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "打算",
               "lerntext": "dǎsuàn",
               "de": "vorhaben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "介绍",
               "lerntext": "jièshào",
               "de": "vorstellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "叫",
               "lerntext": "jiào",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "用",
               "lerntext": "yòng",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "翻译",
               "lerntext": "fānyì",
               "de": "übersetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "解释",
               "lerntext": "jiěshì",
               "de": "erklären",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "逛街",
               "lerntext": "guàngjiē",
               "de": "shoppen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12620,14 +14451,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 想 [Slot]",
-          "lerntext": "wǒ xiǎng [Slot]"
+          "lerntext": "wǒ xiǎng [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "xiǎng": "v"
+          }
         },
         "frameDe": "Ich möchte [Slot].",
         "pronouns": [
           {
             "schrift": "应该",
             "lerntext": "yīnggāi",
-            "de": "sollen"
+            "de": "sollen",
+            "c": "v"
           }
         ],
         "slotGroups": [
@@ -12636,54 +14472,63 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
               "schrift": "发型",
               "lerntext": "fàxíng",
               "de": "Frisur",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "谈恋爱",
               "lerntext": "tán liàn'ài",
               "de": "daten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "帮忙",
               "lerntext": "bāngmáng",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "照顾",
               "lerntext": "zhàogù",
               "de": "kümmern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "阴天",
               "lerntext": "yīntiān",
               "de": "bewölkter Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "晴天",
               "lerntext": "qíngtiān",
               "de": "sonniger Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "习惯",
               "lerntext": "xíguàn",
               "de": "gewöhnt sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "下雪",
               "lerntext": "xiàxuě",
               "de": "schneien",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "了解",
               "lerntext": "liǎojiě",
               "de": "vertraut sein",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12697,7 +14542,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "在 [Slot]",
-          "lerntext": "zài [Slot]"
+          "lerntext": "zài [Slot]",
+          "wortarten": {
+            "zài": "v"
+          }
         },
         "frameDe": "Es ist [Slot].",
         "pronouns": [],
@@ -12750,7 +14598,10 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "在 [Slot]",
-          "lerntext": "zài [Slot]"
+          "lerntext": "zài [Slot]",
+          "wortarten": {
+            "zài": "v"
+          }
         },
         "frameDe": "Es ist [Slot].",
         "pronouns": [],
@@ -12812,14 +14663,18 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 [Slot] 了",
-          "lerntext": "wǒ [Slot] le"
+          "lerntext": "wǒ [Slot] le",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Ich habe [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -12827,86 +14682,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "看",
               "lerntext": "kàn",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "买",
               "lerntext": "mǎi",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "做",
               "lerntext": "zuò",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "觉得",
               "lerntext": "juéde",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "拿",
               "lerntext": "ná",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "读",
               "lerntext": "dú",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "写",
               "lerntext": "xiě",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "听",
               "lerntext": "tīng",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "照顾",
               "lerntext": "zhàogù",
               "de": "kümmern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "帮忙",
               "lerntext": "bāngmáng",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "谈恋爱",
               "lerntext": "tán liàn'ài",
               "de": "daten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "习惯",
               "lerntext": "xíguàn",
               "de": "gewöhnt sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "下雪",
               "lerntext": "xiàxuě",
               "de": "schneien",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "打算",
               "lerntext": "dǎsuàn",
               "de": "vorhaben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "关",
               "lerntext": "guān",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12920,14 +14790,18 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 [Slot] 了",
-          "lerntext": "wǒ [Slot] le"
+          "lerntext": "wǒ [Slot] le",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Ich habe [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -12935,81 +14809,95 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "读",
               "lerntext": "dú",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "写",
               "lerntext": "xiě",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "听",
               "lerntext": "tīng",
-              "de": "hören"
+              "de": "hören",
+              "c": "v"
             },
             {
               "schrift": "丢",
               "lerntext": "diū",
-              "de": "verlieren"
+              "de": "verlieren",
+              "c": "v"
             },
             {
               "schrift": "觉得",
               "lerntext": "juéde",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "拿",
               "lerntext": "ná",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "买",
               "lerntext": "mǎi",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "做",
               "lerntext": "zuò",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "看",
               "lerntext": "kàn",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "照顾",
               "lerntext": "zhàogù",
               "de": "kümmern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "帮忙",
               "lerntext": "bāngmáng",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "谈恋爱",
               "lerntext": "tán liàn'ài",
               "de": "daten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "了解",
               "lerntext": "liǎojiě",
               "de": "vertraut sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "待",
               "lerntext": "dāi",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -13023,14 +14911,18 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "昨天 我 [Slot] 了",
-          "lerntext": "zuótiān wǒ [Slot] le"
+          "lerntext": "zuótiān wǒ [Slot] le",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Gestern habe ich [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -13038,86 +14930,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "工作",
               "lerntext": "gōngzuò",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "玩",
               "lerntext": "wán",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "跳舞",
               "lerntext": "tiàowǔ",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "睡觉",
               "lerntext": "shuìjiào",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "等",
               "lerntext": "děng",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "找",
               "lerntext": "zhǎo",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "问",
               "lerntext": "wèn",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "回答",
               "lerntext": "huídá",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "帮助",
               "lerntext": "bāngzhù",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "丢",
               "lerntext": "diū",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "旅行",
               "lerntext": "lǚxíng",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "介绍",
               "lerntext": "jièshào",
               "de": "vorstellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "说",
               "lerntext": "shuō",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "打",
               "lerntext": "dǎ",
               "de": "schlagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "帮",
               "lerntext": "bāng",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -13131,14 +15038,18 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "昨天 我 [Slot] 了",
-          "lerntext": "zuótiān wǒ [Slot] le"
+          "lerntext": "zuótiān wǒ [Slot] le",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Gestern habe ich [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -13146,86 +15057,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "找",
               "lerntext": "zhǎo",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "问",
               "lerntext": "wèn",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "回答",
               "lerntext": "huídá",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "帮助",
               "lerntext": "bāngzhù",
-              "de": "helfen"
+              "de": "helfen",
+              "c": "v"
             },
             {
               "schrift": "付",
               "lerntext": "fù",
-              "de": "bezahlen"
+              "de": "bezahlen",
+              "c": "v"
             },
             {
               "schrift": "跳舞",
               "lerntext": "tiàowǔ",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "睡觉",
               "lerntext": "shuìjiào",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "等",
               "lerntext": "děng",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "玩",
               "lerntext": "wán",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "工作",
               "lerntext": "gōngzuò",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "丢",
               "lerntext": "diū",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "习惯",
               "lerntext": "xíguàn",
               "de": "gewöhnt sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "照顾",
               "lerntext": "zhàogù",
               "de": "kümmern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "下雪",
               "lerntext": "xiàxuě",
               "de": "schneien",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "跳",
               "lerntext": "tiào",
               "de": "springen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -13239,14 +15165,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 已经 [Slot] 过",
-          "lerntext": "wǒ yǐjīng [Slot] guo"
+          "lerntext": "wǒ yǐjīng [Slot] guo",
+          "wortarten": {
+            "wǒ": "p",
+            "guo": "n"
+          }
         },
         "frameDe": "Ich habe schon [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -13254,66 +15185,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "清楚",
               "lerntext": "qīngchu",
-              "de": "klar"
+              "de": "klar",
+              "c": "a"
             },
             {
               "schrift": "蓝",
               "lerntext": "lán",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "聪明",
               "lerntext": "cōngming",
               "de": "klug",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "瘦",
               "lerntext": "shòu",
               "de": "dünn",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "短",
               "lerntext": "duǎn",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "年轻",
               "lerntext": "niánqīng",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "方便",
               "lerntext": "fāngbiàn",
               "de": "praktisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "单身",
               "lerntext": "dānshēn",
               "de": "single",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "可爱",
               "lerntext": "kě'ài",
               "de": "niedlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "有趣",
               "lerntext": "yǒuqù",
               "de": "interessant",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "舒服",
               "lerntext": "shūfu",
               "de": "wohl",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -13327,14 +15269,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 已经 [Slot] 过",
-          "lerntext": "wǒ yǐjīng [Slot] guo"
+          "lerntext": "wǒ yǐjīng [Slot] guo",
+          "wortarten": {
+            "wǒ": "p",
+            "guo": "n"
+          }
         },
         "frameDe": "Ich habe schon [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -13342,86 +15289,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "忘",
               "lerntext": "wàng",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "给",
               "lerntext": "gěi",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "说",
               "lerntext": "shuō",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "开",
               "lerntext": "kāi",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "关",
               "lerntext": "guān",
-              "de": "schließen"
+              "de": "schließen",
+              "c": "v"
             },
             {
               "schrift": "洗",
               "lerntext": "xǐ",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "付",
               "lerntext": "fù",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "丢",
               "lerntext": "diū",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "叫",
               "lerntext": "jiào",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "帮忙",
               "lerntext": "bāngmáng",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "上网",
               "lerntext": "shàngwǎng",
               "de": "im Internet sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "用",
               "lerntext": "yòng",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "谈恋爱",
               "lerntext": "tán liàn'ài",
               "de": "daten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "翻译",
               "lerntext": "fānyì",
               "de": "übersetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "看书",
               "lerntext": "kànshū",
               "de": "lesen (Buch)",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -13435,14 +15397,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 已经 [Slot] 过",
-          "lerntext": "wǒ yǐjīng [Slot] guo"
+          "lerntext": "wǒ yǐjīng [Slot] guo",
+          "wortarten": {
+            "wǒ": "p",
+            "guo": "n"
+          }
         },
         "frameDe": "Ich habe schon [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -13450,66 +15417,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "洗",
               "lerntext": "xǐ",
-              "de": "waschen"
+              "de": "waschen",
+              "c": "v"
             },
             {
               "schrift": "忘",
               "lerntext": "wàng",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "关",
               "lerntext": "guān",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "给",
               "lerntext": "gěi",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "说",
               "lerntext": "shuō",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "开",
               "lerntext": "kāi",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "付",
               "lerntext": "fù",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "丢",
               "lerntext": "diū",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "解释",
               "lerntext": "jiěshì",
               "de": "erklären",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "聊天",
               "lerntext": "liáotiān",
               "de": "quatschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "打算",
               "lerntext": "dǎsuàn",
               "de": "vorhaben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -13544,14 +15522,18 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "你 [Slot]",
-          "lerntext": "nǐ [Slot]"
+          "lerntext": "nǐ [Slot]",
+          "wortarten": {
+            "nǐ": "p"
+          }
         },
         "frameDe": "du [Slot].",
         "pronouns": [
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -13559,86 +15541,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "看",
               "lerntext": "kàn",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "买",
               "lerntext": "mǎi",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "做",
               "lerntext": "zuò",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "觉得",
               "lerntext": "juéde",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "拿",
               "lerntext": "ná",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "读",
               "lerntext": "dú",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "写",
               "lerntext": "xiě",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "忘",
               "lerntext": "wàng",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "付",
               "lerntext": "fù",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "逛街",
               "lerntext": "guàngjiē",
               "de": "shoppen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "了解",
               "lerntext": "liǎojiě",
               "de": "vertraut sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "待",
               "lerntext": "dāi",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "应该",
               "lerntext": "yīnggāi",
               "de": "sollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "丢",
               "lerntext": "diū",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "喝一杯",
               "lerntext": "hē yī bēi",
               "de": "etwas trinken gehen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -13652,14 +15649,18 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "你 [Slot]",
-          "lerntext": "nǐ [Slot]"
+          "lerntext": "nǐ [Slot]",
+          "wortarten": {
+            "nǐ": "p"
+          }
         },
         "frameDe": "du [Slot].",
         "pronouns": [
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -13667,71 +15668,83 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "读",
               "lerntext": "dú",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "写",
               "lerntext": "xiě",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "觉得",
               "lerntext": "juéde",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "拿",
               "lerntext": "ná",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "买",
               "lerntext": "mǎi",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "做",
               "lerntext": "zuò",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "看",
               "lerntext": "kàn",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "忘",
               "lerntext": "wàng",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "付",
               "lerntext": "fù",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "准备",
               "lerntext": "zhǔnbèi",
               "de": "vorbereiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "吃饱",
               "lerntext": "chībǎo",
               "de": "satt sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "游泳",
               "lerntext": "yóuyǒng",
               "de": "schwimmen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -13745,14 +15758,18 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "他 [Slot]",
-          "lerntext": "tā [Slot]"
+          "lerntext": "tā [Slot]",
+          "wortarten": {
+            "tā": "p"
+          }
         },
         "frameDe": "er [Slot].",
         "pronouns": [
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -13760,86 +15777,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "工作",
               "lerntext": "gōngzuò",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "玩",
               "lerntext": "wán",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "跳舞",
               "lerntext": "tiàowǔ",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "睡觉",
               "lerntext": "shuìjiào",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "等",
               "lerntext": "děng",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "找",
               "lerntext": "zhǎo",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "问",
               "lerntext": "wèn",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "回答",
               "lerntext": "huídá",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "忘",
               "lerntext": "wàng",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "送",
               "lerntext": "sòng",
               "de": "bringen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "唱歌",
               "lerntext": "chànggē",
               "de": "singen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "旅行",
               "lerntext": "lǚxíng",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "打电话",
               "lerntext": "dǎ diànhuà",
               "de": "telefonieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "告诉",
               "lerntext": "gàosu",
               "de": "mitteilen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "退房",
               "lerntext": "tuìfáng",
               "de": "auschecken",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -13853,14 +15885,18 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "他 [Slot]",
-          "lerntext": "tā [Slot]"
+          "lerntext": "tā [Slot]",
+          "wortarten": {
+            "tā": "p"
+          }
         },
         "frameDe": "er [Slot].",
         "pronouns": [
           {
             "schrift": "他",
             "lerntext": "tā",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -13868,76 +15904,89 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "找",
               "lerntext": "zhǎo",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "问",
               "lerntext": "wèn",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "回答",
               "lerntext": "huídá",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "跳舞",
               "lerntext": "tiàowǔ",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "睡觉",
               "lerntext": "shuìjiào",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "等",
               "lerntext": "děng",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "玩",
               "lerntext": "wán",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "工作",
               "lerntext": "gōngzuò",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "介绍",
               "lerntext": "jièshào",
               "de": "vorstellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "打",
               "lerntext": "dǎ",
               "de": "schlagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "坐",
               "lerntext": "zuò",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "可以",
               "lerntext": "kěyǐ",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "发烧",
               "lerntext": "fāshāo",
               "de": "Fieber haben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -13951,14 +16000,18 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我们 [Slot]",
-          "lerntext": "wǒmen [Slot]"
+          "lerntext": "wǒmen [Slot]",
+          "wortarten": {
+            "wǒmen": "p"
+          }
         },
         "frameDe": "wir [Slot].",
         "pronouns": [
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -13966,66 +16019,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "清楚",
               "lerntext": "qīngchu",
-              "de": "klar"
+              "de": "klar",
+              "c": "a"
             },
             {
               "schrift": "蓝",
               "lerntext": "lán",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "热",
               "lerntext": "rè",
               "de": "heiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "聪明",
               "lerntext": "cōngming",
               "de": "klug",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "饿",
               "lerntext": "è",
               "de": "hungrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "难过",
               "lerntext": "nánguò",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "老",
               "lerntext": "lǎo",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "棒",
               "lerntext": "bàng",
               "de": "toll",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "胖",
               "lerntext": "pàng",
               "de": "dick",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "好喝",
               "lerntext": "hǎohē",
               "de": "lecker (Getränk)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "完",
               "lerntext": "wán",
               "de": "fertig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -14039,14 +16103,18 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我们 [Slot]",
-          "lerntext": "wǒmen [Slot]"
+          "lerntext": "wǒmen [Slot]",
+          "wortarten": {
+            "wǒmen": "p"
+          }
         },
         "frameDe": "wir [Slot].",
         "pronouns": [
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -14054,81 +16122,95 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "忘",
               "lerntext": "wàng",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "给",
               "lerntext": "gěi",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "说",
               "lerntext": "shuō",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "开",
               "lerntext": "kāi",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "回家",
               "lerntext": "huíjiā",
               "de": "nach Hause gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "帮",
               "lerntext": "bāng",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "习惯",
               "lerntext": "xíguàn",
               "de": "gewöhnt sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "照顾",
               "lerntext": "zhàogù",
               "de": "kümmern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "让",
               "lerntext": "ràng",
               "de": "lassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "懂",
               "lerntext": "dǒng",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "下雪",
               "lerntext": "xiàxuě",
               "de": "schneien",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "跳",
               "lerntext": "tiào",
               "de": "springen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "支付",
               "lerntext": "zhīfù",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "疼",
               "lerntext": "téng",
               "de": "schmerzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -14142,14 +16224,18 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "她 [Slot]",
-          "lerntext": "tā [Slot]"
+          "lerntext": "tā [Slot]",
+          "wortarten": {
+            "tā": "p"
+          }
         },
         "frameDe": "sie [Slot].",
         "pronouns": [
           {
             "schrift": "她",
             "lerntext": "tā",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -14157,76 +16243,89 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "住",
               "lerntext": "zhù",
-              "de": "wohnen"
+              "de": "wohnen",
+              "c": "v"
             },
             {
               "schrift": "待",
               "lerntext": "dāi",
-              "de": "bleiben"
+              "de": "bleiben",
+              "c": "v"
             },
             {
               "schrift": "要",
               "lerntext": "yào",
-              "de": "wollen"
+              "de": "wollen",
+              "c": "v"
             },
             {
               "schrift": "穿",
               "lerntext": "chuān",
               "de": "anziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "不去",
               "lerntext": "bú qù",
               "de": "nicht gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "卖",
               "lerntext": "mài",
               "de": "verkaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "叫",
               "lerntext": "jiào",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "爱",
               "lerntext": "ài",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "加",
               "lerntext": "jiā",
               "de": "hinzufügen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "帮忙",
               "lerntext": "bāngmáng",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "生病",
               "lerntext": "shēngbìng",
               "de": "krank sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "开始",
               "lerntext": "kāishǐ",
               "de": "anfangen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "上网",
               "lerntext": "shàngwǎng",
               "de": "im Internet sein",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -14270,86 +16369,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "有趣",
               "lerntext": "yǒuqù",
-              "de": "interessant"
+              "de": "interessant",
+              "c": "a"
             },
             {
               "schrift": "难",
               "lerntext": "nán",
-              "de": "schwierig"
+              "de": "schwierig",
+              "c": "a"
             },
             {
               "schrift": "危险",
               "lerntext": "wēixiǎn",
-              "de": "gefährlich"
+              "de": "gefährlich",
+              "c": "a"
             },
             {
               "schrift": "贵",
               "lerntext": "guì",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "累",
               "lerntext": "lèi",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "难过",
               "lerntext": "nánguò",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "蓝",
               "lerntext": "lán",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "瘦",
               "lerntext": "shòu",
               "de": "dünn",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "新",
               "lerntext": "xīn",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "漂亮",
               "lerntext": "piàoliang",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "短",
               "lerntext": "duǎn",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "渴",
               "lerntext": "kě",
               "de": "durstig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "便宜",
               "lerntext": "piányi",
               "de": "günstig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "好吃",
               "lerntext": "hǎochī",
               "de": "lecker (Essen)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "小",
               "lerntext": "xiǎo",
               "de": "klein",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -14372,66 +16486,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "难过",
               "lerntext": "nánguò",
-              "de": "traurig"
+              "de": "traurig",
+              "c": "a"
             },
             {
               "schrift": "危险",
               "lerntext": "wēixiǎn",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "有趣",
               "lerntext": "yǒuqù",
               "de": "interessant",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "难",
               "lerntext": "nán",
               "de": "schwierig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "贵",
               "lerntext": "guì",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "累",
               "lerntext": "lèi",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "年轻",
               "lerntext": "niánqīng",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "大",
               "lerntext": "dà",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "方便",
               "lerntext": "fāngbiàn",
               "de": "praktisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "难受",
               "lerntext": "nánshòu",
               "de": "unwohl",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "甜",
               "lerntext": "tián",
               "de": "süß",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -14445,7 +16570,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 跟 你 一样 [Slot]",
-          "lerntext": "wǒ gēn nǐ yīyàng [Slot]"
+          "lerntext": "wǒ gēn nǐ yīyàng [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p"
+          }
         },
         "frameDe": "Ich bin so [Slot] wie du.",
         "pronouns": [],
@@ -14454,86 +16583,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "高",
               "lerntext": "gāo",
-              "de": "groß (Körpergröße)"
+              "de": "groß (Körpergröße)",
+              "c": "a"
             },
             {
               "schrift": "小",
               "lerntext": "xiǎo",
-              "de": "klein"
+              "de": "klein",
+              "c": "a"
             },
             {
               "schrift": "老",
               "lerntext": "lǎo",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "年轻",
               "lerntext": "niánqīng",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "贵",
               "lerntext": "guì",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "漂亮",
               "lerntext": "piàoliang",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "暖和",
               "lerntext": "nuǎnhuo",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "冷",
               "lerntext": "lěng",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "新",
               "lerntext": "xīn",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "危险",
               "lerntext": "wēixiǎn",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "单身",
               "lerntext": "dānshēn",
               "de": "single",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "准备好",
               "lerntext": "zhǔnbèi hǎo",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "可爱",
               "lerntext": "kě'ài",
               "de": "niedlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "生气",
               "lerntext": "shēngqì",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "错",
               "lerntext": "cuò",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -14558,7 +16702,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 跟 你 一样 [Slot]",
-          "lerntext": "wǒ gēn nǐ yīyàng [Slot]"
+          "lerntext": "wǒ gēn nǐ yīyàng [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "nǐ": "p"
+          }
         },
         "frameDe": "Ich bin so [Slot] wie du.",
         "pronouns": [],
@@ -14567,81 +16715,95 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "漂亮",
               "lerntext": "piàoliang",
-              "de": "schön"
+              "de": "schön",
+              "c": "a"
             },
             {
               "schrift": "暖和",
               "lerntext": "nuǎnhuo",
-              "de": "warm"
+              "de": "warm",
+              "c": "a"
             },
             {
               "schrift": "冷",
               "lerntext": "lěng",
-              "de": "kalt"
+              "de": "kalt",
+              "c": "a"
             },
             {
               "schrift": "新",
               "lerntext": "xīn",
-              "de": "neu"
+              "de": "neu",
+              "c": "a"
             },
             {
               "schrift": "小",
               "lerntext": "xiǎo",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "老",
               "lerntext": "lǎo",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "年轻",
               "lerntext": "niánqīng",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "高",
               "lerntext": "gāo",
               "de": "groß (Körpergröße)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "贵",
               "lerntext": "guì",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "危险",
               "lerntext": "wēixiǎn",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "容易",
               "lerntext": "róngyì",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "快乐",
               "lerntext": "kuàilè",
               "de": "fröhlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "慢",
               "lerntext": "màn",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "舒服",
               "lerntext": "shūfu",
               "de": "wohl",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -14676,14 +16838,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 觉得 [Slot]",
-          "lerntext": "wǒ juéde [Slot]"
+          "lerntext": "wǒ juéde [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "juéde": "v"
+          }
         },
         "frameDe": "Ich fühle mich [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -14691,86 +16858,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "累",
               "lerntext": "lèi",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "难过",
               "lerntext": "nánguò",
-              "de": "traurig"
+              "de": "traurig",
+              "c": "a"
             },
             {
               "schrift": "准备好",
               "lerntext": "zhǔnbèi hǎo",
-              "de": "bereit"
+              "de": "bereit",
+              "c": "a"
             },
             {
               "schrift": "年轻",
               "lerntext": "niánqīng",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "老",
               "lerntext": "lǎo",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "生气",
               "lerntext": "shēngqì",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "漂亮",
               "lerntext": "piàoliang",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "危险",
               "lerntext": "wēixiǎn",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "远",
               "lerntext": "yuǎn",
               "de": "weit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "热",
               "lerntext": "rè",
               "de": "heiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "高兴",
               "lerntext": "gāoxìng",
               "de": "froh",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "聪明",
               "lerntext": "cōngming",
               "de": "klug",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "饿",
               "lerntext": "è",
               "de": "hungrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "棒",
               "lerntext": "bàng",
               "de": "toll",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "蓝",
               "lerntext": "lán",
               "de": "blau",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -14784,14 +16966,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 觉得 [Slot]",
-          "lerntext": "wǒ juéde [Slot]"
+          "lerntext": "wǒ juéde [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "juéde": "v"
+          }
         },
         "frameDe": "Ich fühle mich [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -14799,71 +16986,83 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "生气",
               "lerntext": "shēngqì",
-              "de": "wütend"
+              "de": "wütend",
+              "c": "a"
             },
             {
               "schrift": "漂亮",
               "lerntext": "piàoliang",
-              "de": "schön"
+              "de": "schön",
+              "c": "a"
             },
             {
               "schrift": "准备好",
               "lerntext": "zhǔnbèi hǎo",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "难过",
               "lerntext": "nánguò",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "年轻",
               "lerntext": "niánqīng",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "老",
               "lerntext": "lǎo",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "累",
               "lerntext": "lèi",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "危险",
               "lerntext": "wēixiǎn",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "胖",
               "lerntext": "pàng",
               "de": "dick",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "好喝",
               "lerntext": "hǎohē",
               "de": "lecker (Getränk)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "完",
               "lerntext": "wán",
               "de": "fertig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "长",
               "lerntext": "cháng",
               "de": "lang",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -14877,14 +17076,18 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我们 [Slot] 见面",
-          "lerntext": "wǒmen [Slot] jiànmiàn"
+          "lerntext": "wǒmen [Slot] jiànmiàn",
+          "wortarten": {
+            "wǒmen": "p"
+          }
         },
         "frameDe": "Wir treffen uns [Slot].",
         "pronouns": [
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -14982,7 +17185,8 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "见",
             "lerntext": "jiàn",
-            "de": "sich treffen"
+            "de": "sich treffen",
+            "c": "v"
           }
         ],
         "id": "19.3"
@@ -14991,14 +17195,18 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我们 [Slot] 见面",
-          "lerntext": "wǒmen [Slot] jiànmiàn"
+          "lerntext": "wǒmen [Slot] jiànmiàn",
+          "wortarten": {
+            "wǒmen": "p"
+          }
         },
         "frameDe": "Wir treffen uns [Slot].",
         "pronouns": [
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15105,7 +17313,12 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 在 这里 [Slot] 我 很 累",
-          "lerntext": "wǒ zài zhèlǐ [Slot] wǒ hěn lèi"
+          "lerntext": "wǒ zài zhèlǐ [Slot] wǒ hěn lèi",
+          "wortarten": {
+            "wǒ": "p",
+            "zài": "v",
+            "lèi": "a"
+          }
         },
         "frameDe": "Ich bleibe hier, [Slot] ich müde bin.",
         "pronouns": [],
@@ -15114,27 +17327,32 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "因为",
               "lerntext": "yīnwèi",
-              "de": "weil"
+              "de": "weil",
+              "c": "k"
             },
             {
               "schrift": "但是",
               "lerntext": "dànshì",
-              "de": "aber"
+              "de": "aber",
+              "c": "k"
             },
             {
               "schrift": "还是",
               "lerntext": "háishi",
-              "de": "oder (in Fragen)"
+              "de": "oder (in Fragen)",
+              "c": "k"
             },
             {
               "schrift": "和",
               "lerntext": "hé",
-              "de": "und"
+              "de": "und",
+              "c": "k"
             },
             {
               "schrift": "所以",
               "lerntext": "suǒyǐ",
               "de": "deshalb",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -15148,7 +17366,12 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 在 这里 [Slot] 我 很 累",
-          "lerntext": "wǒ zài zhèlǐ [Slot] wǒ hěn lèi"
+          "lerntext": "wǒ zài zhèlǐ [Slot] wǒ hěn lèi",
+          "wortarten": {
+            "wǒ": "p",
+            "zài": "v",
+            "lèi": "a"
+          }
         },
         "frameDe": "Ich bleibe hier, [Slot] ich müde bin.",
         "pronouns": [],
@@ -15230,7 +17453,12 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 想 这 是 [Slot]",
-          "lerntext": "wǒ xiǎng zhè shì [Slot]"
+          "lerntext": "wǒ xiǎng zhè shì [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "xiǎng": "v",
+            "zhè": "p"
+          }
         },
         "frameDe": "Ich glaube, dass es [Slot] ist.",
         "pronouns": [],
@@ -15239,86 +17467,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "容易",
               "lerntext": "róngyì",
-              "de": "einfach"
+              "de": "einfach",
+              "c": "a"
             },
             {
               "schrift": "错",
               "lerntext": "cuò",
-              "de": "falsch"
+              "de": "falsch",
+              "c": "a"
             },
             {
               "schrift": "长",
               "lerntext": "cháng",
-              "de": "lang"
+              "de": "lang",
+              "c": "a"
             },
             {
               "schrift": "干净",
               "lerntext": "gānjìng",
-              "de": "sauber"
+              "de": "sauber",
+              "c": "a"
             },
             {
               "schrift": "黑",
               "lerntext": "hēi",
-              "de": "schwarz"
+              "de": "schwarz",
+              "c": "a"
             },
             {
               "schrift": "甜",
               "lerntext": "tián",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "生气",
               "lerntext": "shēngqì",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "瘦",
               "lerntext": "shòu",
               "de": "dünn",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "快",
               "lerntext": "kuài",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "短",
               "lerntext": "duǎn",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "渴",
               "lerntext": "kě",
               "de": "durstig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "好",
               "lerntext": "hǎo",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "便宜",
               "lerntext": "piányi",
               "de": "günstig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "好吃",
               "lerntext": "hǎochī",
               "de": "lecker (Essen)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "忙",
               "lerntext": "máng",
               "de": "beschäftigt",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -15332,7 +17575,12 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 想 这 是 [Slot]",
-          "lerntext": "wǒ xiǎng zhè shì [Slot]"
+          "lerntext": "wǒ xiǎng zhè shì [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "xiǎng": "v",
+            "zhè": "p"
+          }
         },
         "frameDe": "Ich glaube, dass es [Slot] ist.",
         "pronouns": [],
@@ -15341,71 +17589,83 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "甜",
               "lerntext": "tián",
-              "de": "süß"
+              "de": "süß",
+              "c": "a"
             },
             {
               "schrift": "生气",
               "lerntext": "shēngqì",
-              "de": "wütend"
+              "de": "wütend",
+              "c": "a"
             },
             {
               "schrift": "干净",
               "lerntext": "gānjìng",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "容易",
               "lerntext": "róngyì",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "错",
               "lerntext": "cuò",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "长",
               "lerntext": "cháng",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "黑",
               "lerntext": "hēi",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "大",
               "lerntext": "dà",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "方便",
               "lerntext": "fāngbiàn",
               "de": "praktisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "危险",
               "lerntext": "wēixiǎn",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "近",
               "lerntext": "jìn",
               "de": "nah",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "难受",
               "lerntext": "nánshòu",
               "de": "unwohl",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -15419,7 +17679,12 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 想 这 是 [Slot]",
-          "lerntext": "wǒ xiǎng zhè shì [Slot]"
+          "lerntext": "wǒ xiǎng zhè shì [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "xiǎng": "v",
+            "zhè": "p"
+          }
         },
         "frameDe": "Ich glaube, dass es [Slot] ist.",
         "pronouns": [],
@@ -15501,7 +17766,13 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "有 时间 我 想 [Slot]",
-          "lerntext": "yǒu shíjiān wǒ xiǎng [Slot]"
+          "lerntext": "yǒu shíjiān wǒ xiǎng [Slot]",
+          "wortarten": {
+            "yǒu": "v",
+            "shíjiān": "n",
+            "wǒ": "p",
+            "xiǎng": "v"
+          }
         },
         "frameDe": "Wenn ich Zeit habe, will ich [Slot].",
         "pronouns": [],
@@ -15510,76 +17781,89 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "住",
               "lerntext": "zhù",
-              "de": "wohnen"
+              "de": "wohnen",
+              "c": "v"
             },
             {
               "schrift": "待",
               "lerntext": "dāi",
-              "de": "bleiben"
+              "de": "bleiben",
+              "c": "v"
             },
             {
               "schrift": "要",
               "lerntext": "yào",
-              "de": "wollen"
+              "de": "wollen",
+              "c": "v"
             },
             {
               "schrift": "见",
               "lerntext": "jiàn",
               "de": "sich treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "运动",
               "lerntext": "yùndòng",
               "de": "Sport treiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "用",
               "lerntext": "yòng",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "回",
               "lerntext": "huí",
               "de": "zurückkehren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "谈恋爱",
               "lerntext": "tán liàn'ài",
               "de": "daten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "翻译",
               "lerntext": "fānyì",
               "de": "übersetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "起床",
               "lerntext": "qǐchuáng",
               "de": "aufstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "休息",
               "lerntext": "xiūxi",
               "de": "ausruhen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "吃饭",
               "lerntext": "chīfàn",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "报警",
               "lerntext": "bàojǐng",
               "de": "die Polizei rufen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15614,14 +17898,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "你 可以 [Slot] 吗?",
-          "lerntext": "nǐ kěyǐ [Slot] ma?"
+          "lerntext": "nǐ kěyǐ [Slot] ma?",
+          "wortarten": {
+            "nǐ": "p",
+            "kěyǐ": "v"
+          }
         },
         "frameDe": "Kannst du bitte [Slot]?",
         "pronouns": [
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15629,86 +17918,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "工作",
               "lerntext": "gōngzuò",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "玩",
               "lerntext": "wán",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "跳舞",
               "lerntext": "tiàowǔ",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "睡觉",
               "lerntext": "shuìjiào",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "等",
               "lerntext": "děng",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "付",
               "lerntext": "fù",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "帮助",
               "lerntext": "bāngzhù",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "找",
               "lerntext": "zhǎo",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "问",
               "lerntext": "wèn",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "回答",
               "lerntext": "huídá",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "见",
               "lerntext": "jiàn",
               "de": "sich treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "看书",
               "lerntext": "kànshū",
               "de": "lesen (Buch)",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "进",
               "lerntext": "jìn",
               "de": "eintreten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "解释",
               "lerntext": "jiěshì",
               "de": "erklären",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "必须",
               "lerntext": "bìxū",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15728,14 +18032,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "你 可以 [Slot] 吗?",
-          "lerntext": "nǐ kěyǐ [Slot] ma?"
+          "lerntext": "nǐ kěyǐ [Slot] ma?",
+          "wortarten": {
+            "nǐ": "p",
+            "kěyǐ": "v"
+          }
         },
         "frameDe": "Kannst du bitte [Slot]?",
         "pronouns": [
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15743,86 +18052,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "找",
               "lerntext": "zhǎo",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "问",
               "lerntext": "wèn",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "回答",
               "lerntext": "huídá",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "帮助",
               "lerntext": "bāngzhù",
-              "de": "helfen"
+              "de": "helfen",
+              "c": "v"
             },
             {
               "schrift": "付",
               "lerntext": "fù",
-              "de": "bezahlen"
+              "de": "bezahlen",
+              "c": "v"
             },
             {
               "schrift": "跳舞",
               "lerntext": "tiàowǔ",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "睡觉",
               "lerntext": "shuìjiào",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "等",
               "lerntext": "děng",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "玩",
               "lerntext": "wán",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "工作",
               "lerntext": "gōngzuò",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "见",
               "lerntext": "jiàn",
               "de": "sich treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "聊天",
               "lerntext": "liáotiān",
               "de": "quatschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "到",
               "lerntext": "dào",
               "de": "ankommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "下雨",
               "lerntext": "xiàyǔ",
               "de": "regnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "旅游",
               "lerntext": "lǚyóu",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15836,14 +18160,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "你 必须 [Slot]",
-          "lerntext": "nǐ bìxū [Slot]"
+          "lerntext": "nǐ bìxū [Slot]",
+          "wortarten": {
+            "nǐ": "p",
+            "bìxū": "v"
+          }
         },
         "frameDe": "Du musst [Slot].",
         "pronouns": [
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15851,66 +18180,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "清楚",
               "lerntext": "qīngchu",
-              "de": "klar"
+              "de": "klar",
+              "c": "a"
             },
             {
               "schrift": "干净",
               "lerntext": "gānjìng",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "单身",
               "lerntext": "dānshēn",
               "de": "single",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "可爱",
               "lerntext": "kě'ài",
               "de": "niedlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "快乐",
               "lerntext": "kuàilè",
               "de": "fröhlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "慢",
               "lerntext": "màn",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "舒服",
               "lerntext": "shūfu",
               "de": "wohl",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "远",
               "lerntext": "yuǎn",
               "de": "weit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "热",
               "lerntext": "rè",
               "de": "heiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "高兴",
               "lerntext": "gāoxìng",
               "de": "froh",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "聪明",
               "lerntext": "cōngming",
               "de": "klug",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -15924,14 +18264,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "你 必须 [Slot]",
-          "lerntext": "nǐ bìxū [Slot]"
+          "lerntext": "nǐ bìxū [Slot]",
+          "wortarten": {
+            "nǐ": "p",
+            "bìxū": "v"
+          }
         },
         "frameDe": "Du musst [Slot].",
         "pronouns": [
           {
             "schrift": "你",
             "lerntext": "nǐ",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15939,81 +18284,95 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "忘",
               "lerntext": "wàng",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "给",
               "lerntext": "gěi",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "说",
               "lerntext": "shuō",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "开",
               "lerntext": "kāi",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "来",
               "lerntext": "lái",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "打算",
               "lerntext": "dǎsuàn",
               "de": "vorhaben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "欢迎",
               "lerntext": "huānyíng",
               "de": "willkommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "能",
               "lerntext": "néng",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "逛街",
               "lerntext": "guàngjiē",
               "de": "shoppen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "跑步",
               "lerntext": "pǎobù",
               "de": "joggen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "走",
               "lerntext": "zǒu",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "知道",
               "lerntext": "zhīdào",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "了解",
               "lerntext": "liǎojiě",
               "de": "vertraut sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "说话",
               "lerntext": "shuōhuà",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16048,14 +18407,20 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 给 [Slot] 书",
-          "lerntext": "wǒ gěi [Slot] shū"
+          "lerntext": "wǒ gěi [Slot] shū",
+          "wortarten": {
+            "wǒ": "p",
+            "gěi": "v",
+            "shū": "n"
+          }
         },
         "frameDe": "Ich gebe [Slot] das Buch.",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16063,86 +18428,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "朋友",
               "lerntext": "péngyou",
-              "de": "Freund"
+              "de": "Freund",
+              "c": "n"
             },
             {
               "schrift": "妈妈",
               "lerntext": "māma",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "爸爸",
               "lerntext": "bàba",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "孩子",
               "lerntext": "háizi",
-              "de": "Kind"
+              "de": "Kind",
+              "c": "n"
             },
             {
               "schrift": "学生",
               "lerntext": "xuésheng",
-              "de": "Student"
+              "de": "Student",
+              "c": "n"
             },
             {
               "schrift": "小姐",
               "lerntext": "xiǎojiě",
               "de": "Frau (Anrede)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "发型",
               "lerntext": "fàxíng",
               "de": "Frisur",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "英语",
               "lerntext": "Yīngyǔ",
               "de": "Englisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "阴天",
               "lerntext": "yīntiān",
               "de": "bewölkter Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "分",
               "lerntext": "fēn",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "晴天",
               "lerntext": "qíngtiān",
               "de": "sonniger Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "面包",
               "lerntext": "miànbāo",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "菜单",
               "lerntext": "càidān",
               "de": "Speisekarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "面条",
               "lerntext": "miàntiáo",
               "de": "Nudeln",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "地铁站",
               "lerntext": "dìtiězhàn",
               "de": "U-Bahn-Station",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -16156,14 +18536,20 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 给 [Slot] 书",
-          "lerntext": "wǒ gěi [Slot] shū"
+          "lerntext": "wǒ gěi [Slot] shū",
+          "wortarten": {
+            "wǒ": "p",
+            "gěi": "v",
+            "shū": "n"
+          }
         },
         "frameDe": "Ich gebe [Slot] das Buch.",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16171,66 +18557,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "小姐",
               "lerntext": "xiǎojiě",
-              "de": "Frau (Anrede)"
+              "de": "Frau (Anrede)",
+              "c": "n"
             },
             {
               "schrift": "孩子",
               "lerntext": "háizi",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "妈妈",
               "lerntext": "māma",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "爸爸",
               "lerntext": "bàba",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "学生",
               "lerntext": "xuésheng",
               "de": "Student",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "朋友",
               "lerntext": "péngyou",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "发型",
               "lerntext": "fàxíng",
               "de": "Frisur",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "英语",
               "lerntext": "Yīngyǔ",
               "de": "Englisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "阴天",
               "lerntext": "yīntiān",
               "de": "bewölkter Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "分",
               "lerntext": "fēn",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "晴天",
               "lerntext": "qíngtiān",
               "de": "sonniger Tag",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -16244,14 +18641,21 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 给 [Slot] 看 城市",
-          "lerntext": "wǒ gěi [Slot] kàn chéngshì"
+          "lerntext": "wǒ gěi [Slot] kàn chéngshì",
+          "wortarten": {
+            "wǒ": "p",
+            "gěi": "v",
+            "kàn": "v",
+            "chéngshì": "n"
+          }
         },
         "frameDe": "Ich zeige [Slot] die Stadt.",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16259,86 +18663,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "朋友",
               "lerntext": "péngyou",
-              "de": "Freund"
+              "de": "Freund",
+              "c": "n"
             },
             {
               "schrift": "妈妈",
               "lerntext": "māma",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "爸爸",
               "lerntext": "bàba",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "孩子",
               "lerntext": "háizi",
-              "de": "Kind"
+              "de": "Kind",
+              "c": "n"
             },
             {
               "schrift": "学生",
               "lerntext": "xuésheng",
-              "de": "Student"
+              "de": "Student",
+              "c": "n"
             },
             {
               "schrift": "小姐",
               "lerntext": "xiǎojiě",
               "de": "Frau (Anrede)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "音乐",
               "lerntext": "yīnyuè",
               "de": "Musik",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "面包",
               "lerntext": "miànbāo",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "元",
               "lerntext": "yuán",
               "de": "Yuan (Währung)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "菜",
               "lerntext": "cài",
               "de": "Gericht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "妹妹",
               "lerntext": "mèimei",
               "de": "jüngere Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "儿子",
               "lerntext": "érzi",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "北京",
               "lerntext": "Běijīng",
               "de": "Peking",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "天气",
               "lerntext": "tiānqì",
               "de": "Wetter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "姐姐",
               "lerntext": "jiějie",
               "de": "ältere Schwester",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -16352,14 +18771,21 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 给 [Slot] 看 城市",
-          "lerntext": "wǒ gěi [Slot] kàn chéngshì"
+          "lerntext": "wǒ gěi [Slot] kàn chéngshì",
+          "wortarten": {
+            "wǒ": "p",
+            "gěi": "v",
+            "kàn": "v",
+            "chéngshì": "n"
+          }
         },
         "frameDe": "Ich zeige [Slot] die Stadt.",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16367,66 +18793,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "小姐",
               "lerntext": "xiǎojiě",
-              "de": "Frau (Anrede)"
+              "de": "Frau (Anrede)",
+              "c": "n"
             },
             {
               "schrift": "孩子",
               "lerntext": "háizi",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "妈妈",
               "lerntext": "māma",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "爸爸",
               "lerntext": "bàba",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "学生",
               "lerntext": "xuésheng",
               "de": "Student",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "朋友",
               "lerntext": "péngyou",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "火车站",
               "lerntext": "huǒchēzhàn",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "药",
               "lerntext": "yào",
               "de": "Medizin",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "眼睛",
               "lerntext": "yǎnjing",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "商店",
               "lerntext": "shāngdiàn",
               "de": "Geschäft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "电脑",
               "lerntext": "diànnǎo",
               "de": "Computer",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -16461,14 +18898,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 想 要 一 杯 [Slot]",
-          "lerntext": "wǒ xiǎng yào yī bēi [Slot]"
+          "lerntext": "wǒ xiǎng yào yī bēi [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "xiǎng": "v"
+          }
         },
         "frameDe": "Ich möchte ein Glas [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16476,81 +18918,95 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "水",
               "lerntext": "shuǐ",
-              "de": "Wasser"
+              "de": "Wasser",
+              "c": "n"
             },
             {
               "schrift": "啤酒",
               "lerntext": "píjiǔ",
-              "de": "Bier"
+              "de": "Bier",
+              "c": "n"
             },
             {
               "schrift": "牛奶",
               "lerntext": "niúnǎi",
-              "de": "Milch"
+              "de": "Milch",
+              "c": "n"
             },
             {
               "schrift": "咖啡",
               "lerntext": "kāfēi",
-              "de": "Kaffee"
+              "de": "Kaffee",
+              "c": "n"
             },
             {
               "schrift": "德国",
               "lerntext": "Déguó",
               "de": "Deutschland",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "周末",
               "lerntext": "zhōumò",
               "de": "Wochenende",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "鸡蛋",
               "lerntext": "jīdàn",
               "de": "Ei",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "腿",
               "lerntext": "tuǐ",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "椅子",
               "lerntext": "yǐzi",
               "de": "Stuhl",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "公共汽车",
               "lerntext": "gōnggòng qìchē",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "菜单",
               "lerntext": "càidān",
               "de": "Speisekarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "感冒",
               "lerntext": "gǎnmào",
               "de": "Erkältung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "茶",
               "lerntext": "chá",
               "de": "Tee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "手",
               "lerntext": "shǒu",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -16561,7 +19017,8 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "杯子",
             "lerntext": "bēizi",
-            "de": "Becher"
+            "de": "Becher",
+            "c": "n"
           },
           {
             "schrift": "杯",
@@ -16575,14 +19032,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我们 有 很多 [Slot]",
-          "lerntext": "wǒmen yǒu hěnduō [Slot]"
+          "lerntext": "wǒmen yǒu hěnduō [Slot]",
+          "wortarten": {
+            "wǒmen": "p",
+            "yǒu": "v"
+          }
         },
         "frameDe": "Wir haben genug [Slot].",
         "pronouns": [
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16590,86 +19052,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "钱",
               "lerntext": "qián",
-              "de": "Geld"
+              "de": "Geld",
+              "c": "n"
             },
             {
               "schrift": "时间",
               "lerntext": "shíjiān",
-              "de": "Zeit"
+              "de": "Zeit",
+              "c": "n"
             },
             {
               "schrift": "面包",
               "lerntext": "miànbāo",
-              "de": "Brot"
+              "de": "Brot",
+              "c": "n"
             },
             {
               "schrift": "水果",
               "lerntext": "shuǐguǒ",
-              "de": "Obst"
+              "de": "Obst",
+              "c": "n"
             },
             {
               "schrift": "肉",
               "lerntext": "ròu",
-              "de": "Fleisch"
+              "de": "Fleisch",
+              "c": "n"
             },
             {
               "schrift": "鱼",
               "lerntext": "yú",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "牛奶",
               "lerntext": "niúnǎi",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "鼻子",
               "lerntext": "bízi",
               "de": "Nase",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "报纸",
               "lerntext": "bàozhǐ",
               "de": "Zeitung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "发型",
               "lerntext": "fàxíng",
               "de": "Frisur",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "飞机",
               "lerntext": "fēijī",
               "de": "Flugzeug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "女儿",
               "lerntext": "nǚ'ér",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "意思",
               "lerntext": "yìsi",
               "de": "Bedeutung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "小时",
               "lerntext": "xiǎoshí",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "男人",
               "lerntext": "nánrén",
               "de": "Mann",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -16680,7 +19157,8 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "够",
             "lerntext": "gòu",
-            "de": "genug"
+            "de": "genug",
+            "c": "a"
           }
         ],
         "id": "23.2"
@@ -16689,14 +19167,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我们 有 很多 [Slot]",
-          "lerntext": "wǒmen yǒu hěnduō [Slot]"
+          "lerntext": "wǒmen yǒu hěnduō [Slot]",
+          "wortarten": {
+            "wǒmen": "p",
+            "yǒu": "v"
+          }
         },
         "frameDe": "Wir haben genug [Slot].",
         "pronouns": [
           {
             "schrift": "我们",
             "lerntext": "wǒmen",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16704,76 +19187,89 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "鱼",
               "lerntext": "yú",
-              "de": "Fisch"
+              "de": "Fisch",
+              "c": "n"
             },
             {
               "schrift": "糖",
               "lerntext": "táng",
-              "de": "Zucker"
+              "de": "Zucker",
+              "c": "n"
             },
             {
               "schrift": "牛奶",
               "lerntext": "niúnǎi",
-              "de": "Milch"
+              "de": "Milch",
+              "c": "n"
             },
             {
               "schrift": "肉",
               "lerntext": "ròu",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "面包",
               "lerntext": "miànbāo",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "水果",
               "lerntext": "shuǐguǒ",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "时间",
               "lerntext": "shíjiān",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "钱",
               "lerntext": "qián",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "人",
               "lerntext": "rén",
               "de": "Mensch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "男朋友",
               "lerntext": "nán péngyou",
               "de": "fester Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "面条",
               "lerntext": "miàntiáo",
               "de": "Nudeln",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "服务员",
               "lerntext": "fúwùyuán",
               "de": "Kellner",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "弟弟",
               "lerntext": "dìdi",
               "de": "jüngerer Bruder",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -16808,14 +19304,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 等 了 一 [Slot]",
-          "lerntext": "wǒ děng le yī [Slot]"
+          "lerntext": "wǒ děng le yī [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "děng": "v"
+          }
         },
         "frameDe": "Ich warte seit einer [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16823,81 +19324,95 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "小时",
               "lerntext": "xiǎoshí",
-              "de": "Stunde"
+              "de": "Stunde",
+              "c": "n"
             },
             {
               "schrift": "分",
               "lerntext": "fēn",
-              "de": "Minute"
+              "de": "Minute",
+              "c": "n"
             },
             {
               "schrift": "星期",
               "lerntext": "xīngqī",
-              "de": "Woche"
+              "de": "Woche",
+              "c": "n"
             },
             {
               "schrift": "夜里",
               "lerntext": "yèli",
-              "de": "Nacht"
+              "de": "Nacht",
+              "c": "n"
             },
             {
               "schrift": "问题",
               "lerntext": "wèntí",
               "de": "Frage",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "衣服",
               "lerntext": "yīfu",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "门",
               "lerntext": "mén",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "银行",
               "lerntext": "yínháng",
               "de": "Bank (Geldinstitut)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "分钟",
               "lerntext": "fēnzhōng",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "学校",
               "lerntext": "xuéxiào",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "洗手间",
               "lerntext": "xǐshǒujiān",
               "de": "Toilette",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "考试",
               "lerntext": "kǎoshì",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "音乐",
               "lerntext": "yīnyuè",
               "de": "Musik",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "药",
               "lerntext": "yào",
               "de": "Medizin",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -16911,14 +19426,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 等 了 一 [Slot]",
-          "lerntext": "wǒ děng le yī [Slot]"
+          "lerntext": "wǒ děng le yī [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "děng": "v"
+          }
         },
         "frameDe": "Ich warte seit einer [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16926,66 +19446,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "号",
               "lerntext": "hào",
-              "de": "Tag (Datum)"
+              "de": "Tag (Datum)",
+              "c": "n"
             },
             {
               "schrift": "小时",
               "lerntext": "xiǎoshí",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "分",
               "lerntext": "fēn",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "星期",
               "lerntext": "xīngqī",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "夜里",
               "lerntext": "yèli",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "糖",
               "lerntext": "táng",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "肉",
               "lerntext": "ròu",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "年",
               "lerntext": "nián",
               "de": "Jahr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "羊肉",
               "lerntext": "yángròu",
               "de": "Lammfleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "月",
               "lerntext": "yuè",
               "de": "Monat",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "块",
               "lerntext": "kuài",
               "de": "Yuan (Geldeinheit)",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -16999,14 +19530,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] 我 回家",
-          "lerntext": "[Slot] wǒ huí jiā"
+          "lerntext": "[Slot] wǒ huí jiā",
+          "wortarten": {
+            "wǒ": "p",
+            "huí": "v"
+          }
         },
         "frameDe": "[Slot] gehe ich nach Hause.",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17107,14 +19643,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] 我 回家",
-          "lerntext": "[Slot] wǒ huí jiā"
+          "lerntext": "[Slot] wǒ huí jiā",
+          "wortarten": {
+            "wǒ": "p",
+            "huí": "v"
+          }
         },
         "frameDe": "[Slot] gehe ich nach Hause.",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17221,14 +19762,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 想 [Slot]",
-          "lerntext": "wǒ xiǎng [Slot]"
+          "lerntext": "wǒ xiǎng [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "xiǎng": "v"
+          }
         },
         "frameDe": "Ich hätte gern [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17236,76 +19782,89 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "住",
               "lerntext": "zhù",
-              "de": "wohnen"
+              "de": "wohnen",
+              "c": "v"
             },
             {
               "schrift": "待",
               "lerntext": "dāi",
-              "de": "bleiben"
+              "de": "bleiben",
+              "c": "v"
             },
             {
               "schrift": "要",
               "lerntext": "yào",
-              "de": "wollen"
+              "de": "wollen",
+              "c": "v"
             },
             {
               "schrift": "应该",
               "lerntext": "yīnggāi",
               "de": "sollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "丢",
               "lerntext": "diū",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "喝一杯",
               "lerntext": "hē yī bēi",
               "de": "etwas trinken gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "准备",
               "lerntext": "zhǔnbèi",
               "de": "vorbereiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "吃饱",
               "lerntext": "chībǎo",
               "de": "satt sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "游泳",
               "lerntext": "yóuyǒng",
               "de": "schwimmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "送",
               "lerntext": "sòng",
               "de": "bringen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "唱歌",
               "lerntext": "chànggē",
               "de": "singen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "旅行",
               "lerntext": "lǚxíng",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "打电话",
               "lerntext": "dǎ diànhuà",
               "de": "telefonieren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -17319,14 +19878,21 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "你 可以 给 我 [Slot] 吗?",
-          "lerntext": "nǐ kěyǐ gěi wǒ [Slot] ma?"
+          "lerntext": "nǐ kěyǐ gěi wǒ [Slot] ma?",
+          "wortarten": {
+            "nǐ": "p",
+            "kěyǐ": "v",
+            "gěi": "v",
+            "wǒ": "p"
+          }
         },
         "frameDe": "Könnten Sie mir [Slot] geben?",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17334,86 +19900,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "水",
               "lerntext": "shuǐ",
-              "de": "Wasser"
+              "de": "Wasser",
+              "c": "n"
             },
             {
               "schrift": "面包",
               "lerntext": "miànbāo",
-              "de": "Brot"
+              "de": "Brot",
+              "c": "n"
             },
             {
               "schrift": "钥匙",
               "lerntext": "yàoshi",
-              "de": "Schlüssel"
+              "de": "Schlüssel",
+              "c": "n"
             },
             {
               "schrift": "书",
               "lerntext": "shū",
-              "de": "Buch"
+              "de": "Buch",
+              "c": "n"
             },
             {
               "schrift": "包",
               "lerntext": "bāo",
-              "de": "Tasche"
+              "de": "Tasche",
+              "c": "n"
             },
             {
               "schrift": "糖",
               "lerntext": "táng",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "咖啡",
               "lerntext": "kāfēi",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "牛奶",
               "lerntext": "niúnǎi",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "肉",
               "lerntext": "ròu",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "哥哥",
               "lerntext": "gēge",
               "de": "älterer Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "国家",
               "lerntext": "guójiā",
               "de": "Land",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "公司",
               "lerntext": "gōngsī",
               "de": "Firma",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "礼物",
               "lerntext": "lǐwù",
               "de": "Geschenk",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "英语",
               "lerntext": "Yīngyǔ",
               "de": "Englisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "点",
               "lerntext": "diǎn",
               "de": "Uhr (Zeitangabe)",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -17427,14 +20008,21 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "你 可以 给 我 [Slot] 吗?",
-          "lerntext": "nǐ kěyǐ gěi wǒ [Slot] ma?"
+          "lerntext": "nǐ kěyǐ gěi wǒ [Slot] ma?",
+          "wortarten": {
+            "nǐ": "p",
+            "kěyǐ": "v",
+            "gěi": "v",
+            "wǒ": "p"
+          }
         },
         "frameDe": "Könnten Sie mir [Slot] geben?",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17442,76 +20030,89 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "糖",
               "lerntext": "táng",
-              "de": "Zucker"
+              "de": "Zucker",
+              "c": "n"
             },
             {
               "schrift": "咖啡",
               "lerntext": "kāfēi",
-              "de": "Kaffee"
+              "de": "Kaffee",
+              "c": "n"
             },
             {
               "schrift": "牛奶",
               "lerntext": "niúnǎi",
-              "de": "Milch"
+              "de": "Milch",
+              "c": "n"
             },
             {
               "schrift": "钥匙",
               "lerntext": "yàoshi",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "包",
               "lerntext": "bāo",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "书",
               "lerntext": "shū",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "水",
               "lerntext": "shuǐ",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "面包",
               "lerntext": "miànbāo",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "肉",
               "lerntext": "ròu",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "教室",
               "lerntext": "jiàoshì",
               "de": "Klassenzimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "机场",
               "lerntext": "jīchǎng",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "安排",
               "lerntext": "ānpái",
               "de": "Programm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "身体",
               "lerntext": "shēntǐ",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -17546,14 +20147,20 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 觉得 这 很 [Slot]",
-          "lerntext": "wǒ juéde zhè hěn [Slot]"
+          "lerntext": "wǒ juéde zhè hěn [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "juéde": "v",
+            "zhè": "p"
+          }
         },
         "frameDe": "Ich denke, das ist [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17561,86 +20168,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "高",
               "lerntext": "gāo",
-              "de": "groß (Körpergröße)"
+              "de": "groß (Körpergröße)",
+              "c": "a"
             },
             {
               "schrift": "小",
               "lerntext": "xiǎo",
-              "de": "klein"
+              "de": "klein",
+              "c": "a"
             },
             {
               "schrift": "老",
               "lerntext": "lǎo",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "年轻",
               "lerntext": "niánqīng",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "贵",
               "lerntext": "guì",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "暖和",
               "lerntext": "nuǎnhuo",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "冷",
               "lerntext": "lěng",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "新",
               "lerntext": "xīn",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "漂亮",
               "lerntext": "piàoliang",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "够",
               "lerntext": "gòu",
               "de": "genug",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "干净",
               "lerntext": "gānjìng",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "饿",
               "lerntext": "è",
               "de": "hungrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "棒",
               "lerntext": "bàng",
               "de": "toll",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "蓝",
               "lerntext": "lán",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "胖",
               "lerntext": "pàng",
               "de": "dick",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17654,14 +20276,20 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 觉得 这 很 [Slot]",
-          "lerntext": "wǒ juéde zhè hěn [Slot]"
+          "lerntext": "wǒ juéde zhè hěn [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "juéde": "v",
+            "zhè": "p"
+          }
         },
         "frameDe": "Ich denke, das ist [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17669,81 +20297,95 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "漂亮",
               "lerntext": "piàoliang",
-              "de": "schön"
+              "de": "schön",
+              "c": "a"
             },
             {
               "schrift": "暖和",
               "lerntext": "nuǎnhuo",
-              "de": "warm"
+              "de": "warm",
+              "c": "a"
             },
             {
               "schrift": "冷",
               "lerntext": "lěng",
-              "de": "kalt"
+              "de": "kalt",
+              "c": "a"
             },
             {
               "schrift": "新",
               "lerntext": "xīn",
-              "de": "neu"
+              "de": "neu",
+              "c": "a"
             },
             {
               "schrift": "小",
               "lerntext": "xiǎo",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "高",
               "lerntext": "gāo",
               "de": "groß (Körpergröße)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "贵",
               "lerntext": "guì",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "老",
               "lerntext": "lǎo",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "年轻",
               "lerntext": "niánqīng",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "够",
               "lerntext": "gòu",
               "de": "genug",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "干净",
               "lerntext": "gānjìng",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "好喝",
               "lerntext": "hǎohē",
               "de": "lecker (Getränk)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "完",
               "lerntext": "wán",
               "de": "fertig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "瘦",
               "lerntext": "shòu",
               "de": "dünn",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17757,14 +20399,20 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 觉得 这 非常 [Slot]",
-          "lerntext": "wǒ juéde zhè fēicháng [Slot]"
+          "lerntext": "wǒ juéde zhè fēicháng [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "juéde": "v",
+            "zhè": "p"
+          }
         },
         "frameDe": "Ich finde das sehr [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17772,86 +20420,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "容易",
               "lerntext": "róngyì",
-              "de": "einfach"
+              "de": "einfach",
+              "c": "a"
             },
             {
               "schrift": "错",
               "lerntext": "cuò",
-              "de": "falsch"
+              "de": "falsch",
+              "c": "a"
             },
             {
               "schrift": "长",
               "lerntext": "cháng",
-              "de": "lang"
+              "de": "lang",
+              "c": "a"
             },
             {
               "schrift": "干净",
               "lerntext": "gānjìng",
-              "de": "sauber"
+              "de": "sauber",
+              "c": "a"
             },
             {
               "schrift": "黑",
               "lerntext": "hēi",
-              "de": "schwarz"
+              "de": "schwarz",
+              "c": "a"
             },
             {
               "schrift": "甜",
               "lerntext": "tián",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "生气",
               "lerntext": "shēngqì",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "够",
               "lerntext": "gòu",
               "de": "genug",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "快",
               "lerntext": "kuài",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "短",
               "lerntext": "duǎn",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "渴",
               "lerntext": "kě",
               "de": "durstig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "好",
               "lerntext": "hǎo",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "便宜",
               "lerntext": "piányi",
               "de": "günstig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "好吃",
               "lerntext": "hǎochī",
               "de": "lecker (Essen)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "忙",
               "lerntext": "máng",
               "de": "beschäftigt",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17865,14 +20528,20 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 觉得 这 非常 [Slot]",
-          "lerntext": "wǒ juéde zhè fēicháng [Slot]"
+          "lerntext": "wǒ juéde zhè fēicháng [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "juéde": "v",
+            "zhè": "p"
+          }
         },
         "frameDe": "Ich finde das sehr [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17880,71 +20549,83 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "甜",
               "lerntext": "tián",
-              "de": "süß"
+              "de": "süß",
+              "c": "a"
             },
             {
               "schrift": "生气",
               "lerntext": "shēngqì",
-              "de": "wütend"
+              "de": "wütend",
+              "c": "a"
             },
             {
               "schrift": "干净",
               "lerntext": "gānjìng",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "容易",
               "lerntext": "róngyì",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "错",
               "lerntext": "cuò",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "长",
               "lerntext": "cháng",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "黑",
               "lerntext": "hēi",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "够",
               "lerntext": "gòu",
               "de": "genug",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "大",
               "lerntext": "dà",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "方便",
               "lerntext": "fāngbiàn",
               "de": "praktisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "危险",
               "lerntext": "wēixiǎn",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "近",
               "lerntext": "jìn",
               "de": "nah",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17958,14 +20639,20 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 觉得 这 非常 [Slot]",
-          "lerntext": "wǒ juéde zhè fēicháng [Slot]"
+          "lerntext": "wǒ juéde zhè fēicháng [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "juéde": "v",
+            "zhè": "p"
+          }
         },
         "frameDe": "Ich finde das sehr [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18067,14 +20754,18 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "明天 我 要 [Slot]",
-          "lerntext": "míngtiān wǒ yào [Slot]"
+          "lerntext": "míngtiān wǒ yào [Slot]",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Morgen werde ich [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18082,86 +20773,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "看",
               "lerntext": "kàn",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "买",
               "lerntext": "mǎi",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "做",
               "lerntext": "zuò",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "觉得",
               "lerntext": "juéde",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "拿",
               "lerntext": "ná",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "读",
               "lerntext": "dú",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "写",
               "lerntext": "xiě",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "告诉",
               "lerntext": "gàosu",
               "de": "mitteilen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "退房",
               "lerntext": "tuìfáng",
               "de": "auschecken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "介绍",
               "lerntext": "jièshào",
               "de": "vorstellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "打",
               "lerntext": "dǎ",
               "de": "schlagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "坐",
               "lerntext": "zuò",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "发烧",
               "lerntext": "fāshāo",
               "de": "Fieber haben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "帮",
               "lerntext": "bāng",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "习惯",
               "lerntext": "xíguàn",
               "de": "gewöhnt sein",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18175,14 +20881,18 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "明天 我 要 [Slot]",
-          "lerntext": "míngtiān wǒ yào [Slot]"
+          "lerntext": "míngtiān wǒ yào [Slot]",
+          "wortarten": {
+            "wǒ": "p"
+          }
         },
         "frameDe": "Morgen werde ich [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18190,71 +20900,83 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "读",
               "lerntext": "dú",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "写",
               "lerntext": "xiě",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "拿",
               "lerntext": "ná",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "买",
               "lerntext": "mǎi",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "做",
               "lerntext": "zuò",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "觉得",
               "lerntext": "juéde",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "看",
               "lerntext": "kàn",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "照顾",
               "lerntext": "zhàogù",
               "de": "kümmern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "让",
               "lerntext": "ràng",
               "de": "lassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "懂",
               "lerntext": "dǒng",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "下雪",
               "lerntext": "xiàxuě",
               "de": "schneien",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "跳",
               "lerntext": "tiào",
               "de": "springen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18268,14 +20990,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 想 快 [Slot]",
-          "lerntext": "wǒ xiǎng kuài [Slot]"
+          "lerntext": "wǒ xiǎng kuài [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "xiǎng": "v"
+          }
         },
         "frameDe": "Ich will bald [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18283,86 +21010,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "工作",
               "lerntext": "gōngzuò",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "玩",
               "lerntext": "wán",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "跳舞",
               "lerntext": "tiàowǔ",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "睡觉",
               "lerntext": "shuìjiào",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "等",
               "lerntext": "děng",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "找",
               "lerntext": "zhǎo",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "问",
               "lerntext": "wèn",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "回答",
               "lerntext": "huídá",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "支付",
               "lerntext": "zhīfù",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "疼",
               "lerntext": "téng",
               "de": "schmerzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "穿",
               "lerntext": "chuān",
               "de": "anziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "不去",
               "lerntext": "bú qù",
               "de": "nicht gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "卖",
               "lerntext": "mài",
               "de": "verkaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "见",
               "lerntext": "jiàn",
               "de": "sich treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "叫",
               "lerntext": "jiào",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18376,14 +21118,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 想 快 [Slot]",
-          "lerntext": "wǒ xiǎng kuài [Slot]"
+          "lerntext": "wǒ xiǎng kuài [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "xiǎng": "v"
+          }
         },
         "frameDe": "Ich will bald [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18391,76 +21138,89 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "找",
               "lerntext": "zhǎo",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "问",
               "lerntext": "wèn",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "回答",
               "lerntext": "huídá",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "跳舞",
               "lerntext": "tiàowǔ",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "睡觉",
               "lerntext": "shuìjiào",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "玩",
               "lerntext": "wán",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "等",
               "lerntext": "děng",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "工作",
               "lerntext": "gōngzuò",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "爱",
               "lerntext": "ài",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "加",
               "lerntext": "jiā",
               "de": "hinzufügen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "帮忙",
               "lerntext": "bāngmáng",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "生病",
               "lerntext": "shēngbìng",
               "de": "krank sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "开始",
               "lerntext": "kāishǐ",
               "de": "anfangen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18495,7 +21255,11 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "这 是 [Slot] 的 人",
-          "lerntext": "zhè shì [Slot] de rén"
+          "lerntext": "zhè shì [Slot] de rén",
+          "wortarten": {
+            "zhè": "p",
+            "rén": "n"
+          }
         },
         "frameDe": "Das ist der Mann, der [Slot].",
         "pronouns": [],
@@ -18504,76 +21268,89 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "住",
               "lerntext": "zhù",
-              "de": "wohnen"
+              "de": "wohnen",
+              "c": "v"
             },
             {
               "schrift": "待",
               "lerntext": "dāi",
-              "de": "bleiben"
+              "de": "bleiben",
+              "c": "v"
             },
             {
               "schrift": "要",
               "lerntext": "yào",
-              "de": "wollen"
+              "de": "wollen",
+              "c": "v"
             },
             {
               "schrift": "上网",
               "lerntext": "shàngwǎng",
               "de": "im Internet sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "运动",
               "lerntext": "yùndòng",
               "de": "Sport treiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "用",
               "lerntext": "yòng",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "回",
               "lerntext": "huí",
               "de": "zurückkehren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "谈恋爱",
               "lerntext": "tán liàn'ài",
               "de": "daten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "翻译",
               "lerntext": "fānyì",
               "de": "übersetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "起床",
               "lerntext": "qǐchuáng",
               "de": "aufstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "休息",
               "lerntext": "xiūxi",
               "de": "ausruhen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "吃饭",
               "lerntext": "chīfàn",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "报警",
               "lerntext": "bàojǐng",
               "de": "die Polizei rufen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18587,7 +21364,13 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 找 可以 [Slot] 的 地方",
-          "lerntext": "wǒ zhǎo kěyǐ [Slot] de dìfang"
+          "lerntext": "wǒ zhǎo kěyǐ [Slot] de dìfang",
+          "wortarten": {
+            "wǒ": "p",
+            "zhǎo": "v",
+            "kěyǐ": "v",
+            "dìfang": "n"
+          }
         },
         "frameDe": "Ich suche einen Ort, wo man [Slot] kann.",
         "pronouns": [],
@@ -18596,86 +21379,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "工作",
               "lerntext": "gōngzuò",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "玩",
               "lerntext": "wán",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "跳舞",
               "lerntext": "tiàowǔ",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "睡觉",
               "lerntext": "shuìjiào",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "等",
               "lerntext": "děng",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "问",
               "lerntext": "wèn",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "回答",
               "lerntext": "huídá",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "看书",
               "lerntext": "kànshū",
               "de": "lesen (Buch)",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "进",
               "lerntext": "jìn",
               "de": "eintreten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "解释",
               "lerntext": "jiěshì",
               "de": "erklären",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "聊天",
               "lerntext": "liáotiān",
               "de": "quatschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "到",
               "lerntext": "dào",
               "de": "ankommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "下雨",
               "lerntext": "xiàyǔ",
               "de": "regnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "旅游",
               "lerntext": "lǚyóu",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "来",
               "lerntext": "lái",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18691,7 +21489,8 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
           {
             "schrift": "地方",
             "lerntext": "dìfang",
-            "de": "Ort"
+            "de": "Ort",
+            "c": "n"
           }
         ],
         "id": "28.2"
@@ -18700,7 +21499,13 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 找 可以 [Slot] 的 地方",
-          "lerntext": "wǒ zhǎo kěyǐ [Slot] de dìfang"
+          "lerntext": "wǒ zhǎo kěyǐ [Slot] de dìfang",
+          "wortarten": {
+            "wǒ": "p",
+            "zhǎo": "v",
+            "kěyǐ": "v",
+            "dìfang": "n"
+          }
         },
         "frameDe": "Ich suche einen Ort, wo man [Slot] kann.",
         "pronouns": [],
@@ -18709,71 +21514,83 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "问",
               "lerntext": "wèn",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "回答",
               "lerntext": "huídá",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "跳舞",
               "lerntext": "tiàowǔ",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "睡觉",
               "lerntext": "shuìjiào",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "玩",
               "lerntext": "wán",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "等",
               "lerntext": "děng",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "工作",
               "lerntext": "gōngzuò",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "打算",
               "lerntext": "dǎsuàn",
               "de": "vorhaben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "欢迎",
               "lerntext": "huānyíng",
               "de": "willkommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "能",
               "lerntext": "néng",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "逛街",
               "lerntext": "guàngjiē",
               "de": "shoppen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "跑步",
               "lerntext": "pǎobù",
               "de": "joggen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18808,14 +21625,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "昨天 我 在 [Slot]",
-          "lerntext": "zuótiān wǒ zài [Slot]"
+          "lerntext": "zuótiān wǒ zài [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "zài": "v"
+          }
         },
         "frameDe": "Gestern war ich im [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18823,86 +21645,101 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "饭店",
               "lerntext": "fàndiàn",
-              "de": "Restaurant"
+              "de": "Restaurant",
+              "c": "n"
             },
             {
               "schrift": "酒店",
               "lerntext": "jiǔdiàn",
-              "de": "Hotel"
+              "de": "Hotel",
+              "c": "n"
             },
             {
               "schrift": "学校",
               "lerntext": "xuéxiào",
-              "de": "Schule"
+              "de": "Schule",
+              "c": "n"
             },
             {
               "schrift": "医院",
               "lerntext": "yīyuàn",
-              "de": "Krankenhaus"
+              "de": "Krankenhaus",
+              "c": "n"
             },
             {
               "schrift": "火车站",
               "lerntext": "huǒchēzhàn",
-              "de": "Bahnhof"
+              "de": "Bahnhof",
+              "c": "n"
             },
             {
               "schrift": "机场",
               "lerntext": "jīchǎng",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "城市",
               "lerntext": "chéngshì",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "钥匙",
               "lerntext": "yàoshi",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "地方",
               "lerntext": "dìfang",
               "de": "Ort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "阴天",
               "lerntext": "yīntiān",
               "de": "bewölkter Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "岁",
               "lerntext": "suì",
               "de": "Jahre (alt)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "女朋友",
               "lerntext": "nǚ péngyou",
               "de": "feste Freundin",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "耳朵",
               "lerntext": "ěrduo",
               "de": "Ohr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "微信",
               "lerntext": "wēixìn",
               "de": "WeChat",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "兴趣",
               "lerntext": "xìngqù",
               "de": "Interesse",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18916,14 +21753,19 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "昨天 我 在 [Slot]",
-          "lerntext": "zuótiān wǒ zài [Slot]"
+          "lerntext": "zuótiān wǒ zài [Slot]",
+          "wortarten": {
+            "wǒ": "p",
+            "zài": "v"
+          }
         },
         "frameDe": "Gestern war ich im [Slot].",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18931,71 +21773,83 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "机场",
               "lerntext": "jīchǎng",
-              "de": "Flughafen"
+              "de": "Flughafen",
+              "c": "n"
             },
             {
               "schrift": "城市",
               "lerntext": "chéngshì",
-              "de": "Stadt"
+              "de": "Stadt",
+              "c": "n"
             },
             {
               "schrift": "饭店",
               "lerntext": "fàndiàn",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "酒店",
               "lerntext": "jiǔdiàn",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "医院",
               "lerntext": "yīyuàn",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "火车站",
               "lerntext": "huǒchēzhàn",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "学校",
               "lerntext": "xuéxiào",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "钥匙",
               "lerntext": "yàoshi",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "地方",
               "lerntext": "dìfang",
               "de": "Ort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "汉语",
               "lerntext": "Hànyǔ",
               "de": "Chinesisch (Sprache)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "电影",
               "lerntext": "diànyǐng",
               "de": "Film",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "桌子",
               "lerntext": "zhuōzi",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -19009,14 +21863,22 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 想 [Slot] 因为 我 有 时间",
-          "lerntext": "wǒ xiǎng [Slot] yīnwèi wǒ yǒu shíjiān"
+          "lerntext": "wǒ xiǎng [Slot] yīnwèi wǒ yǒu shíjiān",
+          "wortarten": {
+            "wǒ": "p",
+            "xiǎng": "v",
+            "yīnwèi": "k",
+            "yǒu": "v",
+            "shíjiān": "n"
+          }
         },
         "frameDe": "Ich möchte [Slot], weil ich Zeit habe.",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19024,66 +21886,77 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "清楚",
               "lerntext": "qīngchu",
-              "de": "klar"
+              "de": "klar",
+              "c": "a"
             },
             {
               "schrift": "够",
               "lerntext": "gòu",
               "de": "genug",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "难受",
               "lerntext": "nánshòu",
               "de": "unwohl",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "单身",
               "lerntext": "dānshēn",
               "de": "single",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "可爱",
               "lerntext": "kě'ài",
               "de": "niedlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "快乐",
               "lerntext": "kuàilè",
               "de": "fröhlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "慢",
               "lerntext": "màn",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "帅",
               "lerntext": "shuài",
               "de": "cool",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "舒服",
               "lerntext": "shūfu",
               "de": "wohl",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "远",
               "lerntext": "yuǎn",
               "de": "weit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "热",
               "lerntext": "rè",
               "de": "heiß",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -19097,14 +21970,22 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "我 想 [Slot] 因为 我 有 时间",
-          "lerntext": "wǒ xiǎng [Slot] yīnwèi wǒ yǒu shíjiān"
+          "lerntext": "wǒ xiǎng [Slot] yīnwèi wǒ yǒu shíjiān",
+          "wortarten": {
+            "wǒ": "p",
+            "xiǎng": "v",
+            "yīnwèi": "k",
+            "yǒu": "v",
+            "shíjiān": "n"
+          }
         },
         "frameDe": "Ich möchte [Slot], weil ich Zeit habe.",
         "pronouns": [
           {
             "schrift": "我",
             "lerntext": "wǒ",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19112,81 +21993,95 @@ export const CHINESE_COURSE_V2: CourseModuleData[] =
             {
               "schrift": "忘",
               "lerntext": "wàng",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "给",
               "lerntext": "gěi",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "说",
               "lerntext": "shuō",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "开",
               "lerntext": "kāi",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "走",
               "lerntext": "zǒu",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "知道",
               "lerntext": "zhīdào",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "了解",
               "lerntext": "liǎojiě",
               "de": "vertraut sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "说话",
               "lerntext": "shuōhuà",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "应该",
               "lerntext": "yīnggāi",
               "de": "sollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "丢",
               "lerntext": "diū",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "喝一杯",
               "lerntext": "hē yī bēi",
               "de": "etwas trinken gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "准备",
               "lerntext": "zhǔnbèi",
               "de": "vorbereiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "吃饱",
               "lerntext": "chībǎo",
               "de": "satt sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "游泳",
               "lerntext": "yóuyǒng",
               "de": "schwimmen",
+              "c": "v",
               "wieder": true
             }
           ]

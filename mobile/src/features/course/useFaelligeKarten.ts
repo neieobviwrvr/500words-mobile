@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react';
 import { useFocusEffect } from 'expo-router';
-import { CourseWord } from '../../data/courseTypes';
+import { CourseFrame, CourseWord } from '../../data/courseTypes';
 import { courseFor } from '../../data/courses';
 import { isDue } from '../srs/fsrsEngine';
 import { cardKey, KURS_RAHMEN, KURS_WORT, loadAllCards } from '../srs/srsStorage';
-import { fuelleRahmen } from './lessonEvaluation';
+import { deutscherSatz, fuelleRahmen } from './lessonEvaluation';
 
 // Welche Karten des gefuehrten Kurses sind faellig? (2026-08-21)
 //
@@ -32,6 +32,10 @@ export type FaelligeRahmenkarte = {
   lerntext: string;
   /** Der Rahmen selbst, fuer die Anzeige ueber der Aufgabe. */
   rahmenLerntext: string;
+  /** Der Satz auf Deutsch - der Ausgangssatz der Stufe-3-Vorlage. */
+  deutsch: string | null;
+  /** Wortarten der festen Rahmenwoerter, fuer die Farben. */
+  wortarten?: CourseFrame['wortarten'];
 };
 
 export type Faellig = FaelligeWortkarte | FaelligeRahmenkarte;
@@ -127,6 +131,8 @@ export function useFaelligeKarten(languageId: string, nur?: Kartenart): Faellige
                 schrift: fuelleRahmen(lektion.frame.schrift, ersteSlot.schrift),
                 lerntext: fuelleRahmen(lektion.frame.lerntext, ersteSlot.lerntext),
                 rahmenLerntext: lektion.frame.lerntext,
+                deutsch: deutscherSatz(lektion.frameDe, ersteSlot),
+                wortarten: lektion.frame.wortarten,
               };
               moeglich.push(eintrag);
               const rahmenKarte = karten[cardKey(languageId, KURS_RAHMEN, lektion.id)];

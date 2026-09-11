@@ -1,9 +1,10 @@
 import { ReactNode } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { TaggedTokens } from './ColoredTokens';
 import {
   getTheme,
+  elevation,
   schrift,
   WordType,
   RADIUS,
@@ -11,6 +12,7 @@ import {
   FONT_SIZE,
   LINE_HEIGHT,
   KACHEL_RAND_LIGHT,
+  ACCENT_ERROR,
   karte,
 } from '../theme/tokens';
 
@@ -25,6 +27,11 @@ import {
 //
 // Bewusst NUR Darstellung, kein Zustand: was ein Chip tut, wann er aktiv ist
 // und wie eine Antwort bewertet wird, bleibt Sache des jeweiligen Screens.
+//
+// Seit 2026-09-11 benutzt der gefuehrte Kurs (LessonScreen.tsx) die Vorlage
+// fuer Stufe 1 bei seinen Teaser-Saetzen. Mikrofon, Weiter-Knopf und der
+// Hilfe-Anteil sind deshalb ebenfalls hierher gewandert - vorher lagen sie
+// nur in SentenceReviewScreen.tsx.
 
 // ---------------------------------------------------------------------------
 // Chip
@@ -246,6 +253,170 @@ export function SatzInfoSlot({ children }: { children: ReactNode }) {
   return <View style={styles.infoSlot}>{children}</View>;
 }
 
+// ---------------------------------------------------------------------------
+// Hilfe: wie viel der Loesung sichtbar wird
+// ---------------------------------------------------------------------------
+/**
+ * Wie viel der Loesung die Hilfe zeigt (Simon, 2026-08-30: "knapp 40%").
+ *
+ * **Der Anteil allein reicht dafuer nicht - es haengt an der Rundung.**
+ * `hilfeText()` in phrasebookContent.ts rundet AUF; bei drei Woertern kaeme
+ * damit auch aus 0.4 noch `ceil(1.2) = 2` heraus, also 67% statt der
+ * gewuenschten Groessenordnung. Deshalb wird die Wortzahl hier selbst
+ * gerechnet und KAUFMAENNISCH gerundet. `hilfeText()` bleibt unveraendert -
+ * ExerciseScreen.tsx haengt daran und soll sich nicht mitaendern.
+ *
+ * Ergebnis (Anteil des Satzes, der sichtbar wird):
+ *   2 Woerter -> 1 (50%)   5 -> 2 (40%)   8 -> 3 (38%)
+ *   3 Woerter -> 1 (33%)   6 -> 2 (33%)
+ *   4 Woerter -> 2 (50%)   7 -> 3 (43%)
+ * "Talar du engelska?" zeigt damit "Talar" statt "Talar du".
+ *
+ * Mindestens EIN Wort, sonst waere die Hilfe bei kurzen Saetzen leer und
+ * der Chip liefe ins Nichts.
+ *
+ * Liegt seit 2026-09-11 hier statt in SentenceReviewScreen.tsx - der
+ * gefuehrte Kurs zeigt dieselbe Hilfe, und zwei Rechnungen dafuer liefen
+ * mit der ersten Aenderung auseinander.
+ */
+const HILFE_ANTEIL = 0.4;
+
+export function hilfeWortzahl(gesamt: number): number {
+  return Math.max(1, Math.round(gesamt * HILFE_ANTEIL));
+}
+
+/** Der Anfang eines Satzes nach derselben Regel - fuer die Hilfe-Zeile. */
+export function hilfeAusschnitt(text: string): string {
+  const woerter = text.trim().split(/\s+/).filter(Boolean);
+  return woerter.slice(0, hilfeWortzahl(woerter.length)).join(' ');
+}
+
+// ---------------------------------------------------------------------------
+// Mikrofon
+// ---------------------------------------------------------------------------
+/**
+ * Das grosse runde Mikrofon in der Mitte - die Hauptaktion der Vorlagen -
+ * plus die Erkannt-Zeile darunter.
+ *
+ * Die Erkannt-Zeile haelt ihren Platz immer frei (Simons Punkt 4), sonst
+ * springt beim Auswerten alles darunter. `numberOfLines={1}` haelt die
+ * reservierte Hoehe konstant, auch wenn ein langes Transkript zurueckkommt.
+ *
+ * Waehrend der Auswertung gesperrt: ein Tipp in dieser Zeit startete sonst
+ * eine zweite Aufnahme, deren Ergebnis das erste ueberholt.
+ */
+export function SatzMikrofon({
+  dark,
+  verfuegbar = true,
+  nimmtAuf,
+  wertetAus,
+  onPress,
+  erkannt,
+}: {
+  dark: boolean;
+  /** Ohne Spracherkennung steht an seiner Stelle ein Hinweis aufs Tippen. */
+  verfuegbar?: boolean;
+  nimmtAuf: boolean;
+  wertetAus: boolean;
+  onPress: () => void;
+  /** Was die Erkennung verstanden hat; leer = Zeile bleibt unsichtbar. */
+  erkannt: string | null;
+}) {
+  const theme = getTheme(dark);
+  return (
+    <>
+      <View style={styles.micZeile}>
+        {verfuegbar ? (
+          <Pressable
+            onPress={onPress}
+            disabled={wertetAus}
+            accessibilityRole="button"
+            accessibilityLabel={nimmtAuf ? 'Aufnahme stoppen' : wertetAus ? 'Wird ausgewertet' : 'Antwort einsprechen'}
+            accessibilityState={{ busy: wertetAus, disabled: wertetAus }}
+            style={({ pressed }) => [
+              styles.mic,
+              {
+                backgroundColor: nimmtAuf ? ACCENT_ERROR : theme.subtleFill,
+                borderColor: nimmtAuf ? ACCENT_ERROR : theme.border,
+                opacity: pressed ? 0.7 : 1,
+              },
+            ]}
+          >
+            {wertetAus ? (
+              <ActivityIndicator color={theme.text} />
+            ) : (
+              <Ionicons name="mic" size={30} color={nimmtAuf ? '#FFFFFF' : theme.text} />
+            )}
+          </Pressable>
+        ) : (
+          <Text style={{ color: theme.sub, fontSize: FONT_SIZE.caption, textAlign: 'center' }}>
+            Spracherkennung nicht verfügbar - bitte Text eingeben.
+          </Text>
+        )}
+      </View>
+      <Text
+        numberOfLines={1}
+        style={[styles.erkannt, { color: erkannt ? theme.text : 'transparent' }]}
+        accessibilityElementsHidden={!erkannt}
+        importantForAccessibility={erkannt ? 'auto' : 'no-hide-descendants'}
+      >
+        {erkannt ? `Erkannt: „${erkannt}"` : ' '}
+      </Text>
+    </>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Abschluss-Knopf unten rechts
+// ---------------------------------------------------------------------------
+/**
+ * "▶ Weiter" (Stufe 1) bzw. "› Lösen" (Stufe 3), unten rechts.
+ *
+ * Gesperrt liegt der Knopf FLACH auf der Seite - ein schwebender Knopf, der
+ * nichts tut, ist ein Widerspruch. Die Erhebung kommt erst, wenn er bedienbar
+ * wird.
+ */
+export function SatzWeiterKnopf({
+  dark,
+  label,
+  a11y,
+  gesperrt,
+  onPress,
+}: {
+  dark: boolean;
+  /** Sichtbare Beschriftung samt Pfeil, z.B. "▶ Weiter". */
+  label: string;
+  /** Ansage fuer Screenreader, ohne Pfeil. */
+  a11y: string;
+  gesperrt: boolean;
+  onPress: () => void;
+}) {
+  const theme = getTheme(dark);
+  return (
+    <View style={styles.weiterZeile}>
+      <Pressable
+        onPress={onPress}
+        disabled={gesperrt}
+        accessibilityRole="button"
+        accessibilityLabel={a11y}
+        accessibilityState={{ disabled: gesperrt }}
+        style={({ pressed }) => [
+          styles.weiterKnopf,
+          gesperrt ? null : elevation(dark, 'chip'),
+          {
+            borderColor: 'transparent',
+            backgroundColor: theme.subtleFill,
+            opacity: gesperrt ? 0.4 : pressed ? 0.75 : 1,
+            transform: [{ translateY: !gesperrt && pressed ? 1 : 0 }],
+          },
+        ]}
+      >
+        <Text style={{ color: theme.text, ...schrift('700'), fontSize: FONT_SIZE.caption }}>{label}</Text>
+      </Pressable>
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   chipReihe: {
     flexDirection: 'row',
@@ -288,4 +459,21 @@ const styles = StyleSheet.create({
   infoSlot: { alignItems: 'center', marginTop: SPACING.md },
   infoZeile: { fontSize: FONT_SIZE.body, lineHeight: LINE_HEIGHT.body, textAlign: 'center' },
   infoKursiv: { fontStyle: 'italic' },
+  micZeile: { alignItems: 'center', marginBottom: SPACING.md },
+  mic: {
+    width: 76,
+    height: 76,
+    borderRadius: 38,
+    borderWidth: 1.5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  erkannt: { textAlign: 'center', fontSize: FONT_SIZE.caption, marginTop: SPACING.xs },
+  weiterZeile: { flexDirection: 'row', justifyContent: 'flex-end' },
+  weiterKnopf: {
+    borderWidth: 1.5,
+    borderRadius: RADIUS.pill,
+    paddingVertical: SPACING.sm,
+    paddingHorizontal: SPACING.lg,
+  },
 });

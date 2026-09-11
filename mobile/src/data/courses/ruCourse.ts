@@ -18,29 +18,36 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я [Slot]",
-          "lerntext": "ja [Slot]"
+          "lerntext": "ja [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich bin [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -48,27 +55,32 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "усталый",
               "lerntext": "ustályj",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "грустный",
               "lerntext": "grúsnyj",
-              "de": "traurig"
+              "de": "traurig",
+              "c": "a"
             },
             {
               "schrift": "злой",
               "lerntext": "slój",
-              "de": "wütend"
+              "de": "wütend",
+              "c": "a"
             },
             {
               "schrift": "довольный",
               "lerntext": "dawólnyj",
-              "de": "zufrieden"
+              "de": "zufrieden",
+              "c": "a"
             },
             {
               "schrift": "больной",
               "lerntext": "balnój",
-              "de": "krank"
+              "de": "krank",
+              "c": "a"
             }
           ]
         ],
@@ -78,7 +90,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "быть",
             "lerntext": "byt",
-            "de": "sein"
+            "de": "sein",
+            "c": "v"
           }
         ],
         "id": "1.1"
@@ -87,29 +100,36 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я [Slot]",
-          "lerntext": "ja [Slot]"
+          "lerntext": "ja [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich bin [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -117,7 +137,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "готовый",
               "lerntext": "gatówyj",
-              "de": "bereit"
+              "de": "bereit",
+              "c": "a"
             }
           ]
         ],
@@ -130,29 +151,36 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "мы [Slot]",
-          "lerntext": "my [Slot]"
+          "lerntext": "my [Slot]",
+          "wortarten": {
+            "my": "p"
+          }
         },
         "frameDe": "wir sind [Slot].",
         "pronouns": [
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "вы",
             "lerntext": "wy",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           },
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -160,27 +188,32 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "студент",
               "lerntext": "studjént",
-              "de": "Student"
+              "de": "Student",
+              "c": "n"
             },
             {
               "schrift": "коллега",
               "lerntext": "kalljéga",
-              "de": "Kollege"
+              "de": "Kollege",
+              "c": "n"
             },
             {
               "schrift": "полиция",
               "lerntext": "polízija",
-              "de": "Polizei"
+              "de": "Polizei",
+              "c": "n"
             },
             {
               "schrift": "друг",
               "lerntext": "drug",
-              "de": "Freund"
+              "de": "Freund",
+              "c": "n"
             },
             {
               "schrift": "женщина",
               "lerntext": "shénschtschina",
-              "de": "Frau"
+              "de": "Frau",
+              "c": "n"
             }
           ]
         ],
@@ -193,29 +226,36 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "мы [Slot]",
-          "lerntext": "my [Slot]"
+          "lerntext": "my [Slot]",
+          "wortarten": {
+            "my": "p"
+          }
         },
         "frameDe": "wir sind [Slot].",
         "pronouns": [
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "вы",
             "lerntext": "wy",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           },
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -223,7 +263,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "ребёнок",
               "lerntext": "rebjónak",
-              "de": "Kind"
+              "de": "Kind",
+              "c": "n"
             }
           ]
         ],
@@ -236,19 +277,24 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "он очень [Slot]",
-          "lerntext": "on ótschen [Slot]"
+          "lerntext": "on ótschen [Slot]",
+          "wortarten": {
+            "on": "p"
+          }
         },
         "frameDe": "er ist sehr [Slot].",
         "pronouns": [
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -256,27 +302,32 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "красивый",
               "lerntext": "krassívyj",
-              "de": "schön"
+              "de": "schön",
+              "c": "a"
             },
             {
               "schrift": "скучный",
               "lerntext": "skúschnyj",
-              "de": "langweilig"
+              "de": "langweilig",
+              "c": "a"
             },
             {
               "schrift": "сильный",
               "lerntext": "sílnyj",
-              "de": "stark"
+              "de": "stark",
+              "c": "a"
             },
             {
               "schrift": "слабый",
               "lerntext": "slábyj",
-              "de": "schwach"
+              "de": "schwach",
+              "c": "a"
             },
             {
               "schrift": "молодой",
               "lerntext": "maladój",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             }
           ]
         ],
@@ -295,19 +346,24 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "он очень [Slot]",
-          "lerntext": "on ótschen [Slot]"
+          "lerntext": "on ótschen [Slot]",
+          "wortarten": {
+            "on": "p"
+          }
         },
         "frameDe": "er ist sehr [Slot].",
         "pronouns": [
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -315,12 +371,14 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "старый",
               "lerntext": "stáryj",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "счастливый",
               "lerntext": "schtschastlívyj",
-              "de": "glücklich"
+              "de": "glücklich",
+              "c": "a"
             }
           ]
         ],
@@ -333,19 +391,24 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "он очень [Slot]",
-          "lerntext": "on ótschen [Slot]"
+          "lerntext": "on ótschen [Slot]",
+          "wortarten": {
+            "on": "p"
+          }
         },
         "frameDe": "er ist sehr [Slot].",
         "pronouns": [
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -354,42 +417,49 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "красивый",
               "lerntext": "krassívyj",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "скучный",
               "lerntext": "skúschnyj",
               "de": "langweilig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "сильный",
               "lerntext": "sílnyj",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "слабый",
               "lerntext": "slábyj",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "молодой",
               "lerntext": "maladój",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "старый",
               "lerntext": "stáryj",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "счастливый",
               "lerntext": "schtschastlívyj",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -403,29 +473,36 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я [Slot]",
-          "lerntext": "ja [Slot]"
+          "lerntext": "ja [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich bin [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -434,36 +511,42 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "усталый",
               "lerntext": "ustályj",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "грустный",
               "lerntext": "grúsnyj",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "злой",
               "lerntext": "slój",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "довольный",
               "lerntext": "dawólnyj",
               "de": "zufrieden",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "больной",
               "lerntext": "balnój",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "готовый",
               "lerntext": "gatówyj",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -477,19 +560,24 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "он очень [Slot]",
-          "lerntext": "on ótschen [Slot]"
+          "lerntext": "on ótschen [Slot]",
+          "wortarten": {
+            "on": "p"
+          }
         },
         "frameDe": "er ist sehr [Slot].",
         "pronouns": [
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -498,42 +586,49 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "красивый",
               "lerntext": "krassívyj",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "скучный",
               "lerntext": "skúschnyj",
               "de": "langweilig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "сильный",
               "lerntext": "sílnyj",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "слабый",
               "lerntext": "slábyj",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "молодой",
               "lerntext": "maladój",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "старый",
               "lerntext": "stáryj",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "счастливый",
               "lerntext": "schtschastlívyj",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -547,29 +642,36 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я [Slot]",
-          "lerntext": "ja [Slot]"
+          "lerntext": "ja [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich bin [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -578,36 +680,42 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "усталый",
               "lerntext": "ustályj",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "грустный",
               "lerntext": "grúsnyj",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "злой",
               "lerntext": "slój",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "довольный",
               "lerntext": "dawólnyj",
               "de": "zufrieden",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "больной",
               "lerntext": "balnój",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "готовый",
               "lerntext": "gatówyj",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -649,7 +757,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -657,33 +766,39 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "сумка",
               "lerntext": "súmka",
-              "de": "Tasche"
+              "de": "Tasche",
+              "c": "n"
             },
             {
               "schrift": "дверь",
               "lerntext": "dwjer",
-              "de": "Tür"
+              "de": "Tür",
+              "c": "n"
             },
             {
               "schrift": "мать",
               "lerntext": "mat",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "сестра",
               "lerntext": "sestrá",
-              "de": "Schwester"
+              "de": "Schwester",
+              "c": "n"
             },
             {
               "schrift": "полиция",
               "lerntext": "polízija",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "женщина",
               "lerntext": "shénschtschina",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -694,7 +809,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "это",
             "lerntext": "éta",
-            "de": "das"
+            "de": "das",
+            "c": "p"
           }
         ],
         "id": "2.1"
@@ -710,7 +826,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -718,34 +835,40 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "ключ",
               "lerntext": "kljutsch",
-              "de": "Schlüssel"
+              "de": "Schlüssel",
+              "c": "n"
             },
             {
               "schrift": "отец",
               "lerntext": "atjéz",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "брат",
               "lerntext": "brat",
-              "de": "Bruder"
+              "de": "Bruder",
+              "c": "n"
             },
             {
               "schrift": "студент",
               "lerntext": "studjént",
               "de": "Student",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "коллега",
               "lerntext": "kalljéga",
               "de": "Kollege",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "друг",
               "lerntext": "drug",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -766,7 +889,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -774,22 +898,26 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "книга",
               "lerntext": "kníga",
-              "de": "Buch"
+              "de": "Buch",
+              "c": "n"
             },
             {
               "schrift": "кровать",
               "lerntext": "krawát",
-              "de": "Bett"
+              "de": "Bett",
+              "c": "n"
             },
             {
               "schrift": "телефон",
               "lerntext": "teljefón",
-              "de": "Telefon"
+              "de": "Telefon",
+              "c": "n"
             },
             {
               "schrift": "ребёнок",
               "lerntext": "rebjónak",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -810,7 +938,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -818,42 +947,49 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "кухня",
               "lerntext": "kúchnja",
-              "de": "Küche"
+              "de": "Küche",
+              "c": "n"
             },
             {
               "schrift": "дверь",
               "lerntext": "dwjer",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сестра",
               "lerntext": "sestrá",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "мать",
               "lerntext": "mat",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сумка",
               "lerntext": "súmka",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "полиция",
               "lerntext": "polízija",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "женщина",
               "lerntext": "shénschtschina",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -880,7 +1016,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -888,42 +1025,49 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "стол",
               "lerntext": "stol",
-              "de": "Tisch"
+              "de": "Tisch",
+              "c": "n"
             },
             {
               "schrift": "отец",
               "lerntext": "atjéz",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ключ",
               "lerntext": "kljutsch",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "брат",
               "lerntext": "brat",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "студент",
               "lerntext": "studjént",
               "de": "Student",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "коллега",
               "lerntext": "kalljéga",
               "de": "Kollege",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "друг",
               "lerntext": "drug",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -944,7 +1088,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -952,50 +1097,59 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "дом",
               "lerntext": "dom",
-              "de": "Haus"
+              "de": "Haus",
+              "c": "n"
             },
             {
               "schrift": "комната",
               "lerntext": "kómnata",
-              "de": "Zimmer"
+              "de": "Zimmer",
+              "c": "n"
             },
             {
               "schrift": "окно",
               "lerntext": "aknó",
-              "de": "Fenster"
+              "de": "Fenster",
+              "c": "n"
             },
             {
               "schrift": "стакан",
               "lerntext": "stakán",
-              "de": "Glas"
+              "de": "Glas",
+              "c": "n"
             },
             {
               "schrift": "отель",
               "lerntext": "atél",
-              "de": "Hotel"
+              "de": "Hotel",
+              "c": "n"
             },
             {
               "schrift": "книга",
               "lerntext": "kníga",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "телефон",
               "lerntext": "teljefón",
               "de": "Telefon",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "кровать",
               "lerntext": "krawát",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ребёнок",
               "lerntext": "rebjónak",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1009,29 +1163,37 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "у меня есть [Slot]",
-          "lerntext": "u menjá jest [Slot]"
+          "lerntext": "u menjá jest [Slot]",
+          "wortarten": {
+            "menjá": "p",
+            "jest": "v"
+          }
         },
         "frameDe": "ich habe eine [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1039,63 +1201,74 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "семья",
               "lerntext": "semjá",
-              "de": "Familie"
+              "de": "Familie",
+              "c": "n"
             },
             {
               "schrift": "дочь",
               "lerntext": "dotsch",
-              "de": "Tochter"
+              "de": "Tochter",
+              "c": "n"
             },
             {
               "schrift": "квартира",
               "lerntext": "kwartíra",
-              "de": "Wohnung"
+              "de": "Wohnung",
+              "c": "n"
             },
             {
               "schrift": "рука",
               "lerntext": "ruká",
-              "de": "Hand"
+              "de": "Hand",
+              "c": "n"
             },
             {
               "schrift": "кухня",
               "lerntext": "kúchnja",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "дверь",
               "lerntext": "dwjer",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сестра",
               "lerntext": "sestrá",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "мать",
               "lerntext": "mat",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сумка",
               "lerntext": "súmka",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "полиция",
               "lerntext": "polízija",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "женщина",
               "lerntext": "shénschtschina",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1111,12 +1284,14 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "меня",
             "lerntext": "menjá",
-            "de": "mich"
+            "de": "mich",
+            "c": "p"
           },
           {
             "schrift": "есть",
             "lerntext": "jest",
-            "de": "essen"
+            "de": "essen",
+            "c": "v"
           }
         ],
         "id": "2.7"
@@ -1125,29 +1300,37 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "у меня есть [Slot]",
-          "lerntext": "u menjá jest [Slot]"
+          "lerntext": "u menjá jest [Slot]",
+          "wortarten": {
+            "menjá": "p",
+            "jest": "v"
+          }
         },
         "frameDe": "ich habe einen [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1155,58 +1338,68 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "сын",
               "lerntext": "syn",
-              "de": "Sohn"
+              "de": "Sohn",
+              "c": "n"
             },
             {
               "schrift": "тело",
               "lerntext": "téla",
-              "de": "Körper"
+              "de": "Körper",
+              "c": "n"
             },
             {
               "schrift": "рот",
               "lerntext": "rot",
-              "de": "Mund"
+              "de": "Mund",
+              "c": "n"
             },
             {
               "schrift": "стол",
               "lerntext": "stol",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "отец",
               "lerntext": "atjéz",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ключ",
               "lerntext": "kljutsch",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "брат",
               "lerntext": "brat",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "студент",
               "lerntext": "studjént",
               "de": "Student",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "коллега",
               "lerntext": "kalljéga",
               "de": "Kollege",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "друг",
               "lerntext": "drug",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1220,29 +1413,37 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "у меня есть [Slot]",
-          "lerntext": "u menjá jest [Slot]"
+          "lerntext": "u menjá jest [Slot]",
+          "wortarten": {
+            "menjá": "p",
+            "jest": "v"
+          }
         },
         "frameDe": "ich habe ein [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1250,65 +1451,76 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "машина",
               "lerntext": "maschýna",
-              "de": "Auto"
+              "de": "Auto",
+              "c": "n"
             },
             {
               "schrift": "нога",
               "lerntext": "nagá",
-              "de": "Bein"
+              "de": "Bein",
+              "c": "n"
             },
             {
               "schrift": "отель",
               "lerntext": "atél",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "окно",
               "lerntext": "aknó",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "стакан",
               "lerntext": "stakán",
               "de": "Glas",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "дом",
               "lerntext": "dom",
               "de": "Haus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "комната",
               "lerntext": "kómnata",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "книга",
               "lerntext": "kníga",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "телефон",
               "lerntext": "teljefón",
               "de": "Telefon",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "кровать",
               "lerntext": "krawát",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ребёнок",
               "lerntext": "rebjónak",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1322,24 +1534,30 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "это моя [Slot]",
-          "lerntext": "eto majá [Slot]"
+          "lerntext": "eto majá [Slot]",
+          "wortarten": {
+            "majá": "p"
+          }
         },
         "frameDe": "Das ist mein [Slot].",
         "pronouns": [
           {
             "schrift": "мой",
             "lerntext": "moj",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           },
           {
             "schrift": "твой",
             "lerntext": "twoj",
-            "de": "dein"
+            "de": "dein",
+            "c": "p"
           },
           {
             "schrift": "наш",
             "lerntext": "nasch",
-            "de": "unser"
+            "de": "unser",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1347,81 +1565,95 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "мать",
               "lerntext": "mat",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "отец",
               "lerntext": "atjéz",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "женщина",
               "lerntext": "shénschtschina",
-              "de": "Frau"
+              "de": "Frau",
+              "c": "n"
             },
             {
               "schrift": "коллега",
               "lerntext": "kalljéga",
-              "de": "Kollege"
+              "de": "Kollege",
+              "c": "n"
             },
             {
               "schrift": "дочь",
               "lerntext": "dotsch",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "нога",
               "lerntext": "nagá",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сын",
               "lerntext": "syn",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "семья",
               "lerntext": "semjá",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "машина",
               "lerntext": "maschýna",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "рот",
               "lerntext": "rot",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "рука",
               "lerntext": "ruká",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "тело",
               "lerntext": "téla",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "квартира",
               "lerntext": "kwartíra",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "отель",
               "lerntext": "atél",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1432,7 +1664,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "это",
             "lerntext": "éta",
-            "de": "das"
+            "de": "das",
+            "c": "p"
           }
         ],
         "id": "2.10"
@@ -1441,24 +1674,30 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "это [Slot] дом",
-          "lerntext": "eto [Slot] dom"
+          "lerntext": "eto [Slot] dom",
+          "wortarten": {
+            "dom": "n"
+          }
         },
         "frameDe": "Das ist [Slot] Haus.",
         "pronouns": [
           {
             "schrift": "мой",
             "lerntext": "moj",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           },
           {
             "schrift": "твой",
             "lerntext": "twoj",
-            "de": "dein"
+            "de": "dein",
+            "c": "p"
           },
           {
             "schrift": "наш",
             "lerntext": "nasch",
-            "de": "unser"
+            "de": "unser",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1466,48 +1705,56 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "его",
               "lerntext": "jewó",
-              "de": "ihn"
+              "de": "ihn",
+              "c": "p"
             },
             {
               "schrift": "вы",
               "lerntext": "wy",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "я",
               "lerntext": "ja",
               "de": "ich",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ты",
               "lerntext": "ty",
               "de": "du",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "мы",
               "lerntext": "my",
               "de": "wir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "она",
               "lerntext": "aná",
               "de": "sie",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "меня",
               "lerntext": "menjá",
               "de": "mich",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "он",
               "lerntext": "on",
               "de": "er",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -1518,7 +1765,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "это",
             "lerntext": "éta",
-            "de": "das"
+            "de": "das",
+            "c": "p"
           }
         ],
         "id": "2.11"
@@ -1536,66 +1784,77 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "все",
               "lerntext": "wsje",
-              "de": "alle"
+              "de": "alle",
+              "c": "p"
             },
             {
               "schrift": "вы",
               "lerntext": "wy",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "его",
               "lerntext": "jewó",
               "de": "ihn",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "мой",
               "lerntext": "moj",
               "de": "mein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "твой",
               "lerntext": "twoj",
               "de": "dein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "наш",
               "lerntext": "nasch",
               "de": "unser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "я",
               "lerntext": "ja",
               "de": "ich",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ты",
               "lerntext": "ty",
               "de": "du",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "мы",
               "lerntext": "my",
               "de": "wir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "она",
               "lerntext": "aná",
               "de": "sie",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "меня",
               "lerntext": "menjá",
               "de": "mich",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -1606,7 +1865,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "это",
             "lerntext": "éta",
-            "de": "das"
+            "de": "das",
+            "c": "p"
           }
         ],
         "id": "2.12"
@@ -1624,76 +1884,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "этот",
               "lerntext": "état",
-              "de": "dieser"
+              "de": "dieser",
+              "c": "p"
             },
             {
               "schrift": "его",
               "lerntext": "jewó",
-              "de": "ihn"
+              "de": "ihn",
+              "c": "p"
             },
             {
               "schrift": "вас",
               "lerntext": "was",
-              "de": "euch"
+              "de": "euch",
+              "c": "p"
             },
             {
               "schrift": "вы",
               "lerntext": "wy",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "все",
               "lerntext": "wsje",
               "de": "alle",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "мой",
               "lerntext": "moj",
               "de": "mein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "твой",
               "lerntext": "twoj",
               "de": "dein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "наш",
               "lerntext": "nasch",
               "de": "unser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "я",
               "lerntext": "ja",
               "de": "ich",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ты",
               "lerntext": "ty",
               "de": "du",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "мы",
               "lerntext": "my",
               "de": "wir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "она",
               "lerntext": "aná",
               "de": "sie",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "меня",
               "lerntext": "menjá",
               "de": "mich",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -1713,24 +1986,30 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "это моя [Slot]",
-          "lerntext": "eto majá [Slot]"
+          "lerntext": "eto majá [Slot]",
+          "wortarten": {
+            "majá": "p"
+          }
         },
         "frameDe": "Das ist mein [Slot].",
         "pronouns": [
           {
             "schrift": "мой",
             "lerntext": "moj",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           },
           {
             "schrift": "твой",
             "lerntext": "twoj",
-            "de": "dein"
+            "de": "dein",
+            "c": "p"
           },
           {
             "schrift": "наш",
             "lerntext": "nasch",
-            "de": "unser"
+            "de": "unser",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1739,54 +2018,63 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "дочь",
               "lerntext": "dotsch",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "нога",
               "lerntext": "nagá",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сын",
               "lerntext": "syn",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "семья",
               "lerntext": "semjá",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "машина",
               "lerntext": "maschýna",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "рот",
               "lerntext": "rot",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "рука",
               "lerntext": "ruká",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "тело",
               "lerntext": "téla",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "квартира",
               "lerntext": "kwartíra",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1807,7 +2095,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1816,24 +2105,28 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "стол",
               "lerntext": "stol",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "комната",
               "lerntext": "kómnata",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "окно",
               "lerntext": "aknó",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "стакан",
               "lerntext": "stakán",
               "de": "Glas",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1857,24 +2150,28 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "этот",
               "lerntext": "état",
               "de": "dieser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "вас",
               "lerntext": "was",
               "de": "euch",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "вы",
               "lerntext": "wy",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "все",
               "lerntext": "wsje",
               "de": "alle",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -1909,24 +2206,30 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу [Slot]",
-          "lerntext": "ja chatschú [Slot]"
+          "lerntext": "ja chatschú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich möchte [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1934,86 +2237,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "вода",
               "lerntext": "wadá",
-              "de": "Wasser"
+              "de": "Wasser",
+              "c": "n"
             },
             {
               "schrift": "кофе",
               "lerntext": "kófje",
-              "de": "Kaffee"
+              "de": "Kaffee",
+              "c": "n"
             },
             {
               "schrift": "чай",
               "lerntext": "tschaj",
-              "de": "Tee"
+              "de": "Tee",
+              "c": "n"
             },
             {
               "schrift": "пиво",
               "lerntext": "píwa",
-              "de": "Bier"
+              "de": "Bier",
+              "c": "n"
             },
             {
               "schrift": "вино",
               "lerntext": "winó",
-              "de": "Wein"
+              "de": "Wein",
+              "c": "n"
             },
             {
               "schrift": "кухня",
               "lerntext": "kúchnja",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "книга",
               "lerntext": "kníga",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "отель",
               "lerntext": "atél",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "дочь",
               "lerntext": "dotsch",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "нога",
               "lerntext": "nagá",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "дверь",
               "lerntext": "dwjer",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сестра",
               "lerntext": "sestrá",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сын",
               "lerntext": "syn",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "семья",
               "lerntext": "semjá",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ключ",
               "lerntext": "kljutsch",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2024,7 +2342,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "хотеть",
             "lerntext": "chatjét",
-            "de": "wollen"
+            "de": "wollen",
+            "c": "v"
           }
         ],
         "id": "3.1"
@@ -2033,24 +2352,30 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу [Slot]",
-          "lerntext": "ja chatschú [Slot]"
+          "lerntext": "ja chatschú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich möchte [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2058,86 +2383,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "еда",
               "lerntext": "jedá",
-              "de": "Essen"
+              "de": "Essen",
+              "c": "n"
             },
             {
               "schrift": "хлеб",
               "lerntext": "chljeb",
-              "de": "Brot"
+              "de": "Brot",
+              "c": "n"
             },
             {
               "schrift": "сыр",
               "lerntext": "syr",
-              "de": "Käse"
+              "de": "Käse",
+              "c": "n"
             },
             {
               "schrift": "молоко",
               "lerntext": "malakó",
-              "de": "Milch"
+              "de": "Milch",
+              "c": "n"
             },
             {
               "schrift": "сахар",
               "lerntext": "sáchar",
-              "de": "Zucker"
+              "de": "Zucker",
+              "c": "n"
             },
             {
               "schrift": "вода",
               "lerntext": "wadá",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "кофе",
               "lerntext": "kófje",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "чай",
               "lerntext": "tschaj",
               "de": "Tee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "пиво",
               "lerntext": "píwa",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вино",
               "lerntext": "winó",
               "de": "Wein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "кухня",
               "lerntext": "kúchnja",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "брат",
               "lerntext": "brat",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "окно",
               "lerntext": "aknó",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "телефон",
               "lerntext": "teljefón",
               "de": "Telefon",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "машина",
               "lerntext": "maschýna",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2151,24 +2491,30 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "мне нужен [Slot]",
-          "lerntext": "mnje núshen [Slot]"
+          "lerntext": "mnje núshen [Slot]",
+          "wortarten": {
+            "mnje": "p"
+          }
         },
         "frameDe": "ich brauche [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2176,81 +2522,95 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "помощь",
               "lerntext": "pómaschtsch",
-              "de": "Hilfe"
+              "de": "Hilfe",
+              "c": "n"
             },
             {
               "schrift": "время",
               "lerntext": "wrjémja",
-              "de": "Zeit"
+              "de": "Zeit",
+              "c": "n"
             },
             {
               "schrift": "деньги",
               "lerntext": "djéngi",
-              "de": "Geld"
+              "de": "Geld",
+              "c": "n"
             },
             {
               "schrift": "соль",
               "lerntext": "sol",
-              "de": "Salz"
+              "de": "Salz",
+              "c": "n"
             },
             {
               "schrift": "сахар",
               "lerntext": "sáchar",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "молоко",
               "lerntext": "malakó",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "еда",
               "lerntext": "jedá",
               "de": "Essen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сыр",
               "lerntext": "syr",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "хлеб",
               "lerntext": "chljeb",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "чай",
               "lerntext": "tschaj",
               "de": "Tee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вода",
               "lerntext": "wadá",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вино",
               "lerntext": "winó",
               "de": "Wein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "пиво",
               "lerntext": "píwa",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "кофе",
               "lerntext": "kófje",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2261,12 +2621,14 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "нуждаться",
             "lerntext": "nushdátsa",
-            "de": "brauchen"
+            "de": "brauchen",
+            "c": "v"
           },
           {
             "schrift": "мне",
             "lerntext": "mnje",
-            "de": "mir"
+            "de": "mir",
+            "c": "p"
           }
         ],
         "id": "3.3"
@@ -2275,14 +2637,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу [Slot], пожалуйста",
-          "lerntext": "ja chatschú [Slot], pashálusta"
+          "lerntext": "ja chatschú [Slot], pashálusta",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich möchte ein [Slot], bitte.",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2290,81 +2656,95 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "завтрак",
               "lerntext": "sáwtrak",
-              "de": "Frühstück"
+              "de": "Frühstück",
+              "c": "n"
             },
             {
               "schrift": "обед",
               "lerntext": "abjéd",
-              "de": "Mittagessen"
+              "de": "Mittagessen",
+              "c": "n"
             },
             {
               "schrift": "ужин",
               "lerntext": "úshyn",
-              "de": "Abendessen"
+              "de": "Abendessen",
+              "c": "n"
             },
             {
               "schrift": "фрукты",
               "lerntext": "frúkty",
-              "de": "Obst"
+              "de": "Obst",
+              "c": "n"
             },
             {
               "schrift": "деньги",
               "lerntext": "djéngi",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "соль",
               "lerntext": "sol",
               "de": "Salz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "еда",
               "lerntext": "jedá",
               "de": "Essen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "хлеб",
               "lerntext": "chljeb",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вода",
               "lerntext": "wadá",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "кровать",
               "lerntext": "krawát",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "дом",
               "lerntext": "dom",
               "de": "Haus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "пиво",
               "lerntext": "píwa",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "стакан",
               "lerntext": "stakán",
               "de": "Glas",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "комната",
               "lerntext": "kómnata",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2378,19 +2758,24 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я ем [Slot]",
-          "lerntext": "ja jem [Slot]"
+          "lerntext": "ja jem [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich esse [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2398,76 +2783,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "мясо",
               "lerntext": "mjássa",
-              "de": "Fleisch"
+              "de": "Fleisch",
+              "c": "n"
             },
             {
               "schrift": "рыба",
               "lerntext": "rýba",
-              "de": "Fisch"
+              "de": "Fisch",
+              "c": "n"
             },
             {
               "schrift": "овощи",
               "lerntext": "ówaschtschi",
-              "de": "Gemüse"
+              "de": "Gemüse",
+              "c": "n"
             },
             {
               "schrift": "ужин",
               "lerntext": "úshyn",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "фрукты",
               "lerntext": "frúkty",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "время",
               "lerntext": "wrjémja",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "завтрак",
               "lerntext": "sáwtrak",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "обед",
               "lerntext": "abjéd",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "помощь",
               "lerntext": "pómaschtsch",
               "de": "Hilfe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сахар",
               "lerntext": "sáchar",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "деньги",
               "lerntext": "djéngi",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "молоко",
               "lerntext": "malakó",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "соль",
               "lerntext": "sol",
               "de": "Salz",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2478,12 +2876,14 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "есть",
             "lerntext": "jest",
-            "de": "essen"
+            "de": "essen",
+            "c": "v"
           },
           {
             "schrift": "пить",
             "lerntext": "pit",
-            "de": "trinken"
+            "de": "trinken",
+            "c": "v"
           }
         ],
         "id": "3.5"
@@ -2492,19 +2892,24 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я ем [Slot]",
-          "lerntext": "ja jem [Slot]"
+          "lerntext": "ja jem [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich esse [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2513,54 +2918,63 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "мясо",
               "lerntext": "mjássa",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "рыба",
               "lerntext": "rýba",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "овощи",
               "lerntext": "ówaschtschi",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ужин",
               "lerntext": "úshyn",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "фрукты",
               "lerntext": "frúkty",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "время",
               "lerntext": "wrjémja",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "завтрак",
               "lerntext": "sáwtrak",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "обед",
               "lerntext": "abjéd",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "помощь",
               "lerntext": "pómaschtsch",
               "de": "Hilfe",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2574,19 +2988,24 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я ем [Slot]",
-          "lerntext": "ja jem [Slot]"
+          "lerntext": "ja jem [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich esse [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2595,18 +3014,21 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "мясо",
               "lerntext": "mjássa",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "рыба",
               "lerntext": "rýba",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "овощи",
               "lerntext": "ówaschtschi",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2641,29 +3063,36 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ты [Slot]?",
-          "lerntext": "ty [Slot]?"
+          "lerntext": "ty [Slot]?",
+          "wortarten": {
+            "ty": "p"
+          }
         },
         "frameDe": "Bist du [Slot]?",
         "pronouns": [
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "вы",
             "lerntext": "wy",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2671,12 +3100,14 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "старый",
               "lerntext": "stáryj",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "новый",
               "lerntext": "nówyj",
-              "de": "neu"
+              "de": "neu",
+              "c": "a"
             },
             {
               "schrift": "хорошо",
@@ -2691,36 +3122,42 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "важный",
               "lerntext": "wáshnyj",
-              "de": "wichtig"
+              "de": "wichtig",
+              "c": "a"
             },
             {
               "schrift": "слабый",
               "lerntext": "slábyj",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "готовый",
               "lerntext": "gatówyj",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "злой",
               "lerntext": "slój",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "молодой",
               "lerntext": "maladój",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "довольный",
               "lerntext": "dawólnyj",
               "de": "zufrieden",
+              "c": "a",
               "wieder": true
             },
             {
@@ -2733,24 +3170,28 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "счастливый",
               "lerntext": "schtschastlívyj",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "усталый",
               "lerntext": "ustályj",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "сильный",
               "lerntext": "sílnyj",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "грустный",
               "lerntext": "grúsnyj",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -2789,76 +3230,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "который",
               "lerntext": "katóryj",
-              "de": "welcher"
+              "de": "welcher",
+              "c": "p"
             },
             {
               "schrift": "что-то",
               "lerntext": "schtó-ta",
-              "de": "etwas"
+              "de": "etwas",
+              "c": "p"
             },
             {
               "schrift": "весь",
               "lerntext": "wjes",
-              "de": "ganz"
+              "de": "ganz",
+              "c": "p"
             },
             {
               "schrift": "мне",
               "lerntext": "mnje",
               "de": "mir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "этот",
               "lerntext": "état",
               "de": "dieser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "вас",
               "lerntext": "was",
               "de": "euch",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "наш",
               "lerntext": "nasch",
               "de": "unser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "все",
               "lerntext": "wsje",
               "de": "alle",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "мой",
               "lerntext": "moj",
               "de": "mein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "твой",
               "lerntext": "twoj",
               "de": "dein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "вы",
               "lerntext": "wy",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "его",
               "lerntext": "jewó",
               "de": "ihn",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "она",
               "lerntext": "aná",
               "de": "sie",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -2889,7 +3343,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "это",
             "lerntext": "éta",
-            "de": "das"
+            "de": "das",
+            "c": "p"
           }
         ],
         "id": "4.2"
@@ -2898,29 +3353,36 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ты [Slot]?",
-          "lerntext": "ty [Slot]?"
+          "lerntext": "ty [Slot]?",
+          "wortarten": {
+            "ty": "p"
+          }
         },
         "frameDe": "Bist du [Slot]?",
         "pronouns": [
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "вы",
             "lerntext": "wy",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2929,6 +3391,7 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "новый",
               "lerntext": "nówyj",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
@@ -2947,6 +3410,7 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "важный",
               "lerntext": "wáshnyj",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -2986,24 +3450,28 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "который",
               "lerntext": "katóryj",
               "de": "welcher",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "что-то",
               "lerntext": "schtó-ta",
               "de": "etwas",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "весь",
               "lerntext": "wjes",
               "de": "ganz",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "мне",
               "lerntext": "mnje",
               "de": "mir",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -3017,29 +3485,36 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ты [Slot]?",
-          "lerntext": "ty [Slot]?"
+          "lerntext": "ty [Slot]?",
+          "wortarten": {
+            "ty": "p"
+          }
         },
         "frameDe": "Bist du [Slot]?",
         "pronouns": [
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "вы",
             "lerntext": "wy",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -3048,6 +3523,7 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "новый",
               "lerntext": "nówyj",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
@@ -3066,6 +3542,7 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "важный",
               "lerntext": "wáshnyj",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -3105,18 +3582,21 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "который",
               "lerntext": "katóryj",
               "de": "welcher",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "что-то",
               "lerntext": "schtó-ta",
               "de": "etwas",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "весь",
               "lerntext": "wjes",
               "de": "ganz",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -3171,76 +3651,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "туалет",
               "lerntext": "tualjét",
-              "de": "Toilette"
+              "de": "Toilette",
+              "c": "n"
             },
             {
               "schrift": "школа",
               "lerntext": "schkóla",
-              "de": "Schule"
+              "de": "Schule",
+              "c": "n"
             },
             {
               "schrift": "улица",
               "lerntext": "úliza",
-              "de": "Straße"
+              "de": "Straße",
+              "c": "n"
             },
             {
               "schrift": "время",
               "lerntext": "wrjémja",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "рука",
               "lerntext": "ruká",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "молоко",
               "lerntext": "malakó",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "квартира",
               "lerntext": "kwartíra",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "помощь",
               "lerntext": "pómaschtsch",
               "de": "Hilfe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сумка",
               "lerntext": "súmka",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "дверь",
               "lerntext": "dwjer",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сестра",
               "lerntext": "sestrá",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "семья",
               "lerntext": "semjá",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "полиция",
               "lerntext": "polízija",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3280,71 +3773,83 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "вокзал",
               "lerntext": "wagsál",
-              "de": "Bahnhof"
+              "de": "Bahnhof",
+              "c": "n"
             },
             {
               "schrift": "аэропорт",
               "lerntext": "aerapórt",
-              "de": "Flughafen"
+              "de": "Flughafen",
+              "c": "n"
             },
             {
               "schrift": "сыр",
               "lerntext": "syr",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "чай",
               "lerntext": "tschaj",
               "de": "Tee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сахар",
               "lerntext": "sáchar",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "тело",
               "lerntext": "téla",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "рыба",
               "lerntext": "rýba",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "рот",
               "lerntext": "rot",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "стол",
               "lerntext": "stol",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вино",
               "lerntext": "winó",
               "de": "Wein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "кофе",
               "lerntext": "kófje",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ключ",
               "lerntext": "kljutsch",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3378,71 +3883,83 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "магазин",
               "lerntext": "magasín",
-              "de": "Geschäft"
+              "de": "Geschäft",
+              "c": "n"
             },
             {
               "schrift": "ресторан",
               "lerntext": "restarán",
-              "de": "Restaurant"
+              "de": "Restaurant",
+              "c": "n"
             },
             {
               "schrift": "ужин",
               "lerntext": "úshyn",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "фрукты",
               "lerntext": "frúkty",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "деньги",
               "lerntext": "djéngi",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "соль",
               "lerntext": "sol",
               "de": "Salz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "завтрак",
               "lerntext": "sáwtrak",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "еда",
               "lerntext": "jedá",
               "de": "Essen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "овощи",
               "lerntext": "ówaschtschi",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "обед",
               "lerntext": "abjéd",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "хлеб",
               "lerntext": "chljeb",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "мясо",
               "lerntext": "mjássa",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3456,7 +3973,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "здесь есть [Slot]?",
-          "lerntext": "sdes jest [Slot]?"
+          "lerntext": "sdes jest [Slot]?",
+          "wortarten": {
+            "jest": "v"
+          }
         },
         "frameDe": "Gibt es hier eine [Slot]?",
         "pronouns": [
@@ -3471,66 +3991,77 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "университет",
               "lerntext": "uniwersitjét",
-              "de": "Universität"
+              "de": "Universität",
+              "c": "n"
             },
             {
               "schrift": "туалет",
               "lerntext": "tualjét",
               "de": "Toilette",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "школа",
               "lerntext": "schkóla",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "улица",
               "lerntext": "úliza",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "время",
               "lerntext": "wrjémja",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "рука",
               "lerntext": "ruká",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "молоко",
               "lerntext": "malakó",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "квартира",
               "lerntext": "kwartíra",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "дочь",
               "lerntext": "dotsch",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "кухня",
               "lerntext": "kúchnja",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "помощь",
               "lerntext": "pómaschtsch",
               "de": "Hilfe",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3544,7 +4075,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "здесь есть [Slot]?",
-          "lerntext": "sdes jest [Slot]?"
+          "lerntext": "sdes jest [Slot]?",
+          "wortarten": {
+            "jest": "v"
+          }
         },
         "frameDe": "Gibt es hier ein [Slot]?",
         "pronouns": [
@@ -3559,66 +4093,77 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "больница",
               "lerntext": "balníza",
-              "de": "Krankenhaus"
+              "de": "Krankenhaus",
+              "c": "n"
             },
             {
               "schrift": "ресторан",
               "lerntext": "restarán",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "магазин",
               "lerntext": "magasín",
               "de": "Geschäft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ужин",
               "lerntext": "úshyn",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "фрукты",
               "lerntext": "frúkty",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ребёнок",
               "lerntext": "rebjónak",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вода",
               "lerntext": "wadá",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "телефон",
               "lerntext": "teljefón",
               "de": "Telefon",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "машина",
               "lerntext": "maschýna",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "нога",
               "lerntext": "nagá",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "деньги",
               "lerntext": "djéngi",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3652,76 +4197,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "город",
               "lerntext": "górad",
-              "de": "Stadt"
+              "de": "Stadt",
+              "c": "n"
             },
             {
               "schrift": "дорога",
               "lerntext": "daróga",
-              "de": "Weg"
+              "de": "Weg",
+              "c": "n"
             },
             {
               "schrift": "лес",
               "lerntext": "ljes",
-              "de": "Wald"
+              "de": "Wald",
+              "c": "n"
             },
             {
               "schrift": "университет",
               "lerntext": "uniwersitjét",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вокзал",
               "lerntext": "wagsál",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "больница",
               "lerntext": "balníza",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "аэропорт",
               "lerntext": "aerapórt",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ресторан",
               "lerntext": "restarán",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "туалет",
               "lerntext": "tualjét",
               "de": "Toilette",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "школа",
               "lerntext": "schkóla",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "улица",
               "lerntext": "úliza",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "магазин",
               "lerntext": "magasín",
               "de": "Geschäft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сыр",
               "lerntext": "syr",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3837,7 +4395,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "это",
             "lerntext": "éta",
-            "de": "das"
+            "de": "das",
+            "c": "p"
           },
           {
             "schrift": "дома",
@@ -3945,42 +4504,49 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "город",
               "lerntext": "górad",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "дорога",
               "lerntext": "daróga",
               "de": "Weg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "лес",
               "lerntext": "ljes",
               "de": "Wald",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "университет",
               "lerntext": "uniwersitjét",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вокзал",
               "lerntext": "wagsál",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "больница",
               "lerntext": "balníza",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "аэропорт",
               "lerntext": "aerapórt",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -4085,18 +4651,21 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "город",
               "lerntext": "górad",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "дорога",
               "lerntext": "daróga",
               "de": "Weg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "лес",
               "lerntext": "ljes",
               "de": "Wald",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -4336,86 +4905,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "дорогой",
               "lerntext": "daragój",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "дешёвый",
               "lerntext": "deschówyj",
-              "de": "billig"
+              "de": "billig",
+              "c": "a"
             },
             {
               "schrift": "большой",
               "lerntext": "balschój",
-              "de": "groß"
+              "de": "groß",
+              "c": "a"
             },
             {
               "schrift": "маленький",
               "lerntext": "málenkij",
-              "de": "klein"
+              "de": "klein",
+              "c": "a"
             },
             {
               "schrift": "длинный",
               "lerntext": "dlínnyj",
-              "de": "lang"
+              "de": "lang",
+              "c": "a"
             },
             {
               "schrift": "важный",
               "lerntext": "wáshnyj",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "новый",
               "lerntext": "nówyj",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "красивый",
               "lerntext": "krassívyj",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "больной",
               "lerntext": "balnój",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "скучный",
               "lerntext": "skúschnyj",
               "de": "langweilig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "слабый",
               "lerntext": "slábyj",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "готовый",
               "lerntext": "gatówyj",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "злой",
               "lerntext": "slój",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "молодой",
               "lerntext": "maladój",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "довольный",
               "lerntext": "dawólnyj",
               "de": "zufrieden",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -4436,7 +5020,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "это",
             "lerntext": "éta",
-            "de": "das"
+            "de": "das",
+            "c": "p"
           }
         ],
         "id": "6.4"
@@ -4454,86 +5039,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "короткий",
               "lerntext": "karótkij",
-              "de": "kurz"
+              "de": "kurz",
+              "c": "a"
             },
             {
               "schrift": "высокий",
               "lerntext": "wyssókij",
-              "de": "hoch"
+              "de": "hoch",
+              "c": "a"
             },
             {
               "schrift": "низкий",
               "lerntext": "nískij",
-              "de": "niedrig"
+              "de": "niedrig",
+              "c": "a"
             },
             {
               "schrift": "тяжёлый",
               "lerntext": "tjashólyj",
-              "de": "schwer"
+              "de": "schwer",
+              "c": "a"
             },
             {
               "schrift": "лёгкий",
               "lerntext": "ljóchkij",
-              "de": "leicht"
+              "de": "leicht",
+              "c": "a"
             },
             {
               "schrift": "дорогой",
               "lerntext": "daragój",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "дешёвый",
               "lerntext": "deschówyj",
               "de": "billig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "большой",
               "lerntext": "balschój",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "маленький",
               "lerntext": "málenkij",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "длинный",
               "lerntext": "dlínnyj",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "важный",
               "lerntext": "wáshnyj",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "новый",
               "lerntext": "nówyj",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "счастливый",
               "lerntext": "schtschastlívyj",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "усталый",
               "lerntext": "ustályj",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "сильный",
               "lerntext": "sílnyj",
               "de": "stark",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -4876,29 +5476,36 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я могу [Slot]",
-          "lerntext": "ja magú [Slot]"
+          "lerntext": "ja magú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich kann [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -4906,56 +5513,66 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "танцевать",
               "lerntext": "tanzewát",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "играть",
               "lerntext": "igrát",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "ехать",
               "lerntext": "jéchat",
-              "de": "fahren"
+              "de": "fahren",
+              "c": "v"
             },
             {
               "schrift": "писать",
               "lerntext": "pissát",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "читать",
               "lerntext": "tschitát",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "нуждаться",
               "lerntext": "nushdátsa",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "пить",
               "lerntext": "pit",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "хотеть",
               "lerntext": "chatjét",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "быть",
               "lerntext": "byt",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "есть",
               "lerntext": "jest",
               "de": "essen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -4966,7 +5583,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "мочь",
             "lerntext": "motsch",
-            "de": "können"
+            "de": "können",
+            "c": "v"
           }
         ],
         "id": "7.1"
@@ -4975,29 +5593,36 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я могу [Slot]",
-          "lerntext": "ja magú [Slot]"
+          "lerntext": "ja magú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich kann [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5005,86 +5630,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "помогать",
               "lerntext": "pamagát",
-              "de": "helfen"
+              "de": "helfen",
+              "c": "v"
             },
             {
               "schrift": "показывать",
               "lerntext": "pakásywat",
-              "de": "zeigen"
+              "de": "zeigen",
+              "c": "v"
             },
             {
               "schrift": "делать",
               "lerntext": "djélat",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "сказать",
               "lerntext": "skasát",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "использовать",
               "lerntext": "ispólsawat",
-              "de": "benutzen"
+              "de": "benutzen",
+              "c": "v"
             },
             {
               "schrift": "танцевать",
               "lerntext": "tanzewát",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "играть",
               "lerntext": "igrát",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ехать",
               "lerntext": "jéchat",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "писать",
               "lerntext": "pissát",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "читать",
               "lerntext": "tschitát",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "нуждаться",
               "lerntext": "nushdátsa",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "пить",
               "lerntext": "pit",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "хотеть",
               "lerntext": "chatjét",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "быть",
               "lerntext": "byt",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "есть",
               "lerntext": "jest",
               "de": "essen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5098,24 +5738,31 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я должен [Slot]",
-          "lerntext": "ja dólshen [Slot]"
+          "lerntext": "ja dólshen [Slot]",
+          "wortarten": {
+            "ja": "p",
+            "dólshen": "v"
+          }
         },
         "frameDe": "ich muss [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5123,86 +5770,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "работать",
               "lerntext": "rabótat",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "спать",
               "lerntext": "spat",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "ждать",
               "lerntext": "shdat",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "платить",
               "lerntext": "platít",
-              "de": "bezahlen"
+              "de": "bezahlen",
+              "c": "v"
             },
             {
               "schrift": "мыть",
               "lerntext": "myt",
-              "de": "waschen"
+              "de": "waschen",
+              "c": "v"
             },
             {
               "schrift": "делать",
               "lerntext": "djélat",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "использовать",
               "lerntext": "ispólsawat",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "сказать",
               "lerntext": "skasát",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "помогать",
               "lerntext": "pamagát",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "показывать",
               "lerntext": "pakásywat",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "мочь",
               "lerntext": "motsch",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "играть",
               "lerntext": "igrát",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "танцевать",
               "lerntext": "tanzewát",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ехать",
               "lerntext": "jéchat",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "читать",
               "lerntext": "tschitát",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5213,7 +5875,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "должен",
             "lerntext": "dólshen",
-            "de": "müssen"
+            "de": "müssen",
+            "c": "v"
           }
         ],
         "id": "7.3"
@@ -5222,29 +5885,36 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу [Slot]",
-          "lerntext": "ja chatschú [Slot]"
+          "lerntext": "ja chatschú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich will [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5252,86 +5922,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "смотреть",
               "lerntext": "smatrjét",
-              "de": "schauen"
+              "de": "schauen",
+              "c": "v"
             },
             {
               "schrift": "звонить",
               "lerntext": "swanít",
-              "de": "anrufen"
+              "de": "anrufen",
+              "c": "v"
             },
             {
               "schrift": "спрашивать",
               "lerntext": "spráschiwat",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "отвечать",
               "lerntext": "atwetschát",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "говорить",
               "lerntext": "gawarít",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "мыть",
               "lerntext": "myt",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "платить",
               "lerntext": "platít",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "работать",
               "lerntext": "rabótat",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ждать",
               "lerntext": "shdat",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "должен",
               "lerntext": "dólshen",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "спать",
               "lerntext": "spat",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "делать",
               "lerntext": "djélat",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "использовать",
               "lerntext": "ispólsawat",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "сказать",
               "lerntext": "skasát",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "помогать",
               "lerntext": "pamagát",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5345,29 +6030,36 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу [Slot]",
-          "lerntext": "ja chatschú [Slot]"
+          "lerntext": "ja chatschú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich will [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5375,71 +6067,83 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "слышать",
               "lerntext": "slýschat",
-              "de": "hören"
+              "de": "hören",
+              "c": "v"
             },
             {
               "schrift": "видеть",
               "lerntext": "wídjet",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "смотреть",
               "lerntext": "smatrjét",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "звонить",
               "lerntext": "swanít",
               "de": "anrufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "спрашивать",
               "lerntext": "spráschiwat",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "отвечать",
               "lerntext": "atwetschát",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "говорить",
               "lerntext": "gawarít",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "мыть",
               "lerntext": "myt",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "платить",
               "lerntext": "platít",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "работать",
               "lerntext": "rabótat",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "показывать",
               "lerntext": "pakásywat",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "писать",
               "lerntext": "pissát",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5453,19 +6157,24 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я не могу [Slot]",
-          "lerntext": "ja nje magú [Slot]"
+          "lerntext": "ja nje magú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich darf nicht [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5473,86 +6182,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "забывать",
               "lerntext": "sabywát",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "терять",
               "lerntext": "terját",
-              "de": "verlieren"
+              "de": "verlieren",
+              "c": "v"
             },
             {
               "schrift": "плакать",
               "lerntext": "plákat",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "смеяться",
               "lerntext": "smejátsa",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "оставаться",
               "lerntext": "astawátsa",
-              "de": "bleiben"
+              "de": "bleiben",
+              "c": "v"
             },
             {
               "schrift": "видеть",
               "lerntext": "wídjet",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "слышать",
               "lerntext": "slýschat",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "звонить",
               "lerntext": "swanít",
               "de": "anrufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "отвечать",
               "lerntext": "atwetschát",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "спрашивать",
               "lerntext": "spráschiwat",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "мочь",
               "lerntext": "motsch",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ждать",
               "lerntext": "shdat",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "смотреть",
               "lerntext": "smatrjét",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "нуждаться",
               "lerntext": "nushdátsa",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "должен",
               "lerntext": "dólshen",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5563,7 +6287,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "получать",
             "lerntext": "palutschát",
-            "de": "bekommen"
+            "de": "bekommen",
+            "c": "v"
           },
           {
             "schrift": "не",
@@ -5577,19 +6302,24 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я не могу [Slot]",
-          "lerntext": "ja nje magú [Slot]"
+          "lerntext": "ja nje magú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich darf nicht [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5597,81 +6327,95 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "умирать",
               "lerntext": "umirát",
-              "de": "sterben"
+              "de": "sterben",
+              "c": "v"
             },
             {
               "schrift": "открывать",
               "lerntext": "atkrywát",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "закрывать",
               "lerntext": "sakrywát",
-              "de": "schließen"
+              "de": "schließen",
+              "c": "v"
             },
             {
               "schrift": "выигрывать",
               "lerntext": "wyígrywat",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "забывать",
               "lerntext": "sabywát",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "терять",
               "lerntext": "terját",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "плакать",
               "lerntext": "plákat",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "смеяться",
               "lerntext": "smejátsa",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "оставаться",
               "lerntext": "astawátsa",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "видеть",
               "lerntext": "wídjet",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "слышать",
               "lerntext": "slýschat",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "говорить",
               "lerntext": "gawarít",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "спать",
               "lerntext": "spat",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "пить",
               "lerntext": "pit",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5685,19 +6429,24 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я не могу [Slot]",
-          "lerntext": "ja nje magú [Slot]"
+          "lerntext": "ja nje magú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich darf nicht [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5706,54 +6455,63 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "умирать",
               "lerntext": "umirát",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "открывать",
               "lerntext": "atkrywát",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "закрывать",
               "lerntext": "sakrywát",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "выигрывать",
               "lerntext": "wyígrywat",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "забывать",
               "lerntext": "sabywát",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "терять",
               "lerntext": "terját",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "плакать",
               "lerntext": "plákat",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "смеяться",
               "lerntext": "smejátsa",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "оставаться",
               "lerntext": "astawátsa",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5767,19 +6525,24 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я не могу [Slot]",
-          "lerntext": "ja nje magú [Slot]"
+          "lerntext": "ja nje magú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich darf nicht [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5788,24 +6551,28 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "умирать",
               "lerntext": "umirát",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "открывать",
               "lerntext": "atkrywát",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "закрывать",
               "lerntext": "sakrywát",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "выигрывать",
               "lerntext": "wyígrywat",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5840,29 +6607,36 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я иду в [Slot]",
-          "lerntext": "ja idú w [Slot]"
+          "lerntext": "ja idú w [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich gehe zu einem [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5870,66 +6644,77 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "магазин",
               "lerntext": "magasín",
-              "de": "Geschäft"
+              "de": "Geschäft",
+              "c": "n"
             },
             {
               "schrift": "ресторан",
               "lerntext": "restarán",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "больница",
               "lerntext": "balníza",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "соль",
               "lerntext": "sol",
               "de": "Salz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "кровать",
               "lerntext": "krawát",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "дом",
               "lerntext": "dom",
               "de": "Haus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "завтрак",
               "lerntext": "sáwtrak",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "еда",
               "lerntext": "jedá",
               "de": "Essen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "овощи",
               "lerntext": "ówaschtschi",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "книга",
               "lerntext": "kníga",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "отель",
               "lerntext": "atél",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -5940,12 +6725,14 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "идти",
             "lerntext": "ittí",
-            "de": "gehen"
+            "de": "gehen",
+            "c": "v"
           },
           {
             "schrift": "приходить",
             "lerntext": "prichadít",
-            "de": "kommen"
+            "de": "kommen",
+            "c": "v"
           }
         ],
         "id": "8.1"
@@ -5954,19 +6741,24 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я еду на [Slot]",
-          "lerntext": "ja jédu na [Slot]"
+          "lerntext": "ja jédu na [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich fahre mit [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5974,81 +6766,95 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "автобус",
               "lerntext": "awtóbus",
-              "de": "Bus"
+              "de": "Bus",
+              "c": "n"
             },
             {
               "schrift": "поезд",
               "lerntext": "pójesd",
-              "de": "Zug"
+              "de": "Zug",
+              "c": "n"
             },
             {
               "schrift": "машина",
               "lerntext": "maschýna",
-              "de": "Auto"
+              "de": "Auto",
+              "c": "n"
             },
             {
               "schrift": "дорога",
               "lerntext": "daróga",
-              "de": "Weg"
+              "de": "Weg",
+              "c": "n"
             },
             {
               "schrift": "университет",
               "lerntext": "uniwersitjét",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "город",
               "lerntext": "górad",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "лес",
               "lerntext": "ljes",
               "de": "Wald",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вокзал",
               "lerntext": "wagsál",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "туалет",
               "lerntext": "tualjét",
               "de": "Toilette",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "школа",
               "lerntext": "schkóla",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "улица",
               "lerntext": "úliza",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "аэропорт",
               "lerntext": "aerapórt",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "чай",
               "lerntext": "tschaj",
               "de": "Tee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сахар",
               "lerntext": "sáchar",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -6059,7 +6865,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "путешествовать",
             "lerntext": "puteschéstwawat",
-            "de": "reisen"
+            "de": "reisen",
+            "c": "v"
           }
         ],
         "id": "8.2"
@@ -6068,24 +6875,30 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу [Slot] сейчас",
-          "lerntext": "ja chatschú [Slot] sitschás"
+          "lerntext": "ja chatschú [Slot] sitschás",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich will jetzt [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6093,81 +6906,95 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "сидеть",
               "lerntext": "ssidjét",
-              "de": "sitzen"
+              "de": "sitzen",
+              "c": "v"
             },
             {
               "schrift": "стоять",
               "lerntext": "stajat",
-              "de": "stehen"
+              "de": "stehen",
+              "c": "v"
             },
             {
               "schrift": "переезжать",
               "lerntext": "pereeshát",
-              "de": "umziehen"
+              "de": "umziehen",
+              "c": "v"
             },
             {
               "schrift": "жить",
               "lerntext": "shyt",
-              "de": "leben"
+              "de": "leben",
+              "c": "v"
             },
             {
               "schrift": "приходить",
               "lerntext": "prichadít",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "путешествовать",
               "lerntext": "puteschéstwawat",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "идти",
               "lerntext": "ittí",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "получать",
               "lerntext": "palutschát",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "мыть",
               "lerntext": "myt",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "играть",
               "lerntext": "igrát",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "звонить",
               "lerntext": "swanít",
               "de": "anrufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "отвечать",
               "lerntext": "atwetschát",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "оставаться",
               "lerntext": "astawátsa",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "делать",
               "lerntext": "djélat",
               "de": "machen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6192,24 +7019,30 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу [Slot] сейчас",
-          "lerntext": "ja chatschú [Slot] sitschás"
+          "lerntext": "ja chatschú [Slot] sitschás",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich will jetzt [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6218,48 +7051,56 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "сидеть",
               "lerntext": "ssidjét",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "стоять",
               "lerntext": "stajat",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "переезжать",
               "lerntext": "pereeshát",
               "de": "umziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "жить",
               "lerntext": "shyt",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "приходить",
               "lerntext": "prichadít",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "путешествовать",
               "lerntext": "puteschéstwawat",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "идти",
               "lerntext": "ittí",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "получать",
               "lerntext": "palutschát",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6273,24 +7114,30 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу [Slot] сейчас",
-          "lerntext": "ja chatschú [Slot] sitschás"
+          "lerntext": "ja chatschú [Slot] sitschás",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich will jetzt [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6299,42 +7146,49 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "сидеть",
               "lerntext": "ssidjét",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "стоять",
               "lerntext": "stajat",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "переезжать",
               "lerntext": "pereeshát",
               "de": "umziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "жить",
               "lerntext": "shyt",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "приходить",
               "lerntext": "prichadít",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "путешествовать",
               "lerntext": "puteschéstwawat",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "идти",
               "lerntext": "ittí",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6461,22 +7315,26 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "вечер",
               "lerntext": "wjétscher",
-              "de": "Abend"
+              "de": "Abend",
+              "c": "n"
             },
             {
               "schrift": "ночь",
               "lerntext": "notsch",
-              "de": "Nacht"
+              "de": "Nacht",
+              "c": "n"
             },
             {
               "schrift": "день",
               "lerntext": "djen",
-              "de": "Tag"
+              "de": "Tag",
+              "c": "n"
             },
             {
               "schrift": "неделя",
               "lerntext": "nedjélja",
-              "de": "Woche"
+              "de": "Woche",
+              "c": "n"
             },
             {
               "schrift": "домой",
@@ -6494,6 +7352,7 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "поезд",
               "lerntext": "pójesd",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
@@ -6536,6 +7395,7 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "автобус",
               "lerntext": "awtóbus",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -6551,7 +7411,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "тоже",
             "lerntext": "tósche",
-            "de": "auch"
+            "de": "auch",
+            "c": "k"
           },
           {
             "schrift": "только",
@@ -6574,71 +7435,83 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "час",
               "lerntext": "tschas",
-              "de": "Stunde"
+              "de": "Stunde",
+              "c": "n"
             },
             {
               "schrift": "минута",
               "lerntext": "minúta",
-              "de": "Minute"
+              "de": "Minute",
+              "c": "n"
             },
             {
               "schrift": "неделя",
               "lerntext": "nedjélja",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ночь",
               "lerntext": "notsch",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "университет",
               "lerntext": "uniwersitjét",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "город",
               "lerntext": "górad",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "туалет",
               "lerntext": "tualjét",
               "de": "Toilette",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "школа",
               "lerntext": "schkóla",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "улица",
               "lerntext": "úliza",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сумка",
               "lerntext": "súmka",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "дверь",
               "lerntext": "dwjer",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сестра",
               "lerntext": "sestrá",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -6649,7 +7522,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "это",
             "lerntext": "éta",
-            "de": "das"
+            "de": "das",
+            "c": "p"
           }
         ],
         "id": "9.3"
@@ -6667,66 +7541,77 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "отпуск",
               "lerntext": "ótpusk",
-              "de": "Urlaub"
+              "de": "Urlaub",
+              "c": "n"
             },
             {
               "schrift": "день",
               "lerntext": "djen",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вечер",
               "lerntext": "wjétscher",
               "de": "Abend",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "поезд",
               "lerntext": "pójesd",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "автобус",
               "lerntext": "awtóbus",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "тело",
               "lerntext": "téla",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "лес",
               "lerntext": "ljes",
               "de": "Wald",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "рыба",
               "lerntext": "rýba",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вокзал",
               "lerntext": "wagsál",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "рот",
               "lerntext": "rot",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "стол",
               "lerntext": "stol",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -6762,24 +7647,28 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "вечер",
               "lerntext": "wjétscher",
               "de": "Abend",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ночь",
               "lerntext": "notsch",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "день",
               "lerntext": "djen",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "неделя",
               "lerntext": "nedjélja",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
@@ -6885,29 +7774,36 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я люблю [Slot]",
-          "lerntext": "ja ljubljú [Slot]"
+          "lerntext": "ja ljubljú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich mag [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6915,86 +7811,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "солнце",
               "lerntext": "sónze",
-              "de": "Sonne"
+              "de": "Sonne",
+              "c": "n"
             },
             {
               "schrift": "дождь",
               "lerntext": "doshd",
-              "de": "Regen"
+              "de": "Regen",
+              "c": "n"
             },
             {
               "schrift": "снег",
               "lerntext": "snjeg",
-              "de": "Schnee"
+              "de": "Schnee",
+              "c": "n"
             },
             {
               "schrift": "погода",
               "lerntext": "pagóda",
-              "de": "Wetter"
+              "de": "Wetter",
+              "c": "n"
             },
             {
               "schrift": "гора",
               "lerntext": "gará",
-              "de": "Berg"
+              "de": "Berg",
+              "c": "n"
             },
             {
               "schrift": "отпуск",
               "lerntext": "ótpusk",
               "de": "Urlaub",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "минута",
               "lerntext": "minúta",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "час",
               "lerntext": "tschas",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "поезд",
               "lerntext": "pójesd",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "день",
               "lerntext": "djen",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "неделя",
               "lerntext": "nedjélja",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вечер",
               "lerntext": "wjétscher",
               "de": "Abend",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "автобус",
               "lerntext": "awtóbus",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ночь",
               "lerntext": "notsch",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ресторан",
               "lerntext": "restarán",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7005,12 +7916,14 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "любить",
             "lerntext": "ljubít",
-            "de": "lieben"
+            "de": "lieben",
+            "c": "v"
           },
           {
             "schrift": "любить",
             "lerntext": "ljubít",
-            "de": "lieben"
+            "de": "lieben",
+            "c": "v"
           }
         ],
         "id": "10.1"
@@ -7019,29 +7932,36 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я люблю [Slot]",
-          "lerntext": "ja ljubljú [Slot]"
+          "lerntext": "ja ljubljú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich mag [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7049,66 +7969,77 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "море",
               "lerntext": "mórje",
-              "de": "Meer"
+              "de": "Meer",
+              "c": "n"
             },
             {
               "schrift": "солнце",
               "lerntext": "sónze",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "дождь",
               "lerntext": "doshd",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "снег",
               "lerntext": "snjeg",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "погода",
               "lerntext": "pagóda",
               "de": "Wetter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "гора",
               "lerntext": "gará",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "отпуск",
               "lerntext": "ótpusk",
               "de": "Urlaub",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "минута",
               "lerntext": "minúta",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "час",
               "lerntext": "tschas",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "поезд",
               "lerntext": "pójesd",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "день",
               "lerntext": "djen",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7122,19 +8053,24 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я вижу [Slot]",
-          "lerntext": "ja wíshu [Slot]"
+          "lerntext": "ja wíshu [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich sehe [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7142,81 +8078,95 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "меня",
               "lerntext": "menjá",
-              "de": "mich"
+              "de": "mich",
+              "c": "p"
             },
             {
               "schrift": "тебя",
               "lerntext": "tjebjá",
-              "de": "dich"
+              "de": "dich",
+              "c": "p"
             },
             {
               "schrift": "его",
               "lerntext": "jewó",
-              "de": "ihn"
+              "de": "ihn",
+              "c": "p"
             },
             {
               "schrift": "нас",
               "lerntext": "nas",
-              "de": "uns"
+              "de": "uns",
+              "c": "p"
             },
             {
               "schrift": "этот",
               "lerntext": "état",
               "de": "dieser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "который",
               "lerntext": "katóryj",
               "de": "welcher",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "что-то",
               "lerntext": "schtó-ta",
               "de": "etwas",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "весь",
               "lerntext": "wjes",
               "de": "ganz",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "мне",
               "lerntext": "mnje",
               "de": "mir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "вас",
               "lerntext": "was",
               "de": "euch",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "наш",
               "lerntext": "nasch",
               "de": "unser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "все",
               "lerntext": "wsje",
               "de": "alle",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "мой",
               "lerntext": "moj",
               "de": "mein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "твой",
               "lerntext": "twoj",
               "de": "dein",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -7227,7 +8177,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "находить",
             "lerntext": "nachadít",
-            "de": "finden"
+            "de": "finden",
+            "c": "v"
           }
         ],
         "id": "10.3"
@@ -7245,86 +8196,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "красный",
               "lerntext": "krásnyj",
-              "de": "rot"
+              "de": "rot",
+              "c": "a"
             },
             {
               "schrift": "синий",
               "lerntext": "sínij",
-              "de": "blau"
+              "de": "blau",
+              "c": "a"
             },
             {
               "schrift": "жёлтый",
               "lerntext": "shóltyj",
-              "de": "gelb"
+              "de": "gelb",
+              "c": "a"
             },
             {
               "schrift": "зелёный",
               "lerntext": "seljónyj",
-              "de": "grün"
+              "de": "grün",
+              "c": "a"
             },
             {
               "schrift": "чёрный",
               "lerntext": "tschórnyj",
-              "de": "schwarz"
+              "de": "schwarz",
+              "c": "a"
             },
             {
               "schrift": "высокий",
               "lerntext": "wyssókij",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "тяжёлый",
               "lerntext": "tjashólyj",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "низкий",
               "lerntext": "nískij",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "короткий",
               "lerntext": "karótkij",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "лёгкий",
               "lerntext": "ljóchkij",
               "de": "leicht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "дорогой",
               "lerntext": "daragój",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "маленький",
               "lerntext": "málenkij",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "длинный",
               "lerntext": "dlínnyj",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "дешёвый",
               "lerntext": "deschówyj",
               "de": "billig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "большой",
               "lerntext": "balschój",
               "de": "groß",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -7347,76 +8313,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "белый",
               "lerntext": "bjélyj",
-              "de": "weiß"
+              "de": "weiß",
+              "c": "a"
             },
             {
               "schrift": "коричневый",
               "lerntext": "karítschnewyj",
-              "de": "braun"
+              "de": "braun",
+              "c": "a"
             },
             {
               "schrift": "серый",
               "lerntext": "sséryj",
-              "de": "grau"
+              "de": "grau",
+              "c": "a"
             },
             {
               "schrift": "красный",
               "lerntext": "krásnyj",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "синий",
               "lerntext": "sínij",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "жёлтый",
               "lerntext": "shóltyj",
               "de": "gelb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "зелёный",
               "lerntext": "seljónyj",
               "de": "grün",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "чёрный",
               "lerntext": "tschórnyj",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "высокий",
               "lerntext": "wyssókij",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "тяжёлый",
               "lerntext": "tjashólyj",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "низкий",
               "lerntext": "nískij",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "короткий",
               "lerntext": "karótkij",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "лёгкий",
               "lerntext": "ljóchkij",
               "de": "leicht",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -7430,7 +8409,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "еда [Slot]",
-          "lerntext": "jedá [Slot]"
+          "lerntext": "jedá [Slot]",
+          "wortarten": {
+            "jedá": "n"
+          }
         },
         "frameDe": "Das Essen ist [Slot].",
         "pronouns": [],
@@ -7439,86 +8421,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "милый",
               "lerntext": "mílyj",
-              "de": "lieb"
+              "de": "lieb",
+              "c": "a"
             },
             {
               "schrift": "тёплый",
               "lerntext": "tjóplyj",
-              "de": "warm"
+              "de": "warm",
+              "c": "a"
             },
             {
               "schrift": "холодный",
               "lerntext": "chalódnyj",
-              "de": "kalt"
+              "de": "kalt",
+              "c": "a"
             },
             {
               "schrift": "чистый",
               "lerntext": "tschístyj",
-              "de": "sauber"
+              "de": "sauber",
+              "c": "a"
             },
             {
               "schrift": "грязный",
               "lerntext": "grjásnyj",
-              "de": "schmutzig"
+              "de": "schmutzig",
+              "c": "a"
             },
             {
               "schrift": "белый",
               "lerntext": "bjélyj",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "серый",
               "lerntext": "sséryj",
               "de": "grau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "коричневый",
               "lerntext": "karítschnewyj",
               "de": "braun",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "красный",
               "lerntext": "krásnyj",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "зелёный",
               "lerntext": "seljónyj",
               "de": "grün",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "чёрный",
               "lerntext": "tschórnyj",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "синий",
               "lerntext": "sínij",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "жёлтый",
               "lerntext": "shóltyj",
               "de": "gelb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "высокий",
               "lerntext": "wyssókij",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "дорогой",
               "lerntext": "daragój",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -7529,7 +8526,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "еда",
             "lerntext": "jedá",
-            "de": "Essen"
+            "de": "Essen",
+            "c": "n"
           }
         ],
         "id": "10.6"
@@ -7538,7 +8536,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "еда [Slot]",
-          "lerntext": "jedá [Slot]"
+          "lerntext": "jedá [Slot]",
+          "wortarten": {
+            "jedá": "n"
+          }
         },
         "frameDe": "Das Essen ist [Slot].",
         "pronouns": [],
@@ -7548,48 +8549,56 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "милый",
               "lerntext": "mílyj",
               "de": "lieb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "тёплый",
               "lerntext": "tjóplyj",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "холодный",
               "lerntext": "chalódnyj",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "чистый",
               "lerntext": "tschístyj",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "грязный",
               "lerntext": "grjásnyj",
               "de": "schmutzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "белый",
               "lerntext": "bjélyj",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "серый",
               "lerntext": "sséryj",
               "de": "grau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "коричневый",
               "lerntext": "karítschnewyj",
               "de": "braun",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -7603,29 +8612,36 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я люблю [Slot]",
-          "lerntext": "ja ljubljú [Slot]"
+          "lerntext": "ja ljubljú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich mag [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7634,36 +8650,42 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "море",
               "lerntext": "mórje",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "солнце",
               "lerntext": "sónze",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "дождь",
               "lerntext": "doshd",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "снег",
               "lerntext": "snjeg",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "погода",
               "lerntext": "pagóda",
               "de": "Wetter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "гора",
               "lerntext": "gará",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7677,7 +8699,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "еда [Slot]",
-          "lerntext": "jedá [Slot]"
+          "lerntext": "jedá [Slot]",
+          "wortarten": {
+            "jedá": "n"
+          }
         },
         "frameDe": "Das Essen ist [Slot].",
         "pronouns": [],
@@ -7687,30 +8712,35 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "милый",
               "lerntext": "mílyj",
               "de": "lieb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "тёплый",
               "lerntext": "tjóplyj",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "холодный",
               "lerntext": "chalódnyj",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "чистый",
               "lerntext": "tschístyj",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "грязный",
               "lerntext": "grjásnyj",
               "de": "schmutzig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -7745,29 +8775,36 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "вчера я был [Slot]",
-          "lerntext": "wtscherá ja byl [Slot]"
+          "lerntext": "wtscherá ja byl [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich war gestern [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7775,76 +8812,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "усталый",
               "lerntext": "ustályj",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "больной",
               "lerntext": "balnój",
-              "de": "krank"
+              "de": "krank",
+              "c": "a"
             },
             {
               "schrift": "довольный",
               "lerntext": "dawólnyj",
-              "de": "zufrieden"
+              "de": "zufrieden",
+              "c": "a"
             },
             {
               "schrift": "красный",
               "lerntext": "krásnyj",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "холодный",
               "lerntext": "chalódnyj",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "маленький",
               "lerntext": "málenkij",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "зелёный",
               "lerntext": "seljónyj",
               "de": "grün",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "чёрный",
               "lerntext": "tschórnyj",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "милый",
               "lerntext": "mílyj",
               "de": "lieb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "синий",
               "lerntext": "sínij",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "грязный",
               "lerntext": "grjásnyj",
               "de": "schmutzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "тяжёлый",
               "lerntext": "tjashólyj",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "белый",
               "lerntext": "bjélyj",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -7858,24 +8908,30 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "завтра я буду [Slot]",
-          "lerntext": "sáwtra ja búdu [Slot]"
+          "lerntext": "sáwtra ja búdu [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich werde morgen [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7883,81 +8939,95 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "покупать",
               "lerntext": "pakupát",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "давать",
               "lerntext": "dawát",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "брать",
               "lerntext": "brat",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "находить",
               "lerntext": "nachadít",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "приходить",
               "lerntext": "prichadít",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "жить",
               "lerntext": "shyt",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "хотеть",
               "lerntext": "chatjét",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "забывать",
               "lerntext": "sabywát",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "использовать",
               "lerntext": "ispólsawat",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "платить",
               "lerntext": "platít",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "переезжать",
               "lerntext": "pereeshát",
               "de": "umziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "открывать",
               "lerntext": "atkrywát",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "танцевать",
               "lerntext": "tanzewát",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "работать",
               "lerntext": "rabótat",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -7968,7 +9038,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "становиться",
             "lerntext": "stanawítsa",
-            "de": "werden"
+            "de": "werden",
+            "c": "v"
           }
         ],
         "id": "11.2"
@@ -7977,19 +9048,24 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу много [Slot]",
-          "lerntext": "ja chatschú mnóga [Slot]"
+          "lerntext": "ja chatschú mnóga [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich will viel [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7997,81 +9073,95 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "искать",
               "lerntext": "iskát",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "знать",
               "lerntext": "snat",
-              "de": "wissen"
+              "de": "wissen",
+              "c": "v"
             },
             {
               "schrift": "верить",
               "lerntext": "wjérit",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "думать",
               "lerntext": "dúmat",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "становиться",
               "lerntext": "stanawítsa",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "давать",
               "lerntext": "dawát",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "покупать",
               "lerntext": "pakupát",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "брать",
               "lerntext": "brat",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "быть",
               "lerntext": "byt",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "терять",
               "lerntext": "terját",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ехать",
               "lerntext": "jéchat",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "сказать",
               "lerntext": "skasát",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "читать",
               "lerntext": "tschitát",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "помогать",
               "lerntext": "pamagát",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8091,19 +9181,24 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я становлюсь [Slot]",
-          "lerntext": "ja stanawljús [Slot]"
+          "lerntext": "ja stanawljús [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich werde [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8111,76 +9206,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "открытый",
               "lerntext": "atkrýtyj",
-              "de": "offen"
+              "de": "offen",
+              "c": "a"
             },
             {
               "schrift": "закрытый",
               "lerntext": "sakrýtyj",
-              "de": "geschlossen"
+              "de": "geschlossen",
+              "c": "a"
             },
             {
               "schrift": "опасный",
               "lerntext": "apásnyj",
-              "de": "gefährlich"
+              "de": "gefährlich",
+              "c": "a"
             },
             {
               "schrift": "низкий",
               "lerntext": "nískij",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "серый",
               "lerntext": "sséryj",
               "de": "grau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "длинный",
               "lerntext": "dlínnyj",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "дешёвый",
               "lerntext": "deschówyj",
               "de": "billig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "коричневый",
               "lerntext": "karítschnewyj",
               "de": "braun",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "короткий",
               "lerntext": "karótkij",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "большой",
               "lerntext": "balschój",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "тёплый",
               "lerntext": "tjóplyj",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "лёгкий",
               "lerntext": "ljóchkij",
               "de": "leicht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "чистый",
               "lerntext": "tschístyj",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8191,7 +9299,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "становиться",
             "lerntext": "stanawítsa",
-            "de": "werden"
+            "de": "werden",
+            "c": "v"
           }
         ],
         "id": "11.4"
@@ -8200,19 +9309,24 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу много [Slot]",
-          "lerntext": "ja chatschú mnóga [Slot]"
+          "lerntext": "ja chatschú mnóga [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich will viel [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8221,42 +9335,49 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "искать",
               "lerntext": "iskát",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "знать",
               "lerntext": "snat",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "верить",
               "lerntext": "wjérit",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "думать",
               "lerntext": "dúmat",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "давать",
               "lerntext": "dawát",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "покупать",
               "lerntext": "pakupát",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "брать",
               "lerntext": "brat",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8270,19 +9391,24 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я становлюсь [Slot]",
-          "lerntext": "ja stanawljús [Slot]"
+          "lerntext": "ja stanawljús [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich werde [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8291,18 +9417,21 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "открытый",
               "lerntext": "atkrýtyj",
               "de": "offen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "закрытый",
               "lerntext": "sakrýtyj",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "опасный",
               "lerntext": "apásnyj",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8316,19 +9445,24 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу много [Slot]",
-          "lerntext": "ja chatschú mnóga [Slot]"
+          "lerntext": "ja chatschú mnóga [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich will viel [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8337,24 +9471,28 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "искать",
               "lerntext": "iskát",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "знать",
               "lerntext": "snat",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "верить",
               "lerntext": "wjérit",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "думать",
               "lerntext": "dúmat",
               "de": "denken",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8368,19 +9506,24 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я становлюсь [Slot]",
-          "lerntext": "ja stanawljús [Slot]"
+          "lerntext": "ja stanawljús [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich werde [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8389,18 +9532,21 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "открытый",
               "lerntext": "atkrýtyj",
               "de": "offen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "закрытый",
               "lerntext": "sakrýtyj",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "опасный",
               "lerntext": "apásnyj",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8435,24 +9581,30 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я устал [Slot] работаю",
-          "lerntext": "ja ustál [Slot] rabótaju"
+          "lerntext": "ja ustál [Slot] rabótaju",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich bin müde, [Slot] ich arbeite.",
         "pronouns": [
           {
             "schrift": "и",
             "lerntext": "i",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "но",
             "lerntext": "no",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           },
           {
             "schrift": "или",
             "lerntext": "íli",
-            "de": "oder"
+            "de": "oder",
+            "c": "k"
           }
         ],
         "slotGroups": [
@@ -8460,7 +9612,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "потому что",
               "lerntext": "patamú schto",
-              "de": "weil"
+              "de": "weil",
+              "c": "k"
             },
             {
               "schrift": "над",
@@ -8470,12 +9623,14 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "пока",
               "lerntext": "paká",
-              "de": "während"
+              "de": "während",
+              "c": "k"
             },
             {
               "schrift": "хотя",
               "lerntext": "chatjá",
-              "de": "obwohl"
+              "de": "obwohl",
+              "c": "k"
             },
             {
               "schrift": "до",
@@ -8492,6 +9647,7 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "тоже",
               "lerntext": "tósche",
               "de": "auch",
+              "c": "k",
               "wieder": true
             },
             {
@@ -8550,22 +9706,26 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "и",
             "lerntext": "i",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "но",
             "lerntext": "no",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           },
           {
             "schrift": "или",
             "lerntext": "íli",
-            "de": "oder"
+            "de": "oder",
+            "c": "k"
           },
           {
             "schrift": "значит",
             "lerntext": "snátschit",
-            "de": "also"
+            "de": "also",
+            "c": "k"
           }
         ],
         "id": "12.1"
@@ -8574,24 +9734,30 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я устал [Slot] работаю",
-          "lerntext": "ja ustál [Slot] rabótaju"
+          "lerntext": "ja ustál [Slot] rabótaju",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich bin müde, [Slot] ich arbeite.",
         "pronouns": [
           {
             "schrift": "и",
             "lerntext": "i",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "но",
             "lerntext": "no",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           },
           {
             "schrift": "или",
             "lerntext": "íli",
-            "de": "oder"
+            "de": "oder",
+            "c": "k"
           }
         ],
         "slotGroups": [
@@ -8599,7 +9765,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "чтобы",
               "lerntext": "schtóby",
-              "de": "damit"
+              "de": "damit",
+              "c": "k"
             },
             {
               "schrift": "перед",
@@ -8610,18 +9777,21 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "потому что",
               "lerntext": "patamú schto",
               "de": "weil",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "пока",
               "lerntext": "paká",
               "de": "während",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "хотя",
               "lerntext": "chatjá",
               "de": "obwohl",
+              "c": "k",
               "wieder": true
             },
             {
@@ -8640,6 +9810,7 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "тоже",
               "lerntext": "tósche",
               "de": "auch",
+              "c": "k",
               "wieder": true
             },
             {
@@ -8677,7 +9848,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "хочу [Slot] но не могу",
-          "lerntext": "chatschú [Slot] no nje magú"
+          "lerntext": "chatschú [Slot] no nje magú",
+          "wortarten": {
+            "no": "k"
+          }
         },
         "frameDe": "Ich will [Slot], aber ich kann nicht.",
         "pronouns": [],
@@ -8686,76 +9860,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "понимать",
               "lerntext": "panimát",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "продолжать",
               "lerntext": "pradalshát",
-              "de": "fortsetzen"
+              "de": "fortsetzen",
+              "c": "v"
             },
             {
               "schrift": "надеяться",
               "lerntext": "nadjéjatsa",
-              "de": "hoffen"
+              "de": "hoffen",
+              "c": "v"
             },
             {
               "schrift": "думать",
               "lerntext": "dúmat",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "давать",
               "lerntext": "dawát",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "показывать",
               "lerntext": "pakásywat",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "покупать",
               "lerntext": "pakupát",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "брать",
               "lerntext": "brat",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "спрашивать",
               "lerntext": "spráschiwat",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "писать",
               "lerntext": "pissát",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "мочь",
               "lerntext": "motsch",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ждать",
               "lerntext": "shdat",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "смотреть",
               "lerntext": "smatrjét",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8775,7 +9962,11 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "это [Slot] но ничего",
-          "lerntext": "eto [Slot] no nitschewó"
+          "lerntext": "eto [Slot] no nitschewó",
+          "wortarten": {
+            "no": "k",
+            "nitschewó": "p"
+          }
         },
         "frameDe": "Es ist [Slot], aber es geht.",
         "pronouns": [],
@@ -8784,86 +9975,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "трудный",
               "lerntext": "trúdnyj",
-              "de": "schwierig"
+              "de": "schwierig",
+              "c": "a"
             },
             {
               "schrift": "лёгкий",
               "lerntext": "ljóchkij",
-              "de": "leicht"
+              "de": "leicht",
+              "c": "a"
             },
             {
               "schrift": "интересный",
               "lerntext": "interjésnyj",
-              "de": "interessant"
+              "de": "interessant",
+              "c": "a"
             },
             {
               "schrift": "правильный",
               "lerntext": "práwilnyj",
-              "de": "richtig"
+              "de": "richtig",
+              "c": "a"
             },
             {
               "schrift": "неправильный",
               "lerntext": "neprávilnyj",
-              "de": "falsch"
+              "de": "falsch",
+              "c": "a"
             },
             {
               "schrift": "опасный",
               "lerntext": "apásnyj",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "открытый",
               "lerntext": "atkrýtyj",
               "de": "offen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "закрытый",
               "lerntext": "sakrýtyj",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "жёлтый",
               "lerntext": "shóltyj",
               "de": "gelb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "высокий",
               "lerntext": "wyssókij",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "красный",
               "lerntext": "krásnyj",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "холодный",
               "lerntext": "chalódnyj",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "дорогой",
               "lerntext": "daragój",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "маленький",
               "lerntext": "málenkij",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "зелёный",
               "lerntext": "seljónyj",
               "de": "grün",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8874,12 +10080,14 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "это",
             "lerntext": "éta",
-            "de": "das"
+            "de": "das",
+            "c": "p"
           },
           {
             "schrift": "ничего",
             "lerntext": "nitschewó",
-            "de": "nichts"
+            "de": "nichts",
+            "c": "p"
           }
         ],
         "id": "12.4"
@@ -8888,7 +10096,11 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "это [Slot] но ничего",
-          "lerntext": "eto [Slot] no nitschewó"
+          "lerntext": "eto [Slot] no nitschewó",
+          "wortarten": {
+            "no": "k",
+            "nitschewó": "p"
+          }
         },
         "frameDe": "Es ist [Slot], aber es geht.",
         "pronouns": [],
@@ -8975,7 +10187,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу тебя [Slot]",
-          "lerntext": "ja chatschú tebjá [Slot]"
+          "lerntext": "ja chatschú tebjá [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich will dich [Slot].",
         "pronouns": [],
@@ -8984,66 +10199,77 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "менять",
               "lerntext": "menját",
-              "de": "ändern"
+              "de": "ändern",
+              "c": "v"
             },
             {
               "schrift": "понимать",
               "lerntext": "panimát",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "продолжать",
               "lerntext": "pradalshát",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "надеяться",
               "lerntext": "nadjéjatsa",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "получать",
               "lerntext": "palutschát",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "плакать",
               "lerntext": "plákat",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "видеть",
               "lerntext": "wídjet",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "сидеть",
               "lerntext": "ssidjét",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "путешествовать",
               "lerntext": "puteschéstwawat",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "верить",
               "lerntext": "wjérit",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "нуждаться",
               "lerntext": "nushdátsa",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -9057,7 +10283,11 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "это [Slot] но ничего",
-          "lerntext": "eto [Slot] no nitschewó"
+          "lerntext": "eto [Slot] no nitschewó",
+          "wortarten": {
+            "no": "k",
+            "nitschewó": "p"
+          }
         },
         "frameDe": "Es ist [Slot], aber es geht.",
         "pronouns": [],
@@ -9067,24 +10297,28 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "трудный",
               "lerntext": "trúdnyj",
               "de": "schwierig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "интересный",
               "lerntext": "interjésnyj",
               "de": "interessant",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "правильный",
               "lerntext": "práwilnyj",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "неправильный",
               "lerntext": "neprávilnyj",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
@@ -9122,24 +10356,30 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я устал [Slot] работаю",
-          "lerntext": "ja ustál [Slot] rabótaju"
+          "lerntext": "ja ustál [Slot] rabótaju",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich bin müde, [Slot] ich arbeite.",
         "pronouns": [
           {
             "schrift": "и",
             "lerntext": "i",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "но",
             "lerntext": "no",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           },
           {
             "schrift": "или",
             "lerntext": "íli",
-            "de": "oder"
+            "de": "oder",
+            "c": "k"
           }
         ],
         "slotGroups": [
@@ -9148,24 +10388,28 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "чтобы",
               "lerntext": "schtóby",
               "de": "damit",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "потому что",
               "lerntext": "patamú schto",
               "de": "weil",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "пока",
               "lerntext": "paká",
               "de": "während",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "хотя",
               "lerntext": "chatjá",
               "de": "obwohl",
+              "c": "k",
               "wieder": true
             },
             {
@@ -9178,6 +10422,7 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "тоже",
               "lerntext": "tósche",
               "de": "auch",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -9191,7 +10436,11 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "это [Slot] но ничего",
-          "lerntext": "eto [Slot] no nitschewó"
+          "lerntext": "eto [Slot] no nitschewó",
+          "wortarten": {
+            "no": "k",
+            "nitschewó": "p"
+          }
         },
         "frameDe": "Es ist [Slot], aber es geht.",
         "pronouns": [],
@@ -9201,24 +10450,28 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "трудный",
               "lerntext": "trúdnyj",
               "de": "schwierig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "интересный",
               "lerntext": "interjésnyj",
               "de": "interessant",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "правильный",
               "lerntext": "práwilnyj",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "неправильный",
               "lerntext": "neprávilnyj",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
@@ -9250,7 +10503,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу тебя [Slot]",
-          "lerntext": "ja chatschú tebjá [Slot]"
+          "lerntext": "ja chatschú tebjá [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich will dich [Slot].",
         "pronouns": [],
@@ -9260,24 +10516,28 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "менять",
               "lerntext": "menját",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "понимать",
               "lerntext": "panimát",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "продолжать",
               "lerntext": "pradalshát",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "надеяться",
               "lerntext": "nadjéjatsa",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -9312,14 +10572,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "у меня болит [Slot]",
-          "lerntext": "u menjá balít [Slot]"
+          "lerntext": "u menjá balít [Slot]",
+          "wortarten": {
+            "menjá": "p"
+          }
         },
         "frameDe": "[Slot] tut weh.",
         "pronouns": [
           {
             "schrift": "мой",
             "lerntext": "moj",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -9327,71 +10591,83 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "голова",
               "lerntext": "galawá",
-              "de": "Kopf"
+              "de": "Kopf",
+              "c": "n"
             },
             {
               "schrift": "глаз",
               "lerntext": "glas",
-              "de": "Auge"
+              "de": "Auge",
+              "c": "n"
             },
             {
               "schrift": "море",
               "lerntext": "mórje",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "отпуск",
               "lerntext": "ótpusk",
               "de": "Urlaub",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "снег",
               "lerntext": "snjeg",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "дождь",
               "lerntext": "doshd",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "минута",
               "lerntext": "minúta",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "час",
               "lerntext": "tschas",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "погода",
               "lerntext": "pagóda",
               "de": "Wetter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "гора",
               "lerntext": "gará",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "солнце",
               "lerntext": "sónze",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "неделя",
               "lerntext": "nedjélja",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9405,7 +10681,11 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "у меня боль в [Slot]",
-          "lerntext": "u menjá bol w [Slot]"
+          "lerntext": "u menjá bol w [Slot]",
+          "wortarten": {
+            "menjá": "p",
+            "bol": "n"
+          }
         },
         "frameDe": "Ich habe Schmerzen im [Slot].",
         "pronouns": [],
@@ -9414,66 +10694,77 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "нога",
               "lerntext": "nagá",
-              "de": "Bein"
+              "de": "Bein",
+              "c": "n"
             },
             {
               "schrift": "глаз",
               "lerntext": "glas",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "голова",
               "lerntext": "galawá",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "море",
               "lerntext": "mórje",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "отпуск",
               "lerntext": "ótpusk",
               "de": "Urlaub",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "снег",
               "lerntext": "snjeg",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вечер",
               "lerntext": "wjétscher",
               "de": "Abend",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "дождь",
               "lerntext": "doshd",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "автобус",
               "lerntext": "awtóbus",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "друг",
               "lerntext": "drug",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "минута",
               "lerntext": "minúta",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9484,7 +10775,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "боль",
             "lerntext": "bol",
-            "de": "Schmerz"
+            "de": "Schmerz",
+            "c": "n"
           }
         ],
         "id": "13.2"
@@ -9514,7 +10806,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "здесь есть [Slot]",
-          "lerntext": "sdes jest [Slot]"
+          "lerntext": "sdes jest [Slot]",
+          "wortarten": {
+            "jest": "v"
+          }
         },
         "frameDe": "Hier gibt es einen [Slot].",
         "pronouns": [],
@@ -9523,66 +10818,77 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "тарелка",
               "lerntext": "taréljka",
-              "de": "Teller"
+              "de": "Teller",
+              "c": "n"
             },
             {
               "schrift": "боль",
               "lerntext": "bol",
               "de": "Schmerz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "голова",
               "lerntext": "galawá",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "студент",
               "lerntext": "studjént",
               "de": "Student",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вино",
               "lerntext": "winó",
               "de": "Wein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "брат",
               "lerntext": "brat",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сын",
               "lerntext": "syn",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сыр",
               "lerntext": "syr",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "кофе",
               "lerntext": "kófje",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "аэропорт",
               "lerntext": "aerapórt",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "чай",
               "lerntext": "tschaj",
               "de": "Tee",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9596,7 +10902,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я покупаю [Slot]",
-          "lerntext": "ja pakupáju [Slot]"
+          "lerntext": "ja pakupáju [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich kaufe ein [Slot].",
         "pronouns": [],
@@ -9605,66 +10914,77 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "платье",
               "lerntext": "plátje",
-              "de": "Kleid"
+              "de": "Kleid",
+              "c": "n"
             },
             {
               "schrift": "глаз",
               "lerntext": "glas",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "погода",
               "lerntext": "pagóda",
               "de": "Wetter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "обед",
               "lerntext": "abjéd",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "пиво",
               "lerntext": "píwa",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "окно",
               "lerntext": "aknó",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "больница",
               "lerntext": "balníza",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "хлеб",
               "lerntext": "chljeb",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "мясо",
               "lerntext": "mjássa",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "стакан",
               "lerntext": "stakán",
               "de": "Glas",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "комната",
               "lerntext": "kómnata",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9678,7 +10998,11 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "у меня есть [Slot]",
-          "lerntext": "u menjá jest [Slot]"
+          "lerntext": "u menjá jest [Slot]",
+          "wortarten": {
+            "menjá": "p",
+            "jest": "v"
+          }
         },
         "frameDe": "Ich habe [Slot].",
         "pronouns": [],
@@ -9687,71 +11011,83 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "одежда",
               "lerntext": "adjéshda",
-              "de": "Kleidung"
+              "de": "Kleidung",
+              "c": "n"
             },
             {
               "schrift": "имя",
               "lerntext": "ímja",
-              "de": "Name"
+              "de": "Name",
+              "c": "n"
             },
             {
               "schrift": "платье",
               "lerntext": "plátje",
               "de": "Kleid",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "тарелка",
               "lerntext": "taréljka",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "боль",
               "lerntext": "bol",
               "de": "Schmerz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "глаз",
               "lerntext": "glas",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "голова",
               "lerntext": "galawá",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "час",
               "lerntext": "tschas",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ночь",
               "lerntext": "notsch",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "гора",
               "lerntext": "gará",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "солнце",
               "lerntext": "sónze",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "море",
               "lerntext": "mórje",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9765,7 +11101,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "это моя [Slot]",
-          "lerntext": "eto majá [Slot]"
+          "lerntext": "eto majá [Slot]",
+          "wortarten": {
+            "majá": "p"
+          }
         },
         "frameDe": "Das ist meine [Slot].",
         "pronouns": [],
@@ -9774,66 +11113,77 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "работа",
               "lerntext": "rabóta",
-              "de": "Arbeit"
+              "de": "Arbeit",
+              "c": "n"
             },
             {
               "schrift": "одежда",
               "lerntext": "adjéshda",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "имя",
               "lerntext": "ímja",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "платье",
               "lerntext": "plátje",
               "de": "Kleid",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "тарелка",
               "lerntext": "taréljka",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "боль",
               "lerntext": "bol",
               "de": "Schmerz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "глаз",
               "lerntext": "glas",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "голова",
               "lerntext": "galawá",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ужин",
               "lerntext": "úshyn",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "фрукты",
               "lerntext": "frúkty",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "университет",
               "lerntext": "uniwersitjét",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9847,7 +11197,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я жду [Slot]",
-          "lerntext": "ja shdu [Slot]"
+          "lerntext": "ja shdu [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich warte auf [Slot].",
         "pronouns": [],
@@ -9856,71 +11209,83 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "ответ",
               "lerntext": "atwjét",
-              "de": "Antwort"
+              "de": "Antwort",
+              "c": "n"
             },
             {
               "schrift": "экзамен",
               "lerntext": "ekzámen",
-              "de": "Prüfung"
+              "de": "Prüfung",
+              "c": "n"
             },
             {
               "schrift": "работа",
               "lerntext": "rabóta",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "одежда",
               "lerntext": "adjéshda",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "имя",
               "lerntext": "ímja",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "платье",
               "lerntext": "plátje",
               "de": "Kleid",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "тарелка",
               "lerntext": "taréljka",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "боль",
               "lerntext": "bol",
               "de": "Schmerz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "глаз",
               "lerntext": "glas",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ребёнок",
               "lerntext": "rebjónak",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "город",
               "lerntext": "górad",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "семья",
               "lerntext": "semjá",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9934,7 +11299,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я получил хороший [Slot]",
-          "lerntext": "ja palutschíl charóschi [Slot]"
+          "lerntext": "ja palutschíl charóschi [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich habe eine gute [Slot] bekommen.",
         "pronouns": [],
@@ -9943,76 +11311,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "дом",
               "lerntext": "dom",
-              "de": "Haus"
+              "de": "Haus",
+              "c": "n"
             },
             {
               "schrift": "комната",
               "lerntext": "kómnata",
-              "de": "Zimmer"
+              "de": "Zimmer",
+              "c": "n"
             },
             {
               "schrift": "стол",
               "lerntext": "stol",
-              "de": "Tisch"
+              "de": "Tisch",
+              "c": "n"
             },
             {
               "schrift": "экзамен",
               "lerntext": "ekzámen",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ответ",
               "lerntext": "atwjét",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "работа",
               "lerntext": "rabóta",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "одежда",
               "lerntext": "adjéshda",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "имя",
               "lerntext": "ímja",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "платье",
               "lerntext": "plátje",
               "de": "Kleid",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "тарелка",
               "lerntext": "taréljka",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "время",
               "lerntext": "wrjémja",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вода",
               "lerntext": "wadá",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ключ",
               "lerntext": "kljutsch",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10023,7 +11404,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "хороший",
             "lerntext": "charóschij",
-            "de": "gut"
+            "de": "gut",
+            "c": "a"
           }
         ],
         "id": "14.6"
@@ -10062,27 +11444,32 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "жена",
               "lerntext": "shená",
-              "de": "Ehefrau"
+              "de": "Ehefrau",
+              "c": "n"
             },
             {
               "schrift": "аптека",
               "lerntext": "aptjéka",
-              "de": "Apotheke"
+              "de": "Apotheke",
+              "c": "n"
             },
             {
               "schrift": "билет",
               "lerntext": "biljét",
-              "de": "Fahrkarte"
+              "de": "Fahrkarte",
+              "c": "n"
             },
             {
               "schrift": "счёт",
               "lerntext": "schtschot",
-              "de": "Rechnung"
+              "de": "Rechnung",
+              "c": "n"
             },
             {
               "schrift": "карта",
               "lerntext": "kárta",
-              "de": "Karte"
+              "de": "Karte",
+              "c": "n"
             }
           ]
         ],
@@ -10104,56 +11491,66 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "лекция",
               "lerntext": "ljékzija",
-              "de": "Vorlesung"
+              "de": "Vorlesung",
+              "c": "n"
             },
             {
               "schrift": "язык",
               "lerntext": "jasýk",
-              "de": "Sprache"
+              "de": "Sprache",
+              "c": "n"
             },
             {
               "schrift": "вопрос",
               "lerntext": "wapróss",
-              "de": "Frage"
+              "de": "Frage",
+              "c": "n"
             },
             {
               "schrift": "вещь",
               "lerntext": "weschtsch",
-              "de": "Sache"
+              "de": "Sache",
+              "c": "n"
             },
             {
               "schrift": "меню",
               "lerntext": "menjú",
-              "de": "Speisekarte"
+              "de": "Speisekarte",
+              "c": "n"
             },
             {
               "schrift": "жена",
               "lerntext": "shená",
               "de": "Ehefrau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "аптека",
               "lerntext": "aptjéka",
               "de": "Apotheke",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "билет",
               "lerntext": "biljét",
               "de": "Fahrkarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "счёт",
               "lerntext": "schtschot",
               "de": "Rechnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "карта",
               "lerntext": "kárta",
               "de": "Karte",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10176,86 +11573,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "бутылка",
               "lerntext": "butýlka",
-              "de": "Flasche"
+              "de": "Flasche",
+              "c": "n"
             },
             {
               "schrift": "номер",
               "lerntext": "nómer",
-              "de": "Nummer"
+              "de": "Nummer",
+              "c": "n"
             },
             {
               "schrift": "музыка",
               "lerntext": "músyka",
-              "de": "Musik"
+              "de": "Musik",
+              "c": "n"
             },
             {
               "schrift": "мир",
               "lerntext": "mir",
-              "de": "Welt"
+              "de": "Welt",
+              "c": "n"
             },
             {
               "schrift": "воздух",
               "lerntext": "wósduch",
-              "de": "Luft"
+              "de": "Luft",
+              "c": "n"
             },
             {
               "schrift": "лекция",
               "lerntext": "ljékzija",
               "de": "Vorlesung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "язык",
               "lerntext": "jasýk",
               "de": "Sprache",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вопрос",
               "lerntext": "wapróss",
               "de": "Frage",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вещь",
               "lerntext": "weschtsch",
               "de": "Sache",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "меню",
               "lerntext": "menjú",
               "de": "Speisekarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "жена",
               "lerntext": "shená",
               "de": "Ehefrau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "аптека",
               "lerntext": "aptjéka",
               "de": "Apotheke",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "билет",
               "lerntext": "biljét",
               "de": "Fahrkarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "счёт",
               "lerntext": "schtschot",
               "de": "Rechnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "карта",
               "lerntext": "kárta",
               "de": "Karte",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10278,86 +11690,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "кошка",
               "lerntext": "kóschka",
-              "de": "Katze"
+              "de": "Katze",
+              "c": "n"
             },
             {
               "schrift": "любовь",
               "lerntext": "ljubów",
-              "de": "Liebe"
+              "de": "Liebe",
+              "c": "n"
             },
             {
               "schrift": "способ",
               "lerntext": "spóssab",
-              "de": "Art"
+              "de": "Art",
+              "c": "n"
             },
             {
               "schrift": "идея",
               "lerntext": "idjéja",
-              "de": "Idee"
+              "de": "Idee",
+              "c": "n"
             },
             {
               "schrift": "история",
               "lerntext": "istórija",
-              "de": "Geschichte"
+              "de": "Geschichte",
+              "c": "n"
             },
             {
               "schrift": "бутылка",
               "lerntext": "butýlka",
               "de": "Flasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "номер",
               "lerntext": "nómer",
               "de": "Nummer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "музыка",
               "lerntext": "músyka",
               "de": "Musik",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "мир",
               "lerntext": "mir",
               "de": "Welt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "воздух",
               "lerntext": "wósduch",
               "de": "Luft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "лекция",
               "lerntext": "ljékzija",
               "de": "Vorlesung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "язык",
               "lerntext": "jasýk",
               "de": "Sprache",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вопрос",
               "lerntext": "wapróss",
               "de": "Frage",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вещь",
               "lerntext": "weschtsch",
               "de": "Sache",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "меню",
               "lerntext": "menjú",
               "de": "Speisekarte",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10380,81 +11807,95 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "страх",
               "lerntext": "strach",
-              "de": "Angst"
+              "de": "Angst",
+              "c": "n"
             },
             {
               "schrift": "смена",
               "lerntext": "smjéna",
-              "de": "Schicht"
+              "de": "Schicht",
+              "c": "n"
             },
             {
               "schrift": "перерыв",
               "lerntext": "pererýw",
-              "de": "Pause"
+              "de": "Pause",
+              "c": "n"
             },
             {
               "schrift": "размер",
               "lerntext": "rasmjér",
-              "de": "Grösse"
+              "de": "Grösse",
+              "c": "n"
             },
             {
               "schrift": "кошка",
               "lerntext": "kóschka",
               "de": "Katze",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "любовь",
               "lerntext": "ljubów",
               "de": "Liebe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "способ",
               "lerntext": "spóssab",
               "de": "Art",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "идея",
               "lerntext": "idjéja",
               "de": "Idee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "история",
               "lerntext": "istórija",
               "de": "Geschichte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "бутылка",
               "lerntext": "butýlka",
               "de": "Flasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "номер",
               "lerntext": "nómer",
               "de": "Nummer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "музыка",
               "lerntext": "músyka",
               "de": "Musik",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "мир",
               "lerntext": "mir",
               "de": "Welt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "воздух",
               "lerntext": "wósduch",
               "de": "Luft",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10477,27 +11918,32 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "мужчина",
               "lerntext": "muschtschína",
-              "de": "Mann"
+              "de": "Mann",
+              "c": "n"
             },
             {
               "schrift": "парень",
               "lerntext": "párjen",
-              "de": "Junge"
+              "de": "Junge",
+              "c": "n"
             },
             {
               "schrift": "муж",
               "lerntext": "mush",
-              "de": "Ehemann"
+              "de": "Ehemann",
+              "c": "n"
             },
             {
               "schrift": "месяц",
               "lerntext": "méssjaz",
-              "de": "Monat"
+              "de": "Monat",
+              "c": "n"
             },
             {
               "schrift": "утро",
               "lerntext": "útra",
-              "de": "Morgen"
+              "de": "Morgen",
+              "c": "n"
             }
           ]
         ],
@@ -10519,56 +11965,66 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "рынок",
               "lerntext": "rýnak",
-              "de": "Markt"
+              "de": "Markt",
+              "c": "n"
             },
             {
               "schrift": "паспорт",
               "lerntext": "páspart",
-              "de": "Pass"
+              "de": "Pass",
+              "c": "n"
             },
             {
               "schrift": "цена",
               "lerntext": "zená",
-              "de": "Preis"
+              "de": "Preis",
+              "c": "n"
             },
             {
               "schrift": "врач",
               "lerntext": "wratsch",
-              "de": "Arzt"
+              "de": "Arzt",
+              "c": "n"
             },
             {
               "schrift": "фильм",
               "lerntext": "film",
-              "de": "Film"
+              "de": "Film",
+              "c": "n"
             },
             {
               "schrift": "мужчина",
               "lerntext": "muschtschína",
               "de": "Mann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "парень",
               "lerntext": "párjen",
               "de": "Junge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "муж",
               "lerntext": "mush",
               "de": "Ehemann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "месяц",
               "lerntext": "méssjaz",
               "de": "Monat",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "утро",
               "lerntext": "útra",
               "de": "Morgen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10591,86 +12047,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "собака",
               "lerntext": "ssabáka",
-              "de": "Hund"
+              "de": "Hund",
+              "c": "n"
             },
             {
               "schrift": "часть",
               "lerntext": "tschast",
-              "de": "Teil"
+              "de": "Teil",
+              "c": "n"
             },
             {
               "schrift": "начало",
               "lerntext": "natschála",
-              "de": "Anfang"
+              "de": "Anfang",
+              "c": "n"
             },
             {
               "schrift": "причина",
               "lerntext": "pritschína",
-              "de": "Grund"
+              "de": "Grund",
+              "c": "n"
             },
             {
               "schrift": "голод",
               "lerntext": "gólad",
-              "de": "Hunger"
+              "de": "Hunger",
+              "c": "n"
             },
             {
               "schrift": "рынок",
               "lerntext": "rýnak",
               "de": "Markt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "паспорт",
               "lerntext": "páspart",
               "de": "Pass",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "цена",
               "lerntext": "zená",
               "de": "Preis",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "врач",
               "lerntext": "wratsch",
               "de": "Arzt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "фильм",
               "lerntext": "film",
               "de": "Film",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "мужчина",
               "lerntext": "muschtschína",
               "de": "Mann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "парень",
               "lerntext": "párjen",
               "de": "Junge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "муж",
               "lerntext": "mush",
               "de": "Ehemann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "месяц",
               "lerntext": "méssjaz",
               "de": "Monat",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "утро",
               "lerntext": "útra",
               "de": "Morgen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10693,86 +12164,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "сон",
               "lerntext": "son",
-              "de": "Schlaf"
+              "de": "Schlaf",
+              "c": "n"
             },
             {
               "schrift": "скидка",
               "lerntext": "skídka",
-              "de": "Rabatt"
+              "de": "Rabatt",
+              "c": "n"
             },
             {
               "schrift": "вход",
               "lerntext": "wchod",
-              "de": "Eingang"
+              "de": "Eingang",
+              "c": "n"
             },
             {
               "schrift": "выход",
               "lerntext": "wýchad",
-              "de": "Ausgang"
+              "de": "Ausgang",
+              "c": "n"
             },
             {
               "schrift": "клиент",
               "lerntext": "klijént",
-              "de": "Kunde"
+              "de": "Kunde",
+              "c": "n"
             },
             {
               "schrift": "собака",
               "lerntext": "ssabáka",
               "de": "Hund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "часть",
               "lerntext": "tschast",
               "de": "Teil",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "начало",
               "lerntext": "natschála",
               "de": "Anfang",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "причина",
               "lerntext": "pritschína",
               "de": "Grund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "голод",
               "lerntext": "gólad",
               "de": "Hunger",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "рынок",
               "lerntext": "rýnak",
               "de": "Markt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "паспорт",
               "lerntext": "páspart",
               "de": "Pass",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "цена",
               "lerntext": "zená",
               "de": "Preis",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "врач",
               "lerntext": "wratsch",
               "de": "Arzt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "фильм",
               "lerntext": "film",
               "de": "Film",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10795,71 +12281,83 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "зарплата",
               "lerntext": "sarpláta",
-              "de": "Lohn"
+              "de": "Lohn",
+              "c": "n"
             },
             {
               "schrift": "договор",
               "lerntext": "dagawór",
-              "de": "Vertrag"
+              "de": "Vertrag",
+              "c": "n"
             },
             {
               "schrift": "сон",
               "lerntext": "son",
               "de": "Schlaf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "скидка",
               "lerntext": "skídka",
               "de": "Rabatt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вход",
               "lerntext": "wchod",
               "de": "Eingang",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "выход",
               "lerntext": "wýchad",
               "de": "Ausgang",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "клиент",
               "lerntext": "klijént",
               "de": "Kunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "собака",
               "lerntext": "ssabáka",
               "de": "Hund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "часть",
               "lerntext": "tschast",
               "de": "Teil",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "начало",
               "lerntext": "natschála",
               "de": "Anfang",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "причина",
               "lerntext": "pritschína",
               "de": "Grund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "голод",
               "lerntext": "gólad",
               "de": "Hunger",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10882,27 +12380,32 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "год",
               "lerntext": "god",
-              "de": "Jahr"
+              "de": "Jahr",
+              "c": "n"
             },
             {
               "schrift": "выходные",
               "lerntext": "wychadnýje",
-              "de": "Wochenende"
+              "de": "Wochenende",
+              "c": "n"
             },
             {
               "schrift": "страна",
               "lerntext": "straná",
-              "de": "Land"
+              "de": "Land",
+              "c": "n"
             },
             {
               "schrift": "кафе",
               "lerntext": "kafé",
-              "de": "Cafe"
+              "de": "Cafe",
+              "c": "n"
             },
             {
               "schrift": "слово",
               "lerntext": "slówa",
-              "de": "Wort"
+              "de": "Wort",
+              "c": "n"
             }
           ]
         ],
@@ -10924,56 +12427,66 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "проблема",
               "lerntext": "prabljéma",
-              "de": "Problem"
+              "de": "Problem",
+              "c": "n"
             },
             {
               "schrift": "девушка",
               "lerntext": "djéwuschka",
-              "de": "Mädchen"
+              "de": "Mädchen",
+              "c": "n"
             },
             {
               "schrift": "багаж",
               "lerntext": "bagásh",
-              "de": "Gepäck"
+              "de": "Gepäck",
+              "c": "n"
             },
             {
               "schrift": "лекарство",
               "lerntext": "lekárstwa",
-              "de": "Medikament"
+              "de": "Medikament",
+              "c": "n"
             },
             {
               "schrift": "температура",
               "lerntext": "temperatúra",
-              "de": "Fieber"
+              "de": "Fieber",
+              "c": "n"
             },
             {
               "schrift": "год",
               "lerntext": "god",
               "de": "Jahr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "выходные",
               "lerntext": "wychadnýje",
               "de": "Wochenende",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "страна",
               "lerntext": "straná",
               "de": "Land",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "кафе",
               "lerntext": "kafé",
               "de": "Cafe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "слово",
               "lerntext": "slówa",
               "de": "Wort",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10996,86 +12509,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "праздник",
               "lerntext": "prásnik",
-              "de": "Fest"
+              "de": "Fest",
+              "c": "n"
             },
             {
               "schrift": "жизнь",
               "lerntext": "shysn",
-              "de": "Leben"
+              "de": "Leben",
+              "c": "n"
             },
             {
               "schrift": "подарок",
               "lerntext": "padárak",
-              "de": "Geschenk"
+              "de": "Geschenk",
+              "c": "n"
             },
             {
               "schrift": "конец",
               "lerntext": "kanjéz",
-              "de": "Ende"
+              "de": "Ende",
+              "c": "n"
             },
             {
               "schrift": "пример",
               "lerntext": "primjér",
-              "de": "Beispiel"
+              "de": "Beispiel",
+              "c": "n"
             },
             {
               "schrift": "проблема",
               "lerntext": "prabljéma",
               "de": "Problem",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "девушка",
               "lerntext": "djéwuschka",
               "de": "Mädchen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "багаж",
               "lerntext": "bagásh",
               "de": "Gepäck",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "лекарство",
               "lerntext": "lekárstwa",
               "de": "Medikament",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "температура",
               "lerntext": "temperatúra",
               "de": "Fieber",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "год",
               "lerntext": "god",
               "de": "Jahr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "выходные",
               "lerntext": "wychadnýje",
               "de": "Wochenende",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "страна",
               "lerntext": "straná",
               "de": "Land",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "кафе",
               "lerntext": "kafé",
               "de": "Cafe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "слово",
               "lerntext": "slówa",
               "de": "Wort",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11098,66 +12626,77 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "встреча",
               "lerntext": "wstrjétscha",
-              "de": "Treffen"
+              "de": "Treffen",
+              "c": "n"
             },
             {
               "schrift": "праздник",
               "lerntext": "prásnik",
               "de": "Fest",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "жизнь",
               "lerntext": "shysn",
               "de": "Leben",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "подарок",
               "lerntext": "padárak",
               "de": "Geschenk",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "конец",
               "lerntext": "kanjéz",
               "de": "Ende",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "пример",
               "lerntext": "primjér",
               "de": "Beispiel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "проблема",
               "lerntext": "prabljéma",
               "de": "Problem",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "девушка",
               "lerntext": "djéwuschka",
               "de": "Mädchen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "багаж",
               "lerntext": "bagásh",
               "de": "Gepäck",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "лекарство",
               "lerntext": "lekárstwa",
               "de": "Medikament",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "температура",
               "lerntext": "temperatúra",
               "de": "Fieber",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11180,17 +12719,20 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "люди",
               "lerntext": "ljúdi",
-              "de": "Leute"
+              "de": "Leute",
+              "c": "n"
             },
             {
               "schrift": "волосы",
               "lerntext": "wólassy",
-              "de": "Haare"
+              "de": "Haare",
+              "c": "n"
             },
             {
               "schrift": "обувь",
               "lerntext": "óbuw",
-              "de": "Schuhe"
+              "de": "Schuhe",
+              "c": "n"
             }
           ]
         ],
@@ -11213,60 +12755,70 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "страх",
               "lerntext": "strach",
               "de": "Angst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "смена",
               "lerntext": "smjéna",
               "de": "Schicht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "перерыв",
               "lerntext": "pererýw",
               "de": "Pause",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "размер",
               "lerntext": "rasmjér",
               "de": "Grösse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "люди",
               "lerntext": "ljúdi",
               "de": "Leute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "волосы",
               "lerntext": "wólassy",
               "de": "Haare",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "обувь",
               "lerntext": "óbuw",
               "de": "Schuhe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "кошка",
               "lerntext": "kóschka",
               "de": "Katze",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "любовь",
               "lerntext": "ljubów",
               "de": "Liebe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "способ",
               "lerntext": "spóssab",
               "de": "Art",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11290,54 +12842,63 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "идея",
               "lerntext": "idjéja",
               "de": "Idee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "история",
               "lerntext": "istórija",
               "de": "Geschichte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "страх",
               "lerntext": "strach",
               "de": "Angst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "смена",
               "lerntext": "smjéna",
               "de": "Schicht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "перерыв",
               "lerntext": "pererýw",
               "de": "Pause",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "размер",
               "lerntext": "rasmjér",
               "de": "Grösse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "люди",
               "lerntext": "ljúdi",
               "de": "Leute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "волосы",
               "lerntext": "wólassy",
               "de": "Haare",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "обувь",
               "lerntext": "óbuw",
               "de": "Schuhe",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11361,42 +12922,49 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "зарплата",
               "lerntext": "sarpláta",
               "de": "Lohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "договор",
               "lerntext": "dagawór",
               "de": "Vertrag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сон",
               "lerntext": "son",
               "de": "Schlaf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "скидка",
               "lerntext": "skídka",
               "de": "Rabatt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вход",
               "lerntext": "wchod",
               "de": "Eingang",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "выход",
               "lerntext": "wýchad",
               "de": "Ausgang",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "клиент",
               "lerntext": "klijént",
               "de": "Kunde",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11420,36 +12988,42 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "встреча",
               "lerntext": "wstrjétscha",
               "de": "Treffen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "праздник",
               "lerntext": "prásnik",
               "de": "Fest",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "жизнь",
               "lerntext": "shysn",
               "de": "Leben",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "подарок",
               "lerntext": "padárak",
               "de": "Geschenk",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "конец",
               "lerntext": "kanjéz",
               "de": "Ende",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "пример",
               "lerntext": "primjér",
               "de": "Beispiel",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11484,7 +13058,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу [Slot]",
-          "lerntext": "ja chatschú [Slot]"
+          "lerntext": "ja chatschú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -11493,27 +13070,32 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "убирать",
               "lerntext": "ubirát",
-              "de": "aufräumen"
+              "de": "aufräumen",
+              "c": "v"
             },
             {
               "schrift": "класть",
               "lerntext": "klast",
-              "de": "legen"
+              "de": "legen",
+              "c": "v"
             },
             {
               "schrift": "выходить",
               "lerntext": "wychadít",
-              "de": "hinausgehen"
+              "de": "hinausgehen",
+              "c": "v"
             },
             {
               "schrift": "учиться",
               "lerntext": "utschítsa",
-              "de": "lernen"
+              "de": "lernen",
+              "c": "v"
             },
             {
               "schrift": "кончать",
               "lerntext": "kantschát",
-              "de": "beenden"
+              "de": "beenden",
+              "c": "v"
             }
           ]
         ],
@@ -11526,7 +13108,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу [Slot]",
-          "lerntext": "ja chatschú [Slot]"
+          "lerntext": "ja chatschú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -11535,56 +13120,66 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "бегать",
               "lerntext": "bjégat",
-              "de": "rennen"
+              "de": "rennen",
+              "c": "v"
             },
             {
               "schrift": "жениться",
               "lerntext": "shenítsa",
-              "de": "heiraten"
+              "de": "heiraten",
+              "c": "v"
             },
             {
               "schrift": "казаться",
               "lerntext": "kasátsa",
-              "de": "scheinen"
+              "de": "scheinen",
+              "c": "v"
             },
             {
               "schrift": "заказывать",
               "lerntext": "sakásywat",
-              "de": "bestellen"
+              "de": "bestellen",
+              "c": "v"
             },
             {
               "schrift": "держать",
               "lerntext": "dershát",
-              "de": "halten"
+              "de": "halten",
+              "c": "v"
             },
             {
               "schrift": "убирать",
               "lerntext": "ubirát",
               "de": "aufräumen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "класть",
               "lerntext": "klast",
               "de": "legen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "выходить",
               "lerntext": "wychadít",
               "de": "hinausgehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "учиться",
               "lerntext": "utschítsa",
               "de": "lernen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "кончать",
               "lerntext": "kantschát",
               "de": "beenden",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -11598,7 +13193,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу [Slot]",
-          "lerntext": "ja chatschú [Slot]"
+          "lerntext": "ja chatschú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -11607,86 +13205,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "звать",
               "lerntext": "swat",
-              "de": "rufen"
+              "de": "rufen",
+              "c": "v"
             },
             {
               "schrift": "стоить",
               "lerntext": "stóit",
-              "de": "kosten"
+              "de": "kosten",
+              "c": "v"
             },
             {
               "schrift": "уезжать",
               "lerntext": "ujeshát",
-              "de": "abfahren"
+              "de": "abfahren",
+              "c": "v"
             },
             {
               "schrift": "приезжать",
               "lerntext": "prijeshát",
-              "de": "ankommen"
+              "de": "ankommen",
+              "c": "v"
             },
             {
               "schrift": "входить",
               "lerntext": "wchadít",
-              "de": "hineingehen"
+              "de": "hineingehen",
+              "c": "v"
             },
             {
               "schrift": "бегать",
               "lerntext": "bjégat",
               "de": "rennen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "жениться",
               "lerntext": "shenítsa",
               "de": "heiraten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "казаться",
               "lerntext": "kasátsa",
               "de": "scheinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "заказывать",
               "lerntext": "sakásywat",
               "de": "bestellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "держать",
               "lerntext": "dershát",
               "de": "halten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "убирать",
               "lerntext": "ubirát",
               "de": "aufräumen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "класть",
               "lerntext": "klast",
               "de": "legen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "выходить",
               "lerntext": "wychadít",
               "de": "hinausgehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "учиться",
               "lerntext": "utschítsa",
               "de": "lernen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "кончать",
               "lerntext": "kantschát",
               "de": "beenden",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -11700,7 +13313,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу [Slot]",
-          "lerntext": "ja chatschú [Slot]"
+          "lerntext": "ja chatschú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -11709,86 +13325,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "носить",
               "lerntext": "nassít",
-              "de": "tragen"
+              "de": "tragen",
+              "c": "v"
             },
             {
               "schrift": "нравиться",
               "lerntext": "nráwitsa",
-              "de": "gefallen"
+              "de": "gefallen",
+              "c": "v"
             },
             {
               "schrift": "изучать",
               "lerntext": "isutschát",
-              "de": "studieren"
+              "de": "studieren",
+              "c": "v"
             },
             {
               "schrift": "преподавать",
               "lerntext": "prepadawát",
-              "de": "unterrichten"
+              "de": "unterrichten",
+              "c": "v"
             },
             {
               "schrift": "помнить",
               "lerntext": "pómnit",
-              "de": "sich erinnern"
+              "de": "sich erinnern",
+              "c": "v"
             },
             {
               "schrift": "звать",
               "lerntext": "swat",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "стоить",
               "lerntext": "stóit",
               "de": "kosten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "уезжать",
               "lerntext": "ujeshát",
               "de": "abfahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "приезжать",
               "lerntext": "prijeshát",
               "de": "ankommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "входить",
               "lerntext": "wchadít",
               "de": "hineingehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "бегать",
               "lerntext": "bjégat",
               "de": "rennen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "жениться",
               "lerntext": "shenítsa",
               "de": "heiraten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "казаться",
               "lerntext": "kasátsa",
               "de": "scheinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "заказывать",
               "lerntext": "sakásywat",
               "de": "bestellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "держать",
               "lerntext": "dershát",
               "de": "halten",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -11802,7 +13433,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу [Slot]",
-          "lerntext": "ja chatschú [Slot]"
+          "lerntext": "ja chatschú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -11811,86 +13445,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "начинать",
               "lerntext": "natschinát",
-              "de": "anfangen"
+              "de": "anfangen",
+              "c": "v"
             },
             {
               "schrift": "пробовать",
               "lerntext": "próbawat",
-              "de": "versuchen"
+              "de": "versuchen",
+              "c": "v"
             },
             {
               "schrift": "петь",
               "lerntext": "pjet",
-              "de": "singen"
+              "de": "singen",
+              "c": "v"
             },
             {
               "schrift": "водить",
               "lerntext": "wadít",
-              "de": "fahren"
+              "de": "fahren",
+              "c": "v"
             },
             {
               "schrift": "посещать",
               "lerntext": "passeschtschát",
-              "de": "besuchen"
+              "de": "besuchen",
+              "c": "v"
             },
             {
               "schrift": "носить",
               "lerntext": "nassít",
               "de": "tragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "нравиться",
               "lerntext": "nráwitsa",
               "de": "gefallen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "изучать",
               "lerntext": "isutschát",
               "de": "studieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "преподавать",
               "lerntext": "prepadawát",
               "de": "unterrichten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "помнить",
               "lerntext": "pómnit",
               "de": "sich erinnern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "звать",
               "lerntext": "swat",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "стоить",
               "lerntext": "stóit",
               "de": "kosten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "уезжать",
               "lerntext": "ujeshát",
               "de": "abfahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "приезжать",
               "lerntext": "prijeshát",
               "de": "ankommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "входить",
               "lerntext": "wchadít",
               "de": "hineingehen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -11904,7 +13553,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу [Slot]",
-          "lerntext": "ja chatschú [Slot]"
+          "lerntext": "ja chatschú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -11913,86 +13565,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "встречать",
               "lerntext": "wstretschát",
-              "de": "treffen"
+              "de": "treffen",
+              "c": "v"
             },
             {
               "schrift": "знакомиться",
               "lerntext": "snakómitsa",
-              "de": "kennenlernen"
+              "de": "kennenlernen",
+              "c": "v"
             },
             {
               "schrift": "родиться",
               "lerntext": "radítsa",
-              "de": "geboren werden"
+              "de": "geboren werden",
+              "c": "v"
             },
             {
               "schrift": "случаться",
               "lerntext": "slutschátsa",
-              "de": "geschehen"
+              "de": "geschehen",
+              "c": "v"
             },
             {
               "schrift": "бронировать",
               "lerntext": "branírawat",
-              "de": "reservieren"
+              "de": "reservieren",
+              "c": "v"
             },
             {
               "schrift": "начинать",
               "lerntext": "natschinát",
               "de": "anfangen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "пробовать",
               "lerntext": "próbawat",
               "de": "versuchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "петь",
               "lerntext": "pjet",
               "de": "singen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "водить",
               "lerntext": "wadít",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "посещать",
               "lerntext": "passeschtschát",
               "de": "besuchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "носить",
               "lerntext": "nassít",
               "de": "tragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "нравиться",
               "lerntext": "nráwitsa",
               "de": "gefallen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "изучать",
               "lerntext": "isutschát",
               "de": "studieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "преподавать",
               "lerntext": "prepadawát",
               "de": "unterrichten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "помнить",
               "lerntext": "pómnit",
               "de": "sich erinnern",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12006,7 +13673,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу [Slot]",
-          "lerntext": "ja chatschú [Slot]"
+          "lerntext": "ja chatschú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12015,86 +13685,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "снимать",
               "lerntext": "snimát",
-              "de": "mieten"
+              "de": "mieten",
+              "c": "v"
             },
             {
               "schrift": "подписывать",
               "lerntext": "padpíssywat",
-              "de": "unterschreiben"
+              "de": "unterschreiben",
+              "c": "v"
             },
             {
               "schrift": "готовить",
               "lerntext": "gatówit",
-              "de": "kochen"
+              "de": "kochen",
+              "c": "v"
             },
             {
               "schrift": "возвращаться",
               "lerntext": "woswraschtschátsa",
-              "de": "zurückkehren"
+              "de": "zurückkehren",
+              "c": "v"
             },
             {
               "schrift": "извинять",
               "lerntext": "iswinját",
-              "de": "entschuldigen"
+              "de": "entschuldigen",
+              "c": "v"
             },
             {
               "schrift": "встречать",
               "lerntext": "wstretschát",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "знакомиться",
               "lerntext": "snakómitsa",
               "de": "kennenlernen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "родиться",
               "lerntext": "radítsa",
               "de": "geboren werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "случаться",
               "lerntext": "slutschátsa",
               "de": "geschehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "бронировать",
               "lerntext": "branírawat",
               "de": "reservieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "начинать",
               "lerntext": "natschinát",
               "de": "anfangen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "пробовать",
               "lerntext": "próbawat",
               "de": "versuchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "петь",
               "lerntext": "pjet",
               "de": "singen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "водить",
               "lerntext": "wadít",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "посещать",
               "lerntext": "passeschtschát",
               "de": "besuchen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12108,7 +13793,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу [Slot]",
-          "lerntext": "ja chatschú [Slot]"
+          "lerntext": "ja chatschú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12117,81 +13805,95 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "благодарить",
               "lerntext": "blagadarít",
-              "de": "danken"
+              "de": "danken",
+              "c": "v"
             },
             {
               "schrift": "останавливаться",
               "lerntext": "astanáwliwatsa",
-              "de": "anhalten"
+              "de": "anhalten",
+              "c": "v"
             },
             {
               "schrift": "рассказывать",
               "lerntext": "rasskásywat",
-              "de": "erzählen"
+              "de": "erzählen",
+              "c": "v"
             },
             {
               "schrift": "здороваться",
               "lerntext": "sdarówatsa",
-              "de": "grüßen"
+              "de": "grüßen",
+              "c": "v"
             },
             {
               "schrift": "снимать",
               "lerntext": "snimát",
               "de": "mieten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "подписывать",
               "lerntext": "padpíssywat",
               "de": "unterschreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "готовить",
               "lerntext": "gatówit",
               "de": "kochen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "возвращаться",
               "lerntext": "woswraschtschátsa",
               "de": "zurückkehren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "извинять",
               "lerntext": "iswinját",
               "de": "entschuldigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "встречать",
               "lerntext": "wstretschát",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "знакомиться",
               "lerntext": "snakómitsa",
               "de": "kennenlernen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "родиться",
               "lerntext": "radítsa",
               "de": "geboren werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "случаться",
               "lerntext": "slutschátsa",
               "de": "geschehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "бронировать",
               "lerntext": "branírawat",
               "de": "reservieren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12205,7 +13907,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу [Slot]",
-          "lerntext": "ja chatschú [Slot]"
+          "lerntext": "ja chatschú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12215,54 +13920,63 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "благодарить",
               "lerntext": "blagadarít",
               "de": "danken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "останавливаться",
               "lerntext": "astanáwliwatsa",
               "de": "anhalten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "рассказывать",
               "lerntext": "rasskásywat",
               "de": "erzählen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "здороваться",
               "lerntext": "sdarówatsa",
               "de": "grüßen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "снимать",
               "lerntext": "snimát",
               "de": "mieten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "подписывать",
               "lerntext": "padpíssywat",
               "de": "unterschreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "готовить",
               "lerntext": "gatówit",
               "de": "kochen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "возвращаться",
               "lerntext": "woswraschtschátsa",
               "de": "zurückkehren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "извинять",
               "lerntext": "iswinját",
               "de": "entschuldigen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12276,7 +13990,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу [Slot]",
-          "lerntext": "ja chatschú [Slot]"
+          "lerntext": "ja chatschú [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12286,24 +14003,28 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "благодарить",
               "lerntext": "blagadarít",
               "de": "danken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "останавливаться",
               "lerntext": "astanáwliwatsa",
               "de": "anhalten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "рассказывать",
               "lerntext": "rasskásywat",
               "de": "erzählen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "здороваться",
               "lerntext": "sdarówatsa",
               "de": "grüßen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12347,27 +14068,32 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "плохой",
               "lerntext": "plachój",
-              "de": "schlecht"
+              "de": "schlecht",
+              "c": "a"
             },
             {
               "schrift": "настоящий",
               "lerntext": "nastajáschtschij",
-              "de": "echt"
+              "de": "echt",
+              "c": "a"
             },
             {
               "schrift": "бесплатный",
               "lerntext": "besplátnyj",
-              "de": "kostenlos"
+              "de": "kostenlos",
+              "c": "a"
             },
             {
               "schrift": "полный",
               "lerntext": "pólnyj",
-              "de": "voll"
+              "de": "voll",
+              "c": "a"
             },
             {
               "schrift": "пустой",
               "lerntext": "pustój",
-              "de": "leer"
+              "de": "leer",
+              "c": "a"
             }
           ]
         ],
@@ -12389,56 +14115,66 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "свободный",
               "lerntext": "swabódnyj",
-              "de": "frei"
+              "de": "frei",
+              "c": "a"
             },
             {
               "schrift": "занятый",
               "lerntext": "sanjátyj",
-              "de": "besetzt"
+              "de": "besetzt",
+              "c": "a"
             },
             {
               "schrift": "здоровый",
               "lerntext": "sdarówyj",
-              "de": "gesund"
+              "de": "gesund",
+              "c": "a"
             },
             {
               "schrift": "быстрый",
               "lerntext": "býstryj",
-              "de": "schnell"
+              "de": "schnell",
+              "c": "a"
             },
             {
               "schrift": "медленный",
               "lerntext": "mjédlennyj",
-              "de": "langsam"
+              "de": "langsam",
+              "c": "a"
             },
             {
               "schrift": "плохой",
               "lerntext": "plachój",
               "de": "schlecht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "настоящий",
               "lerntext": "nastajáschtschij",
               "de": "echt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "бесплатный",
               "lerntext": "besplátnyj",
               "de": "kostenlos",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "полный",
               "lerntext": "pólnyj",
               "de": "voll",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "пустой",
               "lerntext": "pustój",
               "de": "leer",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -12461,86 +14197,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "свежий",
               "lerntext": "swjéshij",
-              "de": "frisch"
+              "de": "frisch",
+              "c": "a"
             },
             {
               "schrift": "солёный",
               "lerntext": "saljónyj",
-              "de": "salzig"
+              "de": "salzig",
+              "c": "a"
             },
             {
               "schrift": "острый",
               "lerntext": "óstryj",
-              "de": "scharf"
+              "de": "scharf",
+              "c": "a"
             },
             {
               "schrift": "вкусный",
               "lerntext": "wkúsnyj",
-              "de": "lecker"
+              "de": "lecker",
+              "c": "a"
             },
             {
               "schrift": "русский",
               "lerntext": "rússkij",
-              "de": "russisch"
+              "de": "russisch",
+              "c": "a"
             },
             {
               "schrift": "свободный",
               "lerntext": "swabódnyj",
               "de": "frei",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "занятый",
               "lerntext": "sanjátyj",
               "de": "besetzt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "здоровый",
               "lerntext": "sdarówyj",
               "de": "gesund",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "быстрый",
               "lerntext": "býstryj",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "медленный",
               "lerntext": "mjédlennyj",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "плохой",
               "lerntext": "plachój",
               "de": "schlecht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "настоящий",
               "lerntext": "nastajáschtschij",
               "de": "echt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "бесплатный",
               "lerntext": "besplátnyj",
               "de": "kostenlos",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "полный",
               "lerntext": "pólnyj",
               "de": "voll",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "пустой",
               "lerntext": "pustój",
               "de": "leer",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -12563,86 +14314,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "немецкий",
               "lerntext": "nemjézkij",
-              "de": "deutsch"
+              "de": "deutsch",
+              "c": "a"
             },
             {
               "schrift": "английский",
               "lerntext": "anglíjskij",
-              "de": "englisch"
+              "de": "englisch",
+              "c": "a"
             },
             {
               "schrift": "прошлый",
               "lerntext": "próschlyj",
-              "de": "vergangener"
+              "de": "vergangener",
+              "c": "a"
             },
             {
               "schrift": "горячий",
               "lerntext": "garjátschij",
-              "de": "heiß"
+              "de": "heiß",
+              "c": "a"
             },
             {
               "schrift": "возможный",
               "lerntext": "wasmóshnyj",
-              "de": "möglich"
+              "de": "möglich",
+              "c": "a"
             },
             {
               "schrift": "свежий",
               "lerntext": "swjéshij",
               "de": "frisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "солёный",
               "lerntext": "saljónyj",
               "de": "salzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "острый",
               "lerntext": "óstryj",
               "de": "scharf",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "вкусный",
               "lerntext": "wkúsnyj",
               "de": "lecker",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "русский",
               "lerntext": "rússkij",
               "de": "russisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "свободный",
               "lerntext": "swabódnyj",
               "de": "frei",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "занятый",
               "lerntext": "sanjátyj",
               "de": "besetzt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "здоровый",
               "lerntext": "sdarówyj",
               "de": "gesund",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "быстрый",
               "lerntext": "býstryj",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "медленный",
               "lerntext": "mjédlennyj",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -12665,86 +14431,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "добрый",
               "lerntext": "dóbryj",
-              "de": "gut"
+              "de": "gut",
+              "c": "a"
             },
             {
               "schrift": "сладкий",
               "lerntext": "slátkij",
-              "de": "süß"
+              "de": "süß",
+              "c": "a"
             },
             {
               "schrift": "иностранный",
               "lerntext": "inastránnyj",
-              "de": "ausländisch"
+              "de": "ausländisch",
+              "c": "a"
             },
             {
               "schrift": "следующий",
               "lerntext": "slédujuschtschij",
-              "de": "nächster"
+              "de": "nächster",
+              "c": "a"
             },
             {
               "schrift": "обычный",
               "lerntext": "abýtschnyj",
-              "de": "üblich"
+              "de": "üblich",
+              "c": "a"
             },
             {
               "schrift": "немецкий",
               "lerntext": "nemjézkij",
               "de": "deutsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "английский",
               "lerntext": "anglíjskij",
               "de": "englisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "прошлый",
               "lerntext": "próschlyj",
               "de": "vergangener",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "горячий",
               "lerntext": "garjátschij",
               "de": "heiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "возможный",
               "lerntext": "wasmóshnyj",
               "de": "möglich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "свежий",
               "lerntext": "swjéshij",
               "de": "frisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "солёный",
               "lerntext": "saljónyj",
               "de": "salzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "острый",
               "lerntext": "óstryj",
               "de": "scharf",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "вкусный",
               "lerntext": "wkúsnyj",
               "de": "lecker",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "русский",
               "lerntext": "rússkij",
               "de": "russisch",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -12767,71 +14548,83 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "нужный",
               "lerntext": "núshnyj",
-              "de": "nötig"
+              "de": "nötig",
+              "c": "a"
             },
             {
               "schrift": "весёлый",
               "lerntext": "wessjólyj",
-              "de": "fröhlich"
+              "de": "fröhlich",
+              "c": "a"
             },
             {
               "schrift": "добрый",
               "lerntext": "dóbryj",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "сладкий",
               "lerntext": "slátkij",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "иностранный",
               "lerntext": "inastránnyj",
               "de": "ausländisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "следующий",
               "lerntext": "slédujuschtschij",
               "de": "nächster",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "обычный",
               "lerntext": "abýtschnyj",
               "de": "üblich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "немецкий",
               "lerntext": "nemjézkij",
               "de": "deutsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "английский",
               "lerntext": "anglíjskij",
               "de": "englisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "прошлый",
               "lerntext": "próschlyj",
               "de": "vergangener",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "горячий",
               "lerntext": "garjátschij",
               "de": "heiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "возможный",
               "lerntext": "wasmóshnyj",
               "de": "möglich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -12855,42 +14648,49 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "нужный",
               "lerntext": "núshnyj",
               "de": "nötig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "весёлый",
               "lerntext": "wessjólyj",
               "de": "fröhlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "добрый",
               "lerntext": "dóbryj",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "сладкий",
               "lerntext": "slátkij",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "иностранный",
               "lerntext": "inastránnyj",
               "de": "ausländisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "следующий",
               "lerntext": "slédujuschtschij",
               "de": "nächster",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "обычный",
               "lerntext": "abýtschnyj",
               "de": "üblich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -12925,7 +14725,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я делаю это [Slot]",
-          "lerntext": "ja délaju eto [Slot]"
+          "lerntext": "ja délaju eto [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -12967,7 +14770,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я делаю это [Slot]",
-          "lerntext": "ja délaju eto [Slot]"
+          "lerntext": "ja délaju eto [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -13039,7 +14845,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я делаю это [Slot]",
-          "lerntext": "ja délaju eto [Slot]"
+          "lerntext": "ja délaju eto [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -13141,7 +14950,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я делаю это [Slot]",
-          "lerntext": "ja délaju eto [Slot]"
+          "lerntext": "ja délaju eto [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -13243,7 +15055,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я делаю это [Slot]",
-          "lerntext": "ja délaju eto [Slot]"
+          "lerntext": "ja délaju eto [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -13330,7 +15145,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я делаю это [Slot]",
-          "lerntext": "ja délaju eto [Slot]"
+          "lerntext": "ja délaju eto [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -13419,27 +15237,32 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "оно",
               "lerntext": "anó",
-              "de": "es"
+              "de": "es",
+              "c": "p"
             },
             {
               "schrift": "тебе",
               "lerntext": "tjebjé",
-              "de": "dir"
+              "de": "dir",
+              "c": "p"
             },
             {
               "schrift": "её",
               "lerntext": "jejó",
-              "de": "sie"
+              "de": "sie",
+              "c": "p"
             },
             {
               "schrift": "им",
               "lerntext": "im",
-              "de": "ihnen"
+              "de": "ihnen",
+              "c": "p"
             },
             {
               "schrift": "ваш",
               "lerntext": "wasch",
-              "de": "euer"
+              "de": "euer",
+              "c": "p"
             }
           ]
         ],
@@ -13461,56 +15284,66 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "свой",
               "lerntext": "swoj",
-              "de": "sein eigener"
+              "de": "sein eigener",
+              "c": "p"
             },
             {
               "schrift": "тот",
               "lerntext": "tot",
-              "de": "jener"
+              "de": "jener",
+              "c": "p"
             },
             {
               "schrift": "всё",
               "lerntext": "wsjo",
-              "de": "alles"
+              "de": "alles",
+              "c": "p"
             },
             {
               "schrift": "кто-то",
               "lerntext": "któ-ta",
-              "de": "jemand"
+              "de": "jemand",
+              "c": "p"
             },
             {
               "schrift": "никто",
               "lerntext": "niktó",
-              "de": "niemand"
+              "de": "niemand",
+              "c": "p"
             },
             {
               "schrift": "оно",
               "lerntext": "anó",
               "de": "es",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "тебе",
               "lerntext": "tjebjé",
               "de": "dir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "её",
               "lerntext": "jejó",
               "de": "sie",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "им",
               "lerntext": "im",
               "de": "ihnen",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ваш",
               "lerntext": "wasch",
               "de": "euer",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -13533,86 +15366,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "другой",
               "lerntext": "drugój",
-              "de": "anderer"
+              "de": "anderer",
+              "c": "p"
             },
             {
               "schrift": "каждый",
               "lerntext": "káshdyj",
-              "de": "jeder"
+              "de": "jeder",
+              "c": "p"
             },
             {
               "schrift": "сам",
               "lerntext": "sam",
-              "de": "selbst"
+              "de": "selbst",
+              "c": "p"
             },
             {
               "schrift": "оба",
               "lerntext": "óba",
-              "de": "beide"
+              "de": "beide",
+              "c": "p"
             },
             {
               "schrift": "друг друга",
               "lerntext": "drug drúga",
-              "de": "einander"
+              "de": "einander",
+              "c": "p"
             },
             {
               "schrift": "свой",
               "lerntext": "swoj",
               "de": "sein eigener",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "тот",
               "lerntext": "tot",
               "de": "jener",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "всё",
               "lerntext": "wsjo",
               "de": "alles",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "кто-то",
               "lerntext": "któ-ta",
               "de": "jemand",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "никто",
               "lerntext": "niktó",
               "de": "niemand",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "оно",
               "lerntext": "anó",
               "de": "es",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "тебе",
               "lerntext": "tjebjé",
               "de": "dir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "её",
               "lerntext": "jejó",
               "de": "sie",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "им",
               "lerntext": "im",
               "de": "ihnen",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ваш",
               "lerntext": "wasch",
               "de": "euer",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -13636,60 +15484,70 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "другой",
               "lerntext": "drugój",
               "de": "anderer",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "каждый",
               "lerntext": "káshdyj",
               "de": "jeder",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "сам",
               "lerntext": "sam",
               "de": "selbst",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "оба",
               "lerntext": "óba",
               "de": "beide",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "друг друга",
               "lerntext": "drug drúga",
               "de": "einander",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "свой",
               "lerntext": "swoj",
               "de": "sein eigener",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "тот",
               "lerntext": "tot",
               "de": "jener",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "всё",
               "lerntext": "wsjo",
               "de": "alles",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "кто-то",
               "lerntext": "któ-ta",
               "de": "jemand",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "никто",
               "lerntext": "niktó",
               "de": "niemand",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -13713,30 +15571,35 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "другой",
               "lerntext": "drugój",
               "de": "anderer",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "каждый",
               "lerntext": "káshdyj",
               "de": "jeder",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "сам",
               "lerntext": "sam",
               "de": "selbst",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "оба",
               "lerntext": "óba",
               "de": "beide",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "друг друга",
               "lerntext": "drug drúga",
               "de": "einander",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -14181,7 +16044,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я приду [Slot] могу",
-          "lerntext": "ja pridú [Slot] magú"
+          "lerntext": "ja pridú [Slot] magú",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich komme, [Slot] ich kann.",
         "pronouns": [],
@@ -14190,22 +16056,26 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "а",
               "lerntext": "a",
-              "de": "und"
+              "de": "und",
+              "c": "k"
             },
             {
               "schrift": "поэтому",
               "lerntext": "paétamu",
-              "de": "deshalb"
+              "de": "deshalb",
+              "c": "k"
             },
             {
               "schrift": "также",
               "lerntext": "tákshe",
-              "de": "ebenfalls"
+              "de": "ebenfalls",
+              "c": "k"
             },
             {
               "schrift": "зато",
               "lerntext": "sató",
-              "de": "dafür aber"
+              "de": "dafür aber",
+              "c": "k"
             }
           ]
         ],
@@ -14218,7 +16088,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я приду [Slot] могу",
-          "lerntext": "ja pridú [Slot] magú"
+          "lerntext": "ja pridú [Slot] magú",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich komme, [Slot] ich kann.",
         "pronouns": [],
@@ -14228,24 +16101,28 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "а",
               "lerntext": "a",
               "de": "und",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "поэтому",
               "lerntext": "paétamu",
               "de": "deshalb",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "также",
               "lerntext": "tákshe",
               "de": "ebenfalls",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "зато",
               "lerntext": "sató",
               "de": "dafür aber",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -14259,7 +16136,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я приду [Slot] могу",
-          "lerntext": "ja pridú [Slot] magú"
+          "lerntext": "ja pridú [Slot] magú",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich komme, [Slot] ich kann.",
         "pronouns": [],
@@ -14269,24 +16149,28 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
               "schrift": "а",
               "lerntext": "a",
               "de": "und",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "поэтому",
               "lerntext": "paétamu",
               "de": "deshalb",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "также",
               "lerntext": "tákshe",
               "de": "ebenfalls",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "зато",
               "lerntext": "sató",
               "de": "dafür aber",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -14369,14 +16253,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хотел [Slot]",
-          "lerntext": "ja chatjél [Slot]"
+          "lerntext": "ja chatjél [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich wollte [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -14384,86 +16272,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "смотреть",
               "lerntext": "smatrjét",
-              "de": "schauen"
+              "de": "schauen",
+              "c": "v"
             },
             {
               "schrift": "покупать",
               "lerntext": "pakupát",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "видеть",
               "lerntext": "wídjet",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "делать",
               "lerntext": "djélat",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "находить",
               "lerntext": "nachadít",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "слышать",
               "lerntext": "slýschat",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "брать",
               "lerntext": "brat",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "читать",
               "lerntext": "tschitát",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "писать",
               "lerntext": "pissát",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "терять",
               "lerntext": "terját",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "менять",
               "lerntext": "menját",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "понимать",
               "lerntext": "panimát",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "продолжать",
               "lerntext": "pradalshát",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "надеяться",
               "lerntext": "nadjéjatsa",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "должен",
               "lerntext": "dólshen",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -14477,14 +16380,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хотел [Slot]",
-          "lerntext": "ja chatjél [Slot]"
+          "lerntext": "ja chatjél [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich wollte [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -14492,86 +16399,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "брать",
               "lerntext": "brat",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "читать",
               "lerntext": "tschitát",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "писать",
               "lerntext": "pissát",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "слышать",
               "lerntext": "slýschat",
-              "de": "hören"
+              "de": "hören",
+              "c": "v"
             },
             {
               "schrift": "терять",
               "lerntext": "terját",
-              "de": "verlieren"
+              "de": "verlieren",
+              "c": "v"
             },
             {
               "schrift": "смотреть",
               "lerntext": "smatrjét",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "покупать",
               "lerntext": "pakupát",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "видеть",
               "lerntext": "wídjet",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "делать",
               "lerntext": "djélat",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "находить",
               "lerntext": "nachadít",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "менять",
               "lerntext": "menját",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "умирать",
               "lerntext": "umirát",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "выигрывать",
               "lerntext": "wyígrywat",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "стоять",
               "lerntext": "stajat",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "смеяться",
               "lerntext": "smejátsa",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -14585,14 +16507,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "вчера я хотел [Slot]",
-          "lerntext": "wtscherá ja chatjél [Slot]"
+          "lerntext": "wtscherá ja chatjél [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Gestern wollte ich [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -14600,86 +16526,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "работать",
               "lerntext": "rabótat",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "играть",
               "lerntext": "igrát",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "танцевать",
               "lerntext": "tanzewát",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "спать",
               "lerntext": "spat",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "ждать",
               "lerntext": "shdat",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "искать",
               "lerntext": "iskát",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "спрашивать",
               "lerntext": "spráschiwat",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "отвечать",
               "lerntext": "atwetschát",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "помогать",
               "lerntext": "pamagát",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "платить",
               "lerntext": "platít",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "знать",
               "lerntext": "snat",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "говорить",
               "lerntext": "gawarít",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "идти",
               "lerntext": "ittí",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "пить",
               "lerntext": "pit",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "закрывать",
               "lerntext": "sakrywát",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -14693,14 +16634,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "вчера я хотел [Slot]",
-          "lerntext": "wtscherá ja chatjél [Slot]"
+          "lerntext": "wtscherá ja chatjél [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Gestern wollte ich [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -14708,86 +16653,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "искать",
               "lerntext": "iskát",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "спрашивать",
               "lerntext": "spráschiwat",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "отвечать",
               "lerntext": "atwetschát",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "помогать",
               "lerntext": "pamagát",
-              "de": "helfen"
+              "de": "helfen",
+              "c": "v"
             },
             {
               "schrift": "платить",
               "lerntext": "platít",
-              "de": "bezahlen"
+              "de": "bezahlen",
+              "c": "v"
             },
             {
               "schrift": "спать",
               "lerntext": "spat",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "работать",
               "lerntext": "rabótat",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "играть",
               "lerntext": "igrát",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "танцевать",
               "lerntext": "tanzewát",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ждать",
               "lerntext": "shdat",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "приходить",
               "lerntext": "prichadít",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "мыть",
               "lerntext": "myt",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "думать",
               "lerntext": "dúmat",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "звонить",
               "lerntext": "swanít",
               "de": "anrufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "оставаться",
               "lerntext": "astawátsa",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -14801,14 +16761,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я уже мог [Slot]",
-          "lerntext": "ja usché mog [Slot]"
+          "lerntext": "ja usché mog [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich konnte schon [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -14816,86 +16780,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "выигрывать",
               "lerntext": "wyígrywat",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "забывать",
               "lerntext": "sabywát",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "понимать",
               "lerntext": "panimát",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "давать",
               "lerntext": "dawát",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "сказать",
               "lerntext": "skasát",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "говорить",
               "lerntext": "gawarít",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "открывать",
               "lerntext": "atkrywát",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "закрывать",
               "lerntext": "sakrywát",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "мыть",
               "lerntext": "myt",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "жить",
               "lerntext": "shyt",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "хотеть",
               "lerntext": "chatjét",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "использовать",
               "lerntext": "ispólsawat",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "переезжать",
               "lerntext": "pereeshát",
               "de": "umziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "быть",
               "lerntext": "byt",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ехать",
               "lerntext": "jéchat",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -14909,14 +16888,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я уже мог [Slot]",
-          "lerntext": "ja usché mog [Slot]"
+          "lerntext": "ja usché mog [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich konnte schon [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -14924,81 +16907,95 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "говорить",
               "lerntext": "gawarít",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "открывать",
               "lerntext": "atkrywát",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "закрывать",
               "lerntext": "sakrywát",
-              "de": "schließen"
+              "de": "schließen",
+              "c": "v"
             },
             {
               "schrift": "мыть",
               "lerntext": "myt",
-              "de": "waschen"
+              "de": "waschen",
+              "c": "v"
             },
             {
               "schrift": "выигрывать",
               "lerntext": "wyígrywat",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "забывать",
               "lerntext": "sabywát",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "понимать",
               "lerntext": "panimát",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "давать",
               "lerntext": "dawát",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "сказать",
               "lerntext": "skasát",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "менять",
               "lerntext": "menját",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "показывать",
               "lerntext": "pakásywat",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "становиться",
               "lerntext": "stanawítsa",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "продолжать",
               "lerntext": "pradalshát",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "мочь",
               "lerntext": "motsch",
               "de": "können",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15033,14 +17030,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ты можешь [Slot]",
-          "lerntext": "ty móschesch [Slot]"
+          "lerntext": "ty móschesch [Slot]",
+          "wortarten": {
+            "ty": "p"
+          }
         },
         "frameDe": "Du kannst [Slot].",
         "pronouns": [
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15048,86 +17049,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "смотреть",
               "lerntext": "smatrjét",
-              "de": "schauen"
+              "de": "schauen",
+              "c": "v"
             },
             {
               "schrift": "покупать",
               "lerntext": "pakupát",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "видеть",
               "lerntext": "wídjet",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "делать",
               "lerntext": "djélat",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "находить",
               "lerntext": "nachadít",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "брать",
               "lerntext": "brat",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "читать",
               "lerntext": "tschitát",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "писать",
               "lerntext": "pissát",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "получать",
               "lerntext": "palutschát",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "плакать",
               "lerntext": "plákat",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "надеяться",
               "lerntext": "nadjéjatsa",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "сидеть",
               "lerntext": "ssidjét",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "путешествовать",
               "lerntext": "puteschéstwawat",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "верить",
               "lerntext": "wjérit",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "нуждаться",
               "lerntext": "nushdátsa",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15141,14 +17157,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ты можешь [Slot]",
-          "lerntext": "ty móschesch [Slot]"
+          "lerntext": "ty móschesch [Slot]",
+          "wortarten": {
+            "ty": "p"
+          }
         },
         "frameDe": "Du kannst [Slot].",
         "pronouns": [
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15156,76 +17176,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "брать",
               "lerntext": "brat",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "читать",
               "lerntext": "tschitát",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "писать",
               "lerntext": "pissát",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "смотреть",
               "lerntext": "smatrjét",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "покупать",
               "lerntext": "pakupát",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "видеть",
               "lerntext": "wídjet",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "делать",
               "lerntext": "djélat",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "находить",
               "lerntext": "nachadít",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "должен",
               "lerntext": "dólshen",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "умирать",
               "lerntext": "umirát",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "стоять",
               "lerntext": "stajat",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "смеяться",
               "lerntext": "smejátsa",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "знать",
               "lerntext": "snat",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15239,14 +17272,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "он может [Slot]",
-          "lerntext": "on móschet [Slot]"
+          "lerntext": "on móschet [Slot]",
+          "wortarten": {
+            "on": "p"
+          }
         },
         "frameDe": "Er kann [Slot].",
         "pronouns": [
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15254,86 +17291,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "работать",
               "lerntext": "rabótat",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "играть",
               "lerntext": "igrát",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "танцевать",
               "lerntext": "tanzewát",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "спать",
               "lerntext": "spat",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "ждать",
               "lerntext": "shdat",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "искать",
               "lerntext": "iskát",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "спрашивать",
               "lerntext": "spráschiwat",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "отвечать",
               "lerntext": "atwetschát",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "идти",
               "lerntext": "ittí",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "пить",
               "lerntext": "pit",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "приходить",
               "lerntext": "prichadít",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "любить",
               "lerntext": "ljubít",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "думать",
               "lerntext": "dúmat",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "звонить",
               "lerntext": "swanít",
               "de": "anrufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "оставаться",
               "lerntext": "astawátsa",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15347,14 +17399,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "он может [Slot]",
-          "lerntext": "on móschet [Slot]"
+          "lerntext": "on móschet [Slot]",
+          "wortarten": {
+            "on": "p"
+          }
         },
         "frameDe": "Er kann [Slot].",
         "pronouns": [
           {
             "schrift": "он",
             "lerntext": "on",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15362,76 +17418,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "искать",
               "lerntext": "iskát",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "спрашивать",
               "lerntext": "spráschiwat",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "отвечать",
               "lerntext": "atwetschát",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "спать",
               "lerntext": "spat",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "работать",
               "lerntext": "rabótat",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "играть",
               "lerntext": "igrát",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "танцевать",
               "lerntext": "tanzewát",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ждать",
               "lerntext": "shdat",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "жить",
               "lerntext": "shyt",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "хотеть",
               "lerntext": "chatjét",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "использовать",
               "lerntext": "ispólsawat",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "переезжать",
               "lerntext": "pereeshát",
               "de": "umziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "быть",
               "lerntext": "byt",
               "de": "sein",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15445,14 +17514,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "мы можем [Slot]",
-          "lerntext": "my móschem [Slot]"
+          "lerntext": "my móschem [Slot]",
+          "wortarten": {
+            "my": "p"
+          }
         },
         "frameDe": "Wir können [Slot].",
         "pronouns": [
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15460,86 +17533,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "выигрывать",
               "lerntext": "wyígrywat",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "забывать",
               "lerntext": "sabywát",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "понимать",
               "lerntext": "panimát",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "давать",
               "lerntext": "dawát",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "сказать",
               "lerntext": "skasát",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "говорить",
               "lerntext": "gawarít",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "открывать",
               "lerntext": "atkrywát",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ехать",
               "lerntext": "jéchat",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "менять",
               "lerntext": "menját",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "показывать",
               "lerntext": "pakásywat",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "становиться",
               "lerntext": "stanawítsa",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "продолжать",
               "lerntext": "pradalshát",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "мочь",
               "lerntext": "motsch",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "получать",
               "lerntext": "palutschát",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "плакать",
               "lerntext": "plákat",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15553,14 +17641,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "мы можем [Slot]",
-          "lerntext": "my móschem [Slot]"
+          "lerntext": "my móschem [Slot]",
+          "wortarten": {
+            "my": "p"
+          }
         },
         "frameDe": "Wir können [Slot].",
         "pronouns": [
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15568,71 +17660,83 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "говорить",
               "lerntext": "gawarít",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "открывать",
               "lerntext": "atkrywát",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "выигрывать",
               "lerntext": "wyígrywat",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "забывать",
               "lerntext": "sabywát",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "понимать",
               "lerntext": "panimát",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "давать",
               "lerntext": "dawát",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "сказать",
               "lerntext": "skasát",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "надеяться",
               "lerntext": "nadjéjatsa",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "сидеть",
               "lerntext": "ssidjét",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "путешествовать",
               "lerntext": "puteschéstwawat",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "верить",
               "lerntext": "wjérit",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "нуждаться",
               "lerntext": "nushdátsa",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15646,14 +17750,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "они могут [Slot]",
-          "lerntext": "aní mógut [Slot]"
+          "lerntext": "aní mógut [Slot]",
+          "wortarten": {
+            "aní": "p"
+          }
         },
         "frameDe": "Sie können [Slot].",
         "pronouns": [
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15661,86 +17769,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "жить",
               "lerntext": "shyt",
-              "de": "leben"
+              "de": "leben",
+              "c": "v"
             },
             {
               "schrift": "оставаться",
               "lerntext": "astawátsa",
-              "de": "bleiben"
+              "de": "bleiben",
+              "c": "v"
             },
             {
               "schrift": "смеяться",
               "lerntext": "smejátsa",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "плакать",
               "lerntext": "plákat",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "думать",
               "lerntext": "dúmat",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "верить",
               "lerntext": "wjérit",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "надеяться",
               "lerntext": "nadjéjatsa",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "нуждаться",
               "lerntext": "nushdátsa",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "должен",
               "lerntext": "dólshen",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "умирать",
               "lerntext": "umirát",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "стоять",
               "lerntext": "stajat",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "знать",
               "lerntext": "snat",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "идти",
               "lerntext": "ittí",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "пить",
               "lerntext": "pit",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "приходить",
               "lerntext": "prichadít",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15751,7 +17874,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "они",
             "lerntext": "aní",
-            "de": "sie (Mehrzahl)"
+            "de": "sie (Mehrzahl)",
+            "c": "p"
           }
         ],
         "id": "25.7"
@@ -15760,14 +17884,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "они могут [Slot]",
-          "lerntext": "aní mógut [Slot]"
+          "lerntext": "aní mógut [Slot]",
+          "wortarten": {
+            "aní": "p"
+          }
         },
         "frameDe": "Sie können [Slot].",
         "pronouns": [
           {
             "schrift": "она",
             "lerntext": "aná",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15775,76 +17903,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "верить",
               "lerntext": "wjérit",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "надеяться",
               "lerntext": "nadjéjatsa",
-              "de": "hoffen"
+              "de": "hoffen",
+              "c": "v"
             },
             {
               "schrift": "нуждаться",
               "lerntext": "nushdátsa",
-              "de": "brauchen"
+              "de": "brauchen",
+              "c": "v"
             },
             {
               "schrift": "смеяться",
               "lerntext": "smejátsa",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "жить",
               "lerntext": "shyt",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "оставаться",
               "lerntext": "astawátsa",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "плакать",
               "lerntext": "plákat",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "думать",
               "lerntext": "dúmat",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "любить",
               "lerntext": "ljubít",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "звонить",
               "lerntext": "swanít",
               "de": "anrufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "хотеть",
               "lerntext": "chatjét",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "использовать",
               "lerntext": "ispólsawat",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "переезжать",
               "lerntext": "pereeshát",
               "de": "umziehen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15879,7 +18020,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "это более [Slot]",
-          "lerntext": "éta bóleje [Slot]"
+          "lerntext": "éta bóleje [Slot]",
+          "wortarten": {
+            "éta": "p"
+          }
         },
         "frameDe": "Das ist mehr [Slot].",
         "pronouns": [],
@@ -15888,86 +18032,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "интересный",
               "lerntext": "interjésnyj",
-              "de": "interessant"
+              "de": "interessant",
+              "c": "a"
             },
             {
               "schrift": "трудный",
               "lerntext": "trúdnyj",
-              "de": "schwierig"
+              "de": "schwierig",
+              "c": "a"
             },
             {
               "schrift": "важный",
               "lerntext": "wáshnyj",
-              "de": "wichtig"
+              "de": "wichtig",
+              "c": "a"
             },
             {
               "schrift": "опасный",
               "lerntext": "apásnyj",
-              "de": "gefährlich"
+              "de": "gefährlich",
+              "c": "a"
             },
             {
               "schrift": "дорогой",
               "lerntext": "daragój",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "грязный",
               "lerntext": "grjásnyj",
               "de": "schmutzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "грустный",
               "lerntext": "grúsnyj",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "усталый",
               "lerntext": "ustályj",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "хороший",
               "lerntext": "charóschij",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "правильный",
               "lerntext": "práwilnyj",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "неправильный",
               "lerntext": "neprávilnyj",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "открытый",
               "lerntext": "atkrýtyj",
               "de": "offen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "чёрный",
               "lerntext": "tschórnyj",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "милый",
               "lerntext": "mílyj",
               "de": "lieb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "синий",
               "lerntext": "sínij",
               "de": "blau",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -15987,7 +18146,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "это более [Slot]",
-          "lerntext": "éta bóleje [Slot]"
+          "lerntext": "éta bóleje [Slot]",
+          "wortarten": {
+            "éta": "p"
+          }
         },
         "frameDe": "Das ist mehr [Slot].",
         "pronouns": [],
@@ -15996,76 +18158,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "грязный",
               "lerntext": "grjásnyj",
-              "de": "schmutzig"
+              "de": "schmutzig",
+              "c": "a"
             },
             {
               "schrift": "усталый",
               "lerntext": "ustályj",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "грустный",
               "lerntext": "grúsnyj",
-              "de": "traurig"
+              "de": "traurig",
+              "c": "a"
             },
             {
               "schrift": "интересный",
               "lerntext": "interjésnyj",
               "de": "interessant",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "трудный",
               "lerntext": "trúdnyj",
               "de": "schwierig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "опасный",
               "lerntext": "apásnyj",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "важный",
               "lerntext": "wáshnyj",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "дорогой",
               "lerntext": "daragój",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "хороший",
               "lerntext": "charóschij",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "правильный",
               "lerntext": "práwilnyj",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "тяжёлый",
               "lerntext": "tjashólyj",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "белый",
               "lerntext": "bjélyj",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "низкий",
               "lerntext": "nískij",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -16079,7 +18254,11 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "такой же [Slot], как ты",
-          "lerntext": "takój sche [Slot], kak ty"
+          "lerntext": "takój sche [Slot], kak ty",
+          "wortarten": {
+            "takój": "p",
+            "ty": "p"
+          }
         },
         "frameDe": "bin so [Slot] wie du.",
         "pronouns": [],
@@ -16088,86 +18267,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "большой",
               "lerntext": "balschój",
-              "de": "groß"
+              "de": "groß",
+              "c": "a"
             },
             {
               "schrift": "маленький",
               "lerntext": "málenkij",
-              "de": "klein"
+              "de": "klein",
+              "c": "a"
             },
             {
               "schrift": "старый",
               "lerntext": "stáryj",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "молодой",
               "lerntext": "maladój",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "дорогой",
               "lerntext": "daragój",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "красивый",
               "lerntext": "krassívyj",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "тёплый",
               "lerntext": "tjóplyj",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "холодный",
               "lerntext": "chalódnyj",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "новый",
               "lerntext": "nówyj",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "сильный",
               "lerntext": "sílnyj",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "хороший",
               "lerntext": "charóschij",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "серый",
               "lerntext": "sséryj",
               "de": "grau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "неправильный",
               "lerntext": "neprávilnyj",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "длинный",
               "lerntext": "dlínnyj",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "дешёвый",
               "lerntext": "deschówyj",
               "de": "billig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -16178,7 +18372,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "такой",
             "lerntext": "takój",
-            "de": "solcher"
+            "de": "solcher",
+            "c": "p"
           }
         ],
         "id": "26.3"
@@ -16187,7 +18382,11 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "такой же [Slot], как ты",
-          "lerntext": "takój sche [Slot], kak ty"
+          "lerntext": "takój sche [Slot], kak ty",
+          "wortarten": {
+            "takój": "p",
+            "ty": "p"
+          }
         },
         "frameDe": "bin so [Slot] wie du.",
         "pronouns": [],
@@ -16196,86 +18395,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "красивый",
               "lerntext": "krassívyj",
-              "de": "schön"
+              "de": "schön",
+              "c": "a"
             },
             {
               "schrift": "тёплый",
               "lerntext": "tjóplyj",
-              "de": "warm"
+              "de": "warm",
+              "c": "a"
             },
             {
               "schrift": "холодный",
               "lerntext": "chalódnyj",
-              "de": "kalt"
+              "de": "kalt",
+              "c": "a"
             },
             {
               "schrift": "новый",
               "lerntext": "nówyj",
-              "de": "neu"
+              "de": "neu",
+              "c": "a"
             },
             {
               "schrift": "сильный",
               "lerntext": "sílnyj",
-              "de": "stark"
+              "de": "stark",
+              "c": "a"
             },
             {
               "schrift": "большой",
               "lerntext": "balschój",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "маленький",
               "lerntext": "málenkij",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "молодой",
               "lerntext": "maladój",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "старый",
               "lerntext": "stáryj",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "дорогой",
               "lerntext": "daragój",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "коричневый",
               "lerntext": "karítschnewyj",
               "de": "braun",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "короткий",
               "lerntext": "karótkij",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "хороший",
               "lerntext": "charóschij",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "скучный",
               "lerntext": "skúschnyj",
               "de": "langweilig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "чистый",
               "lerntext": "tschístyj",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -16310,14 +18524,19 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я чувствую себя [Slot]",
-          "lerntext": "ja tschúwstwuju sebjá [Slot]"
+          "lerntext": "ja tschúwstwuju sebjá [Slot]",
+          "wortarten": {
+            "ja": "p",
+            "sebjá": "p"
+          }
         },
         "frameDe": "ich fühle mich [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16325,86 +18544,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "усталый",
               "lerntext": "ustályj",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "больной",
               "lerntext": "balnój",
-              "de": "krank"
+              "de": "krank",
+              "c": "a"
             },
             {
               "schrift": "грустный",
               "lerntext": "grúsnyj",
-              "de": "traurig"
+              "de": "traurig",
+              "c": "a"
             },
             {
               "schrift": "сильный",
               "lerntext": "sílnyj",
-              "de": "stark"
+              "de": "stark",
+              "c": "a"
             },
             {
               "schrift": "слабый",
               "lerntext": "slábyj",
-              "de": "schwach"
+              "de": "schwach",
+              "c": "a"
             },
             {
               "schrift": "готовый",
               "lerntext": "gatówyj",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "злой",
               "lerntext": "slój",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "красивый",
               "lerntext": "krassívyj",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "молодой",
               "lerntext": "maladój",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "старый",
               "lerntext": "stáryj",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "жёлтый",
               "lerntext": "shóltyj",
               "de": "gelb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "закрытый",
               "lerntext": "sakrýtyj",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "красный",
               "lerntext": "krásnyj",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "синий",
               "lerntext": "sínij",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "правильный",
               "lerntext": "práwilnyj",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -16415,7 +18649,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "себя",
             "lerntext": "sebjá",
-            "de": "sich"
+            "de": "sich",
+            "c": "p"
           }
         ],
         "id": "27.1"
@@ -16424,14 +18659,19 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я чувствую себя [Slot]",
-          "lerntext": "ja tschúwstwuju sebjá [Slot]"
+          "lerntext": "ja tschúwstwuju sebjá [Slot]",
+          "wortarten": {
+            "ja": "p",
+            "sebjá": "p"
+          }
         },
         "frameDe": "ich fühle mich [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16439,86 +18679,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "готовый",
               "lerntext": "gatówyj",
-              "de": "bereit"
+              "de": "bereit",
+              "c": "a"
             },
             {
               "schrift": "молодой",
               "lerntext": "maladój",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "старый",
               "lerntext": "stáryj",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "злой",
               "lerntext": "slój",
-              "de": "wütend"
+              "de": "wütend",
+              "c": "a"
             },
             {
               "schrift": "красивый",
               "lerntext": "krassívyj",
-              "de": "schön"
+              "de": "schön",
+              "c": "a"
             },
             {
               "schrift": "слабый",
               "lerntext": "slábyj",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "больной",
               "lerntext": "balnój",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "грустный",
               "lerntext": "grúsnyj",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "сильный",
               "lerntext": "sílnyj",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "усталый",
               "lerntext": "ustályj",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "коричневый",
               "lerntext": "karítschnewyj",
               "de": "braun",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "короткий",
               "lerntext": "karótkij",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "скучный",
               "lerntext": "skúschnyj",
               "de": "langweilig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "жёлтый",
               "lerntext": "shóltyj",
               "de": "gelb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "милый",
               "lerntext": "mílyj",
               "de": "lieb",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -16532,14 +18787,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "мы встречаемся [Slot]",
-          "lerntext": "my wstretschájemsja [Slot]"
+          "lerntext": "my wstretschájemsja [Slot]",
+          "wortarten": {
+            "my": "p"
+          }
         },
         "frameDe": "wir treffen uns [Slot].",
         "pronouns": [
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16640,14 +18899,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "мы встречаемся [Slot]",
-          "lerntext": "my wstretschájemsja [Slot]"
+          "lerntext": "my wstretschájemsja [Slot]",
+          "wortarten": {
+            "my": "p"
+          }
         },
         "frameDe": "wir treffen uns [Slot].",
         "pronouns": [
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16759,7 +19022,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я остаюсь здесь, [Slot] я устал",
-          "lerntext": "ja astajús sdjes, [Slot] ja ustál"
+          "lerntext": "ja astajús sdjes, [Slot] ja ustál",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich bleibe hier, [Slot] ich müde bin.",
         "pronouns": [],
@@ -16768,56 +19034,66 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "потому что",
               "lerntext": "patamú schto",
-              "de": "weil"
+              "de": "weil",
+              "c": "k"
             },
             {
               "schrift": "если",
               "lerntext": "jésli",
-              "de": "wenn"
+              "de": "wenn",
+              "c": "k"
             },
             {
               "schrift": "хотя",
               "lerntext": "chatjá",
-              "de": "obwohl"
+              "de": "obwohl",
+              "c": "k"
             },
             {
               "schrift": "пока",
               "lerntext": "paká",
-              "de": "während"
+              "de": "während",
+              "c": "k"
             },
             {
               "schrift": "но",
               "lerntext": "no",
-              "de": "aber"
+              "de": "aber",
+              "c": "k"
             },
             {
               "schrift": "или",
               "lerntext": "íli",
               "de": "oder",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "и",
               "lerntext": "i",
               "de": "und",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "значит",
               "lerntext": "snátschit",
               "de": "also",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "чтобы",
               "lerntext": "schtóby",
               "de": "damit",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "тоже",
               "lerntext": "tósche",
               "de": "auch",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -16831,7 +19107,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я остаюсь здесь, [Slot] я устал",
-          "lerntext": "ja astajús sdjes, [Slot] ja ustál"
+          "lerntext": "ja astajús sdjes, [Slot] ja ustál",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich bleibe hier, [Slot] ich müde bin.",
         "pronouns": [],
@@ -16840,59 +19119,69 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "или",
               "lerntext": "íli",
-              "de": "oder"
+              "de": "oder",
+              "c": "k"
             },
             {
               "schrift": "и",
               "lerntext": "i",
-              "de": "und"
+              "de": "und",
+              "c": "k"
             },
             {
               "schrift": "если",
               "lerntext": "jésli",
               "de": "wenn",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "потому что",
               "lerntext": "patamú schto",
               "de": "weil",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "хотя",
               "lerntext": "chatjá",
               "de": "obwohl",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "пока",
               "lerntext": "paká",
               "de": "während",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "но",
               "lerntext": "no",
               "de": "aber",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "значит",
               "lerntext": "snátschit",
               "de": "also",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "чтобы",
               "lerntext": "schtóby",
               "de": "damit",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "тоже",
               "lerntext": "tósche",
               "de": "auch",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -16906,7 +19195,11 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я думаю, что это [Slot]",
-          "lerntext": "ja dúmaju, schto éta [Slot]"
+          "lerntext": "ja dúmaju, schto éta [Slot]",
+          "wortarten": {
+            "ja": "p",
+            "éta": "p"
+          }
         },
         "frameDe": "Ich glaube, dass es [Slot] ist.",
         "pronouns": [],
@@ -16915,86 +19208,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "лёгкий",
               "lerntext": "ljóchkij",
-              "de": "leicht"
+              "de": "leicht",
+              "c": "a"
             },
             {
               "schrift": "неправильный",
               "lerntext": "neprávilnyj",
-              "de": "falsch"
+              "de": "falsch",
+              "c": "a"
             },
             {
               "schrift": "больной",
               "lerntext": "balnój",
-              "de": "krank"
+              "de": "krank",
+              "c": "a"
             },
             {
               "schrift": "короткий",
               "lerntext": "karótkij",
-              "de": "kurz"
+              "de": "kurz",
+              "c": "a"
             },
             {
               "schrift": "длинный",
               "lerntext": "dlínnyj",
-              "de": "lang"
+              "de": "lang",
+              "c": "a"
             },
             {
               "schrift": "чистый",
               "lerntext": "tschístyj",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "чёрный",
               "lerntext": "tschórnyj",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "милый",
               "lerntext": "mílyj",
               "de": "lieb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "слабый",
               "lerntext": "slábyj",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "злой",
               "lerntext": "slój",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "счастливый",
               "lerntext": "schtschastlívyj",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "зелёный",
               "lerntext": "seljónyj",
               "de": "grün",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "тяжёлый",
               "lerntext": "tjashólyj",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "белый",
               "lerntext": "bjélyj",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "серый",
               "lerntext": "sséryj",
               "de": "grau",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17008,7 +19316,11 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я думаю, что это [Slot]",
-          "lerntext": "ja dúmaju, schto éta [Slot]"
+          "lerntext": "ja dúmaju, schto éta [Slot]",
+          "wortarten": {
+            "ja": "p",
+            "éta": "p"
+          }
         },
         "frameDe": "Ich glaube, dass es [Slot] ist.",
         "pronouns": [],
@@ -17017,86 +19329,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "чистый",
               "lerntext": "tschístyj",
-              "de": "sauber"
+              "de": "sauber",
+              "c": "a"
             },
             {
               "schrift": "слабый",
               "lerntext": "slábyj",
-              "de": "schwach"
+              "de": "schwach",
+              "c": "a"
             },
             {
               "schrift": "чёрный",
               "lerntext": "tschórnyj",
-              "de": "schwarz"
+              "de": "schwarz",
+              "c": "a"
             },
             {
               "schrift": "милый",
               "lerntext": "mílyj",
-              "de": "lieb"
+              "de": "lieb",
+              "c": "a"
             },
             {
               "schrift": "злой",
               "lerntext": "slój",
-              "de": "wütend"
+              "de": "wütend",
+              "c": "a"
             },
             {
               "schrift": "неправильный",
               "lerntext": "neprávilnyj",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "длинный",
               "lerntext": "dlínnyj",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "короткий",
               "lerntext": "karótkij",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "лёгкий",
               "lerntext": "ljóchkij",
               "de": "leicht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "больной",
               "lerntext": "balnój",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "хороший",
               "lerntext": "charóschij",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "высокий",
               "lerntext": "wyssókij",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "открытый",
               "lerntext": "atkrýtyj",
               "de": "offen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "низкий",
               "lerntext": "nískij",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "дешёвый",
               "lerntext": "deschówyj",
               "de": "billig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17110,7 +19437,12 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "если есть время, я хочу [Slot]",
-          "lerntext": "jésli jest wrémja, ja chatschú [Slot]"
+          "lerntext": "jésli jest wrémja, ja chatschú [Slot]",
+          "wortarten": {
+            "jésli": "k",
+            "jest": "v",
+            "ja": "p"
+          }
         },
         "frameDe": "Wenn ich Zeit habe, will ich [Slot].",
         "pronouns": [],
@@ -17119,86 +19451,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "жить",
               "lerntext": "shyt",
-              "de": "leben"
+              "de": "leben",
+              "c": "v"
             },
             {
               "schrift": "оставаться",
               "lerntext": "astawátsa",
-              "de": "bleiben"
+              "de": "bleiben",
+              "c": "v"
             },
             {
               "schrift": "смеяться",
               "lerntext": "smejátsa",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "плакать",
               "lerntext": "plákat",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "думать",
               "lerntext": "dúmat",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "верить",
               "lerntext": "wjérit",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "надеяться",
               "lerntext": "nadjéjatsa",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "нуждаться",
               "lerntext": "nushdátsa",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "быть",
               "lerntext": "byt",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "показывать",
               "lerntext": "pakásywat",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "путешествовать",
               "lerntext": "puteschéstwawat",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "идти",
               "lerntext": "ittí",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ехать",
               "lerntext": "jéchat",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "сидеть",
               "lerntext": "ssidjét",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "стоять",
               "lerntext": "stajat",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -17212,7 +19559,12 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "если есть время, я хочу [Slot]",
-          "lerntext": "jésli jest wrémja, ja chatschú [Slot]"
+          "lerntext": "jésli jest wrémja, ja chatschú [Slot]",
+          "wortarten": {
+            "jésli": "k",
+            "jest": "v",
+            "ja": "p"
+          }
         },
         "frameDe": "Wenn ich Zeit habe, will ich [Slot].",
         "pronouns": [],
@@ -17221,76 +19573,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "верить",
               "lerntext": "wjérit",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "надеяться",
               "lerntext": "nadjéjatsa",
-              "de": "hoffen"
+              "de": "hoffen",
+              "c": "v"
             },
             {
               "schrift": "нуждаться",
               "lerntext": "nushdátsa",
-              "de": "brauchen"
+              "de": "brauchen",
+              "c": "v"
             },
             {
               "schrift": "смеяться",
               "lerntext": "smejátsa",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "жить",
               "lerntext": "shyt",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "оставаться",
               "lerntext": "astawátsa",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "плакать",
               "lerntext": "plákat",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "думать",
               "lerntext": "dúmat",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "менять",
               "lerntext": "menját",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "продолжать",
               "lerntext": "pradalshát",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "мочь",
               "lerntext": "motsch",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "получать",
               "lerntext": "palutschát",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "должен",
               "lerntext": "dólshen",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -17325,14 +19690,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ты можешь [Slot], пожалуйста?",
-          "lerntext": "ty móschesch [Slot], paschálusta?"
+          "lerntext": "ty móschesch [Slot], paschálusta?",
+          "wortarten": {
+            "ty": "p"
+          }
         },
         "frameDe": "Kannst du bitte [Slot]?",
         "pronouns": [
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17340,86 +19709,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "работать",
               "lerntext": "rabótat",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "играть",
               "lerntext": "igrát",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "танцевать",
               "lerntext": "tanzewát",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "спать",
               "lerntext": "spat",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "ждать",
               "lerntext": "shdat",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "помогать",
               "lerntext": "pamagát",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "платить",
               "lerntext": "platít",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "искать",
               "lerntext": "iskát",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "спрашивать",
               "lerntext": "spráschiwat",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "отвечать",
               "lerntext": "atwetschát",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "умирать",
               "lerntext": "umirát",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "знать",
               "lerntext": "snat",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "пить",
               "lerntext": "pit",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "становиться",
               "lerntext": "stanawítsa",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "звонить",
               "lerntext": "swanít",
               "de": "anrufen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -17433,14 +19817,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ты можешь [Slot], пожалуйста?",
-          "lerntext": "ty móschesch [Slot], paschálusta?"
+          "lerntext": "ty móschesch [Slot], paschálusta?",
+          "wortarten": {
+            "ty": "p"
+          }
         },
         "frameDe": "Kannst du bitte [Slot]?",
         "pronouns": [
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17448,86 +19836,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "искать",
               "lerntext": "iskát",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "спрашивать",
               "lerntext": "spráschiwat",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "отвечать",
               "lerntext": "atwetschát",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "помогать",
               "lerntext": "pamagát",
-              "de": "helfen"
+              "de": "helfen",
+              "c": "v"
             },
             {
               "schrift": "платить",
               "lerntext": "platít",
-              "de": "bezahlen"
+              "de": "bezahlen",
+              "c": "v"
             },
             {
               "schrift": "спать",
               "lerntext": "spat",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "работать",
               "lerntext": "rabótat",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "играть",
               "lerntext": "igrát",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "танцевать",
               "lerntext": "tanzewát",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ждать",
               "lerntext": "shdat",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "быть",
               "lerntext": "byt",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "показывать",
               "lerntext": "pakásywat",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "путешествовать",
               "lerntext": "puteschéstwawat",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "идти",
               "lerntext": "ittí",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "любить",
               "lerntext": "ljubít",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -17541,14 +19944,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ты должен [Slot]",
-          "lerntext": "ty dólschen [Slot]"
+          "lerntext": "ty dólschen [Slot]",
+          "wortarten": {
+            "ty": "p"
+          }
         },
         "frameDe": "du musst [Slot].",
         "pronouns": [
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17556,86 +19963,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "выигрывать",
               "lerntext": "wyígrywat",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "забывать",
               "lerntext": "sabywát",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "понимать",
               "lerntext": "panimát",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "давать",
               "lerntext": "dawát",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "сказать",
               "lerntext": "skasát",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "говорить",
               "lerntext": "gawarít",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "открывать",
               "lerntext": "atkrywát",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "переезжать",
               "lerntext": "pereeshát",
               "de": "umziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ехать",
               "lerntext": "jéchat",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "сидеть",
               "lerntext": "ssidjét",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "стоять",
               "lerntext": "stajat",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "приходить",
               "lerntext": "prichadít",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "хотеть",
               "lerntext": "chatjét",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "использовать",
               "lerntext": "ispólsawat",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "менять",
               "lerntext": "menját",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -17649,14 +20071,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "ты должен [Slot]",
-          "lerntext": "ty dólschen [Slot]"
+          "lerntext": "ty dólschen [Slot]",
+          "wortarten": {
+            "ty": "p"
+          }
         },
         "frameDe": "du musst [Slot].",
         "pronouns": [
           {
             "schrift": "ты",
             "lerntext": "ty",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17664,71 +20090,83 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "говорить",
               "lerntext": "gawarít",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "открывать",
               "lerntext": "atkrywát",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "выигрывать",
               "lerntext": "wyígrywat",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "забывать",
               "lerntext": "sabywát",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "понимать",
               "lerntext": "panimát",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "давать",
               "lerntext": "dawát",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "сказать",
               "lerntext": "skasát",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "продолжать",
               "lerntext": "pradalshát",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "мочь",
               "lerntext": "motsch",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "получать",
               "lerntext": "palutschát",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "умирать",
               "lerntext": "umirát",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "знать",
               "lerntext": "snat",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -17763,14 +20201,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я даю книгу [Slot]",
-          "lerntext": "ja dajú knígu [Slot]"
+          "lerntext": "ja dajú knígu [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich gebe [Slot] das Buch.",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17778,86 +20220,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "друг",
               "lerntext": "drug",
-              "de": "Freund"
+              "de": "Freund",
+              "c": "n"
             },
             {
               "schrift": "мать",
               "lerntext": "mat",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "отец",
               "lerntext": "atjéz",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "ребёнок",
               "lerntext": "rebjónak",
-              "de": "Kind"
+              "de": "Kind",
+              "c": "n"
             },
             {
               "schrift": "студент",
               "lerntext": "studjént",
-              "de": "Student"
+              "de": "Student",
+              "c": "n"
             },
             {
               "schrift": "брат",
               "lerntext": "brat",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сестра",
               "lerntext": "sestrá",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "женщина",
               "lerntext": "shénschtschina",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ответ",
               "lerntext": "atwjét",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "экзамен",
               "lerntext": "ekzámen",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "работа",
               "lerntext": "rabóta",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "одежда",
               "lerntext": "adjéshda",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "имя",
               "lerntext": "ímja",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "телефон",
               "lerntext": "teljefón",
               "de": "Telefon",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "поезд",
               "lerntext": "pójesd",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -17871,14 +20328,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я даю книгу [Slot]",
-          "lerntext": "ja dajú knígu [Slot]"
+          "lerntext": "ja dajú knígu [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich gebe [Slot] das Buch.",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17886,76 +20347,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "женщина",
               "lerntext": "shénschtschina",
-              "de": "Frau"
+              "de": "Frau",
+              "c": "n"
             },
             {
               "schrift": "сестра",
               "lerntext": "sestrá",
-              "de": "Schwester"
+              "de": "Schwester",
+              "c": "n"
             },
             {
               "schrift": "брат",
               "lerntext": "brat",
-              "de": "Bruder"
+              "de": "Bruder",
+              "c": "n"
             },
             {
               "schrift": "друг",
               "lerntext": "drug",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "студент",
               "lerntext": "studjént",
               "de": "Student",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ребёнок",
               "lerntext": "rebjónak",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "мать",
               "lerntext": "mat",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "отец",
               "lerntext": "atjéz",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ответ",
               "lerntext": "atwjét",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "экзамен",
               "lerntext": "ekzámen",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "работа",
               "lerntext": "rabóta",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "снег",
               "lerntext": "snjeg",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "полиция",
               "lerntext": "polízija",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -17969,14 +20443,19 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я показываю город [Slot]",
-          "lerntext": "ja pokázywaju górad [Slot]"
+          "lerntext": "ja pokázywaju górad [Slot]",
+          "wortarten": {
+            "ja": "p",
+            "górad": "n"
+          }
         },
         "frameDe": "ich zeige [Slot] die Stadt.",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17984,86 +20463,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "друг",
               "lerntext": "drug",
-              "de": "Freund"
+              "de": "Freund",
+              "c": "n"
             },
             {
               "schrift": "мать",
               "lerntext": "mat",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "отец",
               "lerntext": "atjéz",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "ребёнок",
               "lerntext": "rebjónak",
-              "de": "Kind"
+              "de": "Kind",
+              "c": "n"
             },
             {
               "schrift": "студент",
               "lerntext": "studjént",
-              "de": "Student"
+              "de": "Student",
+              "c": "n"
             },
             {
               "schrift": "брат",
               "lerntext": "brat",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сестра",
               "lerntext": "sestrá",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "женщина",
               "lerntext": "shénschtschina",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ответ",
               "lerntext": "atwjét",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "экзамен",
               "lerntext": "ekzámen",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "минута",
               "lerntext": "minúta",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "завтрак",
               "lerntext": "sáwtrak",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "улица",
               "lerntext": "úliza",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "тарелка",
               "lerntext": "taréljka",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "квартира",
               "lerntext": "kwartíra",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18077,14 +20571,19 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я показываю город [Slot]",
-          "lerntext": "ja pokázywaju górad [Slot]"
+          "lerntext": "ja pokázywaju górad [Slot]",
+          "wortarten": {
+            "ja": "p",
+            "górad": "n"
+          }
         },
         "frameDe": "ich zeige [Slot] die Stadt.",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18092,76 +20591,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "женщина",
               "lerntext": "shénschtschina",
-              "de": "Frau"
+              "de": "Frau",
+              "c": "n"
             },
             {
               "schrift": "сестра",
               "lerntext": "sestrá",
-              "de": "Schwester"
+              "de": "Schwester",
+              "c": "n"
             },
             {
               "schrift": "брат",
               "lerntext": "brat",
-              "de": "Bruder"
+              "de": "Bruder",
+              "c": "n"
             },
             {
               "schrift": "друг",
               "lerntext": "drug",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "студент",
               "lerntext": "studjént",
               "de": "Student",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ребёнок",
               "lerntext": "rebjónak",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "мать",
               "lerntext": "mat",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "отец",
               "lerntext": "atjéz",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "овощи",
               "lerntext": "ówaschtschi",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "дочь",
               "lerntext": "dotsch",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "обед",
               "lerntext": "abjéd",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "помощь",
               "lerntext": "pómaschtsch",
               "de": "Hilfe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "окно",
               "lerntext": "aknó",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18196,14 +20708,19 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу стакан [Slot]",
-          "lerntext": "ja chatschú stakán [Slot]"
+          "lerntext": "ja chatschú stakán [Slot]",
+          "wortarten": {
+            "ja": "p",
+            "stakán": "n"
+          }
         },
         "frameDe": "ich möchte ein Glas [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18211,81 +20728,95 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "вода",
               "lerntext": "wadá",
-              "de": "Wasser"
+              "de": "Wasser",
+              "c": "n"
             },
             {
               "schrift": "пиво",
               "lerntext": "píwa",
-              "de": "Bier"
+              "de": "Bier",
+              "c": "n"
             },
             {
               "schrift": "молоко",
               "lerntext": "malakó",
-              "de": "Milch"
+              "de": "Milch",
+              "c": "n"
             },
             {
               "schrift": "кофе",
               "lerntext": "kófje",
-              "de": "Kaffee"
+              "de": "Kaffee",
+              "c": "n"
             },
             {
               "schrift": "аэропорт",
               "lerntext": "aerapórt",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "одежда",
               "lerntext": "adjéshda",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "тело",
               "lerntext": "téla",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "отпуск",
               "lerntext": "ótpusk",
               "de": "Urlaub",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "рыба",
               "lerntext": "rýba",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вокзал",
               "lerntext": "wagsál",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "голова",
               "lerntext": "galawá",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "школа",
               "lerntext": "schkóla",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "отель",
               "lerntext": "atél",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ответ",
               "lerntext": "atwjét",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18296,7 +20827,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "стакан",
             "lerntext": "stakán",
-            "de": "Glas"
+            "de": "Glas",
+            "c": "n"
           }
         ],
         "id": "31.1"
@@ -18305,14 +20837,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "у нас достаточно [Slot]",
-          "lerntext": "u nas dastátatschna [Slot]"
+          "lerntext": "u nas dastátatschna [Slot]",
+          "wortarten": {
+            "nas": "p"
+          }
         },
         "frameDe": "wir haben genug [Slot].",
         "pronouns": [
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18320,86 +20856,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "деньги",
               "lerntext": "djéngi",
-              "de": "Geld"
+              "de": "Geld",
+              "c": "n"
             },
             {
               "schrift": "время",
               "lerntext": "wrjémja",
-              "de": "Zeit"
+              "de": "Zeit",
+              "c": "n"
             },
             {
               "schrift": "хлеб",
               "lerntext": "chljeb",
-              "de": "Brot"
+              "de": "Brot",
+              "c": "n"
             },
             {
               "schrift": "фрукты",
               "lerntext": "frúkty",
-              "de": "Obst"
+              "de": "Obst",
+              "c": "n"
             },
             {
               "schrift": "мясо",
               "lerntext": "mjássa",
-              "de": "Fleisch"
+              "de": "Fleisch",
+              "c": "n"
             },
             {
               "schrift": "сахар",
               "lerntext": "sáchar",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "рыба",
               "lerntext": "rýba",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "молоко",
               "lerntext": "malakó",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "солнце",
               "lerntext": "sónze",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сумка",
               "lerntext": "súmka",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "работа",
               "lerntext": "rabóta",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "день",
               "lerntext": "djen",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ресторан",
               "lerntext": "restarán",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "лес",
               "lerntext": "ljes",
               "de": "Wald",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "кровать",
               "lerntext": "krawát",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18419,14 +20970,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "у нас достаточно [Slot]",
-          "lerntext": "u nas dastátatschna [Slot]"
+          "lerntext": "u nas dastátatschna [Slot]",
+          "wortarten": {
+            "nas": "p"
+          }
         },
         "frameDe": "wir haben genug [Slot].",
         "pronouns": [
           {
             "schrift": "мы",
             "lerntext": "my",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18434,76 +20989,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "рыба",
               "lerntext": "rýba",
-              "de": "Fisch"
+              "de": "Fisch",
+              "c": "n"
             },
             {
               "schrift": "сахар",
               "lerntext": "sáchar",
-              "de": "Zucker"
+              "de": "Zucker",
+              "c": "n"
             },
             {
               "schrift": "молоко",
               "lerntext": "malakó",
-              "de": "Milch"
+              "de": "Milch",
+              "c": "n"
             },
             {
               "schrift": "деньги",
               "lerntext": "djéngi",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "хлеб",
               "lerntext": "chljeb",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "мясо",
               "lerntext": "mjássa",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "фрукты",
               "lerntext": "frúkty",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "время",
               "lerntext": "wrjémja",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "дождь",
               "lerntext": "doshd",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "рот",
               "lerntext": "rot",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "туалет",
               "lerntext": "tualjét",
               "de": "Toilette",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "автобус",
               "lerntext": "awtóbus",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "погода",
               "lerntext": "pagóda",
               "de": "Wetter",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18538,14 +21106,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я жду уже [Slot]",
-          "lerntext": "ja schdu usché [Slot]"
+          "lerntext": "ja schdu usché [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich warte seit einer [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18553,81 +21125,95 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "час",
               "lerntext": "tschas",
-              "de": "Stunde"
+              "de": "Stunde",
+              "c": "n"
             },
             {
               "schrift": "минута",
               "lerntext": "minúta",
-              "de": "Minute"
+              "de": "Minute",
+              "c": "n"
             },
             {
               "schrift": "неделя",
               "lerntext": "nedjélja",
-              "de": "Woche"
+              "de": "Woche",
+              "c": "n"
             },
             {
               "schrift": "ночь",
               "lerntext": "notsch",
-              "de": "Nacht"
+              "de": "Nacht",
+              "c": "n"
             },
             {
               "schrift": "рука",
               "lerntext": "ruká",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "экзамен",
               "lerntext": "ekzámen",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "кухня",
               "lerntext": "kúchnja",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "дверь",
               "lerntext": "dwjer",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "полиция",
               "lerntext": "polízija",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "улица",
               "lerntext": "úliza",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "квартира",
               "lerntext": "kwartíra",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "дочь",
               "lerntext": "dotsch",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "помощь",
               "lerntext": "pómaschtsch",
               "de": "Hilfe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "одежда",
               "lerntext": "adjéshda",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18641,14 +21227,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я жду уже [Slot]",
-          "lerntext": "ja schdu usché [Slot]"
+          "lerntext": "ja schdu usché [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich warte seit einem [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18656,71 +21246,83 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "день",
               "lerntext": "djen",
-              "de": "Tag"
+              "de": "Tag",
+              "c": "n"
             },
             {
               "schrift": "вечер",
               "lerntext": "wjétscher",
-              "de": "Abend"
+              "de": "Abend",
+              "c": "n"
             },
             {
               "schrift": "сын",
               "lerntext": "syn",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вино",
               "lerntext": "winó",
               "de": "Wein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сыр",
               "lerntext": "syr",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "боль",
               "lerntext": "bol",
               "de": "Schmerz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "поезд",
               "lerntext": "pójesd",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "тарелка",
               "lerntext": "taréljka",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "аэропорт",
               "lerntext": "aerapórt",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "тело",
               "lerntext": "téla",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "отпуск",
               "lerntext": "ótpusk",
               "de": "Urlaub",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вокзал",
               "lerntext": "wagsál",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18734,14 +21336,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] я иду домой",
-          "lerntext": "[Slot] ja idú damój"
+          "lerntext": "[Slot] ja idú damój",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "[Slot] gehe ich nach Hause.",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18842,14 +21448,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] я иду домой",
-          "lerntext": "[Slot] ja idú damój"
+          "lerntext": "[Slot] ja idú damój",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "[Slot] gehe ich nach Hause.",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18961,14 +21571,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хотел бы [Slot]",
-          "lerntext": "ja chatjél by [Slot]"
+          "lerntext": "ja chatjél by [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich hätte gern [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18976,86 +21590,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "жить",
               "lerntext": "shyt",
-              "de": "leben"
+              "de": "leben",
+              "c": "v"
             },
             {
               "schrift": "оставаться",
               "lerntext": "astawátsa",
-              "de": "bleiben"
+              "de": "bleiben",
+              "c": "v"
             },
             {
               "schrift": "смеяться",
               "lerntext": "smejátsa",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "плакать",
               "lerntext": "plákat",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "думать",
               "lerntext": "dúmat",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "верить",
               "lerntext": "wjérit",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "надеяться",
               "lerntext": "nadjéjatsa",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "нуждаться",
               "lerntext": "nushdátsa",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "пить",
               "lerntext": "pit",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "становиться",
               "lerntext": "stanawítsa",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "звонить",
               "lerntext": "swanít",
               "de": "anrufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "быть",
               "lerntext": "byt",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "показывать",
               "lerntext": "pakásywat",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "путешествовать",
               "lerntext": "puteschéstwawat",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "слышать",
               "lerntext": "slýschat",
               "de": "hören",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -19069,14 +21698,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хотел бы [Slot]",
-          "lerntext": "ja chatjél by [Slot]"
+          "lerntext": "ja chatjél by [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich hätte gern [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19084,76 +21717,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "верить",
               "lerntext": "wjérit",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "надеяться",
               "lerntext": "nadjéjatsa",
-              "de": "hoffen"
+              "de": "hoffen",
+              "c": "v"
             },
             {
               "schrift": "нуждаться",
               "lerntext": "nushdátsa",
-              "de": "brauchen"
+              "de": "brauchen",
+              "c": "v"
             },
             {
               "schrift": "смеяться",
               "lerntext": "smejátsa",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "жить",
               "lerntext": "shyt",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "оставаться",
               "lerntext": "astawátsa",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "плакать",
               "lerntext": "plákat",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "думать",
               "lerntext": "dúmat",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "идти",
               "lerntext": "ittí",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "любить",
               "lerntext": "ljubít",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "переезжать",
               "lerntext": "pereeshát",
               "de": "umziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ехать",
               "lerntext": "jéchat",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "сидеть",
               "lerntext": "ssidjét",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -19167,14 +21813,19 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "вы можете дать мне [Slot]?",
-          "lerntext": "wy móschete dat mnje [Slot]?"
+          "lerntext": "wy móschete dat mnje [Slot]?",
+          "wortarten": {
+            "wy": "p",
+            "mnje": "p"
+          }
         },
         "frameDe": "Könnten Sie mir [Slot] geben?",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19182,86 +21833,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "вода",
               "lerntext": "wadá",
-              "de": "Wasser"
+              "de": "Wasser",
+              "c": "n"
             },
             {
               "schrift": "хлеб",
               "lerntext": "chljeb",
-              "de": "Brot"
+              "de": "Brot",
+              "c": "n"
             },
             {
               "schrift": "ключ",
               "lerntext": "kljutsch",
-              "de": "Schlüssel"
+              "de": "Schlüssel",
+              "c": "n"
             },
             {
               "schrift": "книга",
               "lerntext": "kníga",
-              "de": "Buch"
+              "de": "Buch",
+              "c": "n"
             },
             {
               "schrift": "сумка",
               "lerntext": "súmka",
-              "de": "Tasche"
+              "de": "Tasche",
+              "c": "n"
             },
             {
               "schrift": "кофе",
               "lerntext": "kófje",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сахар",
               "lerntext": "sáchar",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "молоко",
               "lerntext": "malakó",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "гора",
               "lerntext": "gará",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "имя",
               "lerntext": "ímja",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "больница",
               "lerntext": "balníza",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "платье",
               "lerntext": "plátje",
               "de": "Kleid",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "соль",
               "lerntext": "sol",
               "de": "Salz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "море",
               "lerntext": "mórje",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "глаз",
               "lerntext": "glas",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -19275,14 +21941,19 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "вы можете дать мне [Slot]?",
-          "lerntext": "wy móschete dat mnje [Slot]?"
+          "lerntext": "wy móschete dat mnje [Slot]?",
+          "wortarten": {
+            "wy": "p",
+            "mnje": "p"
+          }
         },
         "frameDe": "Könnten Sie mir [Slot] geben?",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19290,76 +21961,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "сахар",
               "lerntext": "sáchar",
-              "de": "Zucker"
+              "de": "Zucker",
+              "c": "n"
             },
             {
               "schrift": "кофе",
               "lerntext": "kófje",
-              "de": "Kaffee"
+              "de": "Kaffee",
+              "c": "n"
             },
             {
               "schrift": "молоко",
               "lerntext": "malakó",
-              "de": "Milch"
+              "de": "Milch",
+              "c": "n"
             },
             {
               "schrift": "книга",
               "lerntext": "kníga",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ключ",
               "lerntext": "kljutsch",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "сумка",
               "lerntext": "súmka",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "вода",
               "lerntext": "wadá",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "хлеб",
               "lerntext": "chljeb",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "телефон",
               "lerntext": "teljefón",
               "de": "Telefon",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "снег",
               "lerntext": "snjeg",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "завтрак",
               "lerntext": "sáwtrak",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "овощи",
               "lerntext": "ówaschtschi",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "обед",
               "lerntext": "abjéd",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -19394,14 +22078,19 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я думаю, это [Slot]",
-          "lerntext": "ja dúmaju, éta [Slot]"
+          "lerntext": "ja dúmaju, éta [Slot]",
+          "wortarten": {
+            "ja": "p",
+            "éta": "p"
+          }
         },
         "frameDe": "ich denke, das ist [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19409,86 +22098,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "большой",
               "lerntext": "balschój",
-              "de": "groß"
+              "de": "groß",
+              "c": "a"
             },
             {
               "schrift": "маленький",
               "lerntext": "málenkij",
-              "de": "klein"
+              "de": "klein",
+              "c": "a"
             },
             {
               "schrift": "старый",
               "lerntext": "stáryj",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "молодой",
               "lerntext": "maladój",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "дорогой",
               "lerntext": "daragój",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "тёплый",
               "lerntext": "tjóplyj",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "холодный",
               "lerntext": "chalódnyj",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "новый",
               "lerntext": "nówyj",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "красивый",
               "lerntext": "krassívyj",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "сильный",
               "lerntext": "sílnyj",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "закрытый",
               "lerntext": "sakrýtyj",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "красный",
               "lerntext": "krásnyj",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "синий",
               "lerntext": "sínij",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "правильный",
               "lerntext": "práwilnyj",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "коричневый",
               "lerntext": "karítschnewyj",
               "de": "braun",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -19502,14 +22206,19 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я думаю, это [Slot]",
-          "lerntext": "ja dúmaju, éta [Slot]"
+          "lerntext": "ja dúmaju, éta [Slot]",
+          "wortarten": {
+            "ja": "p",
+            "éta": "p"
+          }
         },
         "frameDe": "ich denke, das ist [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19517,86 +22226,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "красивый",
               "lerntext": "krassívyj",
-              "de": "schön"
+              "de": "schön",
+              "c": "a"
             },
             {
               "schrift": "тёплый",
               "lerntext": "tjóplyj",
-              "de": "warm"
+              "de": "warm",
+              "c": "a"
             },
             {
               "schrift": "холодный",
               "lerntext": "chalódnyj",
-              "de": "kalt"
+              "de": "kalt",
+              "c": "a"
             },
             {
               "schrift": "новый",
               "lerntext": "nówyj",
-              "de": "neu"
+              "de": "neu",
+              "c": "a"
             },
             {
               "schrift": "сильный",
               "lerntext": "sílnyj",
-              "de": "stark"
+              "de": "stark",
+              "c": "a"
             },
             {
               "schrift": "большой",
               "lerntext": "balschój",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "маленький",
               "lerntext": "málenkij",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "молодой",
               "lerntext": "maladój",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "дорогой",
               "lerntext": "daragój",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "старый",
               "lerntext": "stáryj",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "скучный",
               "lerntext": "skúschnyj",
               "de": "langweilig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "жёлтый",
               "lerntext": "shóltyj",
               "de": "gelb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "счастливый",
               "lerntext": "schtschastlívyj",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "зелёный",
               "lerntext": "seljónyj",
               "de": "grün",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "тяжёлый",
               "lerntext": "tjashólyj",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -19610,14 +22334,19 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я нахожу это очень [Slot]",
-          "lerntext": "ja nachaschú éta ótschen [Slot]"
+          "lerntext": "ja nachaschú éta ótschen [Slot]",
+          "wortarten": {
+            "ja": "p",
+            "éta": "p"
+          }
         },
         "frameDe": "ich finde das sehr [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19625,86 +22354,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "лёгкий",
               "lerntext": "ljóchkij",
-              "de": "leicht"
+              "de": "leicht",
+              "c": "a"
             },
             {
               "schrift": "неправильный",
               "lerntext": "neprávilnyj",
-              "de": "falsch"
+              "de": "falsch",
+              "c": "a"
             },
             {
               "schrift": "больной",
               "lerntext": "balnój",
-              "de": "krank"
+              "de": "krank",
+              "c": "a"
             },
             {
               "schrift": "короткий",
               "lerntext": "karótkij",
-              "de": "kurz"
+              "de": "kurz",
+              "c": "a"
             },
             {
               "schrift": "длинный",
               "lerntext": "dlínnyj",
-              "de": "lang"
+              "de": "lang",
+              "c": "a"
             },
             {
               "schrift": "чистый",
               "lerntext": "tschístyj",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "чёрный",
               "lerntext": "tschórnyj",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "милый",
               "lerntext": "mílyj",
               "de": "lieb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "слабый",
               "lerntext": "slábyj",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "злой",
               "lerntext": "slój",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "белый",
               "lerntext": "bjélyj",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "серый",
               "lerntext": "sséryj",
               "de": "grau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "хороший",
               "lerntext": "charóschij",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "высокий",
               "lerntext": "wyssókij",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "открытый",
               "lerntext": "atkrýtyj",
               "de": "offen",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -19718,14 +22462,19 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я нахожу это очень [Slot]",
-          "lerntext": "ja nachaschú éta ótschen [Slot]"
+          "lerntext": "ja nachaschú éta ótschen [Slot]",
+          "wortarten": {
+            "ja": "p",
+            "éta": "p"
+          }
         },
         "frameDe": "ich finde das sehr [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19733,86 +22482,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "чистый",
               "lerntext": "tschístyj",
-              "de": "sauber"
+              "de": "sauber",
+              "c": "a"
             },
             {
               "schrift": "слабый",
               "lerntext": "slábyj",
-              "de": "schwach"
+              "de": "schwach",
+              "c": "a"
             },
             {
               "schrift": "чёрный",
               "lerntext": "tschórnyj",
-              "de": "schwarz"
+              "de": "schwarz",
+              "c": "a"
             },
             {
               "schrift": "милый",
               "lerntext": "mílyj",
-              "de": "lieb"
+              "de": "lieb",
+              "c": "a"
             },
             {
               "schrift": "злой",
               "lerntext": "slój",
-              "de": "wütend"
+              "de": "wütend",
+              "c": "a"
             },
             {
               "schrift": "неправильный",
               "lerntext": "neprávilnyj",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "длинный",
               "lerntext": "dlínnyj",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "короткий",
               "lerntext": "karótkij",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "лёгкий",
               "lerntext": "ljóchkij",
               "de": "leicht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "больной",
               "lerntext": "balnój",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "низкий",
               "lerntext": "nískij",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "дешёвый",
               "lerntext": "deschówyj",
               "de": "billig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "закрытый",
               "lerntext": "sakrýtyj",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "красный",
               "lerntext": "krásnyj",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "синий",
               "lerntext": "sínij",
               "de": "blau",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -19847,14 +22611,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "завтра я буду [Slot]",
-          "lerntext": "záwtra ja búdu [Slot]"
+          "lerntext": "záwtra ja búdu [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Morgen werde ich [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19862,86 +22630,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "смотреть",
               "lerntext": "smatrjét",
-              "de": "schauen"
+              "de": "schauen",
+              "c": "v"
             },
             {
               "schrift": "покупать",
               "lerntext": "pakupát",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "видеть",
               "lerntext": "wídjet",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "делать",
               "lerntext": "djélat",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "находить",
               "lerntext": "nachadít",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "брать",
               "lerntext": "brat",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "читать",
               "lerntext": "tschitát",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "писать",
               "lerntext": "pissát",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "стоять",
               "lerntext": "stajat",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "приходить",
               "lerntext": "prichadít",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "хотеть",
               "lerntext": "chatjét",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "использовать",
               "lerntext": "ispólsawat",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "менять",
               "lerntext": "menját",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "продолжать",
               "lerntext": "pradalshát",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "мочь",
               "lerntext": "motsch",
               "de": "können",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -19955,14 +22738,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "завтра я буду [Slot]",
-          "lerntext": "záwtra ja búdu [Slot]"
+          "lerntext": "záwtra ja búdu [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Morgen werde ich [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19970,76 +22757,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "брать",
               "lerntext": "brat",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "читать",
               "lerntext": "tschitát",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "писать",
               "lerntext": "pissát",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "смотреть",
               "lerntext": "smatrjét",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "покупать",
               "lerntext": "pakupát",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "видеть",
               "lerntext": "wídjet",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "делать",
               "lerntext": "djélat",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "находить",
               "lerntext": "nachadít",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "получать",
               "lerntext": "palutschát",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "умирать",
               "lerntext": "umirát",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "знать",
               "lerntext": "snat",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "пить",
               "lerntext": "pit",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "становиться",
               "lerntext": "stanawítsa",
               "de": "werden",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20053,14 +22853,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу скоро [Slot]",
-          "lerntext": "ja chatschú skóra [Slot]"
+          "lerntext": "ja chatschú skóra [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich will bald [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20068,86 +22872,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "работать",
               "lerntext": "rabótat",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "играть",
               "lerntext": "igrát",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "танцевать",
               "lerntext": "tanzewát",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "спать",
               "lerntext": "spat",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "ждать",
               "lerntext": "shdat",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "искать",
               "lerntext": "iskát",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "спрашивать",
               "lerntext": "spráschiwat",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "отвечать",
               "lerntext": "atwetschát",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "звонить",
               "lerntext": "swanít",
               "de": "anrufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "быть",
               "lerntext": "byt",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "показывать",
               "lerntext": "pakásywat",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "путешествовать",
               "lerntext": "puteschéstwawat",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "слышать",
               "lerntext": "slýschat",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "идти",
               "lerntext": "ittí",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "закрывать",
               "lerntext": "sakrywát",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20161,14 +22980,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу скоро [Slot]",
-          "lerntext": "ja chatschú skóra [Slot]"
+          "lerntext": "ja chatschú skóra [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "ich will bald [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20176,76 +22999,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "искать",
               "lerntext": "iskát",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "спрашивать",
               "lerntext": "spráschiwat",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "отвечать",
               "lerntext": "atwetschát",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "спать",
               "lerntext": "spat",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "работать",
               "lerntext": "rabótat",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "играть",
               "lerntext": "igrát",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "танцевать",
               "lerntext": "tanzewát",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ждать",
               "lerntext": "shdat",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "любить",
               "lerntext": "ljubít",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "переезжать",
               "lerntext": "pereeshát",
               "de": "umziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "терять",
               "lerntext": "terját",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ехать",
               "lerntext": "jéchat",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "сидеть",
               "lerntext": "ssidjét",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20280,7 +23116,11 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "это человек, который хочет [Slot]",
-          "lerntext": "éta tschelawék, katóryj chótschet [Slot]"
+          "lerntext": "éta tschelawék, katóryj chótschet [Slot]",
+          "wortarten": {
+            "éta": "p",
+            "katóryj": "p"
+          }
         },
         "frameDe": "Das ist der Mann, der [Slot] will.",
         "pronouns": [],
@@ -20289,86 +23129,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "жить",
               "lerntext": "shyt",
-              "de": "leben"
+              "de": "leben",
+              "c": "v"
             },
             {
               "schrift": "оставаться",
               "lerntext": "astawátsa",
-              "de": "bleiben"
+              "de": "bleiben",
+              "c": "v"
             },
             {
               "schrift": "смеяться",
               "lerntext": "smejátsa",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "плакать",
               "lerntext": "plákat",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "думать",
               "lerntext": "dúmat",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "верить",
               "lerntext": "wjérit",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "надеяться",
               "lerntext": "nadjéjatsa",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "нуждаться",
               "lerntext": "nushdátsa",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "стоять",
               "lerntext": "stajat",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "приходить",
               "lerntext": "prichadít",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "хотеть",
               "lerntext": "chatjét",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "использовать",
               "lerntext": "ispólsawat",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "менять",
               "lerntext": "menját",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "продолжать",
               "lerntext": "pradalshát",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "мочь",
               "lerntext": "motsch",
               "de": "können",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20379,7 +23234,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "человек",
             "lerntext": "tschelawjék",
-            "de": "Mensch"
+            "de": "Mensch",
+            "c": "n"
           }
         ],
         "id": "36.1"
@@ -20388,7 +23244,11 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "это человек, который хочет [Slot]",
-          "lerntext": "éta tschelawék, katóryj chótschet [Slot]"
+          "lerntext": "éta tschelawék, katóryj chótschet [Slot]",
+          "wortarten": {
+            "éta": "p",
+            "katóryj": "p"
+          }
         },
         "frameDe": "Das ist der Mann, der [Slot] will.",
         "pronouns": [],
@@ -20397,76 +23257,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "верить",
               "lerntext": "wjérit",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "надеяться",
               "lerntext": "nadjéjatsa",
-              "de": "hoffen"
+              "de": "hoffen",
+              "c": "v"
             },
             {
               "schrift": "нуждаться",
               "lerntext": "nushdátsa",
-              "de": "brauchen"
+              "de": "brauchen",
+              "c": "v"
             },
             {
               "schrift": "смеяться",
               "lerntext": "smejátsa",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "жить",
               "lerntext": "shyt",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "оставаться",
               "lerntext": "astawátsa",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "плакать",
               "lerntext": "plákat",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "думать",
               "lerntext": "dúmat",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "получать",
               "lerntext": "palutschát",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "должен",
               "lerntext": "dólshen",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "умирать",
               "lerntext": "umirát",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "знать",
               "lerntext": "snat",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "пить",
               "lerntext": "pit",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20480,7 +23353,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я ищу место, где можно [Slot]",
-          "lerntext": "ja ischú mésta, gdje móschna [Slot]"
+          "lerntext": "ja ischú mésta, gdje móschna [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich suche einen Ort, wo man [Slot] kann.",
         "pronouns": [],
@@ -20489,86 +23365,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "работать",
               "lerntext": "rabótat",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "играть",
               "lerntext": "igrát",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "танцевать",
               "lerntext": "tanzewát",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "спать",
               "lerntext": "spat",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "ждать",
               "lerntext": "shdat",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "искать",
               "lerntext": "iskát",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "спрашивать",
               "lerntext": "spráschiwat",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "отвечать",
               "lerntext": "atwetschát",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "становиться",
               "lerntext": "stanawítsa",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "мыть",
               "lerntext": "myt",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "звонить",
               "lerntext": "swanít",
               "de": "anrufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "быть",
               "lerntext": "byt",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "показывать",
               "lerntext": "pakásywat",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "путешествовать",
               "lerntext": "puteschéstwawat",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "слышать",
               "lerntext": "slýschat",
               "de": "hören",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20584,7 +23475,8 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "место",
             "lerntext": "mjésta",
-            "de": "Platz"
+            "de": "Platz",
+            "c": "n"
           }
         ],
         "id": "36.3"
@@ -20593,7 +23485,10 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я ищу место, где можно [Slot]",
-          "lerntext": "ja ischú mésta, gdje móschna [Slot]"
+          "lerntext": "ja ischú mésta, gdje móschna [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Ich suche einen Ort, wo man [Slot] kann.",
         "pronouns": [],
@@ -20602,76 +23497,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "искать",
               "lerntext": "iskát",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "спрашивать",
               "lerntext": "spráschiwat",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "отвечать",
               "lerntext": "atwetschát",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "спать",
               "lerntext": "spat",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "работать",
               "lerntext": "rabótat",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "играть",
               "lerntext": "igrát",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "танцевать",
               "lerntext": "tanzewát",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ждать",
               "lerntext": "shdat",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "идти",
               "lerntext": "ittí",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "закрывать",
               "lerntext": "sakrywát",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "любить",
               "lerntext": "ljubít",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "переезжать",
               "lerntext": "pereeshát",
               "de": "umziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "терять",
               "lerntext": "terját",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20706,14 +23614,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "вчера я был в [Slot]",
-          "lerntext": "wtscherá ja byl w [Slot]"
+          "lerntext": "wtscherá ja byl w [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Gestern war ich im [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20721,86 +23633,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "ресторан",
               "lerntext": "restarán",
-              "de": "Restaurant"
+              "de": "Restaurant",
+              "c": "n"
             },
             {
               "schrift": "отель",
               "lerntext": "atél",
-              "de": "Hotel"
+              "de": "Hotel",
+              "c": "n"
             },
             {
               "schrift": "школа",
               "lerntext": "schkóla",
-              "de": "Schule"
+              "de": "Schule",
+              "c": "n"
             },
             {
               "schrift": "университет",
               "lerntext": "uniwersitjét",
-              "de": "Universität"
+              "de": "Universität",
+              "c": "n"
             },
             {
               "schrift": "больница",
               "lerntext": "balníza",
-              "de": "Krankenhaus"
+              "de": "Krankenhaus",
+              "c": "n"
             },
             {
               "schrift": "вокзал",
               "lerntext": "wagsál",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "аэропорт",
               "lerntext": "aerapórt",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "город",
               "lerntext": "górad",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "человек",
               "lerntext": "tschelawjék",
               "de": "Mensch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "место",
               "lerntext": "mjésta",
               "de": "Platz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "окно",
               "lerntext": "aknó",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ужин",
               "lerntext": "úshyn",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "голова",
               "lerntext": "galawá",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ответ",
               "lerntext": "atwjét",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "солнце",
               "lerntext": "sónze",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -20814,14 +23741,18 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "вчера я был в [Slot]",
-          "lerntext": "wtscherá ja byl w [Slot]"
+          "lerntext": "wtscherá ja byl w [Slot]",
+          "wortarten": {
+            "ja": "p"
+          }
         },
         "frameDe": "Gestern war ich im [Slot].",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20829,76 +23760,89 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "вокзал",
               "lerntext": "wagsál",
-              "de": "Bahnhof"
+              "de": "Bahnhof",
+              "c": "n"
             },
             {
               "schrift": "аэропорт",
               "lerntext": "aerapórt",
-              "de": "Flughafen"
+              "de": "Flughafen",
+              "c": "n"
             },
             {
               "schrift": "город",
               "lerntext": "górad",
-              "de": "Stadt"
+              "de": "Stadt",
+              "c": "n"
             },
             {
               "schrift": "ресторан",
               "lerntext": "restarán",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "отель",
               "lerntext": "atél",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "школа",
               "lerntext": "schkóla",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "университет",
               "lerntext": "uniwersitjét",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "больница",
               "lerntext": "balníza",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "человек",
               "lerntext": "tschelawjék",
               "de": "Mensch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "место",
               "lerntext": "mjésta",
               "de": "Platz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "чай",
               "lerntext": "tschaj",
               "de": "Tee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "работа",
               "lerntext": "rabóta",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "лес",
               "lerntext": "ljes",
               "de": "Wald",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -20912,14 +23856,19 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу [Slot], потому что есть время",
-          "lerntext": "ja chatschú [Slot], patamú schto jest wrémja"
+          "lerntext": "ja chatschú [Slot], patamú schto jest wrémja",
+          "wortarten": {
+            "ja": "p",
+            "jest": "v"
+          }
         },
         "frameDe": "Ich möchte [Slot], weil ich Zeit habe.",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20927,86 +23876,101 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "выигрывать",
               "lerntext": "wyígrywat",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "забывать",
               "lerntext": "sabywát",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "понимать",
               "lerntext": "panimát",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "давать",
               "lerntext": "dawát",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "сказать",
               "lerntext": "skasát",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "говорить",
               "lerntext": "gawarít",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "открывать",
               "lerntext": "atkrywát",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ехать",
               "lerntext": "jéchat",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "сидеть",
               "lerntext": "ssidjét",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "стоять",
               "lerntext": "stajat",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "приходить",
               "lerntext": "prichadít",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "хотеть",
               "lerntext": "chatjét",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "использовать",
               "lerntext": "ispólsawat",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "менять",
               "lerntext": "menját",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "продолжать",
               "lerntext": "pradalshát",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -21020,14 +23984,19 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "я хочу [Slot], потому что есть время",
-          "lerntext": "ja chatschú [Slot], patamú schto jest wrémja"
+          "lerntext": "ja chatschú [Slot], patamú schto jest wrémja",
+          "wortarten": {
+            "ja": "p",
+            "jest": "v"
+          }
         },
         "frameDe": "Ich möchte [Slot], weil ich Zeit habe.",
         "pronouns": [
           {
             "schrift": "я",
             "lerntext": "ja",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -21035,71 +24004,83 @@ export const RUSSIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "говорить",
               "lerntext": "gawarít",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "открывать",
               "lerntext": "atkrywát",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "выигрывать",
               "lerntext": "wyígrywat",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "забывать",
               "lerntext": "sabywát",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "понимать",
               "lerntext": "panimát",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "давать",
               "lerntext": "dawát",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "сказать",
               "lerntext": "skasát",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "мочь",
               "lerntext": "motsch",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "получать",
               "lerntext": "palutschát",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "должен",
               "lerntext": "dólshen",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "умирать",
               "lerntext": "umirát",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "знать",
               "lerntext": "snat",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             }
           ]

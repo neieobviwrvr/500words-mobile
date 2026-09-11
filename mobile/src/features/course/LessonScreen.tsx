@@ -2,17 +2,45 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { router, useFocusEffect } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
-import { Card, PillButton, ProgressBar, SchreibenFeld, Screen, UebungsMenu } from '../../components';
+import {
+  Card,
+  PillButton,
+  ProgressBar,
+  SchreibenFeld,
+  Screen,
+  UebungsMenu,
+  SatzAnzeige,
+  SatzChip,
+  SatzChipReihe,
+  SatzInfoSlot,
+  SatzInfoZeile,
+  SatzMikrofon,
+  SatzRahmen,
+  SatzWeiterKnopf,
+  hilfeAusschnitt,
+} from '../../components';
 import { useAppState } from '../../state/AppState';
-import { CourseWord } from '../../data/courseTypes';
+import { CourseFrame, CourseWord } from '../../data/courseTypes';
 import { courseFor } from '../../data/courses';
-import { hasVoiceFor, speakText } from '../tts/speak';
+import { hasVoiceFor, speakText, stopSpeaking } from '../tts/speak';
 import { useSttRecorder } from '../stt/useSttRecorder';
 import { useSpeechmatics } from '../stt/useSpeechmatics';
-import { getLanguage } from '../../data/languages';
+import { getLanguage, sprachAdjektiv } from '../../data/languages';
+import type { Phrase } from '../../data/cheatsheetContent';
+import { scenarioLabel } from '../../data/scenarios';
 import { newCard, reviewCard } from '../srs/fsrsEngine';
 import { cardKey, KURS_RAHMEN, KURS_WORT, loadAllCards, saveCard } from '../srs/srsStorage';
-import { bewerteAntwort, bewerteFinisher, fuelleRahmen, ersteVariante, Tier } from './lessonEvaluation';
+import {
+  bewerteAntwort,
+  bewerteFinisher,
+  deutscherSatz,
+  fuelleRahmen,
+  ersteVariante,
+  satzTokens,
+  SatzToken,
+  Tier,
+} from './lessonEvaluation';
+import { TaggedTokens } from '../../components/ColoredTokens';
 import { tippHinweis, tippPlatzhalter } from './sprachProfil';
 import {
   ACCENT_ERROR,
@@ -70,6 +98,18 @@ function zurueckZumPfad() {
   else router.replace('/');
 }
 
+
+/**
+ * Chinesische Rahmen tragen Leerzeichen zwischen den Zeichen ("我 是 学生") -
+ * fuer den Generator sind das die Wortgrenzen, auf dem Schirm aber falsch:
+ * Chinesisch schreibt man ohne. Nur fuer die ANZEIGE; vorgelesen wird
+ * weiterhin `schrift` wie bisher. Leerzeichen neben lateinischen oder
+ * kyrillischen Buchstaben bleiben stehen.
+ */
+function schriftFuerAnzeige(schrift: string): string {
+  return schrift.replace(/([\u3400-\u9fff\uf900-\ufaff])\s+(?=[\u3400-\u9fff\uf900-\ufaff])/g, '$1');
+}
+
 type Schritt = 'muster' | 'uebung' | 'finisher' | 'ergebnis';
 
 /**
@@ -100,7 +140,17 @@ type DrillPunkt = {
  * denselben Ablauf, ohne dass irgendetwas doppelt existiert.
  */
 export type UebungsSchritt =
-  | { art: 'teaser'; schrift: string; lerntext: string; woerter: CourseWord[] }
+  | {
+      art: 'teaser';
+      schrift: string;
+      lerntext: string;
+      woerter: CourseWord[];
+      /** Der Satz auf Deutsch, fuer den "Übersetzung"-Chip. */
+      deutsch?: string | null;
+      /** Rahmen und Wortarten, fuer die Farben (siehe satzTokens). */
+      rahmenLerntext?: string;
+      wortarten?: CourseFrame['wortarten'];
+    }
   | { art: 'auszeichnung'; woerter: CourseWord[] }
   | { art: 'nachsprechen'; wort: CourseWord }
   | { art: 'abrufen'; wort: CourseWord }
@@ -113,6 +163,10 @@ export type UebungsSchritt =
       lektionId: string;
       /** Das Muster ueber der Aufgabe - der Schritt braucht dafuer keine Lektion. */
       rahmenLerntext: string;
+      /** Der Satz auf Deutsch - Ausgangssatz der Stufe-3-Vorlage. */
+      deutsch?: string | null;
+      /** Wortarten der festen Rahmenwoerter, fuer die Farben. */
+      wortarten?: CourseFrame['wortarten'];
     }
   | { art: 'finisher'; aufgabe: string }
   | { art: 'ergebnis' };
@@ -135,7 +189,7 @@ type Props = {
 };
 
 export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props) {
-  const { darkMode, zaehle, targetLanguageId } = useAppState();
+  const { darkMode, zaehle, targetLanguageId, saved, toggleSaved, wortartenFarben } = useAppState();
   const theme = getTheme(darkMode);
   // Der gefuehrte Pfad gehoert immer zur gewaehlten Zielsprache -
   // deshalb kommt sie aus dem App-Zustand statt fest aus 'zh'.
@@ -169,6 +223,24 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
    * dafuer jedes Mal erneut klicken zu lassen waere Schikane.
    */
   const [tippenErlaubt, setTippenErlaubt] = useState(false);
+
+  /**
+   * Chips der Satz-Vorlage im Teaser (2026-09-11) - dieselbe Bedeutung wie in
+   * SentenceReviewScreen.tsx.
+   *
+   * `satzHilfeGenutzt` bleibt gesetzt, auch wenn die Hilfe wieder zugeklappt
+   * wird: gesehen ist gesehen, sonst liesse sich die Deckelung auf
+   * "ueberlebt" wegklicken. `zeichenAn` gilt fuer die ganze Lektion und wird
+   * NICHT je Schritt zurueckgesetzt - wer die Zeichen sehen will, will sie
+   * durchgehend sehen.
+   */
+  const [uebersetzungSichtbar, setUebersetzungSichtbar] = useState(false);
+  const [satzHilfe, setSatzHilfe] = useState(false);
+  const [satzHilfeGenutzt, setSatzHilfeGenutzt] = useState(false);
+  const [zeichenAn, setZeichenAn] = useState(false);
+  // Wortarten-Farben "nur diesmal" - wie in SentenceReviewScreen.tsx je
+  // Schritt zurueckgesetzt, unabhaengig vom globalen Schalter im Profil.
+  const [farbenEinmalig, setFarbenEinmalig] = useState(false);
 
   /**
    * Wurde der AKTUELLE Schritt schon einmal beantwortet?
@@ -265,6 +337,9 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
         art: 'teaser',
         schrift: fuelleRahmen(l.frame.schrift, erstes.schrift),
         lerntext: fuelleRahmen(l.frame.lerntext, erstes.lerntext),
+        deutsch: deutscherSatz(l.frameDe, erstes),
+        rahmenLerntext: l.frame.lerntext,
+        wortarten: l.frame.wortarten,
         woerter: teaserWoerter,
       },
       { art: 'auszeichnung', woerter: teaserWoerter },
@@ -281,6 +356,8 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
     liste.push({
       art: 'satz',
       wort: erstes,
+      deutsch: deutscherSatz(l.frameDe, erstes),
+      wortarten: l.frame.wortarten,
       schrift: fuelleRahmen(l.frame.schrift, erstes.schrift),
       lerntext: fuelleRahmen(l.frame.lerntext, erstes.lerntext),
       lektionId: l.id,
@@ -309,13 +386,23 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
       const satzSchrift = fuelleRahmen(l.frame.schrift, w.schrift);
       const satzLerntext = fuelleRahmen(l.frame.lerntext, w.lerntext);
       if (!w.wieder) {
-        liste.push({ art: 'teaser', schrift: satzSchrift, lerntext: satzLerntext, woerter: [w] });
+        liste.push({
+          art: 'teaser',
+          schrift: satzSchrift,
+          lerntext: satzLerntext,
+          deutsch: deutscherSatz(l.frameDe, w),
+          rahmenLerntext: l.frame.lerntext,
+          wortarten: l.frame.wortarten,
+          woerter: [w],
+        });
         liste.push({ art: 'nachsprechen', wort: w });
         liste.push({ art: 'abrufen', wort: w });
       }
       liste.push({
         art: 'satz',
         wort: w,
+        deutsch: deutscherSatz(l.frameDe, w),
+        wortarten: l.frame.wortarten,
         schrift: satzSchrift,
         lerntext: satzLerntext,
         lektionId: l.id,
@@ -353,6 +440,10 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
     setGehoert(null);
     setHilfe(false);
     setSttFehler(null);
+    setUebersetzungSichtbar(false);
+    setSatzHilfe(false);
+    setSatzHilfeGenutzt(false);
+    setFarbenEinmalig(false);
   }, []);
 
   // Jede Lektion faengt beim naechsten Betreten von vorn an (Nutzer-Wunsch
@@ -382,6 +473,23 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
     }, [lessonId])
   );
 
+  // Den Teaser-Satz einmal von selbst vorlesen, sobald er erscheint (Simons
+  // Vorgabe fuer die Satz-Vorlagen, 2026-08-30). Erneut hoeren geht ueber
+  // Antippen des Satzes - einen eigenen "Anhören"-Knopf hat die Vorlage
+  // nicht. Die Wort-Schritte behalten ihren Knopf, sie folgen der Vorlage
+  // nicht.
+  //
+  // Steht VOR der fruehen Rueckkehr unten, weil ein Hook nie hinter einer
+  // Bedingung stehen darf.
+  const teaserJetzt = schritte[pos]?.art === 'teaser' ? schritte[pos] : null;
+  useEffect(() => {
+    if (teaserJetzt?.art !== 'teaser') return;
+    sprich(teaserJetzt.schrift);
+    // Beim Weitertippen abbrechen, damit nicht zwei Saetze uebereinander
+    // reden.
+    return () => stopSpeaking();
+  }, [teaserJetzt, sprich]);
+
   if (!schritteVon && !lektion) {
     return (
       <Screen dark={darkMode} padBottom>
@@ -392,6 +500,137 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
   }
 
   const schritt = schritte[pos];
+
+  // --- Satz-Vorlagen (2026-09-11) -------------------------------------------
+  // Teaser = Stufe-1-Vorlage, Satz-Schritt = Stufe-3-Vorlage. Beim Satz-
+  // Schritt Simons Option A: der Rahmen bleibt dauerhaft sichtbar, es
+  // aendert sich nur die Darstellung, nicht die Aufgabe.
+  //
+  // Eigene Schrift neben der Lautschrift (Chinesisch, Russisch)? Aus den
+  // DATEN abgeleitet wie `hatEigeneSchrift()` in SentenceReviewScreen.tsx,
+  // nicht aus einer Liste von Sprach-IDs. "Zeichen an" gibt es nur im
+  // Teaser - auf Stufe 3 steht der deutsche Satz, da ist nichts umzuschalten.
+  const teaserZeichen = schritt?.art === 'teaser' && schritt.schrift !== schritt.lerntext;
+  // Wortart-Tokens des Satzes (2026-09-11) - aus den Tags, die bauplan.py
+  // in die Kursdateien schreibt: `c` je Wort, `frame.wortarten` fuer die
+  // festen Rahmenwoerter. Nur, wenn die Zerlegung GENAU den Satz auf dem
+  // Schirm ergibt - sonst lieber ungefaerbt als falsch zugeordnet.
+  const satzVoll: SatzToken[] | null = (() => {
+    if (schritt?.art !== 'teaser' && schritt?.art !== 'satz') return null;
+    if (!schritt.rahmenLerntext) return null;
+    const slot = schritt.art === 'teaser' ? schritt.woerter[schritt.woerter.length - 1] : schritt.wort;
+    const tokens = satzTokens(schritt.rahmenLerntext, schritt.wortarten, slot);
+    const gleich = tokens.map((t) => t.t).join(' ') === schritt.lerntext.split(' ').filter(Boolean).join(' ');
+    return gleich ? tokens : null;
+  })();
+  // Die Rahmenzeile im Satz-Schritt ("io sono ___").
+  const rahmenTokens: SatzToken[] =
+    schritt?.art === 'satz' ? satzTokens(schritt.rahmenLerntext, schritt.wortarten) : [];
+  const farbenAn = wortartenFarben || farbenEinmalig;
+  // Speichern nach Survival. Eigener Namensraum `course-satz`, analog zu
+  // `course-situation` in WordReviewScreen.tsx. Schluessel ist der SATZ,
+  // nicht die Lektion: derselbe Satz aus Teaser, Satz-Schritt oder einer
+  // anderen Lektion ist derselbe Eintrag.
+  const satzPhrase: Phrase | null =
+    schritt?.art === 'teaser' || schritt?.art === 'satz'
+      ? {
+          id: `${targetLanguageId}:course-satz:${schriftFuerAnzeige(schritt.schrift)}`,
+          context: scenarioLabel('kurs'),
+          text: schriftFuerAnzeige(schritt.schrift),
+          gloss: schritt.deutsch ?? null,
+          placeholder: false,
+          phonetic: schritt.schrift !== schritt.lerntext ? schritt.lerntext : null,
+          cultureNote: null,
+          scenario: 'kurs',
+          category: 'grundwortschatz',
+          // Damit der gemerkte Satz auch im Survival farbig sein kann.
+          wordTags: satzVoll ? satzVoll.map((t) => ({ w: t.t, c: t.c })) : null,
+        }
+      : null;
+  const satzGemerkt = satzPhrase ? !!saved[satzPhrase.id] : false;
+
+  /**
+   * "Farben an/aus" - nur diesmal, dieselbe Regel wie in
+   * SentenceReviewScreen.tsx: entfaellt, wenn der globale Schalter im Profil
+   * ohnehin an ist oder im Satz nichts Faerbbares steht.
+   */
+  function renderFarbenChip(tokens: SatzToken[] | null) {
+    if (wortartenFarben || !tokens?.some((t) => t.c)) return null;
+    return (
+      <SatzChip
+        dark={darkMode}
+        label={farbenEinmalig ? 'Farben aus' : 'Farben an'}
+        aktiv={farbenEinmalig}
+        onPress={() => setFarbenEinmalig((v) => !v)}
+        a11y={farbenEinmalig ? 'Wortarten-Farben ausblenden' : 'Wortarten-Farben zeigen'}
+        expanded={farbenEinmalig}
+      />
+    );
+  }
+
+  /** Der Speichern-Chip - in beiden Satz-Vorlagen derselbe. */
+  function renderSpeichernChip() {
+    return (
+      <SatzChip
+        dark={darkMode}
+        label={satzGemerkt ? 'Gemerkt' : 'Speichern'}
+        aktiv={satzGemerkt}
+        aktivFarbe={ACCENT_GREEN}
+        icon={satzGemerkt ? 'bookmark' : 'bookmark-outline'}
+        onPress={() => {
+          if (satzPhrase) toggleSaved(satzPhrase.id, satzPhrase);
+        }}
+        a11y={satzGemerkt ? 'Gemerkt' : 'Speichern'}
+        hint={satzGemerkt ? 'Aus den gespeicherten Sätzen entfernen' : 'Zu den gespeicherten Sätzen im Survival hinzufügen'}
+        selected={satzGemerkt}
+      />
+    );
+  }
+
+  /**
+   * Grosses Mikrofon, Fehlerzeile und "Kein Sprechen möglich?" - Teaser und
+   * Satz-Schritt teilen sich das, genau wie Stufe 1 und 3 in der
+   * Saetze-Wiederholung.
+   */
+  function renderSatzEingabe(platzhalter: string) {
+    return (
+      <>
+        <SatzMikrofon
+          dark={darkMode}
+          nimmtAuf={nimmtAuf}
+          wertetAus={prueft}
+          onPress={aufnehmen}
+          erkannt={gehoert}
+        />
+        {sttFehler ? <Text style={[styles.hinweis, { color: ACCENT_ERROR }]}>{sttFehler}</Text> : null}
+        <SchreibenFeld
+          dark={darkMode}
+          offen={tippenErlaubt}
+          onToggle={() => setTippenErlaubt(true)}
+          label="Kein Sprechen möglich?"
+          variant="pille"
+        >
+          <Text style={[styles.schrittLabel, { color: theme.sub }]}>{tippLabel}</Text>
+          <TextInput
+            value={eingabe}
+            onChangeText={setEingabe}
+            placeholder={platzhalter}
+            placeholderTextColor={theme.sub}
+            autoCapitalize="none"
+            autoCorrect={false}
+            autoFocus
+            onSubmitEditing={() => eingabe.trim() && pruefe(eingabe, 'text')}
+            style={[styles.feld, { borderColor: theme.border, color: theme.text, backgroundColor: theme.cardBg }]}
+          />
+        </SchreibenFeld>
+      </>
+    );
+  }
+
+  function satzHilfeTippen() {
+    if (!satzHilfe) setSatzHilfeGenutzt(true);
+    setSatzHilfe((v) => !v);
+  }
 
   function merke(tier: Tier, neuerGrund: string | null, ersterVersuch: boolean) {
     setUrteil(tier);
@@ -470,7 +709,14 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
       quelle,
       sprache: targetLanguageId,
     });
-    merke(b.tier, b.grund, ersterVersuch);
+    // Hilfe im Teaser genutzt -> hoechstens "ueberlebt", dieselbe Regel wie in
+    // der Saetze-Wiederholung. Wirkt nur auf Anzeige und Auswertung am
+    // Lektionsende - der Teaser schreibt ohnehin keine Karte (siehe unten).
+    const angezeigt =
+      schritt.art === 'teaser' && satzHilfeGenutzt && b.tier === 'richtig'
+        ? { tier: 'ueberlebt' as Tier, grund: 'Mit Hilfe gesprochen — zählt als Überlebensmodus.' }
+        : b;
+    merke(angezeigt.tier, angezeigt.grund, ersterVersuch);
 
     // Nur der erste Versuch schreibt - ein zweiter Anlauf ist Uebung, kein
     // Nachweis (siehe versuchtRef).
@@ -506,6 +752,8 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
   async function aufnehmen() {
     setSttFehler(null);
     if (!nimmtAuf) {
+      // Eine noch laufende Sprachausgabe landete sonst in der Aufnahme.
+      stopSpeaking();
       setNimmtAuf(true);
       try {
         await recorder.start();
@@ -595,7 +843,7 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
 
       {hatStimme === false ? (
         <Text style={[styles.hinweis, { color: ACCENT_ERROR, marginTop: SPACING.sm }]}>
-          Auf diesem Gerät ist keine Stimme für {sprache.label} installiert — „Anhören" bleibt stumm.
+          Auf diesem Gerät ist keine Stimme für {sprache.label} installiert — das Vorlesen bleibt stumm.
           Nachladen: Einstellungen › Bedienungshilfen › Gesprochene Inhalte › Stimmen.
         </Text>
       ) : null}
@@ -612,51 +860,99 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
       ) : null}
 
       <ScrollView contentContainerStyle={styles.inhalt} showsVerticalScrollIndicator={false}>
-        {/* ---- Teaser: ein ganzer Satz, nur nachmachen ---- */}
+        {/* ---- Teaser: ein ganzer Satz, nur nachmachen ----
+            Seit 2026-09-11 in Simons Satz-Vorlage fuer Stufe 1 - dieselbe
+            wie in der Saetze-Wiederholung, aus denselben Bausteinen
+            (components/SatzTemplate.tsx): Frage, Chip-Reihe, Satz im Rahmen
+            mit grossem Mikrofon, "Kein Sprechen möglich?" als Ausweg,
+            "▶ Weiter" unten rechts. Ausloeser war Simons Vergleich beider
+            Screens: derselbe Aufgabentyp sah im gefuehrten Lernen anders aus
+            als im Speed-Run.
+
+            Die deutsche Uebersetzung liegt hinter dem Chip statt offen da:
+            was der Satz heisst, loest sich gleich ueber die Einzelwoerter
+            auf, und vorher verraten waere die Pointe weg. Wer sie trotzdem
+            sehen will, tippt.
+
+            Ein zweiter Anlauf geht ueber das Mikrofon selbst - es bleibt nach
+            dem Urteil stehen. Gewertet wird weiterhin nur der erste Versuch
+            (siehe versuchtRef).
+
+            "Farben an" gibt es seit 2026-09-11: die Wortarten schreibt
+            bauplan.py in die Kursdateien (siehe satzVoll). Eingefaerbt wird
+            nur die Lautschrift, nie die Schriftzeichen - SatzAnzeige sorgt
+            dafuer. */}
         {schritt?.art === 'teaser' ? (
           <>
-            <Text style={[styles.schrittLabel, { color: theme.sub }]}>SPRICH DAS NACH</Text>
-            <Card dark={darkMode} style={styles.karte}>
-              <Text style={[styles.gross, { color: theme.text }]}>{schritt.lerntext}</Text>
-              {/* Bewusst OHNE deutsche Uebersetzung: was der Satz heisst,
-                  loest sich gleich ueber die Einzelwoerter auf. Vorher
-                  verraten waere die Pointe weg. */}
-              <Text style={[styles.text, { color: theme.sub }]}>
-                Noch nicht verstehen — einfach nachsprechen.
-              </Text>
-              <HoerKnopf dark={darkMode} onPress={() => sprich(schritt.schrift)} />
-            </Card>
-            {/* Bis 2026-08-21 stand hier nur ein Knopf "Gesagt" - eine reine
-                Selbstauskunft. In einer App, deren Kernprinzip Sprechen ist,
-                war ausgerechnet der erste Schritt jeder Lektion der einzige
-                ohne Mikrofon. */}
-            {urteil ? (
-              <Rueckmeldung
+            <Text style={[styles.frage, { color: theme.text }]}>
+              Sprich diesen {sprachAdjektiv(targetLanguageId)} Satz nach
+            </Text>
+
+            <SatzChipReihe>
+              {schritt.deutsch ? (
+                <SatzChip
+                  dark={darkMode}
+                  label="Übersetzung"
+                  aktiv={uebersetzungSichtbar}
+                  onPress={() => setUebersetzungSichtbar((v) => !v)}
+                  a11y={uebersetzungSichtbar ? 'Übersetzung ausblenden' : 'Übersetzung anzeigen'}
+                  expanded={uebersetzungSichtbar}
+                />
+              ) : null}
+              <SatzChip
                 dark={darkMode}
-                urteil={urteil}
-                loesung={schritt.lerntext}
-                grund={grund}
-                gehoert={gehoert}
-                onNochmal={nochmal}
-                onHoeren={() => sprich(schritt.schrift)}
+                label="Hilfe"
+                aktiv={satzHilfe}
+                onPress={satzHilfeTippen}
+                a11y={satzHilfe ? 'Hilfe ausblenden' : 'Hilfe anzeigen'}
+                hint="Zeigt den Anfang des Satzes, zählt danach höchstens als Überlebensmodus"
+                expanded={satzHilfe}
               />
-            ) : (
-              <AntwortBlock
+              {renderSpeichernChip()}
+              {teaserZeichen ? (
+                <SatzChip
+                  dark={darkMode}
+                  label={zeichenAn ? 'Zeichen aus' : 'Zeichen an'}
+                  aktiv={zeichenAn}
+                  onPress={() => setZeichenAn((v) => !v)}
+                  a11y={zeichenAn ? 'Schriftzeichen ausblenden' : 'Schriftzeichen anzeigen'}
+                  expanded={zeichenAn}
+                />
+              ) : null}
+              {renderFarbenChip(satzVoll)}
+            </SatzChipReihe>
+
+            <SatzRahmen dark={darkMode}>
+              <SatzInfoSlot>
+                {schritt.deutsch ? (
+                  <SatzInfoZeile dark={darkMode} text={schritt.deutsch} sichtbar={uebersetzungSichtbar} />
+                ) : null}
+                <SatzInfoZeile dark={darkMode} text={hilfeAusschnitt(schritt.lerntext)} sichtbar={satzHilfe} kursiv />
+              </SatzInfoSlot>
+              <SatzAnzeige
                 dark={darkMode}
-                nimmtAuf={nimmtAuf}
-                prueft={prueft}
-                sttFehler={sttFehler}
-                eingabe={eingabe}
-                setEingabe={setEingabe}
-                platzhalter={tippPlatzhalter(schritt.lerntext, targetLanguageId)}
-                tippLabel={tippLabel}
-                tippenErlaubt={tippenErlaubt}
-                onTippen={() => setTippenErlaubt(true)}
-                onMikro={aufnehmen}
-                onPruefen={() => pruefe(eingabe, 'text')}
+                schriftzeichen={teaserZeichen ? schriftFuerAnzeige(schritt.schrift) : null}
+                zeichenSichtbar={zeichenAn}
+                tokens={satzVoll ?? [{ t: schritt.lerntext, c: null }]}
+                farbenAn={farbenAn}
+                onPress={() => sprich(schritt.schrift)}
+                a11y={`Vorlesen: ${schritt.lerntext}`}
               />
-            )}
-            <PillButton dark={darkMode} label="Weiter" onPress={weiter} disabled={!urteil} />
+              {renderSatzEingabe(tippPlatzhalter(schritt.lerntext, targetLanguageId))}
+            </SatzRahmen>
+
+            <SatzUrteil dark={darkMode} urteil={urteil} grund={grund} />
+
+            {/* Getippt, aber noch nicht geprueft: "Weiter" prueft zuerst -
+                dasselbe Verhalten wie in der Saetze-Wiederholung. Mit Urteil
+                geht es weiter. */}
+            <SatzWeiterKnopf
+              dark={darkMode}
+              label="▶ Weiter"
+              a11y="Weiter"
+              gesperrt={!urteil && !eingabe.trim()}
+              onPress={() => (urteil ? weiter() : pruefe(eingabe, 'text'))}
+            />
           </>
         ) : null}
 
@@ -785,44 +1081,72 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
           </>
         ) : null}
 
-        {/* ---- Satz: dasselbe Wort im Rahmen ---- */}
+        {/* ---- Satz: dasselbe Wort im Rahmen ----
+            Seit 2026-09-11 in Simons Stufe-3-Vorlage ("Übersetze und sprich
+            ..."), Option A: der Rahmen steht DAUERHAFT in der Info-Zeile, wo
+            auf Stufe 3 sonst die Hilfe steht. Simons Vorgabe dazu: "es geht
+            nur um das Aussehen und die Präsentation" - der Drill bleibt also
+            genauso schwer wie vorher: kein Hilfe-Chip, keine Deckelung,
+            gleiche Bewertung, gleiche Karten.
+
+            Der deutsche Satz ist nicht antippbar, und vor der Antwort wird
+            nichts vorgelesen - die Vorlage schliesst das aus, weil es die
+            Loesung vorsagen wuerde. Die Loesung samt Vorlesen kommt mit dem
+            Urteil (SatzUrteil, `loesung`). Ein zweiter Anlauf geht wie im
+            Teaser ueber das Mikrofon. */}
         {schritt?.art === 'satz' ? (
           <>
-            <Text style={[styles.schrittLabel, { color: theme.sub }]}>JETZT IM GANZEN SATZ</Text>
-            <Card dark={darkMode} style={styles.karte}>
-              <Text style={[styles.rahmen, { color: theme.sub }]}>
-                {ersteVariante(schritt.rahmenLerntext)}
-              </Text>
-              <Text style={[styles.gross, { color: ACCENT_ORANGE }]}>{schritt.wort.de}</Text>
-              <HoerKnopf dark={darkMode} onPress={() => sprich(schritt.schrift)} />
-            </Card>
-            {urteil ? (
-              <Rueckmeldung
+            <Text style={[styles.frage, { color: theme.text }]}>
+              Übersetze und sprich diesen {sprachAdjektiv('de')} Satz auf {sprache.label} aus
+            </Text>
+
+            {/* Reihenfolge wie in der Stufe-3-Vorlage: Farben, dann Speichern.
+                "Farben an" faerbt hier die Rahmenzeile - der deutsche Satz
+                hat keine Wortart-Daten, genau wie im Speed-Run. */}
+            <SatzChipReihe>
+              {renderFarbenChip(rahmenTokens)}
+              {renderSpeichernChip()}
+            </SatzChipReihe>
+
+            <SatzRahmen dark={darkMode}>
+              <SatzInfoSlot>
+                {/* Nicht kursiv: anders als die Hilfe-Zeile ist der Rahmen
+                    kein zugeschalteter Hinweis, sondern steht immer da. */}
+                <TaggedTokens
+                  style={styles.rahmenZeile}
+                  textColor={theme.sub}
+                  showColors={farbenAn}
+                  tokens={rahmenTokens}
+                />
+              </SatzInfoSlot>
+              {/* Aeltere Wiederholungs-Schritte ohne deutsche Fassung zeigen
+                  wie bisher nur das Wort. */}
+              <SatzAnzeige
                 dark={darkMode}
-                urteil={urteil}
-                loesung={schritt.lerntext}
-                grund={grund}
-                gehoert={gehoert}
-                onNochmal={nochmal}
-                onHoeren={() => sprich(schritt.schrift)}
+                tokens={[{ t: schritt.deutsch ?? schritt.wort.de, c: null }]}
+                farbenAn={false}
               />
-            ) : (
-              <AntwortBlock
-                dark={darkMode}
-                nimmtAuf={nimmtAuf}
-                prueft={prueft}
-                sttFehler={sttFehler}
-                eingabe={eingabe}
-                setEingabe={setEingabe}
-                platzhalter={tippPlatzhalter(schritt.lerntext, targetLanguageId)}
-                tippLabel={tippLabel}
-                tippenErlaubt={tippenErlaubt}
-                onTippen={() => setTippenErlaubt(true)}
-                onMikro={aufnehmen}
-                onPruefen={() => pruefe(eingabe, 'text')}
-              />
-            )}
-            <PillButton dark={darkMode} label="Weiter" onPress={weiter} disabled={!urteil} />
+              {renderSatzEingabe(tippPlatzhalter(schritt.lerntext, targetLanguageId))}
+            </SatzRahmen>
+
+            <SatzUrteil
+              dark={darkMode}
+              urteil={urteil}
+              grund={grund}
+              loesung={schritt.lerntext}
+              onLoesungHoeren={() => sprich(schritt.schrift)}
+            />
+
+            {/* "› Lösen" wie in der Vorlage; mit Urteil wird daraus
+                "▶ Weiter", weil der Kurs nicht von selbst weiterblaettert -
+                man soll die Loesung erst lesen koennen. */}
+            <SatzWeiterKnopf
+              dark={darkMode}
+              label={urteil ? '▶ Weiter' : '› Lösen'}
+              a11y={urteil ? 'Weiter' : 'Lösen'}
+              gesperrt={!urteil && !eingabe.trim()}
+              onPress={() => (urteil ? weiter() : pruefe(eingabe, 'text'))}
+            />
           </>
         ) : null}
 
@@ -1010,6 +1334,69 @@ function Rueckmeldung({
   );
 }
 
+/**
+ * Urteil unter dem Satzrahmen der Vorlage (2026-09-11).
+ *
+ * Haelt seinen Platz IMMER frei (Simons Punkt 4: "nichts darf sich
+ * bewegen") - sonst spraenge der Weiter-Knopf beim Auswerten nach unten.
+ * Der Grund steht mit darunter, auf zwei Zeilen reserviert: ein blosses
+ * Urteil lehrt nichts.
+ */
+function SatzUrteil({
+  dark,
+  urteil,
+  grund,
+  loesung,
+  onLoesungHoeren,
+}: {
+  dark: boolean;
+  urteil: Tier | null;
+  grund: string | null;
+  /**
+   * Nur im Satz-Schritt: der richtige Satz, sichtbar erst mit dem Urteil und
+   * antippbar zum Vorlesen. Im Teaser entfaellt die Zeile - dort steht der
+   * Satz ohnehin gross auf dem Schirm.
+   */
+  loesung?: string;
+  onLoesungHoeren?: () => void;
+}) {
+  const theme = getTheme(dark);
+  const zeigeGrund = !!urteil && !!grund;
+  return (
+    <View
+      style={styles.urteilSlot}
+      accessibilityElementsHidden={!urteil}
+      importantForAccessibility={urteil ? 'auto' : 'no-hide-descendants'}
+    >
+      <Text style={[styles.urteil, styles.mittig, { color: urteil ? farbeFuer(urteil) : 'transparent' }]}>
+        {urteil ? textFuer(urteil) : ' '}
+      </Text>
+      <Text
+        numberOfLines={2}
+        style={[styles.hinweis, styles.grundZeile, { color: zeigeGrund ? theme.sub : 'transparent' }]}
+      >
+        {zeigeGrund ? grund : ' '}
+      </Text>
+      {loesung !== undefined ? (
+        // Platz auch ohne Urteil reserviert - sonst spraenge der Knopf
+        // darunter beim Auswerten (Simons Punkt 4).
+        <Pressable
+          onPress={onLoesungHoeren}
+          disabled={!urteil}
+          accessibilityRole="button"
+          accessibilityLabel={`Lösung vorlesen: ${loesung}`}
+          style={({ pressed }) => [styles.loesungReihe, { opacity: !urteil ? 0 : pressed ? 0.6 : 1 }]}
+        >
+          <Feather name="volume-2" size={18} color={theme.text} />
+          <Text numberOfLines={2} style={[styles.loesungText, { color: theme.text }]}>
+            {loesung}
+          </Text>
+        </Pressable>
+      ) : null}
+    </View>
+  );
+}
+
 function Kopf({ dark, titel, untertitel }: { dark: boolean; titel: string; untertitel?: string }) {
   const theme = getTheme(dark);
   return (
@@ -1088,6 +1475,17 @@ const styles = StyleSheet.create({
     letterSpacing: 0.8,
   },
   karte: { gap: SPACING.sm },
+  // Aufgabenfrage der Satz-Vorlage ("Sprich diesen ... Satz nach") -
+  // dieselbe Gewichtung wie in SentenceReviewScreen.tsx.
+  frage: { ...schrift('700'), fontSize: FONT_SIZE.h2, lineHeight: LINE_HEIGHT.h2 },
+  urteilSlot: { alignItems: 'center', gap: 2 },
+  mittig: { textAlign: 'center' },
+  // Rahmenzeile im Satz-Schritt - dieselbe Groesse wie die Info-Zeilen der
+  // Vorlage (SatzInfoZeile).
+  rahmenZeile: { fontSize: FONT_SIZE.body, lineHeight: LINE_HEIGHT.body, textAlign: 'center' },
+  // Zwei Zeilen reserviert - ein laengerer Grund darf den Knopf darunter
+  // nicht verschieben.
+  grundZeile: { minHeight: LINE_HEIGHT.caption * 2 },
   gross: {
     // Bis 2026-09-01 stand hier ein Sonderfall-Kommentar: bewusst OHNE
     // Serife, weil Georgia die Hatschek-Vokale des dritten Pinyin-Tons
@@ -1099,7 +1497,16 @@ const styles = StyleSheet.create({
     lineHeight: LINE_HEIGHT.h2,
     ...schrift('600'),
   },
-  rahmen: { fontSize: FONT_SIZE.bodyLg, lineHeight: LINE_HEIGHT.bodyLg },
+  // Loesungszeile im Urteil des Satz-Schritts.
+  loesungReihe: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: SPACING.sm,
+    marginTop: SPACING.xs,
+    minHeight: LINE_HEIGHT.bodyLg,
+  },
+  loesungText: { fontSize: FONT_SIZE.bodyLg, lineHeight: LINE_HEIGHT.bodyLg, ...schrift('700'), textAlign: 'center', flexShrink: 1 },
   text: { fontSize: FONT_SIZE.body, lineHeight: LINE_HEIGHT.body },
   urteil: { fontSize: FONT_SIZE.body, ...schrift('800') },
   hinweis: { fontSize: FONT_SIZE.caption, lineHeight: LINE_HEIGHT.caption, textAlign: 'center' },

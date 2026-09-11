@@ -18,29 +18,40 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / han / hun er [Slot]",
-          "lerntext": "jeg / du / han / hun er [Slot]"
+          "lerntext": "jeg / du / han / hun er [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "han": "p",
+            "hun": "p",
+            "er": "v"
+          }
         },
         "frameDe": "ich / du / er / sie bin [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -48,27 +59,32 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "trøtt",
               "lerntext": "trøtt",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "glad",
               "lerntext": "glad",
-              "de": "froh"
+              "de": "froh",
+              "c": "a"
             },
             {
               "schrift": "lei",
               "lerntext": "lei",
-              "de": "traurig"
+              "de": "traurig",
+              "c": "a"
             },
             {
               "schrift": "sint",
               "lerntext": "sint",
-              "de": "wütend"
+              "de": "wütend",
+              "c": "a"
             },
             {
               "schrift": "fornøyd",
               "lerntext": "fornøyd",
-              "de": "zufrieden"
+              "de": "zufrieden",
+              "c": "a"
             }
           ]
         ],
@@ -78,7 +94,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "er",
             "lerntext": "er",
-            "de": "sein"
+            "de": "sein",
+            "c": "v"
           }
         ],
         "id": "1.1"
@@ -87,29 +104,40 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / han / hun er [Slot]",
-          "lerntext": "jeg / du / han / hun er [Slot]"
+          "lerntext": "jeg / du / han / hun er [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "han": "p",
+            "hun": "p",
+            "er": "v"
+          }
         },
         "frameDe": "ich / du / er / sie bin [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -117,12 +145,14 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "syk",
               "lerntext": "syk",
-              "de": "krank"
+              "de": "krank",
+              "c": "a"
             },
             {
               "schrift": "klar",
               "lerntext": "klar",
-              "de": "bereit"
+              "de": "bereit",
+              "c": "a"
             }
           ]
         ],
@@ -135,34 +165,47 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "vi / dere / hun / man / han er [Slot]",
-          "lerntext": "vi / dere / hun / man / han er [Slot]"
+          "lerntext": "vi / dere / hun / man / han er [Slot]",
+          "wortarten": {
+            "vi": "p",
+            "dere": "p",
+            "hun": "p",
+            "man": "p",
+            "han": "p",
+            "er": "v"
+          }
         },
         "frameDe": "wir / ihr / sie / man / er sind [Slot].",
         "pronouns": [
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "dere",
             "lerntext": "dere",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "man",
             "lerntext": "man",
-            "de": "man"
+            "de": "man",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -170,27 +213,32 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "student",
               "lerntext": "student",
-              "de": "Student"
+              "de": "Student",
+              "c": "n"
             },
             {
               "schrift": "kollega",
               "lerntext": "kollega",
-              "de": "Kollege"
+              "de": "Kollege",
+              "c": "n"
             },
             {
               "schrift": "politi",
               "lerntext": "politi",
-              "de": "Polizei"
+              "de": "Polizei",
+              "c": "n"
             },
             {
               "schrift": "venn",
               "lerntext": "venn",
-              "de": "Freund"
+              "de": "Freund",
+              "c": "n"
             },
             {
               "schrift": "kvinne",
               "lerntext": "kvinne",
-              "de": "Frau"
+              "de": "Frau",
+              "c": "n"
             }
           ]
         ],
@@ -203,34 +251,47 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "vi / dere / hun / man / han er [Slot]",
-          "lerntext": "vi / dere / hun / man / han er [Slot]"
+          "lerntext": "vi / dere / hun / man / han er [Slot]",
+          "wortarten": {
+            "vi": "p",
+            "dere": "p",
+            "hun": "p",
+            "man": "p",
+            "han": "p",
+            "er": "v"
+          }
         },
         "frameDe": "wir / ihr / sie / man / er sind [Slot].",
         "pronouns": [
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "dere",
             "lerntext": "dere",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "man",
             "lerntext": "man",
-            "de": "man"
+            "de": "man",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -238,7 +299,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "barn",
               "lerntext": "barn",
-              "de": "Kind"
+              "de": "Kind",
+              "c": "n"
             }
           ]
         ],
@@ -251,19 +313,26 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "han / hun er veldig [Slot]",
-          "lerntext": "han / hun er veldig [Slot]"
+          "lerntext": "han / hun er veldig [Slot]",
+          "wortarten": {
+            "han": "p",
+            "hun": "p",
+            "er": "v"
+          }
         },
         "frameDe": "er / sie ist sehr [Slot].",
         "pronouns": [
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -271,27 +340,32 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "hyggelig",
               "lerntext": "hyggelig",
-              "de": "nett"
+              "de": "nett",
+              "c": "a"
             },
             {
               "schrift": "pen",
               "lerntext": "pen",
-              "de": "schön"
+              "de": "schön",
+              "c": "a"
             },
             {
               "schrift": "morsom",
               "lerntext": "morsom",
-              "de": "lustig"
+              "de": "lustig",
+              "c": "a"
             },
             {
               "schrift": "kjedelig",
               "lerntext": "kjedelig",
-              "de": "langweilig"
+              "de": "langweilig",
+              "c": "a"
             },
             {
               "schrift": "sterk",
               "lerntext": "sterk",
-              "de": "stark"
+              "de": "stark",
+              "c": "a"
             }
           ]
         ],
@@ -310,19 +384,26 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "han / hun er veldig [Slot]",
-          "lerntext": "han / hun er veldig [Slot]"
+          "lerntext": "han / hun er veldig [Slot]",
+          "wortarten": {
+            "han": "p",
+            "hun": "p",
+            "er": "v"
+          }
         },
         "frameDe": "er / sie ist sehr [Slot].",
         "pronouns": [
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -330,17 +411,20 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "svak",
               "lerntext": "svak",
-              "de": "schwach"
+              "de": "schwach",
+              "c": "a"
             },
             {
               "schrift": "ung",
               "lerntext": "ung",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "gammel",
               "lerntext": "gammel",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             }
           ]
         ],
@@ -353,19 +437,26 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "han / hun er veldig [Slot]",
-          "lerntext": "han / hun er veldig [Slot]"
+          "lerntext": "han / hun er veldig [Slot]",
+          "wortarten": {
+            "han": "p",
+            "hun": "p",
+            "er": "v"
+          }
         },
         "frameDe": "er / sie ist sehr [Slot].",
         "pronouns": [
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -374,48 +465,56 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "hyggelig",
               "lerntext": "hyggelig",
               "de": "nett",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pen",
               "lerntext": "pen",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "morsom",
               "lerntext": "morsom",
               "de": "lustig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "kjedelig",
               "lerntext": "kjedelig",
               "de": "langweilig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sterk",
               "lerntext": "sterk",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "svak",
               "lerntext": "svak",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ung",
               "lerntext": "ung",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gammel",
               "lerntext": "gammel",
               "de": "alt",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -429,29 +528,40 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / han / hun er [Slot]",
-          "lerntext": "jeg / du / han / hun er [Slot]"
+          "lerntext": "jeg / du / han / hun er [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "han": "p",
+            "hun": "p",
+            "er": "v"
+          }
         },
         "frameDe": "ich / du / er / sie bin [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -460,42 +570,49 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "trøtt",
               "lerntext": "trøtt",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "glad",
               "lerntext": "glad",
               "de": "froh",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lei",
               "lerntext": "lei",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sint",
               "lerntext": "sint",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fornøyd",
               "lerntext": "fornøyd",
               "de": "zufrieden",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "syk",
               "lerntext": "syk",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "klar",
               "lerntext": "klar",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -509,19 +626,26 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "han / hun er veldig [Slot]",
-          "lerntext": "han / hun er veldig [Slot]"
+          "lerntext": "han / hun er veldig [Slot]",
+          "wortarten": {
+            "han": "p",
+            "hun": "p",
+            "er": "v"
+          }
         },
         "frameDe": "er / sie ist sehr [Slot].",
         "pronouns": [
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -530,48 +654,56 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "hyggelig",
               "lerntext": "hyggelig",
               "de": "nett",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pen",
               "lerntext": "pen",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "morsom",
               "lerntext": "morsom",
               "de": "lustig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "kjedelig",
               "lerntext": "kjedelig",
               "de": "langweilig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sterk",
               "lerntext": "sterk",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "svak",
               "lerntext": "svak",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ung",
               "lerntext": "ung",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gammel",
               "lerntext": "gammel",
               "de": "alt",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -585,29 +717,40 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / han / hun er [Slot]",
-          "lerntext": "jeg / du / han / hun er [Slot]"
+          "lerntext": "jeg / du / han / hun er [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "han": "p",
+            "hun": "p",
+            "er": "v"
+          }
         },
         "frameDe": "ich / du / er / sie bin [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -616,42 +759,49 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "trøtt",
               "lerntext": "trøtt",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "glad",
               "lerntext": "glad",
               "de": "froh",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lei",
               "lerntext": "lei",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sint",
               "lerntext": "sint",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fornøyd",
               "lerntext": "fornøyd",
               "de": "zufrieden",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "syk",
               "lerntext": "syk",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "klar",
               "lerntext": "klar",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -686,14 +836,18 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er ei [Slot]",
-          "lerntext": "det er ei [Slot]"
+          "lerntext": "det er ei [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Das ist eine [Slot].",
         "pronouns": [
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -701,33 +855,39 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "veske",
               "lerntext": "veske",
-              "de": "Tasche"
+              "de": "Tasche",
+              "c": "n"
             },
             {
               "schrift": "dør",
               "lerntext": "dør",
-              "de": "Tür"
+              "de": "Tür",
+              "c": "n"
             },
             {
               "schrift": "mor",
               "lerntext": "mor",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "søster",
               "lerntext": "søster",
-              "de": "Schwester"
+              "de": "Schwester",
+              "c": "n"
             },
             {
               "schrift": "kvinne",
               "lerntext": "kvinne",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "politi",
               "lerntext": "politi",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -747,14 +907,18 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er ei [Slot]",
-          "lerntext": "det er ei [Slot]"
+          "lerntext": "det er ei [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Das ist ein [Slot].",
         "pronouns": [
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -762,17 +926,20 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "bok",
               "lerntext": "bok",
-              "de": "Buch"
+              "de": "Buch",
+              "c": "n"
             },
             {
               "schrift": "seng",
               "lerntext": "seng",
-              "de": "Bett"
+              "de": "Bett",
+              "c": "n"
             },
             {
               "schrift": "barn",
               "lerntext": "barn",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -786,14 +953,18 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er en [Slot]",
-          "lerntext": "det er en [Slot]"
+          "lerntext": "det er en [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Das ist ein [Slot].",
         "pronouns": [
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -801,34 +972,40 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "nøkkel",
               "lerntext": "nøkkel",
-              "de": "Schlüssel"
+              "de": "Schlüssel",
+              "c": "n"
             },
             {
               "schrift": "far",
               "lerntext": "far",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "bror",
               "lerntext": "bror",
-              "de": "Bruder"
+              "de": "Bruder",
+              "c": "n"
             },
             {
               "schrift": "venn",
               "lerntext": "venn",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kollega",
               "lerntext": "kollega",
               "de": "Kollege",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "student",
               "lerntext": "student",
               "de": "Student",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -842,14 +1019,18 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er en [Slot]",
-          "lerntext": "her er en [Slot]"
+          "lerntext": "her er en [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist eine [Slot].",
         "pronouns": [
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -857,42 +1038,49 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "jobb",
               "lerntext": "jobb",
-              "de": "Arbeit"
+              "de": "Arbeit",
+              "c": "n"
             },
             {
               "schrift": "dør",
               "lerntext": "dør",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "søster",
               "lerntext": "søster",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mor",
               "lerntext": "mor",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "veske",
               "lerntext": "veske",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kvinne",
               "lerntext": "kvinne",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "politi",
               "lerntext": "politi",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -912,14 +1100,18 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er et [Slot]",
-          "lerntext": "her er et [Slot]"
+          "lerntext": "her er et [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist eine [Slot].",
         "pronouns": [
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -927,48 +1119,56 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "kjøkken",
               "lerntext": "kjøkken",
-              "de": "Küche"
+              "de": "Küche",
+              "c": "n"
             },
             {
               "schrift": "jobb",
               "lerntext": "jobb",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dør",
               "lerntext": "dør",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "søster",
               "lerntext": "søster",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mor",
               "lerntext": "mor",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "veske",
               "lerntext": "veske",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kvinne",
               "lerntext": "kvinne",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "politi",
               "lerntext": "politi",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -982,14 +1182,18 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er et [Slot]",
-          "lerntext": "her er et [Slot]"
+          "lerntext": "her er et [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist ein [Slot].",
         "pronouns": [
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -997,42 +1201,49 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "bord",
               "lerntext": "bord",
-              "de": "Tisch"
+              "de": "Tisch",
+              "c": "n"
             },
             {
               "schrift": "nøkkel",
               "lerntext": "nøkkel",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "far",
               "lerntext": "far",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bror",
               "lerntext": "bror",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "venn",
               "lerntext": "venn",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kollega",
               "lerntext": "kollega",
               "de": "Kollege",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "student",
               "lerntext": "student",
               "de": "Student",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1046,14 +1257,18 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er et [Slot]",
-          "lerntext": "her er et [Slot]"
+          "lerntext": "her er et [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist ein [Slot].",
         "pronouns": [
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1061,44 +1276,52 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "hus",
               "lerntext": "hus",
-              "de": "Haus"
+              "de": "Haus",
+              "c": "n"
             },
             {
               "schrift": "rom",
               "lerntext": "rom",
-              "de": "Zimmer"
+              "de": "Zimmer",
+              "c": "n"
             },
             {
               "schrift": "vindu",
               "lerntext": "vindu",
-              "de": "Fenster"
+              "de": "Fenster",
+              "c": "n"
             },
             {
               "schrift": "glass",
               "lerntext": "glass",
-              "de": "Glas"
+              "de": "Glas",
+              "c": "n"
             },
             {
               "schrift": "hotell",
               "lerntext": "hotell",
-              "de": "Hotel"
+              "de": "Hotel",
+              "c": "n"
             },
             {
               "schrift": "bok",
               "lerntext": "bok",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "seng",
               "lerntext": "seng",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "barn",
               "lerntext": "barn",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1112,29 +1335,40 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / han / vi har ei [Slot]",
-          "lerntext": "jeg / du / han / vi har ei [Slot]"
+          "lerntext": "jeg / du / han / vi har ei [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "han": "p",
+            "vi": "p",
+            "har": "v"
+          }
         },
         "frameDe": "ich / du / er / wir habe eine [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1142,64 +1376,75 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "datter",
               "lerntext": "datter",
-              "de": "Tochter"
+              "de": "Tochter",
+              "c": "n"
             },
             {
               "schrift": "leilighet",
               "lerntext": "leilighet",
-              "de": "Wohnung"
+              "de": "Wohnung",
+              "c": "n"
             },
             {
               "schrift": "hånd",
               "lerntext": "hånd",
-              "de": "Hand"
+              "de": "Hand",
+              "c": "n"
             },
             {
               "schrift": "kjøkken",
               "lerntext": "kjøkken",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "jobb",
               "lerntext": "jobb",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dør",
               "lerntext": "dør",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "søster",
               "lerntext": "søster",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mor",
               "lerntext": "mor",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "veske",
               "lerntext": "veske",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kvinne",
               "lerntext": "kvinne",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "politi",
               "lerntext": "politi",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1210,7 +1455,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "har",
             "lerntext": "har",
-            "de": "haben"
+            "de": "haben",
+            "c": "v"
           }
         ],
         "id": "2.8"
@@ -1219,29 +1465,40 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / han / vi har en [Slot]",
-          "lerntext": "jeg / du / han / vi har en [Slot]"
+          "lerntext": "jeg / du / han / vi har en [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "han": "p",
+            "vi": "p",
+            "har": "v"
+          }
         },
         "frameDe": "ich / du / er / wir habe eine [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1249,66 +1506,77 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "familie",
               "lerntext": "familie",
-              "de": "Familie"
+              "de": "Familie",
+              "c": "n"
             },
             {
               "schrift": "datter",
               "lerntext": "datter",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "leilighet",
               "lerntext": "leilighet",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hånd",
               "lerntext": "hånd",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kjøkken",
               "lerntext": "kjøkken",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "jobb",
               "lerntext": "jobb",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dør",
               "lerntext": "dør",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "søster",
               "lerntext": "søster",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mor",
               "lerntext": "mor",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "veske",
               "lerntext": "veske",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kvinne",
               "lerntext": "kvinne",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1322,29 +1590,40 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / han / vi har en [Slot]",
-          "lerntext": "jeg / du / han / vi har en [Slot]"
+          "lerntext": "jeg / du / han / vi har en [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "han": "p",
+            "vi": "p",
+            "har": "v"
+          }
         },
         "frameDe": "ich / du / er / wir habe einen [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1352,68 +1631,80 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "sønn",
               "lerntext": "sønn",
-              "de": "Sohn"
+              "de": "Sohn",
+              "c": "n"
             },
             {
               "schrift": "arm",
               "lerntext": "arm",
-              "de": "Arm"
+              "de": "Arm",
+              "c": "n"
             },
             {
               "schrift": "fot",
               "lerntext": "fot",
-              "de": "Fuß"
+              "de": "Fuß",
+              "c": "n"
             },
             {
               "schrift": "kropp",
               "lerntext": "kropp",
-              "de": "Körper"
+              "de": "Körper",
+              "c": "n"
             },
             {
               "schrift": "munn",
               "lerntext": "munn",
-              "de": "Mund"
+              "de": "Mund",
+              "c": "n"
             },
             {
               "schrift": "bord",
               "lerntext": "bord",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nøkkel",
               "lerntext": "nøkkel",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "far",
               "lerntext": "far",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bror",
               "lerntext": "bror",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "venn",
               "lerntext": "venn",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kollega",
               "lerntext": "kollega",
               "de": "Kollege",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "student",
               "lerntext": "student",
               "de": "Student",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1427,29 +1718,40 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / han / vi har en [Slot]",
-          "lerntext": "jeg / du / han / vi har en [Slot]"
+          "lerntext": "jeg / du / han / vi har en [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "han": "p",
+            "vi": "p",
+            "har": "v"
+          }
         },
         "frameDe": "ich / du / er / wir habe ein [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1457,54 +1759,63 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "bil",
               "lerntext": "bil",
-              "de": "Auto"
+              "de": "Auto",
+              "c": "n"
             },
             {
               "schrift": "hotell",
               "lerntext": "hotell",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hus",
               "lerntext": "hus",
               "de": "Haus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "rom",
               "lerntext": "rom",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vindu",
               "lerntext": "vindu",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "glass",
               "lerntext": "glass",
               "de": "Glas",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bok",
               "lerntext": "bok",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "seng",
               "lerntext": "seng",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "barn",
               "lerntext": "barn",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1518,24 +1829,31 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er min [Slot]",
-          "lerntext": "det er min [Slot]"
+          "lerntext": "det er min [Slot]",
+          "wortarten": {
+            "er": "v",
+            "min": "p"
+          }
         },
         "frameDe": "Das ist mein [Slot].",
         "pronouns": [
           {
             "schrift": "min",
             "lerntext": "min",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           },
           {
             "schrift": "din",
             "lerntext": "din",
-            "de": "dein"
+            "de": "dein",
+            "c": "p"
           },
           {
             "schrift": "vår",
             "lerntext": "vår",
-            "de": "unser"
+            "de": "unser",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1543,81 +1861,95 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "mor",
               "lerntext": "mor",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "far",
               "lerntext": "far",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "kvinne",
               "lerntext": "kvinne",
-              "de": "Frau"
+              "de": "Frau",
+              "c": "n"
             },
             {
               "schrift": "kollega",
               "lerntext": "kollega",
-              "de": "Kollege"
+              "de": "Kollege",
+              "c": "n"
             },
             {
               "schrift": "arm",
               "lerntext": "arm",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kropp",
               "lerntext": "kropp",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fot",
               "lerntext": "fot",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "familie",
               "lerntext": "familie",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bil",
               "lerntext": "bil",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "munn",
               "lerntext": "munn",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sønn",
               "lerntext": "sønn",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hånd",
               "lerntext": "hånd",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "datter",
               "lerntext": "datter",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "leilighet",
               "lerntext": "leilighet",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1637,24 +1969,31 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er [Slot] hus",
-          "lerntext": "det er [Slot] hus"
+          "lerntext": "det er [Slot] hus",
+          "wortarten": {
+            "er": "v",
+            "hus": "n"
+          }
         },
         "frameDe": "Das ist [Slot] Haus.",
         "pronouns": [
           {
             "schrift": "min",
             "lerntext": "min",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           },
           {
             "schrift": "din",
             "lerntext": "din",
-            "de": "dein"
+            "de": "dein",
+            "c": "p"
           },
           {
             "schrift": "vår",
             "lerntext": "vår",
-            "de": "unser"
+            "de": "unser",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1662,7 +2001,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "hans",
               "lerntext": "hans",
-              "de": "sein"
+              "de": "sein",
+              "c": "p"
             },
             {
               "schrift": "dette",
@@ -1673,42 +2013,49 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "dere",
               "lerntext": "dere",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "man",
               "lerntext": "man",
               "de": "man",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "jeg",
               "lerntext": "jeg",
               "de": "ich",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "vi",
               "lerntext": "vi",
               "de": "wir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "du",
               "lerntext": "du",
               "de": "du",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "hun",
               "lerntext": "hun",
               "de": "sie",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "han",
               "lerntext": "han",
               "de": "er",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -1728,7 +2075,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er [Slot] bøker",
-          "lerntext": "det er [Slot] bøker"
+          "lerntext": "det er [Slot] bøker",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Das sind [Slot] Bücher.",
         "pronouns": [],
@@ -1737,66 +2087,77 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "alle",
               "lerntext": "alle",
-              "de": "alle"
+              "de": "alle",
+              "c": "p"
             },
             {
               "schrift": "dere",
               "lerntext": "dere",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "man",
               "lerntext": "man",
               "de": "man",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "hans",
               "lerntext": "hans",
               "de": "sein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "vår",
               "lerntext": "vår",
               "de": "unser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "din",
               "lerntext": "din",
               "de": "dein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "min",
               "lerntext": "min",
               "de": "mein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "jeg",
               "lerntext": "jeg",
               "de": "ich",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "vi",
               "lerntext": "vi",
               "de": "wir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "du",
               "lerntext": "du",
               "de": "du",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "hun",
               "lerntext": "hun",
               "de": "sie",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -1816,7 +2177,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] er her",
-          "lerntext": "[Slot] er her"
+          "lerntext": "[Slot] er her",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "[Slot] ist hier.",
         "pronouns": [],
@@ -1830,12 +2194,14 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "hans",
               "lerntext": "hans",
-              "de": "sein"
+              "de": "sein",
+              "c": "p"
             },
             {
               "schrift": "dere",
               "lerntext": "dere",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
@@ -1848,48 +2214,56 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "alle",
               "lerntext": "alle",
               "de": "alle",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "man",
               "lerntext": "man",
               "de": "man",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "vår",
               "lerntext": "vår",
               "de": "unser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "din",
               "lerntext": "din",
               "de": "dein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "min",
               "lerntext": "min",
               "de": "mein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "jeg",
               "lerntext": "jeg",
               "de": "ich",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "vi",
               "lerntext": "vi",
               "de": "wir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "du",
               "lerntext": "du",
               "de": "du",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -1909,24 +2283,31 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er min [Slot]",
-          "lerntext": "det er min [Slot]"
+          "lerntext": "det er min [Slot]",
+          "wortarten": {
+            "er": "v",
+            "min": "p"
+          }
         },
         "frameDe": "Das ist mein [Slot].",
         "pronouns": [
           {
             "schrift": "min",
             "lerntext": "min",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           },
           {
             "schrift": "din",
             "lerntext": "din",
-            "de": "dein"
+            "de": "dein",
+            "c": "p"
           },
           {
             "schrift": "vår",
             "lerntext": "vår",
-            "de": "unser"
+            "de": "unser",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1935,42 +2316,49 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "arm",
               "lerntext": "arm",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kropp",
               "lerntext": "kropp",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fot",
               "lerntext": "fot",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "familie",
               "lerntext": "familie",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bil",
               "lerntext": "bil",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "munn",
               "lerntext": "munn",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sønn",
               "lerntext": "sønn",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1984,14 +2372,18 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er et [Slot]",
-          "lerntext": "her er et [Slot]"
+          "lerntext": "her er et [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist ein [Slot].",
         "pronouns": [
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2000,30 +2392,35 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "bord",
               "lerntext": "bord",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "rom",
               "lerntext": "rom",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vindu",
               "lerntext": "vindu",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "glass",
               "lerntext": "glass",
               "de": "Glas",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hotell",
               "lerntext": "hotell",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2037,7 +2434,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] er her",
-          "lerntext": "[Slot] er her"
+          "lerntext": "[Slot] er her",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "[Slot] ist hier.",
         "pronouns": [],
@@ -2053,6 +2453,7 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "dere",
               "lerntext": "dere",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
@@ -2065,12 +2466,14 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "alle",
               "lerntext": "alle",
               "de": "alle",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "man",
               "lerntext": "man",
               "de": "man",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -2105,24 +2508,34 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / vi vil ha [Slot]",
-          "lerntext": "jeg / du / vi vil ha [Slot]"
+          "lerntext": "jeg / du / vi vil ha [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "vi": "p",
+            "vil": "v",
+            "ha": "v"
+          }
         },
         "frameDe": "ich / du / wir möchte [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2130,86 +2543,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "vann",
               "lerntext": "vann",
-              "de": "Wasser"
+              "de": "Wasser",
+              "c": "n"
             },
             {
               "schrift": "kaffe",
               "lerntext": "kaffe",
-              "de": "Kaffee"
+              "de": "Kaffee",
+              "c": "n"
             },
             {
               "schrift": "øl",
               "lerntext": "øl",
-              "de": "Bier"
+              "de": "Bier",
+              "c": "n"
             },
             {
               "schrift": "vin",
               "lerntext": "vin",
-              "de": "Wein"
+              "de": "Wein",
+              "c": "n"
             },
             {
               "schrift": "brød",
               "lerntext": "brød",
-              "de": "Brot"
+              "de": "Brot",
+              "c": "n"
             },
             {
               "schrift": "hånd",
               "lerntext": "hånd",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "datter",
               "lerntext": "datter",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "leilighet",
               "lerntext": "leilighet",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "arm",
               "lerntext": "arm",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kropp",
               "lerntext": "kropp",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hotell",
               "lerntext": "hotell",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bok",
               "lerntext": "bok",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bord",
               "lerntext": "bord",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kjøkken",
               "lerntext": "kjøkken",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fot",
               "lerntext": "fot",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2220,7 +2648,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "vil",
             "lerntext": "vil",
-            "de": "wollen"
+            "de": "wollen",
+            "c": "v"
           }
         ],
         "id": "3.1"
@@ -2229,24 +2658,34 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / vi vil ha [Slot]",
-          "lerntext": "jeg / du / vi vil ha [Slot]"
+          "lerntext": "jeg / du / vi vil ha [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "vi": "p",
+            "vil": "v",
+            "ha": "v"
+          }
         },
         "frameDe": "ich / du / wir möchte [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2254,76 +2693,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "ost",
               "lerntext": "ost",
-              "de": "Käse"
+              "de": "Käse",
+              "c": "n"
             },
             {
               "schrift": "melk",
               "lerntext": "melk",
-              "de": "Milch"
+              "de": "Milch",
+              "c": "n"
             },
             {
               "schrift": "sukker",
               "lerntext": "sukker",
-              "de": "Zucker"
+              "de": "Zucker",
+              "c": "n"
             },
             {
               "schrift": "vann",
               "lerntext": "vann",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kaffe",
               "lerntext": "kaffe",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "øl",
               "lerntext": "øl",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vin",
               "lerntext": "vin",
               "de": "Wein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "brød",
               "lerntext": "brød",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hus",
               "lerntext": "hus",
               "de": "Haus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "rom",
               "lerntext": "rom",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "familie",
               "lerntext": "familie",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nøkkel",
               "lerntext": "nøkkel",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "seng",
               "lerntext": "seng",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2337,24 +2789,33 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / han trenger [Slot]",
-          "lerntext": "jeg / du / han trenger [Slot]"
+          "lerntext": "jeg / du / han trenger [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "han": "p",
+            "trenger": "v"
+          }
         },
         "frameDe": "ich / du / er brauche [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2362,76 +2823,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "hjelp",
               "lerntext": "hjelp",
-              "de": "Hilfe"
+              "de": "Hilfe",
+              "c": "n"
             },
             {
               "schrift": "tid",
               "lerntext": "tid",
-              "de": "Zeit"
+              "de": "Zeit",
+              "c": "n"
             },
             {
               "schrift": "penger",
               "lerntext": "penger",
-              "de": "Geld"
+              "de": "Geld",
+              "c": "n"
             },
             {
               "schrift": "ost",
               "lerntext": "ost",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sukker",
               "lerntext": "sukker",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "melk",
               "lerntext": "melk",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "øl",
               "lerntext": "øl",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "brød",
               "lerntext": "brød",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vann",
               "lerntext": "vann",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vin",
               "lerntext": "vin",
               "de": "Wein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kaffe",
               "lerntext": "kaffe",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vindu",
               "lerntext": "vindu",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "glass",
               "lerntext": "glass",
               "de": "Glas",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2442,7 +2916,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "trenger",
             "lerntext": "trenger",
-            "de": "brauchen"
+            "de": "brauchen",
+            "c": "v"
           }
         ],
         "id": "3.3"
@@ -2451,14 +2926,20 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg vil ha ei [Slot]",
-          "lerntext": "jeg vil ha ei [Slot]"
+          "lerntext": "jeg vil ha ei [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "vil": "v",
+            "ha": "v"
+          }
         },
         "frameDe": "ich möchte ein [Slot], bitte.",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2466,66 +2947,77 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "frukt",
               "lerntext": "frukt",
-              "de": "Obst"
+              "de": "Obst",
+              "c": "n"
             },
             {
               "schrift": "penger",
               "lerntext": "penger",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "øl",
               "lerntext": "øl",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "brød",
               "lerntext": "brød",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vann",
               "lerntext": "vann",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bil",
               "lerntext": "bil",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vindu",
               "lerntext": "vindu",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "glass",
               "lerntext": "glass",
               "de": "Glas",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hus",
               "lerntext": "hus",
               "de": "Haus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "rom",
               "lerntext": "rom",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hotell",
               "lerntext": "hotell",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2539,14 +3031,20 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg vil ha en [Slot]",
-          "lerntext": "jeg vil ha en [Slot]"
+          "lerntext": "jeg vil ha en [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "vil": "v",
+            "ha": "v"
+          }
         },
         "frameDe": "ich möchte ein [Slot], bitte.",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2554,76 +3052,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "frokost",
               "lerntext": "frokost",
-              "de": "Frühstück"
+              "de": "Frühstück",
+              "c": "n"
             },
             {
               "schrift": "lunsj",
               "lerntext": "lunsj",
-              "de": "Mittagessen"
+              "de": "Mittagessen",
+              "c": "n"
             },
             {
               "schrift": "middag",
               "lerntext": "middag",
-              "de": "Abendessen"
+              "de": "Abendessen",
+              "c": "n"
             },
             {
               "schrift": "frukt",
               "lerntext": "frukt",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "penger",
               "lerntext": "penger",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "øl",
               "lerntext": "øl",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "brød",
               "lerntext": "brød",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vann",
               "lerntext": "vann",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bil",
               "lerntext": "bil",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bok",
               "lerntext": "bok",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "seng",
               "lerntext": "seng",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "barn",
               "lerntext": "barn",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vindu",
               "lerntext": "vindu",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2637,19 +3148,26 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / vi spiser [Slot]",
-          "lerntext": "jeg / vi spiser [Slot]"
+          "lerntext": "jeg / vi spiser [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "vi": "p",
+            "spiser": "v"
+          }
         },
         "frameDe": "ich / wir esse [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2657,76 +3175,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "kjøtt",
               "lerntext": "kjøtt",
-              "de": "Fleisch"
+              "de": "Fleisch",
+              "c": "n"
             },
             {
               "schrift": "fisk",
               "lerntext": "fisk",
-              "de": "Fisch"
+              "de": "Fisch",
+              "c": "n"
             },
             {
               "schrift": "grønnsak",
               "lerntext": "grønnsak",
-              "de": "Gemüse"
+              "de": "Gemüse",
+              "c": "n"
             },
             {
               "schrift": "lunsj",
               "lerntext": "lunsj",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tid",
               "lerntext": "tid",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "frokost",
               "lerntext": "frokost",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "middag",
               "lerntext": "middag",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hjelp",
               "lerntext": "hjelp",
               "de": "Hilfe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ost",
               "lerntext": "ost",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sukker",
               "lerntext": "sukker",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "melk",
               "lerntext": "melk",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "frukt",
               "lerntext": "frukt",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "munn",
               "lerntext": "munn",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2737,12 +3268,14 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "spiser",
             "lerntext": "spiser",
-            "de": "essen"
+            "de": "essen",
+            "c": "v"
           },
           {
             "schrift": "drikker",
             "lerntext": "drikker",
-            "de": "trinken"
+            "de": "trinken",
+            "c": "v"
           }
         ],
         "id": "3.6"
@@ -2751,19 +3284,26 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / vi spiser [Slot]",
-          "lerntext": "jeg / vi spiser [Slot]"
+          "lerntext": "jeg / vi spiser [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "vi": "p",
+            "spiser": "v"
+          }
         },
         "frameDe": "ich / wir esse [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2772,48 +3312,56 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "kjøtt",
               "lerntext": "kjøtt",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fisk",
               "lerntext": "fisk",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "grønnsak",
               "lerntext": "grønnsak",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lunsj",
               "lerntext": "lunsj",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tid",
               "lerntext": "tid",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "frokost",
               "lerntext": "frokost",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "middag",
               "lerntext": "middag",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hjelp",
               "lerntext": "hjelp",
               "de": "Hilfe",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2827,19 +3375,26 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / vi spiser [Slot]",
-          "lerntext": "jeg / vi spiser [Slot]"
+          "lerntext": "jeg / vi spiser [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "vi": "p",
+            "spiser": "v"
+          }
         },
         "frameDe": "ich / wir esse [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2848,18 +3403,21 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "kjøtt",
               "lerntext": "kjøtt",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fisk",
               "lerntext": "fisk",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "grønnsak",
               "lerntext": "grønnsak",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2894,29 +3452,40 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / han / hun er ikke [Slot]",
-          "lerntext": "jeg / du / han / hun er ikke [Slot]"
+          "lerntext": "jeg / du / han / hun er ikke [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "han": "p",
+            "hun": "p",
+            "er": "v"
+          }
         },
         "frameDe": "ich / du / er / sie bin nicht [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2965,29 +3534,37 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "er du [Slot]?",
-          "lerntext": "er du [Slot]?"
+          "lerntext": "er du [Slot]?",
+          "wortarten": {
+            "er": "v",
+            "du": "p"
+          }
         },
         "frameDe": "Bist du / er / sie / ihr [Slot]?",
         "pronouns": [
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "dere",
             "lerntext": "dere",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2995,81 +3572,95 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "gammel",
               "lerntext": "gammel",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "ny",
               "lerntext": "ny",
-              "de": "neu"
+              "de": "neu",
+              "c": "a"
             },
             {
               "schrift": "dårlig",
               "lerntext": "dårlig",
-              "de": "schlecht"
+              "de": "schlecht",
+              "c": "a"
             },
             {
               "schrift": "viktig",
               "lerntext": "viktig",
-              "de": "wichtig"
+              "de": "wichtig",
+              "c": "a"
             },
             {
               "schrift": "trøtt",
               "lerntext": "trøtt",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "svak",
               "lerntext": "svak",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fornøyd",
               "lerntext": "fornøyd",
               "de": "zufrieden",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "syk",
               "lerntext": "syk",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ung",
               "lerntext": "ung",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pen",
               "lerntext": "pen",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sterk",
               "lerntext": "sterk",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "morsom",
               "lerntext": "morsom",
               "de": "lustig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "kjedelig",
               "lerntext": "kjedelig",
               "de": "langweilig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sint",
               "lerntext": "sint",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -3083,7 +3674,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] er det?",
-          "lerntext": "[Slot] er det?"
+          "lerntext": "[Slot] er det?",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "[Slot] ist das?",
         "pronouns": [
@@ -3108,71 +3702,83 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "noe",
               "lerntext": "noe",
-              "de": "etwas"
+              "de": "etwas",
+              "c": "p"
             },
             {
               "schrift": "alt",
               "lerntext": "alt",
-              "de": "alles"
+              "de": "alles",
+              "c": "p"
             },
             {
               "schrift": "vår",
               "lerntext": "vår",
               "de": "unser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "man",
               "lerntext": "man",
               "de": "man",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "alle",
               "lerntext": "alle",
               "de": "alle",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "din",
               "lerntext": "din",
               "de": "dein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "min",
               "lerntext": "min",
               "de": "mein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "dere",
               "lerntext": "dere",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "hans",
               "lerntext": "hans",
               "de": "sein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "vi",
               "lerntext": "vi",
               "de": "wir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "hun",
               "lerntext": "hun",
               "de": "sie",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "du",
               "lerntext": "du",
               "de": "du",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -3212,29 +3818,37 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "er du [Slot]?",
-          "lerntext": "er du [Slot]?"
+          "lerntext": "er du [Slot]?",
+          "wortarten": {
+            "er": "v",
+            "du": "p"
+          }
         },
         "frameDe": "Bist du / er / sie / ihr [Slot]?",
         "pronouns": [
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "dere",
             "lerntext": "dere",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -3243,18 +3857,21 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "ny",
               "lerntext": "ny",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dårlig",
               "lerntext": "dårlig",
               "de": "schlecht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "viktig",
               "lerntext": "viktig",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -3268,29 +3885,37 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "er du [Slot]?",
-          "lerntext": "er du [Slot]?"
+          "lerntext": "er du [Slot]?",
+          "wortarten": {
+            "er": "v",
+            "du": "p"
+          }
         },
         "frameDe": "Bist du / er / sie / ihr [Slot]?",
         "pronouns": [
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "dere",
             "lerntext": "dere",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -3299,18 +3924,21 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "ny",
               "lerntext": "ny",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dårlig",
               "lerntext": "dårlig",
               "de": "schlecht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "viktig",
               "lerntext": "viktig",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -3360,66 +3988,77 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "gate",
               "lerntext": "gate",
-              "de": "Straße"
+              "de": "Straße",
+              "c": "n"
             },
             {
               "schrift": "tid",
               "lerntext": "tid",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "melk",
               "lerntext": "melk",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hjelp",
               "lerntext": "hjelp",
               "de": "Hilfe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "datter",
               "lerntext": "datter",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "leilighet",
               "lerntext": "leilighet",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "familie",
               "lerntext": "familie",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kjøkken",
               "lerntext": "kjøkken",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "jobb",
               "lerntext": "jobb",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hånd",
               "lerntext": "hånd",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dør",
               "lerntext": "dør",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3454,66 +4093,77 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "skole",
               "lerntext": "skole",
-              "de": "Schule"
+              "de": "Schule",
+              "c": "n"
             },
             {
               "schrift": "gate",
               "lerntext": "gate",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tid",
               "lerntext": "tid",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "melk",
               "lerntext": "melk",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hjelp",
               "lerntext": "hjelp",
               "de": "Hilfe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "datter",
               "lerntext": "datter",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "leilighet",
               "lerntext": "leilighet",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "familie",
               "lerntext": "familie",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kjøkken",
               "lerntext": "kjøkken",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "politi",
               "lerntext": "politi",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "veske",
               "lerntext": "veske",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3542,76 +4192,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "butikk",
               "lerntext": "butikk",
-              "de": "Laden"
+              "de": "Laden",
+              "c": "n"
             },
             {
               "schrift": "stasjon",
               "lerntext": "stasjon",
-              "de": "Bahnhof"
+              "de": "Bahnhof",
+              "c": "n"
             },
             {
               "schrift": "flyplass",
               "lerntext": "flyplass",
-              "de": "Flughafen"
+              "de": "Flughafen",
+              "c": "n"
             },
             {
               "schrift": "ost",
               "lerntext": "ost",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sukker",
               "lerntext": "sukker",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sønn",
               "lerntext": "sønn",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vin",
               "lerntext": "vin",
               "de": "Wein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kaffe",
               "lerntext": "kaffe",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bror",
               "lerntext": "bror",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fisk",
               "lerntext": "fisk",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "venn",
               "lerntext": "venn",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "arm",
               "lerntext": "arm",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nøkkel",
               "lerntext": "nøkkel",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3640,66 +4303,77 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "restaurant",
               "lerntext": "restaurant",
-              "de": "Restaurant"
+              "de": "Restaurant",
+              "c": "n"
             },
             {
               "schrift": "grønnsak",
               "lerntext": "grønnsak",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lunsj",
               "lerntext": "lunsj",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kjøtt",
               "lerntext": "kjøtt",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "frokost",
               "lerntext": "frokost",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "penger",
               "lerntext": "penger",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "frukt",
               "lerntext": "frukt",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "middag",
               "lerntext": "middag",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "øl",
               "lerntext": "øl",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "glass",
               "lerntext": "glass",
               "de": "Glas",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "brød",
               "lerntext": "brød",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3728,66 +4402,77 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "toalett",
               "lerntext": "toalett",
-              "de": "Toilette"
+              "de": "Toilette",
+              "c": "n"
             },
             {
               "schrift": "skole",
               "lerntext": "skole",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gate",
               "lerntext": "gate",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "jobb",
               "lerntext": "jobb",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tid",
               "lerntext": "tid",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "melk",
               "lerntext": "melk",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hånd",
               "lerntext": "hånd",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "søster",
               "lerntext": "søster",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hjelp",
               "lerntext": "hjelp",
               "de": "Hilfe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "datter",
               "lerntext": "datter",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "leilighet",
               "lerntext": "leilighet",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3816,66 +4501,77 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "universitet",
               "lerntext": "universitet",
-              "de": "Universität"
+              "de": "Universität",
+              "c": "n"
             },
             {
               "schrift": "toalett",
               "lerntext": "toalett",
               "de": "Toilette",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "skole",
               "lerntext": "skole",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gate",
               "lerntext": "gate",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "familie",
               "lerntext": "familie",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dør",
               "lerntext": "dør",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kjøkken",
               "lerntext": "kjøkken",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "politi",
               "lerntext": "politi",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "veske",
               "lerntext": "veske",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "jobb",
               "lerntext": "jobb",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tid",
               "lerntext": "tid",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3910,66 +4606,77 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "sykehus",
               "lerntext": "sykehus",
-              "de": "Krankenhaus"
+              "de": "Krankenhaus",
+              "c": "n"
             },
             {
               "schrift": "restaurant",
               "lerntext": "restaurant",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "grønnsak",
               "lerntext": "grønnsak",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lunsj",
               "lerntext": "lunsj",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kjøtt",
               "lerntext": "kjøtt",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "frokost",
               "lerntext": "frokost",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "penger",
               "lerntext": "penger",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "frukt",
               "lerntext": "frukt",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "middag",
               "lerntext": "middag",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vann",
               "lerntext": "vann",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hus",
               "lerntext": "hus",
               "de": "Haus",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3983,7 +4690,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] er her",
-          "lerntext": "[Slot] er her"
+          "lerntext": "[Slot] er her",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "[Slot] ist hier.",
         "pronouns": [
@@ -4003,76 +4713,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "by",
               "lerntext": "by",
-              "de": "Stadt"
+              "de": "Stadt",
+              "c": "n"
             },
             {
               "schrift": "vei",
               "lerntext": "vei",
-              "de": "Weg"
+              "de": "Weg",
+              "c": "n"
             },
             {
               "schrift": "skog",
               "lerntext": "skog",
-              "de": "Wald"
+              "de": "Wald",
+              "c": "n"
             },
             {
               "schrift": "flyplass",
               "lerntext": "flyplass",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sykehus",
               "lerntext": "sykehus",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "stasjon",
               "lerntext": "stasjon",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "butikk",
               "lerntext": "butikk",
               "de": "Laden",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "universitet",
               "lerntext": "universitet",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "toalett",
               "lerntext": "toalett",
               "de": "Toilette",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "restaurant",
               "lerntext": "restaurant",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "skole",
               "lerntext": "skole",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ost",
               "lerntext": "ost",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "munn",
               "lerntext": "munn",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -4280,7 +5003,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] er her",
-          "lerntext": "[Slot] er her"
+          "lerntext": "[Slot] er her",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "[Slot] ist hier.",
         "pronouns": [
@@ -4301,48 +5027,56 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "by",
               "lerntext": "by",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vei",
               "lerntext": "vei",
               "de": "Weg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "skog",
               "lerntext": "skog",
               "de": "Wald",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "flyplass",
               "lerntext": "flyplass",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sykehus",
               "lerntext": "sykehus",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "stasjon",
               "lerntext": "stasjon",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "butikk",
               "lerntext": "butikk",
               "de": "Laden",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "universitet",
               "lerntext": "universitet",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -4425,7 +5159,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] er her",
-          "lerntext": "[Slot] er her"
+          "lerntext": "[Slot] er her",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "[Slot] ist hier.",
         "pronouns": [
@@ -4446,18 +5183,21 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "by",
               "lerntext": "by",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vei",
               "lerntext": "vei",
               "de": "Weg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "skog",
               "lerntext": "skog",
               "de": "Wald",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -4683,7 +5423,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er for [Slot]",
-          "lerntext": "det er for [Slot]"
+          "lerntext": "det er for [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Das ist zu [Slot].",
         "pronouns": [],
@@ -4692,86 +5435,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "dyr",
               "lerntext": "dyr",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "billig",
               "lerntext": "billig",
-              "de": "billig"
+              "de": "billig",
+              "c": "a"
             },
             {
               "schrift": "stor",
               "lerntext": "stor",
-              "de": "groß"
+              "de": "groß",
+              "c": "a"
             },
             {
               "schrift": "liten",
               "lerntext": "liten",
-              "de": "klein"
+              "de": "klein",
+              "c": "a"
             },
             {
               "schrift": "lang",
               "lerntext": "lang",
-              "de": "lang"
+              "de": "lang",
+              "c": "a"
             },
             {
               "schrift": "viktig",
               "lerntext": "viktig",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dårlig",
               "lerntext": "dårlig",
               "de": "schlecht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "hyggelig",
               "lerntext": "hyggelig",
               "de": "nett",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lei",
               "lerntext": "lei",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "klar",
               "lerntext": "klar",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "glad",
               "lerntext": "glad",
               "de": "froh",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ny",
               "lerntext": "ny",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "trøtt",
               "lerntext": "trøtt",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "svak",
               "lerntext": "svak",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fornøyd",
               "lerntext": "fornøyd",
               "de": "zufrieden",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -4796,7 +5554,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er for [Slot]",
-          "lerntext": "det er for [Slot]"
+          "lerntext": "det er for [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Das ist zu [Slot].",
         "pronouns": [],
@@ -4805,86 +5566,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "kort",
               "lerntext": "kort",
-              "de": "kurz"
+              "de": "kurz",
+              "c": "a"
             },
             {
               "schrift": "høy",
               "lerntext": "høy",
-              "de": "hoch"
+              "de": "hoch",
+              "c": "a"
             },
             {
               "schrift": "lav",
               "lerntext": "lav",
-              "de": "niedrig"
+              "de": "niedrig",
+              "c": "a"
             },
             {
               "schrift": "tung",
               "lerntext": "tung",
-              "de": "schwer"
+              "de": "schwer",
+              "c": "a"
             },
             {
               "schrift": "lett",
               "lerntext": "lett",
-              "de": "leicht"
+              "de": "leicht",
+              "c": "a"
             },
             {
               "schrift": "dyr",
               "lerntext": "dyr",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "billig",
               "lerntext": "billig",
               "de": "billig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "stor",
               "lerntext": "stor",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "liten",
               "lerntext": "liten",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lang",
               "lerntext": "lang",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "viktig",
               "lerntext": "viktig",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dårlig",
               "lerntext": "dårlig",
               "de": "schlecht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "syk",
               "lerntext": "syk",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ung",
               "lerntext": "ung",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pen",
               "lerntext": "pen",
               "de": "schön",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -5227,29 +6003,40 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / vi / han kan [Slot]",
-          "lerntext": "jeg / du / vi / han kan [Slot]"
+          "lerntext": "jeg / du / vi / han kan [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "vi": "p",
+            "han": "p",
+            "kan": "v"
+          }
         },
         "frameDe": "ich / du / wir / er kann [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5257,62 +6044,73 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "danse",
               "lerntext": "danse",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "spille",
               "lerntext": "spille",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "dra",
               "lerntext": "dra",
-              "de": "fahren"
+              "de": "fahren",
+              "c": "v"
             },
             {
               "schrift": "skrive",
               "lerntext": "skrive",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "lese",
               "lerntext": "lese",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "trenge",
               "lerntext": "trenge",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spise",
               "lerntext": "spise",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drikke",
               "lerntext": "drikke",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ville",
               "lerntext": "ville",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "være",
               "lerntext": "være",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ha",
               "lerntext": "ha",
               "de": "haben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5323,7 +6121,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "kan",
             "lerntext": "kan",
-            "de": "können"
+            "de": "können",
+            "c": "v"
           }
         ],
         "id": "7.1"
@@ -5332,29 +6131,40 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / vi / han kan [Slot]",
-          "lerntext": "jeg / du / vi / han kan [Slot]"
+          "lerntext": "jeg / du / vi / han kan [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "vi": "p",
+            "han": "p",
+            "kan": "v"
+          }
         },
         "frameDe": "ich / du / wir / er kann [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5362,86 +6172,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "hjelpe",
               "lerntext": "hjelpe",
-              "de": "helfen"
+              "de": "helfen",
+              "c": "v"
             },
             {
               "schrift": "vise",
               "lerntext": "vise",
-              "de": "zeigen"
+              "de": "zeigen",
+              "c": "v"
             },
             {
               "schrift": "gjøre",
               "lerntext": "gjøre",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "si",
               "lerntext": "si",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "bruke",
               "lerntext": "bruke",
-              "de": "benutzen"
+              "de": "benutzen",
+              "c": "v"
             },
             {
               "schrift": "danse",
               "lerntext": "danse",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spille",
               "lerntext": "spille",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dra",
               "lerntext": "dra",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "skrive",
               "lerntext": "skrive",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lese",
               "lerntext": "lese",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "trenge",
               "lerntext": "trenge",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spise",
               "lerntext": "spise",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drikke",
               "lerntext": "drikke",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ville",
               "lerntext": "ville",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "være",
               "lerntext": "være",
               "de": "sein",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5455,24 +6280,33 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / vi må [Slot]",
-          "lerntext": "jeg / du / vi må [Slot]"
+          "lerntext": "jeg / du / vi må [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "vi": "p",
+            "må": "v"
+          }
         },
         "frameDe": "ich / du / wir muss [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5480,86 +6314,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "jobbe",
               "lerntext": "jobbe",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "sove",
               "lerntext": "sove",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "vente",
               "lerntext": "vente",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "betale",
               "lerntext": "betale",
-              "de": "bezahlen"
+              "de": "bezahlen",
+              "c": "v"
             },
             {
               "schrift": "slutte",
               "lerntext": "slutte",
-              "de": "aufhören"
+              "de": "aufhören",
+              "c": "v"
             },
             {
               "schrift": "kunne",
               "lerntext": "kunne",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gjøre",
               "lerntext": "gjøre",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hjelpe",
               "lerntext": "hjelpe",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bruke",
               "lerntext": "bruke",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "si",
               "lerntext": "si",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vise",
               "lerntext": "vise",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "trenge",
               "lerntext": "trenge",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spise",
               "lerntext": "spise",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drikke",
               "lerntext": "drikke",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dra",
               "lerntext": "dra",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5570,7 +6419,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "måtte",
             "lerntext": "måtte",
-            "de": "müssen"
+            "de": "müssen",
+            "c": "v"
           }
         ],
         "id": "7.3"
@@ -5579,24 +6429,33 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / vi må [Slot]",
-          "lerntext": "jeg / du / vi må [Slot]"
+          "lerntext": "jeg / du / vi må [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "vi": "p",
+            "må": "v"
+          }
         },
         "frameDe": "ich / du / wir muss [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5604,66 +6463,77 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "vaske",
               "lerntext": "vaske",
-              "de": "waschen"
+              "de": "waschen",
+              "c": "v"
             },
             {
               "schrift": "jobbe",
               "lerntext": "jobbe",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sove",
               "lerntext": "sove",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vente",
               "lerntext": "vente",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "betale",
               "lerntext": "betale",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "slutte",
               "lerntext": "slutte",
               "de": "aufhören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "kunne",
               "lerntext": "kunne",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gjøre",
               "lerntext": "gjøre",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hjelpe",
               "lerntext": "hjelpe",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "skrive",
               "lerntext": "skrive",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "danse",
               "lerntext": "danse",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5677,29 +6547,40 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / han / hun vil [Slot]",
-          "lerntext": "jeg / du / han / hun vil [Slot]"
+          "lerntext": "jeg / du / han / hun vil [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "han": "p",
+            "hun": "p",
+            "vil": "v"
+          }
         },
         "frameDe": "ich / du / er / sie will [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5707,86 +6588,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "møte",
               "lerntext": "møte",
-              "de": "treffen"
+              "de": "treffen",
+              "c": "v"
             },
             {
               "schrift": "ringe",
               "lerntext": "ringe",
-              "de": "anrufen"
+              "de": "anrufen",
+              "c": "v"
             },
             {
               "schrift": "spørre",
               "lerntext": "spørre",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "svare",
               "lerntext": "svare",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "snakke",
               "lerntext": "snakke",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "måtte",
               "lerntext": "måtte",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vaske",
               "lerntext": "vaske",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sove",
               "lerntext": "sove",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lese",
               "lerntext": "lese",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "jobbe",
               "lerntext": "jobbe",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bruke",
               "lerntext": "bruke",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "si",
               "lerntext": "si",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vente",
               "lerntext": "vente",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "betale",
               "lerntext": "betale",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spille",
               "lerntext": "spille",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5800,29 +6696,40 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / han / hun vil [Slot]",
-          "lerntext": "jeg / du / han / hun vil [Slot]"
+          "lerntext": "jeg / du / han / hun vil [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "han": "p",
+            "hun": "p",
+            "vil": "v"
+          }
         },
         "frameDe": "ich / du / er / sie will [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5830,71 +6737,83 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "høre",
               "lerntext": "høre",
-              "de": "hören"
+              "de": "hören",
+              "c": "v"
             },
             {
               "schrift": "se",
               "lerntext": "se",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "møte",
               "lerntext": "møte",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ringe",
               "lerntext": "ringe",
               "de": "anrufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spørre",
               "lerntext": "spørre",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "svare",
               "lerntext": "svare",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "snakke",
               "lerntext": "snakke",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "måtte",
               "lerntext": "måtte",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vaske",
               "lerntext": "vaske",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "slutte",
               "lerntext": "slutte",
               "de": "aufhören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vise",
               "lerntext": "vise",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "trenge",
               "lerntext": "trenge",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -5908,19 +6827,26 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du kan ikke [Slot]",
-          "lerntext": "jeg / du kan ikke [Slot]"
+          "lerntext": "jeg / du kan ikke [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "kan": "v"
+          }
         },
         "frameDe": "ich / du darf nicht [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -5928,86 +6854,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "glemme",
               "lerntext": "glemme",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "miste",
               "lerntext": "miste",
-              "de": "verlieren"
+              "de": "verlieren",
+              "c": "v"
             },
             {
               "schrift": "gråte",
               "lerntext": "gråte",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "le",
               "lerntext": "le",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "bli",
               "lerntext": "bli",
-              "de": "werden"
+              "de": "werden",
+              "c": "v"
             },
             {
               "schrift": "høre",
               "lerntext": "høre",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "se",
               "lerntext": "se",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spørre",
               "lerntext": "spørre",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "møte",
               "lerntext": "møte",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "svare",
               "lerntext": "svare",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ringe",
               "lerntext": "ringe",
               "de": "anrufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "snakke",
               "lerntext": "snakke",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spise",
               "lerntext": "spise",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "kunne",
               "lerntext": "kunne",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drikke",
               "lerntext": "drikke",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6018,7 +6959,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "får",
             "lerntext": "får",
-            "de": "bekommen"
+            "de": "bekommen",
+            "c": "v"
           }
         ],
         "id": "7.7"
@@ -6027,19 +6969,26 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du kan ikke [Slot]",
-          "lerntext": "jeg / du kan ikke [Slot]"
+          "lerntext": "jeg / du kan ikke [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "kan": "v"
+          }
         },
         "frameDe": "ich / du darf nicht [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6047,81 +6996,95 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "dø",
               "lerntext": "dø",
-              "de": "sterben"
+              "de": "sterben",
+              "c": "v"
             },
             {
               "schrift": "åpne",
               "lerntext": "åpne",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "stenge",
               "lerntext": "stenge",
-              "de": "schließen"
+              "de": "schließen",
+              "c": "v"
             },
             {
               "schrift": "vinne",
               "lerntext": "vinne",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "glemme",
               "lerntext": "glemme",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "miste",
               "lerntext": "miste",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gråte",
               "lerntext": "gråte",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "le",
               "lerntext": "le",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bli",
               "lerntext": "bli",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "høre",
               "lerntext": "høre",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "se",
               "lerntext": "se",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gjøre",
               "lerntext": "gjøre",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sove",
               "lerntext": "sove",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ville",
               "lerntext": "ville",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6135,19 +7098,26 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du kan ikke [Slot]",
-          "lerntext": "jeg / du kan ikke [Slot]"
+          "lerntext": "jeg / du kan ikke [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "kan": "v"
+          }
         },
         "frameDe": "ich / du darf nicht [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6156,54 +7126,63 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "dø",
               "lerntext": "dø",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "åpne",
               "lerntext": "åpne",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stenge",
               "lerntext": "stenge",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vinne",
               "lerntext": "vinne",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "glemme",
               "lerntext": "glemme",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "miste",
               "lerntext": "miste",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gråte",
               "lerntext": "gråte",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "le",
               "lerntext": "le",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bli",
               "lerntext": "bli",
               "de": "werden",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6217,19 +7196,26 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du kan ikke [Slot]",
-          "lerntext": "jeg / du kan ikke [Slot]"
+          "lerntext": "jeg / du kan ikke [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "kan": "v"
+          }
         },
         "frameDe": "ich / du darf nicht [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6238,24 +7224,28 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "dø",
               "lerntext": "dø",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "åpne",
               "lerntext": "åpne",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stenge",
               "lerntext": "stenge",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vinne",
               "lerntext": "vinne",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6290,29 +7280,40 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / vi / hun går til en [Slot]",
-          "lerntext": "jeg / du / vi / hun går til en [Slot]"
+          "lerntext": "jeg / du / vi / hun går til en [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "vi": "p",
+            "hun": "p",
+            "går": "v"
+          }
         },
         "frameDe": "ich / du / wir / sie gehe zu einem [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6320,66 +7321,77 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "butikk",
               "lerntext": "butikk",
-              "de": "Laden"
+              "de": "Laden",
+              "c": "n"
             },
             {
               "schrift": "flyplass",
               "lerntext": "flyplass",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vei",
               "lerntext": "vei",
               "de": "Weg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "stasjon",
               "lerntext": "stasjon",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "skog",
               "lerntext": "skog",
               "de": "Wald",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sukker",
               "lerntext": "sukker",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sønn",
               "lerntext": "sønn",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bord",
               "lerntext": "bord",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vin",
               "lerntext": "vin",
               "de": "Wein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kaffe",
               "lerntext": "kaffe",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bror",
               "lerntext": "bror",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -6390,12 +7402,14 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "går",
             "lerntext": "går",
-            "de": "gehen"
+            "de": "gehen",
+            "c": "v"
           },
           {
             "schrift": "kommer",
             "lerntext": "kommer",
-            "de": "kommen"
+            "de": "kommen",
+            "c": "v"
           },
           {
             "schrift": "hjem",
@@ -6409,19 +7423,26 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / vi reiser med [Slot]",
-          "lerntext": "jeg / vi reiser med [Slot]"
+          "lerntext": "jeg / vi reiser med [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "vi": "p",
+            "reiser": "v"
+          }
         },
         "frameDe": "ich / wir fahre mit [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6429,81 +7450,95 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "buss",
               "lerntext": "buss",
-              "de": "Bus"
+              "de": "Bus",
+              "c": "n"
             },
             {
               "schrift": "tog",
               "lerntext": "tog",
-              "de": "Zug"
+              "de": "Zug",
+              "c": "n"
             },
             {
               "schrift": "bil",
               "lerntext": "bil",
-              "de": "Auto"
+              "de": "Auto",
+              "c": "n"
             },
             {
               "schrift": "vei",
               "lerntext": "vei",
-              "de": "Weg"
+              "de": "Weg",
+              "c": "n"
             },
             {
               "schrift": "toalett",
               "lerntext": "toalett",
               "de": "Toilette",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sykehus",
               "lerntext": "sykehus",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "by",
               "lerntext": "by",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "universitet",
               "lerntext": "universitet",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "restaurant",
               "lerntext": "restaurant",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "flyplass",
               "lerntext": "flyplass",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "skole",
               "lerntext": "skole",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "stasjon",
               "lerntext": "stasjon",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "skog",
               "lerntext": "skog",
               "de": "Wald",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gate",
               "lerntext": "gate",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -6514,7 +7549,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "reiser",
             "lerntext": "reiser",
-            "de": "reisen"
+            "de": "reisen",
+            "c": "v"
           }
         ],
         "id": "8.2"
@@ -6523,24 +7559,32 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / han / hun [Slot] nå",
-          "lerntext": "jeg / han / hun [Slot] nå"
+          "lerntext": "jeg / han / hun [Slot] nå",
+          "wortarten": {
+            "jeg": "p",
+            "han": "p",
+            "hun": "p"
+          }
         },
         "frameDe": "ich / er / sie [Slot] jetzt.",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6548,86 +7592,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "sitter",
               "lerntext": "sitter",
-              "de": "sitzen"
+              "de": "sitzen",
+              "c": "v"
             },
             {
               "schrift": "står",
               "lerntext": "står",
-              "de": "stehen"
+              "de": "stehen",
+              "c": "v"
             },
             {
               "schrift": "flytter",
               "lerntext": "flytter",
-              "de": "umziehen"
+              "de": "umziehen",
+              "c": "v"
             },
             {
               "schrift": "bor",
               "lerntext": "bor",
-              "de": "wohnen"
+              "de": "wohnen",
+              "c": "v"
             },
             {
               "schrift": "setter",
               "lerntext": "setter",
-              "de": "setzen"
+              "de": "setzen",
+              "c": "v"
             },
             {
               "schrift": "reiser",
               "lerntext": "reiser",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "går",
               "lerntext": "går",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "kommer",
               "lerntext": "kommer",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "får",
               "lerntext": "får",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "blir",
               "lerntext": "blir",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vinner",
               "lerntext": "vinner",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hjelper",
               "lerntext": "hjelper",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drar",
               "lerntext": "drar",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gråter",
               "lerntext": "gråter",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "skriver",
               "lerntext": "skriver",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6647,24 +7706,32 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / han / hun [Slot] nå",
-          "lerntext": "jeg / han / hun [Slot] nå"
+          "lerntext": "jeg / han / hun [Slot] nå",
+          "wortarten": {
+            "jeg": "p",
+            "han": "p",
+            "hun": "p"
+          }
         },
         "frameDe": "ich / er / sie [Slot] jetzt.",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6673,54 +7740,63 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "sitter",
               "lerntext": "sitter",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "står",
               "lerntext": "står",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "flytter",
               "lerntext": "flytter",
               "de": "umziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bor",
               "lerntext": "bor",
               "de": "wohnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "setter",
               "lerntext": "setter",
               "de": "setzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "reiser",
               "lerntext": "reiser",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "går",
               "lerntext": "går",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "kommer",
               "lerntext": "kommer",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "får",
               "lerntext": "får",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6734,24 +7810,32 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / han / hun [Slot] nå",
-          "lerntext": "jeg / han / hun [Slot] nå"
+          "lerntext": "jeg / han / hun [Slot] nå",
+          "wortarten": {
+            "jeg": "p",
+            "han": "p",
+            "hun": "p"
+          }
         },
         "frameDe": "ich / er / sie [Slot] jetzt.",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6760,48 +7844,56 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "sitter",
               "lerntext": "sitter",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "står",
               "lerntext": "står",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "flytter",
               "lerntext": "flytter",
               "de": "umziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bor",
               "lerntext": "bor",
               "de": "wohnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "setter",
               "lerntext": "setter",
               "de": "setzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "reiser",
               "lerntext": "reiser",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "går",
               "lerntext": "går",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "kommer",
               "lerntext": "kommer",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6914,7 +8006,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "vi ses på [Slot]",
-          "lerntext": "vi ses på [Slot]"
+          "lerntext": "vi ses på [Slot]",
+          "wortarten": {
+            "vi": "p"
+          }
         },
         "frameDe": "Wir sehen uns am [Slot].",
         "pronouns": [
@@ -6929,81 +8024,95 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "kveld",
               "lerntext": "kveld",
-              "de": "Abend"
+              "de": "Abend",
+              "c": "n"
             },
             {
               "schrift": "natt",
               "lerntext": "natt",
-              "de": "Nacht"
+              "de": "Nacht",
+              "c": "n"
             },
             {
               "schrift": "dag",
               "lerntext": "dag",
-              "de": "Tag"
+              "de": "Tag",
+              "c": "n"
             },
             {
               "schrift": "uke",
               "lerntext": "uke",
-              "de": "Woche"
+              "de": "Woche",
+              "c": "n"
             },
             {
               "schrift": "buss",
               "lerntext": "buss",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tog",
               "lerntext": "tog",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "toalett",
               "lerntext": "toalett",
               "de": "Toilette",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sykehus",
               "lerntext": "sykehus",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "by",
               "lerntext": "by",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "universitet",
               "lerntext": "universitet",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "restaurant",
               "lerntext": "restaurant",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fisk",
               "lerntext": "fisk",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fot",
               "lerntext": "fot",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "student",
               "lerntext": "student",
               "de": "Student",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7033,7 +8142,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det tar en [Slot]",
-          "lerntext": "det tar en [Slot]"
+          "lerntext": "det tar en [Slot]",
+          "wortarten": {
+            "tar": "v"
+          }
         },
         "frameDe": "Es dauert eine [Slot].",
         "pronouns": [],
@@ -7042,66 +8154,77 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "time",
               "lerntext": "time",
-              "de": "Stunde"
+              "de": "Stunde",
+              "c": "n"
             },
             {
               "schrift": "natt",
               "lerntext": "natt",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "uke",
               "lerntext": "uke",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "toalett",
               "lerntext": "toalett",
               "de": "Toilette",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "skole",
               "lerntext": "skole",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "by",
               "lerntext": "by",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "universitet",
               "lerntext": "universitet",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gate",
               "lerntext": "gate",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "melk",
               "lerntext": "melk",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hånd",
               "lerntext": "hånd",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "søster",
               "lerntext": "søster",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7115,7 +8238,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det tar en [Slot]",
-          "lerntext": "det tar en [Slot]"
+          "lerntext": "det tar en [Slot]",
+          "wortarten": {
+            "tar": "v"
+          }
         },
         "frameDe": "Es dauert einen [Slot].",
         "pronouns": [],
@@ -7124,66 +8250,77 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "ferie",
               "lerntext": "ferie",
-              "de": "Urlaub"
+              "de": "Urlaub",
+              "c": "n"
             },
             {
               "schrift": "kveld",
               "lerntext": "kveld",
               "de": "Abend",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dag",
               "lerntext": "dag",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "buss",
               "lerntext": "buss",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tog",
               "lerntext": "tog",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kropp",
               "lerntext": "kropp",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "flyplass",
               "lerntext": "flyplass",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "venn",
               "lerntext": "venn",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "arm",
               "lerntext": "arm",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "stasjon",
               "lerntext": "stasjon",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nøkkel",
               "lerntext": "nøkkel",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7197,7 +8334,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det tar et [Slot]",
-          "lerntext": "det tar et [Slot]"
+          "lerntext": "det tar et [Slot]",
+          "wortarten": {
+            "tar": "v"
+          }
         },
         "frameDe": "Es dauert eine [Slot].",
         "pronouns": [],
@@ -7206,66 +8346,77 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "minutt",
               "lerntext": "minutt",
-              "de": "Minute"
+              "de": "Minute",
+              "c": "n"
             },
             {
               "schrift": "time",
               "lerntext": "time",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "natt",
               "lerntext": "natt",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "uke",
               "lerntext": "uke",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "toalett",
               "lerntext": "toalett",
               "de": "Toilette",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "skole",
               "lerntext": "skole",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "by",
               "lerntext": "by",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "universitet",
               "lerntext": "universitet",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gate",
               "lerntext": "gate",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hjelp",
               "lerntext": "hjelp",
               "de": "Hilfe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "datter",
               "lerntext": "datter",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7356,7 +8507,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det tar en [Slot]",
-          "lerntext": "det tar en [Slot]"
+          "lerntext": "det tar en [Slot]",
+          "wortarten": {
+            "tar": "v"
+          }
         },
         "frameDe": "Es dauert einen [Slot].",
         "pronouns": [],
@@ -7366,18 +8520,21 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "ferie",
               "lerntext": "ferie",
               "de": "Urlaub",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kveld",
               "lerntext": "kveld",
               "de": "Abend",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dag",
               "lerntext": "dag",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7489,29 +8646,40 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / han / vi liker [Slot]",
-          "lerntext": "jeg / du / han / vi liker [Slot]"
+          "lerntext": "jeg / du / han / vi liker [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "han": "p",
+            "vi": "p",
+            "liker": "v"
+          }
         },
         "frameDe": "ich / du / er / wir mag [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7519,86 +8687,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "sol",
               "lerntext": "sol",
-              "de": "Sonne"
+              "de": "Sonne",
+              "c": "n"
             },
             {
               "schrift": "regn",
               "lerntext": "regn",
-              "de": "Regen"
+              "de": "Regen",
+              "c": "n"
             },
             {
               "schrift": "snø",
               "lerntext": "snø",
-              "de": "Schnee"
+              "de": "Schnee",
+              "c": "n"
             },
             {
               "schrift": "vær",
               "lerntext": "vær",
-              "de": "Wetter"
+              "de": "Wetter",
+              "c": "n"
             },
             {
               "schrift": "fjell",
               "lerntext": "fjell",
-              "de": "Berg"
+              "de": "Berg",
+              "c": "n"
             },
             {
               "schrift": "minutt",
               "lerntext": "minutt",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ferie",
               "lerntext": "ferie",
               "de": "Urlaub",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "time",
               "lerntext": "time",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kveld",
               "lerntext": "kveld",
               "de": "Abend",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "buss",
               "lerntext": "buss",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tog",
               "lerntext": "tog",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dag",
               "lerntext": "dag",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "natt",
               "lerntext": "natt",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "uke",
               "lerntext": "uke",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "grønnsak",
               "lerntext": "grønnsak",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7609,12 +8792,14 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "liker",
             "lerntext": "liker",
-            "de": "mögen"
+            "de": "mögen",
+            "c": "v"
           },
           {
             "schrift": "elsker",
             "lerntext": "elsker",
-            "de": "lieben"
+            "de": "lieben",
+            "c": "v"
           },
           {
             "schrift": "den",
@@ -7628,29 +8813,40 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / han / vi liker [Slot]",
-          "lerntext": "jeg / du / han / vi liker [Slot]"
+          "lerntext": "jeg / du / han / vi liker [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "han": "p",
+            "vi": "p",
+            "liker": "v"
+          }
         },
         "frameDe": "ich / du / er / wir mag [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7658,66 +8854,77 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "hav",
               "lerntext": "hav",
-              "de": "Meer"
+              "de": "Meer",
+              "c": "n"
             },
             {
               "schrift": "sol",
               "lerntext": "sol",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "regn",
               "lerntext": "regn",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "snø",
               "lerntext": "snø",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vær",
               "lerntext": "vær",
               "de": "Wetter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fjell",
               "lerntext": "fjell",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "minutt",
               "lerntext": "minutt",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ferie",
               "lerntext": "ferie",
               "de": "Urlaub",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "time",
               "lerntext": "time",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kveld",
               "lerntext": "kveld",
               "de": "Abend",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "buss",
               "lerntext": "buss",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7731,19 +8938,26 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / hun ser [Slot]",
-          "lerntext": "jeg / hun ser [Slot]"
+          "lerntext": "jeg / hun ser [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "hun": "p",
+            "ser": "v"
+          }
         },
         "frameDe": "ich / sie sehe [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7751,81 +8965,95 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "meg",
               "lerntext": "meg",
-              "de": "mir"
+              "de": "mir",
+              "c": "p"
             },
             {
               "schrift": "deg",
               "lerntext": "deg",
-              "de": "dir"
+              "de": "dir",
+              "c": "p"
             },
             {
               "schrift": "ham",
               "lerntext": "ham",
-              "de": "ihm"
+              "de": "ihm",
+              "c": "p"
             },
             {
               "schrift": "oss",
               "lerntext": "oss",
-              "de": "uns"
+              "de": "uns",
+              "c": "p"
             },
             {
               "schrift": "alt",
               "lerntext": "alt",
               "de": "alles",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "noe",
               "lerntext": "noe",
               "de": "etwas",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "vår",
               "lerntext": "vår",
               "de": "unser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "man",
               "lerntext": "man",
               "de": "man",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "alle",
               "lerntext": "alle",
               "de": "alle",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "din",
               "lerntext": "din",
               "de": "dein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "min",
               "lerntext": "min",
               "de": "mein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "dere",
               "lerntext": "dere",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "hans",
               "lerntext": "hans",
               "de": "sein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "vi",
               "lerntext": "vi",
               "de": "wir",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -7836,7 +9064,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "finner",
             "lerntext": "finner",
-            "de": "finden"
+            "de": "finden",
+            "c": "v"
           }
         ],
         "id": "10.3"
@@ -7845,7 +9074,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "den er [Slot]",
-          "lerntext": "den er [Slot]"
+          "lerntext": "den er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Sie ist [Slot].",
         "pronouns": [],
@@ -7854,86 +9086,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "rød",
               "lerntext": "rød",
-              "de": "rot"
+              "de": "rot",
+              "c": "a"
             },
             {
               "schrift": "blå",
               "lerntext": "blå",
-              "de": "blau"
+              "de": "blau",
+              "c": "a"
             },
             {
               "schrift": "gul",
               "lerntext": "gul",
-              "de": "gelb"
+              "de": "gelb",
+              "c": "a"
             },
             {
               "schrift": "grønn",
               "lerntext": "grønn",
-              "de": "grün"
+              "de": "grün",
+              "c": "a"
             },
             {
               "schrift": "svart",
               "lerntext": "svart",
-              "de": "schwarz"
+              "de": "schwarz",
+              "c": "a"
             },
             {
               "schrift": "kort",
               "lerntext": "kort",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lav",
               "lerntext": "lav",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tung",
               "lerntext": "tung",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lett",
               "lerntext": "lett",
               "de": "leicht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "høy",
               "lerntext": "høy",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "stor",
               "lerntext": "stor",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "billig",
               "lerntext": "billig",
               "de": "billig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lang",
               "lerntext": "lang",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dyr",
               "lerntext": "dyr",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "liten",
               "lerntext": "liten",
               "de": "klein",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -7947,7 +9194,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "den er [Slot]",
-          "lerntext": "den er [Slot]"
+          "lerntext": "den er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Sie ist [Slot].",
         "pronouns": [],
@@ -7956,76 +9206,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "hvit",
               "lerntext": "hvit",
-              "de": "weiß"
+              "de": "weiß",
+              "c": "a"
             },
             {
               "schrift": "brun",
               "lerntext": "brun",
-              "de": "braun"
+              "de": "braun",
+              "c": "a"
             },
             {
               "schrift": "grå",
               "lerntext": "grå",
-              "de": "grau"
+              "de": "grau",
+              "c": "a"
             },
             {
               "schrift": "rød",
               "lerntext": "rød",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "blå",
               "lerntext": "blå",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gul",
               "lerntext": "gul",
               "de": "gelb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grønn",
               "lerntext": "grønn",
               "de": "grün",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "svart",
               "lerntext": "svart",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "kort",
               "lerntext": "kort",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lav",
               "lerntext": "lav",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tung",
               "lerntext": "tung",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lett",
               "lerntext": "lett",
               "de": "leicht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "høy",
               "lerntext": "høy",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8039,7 +9302,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "maten er [Slot]",
-          "lerntext": "maten er [Slot]"
+          "lerntext": "maten er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Das Essen ist [Slot].",
         "pronouns": [],
@@ -8048,86 +9314,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "søt",
               "lerntext": "søt",
-              "de": "süß"
+              "de": "süß",
+              "c": "a"
             },
             {
               "schrift": "varm",
               "lerntext": "varm",
-              "de": "warm"
+              "de": "warm",
+              "c": "a"
             },
             {
               "schrift": "kald",
               "lerntext": "kald",
-              "de": "kalt"
+              "de": "kalt",
+              "c": "a"
             },
             {
               "schrift": "ren",
               "lerntext": "ren",
-              "de": "sauber"
+              "de": "sauber",
+              "c": "a"
             },
             {
               "schrift": "skitten",
               "lerntext": "skitten",
-              "de": "schmutzig"
+              "de": "schmutzig",
+              "c": "a"
             },
             {
               "schrift": "brun",
               "lerntext": "brun",
               "de": "braun",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "hvit",
               "lerntext": "hvit",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grå",
               "lerntext": "grå",
               "de": "grau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "rød",
               "lerntext": "rød",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "blå",
               "lerntext": "blå",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gul",
               "lerntext": "gul",
               "de": "gelb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grønn",
               "lerntext": "grønn",
               "de": "grün",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "svart",
               "lerntext": "svart",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "stor",
               "lerntext": "stor",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "kort",
               "lerntext": "kort",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8138,7 +9419,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "morgen",
             "lerntext": "morgen",
-            "de": "Morgen"
+            "de": "Morgen",
+            "c": "n"
           }
         ],
         "id": "10.6"
@@ -8147,7 +9429,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "maten er [Slot]",
-          "lerntext": "maten er [Slot]"
+          "lerntext": "maten er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Das Essen ist [Slot].",
         "pronouns": [],
@@ -8157,48 +9442,56 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "søt",
               "lerntext": "søt",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "varm",
               "lerntext": "varm",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "kald",
               "lerntext": "kald",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ren",
               "lerntext": "ren",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "skitten",
               "lerntext": "skitten",
               "de": "schmutzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "brun",
               "lerntext": "brun",
               "de": "braun",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "hvit",
               "lerntext": "hvit",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grå",
               "lerntext": "grå",
               "de": "grau",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8212,29 +9505,40 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / han / vi liker [Slot]",
-          "lerntext": "jeg / du / han / vi liker [Slot]"
+          "lerntext": "jeg / du / han / vi liker [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "han": "p",
+            "vi": "p",
+            "liker": "v"
+          }
         },
         "frameDe": "ich / du / er / wir mag [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8243,36 +9547,42 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "hav",
               "lerntext": "hav",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sol",
               "lerntext": "sol",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "regn",
               "lerntext": "regn",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "snø",
               "lerntext": "snø",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vær",
               "lerntext": "vær",
               "de": "Wetter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fjell",
               "lerntext": "fjell",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -8286,19 +9596,26 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / hun ser [Slot]",
-          "lerntext": "jeg / hun ser [Slot]"
+          "lerntext": "jeg / hun ser [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "hun": "p",
+            "ser": "v"
+          }
         },
         "frameDe": "ich / sie sehe [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8307,36 +9624,42 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "meg",
               "lerntext": "meg",
               "de": "mir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "deg",
               "lerntext": "deg",
               "de": "dir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ham",
               "lerntext": "ham",
               "de": "ihm",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "oss",
               "lerntext": "oss",
               "de": "uns",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "alt",
               "lerntext": "alt",
               "de": "alles",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "noe",
               "lerntext": "noe",
               "de": "etwas",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -8350,7 +9673,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "maten er [Slot]",
-          "lerntext": "maten er [Slot]"
+          "lerntext": "maten er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Das Essen ist [Slot].",
         "pronouns": [],
@@ -8360,30 +9686,35 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "søt",
               "lerntext": "søt",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "varm",
               "lerntext": "varm",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "kald",
               "lerntext": "kald",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ren",
               "lerntext": "ren",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "skitten",
               "lerntext": "skitten",
               "de": "schmutzig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8418,29 +9749,41 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / han / vi var [Slot] i går",
-          "lerntext": "jeg / du / han / vi var [Slot] i går"
+          "lerntext": "jeg / du / han / vi var [Slot] i går",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "han": "p",
+            "vi": "p",
+            "var": "v",
+            "går": "v"
+          }
         },
         "frameDe": "ich / du / er / wir war gestern [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8448,81 +9791,95 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "glad",
               "lerntext": "glad",
-              "de": "froh"
+              "de": "froh",
+              "c": "a"
             },
             {
               "schrift": "trøtt",
               "lerntext": "trøtt",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "syk",
               "lerntext": "syk",
-              "de": "krank"
+              "de": "krank",
+              "c": "a"
             },
             {
               "schrift": "fornøyd",
               "lerntext": "fornøyd",
-              "de": "zufrieden"
+              "de": "zufrieden",
+              "c": "a"
             },
             {
               "schrift": "skitten",
               "lerntext": "skitten",
               "de": "schmutzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ren",
               "lerntext": "ren",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "brun",
               "lerntext": "brun",
               "de": "braun",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "billig",
               "lerntext": "billig",
               "de": "billig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lav",
               "lerntext": "lav",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "hvit",
               "lerntext": "hvit",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "rød",
               "lerntext": "rød",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "blå",
               "lerntext": "blå",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tung",
               "lerntext": "tung",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gul",
               "lerntext": "gul",
               "de": "gelb",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8542,24 +9899,34 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du / vi skal [Slot] i morgen",
-          "lerntext": "jeg / du / vi skal [Slot] i morgen"
+          "lerntext": "jeg / du / vi skal [Slot] i morgen",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p",
+            "vi": "p",
+            "skal": "v",
+            "morgen": "n"
+          }
         },
         "frameDe": "ich / du / wir werde morgen [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8567,81 +9934,95 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "kjøpe",
               "lerntext": "kjøpe",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "gi",
               "lerntext": "gi",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "ta",
               "lerntext": "ta",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "finne",
               "lerntext": "finne",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "like",
               "lerntext": "like",
               "de": "mögen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "elske",
               "lerntext": "elske",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bo",
               "lerntext": "bo",
               "de": "wohnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "reise",
               "lerntext": "reise",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "flytte",
               "lerntext": "flytte",
               "de": "umziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gå",
               "lerntext": "gå",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stå",
               "lerntext": "stå",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sitte",
               "lerntext": "sitte",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "få",
               "lerntext": "få",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sette",
               "lerntext": "sette",
               "de": "setzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8652,7 +10033,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "bli",
             "lerntext": "bli",
-            "de": "werden"
+            "de": "werden",
+            "c": "v"
           }
         ],
         "id": "11.2"
@@ -8661,19 +10043,25 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du [Slot] mye",
-          "lerntext": "jeg / du [Slot] mye"
+          "lerntext": "jeg / du [Slot] mye",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p"
+          }
         },
         "frameDe": "ich / du [Slot] viel.",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8681,81 +10069,95 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "leter",
               "lerntext": "leter",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "vet",
               "lerntext": "vet",
-              "de": "wissen"
+              "de": "wissen",
+              "c": "v"
             },
             {
               "schrift": "tror",
               "lerntext": "tror",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "tenker",
               "lerntext": "tenker",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "gir",
               "lerntext": "gir",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tar",
               "lerntext": "tar",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "kjøper",
               "lerntext": "kjøper",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "liker",
               "lerntext": "liker",
               "de": "mögen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "elsker",
               "lerntext": "elsker",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "danser",
               "lerntext": "danser",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stenger",
               "lerntext": "stenger",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "glemmer",
               "lerntext": "glemmer",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spør",
               "lerntext": "spør",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "møter",
               "lerntext": "møter",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8769,19 +10171,26 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / han blir [Slot]",
-          "lerntext": "jeg / han blir [Slot]"
+          "lerntext": "jeg / han blir [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "han": "p",
+            "blir": "v"
+          }
         },
         "frameDe": "ich / er werde [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8789,76 +10198,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "åpen",
               "lerntext": "åpen",
-              "de": "offen"
+              "de": "offen",
+              "c": "a"
             },
             {
               "schrift": "stengt",
               "lerntext": "stengt",
-              "de": "geschlossen"
+              "de": "geschlossen",
+              "c": "a"
             },
             {
               "schrift": "farlig",
               "lerntext": "farlig",
-              "de": "gefährlich"
+              "de": "gefährlich",
+              "c": "a"
             },
             {
               "schrift": "lett",
               "lerntext": "lett",
               "de": "leicht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "høy",
               "lerntext": "høy",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grønn",
               "lerntext": "grønn",
               "de": "grün",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "søt",
               "lerntext": "søt",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lang",
               "lerntext": "lang",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grå",
               "lerntext": "grå",
               "de": "grau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dyr",
               "lerntext": "dyr",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "svart",
               "lerntext": "svart",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "varm",
               "lerntext": "varm",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "kald",
               "lerntext": "kald",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8869,7 +10291,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "blir",
             "lerntext": "blir",
-            "de": "werden"
+            "de": "werden",
+            "c": "v"
           }
         ],
         "id": "11.4"
@@ -8878,19 +10301,25 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du [Slot] mye",
-          "lerntext": "jeg / du [Slot] mye"
+          "lerntext": "jeg / du [Slot] mye",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p"
+          }
         },
         "frameDe": "ich / du [Slot] viel.",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8899,42 +10328,49 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "leter",
               "lerntext": "leter",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vet",
               "lerntext": "vet",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tror",
               "lerntext": "tror",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tenker",
               "lerntext": "tenker",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gir",
               "lerntext": "gir",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tar",
               "lerntext": "tar",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "kjøper",
               "lerntext": "kjøper",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8948,19 +10384,26 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / han blir [Slot]",
-          "lerntext": "jeg / han blir [Slot]"
+          "lerntext": "jeg / han blir [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "han": "p",
+            "blir": "v"
+          }
         },
         "frameDe": "ich / er werde [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -8969,18 +10412,21 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "åpen",
               "lerntext": "åpen",
               "de": "offen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "stengt",
               "lerntext": "stengt",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "farlig",
               "lerntext": "farlig",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -8994,19 +10440,25 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / du [Slot] mye",
-          "lerntext": "jeg / du [Slot] mye"
+          "lerntext": "jeg / du [Slot] mye",
+          "wortarten": {
+            "jeg": "p",
+            "du": "p"
+          }
         },
         "frameDe": "ich / du [Slot] viel.",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -9015,24 +10467,28 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "leter",
               "lerntext": "leter",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vet",
               "lerntext": "vet",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tror",
               "lerntext": "tror",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tenker",
               "lerntext": "tenker",
               "de": "denken",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -9046,19 +10502,26 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg / han blir [Slot]",
-          "lerntext": "jeg / han blir [Slot]"
+          "lerntext": "jeg / han blir [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "han": "p",
+            "blir": "v"
+          }
         },
         "frameDe": "ich / er werde [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -9067,18 +10530,21 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "åpen",
               "lerntext": "åpen",
               "de": "offen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "stengt",
               "lerntext": "stengt",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "farlig",
               "lerntext": "farlig",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -9113,24 +10579,33 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg er trøtt [Slot] jeg jobber",
-          "lerntext": "jeg er trøtt [Slot] jeg jobber"
+          "lerntext": "jeg er trøtt [Slot] jeg jobber",
+          "wortarten": {
+            "jeg": "p",
+            "er": "v",
+            "trøtt": "a",
+            "jobber": "v"
+          }
         },
         "frameDe": "Ich bin müde, [Slot] ich arbeite.",
         "pronouns": [
           {
             "schrift": "og",
             "lerntext": "og",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "men",
             "lerntext": "men",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           },
           {
             "schrift": "eller",
             "lerntext": "eller",
-            "de": "oder"
+            "de": "oder",
+            "c": "k"
           }
         ],
         "slotGroups": [
@@ -9138,7 +10613,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "fordi",
               "lerntext": "fordi",
-              "de": "weil"
+              "de": "weil",
+              "c": "k"
             },
             {
               "schrift": "om",
@@ -9148,12 +10624,14 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "mens",
               "lerntext": "mens",
-              "de": "während"
+              "de": "während",
+              "c": "k"
             },
             {
               "schrift": "selv om",
               "lerntext": "selv om",
-              "de": "obwohl"
+              "de": "obwohl",
+              "c": "k"
             },
             {
               "schrift": "inntil",
@@ -9228,27 +10706,32 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "og",
             "lerntext": "og",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "men",
             "lerntext": "men",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           },
           {
             "schrift": "eller",
             "lerntext": "eller",
-            "de": "oder"
+            "de": "oder",
+            "c": "k"
           },
           {
             "schrift": "så",
             "lerntext": "så",
-            "de": "so"
+            "de": "so",
+            "c": "k"
           },
           {
             "schrift": "at",
             "lerntext": "at",
-            "de": "dass"
+            "de": "dass",
+            "c": "k"
           },
           {
             "schrift": "det",
@@ -9262,24 +10745,33 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg er trøtt [Slot] jeg jobber",
-          "lerntext": "jeg er trøtt [Slot] jeg jobber"
+          "lerntext": "jeg er trøtt [Slot] jeg jobber",
+          "wortarten": {
+            "jeg": "p",
+            "er": "v",
+            "trøtt": "a",
+            "jobber": "v"
+          }
         },
         "frameDe": "Ich bin müde, [Slot] ich arbeite.",
         "pronouns": [
           {
             "schrift": "og",
             "lerntext": "og",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "men",
             "lerntext": "men",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           },
           {
             "schrift": "eller",
             "lerntext": "eller",
-            "de": "oder"
+            "de": "oder",
+            "c": "k"
           }
         ],
         "slotGroups": [
@@ -9360,7 +10852,13 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg vil [Slot] men jeg kan ikke",
-          "lerntext": "jeg vil [Slot] men jeg kan ikke"
+          "lerntext": "jeg vil [Slot] men jeg kan ikke",
+          "wortarten": {
+            "jeg": "p",
+            "vil": "v",
+            "men": "k",
+            "kan": "v"
+          }
         },
         "frameDe": "Ich will [Slot], aber ich kann nicht.",
         "pronouns": [],
@@ -9369,76 +10867,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "forstå",
               "lerntext": "forstå",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "fortsette",
               "lerntext": "fortsette",
-              "de": "fortsetzen"
+              "de": "fortsetzen",
+              "c": "v"
             },
             {
               "schrift": "håpe",
               "lerntext": "håpe",
-              "de": "hoffen"
+              "de": "hoffen",
+              "c": "v"
             },
             {
               "schrift": "like",
               "lerntext": "like",
               "de": "mögen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tro",
               "lerntext": "tro",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gi",
               "lerntext": "gi",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tenke",
               "lerntext": "tenke",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "le",
               "lerntext": "le",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lese",
               "lerntext": "lese",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "svare",
               "lerntext": "svare",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "jobbe",
               "lerntext": "jobbe",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bruke",
               "lerntext": "bruke",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ta",
               "lerntext": "ta",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -9452,7 +10963,12 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er [Slot] men det går",
-          "lerntext": "det er [Slot] men det går"
+          "lerntext": "det er [Slot] men det går",
+          "wortarten": {
+            "er": "v",
+            "men": "k",
+            "går": "v"
+          }
         },
         "frameDe": "Es ist [Slot], aber es geht.",
         "pronouns": [],
@@ -9461,86 +10977,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "vanskelig",
               "lerntext": "vanskelig",
-              "de": "schwierig"
+              "de": "schwierig",
+              "c": "a"
             },
             {
               "schrift": "lett",
               "lerntext": "lett",
-              "de": "leicht"
+              "de": "leicht",
+              "c": "a"
             },
             {
               "schrift": "interessant",
               "lerntext": "interessant",
-              "de": "interessant"
+              "de": "interessant",
+              "c": "a"
             },
             {
               "schrift": "riktig",
               "lerntext": "riktig",
-              "de": "richtig"
+              "de": "richtig",
+              "c": "a"
             },
             {
               "schrift": "feil",
               "lerntext": "feil",
-              "de": "falsch"
+              "de": "falsch",
+              "c": "a"
             },
             {
               "schrift": "åpen",
               "lerntext": "åpen",
               "de": "offen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "farlig",
               "lerntext": "farlig",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "stengt",
               "lerntext": "stengt",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "liten",
               "lerntext": "liten",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "skitten",
               "lerntext": "skitten",
               "de": "schmutzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "stor",
               "lerntext": "stor",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "kort",
               "lerntext": "kort",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ren",
               "lerntext": "ren",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "brun",
               "lerntext": "brun",
               "de": "braun",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "billig",
               "lerntext": "billig",
               "de": "billig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -9554,7 +11085,12 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er [Slot] men det går",
-          "lerntext": "det er [Slot] men det går"
+          "lerntext": "det er [Slot] men det går",
+          "wortarten": {
+            "er": "v",
+            "men": "k",
+            "går": "v"
+          }
         },
         "frameDe": "Es ist [Slot], aber es geht.",
         "pronouns": [],
@@ -9573,36 +11109,42 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "stygg",
               "lerntext": "stygg",
-              "de": "hässlich"
+              "de": "hässlich",
+              "c": "a"
             },
             {
               "schrift": "vanskelig",
               "lerntext": "vanskelig",
               "de": "schwierig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "interessant",
               "lerntext": "interessant",
               "de": "interessant",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "riktig",
               "lerntext": "riktig",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "feil",
               "lerntext": "feil",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lett",
               "lerntext": "lett",
               "de": "leicht",
+              "c": "a",
               "wieder": true
             },
             {
@@ -9646,7 +11188,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg [Slot] deg",
-          "lerntext": "jeg [Slot] deg"
+          "lerntext": "jeg [Slot] deg",
+          "wortarten": {
+            "jeg": "p",
+            "deg": "p"
+          }
         },
         "frameDe": "Ich [Slot] dich.",
         "pronouns": [],
@@ -9655,71 +11201,83 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "bytter",
               "lerntext": "bytter",
-              "de": "tauschen"
+              "de": "tauschen",
+              "c": "v"
             },
             {
               "schrift": "heter",
               "lerntext": "heter",
-              "de": "heißen"
+              "de": "heißen",
+              "c": "v"
             },
             {
               "schrift": "forstår",
               "lerntext": "forstår",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "håper",
               "lerntext": "håper",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "fortsetter",
               "lerntext": "fortsetter",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vet",
               "lerntext": "vet",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "er",
               "lerntext": "er",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sier",
               "lerntext": "sier",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "venter",
               "lerntext": "venter",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ringer",
               "lerntext": "ringer",
               "de": "anrufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "må",
               "lerntext": "må",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mister",
               "lerntext": "mister",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -9733,7 +11291,12 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er [Slot] men det går",
-          "lerntext": "det er [Slot] men det går"
+          "lerntext": "det er [Slot] men det går",
+          "wortarten": {
+            "er": "v",
+            "men": "k",
+            "går": "v"
+          }
         },
         "frameDe": "Es ist [Slot], aber es geht.",
         "pronouns": [],
@@ -9755,6 +11318,7 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "stygg",
               "lerntext": "stygg",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             },
             {
@@ -9791,12 +11355,14 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "vanskelig",
               "lerntext": "vanskelig",
               "de": "schwierig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "interessant",
               "lerntext": "interessant",
               "de": "interessant",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -9810,7 +11376,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg [Slot] deg",
-          "lerntext": "jeg [Slot] deg"
+          "lerntext": "jeg [Slot] deg",
+          "wortarten": {
+            "jeg": "p",
+            "deg": "p"
+          }
         },
         "frameDe": "Ich [Slot] dich.",
         "pronouns": [],
@@ -9820,30 +11390,35 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "bytter",
               "lerntext": "bytter",
               "de": "tauschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "heter",
               "lerntext": "heter",
               "de": "heißen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "forstår",
               "lerntext": "forstår",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "håper",
               "lerntext": "håper",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "fortsetter",
               "lerntext": "fortsetter",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -9857,7 +11432,12 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er [Slot] men det går",
-          "lerntext": "det er [Slot] men det går"
+          "lerntext": "det er [Slot] men det går",
+          "wortarten": {
+            "er": "v",
+            "men": "k",
+            "går": "v"
+          }
         },
         "frameDe": "Es ist [Slot], aber es geht.",
         "pronouns": [],
@@ -9867,12 +11447,14 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "riktig",
               "lerntext": "riktig",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "feil",
               "lerntext": "feil",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
@@ -9891,6 +11473,7 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "stygg",
               "lerntext": "stygg",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             },
             {
@@ -9934,24 +11517,33 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg er trøtt [Slot] jeg jobber",
-          "lerntext": "jeg er trøtt [Slot] jeg jobber"
+          "lerntext": "jeg er trøtt [Slot] jeg jobber",
+          "wortarten": {
+            "jeg": "p",
+            "er": "v",
+            "trøtt": "a",
+            "jobber": "v"
+          }
         },
         "frameDe": "Ich bin müde, [Slot] ich arbeite.",
         "pronouns": [
           {
             "schrift": "og",
             "lerntext": "og",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "men",
             "lerntext": "men",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           },
           {
             "schrift": "eller",
             "lerntext": "eller",
-            "de": "oder"
+            "de": "oder",
+            "c": "k"
           }
         ],
         "slotGroups": [
@@ -9960,18 +11552,21 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "fordi",
               "lerntext": "fordi",
               "de": "weil",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "mens",
               "lerntext": "mens",
               "de": "während",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "selv om",
               "lerntext": "selv om",
               "de": "obwohl",
+              "c": "k",
               "wieder": true
             },
             {
@@ -10012,14 +11607,18 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "et [Slot] gjør vondt",
-          "lerntext": "et [Slot] gjør vondt"
+          "lerntext": "et [Slot] gjør vondt",
+          "wortarten": {
+            "gjør": "v"
+          }
         },
         "frameDe": "[Slot] tut weh.",
         "pronouns": [
           {
             "schrift": "min",
             "lerntext": "min",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -10027,71 +11626,83 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "hode",
               "lerntext": "hode",
-              "de": "Kopf"
+              "de": "Kopf",
+              "c": "n"
             },
             {
               "schrift": "øye",
               "lerntext": "øye",
-              "de": "Auge"
+              "de": "Auge",
+              "c": "n"
             },
             {
               "schrift": "morgen",
               "lerntext": "morgen",
               "de": "Morgen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hav",
               "lerntext": "hav",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "regn",
               "lerntext": "regn",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "minutt",
               "lerntext": "minutt",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sol",
               "lerntext": "sol",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fjell",
               "lerntext": "fjell",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "snø",
               "lerntext": "snø",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vær",
               "lerntext": "vær",
               "de": "Wetter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ferie",
               "lerntext": "ferie",
               "de": "Urlaub",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "time",
               "lerntext": "time",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10105,7 +11716,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg har vondt i et [Slot]",
-          "lerntext": "jeg har vondt i et [Slot]"
+          "lerntext": "jeg har vondt i et [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "har": "v"
+          }
         },
         "frameDe": "Ich habe Schmerzen im [Slot].",
         "pronouns": [],
@@ -10114,71 +11729,83 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "hår",
               "lerntext": "hår",
-              "de": "Haar"
+              "de": "Haar",
+              "c": "n"
             },
             {
               "schrift": "bein",
               "lerntext": "bein",
-              "de": "Bein"
+              "de": "Bein",
+              "c": "n"
             },
             {
               "schrift": "hode",
               "lerntext": "hode",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "øye",
               "lerntext": "øye",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "morgen",
               "lerntext": "morgen",
               "de": "Morgen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hav",
               "lerntext": "hav",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tog",
               "lerntext": "tog",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dag",
               "lerntext": "dag",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "natt",
               "lerntext": "natt",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "regn",
               "lerntext": "regn",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "minutt",
               "lerntext": "minutt",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sol",
               "lerntext": "sol",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10192,7 +11819,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg har vondt i et [Slot]",
-          "lerntext": "jeg har vondt i et [Slot]"
+          "lerntext": "jeg har vondt i et [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "har": "v"
+          }
         },
         "frameDe": "Ich habe Schmerzen im [Slot].",
         "pronouns": [],
@@ -10202,24 +11833,28 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "hår",
               "lerntext": "hår",
               "de": "Haar",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bein",
               "lerntext": "bein",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hode",
               "lerntext": "hode",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "øye",
               "lerntext": "øye",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10254,7 +11889,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg kjøper en [Slot]",
-          "lerntext": "jeg kjøper en [Slot]"
+          "lerntext": "jeg kjøper en [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "kjøper": "v"
+          }
         },
         "frameDe": "Ich kaufe einen [Slot].",
         "pronouns": [],
@@ -10263,66 +11902,77 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "sko",
               "lerntext": "sko",
-              "de": "Schuh"
+              "de": "Schuh",
+              "c": "n"
             },
             {
               "schrift": "hode",
               "lerntext": "hode",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "morgen",
               "lerntext": "morgen",
               "de": "Morgen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ferie",
               "lerntext": "ferie",
               "de": "Urlaub",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kveld",
               "lerntext": "kveld",
               "de": "Abend",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "buss",
               "lerntext": "buss",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tog",
               "lerntext": "tog",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dag",
               "lerntext": "dag",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ost",
               "lerntext": "ost",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "skog",
               "lerntext": "skog",
               "de": "Wald",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "munn",
               "lerntext": "munn",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10333,7 +11983,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "god",
             "lerntext": "god",
-            "de": "gut"
+            "de": "gut",
+            "c": "a"
           }
         ],
         "id": "14.1"
@@ -10342,7 +11993,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg har [Slot]",
-          "lerntext": "jeg har [Slot]"
+          "lerntext": "jeg har [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "har": "v"
+          }
         },
         "frameDe": "Ich habe [Slot].",
         "pronouns": [],
@@ -10351,71 +12006,83 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "klær",
               "lerntext": "klær",
-              "de": "Kleidung"
+              "de": "Kleidung",
+              "c": "n"
             },
             {
               "schrift": "navn",
               "lerntext": "navn",
-              "de": "Name"
+              "de": "Name",
+              "c": "n"
             },
             {
               "schrift": "sko",
               "lerntext": "sko",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bein",
               "lerntext": "bein",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hår",
               "lerntext": "hår",
               "de": "Haar",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "øye",
               "lerntext": "øye",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hode",
               "lerntext": "hode",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hav",
               "lerntext": "hav",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "morgen",
               "lerntext": "morgen",
               "de": "Morgen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "uke",
               "lerntext": "uke",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fjell",
               "lerntext": "fjell",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "snø",
               "lerntext": "snø",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10429,7 +12096,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er min [Slot]",
-          "lerntext": "det er min [Slot]"
+          "lerntext": "det er min [Slot]",
+          "wortarten": {
+            "er": "v",
+            "min": "p"
+          }
         },
         "frameDe": "Das ist meine [Slot].",
         "pronouns": [],
@@ -10438,66 +12109,77 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "jobb",
               "lerntext": "jobb",
-              "de": "Arbeit"
+              "de": "Arbeit",
+              "c": "n"
             },
             {
               "schrift": "klær",
               "lerntext": "klær",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "navn",
               "lerntext": "navn",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sko",
               "lerntext": "sko",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bein",
               "lerntext": "bein",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hår",
               "lerntext": "hår",
               "de": "Haar",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "øye",
               "lerntext": "øye",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vær",
               "lerntext": "vær",
               "de": "Wetter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "time",
               "lerntext": "time",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hode",
               "lerntext": "hode",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lunsj",
               "lerntext": "lunsj",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10511,7 +12193,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg venter på en [Slot]",
-          "lerntext": "jeg venter på en [Slot]"
+          "lerntext": "jeg venter på en [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "venter": "v"
+          }
         },
         "frameDe": "Ich warte auf [Slot].",
         "pronouns": [],
@@ -10520,66 +12206,77 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "eksamen",
               "lerntext": "eksamen",
-              "de": "Prüfung"
+              "de": "Prüfung",
+              "c": "n"
             },
             {
               "schrift": "klær",
               "lerntext": "klær",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "navn",
               "lerntext": "navn",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sko",
               "lerntext": "sko",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bein",
               "lerntext": "bein",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hår",
               "lerntext": "hår",
               "de": "Haar",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sykehus",
               "lerntext": "sykehus",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "øye",
               "lerntext": "øye",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kjøtt",
               "lerntext": "kjøtt",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "natt",
               "lerntext": "natt",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hav",
               "lerntext": "hav",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10593,7 +12290,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg venter på et [Slot]",
-          "lerntext": "jeg venter på et [Slot]"
+          "lerntext": "jeg venter på et [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "venter": "v"
+          }
         },
         "frameDe": "Ich warte auf [Slot].",
         "pronouns": [],
@@ -10602,66 +12303,77 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "svar",
               "lerntext": "svar",
-              "de": "Antwort"
+              "de": "Antwort",
+              "c": "n"
             },
             {
               "schrift": "eksamen",
               "lerntext": "eksamen",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "klær",
               "lerntext": "klær",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "navn",
               "lerntext": "navn",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sko",
               "lerntext": "sko",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bein",
               "lerntext": "bein",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sukker",
               "lerntext": "sukker",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sønn",
               "lerntext": "sønn",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "restaurant",
               "lerntext": "restaurant",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hår",
               "lerntext": "hår",
               "de": "Haar",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "morgen",
               "lerntext": "morgen",
               "de": "Morgen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10675,7 +12387,12 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg fikk et god [Slot]",
-          "lerntext": "jeg fikk et god [Slot]"
+          "lerntext": "jeg fikk et god [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "fikk": "v",
+            "god": "a"
+          }
         },
         "frameDe": "Ich habe eine gute [Slot] bekommen.",
         "pronouns": [],
@@ -10684,76 +12401,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "hus",
               "lerntext": "hus",
-              "de": "Haus"
+              "de": "Haus",
+              "c": "n"
             },
             {
               "schrift": "rom",
               "lerntext": "rom",
-              "de": "Zimmer"
+              "de": "Zimmer",
+              "c": "n"
             },
             {
               "schrift": "bord",
               "lerntext": "bord",
-              "de": "Tisch"
+              "de": "Tisch",
+              "c": "n"
             },
             {
               "schrift": "svar",
               "lerntext": "svar",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "eksamen",
               "lerntext": "eksamen",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "klær",
               "lerntext": "klær",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "navn",
               "lerntext": "navn",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vin",
               "lerntext": "vin",
               "de": "Wein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kaffe",
               "lerntext": "kaffe",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "regn",
               "lerntext": "regn",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "minutt",
               "lerntext": "minutt",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bror",
               "lerntext": "bror",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "frokost",
               "lerntext": "frokost",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10788,7 +12518,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er [Slot]",
-          "lerntext": "her er [Slot]"
+          "lerntext": "her er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist die [Slot].",
         "pronouns": [],
@@ -10797,27 +12530,32 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "apotek",
               "lerntext": "apotek",
-              "de": "Apotheke"
+              "de": "Apotheke",
+              "c": "n"
             },
             {
               "schrift": "billett",
               "lerntext": "billett",
-              "de": "Fahrkarte"
+              "de": "Fahrkarte",
+              "c": "n"
             },
             {
               "schrift": "regning",
               "lerntext": "regning",
-              "de": "Rechnung"
+              "de": "Rechnung",
+              "c": "n"
             },
             {
               "schrift": "bankkort",
               "lerntext": "bankkort",
-              "de": "Bankkarte"
+              "de": "Bankkarte",
+              "c": "n"
             },
             {
               "schrift": "forelesning",
               "lerntext": "forelesning",
-              "de": "Vorlesung"
+              "de": "Vorlesung",
+              "c": "n"
             }
           ]
         ],
@@ -10830,7 +12568,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er [Slot]",
-          "lerntext": "her er [Slot]"
+          "lerntext": "her er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist die [Slot].",
         "pronouns": [],
@@ -10839,56 +12580,66 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "språk",
               "lerntext": "språk",
-              "de": "Sprache"
+              "de": "Sprache",
+              "c": "n"
             },
             {
               "schrift": "spørsmål",
               "lerntext": "spørsmål",
-              "de": "Frage"
+              "de": "Frage",
+              "c": "n"
             },
             {
               "schrift": "meny",
               "lerntext": "meny",
-              "de": "Speisekarte"
+              "de": "Speisekarte",
+              "c": "n"
             },
             {
               "schrift": "flaske",
               "lerntext": "flaske",
-              "de": "Flasche"
+              "de": "Flasche",
+              "c": "n"
             },
             {
               "schrift": "medisin",
               "lerntext": "medisin",
-              "de": "Medizin"
+              "de": "Medizin",
+              "c": "n"
             },
             {
               "schrift": "apotek",
               "lerntext": "apotek",
               "de": "Apotheke",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "billett",
               "lerntext": "billett",
               "de": "Fahrkarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "regning",
               "lerntext": "regning",
               "de": "Rechnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bankkort",
               "lerntext": "bankkort",
               "de": "Bankkarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "forelesning",
               "lerntext": "forelesning",
               "de": "Vorlesung",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10902,7 +12653,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er [Slot]",
-          "lerntext": "her er [Slot]"
+          "lerntext": "her er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist die [Slot].",
         "pronouns": [],
@@ -10911,86 +12665,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "nummer",
               "lerntext": "nummer",
-              "de": "Nummer"
+              "de": "Nummer",
+              "c": "n"
             },
             {
               "schrift": "musikk",
               "lerntext": "musikk",
-              "de": "Musik"
+              "de": "Musik",
+              "c": "n"
             },
             {
               "schrift": "verden",
               "lerntext": "verden",
-              "de": "Welt"
+              "de": "Welt",
+              "c": "n"
             },
             {
               "schrift": "tur",
               "lerntext": "tur",
-              "de": "Wanderung"
+              "de": "Wanderung",
+              "c": "n"
             },
             {
               "schrift": "luft",
               "lerntext": "luft",
-              "de": "Luft"
+              "de": "Luft",
+              "c": "n"
             },
             {
               "schrift": "språk",
               "lerntext": "språk",
               "de": "Sprache",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "spørsmål",
               "lerntext": "spørsmål",
               "de": "Frage",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "meny",
               "lerntext": "meny",
               "de": "Speisekarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "flaske",
               "lerntext": "flaske",
               "de": "Flasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "medisin",
               "lerntext": "medisin",
               "de": "Medizin",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "apotek",
               "lerntext": "apotek",
               "de": "Apotheke",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "billett",
               "lerntext": "billett",
               "de": "Fahrkarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "regning",
               "lerntext": "regning",
               "de": "Rechnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bankkort",
               "lerntext": "bankkort",
               "de": "Bankkarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "forelesning",
               "lerntext": "forelesning",
               "de": "Vorlesung",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11004,7 +12773,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er [Slot]",
-          "lerntext": "her er [Slot]"
+          "lerntext": "her er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist die [Slot].",
         "pronouns": [],
@@ -11013,86 +12785,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "katt",
               "lerntext": "katt",
-              "de": "Katze"
+              "de": "Katze",
+              "c": "n"
             },
             {
               "schrift": "kjærlighet",
               "lerntext": "kjærlighet",
-              "de": "Liebe"
+              "de": "Liebe",
+              "c": "n"
             },
             {
               "schrift": "måte",
               "lerntext": "måte",
-              "de": "Art"
+              "de": "Art",
+              "c": "n"
             },
             {
               "schrift": "idé",
               "lerntext": "idé",
-              "de": "Idee"
+              "de": "Idee",
+              "c": "n"
             },
             {
               "schrift": "historie",
               "lerntext": "historie",
-              "de": "Geschichte"
+              "de": "Geschichte",
+              "c": "n"
             },
             {
               "schrift": "nummer",
               "lerntext": "nummer",
               "de": "Nummer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "musikk",
               "lerntext": "musikk",
               "de": "Musik",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "verden",
               "lerntext": "verden",
               "de": "Welt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tur",
               "lerntext": "tur",
               "de": "Wanderung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "luft",
               "lerntext": "luft",
               "de": "Luft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "språk",
               "lerntext": "språk",
               "de": "Sprache",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "spørsmål",
               "lerntext": "spørsmål",
               "de": "Frage",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "meny",
               "lerntext": "meny",
               "de": "Speisekarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "flaske",
               "lerntext": "flaske",
               "de": "Flasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "medisin",
               "lerntext": "medisin",
               "de": "Medizin",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11106,7 +12893,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er [Slot]",
-          "lerntext": "her er [Slot]"
+          "lerntext": "her er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist die [Slot].",
         "pronouns": [],
@@ -11115,86 +12905,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "angst",
               "lerntext": "angst",
-              "de": "Angst"
+              "de": "Angst",
+              "c": "n"
             },
             {
               "schrift": "vakt",
               "lerntext": "vakt",
-              "de": "Wache"
+              "de": "Wache",
+              "c": "n"
             },
             {
               "schrift": "pause",
               "lerntext": "pause",
-              "de": "Pause"
+              "de": "Pause",
+              "c": "n"
             },
             {
               "schrift": "avtale",
               "lerntext": "avtale",
-              "de": "Verabredung"
+              "de": "Verabredung",
+              "c": "n"
             },
             {
               "schrift": "størrelse",
               "lerntext": "størrelse",
-              "de": "Grösse"
+              "de": "Grösse",
+              "c": "n"
             },
             {
               "schrift": "katt",
               "lerntext": "katt",
               "de": "Katze",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kjærlighet",
               "lerntext": "kjærlighet",
               "de": "Liebe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "måte",
               "lerntext": "måte",
               "de": "Art",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "idé",
               "lerntext": "idé",
               "de": "Idee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "historie",
               "lerntext": "historie",
               "de": "Geschichte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nummer",
               "lerntext": "nummer",
               "de": "Nummer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "musikk",
               "lerntext": "musikk",
               "de": "Musik",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "verden",
               "lerntext": "verden",
               "de": "Welt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tur",
               "lerntext": "tur",
               "de": "Wanderung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "luft",
               "lerntext": "luft",
               "de": "Luft",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11208,7 +13013,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er [Slot]",
-          "lerntext": "her er [Slot]"
+          "lerntext": "her er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist der [Slot].",
         "pronouns": [],
@@ -11217,27 +13025,32 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "mann",
               "lerntext": "mann",
-              "de": "Mann"
+              "de": "Mann",
+              "c": "n"
             },
             {
               "schrift": "gutt",
               "lerntext": "gutt",
-              "de": "Junge"
+              "de": "Junge",
+              "c": "n"
             },
             {
               "schrift": "menneske",
               "lerntext": "menneske",
-              "de": "Mensch"
+              "de": "Mensch",
+              "c": "n"
             },
             {
               "schrift": "måned",
               "lerntext": "måned",
-              "de": "Monat"
+              "de": "Monat",
+              "c": "n"
             },
             {
               "schrift": "ettermiddag",
               "lerntext": "ettermiddag",
-              "de": "Nachmittag"
+              "de": "Nachmittag",
+              "c": "n"
             }
           ]
         ],
@@ -11250,7 +13063,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er [Slot]",
-          "lerntext": "her er [Slot]"
+          "lerntext": "her er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist der [Slot].",
         "pronouns": [],
@@ -11259,56 +13075,66 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "plass",
               "lerntext": "plass",
-              "de": "Platz"
+              "de": "Platz",
+              "c": "n"
             },
             {
               "schrift": "pass",
               "lerntext": "pass",
-              "de": "Pass"
+              "de": "Pass",
+              "c": "n"
             },
             {
               "schrift": "pris",
               "lerntext": "pris",
-              "de": "Preis"
+              "de": "Preis",
+              "c": "n"
             },
             {
               "schrift": "lege",
               "lerntext": "lege",
-              "de": "Arzt"
+              "de": "Arzt",
+              "c": "n"
             },
             {
               "schrift": "smerte",
               "lerntext": "smerte",
-              "de": "Schmerz"
+              "de": "Schmerz",
+              "c": "n"
             },
             {
               "schrift": "mann",
               "lerntext": "mann",
               "de": "Mann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gutt",
               "lerntext": "gutt",
               "de": "Junge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "menneske",
               "lerntext": "menneske",
               "de": "Mensch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "måned",
               "lerntext": "måned",
               "de": "Monat",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ettermiddag",
               "lerntext": "ettermiddag",
               "de": "Nachmittag",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11322,7 +13148,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er [Slot]",
-          "lerntext": "her er [Slot]"
+          "lerntext": "her er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist der [Slot].",
         "pronouns": [],
@@ -11331,86 +13160,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "film",
               "lerntext": "film",
-              "de": "Film"
+              "de": "Film",
+              "c": "n"
             },
             {
               "schrift": "hund",
               "lerntext": "hund",
-              "de": "Hund"
+              "de": "Hund",
+              "c": "n"
             },
             {
               "schrift": "del",
               "lerntext": "del",
-              "de": "Teil"
+              "de": "Teil",
+              "c": "n"
             },
             {
               "schrift": "begynnelse",
               "lerntext": "begynnelse",
-              "de": "Anfang"
+              "de": "Anfang",
+              "c": "n"
             },
             {
               "schrift": "grunn",
               "lerntext": "grunn",
-              "de": "Grund"
+              "de": "Grund",
+              "c": "n"
             },
             {
               "schrift": "plass",
               "lerntext": "plass",
               "de": "Platz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pass",
               "lerntext": "pass",
               "de": "Pass",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pris",
               "lerntext": "pris",
               "de": "Preis",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lege",
               "lerntext": "lege",
               "de": "Arzt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "smerte",
               "lerntext": "smerte",
               "de": "Schmerz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mann",
               "lerntext": "mann",
               "de": "Mann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gutt",
               "lerntext": "gutt",
               "de": "Junge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "menneske",
               "lerntext": "menneske",
               "de": "Mensch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "måned",
               "lerntext": "måned",
               "de": "Monat",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ettermiddag",
               "lerntext": "ettermiddag",
               "de": "Nachmittag",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11424,7 +13268,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er [Slot]",
-          "lerntext": "her er [Slot]"
+          "lerntext": "her er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist der [Slot].",
         "pronouns": [],
@@ -11433,86 +13280,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "sult",
               "lerntext": "sult",
-              "de": "Hunger"
+              "de": "Hunger",
+              "c": "n"
             },
             {
               "schrift": "tørst",
               "lerntext": "tørst",
-              "de": "Durst"
+              "de": "Durst",
+              "c": "n"
             },
             {
               "schrift": "søvn",
               "lerntext": "søvn",
-              "de": "Schlaf"
+              "de": "Schlaf",
+              "c": "n"
             },
             {
               "schrift": "rabatt",
               "lerntext": "rabatt",
-              "de": "Rabatt"
+              "de": "Rabatt",
+              "c": "n"
             },
             {
               "schrift": "inngang",
               "lerntext": "inngang",
-              "de": "Eingang"
+              "de": "Eingang",
+              "c": "n"
             },
             {
               "schrift": "film",
               "lerntext": "film",
               "de": "Film",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hund",
               "lerntext": "hund",
               "de": "Hund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "del",
               "lerntext": "del",
               "de": "Teil",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "begynnelse",
               "lerntext": "begynnelse",
               "de": "Anfang",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "grunn",
               "lerntext": "grunn",
               "de": "Grund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "plass",
               "lerntext": "plass",
               "de": "Platz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pass",
               "lerntext": "pass",
               "de": "Pass",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pris",
               "lerntext": "pris",
               "de": "Preis",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lege",
               "lerntext": "lege",
               "de": "Arzt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "smerte",
               "lerntext": "smerte",
               "de": "Schmerz",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11526,7 +13388,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er [Slot]",
-          "lerntext": "her er [Slot]"
+          "lerntext": "her er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist der [Slot].",
         "pronouns": [],
@@ -11535,81 +13400,95 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "utgang",
               "lerntext": "utgang",
-              "de": "Ausgang"
+              "de": "Ausgang",
+              "c": "n"
             },
             {
               "schrift": "kunde",
               "lerntext": "kunde",
-              "de": "Kunde"
+              "de": "Kunde",
+              "c": "n"
             },
             {
               "schrift": "lønn",
               "lerntext": "lønn",
-              "de": "Lohn"
+              "de": "Lohn",
+              "c": "n"
             },
             {
               "schrift": "kontrakt",
               "lerntext": "kontrakt",
-              "de": "Vertrag"
+              "de": "Vertrag",
+              "c": "n"
             },
             {
               "schrift": "sult",
               "lerntext": "sult",
               "de": "Hunger",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tørst",
               "lerntext": "tørst",
               "de": "Durst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "søvn",
               "lerntext": "søvn",
               "de": "Schlaf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "rabatt",
               "lerntext": "rabatt",
               "de": "Rabatt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "inngang",
               "lerntext": "inngang",
               "de": "Eingang",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "film",
               "lerntext": "film",
               "de": "Film",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hund",
               "lerntext": "hund",
               "de": "Hund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "del",
               "lerntext": "del",
               "de": "Teil",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "begynnelse",
               "lerntext": "begynnelse",
               "de": "Anfang",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "grunn",
               "lerntext": "grunn",
               "de": "Grund",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11623,7 +13502,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er [Slot]",
-          "lerntext": "her er [Slot]"
+          "lerntext": "her er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist das [Slot].",
         "pronouns": [],
@@ -11632,27 +13514,32 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "år",
               "lerntext": "år",
-              "de": "Jahr"
+              "de": "Jahr",
+              "c": "n"
             },
             {
               "schrift": "helg",
               "lerntext": "helg",
-              "de": "Wochenende"
+              "de": "Wochenende",
+              "c": "n"
             },
             {
               "schrift": "land",
               "lerntext": "land",
-              "de": "Land"
+              "de": "Land",
+              "c": "n"
             },
             {
               "schrift": "ord",
               "lerntext": "ord",
-              "de": "Wort"
+              "de": "Wort",
+              "c": "n"
             },
             {
               "schrift": "jente",
               "lerntext": "jente",
-              "de": "Mädchen"
+              "de": "Mädchen",
+              "c": "n"
             }
           ]
         ],
@@ -11665,7 +13552,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er [Slot]",
-          "lerntext": "her er [Slot]"
+          "lerntext": "her er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist das [Slot].",
         "pronouns": [],
@@ -11674,56 +13564,66 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "bagasje",
               "lerntext": "bagasje",
-              "de": "Gepäck"
+              "de": "Gepäck",
+              "c": "n"
             },
             {
               "schrift": "problem",
               "lerntext": "problem",
-              "de": "Problem"
+              "de": "Problem",
+              "c": "n"
             },
             {
               "schrift": "ting",
               "lerntext": "ting",
-              "de": "Ding"
+              "de": "Ding",
+              "c": "n"
             },
             {
               "schrift": "mat",
               "lerntext": "mat",
-              "de": "Essen"
+              "de": "Essen",
+              "c": "n"
             },
             {
               "schrift": "feber",
               "lerntext": "feber",
-              "de": "Fieber"
+              "de": "Fieber",
+              "c": "n"
             },
             {
               "schrift": "år",
               "lerntext": "år",
               "de": "Jahr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "helg",
               "lerntext": "helg",
               "de": "Wochenende",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "land",
               "lerntext": "land",
               "de": "Land",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ord",
               "lerntext": "ord",
               "de": "Wort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "jente",
               "lerntext": "jente",
               "de": "Mädchen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11737,7 +13637,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er [Slot]",
-          "lerntext": "her er [Slot]"
+          "lerntext": "her er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist das [Slot].",
         "pronouns": [],
@@ -11746,86 +13649,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "mobil",
               "lerntext": "mobil",
-              "de": "Handy"
+              "de": "Handy",
+              "c": "n"
             },
             {
               "schrift": "fest",
               "lerntext": "fest",
-              "de": "Fest"
+              "de": "Fest",
+              "c": "n"
             },
             {
               "schrift": "liv",
               "lerntext": "liv",
-              "de": "Leben"
+              "de": "Leben",
+              "c": "n"
             },
             {
               "schrift": "gave",
               "lerntext": "gave",
-              "de": "Geschenk"
+              "de": "Geschenk",
+              "c": "n"
             },
             {
               "schrift": "slutt",
               "lerntext": "slutt",
-              "de": "Ende"
+              "de": "Ende",
+              "c": "n"
             },
             {
               "schrift": "bagasje",
               "lerntext": "bagasje",
               "de": "Gepäck",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "problem",
               "lerntext": "problem",
               "de": "Problem",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ting",
               "lerntext": "ting",
               "de": "Ding",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mat",
               "lerntext": "mat",
               "de": "Essen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "feber",
               "lerntext": "feber",
               "de": "Fieber",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "år",
               "lerntext": "år",
               "de": "Jahr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "helg",
               "lerntext": "helg",
               "de": "Wochenende",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "land",
               "lerntext": "land",
               "de": "Land",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ord",
               "lerntext": "ord",
               "de": "Wort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "jente",
               "lerntext": "jente",
               "de": "Mädchen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11839,7 +13757,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er [Slot]",
-          "lerntext": "her er [Slot]"
+          "lerntext": "her er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist das [Slot].",
         "pronouns": [],
@@ -11848,66 +13769,77 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "eksempel",
               "lerntext": "eksempel",
-              "de": "Beispiel"
+              "de": "Beispiel",
+              "c": "n"
             },
             {
               "schrift": "mobil",
               "lerntext": "mobil",
               "de": "Handy",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fest",
               "lerntext": "fest",
               "de": "Fest",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "liv",
               "lerntext": "liv",
               "de": "Leben",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "gave",
               "lerntext": "gave",
               "de": "Geschenk",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "slutt",
               "lerntext": "slutt",
               "de": "Ende",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bagasje",
               "lerntext": "bagasje",
               "de": "Gepäck",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "problem",
               "lerntext": "problem",
               "de": "Problem",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ting",
               "lerntext": "ting",
               "de": "Ding",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mat",
               "lerntext": "mat",
               "de": "Essen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "feber",
               "lerntext": "feber",
               "de": "Fieber",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11921,7 +13853,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er [Slot]",
-          "lerntext": "her er [Slot]"
+          "lerntext": "her er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist die [Slot].",
         "pronouns": [],
@@ -11930,12 +13865,14 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "folk",
               "lerntext": "folk",
-              "de": "Leute"
+              "de": "Leute",
+              "c": "n"
             },
             {
               "schrift": "søsken",
               "lerntext": "søsken",
-              "de": "Geschwister"
+              "de": "Geschwister",
+              "c": "n"
             }
           ]
         ],
@@ -11948,7 +13885,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er [Slot]",
-          "lerntext": "her er [Slot]"
+          "lerntext": "her er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist der [Slot].",
         "pronouns": [],
@@ -11957,7 +13897,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "kjæreste",
               "lerntext": "kjæreste",
-              "de": "fester Freund"
+              "de": "fester Freund",
+              "c": "n"
             }
           ]
         ],
@@ -11970,7 +13911,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er [Slot]",
-          "lerntext": "her er [Slot]"
+          "lerntext": "her er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist die [Slot].",
         "pronouns": [],
@@ -11980,60 +13924,70 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "angst",
               "lerntext": "angst",
               "de": "Angst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vakt",
               "lerntext": "vakt",
               "de": "Wache",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pause",
               "lerntext": "pause",
               "de": "Pause",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "avtale",
               "lerntext": "avtale",
               "de": "Verabredung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "størrelse",
               "lerntext": "størrelse",
               "de": "Grösse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "folk",
               "lerntext": "folk",
               "de": "Leute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "søsken",
               "lerntext": "søsken",
               "de": "Geschwister",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "katt",
               "lerntext": "katt",
               "de": "Katze",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kjærlighet",
               "lerntext": "kjærlighet",
               "de": "Liebe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "måte",
               "lerntext": "måte",
               "de": "Art",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -12047,7 +14001,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er [Slot]",
-          "lerntext": "her er [Slot]"
+          "lerntext": "her er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist der [Slot].",
         "pronouns": [],
@@ -12057,60 +14014,70 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "utgang",
               "lerntext": "utgang",
               "de": "Ausgang",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kunde",
               "lerntext": "kunde",
               "de": "Kunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lønn",
               "lerntext": "lønn",
               "de": "Lohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kontrakt",
               "lerntext": "kontrakt",
               "de": "Vertrag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kjæreste",
               "lerntext": "kjæreste",
               "de": "fester Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sult",
               "lerntext": "sult",
               "de": "Hunger",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tørst",
               "lerntext": "tørst",
               "de": "Durst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "søvn",
               "lerntext": "søvn",
               "de": "Schlaf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "rabatt",
               "lerntext": "rabatt",
               "de": "Rabatt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "inngang",
               "lerntext": "inngang",
               "de": "Eingang",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -12124,7 +14091,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "her er [Slot]",
-          "lerntext": "her er [Slot]"
+          "lerntext": "her er [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Hier ist die [Slot].",
         "pronouns": [],
@@ -12134,54 +14104,63 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "idé",
               "lerntext": "idé",
               "de": "Idee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "historie",
               "lerntext": "historie",
               "de": "Geschichte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "angst",
               "lerntext": "angst",
               "de": "Angst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vakt",
               "lerntext": "vakt",
               "de": "Wache",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pause",
               "lerntext": "pause",
               "de": "Pause",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "avtale",
               "lerntext": "avtale",
               "de": "Verabredung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "størrelse",
               "lerntext": "størrelse",
               "de": "Grösse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "folk",
               "lerntext": "folk",
               "de": "Leute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "søsken",
               "lerntext": "søsken",
               "de": "Geschwister",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -12216,7 +14195,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg vil [Slot]",
-          "lerntext": "jeg vil [Slot]"
+          "lerntext": "jeg vil [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "vil": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12225,27 +14208,32 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "legge",
               "lerntext": "legge",
-              "de": "legen"
+              "de": "legen",
+              "c": "v"
             },
             {
               "schrift": "koste",
               "lerntext": "koste",
-              "de": "kosten"
+              "de": "kosten",
+              "c": "v"
             },
             {
               "schrift": "ankomme",
               "lerntext": "ankomme",
-              "de": "ankommen"
+              "de": "ankommen",
+              "c": "v"
             },
             {
               "schrift": "endre",
               "lerntext": "endre",
-              "de": "ändern"
+              "de": "ändern",
+              "c": "v"
             },
             {
               "schrift": "studere",
               "lerntext": "studere",
-              "de": "studieren"
+              "de": "studieren",
+              "c": "v"
             }
           ]
         ],
@@ -12258,7 +14246,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg vil [Slot]",
-          "lerntext": "jeg vil [Slot]"
+          "lerntext": "jeg vil [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "vil": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12267,56 +14259,66 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "prøve",
               "lerntext": "prøve",
-              "de": "versuchen"
+              "de": "versuchen",
+              "c": "v"
             },
             {
               "schrift": "klare",
               "lerntext": "klare",
-              "de": "schaffen"
+              "de": "schaffen",
+              "c": "v"
             },
             {
               "schrift": "synge",
               "lerntext": "synge",
-              "de": "singen"
+              "de": "singen",
+              "c": "v"
             },
             {
               "schrift": "løpe",
               "lerntext": "løpe",
-              "de": "rennen"
+              "de": "rennen",
+              "c": "v"
             },
             {
               "schrift": "fødes",
               "lerntext": "fødes",
-              "de": "geboren werden"
+              "de": "geboren werden",
+              "c": "v"
             },
             {
               "schrift": "legge",
               "lerntext": "legge",
               "de": "legen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "koste",
               "lerntext": "koste",
               "de": "kosten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ankomme",
               "lerntext": "ankomme",
               "de": "ankommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "endre",
               "lerntext": "endre",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "studere",
               "lerntext": "studere",
               "de": "studieren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12330,7 +14332,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg vil [Slot]",
-          "lerntext": "jeg vil [Slot]"
+          "lerntext": "jeg vil [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "vil": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12339,86 +14345,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "skje",
               "lerntext": "skje",
-              "de": "geschehen"
+              "de": "geschehen",
+              "c": "v"
             },
             {
               "schrift": "leie",
               "lerntext": "leie",
-              "de": "mieten"
+              "de": "mieten",
+              "c": "v"
             },
             {
               "schrift": "signere",
               "lerntext": "signere",
-              "de": "unterschreiben"
+              "de": "unterschreiben",
+              "c": "v"
             },
             {
               "schrift": "lage",
               "lerntext": "lage",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "takke",
               "lerntext": "takke",
-              "de": "danken"
+              "de": "danken",
+              "c": "v"
             },
             {
               "schrift": "prøve",
               "lerntext": "prøve",
               "de": "versuchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "klare",
               "lerntext": "klare",
               "de": "schaffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "synge",
               "lerntext": "synge",
               "de": "singen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "løpe",
               "lerntext": "løpe",
               "de": "rennen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "fødes",
               "lerntext": "fødes",
               "de": "geboren werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "legge",
               "lerntext": "legge",
               "de": "legen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "koste",
               "lerntext": "koste",
               "de": "kosten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ankomme",
               "lerntext": "ankomme",
               "de": "ankommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "endre",
               "lerntext": "endre",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "studere",
               "lerntext": "studere",
               "de": "studieren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12432,7 +14453,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg vil [Slot]",
-          "lerntext": "jeg vil [Slot]"
+          "lerntext": "jeg vil [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "vil": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12441,86 +14466,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "holde",
               "lerntext": "holde",
-              "de": "halten"
+              "de": "halten",
+              "c": "v"
             },
             {
               "schrift": "følge",
               "lerntext": "følge",
-              "de": "folgen"
+              "de": "folgen",
+              "c": "v"
             },
             {
               "schrift": "skulle",
               "lerntext": "skulle",
-              "de": "sollen"
+              "de": "sollen",
+              "c": "v"
             },
             {
               "schrift": "leve",
               "lerntext": "leve",
-              "de": "leben"
+              "de": "leben",
+              "c": "v"
             },
             {
               "schrift": "bringe",
               "lerntext": "bringe",
-              "de": "bringen"
+              "de": "bringen",
+              "c": "v"
             },
             {
               "schrift": "skje",
               "lerntext": "skje",
               "de": "geschehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "leie",
               "lerntext": "leie",
               "de": "mieten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "signere",
               "lerntext": "signere",
               "de": "unterschreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lage",
               "lerntext": "lage",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "takke",
               "lerntext": "takke",
               "de": "danken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "prøve",
               "lerntext": "prøve",
               "de": "versuchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "klare",
               "lerntext": "klare",
               "de": "schaffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "synge",
               "lerntext": "synge",
               "de": "singen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "løpe",
               "lerntext": "løpe",
               "de": "rennen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "fødes",
               "lerntext": "fødes",
               "de": "geboren werden",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12534,7 +14574,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg vil [Slot]",
-          "lerntext": "jeg vil [Slot]"
+          "lerntext": "jeg vil [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "vil": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12543,86 +14587,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "kjenne",
               "lerntext": "kjenne",
-              "de": "kennen"
+              "de": "kennen",
+              "c": "v"
             },
             {
               "schrift": "lære",
               "lerntext": "lære",
-              "de": "lernen"
+              "de": "lernen",
+              "c": "v"
             },
             {
               "schrift": "undervise",
               "lerntext": "undervise",
-              "de": "unterrichten"
+              "de": "unterrichten",
+              "c": "v"
             },
             {
               "schrift": "huske",
               "lerntext": "huske",
-              "de": "sich erinnern"
+              "de": "sich erinnern",
+              "c": "v"
             },
             {
               "schrift": "begynne",
               "lerntext": "begynne",
-              "de": "anfangen"
+              "de": "anfangen",
+              "c": "v"
             },
             {
               "schrift": "holde",
               "lerntext": "holde",
               "de": "halten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "følge",
               "lerntext": "følge",
               "de": "folgen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "skulle",
               "lerntext": "skulle",
               "de": "sollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "leve",
               "lerntext": "leve",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bringe",
               "lerntext": "bringe",
               "de": "bringen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "skje",
               "lerntext": "skje",
               "de": "geschehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "leie",
               "lerntext": "leie",
               "de": "mieten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "signere",
               "lerntext": "signere",
               "de": "unterschreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lage",
               "lerntext": "lage",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "takke",
               "lerntext": "takke",
               "de": "danken",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12636,7 +14695,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg vil [Slot]",
-          "lerntext": "jeg vil [Slot]"
+          "lerntext": "jeg vil [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "vil": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12645,86 +14708,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "kjøre",
               "lerntext": "kjøre",
-              "de": "fahren"
+              "de": "fahren",
+              "c": "v"
             },
             {
               "schrift": "besøke",
               "lerntext": "besøke",
-              "de": "besuchen"
+              "de": "besuchen",
+              "c": "v"
             },
             {
               "schrift": "gifte",
               "lerntext": "gifte",
-              "de": "heiraten"
+              "de": "heiraten",
+              "c": "v"
             },
             {
               "schrift": "virke",
               "lerntext": "virke",
-              "de": "wirken"
+              "de": "wirken",
+              "c": "v"
             },
             {
               "schrift": "bestille",
               "lerntext": "bestille",
-              "de": "bestellen"
+              "de": "bestellen",
+              "c": "v"
             },
             {
               "schrift": "kjenne",
               "lerntext": "kjenne",
               "de": "kennen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lære",
               "lerntext": "lære",
               "de": "lernen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "undervise",
               "lerntext": "undervise",
               "de": "unterrichten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "huske",
               "lerntext": "huske",
               "de": "sich erinnern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "begynne",
               "lerntext": "begynne",
               "de": "anfangen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "holde",
               "lerntext": "holde",
               "de": "halten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "følge",
               "lerntext": "følge",
               "de": "folgen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "skulle",
               "lerntext": "skulle",
               "de": "sollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "leve",
               "lerntext": "leve",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bringe",
               "lerntext": "bringe",
               "de": "bringen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12738,7 +14816,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg vil [Slot]",
-          "lerntext": "jeg vil [Slot]"
+          "lerntext": "jeg vil [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "vil": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12747,86 +14829,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "beklage",
               "lerntext": "beklage",
-              "de": "bedauern"
+              "de": "bedauern",
+              "c": "v"
             },
             {
               "schrift": "stoppe",
               "lerntext": "stoppe",
-              "de": "anhalten"
+              "de": "anhalten",
+              "c": "v"
             },
             {
               "schrift": "hilse",
               "lerntext": "hilse",
-              "de": "grüßen"
+              "de": "grüßen",
+              "c": "v"
             },
             {
               "schrift": "fortelle",
               "lerntext": "fortelle",
-              "de": "erzählen"
+              "de": "erzählen",
+              "c": "v"
             },
             {
               "schrift": "rydde",
               "lerntext": "rydde",
-              "de": "aufräumen"
+              "de": "aufräumen",
+              "c": "v"
             },
             {
               "schrift": "kjøre",
               "lerntext": "kjøre",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "besøke",
               "lerntext": "besøke",
               "de": "besuchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gifte",
               "lerntext": "gifte",
               "de": "heiraten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "virke",
               "lerntext": "virke",
               "de": "wirken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bestille",
               "lerntext": "bestille",
               "de": "bestellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "kjenne",
               "lerntext": "kjenne",
               "de": "kennen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lære",
               "lerntext": "lære",
               "de": "lernen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "undervise",
               "lerntext": "undervise",
               "de": "unterrichten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "huske",
               "lerntext": "huske",
               "de": "sich erinnern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "begynne",
               "lerntext": "begynne",
               "de": "anfangen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12840,7 +14937,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg vil [Slot]",
-          "lerntext": "jeg vil [Slot]"
+          "lerntext": "jeg vil [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "vil": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12850,60 +14951,70 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "beklage",
               "lerntext": "beklage",
               "de": "bedauern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stoppe",
               "lerntext": "stoppe",
               "de": "anhalten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hilse",
               "lerntext": "hilse",
               "de": "grüßen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "fortelle",
               "lerntext": "fortelle",
               "de": "erzählen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "rydde",
               "lerntext": "rydde",
               "de": "aufräumen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "kjøre",
               "lerntext": "kjøre",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "besøke",
               "lerntext": "besøke",
               "de": "besuchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gifte",
               "lerntext": "gifte",
               "de": "heiraten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "virke",
               "lerntext": "virke",
               "de": "wirken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bestille",
               "lerntext": "bestille",
               "de": "bestellen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12917,7 +15028,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg vil [Slot]",
-          "lerntext": "jeg vil [Slot]"
+          "lerntext": "jeg vil [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "vil": "v"
+          }
         },
         "frameDe": "Ich will [Slot].",
         "pronouns": [],
@@ -12927,30 +15042,35 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "beklage",
               "lerntext": "beklage",
               "de": "bedauern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stoppe",
               "lerntext": "stoppe",
               "de": "anhalten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hilse",
               "lerntext": "hilse",
               "de": "grüßen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "fortelle",
               "lerntext": "fortelle",
               "de": "erzählen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "rydde",
               "lerntext": "rydde",
               "de": "aufräumen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12985,7 +15105,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er veldig [Slot]",
-          "lerntext": "det er veldig [Slot]"
+          "lerntext": "det er veldig [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -12994,27 +15117,32 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "sann",
               "lerntext": "sann",
-              "de": "wahr"
+              "de": "wahr",
+              "c": "a"
             },
             {
               "schrift": "gratis",
               "lerntext": "gratis",
-              "de": "kostenlos"
+              "de": "kostenlos",
+              "c": "a"
             },
             {
               "schrift": "full",
               "lerntext": "full",
-              "de": "voll"
+              "de": "voll",
+              "c": "a"
             },
             {
               "schrift": "tom",
               "lerntext": "tom",
-              "de": "leer"
+              "de": "leer",
+              "c": "a"
             },
             {
               "schrift": "ledig",
               "lerntext": "ledig",
-              "de": "frei"
+              "de": "frei",
+              "c": "a"
             }
           ]
         ],
@@ -13027,7 +15155,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er veldig [Slot]",
-          "lerntext": "det er veldig [Slot]"
+          "lerntext": "det er veldig [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -13036,56 +15167,66 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "frisk",
               "lerntext": "frisk",
-              "de": "gesund"
+              "de": "gesund",
+              "c": "a"
             },
             {
               "schrift": "mulig",
               "lerntext": "mulig",
-              "de": "möglich"
+              "de": "möglich",
+              "c": "a"
             },
             {
               "schrift": "opptatt",
               "lerntext": "opptatt",
-              "de": "besetzt"
+              "de": "besetzt",
+              "c": "a"
             },
             {
               "schrift": "flink",
               "lerntext": "flink",
-              "de": "tüchtig"
+              "de": "tüchtig",
+              "c": "a"
             },
             {
               "schrift": "rask",
               "lerntext": "rask",
-              "de": "schnell"
+              "de": "schnell",
+              "c": "a"
             },
             {
               "schrift": "sann",
               "lerntext": "sann",
               "de": "wahr",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gratis",
               "lerntext": "gratis",
               "de": "kostenlos",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "full",
               "lerntext": "full",
               "de": "voll",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tom",
               "lerntext": "tom",
               "de": "leer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ledig",
               "lerntext": "ledig",
               "de": "frei",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -13099,7 +15240,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er veldig [Slot]",
-          "lerntext": "det er veldig [Slot]"
+          "lerntext": "det er veldig [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -13108,86 +15252,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "fersk",
               "lerntext": "fersk",
-              "de": "frisch"
+              "de": "frisch",
+              "c": "a"
             },
             {
               "schrift": "salt",
               "lerntext": "salt",
-              "de": "salzig"
+              "de": "salzig",
+              "c": "a"
             },
             {
               "schrift": "norsk",
               "lerntext": "norsk",
-              "de": "norwegisch"
+              "de": "norwegisch",
+              "c": "a"
             },
             {
               "schrift": "tysk",
               "lerntext": "tysk",
-              "de": "deutsch"
+              "de": "deutsch",
+              "c": "a"
             },
             {
               "schrift": "engelsk",
               "lerntext": "engelsk",
-              "de": "englisch"
+              "de": "englisch",
+              "c": "a"
             },
             {
               "schrift": "frisk",
               "lerntext": "frisk",
               "de": "gesund",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "mulig",
               "lerntext": "mulig",
               "de": "möglich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "opptatt",
               "lerntext": "opptatt",
               "de": "besetzt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "flink",
               "lerntext": "flink",
               "de": "tüchtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "rask",
               "lerntext": "rask",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sann",
               "lerntext": "sann",
               "de": "wahr",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gratis",
               "lerntext": "gratis",
               "de": "kostenlos",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "full",
               "lerntext": "full",
               "de": "voll",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tom",
               "lerntext": "tom",
               "de": "leer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ledig",
               "lerntext": "ledig",
               "de": "frei",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -13201,7 +15360,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er veldig [Slot]",
-          "lerntext": "det er veldig [Slot]"
+          "lerntext": "det er veldig [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -13210,86 +15372,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "forrige",
               "lerntext": "forrige",
-              "de": "letzter"
+              "de": "letzter",
+              "c": "a"
             },
             {
               "schrift": "sikker",
               "lerntext": "sikker",
-              "de": "sicher"
+              "de": "sicher",
+              "c": "a"
             },
             {
               "schrift": "neste",
               "lerntext": "neste",
-              "de": "nächster"
+              "de": "nächster",
+              "c": "a"
             },
             {
               "schrift": "vanlig",
               "lerntext": "vanlig",
-              "de": "üblich"
+              "de": "üblich",
+              "c": "a"
             },
             {
               "schrift": "nødvendig",
               "lerntext": "nødvendig",
-              "de": "nötig"
+              "de": "nötig",
+              "c": "a"
             },
             {
               "schrift": "fersk",
               "lerntext": "fersk",
               "de": "frisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "salt",
               "lerntext": "salt",
               "de": "salzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "norsk",
               "lerntext": "norsk",
               "de": "norwegisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tysk",
               "lerntext": "tysk",
               "de": "deutsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "engelsk",
               "lerntext": "engelsk",
               "de": "englisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "frisk",
               "lerntext": "frisk",
               "de": "gesund",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "mulig",
               "lerntext": "mulig",
               "de": "möglich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "opptatt",
               "lerntext": "opptatt",
               "de": "besetzt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "flink",
               "lerntext": "flink",
               "de": "tüchtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "rask",
               "lerntext": "rask",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -13303,7 +15480,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er veldig [Slot]",
-          "lerntext": "det er veldig [Slot]"
+          "lerntext": "det er veldig [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -13312,71 +15492,83 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "treg",
               "lerntext": "treg",
-              "de": "langsam"
+              "de": "langsam",
+              "c": "a"
             },
             {
               "schrift": "utenlandsk",
               "lerntext": "utenlandsk",
-              "de": "ausländisch"
+              "de": "ausländisch",
+              "c": "a"
             },
             {
               "schrift": "forrige",
               "lerntext": "forrige",
               "de": "letzter",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sikker",
               "lerntext": "sikker",
               "de": "sicher",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "neste",
               "lerntext": "neste",
               "de": "nächster",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "vanlig",
               "lerntext": "vanlig",
               "de": "üblich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "nødvendig",
               "lerntext": "nødvendig",
               "de": "nötig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fersk",
               "lerntext": "fersk",
               "de": "frisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "salt",
               "lerntext": "salt",
               "de": "salzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "norsk",
               "lerntext": "norsk",
               "de": "norwegisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tysk",
               "lerntext": "tysk",
               "de": "deutsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "engelsk",
               "lerntext": "engelsk",
               "de": "englisch",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -13390,7 +15582,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er veldig [Slot]",
-          "lerntext": "det er veldig [Slot]"
+          "lerntext": "det er veldig [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [],
@@ -13400,42 +15595,49 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "treg",
               "lerntext": "treg",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "utenlandsk",
               "lerntext": "utenlandsk",
               "de": "ausländisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "forrige",
               "lerntext": "forrige",
               "de": "letzter",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sikker",
               "lerntext": "sikker",
               "de": "sicher",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "neste",
               "lerntext": "neste",
               "de": "nächster",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "vanlig",
               "lerntext": "vanlig",
               "de": "üblich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "nødvendig",
               "lerntext": "nødvendig",
               "de": "nötig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -13470,7 +15672,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg gjør det [Slot]",
-          "lerntext": "jeg gjør det [Slot]"
+          "lerntext": "jeg gjør det [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "gjør": "v"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -13512,7 +15718,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg gjør det [Slot]",
-          "lerntext": "jeg gjør det [Slot]"
+          "lerntext": "jeg gjør det [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "gjør": "v"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -13584,7 +15794,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg gjør det [Slot]",
-          "lerntext": "jeg gjør det [Slot]"
+          "lerntext": "jeg gjør det [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "gjør": "v"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -13686,7 +15900,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg gjør det [Slot]",
-          "lerntext": "jeg gjør det [Slot]"
+          "lerntext": "jeg gjør det [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "gjør": "v"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -13788,7 +16006,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg gjør det [Slot]",
-          "lerntext": "jeg gjør det [Slot]"
+          "lerntext": "jeg gjør det [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "gjør": "v"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -13865,7 +16087,11 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg gjør det [Slot]",
-          "lerntext": "jeg gjør det [Slot]"
+          "lerntext": "jeg gjør det [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "gjør": "v"
+          }
         },
         "frameDe": "Ich mache es [Slot].",
         "pronouns": [],
@@ -13933,7 +16159,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er for [Slot]",
-          "lerntext": "det er for [Slot]"
+          "lerntext": "det er for [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Es ist für [Slot].",
         "pronouns": [],
@@ -13942,27 +16171,32 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "henne",
               "lerntext": "henne",
-              "de": "ihr"
+              "de": "ihr",
+              "c": "p"
             },
             {
               "schrift": "seg",
               "lerntext": "seg",
-              "de": "sich"
+              "de": "sich",
+              "c": "p"
             },
             {
               "schrift": "hennes",
               "lerntext": "hennes",
-              "de": "ihr"
+              "de": "ihr",
+              "c": "p"
             },
             {
               "schrift": "deres",
               "lerntext": "deres",
-              "de": "euer"
+              "de": "euer",
+              "c": "p"
             },
             {
               "schrift": "noen",
               "lerntext": "noen",
-              "de": "jemand"
+              "de": "jemand",
+              "c": "p"
             }
           ]
         ],
@@ -13975,7 +16209,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er for [Slot]",
-          "lerntext": "det er for [Slot]"
+          "lerntext": "det er for [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Es ist für [Slot].",
         "pronouns": [],
@@ -13984,56 +16221,66 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "ingen",
               "lerntext": "ingen",
-              "de": "niemand"
+              "de": "niemand",
+              "c": "p"
             },
             {
               "schrift": "ingenting",
               "lerntext": "ingenting",
-              "de": "nichts"
+              "de": "nichts",
+              "c": "p"
             },
             {
               "schrift": "andre",
               "lerntext": "andre",
-              "de": "andere"
+              "de": "andere",
+              "c": "p"
             },
             {
               "schrift": "samme",
               "lerntext": "samme",
-              "de": "selbe"
+              "de": "selbe",
+              "c": "p"
             },
             {
               "schrift": "hverandre",
               "lerntext": "hverandre",
-              "de": "einander"
+              "de": "einander",
+              "c": "p"
             },
             {
               "schrift": "henne",
               "lerntext": "henne",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "seg",
               "lerntext": "seg",
               "de": "sich",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "hennes",
               "lerntext": "hennes",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "deres",
               "lerntext": "deres",
               "de": "euer",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "noen",
               "lerntext": "noen",
               "de": "jemand",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -14047,7 +16294,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er for [Slot]",
-          "lerntext": "det er for [Slot]"
+          "lerntext": "det er for [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Es ist für [Slot].",
         "pronouns": [],
@@ -14056,76 +16306,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "begge",
               "lerntext": "begge",
-              "de": "beide"
+              "de": "beide",
+              "c": "p"
             },
             {
               "schrift": "hver",
               "lerntext": "hver",
-              "de": "jeder"
+              "de": "jeder",
+              "c": "p"
             },
             {
               "schrift": "selv",
               "lerntext": "selv",
-              "de": "selbst"
+              "de": "selbst",
+              "c": "p"
             },
             {
               "schrift": "ingen",
               "lerntext": "ingen",
               "de": "niemand",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ingenting",
               "lerntext": "ingenting",
               "de": "nichts",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "andre",
               "lerntext": "andre",
               "de": "andere",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "samme",
               "lerntext": "samme",
               "de": "selbe",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "hverandre",
               "lerntext": "hverandre",
               "de": "einander",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "henne",
               "lerntext": "henne",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "seg",
               "lerntext": "seg",
               "de": "sich",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "hennes",
               "lerntext": "hennes",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "deres",
               "lerntext": "deres",
               "de": "euer",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "noen",
               "lerntext": "noen",
               "de": "jemand",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -14139,7 +16402,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er for [Slot]",
-          "lerntext": "det er for [Slot]"
+          "lerntext": "det er for [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Es ist für [Slot].",
         "pronouns": [],
@@ -14149,48 +16415,56 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "begge",
               "lerntext": "begge",
               "de": "beide",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "hver",
               "lerntext": "hver",
               "de": "jeder",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "selv",
               "lerntext": "selv",
               "de": "selbst",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ingen",
               "lerntext": "ingen",
               "de": "niemand",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "ingenting",
               "lerntext": "ingenting",
               "de": "nichts",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "andre",
               "lerntext": "andre",
               "de": "andere",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "samme",
               "lerntext": "samme",
               "de": "selbe",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "hverandre",
               "lerntext": "hverandre",
               "de": "einander",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -14204,7 +16478,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er for [Slot]",
-          "lerntext": "det er for [Slot]"
+          "lerntext": "det er for [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Es ist für [Slot].",
         "pronouns": [],
@@ -14214,18 +16491,21 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "begge",
               "lerntext": "begge",
               "de": "beide",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "hver",
               "lerntext": "hver",
               "de": "jeder",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "selv",
               "lerntext": "selv",
               "de": "selbst",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -14519,7 +16799,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er [Slot] huset",
-          "lerntext": "det er [Slot] huset"
+          "lerntext": "det er [Slot] huset",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Es ist [Slot] dem Haus.",
         "pronouns": [],
@@ -14561,7 +16844,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er [Slot] huset",
-          "lerntext": "det er [Slot] huset"
+          "lerntext": "det er [Slot] huset",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Es ist [Slot] dem Haus.",
         "pronouns": [],
@@ -14613,7 +16899,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er [Slot] huset",
-          "lerntext": "det er [Slot] huset"
+          "lerntext": "det er [Slot] huset",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Es ist [Slot] dem Haus.",
         "pronouns": [],
@@ -14687,7 +16976,12 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg kommer [Slot] jeg kan",
-          "lerntext": "jeg kommer [Slot] jeg kan"
+          "lerntext": "jeg kommer [Slot] jeg kan",
+          "wortarten": {
+            "jeg": "p",
+            "kommer": "v",
+            "kan": "v"
+          }
         },
         "frameDe": "Ich komme, [Slot] ich kann.",
         "pronouns": [],
@@ -14696,22 +16990,26 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "enn",
               "lerntext": "enn",
-              "de": "als (Vergleich)"
+              "de": "als (Vergleich)",
+              "c": "k"
             },
             {
               "schrift": "derfor",
               "lerntext": "derfor",
-              "de": "deshalb"
+              "de": "deshalb",
+              "c": "k"
             },
             {
               "schrift": "likevel",
               "lerntext": "likevel",
-              "de": "trotzdem"
+              "de": "trotzdem",
+              "c": "k"
             },
             {
               "schrift": "samt",
               "lerntext": "samt",
-              "de": "sowie"
+              "de": "sowie",
+              "c": "k"
             }
           ]
         ],
@@ -14724,7 +17022,12 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg kommer [Slot] jeg kan",
-          "lerntext": "jeg kommer [Slot] jeg kan"
+          "lerntext": "jeg kommer [Slot] jeg kan",
+          "wortarten": {
+            "jeg": "p",
+            "kommer": "v",
+            "kan": "v"
+          }
         },
         "frameDe": "Ich komme, [Slot] ich kann.",
         "pronouns": [],
@@ -14734,24 +17037,28 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "enn",
               "lerntext": "enn",
               "de": "als (Vergleich)",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "derfor",
               "lerntext": "derfor",
               "de": "deshalb",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "likevel",
               "lerntext": "likevel",
               "de": "trotzdem",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "samt",
               "lerntext": "samt",
               "de": "sowie",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -14765,7 +17072,12 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg kommer [Slot] jeg kan",
-          "lerntext": "jeg kommer [Slot] jeg kan"
+          "lerntext": "jeg kommer [Slot] jeg kan",
+          "wortarten": {
+            "jeg": "p",
+            "kommer": "v",
+            "kan": "v"
+          }
         },
         "frameDe": "Ich komme, [Slot] ich kann.",
         "pronouns": [],
@@ -14775,24 +17087,28 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
               "schrift": "enn",
               "lerntext": "enn",
               "de": "als (Vergleich)",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "derfor",
               "lerntext": "derfor",
               "de": "deshalb",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "likevel",
               "lerntext": "likevel",
               "de": "trotzdem",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "samt",
               "lerntext": "samt",
               "de": "sowie",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -14827,7 +17143,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] er det?",
-          "lerntext": "[Slot] er det?"
+          "lerntext": "[Slot] er det?",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "[Slot] ist es?",
         "pronouns": [],
@@ -14859,7 +17178,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] er det?",
-          "lerntext": "[Slot] er det?"
+          "lerntext": "[Slot] er det?",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "[Slot] ist es?",
         "pronouns": [],
@@ -14894,7 +17216,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] er det?",
-          "lerntext": "[Slot] er det?"
+          "lerntext": "[Slot] er det?",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "[Slot] ist es?",
         "pronouns": [],
@@ -14950,7 +17275,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] hus",
-          "lerntext": "[Slot] hus"
+          "lerntext": "[Slot] hus",
+          "wortarten": {
+            "hus": "n"
+          }
         },
         "frameDe": "[Slot] Haus.",
         "pronouns": [],
@@ -14964,7 +17292,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "de",
               "lerntext": "de",
-              "de": "die (Mehrzahl)"
+              "de": "die (Mehrzahl)",
+              "c": "p"
             }
           ]
         ],
@@ -14998,14 +17327,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg har [Slot]",
-          "lerntext": "jeg har [Slot]"
+          "lerntext": "jeg har [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "har": "v"
+          }
         },
         "frameDe": "ich habe [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15013,86 +17347,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "kjøpt",
               "lerntext": "kjøpt",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "sett",
               "lerntext": "sett",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "gjort",
               "lerntext": "gjort",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "funnet",
               "lerntext": "funnet",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "tatt",
               "lerntext": "tatt",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "hørt",
               "lerntext": "hørt",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lest",
               "lerntext": "lest",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "skrevet",
               "lerntext": "skrevet",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mistet",
               "lerntext": "mistet",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hett",
               "lerntext": "hett",
               "de": "heißen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "byttet",
               "lerntext": "byttet",
               "de": "tauschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "forstått",
               "lerntext": "forstått",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "håpet",
               "lerntext": "håpet",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "elsket",
               "lerntext": "elsket",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "fortsatt",
               "lerntext": "fortsatt",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15106,14 +17455,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg har [Slot]",
-          "lerntext": "jeg har [Slot]"
+          "lerntext": "jeg har [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "har": "v"
+          }
         },
         "frameDe": "ich habe [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15121,81 +17475,95 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "lest",
               "lerntext": "lest",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "skrevet",
               "lerntext": "skrevet",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "hørt",
               "lerntext": "hørt",
-              "de": "hören"
+              "de": "hören",
+              "c": "v"
             },
             {
               "schrift": "mistet",
               "lerntext": "mistet",
-              "de": "verlieren"
+              "de": "verlieren",
+              "c": "v"
             },
             {
               "schrift": "kjøpt",
               "lerntext": "kjøpt",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sett",
               "lerntext": "sett",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gjort",
               "lerntext": "gjort",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "funnet",
               "lerntext": "funnet",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tatt",
               "lerntext": "tatt",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hett",
               "lerntext": "hett",
               "de": "heißen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "byttet",
               "lerntext": "byttet",
               "de": "tauschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dødd",
               "lerntext": "dødd",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "åpnet",
               "lerntext": "åpnet",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vasket",
               "lerntext": "vasket",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15209,14 +17577,20 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "i går har jeg [Slot]",
-          "lerntext": "i går har jeg [Slot]"
+          "lerntext": "i går har jeg [Slot]",
+          "wortarten": {
+            "går": "v",
+            "har": "v",
+            "jeg": "p"
+          }
         },
         "frameDe": "Gestern habe ich [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15224,86 +17598,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "jobbet",
               "lerntext": "jobbet",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "spilt",
               "lerntext": "spilt",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "danset",
               "lerntext": "danset",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "sovet",
               "lerntext": "sovet",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "ventet",
               "lerntext": "ventet",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "lett",
               "lerntext": "lett",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "betalt",
               "lerntext": "betalt",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spurt",
               "lerntext": "spurt",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "svart",
               "lerntext": "svart",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hjulpet",
               "lerntext": "hjulpet",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "kommet",
               "lerntext": "kommet",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sluttet",
               "lerntext": "sluttet",
               "de": "aufhören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vist",
               "lerntext": "vist",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "snakket",
               "lerntext": "snakket",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "trengt",
               "lerntext": "trengt",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15317,14 +17706,20 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "i går har jeg [Slot]",
-          "lerntext": "i går har jeg [Slot]"
+          "lerntext": "i går har jeg [Slot]",
+          "wortarten": {
+            "går": "v",
+            "har": "v",
+            "jeg": "p"
+          }
         },
         "frameDe": "Gestern habe ich [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15332,86 +17727,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "lett",
               "lerntext": "lett",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "spurt",
               "lerntext": "spurt",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "svart",
               "lerntext": "svart",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "hjulpet",
               "lerntext": "hjulpet",
-              "de": "helfen"
+              "de": "helfen",
+              "c": "v"
             },
             {
               "schrift": "betalt",
               "lerntext": "betalt",
-              "de": "bezahlen"
+              "de": "bezahlen",
+              "c": "v"
             },
             {
               "schrift": "spilt",
               "lerntext": "spilt",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "jobbet",
               "lerntext": "jobbet",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "danset",
               "lerntext": "danset",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sovet",
               "lerntext": "sovet",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ventet",
               "lerntext": "ventet",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "forstått",
               "lerntext": "forstått",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spist",
               "lerntext": "spist",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bodd",
               "lerntext": "bodd",
               "de": "wohnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "kunnet",
               "lerntext": "kunnet",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drukket",
               "lerntext": "drukket",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15425,14 +17835,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg har allerede [Slot]",
-          "lerntext": "jeg har allerede [Slot]"
+          "lerntext": "jeg har allerede [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "har": "v"
+          }
         },
         "frameDe": "Ich habe schon [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15440,86 +17855,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "vunnet",
               "lerntext": "vunnet",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "glemt",
               "lerntext": "glemt",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "forstått",
               "lerntext": "forstått",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "møtt",
               "lerntext": "møtt",
-              "de": "treffen"
+              "de": "treffen",
+              "c": "v"
             },
             {
               "schrift": "gitt",
               "lerntext": "gitt",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "sagt",
               "lerntext": "sagt",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "snakket",
               "lerntext": "snakket",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "åpnet",
               "lerntext": "åpnet",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stengt",
               "lerntext": "stengt",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vasket",
               "lerntext": "vasket",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "likt",
               "lerntext": "likt",
               "de": "mögen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "reist",
               "lerntext": "reist",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "flyttet",
               "lerntext": "flyttet",
               "de": "umziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gått",
               "lerntext": "gått",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hett",
               "lerntext": "hett",
               "de": "heißen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15533,14 +17963,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg har allerede [Slot]",
-          "lerntext": "jeg har allerede [Slot]"
+          "lerntext": "jeg har allerede [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "har": "v"
+          }
         },
         "frameDe": "Ich habe schon [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15548,86 +17983,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "sagt",
               "lerntext": "sagt",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "snakket",
               "lerntext": "snakket",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "åpnet",
               "lerntext": "åpnet",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "stengt",
               "lerntext": "stengt",
-              "de": "schließen"
+              "de": "schließen",
+              "c": "v"
             },
             {
               "schrift": "vasket",
               "lerntext": "vasket",
-              "de": "waschen"
+              "de": "waschen",
+              "c": "v"
             },
             {
               "schrift": "vunnet",
               "lerntext": "vunnet",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "glemt",
               "lerntext": "glemt",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "møtt",
               "lerntext": "møtt",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gitt",
               "lerntext": "gitt",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "forstått",
               "lerntext": "forstått",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stått",
               "lerntext": "stått",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "trodd",
               "lerntext": "trodd",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "byttet",
               "lerntext": "byttet",
               "de": "tauschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "villet",
               "lerntext": "villet",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dratt",
               "lerntext": "dratt",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15662,14 +18112,18 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "du [Slot]",
-          "lerntext": "du [Slot]"
+          "lerntext": "du [Slot]",
+          "wortarten": {
+            "du": "p"
+          }
         },
         "frameDe": "du [Slot].",
         "pronouns": [
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15677,86 +18131,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "kjøper",
               "lerntext": "kjøper",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "ser",
               "lerntext": "ser",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "gjør",
               "lerntext": "gjør",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "finner",
               "lerntext": "finner",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "tar",
               "lerntext": "tar",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "leser",
               "lerntext": "leser",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "skriver",
               "lerntext": "skriver",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gråter",
               "lerntext": "gråter",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "håper",
               "lerntext": "håper",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sitter",
               "lerntext": "sitter",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tenker",
               "lerntext": "tenker",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "får",
               "lerntext": "får",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "setter",
               "lerntext": "setter",
               "de": "setzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ler",
               "lerntext": "ler",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bruker",
               "lerntext": "bruker",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15770,14 +18239,18 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "du [Slot]",
-          "lerntext": "du [Slot]"
+          "lerntext": "du [Slot]",
+          "wortarten": {
+            "du": "p"
+          }
         },
         "frameDe": "du [Slot].",
         "pronouns": [
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15785,71 +18258,83 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "leser",
               "lerntext": "leser",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "skriver",
               "lerntext": "skriver",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "kjøper",
               "lerntext": "kjøper",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ser",
               "lerntext": "ser",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gjør",
               "lerntext": "gjør",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "finner",
               "lerntext": "finner",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tar",
               "lerntext": "tar",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vet",
               "lerntext": "vet",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "er",
               "lerntext": "er",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ringer",
               "lerntext": "ringer",
               "de": "anrufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "må",
               "lerntext": "må",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "elsker",
               "lerntext": "elsker",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15863,14 +18348,18 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "han [Slot]",
-          "lerntext": "han [Slot]"
+          "lerntext": "han [Slot]",
+          "wortarten": {
+            "han": "p"
+          }
         },
         "frameDe": "er [Slot].",
         "pronouns": [
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15878,86 +18367,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "jobber",
               "lerntext": "jobber",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "spiller",
               "lerntext": "spiller",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "danser",
               "lerntext": "danser",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "sover",
               "lerntext": "sover",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "venter",
               "lerntext": "venter",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "leter",
               "lerntext": "leter",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spør",
               "lerntext": "spør",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "svarer",
               "lerntext": "svarer",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "fortsetter",
               "lerntext": "fortsetter",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dør",
               "lerntext": "dør",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "kommer",
               "lerntext": "kommer",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "slutter",
               "lerntext": "slutter",
               "de": "aufhören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "viser",
               "lerntext": "viser",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "trenger",
               "lerntext": "trenger",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spiser",
               "lerntext": "spiser",
               "de": "essen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15971,14 +18475,18 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "han [Slot]",
-          "lerntext": "han [Slot]"
+          "lerntext": "han [Slot]",
+          "wortarten": {
+            "han": "p"
+          }
         },
         "frameDe": "er [Slot].",
         "pronouns": [
           {
             "schrift": "han",
             "lerntext": "han",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15986,76 +18494,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "leter",
               "lerntext": "leter",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "spør",
               "lerntext": "spør",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "svarer",
               "lerntext": "svarer",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "spiller",
               "lerntext": "spiller",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "jobber",
               "lerntext": "jobber",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "danser",
               "lerntext": "danser",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sover",
               "lerntext": "sover",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "venter",
               "lerntext": "venter",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bor",
               "lerntext": "bor",
               "de": "wohnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "kan",
               "lerntext": "kan",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drikker",
               "lerntext": "drikker",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "liker",
               "lerntext": "liker",
               "de": "mögen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "reiser",
               "lerntext": "reiser",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16069,14 +18590,18 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "vi [Slot]",
-          "lerntext": "vi [Slot]"
+          "lerntext": "vi [Slot]",
+          "wortarten": {
+            "vi": "p"
+          }
         },
         "frameDe": "wir [Slot].",
         "pronouns": [
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16084,86 +18609,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "vinner",
               "lerntext": "vinner",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "glemmer",
               "lerntext": "glemmer",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "forstår",
               "lerntext": "forstår",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "møter",
               "lerntext": "møter",
-              "de": "treffen"
+              "de": "treffen",
+              "c": "v"
             },
             {
               "schrift": "gir",
               "lerntext": "gir",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "sier",
               "lerntext": "sier",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "snakker",
               "lerntext": "snakker",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "åpner",
               "lerntext": "åpner",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "flytter",
               "lerntext": "flytter",
               "de": "umziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "går",
               "lerntext": "går",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "heter",
               "lerntext": "heter",
               "de": "heißen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "står",
               "lerntext": "står",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tror",
               "lerntext": "tror",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bytter",
               "lerntext": "bytter",
               "de": "tauschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vil",
               "lerntext": "vil",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16177,14 +18717,18 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "vi [Slot]",
-          "lerntext": "vi [Slot]"
+          "lerntext": "vi [Slot]",
+          "wortarten": {
+            "vi": "p"
+          }
         },
         "frameDe": "wir [Slot].",
         "pronouns": [
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16192,76 +18736,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "sier",
               "lerntext": "sier",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "snakker",
               "lerntext": "snakker",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "åpner",
               "lerntext": "åpner",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "vinner",
               "lerntext": "vinner",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "glemmer",
               "lerntext": "glemmer",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "møter",
               "lerntext": "møter",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gir",
               "lerntext": "gir",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "forstår",
               "lerntext": "forstår",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drar",
               "lerntext": "drar",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gråter",
               "lerntext": "gråter",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "håper",
               "lerntext": "håper",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sitter",
               "lerntext": "sitter",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tenker",
               "lerntext": "tenker",
               "de": "denken",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16275,14 +18832,18 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "hun [Slot]",
-          "lerntext": "hun [Slot]"
+          "lerntext": "hun [Slot]",
+          "wortarten": {
+            "hun": "p"
+          }
         },
         "frameDe": "sie [Slot].",
         "pronouns": [
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16290,86 +18851,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "bor",
               "lerntext": "bor",
-              "de": "wohnen"
+              "de": "wohnen",
+              "c": "v"
             },
             {
               "schrift": "blir",
               "lerntext": "blir",
-              "de": "werden"
+              "de": "werden",
+              "c": "v"
             },
             {
               "schrift": "ler",
               "lerntext": "ler",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "gråter",
               "lerntext": "gråter",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "tenker",
               "lerntext": "tenker",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "tror",
               "lerntext": "tror",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "håper",
               "lerntext": "håper",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "trenger",
               "lerntext": "trenger",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "får",
               "lerntext": "får",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "setter",
               "lerntext": "setter",
               "de": "setzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bruker",
               "lerntext": "bruker",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vet",
               "lerntext": "vet",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "er",
               "lerntext": "er",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ringer",
               "lerntext": "ringer",
               "de": "anrufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "må",
               "lerntext": "må",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16383,14 +18959,18 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "hun [Slot]",
-          "lerntext": "hun [Slot]"
+          "lerntext": "hun [Slot]",
+          "wortarten": {
+            "hun": "p"
+          }
         },
         "frameDe": "sie [Slot].",
         "pronouns": [
           {
             "schrift": "hun",
             "lerntext": "hun",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16398,76 +18978,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "tror",
               "lerntext": "tror",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "håper",
               "lerntext": "håper",
-              "de": "hoffen"
+              "de": "hoffen",
+              "c": "v"
             },
             {
               "schrift": "trenger",
               "lerntext": "trenger",
-              "de": "brauchen"
+              "de": "brauchen",
+              "c": "v"
             },
             {
               "schrift": "ler",
               "lerntext": "ler",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bor",
               "lerntext": "bor",
               "de": "wohnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gråter",
               "lerntext": "gråter",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tenker",
               "lerntext": "tenker",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "blir",
               "lerntext": "blir",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "elsker",
               "lerntext": "elsker",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "fortsetter",
               "lerntext": "fortsetter",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dør",
               "lerntext": "dør",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "kommer",
               "lerntext": "kommer",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "slutter",
               "lerntext": "slutter",
               "de": "aufhören",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -16502,7 +19095,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er mer [Slot]",
-          "lerntext": "det er mer [Slot]"
+          "lerntext": "det er mer [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Das ist mehr [Slot].",
         "pronouns": [],
@@ -16511,86 +19107,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "interessant",
               "lerntext": "interessant",
-              "de": "interessant"
+              "de": "interessant",
+              "c": "a"
             },
             {
               "schrift": "vanskelig",
               "lerntext": "vanskelig",
-              "de": "schwierig"
+              "de": "schwierig",
+              "c": "a"
             },
             {
               "schrift": "viktig",
               "lerntext": "viktig",
-              "de": "wichtig"
+              "de": "wichtig",
+              "c": "a"
             },
             {
               "schrift": "farlig",
               "lerntext": "farlig",
-              "de": "gefährlich"
+              "de": "gefährlich",
+              "c": "a"
             },
             {
               "schrift": "dyr",
               "lerntext": "dyr",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "lei",
               "lerntext": "lei",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "skitten",
               "lerntext": "skitten",
               "de": "schmutzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "trøtt",
               "lerntext": "trøtt",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "god",
               "lerntext": "god",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "feil",
               "lerntext": "feil",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "stygg",
               "lerntext": "stygg",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "riktig",
               "lerntext": "riktig",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "hvit",
               "lerntext": "hvit",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "stengt",
               "lerntext": "stengt",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "hyggelig",
               "lerntext": "hyggelig",
               "de": "nett",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -16610,7 +19221,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er mer [Slot]",
-          "lerntext": "det er mer [Slot]"
+          "lerntext": "det er mer [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Das ist mehr [Slot].",
         "pronouns": [],
@@ -16619,76 +19233,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "skitten",
               "lerntext": "skitten",
-              "de": "schmutzig"
+              "de": "schmutzig",
+              "c": "a"
             },
             {
               "schrift": "trøtt",
               "lerntext": "trøtt",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "lei",
               "lerntext": "lei",
-              "de": "traurig"
+              "de": "traurig",
+              "c": "a"
             },
             {
               "schrift": "interessant",
               "lerntext": "interessant",
               "de": "interessant",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "vanskelig",
               "lerntext": "vanskelig",
               "de": "schwierig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "farlig",
               "lerntext": "farlig",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dyr",
               "lerntext": "dyr",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "viktig",
               "lerntext": "viktig",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "god",
               "lerntext": "god",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "søt",
               "lerntext": "søt",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "svart",
               "lerntext": "svart",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "liten",
               "lerntext": "liten",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "feil",
               "lerntext": "feil",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -16702,7 +19329,12 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "er like [Slot] som deg",
-          "lerntext": "er like [Slot] som deg"
+          "lerntext": "er like [Slot] som deg",
+          "wortarten": {
+            "er": "v",
+            "like": "v",
+            "deg": "p"
+          }
         },
         "frameDe": "bin so [Slot] wie du.",
         "pronouns": [],
@@ -16711,86 +19343,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "stor",
               "lerntext": "stor",
-              "de": "groß"
+              "de": "groß",
+              "c": "a"
             },
             {
               "schrift": "liten",
               "lerntext": "liten",
-              "de": "klein"
+              "de": "klein",
+              "c": "a"
             },
             {
               "schrift": "gammel",
               "lerntext": "gammel",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "ung",
               "lerntext": "ung",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "dyr",
               "lerntext": "dyr",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "varm",
               "lerntext": "varm",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "kald",
               "lerntext": "kald",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ny",
               "lerntext": "ny",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sterk",
               "lerntext": "sterk",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pen",
               "lerntext": "pen",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "god",
               "lerntext": "god",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "blå",
               "lerntext": "blå",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sint",
               "lerntext": "sint",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "høy",
               "lerntext": "høy",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "klar",
               "lerntext": "klar",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -16801,12 +19448,14 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "da",
             "lerntext": "da",
-            "de": "als"
+            "de": "als",
+            "c": "k"
           },
           {
             "schrift": "som",
             "lerntext": "som",
-            "de": "der"
+            "de": "der",
+            "c": "p"
           }
         ],
         "id": "27.3"
@@ -16815,7 +19464,12 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "er like [Slot] som deg",
-          "lerntext": "er like [Slot] som deg"
+          "lerntext": "er like [Slot] som deg",
+          "wortarten": {
+            "er": "v",
+            "like": "v",
+            "deg": "p"
+          }
         },
         "frameDe": "bin so [Slot] wie du.",
         "pronouns": [],
@@ -16824,86 +19478,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "pen",
               "lerntext": "pen",
-              "de": "schön"
+              "de": "schön",
+              "c": "a"
             },
             {
               "schrift": "varm",
               "lerntext": "varm",
-              "de": "warm"
+              "de": "warm",
+              "c": "a"
             },
             {
               "schrift": "kald",
               "lerntext": "kald",
-              "de": "kalt"
+              "de": "kalt",
+              "c": "a"
             },
             {
               "schrift": "ny",
               "lerntext": "ny",
-              "de": "neu"
+              "de": "neu",
+              "c": "a"
             },
             {
               "schrift": "sterk",
               "lerntext": "sterk",
-              "de": "stark"
+              "de": "stark",
+              "c": "a"
             },
             {
               "schrift": "stor",
               "lerntext": "stor",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "liten",
               "lerntext": "liten",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ung",
               "lerntext": "ung",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gammel",
               "lerntext": "gammel",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dyr",
               "lerntext": "dyr",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lang",
               "lerntext": "lang",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "rød",
               "lerntext": "rød",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tung",
               "lerntext": "tung",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "kjedelig",
               "lerntext": "kjedelig",
               "de": "langweilig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gul",
               "lerntext": "gul",
               "de": "gelb",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -16938,14 +19607,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg føler meg [Slot]",
-          "lerntext": "jeg føler meg [Slot]"
+          "lerntext": "jeg føler meg [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "meg": "p"
+          }
         },
         "frameDe": "ich fühle mich [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16953,86 +19627,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "trøtt",
               "lerntext": "trøtt",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "syk",
               "lerntext": "syk",
-              "de": "krank"
+              "de": "krank",
+              "c": "a"
             },
             {
               "schrift": "lei",
               "lerntext": "lei",
-              "de": "traurig"
+              "de": "traurig",
+              "c": "a"
             },
             {
               "schrift": "sterk",
               "lerntext": "sterk",
-              "de": "stark"
+              "de": "stark",
+              "c": "a"
             },
             {
               "schrift": "svak",
               "lerntext": "svak",
-              "de": "schwach"
+              "de": "schwach",
+              "c": "a"
             },
             {
               "schrift": "klar",
               "lerntext": "klar",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sint",
               "lerntext": "sint",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ung",
               "lerntext": "ung",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pen",
               "lerntext": "pen",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gammel",
               "lerntext": "gammel",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "stygg",
               "lerntext": "stygg",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grønn",
               "lerntext": "grønn",
               "de": "grün",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grå",
               "lerntext": "grå",
               "de": "grau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "åpen",
               "lerntext": "åpen",
               "de": "offen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lav",
               "lerntext": "lav",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17046,14 +19735,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg føler meg [Slot]",
-          "lerntext": "jeg føler meg [Slot]"
+          "lerntext": "jeg føler meg [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "meg": "p"
+          }
         },
         "frameDe": "ich fühle mich [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17061,86 +19755,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "klar",
               "lerntext": "klar",
-              "de": "bereit"
+              "de": "bereit",
+              "c": "a"
             },
             {
               "schrift": "ung",
               "lerntext": "ung",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "gammel",
               "lerntext": "gammel",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "sint",
               "lerntext": "sint",
-              "de": "wütend"
+              "de": "wütend",
+              "c": "a"
             },
             {
               "schrift": "pen",
               "lerntext": "pen",
-              "de": "schön"
+              "de": "schön",
+              "c": "a"
             },
             {
               "schrift": "svak",
               "lerntext": "svak",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "syk",
               "lerntext": "syk",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lei",
               "lerntext": "lei",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sterk",
               "lerntext": "sterk",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "trøtt",
               "lerntext": "trøtt",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "morsom",
               "lerntext": "morsom",
               "de": "lustig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "riktig",
               "lerntext": "riktig",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "god",
               "lerntext": "god",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "billig",
               "lerntext": "billig",
               "de": "billig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "hvit",
               "lerntext": "hvit",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17154,14 +19863,18 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "vi møtes [Slot]",
-          "lerntext": "vi møtes [Slot]"
+          "lerntext": "vi møtes [Slot]",
+          "wortarten": {
+            "vi": "p"
+          }
         },
         "frameDe": "wir treffen uns [Slot].",
         "pronouns": [
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17262,14 +19975,18 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "vi møtes [Slot]",
-          "lerntext": "vi møtes [Slot]"
+          "lerntext": "vi møtes [Slot]",
+          "wortarten": {
+            "vi": "p"
+          }
         },
         "frameDe": "wir treffen uns [Slot].",
         "pronouns": [
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17381,7 +20098,13 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg blir her [Slot] jeg er trøtt",
-          "lerntext": "jeg blir her [Slot] jeg er trøtt"
+          "lerntext": "jeg blir her [Slot] jeg er trøtt",
+          "wortarten": {
+            "jeg": "p",
+            "blir": "v",
+            "er": "v",
+            "trøtt": "a"
+          }
         },
         "frameDe": "Ich bleibe hier, [Slot] ich müde bin.",
         "pronouns": [],
@@ -17390,56 +20113,66 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "fordi",
               "lerntext": "fordi",
-              "de": "weil"
+              "de": "weil",
+              "c": "k"
             },
             {
               "schrift": "hvis",
               "lerntext": "hvis",
-              "de": "wenn"
+              "de": "wenn",
+              "c": "k"
             },
             {
               "schrift": "selv om",
               "lerntext": "selv om",
-              "de": "obwohl"
+              "de": "obwohl",
+              "c": "k"
             },
             {
               "schrift": "mens",
               "lerntext": "mens",
-              "de": "während"
+              "de": "während",
+              "c": "k"
             },
             {
               "schrift": "da",
               "lerntext": "da",
-              "de": "als"
+              "de": "als",
+              "c": "k"
             },
             {
               "schrift": "eller",
               "lerntext": "eller",
               "de": "oder",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "og",
               "lerntext": "og",
               "de": "und",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "men",
               "lerntext": "men",
               "de": "aber",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "at",
               "lerntext": "at",
               "de": "dass",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "så",
               "lerntext": "så",
               "de": "so",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -17453,7 +20186,13 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg blir her [Slot] jeg er trøtt",
-          "lerntext": "jeg blir her [Slot] jeg er trøtt"
+          "lerntext": "jeg blir her [Slot] jeg er trøtt",
+          "wortarten": {
+            "jeg": "p",
+            "blir": "v",
+            "er": "v",
+            "trøtt": "a"
+          }
         },
         "frameDe": "Ich bleibe hier, [Slot] ich müde bin.",
         "pronouns": [],
@@ -17462,58 +20201,68 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "men",
               "lerntext": "men",
-              "de": "aber"
+              "de": "aber",
+              "c": "k"
             },
             {
               "schrift": "eller",
               "lerntext": "eller",
-              "de": "oder"
+              "de": "oder",
+              "c": "k"
             },
             {
               "schrift": "og",
               "lerntext": "og",
-              "de": "und"
+              "de": "und",
+              "c": "k"
             },
             {
               "schrift": "hvis",
               "lerntext": "hvis",
               "de": "wenn",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "da",
               "lerntext": "da",
               "de": "als",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "fordi",
               "lerntext": "fordi",
               "de": "weil",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "selv om",
               "lerntext": "selv om",
               "de": "obwohl",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "mens",
               "lerntext": "mens",
               "de": "während",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "at",
               "lerntext": "at",
               "de": "dass",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "så",
               "lerntext": "så",
               "de": "so",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -17527,7 +20276,13 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg tror at det er [Slot]",
-          "lerntext": "jeg tror at det er [Slot]"
+          "lerntext": "jeg tror at det er [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "tror": "v",
+            "at": "k",
+            "er": "v"
+          }
         },
         "frameDe": "Ich glaube, dass es [Slot] ist.",
         "pronouns": [],
@@ -17536,86 +20291,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "lett",
               "lerntext": "lett",
-              "de": "leicht"
+              "de": "leicht",
+              "c": "a"
             },
             {
               "schrift": "feil",
               "lerntext": "feil",
-              "de": "falsch"
+              "de": "falsch",
+              "c": "a"
             },
             {
               "schrift": "syk",
               "lerntext": "syk",
-              "de": "krank"
+              "de": "krank",
+              "c": "a"
             },
             {
               "schrift": "kort",
               "lerntext": "kort",
-              "de": "kurz"
+              "de": "kurz",
+              "c": "a"
             },
             {
               "schrift": "lang",
               "lerntext": "lang",
-              "de": "lang"
+              "de": "lang",
+              "c": "a"
             },
             {
               "schrift": "ren",
               "lerntext": "ren",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "svart",
               "lerntext": "svart",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "søt",
               "lerntext": "søt",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "svak",
               "lerntext": "svak",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sint",
               "lerntext": "sint",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "stengt",
               "lerntext": "stengt",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "hyggelig",
               "lerntext": "hyggelig",
               "de": "nett",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "blå",
               "lerntext": "blå",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "høy",
               "lerntext": "høy",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "rød",
               "lerntext": "rød",
               "de": "rot",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17626,7 +20396,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "at",
             "lerntext": "at",
-            "de": "dass"
+            "de": "dass",
+            "c": "k"
           }
         ],
         "id": "29.3"
@@ -17635,7 +20406,13 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg tror at det er [Slot]",
-          "lerntext": "jeg tror at det er [Slot]"
+          "lerntext": "jeg tror at det er [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "tror": "v",
+            "at": "k",
+            "er": "v"
+          }
         },
         "frameDe": "Ich glaube, dass es [Slot] ist.",
         "pronouns": [],
@@ -17644,86 +20421,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "ren",
               "lerntext": "ren",
-              "de": "sauber"
+              "de": "sauber",
+              "c": "a"
             },
             {
               "schrift": "svak",
               "lerntext": "svak",
-              "de": "schwach"
+              "de": "schwach",
+              "c": "a"
             },
             {
               "schrift": "svart",
               "lerntext": "svart",
-              "de": "schwarz"
+              "de": "schwarz",
+              "c": "a"
             },
             {
               "schrift": "søt",
               "lerntext": "søt",
-              "de": "süß"
+              "de": "süß",
+              "c": "a"
             },
             {
               "schrift": "sint",
               "lerntext": "sint",
-              "de": "wütend"
+              "de": "wütend",
+              "c": "a"
             },
             {
               "schrift": "feil",
               "lerntext": "feil",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "kort",
               "lerntext": "kort",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lang",
               "lerntext": "lang",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lett",
               "lerntext": "lett",
               "de": "leicht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "syk",
               "lerntext": "syk",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tung",
               "lerntext": "tung",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "kjedelig",
               "lerntext": "kjedelig",
               "de": "langweilig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gul",
               "lerntext": "gul",
               "de": "gelb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "stygg",
               "lerntext": "stygg",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grønn",
               "lerntext": "grønn",
               "de": "grün",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17737,7 +20529,14 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "hvis jeg har tid, vil jeg [Slot]",
-          "lerntext": "hvis jeg har tid, vil jeg [Slot]"
+          "lerntext": "hvis jeg har tid, vil jeg [Slot]",
+          "wortarten": {
+            "hvis": "k",
+            "jeg": "p",
+            "har": "v",
+            "tid,": "n",
+            "vil": "v"
+          }
         },
         "frameDe": "Wenn ich Zeit habe, will ich [Slot].",
         "pronouns": [],
@@ -17746,86 +20545,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "bo",
               "lerntext": "bo",
-              "de": "wohnen"
+              "de": "wohnen",
+              "c": "v"
             },
             {
               "schrift": "bli",
               "lerntext": "bli",
-              "de": "werden"
+              "de": "werden",
+              "c": "v"
             },
             {
               "schrift": "le",
               "lerntext": "le",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "gråte",
               "lerntext": "gråte",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "tenke",
               "lerntext": "tenke",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "tro",
               "lerntext": "tro",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "håpe",
               "lerntext": "håpe",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "trenge",
               "lerntext": "trenge",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vise",
               "lerntext": "vise",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spise",
               "lerntext": "spise",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sette",
               "lerntext": "sette",
               "de": "setzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vite",
               "lerntext": "vite",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "slutte",
               "lerntext": "slutte",
               "de": "aufhören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gå",
               "lerntext": "gå",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hete",
               "lerntext": "hete",
               "de": "heißen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -17839,7 +20653,14 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "hvis jeg har tid, vil jeg [Slot]",
-          "lerntext": "hvis jeg har tid, vil jeg [Slot]"
+          "lerntext": "hvis jeg har tid, vil jeg [Slot]",
+          "wortarten": {
+            "hvis": "k",
+            "jeg": "p",
+            "har": "v",
+            "tid,": "n",
+            "vil": "v"
+          }
         },
         "frameDe": "Wenn ich Zeit habe, will ich [Slot].",
         "pronouns": [],
@@ -17848,76 +20669,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "tro",
               "lerntext": "tro",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "håpe",
               "lerntext": "håpe",
-              "de": "hoffen"
+              "de": "hoffen",
+              "c": "v"
             },
             {
               "schrift": "trenge",
               "lerntext": "trenge",
-              "de": "brauchen"
+              "de": "brauchen",
+              "c": "v"
             },
             {
               "schrift": "le",
               "lerntext": "le",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bo",
               "lerntext": "bo",
               "de": "wohnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gråte",
               "lerntext": "gråte",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tenke",
               "lerntext": "tenke",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bli",
               "lerntext": "bli",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vise",
               "lerntext": "vise",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bytte",
               "lerntext": "bytte",
               "de": "tauschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sitte",
               "lerntext": "sitte",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dø",
               "lerntext": "dø",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "komme",
               "lerntext": "komme",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -17952,14 +20786,21 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "kan du [Slot], er du snill?",
-          "lerntext": "kan du [Slot], er du snill?"
+          "lerntext": "kan du [Slot], er du snill?",
+          "wortarten": {
+            "kan": "v",
+            "du": "p",
+            "er": "v",
+            "snill?": "a"
+          }
         },
         "frameDe": "Kannst du bitte [Slot]?",
         "pronouns": [
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17967,86 +20808,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "jobbe",
               "lerntext": "jobbe",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "spille",
               "lerntext": "spille",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "danse",
               "lerntext": "danse",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "sove",
               "lerntext": "sove",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "vente",
               "lerntext": "vente",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "betale",
               "lerntext": "betale",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hjelpe",
               "lerntext": "hjelpe",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lete",
               "lerntext": "lete",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spørre",
               "lerntext": "spørre",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "svare",
               "lerntext": "svare",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "kunne",
               "lerntext": "kunne",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "reise",
               "lerntext": "reise",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ville",
               "lerntext": "ville",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "få",
               "lerntext": "få",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "måtte",
               "lerntext": "måtte",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18057,7 +20913,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "snill",
             "lerntext": "snill",
-            "de": "lieb"
+            "de": "lieb",
+            "c": "a"
           }
         ],
         "id": "30.1"
@@ -18066,14 +20923,21 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "kan du [Slot], er du snill?",
-          "lerntext": "kan du [Slot], er du snill?"
+          "lerntext": "kan du [Slot], er du snill?",
+          "wortarten": {
+            "kan": "v",
+            "du": "p",
+            "er": "v",
+            "snill?": "a"
+          }
         },
         "frameDe": "Kannst du bitte [Slot]?",
         "pronouns": [
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18081,86 +20945,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "lete",
               "lerntext": "lete",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "spørre",
               "lerntext": "spørre",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "svare",
               "lerntext": "svare",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "hjelpe",
               "lerntext": "hjelpe",
-              "de": "helfen"
+              "de": "helfen",
+              "c": "v"
             },
             {
               "schrift": "betale",
               "lerntext": "betale",
-              "de": "bezahlen"
+              "de": "bezahlen",
+              "c": "v"
             },
             {
               "schrift": "spille",
               "lerntext": "spille",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "jobbe",
               "lerntext": "jobbe",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "danse",
               "lerntext": "danse",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sove",
               "lerntext": "sove",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vente",
               "lerntext": "vente",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "være",
               "lerntext": "være",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drikke",
               "lerntext": "drikke",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "flytte",
               "lerntext": "flytte",
               "de": "umziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stå",
               "lerntext": "stå",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dra",
               "lerntext": "dra",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18174,14 +21053,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "du må [Slot]",
-          "lerntext": "du må [Slot]"
+          "lerntext": "du må [Slot]",
+          "wortarten": {
+            "du": "p",
+            "må": "v"
+          }
         },
         "frameDe": "du musst [Slot].",
         "pronouns": [
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18189,86 +21073,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "vinne",
               "lerntext": "vinne",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "glemme",
               "lerntext": "glemme",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "forstå",
               "lerntext": "forstå",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "møte",
               "lerntext": "møte",
-              "de": "treffen"
+              "de": "treffen",
+              "c": "v"
             },
             {
               "schrift": "gi",
               "lerntext": "gi",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "si",
               "lerntext": "si",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "snakke",
               "lerntext": "snakke",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "åpne",
               "lerntext": "åpne",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bruke",
               "lerntext": "bruke",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ringe",
               "lerntext": "ringe",
               "de": "anrufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "elske",
               "lerntext": "elske",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "fortsette",
               "lerntext": "fortsette",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spise",
               "lerntext": "spise",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sette",
               "lerntext": "sette",
               "de": "setzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vite",
               "lerntext": "vite",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18282,14 +21181,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "du må [Slot]",
-          "lerntext": "du må [Slot]"
+          "lerntext": "du må [Slot]",
+          "wortarten": {
+            "du": "p",
+            "må": "v"
+          }
         },
         "frameDe": "du musst [Slot].",
         "pronouns": [
           {
             "schrift": "du",
             "lerntext": "du",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18297,76 +21201,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "si",
               "lerntext": "si",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "snakke",
               "lerntext": "snakke",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "åpne",
               "lerntext": "åpne",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "vinne",
               "lerntext": "vinne",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "glemme",
               "lerntext": "glemme",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "møte",
               "lerntext": "møte",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gi",
               "lerntext": "gi",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "forstå",
               "lerntext": "forstå",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "slutte",
               "lerntext": "slutte",
               "de": "aufhören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vise",
               "lerntext": "vise",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gå",
               "lerntext": "gå",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hete",
               "lerntext": "hete",
               "de": "heißen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bytte",
               "lerntext": "bytte",
               "de": "tauschen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -18401,14 +21318,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg gir boken til [Slot]",
-          "lerntext": "jeg gir boken til [Slot]"
+          "lerntext": "jeg gir boken til [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "gir": "v"
+          }
         },
         "frameDe": "ich gebe [Slot] das Buch.",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18416,86 +21338,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "venn",
               "lerntext": "venn",
-              "de": "Freund"
+              "de": "Freund",
+              "c": "n"
             },
             {
               "schrift": "mor",
               "lerntext": "mor",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "far",
               "lerntext": "far",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "barn",
               "lerntext": "barn",
-              "de": "Kind"
+              "de": "Kind",
+              "c": "n"
             },
             {
               "schrift": "student",
               "lerntext": "student",
-              "de": "Student"
+              "de": "Student",
+              "c": "n"
             },
             {
               "schrift": "bror",
               "lerntext": "bror",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "søster",
               "lerntext": "søster",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kvinne",
               "lerntext": "kvinne",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "svar",
               "lerntext": "svar",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "eksamen",
               "lerntext": "eksamen",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "penger",
               "lerntext": "penger",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "uke",
               "lerntext": "uke",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "navn",
               "lerntext": "navn",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sko",
               "lerntext": "sko",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fot",
               "lerntext": "fot",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18509,14 +21446,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg gir boken til [Slot]",
-          "lerntext": "jeg gir boken til [Slot]"
+          "lerntext": "jeg gir boken til [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "gir": "v"
+          }
         },
         "frameDe": "ich gebe [Slot] das Buch.",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18524,76 +21466,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "kvinne",
               "lerntext": "kvinne",
-              "de": "Frau"
+              "de": "Frau",
+              "c": "n"
             },
             {
               "schrift": "søster",
               "lerntext": "søster",
-              "de": "Schwester"
+              "de": "Schwester",
+              "c": "n"
             },
             {
               "schrift": "bror",
               "lerntext": "bror",
-              "de": "Bruder"
+              "de": "Bruder",
+              "c": "n"
             },
             {
               "schrift": "barn",
               "lerntext": "barn",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "student",
               "lerntext": "student",
               "de": "Student",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "venn",
               "lerntext": "venn",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "far",
               "lerntext": "far",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mor",
               "lerntext": "mor",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "svar",
               "lerntext": "svar",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "eksamen",
               "lerntext": "eksamen",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hotell",
               "lerntext": "hotell",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sol",
               "lerntext": "sol",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "seng",
               "lerntext": "seng",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18607,14 +21562,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg viser byen til [Slot]",
-          "lerntext": "jeg viser byen til [Slot]"
+          "lerntext": "jeg viser byen til [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "viser": "v"
+          }
         },
         "frameDe": "ich zeige [Slot] die Stadt.",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18622,86 +21582,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "venn",
               "lerntext": "venn",
-              "de": "Freund"
+              "de": "Freund",
+              "c": "n"
             },
             {
               "schrift": "mor",
               "lerntext": "mor",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "far",
               "lerntext": "far",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "barn",
               "lerntext": "barn",
-              "de": "Kind"
+              "de": "Kind",
+              "c": "n"
             },
             {
               "schrift": "student",
               "lerntext": "student",
-              "de": "Student"
+              "de": "Student",
+              "c": "n"
             },
             {
               "schrift": "bror",
               "lerntext": "bror",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "søster",
               "lerntext": "søster",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kvinne",
               "lerntext": "kvinne",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "svar",
               "lerntext": "svar",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "eksamen",
               "lerntext": "eksamen",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "frukt",
               "lerntext": "frukt",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "snø",
               "lerntext": "snø",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vær",
               "lerntext": "vær",
               "de": "Wetter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "klær",
               "lerntext": "klær",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fisk",
               "lerntext": "fisk",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18715,14 +21690,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg viser byen til [Slot]",
-          "lerntext": "jeg viser byen til [Slot]"
+          "lerntext": "jeg viser byen til [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "viser": "v"
+          }
         },
         "frameDe": "ich zeige [Slot] die Stadt.",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18730,76 +21710,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "kvinne",
               "lerntext": "kvinne",
-              "de": "Frau"
+              "de": "Frau",
+              "c": "n"
             },
             {
               "schrift": "søster",
               "lerntext": "søster",
-              "de": "Schwester"
+              "de": "Schwester",
+              "c": "n"
             },
             {
               "schrift": "bror",
               "lerntext": "bror",
-              "de": "Bruder"
+              "de": "Bruder",
+              "c": "n"
             },
             {
               "schrift": "barn",
               "lerntext": "barn",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "student",
               "lerntext": "student",
               "de": "Student",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "venn",
               "lerntext": "venn",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "far",
               "lerntext": "far",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mor",
               "lerntext": "mor",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "svar",
               "lerntext": "svar",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kropp",
               "lerntext": "kropp",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bok",
               "lerntext": "bok",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fjell",
               "lerntext": "fjell",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "middag",
               "lerntext": "middag",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18834,14 +21827,21 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg vil ha et glass [Slot]",
-          "lerntext": "jeg vil ha et glass [Slot]"
+          "lerntext": "jeg vil ha et glass [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "vil": "v",
+            "ha": "v",
+            "glass": "n"
+          }
         },
         "frameDe": "ich möchte ein Glas [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18849,81 +21849,95 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "vann",
               "lerntext": "vann",
-              "de": "Wasser"
+              "de": "Wasser",
+              "c": "n"
             },
             {
               "schrift": "øl",
               "lerntext": "øl",
-              "de": "Bier"
+              "de": "Bier",
+              "c": "n"
             },
             {
               "schrift": "melk",
               "lerntext": "melk",
-              "de": "Milch"
+              "de": "Milch",
+              "c": "n"
             },
             {
               "schrift": "kaffe",
               "lerntext": "kaffe",
-              "de": "Kaffee"
+              "de": "Kaffee",
+              "c": "n"
             },
             {
               "schrift": "flyplass",
               "lerntext": "flyplass",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "time",
               "lerntext": "time",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sykehus",
               "lerntext": "sykehus",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "øye",
               "lerntext": "øye",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tog",
               "lerntext": "tog",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "munn",
               "lerntext": "munn",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sukker",
               "lerntext": "sukker",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sønn",
               "lerntext": "sønn",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "eksamen",
               "lerntext": "eksamen",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "frokost",
               "lerntext": "frokost",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18934,7 +21948,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "glass",
             "lerntext": "glass",
-            "de": "Glas"
+            "de": "Glas",
+            "c": "n"
           },
           {
             "schrift": "et",
@@ -18948,14 +21963,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "vi har nok [Slot]",
-          "lerntext": "vi har nok [Slot]"
+          "lerntext": "vi har nok [Slot]",
+          "wortarten": {
+            "vi": "p",
+            "har": "v"
+          }
         },
         "frameDe": "wir haben genug [Slot].",
         "pronouns": [
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18963,86 +21983,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "penger",
               "lerntext": "penger",
-              "de": "Geld"
+              "de": "Geld",
+              "c": "n"
             },
             {
               "schrift": "tid",
               "lerntext": "tid",
-              "de": "Zeit"
+              "de": "Zeit",
+              "c": "n"
             },
             {
               "schrift": "brød",
               "lerntext": "brød",
-              "de": "Brot"
+              "de": "Brot",
+              "c": "n"
             },
             {
               "schrift": "frukt",
               "lerntext": "frukt",
-              "de": "Obst"
+              "de": "Obst",
+              "c": "n"
             },
             {
               "schrift": "kjøtt",
               "lerntext": "kjøtt",
-              "de": "Fleisch"
+              "de": "Fleisch",
+              "c": "n"
             },
             {
               "schrift": "fisk",
               "lerntext": "fisk",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sukker",
               "lerntext": "sukker",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "melk",
               "lerntext": "melk",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "uke",
               "lerntext": "uke",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "navn",
               "lerntext": "navn",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sko",
               "lerntext": "sko",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ferie",
               "lerntext": "ferie",
               "de": "Urlaub",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kveld",
               "lerntext": "kveld",
               "de": "Abend",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "grønnsak",
               "lerntext": "grønnsak",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nøkkel",
               "lerntext": "nøkkel",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -19062,14 +22097,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "vi har nok [Slot]",
-          "lerntext": "vi har nok [Slot]"
+          "lerntext": "vi har nok [Slot]",
+          "wortarten": {
+            "vi": "p",
+            "har": "v"
+          }
         },
         "frameDe": "wir haben genug [Slot].",
         "pronouns": [
           {
             "schrift": "vi",
             "lerntext": "vi",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19077,76 +22117,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "fisk",
               "lerntext": "fisk",
-              "de": "Fisch"
+              "de": "Fisch",
+              "c": "n"
             },
             {
               "schrift": "sukker",
               "lerntext": "sukker",
-              "de": "Zucker"
+              "de": "Zucker",
+              "c": "n"
             },
             {
               "schrift": "melk",
               "lerntext": "melk",
-              "de": "Milch"
+              "de": "Milch",
+              "c": "n"
             },
             {
               "schrift": "penger",
               "lerntext": "penger",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "brød",
               "lerntext": "brød",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "frukt",
               "lerntext": "frukt",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kjøtt",
               "lerntext": "kjøtt",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tid",
               "lerntext": "tid",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hav",
               "lerntext": "hav",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "restaurant",
               "lerntext": "restaurant",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "regn",
               "lerntext": "regn",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fot",
               "lerntext": "fot",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hotell",
               "lerntext": "hotell",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -19181,14 +22234,20 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg har ventet i en [Slot]",
-          "lerntext": "jeg har ventet i en [Slot]"
+          "lerntext": "jeg har ventet i en [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "har": "v",
+            "ventet": "v"
+          }
         },
         "frameDe": "ich warte seit einer [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19196,81 +22255,95 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "time",
               "lerntext": "time",
-              "de": "Stunde"
+              "de": "Stunde",
+              "c": "n"
             },
             {
               "schrift": "minutt",
               "lerntext": "minutt",
-              "de": "Minute"
+              "de": "Minute",
+              "c": "n"
             },
             {
               "schrift": "uke",
               "lerntext": "uke",
-              "de": "Woche"
+              "de": "Woche",
+              "c": "n"
             },
             {
               "schrift": "natt",
               "lerntext": "natt",
-              "de": "Nacht"
+              "de": "Nacht",
+              "c": "n"
             },
             {
               "schrift": "svar",
               "lerntext": "svar",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "klær",
               "lerntext": "klær",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "toalett",
               "lerntext": "toalett",
               "de": "Toilette",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "eksamen",
               "lerntext": "eksamen",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hånd",
               "lerntext": "hånd",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hjelp",
               "lerntext": "hjelp",
               "de": "Hilfe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "veske",
               "lerntext": "veske",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "skole",
               "lerntext": "skole",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "by",
               "lerntext": "by",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "leilighet",
               "lerntext": "leilighet",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -19290,14 +22363,20 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg har ventet i en [Slot]",
-          "lerntext": "jeg har ventet i en [Slot]"
+          "lerntext": "jeg har ventet i en [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "har": "v",
+            "ventet": "v"
+          }
         },
         "frameDe": "ich warte seit einem [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19305,71 +22384,83 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "dag",
               "lerntext": "dag",
-              "de": "Tag"
+              "de": "Tag",
+              "c": "n"
             },
             {
               "schrift": "kveld",
               "lerntext": "kveld",
-              "de": "Abend"
+              "de": "Abend",
+              "c": "n"
             },
             {
               "schrift": "buss",
               "lerntext": "buss",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hode",
               "lerntext": "hode",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ost",
               "lerntext": "ost",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "skog",
               "lerntext": "skog",
               "de": "Wald",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "arm",
               "lerntext": "arm",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "stasjon",
               "lerntext": "stasjon",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "morgen",
               "lerntext": "morgen",
               "de": "Morgen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vin",
               "lerntext": "vin",
               "de": "Wein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kropp",
               "lerntext": "kropp",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "flyplass",
               "lerntext": "flyplass",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -19383,14 +22474,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] går jeg hjem",
-          "lerntext": "[Slot] går jeg hjem"
+          "lerntext": "[Slot] går jeg hjem",
+          "wortarten": {
+            "går": "v",
+            "jeg": "p"
+          }
         },
         "frameDe": "[Slot] gehe ich nach Hause.",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19491,14 +22587,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] går jeg hjem",
-          "lerntext": "[Slot] går jeg hjem"
+          "lerntext": "[Slot] går jeg hjem",
+          "wortarten": {
+            "går": "v",
+            "jeg": "p"
+          }
         },
         "frameDe": "[Slot] gehe ich nach Hause.",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19610,14 +22711,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg vil gjerne [Slot]",
-          "lerntext": "jeg vil gjerne [Slot]"
+          "lerntext": "jeg vil gjerne [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "vil": "v"
+          }
         },
         "frameDe": "ich hätte gern [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19625,86 +22731,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "bo",
               "lerntext": "bo",
-              "de": "wohnen"
+              "de": "wohnen",
+              "c": "v"
             },
             {
               "schrift": "bli",
               "lerntext": "bli",
-              "de": "werden"
+              "de": "werden",
+              "c": "v"
             },
             {
               "schrift": "le",
               "lerntext": "le",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "gråte",
               "lerntext": "gråte",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "tenke",
               "lerntext": "tenke",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "tro",
               "lerntext": "tro",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "håpe",
               "lerntext": "håpe",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "trenge",
               "lerntext": "trenge",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sitte",
               "lerntext": "sitte",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dø",
               "lerntext": "dø",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "komme",
               "lerntext": "komme",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "kunne",
               "lerntext": "kunne",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "reise",
               "lerntext": "reise",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ville",
               "lerntext": "ville",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "få",
               "lerntext": "få",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -19724,14 +22845,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg vil gjerne [Slot]",
-          "lerntext": "jeg vil gjerne [Slot]"
+          "lerntext": "jeg vil gjerne [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "vil": "v"
+          }
         },
         "frameDe": "ich hätte gern [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19739,76 +22865,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "tro",
               "lerntext": "tro",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "håpe",
               "lerntext": "håpe",
-              "de": "hoffen"
+              "de": "hoffen",
+              "c": "v"
             },
             {
               "schrift": "trenge",
               "lerntext": "trenge",
-              "de": "brauchen"
+              "de": "brauchen",
+              "c": "v"
             },
             {
               "schrift": "le",
               "lerntext": "le",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bo",
               "lerntext": "bo",
               "de": "wohnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gråte",
               "lerntext": "gråte",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tenke",
               "lerntext": "tenke",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bli",
               "lerntext": "bli",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "måtte",
               "lerntext": "måtte",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "være",
               "lerntext": "være",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drikke",
               "lerntext": "drikke",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "flytte",
               "lerntext": "flytte",
               "de": "umziehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stå",
               "lerntext": "stå",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -19822,14 +22961,21 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "kan du gi meg [Slot]?",
-          "lerntext": "kan du gi meg [Slot]?"
+          "lerntext": "kan du gi meg [Slot]?",
+          "wortarten": {
+            "kan": "v",
+            "du": "p",
+            "gi": "v",
+            "meg": "p"
+          }
         },
         "frameDe": "Könnten Sie mir [Slot] geben?",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19837,86 +22983,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "vann",
               "lerntext": "vann",
-              "de": "Wasser"
+              "de": "Wasser",
+              "c": "n"
             },
             {
               "schrift": "brød",
               "lerntext": "brød",
-              "de": "Brot"
+              "de": "Brot",
+              "c": "n"
             },
             {
               "schrift": "nøkkel",
               "lerntext": "nøkkel",
-              "de": "Schlüssel"
+              "de": "Schlüssel",
+              "c": "n"
             },
             {
               "schrift": "bok",
               "lerntext": "bok",
-              "de": "Buch"
+              "de": "Buch",
+              "c": "n"
             },
             {
               "schrift": "veske",
               "lerntext": "veske",
-              "de": "Tasche"
+              "de": "Tasche",
+              "c": "n"
             },
             {
               "schrift": "kaffe",
               "lerntext": "kaffe",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sukker",
               "lerntext": "sukker",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "melk",
               "lerntext": "melk",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lunsj",
               "lerntext": "lunsj",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vindu",
               "lerntext": "vindu",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bein",
               "lerntext": "bein",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sol",
               "lerntext": "sol",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "seng",
               "lerntext": "seng",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "snø",
               "lerntext": "snø",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vær",
               "lerntext": "vær",
               "de": "Wetter",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -19930,14 +23091,21 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "kan du gi meg [Slot]?",
-          "lerntext": "kan du gi meg [Slot]?"
+          "lerntext": "kan du gi meg [Slot]?",
+          "wortarten": {
+            "kan": "v",
+            "du": "p",
+            "gi": "v",
+            "meg": "p"
+          }
         },
         "frameDe": "Könnten Sie mir [Slot] geben?",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19945,76 +23113,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "sukker",
               "lerntext": "sukker",
-              "de": "Zucker"
+              "de": "Zucker",
+              "c": "n"
             },
             {
               "schrift": "kaffe",
               "lerntext": "kaffe",
-              "de": "Kaffee"
+              "de": "Kaffee",
+              "c": "n"
             },
             {
               "schrift": "melk",
               "lerntext": "melk",
-              "de": "Milch"
+              "de": "Milch",
+              "c": "n"
             },
             {
               "schrift": "bok",
               "lerntext": "bok",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "nøkkel",
               "lerntext": "nøkkel",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "veske",
               "lerntext": "veske",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vann",
               "lerntext": "vann",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "brød",
               "lerntext": "brød",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hår",
               "lerntext": "hår",
               "de": "Haar",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fjell",
               "lerntext": "fjell",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "middag",
               "lerntext": "middag",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sykehus",
               "lerntext": "sykehus",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "øye",
               "lerntext": "øye",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -20049,14 +23230,21 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg tror at det er [Slot]",
-          "lerntext": "jeg tror at det er [Slot]"
+          "lerntext": "jeg tror at det er [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "tror": "v",
+            "at": "k",
+            "er": "v"
+          }
         },
         "frameDe": "ich denke, das ist [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20064,86 +23252,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "stor",
               "lerntext": "stor",
-              "de": "groß"
+              "de": "groß",
+              "c": "a"
             },
             {
               "schrift": "liten",
               "lerntext": "liten",
-              "de": "klein"
+              "de": "klein",
+              "c": "a"
             },
             {
               "schrift": "gammel",
               "lerntext": "gammel",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "ung",
               "lerntext": "ung",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "dyr",
               "lerntext": "dyr",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "varm",
               "lerntext": "varm",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "kald",
               "lerntext": "kald",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ny",
               "lerntext": "ny",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sterk",
               "lerntext": "sterk",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pen",
               "lerntext": "pen",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "snill",
               "lerntext": "snill",
               "de": "lieb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grå",
               "lerntext": "grå",
               "de": "grau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dårlig",
               "lerntext": "dårlig",
               "de": "schlecht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "åpen",
               "lerntext": "åpen",
               "de": "offen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "brun",
               "lerntext": "brun",
               "de": "braun",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -20157,14 +23360,21 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg tror at det er [Slot]",
-          "lerntext": "jeg tror at det er [Slot]"
+          "lerntext": "jeg tror at det er [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "tror": "v",
+            "at": "k",
+            "er": "v"
+          }
         },
         "frameDe": "ich denke, das ist [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20172,86 +23382,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "pen",
               "lerntext": "pen",
-              "de": "schön"
+              "de": "schön",
+              "c": "a"
             },
             {
               "schrift": "varm",
               "lerntext": "varm",
-              "de": "warm"
+              "de": "warm",
+              "c": "a"
             },
             {
               "schrift": "kald",
               "lerntext": "kald",
-              "de": "kalt"
+              "de": "kalt",
+              "c": "a"
             },
             {
               "schrift": "ny",
               "lerntext": "ny",
-              "de": "neu"
+              "de": "neu",
+              "c": "a"
             },
             {
               "schrift": "sterk",
               "lerntext": "sterk",
-              "de": "stark"
+              "de": "stark",
+              "c": "a"
             },
             {
               "schrift": "stor",
               "lerntext": "stor",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "liten",
               "lerntext": "liten",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dyr",
               "lerntext": "dyr",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ung",
               "lerntext": "ung",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "gammel",
               "lerntext": "gammel",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "snill",
               "lerntext": "snill",
               "de": "lieb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lav",
               "lerntext": "lav",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "morsom",
               "lerntext": "morsom",
               "de": "lustig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "riktig",
               "lerntext": "riktig",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "god",
               "lerntext": "god",
               "de": "gut",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -20265,14 +23490,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg synes det er veldig [Slot]",
-          "lerntext": "jeg synes det er veldig [Slot]"
+          "lerntext": "jeg synes det er veldig [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "er": "v"
+          }
         },
         "frameDe": "ich finde das sehr [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20280,86 +23510,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "lett",
               "lerntext": "lett",
-              "de": "leicht"
+              "de": "leicht",
+              "c": "a"
             },
             {
               "schrift": "feil",
               "lerntext": "feil",
-              "de": "falsch"
+              "de": "falsch",
+              "c": "a"
             },
             {
               "schrift": "syk",
               "lerntext": "syk",
-              "de": "krank"
+              "de": "krank",
+              "c": "a"
             },
             {
               "schrift": "kort",
               "lerntext": "kort",
-              "de": "kurz"
+              "de": "kurz",
+              "c": "a"
             },
             {
               "schrift": "lang",
               "lerntext": "lang",
-              "de": "lang"
+              "de": "lang",
+              "c": "a"
             },
             {
               "schrift": "ren",
               "lerntext": "ren",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "svart",
               "lerntext": "svart",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "søt",
               "lerntext": "søt",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "svak",
               "lerntext": "svak",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sint",
               "lerntext": "sint",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "snill",
               "lerntext": "snill",
               "de": "lieb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "billig",
               "lerntext": "billig",
               "de": "billig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "hvit",
               "lerntext": "hvit",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "stengt",
               "lerntext": "stengt",
               "de": "geschlossen",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "hyggelig",
               "lerntext": "hyggelig",
               "de": "nett",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -20373,14 +23618,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg synes det er veldig [Slot]",
-          "lerntext": "jeg synes det er veldig [Slot]"
+          "lerntext": "jeg synes det er veldig [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "er": "v"
+          }
         },
         "frameDe": "ich finde das sehr [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20388,86 +23638,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "ren",
               "lerntext": "ren",
-              "de": "sauber"
+              "de": "sauber",
+              "c": "a"
             },
             {
               "schrift": "svak",
               "lerntext": "svak",
-              "de": "schwach"
+              "de": "schwach",
+              "c": "a"
             },
             {
               "schrift": "svart",
               "lerntext": "svart",
-              "de": "schwarz"
+              "de": "schwarz",
+              "c": "a"
             },
             {
               "schrift": "søt",
               "lerntext": "søt",
-              "de": "süß"
+              "de": "süß",
+              "c": "a"
             },
             {
               "schrift": "sint",
               "lerntext": "sint",
-              "de": "wütend"
+              "de": "wütend",
+              "c": "a"
             },
             {
               "schrift": "feil",
               "lerntext": "feil",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "kort",
               "lerntext": "kort",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lang",
               "lerntext": "lang",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lett",
               "lerntext": "lett",
               "de": "leicht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "syk",
               "lerntext": "syk",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "blå",
               "lerntext": "blå",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "høy",
               "lerntext": "høy",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "rød",
               "lerntext": "rød",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "snill",
               "lerntext": "snill",
               "de": "lieb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tung",
               "lerntext": "tung",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -20502,14 +23767,20 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "i morgen skal jeg [Slot]",
-          "lerntext": "i morgen skal jeg [Slot]"
+          "lerntext": "i morgen skal jeg [Slot]",
+          "wortarten": {
+            "morgen": "n",
+            "skal": "v",
+            "jeg": "p"
+          }
         },
         "frameDe": "Morgen werde ich [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20517,86 +23788,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "kjøpe",
               "lerntext": "kjøpe",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "se",
               "lerntext": "se",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "gjøre",
               "lerntext": "gjøre",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "finne",
               "lerntext": "finne",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "ta",
               "lerntext": "ta",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "lese",
               "lerntext": "lese",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "skrive",
               "lerntext": "skrive",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dra",
               "lerntext": "dra",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bruke",
               "lerntext": "bruke",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ringe",
               "lerntext": "ringe",
               "de": "anrufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "elske",
               "lerntext": "elske",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "fortsette",
               "lerntext": "fortsette",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spise",
               "lerntext": "spise",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sette",
               "lerntext": "sette",
               "de": "setzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vite",
               "lerntext": "vite",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20610,14 +23896,20 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "i morgen skal jeg [Slot]",
-          "lerntext": "i morgen skal jeg [Slot]"
+          "lerntext": "i morgen skal jeg [Slot]",
+          "wortarten": {
+            "morgen": "n",
+            "skal": "v",
+            "jeg": "p"
+          }
         },
         "frameDe": "Morgen werde ich [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20625,71 +23917,83 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "lese",
               "lerntext": "lese",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "skrive",
               "lerntext": "skrive",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "kjøpe",
               "lerntext": "kjøpe",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "se",
               "lerntext": "se",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gjøre",
               "lerntext": "gjøre",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "finne",
               "lerntext": "finne",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ta",
               "lerntext": "ta",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "slutte",
               "lerntext": "slutte",
               "de": "aufhören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vise",
               "lerntext": "vise",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "like",
               "lerntext": "like",
               "de": "mögen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gå",
               "lerntext": "gå",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hete",
               "lerntext": "hete",
               "de": "heißen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20703,14 +24007,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg vil snart [Slot]",
-          "lerntext": "jeg vil snart [Slot]"
+          "lerntext": "jeg vil snart [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "vil": "v"
+          }
         },
         "frameDe": "ich will bald [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20718,86 +24027,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "jobbe",
               "lerntext": "jobbe",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "spille",
               "lerntext": "spille",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "danse",
               "lerntext": "danse",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "sove",
               "lerntext": "sove",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "vente",
               "lerntext": "vente",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "lete",
               "lerntext": "lete",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spørre",
               "lerntext": "spørre",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "svare",
               "lerntext": "svare",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bytte",
               "lerntext": "bytte",
               "de": "tauschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sitte",
               "lerntext": "sitte",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dø",
               "lerntext": "dø",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "komme",
               "lerntext": "komme",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "kunne",
               "lerntext": "kunne",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "reise",
               "lerntext": "reise",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ville",
               "lerntext": "ville",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20811,14 +24135,19 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg vil snart [Slot]",
-          "lerntext": "jeg vil snart [Slot]"
+          "lerntext": "jeg vil snart [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "vil": "v"
+          }
         },
         "frameDe": "ich will bald [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20826,76 +24155,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "lete",
               "lerntext": "lete",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "spørre",
               "lerntext": "spørre",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "svare",
               "lerntext": "svare",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "spille",
               "lerntext": "spille",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "jobbe",
               "lerntext": "jobbe",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "danse",
               "lerntext": "danse",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sove",
               "lerntext": "sove",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vente",
               "lerntext": "vente",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "få",
               "lerntext": "få",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "måtte",
               "lerntext": "måtte",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "være",
               "lerntext": "være",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drikke",
               "lerntext": "drikke",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "flytte",
               "lerntext": "flytte",
               "de": "umziehen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20930,7 +24272,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er mannen som [Slot]",
-          "lerntext": "det er mannen som [Slot]"
+          "lerntext": "det er mannen som [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Das ist der Mann, der [Slot].",
         "pronouns": [],
@@ -20939,86 +24284,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "bor",
               "lerntext": "bor",
-              "de": "wohnen"
+              "de": "wohnen",
+              "c": "v"
             },
             {
               "schrift": "blir",
               "lerntext": "blir",
-              "de": "werden"
+              "de": "werden",
+              "c": "v"
             },
             {
               "schrift": "ler",
               "lerntext": "ler",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "gråter",
               "lerntext": "gråter",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "tenker",
               "lerntext": "tenker",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "tror",
               "lerntext": "tror",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "håper",
               "lerntext": "håper",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "trenger",
               "lerntext": "trenger",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "står",
               "lerntext": "står",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drar",
               "lerntext": "drar",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bruker",
               "lerntext": "bruker",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ringer",
               "lerntext": "ringer",
               "de": "anrufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "elsker",
               "lerntext": "elsker",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "fortsetter",
               "lerntext": "fortsetter",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hører",
               "lerntext": "hører",
               "de": "hören",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -21032,7 +24392,10 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "det er mannen som [Slot]",
-          "lerntext": "det er mannen som [Slot]"
+          "lerntext": "det er mannen som [Slot]",
+          "wortarten": {
+            "er": "v"
+          }
         },
         "frameDe": "Das ist der Mann, der [Slot].",
         "pronouns": [],
@@ -21041,76 +24404,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "tror",
               "lerntext": "tror",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "håper",
               "lerntext": "håper",
-              "de": "hoffen"
+              "de": "hoffen",
+              "c": "v"
             },
             {
               "schrift": "trenger",
               "lerntext": "trenger",
-              "de": "brauchen"
+              "de": "brauchen",
+              "c": "v"
             },
             {
               "schrift": "ler",
               "lerntext": "ler",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bor",
               "lerntext": "bor",
               "de": "wohnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gråter",
               "lerntext": "gråter",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tenker",
               "lerntext": "tenker",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "blir",
               "lerntext": "blir",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "har",
               "lerntext": "har",
               "de": "haben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spiser",
               "lerntext": "spiser",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "setter",
               "lerntext": "setter",
               "de": "setzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vet",
               "lerntext": "vet",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mister",
               "lerntext": "mister",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -21124,7 +24500,14 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg leter etter et sted hvor man kan [Slot]",
-          "lerntext": "jeg leter etter et sted hvor man kan [Slot]"
+          "lerntext": "jeg leter etter et sted hvor man kan [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "leter": "v",
+            "sted": "n",
+            "man": "p",
+            "kan": "v"
+          }
         },
         "frameDe": "Ich suche einen Ort, wo man [Slot] kann.",
         "pronouns": [],
@@ -21133,86 +24516,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "jobbe",
               "lerntext": "jobbe",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "spille",
               "lerntext": "spille",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "danse",
               "lerntext": "danse",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "sove",
               "lerntext": "sove",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "vente",
               "lerntext": "vente",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "lete",
               "lerntext": "lete",
               "de": "suchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spørre",
               "lerntext": "spørre",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "svare",
               "lerntext": "svare",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "slutte",
               "lerntext": "slutte",
               "de": "aufhören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vise",
               "lerntext": "vise",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "like",
               "lerntext": "like",
               "de": "mögen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gå",
               "lerntext": "gå",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hete",
               "lerntext": "hete",
               "de": "heißen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bytte",
               "lerntext": "bytte",
               "de": "tauschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sitte",
               "lerntext": "sitte",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -21233,7 +24631,8 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
           {
             "schrift": "sted",
             "lerntext": "sted",
-            "de": "Ort"
+            "de": "Ort",
+            "c": "n"
           }
         ],
         "id": "37.3"
@@ -21242,7 +24641,14 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg leter etter et sted hvor man kan [Slot]",
-          "lerntext": "jeg leter etter et sted hvor man kan [Slot]"
+          "lerntext": "jeg leter etter et sted hvor man kan [Slot]",
+          "wortarten": {
+            "jeg": "p",
+            "leter": "v",
+            "sted": "n",
+            "man": "p",
+            "kan": "v"
+          }
         },
         "frameDe": "Ich suche einen Ort, wo man [Slot] kann.",
         "pronouns": [],
@@ -21251,76 +24657,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "lete",
               "lerntext": "lete",
-              "de": "suchen"
+              "de": "suchen",
+              "c": "v"
             },
             {
               "schrift": "spørre",
               "lerntext": "spørre",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "svare",
               "lerntext": "svare",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "spille",
               "lerntext": "spille",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "jobbe",
               "lerntext": "jobbe",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "danse",
               "lerntext": "danse",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sove",
               "lerntext": "sove",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vente",
               "lerntext": "vente",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stenge",
               "lerntext": "stenge",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dø",
               "lerntext": "dø",
               "de": "sterben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "komme",
               "lerntext": "komme",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "kunne",
               "lerntext": "kunne",
               "de": "können",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "reise",
               "lerntext": "reise",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -21355,14 +24774,20 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "i går var jeg på [Slot]",
-          "lerntext": "i går var jeg på [Slot]"
+          "lerntext": "i går var jeg på [Slot]",
+          "wortarten": {
+            "går": "v",
+            "var": "v",
+            "jeg": "p"
+          }
         },
         "frameDe": "Gestern war ich im [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -21370,86 +24795,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "restaurant",
               "lerntext": "restaurant",
-              "de": "Restaurant"
+              "de": "Restaurant",
+              "c": "n"
             },
             {
               "schrift": "hotell",
               "lerntext": "hotell",
-              "de": "Hotel"
+              "de": "Hotel",
+              "c": "n"
             },
             {
               "schrift": "skole",
               "lerntext": "skole",
-              "de": "Schule"
+              "de": "Schule",
+              "c": "n"
             },
             {
               "schrift": "universitet",
               "lerntext": "universitet",
-              "de": "Universität"
+              "de": "Universität",
+              "c": "n"
             },
             {
               "schrift": "sykehus",
               "lerntext": "sykehus",
-              "de": "Krankenhaus"
+              "de": "Krankenhaus",
+              "c": "n"
             },
             {
               "schrift": "stasjon",
               "lerntext": "stasjon",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "flyplass",
               "lerntext": "flyplass",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "by",
               "lerntext": "by",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sted",
               "lerntext": "sted",
               "de": "Ort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tog",
               "lerntext": "tog",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "munn",
               "lerntext": "munn",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sønn",
               "lerntext": "sønn",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "frokost",
               "lerntext": "frokost",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "navn",
               "lerntext": "navn",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sko",
               "lerntext": "sko",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -21463,14 +24903,20 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "i går var jeg på [Slot]",
-          "lerntext": "i går var jeg på [Slot]"
+          "lerntext": "i går var jeg på [Slot]",
+          "wortarten": {
+            "går": "v",
+            "var": "v",
+            "jeg": "p"
+          }
         },
         "frameDe": "Gestern war ich im [Slot].",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -21478,76 +24924,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "stasjon",
               "lerntext": "stasjon",
-              "de": "Bahnhof"
+              "de": "Bahnhof",
+              "c": "n"
             },
             {
               "schrift": "flyplass",
               "lerntext": "flyplass",
-              "de": "Flughafen"
+              "de": "Flughafen",
+              "c": "n"
             },
             {
               "schrift": "by",
               "lerntext": "by",
-              "de": "Stadt"
+              "de": "Stadt",
+              "c": "n"
             },
             {
               "schrift": "restaurant",
               "lerntext": "restaurant",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hotell",
               "lerntext": "hotell",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "universitet",
               "lerntext": "universitet",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "skole",
               "lerntext": "skole",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sykehus",
               "lerntext": "sykehus",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sted",
               "lerntext": "sted",
               "de": "Ort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ferie",
               "lerntext": "ferie",
               "de": "Urlaub",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "grønnsak",
               "lerntext": "grønnsak",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hav",
               "lerntext": "hav",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "regn",
               "lerntext": "regn",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -21561,14 +25020,22 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg vil [Slot] fordi jeg har tid",
-          "lerntext": "jeg vil [Slot] fordi jeg har tid"
+          "lerntext": "jeg vil [Slot] fordi jeg har tid",
+          "wortarten": {
+            "jeg": "p",
+            "vil": "v",
+            "fordi": "k",
+            "har": "v",
+            "tid": "n"
+          }
         },
         "frameDe": "Ich möchte [Slot], weil ich Zeit habe.",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -21576,86 +25043,101 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "vinne",
               "lerntext": "vinne",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "glemme",
               "lerntext": "glemme",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "forstå",
               "lerntext": "forstå",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "møte",
               "lerntext": "møte",
-              "de": "treffen"
+              "de": "treffen",
+              "c": "v"
             },
             {
               "schrift": "gi",
               "lerntext": "gi",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "si",
               "lerntext": "si",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "snakke",
               "lerntext": "snakke",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "åpne",
               "lerntext": "åpne",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ville",
               "lerntext": "ville",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "få",
               "lerntext": "få",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "måtte",
               "lerntext": "måtte",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "vaske",
               "lerntext": "vaske",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "være",
               "lerntext": "være",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drikke",
               "lerntext": "drikke",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "flytte",
               "lerntext": "flytte",
               "de": "umziehen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -21669,14 +25151,22 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "jeg vil [Slot] fordi jeg har tid",
-          "lerntext": "jeg vil [Slot] fordi jeg har tid"
+          "lerntext": "jeg vil [Slot] fordi jeg har tid",
+          "wortarten": {
+            "jeg": "p",
+            "vil": "v",
+            "fordi": "k",
+            "har": "v",
+            "tid": "n"
+          }
         },
         "frameDe": "Ich möchte [Slot], weil ich Zeit habe.",
         "pronouns": [
           {
             "schrift": "jeg",
             "lerntext": "jeg",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -21684,76 +25174,89 @@ export const NORWEGIAN_COURSE: CourseModuleData[] =
             {
               "schrift": "si",
               "lerntext": "si",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "snakke",
               "lerntext": "snakke",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "åpne",
               "lerntext": "åpne",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "vinne",
               "lerntext": "vinne",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "glemme",
               "lerntext": "glemme",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "møte",
               "lerntext": "møte",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "forstå",
               "lerntext": "forstå",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "gi",
               "lerntext": "gi",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stå",
               "lerntext": "stå",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dra",
               "lerntext": "dra",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bruke",
               "lerntext": "bruke",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ringe",
               "lerntext": "ringe",
               "de": "anrufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "elske",
               "lerntext": "elske",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             }
           ]

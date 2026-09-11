@@ -42,6 +42,8 @@ export function CourseReviewScreen({ modus }: { modus?: Kartenart }) {
               lerntext: k.lerntext,
               lektionId: k.lektionId,
               rahmenLerntext: k.rahmenLerntext,
+              deutsch: k.deutsch,
+              wortarten: k.wortarten,
             }
       ),
     [faellig.faellig]

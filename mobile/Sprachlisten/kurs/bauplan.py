@@ -20,6 +20,7 @@ Aufruf:
     python bauplan.py sv          # pruefen, nichts schreiben
     python bauplan.py sv --schreib
     python bauplan.py alle --schreib
+    python bauplan.py alle --nur-wortarten   # nur Farben eintragen, Inhalt bleibt
 """
 import importlib.util
 from collections import Counter
@@ -38,6 +39,21 @@ if hasattr(sys.stdout, "reconfigure"):
 HIER = os.path.dirname(os.path.abspath(__file__))
 SPRACHLISTEN = os.path.dirname(HIER)
 ZIEL = os.path.join(os.path.dirname(SPRACHLISTEN), "src", "data", "courses")
+
+
+# Die Regeln fuer die Wortart-Farben stehen EINMAL, in wortarten_auto.py
+# (Personalpronomen immer lila, Doppelrollen nie, Akzente je Sprache). Der
+# Kurs benutzt dieselben, damit ein Satz im gefuehrten Lernen nicht anders
+# gefaerbt ist als derselbe Satz im Speed-Run (2026-09-11).
+def _lade_wortart_regeln():
+    pfad = os.path.join(SPRACHLISTEN, "uebersetzen", "wortarten_auto.py")
+    spec = importlib.util.spec_from_file_location("wortarten_auto", pfad)
+    modul = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(modul)
+    return modul
+
+
+WA = _lade_wortart_regeln()
 
 MAX_NEU = 5          # R2
 MIN_RECYCLING = 10   # R3, ab Modul 2 - siehe pruefe() fuer die Begruendung
@@ -214,6 +230,15 @@ class Wortschatz:
             if w and w not in self.nach_wort:
                 self.nach_wort[w] = z
         self.deutsch_index = self._baue_deutsch_index()
+        # Wortart-Farben (2026-09-11) - siehe wortart_tag() und
+        # tag_fuer_token().
+        self.akzente_egal = self.sprache in WA.AKZENTE_EGAL
+        self.gesperrt = WA.NICHT_TAGGEN.get(self.sprache, set())
+        personal = WA.PERSONAL.get(self.sprache, [])
+        self.personal_exakt = {WA.normalisiere(p) for p in personal}
+        self.personal_egal = {WA.normalisiere(p, True) for p in personal}
+        self.lexikon_exakt, self.lexikon_egal = self._baue_lexikon()
+        self.flaechen_index = self._baue_flaechen_index()
 
     def _baue_deutsch_index(self):
         """Deutsche Bedeutung -> Eintrag.
@@ -245,6 +270,118 @@ class Wortschatz:
                 if teil:
                     idx.setdefault(teil, []).append(z)
         return idx
+
+    def _baue_lexikon(self):
+        """Flaeche -> Farb-Kuerzel, fuer die FESTEN Woerter eines Rahmens.
+
+        Wie baue_lexikon() in wortarten_auto.py, mit einem Unterschied: auch
+        die gebeugten Formen aus der forms-Spalte zaehlen. Ein Rahmen traegt
+        "sono", nicht "essere" - ohne die Formen bliebe genau das Wort
+        ungefaerbt, an dem der Satz haengt. Was unter zwei Wortarten steht,
+        faellt heraus: eine falsche Farbe ist schlechter als keine.
+
+        Zwei Fassungen, exakt (mit Akzenten) und akzentfrei. Die akzentfreie
+        ist nur der Rueckfall fuer Russisch und Chinesisch (AKZENTE_EGAL) -
+        dort traegt der handgeschriebene Rahmen die Betonung bzw. den Ton
+        nicht immer so wie die Vokabeltabelle.
+        """
+        kat_spalte = "wortart" if self.sprache == "zh" else "category"
+        wort_spalte = self.lautschrift or self.spalte
+        exakt, egal = {}, {}
+        for z in self.zeilen:
+            tag = WA.NACH_TAG.get((z.get(kat_spalte) or "").strip())
+            if not tag:
+                continue
+            flaechen = [z.get(wort_spalte)]
+            formen = z.get("forms")
+            # Gebeugte Formen nur ohne eigene Schrift - die Lautschrift-
+            # Spalte kennt ohnehin nur die Grundform (siehe wort()).
+            if not self.lautschrift and isinstance(formen, dict):
+                flaechen += [f for f in formen.values() if isinstance(f, str)]
+            for flaeche in flaechen:
+                for teil in str(flaeche or "").split("/"):
+                    k = WA.normalisiere(teil)
+                    if k:
+                        exakt.setdefault(k, set()).add(tag)
+                    k = WA.normalisiere(teil, True)
+                    if k:
+                        egal.setdefault(k, set()).add(tag)
+
+        def eindeutig(d):
+            return {k: next(iter(v)) for k, v in d.items() if len(v) == 1}
+        return eindeutig(exakt), eindeutig(egal)
+
+    def _ist_personal(self, text):
+        return (WA.normalisiere(text) in self.personal_exakt
+                or (self.akzente_egal and WA.normalisiere(text, True) in self.personal_egal))
+
+    def wortart_tag(self, schluessel, lerntext):
+        """Farb-Kuerzel (v/n/a/p/k) eines Kurs-Worts, oder None.
+
+        Anders als bei einem losen Satz-Token ist hier bekannt, WELCHER
+        Vokabeleintrag gemeint ist - die Wortart kommt deshalb direkt aus der
+        Zeile, ohne Mehrdeutigkeits-Sperre. Nur Personalpronomen schlagen
+        sie, wie in wortarten_auto.py (Simons Vorgabe: immer lila).
+        """
+        if self._ist_personal(lerntext):
+            return "p"
+        return WA.NACH_TAG.get(self.wortart(schluessel))
+
+    def tag_fuer_token(self, token):
+        """Farb-Kuerzel eines FESTEN Rahmenworts, nach den Regeln aus
+        wortarten_auto.tagge(): Doppelrollen nie, Personalpronomen immer,
+        sonst nur ein eindeutiger Treffer in der Vokabeltabelle."""
+        exakt = WA.normalisiere(token)
+        if not exakt or exakt in self.gesperrt:
+            return None
+        if self._ist_personal(token):
+            return "p"
+        if exakt in self.lexikon_exakt:
+            return self.lexikon_exakt[exakt]
+        if self.akzente_egal:
+            return self.lexikon_egal.get(WA.normalisiere(token, True))
+        return None
+
+    def _baue_flaechen_index(self):
+        """Schrift, wie sie in einer Kursdatei steht -> Vokabelzeilen.
+
+        Die Kursdatei kennt je Wort nur Schrift, Lerntext und Bedeutung,
+        nicht den Vokabelschluessel. Die Schrift ist entweder der Schluessel
+        selbst oder eine gebeugte Form daraus (siehe wort()) - beides steht
+        hier.
+        """
+        idx = {}
+        for z in self.zeilen:
+            schluessel = (z.get(self.spalte) or "").strip()
+            if not schluessel:
+                continue
+            flaechen = {schluessel}
+            formen = z.get("forms")
+            if isinstance(formen, dict):
+                flaechen |= {f.strip() for f in formen.values() if isinstance(f, str)}
+            for f in flaechen:
+                idx.setdefault(f, []).append(z)
+        return idx
+
+    def tag_fuer_kurswort(self, w):
+        """Farb-Kuerzel fuer ein Wort aus einer SCHON GEBAUTEN Kursdatei.
+
+        Gesucht wird ueber die Schrift; passen mehrere Zeilen (dieselbe Form
+        zweier Verben), entscheidet die Bedeutung. Bleibt es danach
+        mehrdeutig, bleibt das Wort ungefaerbt - eine falsche Farbe ist
+        schlechter als keine. Liefert dasselbe wie wortart_tag() beim
+        Neubau, solange der Eintrag eindeutig ist.
+        """
+        treffer = self.flaechen_index.get(w["schrift"].strip(), [])
+        if len(treffer) > 1:
+            gleiche_bedeutung = [z for z in treffer
+                                 if kurzbedeutung(z.get("german")) == w.get("de")]
+            treffer = gleiche_bedeutung or treffer
+        if not treffer:
+            return "p" if self._ist_personal(w["lerntext"]) else None
+        tags = {self.wortart_tag((z.get(self.spalte) or "").strip(), w["lerntext"])
+                for z in treffer}
+        return tags.pop() if len(tags) == 1 else None
 
     def nach_deutsch(self, begriff, bevorzugt=None):
         """Findet das Zielwort zu einer deutschen Bedeutung, oder None.
@@ -334,7 +471,14 @@ class Wortschatz:
         lern = schrift
         if self.lautschrift:
             lern = (z.get(self.lautschrift) or schrift).strip()
-        return {"schrift": schrift, "lerntext": lern, "de": kurzbedeutung(z.get("german"))}
+        d = {"schrift": schrift, "lerntext": lern, "de": kurzbedeutung(z.get("german"))}
+        # Wortart fuer die Farben (2026-09-11). Nur geschrieben, wenn es eine
+        # gibt, die gefaerbt wird - ein `"c": null` an jedem Adverb blaehte
+        # die Kursdateien auf, ohne etwas zu sagen.
+        c = self.wortart_tag(schluessel, lern)
+        if c:
+            d["c"] = c
+        return d
 
     def wortart(self, schluessel):
         """Wortart eines Slot-Worts - fuer die Wiederverwendung (R3).
@@ -1361,11 +1505,107 @@ export const {lehrplan.KONSTANTE}: CourseModuleData[] =
 
 
 # ---------------------------------------------------------------------------
+def ergaenze_wortarten(module, wortschatz):
+    """Traegt je Rahmen die Wortarten seiner FESTEN Woerter ein (2026-09-11).
+
+    `frame.wortarten` bildet ein Wort, wie es im Lerntext steht, auf sein
+    Farb-Kuerzel ab. Die App zerlegt den Rahmen an Leerzeichen und schlaegt
+    jedes Stueck hier nach; die Luecke bekommt die Farbe ihres Slot-Worts
+    (`c`, siehe Wortschatz.wort). Schluessel ist das Wort WOERTLICH, mit
+    Satzzeichen und Akzenten - dann muss die App nichts normalisieren, und
+    die Regeln dafuer stehen nur an einer Stelle.
+
+    Enthalten sind auch die Pronomen-Alternativen ("wǒ / nǐ / tā"), obwohl
+    die App nur die erste zeigt - die Tabelle darf mehr wissen als gebraucht.
+
+    Ein Nachtrag statt einer Aenderung in baue(): Rahmen entstehen dort an
+    drei Stellen (Gliederung, Auffangmodul, Wiederholung), und eine vierte
+    kaeme leicht ohne Farben dazu.
+
+    Liefert (feste Woerter, davon gefaerbt, Slot-Woerter, davon gefaerbt)
+    fuer den Bericht.
+    """
+    fest = fest_gefaerbt = 0
+    for m in module:
+        for l in m["lessons"]:
+            laut = l["frame"].get("lerntext") or ""
+            karte = {}
+            for tok in laut.split():
+                if tok == "/" or re.search(r"\[[^\]]*\]", tok):
+                    continue
+                fest += 1
+                c = wortschatz.tag_fuer_token(tok)
+                if c:
+                    fest_gefaerbt += 1
+                    karte[tok] = c
+            if karte:
+                l["frame"]["wortarten"] = karte
+    woerter = [w for m in module for l in m["lessons"] for g in l["slotGroups"] for w in g]
+    return fest, fest_gefaerbt, len(woerter), sum(1 for w in woerter if w.get("c"))
+
+
+def lies_ts(lehrplan):
+    """Die bestehende Kursdatei als Datenstruktur - Gegenstueck zu schreibe_ts."""
+    with open(os.path.join(ZIEL, lehrplan.DATEINAME), encoding="utf-8") as f:
+        text = f.read()
+    return json.loads(text[text.index("=\n") + 2:].rstrip().rstrip(";"))
+
+
+def mit_wortart(wort, c):
+    """`c` direkt hinter `de` - dieselbe Reihenfolge, die wort() beim Neubau
+    erzeugt. Sonst sortierte der naechste Neubau jede Zeile um, und im Diff
+    stuende ein Umbau, wo keiner war."""
+    aus = {}
+    for k, v in wort.items():
+        if k == "c":
+            continue
+        aus[k] = v
+        if k == "de" and c:
+            aus["c"] = c
+    return aus
+
+
+def nur_wortarten(sprache):
+    """Farben in eine SCHON GEBAUTE Kursdatei eintragen, sonst nichts.
+
+    Warum nicht einfach neu bauen (2026-09-11): der Neubau liest die
+    Vokabeltabellen von HEUTE. Haben die sich seit dem letzten Bau
+    geaendert, kaeme ein anderer Kurs heraus - andere Woerter, womoeglich
+    andere Lektionsnummern, und an den Nummern haengt der Fortschritt jedes
+    Nutzers (`course-rahmen:<id>`). Am 2026-09-11 scheiterte der Neubau
+    ausserdem fuer sv/it/ru/vi/pl an Pruefungen, die mit den Farben nichts
+    zu tun haben (`möte` ohne Verbform, `domani`/`tôi` nie eingefuehrt).
+
+    Dieser Weg liest die bestehende Datei und fuegt nur `c` und
+    `frame.wortarten` hinzu. Der Inhalt bleibt Zeichen fuer Zeichen gleich.
+    """
+    lehrplan = lade_lehrplan(sprache)
+    wortschatz = Wortschatz(lehrplan)
+    module = lies_ts(lehrplan)
+    for m in module:
+        for l in m["lessons"]:
+            for feld in ("newFrameWords", "pronouns"):
+                l[feld] = [mit_wortart(w, wortschatz.tag_fuer_kurswort(w))
+                           for w in l.get(feld, [])]
+            l["slotGroups"] = [[mit_wortart(w, wortschatz.tag_fuer_kurswort(w)) for w in g]
+                               for g in l.get("slotGroups", [])]
+    fest, fest_c, slot, slot_c = ergaenze_wortarten(module, wortschatz)
+    anteil = lambda a, b: f"{100 * a / b:.0f}%" if b else "-"
+    print(f"{sprache}: Slot-Woerter {slot_c}/{slot} ({anteil(slot_c, slot)}), "
+          f"feste Rahmenwoerter {fest_c}/{fest} ({anteil(fest_c, fest)})")
+    schreibe_ts(lehrplan, module)
+    return True
+
+
 def lauf(sprache, schreiben):
     lehrplan = lade_lehrplan(sprache)
     wortschatz = Wortschatz(lehrplan)
     module, bekannt, begegnungen, fehler = baue(lehrplan, wortschatz)
     ok = pruefe(lehrplan, wortschatz, module, bekannt, begegnungen, fehler)
+    fest, fest_c, slot, slot_c = ergaenze_wortarten(module, wortschatz)
+    anteil = lambda a, b: f"{100 * a / b:.0f}%" if b else "-"
+    print(f"  Einfaerbung: Slot-Woerter {slot_c}/{slot} ({anteil(slot_c, slot)}), "
+          f"feste Rahmenwoerter {fest_c}/{fest} ({anteil(fest_c, fest)})")
     if ok and schreiben:
         schreibe_ts(lehrplan, module)
     print()
@@ -1378,6 +1618,9 @@ def main():
     ziel = sys.argv[1]
     schreiben = "--schreib" in sys.argv
     sprachen = ["sv", "en", "zh", "es", "fr", "it", "no", "ru", "vi", "pl"] if ziel == "alle" else [ziel]
+    if "--nur-wortarten" in sys.argv:
+        alles_ok = all([nur_wortarten(s) for s in sprachen])
+        sys.exit(0 if alles_ok else 1)
     alles_ok = all([lauf(s, schreiben) for s in sprachen])
     sys.exit(0 if alles_ok else 1)
 

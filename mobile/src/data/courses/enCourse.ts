@@ -18,24 +18,31 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I am [Slot]",
-          "lerntext": "I am [Slot]"
+          "lerntext": "I am [Slot]",
+          "wortarten": {
+            "I": "p",
+            "am": "v"
+          }
         },
         "frameDe": "Ich bin [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "me",
             "lerntext": "me",
-            "de": "mir"
+            "de": "mir",
+            "c": "p"
           },
           {
             "schrift": "my",
             "lerntext": "my",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -43,27 +50,32 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "tired",
               "lerntext": "tired",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "happy",
               "lerntext": "happy",
-              "de": "glücklich"
+              "de": "glücklich",
+              "c": "a"
             },
             {
               "schrift": "sad",
               "lerntext": "sad",
-              "de": "traurig"
+              "de": "traurig",
+              "c": "a"
             },
             {
               "schrift": "angry",
               "lerntext": "angry",
-              "de": "wütend"
+              "de": "wütend",
+              "c": "a"
             },
             {
               "schrift": "hungry",
               "lerntext": "hungry",
-              "de": "hungrig"
+              "de": "hungrig",
+              "c": "a"
             }
           ]
         ],
@@ -73,7 +85,8 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "be",
             "lerntext": "be",
-            "de": "sein"
+            "de": "sein",
+            "c": "v"
           }
         ],
         "id": "1.1"
@@ -82,24 +95,31 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I am [Slot]",
-          "lerntext": "I am [Slot]"
+          "lerntext": "I am [Slot]",
+          "wortarten": {
+            "I": "p",
+            "am": "v"
+          }
         },
         "frameDe": "Ich bin [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "me",
             "lerntext": "me",
-            "de": "mir"
+            "de": "mir",
+            "c": "p"
           },
           {
             "schrift": "my",
             "lerntext": "my",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -107,27 +127,32 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "thirsty",
               "lerntext": "thirsty",
-              "de": "durstig"
+              "de": "durstig",
+              "c": "a"
             },
             {
               "schrift": "ill",
               "lerntext": "ill",
-              "de": "krank"
+              "de": "krank",
+              "c": "a"
             },
             {
               "schrift": "healthy",
               "lerntext": "healthy",
-              "de": "gesund"
+              "de": "gesund",
+              "c": "a"
             },
             {
               "schrift": "ready",
               "lerntext": "ready",
-              "de": "bereit"
+              "de": "bereit",
+              "c": "a"
             },
             {
               "schrift": "busy",
               "lerntext": "busy",
-              "de": "beschäftigt"
+              "de": "beschäftigt",
+              "c": "a"
             }
           ]
         ],
@@ -140,29 +165,37 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "you are [Slot]",
-          "lerntext": "you are [Slot]"
+          "lerntext": "you are [Slot]",
+          "wortarten": {
+            "you": "p",
+            "are": "v"
+          }
         },
         "frameDe": "Du bist [Slot].",
         "pronouns": [
           {
             "schrift": "you",
             "lerntext": "you",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "they",
             "lerntext": "they",
-            "de": "sie (Mehrzahl)"
+            "de": "sie (Mehrzahl)",
+            "c": "p"
           },
           {
             "schrift": "your",
             "lerntext": "your",
-            "de": "dein"
+            "de": "dein",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -170,27 +203,32 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "nice",
               "lerntext": "nice",
-              "de": "nett"
+              "de": "nett",
+              "c": "a"
             },
             {
               "schrift": "kind",
               "lerntext": "kind",
-              "de": "freundlich"
+              "de": "freundlich",
+              "c": "a"
             },
             {
               "schrift": "strong",
               "lerntext": "strong",
-              "de": "stark"
+              "de": "stark",
+              "c": "a"
             },
             {
               "schrift": "weak",
               "lerntext": "weak",
-              "de": "schwach"
+              "de": "schwach",
+              "c": "a"
             },
             {
               "schrift": "funny",
               "lerntext": "funny",
-              "de": "lustig"
+              "de": "lustig",
+              "c": "a"
             }
           ]
         ],
@@ -203,29 +241,37 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "you are [Slot]",
-          "lerntext": "you are [Slot]"
+          "lerntext": "you are [Slot]",
+          "wortarten": {
+            "you": "p",
+            "are": "v"
+          }
         },
         "frameDe": "Du bist [Slot].",
         "pronouns": [
           {
             "schrift": "you",
             "lerntext": "you",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "they",
             "lerntext": "they",
-            "de": "sie (Mehrzahl)"
+            "de": "sie (Mehrzahl)",
+            "c": "p"
           },
           {
             "schrift": "your",
             "lerntext": "your",
-            "de": "dein"
+            "de": "dein",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -233,27 +279,32 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "young",
               "lerntext": "young",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "old",
               "lerntext": "old",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "beautiful",
               "lerntext": "beautiful",
-              "de": "schön"
+              "de": "schön",
+              "c": "a"
             },
             {
               "schrift": "pretty",
               "lerntext": "pretty",
-              "de": "hübsch"
+              "de": "hübsch",
+              "c": "a"
             },
             {
               "schrift": "ugly",
               "lerntext": "ugly",
-              "de": "hässlich"
+              "de": "hässlich",
+              "c": "a"
             }
           ]
         ],
@@ -266,34 +317,43 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "he is [Slot]",
-          "lerntext": "he is [Slot]"
+          "lerntext": "he is [Slot]",
+          "wortarten": {
+            "he": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Er ist [Slot].",
         "pronouns": [
           {
             "schrift": "he",
             "lerntext": "he",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "she",
             "lerntext": "she",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "it",
             "lerntext": "it",
-            "de": "es"
+            "de": "es",
+            "c": "p"
           },
           {
             "schrift": "his",
             "lerntext": "his",
-            "de": "sein"
+            "de": "sein",
+            "c": "p"
           },
           {
             "schrift": "her",
             "lerntext": "her",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -301,27 +361,32 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "student",
               "lerntext": "student",
-              "de": "Student"
+              "de": "Student",
+              "c": "n"
             },
             {
               "schrift": "teacher",
               "lerntext": "teacher",
-              "de": "Lehrer"
+              "de": "Lehrer",
+              "c": "n"
             },
             {
               "schrift": "doctor",
               "lerntext": "doctor",
-              "de": "Arzt"
+              "de": "Arzt",
+              "c": "n"
             },
             {
               "schrift": "friend",
               "lerntext": "friend",
-              "de": "Freund"
+              "de": "Freund",
+              "c": "n"
             },
             {
               "schrift": "colleague",
               "lerntext": "colleague",
-              "de": "Kollege"
+              "de": "Kollege",
+              "c": "n"
             }
           ]
         ],
@@ -334,34 +399,43 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "he is [Slot]",
-          "lerntext": "he is [Slot]"
+          "lerntext": "he is [Slot]",
+          "wortarten": {
+            "he": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Er ist [Slot].",
         "pronouns": [
           {
             "schrift": "he",
             "lerntext": "he",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "she",
             "lerntext": "she",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           },
           {
             "schrift": "it",
             "lerntext": "it",
-            "de": "es"
+            "de": "es",
+            "c": "p"
           },
           {
             "schrift": "his",
             "lerntext": "his",
-            "de": "sein"
+            "de": "sein",
+            "c": "p"
           },
           {
             "schrift": "her",
             "lerntext": "her",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -369,27 +443,32 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "man",
               "lerntext": "man",
-              "de": "Mann"
+              "de": "Mann",
+              "c": "n"
             },
             {
               "schrift": "woman",
               "lerntext": "woman",
-              "de": "Frau"
+              "de": "Frau",
+              "c": "n"
             },
             {
               "schrift": "boy",
               "lerntext": "boy",
-              "de": "Junge"
+              "de": "Junge",
+              "c": "n"
             },
             {
               "schrift": "girl",
               "lerntext": "girl",
-              "de": "Mädchen"
+              "de": "Mädchen",
+              "c": "n"
             },
             {
               "schrift": "child",
               "lerntext": "child",
-              "de": "Kind"
+              "de": "Kind",
+              "c": "n"
             }
           ]
         ],
@@ -402,24 +481,31 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I am [Slot]",
-          "lerntext": "I am [Slot]"
+          "lerntext": "I am [Slot]",
+          "wortarten": {
+            "I": "p",
+            "am": "v"
+          }
         },
         "frameDe": "Ich bin [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "me",
             "lerntext": "me",
-            "de": "mir"
+            "de": "mir",
+            "c": "p"
           },
           {
             "schrift": "my",
             "lerntext": "my",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -428,60 +514,70 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "tired",
               "lerntext": "tired",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "happy",
               "lerntext": "happy",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sad",
               "lerntext": "sad",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "angry",
               "lerntext": "angry",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "hungry",
               "lerntext": "hungry",
               "de": "hungrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "thirsty",
               "lerntext": "thirsty",
               "de": "durstig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ill",
               "lerntext": "ill",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "healthy",
               "lerntext": "healthy",
               "de": "gesund",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ready",
               "lerntext": "ready",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "busy",
               "lerntext": "busy",
               "de": "beschäftigt",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -495,29 +591,37 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "you are [Slot]",
-          "lerntext": "you are [Slot]"
+          "lerntext": "you are [Slot]",
+          "wortarten": {
+            "you": "p",
+            "are": "v"
+          }
         },
         "frameDe": "Du bist [Slot].",
         "pronouns": [
           {
             "schrift": "you",
             "lerntext": "you",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "they",
             "lerntext": "they",
-            "de": "sie (Mehrzahl)"
+            "de": "sie (Mehrzahl)",
+            "c": "p"
           },
           {
             "schrift": "your",
             "lerntext": "your",
-            "de": "dein"
+            "de": "dein",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -526,60 +630,70 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "nice",
               "lerntext": "nice",
               "de": "nett",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "kind",
               "lerntext": "kind",
               "de": "freundlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "strong",
               "lerntext": "strong",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "weak",
               "lerntext": "weak",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "funny",
               "lerntext": "funny",
               "de": "lustig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "young",
               "lerntext": "young",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "old",
               "lerntext": "old",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "beautiful",
               "lerntext": "beautiful",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pretty",
               "lerntext": "pretty",
               "de": "hübsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ugly",
               "lerntext": "ugly",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -593,24 +707,31 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I am [Slot]",
-          "lerntext": "I am [Slot]"
+          "lerntext": "I am [Slot]",
+          "wortarten": {
+            "I": "p",
+            "am": "v"
+          }
         },
         "frameDe": "Ich bin [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "me",
             "lerntext": "me",
-            "de": "mir"
+            "de": "mir",
+            "c": "p"
           },
           {
             "schrift": "my",
             "lerntext": "my",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -619,60 +740,70 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "tired",
               "lerntext": "tired",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "happy",
               "lerntext": "happy",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sad",
               "lerntext": "sad",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "angry",
               "lerntext": "angry",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "hungry",
               "lerntext": "hungry",
               "de": "hungrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "thirsty",
               "lerntext": "thirsty",
               "de": "durstig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ill",
               "lerntext": "ill",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "healthy",
               "lerntext": "healthy",
               "de": "gesund",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ready",
               "lerntext": "ready",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "busy",
               "lerntext": "busy",
               "de": "beschäftigt",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -686,29 +817,37 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "you are [Slot]",
-          "lerntext": "you are [Slot]"
+          "lerntext": "you are [Slot]",
+          "wortarten": {
+            "you": "p",
+            "are": "v"
+          }
         },
         "frameDe": "Du bist [Slot].",
         "pronouns": [
           {
             "schrift": "you",
             "lerntext": "you",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "they",
             "lerntext": "they",
-            "de": "sie (Mehrzahl)"
+            "de": "sie (Mehrzahl)",
+            "c": "p"
           },
           {
             "schrift": "your",
             "lerntext": "your",
-            "de": "dein"
+            "de": "dein",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -717,60 +856,70 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "nice",
               "lerntext": "nice",
               "de": "nett",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "kind",
               "lerntext": "kind",
               "de": "freundlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "strong",
               "lerntext": "strong",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "weak",
               "lerntext": "weak",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "funny",
               "lerntext": "funny",
               "de": "lustig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "young",
               "lerntext": "young",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "old",
               "lerntext": "old",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "beautiful",
               "lerntext": "beautiful",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pretty",
               "lerntext": "pretty",
               "de": "hübsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ugly",
               "lerntext": "ugly",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -805,24 +954,30 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "this is a [Slot]",
-          "lerntext": "this is a [Slot]"
+          "lerntext": "this is a [Slot]",
+          "wortarten": {
+            "is": "v"
+          }
         },
         "frameDe": "Das ist eine [Slot].",
         "pronouns": [
           {
             "schrift": "this",
             "lerntext": "this",
-            "de": "dieser"
+            "de": "dieser",
+            "c": "p"
           },
           {
             "schrift": "these",
             "lerntext": "these",
-            "de": "diese (Mehrzahl)"
+            "de": "diese (Mehrzahl)",
+            "c": "p"
           },
           {
             "schrift": "those",
             "lerntext": "those",
-            "de": "jene"
+            "de": "jene",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -830,27 +985,32 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "door",
               "lerntext": "door",
-              "de": "Tür"
+              "de": "Tür",
+              "c": "n"
             },
             {
               "schrift": "bag",
               "lerntext": "bag",
-              "de": "Tasche"
+              "de": "Tasche",
+              "c": "n"
             },
             {
               "schrift": "card",
               "lerntext": "card",
-              "de": "Karte"
+              "de": "Karte",
+              "c": "n"
             },
             {
               "schrift": "bottle",
               "lerntext": "bottle",
-              "de": "Flasche"
+              "de": "Flasche",
+              "c": "n"
             },
             {
               "schrift": "woman",
               "lerntext": "woman",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -871,12 +1031,14 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "that",
             "lerntext": "that",
-            "de": "dass"
+            "de": "dass",
+            "c": "k"
           },
           {
             "schrift": "this",
             "lerntext": "this",
-            "de": "dieser"
+            "de": "dieser",
+            "c": "p"
           }
         ],
         "id": "2.1"
@@ -885,24 +1047,30 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "this is a [Slot]",
-          "lerntext": "this is a [Slot]"
+          "lerntext": "this is a [Slot]",
+          "wortarten": {
+            "is": "v"
+          }
         },
         "frameDe": "Das ist ein [Slot].",
         "pronouns": [
           {
             "schrift": "this",
             "lerntext": "this",
-            "de": "dieser"
+            "de": "dieser",
+            "c": "p"
           },
           {
             "schrift": "these",
             "lerntext": "these",
-            "de": "diese (Mehrzahl)"
+            "de": "diese (Mehrzahl)",
+            "c": "p"
           },
           {
             "schrift": "those",
             "lerntext": "those",
-            "de": "jene"
+            "de": "jene",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -910,53 +1078,62 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "table",
               "lerntext": "table",
-              "de": "Tisch"
+              "de": "Tisch",
+              "c": "n"
             },
             {
               "schrift": "key",
               "lerntext": "key",
-              "de": "Schlüssel"
+              "de": "Schlüssel",
+              "c": "n"
             },
             {
               "schrift": "doctor",
               "lerntext": "doctor",
               "de": "Arzt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "colleague",
               "lerntext": "colleague",
               "de": "Kollege",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "boy",
               "lerntext": "boy",
               "de": "Junge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "friend",
               "lerntext": "friend",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "teacher",
               "lerntext": "teacher",
               "de": "Lehrer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "man",
               "lerntext": "man",
               "de": "Mann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "student",
               "lerntext": "student",
               "de": "Student",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -970,24 +1147,30 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "this is a [Slot]",
-          "lerntext": "this is a [Slot]"
+          "lerntext": "this is a [Slot]",
+          "wortarten": {
+            "is": "v"
+          }
         },
         "frameDe": "Das ist ein [Slot].",
         "pronouns": [
           {
             "schrift": "this",
             "lerntext": "this",
-            "de": "dieser"
+            "de": "dieser",
+            "c": "p"
           },
           {
             "schrift": "these",
             "lerntext": "these",
-            "de": "diese (Mehrzahl)"
+            "de": "diese (Mehrzahl)",
+            "c": "p"
           },
           {
             "schrift": "those",
             "lerntext": "those",
-            "de": "jene"
+            "de": "jene",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -995,33 +1178,39 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "book",
               "lerntext": "book",
-              "de": "Buch"
+              "de": "Buch",
+              "c": "n"
             },
             {
               "schrift": "bed",
               "lerntext": "bed",
-              "de": "Bett"
+              "de": "Bett",
+              "c": "n"
             },
             {
               "schrift": "window",
               "lerntext": "window",
-              "de": "Fenster"
+              "de": "Fenster",
+              "c": "n"
             },
             {
               "schrift": "phone",
               "lerntext": "phone",
-              "de": "Handy"
+              "de": "Handy",
+              "c": "n"
             },
             {
               "schrift": "child",
               "lerntext": "child",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "girl",
               "lerntext": "girl",
               "de": "Mädchen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1035,14 +1224,18 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "this is an [Slot]",
-          "lerntext": "this is an [Slot]"
+          "lerntext": "this is an [Slot]",
+          "wortarten": {
+            "is": "v"
+          }
         },
         "frameDe": "Das ist eine [Slot].",
         "pronouns": [
           {
             "schrift": "it",
             "lerntext": "it",
-            "de": "es"
+            "de": "es",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1050,46 +1243,54 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "exam",
               "lerntext": "exam",
-              "de": "Prüfung"
+              "de": "Prüfung",
+              "c": "n"
             },
             {
               "schrift": "answer",
               "lerntext": "answer",
-              "de": "Antwort"
+              "de": "Antwort",
+              "c": "n"
             },
             {
               "schrift": "idea",
               "lerntext": "idea",
-              "de": "Idee"
+              "de": "Idee",
+              "c": "n"
             },
             {
               "schrift": "door",
               "lerntext": "door",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "card",
               "lerntext": "card",
               "de": "Karte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bottle",
               "lerntext": "bottle",
               "de": "Flasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bag",
               "lerntext": "bag",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "woman",
               "lerntext": "woman",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1109,14 +1310,18 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "this is an [Slot]",
-          "lerntext": "this is an [Slot]"
+          "lerntext": "this is an [Slot]",
+          "wortarten": {
+            "is": "v"
+          }
         },
         "frameDe": "Das ist ein [Slot].",
         "pronouns": [
           {
             "schrift": "it",
             "lerntext": "it",
-            "de": "es"
+            "de": "es",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1124,47 +1329,55 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "example",
               "lerntext": "example",
-              "de": "Beispiel"
+              "de": "Beispiel",
+              "c": "n"
             },
             {
               "schrift": "eye",
               "lerntext": "eye",
-              "de": "Auge"
+              "de": "Auge",
+              "c": "n"
             },
             {
               "schrift": "window",
               "lerntext": "window",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "book",
               "lerntext": "book",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bed",
               "lerntext": "bed",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "phone",
               "lerntext": "phone",
               "de": "Handy",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "child",
               "lerntext": "child",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "girl",
               "lerntext": "girl",
               "de": "Mädchen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1178,24 +1391,31 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I have a [Slot]",
-          "lerntext": "I have a [Slot]"
+          "lerntext": "I have a [Slot]",
+          "wortarten": {
+            "I": "p",
+            "have": "v"
+          }
         },
         "frameDe": "Ich habe eine [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "they",
             "lerntext": "they",
-            "de": "sie (Mehrzahl)"
+            "de": "sie (Mehrzahl)",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1203,74 +1423,87 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "family",
               "lerntext": "family",
-              "de": "Familie"
+              "de": "Familie",
+              "c": "n"
             },
             {
               "schrift": "flat",
               "lerntext": "flat",
-              "de": "Wohnung"
+              "de": "Wohnung",
+              "c": "n"
             },
             {
               "schrift": "job",
               "lerntext": "job",
-              "de": "Arbeit"
+              "de": "Arbeit",
+              "c": "n"
             },
             {
               "schrift": "question",
               "lerntext": "question",
-              "de": "Frage"
+              "de": "Frage",
+              "c": "n"
             },
             {
               "schrift": "ticket",
               "lerntext": "ticket",
-              "de": "Fahrkarte"
+              "de": "Fahrkarte",
+              "c": "n"
             },
             {
               "schrift": "answer",
               "lerntext": "answer",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "idea",
               "lerntext": "idea",
               "de": "Idee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "exam",
               "lerntext": "exam",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "door",
               "lerntext": "door",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "card",
               "lerntext": "card",
               "de": "Karte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bottle",
               "lerntext": "bottle",
               "de": "Flasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bag",
               "lerntext": "bag",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "woman",
               "lerntext": "woman",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1281,7 +1514,8 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "have",
             "lerntext": "have",
-            "de": "haben"
+            "de": "haben",
+            "c": "v"
           }
         ],
         "id": "2.6"
@@ -1290,24 +1524,31 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I have a [Slot]",
-          "lerntext": "I have a [Slot]"
+          "lerntext": "I have a [Slot]",
+          "wortarten": {
+            "I": "p",
+            "have": "v"
+          }
         },
         "frameDe": "Ich habe einen [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "they",
             "lerntext": "they",
-            "de": "sie (Mehrzahl)"
+            "de": "sie (Mehrzahl)",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1315,60 +1556,70 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "passport",
               "lerntext": "passport",
-              "de": "Pass"
+              "de": "Pass",
+              "c": "n"
             },
             {
               "schrift": "table",
               "lerntext": "table",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "key",
               "lerntext": "key",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "doctor",
               "lerntext": "doctor",
               "de": "Arzt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "colleague",
               "lerntext": "colleague",
               "de": "Kollege",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "boy",
               "lerntext": "boy",
               "de": "Junge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "friend",
               "lerntext": "friend",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "teacher",
               "lerntext": "teacher",
               "de": "Lehrer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "man",
               "lerntext": "man",
               "de": "Mann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "student",
               "lerntext": "student",
               "de": "Student",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1382,24 +1633,31 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I have a [Slot]",
-          "lerntext": "I have a [Slot]"
+          "lerntext": "I have a [Slot]",
+          "wortarten": {
+            "I": "p",
+            "have": "v"
+          }
         },
         "frameDe": "Ich habe ein [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "they",
             "lerntext": "they",
-            "de": "sie (Mehrzahl)"
+            "de": "sie (Mehrzahl)",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1407,69 +1665,81 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "house",
               "lerntext": "house",
-              "de": "Haus"
+              "de": "Haus",
+              "c": "n"
             },
             {
               "schrift": "room",
               "lerntext": "room",
-              "de": "Zimmer"
+              "de": "Zimmer",
+              "c": "n"
             },
             {
               "schrift": "car",
               "lerntext": "car",
-              "de": "Auto"
+              "de": "Auto",
+              "c": "n"
             },
             {
               "schrift": "problem",
               "lerntext": "problem",
-              "de": "Problem"
+              "de": "Problem",
+              "c": "n"
             },
             {
               "schrift": "example",
               "lerntext": "example",
               "de": "Beispiel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "eye",
               "lerntext": "eye",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "window",
               "lerntext": "window",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "book",
               "lerntext": "book",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bed",
               "lerntext": "bed",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "phone",
               "lerntext": "phone",
               "de": "Handy",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "child",
               "lerntext": "child",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "girl",
               "lerntext": "girl",
               "de": "Mädchen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1483,19 +1753,25 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "he has a [Slot]",
-          "lerntext": "he has a [Slot]"
+          "lerntext": "he has a [Slot]",
+          "wortarten": {
+            "he": "p",
+            "has": "v"
+          }
         },
         "frameDe": "Er hat eine [Slot].",
         "pronouns": [
           {
             "schrift": "he",
             "lerntext": "he",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "she",
             "lerntext": "she",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1503,86 +1779,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "mother",
               "lerntext": "mother",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "sister",
               "lerntext": "sister",
-              "de": "Schwester"
+              "de": "Schwester",
+              "c": "n"
             },
             {
               "schrift": "daughter",
               "lerntext": "daughter",
-              "de": "Tochter"
+              "de": "Tochter",
+              "c": "n"
             },
             {
               "schrift": "wife",
               "lerntext": "wife",
-              "de": "Ehefrau"
+              "de": "Ehefrau",
+              "c": "n"
             },
             {
               "schrift": "cat",
               "lerntext": "cat",
-              "de": "Katze"
+              "de": "Katze",
+              "c": "n"
             },
             {
               "schrift": "job",
               "lerntext": "job",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "question",
               "lerntext": "question",
               "de": "Frage",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ticket",
               "lerntext": "ticket",
               "de": "Fahrkarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "family",
               "lerntext": "family",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "flat",
               "lerntext": "flat",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "answer",
               "lerntext": "answer",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "idea",
               "lerntext": "idea",
               "de": "Idee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "exam",
               "lerntext": "exam",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "door",
               "lerntext": "door",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "card",
               "lerntext": "card",
               "de": "Karte",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1596,19 +1887,25 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "he has a [Slot]",
-          "lerntext": "he has a [Slot]"
+          "lerntext": "he has a [Slot]",
+          "wortarten": {
+            "he": "p",
+            "has": "v"
+          }
         },
         "frameDe": "Er hat einen [Slot].",
         "pronouns": [
           {
             "schrift": "he",
             "lerntext": "he",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "she",
             "lerntext": "she",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1616,86 +1913,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "father",
               "lerntext": "father",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "brother",
               "lerntext": "brother",
-              "de": "Bruder"
+              "de": "Bruder",
+              "c": "n"
             },
             {
               "schrift": "son",
               "lerntext": "son",
-              "de": "Sohn"
+              "de": "Sohn",
+              "c": "n"
             },
             {
               "schrift": "husband",
               "lerntext": "husband",
-              "de": "Ehemann"
+              "de": "Ehemann",
+              "c": "n"
             },
             {
               "schrift": "dog",
               "lerntext": "dog",
-              "de": "Hund"
+              "de": "Hund",
+              "c": "n"
             },
             {
               "schrift": "passport",
               "lerntext": "passport",
               "de": "Pass",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "key",
               "lerntext": "key",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "table",
               "lerntext": "table",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "doctor",
               "lerntext": "doctor",
               "de": "Arzt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "friend",
               "lerntext": "friend",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "teacher",
               "lerntext": "teacher",
               "de": "Lehrer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "man",
               "lerntext": "man",
               "de": "Mann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "colleague",
               "lerntext": "colleague",
               "de": "Kollege",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "boy",
               "lerntext": "boy",
               "de": "Junge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "student",
               "lerntext": "student",
               "de": "Student",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1709,34 +2021,43 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "that is my [Slot]",
-          "lerntext": "that is my [Slot]"
+          "lerntext": "that is my [Slot]",
+          "wortarten": {
+            "is": "v",
+            "my": "p"
+          }
         },
         "frameDe": "Das ist mein [Slot].",
         "pronouns": [
           {
             "schrift": "my",
             "lerntext": "my",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           },
           {
             "schrift": "your",
             "lerntext": "your",
-            "de": "dein"
+            "de": "dein",
+            "c": "p"
           },
           {
             "schrift": "our",
             "lerntext": "our",
-            "de": "unser"
+            "de": "unser",
+            "c": "p"
           },
           {
             "schrift": "their",
             "lerntext": "their",
-            "de": "ihr (Mehrzahl)"
+            "de": "ihr (Mehrzahl)",
+            "c": "p"
           },
           {
             "schrift": "its",
             "lerntext": "its",
-            "de": "sein (sächlich)"
+            "de": "sein (sächlich)",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1744,86 +2065,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "name",
               "lerntext": "name",
-              "de": "Name"
+              "de": "Name",
+              "c": "n"
             },
             {
               "schrift": "money",
               "lerntext": "money",
-              "de": "Geld"
+              "de": "Geld",
+              "c": "n"
             },
             {
               "schrift": "luggage",
               "lerntext": "luggage",
-              "de": "Gepäck"
+              "de": "Gepäck",
+              "c": "n"
             },
             {
               "schrift": "present",
               "lerntext": "present",
-              "de": "Geschenk"
+              "de": "Geschenk",
+              "c": "n"
             },
             {
               "schrift": "place",
               "lerntext": "place",
-              "de": "Ort"
+              "de": "Ort",
+              "c": "n"
             },
             {
               "schrift": "brother",
               "lerntext": "brother",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "car",
               "lerntext": "car",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sister",
               "lerntext": "sister",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dog",
               "lerntext": "dog",
               "de": "Hund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "house",
               "lerntext": "house",
               "de": "Haus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "problem",
               "lerntext": "problem",
               "de": "Problem",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "room",
               "lerntext": "room",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "son",
               "lerntext": "son",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cat",
               "lerntext": "cat",
               "de": "Katze",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mother",
               "lerntext": "mother",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1837,19 +2173,25 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "he has a [Slot]",
-          "lerntext": "he has a [Slot]"
+          "lerntext": "he has a [Slot]",
+          "wortarten": {
+            "he": "p",
+            "has": "v"
+          }
         },
         "frameDe": "Er hat eine [Slot].",
         "pronouns": [
           {
             "schrift": "he",
             "lerntext": "he",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "she",
             "lerntext": "she",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1858,60 +2200,70 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "daughter",
               "lerntext": "daughter",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "wife",
               "lerntext": "wife",
               "de": "Ehefrau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mother",
               "lerntext": "mother",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sister",
               "lerntext": "sister",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cat",
               "lerntext": "cat",
               "de": "Katze",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "job",
               "lerntext": "job",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "question",
               "lerntext": "question",
               "de": "Frage",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ticket",
               "lerntext": "ticket",
               "de": "Fahrkarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "family",
               "lerntext": "family",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "flat",
               "lerntext": "flat",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -1925,34 +2277,43 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "that is my [Slot]",
-          "lerntext": "that is my [Slot]"
+          "lerntext": "that is my [Slot]",
+          "wortarten": {
+            "is": "v",
+            "my": "p"
+          }
         },
         "frameDe": "Das ist mein [Slot].",
         "pronouns": [
           {
             "schrift": "my",
             "lerntext": "my",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           },
           {
             "schrift": "your",
             "lerntext": "your",
-            "de": "dein"
+            "de": "dein",
+            "c": "p"
           },
           {
             "schrift": "our",
             "lerntext": "our",
-            "de": "unser"
+            "de": "unser",
+            "c": "p"
           },
           {
             "schrift": "their",
             "lerntext": "their",
-            "de": "ihr (Mehrzahl)"
+            "de": "ihr (Mehrzahl)",
+            "c": "p"
           },
           {
             "schrift": "its",
             "lerntext": "its",
-            "de": "sein (sächlich)"
+            "de": "sein (sächlich)",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -1961,60 +2322,70 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "name",
               "lerntext": "name",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "money",
               "lerntext": "money",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "luggage",
               "lerntext": "luggage",
               "de": "Gepäck",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "present",
               "lerntext": "present",
               "de": "Geschenk",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "place",
               "lerntext": "place",
               "de": "Ort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "brother",
               "lerntext": "brother",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "car",
               "lerntext": "car",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dog",
               "lerntext": "dog",
               "de": "Hund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "house",
               "lerntext": "house",
               "de": "Haus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "problem",
               "lerntext": "problem",
               "de": "Problem",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2028,19 +2399,25 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "he has a [Slot]",
-          "lerntext": "he has a [Slot]"
+          "lerntext": "he has a [Slot]",
+          "wortarten": {
+            "he": "p",
+            "has": "v"
+          }
         },
         "frameDe": "Er hat einen [Slot].",
         "pronouns": [
           {
             "schrift": "he",
             "lerntext": "he",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "she",
             "lerntext": "she",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2049,18 +2426,21 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "father",
               "lerntext": "father",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "husband",
               "lerntext": "husband",
               "de": "Ehemann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "passport",
               "lerntext": "passport",
               "de": "Pass",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2074,34 +2454,43 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "that is my [Slot]",
-          "lerntext": "that is my [Slot]"
+          "lerntext": "that is my [Slot]",
+          "wortarten": {
+            "is": "v",
+            "my": "p"
+          }
         },
         "frameDe": "Das ist mein [Slot].",
         "pronouns": [
           {
             "schrift": "my",
             "lerntext": "my",
-            "de": "mein"
+            "de": "mein",
+            "c": "p"
           },
           {
             "schrift": "your",
             "lerntext": "your",
-            "de": "dein"
+            "de": "dein",
+            "c": "p"
           },
           {
             "schrift": "our",
             "lerntext": "our",
-            "de": "unser"
+            "de": "unser",
+            "c": "p"
           },
           {
             "schrift": "their",
             "lerntext": "their",
-            "de": "ihr (Mehrzahl)"
+            "de": "ihr (Mehrzahl)",
+            "c": "p"
           },
           {
             "schrift": "its",
             "lerntext": "its",
-            "de": "sein (sächlich)"
+            "de": "sein (sächlich)",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2110,42 +2499,49 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "name",
               "lerntext": "name",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "money",
               "lerntext": "money",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "luggage",
               "lerntext": "luggage",
               "de": "Gepäck",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "present",
               "lerntext": "present",
               "de": "Geschenk",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "place",
               "lerntext": "place",
               "de": "Ort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "room",
               "lerntext": "room",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "son",
               "lerntext": "son",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2180,19 +2576,25 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I want [Slot]",
-          "lerntext": "I want [Slot]"
+          "lerntext": "I want [Slot]",
+          "wortarten": {
+            "I": "p",
+            "want": "v"
+          }
         },
         "frameDe": "Ich möchte [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2200,86 +2602,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "water",
               "lerntext": "water",
-              "de": "Wasser"
+              "de": "Wasser",
+              "c": "n"
             },
             {
               "schrift": "coffee",
               "lerntext": "coffee",
-              "de": "Kaffee"
+              "de": "Kaffee",
+              "c": "n"
             },
             {
               "schrift": "tea",
               "lerntext": "tea",
-              "de": "Tee"
+              "de": "Tee",
+              "c": "n"
             },
             {
               "schrift": "beer",
               "lerntext": "beer",
-              "de": "Bier"
+              "de": "Bier",
+              "c": "n"
             },
             {
               "schrift": "wine",
               "lerntext": "wine",
-              "de": "Wein"
+              "de": "Wein",
+              "c": "n"
             },
             {
               "schrift": "example",
               "lerntext": "example",
               "de": "Beispiel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "wife",
               "lerntext": "wife",
               "de": "Ehefrau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "daughter",
               "lerntext": "daughter",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "husband",
               "lerntext": "husband",
               "de": "Ehemann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "eye",
               "lerntext": "eye",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "father",
               "lerntext": "father",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "brother",
               "lerntext": "brother",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "present",
               "lerntext": "present",
               "de": "Geschenk",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "car",
               "lerntext": "car",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sister",
               "lerntext": "sister",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2290,12 +2707,14 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "want",
             "lerntext": "want",
-            "de": "wollen"
+            "de": "wollen",
+            "c": "v"
           },
           {
             "schrift": "need",
             "lerntext": "need",
-            "de": "brauchen"
+            "de": "brauchen",
+            "c": "v"
           }
         ],
         "id": "3.1"
@@ -2304,19 +2723,25 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I want [Slot]",
-          "lerntext": "I want [Slot]"
+          "lerntext": "I want [Slot]",
+          "wortarten": {
+            "I": "p",
+            "want": "v"
+          }
         },
         "frameDe": "Ich möchte [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2324,86 +2749,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "milk",
               "lerntext": "milk",
-              "de": "Milch"
+              "de": "Milch",
+              "c": "n"
             },
             {
               "schrift": "bread",
               "lerntext": "bread",
-              "de": "Brot"
+              "de": "Brot",
+              "c": "n"
             },
             {
               "schrift": "cheese",
               "lerntext": "cheese",
-              "de": "Käse"
+              "de": "Käse",
+              "c": "n"
             },
             {
               "schrift": "meat",
               "lerntext": "meat",
-              "de": "Fleisch"
+              "de": "Fleisch",
+              "c": "n"
             },
             {
               "schrift": "fish",
               "lerntext": "fish",
-              "de": "Fisch"
+              "de": "Fisch",
+              "c": "n"
             },
             {
               "schrift": "water",
               "lerntext": "water",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "coffee",
               "lerntext": "coffee",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tea",
               "lerntext": "tea",
               "de": "Tee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "beer",
               "lerntext": "beer",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "wine",
               "lerntext": "wine",
               "de": "Wein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "example",
               "lerntext": "example",
               "de": "Beispiel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bottle",
               "lerntext": "bottle",
               "de": "Flasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "family",
               "lerntext": "family",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "phone",
               "lerntext": "phone",
               "de": "Handy",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "key",
               "lerntext": "key",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2417,19 +2857,25 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "he wants [Slot]",
-          "lerntext": "he wants [Slot]"
+          "lerntext": "he wants [Slot]",
+          "wortarten": {
+            "he": "p",
+            "wants": "v"
+          }
         },
         "frameDe": "Er möchte [Slot].",
         "pronouns": [
           {
             "schrift": "he",
             "lerntext": "he",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "she",
             "lerntext": "she",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2437,86 +2883,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "food",
               "lerntext": "food",
-              "de": "Essen"
+              "de": "Essen",
+              "c": "n"
             },
             {
               "schrift": "fruit",
               "lerntext": "fruit",
-              "de": "Obst"
+              "de": "Obst",
+              "c": "n"
             },
             {
               "schrift": "sugar",
               "lerntext": "sugar",
-              "de": "Zucker"
+              "de": "Zucker",
+              "c": "n"
             },
             {
               "schrift": "salt",
               "lerntext": "salt",
-              "de": "Salz"
+              "de": "Salz",
+              "c": "n"
             },
             {
               "schrift": "medicine",
               "lerntext": "medicine",
-              "de": "Medizin"
+              "de": "Medizin",
+              "c": "n"
             },
             {
               "schrift": "cheese",
               "lerntext": "cheese",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bread",
               "lerntext": "bread",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fish",
               "lerntext": "fish",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "meat",
               "lerntext": "meat",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "milk",
               "lerntext": "milk",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "beer",
               "lerntext": "beer",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "water",
               "lerntext": "water",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tea",
               "lerntext": "tea",
               "de": "Tee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "coffee",
               "lerntext": "coffee",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "wine",
               "lerntext": "wine",
               "de": "Wein",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2530,19 +2991,25 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I need a [Slot]",
-          "lerntext": "I need a [Slot]"
+          "lerntext": "I need a [Slot]",
+          "wortarten": {
+            "I": "p",
+            "need": "v"
+          }
         },
         "frameDe": "Ich brauche eine [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "you",
             "lerntext": "you",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2550,71 +3017,83 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "menu",
               "lerntext": "menu",
-              "de": "Speisekarte"
+              "de": "Speisekarte",
+              "c": "n"
             },
             {
               "schrift": "bill",
               "lerntext": "bill",
-              "de": "Rechnung"
+              "de": "Rechnung",
+              "c": "n"
             },
             {
               "schrift": "medicine",
               "lerntext": "medicine",
               "de": "Medizin",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "milk",
               "lerntext": "milk",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "exam",
               "lerntext": "exam",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "job",
               "lerntext": "job",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "question",
               "lerntext": "question",
               "de": "Frage",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cat",
               "lerntext": "cat",
               "de": "Katze",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bag",
               "lerntext": "bag",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mother",
               "lerntext": "mother",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "idea",
               "lerntext": "idea",
               "de": "Idee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "wife",
               "lerntext": "wife",
               "de": "Ehefrau",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2628,19 +3107,25 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I need a [Slot]",
-          "lerntext": "I need a [Slot]"
+          "lerntext": "I need a [Slot]",
+          "wortarten": {
+            "I": "p",
+            "need": "v"
+          }
         },
         "frameDe": "Ich brauche einen [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "you",
             "lerntext": "you",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2648,71 +3133,83 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "plate",
               "lerntext": "plate",
-              "de": "Teller"
+              "de": "Teller",
+              "c": "n"
             },
             {
               "schrift": "doctor",
               "lerntext": "doctor",
-              "de": "Arzt"
+              "de": "Arzt",
+              "c": "n"
             },
             {
               "schrift": "sugar",
               "lerntext": "sugar",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cheese",
               "lerntext": "cheese",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fish",
               "lerntext": "fish",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "table",
               "lerntext": "table",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dog",
               "lerntext": "dog",
               "de": "Hund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "passport",
               "lerntext": "passport",
               "de": "Pass",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tea",
               "lerntext": "tea",
               "de": "Tee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "son",
               "lerntext": "son",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "coffee",
               "lerntext": "coffee",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "wine",
               "lerntext": "wine",
               "de": "Wein",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2726,19 +3223,25 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I need a [Slot]",
-          "lerntext": "I need a [Slot]"
+          "lerntext": "I need a [Slot]",
+          "wortarten": {
+            "I": "p",
+            "need": "v"
+          }
         },
         "frameDe": "Ich brauche ein [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "you",
             "lerntext": "you",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -2746,66 +3249,77 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "glass",
               "lerntext": "glass",
-              "de": "Glas"
+              "de": "Glas",
+              "c": "n"
             },
             {
               "schrift": "fruit",
               "lerntext": "fruit",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "salt",
               "lerntext": "salt",
               "de": "Salz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "food",
               "lerntext": "food",
               "de": "Essen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bread",
               "lerntext": "bread",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "meat",
               "lerntext": "meat",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "beer",
               "lerntext": "beer",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "water",
               "lerntext": "water",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "luggage",
               "lerntext": "luggage",
               "de": "Gepäck",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "house",
               "lerntext": "house",
               "de": "Haus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "book",
               "lerntext": "book",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2819,7 +3333,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I would like [Slot], please",
-          "lerntext": "I would like [Slot], please"
+          "lerntext": "I would like [Slot], please",
+          "wortarten": {
+            "I": "p",
+            "would": "v"
+          }
         },
         "frameDe": "Ich hätte gern [Slot], bitte.",
         "pronouns": [],
@@ -2828,86 +3346,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "breakfast",
               "lerntext": "breakfast",
-              "de": "Frühstück"
+              "de": "Frühstück",
+              "c": "n"
             },
             {
               "schrift": "lunch",
               "lerntext": "lunch",
-              "de": "Mittagessen"
+              "de": "Mittagessen",
+              "c": "n"
             },
             {
               "schrift": "dinner",
               "lerntext": "dinner",
-              "de": "Abendessen"
+              "de": "Abendessen",
+              "c": "n"
             },
             {
               "schrift": "vegetables",
               "lerntext": "vegetables",
-              "de": "Gemüse"
+              "de": "Gemüse",
+              "c": "n"
             },
             {
               "schrift": "part",
               "lerntext": "part",
-              "de": "Teil"
+              "de": "Teil",
+              "c": "n"
             },
             {
               "schrift": "plate",
               "lerntext": "plate",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "glass",
               "lerntext": "glass",
               "de": "Glas",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "menu",
               "lerntext": "menu",
               "de": "Speisekarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bill",
               "lerntext": "bill",
               "de": "Rechnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fruit",
               "lerntext": "fruit",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "medicine",
               "lerntext": "medicine",
               "de": "Medizin",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "salt",
               "lerntext": "salt",
               "de": "Salz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sugar",
               "lerntext": "sugar",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "food",
               "lerntext": "food",
               "de": "Essen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cheese",
               "lerntext": "cheese",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -2918,12 +3451,14 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "would",
             "lerntext": "would",
-            "de": "würde"
+            "de": "würde",
+            "c": "v"
           },
           {
             "schrift": "like",
             "lerntext": "like",
-            "de": "mögen"
+            "de": "mögen",
+            "c": "v"
           }
         ],
         "id": "3.7"
@@ -2932,7 +3467,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I would like [Slot], please",
-          "lerntext": "I would like [Slot], please"
+          "lerntext": "I would like [Slot], please",
+          "wortarten": {
+            "I": "p",
+            "would": "v"
+          }
         },
         "frameDe": "Ich hätte gern [Slot], bitte.",
         "pronouns": [],
@@ -2942,54 +3481,63 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "breakfast",
               "lerntext": "breakfast",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lunch",
               "lerntext": "lunch",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dinner",
               "lerntext": "dinner",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vegetables",
               "lerntext": "vegetables",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "part",
               "lerntext": "part",
               "de": "Teil",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "plate",
               "lerntext": "plate",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "glass",
               "lerntext": "glass",
               "de": "Glas",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "menu",
               "lerntext": "menu",
               "de": "Speisekarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bill",
               "lerntext": "bill",
               "de": "Rechnung",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3003,7 +3551,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I would like [Slot], please",
-          "lerntext": "I would like [Slot], please"
+          "lerntext": "I would like [Slot], please",
+          "wortarten": {
+            "I": "p",
+            "would": "v"
+          }
         },
         "frameDe": "Ich hätte gern [Slot], bitte.",
         "pronouns": [],
@@ -3013,30 +3565,35 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "breakfast",
               "lerntext": "breakfast",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lunch",
               "lerntext": "lunch",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dinner",
               "lerntext": "dinner",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vegetables",
               "lerntext": "vegetables",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "part",
               "lerntext": "part",
               "de": "Teil",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -3071,7 +3628,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I am not [Slot]",
-          "lerntext": "I am not [Slot]"
+          "lerntext": "I am not [Slot]",
+          "wortarten": {
+            "I": "p",
+            "am": "v"
+          }
         },
         "frameDe": "Ich bin nicht [Slot].",
         "pronouns": [
@@ -3096,86 +3657,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "free",
               "lerntext": "free",
-              "de": "frei"
+              "de": "frei",
+              "c": "a"
             },
             {
               "schrift": "full",
               "lerntext": "full",
-              "de": "voll"
+              "de": "voll",
+              "c": "a"
             },
             {
               "schrift": "empty",
               "lerntext": "empty",
-              "de": "leer"
+              "de": "leer",
+              "c": "a"
             },
             {
               "schrift": "safe",
               "lerntext": "safe",
-              "de": "sicher"
+              "de": "sicher",
+              "c": "a"
             },
             {
               "schrift": "dangerous",
               "lerntext": "dangerous",
-              "de": "gefährlich"
+              "de": "gefährlich",
+              "c": "a"
             },
             {
               "schrift": "beautiful",
               "lerntext": "beautiful",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "weak",
               "lerntext": "weak",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "busy",
               "lerntext": "busy",
               "de": "beschäftigt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "funny",
               "lerntext": "funny",
               "de": "lustig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sad",
               "lerntext": "sad",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pretty",
               "lerntext": "pretty",
               "de": "hübsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "thirsty",
               "lerntext": "thirsty",
               "de": "durstig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ready",
               "lerntext": "ready",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "healthy",
               "lerntext": "healthy",
               "de": "gesund",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ugly",
               "lerntext": "ugly",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -3205,19 +3781,25 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "do you [Slot]?",
-          "lerntext": "do you [Slot]?"
+          "lerntext": "do you [Slot]?",
+          "wortarten": {
+            "do": "v",
+            "you": "p"
+          }
         },
         "frameDe": "Möchtest du [Slot]?",
         "pronouns": [
           {
             "schrift": "you",
             "lerntext": "you",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "they",
             "lerntext": "they",
-            "de": "sie (Mehrzahl)"
+            "de": "sie (Mehrzahl)",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -3225,62 +3807,73 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "know",
               "lerntext": "know",
-              "de": "wissen"
+              "de": "wissen",
+              "c": "v"
             },
             {
               "schrift": "see",
               "lerntext": "see",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "hear",
               "lerntext": "hear",
-              "de": "hören"
+              "de": "hören",
+              "c": "v"
             },
             {
               "schrift": "understand",
               "lerntext": "understand",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "remember",
               "lerntext": "remember",
-              "de": "sich erinnern"
+              "de": "sich erinnern",
+              "c": "v"
             },
             {
               "schrift": "like",
               "lerntext": "like",
               "de": "mögen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "be",
               "lerntext": "be",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "would",
               "lerntext": "would",
               "de": "würde",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "want",
               "lerntext": "want",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "need",
               "lerntext": "need",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "have",
               "lerntext": "have",
               "de": "haben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -3291,7 +3884,8 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "do",
             "lerntext": "do",
-            "de": "tun"
+            "de": "tun",
+            "c": "v"
           }
         ],
         "id": "4.2"
@@ -3300,7 +3894,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] is that?",
-          "lerntext": "[Slot] is that?"
+          "lerntext": "[Slot] is that?",
+          "wortarten": {
+            "is": "v"
+          }
         },
         "frameDe": "[Slot] ist das?",
         "pronouns": [
@@ -3312,12 +3909,14 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "who",
             "lerntext": "who",
-            "de": "wer"
+            "de": "wer",
+            "c": "p"
           },
           {
             "schrift": "which",
             "lerntext": "which",
-            "de": "welcher"
+            "de": "welcher",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -3325,86 +3924,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "something",
               "lerntext": "something",
-              "de": "etwas"
+              "de": "etwas",
+              "c": "p"
             },
             {
               "schrift": "anything",
               "lerntext": "anything",
-              "de": "irgendetwas"
+              "de": "irgendetwas",
+              "c": "p"
             },
             {
               "schrift": "nothing",
               "lerntext": "nothing",
-              "de": "nichts"
+              "de": "nichts",
+              "c": "p"
             },
             {
               "schrift": "everything",
               "lerntext": "everything",
-              "de": "alles"
+              "de": "alles",
+              "c": "p"
             },
             {
               "schrift": "someone",
               "lerntext": "someone",
-              "de": "jemand"
+              "de": "jemand",
+              "c": "p"
             },
             {
               "schrift": "her",
               "lerntext": "her",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "those",
               "lerntext": "those",
               "de": "jene",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "these",
               "lerntext": "these",
               "de": "diese (Mehrzahl)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "his",
               "lerntext": "his",
               "de": "sein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "our",
               "lerntext": "our",
               "de": "unser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "their",
               "lerntext": "their",
               "de": "ihr (Mehrzahl)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "me",
               "lerntext": "me",
               "de": "mir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "its",
               "lerntext": "its",
               "de": "sein (sächlich)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "it",
               "lerntext": "it",
               "de": "es",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "your",
               "lerntext": "your",
               "de": "dein",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -3420,12 +4034,14 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "who",
             "lerntext": "who",
-            "de": "wer"
+            "de": "wer",
+            "c": "p"
           },
           {
             "schrift": "which",
             "lerntext": "which",
-            "de": "welcher"
+            "de": "welcher",
+            "c": "p"
           },
           {
             "schrift": "whose",
@@ -3439,7 +4055,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I do not [Slot] that",
-          "lerntext": "I do not [Slot] that"
+          "lerntext": "I do not [Slot] that",
+          "wortarten": {
+            "I": "p",
+            "do": "v"
+          }
         },
         "frameDe": "Ich [Slot] das nicht.",
         "pronouns": [],
@@ -3448,86 +4068,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "think",
               "lerntext": "think",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "believe",
               "lerntext": "believe",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "mean",
               "lerntext": "mean",
-              "de": "bedeuten"
+              "de": "bedeuten",
+              "c": "v"
             },
             {
               "schrift": "forget",
               "lerntext": "forget",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "remember",
               "lerntext": "remember",
-              "de": "sich erinnern"
+              "de": "sich erinnern",
+              "c": "v"
             },
             {
               "schrift": "hear",
               "lerntext": "hear",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "understand",
               "lerntext": "understand",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "know",
               "lerntext": "know",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "see",
               "lerntext": "see",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "like",
               "lerntext": "like",
               "de": "mögen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "be",
               "lerntext": "be",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "would",
               "lerntext": "would",
               "de": "würde",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "want",
               "lerntext": "want",
               "de": "wollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "need",
               "lerntext": "need",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "have",
               "lerntext": "have",
               "de": "haben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -3541,7 +4176,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] is that?",
-          "lerntext": "[Slot] is that?"
+          "lerntext": "[Slot] is that?",
+          "wortarten": {
+            "is": "v"
+          }
         },
         "frameDe": "[Slot] ist das?",
         "pronouns": [
@@ -3553,12 +4191,14 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "who",
             "lerntext": "who",
-            "de": "wer"
+            "de": "wer",
+            "c": "p"
           },
           {
             "schrift": "which",
             "lerntext": "which",
-            "de": "welcher"
+            "de": "welcher",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -3567,60 +4207,70 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "her",
               "lerntext": "her",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "those",
               "lerntext": "those",
               "de": "jene",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "these",
               "lerntext": "these",
               "de": "diese (Mehrzahl)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "his",
               "lerntext": "his",
               "de": "sein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "our",
               "lerntext": "our",
               "de": "unser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "their",
               "lerntext": "their",
               "de": "ihr (Mehrzahl)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "me",
               "lerntext": "me",
               "de": "mir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "its",
               "lerntext": "its",
               "de": "sein (sächlich)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "something",
               "lerntext": "something",
               "de": "etwas",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "anything",
               "lerntext": "anything",
               "de": "irgendetwas",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -3634,7 +4284,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I do not [Slot] that",
-          "lerntext": "I do not [Slot] that"
+          "lerntext": "I do not [Slot] that",
+          "wortarten": {
+            "I": "p",
+            "do": "v"
+          }
         },
         "frameDe": "Ich [Slot] das nicht.",
         "pronouns": [],
@@ -3644,48 +4298,56 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "think",
               "lerntext": "think",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "believe",
               "lerntext": "believe",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mean",
               "lerntext": "mean",
               "de": "bedeuten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "forget",
               "lerntext": "forget",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hear",
               "lerntext": "hear",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "understand",
               "lerntext": "understand",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "know",
               "lerntext": "know",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "see",
               "lerntext": "see",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -3699,7 +4361,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] is that?",
-          "lerntext": "[Slot] is that?"
+          "lerntext": "[Slot] is that?",
+          "wortarten": {
+            "is": "v"
+          }
         },
         "frameDe": "[Slot] ist das?",
         "pronouns": [
@@ -3711,12 +4376,14 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "who",
             "lerntext": "who",
-            "de": "wer"
+            "de": "wer",
+            "c": "p"
           },
           {
             "schrift": "which",
             "lerntext": "which",
-            "de": "welcher"
+            "de": "welcher",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -3725,60 +4392,70 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "nothing",
               "lerntext": "nothing",
               "de": "nichts",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "everything",
               "lerntext": "everything",
               "de": "alles",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "someone",
               "lerntext": "someone",
               "de": "jemand",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "her",
               "lerntext": "her",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "those",
               "lerntext": "those",
               "de": "jene",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "these",
               "lerntext": "these",
               "de": "diese (Mehrzahl)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "his",
               "lerntext": "his",
               "de": "sein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "our",
               "lerntext": "our",
               "de": "unser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "their",
               "lerntext": "their",
               "de": "ihr (Mehrzahl)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "me",
               "lerntext": "me",
               "de": "mir",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -3792,7 +4469,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] is that?",
-          "lerntext": "[Slot] is that?"
+          "lerntext": "[Slot] is that?",
+          "wortarten": {
+            "is": "v"
+          }
         },
         "frameDe": "[Slot] ist das?",
         "pronouns": [
@@ -3804,12 +4484,14 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "who",
             "lerntext": "who",
-            "de": "wer"
+            "de": "wer",
+            "c": "p"
           },
           {
             "schrift": "which",
             "lerntext": "which",
-            "de": "welcher"
+            "de": "welcher",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -3818,60 +4500,70 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "its",
               "lerntext": "its",
               "de": "sein (sächlich)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "something",
               "lerntext": "something",
               "de": "etwas",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "anything",
               "lerntext": "anything",
               "de": "irgendetwas",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "nothing",
               "lerntext": "nothing",
               "de": "nichts",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "everything",
               "lerntext": "everything",
               "de": "alles",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "someone",
               "lerntext": "someone",
               "de": "jemand",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "her",
               "lerntext": "her",
               "de": "ihr",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "those",
               "lerntext": "those",
               "de": "jene",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "these",
               "lerntext": "these",
               "de": "diese (Mehrzahl)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "his",
               "lerntext": "his",
               "de": "sein",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -3906,7 +4598,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "where is the [Slot]?",
-          "lerntext": "where is the [Slot]?"
+          "lerntext": "where is the [Slot]?",
+          "wortarten": {
+            "is": "v"
+          }
         },
         "frameDe": "Wo ist die [Slot]?",
         "pronouns": [
@@ -3931,76 +4626,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "pharmacy",
               "lerntext": "pharmacy",
-              "de": "Apotheke"
+              "de": "Apotheke",
+              "c": "n"
             },
             {
               "schrift": "bank",
               "lerntext": "bank",
-              "de": "Bank (Geldinstitut)"
+              "de": "Bank (Geldinstitut)",
+              "c": "n"
             },
             {
               "schrift": "toilet",
               "lerntext": "toilet",
-              "de": "Toilette"
+              "de": "Toilette",
+              "c": "n"
             },
             {
               "schrift": "medicine",
               "lerntext": "medicine",
               "de": "Medizin",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "menu",
               "lerntext": "menu",
               "de": "Speisekarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "daughter",
               "lerntext": "daughter",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "answer",
               "lerntext": "answer",
               "de": "Antwort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bill",
               "lerntext": "bill",
               "de": "Rechnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ticket",
               "lerntext": "ticket",
               "de": "Fahrkarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "flat",
               "lerntext": "flat",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "milk",
               "lerntext": "milk",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sister",
               "lerntext": "sister",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bottle",
               "lerntext": "bottle",
               "de": "Flasche",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -4030,7 +4738,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "where is the [Slot]?",
-          "lerntext": "where is the [Slot]?"
+          "lerntext": "where is the [Slot]?",
+          "wortarten": {
+            "is": "v"
+          }
         },
         "frameDe": "Wo ist der [Slot]?",
         "pronouns": [
@@ -4055,81 +4766,95 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "station",
               "lerntext": "station",
-              "de": "Bahnhof"
+              "de": "Bahnhof",
+              "c": "n"
             },
             {
               "schrift": "airport",
               "lerntext": "airport",
-              "de": "Flughafen"
+              "de": "Flughafen",
+              "c": "n"
             },
             {
               "schrift": "shop",
               "lerntext": "shop",
-              "de": "Laden"
+              "de": "Laden",
+              "c": "n"
             },
             {
               "schrift": "market",
               "lerntext": "market",
-              "de": "Markt"
+              "de": "Markt",
+              "c": "n"
             },
             {
               "schrift": "plate",
               "lerntext": "plate",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "part",
               "lerntext": "part",
               "de": "Teil",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "place",
               "lerntext": "place",
               "de": "Ort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sugar",
               "lerntext": "sugar",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "husband",
               "lerntext": "husband",
               "de": "Ehemann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fish",
               "lerntext": "fish",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "father",
               "lerntext": "father",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "brother",
               "lerntext": "brother",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "friend",
               "lerntext": "friend",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cheese",
               "lerntext": "cheese",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -4143,7 +4868,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "where is the [Slot]?",
-          "lerntext": "where is the [Slot]?"
+          "lerntext": "where is the [Slot]?",
+          "wortarten": {
+            "is": "v"
+          }
         },
         "frameDe": "Wo ist das [Slot]?",
         "pronouns": [
@@ -4168,76 +4896,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "hotel",
               "lerntext": "hotel",
-              "de": "Hotel"
+              "de": "Hotel",
+              "c": "n"
             },
             {
               "schrift": "hospital",
               "lerntext": "hospital",
-              "de": "Krankenhaus"
+              "de": "Krankenhaus",
+              "c": "n"
             },
             {
               "schrift": "restaurant",
               "lerntext": "restaurant",
-              "de": "Restaurant"
+              "de": "Restaurant",
+              "c": "n"
             },
             {
               "schrift": "breakfast",
               "lerntext": "breakfast",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fruit",
               "lerntext": "fruit",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vegetables",
               "lerntext": "vegetables",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "glass",
               "lerntext": "glass",
               "de": "Glas",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bread",
               "lerntext": "bread",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dinner",
               "lerntext": "dinner",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "problem",
               "lerntext": "problem",
               "de": "Problem",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "room",
               "lerntext": "room",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "money",
               "lerntext": "money",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "window",
               "lerntext": "window",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -4251,7 +4992,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it is in the [Slot]",
-          "lerntext": "it is in the [Slot]"
+          "lerntext": "it is in the [Slot]",
+          "wortarten": {
+            "it": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Es ist in der [Slot].",
         "pronouns": [
@@ -4276,86 +5021,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "city",
               "lerntext": "city",
-              "de": "Stadt"
+              "de": "Stadt",
+              "c": "n"
             },
             {
               "schrift": "street",
               "lerntext": "street",
-              "de": "Straße"
+              "de": "Straße",
+              "c": "n"
             },
             {
               "schrift": "school",
               "lerntext": "school",
-              "de": "Schule"
+              "de": "Schule",
+              "c": "n"
             },
             {
               "schrift": "university",
               "lerntext": "university",
-              "de": "Universität"
+              "de": "Universität",
+              "c": "n"
             },
             {
               "schrift": "pub",
               "lerntext": "pub",
-              "de": "Kneipe"
+              "de": "Kneipe",
+              "c": "n"
             },
             {
               "schrift": "toilet",
               "lerntext": "toilet",
               "de": "Toilette",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pharmacy",
               "lerntext": "pharmacy",
               "de": "Apotheke",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bank",
               "lerntext": "bank",
               "de": "Bank (Geldinstitut)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "family",
               "lerntext": "family",
               "de": "Familie",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "exam",
               "lerntext": "exam",
               "de": "Prüfung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "job",
               "lerntext": "job",
               "de": "Arbeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "question",
               "lerntext": "question",
               "de": "Frage",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "door",
               "lerntext": "door",
               "de": "Tür",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "medicine",
               "lerntext": "medicine",
               "de": "Medizin",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "card",
               "lerntext": "card",
               "de": "Karte",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -4395,7 +5155,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it is in the [Slot]",
-          "lerntext": "it is in the [Slot]"
+          "lerntext": "it is in the [Slot]",
+          "wortarten": {
+            "it": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Es ist in der [Slot].",
         "pronouns": [
@@ -4420,71 +5184,83 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "party",
               "lerntext": "party",
-              "de": "Party"
+              "de": "Party",
+              "c": "n"
             },
             {
               "schrift": "world",
               "lerntext": "world",
-              "de": "Welt"
+              "de": "Welt",
+              "c": "n"
             },
             {
               "schrift": "city",
               "lerntext": "city",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "street",
               "lerntext": "street",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "school",
               "lerntext": "school",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "university",
               "lerntext": "university",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pub",
               "lerntext": "pub",
               "de": "Kneipe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "toilet",
               "lerntext": "toilet",
               "de": "Toilette",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pharmacy",
               "lerntext": "pharmacy",
               "de": "Apotheke",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bank",
               "lerntext": "bank",
               "de": "Bank (Geldinstitut)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "woman",
               "lerntext": "woman",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cat",
               "lerntext": "cat",
               "de": "Katze",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -4498,7 +5274,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it is in the [Slot]",
-          "lerntext": "it is in the [Slot]"
+          "lerntext": "it is in the [Slot]",
+          "wortarten": {
+            "it": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Es ist in dem [Slot].",
         "pronouns": [
@@ -4523,71 +5303,83 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "way",
               "lerntext": "way",
-              "de": "Weg"
+              "de": "Weg",
+              "c": "n"
             },
             {
               "schrift": "place",
               "lerntext": "place",
-              "de": "Ort"
+              "de": "Ort",
+              "c": "n"
             },
             {
               "schrift": "market",
               "lerntext": "market",
               "de": "Markt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "station",
               "lerntext": "station",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "airport",
               "lerntext": "airport",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "shop",
               "lerntext": "shop",
               "de": "Laden",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "plate",
               "lerntext": "plate",
               "de": "Teller",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "key",
               "lerntext": "key",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "part",
               "lerntext": "part",
               "de": "Teil",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "table",
               "lerntext": "table",
               "de": "Tisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dog",
               "lerntext": "dog",
               "de": "Hund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "passport",
               "lerntext": "passport",
               "de": "Pass",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -4601,7 +5393,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it is in the [Slot]",
-          "lerntext": "it is in the [Slot]"
+          "lerntext": "it is in the [Slot]",
+          "wortarten": {
+            "it": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Es ist in dem [Slot].",
         "pronouns": [
@@ -4626,66 +5422,77 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "country",
               "lerntext": "country",
-              "de": "Land"
+              "de": "Land",
+              "c": "n"
             },
             {
               "schrift": "hotel",
               "lerntext": "hotel",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "restaurant",
               "lerntext": "restaurant",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hospital",
               "lerntext": "hospital",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "salt",
               "lerntext": "salt",
               "de": "Salz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lunch",
               "lerntext": "lunch",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bed",
               "lerntext": "bed",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "food",
               "lerntext": "food",
               "de": "Essen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "meat",
               "lerntext": "meat",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "eye",
               "lerntext": "eye",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "example",
               "lerntext": "example",
               "de": "Beispiel",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -4699,7 +5506,12 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "the shop is [Slot] the hotel",
-          "lerntext": "the shop is [Slot] the hotel"
+          "lerntext": "the shop is [Slot] the hotel",
+          "wortarten": {
+            "shop": "n",
+            "is": "v",
+            "hotel": "n"
+          }
         },
         "frameDe": "Der Laden ist [Slot] dem Hotel.",
         "pronouns": [],
@@ -4797,7 +5609,12 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "the shop is [Slot] the hotel",
-          "lerntext": "the shop is [Slot] the hotel"
+          "lerntext": "the shop is [Slot] the hotel",
+          "wortarten": {
+            "shop": "n",
+            "is": "v",
+            "hotel": "n"
+          }
         },
         "frameDe": "Der Laden ist [Slot] dem Hotel.",
         "pronouns": [],
@@ -4899,7 +5716,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "go [Slot]",
-          "lerntext": "go [Slot]"
+          "lerntext": "go [Slot]",
+          "wortarten": {
+            "go": "v"
+          }
         },
         "frameDe": "Geh [Slot].",
         "pronouns": [],
@@ -4968,7 +5788,8 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "go",
             "lerntext": "go",
-            "de": "gehen"
+            "de": "gehen",
+            "c": "v"
           }
         ],
         "id": "5.10"
@@ -4977,7 +5798,12 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "the shop is [Slot] the hotel",
-          "lerntext": "the shop is [Slot] the hotel"
+          "lerntext": "the shop is [Slot] the hotel",
+          "wortarten": {
+            "shop": "n",
+            "is": "v",
+            "hotel": "n"
+          }
         },
         "frameDe": "Der Laden ist [Slot] dem Hotel.",
         "pronouns": [],
@@ -5054,7 +5880,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it is in the [Slot]",
-          "lerntext": "it is in the [Slot]"
+          "lerntext": "it is in the [Slot]",
+          "wortarten": {
+            "it": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Es ist in der [Slot].",
         "pronouns": [
@@ -5080,42 +5910,49 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "party",
               "lerntext": "party",
               "de": "Party",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "world",
               "lerntext": "world",
               "de": "Welt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "city",
               "lerntext": "city",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "street",
               "lerntext": "street",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "school",
               "lerntext": "school",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "university",
               "lerntext": "university",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pub",
               "lerntext": "pub",
               "de": "Kneipe",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -5129,7 +5966,12 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "the shop is [Slot] the hotel",
-          "lerntext": "the shop is [Slot] the hotel"
+          "lerntext": "the shop is [Slot] the hotel",
+          "wortarten": {
+            "shop": "n",
+            "is": "v",
+            "hotel": "n"
+          }
         },
         "frameDe": "Der Laden ist [Slot] dem Hotel.",
         "pronouns": [],
@@ -5176,7 +6018,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it is in the [Slot]",
-          "lerntext": "it is in the [Slot]"
+          "lerntext": "it is in the [Slot]",
+          "wortarten": {
+            "it": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Es ist in dem [Slot].",
         "pronouns": [
@@ -5202,42 +6048,49 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "way",
               "lerntext": "way",
               "de": "Weg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "country",
               "lerntext": "country",
               "de": "Land",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "market",
               "lerntext": "market",
               "de": "Markt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "station",
               "lerntext": "station",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "airport",
               "lerntext": "airport",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "restaurant",
               "lerntext": "restaurant",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hospital",
               "lerntext": "hospital",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -5478,7 +6331,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "how much is the [Slot]?",
-          "lerntext": "how much is the [Slot]?"
+          "lerntext": "how much is the [Slot]?",
+          "wortarten": {
+            "is": "v"
+          }
         },
         "frameDe": "Wie viel kostet die [Slot]?",
         "pronouns": [
@@ -5503,76 +6359,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "number",
               "lerntext": "number",
-              "de": "Nummer"
+              "de": "Nummer",
+              "c": "n"
             },
             {
               "schrift": "shift",
               "lerntext": "shift",
-              "de": "Schicht"
+              "de": "Schicht",
+              "c": "n"
             },
             {
               "schrift": "lecture",
               "lerntext": "lecture",
-              "de": "Vorlesung"
+              "de": "Vorlesung",
+              "c": "n"
             },
             {
               "schrift": "party",
               "lerntext": "party",
               "de": "Party",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "world",
               "lerntext": "world",
               "de": "Welt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "street",
               "lerntext": "street",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "toilet",
               "lerntext": "toilet",
               "de": "Toilette",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "city",
               "lerntext": "city",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pharmacy",
               "lerntext": "pharmacy",
               "de": "Apotheke",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bank",
               "lerntext": "bank",
               "de": "Bank (Geldinstitut)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pub",
               "lerntext": "pub",
               "de": "Kneipe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "school",
               "lerntext": "school",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "university",
               "lerntext": "university",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -5612,7 +6481,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "how much is the [Slot]?",
-          "lerntext": "how much is the [Slot]?"
+          "lerntext": "how much is the [Slot]?",
+          "wortarten": {
+            "is": "v"
+          }
         },
         "frameDe": "Wie viel kostet der [Slot]?",
         "pronouns": [
@@ -5637,66 +6509,77 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "price",
               "lerntext": "price",
-              "de": "Preis"
+              "de": "Preis",
+              "c": "n"
             },
             {
               "schrift": "way",
               "lerntext": "way",
               "de": "Weg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "market",
               "lerntext": "market",
               "de": "Markt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "station",
               "lerntext": "station",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "airport",
               "lerntext": "airport",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "tea",
               "lerntext": "tea",
               "de": "Tee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "teacher",
               "lerntext": "teacher",
               "de": "Lehrer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "man",
               "lerntext": "man",
               "de": "Mann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "colleague",
               "lerntext": "colleague",
               "de": "Kollege",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "son",
               "lerntext": "son",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "coffee",
               "lerntext": "coffee",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -5710,7 +6593,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "how much is the [Slot]?",
-          "lerntext": "how much is the [Slot]?"
+          "lerntext": "how much is the [Slot]?",
+          "wortarten": {
+            "is": "v"
+          }
         },
         "frameDe": "Wie viel kostet das [Slot]?",
         "pronouns": [
@@ -5735,66 +6621,77 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "weekend",
               "lerntext": "weekend",
-              "de": "Wochenende"
+              "de": "Wochenende",
+              "c": "n"
             },
             {
               "schrift": "country",
               "lerntext": "country",
               "de": "Land",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "restaurant",
               "lerntext": "restaurant",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hospital",
               "lerntext": "hospital",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "present",
               "lerntext": "present",
               "de": "Geschenk",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "car",
               "lerntext": "car",
               "de": "Auto",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "breakfast",
               "lerntext": "breakfast",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fruit",
               "lerntext": "fruit",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "vegetables",
               "lerntext": "vegetables",
               "de": "Gemüse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "beer",
               "lerntext": "beer",
               "de": "Bier",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "glass",
               "lerntext": "glass",
               "de": "Glas",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -5808,7 +6705,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it is too [Slot]",
-          "lerntext": "it is too [Slot]"
+          "lerntext": "it is too [Slot]",
+          "wortarten": {
+            "it": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Das ist zu [Slot].",
         "pronouns": [
@@ -5833,86 +6734,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "expensive",
               "lerntext": "expensive",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "cheap",
               "lerntext": "cheap",
-              "de": "billig"
+              "de": "billig",
+              "c": "a"
             },
             {
               "schrift": "big",
               "lerntext": "big",
-              "de": "groß"
+              "de": "groß",
+              "c": "a"
             },
             {
               "schrift": "small",
               "lerntext": "small",
-              "de": "klein"
+              "de": "klein",
+              "c": "a"
             },
             {
               "schrift": "long",
               "lerntext": "long",
-              "de": "lang"
+              "de": "lang",
+              "c": "a"
             },
             {
               "schrift": "free",
               "lerntext": "free",
               "de": "frei",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dangerous",
               "lerntext": "dangerous",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "safe",
               "lerntext": "safe",
               "de": "sicher",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "full",
               "lerntext": "full",
               "de": "voll",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "empty",
               "lerntext": "empty",
               "de": "leer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ill",
               "lerntext": "ill",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "hungry",
               "lerntext": "hungry",
               "de": "hungrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "old",
               "lerntext": "old",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tired",
               "lerntext": "tired",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "angry",
               "lerntext": "angry",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -5962,7 +6878,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it is too [Slot]",
-          "lerntext": "it is too [Slot]"
+          "lerntext": "it is too [Slot]",
+          "wortarten": {
+            "it": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Das ist zu [Slot].",
         "pronouns": [
@@ -5987,86 +6907,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "short",
               "lerntext": "short",
-              "de": "kurz"
+              "de": "kurz",
+              "c": "a"
             },
             {
               "schrift": "high",
               "lerntext": "high",
-              "de": "hoch"
+              "de": "hoch",
+              "c": "a"
             },
             {
               "schrift": "low",
               "lerntext": "low",
-              "de": "niedrig"
+              "de": "niedrig",
+              "c": "a"
             },
             {
               "schrift": "heavy",
               "lerntext": "heavy",
-              "de": "schwer"
+              "de": "schwer",
+              "c": "a"
             },
             {
               "schrift": "light",
               "lerntext": "light",
-              "de": "leicht"
+              "de": "leicht",
+              "c": "a"
             },
             {
               "schrift": "expensive",
               "lerntext": "expensive",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "cheap",
               "lerntext": "cheap",
               "de": "billig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "big",
               "lerntext": "big",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "small",
               "lerntext": "small",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "long",
               "lerntext": "long",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "free",
               "lerntext": "free",
               "de": "frei",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dangerous",
               "lerntext": "dangerous",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "safe",
               "lerntext": "safe",
               "de": "sicher",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "full",
               "lerntext": "full",
               "de": "voll",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "empty",
               "lerntext": "empty",
               "de": "leer",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -6089,66 +7024,77 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "next",
               "lerntext": "next",
-              "de": "nächster"
+              "de": "nächster",
+              "c": "a"
             },
             {
               "schrift": "low",
               "lerntext": "low",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "light",
               "lerntext": "light",
               "de": "leicht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "heavy",
               "lerntext": "heavy",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "high",
               "lerntext": "high",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "short",
               "lerntext": "short",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "small",
               "lerntext": "small",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "big",
               "lerntext": "big",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "long",
               "lerntext": "long",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "cheap",
               "lerntext": "cheap",
               "de": "billig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "expensive",
               "lerntext": "expensive",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -6588,24 +7534,30 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I can [Slot]",
-          "lerntext": "I can [Slot]"
+          "lerntext": "I can [Slot]",
+          "wortarten": {
+            "I": "p"
+          }
         },
         "frameDe": "Ich kann [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "you",
             "lerntext": "you",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6613,86 +7565,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "dance",
               "lerntext": "dance",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "drive",
               "lerntext": "drive",
-              "de": "fahren"
+              "de": "fahren",
+              "c": "v"
             },
             {
               "schrift": "sing",
               "lerntext": "sing",
-              "de": "singen"
+              "de": "singen",
+              "c": "v"
             },
             {
               "schrift": "walk",
               "lerntext": "walk",
-              "de": "gehen"
+              "de": "gehen",
+              "c": "v"
             },
             {
               "schrift": "wash",
               "lerntext": "wash",
-              "de": "waschen"
+              "de": "waschen",
+              "c": "v"
             },
             {
               "schrift": "go",
               "lerntext": "go",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mean",
               "lerntext": "mean",
               "de": "bedeuten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "forget",
               "lerntext": "forget",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "do",
               "lerntext": "do",
               "de": "tun",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "think",
               "lerntext": "think",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "believe",
               "lerntext": "believe",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hear",
               "lerntext": "hear",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "like",
               "lerntext": "like",
               "de": "mögen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "understand",
               "lerntext": "understand",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "know",
               "lerntext": "know",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6703,7 +7670,8 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "can",
             "lerntext": "can",
-            "de": "können"
+            "de": "können",
+            "c": "v"
           }
         ],
         "id": "7.1"
@@ -6712,24 +7680,30 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I can [Slot]",
-          "lerntext": "I can [Slot]"
+          "lerntext": "I can [Slot]",
+          "wortarten": {
+            "I": "p"
+          }
         },
         "frameDe": "Ich kann [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "you",
             "lerntext": "you",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           },
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6737,86 +7711,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "read",
               "lerntext": "read",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "write",
               "lerntext": "write",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "help",
               "lerntext": "help",
-              "de": "helfen"
+              "de": "helfen",
+              "c": "v"
             },
             {
               "schrift": "speak",
               "lerntext": "speak",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "cook",
               "lerntext": "cook",
-              "de": "kochen"
+              "de": "kochen",
+              "c": "v"
             },
             {
               "schrift": "dance",
               "lerntext": "dance",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drive",
               "lerntext": "drive",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sing",
               "lerntext": "sing",
               "de": "singen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "walk",
               "lerntext": "walk",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "wash",
               "lerntext": "wash",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "go",
               "lerntext": "go",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mean",
               "lerntext": "mean",
               "de": "bedeuten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "forget",
               "lerntext": "forget",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "do",
               "lerntext": "do",
               "de": "tun",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "think",
               "lerntext": "think",
               "de": "denken",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6830,19 +7819,24 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "he can [Slot]",
-          "lerntext": "he can [Slot]"
+          "lerntext": "he can [Slot]",
+          "wortarten": {
+            "he": "p"
+          }
         },
         "frameDe": "Er kann [Slot].",
         "pronouns": [
           {
             "schrift": "he",
             "lerntext": "he",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "she",
             "lerntext": "she",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -6850,86 +7844,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "work",
               "lerntext": "work",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "play",
               "lerntext": "play",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "run",
               "lerntext": "run",
-              "de": "rennen"
+              "de": "rennen",
+              "c": "v"
             },
             {
               "schrift": "walk",
               "lerntext": "walk",
-              "de": "gehen"
+              "de": "gehen",
+              "c": "v"
             },
             {
               "schrift": "wait",
               "lerntext": "wait",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "write",
               "lerntext": "write",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "read",
               "lerntext": "read",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "speak",
               "lerntext": "speak",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "help",
               "lerntext": "help",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cook",
               "lerntext": "cook",
               "de": "kochen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drive",
               "lerntext": "drive",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "wash",
               "lerntext": "wash",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sing",
               "lerntext": "sing",
               "de": "singen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dance",
               "lerntext": "dance",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "believe",
               "lerntext": "believe",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -6943,7 +7952,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I must [Slot]",
-          "lerntext": "I must [Slot]"
+          "lerntext": "I must [Slot]",
+          "wortarten": {
+            "I": "p",
+            "must": "v"
+          }
         },
         "frameDe": "Ich muss [Slot].",
         "pronouns": [],
@@ -6952,86 +7965,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "pay",
               "lerntext": "pay",
-              "de": "bezahlen"
+              "de": "bezahlen",
+              "c": "v"
             },
             {
               "schrift": "sleep",
               "lerntext": "sleep",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "eat",
               "lerntext": "eat",
-              "de": "essen"
+              "de": "essen",
+              "c": "v"
             },
             {
               "schrift": "drink",
               "lerntext": "drink",
-              "de": "trinken"
+              "de": "trinken",
+              "c": "v"
             },
             {
               "schrift": "start",
               "lerntext": "start",
-              "de": "starten"
+              "de": "starten",
+              "c": "v"
             },
             {
               "schrift": "play",
               "lerntext": "play",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "run",
               "lerntext": "run",
               "de": "rennen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "wait",
               "lerntext": "wait",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "work",
               "lerntext": "work",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "write",
               "lerntext": "write",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "read",
               "lerntext": "read",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "speak",
               "lerntext": "speak",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "help",
               "lerntext": "help",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cook",
               "lerntext": "cook",
               "de": "kochen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drive",
               "lerntext": "drive",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -7042,12 +8070,14 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "must",
             "lerntext": "must",
-            "de": "müssen"
+            "de": "müssen",
+            "c": "v"
           },
           {
             "schrift": "should",
             "lerntext": "should",
-            "de": "sollen"
+            "de": "sollen",
+            "c": "v"
           }
         ],
         "id": "7.4"
@@ -7056,7 +8086,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "you should [Slot]",
-          "lerntext": "you should [Slot]"
+          "lerntext": "you should [Slot]",
+          "wortarten": {
+            "you": "p",
+            "should": "v"
+          }
         },
         "frameDe": "Du solltest [Slot].",
         "pronouns": [],
@@ -7065,66 +8099,77 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "answer",
               "lerntext": "answer",
-              "de": "Antwort"
+              "de": "Antwort",
+              "c": "n"
             },
             {
               "schrift": "price",
               "lerntext": "price",
               "de": "Preis",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "shift",
               "lerntext": "shift",
               "de": "Schicht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "number",
               "lerntext": "number",
               "de": "Nummer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "weekend",
               "lerntext": "weekend",
               "de": "Wochenende",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lecture",
               "lerntext": "lecture",
               "de": "Vorlesung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "way",
               "lerntext": "way",
               "de": "Weg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "name",
               "lerntext": "name",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "party",
               "lerntext": "party",
               "de": "Party",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "world",
               "lerntext": "world",
               "de": "Welt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "country",
               "lerntext": "country",
               "de": "Land",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7138,7 +8183,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "you should [Slot]",
-          "lerntext": "you should [Slot]"
+          "lerntext": "you should [Slot]",
+          "wortarten": {
+            "you": "p",
+            "should": "v"
+          }
         },
         "frameDe": "Du solltest [Slot].",
         "pronouns": [],
@@ -7147,81 +8196,95 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "ask",
               "lerntext": "ask",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "try",
               "lerntext": "try",
-              "de": "versuchen"
+              "de": "versuchen",
+              "c": "v"
             },
             {
               "schrift": "call",
               "lerntext": "call",
-              "de": "rufen"
+              "de": "rufen",
+              "c": "v"
             },
             {
               "schrift": "look",
               "lerntext": "look",
-              "de": "schauen"
+              "de": "schauen",
+              "c": "v"
             },
             {
               "schrift": "eat",
               "lerntext": "eat",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "must",
               "lerntext": "must",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sleep",
               "lerntext": "sleep",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drink",
               "lerntext": "drink",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "start",
               "lerntext": "start",
               "de": "starten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pay",
               "lerntext": "pay",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "play",
               "lerntext": "play",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "run",
               "lerntext": "run",
               "de": "rennen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "wait",
               "lerntext": "wait",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "work",
               "lerntext": "work",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -7235,7 +8298,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "you should [Slot]",
-          "lerntext": "you should [Slot]"
+          "lerntext": "you should [Slot]",
+          "wortarten": {
+            "you": "p",
+            "should": "v"
+          }
         },
         "frameDe": "Du solltest [Slot].",
         "pronouns": [],
@@ -7245,60 +8312,70 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "ask",
               "lerntext": "ask",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "try",
               "lerntext": "try",
               "de": "versuchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "call",
               "lerntext": "call",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "look",
               "lerntext": "look",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "price",
               "lerntext": "price",
               "de": "Preis",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "shift",
               "lerntext": "shift",
               "de": "Schicht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "number",
               "lerntext": "number",
               "de": "Nummer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "weekend",
               "lerntext": "weekend",
               "de": "Wochenende",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lecture",
               "lerntext": "lecture",
               "de": "Vorlesung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "eat",
               "lerntext": "eat",
               "de": "essen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -7312,7 +8389,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "you should [Slot]",
-          "lerntext": "you should [Slot]"
+          "lerntext": "you should [Slot]",
+          "wortarten": {
+            "you": "p",
+            "should": "v"
+          }
         },
         "frameDe": "Du solltest [Slot].",
         "pronouns": [],
@@ -7322,54 +8403,63 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "ask",
               "lerntext": "ask",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "try",
               "lerntext": "try",
               "de": "versuchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "call",
               "lerntext": "call",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "look",
               "lerntext": "look",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "must",
               "lerntext": "must",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sleep",
               "lerntext": "sleep",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drink",
               "lerntext": "drink",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "start",
               "lerntext": "start",
               "de": "starten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pay",
               "lerntext": "pay",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -7404,24 +8494,31 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I go to the [Slot]",
-          "lerntext": "I go to the [Slot]"
+          "lerntext": "I go to the [Slot]",
+          "wortarten": {
+            "I": "p",
+            "go": "v"
+          }
         },
         "frameDe": "Ich gehe zum [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           },
           {
             "schrift": "they",
             "lerntext": "they",
-            "de": "sie (Mehrzahl)"
+            "de": "sie (Mehrzahl)",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7429,86 +8526,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "train",
               "lerntext": "train",
-              "de": "Zug"
+              "de": "Zug",
+              "c": "n"
             },
             {
               "schrift": "bus",
               "lerntext": "bus",
-              "de": "Bus"
+              "de": "Bus",
+              "c": "n"
             },
             {
               "schrift": "car",
               "lerntext": "car",
-              "de": "Auto"
+              "de": "Auto",
+              "c": "n"
             },
             {
               "schrift": "airport",
               "lerntext": "airport",
-              "de": "Flughafen"
+              "de": "Flughafen",
+              "c": "n"
             },
             {
               "schrift": "station",
               "lerntext": "station",
-              "de": "Bahnhof"
+              "de": "Bahnhof",
+              "c": "n"
             },
             {
               "schrift": "price",
               "lerntext": "price",
               "de": "Preis",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "shift",
               "lerntext": "shift",
               "de": "Schicht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "number",
               "lerntext": "number",
               "de": "Nummer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "weekend",
               "lerntext": "weekend",
               "de": "Wochenende",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lecture",
               "lerntext": "lecture",
               "de": "Vorlesung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "phone",
               "lerntext": "phone",
               "de": "Handy",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "market",
               "lerntext": "market",
               "de": "Markt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "street",
               "lerntext": "street",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "water",
               "lerntext": "water",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "way",
               "lerntext": "way",
               "de": "Weg",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -7519,7 +8631,8 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "come",
             "lerntext": "come",
-            "de": "kommen"
+            "de": "kommen",
+            "c": "v"
           }
         ],
         "id": "8.1"
@@ -7528,19 +8641,24 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "we can [Slot]",
-          "lerntext": "we can [Slot]"
+          "lerntext": "we can [Slot]",
+          "wortarten": {
+            "we": "p"
+          }
         },
         "frameDe": "Wir können [Slot].",
         "pronouns": [
           {
             "schrift": "he",
             "lerntext": "he",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "she",
             "lerntext": "she",
-            "de": "sie"
+            "de": "sie",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -7548,76 +8666,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "move",
               "lerntext": "move",
-              "de": "bewegen"
+              "de": "bewegen",
+              "c": "v"
             },
             {
               "schrift": "arrive",
               "lerntext": "arrive",
-              "de": "ankommen"
+              "de": "ankommen",
+              "c": "v"
             },
             {
               "schrift": "visit",
               "lerntext": "visit",
-              "de": "besuchen"
+              "de": "besuchen",
+              "c": "v"
             },
             {
               "schrift": "come",
               "lerntext": "come",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "should",
               "lerntext": "should",
               "de": "sollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "look",
               "lerntext": "look",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "play",
               "lerntext": "play",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "eat",
               "lerntext": "eat",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "wash",
               "lerntext": "wash",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sing",
               "lerntext": "sing",
               "de": "singen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "call",
               "lerntext": "call",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "write",
               "lerntext": "write",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "must",
               "lerntext": "must",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -7631,7 +8762,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I [Slot] a lot",
-          "lerntext": "I [Slot] a lot"
+          "lerntext": "I [Slot] a lot",
+          "wortarten": {
+            "I": "p"
+          }
         },
         "frameDe": "Ich [Slot] viel.",
         "pronouns": [],
@@ -7640,86 +8774,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "get",
               "lerntext": "get",
-              "de": "bekommen"
+              "de": "bekommen",
+              "c": "v"
             },
             {
               "schrift": "take",
               "lerntext": "take",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "give",
               "lerntext": "give",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "put",
               "lerntext": "put",
-              "de": "legen"
+              "de": "legen",
+              "c": "v"
             },
             {
               "schrift": "keep",
               "lerntext": "keep",
-              "de": "behalten"
+              "de": "behalten",
+              "c": "v"
             },
             {
               "schrift": "visit",
               "lerntext": "visit",
               "de": "besuchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "move",
               "lerntext": "move",
               "de": "bewegen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "come",
               "lerntext": "come",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "arrive",
               "lerntext": "arrive",
               "de": "ankommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "should",
               "lerntext": "should",
               "de": "sollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sleep",
               "lerntext": "sleep",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "run",
               "lerntext": "run",
               "de": "rennen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "read",
               "lerntext": "read",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dance",
               "lerntext": "dance",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "be",
               "lerntext": "be",
               "de": "sein",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -7733,7 +8882,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I [Slot] a lot",
-          "lerntext": "I [Slot] a lot"
+          "lerntext": "I [Slot] a lot",
+          "wortarten": {
+            "I": "p"
+          }
         },
         "frameDe": "Ich [Slot] viel.",
         "pronouns": [],
@@ -7742,86 +8894,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "leave",
               "lerntext": "leave",
-              "de": "verlassen"
+              "de": "verlassen",
+              "c": "v"
             },
             {
               "schrift": "turn",
               "lerntext": "turn",
-              "de": "drehen"
+              "de": "drehen",
+              "c": "v"
             },
             {
               "schrift": "show",
               "lerntext": "show",
-              "de": "zeigen"
+              "de": "zeigen",
+              "c": "v"
             },
             {
               "schrift": "tell",
               "lerntext": "tell",
-              "de": "erzählen"
+              "de": "erzählen",
+              "c": "v"
             },
             {
               "schrift": "let",
               "lerntext": "let",
-              "de": "lassen"
+              "de": "lassen",
+              "c": "v"
             },
             {
               "schrift": "get",
               "lerntext": "get",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "take",
               "lerntext": "take",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "give",
               "lerntext": "give",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "put",
               "lerntext": "put",
               "de": "legen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "keep",
               "lerntext": "keep",
               "de": "behalten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "visit",
               "lerntext": "visit",
               "de": "besuchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "move",
               "lerntext": "move",
               "de": "bewegen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "come",
               "lerntext": "come",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "arrive",
               "lerntext": "arrive",
               "de": "ankommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "wait",
               "lerntext": "wait",
               "de": "warten",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -7835,7 +9002,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I [Slot] a lot",
-          "lerntext": "I [Slot] a lot"
+          "lerntext": "I [Slot] a lot",
+          "wortarten": {
+            "I": "p"
+          }
         },
         "frameDe": "Ich [Slot] viel.",
         "pronouns": [],
@@ -7844,66 +9014,77 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "bring",
               "lerntext": "bring",
-              "de": "bringen"
+              "de": "bringen",
+              "c": "v"
             },
             {
               "schrift": "leave",
               "lerntext": "leave",
               "de": "verlassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "turn",
               "lerntext": "turn",
               "de": "drehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "show",
               "lerntext": "show",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tell",
               "lerntext": "tell",
               "de": "erzählen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "let",
               "lerntext": "let",
               "de": "lassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "get",
               "lerntext": "get",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "take",
               "lerntext": "take",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "give",
               "lerntext": "give",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "put",
               "lerntext": "put",
               "de": "legen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "keep",
               "lerntext": "keep",
               "de": "behalten",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -7917,7 +9098,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "we [Slot] together",
-          "lerntext": "we [Slot] together"
+          "lerntext": "we [Slot] together",
+          "wortarten": {
+            "we": "p"
+          }
         },
         "frameDe": "Wir [Slot] zusammen.",
         "pronouns": [
@@ -7942,86 +9126,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "travel",
               "lerntext": "travel",
-              "de": "reisen"
+              "de": "reisen",
+              "c": "v"
             },
             {
               "schrift": "meet",
               "lerntext": "meet",
-              "de": "treffen"
+              "de": "treffen",
+              "c": "v"
             },
             {
               "schrift": "stay",
               "lerntext": "stay",
-              "de": "bleiben"
+              "de": "bleiben",
+              "c": "v"
             },
             {
               "schrift": "live",
               "lerntext": "live",
-              "de": "leben"
+              "de": "leben",
+              "c": "v"
             },
             {
               "schrift": "sit",
               "lerntext": "sit",
-              "de": "sitzen"
+              "de": "sitzen",
+              "c": "v"
             },
             {
               "schrift": "bring",
               "lerntext": "bring",
               "de": "bringen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "let",
               "lerntext": "let",
               "de": "lassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "turn",
               "lerntext": "turn",
               "de": "drehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tell",
               "lerntext": "tell",
               "de": "erzählen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "show",
               "lerntext": "show",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "leave",
               "lerntext": "leave",
               "de": "verlassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "visit",
               "lerntext": "visit",
               "de": "besuchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "give",
               "lerntext": "give",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "move",
               "lerntext": "move",
               "de": "bewegen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "take",
               "lerntext": "take",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8056,7 +9255,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "we [Slot] together",
-          "lerntext": "we [Slot] together"
+          "lerntext": "we [Slot] together",
+          "wortarten": {
+            "we": "p"
+          }
         },
         "frameDe": "Wir [Slot] zusammen.",
         "pronouns": [
@@ -8082,36 +9284,42 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "travel",
               "lerntext": "travel",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "meet",
               "lerntext": "meet",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stay",
               "lerntext": "stay",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "live",
               "lerntext": "live",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sit",
               "lerntext": "sit",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bring",
               "lerntext": "bring",
               "de": "bringen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8125,7 +9333,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "we [Slot] together",
-          "lerntext": "we [Slot] together"
+          "lerntext": "we [Slot] together",
+          "wortarten": {
+            "we": "p"
+          }
         },
         "frameDe": "Wir [Slot] zusammen.",
         "pronouns": [
@@ -8151,30 +9362,35 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "travel",
               "lerntext": "travel",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "meet",
               "lerntext": "meet",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stay",
               "lerntext": "stay",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "live",
               "lerntext": "live",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sit",
               "lerntext": "sit",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -8307,7 +9523,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "see you in the [Slot]",
-          "lerntext": "see you in the [Slot]"
+          "lerntext": "see you in the [Slot]",
+          "wortarten": {
+            "see": "v",
+            "you": "p"
+          }
         },
         "frameDe": "Bis [Slot].",
         "pronouns": [
@@ -8332,86 +9552,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "morning",
               "lerntext": "morning",
-              "de": "Morgen"
+              "de": "Morgen",
+              "c": "n"
             },
             {
               "schrift": "afternoon",
               "lerntext": "afternoon",
-              "de": "Nachmittag"
+              "de": "Nachmittag",
+              "c": "n"
             },
             {
               "schrift": "evening",
               "lerntext": "evening",
-              "de": "Abend"
+              "de": "Abend",
+              "c": "n"
             },
             {
               "schrift": "night",
               "lerntext": "night",
-              "de": "Nacht"
+              "de": "Nacht",
+              "c": "n"
             },
             {
               "schrift": "moment",
               "lerntext": "moment",
-              "de": "Moment"
+              "de": "Moment",
+              "c": "n"
             },
             {
               "schrift": "bus",
               "lerntext": "bus",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "train",
               "lerntext": "train",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "problem",
               "lerntext": "problem",
               "de": "Problem",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "girl",
               "lerntext": "girl",
               "de": "Mädchen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "room",
               "lerntext": "room",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "salt",
               "lerntext": "salt",
               "de": "Salz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "idea",
               "lerntext": "idea",
               "de": "Idee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bed",
               "lerntext": "bed",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "weekend",
               "lerntext": "weekend",
               "de": "Wochenende",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ticket",
               "lerntext": "ticket",
               "de": "Fahrkarte",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -8446,7 +9681,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it takes an [Slot]",
-          "lerntext": "it takes an [Slot]"
+          "lerntext": "it takes an [Slot]",
+          "wortarten": {
+            "it": "p",
+            "takes": "v"
+          }
         },
         "frameDe": "Es dauert eine [Slot].",
         "pronouns": [],
@@ -8455,81 +9694,95 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "hour",
               "lerntext": "hour",
-              "de": "Stunde"
+              "de": "Stunde",
+              "c": "n"
             },
             {
               "schrift": "minute",
               "lerntext": "minute",
-              "de": "Minute"
+              "de": "Minute",
+              "c": "n"
             },
             {
               "schrift": "week",
               "lerntext": "week",
-              "de": "Woche"
+              "de": "Woche",
+              "c": "n"
             },
             {
               "schrift": "time",
               "lerntext": "time",
-              "de": "Zeit"
+              "de": "Zeit",
+              "c": "n"
             },
             {
               "schrift": "night",
               "lerntext": "night",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "shift",
               "lerntext": "shift",
               "de": "Schicht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bag",
               "lerntext": "bag",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "menu",
               "lerntext": "menu",
               "de": "Speisekarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "party",
               "lerntext": "party",
               "de": "Party",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bill",
               "lerntext": "bill",
               "de": "Rechnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "school",
               "lerntext": "school",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "flat",
               "lerntext": "flat",
               "de": "Wohnung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "milk",
               "lerntext": "milk",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "number",
               "lerntext": "number",
               "de": "Nummer",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -8543,7 +9796,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it takes an [Slot]",
-          "lerntext": "it takes an [Slot]"
+          "lerntext": "it takes an [Slot]",
+          "wortarten": {
+            "it": "p",
+            "takes": "v"
+          }
         },
         "frameDe": "Es dauert einen [Slot].",
         "pronouns": [],
@@ -8552,76 +9809,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "day",
               "lerntext": "day",
-              "de": "Tag"
+              "de": "Tag",
+              "c": "n"
             },
             {
               "schrift": "month",
               "lerntext": "month",
-              "de": "Monat"
+              "de": "Monat",
+              "c": "n"
             },
             {
               "schrift": "beginning",
               "lerntext": "beginning",
-              "de": "Anfang"
+              "de": "Anfang",
+              "c": "n"
             },
             {
               "schrift": "moment",
               "lerntext": "moment",
               "de": "Moment",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "afternoon",
               "lerntext": "afternoon",
               "de": "Nachmittag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "evening",
               "lerntext": "evening",
               "de": "Abend",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "morning",
               "lerntext": "morning",
               "de": "Morgen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bus",
               "lerntext": "bus",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "train",
               "lerntext": "train",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "father",
               "lerntext": "father",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sugar",
               "lerntext": "sugar",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fish",
               "lerntext": "fish",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "wine",
               "lerntext": "wine",
               "de": "Wein",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -8635,7 +9905,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it takes an [Slot]",
-          "lerntext": "it takes an [Slot]"
+          "lerntext": "it takes an [Slot]",
+          "wortarten": {
+            "it": "p",
+            "takes": "v"
+          }
         },
         "frameDe": "Es dauert ein [Slot].",
         "pronouns": [],
@@ -8644,76 +9918,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "year",
               "lerntext": "year",
-              "de": "Jahr"
+              "de": "Jahr",
+              "c": "n"
             },
             {
               "schrift": "life",
               "lerntext": "life",
-              "de": "Leben"
+              "de": "Leben",
+              "c": "n"
             },
             {
               "schrift": "end",
               "lerntext": "end",
-              "de": "Ende"
+              "de": "Ende",
+              "c": "n"
             },
             {
               "schrift": "dinner",
               "lerntext": "dinner",
               "de": "Abendessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "luggage",
               "lerntext": "luggage",
               "de": "Gepäck",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "restaurant",
               "lerntext": "restaurant",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "child",
               "lerntext": "child",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "window",
               "lerntext": "window",
               "de": "Fenster",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "eye",
               "lerntext": "eye",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bread",
               "lerntext": "bread",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hotel",
               "lerntext": "hotel",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "house",
               "lerntext": "house",
               "de": "Haus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "book",
               "lerntext": "book",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -8804,7 +10091,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it takes an [Slot]",
-          "lerntext": "it takes an [Slot]"
+          "lerntext": "it takes an [Slot]",
+          "wortarten": {
+            "it": "p",
+            "takes": "v"
+          }
         },
         "frameDe": "Es dauert einen [Slot].",
         "pronouns": [],
@@ -8814,42 +10105,49 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "day",
               "lerntext": "day",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "month",
               "lerntext": "month",
               "de": "Monat",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "beginning",
               "lerntext": "beginning",
               "de": "Anfang",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "moment",
               "lerntext": "moment",
               "de": "Moment",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "afternoon",
               "lerntext": "afternoon",
               "de": "Nachmittag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "evening",
               "lerntext": "evening",
               "de": "Abend",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "morning",
               "lerntext": "morning",
               "de": "Morgen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9014,19 +10312,24 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I like [Slot]",
-          "lerntext": "I like [Slot]"
+          "lerntext": "I like [Slot]",
+          "wortarten": {
+            "I": "p"
+          }
         },
         "frameDe": "Ich mag [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -9034,86 +10337,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "music",
               "lerntext": "music",
-              "de": "Musik"
+              "de": "Musik",
+              "c": "n"
             },
             {
               "schrift": "film",
               "lerntext": "film",
-              "de": "Film"
+              "de": "Film",
+              "c": "n"
             },
             {
               "schrift": "story",
               "lerntext": "story",
-              "de": "Geschichte"
+              "de": "Geschichte",
+              "c": "n"
             },
             {
               "schrift": "sun",
               "lerntext": "sun",
-              "de": "Sonne"
+              "de": "Sonne",
+              "c": "n"
             },
             {
               "schrift": "rain",
               "lerntext": "rain",
-              "de": "Regen"
+              "de": "Regen",
+              "c": "n"
             },
             {
               "schrift": "time",
               "lerntext": "time",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "life",
               "lerntext": "life",
               "de": "Leben",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "end",
               "lerntext": "end",
               "de": "Ende",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "week",
               "lerntext": "week",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "minute",
               "lerntext": "minute",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hour",
               "lerntext": "hour",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "year",
               "lerntext": "year",
               "de": "Jahr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "day",
               "lerntext": "day",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "beginning",
               "lerntext": "beginning",
               "de": "Anfang",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "night",
               "lerntext": "night",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9124,7 +10442,8 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "to love",
             "lerntext": "to love",
-            "de": "lieben"
+            "de": "lieben",
+            "c": "v"
           }
         ],
         "id": "10.1"
@@ -9133,19 +10452,24 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I like [Slot]",
-          "lerntext": "I like [Slot]"
+          "lerntext": "I like [Slot]",
+          "wortarten": {
+            "I": "p"
+          }
         },
         "frameDe": "Ich mag [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -9153,86 +10477,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "snow",
               "lerntext": "snow",
-              "de": "Schnee"
+              "de": "Schnee",
+              "c": "n"
             },
             {
               "schrift": "weather",
               "lerntext": "weather",
-              "de": "Wetter"
+              "de": "Wetter",
+              "c": "n"
             },
             {
               "schrift": "sea",
               "lerntext": "sea",
-              "de": "Meer"
+              "de": "Meer",
+              "c": "n"
             },
             {
               "schrift": "mountain",
               "lerntext": "mountain",
-              "de": "Berg"
+              "de": "Berg",
+              "c": "n"
             },
             {
               "schrift": "air",
               "lerntext": "air",
-              "de": "Luft"
+              "de": "Luft",
+              "c": "n"
             },
             {
               "schrift": "music",
               "lerntext": "music",
               "de": "Musik",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "film",
               "lerntext": "film",
               "de": "Film",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "story",
               "lerntext": "story",
               "de": "Geschichte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sun",
               "lerntext": "sun",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "rain",
               "lerntext": "rain",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "time",
               "lerntext": "time",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "life",
               "lerntext": "life",
               "de": "Leben",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "end",
               "lerntext": "end",
               "de": "Ende",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "week",
               "lerntext": "week",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "month",
               "lerntext": "month",
               "de": "Monat",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9246,34 +10585,43 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "she loves [Slot]",
-          "lerntext": "she loves [Slot]"
+          "lerntext": "she loves [Slot]",
+          "wortarten": {
+            "she": "p",
+            "loves": "v"
+          }
         },
         "frameDe": "Sie liebt [Slot].",
         "pronouns": [
           {
             "schrift": "him",
             "lerntext": "him",
-            "de": "ihm"
+            "de": "ihm",
+            "c": "p"
           },
           {
             "schrift": "her",
             "lerntext": "her",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           },
           {
             "schrift": "us",
             "lerntext": "us",
-            "de": "uns"
+            "de": "uns",
+            "c": "p"
           },
           {
             "schrift": "them",
             "lerntext": "them",
-            "de": "ihnen"
+            "de": "ihnen",
+            "c": "p"
           },
           {
             "schrift": "it",
             "lerntext": "it",
-            "de": "es"
+            "de": "es",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -9281,86 +10629,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "love",
               "lerntext": "love",
-              "de": "Liebe"
+              "de": "Liebe",
+              "c": "n"
             },
             {
               "schrift": "people",
               "lerntext": "people",
-              "de": "Leute"
+              "de": "Leute",
+              "c": "n"
             },
             {
               "schrift": "person",
               "lerntext": "person",
-              "de": "Person"
+              "de": "Person",
+              "c": "n"
             },
             {
               "schrift": "thing",
               "lerntext": "thing",
-              "de": "Ding"
+              "de": "Ding",
+              "c": "n"
             },
             {
               "schrift": "reason",
               "lerntext": "reason",
-              "de": "Grund"
+              "de": "Grund",
+              "c": "n"
             },
             {
               "schrift": "mountain",
               "lerntext": "mountain",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "air",
               "lerntext": "air",
               "de": "Luft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "snow",
               "lerntext": "snow",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sea",
               "lerntext": "sea",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "weather",
               "lerntext": "weather",
               "de": "Wetter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "film",
               "lerntext": "film",
               "de": "Film",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "story",
               "lerntext": "story",
               "de": "Geschichte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "minute",
               "lerntext": "minute",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "music",
               "lerntext": "music",
               "de": "Musik",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "rain",
               "lerntext": "rain",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -9374,7 +10737,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it is [Slot]",
-          "lerntext": "it is [Slot]"
+          "lerntext": "it is [Slot]",
+          "wortarten": {
+            "it": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Es ist [Slot].",
         "pronouns": [],
@@ -9383,86 +10750,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "white",
               "lerntext": "white",
-              "de": "weiß"
+              "de": "weiß",
+              "c": "a"
             },
             {
               "schrift": "black",
               "lerntext": "black",
-              "de": "schwarz"
+              "de": "schwarz",
+              "c": "a"
             },
             {
               "schrift": "red",
               "lerntext": "red",
-              "de": "rot"
+              "de": "rot",
+              "c": "a"
             },
             {
               "schrift": "blue",
               "lerntext": "blue",
-              "de": "blau"
+              "de": "blau",
+              "c": "a"
             },
             {
               "schrift": "green",
               "lerntext": "green",
-              "de": "grün"
+              "de": "grün",
+              "c": "a"
             },
             {
               "schrift": "next",
               "lerntext": "next",
               "de": "nächster",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "high",
               "lerntext": "high",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "short",
               "lerntext": "short",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "low",
               "lerntext": "low",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "heavy",
               "lerntext": "heavy",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "light",
               "lerntext": "light",
               "de": "leicht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "small",
               "lerntext": "small",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "free",
               "lerntext": "free",
               "de": "frei",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "happy",
               "lerntext": "happy",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "young",
               "lerntext": "young",
               "de": "jung",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -9476,7 +10858,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it is [Slot]",
-          "lerntext": "it is [Slot]"
+          "lerntext": "it is [Slot]",
+          "wortarten": {
+            "it": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Es ist [Slot].",
         "pronouns": [],
@@ -9485,86 +10871,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "yellow",
               "lerntext": "yellow",
-              "de": "gelb"
+              "de": "gelb",
+              "c": "a"
             },
             {
               "schrift": "grey",
               "lerntext": "grey",
-              "de": "grau"
+              "de": "grau",
+              "c": "a"
             },
             {
               "schrift": "brown",
               "lerntext": "brown",
-              "de": "braun"
+              "de": "braun",
+              "c": "a"
             },
             {
               "schrift": "clean",
               "lerntext": "clean",
-              "de": "sauber"
+              "de": "sauber",
+              "c": "a"
             },
             {
               "schrift": "dirty",
               "lerntext": "dirty",
-              "de": "schmutzig"
+              "de": "schmutzig",
+              "c": "a"
             },
             {
               "schrift": "white",
               "lerntext": "white",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "black",
               "lerntext": "black",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "red",
               "lerntext": "red",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "blue",
               "lerntext": "blue",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "green",
               "lerntext": "green",
               "de": "grün",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "next",
               "lerntext": "next",
               "de": "nächster",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "high",
               "lerntext": "high",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "short",
               "lerntext": "short",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "kind",
               "lerntext": "kind",
               "de": "freundlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "safe",
               "lerntext": "safe",
               "de": "sicher",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -9578,7 +10979,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "the food is [Slot]",
-          "lerntext": "the food is [Slot]"
+          "lerntext": "the food is [Slot]",
+          "wortarten": {
+            "food": "n",
+            "is": "v"
+          }
         },
         "frameDe": "Das Essen ist [Slot].",
         "pronouns": [],
@@ -9587,86 +10992,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "sweet",
               "lerntext": "sweet",
-              "de": "süß"
+              "de": "süß",
+              "c": "a"
             },
             {
               "schrift": "salty",
               "lerntext": "salty",
-              "de": "salzig"
+              "de": "salzig",
+              "c": "a"
             },
             {
               "schrift": "spicy",
               "lerntext": "spicy",
-              "de": "scharf"
+              "de": "scharf",
+              "c": "a"
             },
             {
               "schrift": "delicious",
               "lerntext": "delicious",
-              "de": "lecker"
+              "de": "lecker",
+              "c": "a"
             },
             {
               "schrift": "fresh",
               "lerntext": "fresh",
-              "de": "frisch"
+              "de": "frisch",
+              "c": "a"
             },
             {
               "schrift": "grey",
               "lerntext": "grey",
               "de": "grau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "brown",
               "lerntext": "brown",
               "de": "braun",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "yellow",
               "lerntext": "yellow",
               "de": "gelb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dirty",
               "lerntext": "dirty",
               "de": "schmutzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "clean",
               "lerntext": "clean",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "white",
               "lerntext": "white",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "blue",
               "lerntext": "blue",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "green",
               "lerntext": "green",
               "de": "grün",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "red",
               "lerntext": "red",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "black",
               "lerntext": "black",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -9680,7 +11100,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "the food is [Slot]",
-          "lerntext": "the food is [Slot]"
+          "lerntext": "the food is [Slot]",
+          "wortarten": {
+            "food": "n",
+            "is": "v"
+          }
         },
         "frameDe": "Das Essen ist [Slot].",
         "pronouns": [],
@@ -9689,86 +11113,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "hot",
               "lerntext": "hot",
-              "de": "heiß"
+              "de": "heiß",
+              "c": "a"
             },
             {
               "schrift": "warm",
               "lerntext": "warm",
-              "de": "warm"
+              "de": "warm",
+              "c": "a"
             },
             {
               "schrift": "cold",
               "lerntext": "cold",
-              "de": "kalt"
+              "de": "kalt",
+              "c": "a"
             },
             {
               "schrift": "good",
               "lerntext": "good",
-              "de": "gut"
+              "de": "gut",
+              "c": "a"
             },
             {
               "schrift": "bad",
               "lerntext": "bad",
-              "de": "schlecht"
+              "de": "schlecht",
+              "c": "a"
             },
             {
               "schrift": "sweet",
               "lerntext": "sweet",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "salty",
               "lerntext": "salty",
               "de": "salzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "spicy",
               "lerntext": "spicy",
               "de": "scharf",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "delicious",
               "lerntext": "delicious",
               "de": "lecker",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fresh",
               "lerntext": "fresh",
               "de": "frisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grey",
               "lerntext": "grey",
               "de": "grau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "brown",
               "lerntext": "brown",
               "de": "braun",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "yellow",
               "lerntext": "yellow",
               "de": "gelb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dirty",
               "lerntext": "dirty",
               "de": "schmutzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "clean",
               "lerntext": "clean",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -9782,7 +11221,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "that is [Slot]",
-          "lerntext": "that is [Slot]"
+          "lerntext": "that is [Slot]",
+          "wortarten": {
+            "is": "v"
+          }
         },
         "frameDe": "Das ist [Slot].",
         "pronouns": [
@@ -9807,86 +11249,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "interesting",
               "lerntext": "interesting",
-              "de": "interessant"
+              "de": "interessant",
+              "c": "a"
             },
             {
               "schrift": "boring",
               "lerntext": "boring",
-              "de": "langweilig"
+              "de": "langweilig",
+              "c": "a"
             },
             {
               "schrift": "important",
               "lerntext": "important",
-              "de": "wichtig"
+              "de": "wichtig",
+              "c": "a"
             },
             {
               "schrift": "possible",
               "lerntext": "possible",
-              "de": "möglich"
+              "de": "möglich",
+              "c": "a"
             },
             {
               "schrift": "true",
               "lerntext": "true",
-              "de": "wahr"
+              "de": "wahr",
+              "c": "a"
             },
             {
               "schrift": "bad",
               "lerntext": "bad",
               "de": "schlecht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "good",
               "lerntext": "good",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "warm",
               "lerntext": "warm",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "hot",
               "lerntext": "hot",
               "de": "heiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "cold",
               "lerntext": "cold",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "spicy",
               "lerntext": "spicy",
               "de": "scharf",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "salty",
               "lerntext": "salty",
               "de": "salzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "delicious",
               "lerntext": "delicious",
               "de": "lecker",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sweet",
               "lerntext": "sweet",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fresh",
               "lerntext": "fresh",
               "de": "frisch",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -9926,7 +11383,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "that is [Slot]",
-          "lerntext": "that is [Slot]"
+          "lerntext": "that is [Slot]",
+          "wortarten": {
+            "is": "v"
+          }
         },
         "frameDe": "Das ist [Slot].",
         "pronouns": [
@@ -9951,86 +11411,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "wrong",
               "lerntext": "wrong",
-              "de": "falsch"
+              "de": "falsch",
+              "c": "a"
             },
             {
               "schrift": "right",
               "lerntext": "right",
-              "de": "richtig"
+              "de": "richtig",
+              "c": "a"
             },
             {
               "schrift": "same",
               "lerntext": "same",
-              "de": "gleich"
+              "de": "gleich",
+              "c": "a"
             },
             {
               "schrift": "different",
               "lerntext": "different",
-              "de": "verschieden"
+              "de": "verschieden",
+              "c": "a"
             },
             {
               "schrift": "usual",
               "lerntext": "usual",
-              "de": "üblich"
+              "de": "üblich",
+              "c": "a"
             },
             {
               "schrift": "interesting",
               "lerntext": "interesting",
               "de": "interessant",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "boring",
               "lerntext": "boring",
               "de": "langweilig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "important",
               "lerntext": "important",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "possible",
               "lerntext": "possible",
               "de": "möglich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "true",
               "lerntext": "true",
               "de": "wahr",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bad",
               "lerntext": "bad",
               "de": "schlecht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "good",
               "lerntext": "good",
               "de": "gut",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "warm",
               "lerntext": "warm",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "hot",
               "lerntext": "hot",
               "de": "heiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "cold",
               "lerntext": "cold",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -10044,34 +11519,43 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "she loves [Slot]",
-          "lerntext": "she loves [Slot]"
+          "lerntext": "she loves [Slot]",
+          "wortarten": {
+            "she": "p",
+            "loves": "v"
+          }
         },
         "frameDe": "Sie liebt [Slot].",
         "pronouns": [
           {
             "schrift": "him",
             "lerntext": "him",
-            "de": "ihm"
+            "de": "ihm",
+            "c": "p"
           },
           {
             "schrift": "her",
             "lerntext": "her",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           },
           {
             "schrift": "us",
             "lerntext": "us",
-            "de": "uns"
+            "de": "uns",
+            "c": "p"
           },
           {
             "schrift": "them",
             "lerntext": "them",
-            "de": "ihnen"
+            "de": "ihnen",
+            "c": "p"
           },
           {
             "schrift": "it",
             "lerntext": "it",
-            "de": "es"
+            "de": "es",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -10080,60 +11564,70 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "love",
               "lerntext": "love",
               "de": "Liebe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "people",
               "lerntext": "people",
               "de": "Leute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "person",
               "lerntext": "person",
               "de": "Person",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "thing",
               "lerntext": "thing",
               "de": "Ding",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "reason",
               "lerntext": "reason",
               "de": "Grund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mountain",
               "lerntext": "mountain",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "air",
               "lerntext": "air",
               "de": "Luft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "snow",
               "lerntext": "snow",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sea",
               "lerntext": "sea",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "weather",
               "lerntext": "weather",
               "de": "Wetter",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10147,7 +11641,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "that is [Slot]",
-          "lerntext": "that is [Slot]"
+          "lerntext": "that is [Slot]",
+          "wortarten": {
+            "is": "v"
+          }
         },
         "frameDe": "Das ist [Slot].",
         "pronouns": [
@@ -10173,60 +11670,70 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "wrong",
               "lerntext": "wrong",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "right",
               "lerntext": "right",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "same",
               "lerntext": "same",
               "de": "gleich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "different",
               "lerntext": "different",
               "de": "verschieden",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "usual",
               "lerntext": "usual",
               "de": "üblich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "interesting",
               "lerntext": "interesting",
               "de": "interessant",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "boring",
               "lerntext": "boring",
               "de": "langweilig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "important",
               "lerntext": "important",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "possible",
               "lerntext": "possible",
               "de": "möglich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "true",
               "lerntext": "true",
               "de": "wahr",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -10240,34 +11747,43 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "she loves [Slot]",
-          "lerntext": "she loves [Slot]"
+          "lerntext": "she loves [Slot]",
+          "wortarten": {
+            "she": "p",
+            "loves": "v"
+          }
         },
         "frameDe": "Sie liebt [Slot].",
         "pronouns": [
           {
             "schrift": "him",
             "lerntext": "him",
-            "de": "ihm"
+            "de": "ihm",
+            "c": "p"
           },
           {
             "schrift": "her",
             "lerntext": "her",
-            "de": "ihr"
+            "de": "ihr",
+            "c": "p"
           },
           {
             "schrift": "us",
             "lerntext": "us",
-            "de": "uns"
+            "de": "uns",
+            "c": "p"
           },
           {
             "schrift": "them",
             "lerntext": "them",
-            "de": "ihnen"
+            "de": "ihnen",
+            "c": "p"
           },
           {
             "schrift": "it",
             "lerntext": "it",
-            "de": "es"
+            "de": "es",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -10276,30 +11792,35 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "love",
               "lerntext": "love",
               "de": "Liebe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "people",
               "lerntext": "people",
               "de": "Leute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "person",
               "lerntext": "person",
               "de": "Person",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "thing",
               "lerntext": "thing",
               "de": "Ding",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "reason",
               "lerntext": "reason",
               "de": "Grund",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -10313,7 +11834,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "that is [Slot]",
-          "lerntext": "that is [Slot]"
+          "lerntext": "that is [Slot]",
+          "wortarten": {
+            "is": "v"
+          }
         },
         "frameDe": "Das ist [Slot].",
         "pronouns": [
@@ -10339,30 +11863,35 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "wrong",
               "lerntext": "wrong",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "right",
               "lerntext": "right",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "same",
               "lerntext": "same",
               "de": "gleich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "different",
               "lerntext": "different",
               "de": "verschieden",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "usual",
               "lerntext": "usual",
               "de": "üblich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -10397,24 +11926,31 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I was [Slot] yesterday",
-          "lerntext": "I was [Slot] yesterday"
+          "lerntext": "I was [Slot] yesterday",
+          "wortarten": {
+            "I": "p",
+            "was": "v"
+          }
         },
         "frameDe": "Ich war gestern [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           },
           {
             "schrift": "he",
             "lerntext": "he",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           },
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -10515,7 +12051,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I will [Slot] tomorrow",
-          "lerntext": "I will [Slot] tomorrow"
+          "lerntext": "I will [Slot] tomorrow",
+          "wortarten": {
+            "I": "p"
+          }
         },
         "frameDe": "Ich werde morgen [Slot].",
         "pronouns": [],
@@ -10524,86 +12063,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "buy",
               "lerntext": "buy",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "sell",
               "lerntext": "sell",
-              "de": "verkaufen"
+              "de": "verkaufen",
+              "c": "v"
             },
             {
               "schrift": "find",
               "lerntext": "find",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "become",
               "lerntext": "become",
-              "de": "werden"
+              "de": "werden",
+              "c": "v"
             },
             {
               "schrift": "begin",
               "lerntext": "begin",
-              "de": "anfangen"
+              "de": "anfangen",
+              "c": "v"
             },
             {
               "schrift": "to love",
               "lerntext": "to love",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "let",
               "lerntext": "let",
               "de": "lassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "come",
               "lerntext": "come",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bring",
               "lerntext": "bring",
               "de": "bringen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drink",
               "lerntext": "drink",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "keep",
               "lerntext": "keep",
               "de": "behalten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "would",
               "lerntext": "would",
               "de": "würde",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "start",
               "lerntext": "start",
               "de": "starten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cook",
               "lerntext": "cook",
               "de": "kochen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pay",
               "lerntext": "pay",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -10614,7 +12168,8 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "will",
             "lerntext": "will",
-            "de": "werden (Zukunft)"
+            "de": "werden (Zukunft)",
+            "c": "v"
           }
         ],
         "id": "11.2"
@@ -10623,7 +12178,12 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I have [Slot] it",
-          "lerntext": "I have [Slot] it"
+          "lerntext": "I have [Slot] it",
+          "wortarten": {
+            "I": "p",
+            "have": "v",
+            "it": "p"
+          }
         },
         "frameDe": "Ich habe es [Slot].",
         "pronouns": [],
@@ -10632,86 +12192,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "finished",
               "lerntext": "finished",
-              "de": "beenden"
+              "de": "beenden",
+              "c": "v"
             },
             {
               "schrift": "won",
               "lerntext": "won",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "lost",
               "lerntext": "lost",
-              "de": "verlieren"
+              "de": "verlieren",
+              "c": "v"
             },
             {
               "schrift": "ordered",
               "lerntext": "ordered",
-              "de": "bestellen"
+              "de": "bestellen",
+              "c": "v"
             },
             {
               "schrift": "reserved",
               "lerntext": "reserved",
-              "de": "reservieren"
+              "de": "reservieren",
+              "c": "v"
             },
             {
               "schrift": "found",
               "lerntext": "found",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bought",
               "lerntext": "bought",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sold",
               "lerntext": "sold",
               "de": "verkaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "become",
               "lerntext": "become",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "begun",
               "lerntext": "begun",
               "de": "anfangen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "loved",
               "lerntext": "loved",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "put",
               "lerntext": "put",
               "de": "legen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "worked",
               "lerntext": "worked",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "told",
               "lerntext": "told",
               "de": "erzählen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stayed",
               "lerntext": "stayed",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -10725,7 +12300,12 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] it was good",
-          "lerntext": "[Slot] it was good"
+          "lerntext": "[Slot] it was good",
+          "wortarten": {
+            "it": "p",
+            "was": "v",
+            "good": "a"
+          }
         },
         "frameDe": "[Slot] war es gut.",
         "pronouns": [
@@ -10864,7 +12444,12 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I have [Slot] it",
-          "lerntext": "I have [Slot] it"
+          "lerntext": "I have [Slot] it",
+          "wortarten": {
+            "I": "p",
+            "have": "v",
+            "it": "p"
+          }
         },
         "frameDe": "Ich habe es [Slot].",
         "pronouns": [],
@@ -10874,60 +12459,70 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "finished",
               "lerntext": "finished",
               "de": "beenden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "won",
               "lerntext": "won",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lost",
               "lerntext": "lost",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ordered",
               "lerntext": "ordered",
               "de": "bestellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "reserved",
               "lerntext": "reserved",
               "de": "reservieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "found",
               "lerntext": "found",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bought",
               "lerntext": "bought",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sold",
               "lerntext": "sold",
               "de": "verkaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "become",
               "lerntext": "become",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "begun",
               "lerntext": "begun",
               "de": "anfangen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -10941,7 +12536,12 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] it was good",
-          "lerntext": "[Slot] it was good"
+          "lerntext": "[Slot] it was good",
+          "wortarten": {
+            "it": "p",
+            "was": "v",
+            "good": "a"
+          }
         },
         "frameDe": "[Slot] war es gut.",
         "pronouns": [
@@ -11017,7 +12617,12 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I have [Slot] it",
-          "lerntext": "I have [Slot] it"
+          "lerntext": "I have [Slot] it",
+          "wortarten": {
+            "I": "p",
+            "have": "v",
+            "it": "p"
+          }
         },
         "frameDe": "Ich habe es [Slot].",
         "pronouns": [],
@@ -11027,30 +12632,35 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "finished",
               "lerntext": "finished",
               "de": "beenden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "won",
               "lerntext": "won",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lost",
               "lerntext": "lost",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ordered",
               "lerntext": "ordered",
               "de": "bestellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "reserved",
               "lerntext": "reserved",
               "de": "reservieren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -11085,24 +12695,33 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I am tired [Slot] I work",
-          "lerntext": "I am tired [Slot] I work"
+          "lerntext": "I am tired [Slot] I work",
+          "wortarten": {
+            "I": "p",
+            "am": "v",
+            "tired": "a",
+            "work": "v"
+          }
         },
         "frameDe": "Ich bin müde, [Slot] ich arbeite.",
         "pronouns": [
           {
             "schrift": "and",
             "lerntext": "and",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "but",
             "lerntext": "but",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           },
           {
             "schrift": "or",
             "lerntext": "or",
-            "de": "oder"
+            "de": "oder",
+            "c": "k"
           }
         ],
         "slotGroups": [
@@ -11110,27 +12729,32 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "because",
               "lerntext": "because",
-              "de": "weil"
+              "de": "weil",
+              "c": "k"
             },
             {
               "schrift": "if",
               "lerntext": "if",
-              "de": "wenn"
+              "de": "wenn",
+              "c": "k"
             },
             {
               "schrift": "while",
               "lerntext": "while",
-              "de": "während"
+              "de": "während",
+              "c": "k"
             },
             {
               "schrift": "although",
               "lerntext": "although",
-              "de": "obwohl"
+              "de": "obwohl",
+              "c": "k"
             },
             {
               "schrift": "since",
               "lerntext": "since",
-              "de": "seit"
+              "de": "seit",
+              "c": "k"
             }
           ]
         ],
@@ -11140,27 +12764,32 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "and",
             "lerntext": "and",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "but",
             "lerntext": "but",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           },
           {
             "schrift": "or",
             "lerntext": "or",
-            "de": "oder"
+            "de": "oder",
+            "c": "k"
           },
           {
             "schrift": "so",
             "lerntext": "so",
-            "de": "also"
+            "de": "also",
+            "c": "k"
           },
           {
             "schrift": "that",
             "lerntext": "that",
-            "de": "dass"
+            "de": "dass",
+            "c": "k"
           }
         ],
         "id": "12.1"
@@ -11169,7 +12798,12 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I want to [Slot] but I cannot",
-          "lerntext": "I want to [Slot] but I cannot"
+          "lerntext": "I want to [Slot] but I cannot",
+          "wortarten": {
+            "I": "p",
+            "want": "v",
+            "but": "k"
+          }
         },
         "frameDe": "Ich will [Slot], aber ich kann nicht.",
         "pronouns": [],
@@ -11178,86 +12812,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "learn",
               "lerntext": "learn",
-              "de": "lernen"
+              "de": "lernen",
+              "c": "v"
             },
             {
               "schrift": "study",
               "lerntext": "study",
-              "de": "studieren"
+              "de": "studieren",
+              "c": "v"
             },
             {
               "schrift": "change",
               "lerntext": "change",
-              "de": "ändern"
+              "de": "ändern",
+              "c": "v"
             },
             {
               "schrift": "continue",
               "lerntext": "continue",
-              "de": "fortsetzen"
+              "de": "fortsetzen",
+              "c": "v"
             },
             {
               "schrift": "hope",
               "lerntext": "hope",
-              "de": "hoffen"
+              "de": "hoffen",
+              "c": "v"
             },
             {
               "schrift": "will",
               "lerntext": "will",
               "de": "werden (Zukunft)",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "find",
               "lerntext": "find",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "order",
               "lerntext": "order",
               "de": "bestellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "finish",
               "lerntext": "finish",
               "de": "beenden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "reserve",
               "lerntext": "reserve",
               "de": "reservieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "arrive",
               "lerntext": "arrive",
               "de": "ankommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "meet",
               "lerntext": "meet",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "show",
               "lerntext": "show",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "turn",
               "lerntext": "turn",
               "de": "drehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "win",
               "lerntext": "win",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -11271,24 +12920,31 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it is very [Slot]",
-          "lerntext": "it is very [Slot]"
+          "lerntext": "it is very [Slot]",
+          "wortarten": {
+            "it": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Es ist sehr [Slot].",
         "pronouns": [
           {
             "schrift": "than",
             "lerntext": "than",
-            "de": "als (Vergleich)"
+            "de": "als (Vergleich)",
+            "c": "k"
           },
           {
             "schrift": "as",
             "lerntext": "as",
-            "de": "als"
+            "de": "als",
+            "c": "k"
           },
           {
             "schrift": "however",
             "lerntext": "however",
-            "de": "jedoch"
+            "de": "jedoch",
+            "c": "k"
           }
         ],
         "slotGroups": [
@@ -11296,86 +12952,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "easy",
               "lerntext": "easy",
-              "de": "einfach"
+              "de": "einfach",
+              "c": "a"
             },
             {
               "schrift": "difficult",
               "lerntext": "difficult",
-              "de": "schwierig"
+              "de": "schwierig",
+              "c": "a"
             },
             {
               "schrift": "fast",
               "lerntext": "fast",
-              "de": "schnell"
+              "de": "schnell",
+              "c": "a"
             },
             {
               "schrift": "slow",
               "lerntext": "slow",
-              "de": "langsam"
+              "de": "langsam",
+              "c": "a"
             },
             {
               "schrift": "tall",
               "lerntext": "tall",
-              "de": "groß (Person)"
+              "de": "groß (Person)",
+              "c": "a"
             },
             {
               "schrift": "possible",
               "lerntext": "possible",
               "de": "möglich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grey",
               "lerntext": "grey",
               "de": "grau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bad",
               "lerntext": "bad",
               "de": "schlecht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "spicy",
               "lerntext": "spicy",
               "de": "scharf",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "white",
               "lerntext": "white",
               "de": "weiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "salty",
               "lerntext": "salty",
               "de": "salzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "warm",
               "lerntext": "warm",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "next",
               "lerntext": "next",
               "de": "nächster",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "delicious",
               "lerntext": "delicious",
               "de": "lecker",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "hot",
               "lerntext": "hot",
               "de": "heiß",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -11386,27 +13057,32 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "than",
             "lerntext": "than",
-            "de": "als (Vergleich)"
+            "de": "als (Vergleich)",
+            "c": "k"
           },
           {
             "schrift": "as",
             "lerntext": "as",
-            "de": "als"
+            "de": "als",
+            "c": "k"
           },
           {
             "schrift": "however",
             "lerntext": "however",
-            "de": "jedoch"
+            "de": "jedoch",
+            "c": "k"
           },
           {
             "schrift": "therefore",
             "lerntext": "therefore",
-            "de": "deshalb"
+            "de": "deshalb",
+            "c": "k"
           },
           {
             "schrift": "unless",
             "lerntext": "unless",
-            "de": "es sei denn"
+            "de": "es sei denn",
+            "c": "k"
           }
         ],
         "id": "12.3"
@@ -11415,7 +13091,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] of us",
-          "lerntext": "[Slot] of us"
+          "lerntext": "[Slot] of us",
+          "wortarten": {
+            "us": "p"
+          }
         },
         "frameDe": "[Slot] von uns.",
         "pronouns": [],
@@ -11424,86 +13103,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "both",
               "lerntext": "both",
-              "de": "beide"
+              "de": "beide",
+              "c": "p"
             },
             {
               "schrift": "each",
               "lerntext": "each",
-              "de": "jeder einzelne"
+              "de": "jeder einzelne",
+              "c": "p"
             },
             {
               "schrift": "few",
               "lerntext": "few",
-              "de": "wenige"
+              "de": "wenige",
+              "c": "p"
             },
             {
               "schrift": "another",
               "lerntext": "another",
-              "de": "ein anderer"
+              "de": "ein anderer",
+              "c": "p"
             },
             {
               "schrift": "nobody",
               "lerntext": "nobody",
-              "de": "niemand"
+              "de": "niemand",
+              "c": "p"
             },
             {
               "schrift": "them",
               "lerntext": "them",
               "de": "ihnen",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "him",
               "lerntext": "him",
               "de": "ihm",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "who",
               "lerntext": "who",
               "de": "wer",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "which",
               "lerntext": "which",
               "de": "welcher",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "my",
               "lerntext": "my",
               "de": "mein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "our",
               "lerntext": "our",
               "de": "unser",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "your",
               "lerntext": "your",
               "de": "dein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "their",
               "lerntext": "their",
               "de": "ihr (Mehrzahl)",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "me",
               "lerntext": "me",
               "de": "mir",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "its",
               "lerntext": "its",
               "de": "sein (sächlich)",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -11517,7 +13211,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] of us",
-          "lerntext": "[Slot] of us"
+          "lerntext": "[Slot] of us",
+          "wortarten": {
+            "us": "p"
+          }
         },
         "frameDe": "[Slot] von uns.",
         "pronouns": [],
@@ -11527,42 +13224,49 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "them",
               "lerntext": "them",
               "de": "ihnen",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "him",
               "lerntext": "him",
               "de": "ihm",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "both",
               "lerntext": "both",
               "de": "beide",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "each",
               "lerntext": "each",
               "de": "jeder einzelne",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "few",
               "lerntext": "few",
               "de": "wenige",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "another",
               "lerntext": "another",
               "de": "ein anderer",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "nobody",
               "lerntext": "nobody",
               "de": "niemand",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -11576,7 +13280,12 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I want to [Slot] but I cannot",
-          "lerntext": "I want to [Slot] but I cannot"
+          "lerntext": "I want to [Slot] but I cannot",
+          "wortarten": {
+            "I": "p",
+            "want": "v",
+            "but": "k"
+          }
         },
         "frameDe": "Ich will [Slot], aber ich kann nicht.",
         "pronouns": [],
@@ -11586,36 +13295,42 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "learn",
               "lerntext": "learn",
               "de": "lernen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "study",
               "lerntext": "study",
               "de": "studieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "change",
               "lerntext": "change",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "continue",
               "lerntext": "continue",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hope",
               "lerntext": "hope",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "will",
               "lerntext": "will",
               "de": "werden (Zukunft)",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -11629,7 +13344,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] of us",
-          "lerntext": "[Slot] of us"
+          "lerntext": "[Slot] of us",
+          "wortarten": {
+            "us": "p"
+          }
         },
         "frameDe": "[Slot] von uns.",
         "pronouns": [],
@@ -11639,42 +13357,49 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "them",
               "lerntext": "them",
               "de": "ihnen",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "him",
               "lerntext": "him",
               "de": "ihm",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "both",
               "lerntext": "both",
               "de": "beide",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "each",
               "lerntext": "each",
               "de": "jeder einzelne",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "few",
               "lerntext": "few",
               "de": "wenige",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "another",
               "lerntext": "another",
               "de": "ein anderer",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "nobody",
               "lerntext": "nobody",
               "de": "niemand",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -11688,24 +13413,33 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I am tired [Slot] I work",
-          "lerntext": "I am tired [Slot] I work"
+          "lerntext": "I am tired [Slot] I work",
+          "wortarten": {
+            "I": "p",
+            "am": "v",
+            "tired": "a",
+            "work": "v"
+          }
         },
         "frameDe": "Ich bin müde, [Slot] ich arbeite.",
         "pronouns": [
           {
             "schrift": "and",
             "lerntext": "and",
-            "de": "und"
+            "de": "und",
+            "c": "k"
           },
           {
             "schrift": "but",
             "lerntext": "but",
-            "de": "aber"
+            "de": "aber",
+            "c": "k"
           },
           {
             "schrift": "or",
             "lerntext": "or",
-            "de": "oder"
+            "de": "oder",
+            "c": "k"
           }
         ],
         "slotGroups": [
@@ -11714,30 +13448,35 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "because",
               "lerntext": "because",
               "de": "weil",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "if",
               "lerntext": "if",
               "de": "wenn",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "while",
               "lerntext": "while",
               "de": "während",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "although",
               "lerntext": "although",
               "de": "obwohl",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "since",
               "lerntext": "since",
               "de": "seit",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -11772,7 +13511,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "my [Slot] hurts",
-          "lerntext": "my [Slot] hurts"
+          "lerntext": "my [Slot] hurts",
+          "wortarten": {
+            "my": "p"
+          }
         },
         "frameDe": "Mein [Slot] tut weh.",
         "pronouns": [],
@@ -11781,86 +13523,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "head",
               "lerntext": "head",
-              "de": "Kopf"
+              "de": "Kopf",
+              "c": "n"
             },
             {
               "schrift": "hand",
               "lerntext": "hand",
-              "de": "Hand"
+              "de": "Hand",
+              "c": "n"
             },
             {
               "schrift": "foot",
               "lerntext": "foot",
-              "de": "Fuß"
+              "de": "Fuß",
+              "c": "n"
             },
             {
               "schrift": "eye",
               "lerntext": "eye",
-              "de": "Auge"
+              "de": "Auge",
+              "c": "n"
             },
             {
               "schrift": "mouth",
               "lerntext": "mouth",
-              "de": "Mund"
+              "de": "Mund",
+              "c": "n"
             },
             {
               "schrift": "hour",
               "lerntext": "hour",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "year",
               "lerntext": "year",
               "de": "Jahr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sun",
               "lerntext": "sun",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "time",
               "lerntext": "time",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "day",
               "lerntext": "day",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "people",
               "lerntext": "people",
               "de": "Leute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "life",
               "lerntext": "life",
               "de": "Leben",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "moment",
               "lerntext": "moment",
               "de": "Moment",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mountain",
               "lerntext": "mountain",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "love",
               "lerntext": "love",
               "de": "Liebe",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11874,7 +13631,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "my [Slot] hurts",
-          "lerntext": "my [Slot] hurts"
+          "lerntext": "my [Slot] hurts",
+          "wortarten": {
+            "my": "p"
+          }
         },
         "frameDe": "Mein [Slot] tut weh.",
         "pronouns": [],
@@ -11883,86 +13643,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "arm",
               "lerntext": "arm",
-              "de": "Arm"
+              "de": "Arm",
+              "c": "n"
             },
             {
               "schrift": "leg",
               "lerntext": "leg",
-              "de": "Bein"
+              "de": "Bein",
+              "c": "n"
             },
             {
               "schrift": "hair",
               "lerntext": "hair",
-              "de": "Haare"
+              "de": "Haare",
+              "c": "n"
             },
             {
               "schrift": "body",
               "lerntext": "body",
-              "de": "Körper"
+              "de": "Körper",
+              "c": "n"
             },
             {
               "schrift": "pain",
               "lerntext": "pain",
-              "de": "Schmerz"
+              "de": "Schmerz",
+              "c": "n"
             },
             {
               "schrift": "head",
               "lerntext": "head",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hand",
               "lerntext": "hand",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "foot",
               "lerntext": "foot",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mouth",
               "lerntext": "mouth",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "eye",
               "lerntext": "eye",
               "de": "Auge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "afternoon",
               "lerntext": "afternoon",
               "de": "Nachmittag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "evening",
               "lerntext": "evening",
               "de": "Abend",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "film",
               "lerntext": "film",
               "de": "Film",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bus",
               "lerntext": "bus",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "end",
               "lerntext": "end",
               "de": "Ende",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -11976,7 +13751,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it is for [Slot]",
-          "lerntext": "it is for [Slot]"
+          "lerntext": "it is for [Slot]",
+          "wortarten": {
+            "it": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Es ist für [Slot].",
         "pronouns": [],
@@ -11985,86 +13764,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "myself",
               "lerntext": "myself",
-              "de": "mich selbst"
+              "de": "mich selbst",
+              "c": "p"
             },
             {
               "schrift": "yourself",
               "lerntext": "yourself",
-              "de": "dich selbst"
+              "de": "dich selbst",
+              "c": "p"
             },
             {
               "schrift": "himself",
               "lerntext": "himself",
-              "de": "sich selbst"
+              "de": "sich selbst",
+              "c": "p"
             },
             {
               "schrift": "each other",
               "lerntext": "each other",
-              "de": "einander"
+              "de": "einander",
+              "c": "p"
             },
             {
               "schrift": "everyone",
               "lerntext": "everyone",
-              "de": "jeder"
+              "de": "jeder",
+              "c": "p"
             },
             {
               "schrift": "us",
               "lerntext": "us",
               "de": "uns",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "them",
               "lerntext": "them",
               "de": "ihnen",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "him",
               "lerntext": "him",
               "de": "ihm",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "both",
               "lerntext": "both",
               "de": "beide",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "few",
               "lerntext": "few",
               "de": "wenige",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "his",
               "lerntext": "his",
               "de": "sein",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "something",
               "lerntext": "something",
               "de": "etwas",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "each",
               "lerntext": "each",
               "de": "jeder einzelne",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "who",
               "lerntext": "who",
               "de": "wer",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "someone",
               "lerntext": "someone",
               "de": "jemand",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -12075,7 +13869,8 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "feel",
             "lerntext": "feel",
-            "de": "fühlen"
+            "de": "fühlen",
+            "c": "v"
           }
         ],
         "id": "13.3"
@@ -12084,7 +13879,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "my [Slot] hurts",
-          "lerntext": "my [Slot] hurts"
+          "lerntext": "my [Slot] hurts",
+          "wortarten": {
+            "my": "p"
+          }
         },
         "frameDe": "Mein [Slot] tut weh.",
         "pronouns": [],
@@ -12094,54 +13892,63 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "arm",
               "lerntext": "arm",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "leg",
               "lerntext": "leg",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hair",
               "lerntext": "hair",
               "de": "Haare",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "body",
               "lerntext": "body",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pain",
               "lerntext": "pain",
               "de": "Schmerz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "head",
               "lerntext": "head",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hand",
               "lerntext": "hand",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "foot",
               "lerntext": "foot",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mouth",
               "lerntext": "mouth",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -12155,7 +13962,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it is for [Slot]",
-          "lerntext": "it is for [Slot]"
+          "lerntext": "it is for [Slot]",
+          "wortarten": {
+            "it": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Es ist für [Slot].",
         "pronouns": [],
@@ -12165,36 +13976,42 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "myself",
               "lerntext": "myself",
               "de": "mich selbst",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "yourself",
               "lerntext": "yourself",
               "de": "dich selbst",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "himself",
               "lerntext": "himself",
               "de": "sich selbst",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "each other",
               "lerntext": "each other",
               "de": "einander",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "everyone",
               "lerntext": "everyone",
               "de": "jeder",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "us",
               "lerntext": "us",
               "de": "uns",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -12208,7 +14025,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "my [Slot] hurts",
-          "lerntext": "my [Slot] hurts"
+          "lerntext": "my [Slot] hurts",
+          "wortarten": {
+            "my": "p"
+          }
         },
         "frameDe": "Mein [Slot] tut weh.",
         "pronouns": [],
@@ -12218,30 +14038,35 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "arm",
               "lerntext": "arm",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "leg",
               "lerntext": "leg",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hair",
               "lerntext": "hair",
               "de": "Haare",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "body",
               "lerntext": "body",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pain",
               "lerntext": "pain",
               "de": "Schmerz",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -12255,7 +14080,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it is for [Slot]",
-          "lerntext": "it is for [Slot]"
+          "lerntext": "it is for [Slot]",
+          "wortarten": {
+            "it": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Es ist für [Slot].",
         "pronouns": [],
@@ -12265,36 +14094,42 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "myself",
               "lerntext": "myself",
               "de": "mich selbst",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "yourself",
               "lerntext": "yourself",
               "de": "dich selbst",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "himself",
               "lerntext": "himself",
               "de": "sich selbst",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "each other",
               "lerntext": "each other",
               "de": "einander",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "everyone",
               "lerntext": "everyone",
               "de": "jeder",
+              "c": "p",
               "wieder": true
             },
             {
               "schrift": "us",
               "lerntext": "us",
               "de": "uns",
+              "c": "p",
               "wieder": true
             }
           ]
@@ -12329,7 +14164,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I buy a [Slot]",
-          "lerntext": "I buy a [Slot]"
+          "lerntext": "I buy a [Slot]",
+          "wortarten": {
+            "I": "p",
+            "buy": "v"
+          }
         },
         "frameDe": "Ich kaufe eine [Slot].",
         "pronouns": [],
@@ -12338,76 +14177,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "clothes",
               "lerntext": "clothes",
-              "de": "Kleidung"
+              "de": "Kleidung",
+              "c": "n"
             },
             {
               "schrift": "language",
               "lerntext": "language",
-              "de": "Sprache"
+              "de": "Sprache",
+              "c": "n"
             },
             {
               "schrift": "police",
               "lerntext": "police",
-              "de": "Polizei"
+              "de": "Polizei",
+              "c": "n"
             },
             {
               "schrift": "hand",
               "lerntext": "hand",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "week",
               "lerntext": "week",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "air",
               "lerntext": "air",
               "de": "Luft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "story",
               "lerntext": "story",
               "de": "Geschichte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "night",
               "lerntext": "night",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "minute",
               "lerntext": "minute",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "person",
               "lerntext": "person",
               "de": "Person",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "music",
               "lerntext": "music",
               "de": "Musik",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hour",
               "lerntext": "hour",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "time",
               "lerntext": "time",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -12421,7 +14273,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I buy a [Slot]",
-          "lerntext": "I buy a [Slot]"
+          "lerntext": "I buy a [Slot]",
+          "wortarten": {
+            "I": "p",
+            "buy": "v"
+          }
         },
         "frameDe": "Ich kaufe einen [Slot].",
         "pronouns": [],
@@ -12430,66 +14286,77 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "shoe",
               "lerntext": "shoe",
-              "de": "Schuh"
+              "de": "Schuh",
+              "c": "n"
             },
             {
               "schrift": "pain",
               "lerntext": "pain",
               "de": "Schmerz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mouth",
               "lerntext": "mouth",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "beginning",
               "lerntext": "beginning",
               "de": "Anfang",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "head",
               "lerntext": "head",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "morning",
               "lerntext": "morning",
               "de": "Morgen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "body",
               "lerntext": "body",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "month",
               "lerntext": "month",
               "de": "Monat",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "train",
               "lerntext": "train",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "arm",
               "lerntext": "arm",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "foot",
               "lerntext": "foot",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -12503,7 +14370,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I buy a [Slot]",
-          "lerntext": "I buy a [Slot]"
+          "lerntext": "I buy a [Slot]",
+          "wortarten": {
+            "I": "p",
+            "buy": "v"
+          }
         },
         "frameDe": "Ich kaufe ein [Slot].",
         "pronouns": [],
@@ -12512,66 +14383,77 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "word",
               "lerntext": "word",
-              "de": "Wort"
+              "de": "Wort",
+              "c": "n"
             },
             {
               "schrift": "leg",
               "lerntext": "leg",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "thing",
               "lerntext": "thing",
               "de": "Ding",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "year",
               "lerntext": "year",
               "de": "Jahr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "weather",
               "lerntext": "weather",
               "de": "Wetter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "life",
               "lerntext": "life",
               "de": "Leben",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "end",
               "lerntext": "end",
               "de": "Ende",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "money",
               "lerntext": "money",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "meat",
               "lerntext": "meat",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lunch",
               "lerntext": "lunch",
               "de": "Mittagessen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "country",
               "lerntext": "country",
               "de": "Land",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -12585,7 +14467,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I know the [Slot]",
-          "lerntext": "I know the [Slot]"
+          "lerntext": "I know the [Slot]",
+          "wortarten": {
+            "I": "p",
+            "know": "v"
+          }
         },
         "frameDe": "Ich kenne die [Slot].",
         "pronouns": [],
@@ -12594,66 +14480,77 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "kitchen",
               "lerntext": "kitchen",
-              "de": "Küche"
+              "de": "Küche",
+              "c": "n"
             },
             {
               "schrift": "clothes",
               "lerntext": "clothes",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "police",
               "lerntext": "police",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "language",
               "lerntext": "language",
               "de": "Sprache",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hand",
               "lerntext": "hand",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "love",
               "lerntext": "love",
               "de": "Liebe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "week",
               "lerntext": "week",
               "de": "Woche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "air",
               "lerntext": "air",
               "de": "Luft",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "story",
               "lerntext": "story",
               "de": "Geschichte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "city",
               "lerntext": "city",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "wife",
               "lerntext": "wife",
               "de": "Ehefrau",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -12667,7 +14564,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I know the [Slot]",
-          "lerntext": "I know the [Slot]"
+          "lerntext": "I know the [Slot]",
+          "wortarten": {
+            "I": "p",
+            "know": "v"
+          }
         },
         "frameDe": "Ich kenne den [Slot].",
         "pronouns": [],
@@ -12676,71 +14577,83 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "customer",
               "lerntext": "customer",
-              "de": "Kunde"
+              "de": "Kunde",
+              "c": "n"
             },
             {
               "schrift": "colleague",
               "lerntext": "colleague",
-              "de": "Kollege"
+              "de": "Kollege",
+              "c": "n"
             },
             {
               "schrift": "shoe",
               "lerntext": "shoe",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "reason",
               "lerntext": "reason",
               "de": "Grund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "day",
               "lerntext": "day",
               "de": "Tag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pain",
               "lerntext": "pain",
               "de": "Schmerz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mouth",
               "lerntext": "mouth",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "moment",
               "lerntext": "moment",
               "de": "Moment",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "afternoon",
               "lerntext": "afternoon",
               "de": "Nachmittag",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "evening",
               "lerntext": "evening",
               "de": "Abend",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "film",
               "lerntext": "film",
               "de": "Film",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bus",
               "lerntext": "bus",
               "de": "Bus",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -12754,7 +14667,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I can [Slot] it",
-          "lerntext": "I can [Slot] it"
+          "lerntext": "I can [Slot] it",
+          "wortarten": {
+            "I": "p",
+            "it": "p"
+          }
         },
         "frameDe": "Ich kann es [Slot].",
         "pronouns": [],
@@ -12763,76 +14680,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "teach",
               "lerntext": "teach",
-              "de": "unterrichten"
+              "de": "unterrichten",
+              "c": "v"
             },
             {
               "schrift": "send",
               "lerntext": "send",
-              "de": "senden"
+              "de": "senden",
+              "c": "v"
             },
             {
               "schrift": "wear",
               "lerntext": "wear",
-              "de": "tragen (Kleidung)"
+              "de": "tragen (Kleidung)",
+              "c": "v"
             },
             {
               "schrift": "feel",
               "lerntext": "feel",
               "de": "fühlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hope",
               "lerntext": "hope",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "change",
               "lerntext": "change",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "learn",
               "lerntext": "learn",
               "de": "lernen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "continue",
               "lerntext": "continue",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "study",
               "lerntext": "study",
               "de": "studieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "will",
               "lerntext": "will",
               "de": "werden (Zukunft)",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "to love",
               "lerntext": "to love",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lose",
               "lerntext": "lose",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sell",
               "lerntext": "sell",
               "de": "verkaufen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -12846,7 +14776,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "he is [Slot]",
-          "lerntext": "he is [Slot]"
+          "lerntext": "he is [Slot]",
+          "wortarten": {
+            "he": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Er ist [Slot].",
         "pronouns": [],
@@ -12855,81 +14789,95 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "English",
               "lerntext": "English",
-              "de": "englisch"
+              "de": "englisch",
+              "c": "a"
             },
             {
               "schrift": "German",
               "lerntext": "German",
-              "de": "deutsch"
+              "de": "deutsch",
+              "c": "a"
             },
             {
               "schrift": "foreign",
               "lerntext": "foreign",
-              "de": "ausländisch"
+              "de": "ausländisch",
+              "c": "a"
             },
             {
               "schrift": "lovely",
               "lerntext": "lovely",
-              "de": "reizend"
+              "de": "reizend",
+              "c": "a"
             },
             {
               "schrift": "fast",
               "lerntext": "fast",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "slow",
               "lerntext": "slow",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tall",
               "lerntext": "tall",
               "de": "groß (Person)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "easy",
               "lerntext": "easy",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "difficult",
               "lerntext": "difficult",
               "de": "schwierig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sweet",
               "lerntext": "sweet",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "expensive",
               "lerntext": "expensive",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "blue",
               "lerntext": "blue",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "wrong",
               "lerntext": "wrong",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "brown",
               "lerntext": "brown",
               "de": "braun",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -12943,7 +14891,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "he is [Slot]",
-          "lerntext": "he is [Slot]"
+          "lerntext": "he is [Slot]",
+          "wortarten": {
+            "he": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Er ist [Slot].",
         "pronouns": [],
@@ -13025,7 +14977,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "we need a [Slot]",
-          "lerntext": "we need a [Slot]"
+          "lerntext": "we need a [Slot]",
+          "wortarten": {
+            "we": "p",
+            "need": "v"
+          }
         },
         "frameDe": "Wir brauchen ein [Slot].",
         "pronouns": [],
@@ -13034,76 +14990,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "sign",
               "lerntext": "sign",
-              "de": "unterschreiben"
+              "de": "unterschreiben",
+              "c": "v"
             },
             {
               "schrift": "rent",
               "lerntext": "rent",
-              "de": "mieten"
+              "de": "mieten",
+              "c": "v"
             },
             {
               "schrift": "borrow",
               "lerntext": "borrow",
-              "de": "sich leihen"
+              "de": "sich leihen",
+              "c": "v"
             },
             {
               "schrift": "teach",
               "lerntext": "teach",
               "de": "unterrichten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "feel",
               "lerntext": "feel",
               "de": "fühlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "wear",
               "lerntext": "wear",
               "de": "tragen (Kleidung)",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "send",
               "lerntext": "send",
               "de": "senden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hope",
               "lerntext": "hope",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ask",
               "lerntext": "ask",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "live",
               "lerntext": "live",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "change",
               "lerntext": "change",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "learn",
               "lerntext": "learn",
               "de": "lernen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "become",
               "lerntext": "become",
               "de": "werden",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -13117,7 +15086,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "we need a [Slot]",
-          "lerntext": "we need a [Slot]"
+          "lerntext": "we need a [Slot]",
+          "wortarten": {
+            "we": "p",
+            "need": "v"
+          }
         },
         "frameDe": "Wir brauchen ein [Slot].",
         "pronouns": [],
@@ -13139,7 +15112,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "we need a [Slot]",
-          "lerntext": "we need a [Slot]"
+          "lerntext": "we need a [Slot]",
+          "wortarten": {
+            "we": "p",
+            "need": "v"
+          }
         },
         "frameDe": "Wir brauchen ein [Slot].",
         "pronouns": [],
@@ -13221,7 +15198,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "he is [Slot]",
-          "lerntext": "he is [Slot]"
+          "lerntext": "he is [Slot]",
+          "wortarten": {
+            "he": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Er ist [Slot].",
         "pronouns": [],
@@ -13231,54 +15212,63 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "English",
               "lerntext": "English",
               "de": "englisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "German",
               "lerntext": "German",
               "de": "deutsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "foreign",
               "lerntext": "foreign",
               "de": "ausländisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lovely",
               "lerntext": "lovely",
               "de": "reizend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fast",
               "lerntext": "fast",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "slow",
               "lerntext": "slow",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tall",
               "lerntext": "tall",
               "de": "groß (Person)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "easy",
               "lerntext": "easy",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "difficult",
               "lerntext": "difficult",
               "de": "schwierig",
+              "c": "a",
               "wieder": true
             },
             {
@@ -13298,7 +15288,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "we need a [Slot]",
-          "lerntext": "we need a [Slot]"
+          "lerntext": "we need a [Slot]",
+          "wortarten": {
+            "we": "p",
+            "need": "v"
+          }
         },
         "frameDe": "Wir brauchen ein [Slot].",
         "pronouns": [],
@@ -13308,18 +15302,21 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "sign",
               "lerntext": "sign",
               "de": "unterschreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "rent",
               "lerntext": "rent",
               "de": "mieten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "borrow",
               "lerntext": "borrow",
               "de": "sich leihen",
+              "c": "v",
               "wieder": true
             },
             {
@@ -13332,24 +15329,28 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "teach",
               "lerntext": "teach",
               "de": "unterrichten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "feel",
               "lerntext": "feel",
               "de": "fühlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "wear",
               "lerntext": "wear",
               "de": "tragen (Kleidung)",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "send",
               "lerntext": "send",
               "de": "senden",
+              "c": "v",
               "wieder": true
             },
             {
@@ -13369,7 +15370,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I know the [Slot]",
-          "lerntext": "I know the [Slot]"
+          "lerntext": "I know the [Slot]",
+          "wortarten": {
+            "I": "p",
+            "know": "v"
+          }
         },
         "frameDe": "Ich kenne die [Slot].",
         "pronouns": [],
@@ -13379,24 +15384,28 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "kitchen",
               "lerntext": "kitchen",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "clothes",
               "lerntext": "clothes",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "police",
               "lerntext": "police",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "language",
               "lerntext": "language",
               "de": "Sprache",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -13410,7 +15419,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "he is [Slot]",
-          "lerntext": "he is [Slot]"
+          "lerntext": "he is [Slot]",
+          "wortarten": {
+            "he": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Er ist [Slot].",
         "pronouns": [],
@@ -13420,24 +15433,28 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "English",
               "lerntext": "English",
               "de": "englisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "German",
               "lerntext": "German",
               "de": "deutsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "foreign",
               "lerntext": "foreign",
               "de": "ausländisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lovely",
               "lerntext": "lovely",
               "de": "reizend",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -13472,19 +15489,25 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I [Slot] to you",
-          "lerntext": "I [Slot] to you"
+          "lerntext": "I [Slot] to you",
+          "wortarten": {
+            "I": "p",
+            "you": "p"
+          }
         },
         "frameDe": "Ich [Slot] dir.",
         "pronouns": [
           {
             "schrift": "mine",
             "lerntext": "mine",
-            "de": "meiner"
+            "de": "meiner",
+            "c": "p"
           },
           {
             "schrift": "yours",
             "lerntext": "yours",
-            "de": "deiner"
+            "de": "deiner",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -13492,86 +15515,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "say",
               "lerntext": "say",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "talk",
               "lerntext": "talk",
-              "de": "reden"
+              "de": "reden",
+              "c": "v"
             },
             {
               "schrift": "listen",
               "lerntext": "listen",
-              "de": "zuhören"
+              "de": "zuhören",
+              "c": "v"
             },
             {
               "schrift": "thank",
               "lerntext": "thank",
-              "de": "danken"
+              "de": "danken",
+              "c": "v"
             },
             {
               "schrift": "smile",
               "lerntext": "smile",
-              "de": "lächeln"
+              "de": "lächeln",
+              "c": "v"
             },
             {
               "schrift": "borrow",
               "lerntext": "borrow",
               "de": "sich leihen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "rent",
               "lerntext": "rent",
               "de": "mieten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sign",
               "lerntext": "sign",
               "de": "unterschreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "teach",
               "lerntext": "teach",
               "de": "unterrichten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "feel",
               "lerntext": "feel",
               "de": "fühlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "wear",
               "lerntext": "wear",
               "de": "tragen (Kleidung)",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "continue",
               "lerntext": "continue",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "travel",
               "lerntext": "travel",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "send",
               "lerntext": "send",
               "de": "senden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "get",
               "lerntext": "get",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -13585,7 +15623,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I [Slot] the door",
-          "lerntext": "I [Slot] the door"
+          "lerntext": "I [Slot] the door",
+          "wortarten": {
+            "I": "p",
+            "door": "n"
+          }
         },
         "frameDe": "Ich [Slot] die Tür.",
         "pronouns": [],
@@ -13594,86 +15636,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "open",
               "lerntext": "open",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "close",
               "lerntext": "close",
-              "de": "schließen"
+              "de": "schließen",
+              "c": "v"
             },
             {
               "schrift": "use",
               "lerntext": "use",
-              "de": "benutzen"
+              "de": "benutzen",
+              "c": "v"
             },
             {
               "schrift": "make",
               "lerntext": "make",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "choose",
               "lerntext": "choose",
-              "de": "wählen"
+              "de": "wählen",
+              "c": "v"
             },
             {
               "schrift": "smile",
               "lerntext": "smile",
               "de": "lächeln",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "say",
               "lerntext": "say",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "thank",
               "lerntext": "thank",
               "de": "danken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "talk",
               "lerntext": "talk",
               "de": "reden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "listen",
               "lerntext": "listen",
               "de": "zuhören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "borrow",
               "lerntext": "borrow",
               "de": "sich leihen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "rent",
               "lerntext": "rent",
               "de": "mieten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sign",
               "lerntext": "sign",
               "de": "unterschreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "begin",
               "lerntext": "begin",
               "de": "anfangen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "study",
               "lerntext": "study",
               "de": "studieren",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -13687,7 +15744,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I [Slot] here",
-          "lerntext": "I [Slot] here"
+          "lerntext": "I [Slot] here",
+          "wortarten": {
+            "I": "p"
+          }
         },
         "frameDe": "Ich [Slot] hier.",
         "pronouns": [],
@@ -13696,86 +15756,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "stand",
               "lerntext": "stand",
-              "de": "stehen"
+              "de": "stehen",
+              "c": "v"
             },
             {
               "schrift": "laugh",
               "lerntext": "laugh",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "cry",
               "lerntext": "cry",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "watch",
               "lerntext": "watch",
-              "de": "ansehen"
+              "de": "ansehen",
+              "c": "v"
             },
             {
               "schrift": "enjoy",
               "lerntext": "enjoy",
-              "de": "genießen"
+              "de": "genießen",
+              "c": "v"
             },
             {
               "schrift": "choose",
               "lerntext": "choose",
               "de": "wählen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "use",
               "lerntext": "use",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "close",
               "lerntext": "close",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "make",
               "lerntext": "make",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "open",
               "lerntext": "open",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "smile",
               "lerntext": "smile",
               "de": "lächeln",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "say",
               "lerntext": "say",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "thank",
               "lerntext": "thank",
               "de": "danken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "talk",
               "lerntext": "talk",
               "de": "reden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "listen",
               "lerntext": "listen",
               "de": "zuhören",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -13789,7 +15864,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I need [Slot]",
-          "lerntext": "I need [Slot]"
+          "lerntext": "I need [Slot]",
+          "wortarten": {
+            "I": "p",
+            "need": "v"
+          }
         },
         "frameDe": "Ich muss [Slot].",
         "pronouns": [
@@ -13809,71 +15888,83 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "to be called",
               "lerntext": "to be called",
-              "de": "heißen"
+              "de": "heißen",
+              "c": "v"
             },
             {
               "schrift": "to answer",
               "lerntext": "to answer",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "watch",
               "lerntext": "watch",
               "de": "ansehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "enjoy",
               "lerntext": "enjoy",
               "de": "genießen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cry",
               "lerntext": "cry",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "laugh",
               "lerntext": "laugh",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stand",
               "lerntext": "stand",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "choose",
               "lerntext": "choose",
               "de": "wählen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "use",
               "lerntext": "use",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "close",
               "lerntext": "close",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "make",
               "lerntext": "make",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "open",
               "lerntext": "open",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -13903,7 +15994,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I want to [Slot] today",
-          "lerntext": "I want to [Slot] today"
+          "lerntext": "I want to [Slot] today",
+          "wortarten": {
+            "I": "p",
+            "want": "v"
+          }
         },
         "frameDe": "Ich will heute [Slot].",
         "pronouns": [],
@@ -13912,71 +16007,83 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "marry",
               "lerntext": "marry",
-              "de": "heiraten"
+              "de": "heiraten",
+              "c": "v"
             },
             {
               "schrift": "tidy",
               "lerntext": "tidy",
-              "de": "aufräumen"
+              "de": "aufräumen",
+              "c": "v"
             },
             {
               "schrift": "to answer",
               "lerntext": "to answer",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "to be called",
               "lerntext": "to be called",
               "de": "heißen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "watch",
               "lerntext": "watch",
               "de": "ansehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "enjoy",
               "lerntext": "enjoy",
               "de": "genießen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cry",
               "lerntext": "cry",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "laugh",
               "lerntext": "laugh",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stand",
               "lerntext": "stand",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "smile",
               "lerntext": "smile",
               "de": "lächeln",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "choose",
               "lerntext": "choose",
               "de": "wählen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "use",
               "lerntext": "use",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -13990,7 +16097,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it can [Slot]",
-          "lerntext": "it can [Slot]"
+          "lerntext": "it can [Slot]",
+          "wortarten": {
+            "it": "p"
+          }
         },
         "frameDe": "Es kann [Slot].",
         "pronouns": [],
@@ -13999,71 +16109,83 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "cost",
               "lerntext": "cost",
-              "de": "kosten"
+              "de": "kosten",
+              "c": "v"
             },
             {
               "schrift": "happen",
               "lerntext": "happen",
-              "de": "geschehen"
+              "de": "geschehen",
+              "c": "v"
             },
             {
               "schrift": "marry",
               "lerntext": "marry",
               "de": "heiraten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tidy",
               "lerntext": "tidy",
               "de": "aufräumen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "to answer",
               "lerntext": "to answer",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "to be called",
               "lerntext": "to be called",
               "de": "heißen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "say",
               "lerntext": "say",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "watch",
               "lerntext": "watch",
               "de": "ansehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "thank",
               "lerntext": "thank",
               "de": "danken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "enjoy",
               "lerntext": "enjoy",
               "de": "genießen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cry",
               "lerntext": "cry",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "laugh",
               "lerntext": "laugh",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -14077,7 +16199,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it is [Slot]",
-          "lerntext": "it is [Slot]"
+          "lerntext": "it is [Slot]",
+          "wortarten": {
+            "it": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Es ist [Slot].",
         "pronouns": [],
@@ -14086,86 +16212,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "new",
               "lerntext": "new",
-              "de": "neu"
+              "de": "neu",
+              "c": "a"
             },
             {
               "schrift": "finished",
               "lerntext": "finished",
-              "de": "fertig"
+              "de": "fertig",
+              "c": "a"
             },
             {
               "schrift": "left",
               "lerntext": "left",
-              "de": "links"
+              "de": "links",
+              "c": "a"
             },
             {
               "schrift": "black",
               "lerntext": "black",
-              "de": "schwarz"
+              "de": "schwarz",
+              "c": "a"
             },
             {
               "schrift": "white",
               "lerntext": "white",
-              "de": "weiß"
+              "de": "weiß",
+              "c": "a"
             },
             {
               "schrift": "German",
               "lerntext": "German",
               "de": "deutsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lovely",
               "lerntext": "lovely",
               "de": "reizend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fast",
               "lerntext": "fast",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "slow",
               "lerntext": "slow",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "yellow",
               "lerntext": "yellow",
               "de": "gelb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "low",
               "lerntext": "low",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "same",
               "lerntext": "same",
               "de": "gleich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tall",
               "lerntext": "tall",
               "de": "groß (Person)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "heavy",
               "lerntext": "heavy",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "foreign",
               "lerntext": "foreign",
               "de": "ausländisch",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -14179,7 +16320,10 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it can [Slot]",
-          "lerntext": "it can [Slot]"
+          "lerntext": "it can [Slot]",
+          "wortarten": {
+            "it": "p"
+          }
         },
         "frameDe": "Es kann [Slot].",
         "pronouns": [],
@@ -14189,24 +16333,28 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "cost",
               "lerntext": "cost",
               "de": "kosten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "happen",
               "lerntext": "happen",
               "de": "geschehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "marry",
               "lerntext": "marry",
               "de": "heiraten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tidy",
               "lerntext": "tidy",
               "de": "aufräumen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -14220,7 +16368,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it is [Slot]",
-          "lerntext": "it is [Slot]"
+          "lerntext": "it is [Slot]",
+          "wortarten": {
+            "it": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Es ist [Slot].",
         "pronouns": [],
@@ -14230,18 +16382,21 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "new",
               "lerntext": "new",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "finished",
               "lerntext": "finished",
               "de": "fertig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "left",
               "lerntext": "left",
               "de": "links",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -14255,7 +16410,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it is [Slot]",
-          "lerntext": "it is [Slot]"
+          "lerntext": "it is [Slot]",
+          "wortarten": {
+            "it": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Es ist [Slot].",
         "pronouns": [],
@@ -14265,18 +16424,21 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "new",
               "lerntext": "new",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "finished",
               "lerntext": "finished",
               "de": "fertig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "left",
               "lerntext": "left",
               "de": "links",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -14311,14 +16473,20 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I have [Slot] it",
-          "lerntext": "I have [Slot] it"
+          "lerntext": "I have [Slot] it",
+          "wortarten": {
+            "I": "p",
+            "have": "v",
+            "it": "p"
+          }
         },
         "frameDe": "ich habe [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -14326,86 +16494,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "looked",
               "lerntext": "looked",
-              "de": "schauen"
+              "de": "schauen",
+              "c": "v"
             },
             {
               "schrift": "bought",
               "lerntext": "bought",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "seen",
               "lerntext": "seen",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "made",
               "lerntext": "made",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "found",
               "lerntext": "found",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "taken",
               "lerntext": "taken",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "read",
               "lerntext": "read",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "written",
               "lerntext": "written",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "heard",
               "lerntext": "heard",
               "de": "hören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lost",
               "lerntext": "lost",
               "de": "verlieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "happened",
               "lerntext": "happened",
               "de": "geschehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cost",
               "lerntext": "cost",
               "de": "kosten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "married",
               "lerntext": "married",
               "de": "heiraten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "answered",
               "lerntext": "answered",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tidied",
               "lerntext": "tidied",
               "de": "aufräumen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -14419,14 +16602,20 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I have [Slot] it",
-          "lerntext": "I have [Slot] it"
+          "lerntext": "I have [Slot] it",
+          "wortarten": {
+            "I": "p",
+            "have": "v",
+            "it": "p"
+          }
         },
         "frameDe": "ich habe [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -14434,86 +16623,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "taken",
               "lerntext": "taken",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "read",
               "lerntext": "read",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "written",
               "lerntext": "written",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "heard",
               "lerntext": "heard",
-              "de": "hören"
+              "de": "hören",
+              "c": "v"
             },
             {
               "schrift": "lost",
               "lerntext": "lost",
-              "de": "verlieren"
+              "de": "verlieren",
+              "c": "v"
             },
             {
               "schrift": "made",
               "lerntext": "made",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "looked",
               "lerntext": "looked",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "seen",
               "lerntext": "seen",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "found",
               "lerntext": "found",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bought",
               "lerntext": "bought",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "happened",
               "lerntext": "happened",
               "de": "geschehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "closed",
               "lerntext": "closed",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "talked",
               "lerntext": "talked",
               "de": "reden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "been called",
               "lerntext": "been called",
               "de": "heißen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stood",
               "lerntext": "stood",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -14527,14 +16731,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I have already [Slot]",
-          "lerntext": "I have already [Slot]"
+          "lerntext": "I have already [Slot]",
+          "wortarten": {
+            "I": "p",
+            "have": "v"
+          }
         },
         "frameDe": "Ich habe schon [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -14542,86 +16751,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "worked",
               "lerntext": "worked",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "played",
               "lerntext": "played",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "danced",
               "lerntext": "danced",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "slept",
               "lerntext": "slept",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "waited",
               "lerntext": "waited",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "helped",
               "lerntext": "helped",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "asked",
               "lerntext": "asked",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "answered",
               "lerntext": "answered",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "paid",
               "lerntext": "paid",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "listened",
               "lerntext": "listened",
               "de": "zuhören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cost",
               "lerntext": "cost",
               "de": "kosten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spoken",
               "lerntext": "spoken",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tried",
               "lerntext": "tried",
               "de": "versuchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "opened",
               "lerntext": "opened",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sat",
               "lerntext": "sat",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -14635,14 +16859,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I have already [Slot]",
-          "lerntext": "I have already [Slot]"
+          "lerntext": "I have already [Slot]",
+          "wortarten": {
+            "I": "p",
+            "have": "v"
+          }
         },
         "frameDe": "Ich habe schon [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -14650,81 +16879,95 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "asked",
               "lerntext": "asked",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "answered",
               "lerntext": "answered",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "helped",
               "lerntext": "helped",
-              "de": "helfen"
+              "de": "helfen",
+              "c": "v"
             },
             {
               "schrift": "paid",
               "lerntext": "paid",
-              "de": "bezahlen"
+              "de": "bezahlen",
+              "c": "v"
             },
             {
               "schrift": "played",
               "lerntext": "played",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "danced",
               "lerntext": "danced",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "slept",
               "lerntext": "slept",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "waited",
               "lerntext": "waited",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "worked",
               "lerntext": "worked",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "left",
               "lerntext": "left",
               "de": "verlassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "meant",
               "lerntext": "meant",
               "de": "bedeuten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "washed",
               "lerntext": "washed",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "smiled",
               "lerntext": "smiled",
               "de": "lächeln",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "visited",
               "lerntext": "visited",
               "de": "besuchen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -14738,14 +16981,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I have never [Slot]",
-          "lerntext": "I have never [Slot]"
+          "lerntext": "I have never [Slot]",
+          "wortarten": {
+            "I": "p",
+            "have": "v"
+          }
         },
         "frameDe": "Ich habe nie [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -14753,86 +17001,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "won",
               "lerntext": "won",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "forgotten",
               "lerntext": "forgotten",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "understood",
               "lerntext": "understood",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "met",
               "lerntext": "met",
-              "de": "treffen"
+              "de": "treffen",
+              "c": "v"
             },
             {
               "schrift": "given",
               "lerntext": "given",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "said",
               "lerntext": "said",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "spoken",
               "lerntext": "spoken",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "opened",
               "lerntext": "opened",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "closed",
               "lerntext": "closed",
               "de": "schließen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "washed",
               "lerntext": "washed",
               "de": "waschen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "let",
               "lerntext": "let",
               "de": "lassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "taught",
               "lerntext": "taught",
               "de": "unterrichten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "chosen",
               "lerntext": "chosen",
               "de": "wählen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "borrowed",
               "lerntext": "borrowed",
               "de": "sich leihen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "done",
               "lerntext": "done",
               "de": "tun",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -14846,14 +17109,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I have never [Slot]",
-          "lerntext": "I have never [Slot]"
+          "lerntext": "I have never [Slot]",
+          "wortarten": {
+            "I": "p",
+            "have": "v"
+          }
         },
         "frameDe": "Ich habe nie [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -14861,86 +17129,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "said",
               "lerntext": "said",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "spoken",
               "lerntext": "spoken",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "opened",
               "lerntext": "opened",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "closed",
               "lerntext": "closed",
-              "de": "schließen"
+              "de": "schließen",
+              "c": "v"
             },
             {
               "schrift": "washed",
               "lerntext": "washed",
-              "de": "waschen"
+              "de": "waschen",
+              "c": "v"
             },
             {
               "schrift": "won",
               "lerntext": "won",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "forgotten",
               "lerntext": "forgotten",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "understood",
               "lerntext": "understood",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "met",
               "lerntext": "met",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "given",
               "lerntext": "given",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "used",
               "lerntext": "used",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "thought",
               "lerntext": "thought",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ordered",
               "lerntext": "ordered",
               "de": "bestellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "married",
               "lerntext": "married",
               "de": "heiraten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "come",
               "lerntext": "come",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -14975,14 +17258,18 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "you [Slot]",
-          "lerntext": "you [Slot]"
+          "lerntext": "you [Slot]",
+          "wortarten": {
+            "you": "p"
+          }
         },
         "frameDe": "du [Slot].",
         "pronouns": [
           {
             "schrift": "you",
             "lerntext": "you",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -14990,86 +17277,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "look",
               "lerntext": "look",
-              "de": "schauen"
+              "de": "schauen",
+              "c": "v"
             },
             {
               "schrift": "buy",
               "lerntext": "buy",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "see",
               "lerntext": "see",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "make",
               "lerntext": "make",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "find",
               "lerntext": "find",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "take",
               "lerntext": "take",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "read",
               "lerntext": "read",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "write",
               "lerntext": "write",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "must",
               "lerntext": "must",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "rent",
               "lerntext": "rent",
               "de": "mieten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "finish",
               "lerntext": "finish",
               "de": "beenden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bring",
               "lerntext": "bring",
               "de": "bringen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "watch",
               "lerntext": "watch",
               "de": "ansehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "go",
               "lerntext": "go",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drink",
               "lerntext": "drink",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15083,14 +17385,18 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "you [Slot]",
-          "lerntext": "you [Slot]"
+          "lerntext": "you [Slot]",
+          "wortarten": {
+            "you": "p"
+          }
         },
         "frameDe": "du [Slot].",
         "pronouns": [
           {
             "schrift": "you",
             "lerntext": "you",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15098,76 +17404,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "take",
               "lerntext": "take",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "read",
               "lerntext": "read",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "write",
               "lerntext": "write",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "make",
               "lerntext": "make",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "look",
               "lerntext": "look",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "see",
               "lerntext": "see",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "find",
               "lerntext": "find",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "buy",
               "lerntext": "buy",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "keep",
               "lerntext": "keep",
               "de": "behalten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "would",
               "lerntext": "would",
               "de": "würde",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sign",
               "lerntext": "sign",
               "de": "unterschreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "start",
               "lerntext": "start",
               "de": "starten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cook",
               "lerntext": "cook",
               "de": "kochen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15181,14 +17500,18 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "he [Slot]",
-          "lerntext": "he [Slot]"
+          "lerntext": "he [Slot]",
+          "wortarten": {
+            "he": "p"
+          }
         },
         "frameDe": "er [Slot].",
         "pronouns": [
           {
             "schrift": "he",
             "lerntext": "he",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15196,86 +17519,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "works",
               "lerntext": "works",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "plays",
               "lerntext": "plays",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "dances",
               "lerntext": "dances",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "sleeps",
               "lerntext": "sleeps",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "waits",
               "lerntext": "waits",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "asks",
               "lerntext": "asks",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "answers",
               "lerntext": "answers",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "puts",
               "lerntext": "puts",
               "de": "legen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drives",
               "lerntext": "drives",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "eats",
               "lerntext": "eats",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "calls",
               "lerntext": "calls",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "thanks",
               "lerntext": "thanks",
               "de": "danken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "enjoys",
               "lerntext": "enjoys",
               "de": "genießen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "feels",
               "lerntext": "feels",
               "de": "fühlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tidies",
               "lerntext": "tidies",
               "de": "aufräumen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15289,14 +17627,18 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "he [Slot]",
-          "lerntext": "he [Slot]"
+          "lerntext": "he [Slot]",
+          "wortarten": {
+            "he": "p"
+          }
         },
         "frameDe": "er [Slot].",
         "pronouns": [
           {
             "schrift": "he",
             "lerntext": "he",
-            "de": "er"
+            "de": "er",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15304,71 +17646,83 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "asks",
               "lerntext": "asks",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "answers",
               "lerntext": "answers",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "plays",
               "lerntext": "plays",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dances",
               "lerntext": "dances",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sleeps",
               "lerntext": "sleeps",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "waits",
               "lerntext": "waits",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "works",
               "lerntext": "works",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "reserves",
               "lerntext": "reserves",
               "de": "reservieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tells",
               "lerntext": "tells",
               "de": "erzählen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stays",
               "lerntext": "stays",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "arrives",
               "lerntext": "arrives",
               "de": "ankommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cries",
               "lerntext": "cries",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15382,14 +17736,18 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "we [Slot]",
-          "lerntext": "we [Slot]"
+          "lerntext": "we [Slot]",
+          "wortarten": {
+            "we": "p"
+          }
         },
         "frameDe": "wir [Slot].",
         "pronouns": [
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15397,86 +17755,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "win",
               "lerntext": "win",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "forget",
               "lerntext": "forget",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "understand",
               "lerntext": "understand",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "meet",
               "lerntext": "meet",
-              "de": "treffen"
+              "de": "treffen",
+              "c": "v"
             },
             {
               "schrift": "give",
               "lerntext": "give",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "say",
               "lerntext": "say",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "speak",
               "lerntext": "speak",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "open",
               "lerntext": "open",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "will",
               "lerntext": "will",
               "de": "werden (Zukunft)",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "show",
               "lerntext": "show",
               "de": "zeigen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hope",
               "lerntext": "hope",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "happen",
               "lerntext": "happen",
               "de": "geschehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "wear",
               "lerntext": "wear",
               "de": "tragen (Kleidung)",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "laugh",
               "lerntext": "laugh",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "move",
               "lerntext": "move",
               "de": "bewegen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15490,14 +17863,18 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "we [Slot]",
-          "lerntext": "we [Slot]"
+          "lerntext": "we [Slot]",
+          "wortarten": {
+            "we": "p"
+          }
         },
         "frameDe": "wir [Slot].",
         "pronouns": [
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15505,76 +17882,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "say",
               "lerntext": "say",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "speak",
               "lerntext": "speak",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "open",
               "lerntext": "open",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "win",
               "lerntext": "win",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "forget",
               "lerntext": "forget",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "understand",
               "lerntext": "understand",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "meet",
               "lerntext": "meet",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "give",
               "lerntext": "give",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "turn",
               "lerntext": "turn",
               "de": "drehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "to love",
               "lerntext": "to love",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "should",
               "lerntext": "should",
               "de": "sollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "talk",
               "lerntext": "talk",
               "de": "reden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "run",
               "lerntext": "run",
               "de": "rennen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15588,14 +17978,18 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "you [Slot]",
-          "lerntext": "you [Slot]"
+          "lerntext": "you [Slot]",
+          "wortarten": {
+            "you": "p"
+          }
         },
         "frameDe": "du [Slot].",
         "pronouns": [
           {
             "schrift": "you",
             "lerntext": "you",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15603,86 +17997,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "live",
               "lerntext": "live",
-              "de": "leben"
+              "de": "leben",
+              "c": "v"
             },
             {
               "schrift": "stay",
               "lerntext": "stay",
-              "de": "bleiben"
+              "de": "bleiben",
+              "c": "v"
             },
             {
               "schrift": "laugh",
               "lerntext": "laugh",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "cry",
               "lerntext": "cry",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "think",
               "lerntext": "think",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "believe",
               "lerntext": "believe",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hope",
               "lerntext": "hope",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "need",
               "lerntext": "need",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "be",
               "lerntext": "be",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "to be called",
               "lerntext": "to be called",
               "de": "heißen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sell",
               "lerntext": "sell",
               "de": "verkaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "change",
               "lerntext": "change",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sing",
               "lerntext": "sing",
               "de": "singen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "learn",
               "lerntext": "learn",
               "de": "lernen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "become",
               "lerntext": "become",
               "de": "werden",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15696,14 +18105,18 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "you [Slot]",
-          "lerntext": "you [Slot]"
+          "lerntext": "you [Slot]",
+          "wortarten": {
+            "you": "p"
+          }
         },
         "frameDe": "du [Slot].",
         "pronouns": [
           {
             "schrift": "you",
             "lerntext": "you",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -15711,76 +18124,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "believe",
               "lerntext": "believe",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "hope",
               "lerntext": "hope",
-              "de": "hoffen"
+              "de": "hoffen",
+              "c": "v"
             },
             {
               "schrift": "need",
               "lerntext": "need",
-              "de": "brauchen"
+              "de": "brauchen",
+              "c": "v"
             },
             {
               "schrift": "live",
               "lerntext": "live",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stay",
               "lerntext": "stay",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "laugh",
               "lerntext": "laugh",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cry",
               "lerntext": "cry",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "think",
               "lerntext": "think",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "continue",
               "lerntext": "continue",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stand",
               "lerntext": "stand",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "listen",
               "lerntext": "listen",
               "de": "zuhören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "travel",
               "lerntext": "travel",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "send",
               "lerntext": "send",
               "de": "senden",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -15815,7 +18241,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it is more [Slot]",
-          "lerntext": "it is more [Slot]"
+          "lerntext": "it is more [Slot]",
+          "wortarten": {
+            "it": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Das ist mehr [Slot].",
         "pronouns": [],
@@ -15824,86 +18254,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "interesting",
               "lerntext": "interesting",
-              "de": "interessant"
+              "de": "interessant",
+              "c": "a"
             },
             {
               "schrift": "difficult",
               "lerntext": "difficult",
-              "de": "schwierig"
+              "de": "schwierig",
+              "c": "a"
             },
             {
               "schrift": "important",
               "lerntext": "important",
-              "de": "wichtig"
+              "de": "wichtig",
+              "c": "a"
             },
             {
               "schrift": "dangerous",
               "lerntext": "dangerous",
-              "de": "gefährlich"
+              "de": "gefährlich",
+              "c": "a"
             },
             {
               "schrift": "expensive",
               "lerntext": "expensive",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "dirty",
               "lerntext": "dirty",
               "de": "schmutzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sad",
               "lerntext": "sad",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tired",
               "lerntext": "tired",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "new",
               "lerntext": "new",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "finished",
               "lerntext": "finished",
               "de": "fertig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "left",
               "lerntext": "left",
               "de": "links",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "full",
               "lerntext": "full",
               "de": "voll",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "easy",
               "lerntext": "easy",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "green",
               "lerntext": "green",
               "de": "grün",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "nice",
               "lerntext": "nice",
               "de": "nett",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -15923,7 +18368,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "it is more [Slot]",
-          "lerntext": "it is more [Slot]"
+          "lerntext": "it is more [Slot]",
+          "wortarten": {
+            "it": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Das ist mehr [Slot].",
         "pronouns": [],
@@ -15932,76 +18381,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "dirty",
               "lerntext": "dirty",
-              "de": "schmutzig"
+              "de": "schmutzig",
+              "c": "a"
             },
             {
               "schrift": "tired",
               "lerntext": "tired",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "sad",
               "lerntext": "sad",
-              "de": "traurig"
+              "de": "traurig",
+              "c": "a"
             },
             {
               "schrift": "interesting",
               "lerntext": "interesting",
               "de": "interessant",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "difficult",
               "lerntext": "difficult",
               "de": "schwierig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "important",
               "lerntext": "important",
               "de": "wichtig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "dangerous",
               "lerntext": "dangerous",
               "de": "gefährlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "expensive",
               "lerntext": "expensive",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "strong",
               "lerntext": "strong",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "red",
               "lerntext": "red",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "light",
               "lerntext": "light",
               "de": "leicht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fresh",
               "lerntext": "fresh",
               "de": "frisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "right",
               "lerntext": "right",
               "de": "richtig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -16015,7 +18477,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "am as [Slot] as you",
-          "lerntext": "am as [Slot] as you"
+          "lerntext": "am as [Slot] as you",
+          "wortarten": {
+            "am": "v",
+            "you": "p"
+          }
         },
         "frameDe": "bin so [Slot] wie du.",
         "pronouns": [],
@@ -16024,86 +18490,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "big",
               "lerntext": "big",
-              "de": "groß"
+              "de": "groß",
+              "c": "a"
             },
             {
               "schrift": "small",
               "lerntext": "small",
-              "de": "klein"
+              "de": "klein",
+              "c": "a"
             },
             {
               "schrift": "old",
               "lerntext": "old",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "young",
               "lerntext": "young",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "expensive",
               "lerntext": "expensive",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "cold",
               "lerntext": "cold",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "beautiful",
               "lerntext": "beautiful",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "warm",
               "lerntext": "warm",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "new",
               "lerntext": "new",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "strong",
               "lerntext": "strong",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "English",
               "lerntext": "English",
               "de": "englisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "usual",
               "lerntext": "usual",
               "de": "üblich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "clean",
               "lerntext": "clean",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "long",
               "lerntext": "long",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "empty",
               "lerntext": "empty",
               "de": "leer",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -16114,7 +18595,8 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "than",
             "lerntext": "than",
-            "de": "als (Vergleich)"
+            "de": "als (Vergleich)",
+            "c": "k"
           }
         ],
         "id": "18.3"
@@ -16123,7 +18605,11 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "am as [Slot] as you",
-          "lerntext": "am as [Slot] as you"
+          "lerntext": "am as [Slot] as you",
+          "wortarten": {
+            "am": "v",
+            "you": "p"
+          }
         },
         "frameDe": "bin so [Slot] wie du.",
         "pronouns": [],
@@ -16132,86 +18618,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "beautiful",
               "lerntext": "beautiful",
-              "de": "schön"
+              "de": "schön",
+              "c": "a"
             },
             {
               "schrift": "warm",
               "lerntext": "warm",
-              "de": "warm"
+              "de": "warm",
+              "c": "a"
             },
             {
               "schrift": "cold",
               "lerntext": "cold",
-              "de": "kalt"
+              "de": "kalt",
+              "c": "a"
             },
             {
               "schrift": "new",
               "lerntext": "new",
-              "de": "neu"
+              "de": "neu",
+              "c": "a"
             },
             {
               "schrift": "strong",
               "lerntext": "strong",
-              "de": "stark"
+              "de": "stark",
+              "c": "a"
             },
             {
               "schrift": "big",
               "lerntext": "big",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "small",
               "lerntext": "small",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "old",
               "lerntext": "old",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "young",
               "lerntext": "young",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "expensive",
               "lerntext": "expensive",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "true",
               "lerntext": "true",
               "de": "wahr",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "different",
               "lerntext": "different",
               "de": "verschieden",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "cheap",
               "lerntext": "cheap",
               "de": "billig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "boring",
               "lerntext": "boring",
               "de": "langweilig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "possible",
               "lerntext": "possible",
               "de": "möglich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -16246,14 +18747,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I feel [Slot]",
-          "lerntext": "I feel [Slot]"
+          "lerntext": "I feel [Slot]",
+          "wortarten": {
+            "I": "p",
+            "feel": "v"
+          }
         },
         "frameDe": "ich fühle mich [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16261,86 +18767,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "tired",
               "lerntext": "tired",
-              "de": "müde"
+              "de": "müde",
+              "c": "a"
             },
             {
               "schrift": "ill",
               "lerntext": "ill",
-              "de": "krank"
+              "de": "krank",
+              "c": "a"
             },
             {
               "schrift": "sad",
               "lerntext": "sad",
-              "de": "traurig"
+              "de": "traurig",
+              "c": "a"
             },
             {
               "schrift": "strong",
               "lerntext": "strong",
-              "de": "stark"
+              "de": "stark",
+              "c": "a"
             },
             {
               "schrift": "weak",
               "lerntext": "weak",
-              "de": "schwach"
+              "de": "schwach",
+              "c": "a"
             },
             {
               "schrift": "ready",
               "lerntext": "ready",
               "de": "bereit",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "angry",
               "lerntext": "angry",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "young",
               "lerntext": "young",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "old",
               "lerntext": "old",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "beautiful",
               "lerntext": "beautiful",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "grey",
               "lerntext": "grey",
               "de": "grau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "free",
               "lerntext": "free",
               "de": "frei",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "high",
               "lerntext": "high",
               "de": "hoch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "bad",
               "lerntext": "bad",
               "de": "schlecht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "spicy",
               "lerntext": "spicy",
               "de": "scharf",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -16354,14 +18875,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I feel [Slot]",
-          "lerntext": "I feel [Slot]"
+          "lerntext": "I feel [Slot]",
+          "wortarten": {
+            "I": "p",
+            "feel": "v"
+          }
         },
         "frameDe": "ich fühle mich [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16369,86 +18895,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "ready",
               "lerntext": "ready",
-              "de": "bereit"
+              "de": "bereit",
+              "c": "a"
             },
             {
               "schrift": "young",
               "lerntext": "young",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "old",
               "lerntext": "old",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "angry",
               "lerntext": "angry",
-              "de": "wütend"
+              "de": "wütend",
+              "c": "a"
             },
             {
               "schrift": "beautiful",
               "lerntext": "beautiful",
-              "de": "schön"
+              "de": "schön",
+              "c": "a"
             },
             {
               "schrift": "ill",
               "lerntext": "ill",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "weak",
               "lerntext": "weak",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sad",
               "lerntext": "sad",
               "de": "traurig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "strong",
               "lerntext": "strong",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tired",
               "lerntext": "tired",
               "de": "müde",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "happy",
               "lerntext": "happy",
               "de": "glücklich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "short",
               "lerntext": "short",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "German",
               "lerntext": "German",
               "de": "deutsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "kind",
               "lerntext": "kind",
               "de": "freundlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "good",
               "lerntext": "good",
               "de": "gut",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -16462,14 +19003,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "we meet [Slot]",
-          "lerntext": "we meet [Slot]"
+          "lerntext": "we meet [Slot]",
+          "wortarten": {
+            "we": "p",
+            "meet": "v"
+          }
         },
         "frameDe": "wir treffen uns [Slot].",
         "pronouns": [
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16570,14 +19116,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "we meet [Slot]",
-          "lerntext": "we meet [Slot]"
+          "lerntext": "we meet [Slot]",
+          "wortarten": {
+            "we": "p",
+            "meet": "v"
+          }
         },
         "frameDe": "wir treffen uns [Slot].",
         "pronouns": [
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16668,14 +19219,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "we meet [Slot]",
-          "lerntext": "we meet [Slot]"
+          "lerntext": "we meet [Slot]",
+          "wortarten": {
+            "we": "p",
+            "meet": "v"
+          }
         },
         "frameDe": "wir treffen uns [Slot].",
         "pronouns": [
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -16730,7 +19286,13 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I stay here [Slot] I am tired",
-          "lerntext": "I stay here [Slot] I am tired"
+          "lerntext": "I stay here [Slot] I am tired",
+          "wortarten": {
+            "I": "p",
+            "stay": "v",
+            "am": "v",
+            "tired": "a"
+          }
         },
         "frameDe": "Ich bleibe hier, [Slot] ich müde bin.",
         "pronouns": [],
@@ -16739,86 +19301,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "because",
               "lerntext": "because",
-              "de": "weil"
+              "de": "weil",
+              "c": "k"
             },
             {
               "schrift": "if",
               "lerntext": "if",
-              "de": "wenn"
+              "de": "wenn",
+              "c": "k"
             },
             {
               "schrift": "although",
               "lerntext": "although",
-              "de": "obwohl"
+              "de": "obwohl",
+              "c": "k"
             },
             {
               "schrift": "while",
               "lerntext": "while",
-              "de": "während"
+              "de": "während",
+              "c": "k"
             },
             {
               "schrift": "than",
               "lerntext": "than",
-              "de": "als (Vergleich)"
+              "de": "als (Vergleich)",
+              "c": "k"
             },
             {
               "schrift": "or",
               "lerntext": "or",
               "de": "oder",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "and",
               "lerntext": "and",
               "de": "und",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "but",
               "lerntext": "but",
               "de": "aber",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "therefore",
               "lerntext": "therefore",
               "de": "deshalb",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "so",
               "lerntext": "so",
               "de": "also",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "unless",
               "lerntext": "unless",
               "de": "es sei denn",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "since",
               "lerntext": "since",
               "de": "seit",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "however",
               "lerntext": "however",
               "de": "jedoch",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "as",
               "lerntext": "as",
               "de": "als",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "that",
               "lerntext": "that",
               "de": "dass",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -16832,7 +19409,13 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I stay here [Slot] I am tired",
-          "lerntext": "I stay here [Slot] I am tired"
+          "lerntext": "I stay here [Slot] I am tired",
+          "wortarten": {
+            "I": "p",
+            "stay": "v",
+            "am": "v",
+            "tired": "a"
+          }
         },
         "frameDe": "Ich bleibe hier, [Slot] ich müde bin.",
         "pronouns": [],
@@ -16841,76 +19424,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "but",
               "lerntext": "but",
-              "de": "aber"
+              "de": "aber",
+              "c": "k"
             },
             {
               "schrift": "or",
               "lerntext": "or",
-              "de": "oder"
+              "de": "oder",
+              "c": "k"
             },
             {
               "schrift": "and",
               "lerntext": "and",
-              "de": "und"
+              "de": "und",
+              "c": "k"
             },
             {
               "schrift": "because",
               "lerntext": "because",
               "de": "weil",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "if",
               "lerntext": "if",
               "de": "wenn",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "although",
               "lerntext": "although",
               "de": "obwohl",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "while",
               "lerntext": "while",
               "de": "während",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "than",
               "lerntext": "than",
               "de": "als (Vergleich)",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "therefore",
               "lerntext": "therefore",
               "de": "deshalb",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "so",
               "lerntext": "so",
               "de": "also",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "unless",
               "lerntext": "unless",
               "de": "es sei denn",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "since",
               "lerntext": "since",
               "de": "seit",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "however",
               "lerntext": "however",
               "de": "jedoch",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -16924,7 +19520,13 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I think that it is [Slot]",
-          "lerntext": "I think that it is [Slot]"
+          "lerntext": "I think that it is [Slot]",
+          "wortarten": {
+            "I": "p",
+            "think": "v",
+            "it": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Ich glaube, dass es [Slot] ist.",
         "pronouns": [],
@@ -16933,86 +19535,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "easy",
               "lerntext": "easy",
-              "de": "einfach"
+              "de": "einfach",
+              "c": "a"
             },
             {
               "schrift": "wrong",
               "lerntext": "wrong",
-              "de": "falsch"
+              "de": "falsch",
+              "c": "a"
             },
             {
               "schrift": "ill",
               "lerntext": "ill",
-              "de": "krank"
+              "de": "krank",
+              "c": "a"
             },
             {
               "schrift": "short",
               "lerntext": "short",
-              "de": "kurz"
+              "de": "kurz",
+              "c": "a"
             },
             {
               "schrift": "long",
               "lerntext": "long",
-              "de": "lang"
+              "de": "lang",
+              "c": "a"
             },
             {
               "schrift": "clean",
               "lerntext": "clean",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sweet",
               "lerntext": "sweet",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "black",
               "lerntext": "black",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "weak",
               "lerntext": "weak",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "angry",
               "lerntext": "angry",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "salty",
               "lerntext": "salty",
               "de": "salzig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "healthy",
               "lerntext": "healthy",
               "de": "gesund",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ugly",
               "lerntext": "ugly",
               "de": "hässlich",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "next",
               "lerntext": "next",
               "de": "nächster",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "safe",
               "lerntext": "safe",
               "de": "sicher",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17023,7 +19640,8 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "that",
             "lerntext": "that",
-            "de": "dass"
+            "de": "dass",
+            "c": "k"
           }
         ],
         "id": "20.3"
@@ -17032,7 +19650,13 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I think that it is [Slot]",
-          "lerntext": "I think that it is [Slot]"
+          "lerntext": "I think that it is [Slot]",
+          "wortarten": {
+            "I": "p",
+            "think": "v",
+            "it": "p",
+            "is": "v"
+          }
         },
         "frameDe": "Ich glaube, dass es [Slot] ist.",
         "pronouns": [],
@@ -17041,86 +19665,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "clean",
               "lerntext": "clean",
-              "de": "sauber"
+              "de": "sauber",
+              "c": "a"
             },
             {
               "schrift": "weak",
               "lerntext": "weak",
-              "de": "schwach"
+              "de": "schwach",
+              "c": "a"
             },
             {
               "schrift": "black",
               "lerntext": "black",
-              "de": "schwarz"
+              "de": "schwarz",
+              "c": "a"
             },
             {
               "schrift": "sweet",
               "lerntext": "sweet",
-              "de": "süß"
+              "de": "süß",
+              "c": "a"
             },
             {
               "schrift": "angry",
               "lerntext": "angry",
-              "de": "wütend"
+              "de": "wütend",
+              "c": "a"
             },
             {
               "schrift": "easy",
               "lerntext": "easy",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "wrong",
               "lerntext": "wrong",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "long",
               "lerntext": "long",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "short",
               "lerntext": "short",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ill",
               "lerntext": "ill",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "delicious",
               "lerntext": "delicious",
               "de": "lecker",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "finished",
               "lerntext": "finished",
               "de": "fertig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "hot",
               "lerntext": "hot",
               "de": "heiß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "lovely",
               "lerntext": "lovely",
               "de": "reizend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "fast",
               "lerntext": "fast",
               "de": "schnell",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -17134,7 +19773,14 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "if I have time, I want to [Slot]",
-          "lerntext": "if I have time, I want to [Slot]"
+          "lerntext": "if I have time, I want to [Slot]",
+          "wortarten": {
+            "if": "k",
+            "I": "p",
+            "have": "v",
+            "time,": "n",
+            "want": "v"
+          }
         },
         "frameDe": "Wenn ich Zeit habe, will ich [Slot].",
         "pronouns": [],
@@ -17143,86 +19789,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "live",
               "lerntext": "live",
-              "de": "leben"
+              "de": "leben",
+              "c": "v"
             },
             {
               "schrift": "stay",
               "lerntext": "stay",
-              "de": "bleiben"
+              "de": "bleiben",
+              "c": "v"
             },
             {
               "schrift": "laugh",
               "lerntext": "laugh",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "cry",
               "lerntext": "cry",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "think",
               "lerntext": "think",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "believe",
               "lerntext": "believe",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hope",
               "lerntext": "hope",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "need",
               "lerntext": "need",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "get",
               "lerntext": "get",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "begin",
               "lerntext": "begin",
               "de": "anfangen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "study",
               "lerntext": "study",
               "de": "studieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cost",
               "lerntext": "cost",
               "de": "kosten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "try",
               "lerntext": "try",
               "de": "versuchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sit",
               "lerntext": "sit",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "leave",
               "lerntext": "leave",
               "de": "verlassen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -17236,7 +19897,14 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "if I have time, I want to [Slot]",
-          "lerntext": "if I have time, I want to [Slot]"
+          "lerntext": "if I have time, I want to [Slot]",
+          "wortarten": {
+            "if": "k",
+            "I": "p",
+            "have": "v",
+            "time,": "n",
+            "want": "v"
+          }
         },
         "frameDe": "Wenn ich Zeit habe, will ich [Slot].",
         "pronouns": [],
@@ -17245,76 +19913,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "believe",
               "lerntext": "believe",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "hope",
               "lerntext": "hope",
-              "de": "hoffen"
+              "de": "hoffen",
+              "c": "v"
             },
             {
               "schrift": "need",
               "lerntext": "need",
-              "de": "brauchen"
+              "de": "brauchen",
+              "c": "v"
             },
             {
               "schrift": "live",
               "lerntext": "live",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "laugh",
               "lerntext": "laugh",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cry",
               "lerntext": "cry",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stay",
               "lerntext": "stay",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "think",
               "lerntext": "think",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mean",
               "lerntext": "mean",
               "de": "bedeuten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "smile",
               "lerntext": "smile",
               "de": "lächeln",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "visit",
               "lerntext": "visit",
               "de": "besuchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "let",
               "lerntext": "let",
               "de": "lassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "teach",
               "lerntext": "teach",
               "de": "unterrichten",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -17328,7 +20009,13 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I stay here [Slot] I am tired",
-          "lerntext": "I stay here [Slot] I am tired"
+          "lerntext": "I stay here [Slot] I am tired",
+          "wortarten": {
+            "I": "p",
+            "stay": "v",
+            "am": "v",
+            "tired": "a"
+          }
         },
         "frameDe": "Ich bleibe hier, [Slot] ich müde bin.",
         "pronouns": [],
@@ -17338,18 +20025,21 @@ export const ENGLISH_COURSE: CourseModuleData[] =
               "schrift": "therefore",
               "lerntext": "therefore",
               "de": "deshalb",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "so",
               "lerntext": "so",
               "de": "also",
+              "c": "k",
               "wieder": true
             },
             {
               "schrift": "unless",
               "lerntext": "unless",
               "de": "es sei denn",
+              "c": "k",
               "wieder": true
             }
           ]
@@ -17384,14 +20074,18 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "can you [Slot], please?",
-          "lerntext": "can you [Slot], please?"
+          "lerntext": "can you [Slot], please?",
+          "wortarten": {
+            "you": "p"
+          }
         },
         "frameDe": "Kannst du bitte [Slot]?",
         "pronouns": [
           {
             "schrift": "you",
             "lerntext": "you",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17399,86 +20093,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "work",
               "lerntext": "work",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "play",
               "lerntext": "play",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "dance",
               "lerntext": "dance",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "sleep",
               "lerntext": "sleep",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "wait",
               "lerntext": "wait",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "help",
               "lerntext": "help",
               "de": "helfen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "pay",
               "lerntext": "pay",
               "de": "bezahlen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "ask",
               "lerntext": "ask",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "to answer",
               "lerntext": "to answer",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "choose",
               "lerntext": "choose",
               "de": "wählen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "borrow",
               "lerntext": "borrow",
               "de": "sich leihen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "do",
               "lerntext": "do",
               "de": "tun",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "use",
               "lerntext": "use",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "must",
               "lerntext": "must",
               "de": "müssen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "order",
               "lerntext": "order",
               "de": "bestellen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -17492,14 +20201,18 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "can you [Slot], please?",
-          "lerntext": "can you [Slot], please?"
+          "lerntext": "can you [Slot], please?",
+          "wortarten": {
+            "you": "p"
+          }
         },
         "frameDe": "Kannst du bitte [Slot]?",
         "pronouns": [
           {
             "schrift": "you",
             "lerntext": "you",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17507,81 +20220,95 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "ask",
               "lerntext": "ask",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "to answer",
               "lerntext": "to answer",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "help",
               "lerntext": "help",
-              "de": "helfen"
+              "de": "helfen",
+              "c": "v"
             },
             {
               "schrift": "pay",
               "lerntext": "pay",
-              "de": "bezahlen"
+              "de": "bezahlen",
+              "c": "v"
             },
             {
               "schrift": "play",
               "lerntext": "play",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dance",
               "lerntext": "dance",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sleep",
               "lerntext": "sleep",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "wait",
               "lerntext": "wait",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "work",
               "lerntext": "work",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "marry",
               "lerntext": "marry",
               "de": "heiraten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "come",
               "lerntext": "come",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "rent",
               "lerntext": "rent",
               "de": "mieten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "finish",
               "lerntext": "finish",
               "de": "beenden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bring",
               "lerntext": "bring",
               "de": "bringen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -17595,14 +20322,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "you must [Slot]",
-          "lerntext": "you must [Slot]"
+          "lerntext": "you must [Slot]",
+          "wortarten": {
+            "you": "p",
+            "must": "v"
+          }
         },
         "frameDe": "du musst [Slot].",
         "pronouns": [
           {
             "schrift": "you",
             "lerntext": "you",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17610,86 +20342,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "win",
               "lerntext": "win",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "forget",
               "lerntext": "forget",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "understand",
               "lerntext": "understand",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "meet",
               "lerntext": "meet",
-              "de": "treffen"
+              "de": "treffen",
+              "c": "v"
             },
             {
               "schrift": "give",
               "lerntext": "give",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "say",
               "lerntext": "say",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "speak",
               "lerntext": "speak",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "open",
               "lerntext": "open",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "watch",
               "lerntext": "watch",
               "de": "ansehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "go",
               "lerntext": "go",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drink",
               "lerntext": "drink",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "keep",
               "lerntext": "keep",
               "de": "behalten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "would",
               "lerntext": "would",
               "de": "würde",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sign",
               "lerntext": "sign",
               "de": "unterschreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "start",
               "lerntext": "start",
               "de": "starten",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -17703,14 +20450,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "you must [Slot]",
-          "lerntext": "you must [Slot]"
+          "lerntext": "you must [Slot]",
+          "wortarten": {
+            "you": "p",
+            "must": "v"
+          }
         },
         "frameDe": "du musst [Slot].",
         "pronouns": [
           {
             "schrift": "you",
             "lerntext": "you",
-            "de": "du"
+            "de": "du",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17718,76 +20470,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "say",
               "lerntext": "say",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "speak",
               "lerntext": "speak",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "open",
               "lerntext": "open",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "win",
               "lerntext": "win",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "forget",
               "lerntext": "forget",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "understand",
               "lerntext": "understand",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "give",
               "lerntext": "give",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "meet",
               "lerntext": "meet",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cook",
               "lerntext": "cook",
               "de": "kochen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "put",
               "lerntext": "put",
               "de": "legen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drive",
               "lerntext": "drive",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "eat",
               "lerntext": "eat",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "call",
               "lerntext": "call",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -17822,14 +20587,20 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I give the book to [Slot]",
-          "lerntext": "I give the book to [Slot]"
+          "lerntext": "I give the book to [Slot]",
+          "wortarten": {
+            "I": "p",
+            "give": "v",
+            "book": "n"
+          }
         },
         "frameDe": "ich gebe [Slot] das Buch.",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17837,86 +20608,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "friend",
               "lerntext": "friend",
-              "de": "Freund"
+              "de": "Freund",
+              "c": "n"
             },
             {
               "schrift": "mother",
               "lerntext": "mother",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "father",
               "lerntext": "father",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "child",
               "lerntext": "child",
-              "de": "Kind"
+              "de": "Kind",
+              "c": "n"
             },
             {
               "schrift": "student",
               "lerntext": "student",
-              "de": "Student"
+              "de": "Student",
+              "c": "n"
             },
             {
               "schrift": "woman",
               "lerntext": "woman",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sister",
               "lerntext": "sister",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "brother",
               "lerntext": "brother",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "word",
               "lerntext": "word",
               "de": "Wort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "customer",
               "lerntext": "customer",
               "de": "Kunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kitchen",
               "lerntext": "kitchen",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "shoe",
               "lerntext": "shoe",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "clothes",
               "lerntext": "clothes",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hair",
               "lerntext": "hair",
               "de": "Haare",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "police",
               "lerntext": "police",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -17930,14 +20716,20 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I give the book to [Slot]",
-          "lerntext": "I give the book to [Slot]"
+          "lerntext": "I give the book to [Slot]",
+          "wortarten": {
+            "I": "p",
+            "give": "v",
+            "book": "n"
+          }
         },
         "frameDe": "ich gebe [Slot] das Buch.",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -17945,76 +20737,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "woman",
               "lerntext": "woman",
-              "de": "Frau"
+              "de": "Frau",
+              "c": "n"
             },
             {
               "schrift": "sister",
               "lerntext": "sister",
-              "de": "Schwester"
+              "de": "Schwester",
+              "c": "n"
             },
             {
               "schrift": "brother",
               "lerntext": "brother",
-              "de": "Bruder"
+              "de": "Bruder",
+              "c": "n"
             },
             {
               "schrift": "mother",
               "lerntext": "mother",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "student",
               "lerntext": "student",
               "de": "Student",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "friend",
               "lerntext": "friend",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "father",
               "lerntext": "father",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "child",
               "lerntext": "child",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "word",
               "lerntext": "word",
               "de": "Wort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "customer",
               "lerntext": "customer",
               "de": "Kunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kitchen",
               "lerntext": "kitchen",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "snow",
               "lerntext": "snow",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "rain",
               "lerntext": "rain",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18028,14 +20833,20 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I show the city to [Slot]",
-          "lerntext": "I show the city to [Slot]"
+          "lerntext": "I show the city to [Slot]",
+          "wortarten": {
+            "I": "p",
+            "show": "v",
+            "city": "n"
+          }
         },
         "frameDe": "ich zeige [Slot] die Stadt.",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18043,86 +20854,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "friend",
               "lerntext": "friend",
-              "de": "Freund"
+              "de": "Freund",
+              "c": "n"
             },
             {
               "schrift": "mother",
               "lerntext": "mother",
-              "de": "Mutter"
+              "de": "Mutter",
+              "c": "n"
             },
             {
               "schrift": "father",
               "lerntext": "father",
-              "de": "Vater"
+              "de": "Vater",
+              "c": "n"
             },
             {
               "schrift": "child",
               "lerntext": "child",
-              "de": "Kind"
+              "de": "Kind",
+              "c": "n"
             },
             {
               "schrift": "student",
               "lerntext": "student",
-              "de": "Student"
+              "de": "Student",
+              "c": "n"
             },
             {
               "schrift": "woman",
               "lerntext": "woman",
               "de": "Frau",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sister",
               "lerntext": "sister",
               "de": "Schwester",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "brother",
               "lerntext": "brother",
               "de": "Bruder",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "word",
               "lerntext": "word",
               "de": "Wort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "customer",
               "lerntext": "customer",
               "de": "Kunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sea",
               "lerntext": "sea",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "shoe",
               "lerntext": "shoe",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sun",
               "lerntext": "sun",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "language",
               "lerntext": "language",
               "de": "Sprache",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "leg",
               "lerntext": "leg",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18136,14 +20962,20 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I show the city to [Slot]",
-          "lerntext": "I show the city to [Slot]"
+          "lerntext": "I show the city to [Slot]",
+          "wortarten": {
+            "I": "p",
+            "show": "v",
+            "city": "n"
+          }
         },
         "frameDe": "ich zeige [Slot] die Stadt.",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18151,76 +20983,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "woman",
               "lerntext": "woman",
-              "de": "Frau"
+              "de": "Frau",
+              "c": "n"
             },
             {
               "schrift": "sister",
               "lerntext": "sister",
-              "de": "Schwester"
+              "de": "Schwester",
+              "c": "n"
             },
             {
               "schrift": "brother",
               "lerntext": "brother",
-              "de": "Bruder"
+              "de": "Bruder",
+              "c": "n"
             },
             {
               "schrift": "mother",
               "lerntext": "mother",
               "de": "Mutter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "student",
               "lerntext": "student",
               "de": "Student",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "friend",
               "lerntext": "friend",
               "de": "Freund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "father",
               "lerntext": "father",
               "de": "Vater",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "child",
               "lerntext": "child",
               "de": "Kind",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "word",
               "lerntext": "word",
               "de": "Wort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "clothes",
               "lerntext": "clothes",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "customer",
               "lerntext": "customer",
               "de": "Kunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "people",
               "lerntext": "people",
               "de": "Leute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mountain",
               "lerntext": "mountain",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18255,14 +21100,20 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I want a glass of [Slot]",
-          "lerntext": "I want a glass of [Slot]"
+          "lerntext": "I want a glass of [Slot]",
+          "wortarten": {
+            "I": "p",
+            "want": "v",
+            "glass": "n"
+          }
         },
         "frameDe": "ich möchte ein Glas [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18270,81 +21121,95 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "water",
               "lerntext": "water",
-              "de": "Wasser"
+              "de": "Wasser",
+              "c": "n"
             },
             {
               "schrift": "beer",
               "lerntext": "beer",
-              "de": "Bier"
+              "de": "Bier",
+              "c": "n"
             },
             {
               "schrift": "milk",
               "lerntext": "milk",
-              "de": "Milch"
+              "de": "Milch",
+              "c": "n"
             },
             {
               "schrift": "coffee",
               "lerntext": "coffee",
-              "de": "Kaffee"
+              "de": "Kaffee",
+              "c": "n"
             },
             {
               "schrift": "hair",
               "lerntext": "hair",
               "de": "Haare",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "kitchen",
               "lerntext": "kitchen",
               "de": "Küche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "beginning",
               "lerntext": "beginning",
               "de": "Anfang",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "head",
               "lerntext": "head",
               "de": "Kopf",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "police",
               "lerntext": "police",
               "de": "Polizei",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "snow",
               "lerntext": "snow",
               "de": "Schnee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "morning",
               "lerntext": "morning",
               "de": "Morgen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "body",
               "lerntext": "body",
               "de": "Körper",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "night",
               "lerntext": "night",
               "de": "Nacht",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "month",
               "lerntext": "month",
               "de": "Monat",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18355,7 +21220,8 @@ export const ENGLISH_COURSE: CourseModuleData[] =
           {
             "schrift": "glass",
             "lerntext": "glass",
-            "de": "Glas"
+            "de": "Glas",
+            "c": "n"
           }
         ],
         "id": "23.1"
@@ -18364,14 +21230,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "we have enough [Slot]",
-          "lerntext": "we have enough [Slot]"
+          "lerntext": "we have enough [Slot]",
+          "wortarten": {
+            "we": "p",
+            "have": "v"
+          }
         },
         "frameDe": "wir haben genug [Slot].",
         "pronouns": [
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18379,86 +21250,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "money",
               "lerntext": "money",
-              "de": "Geld"
+              "de": "Geld",
+              "c": "n"
             },
             {
               "schrift": "time",
               "lerntext": "time",
-              "de": "Zeit"
+              "de": "Zeit",
+              "c": "n"
             },
             {
               "schrift": "bread",
               "lerntext": "bread",
-              "de": "Brot"
+              "de": "Brot",
+              "c": "n"
             },
             {
               "schrift": "fruit",
               "lerntext": "fruit",
-              "de": "Obst"
+              "de": "Obst",
+              "c": "n"
             },
             {
               "schrift": "meat",
               "lerntext": "meat",
-              "de": "Fleisch"
+              "de": "Fleisch",
+              "c": "n"
             },
             {
               "schrift": "fish",
               "lerntext": "fish",
               "de": "Fisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sugar",
               "lerntext": "sugar",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "milk",
               "lerntext": "milk",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "train",
               "lerntext": "train",
               "de": "Zug",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "husband",
               "lerntext": "husband",
               "de": "Ehemann",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "world",
               "lerntext": "world",
               "de": "Welt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "minute",
               "lerntext": "minute",
               "de": "Minute",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "person",
               "lerntext": "person",
               "de": "Person",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "music",
               "lerntext": "music",
               "de": "Musik",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "rain",
               "lerntext": "rain",
               "de": "Regen",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18478,14 +21364,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "we have enough [Slot]",
-          "lerntext": "we have enough [Slot]"
+          "lerntext": "we have enough [Slot]",
+          "wortarten": {
+            "we": "p",
+            "have": "v"
+          }
         },
         "frameDe": "wir haben genug [Slot].",
         "pronouns": [
           {
             "schrift": "we",
             "lerntext": "we",
-            "de": "wir"
+            "de": "wir",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18493,76 +21384,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "fish",
               "lerntext": "fish",
-              "de": "Fisch"
+              "de": "Fisch",
+              "c": "n"
             },
             {
               "schrift": "sugar",
               "lerntext": "sugar",
-              "de": "Zucker"
+              "de": "Zucker",
+              "c": "n"
             },
             {
               "schrift": "milk",
               "lerntext": "milk",
-              "de": "Milch"
+              "de": "Milch",
+              "c": "n"
             },
             {
               "schrift": "money",
               "lerntext": "money",
               "de": "Geld",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bread",
               "lerntext": "bread",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "fruit",
               "lerntext": "fruit",
               "de": "Obst",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "meat",
               "lerntext": "meat",
               "de": "Fleisch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "time",
               "lerntext": "time",
               "de": "Zeit",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "arm",
               "lerntext": "arm",
               "de": "Arm",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "foot",
               "lerntext": "foot",
               "de": "Fuß",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "price",
               "lerntext": "price",
               "de": "Preis",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hour",
               "lerntext": "hour",
               "de": "Stunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sea",
               "lerntext": "sea",
               "de": "Meer",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18597,14 +21501,20 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I have waited for an [Slot]",
-          "lerntext": "I have waited for an [Slot]"
+          "lerntext": "I have waited for an [Slot]",
+          "wortarten": {
+            "I": "p",
+            "have": "v",
+            "waited": "v"
+          }
         },
         "frameDe": "ich warte seit einer [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18612,81 +21522,95 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "hour",
               "lerntext": "hour",
-              "de": "Stunde"
+              "de": "Stunde",
+              "c": "n"
             },
             {
               "schrift": "minute",
               "lerntext": "minute",
-              "de": "Minute"
+              "de": "Minute",
+              "c": "n"
             },
             {
               "schrift": "week",
               "lerntext": "week",
-              "de": "Woche"
+              "de": "Woche",
+              "c": "n"
             },
             {
               "schrift": "night",
               "lerntext": "night",
-              "de": "Nacht"
+              "de": "Nacht",
+              "c": "n"
             },
             {
               "schrift": "toilet",
               "lerntext": "toilet",
               "de": "Toilette",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "lecture",
               "lerntext": "lecture",
               "de": "Vorlesung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "daughter",
               "lerntext": "daughter",
               "de": "Tochter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pharmacy",
               "lerntext": "pharmacy",
               "de": "Apotheke",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bank",
               "lerntext": "bank",
               "de": "Bank (Geldinstitut)",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pub",
               "lerntext": "pub",
               "de": "Kneipe",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "language",
               "lerntext": "language",
               "de": "Sprache",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "university",
               "lerntext": "university",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bottle",
               "lerntext": "bottle",
               "de": "Flasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "street",
               "lerntext": "street",
               "de": "Straße",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18700,14 +21624,20 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I have waited for an [Slot]",
-          "lerntext": "I have waited for an [Slot]"
+          "lerntext": "I have waited for an [Slot]",
+          "wortarten": {
+            "I": "p",
+            "have": "v",
+            "waited": "v"
+          }
         },
         "frameDe": "ich warte seit einem [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18715,71 +21645,83 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "day",
               "lerntext": "day",
-              "de": "Tag"
+              "de": "Tag",
+              "c": "n"
             },
             {
               "schrift": "evening",
               "lerntext": "evening",
-              "de": "Abend"
+              "de": "Abend",
+              "c": "n"
             },
             {
               "schrift": "reason",
               "lerntext": "reason",
               "de": "Grund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "shoe",
               "lerntext": "shoe",
               "de": "Schuh",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "boy",
               "lerntext": "boy",
               "de": "Junge",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "shop",
               "lerntext": "shop",
               "de": "Laden",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "cheese",
               "lerntext": "cheese",
               "de": "Käse",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "dog",
               "lerntext": "dog",
               "de": "Hund",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "son",
               "lerntext": "son",
               "de": "Sohn",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "customer",
               "lerntext": "customer",
               "de": "Kunde",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "pain",
               "lerntext": "pain",
               "de": "Schmerz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mouth",
               "lerntext": "mouth",
               "de": "Mund",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -18793,14 +21735,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] I go home",
-          "lerntext": "[Slot] I go home"
+          "lerntext": "[Slot] I go home",
+          "wortarten": {
+            "I": "p",
+            "go": "v"
+          }
         },
         "frameDe": "[Slot] gehe ich nach Hause.",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -18901,14 +21848,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "[Slot] I go home",
-          "lerntext": "[Slot] I go home"
+          "lerntext": "[Slot] I go home",
+          "wortarten": {
+            "I": "p",
+            "go": "v"
+          }
         },
         "frameDe": "[Slot] gehe ich nach Hause.",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19020,14 +21972,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I would like to [Slot]",
-          "lerntext": "I would like to [Slot]"
+          "lerntext": "I would like to [Slot]",
+          "wortarten": {
+            "I": "p",
+            "would": "v"
+          }
         },
         "frameDe": "ich hätte gern [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19035,86 +21992,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "live",
               "lerntext": "live",
-              "de": "leben"
+              "de": "leben",
+              "c": "v"
             },
             {
               "schrift": "stay",
               "lerntext": "stay",
-              "de": "bleiben"
+              "de": "bleiben",
+              "c": "v"
             },
             {
               "schrift": "laugh",
               "lerntext": "laugh",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "cry",
               "lerntext": "cry",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "think",
               "lerntext": "think",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "believe",
               "lerntext": "believe",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hope",
               "lerntext": "hope",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "need",
               "lerntext": "need",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "thank",
               "lerntext": "thank",
               "de": "danken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "enjoy",
               "lerntext": "enjoy",
               "de": "genießen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tidy",
               "lerntext": "tidy",
               "de": "aufräumen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "reserve",
               "lerntext": "reserve",
               "de": "reservieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tell",
               "lerntext": "tell",
               "de": "erzählen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "arrive",
               "lerntext": "arrive",
               "de": "ankommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "will",
               "lerntext": "will",
               "de": "werden (Zukunft)",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -19128,14 +22100,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I would like to [Slot]",
-          "lerntext": "I would like to [Slot]"
+          "lerntext": "I would like to [Slot]",
+          "wortarten": {
+            "I": "p",
+            "would": "v"
+          }
         },
         "frameDe": "ich hätte gern [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19143,76 +22120,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "believe",
               "lerntext": "believe",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "hope",
               "lerntext": "hope",
-              "de": "hoffen"
+              "de": "hoffen",
+              "c": "v"
             },
             {
               "schrift": "need",
               "lerntext": "need",
-              "de": "brauchen"
+              "de": "brauchen",
+              "c": "v"
             },
             {
               "schrift": "live",
               "lerntext": "live",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "laugh",
               "lerntext": "laugh",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cry",
               "lerntext": "cry",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stay",
               "lerntext": "stay",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "think",
               "lerntext": "think",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "happen",
               "lerntext": "happen",
               "de": "geschehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "wear",
               "lerntext": "wear",
               "de": "tragen (Kleidung)",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "remember",
               "lerntext": "remember",
               "de": "sich erinnern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "move",
               "lerntext": "move",
               "de": "bewegen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "turn",
               "lerntext": "turn",
               "de": "drehen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -19226,14 +22216,20 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "could you give me [Slot]?",
-          "lerntext": "could you give me [Slot]?"
+          "lerntext": "could you give me [Slot]?",
+          "wortarten": {
+            "you": "p",
+            "give": "v",
+            "me": "p"
+          }
         },
         "frameDe": "Könnten Sie mir [Slot] geben?",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19241,86 +22237,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "water",
               "lerntext": "water",
-              "de": "Wasser"
+              "de": "Wasser",
+              "c": "n"
             },
             {
               "schrift": "bread",
               "lerntext": "bread",
-              "de": "Brot"
+              "de": "Brot",
+              "c": "n"
             },
             {
               "schrift": "key",
               "lerntext": "key",
-              "de": "Schlüssel"
+              "de": "Schlüssel",
+              "c": "n"
             },
             {
               "schrift": "book",
               "lerntext": "book",
-              "de": "Buch"
+              "de": "Buch",
+              "c": "n"
             },
             {
               "schrift": "bag",
               "lerntext": "bag",
-              "de": "Tasche"
+              "de": "Tasche",
+              "c": "n"
             },
             {
               "schrift": "coffee",
               "lerntext": "coffee",
               "de": "Kaffee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sugar",
               "lerntext": "sugar",
               "de": "Zucker",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "milk",
               "lerntext": "milk",
               "de": "Milch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "thing",
               "lerntext": "thing",
               "de": "Ding",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "name",
               "lerntext": "name",
               "de": "Name",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "year",
               "lerntext": "year",
               "de": "Jahr",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "sun",
               "lerntext": "sun",
               "de": "Sonne",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hospital",
               "lerntext": "hospital",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "weather",
               "lerntext": "weather",
               "de": "Wetter",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "breakfast",
               "lerntext": "breakfast",
               "de": "Frühstück",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -19334,14 +22345,20 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "could you give me [Slot]?",
-          "lerntext": "could you give me [Slot]?"
+          "lerntext": "could you give me [Slot]?",
+          "wortarten": {
+            "you": "p",
+            "give": "v",
+            "me": "p"
+          }
         },
         "frameDe": "Könnten Sie mir [Slot] geben?",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19349,76 +22366,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "sugar",
               "lerntext": "sugar",
-              "de": "Zucker"
+              "de": "Zucker",
+              "c": "n"
             },
             {
               "schrift": "coffee",
               "lerntext": "coffee",
-              "de": "Kaffee"
+              "de": "Kaffee",
+              "c": "n"
             },
             {
               "schrift": "milk",
               "lerntext": "milk",
-              "de": "Milch"
+              "de": "Milch",
+              "c": "n"
             },
             {
               "schrift": "key",
               "lerntext": "key",
               "de": "Schlüssel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bag",
               "lerntext": "bag",
               "de": "Tasche",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "book",
               "lerntext": "book",
               "de": "Buch",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "water",
               "lerntext": "water",
               "de": "Wasser",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bread",
               "lerntext": "bread",
               "de": "Brot",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "leg",
               "lerntext": "leg",
               "de": "Bein",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "problem",
               "lerntext": "problem",
               "de": "Problem",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "word",
               "lerntext": "word",
               "de": "Wort",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "girl",
               "lerntext": "girl",
               "de": "Mädchen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "room",
               "lerntext": "room",
               "de": "Zimmer",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -19453,14 +22483,20 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I think that is [Slot]",
-          "lerntext": "I think that is [Slot]"
+          "lerntext": "I think that is [Slot]",
+          "wortarten": {
+            "I": "p",
+            "think": "v",
+            "is": "v"
+          }
         },
         "frameDe": "ich denke, das ist [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19468,86 +22504,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "big",
               "lerntext": "big",
-              "de": "groß"
+              "de": "groß",
+              "c": "a"
             },
             {
               "schrift": "small",
               "lerntext": "small",
-              "de": "klein"
+              "de": "klein",
+              "c": "a"
             },
             {
               "schrift": "old",
               "lerntext": "old",
-              "de": "alt"
+              "de": "alt",
+              "c": "a"
             },
             {
               "schrift": "young",
               "lerntext": "young",
-              "de": "jung"
+              "de": "jung",
+              "c": "a"
             },
             {
               "schrift": "expensive",
               "lerntext": "expensive",
-              "de": "teuer"
+              "de": "teuer",
+              "c": "a"
             },
             {
               "schrift": "cold",
               "lerntext": "cold",
               "de": "kalt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "warm",
               "lerntext": "warm",
               "de": "warm",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "new",
               "lerntext": "new",
               "de": "neu",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "beautiful",
               "lerntext": "beautiful",
               "de": "schön",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "strong",
               "lerntext": "strong",
               "de": "stark",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "blue",
               "lerntext": "blue",
               "de": "blau",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "brown",
               "lerntext": "brown",
               "de": "braun",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "slow",
               "lerntext": "slow",
               "de": "langsam",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "yellow",
               "lerntext": "yellow",
               "de": "gelb",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "low",
               "lerntext": "low",
               "de": "niedrig",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -19561,14 +22612,20 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I think that is [Slot]",
-          "lerntext": "I think that is [Slot]"
+          "lerntext": "I think that is [Slot]",
+          "wortarten": {
+            "I": "p",
+            "think": "v",
+            "is": "v"
+          }
         },
         "frameDe": "ich denke, das ist [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19576,86 +22633,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "beautiful",
               "lerntext": "beautiful",
-              "de": "schön"
+              "de": "schön",
+              "c": "a"
             },
             {
               "schrift": "warm",
               "lerntext": "warm",
-              "de": "warm"
+              "de": "warm",
+              "c": "a"
             },
             {
               "schrift": "cold",
               "lerntext": "cold",
-              "de": "kalt"
+              "de": "kalt",
+              "c": "a"
             },
             {
               "schrift": "new",
               "lerntext": "new",
-              "de": "neu"
+              "de": "neu",
+              "c": "a"
             },
             {
               "schrift": "strong",
               "lerntext": "strong",
-              "de": "stark"
+              "de": "stark",
+              "c": "a"
             },
             {
               "schrift": "big",
               "lerntext": "big",
               "de": "groß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "small",
               "lerntext": "small",
               "de": "klein",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "old",
               "lerntext": "old",
               "de": "alt",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "young",
               "lerntext": "young",
               "de": "jung",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "expensive",
               "lerntext": "expensive",
               "de": "teuer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "left",
               "lerntext": "left",
               "de": "links",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "funny",
               "lerntext": "funny",
               "de": "lustig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "pretty",
               "lerntext": "pretty",
               "de": "hübsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "thirsty",
               "lerntext": "thirsty",
               "de": "durstig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "same",
               "lerntext": "same",
               "de": "gleich",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -19669,14 +22741,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I find that very [Slot]",
-          "lerntext": "I find that very [Slot]"
+          "lerntext": "I find that very [Slot]",
+          "wortarten": {
+            "I": "p",
+            "find": "v"
+          }
         },
         "frameDe": "ich finde das sehr [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19684,86 +22761,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "easy",
               "lerntext": "easy",
-              "de": "einfach"
+              "de": "einfach",
+              "c": "a"
             },
             {
               "schrift": "wrong",
               "lerntext": "wrong",
-              "de": "falsch"
+              "de": "falsch",
+              "c": "a"
             },
             {
               "schrift": "ill",
               "lerntext": "ill",
-              "de": "krank"
+              "de": "krank",
+              "c": "a"
             },
             {
               "schrift": "short",
               "lerntext": "short",
-              "de": "kurz"
+              "de": "kurz",
+              "c": "a"
             },
             {
               "schrift": "long",
               "lerntext": "long",
-              "de": "lang"
+              "de": "lang",
+              "c": "a"
             },
             {
               "schrift": "clean",
               "lerntext": "clean",
               "de": "sauber",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "sweet",
               "lerntext": "sweet",
               "de": "süß",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "black",
               "lerntext": "black",
               "de": "schwarz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "weak",
               "lerntext": "weak",
               "de": "schwach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "angry",
               "lerntext": "angry",
               "de": "wütend",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "tall",
               "lerntext": "tall",
               "de": "groß (Person)",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "heavy",
               "lerntext": "heavy",
               "de": "schwer",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "hungry",
               "lerntext": "hungry",
               "de": "hungrig",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "foreign",
               "lerntext": "foreign",
               "de": "ausländisch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "full",
               "lerntext": "full",
               "de": "voll",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -19777,14 +22869,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I find that very [Slot]",
-          "lerntext": "I find that very [Slot]"
+          "lerntext": "I find that very [Slot]",
+          "wortarten": {
+            "I": "p",
+            "find": "v"
+          }
         },
         "frameDe": "ich finde das sehr [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19792,86 +22889,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "clean",
               "lerntext": "clean",
-              "de": "sauber"
+              "de": "sauber",
+              "c": "a"
             },
             {
               "schrift": "weak",
               "lerntext": "weak",
-              "de": "schwach"
+              "de": "schwach",
+              "c": "a"
             },
             {
               "schrift": "black",
               "lerntext": "black",
-              "de": "schwarz"
+              "de": "schwarz",
+              "c": "a"
             },
             {
               "schrift": "sweet",
               "lerntext": "sweet",
-              "de": "süß"
+              "de": "süß",
+              "c": "a"
             },
             {
               "schrift": "angry",
               "lerntext": "angry",
-              "de": "wütend"
+              "de": "wütend",
+              "c": "a"
             },
             {
               "schrift": "easy",
               "lerntext": "easy",
               "de": "einfach",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "wrong",
               "lerntext": "wrong",
               "de": "falsch",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "long",
               "lerntext": "long",
               "de": "lang",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "short",
               "lerntext": "short",
               "de": "kurz",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "ill",
               "lerntext": "ill",
               "de": "krank",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "green",
               "lerntext": "green",
               "de": "grün",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "nice",
               "lerntext": "nice",
               "de": "nett",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "red",
               "lerntext": "red",
               "de": "rot",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "light",
               "lerntext": "light",
               "de": "leicht",
+              "c": "a",
               "wieder": true
             },
             {
               "schrift": "busy",
               "lerntext": "busy",
               "de": "beschäftigt",
+              "c": "a",
               "wieder": true
             }
           ]
@@ -19906,14 +23018,18 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "tomorrow I will [Slot]",
-          "lerntext": "tomorrow I will [Slot]"
+          "lerntext": "tomorrow I will [Slot]",
+          "wortarten": {
+            "I": "p"
+          }
         },
         "frameDe": "Morgen werde ich [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -19921,86 +23037,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "look",
               "lerntext": "look",
-              "de": "schauen"
+              "de": "schauen",
+              "c": "v"
             },
             {
               "schrift": "buy",
               "lerntext": "buy",
-              "de": "kaufen"
+              "de": "kaufen",
+              "c": "v"
             },
             {
               "schrift": "see",
               "lerntext": "see",
-              "de": "sehen"
+              "de": "sehen",
+              "c": "v"
             },
             {
               "schrift": "make",
               "lerntext": "make",
-              "de": "machen"
+              "de": "machen",
+              "c": "v"
             },
             {
               "schrift": "find",
               "lerntext": "find",
-              "de": "finden"
+              "de": "finden",
+              "c": "v"
             },
             {
               "schrift": "take",
               "lerntext": "take",
               "de": "nehmen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "read",
               "lerntext": "read",
               "de": "lesen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "write",
               "lerntext": "write",
               "de": "schreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "to love",
               "lerntext": "to love",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "should",
               "lerntext": "should",
               "de": "sollen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "talk",
               "lerntext": "talk",
               "de": "reden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "run",
               "lerntext": "run",
               "de": "rennen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "be",
               "lerntext": "be",
               "de": "sein",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "to be called",
               "lerntext": "to be called",
               "de": "heißen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sell",
               "lerntext": "sell",
               "de": "verkaufen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20014,14 +23145,18 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "tomorrow I will [Slot]",
-          "lerntext": "tomorrow I will [Slot]"
+          "lerntext": "tomorrow I will [Slot]",
+          "wortarten": {
+            "I": "p"
+          }
         },
         "frameDe": "Morgen werde ich [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20029,76 +23164,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "take",
               "lerntext": "take",
-              "de": "nehmen"
+              "de": "nehmen",
+              "c": "v"
             },
             {
               "schrift": "read",
               "lerntext": "read",
-              "de": "lesen"
+              "de": "lesen",
+              "c": "v"
             },
             {
               "schrift": "write",
               "lerntext": "write",
-              "de": "schreiben"
+              "de": "schreiben",
+              "c": "v"
             },
             {
               "schrift": "make",
               "lerntext": "make",
               "de": "machen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "look",
               "lerntext": "look",
               "de": "schauen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "see",
               "lerntext": "see",
               "de": "sehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "buy",
               "lerntext": "buy",
               "de": "kaufen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "find",
               "lerntext": "find",
               "de": "finden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "change",
               "lerntext": "change",
               "de": "ändern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sing",
               "lerntext": "sing",
               "de": "singen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "learn",
               "lerntext": "learn",
               "de": "lernen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "become",
               "lerntext": "become",
               "de": "werden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "continue",
               "lerntext": "continue",
               "de": "fortsetzen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20112,14 +23260,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I want to [Slot] soon",
-          "lerntext": "I want to [Slot] soon"
+          "lerntext": "I want to [Slot] soon",
+          "wortarten": {
+            "I": "p",
+            "want": "v"
+          }
         },
         "frameDe": "ich will bald [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20127,86 +23280,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "work",
               "lerntext": "work",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "play",
               "lerntext": "play",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "dance",
               "lerntext": "dance",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "sleep",
               "lerntext": "sleep",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "wait",
               "lerntext": "wait",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "ask",
               "lerntext": "ask",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "to answer",
               "lerntext": "to answer",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stand",
               "lerntext": "stand",
               "de": "stehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "listen",
               "lerntext": "listen",
               "de": "zuhören",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "travel",
               "lerntext": "travel",
               "de": "reisen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "send",
               "lerntext": "send",
               "de": "senden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "get",
               "lerntext": "get",
               "de": "bekommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "begin",
               "lerntext": "begin",
               "de": "anfangen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "study",
               "lerntext": "study",
               "de": "studieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cost",
               "lerntext": "cost",
               "de": "kosten",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20220,14 +23388,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I want to [Slot] soon",
-          "lerntext": "I want to [Slot] soon"
+          "lerntext": "I want to [Slot] soon",
+          "wortarten": {
+            "I": "p",
+            "want": "v"
+          }
         },
         "frameDe": "ich will bald [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20235,71 +23408,83 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "ask",
               "lerntext": "ask",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "to answer",
               "lerntext": "to answer",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "play",
               "lerntext": "play",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dance",
               "lerntext": "dance",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sleep",
               "lerntext": "sleep",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "wait",
               "lerntext": "wait",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "work",
               "lerntext": "work",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "try",
               "lerntext": "try",
               "de": "versuchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sit",
               "lerntext": "sit",
               "de": "sitzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "leave",
               "lerntext": "leave",
               "de": "verlassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "mean",
               "lerntext": "mean",
               "de": "bedeuten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "smile",
               "lerntext": "smile",
               "de": "lächeln",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20334,7 +23519,12 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "that is the man who [Slot]",
-          "lerntext": "that is the man who [Slot]"
+          "lerntext": "that is the man who [Slot]",
+          "wortarten": {
+            "is": "v",
+            "man": "n",
+            "who": "p"
+          }
         },
         "frameDe": "Das ist der Mann, der [Slot].",
         "pronouns": [],
@@ -20343,86 +23533,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "lives",
               "lerntext": "lives",
-              "de": "leben"
+              "de": "leben",
+              "c": "v"
             },
             {
               "schrift": "stays",
               "lerntext": "stays",
-              "de": "bleiben"
+              "de": "bleiben",
+              "c": "v"
             },
             {
               "schrift": "laughs",
               "lerntext": "laughs",
-              "de": "lachen"
+              "de": "lachen",
+              "c": "v"
             },
             {
               "schrift": "cries",
               "lerntext": "cries",
-              "de": "weinen"
+              "de": "weinen",
+              "c": "v"
             },
             {
               "schrift": "thinks",
               "lerntext": "thinks",
-              "de": "denken"
+              "de": "denken",
+              "c": "v"
             },
             {
               "schrift": "believes",
               "lerntext": "believes",
               "de": "glauben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "hopes",
               "lerntext": "hopes",
               "de": "hoffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "needs",
               "lerntext": "needs",
               "de": "brauchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "visits",
               "lerntext": "visits",
               "de": "besuchen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "lets",
               "lerntext": "lets",
               "de": "lassen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "walks",
               "lerntext": "walks",
               "de": "gehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "teaches",
               "lerntext": "teaches",
               "de": "unterrichten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "chooses",
               "lerntext": "chooses",
               "de": "wählen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "borrows",
               "lerntext": "borrows",
               "de": "sich leihen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "does",
               "lerntext": "does",
               "de": "tun",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20436,7 +23641,12 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "that is the man who [Slot]",
-          "lerntext": "that is the man who [Slot]"
+          "lerntext": "that is the man who [Slot]",
+          "wortarten": {
+            "is": "v",
+            "man": "n",
+            "who": "p"
+          }
         },
         "frameDe": "Das ist der Mann, der [Slot].",
         "pronouns": [],
@@ -20445,76 +23655,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "believes",
               "lerntext": "believes",
-              "de": "glauben"
+              "de": "glauben",
+              "c": "v"
             },
             {
               "schrift": "hopes",
               "lerntext": "hopes",
-              "de": "hoffen"
+              "de": "hoffen",
+              "c": "v"
             },
             {
               "schrift": "needs",
               "lerntext": "needs",
-              "de": "brauchen"
+              "de": "brauchen",
+              "c": "v"
             },
             {
               "schrift": "lives",
               "lerntext": "lives",
               "de": "leben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "laughs",
               "lerntext": "laughs",
               "de": "lachen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cries",
               "lerntext": "cries",
               "de": "weinen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "stays",
               "lerntext": "stays",
               "de": "bleiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "thinks",
               "lerntext": "thinks",
               "de": "denken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "uses",
               "lerntext": "uses",
               "de": "benutzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "orders",
               "lerntext": "orders",
               "de": "bestellen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "knows",
               "lerntext": "knows",
               "de": "wissen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "marries",
               "lerntext": "marries",
               "de": "heiraten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "comes",
               "lerntext": "comes",
               "de": "kommen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20528,7 +23751,14 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I am looking for a place where you can [Slot]",
-          "lerntext": "I am looking for a place where you can [Slot]"
+          "lerntext": "I am looking for a place where you can [Slot]",
+          "wortarten": {
+            "I": "p",
+            "am": "v",
+            "looking": "v",
+            "place": "n",
+            "you": "p"
+          }
         },
         "frameDe": "Ich suche einen Ort, wo man [Slot] kann.",
         "pronouns": [],
@@ -20537,86 +23767,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "work",
               "lerntext": "work",
-              "de": "arbeiten"
+              "de": "arbeiten",
+              "c": "v"
             },
             {
               "schrift": "play",
               "lerntext": "play",
-              "de": "spielen"
+              "de": "spielen",
+              "c": "v"
             },
             {
               "schrift": "dance",
               "lerntext": "dance",
-              "de": "tanzen"
+              "de": "tanzen",
+              "c": "v"
             },
             {
               "schrift": "sleep",
               "lerntext": "sleep",
-              "de": "schlafen"
+              "de": "schlafen",
+              "c": "v"
             },
             {
               "schrift": "wait",
               "lerntext": "wait",
-              "de": "warten"
+              "de": "warten",
+              "c": "v"
             },
             {
               "schrift": "ask",
               "lerntext": "ask",
               "de": "fragen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "to answer",
               "lerntext": "to answer",
               "de": "antworten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "rent",
               "lerntext": "rent",
               "de": "mieten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "finish",
               "lerntext": "finish",
               "de": "beenden",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "bring",
               "lerntext": "bring",
               "de": "bringen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "watch",
               "lerntext": "watch",
               "de": "ansehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drink",
               "lerntext": "drink",
               "de": "trinken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "keep",
               "lerntext": "keep",
               "de": "behalten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sign",
               "lerntext": "sign",
               "de": "unterschreiben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "start",
               "lerntext": "start",
               "de": "starten",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20636,7 +23881,14 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I am looking for a place where you can [Slot]",
-          "lerntext": "I am looking for a place where you can [Slot]"
+          "lerntext": "I am looking for a place where you can [Slot]",
+          "wortarten": {
+            "I": "p",
+            "am": "v",
+            "looking": "v",
+            "place": "n",
+            "you": "p"
+          }
         },
         "frameDe": "Ich suche einen Ort, wo man [Slot] kann.",
         "pronouns": [],
@@ -20645,71 +23897,83 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "ask",
               "lerntext": "ask",
-              "de": "fragen"
+              "de": "fragen",
+              "c": "v"
             },
             {
               "schrift": "to answer",
               "lerntext": "to answer",
-              "de": "antworten"
+              "de": "antworten",
+              "c": "v"
             },
             {
               "schrift": "play",
               "lerntext": "play",
               "de": "spielen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "dance",
               "lerntext": "dance",
               "de": "tanzen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "sleep",
               "lerntext": "sleep",
               "de": "schlafen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "wait",
               "lerntext": "wait",
               "de": "warten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "work",
               "lerntext": "work",
               "de": "arbeiten",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "cook",
               "lerntext": "cook",
               "de": "kochen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "put",
               "lerntext": "put",
               "de": "legen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "drive",
               "lerntext": "drive",
               "de": "fahren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "eat",
               "lerntext": "eat",
               "de": "essen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "call",
               "lerntext": "call",
               "de": "rufen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -20744,14 +24008,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yesterday I was at the [Slot]",
-          "lerntext": "yesterday I was at the [Slot]"
+          "lerntext": "yesterday I was at the [Slot]",
+          "wortarten": {
+            "I": "p",
+            "was": "v"
+          }
         },
         "frameDe": "Gestern war ich im [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20759,86 +24028,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "restaurant",
               "lerntext": "restaurant",
-              "de": "Restaurant"
+              "de": "Restaurant",
+              "c": "n"
             },
             {
               "schrift": "hotel",
               "lerntext": "hotel",
-              "de": "Hotel"
+              "de": "Hotel",
+              "c": "n"
             },
             {
               "schrift": "school",
               "lerntext": "school",
-              "de": "Schule"
+              "de": "Schule",
+              "c": "n"
             },
             {
               "schrift": "university",
               "lerntext": "university",
-              "de": "Universität"
+              "de": "Universität",
+              "c": "n"
             },
             {
               "schrift": "hospital",
               "lerntext": "hospital",
-              "de": "Krankenhaus"
+              "de": "Krankenhaus",
+              "c": "n"
             },
             {
               "schrift": "city",
               "lerntext": "city",
               "de": "Stadt",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "station",
               "lerntext": "station",
               "de": "Bahnhof",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "airport",
               "lerntext": "airport",
               "de": "Flughafen",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "salt",
               "lerntext": "salt",
               "de": "Salz",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "clothes",
               "lerntext": "clothes",
               "de": "Kleidung",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "idea",
               "lerntext": "idea",
               "de": "Idee",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "bed",
               "lerntext": "bed",
               "de": "Bett",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "weekend",
               "lerntext": "weekend",
               "de": "Wochenende",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "ticket",
               "lerntext": "ticket",
               "de": "Fahrkarte",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "people",
               "lerntext": "people",
               "de": "Leute",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -20852,14 +24136,19 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "yesterday I was at the [Slot]",
-          "lerntext": "yesterday I was at the [Slot]"
+          "lerntext": "yesterday I was at the [Slot]",
+          "wortarten": {
+            "I": "p",
+            "was": "v"
+          }
         },
         "frameDe": "Gestern war ich im [Slot].",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20867,76 +24156,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "station",
               "lerntext": "station",
-              "de": "Bahnhof"
+              "de": "Bahnhof",
+              "c": "n"
             },
             {
               "schrift": "airport",
               "lerntext": "airport",
-              "de": "Flughafen"
+              "de": "Flughafen",
+              "c": "n"
             },
             {
               "schrift": "city",
               "lerntext": "city",
-              "de": "Stadt"
+              "de": "Stadt",
+              "c": "n"
             },
             {
               "schrift": "restaurant",
               "lerntext": "restaurant",
               "de": "Restaurant",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hotel",
               "lerntext": "hotel",
               "de": "Hotel",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "school",
               "lerntext": "school",
               "de": "Schule",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "university",
               "lerntext": "university",
               "de": "Universität",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hospital",
               "lerntext": "hospital",
               "de": "Krankenhaus",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "life",
               "lerntext": "life",
               "de": "Leben",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "hand",
               "lerntext": "hand",
               "de": "Hand",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "moment",
               "lerntext": "moment",
               "de": "Moment",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "present",
               "lerntext": "present",
               "de": "Geschenk",
+              "c": "n",
               "wieder": true
             },
             {
               "schrift": "mountain",
               "lerntext": "mountain",
               "de": "Berg",
+              "c": "n",
               "wieder": true
             }
           ]
@@ -20950,14 +24252,22 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I want to [Slot] because I have time",
-          "lerntext": "I want to [Slot] because I have time"
+          "lerntext": "I want to [Slot] because I have time",
+          "wortarten": {
+            "I": "p",
+            "want": "v",
+            "because": "k",
+            "have": "v",
+            "time": "n"
+          }
         },
         "frameDe": "Ich möchte [Slot], weil ich Zeit habe.",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -20965,86 +24275,101 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "win",
               "lerntext": "win",
-              "de": "gewinnen"
+              "de": "gewinnen",
+              "c": "v"
             },
             {
               "schrift": "forget",
               "lerntext": "forget",
-              "de": "vergessen"
+              "de": "vergessen",
+              "c": "v"
             },
             {
               "schrift": "understand",
               "lerntext": "understand",
-              "de": "verstehen"
+              "de": "verstehen",
+              "c": "v"
             },
             {
               "schrift": "meet",
               "lerntext": "meet",
-              "de": "treffen"
+              "de": "treffen",
+              "c": "v"
             },
             {
               "schrift": "give",
               "lerntext": "give",
-              "de": "geben"
+              "de": "geben",
+              "c": "v"
             },
             {
               "schrift": "say",
               "lerntext": "say",
               "de": "sagen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "speak",
               "lerntext": "speak",
               "de": "sprechen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "open",
               "lerntext": "open",
               "de": "öffnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "thank",
               "lerntext": "thank",
               "de": "danken",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "enjoy",
               "lerntext": "enjoy",
               "de": "genießen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tidy",
               "lerntext": "tidy",
               "de": "aufräumen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "reserve",
               "lerntext": "reserve",
               "de": "reservieren",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "tell",
               "lerntext": "tell",
               "de": "erzählen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "arrive",
               "lerntext": "arrive",
               "de": "ankommen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "happen",
               "lerntext": "happen",
               "de": "geschehen",
+              "c": "v",
               "wieder": true
             }
           ]
@@ -21058,14 +24383,22 @@ export const ENGLISH_COURSE: CourseModuleData[] =
         "kind": "frame",
         "frame": {
           "schrift": "I want to [Slot] because I have time",
-          "lerntext": "I want to [Slot] because I have time"
+          "lerntext": "I want to [Slot] because I have time",
+          "wortarten": {
+            "I": "p",
+            "want": "v",
+            "because": "k",
+            "have": "v",
+            "time": "n"
+          }
         },
         "frameDe": "Ich möchte [Slot], weil ich Zeit habe.",
         "pronouns": [
           {
             "schrift": "I",
             "lerntext": "I",
-            "de": "ich"
+            "de": "ich",
+            "c": "p"
           }
         ],
         "slotGroups": [
@@ -21073,76 +24406,89 @@ export const ENGLISH_COURSE: CourseModuleData[] =
             {
               "schrift": "say",
               "lerntext": "say",
-              "de": "sagen"
+              "de": "sagen",
+              "c": "v"
             },
             {
               "schrift": "speak",
               "lerntext": "speak",
-              "de": "sprechen"
+              "de": "sprechen",
+              "c": "v"
             },
             {
               "schrift": "open",
               "lerntext": "open",
-              "de": "öffnen"
+              "de": "öffnen",
+              "c": "v"
             },
             {
               "schrift": "win",
               "lerntext": "win",
               "de": "gewinnen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "forget",
               "lerntext": "forget",
               "de": "vergessen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "understand",
               "lerntext": "understand",
               "de": "verstehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "meet",
               "lerntext": "meet",
               "de": "treffen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "give",
               "lerntext": "give",
               "de": "geben",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "wear",
               "lerntext": "wear",
               "de": "tragen (Kleidung)",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "remember",
               "lerntext": "remember",
               "de": "sich erinnern",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "move",
               "lerntext": "move",
               "de": "bewegen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "turn",
               "lerntext": "turn",
               "de": "drehen",
+              "c": "v",
               "wieder": true
             },
             {
               "schrift": "to love",
               "lerntext": "to love",
               "de": "lieben",
+              "c": "v",
               "wieder": true
             }
           ]

@@ -18,6 +18,8 @@
 // Redundanz, sondern der Grund, warum derselbe Uebungs-Screen alle Sprachen
 // abspielen kann.
 
+import type { WordType } from '../theme/tokens';
+
 export type CourseWord = {
   /** Wird vorgelesen. Chinesisch: Zeichen. */
   schrift: string;
@@ -25,6 +27,13 @@ export type CourseWord = {
   lerntext: string;
   /** Bedeutung in der Sprache des Nutzers. */
   de: string;
+  /**
+   * Wortart fuer die Farben (2026-09-11), vom Generator aus der
+   * Vokabeltabelle geschrieben - dieselben Kuerzel wie `word_tags` der
+   * Phrasebook-Saetze. Fehlt bei Wortarten, die ungefaerbt bleiben (Adverb,
+   * Praeposition, ...), und in aelteren Kursdateien.
+   */
+  c?: WordType;
   /**
    * Ein WIEDERHOLTES Wort, keins, das diese Lektion einfuehrt (2026-09-07).
    *
@@ -51,6 +60,13 @@ export type CourseWord = {
 export type CourseFrame = {
   schrift: string;
   lerntext: string;
+  /**
+   * Wortarten der FESTEN Rahmenwoerter (2026-09-11): Wort, wie es im
+   * Lerntext steht (mit Satzzeichen) -> Farb-Kuerzel. Die Luecke faerbt
+   * sich nach dem Slot-Wort (`CourseWord.c`). Siehe satzTokens() in
+   * lessonEvaluation.ts und ergaenze_wortarten() in bauplan.py.
+   */
+  wortarten?: Record<string, WordType>;
 };
 
 export type CourseLessonData = {

@@ -12,7 +12,18 @@ export { PillButton, PRESS_DEPTH } from './PillButton';
 export { ProgressBar, ProgressProzent } from './ProgressBar';
 export { Screen } from './Screen';
 export { SchreibenFeld } from './SchreibenFeld';
-export { SatzChip, SatzChipReihe, SatzAnzeige, SatzInfoZeile, SatzInfoSlot, SatzRahmen } from './SatzTemplate';
+export {
+  SatzChip,
+  SatzChipReihe,
+  SatzAnzeige,
+  SatzInfoZeile,
+  SatzInfoSlot,
+  SatzRahmen,
+  SatzMikrofon,
+  SatzWeiterKnopf,
+  hilfeWortzahl,
+  hilfeAusschnitt,
+} from './SatzTemplate';
 export { SwipeBackScreen } from './SwipeBackScreen';
 export { UebungsMenu } from './UebungsMenu';
 export { useSwipeBack } from './useSwipeBack';
