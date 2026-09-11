@@ -9,6 +9,7 @@ import {
   FONT_SIZE,
   LINE_HEIGHT,
   schrift,
+  PROGRESS_SEITE,
 } from '../../theme/tokens';
 import { ProgressBar } from '../ProgressBar';
 
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
     gap: SPACING.md,
   },
   backButton: {
-    width: 32,
+    width: PROGRESS_SEITE,
     alignItems: 'flex-start',
   },
   scroll: {

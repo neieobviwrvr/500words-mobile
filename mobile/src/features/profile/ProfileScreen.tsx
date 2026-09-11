@@ -1,40 +1,44 @@
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
-import { Card, HeaderMenu, PillButton, Screen } from '../../components';
+import { HeaderMenu, Screen } from '../../components';
 import { useOnboardingState } from '../../state/OnboardingState';
-import { Herausforderungen } from './Herausforderungen';
 import { ADDRESSING_OPTIONS, GENDERS } from '../../data/onboardingOptions';
-import { LockscreenContent, useAppState } from '../../state/AppState';
+import { HERAUSFORDERUNGEN, sortiere, standVon } from '../../data/herausforderungen';
+import { useAppState } from '../../state/AppState';
 import { useLockscreenPick } from '../widget/useLockscreenPick';
-import { formatCountdown, SLOT_HOURS } from '../widget/lockscreenRotation';
+import { SLOT_HOURS } from '../widget/lockscreenRotation';
 import {
   ACCENT_ORANGE,
   FONT_SIZE,
   getTheme,
   LINE_HEIGHT,
-  RADIUS,
-  SPACING, schrift } from '../../theme/tokens';
+  SPACING,
+  schrift,
+} from '../../theme/tokens';
+import { AuswahlZeile, Gruppe, gruppenGrund, SchalterZeile, Zeile } from './ListenBausteine';
+import { SPERR_OPTIONEN } from './SperrbildschirmScreen';
 
-// Profil - bisher ein Platzhalter, jetzt echter Screen (2026-08-20).
+// Profil im Stil der iOS-Einstellungen (neu aufgebaut 2026-09-11, Simons
+// Wunsch: "mehr wie ein Apple-Profil mit Dropdowns und anderen Ansichten").
 //
-// Erste echte Einstellung ist das Sperrbildschirm-Widget. Konto, Darkmode,
-// Sprache und Erinnerungen sollen hier ebenfalls hin (das versprach der
-// Platzhalter), sind aber noch nicht gebaut - der Hinweis unten sagt das,
-// statt die Seite so aussehen zu lassen, als waere sie fertig.
-
-const OPTIONS: { id: LockscreenContent; title: string; description: string }[] = [
-  {
-    id: 'woerter',
-    title: 'Ein Wort',
-    description: 'Aus den 500 häufigsten Wörtern deiner Zielsprache.',
-  },
-  {
-    id: 'saetze',
-    title: 'Ein Satz',
-    description: 'Aus allen Kategorien, die du freigeschaltet hast.',
-  },
-];
+// Vorher: sechs Karten untereinander, jede mit Titel, Fliesstext und eigenen
+// Bedienelementen - Radio-Karten fuer das Widget, eine Checkbox-Karte, eine
+// Liste mit Balken, eine Vorschau ganz unten, getrennt von ihrer Auswahl
+// ganz oben. Man musste lesen, um zu finden.
+//
+// Jetzt: eine Zeile je Einstellung, der aktuelle Wert steht rechts daneben.
+// Man sieht den Stand der ganzen Seite, ohne etwas zu oeffnen, und oeffnet
+// nur, was man aendern will:
+//   * kurze Auswahl (Wort/Satz) -> Pull-down-Menue direkt an der Zeile
+//   * Ein/Aus (Wortarten-Farben) -> iOS-Schalter
+//   * alles mit mehr Inhalt (Sperrbildschirm-Vorschau, Herausforderungen,
+//     Anrede) -> eigene Detailseite
+//
+// Die Bausteine liegen in ListenBausteine.tsx, damit spaetere Einstellungen
+// (Konto, Darkmode, Sprache, Erinnerungen - die sollen laut CLAUDE.md
+// hierher) keine eigene Optik erfinden muessen.
 
 // Beschriftungen aus derselben Quelle wie der Anrede-Screen, damit Profil und
 // Auswahl nie verschiedene Woerter fuer dieselbe Antwort zeigen.
@@ -46,7 +50,7 @@ const GESCHLECHT_LABEL: Record<string, string> = Object.fromEntries(
 );
 
 export function ProfileScreen() {
-  const { gender: geschlecht, addressing: ansprache } = useOnboardingState();
+  const { name, gender: geschlecht, addressing: ansprache } = useOnboardingState();
   const {
     uebersprungen,
     ueberspringenZuruecknehmen,
@@ -55,237 +59,180 @@ export function ProfileScreen() {
     setLockscreenContent,
     wortartenFarben,
     toggleWortartenFarben,
+    fortschritt,
+    coinGrants,
   } = useAppState();
   const theme = getTheme(darkMode);
-  const anzahlUebersprungen = Object.values(uebersprungen).filter(Boolean).length;
   const pick = useLockscreenPick();
 
+  const anzahlUebersprungen = Object.values(uebersprungen).filter(Boolean).length;
+
+  // Dieselbe Rechnung wie in Herausforderungen.tsx - dort fuer die Liste, hier
+  // fuer den Wert rechts und das Abzeichen.
+  const liste = sortiere(HERAUSFORDERUNGEN, fortschritt, coinGrants);
+  const offen = liste.filter((h) => h.quelle && standVon(h, fortschritt) < h.ziel).length;
+  const abholbar = liste.filter(
+    (h) => h.quelle !== null && standVon(h, fortschritt) >= h.ziel && !coinGrants[h.id],
+  ).length;
+
+  const anzeigeName = name?.trim() || 'Dein Profil';
+  const initiale = name?.trim() ? name.trim()[0].toUpperCase() : null;
+
   return (
-    <Screen dark={darkMode} padHorizontal={false}>
+    <Screen dark={darkMode} padHorizontal={false} style={{ backgroundColor: gruppenGrund(darkMode) }}>
       <View style={styles.menuSlot}>
         <HeaderMenu dark={darkMode} overlay />
       </View>
 
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.page}>
-        <Text style={[styles.pageTitle, { color: theme.text }]}>Profil</Text>
-        <Text style={[styles.pageIntro, { color: theme.sub }]}>
-          Einstellungen rund um dein Lernen.
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.seite}>
+        <Text style={[styles.titel, { color: theme.text }]} accessibilityRole="header">
+          Profil
         </Text>
 
-        <Text style={[styles.sectionLabel, { color: theme.sub }]}>SPERRBILDSCHIRM</Text>
-
-        <Card dark={darkMode} style={styles.card}>
-          <Text style={[styles.cardTitle, { color: theme.text }]}>Was dir angezeigt wird</Text>
-          <Text style={[styles.cardText, { color: theme.sub }]}>
-            {`Alle ${SLOT_HOURS} Stunden erscheint ein neuer Eintrag auf deinem Sperrbildschirm.`}
-          </Text>
-
-          <View
-            style={styles.options}
-            accessibilityRole="radiogroup"
-            accessibilityLabel="Inhalt des Sperrbildschirm-Widgets"
-          >
-            {OPTIONS.map((option) => {
-              const selected = lockscreenContent === option.id;
-              return (
-                <Pressable
-                  key={option.id}
-                  onPress={() => setLockscreenContent(option.id)}
-                  accessibilityRole="radio"
-                  // Beide Schreibweisen, und das ist kein Versehen: die
-                  // klassische `accessibilityState` traegt den Zustand auf
-                  // iOS/Android, wird von React Native Web an `Pressable`
-                  // aber gar nicht weitergereicht (im Browser nachgemessen -
-                  // es entstand kein aria-checked). `aria-checked` gibt es
-                  // seit RN 0.71 und deckt genau diese Luecke.
-                  accessibilityState={{ checked: selected, selected }}
-                  aria-checked={selected}
-                  accessibilityLabel={`${option.title}. ${option.description}`}
-                  style={({ pressed }) => [
-                    styles.option,
-                    {
-                      // Ausgewaehlt traegt Rahmen UND Punkt - Farbe allein
-                      // reicht nicht (siehe CLAUDE.md, Zustand nie nur ueber
-                      // Farbe).
-                      borderColor: selected ? ACCENT_ORANGE : theme.border,
-                      backgroundColor: selected ? theme.subtleFill : 'transparent',
-                      opacity: pressed ? 0.7 : 1,
-                    },
-                  ]}
-                >
-                  <View
-                    style={[
-                      styles.radio,
-                      { borderColor: selected ? ACCENT_ORANGE : theme.dividerColor },
-                    ]}
-                  >
-                    {selected ? <View style={styles.radioDot} /> : null}
-                  </View>
-                  <View style={styles.optionBody}>
-                    <Text style={[styles.optionTitle, { color: theme.text }]}>{option.title}</Text>
-                    <Text style={[styles.optionText, { color: theme.sub }]}>
-                      {option.description}
-                    </Text>
-                  </View>
-                </Pressable>
-              );
-            })}
-          </View>
-        </Card>
-
-        {/* Wortarten-Farben (2026-08-30, Simons Wunsch: "erst sehen wenn man
-            sie einschaltet"). Betrifft nur die Satz-Anzeige (Satz-
-            Wiederholung, Cheat-Sheet) - die Woerter-Wiederholung bleibt
-            unveraendert immer eingefaerbt, dort ist die Farbe Teil der
-            Zuordnungs-Mechanik, keine reine Anzeige-Option. */}
-        <Text style={[styles.sectionLabel, { color: theme.sub }]}>SATZ-ANZEIGE</Text>
-
-        <Card dark={darkMode} style={styles.card}>
+        {/* Kopf wie Apples Account-Zeile ganz oben in den Einstellungen:
+            wer man ist, und der Weg zum Konto. */}
+        <Gruppe dark={darkMode}>
           <Pressable
-            onPress={toggleWortartenFarben}
-            accessibilityRole="checkbox"
-            accessibilityState={{ checked: wortartenFarben }}
-            aria-checked={wortartenFarben}
-            accessibilityLabel={`Wortarten-Farben in Sätzen. ${
-              wortartenFarben ? 'Eingeschaltet' : 'Ausgeschaltet'
-            }`}
-            style={({ pressed }) => [styles.option, { borderColor: theme.border, opacity: pressed ? 0.7 : 1 }]}
+            onPress={() => router.push('/konto')}
+            accessibilityRole="button"
+            accessibilityLabel={`${anzeigeName}. Konto, Anmeldung und Abgleich`}
+            style={({ pressed }) => [styles.konto, pressed && styles.gedrueckt]}
           >
-            <View
-              style={[
-                styles.radio,
-                styles.checkbox,
-                {
-                  borderColor: wortartenFarben ? ACCENT_ORANGE : theme.dividerColor,
-                  backgroundColor: wortartenFarben ? ACCENT_ORANGE : 'transparent',
-                },
-              ]}
+            <LinearGradient
+              colors={['#FFB36B', ACCENT_ORANGE]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={styles.avatar}
             >
-              {wortartenFarben ? <Feather name="check" size={13} color="#FFFFFF" /> : null}
-            </View>
-            <View style={styles.optionBody}>
-              <Text style={[styles.optionTitle, { color: theme.text }]}>Wortarten-Farben</Text>
-              <Text style={[styles.optionText, { color: theme.sub }]}>
-                Nomen, Verben, Adjektive und Verbindungswörter farbig hervorheben, in Satz-Wiederholung
-                und Cheat-Sheet. Unabhängig davon zeigt der Hilfe-Knopf neben einem Satz die Farben
-                einmalig, auch wenn dieser Schalter aus ist.
+              {initiale ? (
+                <Text style={styles.avatarText}>{initiale}</Text>
+              ) : (
+                <Feather name="user" size={26} color="#FFFFFF" />
+              )}
+            </LinearGradient>
+            <View style={styles.kontoText}>
+              <Text style={[styles.kontoName, { color: theme.text }]} numberOfLines={1}>
+                {anzeigeName}
+              </Text>
+              <Text style={[styles.kontoUnter, { color: theme.sub }]} numberOfLines={1}>
+                Konto, Anmeldung und Abgleich
               </Text>
             </View>
+            <Feather name="chevron-right" size={18} color={theme.dividerColor} />
           </Pressable>
-        </Card>
+        </Gruppe>
 
-        {/* Uebersprungene Saetze zurueckholen (2026-08-22). "Brauch ich
-            nicht" wirkt dauerhaft - ohne diese Stelle waere es eine
-            Einbahnstrasse, und wer versehentlich tippt, bekaeme den Satz nie
-            wieder. Vorerst nur alles auf einmal: eine Einzelliste braucht
-            eine Ansicht, die es noch nicht gibt, und der haeufige Fall ist
-            ohnehin "ich hab mich vertan". */}
+        <Gruppe
+          dark={darkMode}
+          titel="Sperrbildschirm"
+          fuss={`Alle ${SLOT_HOURS} Stunden erscheint ein neuer Eintrag auf deinem Sperrbildschirm.`}
+        >
+          <AuswahlZeile
+            dark={darkMode}
+            icon="lock"
+            farbe="blau"
+            titel="Anzeige"
+            optionen={SPERR_OPTIONEN}
+            wert={lockscreenContent}
+            onWahl={setLockscreenContent}
+          />
+          <Zeile
+            dark={darkMode}
+            icon="smartphone"
+            farbe="indigo"
+            titel="Vorschau"
+            // Der Eintrag, der gerade dran ist - Apple zeigt rechts immer den
+            // aktuellen Wert, nicht nur einen Pfeil.
+            wert={pick.item?.primary}
+            onPress={() => router.push('/einstellungen/sperrbildschirm')}
+          />
+        </Gruppe>
+
+        <Gruppe
+          dark={darkMode}
+          titel="Satz-Anzeige"
+          fuss="Nomen, Verben, Adjektive und Verbindungswörter farbig hervorheben, in Satz-Wiederholung und Cheat-Sheet. Der Hilfe-Knopf neben einem Satz zeigt die Farben auch dann einmalig, wenn der Schalter aus ist."
+        >
+          <SchalterZeile
+            dark={darkMode}
+            icon="type"
+            farbe="lila"
+            titel="Wortarten-Farben"
+            wert={wortartenFarben}
+            onWechsel={(an) => {
+              if (an !== wortartenFarben) toggleWortartenFarben();
+            }}
+          />
+        </Gruppe>
+
+        {/* "Brauch ich nicht" wirkt dauerhaft - ohne diese Stelle waere es
+            eine Einbahnstrasse. Nur sichtbar, wenn es etwas zurueckzuholen
+            gibt. */}
         {anzahlUebersprungen > 0 ? (
-          <>
-            <Text style={[styles.sectionLabel, { color: theme.sub }]}>ÜBERSPRUNGENE SÄTZE</Text>
-            <Card dark={darkMode} style={styles.card}>
-              <Text style={[styles.cardText, { color: theme.sub }]}>
-                {anzahlUebersprungen === 1
-                  ? 'Ein Satz taucht nicht mehr in deinen Übungen auf.'
-                  : `${anzahlUebersprungen} Sätze tauchen nicht mehr in deinen Übungen auf.`}
-              </Text>
-              <PillButton
-                label="Alle zurückholen"
-                dark={darkMode}
-                onPress={ueberspringenZuruecknehmen}
-              />
-            </Card>
-          </>
+          <Gruppe
+            dark={darkMode}
+            titel="Übersprungene Sätze"
+            fuss="Diese Sätze tauchen nicht mehr in deinen Übungen auf."
+          >
+            <Zeile
+              dark={darkMode}
+              icon="eye-off"
+              farbe="grau"
+              titel="Ausgeblendet"
+              wert={String(anzahlUebersprungen)}
+            />
+            <Zeile
+              dark={darkMode}
+              titel="Alle zurückholen"
+              tint
+              chevron={false}
+              onPress={ueberspringenZuruecknehmen}
+            />
+          </Gruppe>
         ) : null}
 
-        <Herausforderungen />
-
-        {/* Geschlecht und Ansprache sind seit dem 2026-08-22 nicht mehr Teil
-            des Onboardings, sondern werden nach dem Kauf einer Kategorie mit
-            geschlechtsspezifischen Saetzen gefragt (siehe data/anrede.ts).
-            Damit braucht es eine Stelle zum Nachschauen und Aendern - und der
-            Anrede-Screen verspricht sie ausdruecklich. */}
-        <Text style={[styles.sectionLabel, { color: theme.sub }]}>SÄTZE FÜRS KENNENLERNEN</Text>
-
-        <Card dark={darkMode} style={styles.card}>
-          <Text style={[styles.cardTitle, { color: theme.text }]}>Geschlecht und Ansprache</Text>
-          <View style={styles.anredeZeilen}>
-            <View style={styles.anredeZeile}>
-              <Text style={[styles.anredeLabel, { color: theme.sub }]}>Du bist</Text>
-              <Text style={[styles.anredeWert, { color: theme.text }]}>
-                {geschlecht ? GESCHLECHT_LABEL[geschlecht] ?? geschlecht : 'noch offen'}
-              </Text>
-            </View>
-            <View style={styles.anredeZeile}>
-              <Text style={[styles.anredeLabel, { color: theme.sub }]}>Du sprichst an</Text>
-              <Text style={[styles.anredeWert, { color: theme.text }]}>
-                {ansprache ? ANSPRACHE_LABEL[ansprache] ?? ansprache : 'noch offen'}
-              </Text>
-            </View>
-          </View>
-          <Text style={[styles.cardText, { color: theme.sub }]}>
-            {ansprache && ansprache !== 'alle'
-              ? 'Danach richten sich Komplimente und Anmachsätze — im Chinesischen etwa 漂亮 an Frauen und 帅 an Männer.'
-              : 'Solange nichts festgelegt ist, zeigen wir dir beide Varianten.'}
-          </Text>
-          <PillButton
-            label={ansprache ? 'Ändern' : 'Festlegen'}
+        <Gruppe dark={darkMode} titel="Fortschritt">
+          <Zeile
             dark={darkMode}
+            icon="award"
+            farbe="orange"
+            titel="Herausforderungen"
+            wert={offen ? `${offen} offen` : 'alle geschafft'}
+            // Rotes Abzeichen wie bei iOS, sobald Coins abzuholen sind - sonst
+            // merkt man es nur, wenn man zufaellig hineinschaut.
+            abzeichen={abholbar}
+            onPress={() => router.push('/einstellungen/herausforderungen')}
+          />
+        </Gruppe>
+
+        <Gruppe
+          dark={darkMode}
+          titel="Sätze fürs Kennenlernen"
+          fuss={
+            ansprache && ansprache !== 'alle'
+              ? 'Danach richten sich Komplimente und Anmachsätze – im Chinesischen etwa 漂亮 an Frauen und 帅 an Männer.'
+              : 'Solange nichts festgelegt ist, zeigen wir dir beide Varianten.'
+          }
+        >
+          <Zeile
+            dark={darkMode}
+            icon="user"
+            farbe="pink"
+            titel="Du bist"
+            wert={geschlecht ? GESCHLECHT_LABEL[geschlecht] ?? geschlecht : 'noch offen'}
             onPress={() => router.push('/anrede')}
           />
-        </Card>
+          <Zeile
+            dark={darkMode}
+            icon="heart"
+            farbe="rot"
+            titel="Du sprichst an"
+            wert={ansprache ? ANSPRACHE_LABEL[ansprache] ?? ansprache : 'noch offen'}
+            onPress={() => router.push('/anrede')}
+          />
+        </Gruppe>
 
-        <Text style={[styles.sectionLabel, { color: theme.sub }]}>VORSCHAU</Text>
-
-        <Card dark={darkMode} style={styles.card}>
-          {pick.loading ? (
-            <Text style={[styles.cardText, { color: theme.sub }]}>Wird geladen …</Text>
-          ) : pick.unavailable ? (
-            <Text style={[styles.cardText, { color: theme.sub }]}>{pick.unavailable}</Text>
-          ) : pick.item ? (
-            <>
-              <Text style={[styles.previewPrimary, { color: theme.text }]}>
-                {pick.item.primary}
-              </Text>
-              {pick.item.secondary ? (
-                <Text style={[styles.previewSecondary, { color: theme.sub }]}>
-                  {pick.item.secondary}
-                </Text>
-              ) : null}
-              <View style={[styles.previewFoot, { borderTopColor: theme.border }]}>
-                {pick.item.note ? (
-                  <Text style={[styles.previewNote, { color: theme.sub }]}>{pick.item.note}</Text>
-                ) : (
-                  <View />
-                )}
-                <Text style={[styles.previewNote, { color: theme.sub }]}>
-                  {`wechselt ${formatCountdown(pick.changesAt - Date.now())}`}
-                </Text>
-              </View>
-              <Text style={[styles.previewPool, { color: theme.sub }]}>
-                {`${pick.poolSize} ${pick.kind === 'woerter' ? 'Wörter' : 'Sätze'} im Wechsel`}
-              </Text>
-            </>
-          ) : null}
-
-          {pick.offline ? (
-            <Text style={[styles.previewPool, { color: theme.sub }]}>
-              📴 Offline — letzter gespeicherter Stand
-            </Text>
-          ) : null}
-        </Card>
-
-        {/* Ehrlich statt stillschweigend: die Auswahl wirkt heute nur in der
-            Vorschau, weil die Widget-Extension noch fehlt. */}
-        <View style={styles.hint}>
-          <Feather name="info" size={15} color={theme.sub} />
-          <Text style={[styles.hintText, { color: theme.sub }]}>
-            Das Widget selbst ist noch nicht gebaut — dafür braucht die App ein bezahltes
-            Apple-Entwicklerkonto. Deine Auswahl ist gespeichert und gilt, sobald es da ist.
-          </Text>
-        </View>
-
-        <Text style={[styles.outlook, { color: theme.sub }]}>
+        <Text style={[styles.ausblick, { color: theme.sub }]}>
           Konto, Darkmode, Sprache und Erinnerungen kommen später ebenfalls hierher.
         </Text>
       </ScrollView>
@@ -298,137 +245,53 @@ const styles = StyleSheet.create({
     position: 'relative',
     zIndex: 10,
   },
-  page: {
+  seite: {
     paddingBottom: SPACING.xxxl,
-    gap: SPACING.sm,
   },
-  pageTitle: {
-    // ExtraBold statt Serife (2026-09-01).
+  titel: {
     ...schrift('800'),
     fontSize: FONT_SIZE.h1,
     lineHeight: LINE_HEIGHT.h1,
     paddingHorizontal: SPACING.lg,
   },
-  pageIntro: {
-    fontSize: FONT_SIZE.body,
-    lineHeight: LINE_HEIGHT.body,
-    paddingHorizontal: SPACING.lg,
+  konto: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: SPACING.md,
+    padding: SPACING.lg,
   },
-  sectionLabel: {
-    fontSize: FONT_SIZE.small,
+  gedrueckt: {
+    opacity: 0.55,
+  },
+  avatar: {
+    width: 58,
+    height: 58,
+    borderRadius: 29,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  avatarText: {
+    color: '#FFFFFF',
+    fontSize: FONT_SIZE.title,
     ...schrift('800'),
-    letterSpacing: 0.8,
-    paddingHorizontal: SPACING.lg,
-    marginTop: SPACING.lg,
   },
-  card: {
-    marginHorizontal: SPACING.lg,
-    gap: SPACING.sm,
+  kontoText: {
+    flex: 1,
+    gap: 2,
   },
-  cardTitle: {
+  kontoName: {
     fontSize: FONT_SIZE.bodyLg,
     lineHeight: LINE_HEIGHT.bodyLg,
     ...schrift('800'),
   },
-  cardText: {
-    fontSize: FONT_SIZE.body,
-    lineHeight: LINE_HEIGHT.body,
-  },
-  options: {
-    gap: SPACING.sm,
-    marginTop: SPACING.xs,
-  },
-  option: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    gap: SPACING.md,
-    borderWidth: 1.5,
-    borderRadius: RADIUS.md,
-    padding: SPACING.md,
-  },
-  radio: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-    borderWidth: 2,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 1,
-  },
-  radioDot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    backgroundColor: ACCENT_ORANGE,
-  },
-  // Eckig statt rund (Checkbox statt Radio) - unterscheidet den einzelnen
-  // Ein/Aus-Schalter optisch von der Radiogroup weiter oben.
-  checkbox: {
-    borderRadius: RADIUS.sm,
-  },
-  optionBody: {
-    flex: 1,
-    gap: 2,
-  },
-  optionTitle: {
-    fontSize: FONT_SIZE.body,
-    lineHeight: LINE_HEIGHT.body,
-    ...schrift('800'),
-  },
-  optionText: {
+  kontoUnter: {
     fontSize: FONT_SIZE.caption,
     lineHeight: LINE_HEIGHT.caption,
   },
-  previewPrimary: {
-    // Bold statt Serife (2026-09-01): das ist der Inhalt selbst (Wort/Satz
-    // der Widget-Vorschau), keine Ueberschrift - dieselbe Rolle wie der
-    // Zielsatz auf den Uebungsscreens, dort ebenfalls Bold statt ExtraBold.
-    ...schrift('700'),
-    fontSize: FONT_SIZE.title,
-    lineHeight: LINE_HEIGHT.title,
-  },
-  previewSecondary: {
-    fontSize: FONT_SIZE.body,
-    lineHeight: LINE_HEIGHT.body,
-  },
-  previewFoot: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: SPACING.sm,
-    borderTopWidth: 1,
-    paddingTop: SPACING.sm,
-    marginTop: SPACING.xs,
-  },
-  previewNote: {
-    fontSize: FONT_SIZE.caption,
-    ...schrift('700'),
-    flexShrink: 1,
-  },
-  previewPool: {
+  ausblick: {
     fontSize: FONT_SIZE.caption,
     lineHeight: LINE_HEIGHT.caption,
-  },
-  anredeZeilen: { gap: SPACING.xs },
-  anredeZeile: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: SPACING.sm },
-  anredeLabel: { fontSize: FONT_SIZE.caption },
-  anredeWert: { fontSize: FONT_SIZE.caption, ...schrift('800') },
-  hint: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    gap: SPACING.sm,
-    marginHorizontal: SPACING.lg,
-    marginTop: SPACING.md,
-  },
-  hintText: {
-    flex: 1,
-    fontSize: FONT_SIZE.caption,
-    lineHeight: LINE_HEIGHT.caption,
-  },
-  outlook: {
-    fontSize: FONT_SIZE.caption,
-    lineHeight: LINE_HEIGHT.caption,
-    paddingHorizontal: SPACING.lg,
-    marginTop: SPACING.lg,
+    marginHorizontal: SPACING.xl,
+    marginTop: SPACING.xl,
   },
 });

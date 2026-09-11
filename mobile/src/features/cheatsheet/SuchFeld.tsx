@@ -126,7 +126,13 @@ export function SuchFeld({
         value={wert}
         onChangeText={onChange}
         onSubmitEditing={onAbsenden}
-        autoFocus
+        // KEIN autoFocus mehr (2026-09-11, Simons Wunsch): beim Betreten von
+        // Survival oeffnet sich die Situationsauswahl, die Tastatur aber erst,
+        // wenn man ins Feld tippt. Vorher schob `autoFocus` sofort die
+        // Tastatur hoch und verdeckte genau die Auswahl, fuer die man meist
+        // kommt - Nachsehen ist der haeufige Fall, Tippen der seltene (siehe
+        // Kopfkommentar in CheatsheetScreen.tsx). Die Auswahl selbst startet
+        // offen ueber `sucheOffen = true` dort, dafuer braucht es hier nichts.
         returnKeyType="search"
         // Der laufende Text ist Deko. VoiceOver bekommt eine feste
         // Beschriftung, sonst liest es bei jedem Zeichen neu vor.

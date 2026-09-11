@@ -36,14 +36,30 @@ import {
 //   weil drei Spalten auf 375px zu schmal sind; zwei Spalten vermeiden das.
 
 // Flaggen als Emoji: fuer Laenderflaggen gibt es in Feather keine
-// Entsprechung, und eigene Grafiken waeren fuer vier Sprachen zu viel
-// Aufwand. Betrifft nur diesen Screen - alle uebrigen Symbole der Strecke
-// sind Linien-Icons.
+// Entsprechung, und eigene Grafiken waeren zu viel Aufwand. Betrifft nur
+// diesen Screen - alle uebrigen Symbole der Strecke sind Linien-Icons.
+//
+// MUSS JEDE SPRACHE AUS languages.ts ENTHALTEN. Fehlt eine, zeigt der
+// Screen die weisse Platzhalterflagge, und das faellt niemandem auf, der
+// nicht danach sucht: die Karte sieht fertig aus, nur ohne Land. Genau das
+// war vom 2026-09-03 bis zum 2026-09-11 der Fall - die Tabelle stand noch
+// auf den vier urspruenglichen Sprachen, waehrend sieben dazugekommen
+// waren, also auf der ALLERERSTEN Seite des Onboardings.
+//
+// Englisch bekommt bewusst die britische Flagge: der englische Bestand ist
+// britisch (toilet/mobile/bill, ttsLocale en-GB), siehe CLAUDE.md.
 const FLAGS: Record<string, string> = {
   de: '🇩🇪',
   sv: '🇸🇪',
   es: '🇪🇸',
   fr: '🇫🇷',
+  zh: '🇨🇳',
+  it: '🇮🇹',
+  no: '🇳🇴',
+  ru: '🇷🇺',
+  vi: '🇻🇳',
+  pl: '🇵🇱',
+  en: '🇬🇧',
 };
 
 // Ausgangssprache als Auswahlfeld statt als Liste - so macht es auch die

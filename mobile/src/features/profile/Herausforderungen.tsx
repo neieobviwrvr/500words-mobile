@@ -15,7 +15,7 @@ import {
   ACCENT_ORANGE,
   FONT_SIZE,
   LINE_HEIGHT,
-  SPACING, schrift } from '../../theme/tokens';
+  SPACING, schrift, karte } from '../../theme/tokens';
 
 // Herausforderungen auf dem Profil (2026-08-22, Nutzer-Wunsch).
 //
@@ -25,7 +25,10 @@ import {
 // genau einmal pro Schluessel - der Knopf passt also exakt auf die vorhandene
 // Mechanik, ohne dass es einen zweiten Merkzettel braucht.
 
-export function Herausforderungen() {
+// `ohneUeberschrift` fuer die eigene Detailseite (2026-09-11): dort steht
+// "Herausforderungen" schon als Seitentitel, die Abschnittszeile doppelt waere
+// Laerm.
+export function Herausforderungen({ ohneUeberschrift = false }: { ohneUeberschrift?: boolean } = {}) {
   const { darkMode, fortschritt, coinGrants, grantCoins, hydrated } = useAppState();
   const theme = getTheme(darkMode);
 
@@ -34,11 +37,13 @@ export function Herausforderungen() {
 
   return (
     <>
-      <Text style={[styles.sectionLabel, { color: theme.sub }]}>
-        {`HERAUSFORDERUNGEN${offen ? ` · ${offen} offen` : ''}`}
-      </Text>
+      {ohneUeberschrift ? null : (
+        <Text style={[styles.sectionLabel, { color: theme.sub }]}>
+          {`HERAUSFORDERUNGEN${offen ? ` · ${offen} offen` : ''}`}
+        </Text>
+      )}
 
-      <Card dark={darkMode} style={styles.card}>
+      <Card dark={darkMode} style={[styles.card, karte(darkMode), styles.schattenSichtbar]}>
         {liste.map((h, i) => (
           <Zeile
             key={h.id}
@@ -134,6 +139,9 @@ const styles = StyleSheet.create({
     marginBottom: SPACING.sm,
   },
   card: { marginHorizontal: SPACING.lg, gap: 0 },
+  // Karten-Look wie auf S1, siehe ProfileScreen.tsx: `Card` schneidet mit
+  // overflow hidden, und das nimmt der Karte auf iOS ihren Schatten.
+  schattenSichtbar: { overflow: 'visible' },
   zeile: { paddingVertical: SPACING.md, gap: SPACING.xs },
   kopf: { flexDirection: 'row', alignItems: 'center', gap: SPACING.sm },
   titel: { flex: 1, fontSize: FONT_SIZE.body, ...schrift('800') },

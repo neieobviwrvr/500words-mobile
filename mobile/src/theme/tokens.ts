@@ -62,6 +62,15 @@ export const SPACING = {
   xxxl: 48,
 } as const;
 
+// Breite der Seitenplaetze links und rechts vom Fortschrittsbalken
+// (2026-09-11, Simons Vorgabe: der Balken auf S1 soll genau so gross sein wie
+// im Onboarding). Das Onboarding haelt dort den Zurueck-Pfeil und ein leeres
+// Gegenstueck, S1 ein leeres Feld und die Prozentzahl. EIN Wert fuer beide,
+// damit die Balken nicht still auseinanderlaufen, wenn jemand nur einen
+// Screen anfasst - vorher stand die 32 im Onboarding als nackte Zahl, und S1
+// hatte gar keine Seitenplaetze.
+export const PROGRESS_SEITE = 32;
+
 // ---------------------------------------------------------------------------
 // Radien
 // ---------------------------------------------------------------------------

@@ -2,14 +2,13 @@ import { useEffect, useRef } from 'react';
 import {
   ActivityIndicator,
   AppState as RNAppState,
-  Platform,
   StyleSheet,
   useWindowDimensions,
   View,
 } from 'react-native';
 import { Redirect, Tabs } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
-import { BlurView } from 'expo-blur';
+import { Milchglas } from '../../src/components/Milchglas';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAppState } from '../../src/state/AppState';
 import { useAuthState } from '../../src/state/AuthState';
@@ -211,6 +210,17 @@ export default function TabsLayout() {
         tabBarBackground: () => <TabBarSurface dark={darkMode} />,
         tabBarStyle: {
           position: 'absolute',
+          // `start` UND `end` ausdruecklich (2026-09-11, Simons Befund: die
+          // Leiste sass auf dem iPhone nach links verschoben). Die von
+          // expo-router mitgelieferte Tab-Bibliothek setzt fuer die untere
+          // Leiste `start: 0, end: 0` (build/react-navigation/bottom-tabs/
+          // views/BottomTabBar.js, `styles.bottom`). Unser `left` allein
+          // ueberschrieb das nicht - und auf iOS schlaegt das logische
+          // `start` das physische `left`. Die Leiste stand bei x=0 und endete
+          // 64 Punkte vor dem rechten Rand. Im Browser gewinnt `left`, deshalb
+          // war es in der Vorschau nie zu sehen (dort 33/33 gemessen).
+          start: BAR_SIDE,
+          end: BAR_SIDE,
           left: BAR_SIDE,
           width: barWidth,
           bottom: bottomOffset,
@@ -341,6 +351,9 @@ export default function TabsLayout() {
       <Tabs.Screen name="category/[id]" options={{ href: null }} />
       <Tabs.Screen name="cheatsheet/[groupId]" options={{ href: null }} />
       <Tabs.Screen name="cheatsheet/search-results" options={{ href: null }} />
+      {/* Detailseiten des Profils (2026-09-11, Umbau im iOS-Stil). */}
+      <Tabs.Screen name="einstellungen/sperrbildschirm" options={{ href: null }} />
+      <Tabs.Screen name="einstellungen/herausforderungen" options={{ href: null }} />
     </Tabs>
 
     </View>
@@ -360,38 +373,19 @@ export default function TabsLayout() {
 // `opacity`-Wert auf der ganzen Leiste haette er auch Symbole und
 // Beschriftungen mit ausgeblichen.
 //
-// `overflow: 'hidden'` statt `borderRadius` direkt auf der BlurView: die
-// Ecken-Rundung greift laut Expo-Doku auf Android sonst nicht.
+// Seit 2026-09-11 liegt das Material selbst in components/Milchglas.tsx,
+// weil die Navigationsleiste auf S1 dasselbe Glas benutzt. Die Begruendungen
+// oben gelten dort unveraendert - auch diese: `overflow: 'hidden'` statt
+// `borderRadius` direkt auf der BlurView, weil die Ecken-Rundung laut
+// Expo-Doku auf Android sonst nicht greift.
 function TabBarSurface({ dark, radius = BAR_RADIUS }: { dark: boolean; radius?: number }) {
-  return (
-    <View style={[styles.surface, { borderRadius: radius }]}>
-      <BlurView
-        intensity={60}
-        tint={dark ? 'systemThinMaterialDark' : 'systemThinMaterialLight'}
-        // Ohne diese Angabe zeichnet Android gar keinen Blur.
-        blurMethod={Platform.OS === 'android' ? 'dimezisBlurViewSdk31Plus' : undefined}
-        style={StyleSheet.absoluteFill}
-      />
-      <View
-        style={[
-          StyleSheet.absoluteFill,
-          { backgroundColor: dark ? 'rgba(24,24,22,0.22)' : 'rgba(255,255,255,0.12)' },
-        ]}
-      />
-    </View>
-  );
+  // Das Material selbst liegt seit 2026-09-11 in components/Milchglas.tsx -
+  // die Navigationsleiste auf S1 benutzt dasselbe Glas.
+  return <Milchglas dark={dark} radius={radius} />;
 }
 
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-  },
-  surface: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    overflow: 'hidden',
   },
 });
