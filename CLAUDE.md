@@ -2738,6 +2738,96 @@ Reparatur-Lauf: 136.318 Symbole, alles aufloesbar.
 
 **Bestaetigt am 2026-09-10:** die App startet wieder.
 
+## Vertonung: Google Cloud TTS, eine Stimme je Sprache (2026-09-11)
+
+Bis hierher hatte **keine der elf Sprachen Audio** - 0 von 6.376 Saetzen,
+und bei den Vokabeln nur Franzoesisch und Spanisch aus einem alten
+ElevenLabs-Lauf. Das war Launch-Blocker Nummer vier: eine App, deren
+Kernprinzip Sprechen ist, hatte nichts zu hoeren.
+
+**`Sprachlisten/vertonung/vertone_google.py`** vertont Saetze UND Vokabeln
+aller elf Sprachen und legt die MP3s in den Supabase-Bucket `vocab_audio`.
+Befehle wie beim Azure-Skript: `stimmen`, `plan`, `los`, dazu `--sprache`,
+`--nur`, `--limit`, `--budget`, `--erneut`.
+
+**Anders als `vertone.py` und `vertone_azure.py` liegt es IM GIT.** Die
+beiden aelteren tragen Schluessel im Klartext und sind deshalb ueber die
+pauschale `/*`-Regel am Repo-Root ausgeschlossen; dieses liest aus
+`Sprachlisten/.env` und darf deshalb versioniert werden.
+
+### Die Stimmen
+
+| Stimme | Sprachen |
+|---|---|
+| Aoede | Deutsch, Spanisch, Chinesisch, Vietnamesisch |
+| Achernar | Schwedisch, Norwegisch, Englisch |
+| Zephyr | Russisch, Polnisch |
+| Autonoe | Franzoesisch |
+| Leda | Italienisch |
+
+Alle aus der Klasse **Chirp3-HD**. Von Googles acht Stimmklassen gibt es nur
+drei in allen elf Sprachen (Standard, Wavenet, Chirp3-HD) - Neural2 fehlt
+bei sv/zh/no/ru/pl, Studio fast ueberall.
+
+**Jede Sprache wurde einzeln GEHOERT**, an mehreren echten Saetzen aus dem
+eigenen Bestand, nicht nach Beschreibung ausgewaehlt. Die Proben waren je
+Sprache auf deren Schwachstelle zugeschnitten, sonst pruefen sie nichts:
+
+| | woran die Stimme gemessen wurde |
+|---|---|
+| pl | Zischlautreihen - `Czy szukacie jeszcze ludzi?` traegt cz, sz und szcz |
+| it | Doppelkonsonanten, bedeutungsunterscheidend (capelli/cappelli) |
+| fr | Nasale und Liaison (`les etudiants en echange`) |
+| zh | alle vier Toene in einem Satz |
+| vi | moeglichst viele der sechs Tonzeichen |
+| sv, no | Tonakzent |
+| ru | Vokalreduktion, gegen die Lautschrift-Spalte gehalten |
+| es | Frageintonation (der Satzbau markiert die Frage oft nicht) |
+| de | Umlaute, ich-Laut gegen ach-Laut |
+
+**Zwei Beobachtungen, die beim Hoeren herausfielen:** die Paare folgen den
+Sprachfamilien, ohne dass darauf hin entschieden wurde - beide slawischen
+bekamen Zephyr, beide mit Tonakzent Achernar. Und ein Stimmname sagt NICHTS
+ueber eine andere Sprache: dieselbe Familie ist je Sprache eigens trainiert.
+Kommt eine zwoelfte Sprache dazu, hoert man sie gegen die verwandte.
+
+**Die Stimmwahl steht NUR im Skript.** Der Speicherpfad
+(`vocab_audio/<tabelle>/google/<id>_<text>.mp3`) nennt den ANBIETER, nicht
+die Stimme - einer MP3 hoert man nicht an, wer sie gesprochen hat. Wer die
+Tabelle oben verliert, verliert die Entscheidung.
+
+### Drei Fallen, alle real zugeschlagen
+
+**Mandarin heisst bei Google `cmn-CN`, nicht `zh-CN`.** Wer die
+Locale-Tabelle aus dem Azure-Skript uebernimmt, bekommt fuer Chinesisch
+einen Fehler je Satz statt Audio - 584 mal.
+
+**Die Windows-Konsole ist cp1252.** Die Fortschrittszeile druckt den
+Satztext mit; ohne `sys.stdout.reconfigure` waere der Lauf mit
+`UnicodeEncodeError` gestorben, sobald er Chinesisch, Russisch oder
+Vietnamesisch erreicht - also nach Stunden und mitten im Bestand.
+
+**Das Ratenlimit ist nicht der Engpass.** Google erlaubt 200 Chirp3-HD-
+Anfragen je Minute (aus der Cloud Console abgelesen, NICHT anpassbar - dort
+gibt es ueberhaupt kein Zeichen- oder Tageskontingent). Gemessen wurden
+aber nur **93 Dateien je Minute**, weil je Datei DREI Netzwerkrunden
+nacheinander laufen: Synthese, Upload, DB-Eintrag. Wer die Laufzeit aus dem
+Ratenlimit rechnet, verspricht die halbe Zeit - der volle Lauf dauert rund
+zwei Stunden, nicht eine.
+
+### Was der Anbieter im Pfad bedeutet
+
+`ANBIETER = "google"` steckt im Speicherpfad, und daran haengt die Frage
+"was ist noch offen?": eine Zeile, deren URL kein `/google/` enthaelt, gilt
+als nicht vertont. Der Wechsel von ElevenLabs zu Google brauchte deshalb
+KEIN Zuruecksetzen von Hand - die 515 franzoesischen und 500 spanischen
+Vokabeln wurden automatisch neu gemacht, und die alten Dateien liegen
+unberuehrt daneben, falls der Wechsel ein Fehler war.
+
+**Der API-Schluessel gehoert geloescht**, sobald der Bestand vertont ist.
+Google bietet fuer Text-to-Speech kein Tageskontingent, mit dem sich
+Missbrauch begrenzen liesse; ein geloeschter Schluessel braucht keins.
+
 ## Backlog: Geplant, aber noch nicht gebaut (Stand 2026-08-04)
 
 Referenzierte Dateien, die es trotz Erwaehnung in Doku/Prompts noch NICHT

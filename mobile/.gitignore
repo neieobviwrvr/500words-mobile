@@ -59,6 +59,11 @@ yarn-error.*
 Sprachlisten/.env
 Sprachlisten/**/.env
 
+# Laufstatistik der Vertonung (verbrauchte Zeichen je Stimmklasse und
+# Monat). Reiner Zwischenstand einer Maschine, kein Projektinhalt - die
+# Wahrheit darueber, was vertont ist, steht ohnehin in der Datenbank.
+Sprachlisten/vertonung/.vertone_*_stand.json
+
 # Supabase-CLI-Arbeitsverzeichnis: enthaelt u.a. pooler-url mit Passwort.
 # `**` ist noetig: es gibt diesen Ordner NICHT nur einmal oben, sondern auch
 # in club_nightlife/, chinesisch_ausbau/ und "Chinesisch HSK1 und HSK2" -
