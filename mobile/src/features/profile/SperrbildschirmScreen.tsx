@@ -111,7 +111,7 @@ export function SperrbildschirmScreen() {
           </View>
         </LinearGradient>
 
-        <Gruppe dark={darkMode} titel="Anzeige" ohneSymbole>
+        <Gruppe dark={darkMode} titel="Anzeige">
           {SPERR_OPTIONEN.map((o) => {
             const gewaehlt = lockscreenContent === o.id;
             return (
@@ -132,7 +132,6 @@ export function SperrbildschirmScreen() {
         <Gruppe
           dark={darkMode}
           titel="Wechsel"
-          ohneSymbole
           fuss="Das Widget selbst ist noch nicht gebaut — dafür braucht die App ein bezahltes Apple-Entwicklerkonto. Deine Auswahl ist gespeichert und gilt, sobald es da ist."
         >
           <Zeile dark={darkMode} titel="Rhythmus" wert={`alle ${SLOT_HOURS} Std.`} />

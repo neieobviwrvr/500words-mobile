@@ -1,4 +1,4 @@
-import { Children, ComponentProps, Fragment, ReactNode, useRef, useState } from 'react';
+import { Children, Fragment, ReactNode, useRef, useState } from 'react';
 import {
   Modal,
   Pressable,
@@ -11,7 +11,9 @@ import {
 import { Feather } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import {
+  ACCENT_ERROR,
   ACCENT_ORANGE,
+  ACCENT_ORANGE_EDGE,
   FONT_SIZE,
   getTheme,
   LINE_HEIGHT,
@@ -28,43 +30,44 @@ import {
 // Das iOS-Muster hat vier Teile, und jeder hat hier genau einen Baustein:
 //   Gruppe        gerundete Flaeche auf grauem Grund, Ueberschrift darueber,
 //                 Erklaerung darunter
-//   Zeile         Symbolkachel, Titel, Wert rechts, Chevron wenn sie
-//                 weiterfuehrt - die Grundeinheit jeder Einstellungsseite
+//   Zeile         Titel, Wert rechts, Chevron wenn sie weiterfuehrt - die
+//                 Grundeinheit jeder Einstellungsseite
 //   AuswahlZeile  Wert mit Doppelpfeil, oeffnet ein Pull-down-Menue direkt an
 //                 der Zeile (so waehlt iOS seit Version 14 aus kurzen Listen;
 //                 frueher war das eine eigene Seite)
 //   DetailKopf    Zurueck-Pfeil mit dem Namen der vorigen Seite, Titel mittig
 //
+// Zweiter Durchgang am selben Tag (Simon: "viel zu gevibecoded", mit dem
+// Auftrag, sich an die installierten Design-Skills zu halten). Drei Dinge
+// sind raus, weil sie das Muster NACHGEBAUT haben, statt es zu verstehen:
+//   * Die bunten Symbolkacheln. Das waren Apples Systemfarben, und mit
+//     unserer Marke hatten sie nichts zu tun. In den iOS-Einstellungen
+//     tragen sie bei ueber 50 Zeilen die Orientierung, bei acht Zeilen
+//     waren sie nur Dekoration. Wer wieder Kacheln will: erst pruefen, ob
+//     die Seite so lang geworden ist, dass man sie zum Wiederfinden braucht.
+//   * Ueberschriften in Versalien mit Sperrung - jetzt normal geschrieben,
+//     fett, in Textfarbe.
+//   * Halbfette Zeilentitel. Ist jede Zeile halbfett, hebt sich nichts mehr
+//     ab; die Gewichtung traegt jetzt die Ueberschrift.
+//
 // Die Gruppen tragen den Karten-Look aus `karte()` statt Apples randloser
-// Flaeche: Simon hatte die Profil-Karten am selben Tag ausdruecklich auf den
-// "Du bist hier"-Kasten von S1 umgestellt. Wer die reine iOS-Optik will,
-// nimmt `karte(dark)` in `Gruppe` heraus - dann bleibt die weisse Flaeche
-// auf Grau.
+// Flaeche: Simon hatte die Profil-Karten ausdruecklich auf den
+// "Du bist hier"-Kasten von S1 umgestellt, und das bleibt so.
 
-// Die farbigen Symbolkacheln sind DAS Erkennungszeichen der iOS-
-// Einstellungen. Es sind Apples Systemfarben, bewusst nicht unsere
-// Markenfarben: eine orange Kachel neben orangem Akzenttext waere Laerm.
-// Im Darkmode bleiben sie gleich - weisses Symbol auf satter Kachel traegt
-// auf beiden Gruenden.
-export const ICON_FARBEN = {
-  blau: '#007AFF',
-  indigo: '#5856D6',
-  lila: '#AF52DE',
-  orange: '#FF9500',
-  pink: '#FF2D55',
-  rot: '#FF3B30',
-  grau: '#8E8E93',
-  gruen: '#34C759',
-} as const;
-export type IconFarbe = keyof typeof ICON_FARBEN;
-type IconName = ComponentProps<typeof Feather>['name'];
-
-/** Apples Kachelmass in den Einstellungen. */
-const KACHEL = 29;
-/** Mindesthoehe einer Zeile: Apples 44 plus etwas Luft fuer die Kachel. */
+/** Mindesthoehe einer Zeile: Apples 44 plus etwas Luft. */
 const ZEILE_MIN = 48;
-/** Trenner beginnen unter dem Titel, nicht am Rand - wie bei iOS. */
-const TRENNER_EINZUG = SPACING.lg + KACHEL + SPACING.md;
+
+/**
+ * Farbe fuer Text, der eine Aktion ausloest (Zurueck, "Zurückholen").
+ *
+ * Nicht einfach ACCENT_ORANGE: auf Weiss erreicht das nur rund 2,9:1, zu
+ * wenig fuer Text in normaler Groesse (4,5:1). Die dunklere Kante liegt
+ * knapp darueber; im Darkmode reicht das normale Orange auf dem dunklen
+ * Grund schon.
+ */
+export function aktionsFarbe(dark: boolean) {
+  return dark ? ACCENT_ORANGE : ACCENT_ORANGE_EDGE;
+}
 
 /**
  * Grund einer Einstellungsseite. iOS legt helle Gruppen auf einen grauen
@@ -81,18 +84,11 @@ export function Gruppe({
   dark,
   titel,
   fuss,
-  ohneSymbole = false,
   children,
 }: {
   dark: boolean;
   titel?: string;
   fuss?: string;
-  /**
-   * Gruppe ohne Symbolkacheln: dann beginnen die Trenner am Textanfang statt
-   * hinter einer Kachel, die es nicht gibt. iOS rueckt die Linie immer bis
-   * genau dorthin ein, wo der Text anfaengt.
-   */
-  ohneSymbole?: boolean;
   children: ReactNode;
 }) {
   const theme = getTheme(dark);
@@ -102,19 +98,14 @@ export function Gruppe({
   return (
     <View style={styles.gruppeRahmen}>
       {titel ? (
-        <Text style={[styles.gruppeTitel, { color: theme.sub }]} accessibilityRole="header">
+        <Text style={[styles.gruppeTitel, { color: theme.text }]} accessibilityRole="header">
           {titel}
         </Text>
       ) : null}
       <View style={[styles.gruppe, karte(dark), { backgroundColor: theme.cardBg }]}>
         {zeilen.map((zeile, i) => (
           <Fragment key={i}>
-            {i > 0 ? <View
-                style={[
-                  styles.trenner,
-                  { backgroundColor: theme.border, marginLeft: ohneSymbole ? SPACING.lg : TRENNER_EINZUG },
-                ]}
-              /> : null}
+            {i > 0 ? <View style={[styles.trenner, { backgroundColor: theme.border }]} /> : null}
             {zeile}
           </Fragment>
         ))}
@@ -126,8 +117,6 @@ export function Gruppe({
 
 export function Zeile({
   dark,
-  icon,
-  farbe = 'blau',
   titel,
   untertitel,
   wert,
@@ -135,25 +124,20 @@ export function Zeile({
   chevron,
   rechts,
   abzeichen,
-  tint = false,
   ausgewaehlt,
   hinweis,
 }: {
   dark: boolean;
-  icon?: IconName;
-  farbe?: IconFarbe;
   titel: string;
   untertitel?: string;
   wert?: string;
   onPress?: () => void;
   /** Vorgabe: Chevron genau dann, wenn die Zeile weiterfuehrt. */
   chevron?: boolean;
-  /** Eigenes Element rechts - Schalter, Haken, Doppelpfeil. */
+  /** Eigenes Element rechts - Schalter, Haken, Doppelpfeil, Textknopf. */
   rechts?: ReactNode;
   /** Rote Zahl wie bei iOS-Hinweisen, z.B. abholbare Coins. */
   abzeichen?: number;
-  /** Titel in Akzentfarbe - fuer Aktionszeilen wie "Alle zurückholen". */
-  tint?: boolean;
   /** Fuer Auswahllisten mit Haken: traegt den Zustand fuer VoiceOver. */
   ausgewaehlt?: boolean;
   hinweis?: string;
@@ -163,16 +147,8 @@ export function Zeile({
 
   const inhalt = (
     <>
-      {icon ? (
-        <View style={[styles.kachel, { backgroundColor: ICON_FARBEN[farbe] }]}>
-          <Feather name={icon} size={17} color="#FFFFFF" />
-        </View>
-      ) : null}
       <View style={styles.zeileText}>
-        <Text
-          style={[styles.zeileTitel, { color: tint ? ACCENT_ORANGE : theme.text }]}
-          numberOfLines={1}
-        >
+        <Text style={[styles.zeileTitel, { color: theme.text }]} numberOfLines={1}>
           {titel}
         </Text>
         {untertitel ? (
@@ -197,8 +173,9 @@ export function Zeile({
   const ansage = [titel, wert, abzeichen ? `${abzeichen} neu` : null].filter(Boolean).join(', ');
 
   if (!onPress) {
-    // Traegt die Zeile einen Schalter, darf sie NICHT als ein Element gelten -
-    // sonst verschluckt sie ihn, und VoiceOver kommt nicht mehr an ihn heran.
+    // Traegt die Zeile ein eigenes Bedienelement, darf sie NICHT als ein
+    // Element gelten - sonst verschluckt sie es, und VoiceOver kommt nicht
+    // mehr heran.
     return (
       <View style={styles.zeile} accessible={!rechts} accessibilityLabel={rechts ? undefined : ansage}>
         {inhalt}
@@ -229,16 +206,15 @@ export function Zeile({
 /** Zeile mit iOS-Schalter. Der Schalter ist die Systemsteuerung, kein Nachbau. */
 export function SchalterZeile({
   dark,
-  icon,
-  farbe,
   titel,
+  untertitel,
   wert,
   onWechsel,
 }: {
   dark: boolean;
-  icon?: IconName;
-  farbe?: IconFarbe;
   titel: string;
+  /** Was der Schalter bewirkt, in einer Zeile - statt eines Absatzes unter der Gruppe. */
+  untertitel?: string;
   wert: boolean;
   onWechsel: (an: boolean) => void;
 }) {
@@ -246,9 +222,8 @@ export function SchalterZeile({
   return (
     <Zeile
       dark={dark}
-      icon={icon}
-      farbe={farbe}
       titel={titel}
+      untertitel={untertitel}
       chevron={false}
       rechts={
         <Switch
@@ -258,6 +233,7 @@ export function SchalterZeile({
           ios_backgroundColor={theme.dividerColor}
           thumbColor="#FFFFFF"
           accessibilityLabel={titel}
+          accessibilityHint={untertitel}
         />
       }
     />
@@ -283,16 +259,12 @@ function Wahlpfeile({ farbe }: { farbe: string }) {
 
 export function AuswahlZeile<T extends string>({
   dark,
-  icon,
-  farbe,
   titel,
   optionen,
   wert,
   onWahl,
 }: {
   dark: boolean;
-  icon?: IconName;
-  farbe?: IconFarbe;
   titel: string;
   optionen: AuswahlOption<T>[];
   wert: T;
@@ -313,8 +285,6 @@ export function AuswahlZeile<T extends string>({
     <View ref={anker} collapsable={false}>
       <Zeile
         dark={dark}
-        icon={icon}
-        farbe={farbe}
         titel={titel}
         wert={aktuell?.label}
         chevron={false}
@@ -380,7 +350,7 @@ function PullDownMenue<T extends string>({
         accessibilityLabel="Auswahl schließen"
       />
       {/* Schatten aussen, Beschnitt innen: `overflow: hidden` wuerde auf iOS
-          den eigenen Schatten mit abschneiden (siehe ProfileScreen). */}
+          den eigenen Schatten mit abschneiden. */}
       <View style={[styles.menueSchatten, { top: oben, right: abstandRechts, width: breite }]}>
         <View
           style={[
@@ -446,6 +416,7 @@ export function DetailKopf({
   fallback?: Parameters<typeof router.replace>[0];
 }) {
   const theme = getTheme(dark);
+  const farbe = aktionsFarbe(dark);
   const geheZurueck = () => {
     if (router.canGoBack()) router.back();
     else router.replace(fallback);
@@ -468,8 +439,8 @@ export function DetailKopf({
         accessibilityLabel={`Zurück zu ${zurueck}`}
         style={({ pressed }) => [styles.kopfZurueck, pressed && styles.gedrueckt]}
       >
-        <Feather name="chevron-left" size={26} color={ACCENT_ORANGE} />
-        <Text style={styles.kopfZurueckText}>{zurueck}</Text>
+        <Feather name="chevron-left" size={26} color={farbe} />
+        <Text style={[styles.kopfZurueckText, { color: farbe }]}>{zurueck}</Text>
       </Pressable>
     </View>
   );
@@ -481,10 +452,11 @@ const styles = StyleSheet.create({
     marginTop: SPACING.xl,
   },
   gruppeTitel: {
-    fontSize: FONT_SIZE.caption,
-    ...schrift('700'),
-    letterSpacing: 0.4,
-    textTransform: 'uppercase',
+    fontSize: FONT_SIZE.bodyLg,
+    lineHeight: LINE_HEIGHT.bodyLg,
+    ...schrift('800'),
+    // Auf einer Linie mit dem Text der Zeilen darunter, nicht mit dem
+    // Kartenrand - so liest sich Ueberschrift und Inhalt als eine Spalte.
     marginLeft: SPACING.lg,
     marginBottom: SPACING.sm,
   },
@@ -493,13 +465,14 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.lg,
   },
   gruppeFuss: {
-    fontSize: FONT_SIZE.caption,
-    lineHeight: LINE_HEIGHT.caption,
+    fontSize: FONT_SIZE.small,
+    lineHeight: LINE_HEIGHT.small,
     marginHorizontal: SPACING.lg,
     marginTop: SPACING.sm,
   },
   trenner: {
-    // Der Einzug kommt an der Verwendung, je nachdem ob die Gruppe Kacheln traegt.
+    // Beginnt unter dem Titel, nicht am Kartenrand - wie bei iOS.
+    marginLeft: SPACING.lg,
     height: StyleSheet.hairlineWidth,
   },
   zeile: {
@@ -513,13 +486,6 @@ const styles = StyleSheet.create({
   gedrueckt: {
     opacity: 0.55,
   },
-  kachel: {
-    width: KACHEL,
-    height: KACHEL,
-    borderRadius: 7,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   zeileText: {
     flex: 1,
     gap: 2,
@@ -527,11 +493,11 @@ const styles = StyleSheet.create({
   zeileTitel: {
     fontSize: FONT_SIZE.body,
     lineHeight: LINE_HEIGHT.body,
-    ...schrift('600'),
+    ...schrift('500'),
   },
   zeileUntertitel: {
-    fontSize: FONT_SIZE.caption,
-    lineHeight: LINE_HEIGHT.caption,
+    fontSize: FONT_SIZE.small,
+    lineHeight: LINE_HEIGHT.small,
   },
   zeileWert: {
     fontSize: FONT_SIZE.body,
@@ -543,7 +509,7 @@ const styles = StyleSheet.create({
     height: 22,
     borderRadius: 11,
     paddingHorizontal: 6,
-    backgroundColor: ICON_FARBEN.rot,
+    backgroundColor: ACCENT_ERROR,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -622,7 +588,6 @@ const styles = StyleSheet.create({
     paddingRight: SPACING.sm,
   },
   kopfZurueckText: {
-    color: ACCENT_ORANGE,
     fontSize: FONT_SIZE.body,
     ...schrift('600'),
     marginLeft: -2,

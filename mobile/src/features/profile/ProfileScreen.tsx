@@ -1,15 +1,18 @@
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import { HeaderMenu, Screen } from '../../components';
 import { useOnboardingState } from '../../state/OnboardingState';
+import { useAuthState } from '../../state/AuthState';
 import { ADDRESSING_OPTIONS, GENDERS } from '../../data/onboardingOptions';
+import { getLanguage } from '../../data/languages';
 import { HERAUSFORDERUNGEN, sortiere, standVon } from '../../data/herausforderungen';
 import { useAppState } from '../../state/AppState';
 import { useLockscreenPick } from '../widget/useLockscreenPick';
 import { SLOT_HOURS } from '../widget/lockscreenRotation';
 import {
+  ACCENT_AMBER_BG,
+  ACCENT_AMBER_TEXT,
   ACCENT_ORANGE,
   FONT_SIZE,
   getTheme,
@@ -17,28 +20,42 @@ import {
   SPACING,
   schrift,
 } from '../../theme/tokens';
-import { AuswahlZeile, Gruppe, gruppenGrund, SchalterZeile, Zeile } from './ListenBausteine';
+import {
+  aktionsFarbe,
+  AuswahlZeile,
+  Gruppe,
+  gruppenGrund,
+  SchalterZeile,
+  Zeile,
+} from './ListenBausteine';
 import { SPERR_OPTIONEN } from './SperrbildschirmScreen';
 
-// Profil im Stil der iOS-Einstellungen (neu aufgebaut 2026-09-11, Simons
-// Wunsch: "mehr wie ein Apple-Profil mit Dropdowns und anderen Ansichten").
+// Profil im Stil der iOS-Einstellungen (2026-09-11).
 //
-// Vorher: sechs Karten untereinander, jede mit Titel, Fliesstext und eigenen
-// Bedienelementen - Radio-Karten fuer das Widget, eine Checkbox-Karte, eine
-// Liste mit Balken, eine Vorschau ganz unten, getrennt von ihrer Auswahl
-// ganz oben. Man musste lesen, um zu finden.
+// Erster Durchgang (Simons Wunsch: "mehr wie ein Apple-Profil mit Dropdowns
+// und anderen Ansichten"): eine Zeile je Einstellung, der aktuelle Wert
+// rechts daneben, kurze Auswahl als Pull-down, Ein/Aus als Schalter, alles
+// mit mehr Inhalt als eigene Detailseite. Das Muster bleibt.
 //
-// Jetzt: eine Zeile je Einstellung, der aktuelle Wert steht rechts daneben.
-// Man sieht den Stand der ganzen Seite, ohne etwas zu oeffnen, und oeffnet
-// nur, was man aendern will:
-//   * kurze Auswahl (Wort/Satz) -> Pull-down-Menue direkt an der Zeile
-//   * Ein/Aus (Wortarten-Farben) -> iOS-Schalter
-//   * alles mit mehr Inhalt (Sperrbildschirm-Vorschau, Herausforderungen,
-//     Anrede) -> eigene Detailseite
-//
-// Die Bausteine liegen in ListenBausteine.tsx, damit spaetere Einstellungen
-// (Konto, Darkmode, Sprache, Erinnerungen - die sollen laut CLAUDE.md
-// hierher) keine eigene Optik erfinden muessen.
+// Zweiter Durchgang am selben Tag (Simon: "viel zu gevibecoded"). Gemessen
+// an den Design-Skills (ios-hig-design, frontend-design, ui-ux-pro-max)
+// war das Muster zwar richtig, die Ausfuehrung aber ein Nachbau:
+//   * Sechs Gruppen fuer acht Zeilen - jede Einstellung ihre eigene Karte.
+//     Jetzt drei nach dem, worum es geht: Lernen, Sperrbildschirm, ueber
+//     dich. Dazu die Konto-Zeile ohne Ueberschrift.
+//   * Absaetze unter den Gruppen, die erklaerten, wie die App gebaut ist
+//     ("Der Hilfe-Knopf neben einem Satz zeigt die Farben auch dann
+//     einmalig ..."). Jetzt steht in einer Zeile, was ein Schalter bewirkt;
+//     der Rest gehoert in die Stelle, an der er passiert.
+//   * "Konto, Darkmode, Sprache und Erinnerungen kommen später ebenfalls
+//     hierher" - eine Notiz an uns, nicht an den Nutzer. Raus.
+//   * "Konto, Anmeldung und Abgleich" unter dem Namen beschrieb die
+//     Zielseite. Unter dem Namen steht jetzt, was ihn in DIESER App
+//     ausmacht: welche Sprache er lernt.
+//   * Der Avatar mit Farbverlauf - jetzt eine ruhige Flaeche in Markenfarbe.
+//     Weiss auf dem vollen Orange erreichte nur rund 2,9:1.
+//   * "Ausgeblendet 5" plus eine eigene Zeile "Alle zurückholen" sind eine
+//     Zeile mit einem Textknopf geworden.
 
 // Beschriftungen aus derselben Quelle wie der Anrede-Screen, damit Profil und
 // Auswahl nie verschiedene Woerter fuer dieselbe Antwort zeigen.
@@ -51,10 +68,12 @@ const GESCHLECHT_LABEL: Record<string, string> = Object.fromEntries(
 
 export function ProfileScreen() {
   const { name, gender: geschlecht, addressing: ansprache } = useOnboardingState();
+  const { hatKonto, isGuest } = useAuthState();
   const {
     uebersprungen,
     ueberspringenZuruecknehmen,
     darkMode,
+    targetLanguageId,
     lockscreenContent,
     setLockscreenContent,
     wortartenFarben,
@@ -77,6 +96,13 @@ export function ProfileScreen() {
 
   const anzeigeName = name?.trim() || 'Dein Profil';
   const initiale = name?.trim() ? name.trim()[0].toUpperCase() : null;
+  const sprache = getLanguage(targetLanguageId).label;
+  const kontoStand = hatKonto ? 'Angemeldet' : isGuest ? 'Gast' : 'Nicht angemeldet';
+
+  // Ruhige Flaeche statt Verlauf: helles Orange mit dunklem Buchstaben (rund
+  // 5:1), im Darkmode umgekehrt - der Buchstabe traegt die Farbe.
+  const avatarGrund = darkMode ? theme.subtleFill : ACCENT_AMBER_BG;
+  const avatarSchrift = darkMode ? ACCENT_ORANGE : ACCENT_AMBER_TEXT;
 
   return (
     <Screen dark={darkMode} padHorizontal={false} style={{ backgroundColor: gruppenGrund(darkMode) }}>
@@ -89,57 +115,98 @@ export function ProfileScreen() {
           Profil
         </Text>
 
-        {/* Kopf wie Apples Account-Zeile ganz oben in den Einstellungen:
-            wer man ist, und der Weg zum Konto. */}
+        {/* Wer man ist, direkt auf der Seite statt in einer Karte: das ist
+            kein Bedienelement, sondern der Kopf, unter dem alles steht. */}
+        <View
+          style={styles.person}
+          accessible
+          accessibilityLabel={`${anzeigeName}, lernt ${sprache}`}
+        >
+          <View style={[styles.avatar, { backgroundColor: avatarGrund }]}>
+            {initiale ? (
+              <Text style={[styles.avatarText, { color: avatarSchrift }]}>{initiale}</Text>
+            ) : (
+              <Feather name="user" size={28} color={avatarSchrift} />
+            )}
+          </View>
+          <View style={styles.personText}>
+            <Text style={[styles.personName, { color: theme.text }]} numberOfLines={1}>
+              {anzeigeName}
+            </Text>
+            <Text style={[styles.personSprache, { color: theme.sub }]} numberOfLines={1}>
+              Lernt {sprache}
+            </Text>
+          </View>
+        </View>
+
         <Gruppe dark={darkMode}>
-          <Pressable
+          <Zeile
+            dark={darkMode}
+            titel="Konto"
+            wert={kontoStand}
+            hinweis="Anmeldung und Abgleich zwischen Geräten"
             onPress={() => router.push('/konto')}
-            accessibilityRole="button"
-            accessibilityLabel={`${anzeigeName}. Konto, Anmeldung und Abgleich`}
-            style={({ pressed }) => [styles.konto, pressed && styles.gedrueckt]}
-          >
-            <LinearGradient
-              colors={['#FFB36B', ACCENT_ORANGE]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={styles.avatar}
-            >
-              {initiale ? (
-                <Text style={styles.avatarText}>{initiale}</Text>
-              ) : (
-                <Feather name="user" size={26} color="#FFFFFF" />
-              )}
-            </LinearGradient>
-            <View style={styles.kontoText}>
-              <Text style={[styles.kontoName, { color: theme.text }]} numberOfLines={1}>
-                {anzeigeName}
-              </Text>
-              <Text style={[styles.kontoUnter, { color: theme.sub }]} numberOfLines={1}>
-                Konto, Anmeldung und Abgleich
-              </Text>
-            </View>
-            <Feather name="chevron-right" size={18} color={theme.dividerColor} />
-          </Pressable>
+          />
+        </Gruppe>
+
+        <Gruppe dark={darkMode} titel="Lernen">
+          <SchalterZeile
+            dark={darkMode}
+            titel="Wortarten einfärben"
+            untertitel="Nomen, Verben und Adjektive in Farbe"
+            wert={wortartenFarben}
+            onWechsel={(an) => {
+              if (an !== wortartenFarben) toggleWortartenFarben();
+            }}
+          />
+          <Zeile
+            dark={darkMode}
+            titel="Herausforderungen"
+            wert={offen ? `${offen} offen` : 'alle geschafft'}
+            // Rotes Abzeichen wie bei iOS, sobald Coins abzuholen sind - sonst
+            // merkt man es nur, wenn man zufaellig hineinschaut.
+            abzeichen={abholbar}
+            onPress={() => router.push('/einstellungen/herausforderungen')}
+          />
+          {/* "Brauch ich nicht" wirkt dauerhaft - ohne diese Stelle waere es
+              eine Einbahnstrasse. Nur sichtbar, wenn es etwas zurueckzuholen
+              gibt. */}
+          {anzahlUebersprungen > 0 ? (
+            <Zeile
+              dark={darkMode}
+              titel="Übersprungene Sätze"
+              wert={String(anzahlUebersprungen)}
+              rechts={
+                <Pressable
+                  onPress={ueberspringenZuruecknehmen}
+                  hitSlop={SPACING.sm}
+                  accessibilityRole="button"
+                  accessibilityLabel={`${anzahlUebersprungen} übersprungene Sätze zurückholen`}
+                  style={({ pressed }) => [styles.textKnopf, pressed && styles.gedrueckt]}
+                >
+                  <Text style={[styles.textKnopfText, { color: aktionsFarbe(darkMode) }]}>
+                    Zurückholen
+                  </Text>
+                </Pressable>
+              }
+            />
+          ) : null}
         </Gruppe>
 
         <Gruppe
           dark={darkMode}
           titel="Sperrbildschirm"
-          fuss={`Alle ${SLOT_HOURS} Stunden erscheint ein neuer Eintrag auf deinem Sperrbildschirm.`}
+          fuss={`Wechselt alle ${SLOT_HOURS} Stunden.`}
         >
           <AuswahlZeile
             dark={darkMode}
-            icon="lock"
-            farbe="blau"
-            titel="Anzeige"
+            titel="Inhalt"
             optionen={SPERR_OPTIONEN}
             wert={lockscreenContent}
             onWahl={setLockscreenContent}
           />
           <Zeile
             dark={darkMode}
-            icon="smartphone"
-            farbe="indigo"
             titel="Vorschau"
             // Der Eintrag, der gerade dran ist - Apple zeigt rechts immer den
             // aktuellen Wert, nicht nur einen Pfeil.
@@ -150,95 +217,32 @@ export function ProfileScreen() {
 
         <Gruppe
           dark={darkMode}
-          titel="Satz-Anzeige"
-          fuss="Nomen, Verben, Adjektive und Verbindungswörter farbig hervorheben, in Satz-Wiederholung und Cheat-Sheet. Der Hilfe-Knopf neben einem Satz zeigt die Farben auch dann einmalig, wenn der Schalter aus ist."
-        >
-          <SchalterZeile
-            dark={darkMode}
-            icon="type"
-            farbe="lila"
-            titel="Wortarten-Farben"
-            wert={wortartenFarben}
-            onWechsel={(an) => {
-              if (an !== wortartenFarben) toggleWortartenFarben();
-            }}
-          />
-        </Gruppe>
-
-        {/* "Brauch ich nicht" wirkt dauerhaft - ohne diese Stelle waere es
-            eine Einbahnstrasse. Nur sichtbar, wenn es etwas zurueckzuholen
-            gibt. */}
-        {anzahlUebersprungen > 0 ? (
-          <Gruppe
-            dark={darkMode}
-            titel="Übersprungene Sätze"
-            fuss="Diese Sätze tauchen nicht mehr in deinen Übungen auf."
-          >
-            <Zeile
-              dark={darkMode}
-              icon="eye-off"
-              farbe="grau"
-              titel="Ausgeblendet"
-              wert={String(anzahlUebersprungen)}
-            />
-            <Zeile
-              dark={darkMode}
-              titel="Alle zurückholen"
-              tint
-              chevron={false}
-              onPress={ueberspringenZuruecknehmen}
-            />
-          </Gruppe>
-        ) : null}
-
-        <Gruppe dark={darkMode} titel="Fortschritt">
-          <Zeile
-            dark={darkMode}
-            icon="award"
-            farbe="orange"
-            titel="Herausforderungen"
-            wert={offen ? `${offen} offen` : 'alle geschafft'}
-            // Rotes Abzeichen wie bei iOS, sobald Coins abzuholen sind - sonst
-            // merkt man es nur, wenn man zufaellig hineinschaut.
-            abzeichen={abholbar}
-            onPress={() => router.push('/einstellungen/herausforderungen')}
-          />
-        </Gruppe>
-
-        <Gruppe
-          dark={darkMode}
-          titel="Sätze fürs Kennenlernen"
+          titel="Über dich"
           fuss={
             ansprache && ansprache !== 'alle'
-              ? 'Danach richten sich Komplimente und Anmachsätze – im Chinesischen etwa 漂亮 an Frauen und 帅 an Männer.'
-              : 'Solange nichts festgelegt ist, zeigen wir dir beide Varianten.'
+              ? 'Danach richten sich Komplimente und Anmachsätze.'
+              : 'Solange nichts gewählt ist, siehst du beide Varianten.'
           }
         >
           <Zeile
             dark={darkMode}
-            icon="user"
-            farbe="pink"
             titel="Du bist"
-            wert={geschlecht ? GESCHLECHT_LABEL[geschlecht] ?? geschlecht : 'noch offen'}
+            wert={geschlecht ? GESCHLECHT_LABEL[geschlecht] ?? geschlecht : 'Noch offen'}
             onPress={() => router.push('/anrede')}
           />
           <Zeile
             dark={darkMode}
-            icon="heart"
-            farbe="rot"
             titel="Du sprichst an"
-            wert={ansprache ? ANSPRACHE_LABEL[ansprache] ?? ansprache : 'noch offen'}
+            wert={ansprache ? ANSPRACHE_LABEL[ansprache] ?? ansprache : 'Noch offen'}
             onPress={() => router.push('/anrede')}
           />
         </Gruppe>
-
-        <Text style={[styles.ausblick, { color: theme.sub }]}>
-          Konto, Darkmode, Sprache und Erinnerungen kommen später ebenfalls hierher.
-        </Text>
       </ScrollView>
     </Screen>
   );
 }
+
+const AVATAR = 64;
 
 const styles = StyleSheet.create({
   menuSlot: {
@@ -254,44 +258,48 @@ const styles = StyleSheet.create({
     lineHeight: LINE_HEIGHT.h1,
     paddingHorizontal: SPACING.lg,
   },
-  konto: {
+  person: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: SPACING.md,
-    padding: SPACING.lg,
-  },
-  gedrueckt: {
-    opacity: 0.55,
+    gap: SPACING.lg,
+    paddingHorizontal: SPACING.lg,
+    marginTop: SPACING.xl,
   },
   avatar: {
-    width: 58,
-    height: 58,
-    borderRadius: 29,
+    width: AVATAR,
+    height: AVATAR,
+    borderRadius: AVATAR / 2,
     alignItems: 'center',
     justifyContent: 'center',
   },
   avatarText: {
-    color: '#FFFFFF',
-    fontSize: FONT_SIZE.title,
+    fontSize: FONT_SIZE.h2,
+    lineHeight: LINE_HEIGHT.h2,
     ...schrift('800'),
   },
-  kontoText: {
+  personText: {
     flex: 1,
     gap: 2,
   },
-  kontoName: {
-    fontSize: FONT_SIZE.bodyLg,
-    lineHeight: LINE_HEIGHT.bodyLg,
+  personName: {
+    fontSize: FONT_SIZE.title,
+    lineHeight: LINE_HEIGHT.title,
     ...schrift('800'),
   },
-  kontoUnter: {
-    fontSize: FONT_SIZE.caption,
-    lineHeight: LINE_HEIGHT.caption,
+  personSprache: {
+    fontSize: FONT_SIZE.body,
+    lineHeight: LINE_HEIGHT.body,
   },
-  ausblick: {
-    fontSize: FONT_SIZE.caption,
-    lineHeight: LINE_HEIGHT.caption,
-    marginHorizontal: SPACING.xl,
-    marginTop: SPACING.xl,
+  textKnopf: {
+    // 44 hoch wie jedes Tippziel, auch wenn nur das Wort zu sehen ist.
+    minHeight: 44,
+    justifyContent: 'center',
+  },
+  textKnopfText: {
+    fontSize: FONT_SIZE.body,
+    ...schrift('700'),
+  },
+  gedrueckt: {
+    opacity: 0.55,
   },
 });
