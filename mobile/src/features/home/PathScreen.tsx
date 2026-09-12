@@ -967,13 +967,29 @@ export function PathScreen() {
             freigeschalteten Kategorien - sonst stuende der Balken im Kurs
             dauerhaft auf dem Wert einer Sammlung, die man dort gar nicht
             anfasst. */}
-        <ProgressBar
-          dark={darkMode}
-          ratio={anteil}
-          label={`${Math.round(anteil * 100)} Prozent ${
-            learningMode === 'gefuehrt' ? 'des Kurses geschafft' : 'deiner freigeschalteten Inhalte geübt'
-          }`}
-        />
+        {/* Der Balken in einer eigenen Huelle, damit er MITTIG in der Zeile
+            sitzt (2026-09-13, Simons Befund: die Mitte der Flagge lag 7
+            Punkte unter der Mitte des Balkens).
+
+            Ursache: die Spur traegt `alignSelf: 'stretch'` (fuer den Fall,
+            dass der Balken in einer SPALTE steht und die volle Breite
+            braucht). Bei fester Hoehe stretcht das nichts, sondern setzt
+            ihn an den Anfang der Achse - in einer Zeile also nach OBEN, und
+            das schlaegt das `alignItems: 'center'` der Zeile.
+
+            Die Huelle nimmt den Platz ein, wird von der Zeile mittig
+            gesetzt und laesst die Spur darin ihre Breite fuellen. So bleibt
+            `ProgressBar` unangetastet - es gibt sechs Verwendungen, und in
+            den Spalten ist das Strecken richtig. */}
+        <View style={styles.balkenPlatz}>
+                  <ProgressBar
+            dark={darkMode}
+            ratio={anteil}
+            label={`${Math.round(anteil * 100)} Prozent ${
+              learningMode === 'gefuehrt' ? 'des Kurses geschafft' : 'deiner freigeschalteten Inhalte geübt'
+            }`}
+          />
+        </View>
         {/* Die Prozentzahl sitzt im rechten Seitenplatz, wo das Onboarding
             einen leeren Platzhalter hat. So bleibt der Balken exakt gleich
             breit und zentriert, und die Zahl bleibt trotzdem stehen - sie ist
@@ -1397,6 +1413,11 @@ const styles = StyleSheet.create({
   },
   standortReihe: {
     marginTop: SPACING.xxl + KNOEPFE_HOEHER,
+  },
+  balkenPlatz: {
+    // Nimmt die Restbreite; die Hoehe kommt vom Balken selbst, damit die
+    // Zeile ihn mittig setzen kann.
+    flex: 1,
   },
   progressSeite: {
     width: PROGRESS_SEITE,
