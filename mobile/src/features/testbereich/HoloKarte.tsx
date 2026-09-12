@@ -3,11 +3,11 @@ import { ScrollView, StyleSheet, useWindowDimensions, View } from 'react-native'
 import { router, useNavigation } from 'expo-router';
 import type { BottomTabNavigationProp } from 'expo-router/tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Dropdown, HeaderMenu, ProgressBar, ProgressProzent, Screen } from '../../components';
+import { Dropdown, ProgressBar, ProgressProzent, Screen } from '../../components';
 import type { DropdownOption } from '../../components';
-import { useTabLeistenFreiraum } from '../../components/tabLeiste';
+import { BAR_HEIGHT, CONTENT_GAP } from '../../components/tabLeiste';
 import { CATEGORIES, GRUNDWORTSCHATZ_ID } from '../../data/categories';
-import { LANGUAGES } from '../../data/languages';
+import { LANGUAGES, getLanguage } from '../../data/languages';
 import { useUnlockedProgress } from '../home/useUnlockedProgress';
 import { useAppState } from '../../state/AppState';
 import {
@@ -90,12 +90,24 @@ import {
  */
 const MANDARIN = require('../../../assets/sprachkarte-zh.png');
 
-// Um so viel sitzen die Kopfzeilen-Knoepfe hoeher als urspruenglich - wie
-// `KNOEPFE_HOEHER` in PathScreen.tsx, damit die Leiste unten gleich weit
-// ueber die Knoepfe hinausreicht.
-const KNOEPFE_HOEHER = SPACING.md - SPACING.xs;
-/** So weit reicht die Leiste unten ueber die Knoepfe hinaus. */
-const LEISTE_UEBERSTAND = SPACING.sm + KNOEPFE_HOEHER;
+/**
+ * Die Tab-Leiste im Gewand der Top-Bar (2026-09-12, Simons Wunsch:
+ * "kannst du bei Freunde die Tab-Bar so bauen wie die Top-Bar und im selben
+ * Zug bei Freunde die Top-Bar entfernen?").
+ *
+ * Aus der schwebenden Kapsel wird damit eine angedockte Karte am unteren
+ * Rand - dieselbe Flaeche, dieselbe Kontur, derselbe Radius wie die
+ * Kopfleiste, nur GESPIEGELT: die Kopfleiste laeuft oben aus dem Bild und
+ * ist deshalb unten gerundet, diese laeuft unten hinaus und ist oben
+ * gerundet.
+ *
+ * Die Einstellung steht in diesem Screen und nicht im Tab-Layout: sie gilt
+ * nur hier, und wenn der Testbereich geloescht wird, verschwindet sie mit
+ * ihm.
+ *
+ * Auf `false` ist alles wie ueberall sonst - eine Zeile.
+ */
+const LEISTE_WIE_TOPBAR = true;
 
 export function HoloKarteTest() {
   const { darkMode, purchased, targetLanguageId, setTargetLanguageId, learningMode } =
@@ -129,24 +141,34 @@ export function HoloKarteTest() {
   );
   const anteil = useUnlockedProgress(targetLanguageId, freigeschaltet).ratio;
 
-  // Kopfleiste wie auf S1 (Simon, 2026-09-11: statt Titel und Texten eine
-  // Top-Bar mit Sprache, Coins und Geschenk "like on S1"). Fuer diesen
-  // Testscreen aus PathScreen.tsx KOPIERT, nicht ausgelagert: S1 haengt mit
-  // seinem Fortschrittsbalken an denselben Massen, und fuer einen Screen,
-  // der wieder verschwindet, sollte S1 nicht umgebaut werden. Wird die
-  // Leiste dauerhaft auf mehreren Screens gebraucht, gehoert sie in ein
-  // eigenes Bauteil - dann diese Kopie loeschen.
+  // Die Sprachauswahl ist mit der Kopfleiste weggefallen und kommt als
+  // Flagge neben dem Balken zurueck (2026-09-12, Simons Wunsch) - derselbe
+  // Baustein wie auf S1, nur mit dem kleinen Ausloeser.
+  const sprachen: DropdownOption[] = LANGUAGES.map((l) => ({
+    id: l.id,
+    label: l.label,
+    disabled: !l.hasContent,
+    note: l.hasContent ? undefined : 'bald',
+  }));
+
+  // Die Tab-Leiste bekommt das Gewand der frueheren Kopfleiste: dieselbe
+  // `karte()`, nur gespiegelt. Die Kopfleiste lief oben aus dem Bild (kein
+  // oberer Rand, unten gerundet) - diese laeuft unten hinaus, also kein
+  // unterer Rand und oben gerundet.
   //
-  // Coins und Geschenk liegen wie auf S1 hinter dem Drei-Punkte-Knopf.
+  // Auch der Schatten spiegelt: `karte()` wirft ihn nach unten, wo er bei
+  // einer am Boden klebenden Leiste aus dem Bild faellt. Nach oben liegt er
+  // auf dem Inhalt - und genau das tut er bei der Kopfleiste auch.
   const { borderWidth: kartenRand, borderRadius: kartenRadius, ...kartenRest } = karte(darkMode);
-  const navKarte = {
+  const leisteKarte = {
     ...kartenRest,
-    borderTopWidth: 0,
+    shadowOffset: { width: 0, height: -2 },
+    borderBottomWidth: 0,
     borderLeftWidth: kartenRand,
     borderRightWidth: kartenRand,
-    borderBottomWidth: kartenRand,
-    borderBottomLeftRadius: kartenRadius,
-    borderBottomRightRadius: kartenRadius,
+    borderTopWidth: kartenRand,
+    borderTopLeftRadius: kartenRadius,
+    borderTopRightRadius: kartenRadius,
   };
   // Die untere Karte laeuft unten aus dem Bildschirm, also Rand und Rundung
   // nur OBEN und an den Seiten. Seit sie nicht mehr randlos ist
@@ -191,7 +213,10 @@ export function HoloKarteTest() {
   // bequeme Hook. S1 hat sie ohnehin und rechnet direkt.
   const standort = useStandort(targetLanguageId, learningMode);
 
-  const freiraum = useTabLeistenFreiraum();
+  // Die angedockte Leiste braucht weniger Platz als die schwebende: es
+  // entfaellt der Schwebeabstand, der Sicherheitsrand steckt jetzt IN ihr.
+  const leistenHoehe = BAR_HEIGHT + sicherRand.bottom;
+  const freiraum = leistenHoehe + CONTENT_GAP;
 
   // Diesem einen Screen den unteren Innenabstand des Tab-Layouts abnehmen:
   // nur so reicht die untere Karte wirklich bis an den Bildschirmrand, und
@@ -205,15 +230,39 @@ export function HoloKarteTest() {
   // faellt diese Ausnahme mit ihm.
   const navigation = useNavigation<BottomTabNavigationProp<Record<string, object | undefined>>>();
   useLayoutEffect(() => {
-    navigation.setOptions({ sceneStyle: { backgroundColor: theme.pageBg, paddingBottom: 0 } });
-  }, [navigation, theme.pageBg]);
+    navigation.setOptions({
+      sceneStyle: { backgroundColor: theme.pageBg, paddingBottom: 0 },
+      // Die Leiste im Gewand der Kopfleiste, siehe `LEISTE_WIE_TOPBAR`.
+      ...(LEISTE_WIE_TOPBAR
+        ? {
+            tabBarStyle: {
+              position: 'absolute' as const,
+              // `start`/`end` ZUSAETZLICH zu left/right: auf iOS schlaegt
+              // das logische `start` das physische `left`, und die
+              // mitgelieferte Leiste setzt beide. Ohne das stuende sie
+              // seitlich versetzt (derselbe Geraetefehler wie 2026-09-11 im
+              // Tab-Layout).
+              start: 0,
+              end: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              height: leistenHoehe,
+              // Der Sicherheitsrand gehoert hier NACH INNEN: die Leiste
+              // klebt am Rand, ihre Symbole duerfen nicht unter dem
+              // Home-Indikator liegen.
+              paddingBottom: sicherRand.bottom,
+              backgroundColor: theme.cardBg,
+              ...leisteKarte,
+            },
+            // Kein Milchglas mehr - die Kopfleiste ist deckend weiss, und
+            // der Untergrund aus dem Tab-Layout laege sonst darueber.
+            tabBarBackground: () => null,
+          }
+        : null),
+    });
+  }, [navigation, theme.pageBg, leisteKarte, leistenHoehe, sicherRand.bottom, theme.cardBg]);
 
-  const sprachen: DropdownOption[] = LANGUAGES.map((l) => ({
-    id: l.id,
-    label: l.label,
-    disabled: !l.hasContent,
-    note: l.hasContent ? undefined : 'bald',
-  }));
 
   // Seit 2026-09-12 nicht mehr randlos, sondern mit KARTE_SEITE Abstand zu
   // beiden Seiten - genau wie die untere Karte ("do the same to the top
@@ -225,39 +274,10 @@ export function HoloKarteTest() {
 
   return (
     <Screen dark={darkMode}>
-      <View style={styles.navLeiste}>
-        {/* Volle Breite und bis unter die Statusleiste - `Screen` rueckt
-            seinen Inhalt um genau diese Betraege ein, die Flaeche geht um
-            sie wieder hinaus (wie auf S1). */}
-        <View
-          style={[
-            styles.navFlaeche,
-            navKarte,
-            { top: -(sicherRand.top + SPACING.sm), backgroundColor: theme.cardBg },
-          ]}
-          accessibilityElementsHidden
-          importantForAccessibility="no-hide-descendants"
-        />
-        <View style={styles.topBar}>
-          <View style={styles.langSlot}>
-            <Dropdown
-              compact
-              options={sprachen}
-              selectedId={targetLanguageId}
-              onSelect={setTargetLanguageId}
-              dark={darkMode}
-              title="Welche Sprache lernst du?"
-              accessibilityLabel="Sprache"
-              rahmen="ohne"
-            />
-          </View>
-          {/* `rahmen="ohne"` bei beiden (2026-09-11, Simon): Beschriftung
-              und Symbole bleiben, das Knopf-Aussehen faellt weg. S1 behaelt
-              vorerst seine Karten-Knoepfe. */}
-          <HeaderMenu dark={darkMode} rahmen="ohne" />
-        </View>
-      </View>
-
+      {/* Keine Kopfleiste mehr (2026-09-12, Simons Wunsch: "im selben Zug
+          bei Freunde die Top-Bar entfernen"). Mit ihr sind Sprachauswahl und
+          das Drei-Punkte-Menue von diesem Screen verschwunden - der Weg zu
+          Geschenk und Coins fuehrt hier also nicht mehr entlang. */}
       {/* Ueber dem Balken: wo man gerade steht (2026-09-12, Simon: "setz
           ueber die Progressionbar wo wir uns grade befinden"). Inhalt und
           Aufbau stammen aus dem "Du bist hier"-Kasten, den S1 beim Umbau
@@ -269,9 +289,23 @@ export function HoloKarteTest() {
       {/* Fortschrittsbalken wie auf S1 (Simon, 2026-09-12: "put the
           progressionbar on Freunde right under the top bar"). */}
       <View style={styles.progressRow}>
-        {/* Leerer Platz links, Gegengewicht zur Prozentzahl rechts - so
-            steht der Balken mittig und genau so breit wie auf S1. */}
-        <View style={styles.progressSeite} />
+        {/* Links die Flagge der Lernsprache, wie auf S1: derselbe Baustein
+            mit kleinerem Ausloeser, und zugleich das Gegengewicht zur
+            Prozentzahl rechts - der Balken bleibt dadurch mittig und genau
+            so breit wie dort. */}
+        <View style={styles.progressSeite}>
+          <Dropdown
+            compact
+            symbol={getLanguage(targetLanguageId).flagge}
+            options={sprachen}
+            selectedId={targetLanguageId}
+            onSelect={setTargetLanguageId}
+            dark={darkMode}
+            title="Welche Sprache lernst du?"
+            accessibilityLabel="Sprache"
+            rahmen="ohne"
+          />
+        </View>
         <ProgressBar
           dark={darkMode}
           ratio={anteil}
@@ -375,27 +409,6 @@ export function HoloKarteTest() {
 }
 
 const styles = StyleSheet.create({
-  navLeiste: {
-    // Liegt ueber der Karte, damit das ausfahrende Menue nicht darunter
-    // verschwindet.
-    zIndex: 10,
-  },
-  navFlaeche: {
-    position: 'absolute',
-    left: -SPACING.lg,
-    right: -SPACING.lg,
-    bottom: -LEISTE_UEBERSTAND,
-  },
-  topBar: {
-    marginTop: SPACING.xs,
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: SPACING.sm,
-    justifyContent: 'space-between',
-  },
-  langSlot: {
-    flexShrink: 1,
-  },
   buehne: {
     // Oben angesetzt, nicht mittig: die Karte gehoert direkt unter die
     // Top-Bar. Seitlich gestreckt (Vorgabe), damit `karteUnterLeiste` mit
@@ -421,7 +434,9 @@ const styles = StyleSheet.create({
     marginTop: SPACING.lg,
   },
   standortReihe: {
-    marginTop: LEISTE_UEBERSTAND + SPACING.xl,
+    // Ohne Kopfleiste holt hier nichts mehr einen Ueberstand auf - es ist
+    // schlicht der Abstand zum oberen Rand.
+    marginTop: SPACING.xl,
   },
   progressSeite: {
     width: PROGRESS_SEITE,
