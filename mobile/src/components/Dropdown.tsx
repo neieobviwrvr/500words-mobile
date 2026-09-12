@@ -11,6 +11,7 @@ import {
   schrift,
   kachel,
   karte,
+  PROGRESS_SEITE,
 } from '../theme/tokens';
 
 // Auswahlfeld im Babbel-Stil: eine ruhige Zeile mit Pfeil, die eine Liste
@@ -61,6 +62,16 @@ type Props = {
    * statt um die Polsterung eines unsichtbaren Kastens eingerueckt.
    */
   rahmen?: 'kachel' | 'karte' | 'ohne';
+  /**
+   * Statt Beschriftung und Pfeil NUR dieses Zeichen - auf S1 die Flagge der
+   * Lernsprache neben dem Fortschrittsbalken (2026-09-12, Simons Wunsch).
+   *
+   * Die Auswahl dahinter ist dieselbe; nur der Ausloeser ist kleiner. Fuer
+   * die Sprachausgabe aendert sich dadurch NICHTS - die liest weiterhin
+   * Beschriftung und gewaehlte Sprache vor, ein Flaggen-Emoji allein waere
+   * dort wertlos.
+   */
+  symbol?: string;
 };
 
 export function Dropdown({
@@ -72,6 +83,7 @@ export function Dropdown({
   accessibilityLabel,
   compact = false,
   rahmen = 'kachel',
+  symbol,
 }: Props) {
   const theme = getTheme(dark);
   const [open, setOpen] = useState(false);
@@ -84,9 +96,13 @@ export function Dropdown({
         accessibilityRole="button"
         accessibilityLabel={`${accessibilityLabel}: ${selected?.label ?? 'nicht gewählt'}`}
         accessibilityHint="Öffnet die Auswahl"
+        // Das Symbol ist klein (es sitzt im 32 Punkte breiten Seitenplatz
+        // des Balkens), die Tippflaeche darf es nicht sein - Apple verlangt
+        // 44. `hitSlop` vergroessert sie, ohne das Bild zu vergroessern.
+        hitSlop={symbol ? SYMBOL_HITSLOP : undefined}
         style={({ pressed }) => [
-          styles.field,
-          compact && styles.fieldCompact,
+          symbol ? styles.symbolFeld : styles.field,
+          !symbol && compact && styles.fieldCompact,
           rahmen === 'karte' ? karte(dark) : rahmen === 'ohne' ? styles.fieldOhneRahmen : kachel(dark),
           {
             backgroundColor: rahmen === 'ohne' ? 'transparent' : theme.cardBg,
@@ -94,7 +110,8 @@ export function Dropdown({
           },
         ]}
       >
-        <Text
+        {symbol ? <Text style={styles.symbolText}>{symbol}</Text> : null}
+        {symbol ? null : <Text
           // Nur im schmalen Modus: dort sitzt das Feld in einer Kopfzeile
           // neben anderen Knoepfen und darf nicht umbrechen. Im Onboarding
           // fuellt es die Seitenbreite, da ist eine Kuerzung unnoetig.
@@ -102,8 +119,10 @@ export function Dropdown({
           style={[compact ? styles.fieldValueCompact : styles.fieldValue, { color: theme.text }]}
         >
           {selected?.label ?? '—'}
-        </Text>
-        <Feather name="chevron-down" size={compact ? 18 : 22} color={theme.sub} />
+        </Text>}
+        {symbol ? null : (
+          <Feather name="chevron-down" size={compact ? 18 : 22} color={theme.sub} />
+        )}
       </Pressable>
 
       <Modal
@@ -157,7 +176,21 @@ export function Dropdown({
   );
 }
 
+/** Auf 44 Punkte aufgefuellte Tippflaeche rund um das kleine Symbol. */
+const SYMBOL_HITSLOP = { top: 10, bottom: 10, left: 10, right: 10 };
+
 const styles = StyleSheet.create({
+  symbolFeld: {
+    width: PROGRESS_SEITE,
+    height: PROGRESS_SEITE,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  symbolText: {
+    // Emoji, keine Schrift der App - `schrift()` waere hier wirkungslos.
+    fontSize: 22,
+    lineHeight: 26,
+  },
   field: {
     flexDirection: 'row',
     alignItems: 'center',

@@ -29,6 +29,23 @@ export type Language = {
   // um die richtige Stimme zu waehlen.
   ttsLocale: string;
   hasContent: boolean;
+  /**
+   * Flaggen-Emoji fuer die Sprachauswahl (2026-09-12, Simons Wunsch: ein
+   * Flaggensymbol neben dem Fortschrittsbalken).
+   *
+   * ACHTUNG, das ist eine Vereinfachung: eine Sprache ist kein Land.
+   * Englisch waere ebenso US, Spanisch ebenso Mexiko, Chinesisch ebenso
+   * Taiwan. Gewaehlt ist jeweils die Variante, auf die dieses Projekt sich
+   * schon festgelegt hat - britisches Englisch (`en-GB`), europaeisches
+   * Spanisch (`es-ES`), Festland-Mandarin (`cmn`/`zh-CN`), Bokmaal
+   * (`nb-NO`). Wer die Flagge tauscht, tauscht damit eine
+   * Content-Entscheidung, nicht nur ein Bild.
+   *
+   * Emoji statt Bilddateien: iOS und Android zeichnen sie selbst, im Browser
+   * zeigt Windows stattdessen die zwei Landesbuchstaben - das ist eine
+   * Schwaeche der Vorschau, nicht der App.
+   */
+  flagge: string;
   // Vokabeltabelle der 500 haeufigsten Woerter, plus die Spalte mit dem Wort
   // in der Zielsprache. Getrennt von `table`, weil das zwei verschiedene
   // Inhalte sind: `table` haelt Saetze mit einer Lern-`category`
@@ -61,12 +78,12 @@ export type Language = {
 };
 
 export const LANGUAGES: Language[] = [
-  { id: 'de', label: 'Deutsch', table: 'phrasebook_master', sttLanguage: 'de', sttPrompt: 'Das ist ein Beispielsatz auf Deutsch.', ttsLocale: 'de-DE', hasContent: true, vocabTable: null, vocabColumn: null, lautschriftSpalte: null },
-  { id: 'sv', label: 'Schwedisch', table: 'schwedisch_phrasebook', sttLanguage: 'sv', sttPrompt: 'Det här är en exempelmening på svenska.', ttsLocale: 'sv-SE', hasContent: true, vocabTable: 'schwedisch_vocab', vocabColumn: 'swedish', lautschriftSpalte: null },
+  { id: 'de', label: 'Deutsch', table: 'phrasebook_master', sttLanguage: 'de', sttPrompt: 'Das ist ein Beispielsatz auf Deutsch.', ttsLocale: 'de-DE', hasContent: true, flagge: '🇩🇪', vocabTable: null, vocabColumn: null, lautschriftSpalte: null },
+  { id: 'sv', label: 'Schwedisch', table: 'schwedisch_phrasebook', sttLanguage: 'sv', sttPrompt: 'Det här är en exempelmening på svenska.', ttsLocale: 'sv-SE', hasContent: true, flagge: '🇸🇪', vocabTable: 'schwedisch_vocab', vocabColumn: 'swedish', lautschriftSpalte: null },
   // vocabTable zeigt seit 2026-08-30 auf spanisch_vocab (500 Woerter) -
   // vorher gab es trotz vollstaendigem Phrasebook keine einzige spanische
   // Vokabel, Woerter-Wiederholung lief fuer Spanisch komplett leer.
-  { id: 'es', label: 'Spanisch', table: 'spanisch_phrasebook', sttLanguage: 'es', sttPrompt: 'Esta es una frase de ejemplo en español.', ttsLocale: 'es-ES', hasContent: true, vocabTable: 'spanisch_vocab', vocabColumn: 'spanish', lautschriftSpalte: null },
+  { id: 'es', label: 'Spanisch', table: 'spanisch_phrasebook', sttLanguage: 'es', sttPrompt: 'Esta es una frase de ejemplo en español.', ttsLocale: 'es-ES', hasContent: true, flagge: '🇪🇸', vocabTable: 'spanisch_vocab', vocabColumn: 'spanish', lautschriftSpalte: null },
   // Chinesisch hat KEIN Phrasebook (der gefuehrte Kurs deckt das ab, siehe
   // data/chineseCourse.ts), also `table: null` bleibt bestehen fuer die
   // Onboarding-Ausschlussbedingung `table !== null`.
@@ -81,7 +98,7 @@ export const LANGUAGES: Language[] = [
   //
   // `hasContent: true` trotzdem, sonst waere die Sprache in der Auswahl
   // ausgegraut und der Kurs gar nicht erreichbar.
-  { id: 'zh', label: 'Chinesisch', table: 'chinesisch_phrasebook', sttLanguage: 'cmn', sttPrompt: '这是一个中文例句。', ttsLocale: 'zh-CN', hasContent: true, vocabTable: 'chinesisch_vocab', vocabColumn: null, lautschriftSpalte: 'pinyin' },
+  { id: 'zh', label: 'Chinesisch', table: 'chinesisch_phrasebook', sttLanguage: 'cmn', sttPrompt: '这是一个中文例句。', ttsLocale: 'zh-CN', hasContent: true, flagge: '🇨🇳', vocabTable: 'chinesisch_vocab', vocabColumn: null, lautschriftSpalte: 'pinyin' },
   // Franzoesisch hat seit 2026-08-27 ein eigenes Phrasebook
   // (Migration 20260827120000_franz_phrasebook.sql) und damit erstmals
   // Saetze - bis dahin gab es nur `franz_vocab` mit Einzelwoertern, und die
@@ -91,7 +108,7 @@ export const LANGUAGES: Language[] = [
   // der Grundwortschatz ist vollstaendig (der freie Teil, den jeder
   // bekommt), die KAUFKATEGORIEN sind es noch nicht - dort zeigt der Pfad
   // vorerst leere Reihen, genau wie Chinesisch es lange bei den Saetzen tat.
-  { id: 'fr', label: 'Französisch', table: 'franz_phrasebook', sttLanguage: 'fr', sttPrompt: 'Voici une phrase d\'exemple en français.', ttsLocale: 'fr-FR', hasContent: true, vocabTable: 'franz_vocab', vocabColumn: 'french', lautschriftSpalte: null },
+  { id: 'fr', label: 'Französisch', table: 'franz_phrasebook', sttLanguage: 'fr', sttPrompt: 'Voici une phrase d\'exemple en français.', ttsLocale: 'fr-FR', hasContent: true, flagge: '🇫🇷', vocabTable: 'franz_vocab', vocabColumn: 'french', lautschriftSpalte: null },
 
   // Italienisch, Norwegisch, Russisch (2026-09-03, Simons Auftrag "alles
   // Chinesische uebersetzen"). Migration
@@ -100,14 +117,14 @@ export const LANGUAGES: Language[] = [
   // VOLLSTAENDIG: alle 14 Kategorien, 579-581 Saetze je Sprache, dazu je
   // 500 Vokabeln und vollstaendige Wortart-Tags. Es fehlen nur noch
   // answer_clusters, Vertonung und der gefuehrte Kurs.
-  { id: 'it', label: 'Italienisch', table: 'italienisch_phrasebook', sttLanguage: 'it', sttPrompt: 'Questa è una frase di esempio in italiano.', ttsLocale: 'it-IT', hasContent: true, vocabTable: 'italienisch_vocab', vocabColumn: 'italian', lautschriftSpalte: null },
+  { id: 'it', label: 'Italienisch', table: 'italienisch_phrasebook', sttLanguage: 'it', sttPrompt: 'Questa è una frase di esempio in italiano.', ttsLocale: 'it-IT', hasContent: true, flagge: '🇮🇹', vocabTable: 'italienisch_vocab', vocabColumn: 'italian', lautschriftSpalte: null },
   // Bokmaal, nicht Nynorsk - siehe Kopfkommentar der Migration. Das
   // TTS-Gebietsschema sagt es ausdruecklich ("nb"), damit die Systemstimme
   // nicht auf Nynorsk ausweicht.
-  { id: 'no', label: 'Norwegisch', table: 'norwegisch_phrasebook', sttLanguage: 'no', sttPrompt: 'Dette er en eksempelsetning på norsk.', ttsLocale: 'nb-NO', hasContent: true, vocabTable: 'norwegisch_vocab', vocabColumn: 'norwegian', lautschriftSpalte: null },
+  { id: 'no', label: 'Norwegisch', table: 'norwegisch_phrasebook', sttLanguage: 'no', sttPrompt: 'Dette er en eksempelsetning på norsk.', ttsLocale: 'nb-NO', hasContent: true, flagge: '🇳🇴', vocabTable: 'norwegisch_vocab', vocabColumn: 'norwegian', lautschriftSpalte: null },
   // Einzige Sprache neben Chinesisch mit eigener Schrift: gelernt wird ueber
   // `lautschrift` (Transliteration), das Kyrillische laeuft passiv mit.
-  { id: 'ru', label: 'Russisch', table: 'russisch_phrasebook', sttLanguage: 'ru', sttPrompt: 'Это пример предложения на русском языке.', ttsLocale: 'ru-RU', hasContent: true, vocabTable: 'russisch_vocab', vocabColumn: 'russian', lautschriftSpalte: 'lautschrift' },
+  { id: 'ru', label: 'Russisch', table: 'russisch_phrasebook', sttLanguage: 'ru', sttPrompt: 'Это пример предложения на русском языке.', ttsLocale: 'ru-RU', hasContent: true, flagge: '🇷🇺', vocabTable: 'russisch_vocab', vocabColumn: 'russian', lautschriftSpalte: 'lautschrift' },
 
   // Vietnamesisch, Polnisch, Englisch (2026-09-03, dritte Welle).
   // Migration 20260903210000. Ebenfalls vollstaendig (581-584 Saetze,
@@ -125,12 +142,12 @@ export const LANGUAGES: Language[] = [
   // Sonderzeichen. Es gibt dort keine zweite Schrift zu verbergen - anders
   // als bei Hanzi und Kyrillisch, die ein Anfaenger gar nicht lesen kann.
   // Eine Lautschrift waere hier nicht abgebildet, sondern erfunden.
-  { id: 'vi', label: 'Vietnamesisch', table: 'vietnamesisch_phrasebook', sttLanguage: 'vi', sttPrompt: 'Đây là một câu ví dụ bằng tiếng Việt.', ttsLocale: 'vi-VN', hasContent: true, vocabTable: 'vietnamesisch_vocab', vocabColumn: 'vietnamese', lautschriftSpalte: null },
-  { id: 'pl', label: 'Polnisch', table: 'polnisch_phrasebook', sttLanguage: 'pl', sttPrompt: 'To jest przykładowe zdanie po polsku.', ttsLocale: 'pl-PL', hasContent: true, vocabTable: 'polnisch_vocab', vocabColumn: 'polish', lautschriftSpalte: null },
+  { id: 'vi', label: 'Vietnamesisch', table: 'vietnamesisch_phrasebook', sttLanguage: 'vi', sttPrompt: 'Đây là một câu ví dụ bằng tiếng Việt.', ttsLocale: 'vi-VN', hasContent: true, flagge: '🇻🇳', vocabTable: 'vietnamesisch_vocab', vocabColumn: 'vietnamese', lautschriftSpalte: null },
+  { id: 'pl', label: 'Polnisch', table: 'polnisch_phrasebook', sttLanguage: 'pl', sttPrompt: 'To jest przykładowe zdanie po polsku.', ttsLocale: 'pl-PL', hasContent: true, flagge: '🇵🇱', vocabTable: 'polnisch_vocab', vocabColumn: 'polish', lautschriftSpalte: null },
   // Britisches Englisch, wo es auseinandergeht (toilet/mobile/bill statt
   // restroom/cell phone/check) - deshalb en-GB als Stimme. Beide Varianten
   // stehen in den accepted_concepts, die Bewertung weist also keine ab.
-  { id: 'en', label: 'Englisch', table: 'englisch_phrasebook', sttLanguage: 'en', sttPrompt: 'This is an example sentence in English.', ttsLocale: 'en-GB', hasContent: true, vocabTable: 'englisch_vocab', vocabColumn: 'english', lautschriftSpalte: null },
+  { id: 'en', label: 'Englisch', table: 'englisch_phrasebook', sttLanguage: 'en', sttPrompt: 'This is an example sentence in English.', ttsLocale: 'en-GB', hasContent: true, flagge: '🇬🇧', vocabTable: 'englisch_vocab', vocabColumn: 'english', lautschriftSpalte: null },
 ];
 
 export const DEFAULT_LANGUAGE_ID = 'de';
