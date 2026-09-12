@@ -226,7 +226,10 @@ export function HoloKarteTest() {
   // Symbole in diesem Streifen waeren teils nicht bedienbar. Das ist der
   // weisse Rest, der unten stehen bleibt - Geraet, nicht Gestaltung.
   const leistenBand = 56;
-  const leistenHoehe = leistenBand + sicherRand.bottom;
+  // Derselbe gekappte Wert wie im Innenabstand unten - sonst waere die
+  // Leiste hoeher als ihr Inhalt und der Schnitt waere wieder da.
+  const leistenRand = Math.min(sicherRand.bottom, SPACING.lg);
+  const leistenHoehe = leistenBand + leistenRand;
   const freiraum = leistenHoehe + CONTENT_GAP;
 
   // Diesem einen Screen den unteren Innenabstand des Tab-Layouts abnehmen:
@@ -262,7 +265,17 @@ export function HoloKarteTest() {
               // Der Sicherheitsrand gehoert hier NACH INNEN: die Leiste
               // klebt am Rand, ihre Symbole duerfen nicht unter dem
               // Home-Indikator liegen.
-              paddingBottom: sicherRand.bottom,
+              //
+              // GEKAPPT auf hoechstens SPACING.lg (2026-09-13, Simon nach
+              // dem zweiten Blick aufs Geraet: unten ist immer noch zu viel
+              // weiss). Auf einem iPhone 12 sind das 16 statt 34 Punkte.
+              //
+              // Was das kostet: die Beschriftungen ruecken in die Naehe des
+              // Home-Indikators. Die Wischgeste von unten gehoert weiterhin
+              // iOS - ein Tipp auf die Symbole funktioniert, ein Wisch von
+              // ganz unten fuehrt aus der App. Apples eigene Leiste laesst
+              // den Streifen deshalb frei; das hier ist bewusst enger.
+              paddingBottom: leistenRand,
               backgroundColor: theme.cardBg,
               ...leisteKarte,
             },
@@ -272,7 +285,7 @@ export function HoloKarteTest() {
           }
         : null),
     });
-  }, [navigation, theme.pageBg, leisteKarte, leistenHoehe, sicherRand.bottom, theme.cardBg]);
+  }, [navigation, theme.pageBg, leisteKarte, leistenHoehe, leistenRand, theme.cardBg]);
 
 
   // Seit 2026-09-12 nicht mehr randlos, sondern mit KARTE_SEITE Abstand zu
@@ -317,11 +330,27 @@ export function HoloKarteTest() {
             rahmen="ohne"
           />
         </View>
-        <ProgressBar
-          dark={darkMode}
-          ratio={anteil}
-          label={`${Math.round(anteil * 100)} Prozent deiner freigeschalteten Inhalte geübt`}
-        />
+        {/* Der Balken in einer eigenen Huelle, damit er MITTIG in der Zeile
+            sitzt (2026-09-13, Simons Befund: die Mitte der Flagge lag 7
+            Punkte unter der Mitte des Balkens).
+
+            Ursache: die Spur traegt `alignSelf: 'stretch'` (fuer den Fall,
+            dass der Balken in einer SPALTE steht und die volle Breite
+            braucht). Bei fester Hoehe stretcht das nichts, sondern setzt
+            ihn an den Anfang der Achse - in einer Zeile also nach OBEN, und
+            das schlaegt das `alignItems: 'center'` der Zeile.
+
+            Die Huelle nimmt den Platz ein, wird von der Zeile mittig
+            gesetzt und laesst die Spur darin ihre Breite fuellen. So bleibt
+            `ProgressBar` unangetastet - es gibt sechs Verwendungen, und in
+            den Spalten ist das Strecken richtig. */}
+        <View style={styles.balkenPlatz}>
+                  <ProgressBar
+            dark={darkMode}
+            ratio={anteil}
+            label={`${Math.round(anteil * 100)} Prozent deiner freigeschalteten Inhalte geübt`}
+          />
+        </View>
         <View style={styles.progressSeite}>
           <ProgressProzent dark={darkMode} ratio={anteil} />
         </View>
@@ -448,12 +477,20 @@ const styles = StyleSheet.create({
     // Ohne Kopfleiste holt hier nichts mehr einen Ueberstand auf - es ist
     // schlicht der Abstand zum oberen Rand.
     //
-    // 2026-09-12 von xl auf sm (Simon: das Weiss ueber "SPEED-RUN"
-    // reduzieren). Was danach noch bleibt, ist der Sicherheitsrand des
-    // Geraets (auf einem iPhone 12 rund 47 Punkte) plus die 8, die `Screen`
-    // fuer alle Seiten setzt - dort steht die Statusleiste, das ist kein
-    // Abstand, den wir vergeben.
-    marginTop: SPACING.sm,
+    // In zwei Schritten am 2026-09-12/13 heruntergefahren (Simon: "immer
+    // noch zu viel weisse Flaeche gaanz oben"): erst xl -> sm, dann auf
+    // NEGATIV. Die -8 nehmen die Polsterung zurueck, die `Screen` allen
+    // Seiten gibt - der Text steht damit direkt unter der Statusleiste.
+    //
+    // Weiter geht es nicht, ohne DARUNTER zu rutschen: die restlichen rund
+    // 47 Punkte auf einem iPhone 12 sind der Sicherheitsrand mit Uhrzeit,
+    // Signal und Notch. Text dort waere teilweise verdeckt.
+    marginTop: -SPACING.sm,
+  },
+  balkenPlatz: {
+    // Nimmt die Restbreite; die Hoehe kommt vom Balken selbst, damit die
+    // Zeile ihn mittig setzen kann.
+    flex: 1,
   },
   progressSeite: {
     width: PROGRESS_SEITE,
