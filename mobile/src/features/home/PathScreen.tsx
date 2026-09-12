@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import {
   Animated,
   Easing,
@@ -11,7 +11,8 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
-import { router, useFocusEffect } from 'expo-router';
+import { router, useFocusEffect, useNavigation } from 'expo-router';
+import type { BottomTabNavigationProp } from 'expo-router/tabs';
 import { Feather } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { LEARNING_MODE_LABEL, useAppState } from '../../state/AppState';
@@ -20,7 +21,6 @@ import { sichtbareSituationen } from '../../data/demo';
 import { useAuthState } from '../../state/AuthState';
 import { LANGUAGES, getLanguage } from '../../data/languages';
 import {
-  Card,
   Dropdown,
   HeaderMenu,
   ProgressBar,
@@ -28,14 +28,27 @@ import {
   Screen,
 } from '../../components';
 import type { DropdownOption } from '../../components';
+import { useTabLeistenFreiraum } from '../../components/tabLeiste';
 import { useUnlockedProgress } from './useUnlockedProgress';
 import { useCategorySituations } from '../lessons/useCategorySituations';
 import { useGuidedCourse } from './useGuidedCourse';
 import { useGuidedProgress } from './useGuidedProgress';
-import { PathBackdrop, PATH_BACKDROP_COLOR, PATH_BACKDROP_TRANSPARENT } from './PathBackdrop';
-import { ChinaPfadHintergrund, CHINA_BG, wegAnteilBei } from './ChinaPfadHintergrund';
+import { PathBackdrop } from './PathBackdrop';
+import { standortAus, Standortzeile } from './Standort';
+import {
+  BildKarte,
+  BlattKarte,
+  KARTE_HOEHE,
+  KARTE_SEITE,
+  Knopfreihe,
+  LektionsPille,
+  SCHATTEN,
+  SCHATTEN_TIEFE,
+  TINTE,
+  useUmdrehen,
+  WechselKnopf,
+} from './Drehkarten';
 import { ladeBesuch, ZuletztBesucht } from './zuletztBesucht';
-import { LinearGradient } from 'expo-linear-gradient';
 import { scenarioLabel } from '../../data/scenarios';
 import { leihName } from '../../data/geliehen';
 import {
@@ -51,6 +64,7 @@ import {
   PATH_LINE_NEUTRAL_DARK,
   VEIL_LIGHT,
   VEIL_DARK,
+  KACHEL_RAND_LIGHT,
   RADIUS,
   SPACING,
   FONT_SIZE,
@@ -90,6 +104,17 @@ import {
 // Geometrie des Zickzacks. Layout-Mathematik, keine Abstands-Tokens - die
 // Werte stehen zueinander in einem festen Verhaeltnis (eine Zeile muss hoeher
 // sein als eine Pille, sonst ueberlappen sich zwei Reihen).
+/**
+ * Die Illustration der oberen Karte (2026-09-12). Simons Vorlage aus
+ * "Marketing und UI-Ideen/Background S1" - gemalt fuer genau diesen Screen.
+ *
+ * Sie zeigt Chinesisch (Tor, Bambus, die Mandarine) und gilt deshalb nur
+ * dort; jede andere Sprache bekommt bis auf Weiteres eine ruhige Flaeche,
+ * statt ein falsches Land zu zeigen. Die gemalten Pillen auf dem Bild
+ * (Serie, Abzeichen) sind Teil der Zeichnung und noch keine echten Anzeigen.
+ */
+const SPRACH_BILD_ZH = require('../../../assets/sprachkarte-zh.png');
+
 const PILL_W = 176;
 const PILL_H = 48;
 const LANG_PILL_W = 150;
@@ -147,46 +172,6 @@ const SWIPE_CLAIM = 20;
 const SWIPE_DISTANCE = 90;
 /** Alternativ: kurzer, aber schneller Zug. */
 const SWIPE_VELOCITY = 0.3;
-/**
- * Anteil der Fensterhoehe, den die Pfad-Box hoechstens einnimmt.
- *
- * Herleitung des Werts (2026-08-20): bei 0.52 war die Box auf einem
- * 812 Punkte hohen Bildschirm 422 hoch, und zwischen ihrer Unterkante und
- * dem Lern-Knopf blieben 109 Punkte Luft. Die Box sollte unten um 40% dieser
- * Luft wachsen, also um rund 44 Punkte auf 466 - das sind 0.573 der
- * Fensterhoehe. Die restliche Luft betraegt danach etwa 65 Punkte.
- *
- * Nachgezogen (2026-08-25, Nutzer-Wunsch "Tab-Bar und Knopf Richtung
- * Pfad-Box schieben"): dieselbe Rechnung nochmal, diesmal die Luft um
- * weitere 40 Punkte verkleinert (von ~72 auf ~32 Punkte, gemessen bei
- * 812 Punkten Fensterhoehe). Box waechst dafuer um 40 Punkte auf 505,
- * das sind 0.622 der Fensterhoehe.
- *
- * Zurueckgenommen, noch am selben Tag (Nutzer-Wunsch: "ein bisschen zu nah,
- * um die Haelfte der geaenderten Groesse vergroessern"): die Haelfte der
- * eben gewonnenen 40 Punkte wieder abgegeben, also 20 Punkte. Box damit bei
- * 485 Punkten (0.598 der Fensterhoehe), die Luft liegt wieder bei ~52 Punkten
- * statt ~32.
- *
- * Weil es ein Anteil und keine feste Zahl ist, waechst die Box auf groesseren
- * Geraeten mit; die verbleibende Luft ist dort entsprechend etwas groesser,
- * nicht exakt gleich.
- *
- * NEU 2026-09-01 - die Rolle des Werts hat sich geaendert, die Rechnungen
- * oben sind damit Geschichte. Er war bis dahin die BINDENDE Groesse: die Box
- * traf auf jedem Telefon ihren Deckel, und was uebrig blieb, sammelte sich
- * als Luft zwischen Pfad und Knopf (gemessen 49 Punkte bei 812) - genau die
- * Luecke, die Simon stoerte. Verschaerft hat es der Wegfall des zweiten
- * Knopfes: die Zahlen oben wurden fuer ZWEI Knoepfe eingestellt, seitdem
- * steht dort nur noch einer und die Luft wuchs entsprechend.
- *
- * Jetzt ist der Wert nur noch eine Obergrenze fuer sehr hohe Bildschirme.
- * Die tatsaechliche Hoehe ergibt sich aus `flex: 1` - also aus dem, was
- * Kopfzeile und Knopfblock uebrig lassen. Dadurch gibt es keinen Rest mehr,
- * der sich irgendwo sammeln koennte, und der Abstand zum Knopf ist genau
- * `actions.marginTop` und sonst nichts.
- */
-const PATH_BOX_HEIGHT_RATIO = 0.66;
 
 type NodeState = 'done' | 'current' | 'open' | 'locked';
 
@@ -251,21 +236,19 @@ export function PathScreen() {
   const theme = getTheme(darkMode);
   const activeLanguage = getLanguage(targetLanguageId);
 
-  // Hoehe der Pfad-Box deckeln (Nutzer-Wunsch 2026-08-18: vertikal kleiner).
-  // Als Anteil der Fensterhoehe statt als feste Zahl - auf einem kleinen
-  // iPhone SE waere eine feste Hoehe zu viel, auf einem Pro Max zu wenig.
-  // Die Box scrollt ohnehin innen, sie muss also nicht alles zeigen.
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
-  // Bebilderter Pfad: bisher nur Chinesisch (Simons Vorlage 2026-08-31).
-  // Weitere Sprachen bekommen eigene Zeichnungen, sobald es welche gibt -
-  // dann wird daraus eine Zuordnung statt eines Vergleichs.
-  const bebilderterPfad = targetLanguageId === 'zh';
-  const pathBoxMaxHeight = Math.round(windowHeight * PATH_BOX_HEIGHT_RATIO);
-  // Ausblenden-Hoehe als Anteil der Box, nicht als feste Zahl (Nutzer-
-  // Wunsch: "zu einem bestimmten Prozentsatz") - skaliert dadurch mit der
-  // Box selbst statt auf kleinen Geraeten unverhaeltnismaessig viel wegzu-
-  // nehmen.
-  const pathFadeHoehe = Math.round(pathBoxMaxHeight * 0.1);
+
+  // Masse der beiden Karten (2026-09-12, Simons Umbau: der Startscreen soll
+  // aussehen wie der Testscreen auf /freunde). Die obere Karte nimmt 35 %
+  // der Hoehe, die untere nimmt sich den Rest und laeuft unten aus dem
+  // Bildschirm - beide mit demselben Seitenabstand.
+  const kartenBreite = windowWidth - 2 * KARTE_SEITE;
+  const kartenHoehe = Math.round(windowHeight * KARTE_HOEHE);
+
+  // Der bebilderte Pfad ist am 2026-09-12 ersatzlos weggefallen (Simon:
+  // "Vergiss den Bildpfad aus Chinesisch, wir brauchen keine Bilder als
+  // Hintergrund"). Die Knoten stehen seitdem in ALLEN Sprachen im Zickzack,
+  // und `ChinaPfadHintergrund.tsx` wird nirgends mehr eingebunden.
 
   // Nach rechts wischen oeffnet die Geschenk-/Belohnungsseite (Nutzer-Wunsch
   // 2026-08-20). Zusaetzlicher Weg, nicht der einzige: der Coins-Knopf im
@@ -336,6 +319,7 @@ export function PathScreen() {
   ).current;
 
   const scrollRef = useRef<ScrollView>(null);
+  const scrollHinten = useRef<ScrollView>(null);
   // Navigationsleiste oben (2026-09-11). Drei Stufen am selben Tag:
   // erst eine iOS-Leiste, die beim Scrollen milchig wird ("Option B, nur auf
   // S1"), dann dauerhaft grau mit Schieferkante, dann - Simons endgueltiger
@@ -371,8 +355,6 @@ export function PathScreen() {
   // liegt es hinter dem Screen und bekommt den Scroll-Stand als Versatz -
   // es bewegt sich also mit, ohne beschnitten zu werden.
   const [besuch, setBesuch] = useState<ZuletztBesucht | null>(null);
-  const [scrollY, setScrollY] = useState(0);
-  const [scrollTop, setScrollTop] = useState(0);
   const didAutoScroll = useRef(false);
 
   // Auffaechern: ein Tipp auf eine Pille zeigt ihre Themen. `expandedIds`
@@ -384,7 +366,12 @@ export function PathScreen() {
   // Lektion ohnehin schreibt - siehe useGuidedProgress.ts.
   const guidedProgress = useGuidedProgress(activeLanguage.id);
 
+  // ZWEI Listen, seit beide Lernwege gleichzeitig gebaut werden (2026-09-12):
+  // vorne der Speed-Run, hinten der gefuehrte Kurs. Mit einer gemeinsamen
+  // Liste wuerde der Effekt weiter unten, der im Kurs alle Lektionen
+  // aufklappt, dem Speed-Run seine Kategorien zuklappen.
   const [expandedIds, setExpandedIds] = useState<string[]>([]);
+  const [offenGefuehrt, setOffenGefuehrt] = useState<string[]>([]);
   // Wie beim Menue getrennt vom Zustand: die Knoten sollen das Einfahren zu
   // Ende spielen, bevor sie aus der Liste verschwinden.
   const [themesMounted, setThemesMounted] = useState(false);
@@ -400,6 +387,15 @@ export function PathScreen() {
     (categoryId: string) => () =>
       setExpandedIds((cur) =>
         cur.includes(categoryId) ? cur.filter((id) => id !== categoryId) : [...cur, categoryId]
+      ),
+    []
+  );
+
+  /** Dasselbe fuer die Rueckseite - der gefuehrte Kurs hat eigene Pillen. */
+  const toggleModul = useCallback(
+    (modulId: string) => () =>
+      setOffenGefuehrt((cur) =>
+        cur.includes(modulId) ? cur.filter((id) => id !== modulId) : [...cur, modulId]
       ),
     []
   );
@@ -426,8 +422,8 @@ export function PathScreen() {
   // Die Abhaengigkeiten sind bewusst eng - `expandedIds` steht NICHT darin,
   // sonst spraenge eine gerade zugeklappte Pille sofort wieder auf.
   useEffect(() => {
-    setExpandedIds(learningMode === 'gefuehrt' ? course.lessons.map((l) => l.id) : []);
-  }, [learningMode, course.lessons]);
+    setOffenGefuehrt(course.lessons.map((l) => l.id));
+  }, [course.lessons]);
 
   useEffect(() => {
     const useNative = Platform.OS !== 'web';
@@ -476,6 +472,41 @@ export function PathScreen() {
         : 0
       : progress.ratio;
 
+  // Wo man gerade steht - die Zeile ueber dem Balken (2026-09-12, Simon:
+  // erst auf Freunde gebaut, dann "setz die Standort-Zeile auch auf S1").
+  //
+  // `standortAus` statt des Hooks `useStandort`: der laedt die drei Quellen
+  // selbst, und dieser Screen hat sie schon (`situations`, `course`,
+  // `guidedProgress`). Ueber den Hook liefe `useCategorySituations` hier ein
+  // zweites Mal - saemtliche Saetze und alle Lernkarten, fuer zwei Zeilen
+  // Text.
+  const standort = useMemo(
+    () =>
+      standortAus({
+        learningMode,
+        lektionen: course.lessons,
+        aktuellesModul: guidedProgress.aktuellesModul,
+        aktuelleLektion: guidedProgress.aktuelleLektion,
+        recentCategoryIds: situations.recentCategoryIds,
+        recentSituations: situations.recentSituations,
+      }),
+    [
+      learningMode,
+      course.lessons,
+      guidedProgress.aktuellesModul,
+      guidedProgress.aktuelleLektion,
+      situations.recentCategoryIds,
+      situations.recentSituations,
+    ]
+  );
+
+  // Die Illustration der oberen Karte. Bisher gibt es genau eine, und sie
+  // zeigt Chinesisch (Simons Vorlage aus "Background S1") - fuer jede
+  // andere Sprache bleibt die Karte eine ruhige Perlmutt-Flaeche, statt ein
+  // falsches Land zu zeigen. Kommt eine zweite Zeichnung, wird daraus eine
+  // Zuordnung statt eines Vergleichs.
+  const heldBild = targetLanguageId === 'zh' ? SPRACH_BILD_ZH : undefined;
+
   const goCategory = (id: string) => () => router.push({ pathname: '/category/[id]', params: { id } });
   // Eine Situation oeffnet GENAU ihre Saetze (2026-08-21). Vorher landete
   // man auf der Kategorie und damit bei den vier Modus-Knoepfen - man hatte
@@ -492,11 +523,15 @@ export function PathScreen() {
   // ---------------------------------------------------------------------
   // Knotenliste
   // ---------------------------------------------------------------------
-  const { nodes: raw, currentIndex, currentLabel, currentScenario, currentNiveau } = useMemo(() => {
+  // Beide Lernwege auf einmal: der Speed-Run liegt auf der Vorderseite der
+  // unteren Karte, der gefuehrte Kurs auf ihrer Rueckseite (2026-09-12,
+  // Simons Vorgabe). Vorher baute dieser Block nur den GERADE aktiven Weg -
+  // beim Umdrehen haette die halbe Drehung eine leere Karte gezeigt.
+  const pfade = useMemo(() => {
     // Geführtes Lernen: Lektionen statt Kategorien, Themen statt Situationen.
     // Solange der Kurs leer ist, bleibt auch die Liste leer - der Pfad zeigt
     // dann den Grund aus dem Hook (siehe useGuidedCourse.ts).
-    if (learningMode === 'gefuehrt') {
+    const gefuehrt = (() => {
       // Zustaende aus dem echten Fortschritt statt fest 'open' - erledigte
       // Lektionen bekommen den Haken, die naechste offene wird
       // hervorgehoben. Das ist die Duolingo-Mechanik, die dem Kurs bis
@@ -506,9 +541,9 @@ export function PathScreen() {
           id: lesson.id,
           label: lesson.label,
           state: (guidedProgress.module[lesson.id] ?? 'open') as NodeState,
-          onPress: toggleCategory(lesson.id),
+          onPress: toggleModul(lesson.id),
         },
-        ...(themesMounted && expandedIds.includes(lesson.id)
+        ...(offenGefuehrt.includes(lesson.id)
           ? lesson.themes.map((t) => ({
               id: `${lesson.id}:${t.id}`,
               label: t.label,
@@ -528,24 +563,19 @@ export function PathScreen() {
       if (index < 0) index = list.findIndex((n) => n.id === guidedProgress.aktuellesModul);
       if (index < 0) index = 0;
 
-      return {
-        nodes: list,
-        currentIndex: index,
-        currentLabel: list.length > 0 ? (list[index]?.label ?? list[0].label) : 'Noch kein Kurs',
-        currentScenario: null,
-        // Der Pfad ist eine flache Liste aus bis zu 38 Pillen. Ohne die
-        // Stufe im Kopf saehe der Nutzer nach Modul 24 einfach weitere
-        // Pillen und wuesste nicht, dass dort A2 anfaengt (2026-09-09).
-        currentNiveau:
-          course.lessons.find((m) => m.id === guidedProgress.aktuellesModul)?.niveau ?? null,
-      };
-    }
+      // Nur noch Liste und Stelle: Name, Situation und Niveau brauchte der
+      // "Du bist hier"-Kasten, und den gibt es seit dem 2026-09-12 nicht
+      // mehr (Simons Umbau). Die Stufe A2 stand dort im Kopf - sie hat auf
+      // dem neuen Aufbau noch keinen Platz, siehe Notiz in CLAUDE.md.
+      return { nodes: list, currentIndex: index };
+    })();
 
+    const speed = (() => {
     // Sprachen ohne Phrasebook-Tabelle (Chinesisch traegt bisher nur den
     // gefuehrten Kurs) haben im Speed-Run nichts zu zeigen. Ohne diese
     // Weiche stuenden die Kategorien trotzdem da - mit nichts dahinter.
     if (!activeLanguage.table) {
-      return { nodes: [] as RawNode[], currentIndex: 0, currentLabel: 'Noch keine Sätze', currentScenario: null, currentNiveau: null };
+      return { nodes: [] as RawNode[], currentIndex: 0 };
     }
 
     // ALLE Kategorien, auch ohne Konto (berichtigt 2026-08-23, siehe
@@ -640,73 +670,36 @@ export function PathScreen() {
     const idx = zuletzt >= 0 ? zuletzt : list.findIndex((n) => n.state === 'open');
     if (idx >= 0 && list[idx].state !== 'done') list[idx].state = 'current';
 
-    return {
-      nodes: list,
-      currentIndex: idx >= 0 ? idx : 0,
-      // `list` ist im Speed-Run nie leer (die Sprach-Pille steht immer da),
-      // der Zugriff auf list[0] wird trotzdem abgesichert - der geführte Weg
-      // teilt sich diesen Rueckgabepfad nicht, aber die Annahme soll nicht
-      // still im Code stehen.
-      currentLabel: idx >= 0 ? list[idx].label : (list[0]?.label ?? ''),
-      currentNiveau: null,
-      // Die Stelle IN der Kategorie (Simons Wunsch 2026-08-31): der Kasten
-      // soll zeigen, woran man zuletzt war, nicht nur in welcher Kategorie.
-      // Nur die juengste Situation zaehlt, und nur wenn sie zur angezeigten
-      // Kategorie gehoert - sonst stuende dort eine Situation aus einer
-      // anderen Kategorie als die darueber genannte.
-      currentScenario: (() => {
-        if (idx < 0) return null;
-        const ausMerker =
-          besuch && besuch.languageId === targetLanguageId && besuch.categoryId === list[idx].id && besuch.scenario
-            ? { categoryId: besuch.categoryId, scenario: besuch.scenario }
-            : null;
-        const sit = ausMerker ?? situations.recentSituations.find((s) => s.categoryId === list[idx].id);
-        if (!sit) return null;
-        // Leih-Namen hier aufloesen, nicht im Render: die aufnehmende
-        // Kategorie ist genau hier bekannt (siehe data/geliehen.ts).
-        return leihName(sit.categoryId, sit.scenario) ?? scenarioLabel(sit.scenario);
-      })(),
-    };
-    // `expandedIds` gehoert schon jetzt in die Abhaengigkeiten - sobald das
-    // Auffaechern kommt, muss die Liste sich davon neu bauen.
-  }, [learningMode, course.lessons, guidedProgress.module, guidedProgress.lektionen,
-      guidedProgress.aktuelleLektion, guidedProgress.aktuellesModul, purchased, activeLanguage.label, activeLanguage.table, progress.byCategory, situations.recentCategoryIds, situations.recentSituations, besuch, targetLanguageId, expandedIds, themesMounted, situations.byCategory, toggleCategory, hatKonto]);
+    // Wie beim gefuehrten Weg: nur Liste und Stelle. Der Rest gehoerte zum
+    // "Du bist hier"-Kasten.
+    return { nodes: list, currentIndex: idx >= 0 ? idx : 0 };
+    })();
+
+    return { gefuehrt, speed };
+  }, [course.lessons, guidedProgress.module, guidedProgress.lektionen,
+      guidedProgress.aktuelleLektion, guidedProgress.aktuellesModul, purchased, activeLanguage.label, activeLanguage.table, progress.byCategory, situations.recentCategoryIds, situations.recentSituations, besuch, targetLanguageId, expandedIds, offenGefuehrt, themesMounted, situations.byCategory, toggleCategory, toggleModul, hatKonto]);
 
   // ---------------------------------------------------------------------
   // Zickzack-Layout: Pillen abwechselnd links/rechts, verbunden durch
   // rotierte Linien zwischen den Mittelpunkten.
   // ---------------------------------------------------------------------
-  const { pathNodes, connectors, canvasHeight } = useMemo(() => {
+  // Einmal geschrieben, zweimal gerechnet: fuer jede Kartenseite eine
+  // Knotenliste. Frueher war das ein `useMemo` fuer den einen aktiven Weg.
+  const legeAus = useCallback((raw: RawNode[]) => {
     // Laufende Hoehe statt `index * ROW_H`: Themen-Zeilen sind niedriger als
     // Kategorie-Zeilen, sonst klaffte beim Auffaechern ueberall eine Luecke.
     let y = 0;
-    // Hoehe einer Bildkachel in Pfad-Koordinaten - der Weg wiederholt sich
-    // mit ihr.
-    const kachelHoehe = Math.round(CHINA_BG.hoehe * (windowWidth / CHINA_BG.breite));
     const laid: LaidOutNode[] = raw.map((n, i) => {
       const w = n.theme ? THEME_W : n.lead ? LANG_PILL_W : PILL_W;
       const h = n.theme ? THEME_H : n.lead ? LANG_PILL_H : PILL_H;
-      // Auf einem bebilderten Pfad folgen die Knoten dem gezeichneten Weg
-      // (2026-08-31, Simons Wunsch) statt dem festen Zickzack. `wegAnteilBei`
-      // liest den Verlauf aus dem Bild; der Wert ist die MITTE des Knotens,
-      // deshalb die halbe Breite abziehen und in den Container klemmen.
-      // Der Weg-Anteil bezieht sich auf die BILDbreite (Fensterbreite), die
-      // Knoten liegen aber im schmaleren Canvas - deshalb den Versatz
-      // zwischen beiden abziehen.
-      const bildVersatz = (windowWidth - CONT_W) / 2;
-      const left = bebilderterPfad
-        ? Math.max(
-            0,
-            Math.min(
-              CONT_W - w,
-              wegAnteilBei(y + h / 2, kachelHoehe) * windowWidth - bildVersatz - w / 2
-            )
-          )
-        : n.lead
-          ? (CONT_W - w) / 2
-          : i % 2 === 0
-            ? 0
-            : CONT_W - w;
+      // Zickzack: die Sprach-Pille mittig, alles andere abwechselnd links
+      // und rechts. (Bis zum 2026-09-12 folgten die Knoten bei Chinesisch
+      // einem gezeichneten Weg - der ist mit dem Bildhintergrund weg.)
+      const left = n.lead
+        ? (CONT_W - w) / 2
+        : i % 2 === 0
+          ? 0
+          : CONT_W - w;
       const top = y;
       y += n.theme ? THEME_ROW_H : ROW_H;
       return { ...n, width: w, height: h, left, top, cx: left + w / 2, cy: top + h / 2 };
@@ -739,10 +732,12 @@ export function PathScreen() {
       connectors: conns,
       canvasHeight: last ? last.top + last.height + SPACING.xl : 0,
     };
-    // `bebilderterPfad` gehoert dazu: davon haengt ab, ob die Knoten dem
-    // gezeichneten Weg folgen oder im Zickzack stehen. `darkMode` seit
-    // 2026-09-01 dazu - die Verbindungslinien-Farbe haengt jetzt vom Modus ab.
-  }, [raw, bebilderterPfad, windowWidth, darkMode]);
+    // `darkMode` seit 2026-09-01 dabei - die Verbindungslinien-Farbe haengt
+    // davon ab.
+  }, [darkMode]);
+
+  const pfadVorne = useMemo(() => legeAus(pfade.speed.nodes), [legeAus, pfade.speed.nodes]);
+  const pfadHinten = useMemo(() => legeAus(pfade.gefuehrt.nodes), [legeAus, pfade.gefuehrt.nodes]);
 
   // Sprung zur zuletzt gelernten Stelle - bei JEDEM Betreten des Screens
   // (Nutzer-Wunsch 2026-08-20), also auch beim Zurueckkehren aus einer
@@ -769,14 +764,116 @@ export function PathScreen() {
     }, [])
   );
 
+  // Beide Seiten springen an ihre Stelle, nicht nur die sichtbare: die
+  // abgewandte wird im selben Moment mitgebaut, und wer umdreht, soll dort
+  // nicht am Anfang des Pfades landen.
   useEffect(() => {
-    if (didAutoScroll.current || progress.loading || pathNodes.length === 0) return;
+    if (didAutoScroll.current || progress.loading) return;
+    if (pfadVorne.pathNodes.length === 0 && pfadHinten.pathNodes.length === 0) return;
     didAutoScroll.current = true;
-    const target = Math.max(0, (pathNodes[currentIndex]?.top ?? 0) - ROW_H);
+    const ziel = (knoten: LaidOutNode[], index: number) =>
+      Math.max(0, (knoten[index]?.top ?? 0) - ROW_H);
     // Ohne die Verzoegerung misst die ScrollView ihren Inhalt noch nicht.
-    const timer = setTimeout(() => scrollRef.current?.scrollTo({ y: target, animated: true }), 0);
+    const timer = setTimeout(() => {
+      scrollRef.current?.scrollTo({ y: ziel(pfadVorne.pathNodes, pfade.speed.currentIndex), animated: true });
+      scrollHinten.current?.scrollTo({ y: ziel(pfadHinten.pathNodes, pfade.gefuehrt.currentIndex), animated: true });
+    }, 0);
     return () => clearTimeout(timer);
-  }, [progress.loading, pathNodes, currentIndex]);
+  }, [progress.loading, pfadVorne, pfadHinten, pfade.speed.currentIndex, pfade.gefuehrt.currentIndex]);
+
+  // -------------------------------------------------------------------
+  // Die beiden Karten (2026-09-12, Simons Umbau: "was wir jetzt auf Freunde
+  // haben auch so auf S1")
+  // -------------------------------------------------------------------
+  //
+  // Das Umdrehen IST der Wechsel des Lernwegs: vorne der Speed-Run, hinten
+  // der gefuehrte Kurs. Damit ersetzt die Drehung den Knopf im Kopf der
+  // alten Pfad-Box - und der "Du bist hier"-Kasten faellt weg, weil die
+  // sichtbare Seite selbst sagt, wo man ist.
+  const kursSeite: 1 | 2 = learningMode === 'gefuehrt' ? 2 : 1;
+
+  // Der Lernweg wechselt, wenn die Drehung STEHT - nicht, wenn sie beginnt
+  // (2026-09-12, Simons Beobachtung: "du hast unterschiedliche
+  // Geschwindigkeiten drin beim Flippen"). Die Dauer war nie verschieden,
+  // beide Screens lesen dieselbe Drehung; verschieden war, was waehrenddessen
+  // passiert. Der Moduswechsel aendert den App-Zustand, und der laesst auf S1
+  // den halben Screen neu rechnen - im Browser mitten in der Bewegung
+  // sichtbar, weil die Drehung dort mangels nativem Treiber in JS laeuft.
+  //
+  // Der Inhalt der Karten haengt NICHT am Lernweg (beide Wege sind ohnehin
+  // gebaut, je einer je Seite) - nur Balken, Standort-Zeile und das Ziel von
+  // "Tageslektion". Die duerfen mit der Karte landen.
+  //
+  // VERGLICHEN statt umgeschaltet: bei zweimal schnell hintereinander bricht
+  // die erste Drehung ab (ihr Rueckruf laeuft dann gar nicht), und ein blindes
+  // Umschalten haette Karte und Lernweg auseinanderlaufen lassen.
+  const lernwegRef = useRef(learningMode);
+  lernwegRef.current = learningMode;
+  const seiteGelandet = useCallback(
+    (seite: 1 | 2) => {
+      const soll = seite === 2 ? 'gefuehrt' : 'speedrun';
+      if (lernwegRef.current !== soll) toggleLearningMode();
+    },
+    [toggleLearningMode]
+  );
+
+  const oben = useUmdrehen({ start: kursSeite });
+  const unten = useUmdrehen({ start: kursSeite, beiEnde: seiteGelandet });
+
+  // Eine Handlung, zwei Karten - an EINER Stelle, damit sie nie
+  // auseinanderlaufen. Auch ein Tipp auf die Bildkarte geht hier durch, nicht
+  // an ihrer eigenen Drehung vorbei.
+  const beideUmdrehen = useCallback(() => {
+    oben.umdrehen();
+    unten.umdrehen();
+  }, [oben, unten]);
+
+  // Der Lernweg kann sich auch OHNE diesen Knopf aendern: er liegt
+  // persistiert im AppState und kommt beim Start erst nach dem Laden an (und
+  // beim Geraeteabgleich ein zweites Mal). Ohne diesen Abgleich stuende die
+  // Karte dann auf der Vorderseite, waehrend die App im Kurs ist. Ohne
+  // Bewegung - es ist kein Umdrehen, sondern ein Nachziehen.
+  //
+  // Der Merker ist hier PFLICHT, nicht Feinschliff: seit der Moduswechsel
+  // erst am Ende der Drehung kommt, steht die Karte waehrend der Bewegung
+  // absichtlich anders als der Lernweg. Ohne die Abfrage "hat sich von aussen
+  // ueberhaupt etwas geaendert?" saehe dieser Effekt genau das - und risse
+  // die Karte mitten in der Drehung zurueck.
+  const letzteKursSeite = useRef(kursSeite);
+  useEffect(() => {
+    if (letzteKursSeite.current === kursSeite) return;
+    letzteKursSeite.current = kursSeite;
+    // Kam der Wechsel von der Karte selbst, steht sie schon richtig.
+    if (oben.seite === kursSeite) return;
+    oben.setzeSeite(kursSeite);
+    unten.setzeSeite(kursSeite);
+  }, [kursSeite, oben, unten]);
+
+  // Rahmen der unteren Karte: laeuft unten aus dem Bildschirm, also Rand und
+  // Rundung nur OBEN, und der Schatten nach oben (siehe `SCHATTEN` im
+  // Bauteil - die Begruendung steht dort).
+  const blattKarte = {
+    borderTopWidth: 1.5,
+    borderLeftWidth: 1.5,
+    borderRightWidth: 1.5,
+    borderBottomWidth: 0,
+    borderColor: darkMode ? theme.border : KACHEL_RAND_LIGHT,
+    borderTopLeftRadius: RADIUS.lg,
+    borderTopRightRadius: RADIUS.lg,
+    ...(darkMode
+      ? null
+      : { ...SCHATTEN, shadowOffset: { width: 0, height: -SCHATTEN_TIEFE } }),
+  };
+
+  // Den unteren Innenabstand des Tab-Layouts nimmt sich dieser Screen selbst
+  // ab: nur so reicht die untere Karte bis an den Bildschirmrand, und ihr
+  // Stueck unter der Leiste bleibt beruehr- und scrollbar. Der Abstand geht
+  // nicht verloren - er sitzt als `freiraum` in den Scroll-Flaechen.
+  const freiraum = useTabLeistenFreiraum();
+  const navigation = useNavigation<BottomTabNavigationProp<Record<string, object | undefined>>>();
+  useLayoutEffect(() => {
+    navigation.setOptions({ sceneStyle: { backgroundColor: theme.pageBg, paddingBottom: 0 } });
+  }, [navigation, theme.pageBg]);
 
   const languageOptions: DropdownOption[] = LANGUAGES.map((l) => ({
     id: l.id,
@@ -792,21 +889,6 @@ export function PathScreen() {
           <Screen> streichen und `pathBoxTestTransparent` aus dem Card-Stil
           nehmen. */}
       <PathBackdrop width={windowWidth} height={windowHeight} />
-      {/* Bebilderte Seite nur fuer Chinesisch (2026-08-31, Simons Vorlage).
-          Volle Fensterbreite und -hoehe, verschoben um den Scroll-Stand -
-          siehe `scrollY` oben, warum weder "in der Scroll-Flaeche" noch
-          "fest hinter dem Screen" allein reicht.
-          `scrollTop` ist die Lage der Scroll-Flaeche im Screen: das Bild
-          soll dort beginnen, wo der Pfad beginnt, nicht am oberen
-          Bildschirmrand - sonst laege der Weg um die Kopfzeile versetzt. */}
-      {bebilderterPfad ? (
-        <View
-          style={[styles.bebildert, { top: scrollTop - scrollY }]}
-          pointerEvents="none"
-        >
-          <ChinaPfadHintergrund breite={windowWidth} hoehe={canvasHeight + windowHeight} />
-        </View>
-      ) : null}
     <Animated.View style={[styles.root, { transform: [{ translateX: drag }] }]}>
     <Screen dark={darkMode} style={styles.transparentPage}>
       {/* Kopfzeile: Sprache links, Geschenk und Coins rechts - seit
@@ -848,6 +930,14 @@ export function PathScreen() {
         </View>
       </View>
 
+      {/* Ueber dem Balken: wo man gerade steht. Das ist die Aussage des
+          alten "Du bist hier"-Kastens, die beim Umbau auf die zwei Karten
+          weggefallen war - jetzt ohne Kasten, nur zwei Zeilen, und mittig
+          statt links. */}
+      <View style={styles.standortReihe}>
+        <Standortzeile dark={darkMode} standort={standort} />
+      </View>
+
       {/* Fortschritt ueber die freigeschalteten Inhalte. */}
       <View style={styles.progressRow}>
         {/* Leerer Platz links, Gegenstueck zum Zurueck-Pfeil im Onboarding -
@@ -874,205 +964,103 @@ export function PathScreen() {
         </View>
       </View>
 
-      {/* Pfad-Box: NUR dieser Bereich scrollt. */}
-      {/* Rahmen unsichtbar (Nutzer-Wunsch 2026-08-18): die Lern-Box soll nicht
-          als Kasten lesbar sein, sondern nur der Pfad darin. `transparent`
-          statt einer festen Farbe, damit es in beiden Erscheinungsbildern
-          stimmt - im Darkmode hebt sich die Box weiterhin ueber ihre eigene
-          Fuellung ab, im hellen verschwindet sie ganz. */}
-      <Card
-        dark={darkMode}
-        padded={false}
-        style={[
-          styles.pathBox,
-          styles.pathBoxFrameless,
-          styles.pathBoxTestTransparent,
-          { maxHeight: pathBoxMaxHeight },
-        ]}
-      >
-        {/* Abschnitts-Kopf, bleibt beim Scrollen stehen. */}
-        <View style={styles.sectionBar}>
-          {/* Karten-Look statt Kachel (2026-09-03, Simons Test): derselbe
-              Rahmen wie die Saetze beim Wiederholen - blasser Rand, groesserer
-              Radius, versetzter Schatten. `karte()` liegt in tokens.ts, damit
-              beide Stellen dieselbe Definition benutzen. Zum Zuruecknehmen
-              genuegt `kachel(darkMode)` an dieser Stelle. */}
-          <View style={[styles.sectionField, karte(darkMode), { backgroundColor: theme.cardBg }]}>
-            {/* Die kleine Zeile nennt den Lernweg (Nutzer-Wunsch
-                2026-08-20), die grosse bleibt die Stelle im Pfad. Der Text
-                kommt aus LEARNING_MODE_LABEL, damit Knopf-Ansage und Kasten
-                nie auseinanderlaufen. `textTransform` im Stil macht die
-                Grossschreibung, der Wortlaut bleibt hier lesbar. */}
-            {/* Steht eine Situation fest, rutscht die Kategorie in die
-                kleine Zeile und die Situation wird zur grossen - so nennt
-                der Kasten beides, ohne eine dritte Zeile zu brauchen. Ohne
-                Situation bleibt es beim bisherigen Aufbau. */}
-            <Text style={[styles.sectionLabel, { color: theme.sub }]} numberOfLines={1}>
-              {currentScenario
-                ? `${LEARNING_MODE_LABEL[learningMode]} · ${currentLabel}`
-                : currentNiveau
-                  ? `${LEARNING_MODE_LABEL[learningMode]} · ${currentNiveau}`
-                  : LEARNING_MODE_LABEL[learningMode]}
-            </Text>
-            <Text style={[styles.sectionName, { color: theme.text }]} numberOfLines={1}>
-              {currentScenario ?? currentLabel}
-            </Text>
-          </View>
-          <Pressable
-            onPress={switchMode}
-            accessibilityRole="button"
-            // Nennt das ZIEL, nicht den aktuellen Stand - sonst weiss man
-            // beim Vorlesen nicht, was der Knopf bewirkt. Kein
-            // `aria-expanded` mehr: der Knopf klappt nichts mehr auf.
-            //
-            // Doppelpunkt statt "Zu X wechseln": der Modusname stuende dort
-            // im Dativ ("Zu Geführtem Lernen"), muesste also gebeugt werden.
-            // So bleibt LEARNING_MODE_LABEL unveraendert einsetzbar, auch
-            // fuer kuenftige Namen.
-            accessibilityLabel={`Lernweg wechseln zu: ${
-              LEARNING_MODE_LABEL[learningMode === 'speedrun' ? 'gefuehrt' : 'speedrun']
-            }`}
-            // Karten-Look wie der Kasten daneben (2026-09-03, Simons Wunsch,
-            // einen Schritt nach dem Kasten). Die beiden sind optisch ein
-            // Paar in einer Zeile - eine Kachel neben einer Karte sah aus
-            // wie zwei verschiedene Materialien.
-            //
-            // Der Knopf verliert damit die Druckkante, die in dieser App
-            // "das kann man druecken" bedeutet. Die Rueckmeldung BEIM
-            // Druecken bleibt aber (opacity unten), es geht also nur das
-            // ruhende Signal verloren, nicht die Bedienbarkeit.
-            style={({ pressed }) => [
-              styles.toggleButton,
-              karte(darkMode),
-              {
-                backgroundColor: theme.cardBg,
-                opacity: pressed ? 0.7 : 1,
-              },
-            ]}
-          >
-            {/* Wechsel-Symbol (Nutzer-Wunsch 2026-08-20). Passt weiterhin:
-                der Knopf schaltet zwischen den beiden Lernwegen hin und her,
-                er fuehrt nicht woandershin. */}
-            <Feather name="repeat" size={24} color={theme.text} />
-          </Pressable>
-        </View>
-
-        <View style={styles.pathScrollWrap}>
-          <ScrollView
-            ref={scrollRef}
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={styles.pathBoxContent}
-            // Nur beim bebilderten Pfad noetig - sonst kostet das Melden
-            // jedes Frames Rechenzeit ohne Gegenwert.
-            scrollEventThrottle={bebilderterPfad ? 16 : 0}
-            onScroll={bebilderterPfad ? (e) => setScrollY(e.nativeEvent.contentOffset.y) : undefined}
-            onLayout={
-              bebilderterPfad
-                ? (e) => setScrollTop(e.nativeEvent.layout.y)
-                : undefined
-            }
-          >
-            {pathNodes.length === 0 ? (
-              // Ehrlich statt leere Flaeche: sagt, woran es liegt. Bleibt
-              // stehen, anders als die Notice, die sich wieder ausblendet.
-              <View style={styles.pathEmpty}>
-                <Feather name="map" size={28} color={theme.sub} />
-                <Text style={[styles.pathEmptyText, { color: theme.sub }]}>
-                  {learningMode === 'gefuehrt'
-                    ? (course.unavailable ?? 'Hier ist noch nichts.')
-                    : `Für ${activeLanguage.label} gibt es bisher keine Sätze — probier den geführten Kurs über den Knopf oben rechts.`}
-                </Text>
-              </View>
-            ) : null}
-            <View style={[styles.pathCanvas, { height: canvasHeight }]}>
-              {connectors.map((c, i) => (
-                <View
-                  key={`conn-${i}`}
-                  style={[
-                    styles.connector,
-                    {
-                      left: c.left,
-                      top: c.top,
-                      width: c.length,
-                      backgroundColor: c.color,
-                      transform: [{ rotate: `${c.angle}deg` }],
-                      transformOrigin: '0% 50%',
-                    },
-                  ]}
-                />
-              ))}
-              {pathNodes.map((n) =>
-                n.theme ? (
-                  <PathNode key={n.id} node={n} dark={darkMode} progress={expand} />
-                ) : (
-                  <PathNode key={n.id} node={n} dark={darkMode} />
-                )
-              )}
+      {/* Obere Karte: die Illustration der Sprache. Sie dreht sich mit der
+          unteren, zeigt hinten aber keine zweite Zeichnung - dort steht der
+          Name des Lernwegs, in den man gerade gewechselt ist. Das ist der
+          Rest des alten "Du bist hier"-Kastens: die Stelle im Pfad zeigt
+          jetzt der Pfad selbst, den MODUS sieht man sonst nirgends. */}
+      <View style={styles.bildReihe}>
+        <BildKarte
+          breite={kartenBreite}
+          hoehe={kartenHoehe}
+          dreh={oben.dreh}
+          seite={oben.seite}
+          umdrehen={beideUmdrehen}
+          quelle={heldBild}
+          name="Sprachkarte"
+          rueckseite={
+            <View style={styles.heldRueck} pointerEvents="none">
+              <Text style={styles.heldRueckText}>{LEARNING_MODE_LABEL.gefuehrt}</Text>
             </View>
-          </ScrollView>
+          }
+        />
+      </View>
 
-          {/* Ausblenden statt hartem Schnitt (Nutzer-Wunsch 2026-08-25):
-              eine angeschnittene Pille direkt am Rand der Scroll-Box sah
-              wie ein Rendering-Fehler aus. Zwei Farbverlaeufe liegen ÜBER
-              der ScrollView (spaetere Geschwister malen in RN darueber),
-              `pointerEvents="none"` laesst Scroll/Tipp-Gesten ungehindert
-              durch. Faerben zu PATH_BACKDROP_COLOR statt einer festen
-              Konstante - dieselbe Farbe wie der Hintergrund dahinter, sonst
-              waere der Uebergang selbst wieder eine harte Kante. */}
-          {/* Auf einem bebilderten Pfad entfallen die Verlaeufe: sie
-              verblassen zur HINTERGRUNDFARBE, und die gibt es dort nicht -
-              ueber der Zeichnung laegen sie als heller Schleier. Die Pillen
-              werden dort vom Bild selbst gerahmt. */}
-          {bebilderterPfad ? null : (
-            <>
-              <LinearGradient
-                pointerEvents="none"
-                colors={[PATH_BACKDROP_COLOR, PATH_BACKDROP_TRANSPARENT]}
-                style={[styles.pathFade, styles.pathFadeTop, { height: pathFadeHoehe }]}
-              />
-              <LinearGradient
-                pointerEvents="none"
-                colors={[PATH_BACKDROP_TRANSPARENT, PATH_BACKDROP_COLOR]}
-                style={[styles.pathFade, styles.pathFadeBottom, { height: pathFadeHoehe }]}
-              />
-            </>
-          )}
-        </View>
-      </Card>
+      {/* Die Knopfreihe zwischen den Karten. Der runde Knopf in der Mitte
+          wechselt den Lernweg - dieselbe Handlung wie frueher der Knopf im
+          Kopf der Pfad-Box, nur dreht sie jetzt sichtbar die Karte um. */}
+      <Knopfreihe>
+        {/* Noch ohne Handlung - was "Sprachlektion" oeffnen soll, ist offen.
+            Als Attrappe gebaut (kein Tippziel, fuer die Sprachausgabe
+            ausgeblendet), damit niemand auf einen Knopf tippt, der nichts
+            tut. */}
+        <LektionsPille dark={darkMode} label="Sprachlektion" />
 
-      {/* Fester Knopf ausserhalb der Scroll-Box. */}
-      <View style={styles.actions}>
-        <SoftButton
+        <WechselKnopf
           dark={darkMode}
-          label="Tägliches Wiederholen"
-          hint={
+          onPress={beideUmdrehen}
+          // Nennt das ZIEL, nicht den Stand - sonst weiss man beim Vorlesen
+          // nicht, was der Knopf bewirkt.
+          label={`Lernweg wechseln zu: ${
+            LEARNING_MODE_LABEL[learningMode === 'speedrun' ? 'gefuehrt' : 'speedrun']
+          }`}
+          hinweis="Dreht beide Karten um"
+        />
+
+        {/* Dasselbe Ziel wie frueher der Knopf unter dem Pfad: direkt in EINE
+            gemischte Sitzung, ohne Zwischenscreen (Nutzer-Frage 2026-08-21).
+            Das taegliche Wiederholen ist der gemeinsame Pool - wer hier erst
+            waehlen muss, uebt die Haelfte nicht.
+            WOHIN, haengt am LERNWEG und nicht an der Sprache: wiederholt
+            wird das, was man auch lernt. Im gefuehrten Modus einer Sprache
+            ohne Kurs kommt man auf einen ehrlich leeren Screen - dieselbe
+            Aussage, die der Pfad daneben schon macht. */}
+        <LektionsPille
+          dark={darkMode}
+          label="Tageslektion"
+          hinweis={
             learningMode === 'gefuehrt'
               ? 'Wiederholt die Wörter und Satzmuster aus dem Kurs'
               : 'Wiederholt die fälligen Sätze aus dem Speed-Run'
           }
-          // Direkt in EINE gemischte Sitzung, ohne Zwischenscreen
-          // (Nutzer-Frage 2026-08-21). Das taegliche Wiederholen ist der
-          // gemeinsame Pool - wer hier erst waehlen muss, uebt die Haelfte
-          // nicht. Nach Kartenart filtern kann man weiterhin ueber S5, das
-          // ist aber die Ausnahme.
-          //
-          // WOHIN, haengt am LERNWEG, nicht an der Sprache
-          // (Nutzer-Wunsch 2026-08-21): wiederholt wird das, was man auch
-          // lernt. Vorher entschied die Sprache - Chinesisch landete immer
-          // beim Kurs, selbst wenn man gerade im Speed-Run stand. Das ging
-          // durch, solange Chinesisch gar keine Speed-Run-Saetze hatte;
-          // seit `chinesisch_phrasebook` existiert, waere es schlicht der
-          // falsche Stoff.
-          //
-          // Im gefuehrten Modus einer Sprache OHNE Kurs kommt man auf einen
-          // ehrlich leeren Screen - dieselbe Aussage, die der Pfad darueber
-          // schon macht ("gibt es bisher nur fuer Chinesisch").
           onPress={() =>
-            // `/training/saetze` OHNE Parameter ist die globale
-            // Satz-Wiederholung ueber alle Kategorien - derselbe Screen wie
-            // bei einer einzelnen Situation, nur ohne Filter, und damit mit
-            // denselben Layout-Vorlagen (2026-08-31).
             router.push(learningMode === 'gefuehrt' ? '/wiederholen' : '/training/saetze')
+          }
+        />
+      </Knopfreihe>
+
+      {/* Untere Karte: VORNE der Speed-Run, HINTEN der gefuehrte Kurs
+          (2026-09-12, Simons Vorgabe). Sie laeuft unten aus dem Bildschirm
+          und unter der Tab-Leiste durch; gescrollt wird in ihr. */}
+      <View style={styles.blatt}>
+        <BlattKarte
+          rahmen={blattKarte}
+          name="Lernpfad"
+          dreh={unten.dreh}
+          seite={unten.seite}
+          umdrehen={beideUmdrehen}
+          // Der Pfad darin besteht aus Knoepfen - siehe `tippenDreht`.
+          tippenDreht={false}
+          farbe={theme.subtleFill}
+          linien={theme.border}
+          vorne={
+            <PfadFlaeche
+              layout={pfadVorne}
+              dark={darkMode}
+              scrollRef={scrollRef}
+              freiraum={freiraum}
+              expand={expand}
+              leerText={`Für ${activeLanguage.label} gibt es bisher keine Sätze — dreh die Karte um, dort liegt der geführte Kurs.`}
+            />
+          }
+          hinten={
+            <PfadFlaeche
+              layout={pfadHinten}
+              dark={darkMode}
+              scrollRef={scrollHinten}
+              freiraum={freiraum}
+              leerText={course.unavailable ?? 'Hier ist noch nichts.'}
+            />
           }
         />
       </View>
@@ -1213,57 +1201,83 @@ function PathNode({
   );
 }
 
-function SoftButton({
+/**
+ * Eine Seite der unteren Karte: der scrollende Pfad (2026-09-12).
+ *
+ * Beide Seiten sind IMMER gebaut, auch die abgewandte - sonst zeigte die
+ * halbe Drehung eine leere Karte. Sie kostet nichts weiter: die Knotenliste
+ * dahinter wird ohnehin fuer beide Lernwege gerechnet.
+ */
+const PfadFlaeche = memo(function PfadFlaeche({
+  layout,
   dark,
-  label,
-  hint,
-  onPress,
+  scrollRef,
+  freiraum,
+  leerText,
+  expand,
 }: {
+  layout: { pathNodes: LaidOutNode[]; connectors: Connector[]; canvasHeight: number };
   dark: boolean;
-  label: string;
-  hint: string;
-  onPress: () => void;
+  scrollRef: React.RefObject<ScrollView | null>;
+  /** Platz fuer die schwebende Tab-Leiste, unter der die Karte durchlaeuft. */
+  freiraum: number;
+  leerText: string;
+  /**
+   * Nur die Vorderseite bekommt die Einblend-Animation der Situationen: im
+   * Kurs stehen die Lektionen von Anfang an offen, dort gibt es nichts
+   * einzublenden.
+   */
+  expand?: Animated.Value;
 }) {
   const theme = getTheme(dark);
 
   return (
-    <Pressable
-      onPress={onPress}
-      accessibilityRole="button"
-      accessibilityLabel={label}
-      accessibilityHint={hint}
-      style={({ pressed }) => [
-        styles.softButton,
-        // Karten-Look wie der Rest von S1 (2026-09-03, Simons Wunsch).
-        //
-        // ACHTUNG, das nimmt eine aeltere Entscheidung zurueck: hier stand
-        // `kachel(dark, 6)` mit der Begruendung, das Banner sei die
-        // groesste Flaeche und die eine wirklich weiterfuehrende Handlung,
-        // es duerfe schwerer wirken als die Kopfzeilen-Knoepfe. Mit dem
-        // Karten-Look tragen jetzt ALLE Elemente auf S1 dasselbe Gewicht -
-        // der Knopf hebt sich nur noch ueber Groesse und Lage hervor,
-        // nicht mehr ueber die Tiefe.
-        karte(dark),
-        {
-          backgroundColor: pressed ? theme.subtleFill : theme.cardBg,
-          // Die Pillenform zurueckholen: `karte()` bringt RADIUS.lg mit, und
-          // das haette diesen Knopf vom Stadion zum Rechteck gemacht. Bei
-          // den kleinen Elementen der Kopfzeile ist der Sprung 12 -> 16 und
-          // faellt kaum auf, hier waere es 100 -> 16 gewesen.
-          //
-          // Uebernommen wird also das MATERIAL der Karte (Rand, Schatten),
-          // nicht ihre Form - die ist eine eigene Entscheidung und war fuer
-          // diesen Knopf schon getroffen.
-          borderRadius: RADIUS.pill,
-        },
-      ]}
+    <ScrollView
+      ref={scrollRef}
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={[styles.pathBoxContent, { paddingBottom: freiraum }]}
     >
-      <Text numberOfLines={2} style={[styles.softLabel, { color: theme.text }]}>
-        {label}
-      </Text>
-    </Pressable>
+      {layout.pathNodes.length === 0 ? (
+        // Ehrlich statt leere Flaeche: sagt, woran es liegt.
+        <View style={styles.pathEmpty}>
+          <Feather name="map" size={28} color={theme.sub} />
+          <Text style={[styles.pathEmptyText, { color: theme.sub }]}>{leerText}</Text>
+        </View>
+      ) : null}
+      <View style={[styles.pathCanvas, { height: layout.canvasHeight }]}>
+        {layout.connectors.map((c, i) => (
+          <View
+            key={`conn-${i}`}
+            style={[
+              styles.connector,
+              {
+                left: c.left,
+                top: c.top,
+                width: c.length,
+                backgroundColor: c.color,
+                transform: [{ rotate: `${c.angle}deg` }],
+                transformOrigin: '0% 50%',
+              },
+            ]}
+          />
+        ))}
+        {layout.pathNodes.map((n) =>
+          n.theme && expand ? (
+            <PathNode key={n.id} node={n} dark={dark} progress={expand} />
+          ) : (
+            <PathNode key={n.id} node={n} dark={dark} />
+          )
+        )}
+      </View>
+    </ScrollView>
   );
-}
+});
+
+// `memo`, weil der Pfad sonst bei JEDER Drehung zweimal komplett neu gebaut
+// wird: das Umdrehen setzt in beiden Karten eine Seiten-Zustandsvariable, und
+// die haengt am selben Screen wie die Pfade. Die Knotenlisten selbst sind
+// gemerkt (`useMemo`), also sind die Props gleich - ohne `memo` liefe React
+// trotzdem durch bis zu mehreren hundert Knoten, mitten in der Bewegung.
 
 // Kurze Rueckmeldung fuer Knoepfe, die es zwar gibt, die aber noch nichts
 // tun. Lieber eine Zeile, die sagt woran man ist, als ein Tipp ins Leere.
@@ -1359,6 +1373,13 @@ const styles = StyleSheet.create({
     //
     // `+ KNOEPFE_HOEHER` seit 2026-09-11: die Knoepfe darueber sind um so
     // viel nach oben gerueckt, und der Balken soll dabei nicht mitwandern.
+    //
+    // Seit dem 2026-09-12 haelt die Standort-Zeile darueber diesen Abstand
+    // zur Kopfzeile; hier bleibt nur der Abstand zwischen Zeile und Balken.
+    // Alles darunter verschiebt sich entsprechend nach unten.
+    marginTop: SPACING.lg,
+  },
+  standortReihe: {
     marginTop: SPACING.xxl + KNOEPFE_HOEHER,
   },
   progressSeite: {
@@ -1371,80 +1392,44 @@ const styles = StyleSheet.create({
   },
   // `progressValue` ist am 2026-09-01 weggefallen: die Prozentzahl liegt
   // jetzt als `ProgressProzent` beim Balken selbst, damit Schrift und Farbe
-  // nicht an zwei Stellen gepflegt werden.
-  pathBox: {
-    flex: 1,
-    // Das ist der Abstand UNTER dem Fortschrittsbalken (2026-09-03, von lg
-    // auf xl). Zu dem, was hier steht, kommt noch `sectionBar.padding`
-    // (SPACING.md) dazu, weil die Box selbst rahmenlos ist - sichtbar ist
-    // also die Summe, heute 24 + 12 = 36. Die Polsterung nicht als
-    // Stellschraube benutzen: sie setzt zugleich den seitlichen Einzug der
-    // Kopfzeile.
-    marginTop: SPACING.xl,
-  },
-  pathBoxFrameless: {
-    borderColor: 'transparent',
-  },
+  // nicht an zwei Stellen gepflegt werden.
   // --- gehoert zum TEST-HINTERGRUND, siehe oben ---
   transparentPage: {
     backgroundColor: 'transparent',
-  },
-  pathBoxTestTransparent: {
-    backgroundColor: 'transparent',
-  },
+  },
   root: {
     flex: 1,
+  },
+  bildReihe: {
+    // Die Karte ist so breit wie der Bildschirm minus KARTE_SEITE; `Screen`
+    // polstert seitlich um SPACING.lg, die Differenz holt sie wieder heraus.
+    marginTop: SPACING.xl,
+    marginHorizontal: KARTE_SEITE - SPACING.lg,
   },
-  bebildert: { position: 'absolute', left: 0 },
-  sectionBar: {
-    flexDirection: 'row',
-    alignItems: 'stretch',
-    gap: SPACING.sm,
-    padding: SPACING.md,
-  },
-  sectionField: {
+  blatt: {
     flex: 1,
-    justifyContent: 'center',
-    // Rahmen, Radius und Schatten kommen aus `karte()` an der Verwendung
-    // (seit 2026-09-03, vorher `kachel()`). Der Radius hier wird davon
-    // ueberschrieben. Das Profil benutzt seit 2026-09-11 denselben Look.
-    borderRadius: RADIUS.md,
-    paddingHorizontal: SPACING.md,
-    paddingVertical: SPACING.sm,
+    marginHorizontal: KARTE_SEITE - SPACING.lg,
+    // Vorn: nur so legt sich ihr Schatten auf die obere Karte, und genau das
+    // macht "erhoben" sichtbar.
+    zIndex: 1,
   },
-  sectionLabel: {
-    fontSize: FONT_SIZE.caption - 1,
-    ...schrift('700'),
-    textTransform: 'uppercase',
-    letterSpacing: 0.6,
-  },
-  sectionName: {
-    // ExtraBold statt Serife (2026-09-01): die grosse Zeile im
-    // "Du bist hier"-Kasten ist ein Status, keine Ueberschrift zum Lesen.
-    ...schrift('800'),
-    fontSize: FONT_SIZE.bodyLg,
-    lineHeight: LINE_HEIGHT.bodyLg,
-  },
-  toggleButton: {
-    width: 56,
-    // minHeight statt height (2026-09-03, Simons Beobachtung: der Knopf
-    // stand 2 px hoeher als der Kasten daneben).
-    //
-    // Die Zeile steht auf `alignItems: 'stretch'` - eine FESTE Hoehe
-    // hebelt das aus, der Knopf blieb also bei 56, waehrend der Kasten
-    // mit seinem Text auf 58 wuchs. Mit minHeight stretcht der Knopf auf
-    // die Zeilenhoehe mit, die 56 wirken nur noch als Untergrenze fuer
-    // die Tippflaeche (Apple verlangt mindestens 44).
-    //
-    // Bewusst KEINE feste Hoehe auf beiden: die Gleichheit soll aus dem
-    // Layout kommen, nicht aus zwei Zahlen, die jemand beim naechsten
-    // Schriftwechsel auseinanderlaufen laesst.
-    minHeight: 56,
-    // borderRadius kommt aus `karte()` (RADIUS.lg) - hier steht er nicht
-    // mehr, sonst muesste man ihn bei jeder Aenderung an der Karte
-    // nachziehen.
+  heldRueck: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  heldRueckText: {
+    color: TINTE,
+    opacity: 0.5,
+    fontSize: FONT_SIZE.bodyLg,
+    lineHeight: LINE_HEIGHT.bodyLg,
+    ...schrift('800'),
+    textTransform: 'uppercase',
+    letterSpacing: 0.6,
   },
   pathBoxContent: {
     // Oben und unten getrennt seit 2026-09-03 (Simon: der Abstand zwischen
@@ -1463,11 +1448,7 @@ const styles = StyleSheet.create({
     paddingTop: SPACING.xl,
     paddingBottom: SPACING.lg,
     paddingHorizontal: SPACING.sm,
-  },
-  pathScrollWrap: { flex: 1, position: 'relative' },
-  pathFade: { position: 'absolute', left: 0, right: 0 },
-  pathFadeTop: { top: 0 },
-  pathFadeBottom: { bottom: 0 },
+  },
   pathEmpty: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -1540,45 +1521,7 @@ const styles = StyleSheet.create({
     ...schrift('800'),
     fontSize: FONT_SIZE.bodyLg,
     textAlign: 'center',
-  },
-  actions: {
-    // `marginTop: 'auto'` ist am 2026-09-01 weggefallen. Es schob den Knopf
-    // an die Unterkante und liess den ganzen Rest als Luecke zwischen Pfad
-    // und Knopf stehen - dieselbe Luecke, die Simon als "riesig" beschrieb.
-    // Jetzt folgt der Knopf direkt auf den Pfad, und weil die Box ueber
-    // `flex: 1` waechst, bleibt kein Rest mehr uebrig, den man verschieben
-    // muesste.
-    //
-    // 2026-09-03 von lg auf xl (Simon: auch diese Luecke um die Haelfte
-    // groesser). Das ist der Abstand zwischen dem unteren Ende der Pfad-Box
-    // und dem Knopf - er liegt AUSSERHALB der Scroll-Flaeche und ist
-    // deshalb immer sichtbar, egal wie weit der Pfad gescrollt ist.
-    marginTop: SPACING.xl,
-    marginBottom: SPACING.md,
-  },
-  softButton: {
-    // Schmiegt sich an den Text statt die volle Zeilenbreite zu nehmen
-    // (Nutzer-Wunsch 2026-08-20). Zentriert, damit er nicht am linken Rand
-    // klebt.
-    alignSelf: 'center',
-    maxWidth: '100%',
-    borderRadius: RADIUS.pill,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: SPACING.lg,
-    paddingHorizontal: SPACING.xl,
-    minHeight: 76,
-    // Rahmen und Tiefe kommen aus `kachel()`. Der weiche graue Schatten
-    // (Y4/Blur18/12%) ist am 2026-09-01 ersatzlos weg: auf dem Off-White
-    // war er kaum zu sehen, und auf Android machte `elevation: 5` daraus
-    // einen grauen Saum.
-  },
-  softLabel: {
-    fontSize: FONT_SIZE.bodyLg,
-    lineHeight: LINE_HEIGHT.bodyLg,
-    ...schrift('700'),
-    textAlign: 'center',
-  },
+  },
   notice: {
     // Bezieht sich auf die Innenkante von `Screen`, das den seitlichen Rand
     // schon setzt - hier also 0 statt noch einmal derselbe Abstand.

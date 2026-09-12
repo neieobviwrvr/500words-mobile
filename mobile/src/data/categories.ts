@@ -48,6 +48,13 @@ export const CATEGORY_BY_ID: Record<string, Category> = Object.fromEntries(
 // sie einmal benannt.
 export const GRUNDWORTSCHATZ_ID = 'grundwortschatz';
 
+// Wie er im Text heisst. Dieselbe Geschichte wie bei der ID eine Zeile
+// darueber: die Zeichenkette steht in sieben Screens einzeln im Code (Shop,
+// Cheat-Sheet, Uebung, Lektionen ...), jedes Mal als Sonderfall neben
+// `CATEGORY_BY_ID`. Neue Stellen lesen bitte diesen Namen; die alten
+// nachzuziehen ist eine eigene Aufraeumrunde.
+export const GRUNDWORTSCHATZ_NAME = 'Grundwortschatz';
+
 // Platzhalter-Themen. Seit dem S1-Umbau (2026-08-18) liest sie NIEMAND mehr:
 // die Pfad-Box zeigt nur noch Kategorien, die Themen erscheinen erst beim
 // Auffaechern - und dann aus echtem Content statt aus dieser Liste. Beide
