@@ -70,8 +70,12 @@ type Props = {
    * `flach` und `karte` sind NICHT dasselbe, auch wenn beide flach
    * aussehen: der eine Schatten faellt nach unten, der andere nach
    * schraeg rechts.
+   *
+   * - `ohne`:   gar kein Knopf-Aussehen, nur Symbol und Zahl (2026-09-11,
+   *             Simon: "keep the labels and the icons but make the things
+   *             not look like buttons"). Die Tippflaeche bleibt 44 x 44.
    */
-  rahmen?: 'kachel' | 'flach' | 'karte';
+  rahmen?: 'kachel' | 'flach' | 'karte' | 'ohne';
 };
 
 export function HeaderMenu({ dark, overlay = false, inline = false, rahmen = 'kachel' }: Props) {
@@ -243,8 +247,8 @@ function HeaderButton({
   onPress,
 }: {
   dark: boolean;
-  /** Siehe `Props.rahmen` an `HeaderMenu` - kachel / flach / karte. */
-  rahmen?: 'kachel' | 'flach' | 'karte';
+  /** Siehe `Props.rahmen` an `HeaderMenu` - kachel / flach / karte / ohne. */
+  rahmen?: Props['rahmen'];
   icon: React.ComponentProps<typeof Feather>['name'];
   label: string;
   value?: string;
@@ -271,8 +275,13 @@ function HeaderButton({
           ? { borderWidth: 1, borderColor: FLOATING_BORDER, ...FLOATING_SHADOW }
           : rahmen === 'karte'
             ? karte(dark)
-            : kachel(dark),
-        { backgroundColor: theme.cardBg, opacity: pressed ? 0.7 : 1 },
+            : rahmen === 'ohne'
+              ? styles.buttonOhneRahmen
+              : kachel(dark),
+        {
+          backgroundColor: rahmen === 'ohne' ? 'transparent' : theme.cardBg,
+          opacity: pressed ? 0.7 : 1,
+        },
       ]}
     >
       <Feather name={icon} size={15} color={theme.sub} />
@@ -316,6 +325,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.md,
     // Rahmen und Tiefe kommen aus `kachel()`.
     borderRadius: RADIUS.md,
+  },
+  buttonOhneRahmen: {
+    // Ohne sichtbaren Kasten waere die volle Polsterung nur Luecke zwischen
+    // den Symbolen; die Mindestbreite von 44 haelt die Tippflaeche trotzdem.
+    paddingHorizontal: SPACING.sm,
   },
   buttonValue: {
     fontSize: FONT_SIZE.small,

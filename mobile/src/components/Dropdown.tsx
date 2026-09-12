@@ -53,8 +53,14 @@ type Props = {
    *
    * Als Prop und NICHT als Aenderung an `kachel()`: das Onboarding
    * benutzt denselben Dropdown und behaelt seine Tiefe.
+   *
+   * `ohne` (2026-09-11, Simon: "keep the labels and the icons but make the
+   * things not look like buttons"): kein Rahmen, kein Schatten, keine
+   * Flaeche - nur Sprachname und Pfeil. Die Tippflaeche bleibt 44 hoch.
+   * Seitlich ohne Polsterung, damit der Name buendig am Seitenrand steht,
+   * statt um die Polsterung eines unsichtbaren Kastens eingerueckt.
    */
-  rahmen?: 'kachel' | 'karte';
+  rahmen?: 'kachel' | 'karte' | 'ohne';
 };
 
 export function Dropdown({
@@ -81,9 +87,9 @@ export function Dropdown({
         style={({ pressed }) => [
           styles.field,
           compact && styles.fieldCompact,
-          rahmen === 'karte' ? karte(dark) : kachel(dark),
+          rahmen === 'karte' ? karte(dark) : rahmen === 'ohne' ? styles.fieldOhneRahmen : kachel(dark),
           {
-            backgroundColor: theme.cardBg,
+            backgroundColor: rahmen === 'ohne' ? 'transparent' : theme.cardBg,
             opacity: pressed ? 0.7 : 1,
           },
         ]}
@@ -165,6 +171,11 @@ const styles = StyleSheet.create({
     minHeight: 44,
     paddingHorizontal: SPACING.md,
     gap: SPACING.xs,
+  },
+  fieldOhneRahmen: {
+    // Steht nach `fieldCompact` und schlaegt dessen Polsterung - siehe
+    // `rahmen: 'ohne'`.
+    paddingHorizontal: 0,
   },
   fieldValue: {
     fontSize: FONT_SIZE.bodyLg,

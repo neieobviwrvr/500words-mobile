@@ -9,6 +9,7 @@ import {
 import { Redirect, Tabs } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
 import { Milchglas } from '../../src/components/Milchglas';
+import { BAR_HEIGHT, CONTENT_GAP, FLOAT_GAP } from '../../src/components/tabLeiste';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAppState } from '../../src/state/AppState';
 import { useAuthState } from '../../src/state/AuthState';
@@ -45,19 +46,10 @@ import {
 // Ebene wird die ganze Gruppe erst gar nicht aufgebaut.
 
 // --- Masse der schwebenden Leiste ------------------------------------------
-// Abstand nach unten. `Math.max` statt einer festen Zahl, weil beide Geraete-
-// arten gemeint sind: auf Geraeten mit Home-Indikator ist der Sicherheitsrand
-// (34) schon groesser als der gewuenschte Schwebeabstand, die Leiste sitzt
-// dann genau auf dessen Oberkante; auf aelteren Geraeten ohne Indikator sorgt
-// FLOAT_GAP fuer den Abstand zum Bildschirmrand.
-const FLOAT_GAP = 20;
-// 2026-09-01 von 64 auf 68: der 3D-Kachel-Look kostet oben 1.5 und unten 4
-// Punkte Rahmen, und in React Native liegt der Rahmen INNEN. Bei
-// unveraenderten 64 waeren dem Inhalt 3.5 Punkte verloren gegangen - genau
-// dort, wo die Beschriftung schon einmal abgeschnitten wurde (siehe die
-// `paddingBottom: 0`-Notiz weiter unten). Der sichtbare Koerper waechst also
-// um 4, der nutzbare Innenraum bleibt bei rund 62.
-const BAR_HEIGHT = 68;
+// FLOAT_GAP, BAR_HEIGHT und CONTENT_GAP liegen seit 2026-09-11 in
+// src/components/tabLeiste.ts (samt ihrer Begruendungen): Screens, deren
+// Inhalt unter der Leiste durchlaeuft, brauchen dieselben Zahlen fuer ihr
+// Scroll-Ende.
 const BAR_RADIUS = 36;
 
 /**
@@ -75,10 +67,6 @@ const BAR_RADIUS = 36;
  * das zweite Geraet ist nur bis dahin veraltet.
  */
 const ZURUECK_DROSSEL_MS = 60_000;
-// Abstand zwischen Bildschirminhalt und Leiste. Ohne das verschwaende der
-// Inhalt unter der Leiste - sie liegt absolut positioniert darueber und
-// reserviert keinen Platz mehr im Layout.
-const CONTENT_GAP = SPACING.md;
 // Zweite, abgesetzte Kapsel rechts neben der Leiste (Nutzer-Vorlage
 // 2026-08-18). Quadratisch und so hoch wie die Leiste, damit beide auf
 // derselben Linie sitzen; der Abstand dazwischen macht sie als eigenes
