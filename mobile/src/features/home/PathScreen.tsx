@@ -44,7 +44,6 @@ import {
   LektionsPille,
   SCHATTEN,
   SCHATTEN_TIEFE,
-  TINTE,
   useUmdrehen,
   WechselKnopf,
 } from './Drehkarten';
@@ -105,15 +104,23 @@ import {
 // Werte stehen zueinander in einem festen Verhaeltnis (eine Zeile muss hoeher
 // sein als eine Pille, sonst ueberlappen sich zwei Reihen).
 /**
- * Die Illustration der oberen Karte (2026-09-12). Simons Vorlage aus
+ * Die Illustrationen der oberen Karte (2026-09-12). Simons Vorlagen aus
  * "Marketing und UI-Ideen/Background S1" - gemalt fuer genau diesen Screen.
  *
- * Sie zeigt Chinesisch (Tor, Bambus, die Mandarine) und gilt deshalb nur
- * dort; jede andere Sprache bekommt bis auf Weiteres eine ruhige Flaeche,
- * statt ein falsches Land zu zeigen. Die gemalten Pillen auf dem Bild
- * (Serie, Abzeichen) sind Teil der Zeichnung und noch keine echten Anzeigen.
+ * EINE ZUORDNUNG, kein Vergleich: jede Sprache bekommt ihr eigenes Bild,
+ * sobald es eines gibt. Wer eine Zeichnung ergaenzt, legt sie als
+ * `sprachkarte-<id>.png` in `assets/` und traegt hier eine Zeile ein.
+ *
+ * Sprachen OHNE Zeichnung bekommen eine ruhige helle Flaeche - ein fremdes
+ * Land waere schlechter als kein Bild. Heute betrifft das neun der elf.
+ *
+ * Die gemalten Pillen auf den Bildern (Serie, Abzeichen) sind Teil der
+ * Zeichnung und noch keine echten Anzeigen.
  */
-const SPRACH_BILD_ZH = require('../../../assets/sprachkarte-zh.png');
+const SPRACH_BILDER: Record<string, ReturnType<typeof require>> = {
+  zh: require('../../../assets/sprachkarte-zh.png'),
+  it: require('../../../assets/sprachkarte-it.png'),
+};
 
 const PILL_W = 176;
 const PILL_H = 48;
@@ -500,12 +507,8 @@ export function PathScreen() {
     ]
   );
 
-  // Die Illustration der oberen Karte. Bisher gibt es genau eine, und sie
-  // zeigt Chinesisch (Simons Vorlage aus "Background S1") - fuer jede
-  // andere Sprache bleibt die Karte eine ruhige Perlmutt-Flaeche, statt ein
-  // falsches Land zu zeigen. Kommt eine zweite Zeichnung, wird daraus eine
-  // Zuordnung statt eines Vergleichs.
-  const heldBild = targetLanguageId === 'zh' ? SPRACH_BILD_ZH : undefined;
+  // Die Illustration der oberen Karte - zur Sprache passend, sonst keine.
+  const heldBild = SPRACH_BILDER[targetLanguageId];
 
   const goCategory = (id: string) => () => router.push({ pathname: '/category/[id]', params: { id } });
   // Eine Situation oeffnet GENAU ihre Saetze (2026-08-21). Vorher landete
@@ -940,9 +943,26 @@ export function PathScreen() {
 
       {/* Fortschritt ueber die freigeschalteten Inhalte. */}
       <View style={styles.progressRow}>
-        {/* Leerer Platz links, Gegenstueck zum Zurueck-Pfeil im Onboarding -
-            ohne ihn stuende der Balken links buendig und rechts eingerueckt. */}
-        <View style={styles.progressSeite} />
+        {/* Links die Flagge der Lernsprache (2026-09-12, Simons Wunsch).
+            Sie oeffnet DIESELBE Auswahl wie das Dropdown in der Kopfzeile -
+            derselbe Baustein, nur ein kleinerer Ausloeser, damit die beiden
+            nicht auseinanderlaufen koennen.
+            Der Platz war vorher leer und diente nur als Gegengewicht zur
+            Prozentzahl rechts; der Balken steht also weiterhin genau mittig
+            und gleich breit. */}
+        <View style={styles.progressSeite}>
+          <Dropdown
+            compact
+            symbol={activeLanguage.flagge}
+            options={languageOptions}
+            selectedId={targetLanguageId}
+            onSelect={setTargetLanguageId}
+            dark={darkMode}
+            title="Welche Sprache lernst du?"
+            accessibilityLabel="Sprache"
+            rahmen="ohne"
+          />
+        </View>
         {/* Im gefuehrten Modus zaehlt der Kurs, im Speed-Run die
             freigeschalteten Kategorien - sonst stuende der Balken im Kurs
             dauerhaft auf dem Wert einer Sammlung, die man dort gar nicht
@@ -964,11 +984,11 @@ export function PathScreen() {
         </View>
       </View>
 
-      {/* Obere Karte: die Illustration der Sprache. Sie dreht sich mit der
-          unteren, zeigt hinten aber keine zweite Zeichnung - dort steht der
-          Name des Lernwegs, in den man gerade gewechselt ist. Das ist der
-          Rest des alten "Du bist hier"-Kastens: die Stelle im Pfad zeigt
-          jetzt der Pfad selbst, den MODUS sieht man sonst nirgends. */}
+      {/* Obere Karte: die Illustration der Sprache - auf BEIDEN Seiten
+          (2026-09-12, Simon: das Bild von Freunde gehoert auch auf S1s obere
+          Karte). Vorher stand hinten der Name des Lernwegs; der war der
+          Rest des alten "Du bist hier"-Kastens und ist mit der
+          Standort-Zeile ueber dem Balken doppelt geworden. */}
       <View style={styles.bildReihe}>
         <BildKarte
           breite={kartenBreite}
@@ -977,12 +997,8 @@ export function PathScreen() {
           seite={oben.seite}
           umdrehen={beideUmdrehen}
           quelle={heldBild}
+          rueckseitenBild={heldBild}
           name="Sprachkarte"
-          rueckseite={
-            <View style={styles.heldRueck} pointerEvents="none">
-              <Text style={styles.heldRueckText}>{LEARNING_MODE_LABEL.gefuehrt}</Text>
-            </View>
-          }
         />
       </View>
 
@@ -1412,25 +1428,7 @@ const styles = StyleSheet.create({
     // Vorn: nur so legt sich ihr Schatten auf die obere Karte, und genau das
     // macht "erhoben" sichtbar.
     zIndex: 1,
-  },
-  heldRueck: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  heldRueckText: {
-    color: TINTE,
-    opacity: 0.5,
-    fontSize: FONT_SIZE.bodyLg,
-    lineHeight: LINE_HEIGHT.bodyLg,
-    ...schrift('800'),
-    textTransform: 'uppercase',
-    letterSpacing: 0.6,
-  },
+  },
   pathBoxContent: {
     // Oben und unten getrennt seit 2026-09-03 (Simon: der Abstand zwischen
     // dem "Du bist hier"-Kasten und dem Pfad soll um die Haelfte wachsen).

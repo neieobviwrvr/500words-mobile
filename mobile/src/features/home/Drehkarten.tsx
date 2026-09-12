@@ -213,6 +213,7 @@ export function BildKarte({
   quelle,
   name,
   rueckseite,
+  rueckseitenBild,
 }: {
   breite: number;
   hoehe: number;
@@ -230,6 +231,17 @@ export function BildKarte({
   name: string;
   /** Was hinten steht. Ohne Angabe bleibt die Rueckseite leer. */
   rueckseite?: ReactNode;
+  /**
+   * Bild fuer die RUECKSEITE - in der Regel dasselbe wie vorn (2026-09-12,
+   * Simons Wunsch fuer S1: die Karte soll das Bild zeigen, egal welche Seite
+   * oben liegt).
+   *
+   * Der Preis ist bekannt und gewollt: mit demselben Bild auf beiden Seiten
+   * sieht man der oberen Karte die Drehung kaum noch an - sie bleibt das
+   * Bild, nur Schatten und Verkuerzung wandern. Was sich wirklich aendert,
+   * zeigt die untere Karte.
+   */
+  rueckseitenBild?: ImageSourcePropType;
 }) {
 
   const kippX = useRef(new Animated.Value(0)).current;
@@ -362,6 +374,18 @@ export function BildKarte({
             kuehles Violettweiss, ein warmer Grauton saesse daneben. */}
         {RASTER ? <Struktur farbe={PERLMUTT[1]} ecken="alle" /> : null}
 
+        {rueckseitenBild ? (
+          // Gleicher Beschnitt wie vorn: die Rundung sitzt an der Huelle,
+          // nicht an der Flaeche darueber - die traegt den Schatten.
+          <View style={[styles.bildRahmen, { width: breite, height: hoehe }]}>
+            <Image
+              source={rueckseitenBild}
+              style={{ width: breite, height: hoehe }}
+              resizeMode="cover"
+              accessibilityIgnoresInvertColors
+            />
+          </View>
+        ) : null}
         {rueckseite}
       </Animated.View>
     </View>
