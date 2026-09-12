@@ -5,7 +5,7 @@ import type { BottomTabNavigationProp } from 'expo-router/tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Dropdown, ProgressBar, ProgressProzent, Screen } from '../../components';
 import type { DropdownOption } from '../../components';
-import { BAR_HEIGHT, CONTENT_GAP } from '../../components/tabLeiste';
+import { CONTENT_GAP } from '../../components/tabLeiste';
 import { CATEGORIES, GRUNDWORTSCHATZ_ID } from '../../data/categories';
 import { LANGUAGES, getLanguage } from '../../data/languages';
 import { useUnlockedProgress } from '../home/useUnlockedProgress';
@@ -215,7 +215,18 @@ export function HoloKarteTest() {
 
   // Die angedockte Leiste braucht weniger Platz als die schwebende: es
   // entfaellt der Schwebeabstand, der Sicherheitsrand steckt jetzt IN ihr.
-  const leistenHoehe = BAR_HEIGHT + sicherRand.bottom;
+  //
+  // Und sie ist flacher als die schwebende (2026-09-12, Simon: das Weiss
+  // unter den Symbolen reduzieren): die Kapsel braucht ihre 68, weil sie
+  // frei steht und rundum Luft hat - eine angedockte Leiste kommt mit 56
+  // aus, das ist die zweite Knopfhoehe der App und immer noch mehr als
+  // Apples eigene Leiste (49).
+  //
+  // Der Sicherheitsrand darunter BLEIBT: dort liegt der Home-Indikator, und
+  // Symbole in diesem Streifen waeren teils nicht bedienbar. Das ist der
+  // weisse Rest, der unten stehen bleibt - Geraet, nicht Gestaltung.
+  const leistenBand = 56;
+  const leistenHoehe = leistenBand + sicherRand.bottom;
   const freiraum = leistenHoehe + CONTENT_GAP;
 
   // Diesem einen Screen den unteren Innenabstand des Tab-Layouts abnehmen:
@@ -436,7 +447,13 @@ const styles = StyleSheet.create({
   standortReihe: {
     // Ohne Kopfleiste holt hier nichts mehr einen Ueberstand auf - es ist
     // schlicht der Abstand zum oberen Rand.
-    marginTop: SPACING.xl,
+    //
+    // 2026-09-12 von xl auf sm (Simon: das Weiss ueber "SPEED-RUN"
+    // reduzieren). Was danach noch bleibt, ist der Sicherheitsrand des
+    // Geraets (auf einem iPhone 12 rund 47 Punkte) plus die 8, die `Screen`
+    // fuer alle Seiten setzt - dort steht die Statusleiste, das ist kein
+    // Abstand, den wir vergeben.
+    marginTop: SPACING.sm,
   },
   progressSeite: {
     width: PROGRESS_SEITE,
