@@ -2,6 +2,13 @@ import { router } from 'expo-router';
 import { PlaceholderScreen } from '../../src/features/placeholder/PlaceholderScreen';
 import { useAuthState } from '../../src/state/AuthState';
 import { KONTO_NOETIG } from '../../src/data/demo';
+import { HoloKarteTest } from '../../src/features/testbereich/HoloKarte';
+
+// TEST (2026-09-11): solange das hier `true` ist, zeigt "Freunde" den
+// Holo-Karten-Testscreen statt seines eigentlichen Inhalts. Zurueck zum
+// normalen Stand: diese Konstante, die Zeile darunter in `Freunde` und den
+// Import oben loeschen. Der eigentliche Inhalt bleibt dabei unberuehrt.
+const HOLO_TEST = true;
 
 // Inhalt noch offen - Gruppen und Ranglisten sind auf Nutzer-Entscheidung
 // zurueckgestellt (2026-08-20).
@@ -13,6 +20,8 @@ import { KONTO_NOETIG } from '../../src/data/demo';
 // erreicht.
 export default function Freunde() {
   const { hatKonto } = useAuthState();
+
+  if (HOLO_TEST) return <HoloKarteTest />;
 
   if (!hatKonto) {
     return (
