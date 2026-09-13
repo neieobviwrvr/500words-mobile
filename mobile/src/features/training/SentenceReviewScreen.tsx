@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useState } from 'react';
-import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { AccessibilityInfo, ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useAppState } from '../../state/AppState';
 import { useOnboardingState } from '../../state/OnboardingState';
@@ -15,7 +16,7 @@ import { useSttRecorder } from '../stt/useSttRecorder';
 import { useSpeechmatics } from '../stt/useSpeechmatics';
 import { speakSentence, stopSpeaking } from '../tts/speak';
 import { newCard, reviewCard } from '../srs/fsrsEngine';
-import { cardKey, saveCard } from '../srs/srsStorage';
+import { cardKey, loadCard, saveCard } from '../srs/srsStorage';
 import { merkeBesuch } from '../home/zuletztBesucht';
 import { ladeZaehler, aendereZaehler, setzeZaehler, ladeJeErreicht, markiereJeErreicht, aktiverBatchPool } from './batchLeiter';
 import {
@@ -34,6 +35,8 @@ import {
   hilfeAusschnitt,
 } from '../../components';
 import { TaggedTokens } from '../../components/ColoredTokens';
+import { RichtigFunken } from '../../components/RichtigFunken';
+import { spieleRichtigTon } from '../tts/effekte';
 import { getTheme, SPACING, RADIUS, FONT_SIZE, LINE_HEIGHT, ACCENT_GREEN, ACCENT_ERROR, ACCENT_ORANGE, WordType, schrift } from '../../theme/tokens';
 
 // "Sätze-Wiederholung" (2026-08-26) - der zweite der drei Trainingsmodi aus
@@ -88,9 +91,23 @@ const BATCH_GROESSE = 20;
 const BATCH_FREISCHALT_ANTEIL = 0.9;
 const SATZ_KEY = (s: ExerciseSentence) => String(s.id);
 
+// Gilt nur fuer die globale Saetze-Wiederholung und fuer "üben" einer ganzen
+// Kategorie. Eine einzelne SITUATION fragt stattdessen jeden ihrer Saetze
+// genau einmal ab, bei jedem Start neu gemischt (2026-09-13, Simons Vorgabe:
+// "Höflich sein" hat 9 Saetze, 6 Runden mit Zufallsziehung zeigten davon
+// nur 4) - siehe `situationsModus`.
 const SESSION_RUNDEN = 6;
 
 type Stufe = 1 | 2 | 3;
+
+/** Wie die Loesungsansicht nach einer Antwort aussieht - siehe `LOESUNG_KOPF`. */
+type Loesung = 'richtig' | 'ueberlebt' | 'falsch';
+
+const LOESUNG_KOPF: Record<Loesung, { titel: string; icon: 'checkmark-circle' | 'checkmark-circle-outline' | 'close-circle'; farbe: string }> = {
+  richtig: { titel: 'Richtig!', icon: 'checkmark-circle', farbe: ACCENT_GREEN },
+  ueberlebt: { titel: 'Fast richtig', icon: 'checkmark-circle-outline', farbe: ACCENT_ORANGE },
+  falsch: { titel: 'So heißt es richtig', icon: 'close-circle', farbe: ACCENT_ERROR },
+};
 
 // `sprachAdjektiv()` (fuer "Sprich diesen polnischen Satz nach") liegt seit
 // 2026-09-11 in data/languages.ts - der gefuehrte Kurs braucht dieselbe
@@ -133,6 +150,18 @@ function stufeVon(
   if ((stufe1[SATZ_KEY(satz)] ?? 0) < STUFE1_SCHWELLE) return 1;
   if ((stufe2[SATZ_KEY(satz)] ?? 0) < STUFE2_SCHWELLE) return 2;
   return 3;
+}
+
+/** Gleicher Satz bis auf Gross-/Kleinschreibung und Satzzeichen? */
+function gleicherWortlaut(antwort: string, satz: ExerciseSentence): boolean {
+  const glatt = (s: string) =>
+    s
+      .toLocaleLowerCase()
+      .replace(/[.,!?¿¡;:"„“”«»…。，！？]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+  const a = glatt(antwort);
+  return a === glatt(satz.text) || (!!satz.pinyin && a === glatt(satz.pinyin));
 }
 
 function mischen<T>(arr: T[]): T[] {
@@ -186,6 +215,17 @@ export function SentenceReviewScreen() {
   // Wiederholung"-Kachel. Ohne `categoryId` bleibt alles exakt wie bisher.
   const { categoryId, scenario } = useLocalSearchParams<{ categoryId?: string; scenario?: string }>();
   const kategorieModus = !!categoryId;
+  // Eine einzelne Situation (Karte auf dem Lektionen-Screen, Situations-Pille
+  // im Pfad): die Sitzung ist die ganze Situation, jeder Satz genau einmal in
+  // zufaelliger Reihenfolge. Die Leiter bleibt - jeder Satz erscheint auf
+  // seiner eigenen Stufe; nur die AUSWAHL folgt nicht mehr dem Batch.
+  const situationsModus = kategorieModus && !!scenario;
+  // Alles, was vom Lektionen-Screen kommt - eine Situation ODER "üben" einer
+  // ganzen Kategorie - startet ohne "Bereit für ...?" (2026-09-13, Simons
+  // Vorgabe). Nur die globale Saetze-Wiederholung behaelt ihren
+  // Startbildschirm, dort steht der Batch-Fortschritt.
+  const ohneStartfrage = kategorieModus;
+  const ladeSchluessel = `${targetLanguageId}|${categoryId ?? ''}|${scenario ?? ''}`;
   // Eigene Zaehler-Praefixe im Kategorie-Modus (siehe Konstanten oben) - der
   // Fortschritt hier ist ausdruecklich NICHT derselbe wie in der globalen
   // Saetze-Wiederholung.
@@ -207,6 +247,11 @@ export function SentenceReviewScreen() {
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [sentences, setSentences] = useState<ExerciseSentence[]>([]);
+  // Fuer welche Auswahl `sentences` gilt. Der Screen bleibt als Tab-Route
+  // gemountet - tippt man danach eine ANDERE Situation an, stehen fuer einen
+  // Moment noch die alten Saetze im State. Der Selbststart im
+  // Situations-Modus darf erst loslaufen, wenn die richtigen da sind.
+  const [geladenFuer, setGeladenFuer] = useState<string | null>(null);
   const [clusters, setClusters] = useState<Record<string, string[]>>({});
   const [offline, setOffline] = useState(false);
 
@@ -218,6 +263,10 @@ export function SentenceReviewScreen() {
   const [rundeNr, setRundeNr] = useState(1);
   const [sessionRichtig, setSessionRichtig] = useState(0);
   const [sessionGesamt, setSessionGesamt] = useState(0);
+  // Nur im Situations-Modus: die gemischte Reihenfolge dieser Sitzung,
+  // Runde N zeigt `reihenfolge[N - 1]`.
+  const [reihenfolge, setReihenfolge] = useState<ExerciseSentence[]>([]);
+  const sitzungsLaenge = situationsModus ? reihenfolge.length : SESSION_RUNDEN;
 
   const [aktuellerSatz, setAktuellerSatz] = useState<ExerciseSentence | null>(null);
   const [stufe2Optionen, setStufe2Optionen] = useState<ExerciseSentence[]>([]);
@@ -278,17 +327,89 @@ export function SentenceReviewScreen() {
   const [recordError, setRecordError] = useState<string | null>(null);
   const [feedback, setFeedback] = useState<EvaluationResult | null>(null);
 
+  // Genau EIN Rundenwechsel je Runde (2026-09-13, Fehlerbericht Simon: ein
+  // Satz erschien, spielte sein Audio und verschwand eine Sekunde spaeter
+  // von selbst).
+  //
+  // Die Ursache war zweiteilig. Erstens sprang die Ansicht schon beim
+  // BEANTWORTEN auf die naechste Stufe, weil `stufe` live aus den Zaehlern
+  // kam - nach einer richtigen Stufe-1-Antwort stand fuer die Wartezeit die
+  // Stufe-2-Ansicht desselben Satzes da, samt ihrem "Weiter"-Notausgang.
+  // Zweitens wechselte dieser Knopf sofort die Runde, und der schon
+  // geplante Zeitgeber wechselte eine Sekunde spaeter ein zweites Mal.
+  //
+  // Deshalb: die Stufe steht fuer die ganze Runde fest (`rundenStufe`), jede
+  // Runde traegt eine Nummer, und ein Wechsel zaehlt nur fuer die Runde, in
+  // der er ausgeloest wurde. Ein spaeter Zeitgeber, ein zweiter Tipp oder
+  // eine verspaetete Spracherkennung laufen damit ins Leere.
+  // `rundeId` (State) haelt die Nummer der ANGEZEIGTEN Runde fest, damit
+  // Handler sie aus ihrem Render mitnehmen; `rundeIdRef` ist die aktuelle.
+  const [rundenStufe, setRundenStufe] = useState<Stufe>(1);
+  // Nach der Antwort: Loesungsansicht statt Aufgabe (siehe `loesungZeigen`).
+  // Gilt je Runde.
+  const [loesung, setLoesung] = useState<Loesung | null>(null);
+  // Zweiter Versuch nach "nicht verstanden" (siehe `zweitenVersuchAnbieten`).
+  // Der State steuert den Hinweis, der Ref die Logik - Handler aus einem
+  // aelteren Render sollen den aktuellen Versuch sehen.
+  const [zweiterVersuch, setZweiterVersuch] = useState(false);
+  const versuchRef = useRef<1 | 2>(1);
+  // Stufe 2: die im ersten Versuch falsch gewaehlte Option. Bleibt stehen,
+  // wird aber blass und untippbar - wie ein Hilfe-Ausschluss.
+  const [stufe2Falsch, setStufe2Falsch] = useState<number | null>(null);
+  const [rundeId, setRundeId] = useState(0);
+  const rundeIdRef = useRef(0);
+  const beantwortetRef = useRef(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const aufnahmeRundeRef = useRef(0);
+
+  // "Weiter" nach der Antwort (2026-09-13, Fehlerbericht Simon: der Knopf
+  // hatte keine Funktion - er war nach jeder Antwort gesperrt, nach dem
+  // Sprechen also nie bedienbar). Er zieht den geplanten Wechsel vor, statt
+  // einen zweiten auszuloesen. Kommt der Tipp, bevor der Wechsel ueberhaupt
+  // geplant ist (Stufe 1 schreibt erst noch den Zaehler), merkt ihn
+  // `weiterGewuenschtRef` vor.
+  const ausstehenderWechselRef = useRef<(() => void) | null>(null);
+  const weiterGewuenschtRef = useRef(false);
+
+  function neueRundenNummer() {
+    rundeIdRef.current += 1;
+    setRundeId(rundeIdRef.current);
+    beantwortetRef.current = false;
+    ausstehenderWechselRef.current = null;
+    weiterGewuenschtRef.current = false;
+    versuchRef.current = 1;
+    setLoesung(null);
+    setZweiterVersuch(false);
+    setStufe2Falsch(null);
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+  }
+
   useFocusEffect(
     useCallback(() => {
+      // Beim Verlassen UND beim Zurueckkehren: ein noch geplanter Wechsel
+      // darf nicht in eine spaeter gestartete Sitzung hineinfeuern.
+      neueRundenNummer();
       setPhase('auswahl');
+      return () => {
+        neueRundenNummer();
+        // Eine Situation verlaesst man mitten in der Runde direkt per
+        // Zurueck - der Satz darf danach nicht auf Lektionen weiterreden.
+        stopSpeaking();
+      };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
   );
 
   useEffect(() => {
     let cancelled = false;
+    const schluessel = ladeSchluessel;
     (async () => {
       setLoading(true);
       setLoadError(null);
+      setGeladenFuer(null);
       try {
         // Im Kategorie-Modus dieselbe Filter-Pipeline wie ExerciseScreen.tsx
         // (source='category'/'srs-kategorie'): eigene + geliehene Situationen
@@ -321,6 +442,7 @@ export function SentenceReviewScreen() {
         setStufe1(s1);
         setStufe2(s2);
         setJeStufe3(je3);
+        setGeladenFuer(schluessel);
       } catch (e) {
         if (!cancelled) setLoadError(e instanceof Error ? e.message : String(e));
       } finally {
@@ -358,12 +480,20 @@ export function SentenceReviewScreen() {
   function naechsteRundeVorbereiten(
     s1: Record<string, number> = stufe1,
     s2: Record<string, number> = stufe2,
-    je3: Set<string> = jeStufe3
+    je3: Set<string> = jeStufe3,
+    /** Situations-Modus: der Satz steht schon fest (siehe `reihenfolge`). */
+    satzVorgabe?: ExerciseSentence
   ) {
-    const batch = aktiverBatchPool(sentences, SATZ_KEY, je3, BATCH_GROESSE, BATCH_FREISCHALT_ANTEIL);
-    const nichtFertig = batch.filter((s) => stufeVon(s, s1, s2, kannAbfragen) !== 3);
-    const kandidaten = nichtFertig.length > 0 ? nichtFertig : batch;
-    const satz = mischen(kandidaten)[0];
+    let satz = satzVorgabe;
+    if (!satz) {
+      const batch = aktiverBatchPool(sentences, SATZ_KEY, je3, BATCH_GROESSE, BATCH_FREISCHALT_ANTEIL);
+      const nichtFertig = batch.filter((s) => stufeVon(s, s1, s2, kannAbfragen) !== 3);
+      const kandidaten = nichtFertig.length > 0 ? nichtFertig : batch;
+      satz = mischen(kandidaten)[0];
+    }
+    const neueStufe: Stufe = satz ? stufeVon(satz, s1, s2, kannAbfragen) : 1;
+    neueRundenNummer();
+    setRundenStufe(neueStufe);
     setAktuellerSatz(satz);
     setInput('');
     setTranscript('');
@@ -375,7 +505,7 @@ export function SentenceReviewScreen() {
     setStufe2Gewaehlt(null);
     setStufe2Ausgewertet(null);
     setStufe2Ausgeschlossen(null);
-    setStufe2Optionen(satz && stufeVon(satz, s1, s2, kannAbfragen) === 2 ? stufe2OptionenFuer(satz) : []);
+    setStufe2Optionen(satz && neueStufe === 2 ? stufe2OptionenFuer(satz) : []);
   }
 
   /**
@@ -407,6 +537,8 @@ export function SentenceReviewScreen() {
     const neuStufe2 = { ...stufe2, [key]: zielStufe >= 3 ? STUFE2_SCHWELLE : 0 };
     setStufe1(neuStufe1);
     setStufe2(neuStufe2);
+    neueRundenNummer();
+    setRundenStufe(stufeVon(satz, neuStufe1, neuStufe2, kannAbfragen));
     setAktuellerSatz(satz);
     setInput('');
     setTranscript('');
@@ -465,10 +597,8 @@ export function SentenceReviewScreen() {
    *
    * `rundeNr` gehoert in die Abhaengigkeiten, nicht nur die Satz-ID: sonst
    * bliebe es stumm, wenn zweimal hintereinander derselbe Satz gezogen wird.
-   * `stufe` steht bewusst NICHT drin - der Wert aendert sich nach dem Loesen
-   * noch einmal, was ein zweites Vorlesen mitten in der Rueckmeldung
-   * ausloesen wuerde; gelesen wird er trotzdem aktuell, weil der Effekt nach
-   * dem Rendern laeuft.
+   * `stufe` muss nicht hinein: sie steht seit 2026-09-13 fuer die ganze
+   * Runde fest (`rundenStufe`) und wechselt nur zusammen mit dem Satz.
    */
   useEffect(() => {
     if (phase !== 'runde' || !aktuellerSatz || stufe === 3) return;
@@ -484,8 +614,27 @@ export function SentenceReviewScreen() {
     setSessionRichtig(0);
     setSessionGesamt(0);
     setPhase('runde');
-    naechsteRundeVorbereiten();
+    if (situationsModus) {
+      // Bei JEDEM Start neu gemischt, auch bei "Nochmal".
+      const neu = mischen(sentences);
+      setReihenfolge(neu);
+      naechsteRundeVorbereiten(undefined, undefined, undefined, neu[0]);
+    } else {
+      naechsteRundeVorbereiten();
+    }
   }
+
+  // Situation und Kategorie starten ohne Zwischenfrage (2026-09-13, Simons
+  // Vorgabe: "Bereit für ...?" faellt weg, siehe `ohneStartfrage`). Sobald
+  // die Saetze geladen sind, steht Satz 1 da. `geladenFuer` verhindert, dass
+  // nach dem Antippen einer anderen Auswahl mit den noch alten Saetzen
+  // gestartet wird.
+  useEffect(() => {
+    if (!ohneStartfrage || phase !== 'auswahl' || loading || loadError) return;
+    if (geladenFuer !== ladeSchluessel || sentences.length === 0) return;
+    rundeStarten();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ohneStartfrage, phase, loading, loadError, geladenFuer, ladeSchluessel, sentences]);
 
   /**
    * `overrides` (2026-08-26, Bugfix): `naechsteRundeVorbereiten()` faellt
@@ -507,21 +656,32 @@ export function SentenceReviewScreen() {
   function rundeAbschliessen(
     richtigDieseRunde: number,
     gesamtDieseRunde: number,
-    overrides?: { s1?: Record<string, number>; s2?: Record<string, number>; je3?: Set<string> }
+    overrides: { s1?: Record<string, number>; s2?: Record<string, number>; je3?: Set<string> } | undefined,
+    /** Die Runde, in der der Wechsel ausgeloest wurde - siehe `rundeId`. */
+    fuerRunde: number
   ) {
+    if (fuerRunde !== rundeIdRef.current) return;
     setSessionRichtig((r) => r + richtigDieseRunde);
     setSessionGesamt((g) => g + gesamtDieseRunde);
-    if (rundeNr >= SESSION_RUNDEN) {
+    if (rundeNr >= sitzungsLaenge) {
+      // Auch die letzte Runde verbrauchen - sonst zaehlte ein zweiter
+      // Wechsel fuer dieselbe Runde doppelt ins Ergebnis.
+      neueRundenNummer();
       setPhase('ergebnis');
     } else {
       setRundeNr((n) => n + 1);
-      naechsteRundeVorbereiten(overrides?.s1, overrides?.s2, overrides?.je3);
+      // `rundeNr` ist 1-basiert, die naechste Runde ist also Index `rundeNr`.
+      naechsteRundeVorbereiten(overrides?.s1, overrides?.s2, overrides?.je3, situationsModus ? reihenfolge[rundeNr] : undefined);
     }
   }
 
   async function handleMicPress() {
     setRecordError(null);
     if (!isRecording) {
+      // Nach der Antwort keine zweite Aufnahme mehr - ihr Ergebnis landete
+      // sonst in der naechsten Runde.
+      if (beantwortetRef.current) return;
+      aufnahmeRundeRef.current = rundeId;
       try {
         await recorder.start();
         setIsRecording(true);
@@ -536,12 +696,20 @@ export function SentenceReviewScreen() {
       setRecordError('Keine Aufnahme-Datei erhalten.');
       return;
     }
+    const runde = aufnahmeRundeRef.current;
     setIsTranscribing(true);
     setTranscript('');
     try {
-      const { text } = await stt.transcribe(uri, language.sttLanguage, aktuellerSatz?.text ?? language.sttPrompt);
+      // Erwartet ist der Satz in der Zielsprache - auf Stufe 1 der, der
+      // dasteht, auf Stufe 3 die Uebersetzung, die gesucht ist. Kein
+      // Rueckfall auf `sttPrompt`: ein Beispielsatz ohne Bezug wuerde die
+      // Erkennung auf falsche Woerter lenken.
+      const { text } = await stt.transcribe(uri, language.sttLanguage, aktuellerSatz?.text);
+      // Die Erkennung braucht Sekunden. Ist die Runde inzwischen eine andere
+      // oder schon beantwortet, gehoert das Ergebnis zu keinem Satz mehr.
+      if (runde !== rundeIdRef.current || beantwortetRef.current) return;
       setTranscript(text);
-      loesen(text);
+      loesen(text, runde);
     } catch (e) {
       setRecordError(e instanceof Error ? e.message : String(e));
     } finally {
@@ -568,17 +736,102 @@ export function SentenceReviewScreen() {
     });
   }
 
+  /**
+   * Den Rundenwechsel nach der Rueckmeldungs-Pause einplanen. Gilt nur fuer
+   * `runde` - ist bis dahin eine andere Runde dran, verfaellt er (siehe
+   * `rundeId`).
+   */
+  function spaeterAbschliessen(
+    runde: number,
+    /** `null` = kein automatischer Wechsel, nur ueber "Weiter" (richtige Antwort). */
+    ms: number | null,
+    richtig: number,
+    gesamt: number,
+    overrides?: { s1?: Record<string, number>; s2?: Record<string, number>; je3?: Set<string> }
+  ) {
+    if (runde !== rundeIdRef.current) return;
+    if (timerRef.current) clearTimeout(timerRef.current);
+    const wechseln = () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+      timerRef.current = null;
+      ausstehenderWechselRef.current = null;
+      rundeAbschliessen(richtig, gesamt, overrides, runde);
+    };
+    ausstehenderWechselRef.current = wechseln;
+    if (weiterGewuenschtRef.current) timerRef.current = setTimeout(wechseln, 0);
+    else if (ms !== null) timerRef.current = setTimeout(wechseln, ms);
+  }
+
+  /**
+   * Loesungsansicht (2026-09-13, Simons Vorgaben): nach JEDER Antwort steht
+   * der Satz mit seiner Uebersetzung da, bis "Weiter" getippt wird. Vorher
+   * stand nur eine Urteilszeile da, und nach 1,4 Sekunden war der Satz weg -
+   * gerade in dem Moment, in dem man ihn sich einpraegen koennte.
+   *
+   * Nur "richtig" bekommt Ping und gruene Funken. Nach "nicht verstanden"
+   * kommt die Ansicht erst nach dem zweiten Versuch, siehe
+   * `zweitenVersuchAnbieten`.
+   */
+  function loesungZeigen(art: Loesung) {
+    setLoesung(art);
+    if (art === 'richtig') spieleRichtigTon();
+    AccessibilityInfo.announceForAccessibility(LOESUNG_KOPF[art].titel);
+  }
+
+  /**
+   * "Nicht verstanden" im ersten Versuch: noch einmal antworten, bevor die
+   * Loesung kommt (2026-09-13, Simons Vorgabe).
+   *
+   * **Gewertet bleibt der ERSTE Versuch** - fuer die Stufen-Zaehler, die
+   * FSRS-Karte und das Sitzungsergebnis. Das ist die Regel, die der gefuehrte
+   * Kurs schon hat (siehe "Zweiter Anlauf" in CLAUDE.md): sonst liesse sich
+   * jede Stufe durch Nochmal-Antworten hochklicken. Der zweite Versuch
+   * aendert nur, was auf dem Bildschirm steht - er ist Uebung, kein Nachweis.
+   * Deshalb ist der Rundenwechsel beim ersten Versuch schon mit dessen
+   * Wertung vorgemerkt und wird hier nicht mehr angefasst.
+   */
+  function zweitenVersuchAnbieten() {
+    versuchRef.current = 2;
+    beantwortetRef.current = false;
+    setZweiterVersuch(true);
+    setFeedback(null);
+    setInput('');
+    setTranscript('');
+    AccessibilityInfo.announceForAccessibility('Nicht verstanden. Versuch es noch einmal.');
+  }
+
+  /** "Weiter" nach der Antwort: den geplanten Wechsel sofort ausfuehren. */
+  function weiterTippen() {
+    if (!beantwortetRef.current) return;
+    if (ausstehenderWechselRef.current) ausstehenderWechselRef.current();
+    else weiterGewuenschtRef.current = true;
+  }
+
   /** Stufe 1 (Nachsprechen) und Stufe 3 (Freie Übersetzung) - beide über evaluateConcepts. */
-  function loesen(antwort: string) {
-    if (!aktuellerSatz) return;
+  function loesen(antwort: string, runde: number = rundeId) {
+    // Jede Runde wird genau einmal beantwortet.
+    if (!aktuellerSatz || beantwortetRef.current || runde !== rundeIdRef.current) return;
+    beantwortetRef.current = true;
     const roh = evaluateConcepts(antwort.trim(), aktuellerSatz.accepted_concepts, clusters, aktuellerSatz.text);
     // Hilfe genutzt -> gedeckelt auf "überlebt", exakt die Regel aus
     // ExerciseScreen.tsx ("Lösung zeigen").
     const evaluation: EvaluationResult = aufgedeckt && roh.tier === 'richtig' ? { ...roh, tier: 'ueberlebt' } : roh;
     setFeedback(evaluation);
-    besuchMerken(aktuellerSatz);
 
-    const stufe = stufeVon(aktuellerSatz, stufe1, stufe2, kannAbfragen);
+    // Zweiter Versuch: nur noch zeigen - gewertet ist der erste.
+    if (versuchRef.current === 2) {
+      loesungZeigen(evaluation.tier === 'nicht_verstanden' ? 'falsch' : evaluation.tier);
+      return;
+    }
+
+    besuchMerken(aktuellerSatz);
+    if (evaluation.tier === 'nicht_verstanden') zweitenVersuchAnbieten();
+    else loesungZeigen(evaluation.tier);
+    // Nichts wechselt mehr von selbst: der Satz bleibt stehen, bis "Weiter"
+    // in der Loesungsansicht getippt wird.
+    const wartezeit = null;
+
+    const stufe = rundenStufe;
     const key = SATZ_KEY(aktuellerSatz);
 
     if (stufe === 1) {
@@ -597,7 +850,7 @@ export function SentenceReviewScreen() {
       void schreiben.then((neu) => {
         const neuStufe1 = nichtVerstanden ? stufe1 : { ...stufe1, [key]: neu };
         if (!nichtVerstanden) setStufe1(neuStufe1);
-        setTimeout(() => rundeAbschliessen(nichtVerstanden ? 0 : 1, 1, { s1: neuStufe1 }), 1400);
+        spaeterAbschliessen(runde, wartezeit, nichtVerstanden ? 0 : 1, 1, { s1: neuStufe1 });
       });
       return;
     }
@@ -608,11 +861,16 @@ export function SentenceReviewScreen() {
     // Wunsch: "komplett unabhaengig") - dieser Durchlauf berührt weder die
     // Faelligkeit fuer "Taegliches Wiederholen" noch die von
     // "srs-kategorie"/ExerciseScreen.tsx.
+    //
+    // Die BESTEHENDE Karte fortschreiben, nie eine frische (2026-09-13,
+    // Bugfix): hier stand `newCard()` - jede Antwort ueberschrieb damit die
+    // gesamte Speed-Run-Historie des Satzes mit einer Karte aus genau einer
+    // Bewertung, und der Abgleich trug das auf den Server. Dasselbe Muster
+    // wie ExerciseScreen.tsx und LessonScreen.tsx.
     if (language.table && !kategorieModus) {
       const fsrsKey = cardKey(targetLanguageId, language.table, aktuellerSatz.id);
-      const bisherige = newCard();
-      const aktualisiert = reviewCard(bisherige, evaluation.tier);
-      void saveCard(fsrsKey, aktualisiert);
+      const tier = evaluation.tier;
+      void loadCard(fsrsKey).then((bisherige) => saveCard(fsrsKey, reviewCard(bisherige ?? newCard(), tier)));
     }
 
     if (evaluation.tier === 'nicht_verstanden') {
@@ -627,9 +885,9 @@ export function SentenceReviewScreen() {
       void setzeZaehler(stufe2Praefix, targetLanguageId, key, neuerStand);
       const neuStufe2 = { ...stufe2, [key]: neuerStand };
       setStufe2(neuStufe2);
-      setTimeout(() => rundeAbschliessen(0, 1, { s2: neuStufe2 }), 1400);
+      spaeterAbschliessen(runde, wartezeit, 0, 1, { s2: neuStufe2 });
     } else {
-      setTimeout(() => rundeAbschliessen(1, 1), 1400);
+      spaeterAbschliessen(runde, wartezeit, 1, 1);
     }
   }
 
@@ -640,11 +898,23 @@ export function SentenceReviewScreen() {
 
   function stufe2Loesen() {
     if (!stufe2Gewaehlt || stufe2Ausgewertet || !aktuellerSatz) return;
+    if (beantwortetRef.current || rundeId !== rundeIdRef.current) return;
+    beantwortetRef.current = true;
+    const runde = rundeId;
     const stimmt = stufe2Gewaehlt.id === aktuellerSatz.id;
-    setStufe2Ausgewertet(stimmt ? 'richtig' : 'falsch');
+
+    // Zweiter Versuch: nur noch zeigen - gewertet ist der erste.
+    if (versuchRef.current === 2) {
+      setStufe2Ausgewertet(stimmt ? 'richtig' : 'falsch');
+      loesungZeigen(stimmt ? 'richtig' : 'falsch');
+      return;
+    }
+
     besuchMerken(aktuellerSatz);
     const key = SATZ_KEY(aktuellerSatz);
     if (stimmt) {
+      setStufe2Ausgewertet('richtig');
+      loesungZeigen('richtig');
       // Gleicher Umbau wie in loesen() (Stufe 1) - setTimeout NACH der
       // Zaehler-Aktualisierung geplant, mit explizitem Override statt
       // veralteter Closure-Defaults. Hier zusaetzlich betroffen: `jeStufe3`,
@@ -658,10 +928,14 @@ export function SentenceReviewScreen() {
           setJeStufe3(neueJe3);
           await markiereJeErreicht(jeStufe3Praefix, targetLanguageId, key);
         }
-        setTimeout(() => rundeAbschliessen(1, 1, { s2: neuStufe2, je3: neueJe3 }), 900);
+        spaeterAbschliessen(runde, null, 1, 1, { s2: neuStufe2, je3: neueJe3 });
       });
     } else {
-      setTimeout(() => rundeAbschliessen(0, 1), 900);
+      // Die falsche Wahl bleibt blass stehen, die uebrigen sind wieder frei.
+      setStufe2Falsch(stufe2Gewaehlt.id);
+      setStufe2Gewaehlt(null);
+      zweitenVersuchAnbieten();
+      spaeterAbschliessen(runde, null, 0, 1);
     }
   }
 
@@ -686,7 +960,9 @@ export function SentenceReviewScreen() {
         setHilfeSichtbar(false);
         return;
       }
-      const falsche = stufe2Optionen.filter((o) => o.id !== aktuellerSatz.id);
+      // Die schon falsch gewaehlte Option ist bereits raus - die Hilfe
+      // schliesst eine weitere aus, sonst taete sie im zweiten Versuch nichts.
+      const falsche = stufe2Optionen.filter((o) => o.id !== aktuellerSatz.id && o.id !== stufe2Falsch);
       if (falsche.length === 0) return;
       setStufe2Ausgeschlossen(mischen(falsche)[0].id);
       setHilfeSichtbar(true);
@@ -708,8 +984,13 @@ export function SentenceReviewScreen() {
     loesen(input.trim() || transcript);
   }
 
-  const stufe = aktuellerSatz ? stufeVon(aktuellerSatz, stufe1, stufe2, kannAbfragen) : 1;
-  const sessionFortschritt = (rundeNr - 1) / SESSION_RUNDEN;
+  // Die Stufe, mit der die Runde BEGANN - nicht live aus den Zaehlern, sonst
+  // springt die Ansicht schon beim Beantworten um (siehe `rundenStufe`).
+  const stufe = aktuellerSatz ? rundenStufe : 1;
+  // Nach dem Antippen einer ANDEREN Situation/Kategorie steht fuer einen
+  // Render noch die alte Runde im State - die soll nicht aufblitzen.
+  const rundeSichtbar = phase === 'runde' && !(ohneStartfrage && geladenFuer !== ladeSchluessel);
+  const sessionFortschritt = sitzungsLaenge > 0 ? (rundeNr - 1) / sitzungsLaenge : 0;
 
   // Speichern mitten in der Uebung (Simons Wunsch 2026-08-26) - exakt das
   // Muster aus ExerciseScreen.tsx: derselbe Schluessel (sprache:tabelle:id),
@@ -735,7 +1016,10 @@ export function SentenceReviewScreen() {
   })();
 
   function zurueckTippen() {
-    if (phase !== 'auswahl') {
+    // Ohne Startbildschirm gibt es nichts, wohin man zurueckkaeme - Zurueck
+    // fuehrt direkt dorthin, wo die Uebung angetippt wurde.
+    if (phase !== 'auswahl' && !ohneStartfrage) {
+      neueRundenNummer();
       setPhase('auswahl');
       return;
     }
@@ -762,12 +1046,12 @@ export function SentenceReviewScreen() {
           genau wie in PathScreen.tsx (`progressRow`).
           Die Rundenzahl bleibt fuer Screenreader als `label` erhalten - dort
           waere "17 Prozent" die schlechtere Ansage. */}
-      {phase === 'runde' ? (
+      {rundeSichtbar ? (
         <View style={styles.progressSlot}>
           <ProgressBar
             dark={darkMode}
             ratio={sessionFortschritt}
-            label={`Runde ${rundeNr} von ${SESSION_RUNDEN}`}
+            label={situationsModus ? `Satz ${rundeNr} von ${sitzungsLaenge}` : `Runde ${rundeNr} von ${sitzungsLaenge}`}
           />
         </View>
       ) : null}
@@ -792,7 +1076,22 @@ export function SentenceReviewScreen() {
         </View>
       )}
 
-      {!loading && !loadError && language.table && phase === 'auswahl' && (
+      {/* Situation/Kategorie: statt der Startfrage nur der kurze Moment bis
+          zum Selbststart - oder ehrlich, dass nach den Filtern nichts uebrig
+          ist. */}
+      {!loading && !loadError && language.table && phase === 'auswahl' && ohneStartfrage && (
+        <View style={styles.center}>
+          {geladenFuer === ladeSchluessel && sentences.length === 0 ? (
+            <Text style={{ color: theme.sub, textAlign: 'center', fontSize: FONT_SIZE.body }}>
+              Für diese {situationsModus ? 'Situation' : 'Kategorie'} gibt es noch keine Sätze.
+            </Text>
+          ) : (
+            <ActivityIndicator color={theme.text} />
+          )}
+        </View>
+      )}
+
+      {!loading && !loadError && language.table && phase === 'auswahl' && !ohneStartfrage && (
         <ScrollView contentContainerStyle={styles.auswahlScroll}>
           {offline ? <Text style={[styles.offline, { color: theme.sub }]}>📴 Offline — letzter gespeicherter Stand</Text> : null}
           <Text style={[styles.frage, { color: theme.text }]}>
@@ -811,6 +1110,50 @@ export function SentenceReviewScreen() {
               <PillButton dark={darkMode} label="Los geht's" onPress={rundeStarten} />
             )}
           </View>
+        </ScrollView>
+      )}
+
+      {/* Loesungsansicht nach der Antwort, auf allen drei Stufen gleich
+          (siehe `loesungZeigen`): Urteil oben - bei "richtig" mit Funken -,
+          darunter der Satz in der Zielsprache mit seiner Uebersetzung, dann
+          "Weiter". Der Satz steht im selben Rahmen wie in der Aufgabe und
+          laesst sich wie dort antippen, um ihn noch einmal zu hoeren. */}
+      {rundeSichtbar && aktuellerSatz && loesung && (
+        <ScrollView contentContainerStyle={styles.rundenBereich} showsVerticalScrollIndicator={false}>
+          {/* `zIndex`, damit die Funken UEBER dem Satzrahmen darunter fliegen
+              statt hinter ihm zu verschwinden. */}
+          <View style={styles.loesungKopf}>
+            <Ionicons name={LOESUNG_KOPF[loesung].icon} size={56} color={LOESUNG_KOPF[loesung].farbe} />
+            <Text style={[styles.loesungTitel, { color: LOESUNG_KOPF[loesung].farbe }]} accessibilityRole="header">
+              {LOESUNG_KOPF[loesung].titel}
+            </Text>
+            {loesung === 'richtig' ? <RichtigFunken key={rundeId} /> : null}
+          </View>
+          {/* Was man selbst gesagt hat, direkt neben der Loesung - nur wenn
+              es daneben lag, und nur auf den Stufen mit freier Antwort.
+              Wortgleich mit der Loesung (etwa "Fast richtig" wegen der Hilfe)
+              waere die Zeile eine blosse Wiederholung. */}
+          {loesung !== 'richtig' &&
+          stufe !== 2 &&
+          (input.trim() || transcript) &&
+          !gleicherWortlaut(input.trim() || transcript, aktuellerSatz) ? (
+            <Text style={[styles.deineAntwort, { color: theme.sub }]}>Deine Antwort: „{input.trim() || transcript}“</Text>
+          ) : null}
+          <SatzRahmen dark={darkMode}>
+            <SatzAnzeige
+              dark={darkMode}
+              schriftzeichen={hatEigeneSchrift(aktuellerSatz) ? aktuellerSatz.text : null}
+              zeichenSichtbar={zeichenAn}
+              tokens={satzTokens(aktuellerSatz)}
+              farbenAn={wortartenFarben || farbenEinmalig}
+              onPress={() => satzVorlesen(aktuellerSatz)}
+              a11y={`Vorlesen: ${aktuellerSatz.text}`}
+            />
+            {aktuellerSatz.germanGloss ? (
+              <Text style={[styles.loesungUebersetzung, { color: theme.sub }]}>{aktuellerSatz.germanGloss}</Text>
+            ) : null}
+          </SatzRahmen>
+          <PillButton dark={darkMode} label="Weiter" onPress={weiterTippen} />
         </ScrollView>
       )}
 
@@ -839,7 +1182,7 @@ export function SentenceReviewScreen() {
           Chips ersetzen die frueher untereinander gestapelten Knoepfe -
           dadurch steht der Satz im Blickfeld statt unter einer Knopfleiste.
           ------------------------------------------------------------------ */}
-      {phase === 'runde' && aktuellerSatz && stufe === 1 && (
+      {rundeSichtbar && aktuellerSatz && !loesung && stufe === 1 && (
         <ScrollView contentContainerStyle={styles.rundenBereich} showsVerticalScrollIndicator={false}>
           <Text style={[styles.frage, { color: theme.text }]}>Sprich diesen {sprachAdjektiv(targetLanguageId)} Satz nach</Text>
 
@@ -964,13 +1307,16 @@ export function SentenceReviewScreen() {
             dark={darkMode}
             label="▶ Weiter"
             a11y="Weiter"
-            gesperrt={(!input.trim() && !transcript) || !!feedback}
-            onPress={checkAnswer}
+            // Vor der Antwort schickt der Knopf das Getippte ab, danach geht
+            // er zum naechsten Satz. Ohne Antwort bleibt er gesperrt - ein
+            // Satz verschwindet nur, wenn er beantwortet ist.
+            gesperrt={!feedback && !input.trim() && !transcript}
+            onPress={feedback ? weiterTippen : checkAnswer}
           />
         </ScrollView>
       )}
 
-      {phase === 'runde' && aktuellerSatz && stufe === 2 && (
+      {rundeSichtbar && aktuellerSatz && !loesung && stufe === 2 && (
         <ScrollView contentContainerStyle={styles.rundenBereich} showsVerticalScrollIndicator={false}>
           <Text style={[styles.frage, { color: theme.text }]}>Ordne diesen {sprachAdjektiv(targetLanguageId)} Satz seiner Bedeutung zu</Text>
 
@@ -1047,20 +1393,24 @@ export function SentenceReviewScreen() {
               // und untippbar. Herausnehmen wuerde die Liste kuerzen und
               // alles darunter verschieben (Simons Punkt 4).
               const ausgeschlossen = stufe2Ausgeschlossen === o.id && !stufe2Ausgewertet;
+              // Im ersten Versuch falsch gewaehlt: gleiche Darstellung.
+              const schonFalsch = stufe2Falsch === o.id && !stufe2Ausgewertet;
               return (
                 <Pressable
                   key={o.id}
-                  disabled={!!stufe2Ausgewertet || ausgeschlossen}
+                  disabled={!!stufe2Ausgewertet || ausgeschlossen || schonFalsch}
                   onPress={() => stufe2OptionTippen(o)}
                   accessibilityRole="button"
-                  accessibilityState={{ disabled: ausgeschlossen, selected: gewaehltHier }}
-                  accessibilityHint={ausgeschlossen ? 'Durch die Hilfe ausgeschlossen' : undefined}
+                  accessibilityState={{ disabled: ausgeschlossen || schonFalsch, selected: gewaehltHier }}
+                  accessibilityHint={
+                    schonFalsch ? 'Im ersten Versuch falsch' : ausgeschlossen ? 'Durch die Hilfe ausgeschlossen' : undefined
+                  }
                   style={[
                     styles.optionChip,
                     {
                       borderColor: zeigeRichtig ? ACCENT_GREEN : zeigeFalsch ? ACCENT_ERROR : gewaehltHier ? theme.text : theme.border,
                       backgroundColor: zeigeRichtig ? ACCENT_GREEN : zeigeFalsch ? ACCENT_ERROR : theme.subtleFill,
-                      opacity: ausgeschlossen ? 0.35 : 1,
+                      opacity: ausgeschlossen || schonFalsch ? 0.35 : 1,
                     },
                   ]}
                 >
@@ -1068,7 +1418,7 @@ export function SentenceReviewScreen() {
                     style={{
                       color: zeigeRichtig || zeigeFalsch ? '#FFFFFF' : theme.text,
                       ...schrift('600'),
-                      textDecorationLine: ausgeschlossen ? 'line-through' : 'none',
+                      textDecorationLine: ausgeschlossen || schonFalsch ? 'line-through' : 'none',
                     }}
                   >
                     {o.germanGloss ?? o.text}
@@ -1077,6 +1427,9 @@ export function SentenceReviewScreen() {
               );
             })}
           </View>
+          {zweiterVersuch ? (
+            <Text style={[styles.zweiterVersuch, { color: ACCENT_ERROR }]}>Das war es nicht – wähl noch einmal.</Text>
+          ) : null}
           {/* Notausgang (2026-08-30): ohne Auswahlmoeglichkeiten bleibt
               "Lösen" dauerhaft gesperrt - der Bildschirm waere eine
               Sackgasse, aus der nur der Zurueck-Pfeil fuehrt. Die Ursache
@@ -1084,14 +1437,18 @@ export function SentenceReviewScreen() {
               Bildschirm, den man nicht verlassen kann, ist ein zu teurer
               Fehler, um sich allein auf die Ursache zu verlassen. */}
           {stufe2Optionen.length === 0 ? (
-            <PillButton dark={darkMode} label="Weiter" onPress={() => rundeAbschliessen(0, 0)} />
+            <PillButton dark={darkMode} label="Weiter" onPress={() => rundeAbschliessen(0, 0, undefined, rundeId)} />
           ) : (
-            <PillButton dark={darkMode} label="Lösen" disabled={!stufe2Gewaehlt || !!stufe2Ausgewertet} onPress={stufe2Loesen} />
+            stufe2Ausgewertet ? (
+              <PillButton dark={darkMode} label="Weiter" onPress={weiterTippen} />
+            ) : (
+              <PillButton dark={darkMode} label="Lösen" disabled={!stufe2Gewaehlt} onPress={stufe2Loesen} />
+            )
           )}
         </ScrollView>
       )}
 
-      {phase === 'runde' && aktuellerSatz && stufe === 3 && (
+      {rundeSichtbar && aktuellerSatz && !loesung && stufe === 3 && (
         <ScrollView contentContainerStyle={styles.rundenBereich} showsVerticalScrollIndicator={false}>
           {/* Stufe-3-Template (2026-08-30, Simons Vorlage). Gilt AUSDRUECKLICH
               fuer alle Sprachen gleich - anders als Stufe 1 und 2 gibt es
@@ -1175,10 +1532,10 @@ export function SentenceReviewScreen() {
 
           <SatzWeiterKnopf
             dark={darkMode}
-            label="› Lösen"
-            a11y="Lösen"
-            gesperrt={(!input.trim() && !transcript) || !!feedback}
-            onPress={checkAnswer}
+            label={feedback ? '▶ Weiter' : '› Lösen'}
+            a11y={feedback ? 'Weiter' : 'Lösen'}
+            gesperrt={!feedback && !input.trim() && !transcript}
+            onPress={feedback ? weiterTippen : checkAnswer}
           />
         </ScrollView>
       )}
@@ -1187,11 +1544,20 @@ export function SentenceReviewScreen() {
         <View style={styles.center}>
           <Text style={[styles.ergebnisTitel, { color: theme.text }]}>Sätze geschafft! 🎉</Text>
           <Text style={[styles.ergebnisText, { color: theme.sub }]}>
-            {SESSION_RUNDEN} Runden · {sessionRichtig} von {sessionGesamt} richtig
+            {sitzungsLaenge} {situationsModus ? 'Sätze' : 'Runden'} · {sessionRichtig} von {sessionGesamt} richtig
           </Text>
           <View style={styles.ergebnisKnoepfe}>
             <PillButton dark={darkMode} label="Nochmal" onPress={rundeStarten} />
-            <PillButton dark={darkMode} variant="secondary" label="Andere Auswahl" onPress={() => setPhase('auswahl')} />
+            {ohneStartfrage ? (
+              <PillButton
+                dark={darkMode}
+                variant="secondary"
+                label={situationsModus ? 'Andere Situation' : 'Andere Kategorie'}
+                onPress={() => router.back()}
+              />
+            ) : (
+              <PillButton dark={darkMode} variant="secondary" label="Andere Auswahl" onPress={() => setPhase('auswahl')} />
+            )}
           </View>
         </View>
       )}
@@ -1302,13 +1668,20 @@ export function SentenceReviewScreen() {
    * nur Leerraum.
    */
   function renderFeedback(platzHalten = false) {
-    if (!feedback && !platzHalten) return null;
+    if (!feedback && !zweiterVersuch && !platzHalten) return null;
     const map: Record<EvaluationResult['tier'], { msg: string; color: string }> = {
       richtig: { msg: '✅ Richtig-Niveau', color: ACCENT_GREEN },
       ueberlebt: { msg: '🟡 Überlebensmodus-Niveau', color: ACCENT_ORANGE },
       nicht_verstanden: { msg: '❌ Nicht verstanden', color: ACCENT_ERROR },
     };
-    const eintrag = feedback ? map[feedback.tier] : null;
+    // Waehrend des zweiten Versuchs gibt es kein Urteil (das kommt erst mit
+    // der Loesungsansicht), aber die Aufforderung, es noch einmal zu
+    // probieren - in derselben reservierten Zeile.
+    const eintrag = feedback
+      ? map[feedback.tier]
+      : zweiterVersuch
+        ? { msg: '❌ Nicht verstanden – versuch es noch einmal', color: ACCENT_ERROR }
+        : null;
     return (
       <Text
         style={{
@@ -1403,4 +1776,18 @@ const styles = StyleSheet.create({
   ergebnisTitel: { ...schrift('800'), fontSize: FONT_SIZE.h2, lineHeight: LINE_HEIGHT.h2, textAlign: 'center' },
   ergebnisText: { fontSize: FONT_SIZE.body, textAlign: 'center' },
   ergebnisKnoepfe: { gap: SPACING.sm, marginTop: SPACING.lg, width: '100%' },
+  // --- Loesungsansicht nach der Antwort -----------------------------------
+  // `paddingTop` gibt den Funken Luft nach oben - darueber endet der
+  // Scrollbereich, und was dort hinausfliegt, wird abgeschnitten. Gilt auch
+  // ohne Funken, damit die drei Varianten gleich hoch beginnen.
+  loesungKopf: { alignItems: 'center', gap: SPACING.xs, paddingTop: SPACING.xxxl, zIndex: 1, elevation: 1 },
+  loesungTitel: { ...schrift('800'), fontSize: FONT_SIZE.h2, lineHeight: LINE_HEIGHT.h2, textAlign: 'center' },
+  loesungUebersetzung: {
+    fontSize: FONT_SIZE.bodyLg,
+    lineHeight: LINE_HEIGHT.bodyLg,
+    textAlign: 'center',
+    marginTop: SPACING.sm,
+  },
+  deineAntwort: { fontSize: FONT_SIZE.body, lineHeight: LINE_HEIGHT.body, textAlign: 'center' },
+  zweiterVersuch: { ...schrift('700'), textAlign: 'center' },
 });

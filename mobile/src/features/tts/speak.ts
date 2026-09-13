@@ -24,6 +24,17 @@ let activePlayer: AudioPlayer | null = null;
 function releaseActivePlayer() {
   if (!activePlayer) return;
   try {
+    // ERST anhalten (2026-09-13, Fehlerbericht Simon: zwei Satz-Audios liefen
+    // uebereinander). `remove()` allein stoppt auf iOS nichts - es nimmt den
+    // Player nur aus expo-audios Verzeichnis (`registry.remove` in
+    // AudioModule.swift), der AVPlayer spielt weiter, bis der Speicher ihn
+    // irgendwann einsammelt. Im Browser faellt das nie auf, weil die
+    // Web-Fassung von `remove()` selbst `pause()` aufruft.
+    activePlayer.pause();
+  } catch {
+    // Schon freigegeben.
+  }
+  try {
     activePlayer.remove();
   } catch {
     // Schon freigegeben - egal, wir wollen nur sicher aufraeumen.
