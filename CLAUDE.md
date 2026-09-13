@@ -256,13 +256,24 @@ Kategorie hat es keine Ware.
    (nicht_verstanden / ueberlebt / richtig), keinen Prozentwert. Fuer eine
    98%-Schwelle braucht es erst eine Punktzahl pro Lektion.
 
-**Was heute existiert:** `coins` und `coinGrants` liegen persistiert in
-`mobile/src/state/AppState.tsx`; `grantCoins(grantId, amount)` vergibt ein
-Geschenk genau einmal pro Schluessel und darf erst laufen, wenn `hydrated`
-true ist. Vergeben wird bisher genau ein Coin - nach der Beispiellektion im
-Onboarding (`mobile/app/onboarding/o9b-coin.tsx`), damit auf S1 beim
-Coins-Knopf von Anfang an eine echte Zahl steht. **Ausgeben kann man Coins
-nicht**, weil es die Themen-Ebene noch nicht gibt.
+**Was heute existiert:** seit dem 2026-09-13 liegen Coins **auf dem Server**
+und sind von der App nicht beschreibbar - siehe eigener Abschnitt "Coins
+liegen auf dem Server". In der App fordert `grantCoins(grantId, amount)` eine
+Gutschrift an (einmal pro Schluessel, erst nach `hydrated`); gebucht wird sie
+von Supabase. Vergeben werden Coins bisher an DREI Stellen:
+- **ein Coin nach der Beispiellektion** im Onboarding
+  (`mobile/app/onboarding/o9b-coin.tsx`), damit auf S1 beim Coins-Knopf von
+  Anfang an eine echte Zahl steht
+- **ein Coin fuer das erste Feedback, EINMAL je Konto** (seit 2026-09-13,
+  Schluessel `feedback_erstes`) - siehe "Feedback und Melden aus der Uebung"
+  weiter unten. Jedes weitere Feedback geht genauso durch, bringt aber
+  nichts. Zuerst war es ein Coin je Tag; Simon wollte ausdruecklich nur eine
+  einzige Auszahlung. **Nur mit Konto** - Gaeste sehen den Hinweis, dass es
+  mit Konto einen Coin gibt.
+- **die Herausforderungen auf dem Profil** (`data/herausforderungen.ts`,
+  1/2/3 Coins je Ziel)
+
+**Ausgeben kann man Coins nicht**, weil es die Themen-Ebene noch nicht gibt.
 
 **Kein Widerspruch zum Boost-Verbot** weiter unten: das verbietet *gekaufte*
 Vorteile beim Lernen. Coins werden verdient und schalten Inhalt frei, nicht
@@ -398,8 +409,13 @@ Bereichen (nur Platzhalter-UI bisher, siehe `mobile/src/features/rewards/Rewards
   Filtern nach Sternewert vor dem echten Prompt verstoesst gegen Apples
   Review-Gating-Richtlinien.
 - **Feedback:** Freitext, geht an den eigenen Support-Kanal, nicht an den
-  Store. Aktuell keine Belohnung dafuer vorgesehen (nur Referral hat eine
-  definierte Belohnung).
+  Store. **Ueberholt 2026-09-13:** hier stand "keine Belohnung vorgesehen".
+  Simon hat entschieden, dass Feedback belohnt wird - ein Coin, einmal je
+  Konto. Gebaut
+  ist es bisher nur im Drei-Punkte-Menue der Uebungen (siehe "Feedback und
+  Melden aus der Uebung"); die Feedback-Box auf `RewardsScreen.tsx` ist
+  weiterhin gesperrt ("bald") und koennte dieselbe Funktion
+  `sendeRueckmeldung()` benutzen.
 
 ## Lernmodi
 1. **Woerter lernen**: Karteikarten, TTS + STT
@@ -2457,7 +2473,8 @@ Ergebnis des ersten.
 |---|---|---|
 | Zaehler | Maximum | wer auf dem Handy 40 schaffte und auf dem iPad 5, hat 40 |
 | Marken (Geschenke, Kaeufe) | Vereinigung | fehlend heisst "war offline", nicht "zurueckgenommen" |
-| Coins, Einstellungen | juengerer gewinnt | sobald man Coins ausgeben kann, machte "Maximum" jede Ausgabe rueckgaengig |
+| Einstellungen | juengerer gewinnt | wer auf dem iPad Darkmode einschaltet, meint das neuere |
+| Coins | gar nicht mehr (seit 2026-09-13) | Summe der Buchungen in `coin_buchung`, siehe "Coins liegen auf dem Server" |
 | FSRS-Karten | juengere Bewertung | eine Karte verdichtet ihre ganze Historie, die spaetere kennt alles |
 
 **Der Fehler, der beim ersten Test zuschlug** - und der Grund, warum
@@ -2540,6 +2557,140 @@ wurde beides - dass nicht mehr geschrieben werden kann UND dass mit dem
 anon-Key weiterhin alles LESBAR ist (716 Cluster, 584 Master-Saetze, die
 Vokabellisten). Eine zu strenge Policy legt die App genauso lahm wie eine
 fehlende sie offen laesst.
+
+## Feedback und Melden aus der Uebung (2026-09-13, gebaut)
+
+Das Drei-Punkte-Menue oben rechts in den Uebungen
+(`mobile/src/components/UebungsMenu.tsx`) hatte zwei Eintraege ohne
+Wirkung: "Satz melden" tat nichts, "Feedback" fuehrte auf die
+Geschenke-Seite und warf den Nutzer damit aus der Lektion. Simons Vorgabe:
+ein Textfeld, danach weiter in der Lektion, und fuer Feedback eine
+Belohnung.
+
+**Beides oeffnet ein Blatt ueber der Uebung** (RN-`Modal`), die Uebung
+darunter bleibt stehen - gleicher Satz, gleiche Runde, kein Neustart.
+- **Feedback:** Freitext, "Senden" erst mit Text. Danach "Danke fuer dein
+  Feedback! +1 Coin" beim ersten Mal, danach ohne Coin. **Die Belohnung gibt
+  es genau einmal je Konto** (Simon: "man kann auch oefter Feedback geben,
+  aber Coinauszahlung nur einmal"). **Seit dem 2026-09-13 serverseitig
+  erzwungen:** der Coin wird nur gebucht, wenn die Datenbank ein Feedback
+  DIESES Kontos vorfindet, und hoechstens einmal (siehe "Coins liegen auf dem
+  Server"). **Gaeste bekommen keinen**, sehen aber den Hinweis darauf - ohne
+  Konto gibt es kein Feedback, das sich einem Konto zuordnen liesse.
+- **Satz melden / Wort melden:** zeigt, WAS gemeldet wird ("Gemeldet wird:
+  „Ja.“"), dazu Gruende als Chips (Uebersetzung stimmt nicht / Satz klingt
+  falsch / Audio stimmt nicht / Aussprache wird nicht erkannt / Etwas
+  anderes) und ein optionales Textfeld. "Senden" erst mit Grund oder Text.
+  **Melden bringt keinen Coin** - sonst lohnt es sich, grundlos zu melden.
+- **Schlaegt das Senden fehl**, bleibt das Blatt offen und der Text stehen.
+
+**Jede Meldung traegt ihren Kontext mit**, damit man sie ohne Rueckfrage
+nachvollziehen kann: `screen` (z.B. `situation:stufe1`,
+`kurs:abrufen`, `woerter-wiederholung:situation`, `speed-run:spam`),
+`sprache`, `quelle` (Tabelle oder `kurs`), `inhalt_id`, `inhalt_text`.
+Eingebunden in allen vier Uebungs-Screens: SentenceReview, Exercise,
+Lesson, WordReview.
+
+**Tabelle `rueckmeldung`** (Migration `20260913120000_rueckmeldung.sql`),
+Zugriff ueber `mobile/src/data/rueckmeldung.ts`. **Nur Einfuegen**, fuer
+`anon` und `authenticated` - kein Lesen, Aendern, Loeschen. Gelesen wird mit
+dem Service-Role-Key. `nutzer_id` fuellt sich ueber `auth.uid()` selbst,
+die Policy erlaubt nur die eigene oder gar keine.
+
+**Die Standard-Grants sind ausdruecklich entzogen** (`revoke select, update,
+delete, truncate`). Ohne das antwortete ein SELECT mit dem anon-Key mit 200
+und leerer Liste - RLS filterte, aber die Tabelle sah nach "lesbar"
+aus. Jetzt 401. Genau der Unterschied, den der Abschnitt ueber die acht
+offenen Tabellen oben beschreibt: filtern ist nicht ablehnen.
+
+**Eingespielt ueber `supabase db query --linked --file`, NICHT `db push`.**
+`20260910120000_rls_content_tabellen.sql` ist in der Datenbank wirksam,
+fehlt aber in der Migrations-Historie des Servers - `db push` wuerde sie
+erneut anwenden wollen. Dasselbe gilt jetzt fuer `20260913120000`. Wer die
+Historie aufraeumt: alle drei (`20260910120000`, `20260913120000`,
+`20260913180000`) mit `supabase migration repair --status applied`
+nachtragen.
+
+## Coins liegen auf dem Server (2026-09-13)
+
+Simons Auftrag: "mach, dass das mit den Coins funktioniert und nicht
+gecheatet werden kann auf Supabase". **Supabase reicht dafuer, ein eigener
+Server ist nicht noetig** - Datenbank, Rechte und Funktionen genuegen.
+
+**Vorher war es ein offenes Loch.** `nutzer_zustand.coins` und `coin_grants`
+schrieb die App selbst, und die Policy `zustand_eigener` erlaubt dem Nutzer
+alles auf seiner Zeile. Mit dem oeffentlichen anon-Key plus eigenem Login
+liess sich `coins = 9999` hochschreiben, und der Abgleich haette die Zahl auf
+jedes Geraet verteilt.
+
+**Aufbau** (Migration `20260913180000_coin_buchung.sql`):
+- **`coin_buchung`** - eine Zeile je Gutschrift (Konto, Grund, Betrag). Der
+  Kontostand ist die SUMME, keine gespeicherte Zahl. Die App darf nur ihre
+  eigenen Zeilen LESEN; Insert/Update/Delete sind fuer anon und authenticated
+  entzogen (nicht nur ohne Policy - ohne Grant bleibt es dicht, auch wenn
+  spaeter jemand eine Policy dazuschreibt).
+- **`unique (nutzer_id, grund)`** - jeder Grund genau einmal je Konto, auch
+  bei zwei gleichzeitigen Aufrufen.
+- **`coin_belohnung`** - der Katalog: Grund, Betrag, Bedingung. Lesbar fuer
+  alle, schreibbar fuer niemanden. **Die App nennt nur den Grund, nie den
+  Betrag.** Die Betraege in `lib/coins.ts` sind nur fuer die Anzeige vor der
+  Bestaetigung; bei Abweichung gilt die Tabelle.
+- **`coin_abholen(grund)`** - der EINZIGE Weg zu einer Gutschrift. Nimmt keine
+  Nutzer-ID an (es gilt das angemeldete Konto) und prueft selbst:
+  `keine` (Onboarding-Coin), `feedback` (ein Feedback dieses Kontos existiert
+  in `rueckmeldung`), `fortschritt` (Zaehler in `nutzer_zustand.fortschritt`
+  erreicht das Ziel). Antwortet `vergeben`, `schon_vergeben`,
+  `bedingung_fehlt`, `unbekannt` oder `kein_konto`.
+- **`coin_vergeben(nutzer, grund)`** - die Pruefung selbst, fuer die App NICHT
+  aufrufbar (sie nimmt eine beliebige Nutzer-ID).
+
+**Nachgemessen, nicht angenommen:** Test in der Datenbank mit simulierter
+Rolle, danach komplett zurueckgerollt - anon darf weder abholen noch lesen;
+ein angemeldeter Nutzer kann nicht einfuegen, aendern, loeschen, den Katalog
+aendern, die interne Funktion rufen oder Feedback unter fremder ID
+einreichen. Ueber die oeffentliche REST-API mit dem anon-Key dasselbe (401
+auf Funktion, Lesen und Schreiben; Katalog lesbar).
+
+**Die EINE Grenze, offen benannt:** ob die Lernleistung hinter einer
+Herausforderung echt ist, kann der Server nicht wissen - bewertet wird auf
+dem Geraet, und den Zaehler `fortschritt` schreibt die App. Wer ihn faelscht,
+kann jede Herausforderung EINMAL abholen: heute hoechstens 6 Coins je Konto,
+im Test nachvollzogen. Weil Coins nicht zwischen Konten uebertragbar sind,
+bringt es auch nichts, dafuer neue Konten anzulegen. Ganz schliessen liesse
+sich das nur mit einer Bewertung auf dem Server.
+
+**In der App** (`lib/coins.ts`, `AppState.tsx`): der Stand liegt unter eigenem
+AsyncStorage-Schluessel `coins_v1`, getrennt von `app_state_v1`, damit eine
+Bestaetigung vom Server nicht `geaendertAm` hochzieht.
+- `bestaetigt` - die zuletzt geladenen Buchungen des Kontos
+- `ausstehend` - angeforderte, noch nicht bestaetigte Gutschriften: kein Netz,
+  noch kein Konto (der Onboarding-Coin kommt VOR der Kontofrage) oder ein
+  Zaehler, den der Server erst beim naechsten Abgleich hat. Sie zaehlen in der
+  Anzeige sofort mit. Eingereicht wird direkt beim Anfordern und nach jedem
+  Abgleich (dann ist der Fortschritt schon oben). Lehnt der Server ab und
+  reicht der Zaehler auch lokal nicht, faellt die Gutschrift weg; reicht er
+  lokal, bleibt sie fuer den naechsten Abgleich stehen.
+
+**Wer Coins spaeter AUSGIBT, prueft nur gegen den Server** - als negative
+Buchung mit eigenem Grund (`ausgabe:situation:...`) in einer Funktion, die
+Stand und Abbuchung in einem Schritt macht. Die Anzeige in der App ist dafuer
+kein Beleg. Dieselbe Eindeutigkeit verhindert, dass dieselbe Situation zweimal
+bezahlt wird.
+
+**Altbestand:** was in `nutzer_zustand.coin_grants` stand, wurde UEBER
+DIESELBE PRUEFUNG uebernommen, nicht blind (Simons Konto: Onboarding +
+10 Saetze = 2 Coins). Auf dem Geraet werden alte `coinGrants` beim ersten
+Start als ausstehend an den Server gereicht; unbekannte Schluessel fallen weg.
+Die Spalten `coins`/`coin_grants` bleiben stehen, bis keine aeltere App-Fassung
+mehr im Umlauf ist - die schreibt sie beim Abgleich noch mit, gelesen werden
+sie nicht mehr.
+
+**`freunde_5` steht bewusst NICHT im Katalog** - dafuer gibt es noch keine
+Zaehlung. Kommt das Werben, gehoert die Bedingung auf den Server (Anzahl
+Konten mit diesem Werber), nicht in einen Zaehler der App.
+
+**Eingespielt wie `rueckmeldung` ueber `supabase db query --linked --file`**,
+nicht `db push` (siehe dort).
 
 ## Konto noetig, Demo fuer Gaeste (2026-08-22)
 
@@ -3478,14 +3629,52 @@ Content:
   3. **Eindeutiger Treffer in der Vokabeltabelle** liefert die Wortart.
   4. **Sonst gar kein Tag.** Eine falsche Farbe ist schlechter als keine.
 
-  **Die Abdeckung schwankt stark, und das ist Sprachtypologie, kein Fehler:**
-  vi 46%, en 37%, sv 33%, no/ru 30%, fr 28%, zh 26%, es 25%, it 20%,
-  **pl 14%** (de 65%, weil dort auch die Master-Saetze getaggt sind).
-  Der Tagger kennt nur GRUNDFORMEN. Vietnamesisch flektiert gar nicht, dort
-  ist die Woerterbuchform die Satzform; Polnisch hat sieben Faelle und drei
-  Geschlechter, da steht im Satz fast nie die Grundform. Mehr Abdeckung
-  braucht dort einen Stemmer oder gebeugte Formen in der Vokabeltabelle -
-  nicht mehr Vokabeln.
+  **Gebeugte Formen seit 2026-09-13 eingespielt** (Fehlerbericht Simon:
+  norwegisch "Når har du tid?" - `har` ungefaerbt). Der Lauf vom 2026-09-03
+  kannte nur GRUNDFORMEN; die `forms`-Spalten kamen erst danach (no
+  2026-09-04, die uebrigen 2026-09-08/09) und wurden nie nachgezogen.
+  Dasselbe bei Chinesisch: die vollstaendigen Wortarten vom 2026-09-07
+  waren nie eingefaerbt. Nachgemessen und eingespielt: rund 2.700 Farben
+  aus Formen (fast alles Verben, bei sv auch Nomen/Adjektive) plus rund 590
+  chinesische - **wieder "gebaut ist nicht eingespielt"**, siehe Familien.
+
+  | | vorher | jetzt |
+  |---|---|---|
+  | sv | 33% | 52% |
+  | zh | 26% | 51% |
+  | no | 30% | 50% |
+  | vi | 46% | 47% (beugt nicht) |
+  | en | 37% | 46% |
+  | es | 25% | 42% |
+  | fr | 28% | 39% |
+  | it | 20% | 39% |
+  | ru | 30% | 37% |
+  | pl | 14% | 31% |
+  | de | 65% | 65% (Handarbeit, keine Vokabeltabelle) |
+
+  Der Rest bleibt Sprachtypologie: Polnisch und Russisch DEKLINIEREN
+  (Nomen und Adjektive stehen im Satz selten im Nominativ), die Formen
+  decken nur Verben ab. `python wortarten_auto.py pruefe alle` meldet je
+  Sprache "zu schreiben" - steht dort mehr als 0, fehlt ein `spiel_ein`.
+
+  **Mehrdeutig heisst seit 2026-09-13: in IRGENDEINER Wortart, auch einer
+  ungefaerbten.** Sonst galt schwedisch `var` (war) als eindeutiges Verb,
+  obwohl es als Fragewort "wo" in der Liste steht - 34 falsche Farben,
+  dazu italienisch `sei` (bist / sechs) und polnisch `może` (kann /
+  vielleicht). Formen zaehlen nur, wenn ihr Schluessel zur Wortart der
+  Zeile passt (`FORM_SCHLUESSEL`) - `franz_vocab` fuehrte `pouvoir` als
+  Nomen ("Macht") MIT Verbformen; die sind dort seit 2026-09-13 entfernt.
+
+  **Drei Korrekturen am Bestand (2026-09-13, Simon):**
+  - schwedisch `När` in 13 Fragen entfaerbt - war als Konjunktion gefaerbt,
+    ist dort Fragewort. Die Regel oben haette es nie gefaerbt, das Tag
+    stammte aus dem ersten Lauf.
+  - chinesisch 什么/谁/哪/那/这/这些 bleiben ungefaerbt (`NICHT_TAGGEN`),
+    obwohl `chinesisch_vocab.wortart` sie als Pronomen fuehrt - wie die
+    Frage- und Hinweiswoerter in allen anderen Sprachen.
+  - Russisch schlaegt ueber den kyrillischen Satz nach (`FREMDSCHRIFT`),
+    weil die Tags auf der Lautschrift liegen, die Formen aber kyrillisch
+    sind.
 
   **Zwei Fallen, beide real zugeschlagen:**
   - **Akzente NICHT abstreifen bei lateinischer Schrift.** Der erste Lauf
