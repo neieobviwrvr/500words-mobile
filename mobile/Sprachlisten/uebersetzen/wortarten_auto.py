@@ -34,12 +34,28 @@ schlechter als keine - genau die Linie, die `wortarten_werkzeug.py` schon
 mit "der Rest bleibt absichtlich neutral statt falsch-praezise zugeordnet"
 zieht.
 
-**Nur die Grundform trifft.** Ein Vokabeleintrag steht im Infinitiv
-(`essere`), im Satz steht die gebeugte Form (`sono`) - die wird nicht
-erkannt und bleibt ungefaerbt. Die Abdeckung ist deshalb je nach Sprache
-sehr unterschiedlich: Chinesisch beugt gar nicht und wird fast
-vollstaendig, Russisch beugt stark und bleibt lueckenhaft. Das Werkzeug
-meldet die Quote je Sprache, damit man sieht, wo Handarbeit lohnt.
+**Gebeugte Formen treffen seit 2026-09-13 auch** (Fehlerbericht Simon:
+norwegisch "Når har du tid?" - `har` ungefaerbt, weil in der Liste nur `ha`
+steht). Bis dahin traf NUR die Grundform: der Lauf vom 2026-09-03 lag vor
+den `forms`-Spalten (Norwegisch 2026-09-04, die uebrigen 2026-09-08/09) und
+hat sie nie gesehen. Nachgemessen blieben dadurch rund 2.700 Woerter in
+acht Sprachen ungefaerbt, fast alles Verben - dazu schwedische Nomen und
+Adjektive, weil `schwedisch_vocab.forms` auch deren Formen fuehrt.
+Uebernommen werden nur die Formschluessel, die zur Wortart der Zeile
+passen (`FORM_SCHLUESSEL`): `franz_vocab` fuehrt `pouvoir` als Verb UND als
+Nomen ("Macht"), und die Nomen-Zeile hat faelschlich Verbformen bekommen.
+Russisch taggt die Lautschrift, die Formen sind aber kyrillisch - dort wird
+ueber `target_text` nachgeschlagen, Position fuer Position (siehe tagge).
+Chinesisch und Vietnamesisch beugen nicht und haben keine `forms`.
+
+**Mehrdeutig heisst: in IRGENDEINER Wortart, auch einer ungefaerbten.**
+Bis 2026-09-13 zaehlten nur die fuenf gefaerbten - schwedisch `var` (war)
+gilt dann als eindeutiges Verb, obwohl es als Fragewort "wo" in der Liste
+steht. "Var ligger stationen?" waere als Verb eingefaerbt worden (34
+Stellen), ebenso italienisch `sei` (bist / sechs) und polnisch `może`
+(kann / vielleicht). Vorhandene Tags bleiben davon unberuehrt (Regel 2) -
+schwedisch `när` steht deshalb weiterhin 13x als Konjunktion, auch in
+Fragen.
 
 **Der Zusammenfuege-Test aus wortarten_werkzeug.py gilt weiter:**
 `" ".join(t["w"])` muss exakt der Textspalte entsprechen. Hier ist er
@@ -236,33 +252,85 @@ NICHT_TAGGEN = {
 }
 
 
+# Welche `forms`-Schluessel zu welcher Wortart gehoeren. Andere Schluessel
+# einer Zeile werden ignoriert - siehe `pouvoir` im Modulkopf.
+FORM_SCHLUESSEL = {
+    "Verb": {"present", "present_1", "present_3", "present_pl", "verlaufsform",
+             "praesens_1", "praesens_2", "praesens_3", "praesens_4", "praesens_5",
+             "praesens_6", "preteritum", "preteritum_f", "preteritum_pl", "supinum"},
+    "Nomen": {"indef_sg", "indef_pl", "def_sg", "def_pl"},
+    "Adjektiv": {"en_form", "ett_form", "plural_bestimmt"},
+}
+
+# Sprachen, deren Formen in einer ANDEREN Schrift stehen als der getaggte
+# Lerntext -> Spalte mit der Grundform in dieser Schrift, und die Satzspalte,
+# ueber die nachgeschlagen wird.
+FREMDSCHRIFT = {"ru": ("russian", "target_text")}
+
+# Vokabeltabellen OHNE `forms`-Spalte - die Sprachen beugen nicht. Ein
+# Select auf die Spalte scheitert dort.
+OHNE_FORMEN = {"zh", "vi"}
+
+# Platzhalter fuer Wortarten, die die App NICHT faerbt (Adverb, Fragewort,
+# Praeposition ...). Sie zaehlen fuer die Mehrdeutigkeit, ergeben aber nie
+# ein Tag.
+UNGEFAERBT = "x"
+
+
 def baue_lexikon(url, key, sprache):
-    """surface -> Tag, aus der Vokabeltabelle. Mehrdeutiges faellt raus."""
+    """surface -> Tag, aus Grundformen UND gebeugten Formen der
+    Vokabeltabelle. Mehrdeutiges faellt raus - auch gegen ungefaerbte
+    Wortarten."""
     tabelle, textspalte, vokab, wortspalte, katspalte = SPRACHEN[sprache]
     egal = sprache in AKZENTE_EGAL
     if not vokab:
         return {}
-    zeilen = rest(url, key, vokab + "?select=" + wortspalte + "," + katspalte)
+    fremd = FREMDSCHRIFT.get(sprache)
+    spalten = ([wortspalte, katspalte] + ([] if sprache in OHNE_FORMEN else ["forms"])
+               + ([fremd[0]] if fremd else []))
+    zeilen = rest(url, key, vokab + "?select=" + ",".join(spalten))
     kandidaten = {}
-    for z in zeilen:
-        wort, kat = z.get(wortspalte), z.get(katspalte)
-        if not wort or kat not in NACH_TAG:
-            continue
+
+    def merke(text, tag, akzente_egal):
         # "otro / otra" und aehnliche Doppelformen aufteilen - beide Formen
         # kommen im Satz vor, der Schraegstrich nie.
-        for teil in str(wort).split("/"):
-            schluessel = normalisiere(teil, egal)
+        for teil in str(text).split("/"):
+            schluessel = normalisiere(teil, akzente_egal)
             if schluessel:
-                kandidaten.setdefault(schluessel, set()).add(NACH_TAG[kat])
-    # Nur Eindeutiges uebernehmen, und nichts aus der Sperrliste.
+                kandidaten.setdefault(schluessel, set()).add(tag)
+
+    for z in zeilen:
+        wort, kat = z.get(wortspalte), z.get(katspalte)
+        if not wort:
+            continue
+        tag = NACH_TAG.get(kat, UNGEFAERBT)
+        merke(wort, tag, egal)
+        # Formen in der Fremdschrift werden nie akzentbereinigt - die
+        # AKZENTE_EGAL-Regel gilt fuer die Lautschrift, nicht fuers Kyrillische.
+        if fremd and z.get(fremd[0]):
+            merke(z[fremd[0]], tag, False)
+        erlaubt = FORM_SCHLUESSEL.get(kat, set())
+        for schluessel, form in (z.get("forms") or {}).items():
+            if schluessel in erlaubt and form:
+                merke(form, tag, egal and not fremd)
+    # Nur Eindeutiges uebernehmen, nichts Ungefaerbtes, nichts aus der Sperrliste.
     gesperrt = NICHT_TAGGEN.get(sprache, set())
     return {k: next(iter(v)) for k, v in kandidaten.items()
-            if len(v) == 1 and k not in gesperrt}
+            if len(v) == 1 and UNGEFAERBT not in v and k not in gesperrt}
 
 
-def tagge(text, alte_tags, lexikon, personal, egal, gesperrt):
-    """Token-Liste fuer EINEN Satz. Die Token stammen aus `text` selbst."""
+def tagge(text, alte_tags, lexikon, personal, egal, gesperrt, parallel=None):
+    """Token-Liste fuer EINEN Satz. Die Token stammen aus `text` selbst.
+
+    `parallel`: derselbe Satz in der Schrift der Formen (Russisch:
+    kyrillisch). Nur wenn er gleich viele Woerter hat, dient er als zweiter
+    Nachschlag fuer ein sonst ungefaerbtes Wort an derselben Position - bei
+    abweichender Zerlegung waere die Zuordnung geraten.
+    """
     woerter = text.split(" ")
+    zweit = parallel.split(" ") if parallel else []
+    if len(zweit) != len(woerter):
+        zweit = []
     alt = {}
     if alte_tags:
         # Nach Position zuordnen, aber nur wenn die Zerlegung passt - sonst
@@ -283,6 +351,10 @@ def tagge(text, alte_tags, lexikon, personal, egal, gesperrt):
             c = alt[i]                   # 2. Handarbeit bleibt
         else:
             c = lexikon.get(s)           # 3. Vokabeltabelle, sonst None
+            if c is None and zweit:
+                s2 = normalisiere(zweit[i])
+                if s2 not in gesperrt and s2 not in personal:
+                    c = lexikon.get(s2)
         neu.append({"w": w, "c": c})
     return neu
 
@@ -295,13 +367,16 @@ def verarbeite(sprache, echt):
     gesperrt = NICHT_TAGGEN.get(sprache, set())
     personal = {normalisiere(p, egal) for p in PERSONAL.get(sprache, [])} - gesperrt
 
-    zeilen = rest(url, key, tabelle + "?select=id," + textspalte + ",word_tags")
+    fremd = FREMDSCHRIFT.get(sprache)
+    satzspalten = "id," + textspalte + ",word_tags" + ("," + fremd[1] if fremd else "")
+    zeilen = rest(url, key, tabelle + "?select=" + satzspalten)
     aenderungen, zaehler, gesamt_woerter, gefaerbt = [], Counter(), 0, 0
     for z in zeilen:
         text = z.get(textspalte)
         if not text:
             continue
-        tags = tagge(text, z.get("word_tags"), lexikon, personal, egal, gesperrt)
+        tags = tagge(text, z.get("word_tags"), lexikon, personal, egal, gesperrt,
+                     z.get(fremd[1]) if fremd else None)
         gesamt_woerter += len(tags)
         gefaerbt += sum(1 for t in tags if t["c"])
         for t in tags:
