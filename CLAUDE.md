@@ -337,6 +337,34 @@ Edge Function. Nicht ohne Simon erweitern.
   -> vermutlich als Premium-Feature/Kontingent zu behandeln, noch offen
 
 ### Freunde-Bereich (2026-08-20, Konzept - ZURUECKGESTELLT)
+
+**Stand 2026-09-14: Freunde hinzufuegen ist GEBAUT** (Simon: "Aendere die
+Freundeseite wieder zu etwas mit Freunden und Leute hinzufuegen"). Gruppen,
+Streak und Rangliste bleiben zurueckgestellt, der Rest dieses Abschnitts
+beschreibt weiterhin das Zielbild.
+- **Jedes Konto hat EINEN festen Code** aus sechs Zeichen ohne verwechselbare
+  Zeichen (kein 0/O, 1/I/L), vergeben vom Server (`mein_freundescode()`).
+  Wer ihn eingibt (`freund_hinzufuegen(code)`), ist sofort befreundet, in
+  beide Richtungen. Gross-/Kleinschreibung und Trennzeichen sind egal.
+- **Der Tab** (`features/freunde/FreundeScreen.tsx`): eigener Code mit
+  "Code teilen" (Teilen-Menue, also WhatsApp & Co.), Feld "Code eingeben",
+  Liste der Freunde, und der Name, unter dem Freunde einen sehen
+  (`profil.anzeigename`, hoechstens 30 Zeichen). Der Onboarding-Name bleibt
+  privat auf dem Geraet. Ohne Konto weiterhin der Hinweis "Freunde brauchen
+  ein Konto".
+- **Absicherung** (Migration `20260914120000_freundescode.sql`): Codes kann
+  niemand selbst setzen oder fremde lesen. `freundschaft` war fuer den Nutzer
+  frei beschreibbar - wer eine fremde Nutzer-ID kannte, konnte sich als
+  bestaetigten Freund eintragen und dessen Profil lesen. Insert/Update sind
+  jetzt entzogen, befreundet wird nur noch ueber die Funktion. Raten bremst
+  eine Sperre: mehr als zehn falsche Codes in zehn Minuten werden abgewiesen.
+  In der Datenbank mit zwei simulierten Konten getestet und zurueckgerollt;
+  ueber die oeffentliche API mit dem anon-Key alles 401.
+- **Der Holo-Karten-Testscreen ist entfernt** - er war inzwischen dieselbe
+  Seite wie Start (`features/testbereich/` geloescht).
+- **Noch nicht gebaut:** Freunde entfernen, Code erneuern, "geworben von"
+  fuer die Referral-Coins (zaehlt nur beim NEUEN Konto, siehe Referral), und
+  ein Link statt nur des Codes (braucht Domain und Store-Eintrag).
 **Prioritaet:** Gruppen und Ranglisten sind auf Nutzer-Entscheidung
 zurueckgestellt (2026-08-20). Hier steht das Zielbild, damit es nicht
 verlorengeht - es ist ausdruecklich NICHT der naechste Schritt. Was vom Tab
@@ -1521,7 +1549,13 @@ bewusst verbaut. Falls sich das im Test als stoerend erweist, reicht es,
   Position im aeusseren Layout
 **Aufbau (Stand 2026-08-18, gebaut nach Simons Vorlage
 `Screenplanung/UI - Rest/Homepage/Homescreen grobe Themenuebersicht.png`):**
-1. Kopfzeile: Sprach-Dropdown links, **Geschenk** und **Coins** rechts
+1. Kopfzeile: Sprach-Dropdown links, **Geschenk** und **Coins** rechts -
+   **seit 2026-09-13 weg** (Simon: "auf Start und Lektionen die Top-Bar so
+   machen wie bei Freunde"). Start, Lektionen und Freunde tragen oben
+   denselben Baustein `LernKopf` (`features/home/LernKopf.tsx`): Standortzeile
+   plus Balken, die Flagge links am Balken ist die Sprachauswahl. Das
+   Geschenk sitzt als runder Knopf auf der Sprachkarte; Coins und Geschenke
+   erreicht man noch ueber das Drei-Punkte-Menue auf Survival und Profil.
 2. Fortschrittsbalken 0-100%
 3. Pfad-Box mit festem Kopf (Abschnittsname + Schatzkarte) und scrollendem Pfad
 4. Zwei Knoepfe darunter: "Weiter durchstarten", "Taegliches Wiederholen"
@@ -2248,6 +2282,17 @@ Fuenf Einstiege am unteren Rand, `mobile/app/(tabs)/_layout.tsx`. Nach den
 Apple-Richtlinien: zwei bis fuenf Ziele (fuenf ist das Maximum),
 Ein-Wort-Beschriftungen - deshalb "Survival" statt "Cheat-Sheet-Survival".
 
+**Seit 2026-09-13 ANGEDOCKT statt schwebend** (Simon: "die regulaere
+Tab-Bar mit der Tab-Bar von Freunde ersetzen"). Die Leiste, die bis dahin
+nur auf dem Freunde-Testscreen stand, gilt jetzt app-weit: volle Breite, am
+unteren Rand, deckend weiss, oben gerundet, Rand und Schatten aus `karte()`
+nach oben gespiegelt. 56 Punkte Band plus Sicherheitsrand, dieser gekappt
+auf 16 (iPhone 12: 72 statt vorher 68 + 34 Schwebeabstand). Kein Milchglas
+mehr. Masse und Material an EINER Stelle: `src/components/tabLeiste.ts`
+(`useTabLeiste`, `useTabLeistenFreiraum`, `leistenKarte`). **Der Abschnitt
+darunter beschreibt die alte Kapsel** - die drei Fallen (`start`/`end`,
+Innenabstand der Screens, `borderTopWidth`) gelten weiterhin.
+
 **Schwebende Leiste (Nutzer-Vorgabe 2026-08-18):** sie sitzt nicht am
 Bildschirmrand, sondern als abgerundete Kapsel darueber - 36 Radius, 16 Rand
 zu den Seiten, 64 hoch, Schatten Y5/Blur25, 1-px-Kontur. Der milchige
@@ -2607,9 +2652,9 @@ offenen Tabellen oben beschreibt: filtern ist nicht ablehnen.
 `20260910120000_rls_content_tabellen.sql` ist in der Datenbank wirksam,
 fehlt aber in der Migrations-Historie des Servers - `db push` wuerde sie
 erneut anwenden wollen. Dasselbe gilt jetzt fuer `20260913120000`. Wer die
-Historie aufraeumt: alle drei (`20260910120000`, `20260913120000`,
-`20260913180000`) mit `supabase migration repair --status applied`
-nachtragen.
+Historie aufraeumt: alle vier (`20260910120000`, `20260913120000`,
+`20260913180000`, `20260914120000`) mit `supabase migration repair --status
+applied` nachtragen.
 
 ## Coins liegen auf dem Server (2026-09-13)
 
