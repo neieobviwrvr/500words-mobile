@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import { ComponentProps, ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import {
   AccessibilityInfo,
   Animated,
@@ -224,6 +224,7 @@ export function BildKarte({
   name,
   rueckseite,
   rueckseitenBild,
+  knopf,
 }: {
   breite: number;
   hoehe: number;
@@ -252,6 +253,19 @@ export function BildKarte({
    * zeigt die untere Karte.
    */
   rueckseitenBild?: ImageSourcePropType;
+  /**
+   * Ein Bedienelement AUF der Karte, z.B. der Geschenk-Knopf (2026-09-13,
+   * Simon: "einen runden Button fuer die Geschenke auf das Bild, so dass es
+   * merkbar ein Button ist, aber auch gedreht werden kann").
+   *
+   * Liegt auf BEIDEN Seiten und dreht und kippt mit ihnen - er klebt am
+   * Bild, statt ueber einer sich drehenden Karte stehenzubleiben. Antippbar
+   * ist nur die Fassung auf der sichtbaren Seite. Ein Tipp auf den Knopf
+   * dreht die Karte NICHT; ein Tipp daneben weiterhin schon.
+   *
+   * Positioniert sich selbst (siehe `KartenKnopf`).
+   */
+  knopf?: ReactNode;
 }) {
 
   const kippX = useRef(new Animated.Value(0)).current;
@@ -307,98 +321,183 @@ export function BildKarte({
   }, [dreh, kippX, kippY, halbeDrehung]);
 
   return (
-    <View
-      {...gesten.panHandlers}
-      style={{ width: breite, height: hoehe }}
-      accessible
-      accessibilityRole="button"
-      accessibilityLabel={`${name}, Seite ${seite}`}
-      accessibilityHint="Dreht die Karte um"
-      onAccessibilityTap={umdrehen}
-    >
-      <Animated.View
-        pointerEvents="none"
-        style={[
-          styles.flaeche,
-          {
-            width: breite,
-            height: hoehe,
-            // Ohne Bild derselbe helle Ton wie die Rueckseite - der mittlere
-            // Perlmutt-Ton aus `flaeche` sieht als leere Karte aus wie ein
-            // fehlendes Bild.
-            ...(quelle ? null : { backgroundColor: PERLMUTT[0] }),
-            opacity: anim.vorneDeckung,
-            transform: [{ perspective: 1000 }, { rotateX: anim.neigung }, { rotateY: anim.vorneY }],
-          },
-        ]}
+    <View style={{ width: breite, height: hoehe }}>
+      <View
+        {...gesten.panHandlers}
+        style={{ width: breite, height: hoehe }}
+        accessible
+        accessibilityRole="button"
+        accessibilityLabel={`${name}, Seite ${seite}`}
+        accessibilityHint="Dreht die Karte um"
+        onAccessibilityTap={umdrehen}
       >
-        {/* Beschneidende Huelle: die Rundung MUSS hier sitzen und nicht an
-            der Flaeche darueber. Die traegt den Schlagschatten, und
-            `overflow: hidden` wuerde ihn auf iOS mit abschneiden (dieselbe
-            Falle wie beim Pull-down-Menue im Profil).
-            `cover`: das Bild fuellt die Karte und wird dabei beschnitten,
-            statt verzerrt zu werden - die Kartenmasse kommen vom Screen,
-            nicht vom Seitenverhaeltnis des Bildes. */}
-        {quelle ? (
-          <View style={[styles.bildRahmen, { width: breite, height: hoehe }]}>
-            <Image
-              source={quelle}
-              style={{ width: breite, height: hoehe }}
-              resizeMode="cover"
-              accessibilityIgnoresInvertColors
-            />
-          </View>
-        ) : null}
-      </Animated.View>
+        <Animated.View
+          pointerEvents="none"
+          style={[
+            styles.flaeche,
+            {
+              width: breite,
+              height: hoehe,
+              // Ohne Bild derselbe helle Ton wie die Rueckseite - der mittlere
+              // Perlmutt-Ton aus `flaeche` sieht als leere Karte aus wie ein
+              // fehlendes Bild.
+              ...(quelle ? null : { backgroundColor: PERLMUTT[0] }),
+              opacity: anim.vorneDeckung,
+              transform: [{ perspective: 1000 }, { rotateX: anim.neigung }, { rotateY: anim.vorneY }],
+            },
+          ]}
+        >
+          {/* Beschneidende Huelle: die Rundung MUSS hier sitzen und nicht an
+              der Flaeche darueber. Die traegt den Schlagschatten, und
+              `overflow: hidden` wuerde ihn auf iOS mit abschneiden (dieselbe
+              Falle wie beim Pull-down-Menue im Profil).
+              `cover`: das Bild fuellt die Karte und wird dabei beschnitten,
+              statt verzerrt zu werden - die Kartenmasse kommen vom Screen,
+              nicht vom Seitenverhaeltnis des Bildes. */}
+          {quelle ? (
+            <View style={[styles.bildRahmen, { width: breite, height: hoehe }]}>
+              <Image
+                source={quelle}
+                style={{ width: breite, height: hoehe }}
+                resizeMode="cover"
+                accessibilityIgnoresInvertColors
+              />
+            </View>
+          ) : null}
+        </Animated.View>
 
-      {/* Rueckseite MIT Flaeche (2026-09-12, Simons Wahl: "give the backs
-          content").
-          Vorher war sie leer - "simply show nothing on the back" von
-          demselben Tag. Das machte die gemeinsame Drehung unleserlich: oben
-          verschwand das Bild, unten schien nichts zu passieren, und beide
-          Karten sahen aus, als taeten sie Verschiedenes. Jetzt zeigt jede
-          Seite eine eigene Flaeche, die Drehung ist auf beiden Karten
-          dasselbe Ereignis.
-          `Rückseite` ist ein PLATZHALTER, kein Inhalt - er sagt nur, dass
-          man die andere Seite sieht. */}
-      <Animated.View
-        pointerEvents="none"
-        accessibilityElementsHidden={seite !== 2}
-        importantForAccessibility={seite === 2 ? 'auto' : 'no-hide-descendants'}
-        style={[
-          styles.flaeche,
-          {
-            width: breite,
-            height: hoehe,
-            backgroundColor: PERLMUTT[0],
-            opacity: anim.hintenDeckung,
-            transform: [{ perspective: 1000 }, { rotateX: anim.neigung }, { rotateY: anim.hintenY }],
-          },
-        ]}
-      >
-        {/* Dasselbe Raster wie auf der unteren Karte (2026-09-12): ohne das
-            war die Bildkarte in der ZWEITEN Haelfte der Drehung wieder eine
-            leere Flaeche, an der nichts zu sehen ist - genau die Luecke, die
-            die Struktur unten schliessen sollte. Linienfarbe aus dem
-            Perlmutt der Karte, nicht aus der App-Palette: der Grund hier ist
-            kuehles Violettweiss, ein warmer Grauton saesse daneben. */}
-        {RASTER ? <Struktur farbe={PERLMUTT[1]} ecken="alle" /> : null}
+        {/* Rueckseite MIT Flaeche (2026-09-12, Simons Wahl: "give the backs
+            content").
+            Vorher war sie leer - "simply show nothing on the back" von
+            demselben Tag. Das machte die gemeinsame Drehung unleserlich: oben
+            verschwand das Bild, unten schien nichts zu passieren, und beide
+            Karten sahen aus, als taeten sie Verschiedenes. Jetzt zeigt jede
+            Seite eine eigene Flaeche, die Drehung ist auf beiden Karten
+            dasselbe Ereignis.
+            `Rückseite` ist ein PLATZHALTER, kein Inhalt - er sagt nur, dass
+            man die andere Seite sieht. */}
+        <Animated.View
+          pointerEvents="none"
+          accessibilityElementsHidden={seite !== 2}
+          importantForAccessibility={seite === 2 ? 'auto' : 'no-hide-descendants'}
+          style={[
+            styles.flaeche,
+            {
+              width: breite,
+              height: hoehe,
+              backgroundColor: PERLMUTT[0],
+              opacity: anim.hintenDeckung,
+              transform: [{ perspective: 1000 }, { rotateX: anim.neigung }, { rotateY: anim.hintenY }],
+            },
+          ]}
+        >
+          {/* Dasselbe Raster wie auf der unteren Karte (2026-09-12): ohne das
+              war die Bildkarte in der ZWEITEN Haelfte der Drehung wieder eine
+              leere Flaeche, an der nichts zu sehen ist - genau die Luecke, die
+              die Struktur unten schliessen sollte. Linienfarbe aus dem
+              Perlmutt der Karte, nicht aus der App-Palette: der Grund hier ist
+              kuehles Violettweiss, ein warmer Grauton saesse daneben. */}
+          {RASTER ? <Struktur farbe={PERLMUTT[1]} ecken="alle" /> : null}
 
-        {rueckseitenBild ? (
-          // Gleicher Beschnitt wie vorn: die Rundung sitzt an der Huelle,
-          // nicht an der Flaeche darueber - die traegt den Schatten.
-          <View style={[styles.bildRahmen, { width: breite, height: hoehe }]}>
-            <Image
-              source={rueckseitenBild}
-              style={{ width: breite, height: hoehe }}
-              resizeMode="cover"
-              accessibilityIgnoresInvertColors
-            />
-          </View>
-        ) : null}
-        {rueckseite}
-      </Animated.View>
+          {rueckseitenBild ? (
+            // Gleicher Beschnitt wie vorn: die Rundung sitzt an der Huelle,
+            // nicht an der Flaeche darueber - die traegt den Schatten.
+            <View style={[styles.bildRahmen, { width: breite, height: hoehe }]}>
+              <Image
+                source={rueckseitenBild}
+                style={{ width: breite, height: hoehe }}
+                resizeMode="cover"
+                accessibilityIgnoresInvertColors
+              />
+            </View>
+          ) : null}
+          {rueckseite}
+        </Animated.View>
+      </View>
+
+      {/* Der Knopf auf der Karte, je Seite eine Fassung mit genau der Drehung
+          und Neigung dieser Seite. GESCHWISTER der Gesten-Flaeche, nicht ihr
+          Kind (siehe Huelle oben): so erreicht VoiceOver den Knopf, und ein
+          Tipp darauf gehoert allein dem Knopf. `box-none` laesst Tipps neben
+          dem Knopf zur Karte durch. */}
+      {knopf ? (
+        <>
+          <Animated.View
+            pointerEvents={seite === 1 ? 'box-none' : 'none'}
+            accessibilityElementsHidden={seite !== 1}
+            importantForAccessibility={seite === 1 ? 'auto' : 'no-hide-descendants'}
+            style={[
+              styles.knopfEbene,
+              {
+                width: breite,
+                height: hoehe,
+                opacity: anim.vorneDeckung,
+                transform: [{ perspective: 1000 }, { rotateX: anim.neigung }, { rotateY: anim.vorneY }],
+              },
+            ]}
+          >
+            {knopf}
+          </Animated.View>
+          <Animated.View
+            pointerEvents={seite === 2 ? 'box-none' : 'none'}
+            accessibilityElementsHidden={seite !== 2}
+            importantForAccessibility={seite === 2 ? 'auto' : 'no-hide-descendants'}
+            style={[
+              styles.knopfEbene,
+              {
+                width: breite,
+                height: hoehe,
+                opacity: anim.hintenDeckung,
+                transform: [{ perspective: 1000 }, { rotateX: anim.neigung }, { rotateY: anim.hintenY }],
+              },
+            ]}
+          >
+            {knopf}
+          </Animated.View>
+        </>
+      ) : null}
     </View>
+  );
+}
+
+/**
+ * Runder Knopf AUF einer Bildkarte, oben rechts (2026-09-13, fuer das
+ * Geschenk). Gedacht fuer `BildKarte`s `knopf`.
+ *
+ * Weiss mit Rand und Schatten wie der Wechsel-Knopf zwischen den Karten -
+ * auf einer gemalten Szene muss er sich als Bedienelement abheben, nicht als
+ * Teil des Bildes lesen (die gemalten Pillen auf der Mandarin-Karte sind
+ * genau das Gegenbeispiel). 44 Punkte: die kleinste Tippflaeche nach Apple.
+ */
+export function KartenKnopf({
+  dark,
+  icon,
+  label,
+  hinweis,
+  onPress,
+}: {
+  dark: boolean;
+  icon: ComponentProps<typeof Feather>['name'];
+  label: string;
+  hinweis?: string;
+  onPress: () => void;
+}) {
+  const theme = getTheme(dark);
+  return (
+    <Pressable
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      accessibilityHint={hinweis}
+      style={({ pressed }) => [
+        styles.kartenKnopf,
+        karte(dark),
+        // Rund NACH `karte()`, das seinen eigenen Radius mitbringt.
+        { borderRadius: KARTEN_KNOPF / 2, backgroundColor: theme.cardBg, opacity: pressed ? 0.7 : 1 },
+      ]}
+    >
+      <Feather name={icon} size={20} color={theme.text} />
+    </Pressable>
   );
 }
 
@@ -798,7 +897,24 @@ export function Knopfreihe({ children }: { children: ReactNode }) {
 
 export { KARTE_HOEHE, KARTE_SEITE, PERLMUTT, SCHATTEN, SCHATTEN_TIEFE, TINTE };
 
+const KARTEN_KNOPF = 44;
+
 const styles = StyleSheet.create({
+  knopfEbene: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    backfaceVisibility: 'hidden',
+  },
+  kartenKnopf: {
+    position: 'absolute',
+    top: SPACING.md,
+    right: SPACING.md,
+    width: KARTEN_KNOPF,
+    height: KARTEN_KNOPF,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   knopfReihe: {
     // Im Fluss zwischen den Karten - der Abstand nach oben und unten ist
     // derselbe, damit die Reihe mittig zwischen ihnen sitzt.

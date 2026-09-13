@@ -14,32 +14,26 @@ import {
 import { router, useFocusEffect, useNavigation } from 'expo-router';
 import type { BottomTabNavigationProp } from 'expo-router/tabs';
 import { Feather } from '@expo/vector-icons';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { LEARNING_MODE_LABEL, useAppState } from '../../state/AppState';
 import { CATEGORIES, GRUNDWORTSCHATZ_ID } from '../../data/categories';
 import { sichtbareSituationen } from '../../data/demo';
 import { useAuthState } from '../../state/AuthState';
-import { LANGUAGES, getLanguage } from '../../data/languages';
-import {
-  Dropdown,
-  HeaderMenu,
-  ProgressBar,
-  ProgressProzent,
-  Screen,
-} from '../../components';
-import type { DropdownOption } from '../../components';
+import { getLanguage } from '../../data/languages';
+import { Screen } from '../../components';
 import { useTabLeistenFreiraum } from '../../components/tabLeiste';
 import { useUnlockedProgress } from './useUnlockedProgress';
 import { useCategorySituations } from '../lessons/useCategorySituations';
 import { useGuidedCourse } from './useGuidedCourse';
 import { useGuidedProgress } from './useGuidedProgress';
 import { PathBackdrop } from './PathBackdrop';
-import { standortAus, Standortzeile } from './Standort';
+import { standortAus } from './Standort';
+import { fortschrittsAnteil, LernKopf } from './LernKopf';
 import {
   BildKarte,
   BlattKarte,
   KARTE_HOEHE,
   KARTE_SEITE,
+  KartenKnopf,
   Knopfreihe,
   LektionsPille,
   SCHATTEN,
@@ -70,8 +64,6 @@ import {
   LINE_HEIGHT,
   schrift,
   kachel,
-  karte,
-  PROGRESS_SEITE,
 } from '../../theme/tokens';
 
 // S1 - Startscreen (Pfad).
@@ -382,12 +374,7 @@ export function useLernpfad() {
   );
   const progress = useUnlockedProgress(targetLanguageId, unlockedIds);
   // Welcher Anteil oben im Balken steht.
-  const anteil =
-    learningMode === 'gefuehrt'
-      ? guidedProgress.gesamt > 0
-        ? guidedProgress.fertig / guidedProgress.gesamt
-        : 0
-      : progress.ratio;
+  const anteil = fortschrittsAnteil(learningMode, guidedProgress, progress.ratio);
 
   // Wo man gerade steht - die Zeile ueber dem Balken (2026-09-12, Simon:
   // erst auf Freunde gebaut, dann "setz die Standort-Zeile auch auf S1").
@@ -705,10 +692,9 @@ export function useLernpfad() {
 
 export function PathScreen() {
   // `purchased` und `hatKonto` liest seit 2026-09-13 `useLernpfad`, nicht mehr der Screen.
-  const { darkMode, targetLanguageId, setTargetLanguageId, coins, learningMode, toggleLearningMode } =
+  const { darkMode, targetLanguageId, coins, learningMode, toggleLearningMode } =
     useAppState();
   const theme = getTheme(darkMode);
-  const activeLanguage = getLanguage(targetLanguageId);
 
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
 
@@ -796,32 +782,6 @@ export function PathScreen() {
   // der Freunde-Testscreen denselben Pfad zeigt (siehe `useLernpfad`).
   const { scrollRef, scrollHinten, expand, pfadVorne, pfadHinten, anteil, standort, speedLeerText, kursLeerText } =
     useLernpfad();
-  // Navigationsleiste oben (2026-09-11). Drei Stufen am selben Tag:
-  // erst eine iOS-Leiste, die beim Scrollen milchig wird ("Option B, nur auf
-  // S1"), dann dauerhaft grau mit Schieferkante, dann - Simons endgueltiger
-  // Wunsch - im Look des "Du bist hier"-Kastens: `karte()`, also weiss,
-  // blasser Rand, grosser Radius, versetzter Schatten. Die volle Breite aus
-  // Option B bleibt; die Karte haengt wie ein Blatt von oben herab und ist
-  // nur unten gerundet. Die Scroll-Meldungen des Pfads sind wieder auf dem
-  // alten Stand (nur beim bebilderten Pfad).
-  const sicherRand = useSafeAreaInsets();
-  // Der Karten-Look aus `karte()`, aber nur als EINZELANGABEN - oben ohne
-  // Rand und Rundung. Die Sammelwerte `borderWidth`/`borderRadius` duerfen
-  // gar nicht erst ankommen: im Browser schlug die Sammelangabe eine
-  // spaetere Einzelangabe (oben blieb gerundet und umrandet, am 2026-09-11
-  // nachgemessen), auf dem Geraet haengt es an der Plattform. So gibt es
-  // nichts zu ueberstimmen.
-  const { borderWidth: kartenRand, borderRadius: kartenRadius, ...kartenRest } =
-    karte(darkMode);
-  const navKarte = {
-    ...kartenRest,
-    borderTopWidth: 0,
-    borderLeftWidth: kartenRand,
-    borderRightWidth: kartenRand,
-    borderBottomWidth: kartenRand,
-    borderBottomLeftRadius: kartenRadius,
-    borderBottomRightRadius: kartenRadius,
-  };
 
 
   // Der Knopf im Kopf der Pfad-Box wechselt den Lernweg (Nutzer-Wunsch
@@ -940,12 +900,6 @@ export function PathScreen() {
     navigation.setOptions({ sceneStyle: { backgroundColor: theme.pageBg, paddingBottom: 0 } });
   }, [navigation, theme.pageBg]);
 
-  const languageOptions: DropdownOption[] = LANGUAGES.map((l) => ({
-    id: l.id,
-    label: l.label,
-    disabled: !l.hasContent,
-    note: l.hasContent ? undefined : 'bald',
-  }));
 
   return (
     <View style={styles.root} {...swipe.panHandlers}>
@@ -956,111 +910,11 @@ export function PathScreen() {
       <PathBackdrop width={windowWidth} height={windowHeight} />
     <Animated.View style={[styles.root, { transform: [{ translateX: drag }] }]}>
     <Screen dark={darkMode} style={styles.transparentPage}>
-      {/* Kopfzeile: Sprache links, Geschenk und Coins rechts - seit
-          2026-09-11 in einer grauen Leiste mit 3D-Kante (siehe `sicherRand`). */}
-      <View style={styles.navLeiste}>
-        {/* Die Karte reicht ueber die volle Breite und nach oben bis unter
-            die Statusleiste: `Screen` rueckt seinen Inhalt dort um den
-            Sicherheitsrand plus SPACING.sm und seitlich um SPACING.lg ein,
-            und die Karte geht um genau diese Betraege wieder hinaus. */}
-        <View
-          style={[
-            styles.navGlas,
-            // Derselbe Baustein wie der "Du bist hier"-Kasten - aendert sich
-            // die Karte, aendern sich beide.
-            navKarte,
-            // Deckend weiss: iOS zeichnet den Schatten nur unter einer
-            // deckenden Flaeche verlaesslich (deshalb oben kein Glas mehr).
-            { top: -(sicherRand.top + SPACING.sm), backgroundColor: theme.cardBg },
-          ]}
-          accessibilityElementsHidden
-          importantForAccessibility="no-hide-descendants"
-        />
-
-        <View style={styles.topBar}>
-          <View style={styles.langSlot}>
-            <Dropdown
-              compact
-              options={languageOptions}
-              selectedId={targetLanguageId}
-              onSelect={setTargetLanguageId}
-              dark={darkMode}
-              title="Welche Sprache lernst du?"
-              accessibilityLabel="Sprache"
-              rahmen="karte"
-            />
-          </View>
-
-          <HeaderMenu dark={darkMode} rahmen="karte" />
-        </View>
-      </View>
-
-      {/* Ueber dem Balken: wo man gerade steht. Das ist die Aussage des
-          alten "Du bist hier"-Kastens, die beim Umbau auf die zwei Karten
-          weggefallen war - jetzt ohne Kasten, nur zwei Zeilen, und mittig
-          statt links. */}
-      <View style={styles.standortReihe}>
-        <Standortzeile dark={darkMode} standort={standort} />
-      </View>
-
-      {/* Fortschritt ueber die freigeschalteten Inhalte. */}
-      <View style={styles.progressRow}>
-        {/* Links die Flagge der Lernsprache (2026-09-12, Simons Wunsch).
-            Sie oeffnet DIESELBE Auswahl wie das Dropdown in der Kopfzeile -
-            derselbe Baustein, nur ein kleinerer Ausloeser, damit die beiden
-            nicht auseinanderlaufen koennen.
-            Der Platz war vorher leer und diente nur als Gegengewicht zur
-            Prozentzahl rechts; der Balken steht also weiterhin genau mittig
-            und gleich breit. */}
-        <View style={styles.progressSeite}>
-          <Dropdown
-            compact
-            symbol={activeLanguage.flagge}
-            options={languageOptions}
-            selectedId={targetLanguageId}
-            onSelect={setTargetLanguageId}
-            dark={darkMode}
-            title="Welche Sprache lernst du?"
-            accessibilityLabel="Sprache"
-            rahmen="ohne"
-          />
-        </View>
-        {/* Im gefuehrten Modus zaehlt der Kurs, im Speed-Run die
-            freigeschalteten Kategorien - sonst stuende der Balken im Kurs
-            dauerhaft auf dem Wert einer Sammlung, die man dort gar nicht
-            anfasst. */}
-        {/* Der Balken in einer eigenen Huelle, damit er MITTIG in der Zeile
-            sitzt (2026-09-13, Simons Befund: die Mitte der Flagge lag 7
-            Punkte unter der Mitte des Balkens).
-
-            Ursache: die Spur traegt `alignSelf: 'stretch'` (fuer den Fall,
-            dass der Balken in einer SPALTE steht und die volle Breite
-            braucht). Bei fester Hoehe stretcht das nichts, sondern setzt
-            ihn an den Anfang der Achse - in einer Zeile also nach OBEN, und
-            das schlaegt das `alignItems: 'center'` der Zeile.
-
-            Die Huelle nimmt den Platz ein, wird von der Zeile mittig
-            gesetzt und laesst die Spur darin ihre Breite fuellen. So bleibt
-            `ProgressBar` unangetastet - es gibt sechs Verwendungen, und in
-            den Spalten ist das Strecken richtig. */}
-        <View style={styles.balkenPlatz}>
-                  <ProgressBar
-            dark={darkMode}
-            ratio={anteil}
-            label={`${Math.round(anteil * 100)} Prozent ${
-              learningMode === 'gefuehrt' ? 'des Kurses geschafft' : 'deiner freigeschalteten Inhalte geübt'
-            }`}
-          />
-        </View>
-        {/* Die Prozentzahl sitzt im rechten Seitenplatz, wo das Onboarding
-            einen leeren Platzhalter hat. So bleibt der Balken exakt gleich
-            breit und zentriert, und die Zahl bleibt trotzdem stehen - sie ist
-            das Gegengewicht zur Mindestfuellung (siehe ProgressBar.tsx: "der
-            Balken schmeichelt, die Zahl luegt nicht"). */}
-        <View style={styles.progressSeite}>
-          <ProgressProzent dark={darkMode} ratio={anteil} />
-        </View>
-      </View>
+      {/* Kopf wie auf Freunde (2026-09-13, Simon: "auf Start und Lektionen
+          die Top-Bar so machen wie bei Freunde"): keine Kopfleiste mehr -
+          Sprach-Dropdown und Drei-Punkte-Menue sind weg, die Flagge am Balken
+          ist die Sprachauswahl, das Geschenk sitzt auf der Sprachkarte. */}
+      <LernKopf dark={darkMode} standort={standort} anteil={anteil} />
 
       {/* Obere Karte: die Illustration der Sprache - auf BEIDEN Seiten
           (2026-09-12, Simon: das Bild von Freunde gehoert auch auf S1s obere
@@ -1077,6 +931,19 @@ export function PathScreen() {
           quelle={heldBild}
           rueckseitenBild={heldBild}
           name="Sprachkarte"
+          // Das Geschenk auf der Karte (2026-09-13, Simons Wunsch). Dasselbe
+          // Verhalten wie der Geschenk-Knopf im Drei-Punkte-Menue: ohne
+          // Funktion, bis die taegliche Kiste existiert, und das sagt er beim
+          // Antippen, statt still nichts zu tun.
+          knopf={
+            <KartenKnopf
+              dark={darkMode}
+              icon="gift"
+              label="Geschenk"
+              hinweis="Die tägliche Kiste gibt es noch nicht"
+              onPress={() => setNotice('Die tägliche Kiste kommt später.')}
+            />
+          }
         />
       </View>
 
@@ -1398,100 +1265,8 @@ function Notice({ text, dark, onHide }: { text: string | null; dark: boolean; on
   );
 }
 
-// Um so viel sind die Kopfzeilen-Knoepfe am 2026-09-11 nach oben gerueckt
-// (`topBar.marginTop` von md auf xs). Steht als EINE Groesse da, weil drei
-// Stellen daran haengen - wer sie aendert, verschiebt Knoepfe, Balken und
-// Leistenkante gemeinsam statt einzeln.
-const KNOEPFE_HOEHER = SPACING.md - SPACING.xs;
 
 const styles = StyleSheet.create({
-  navLeiste: {
-    // Eigene Stapelebene: die Leiste liegt als Ganzes ueber Fortschritts-
-    // balken und Pfad-Box. Das Glas ragt unten ein Stueck ueber die Knoepfe
-    // hinaus (siehe `navGlas.bottom`) und muss dort ueber dem Rest liegen.
-    zIndex: 10,
-  },
-  navGlas: {
-    position: 'absolute',
-    left: -SPACING.lg,
-    right: -SPACING.lg,
-    // Unter die Knoepfe hinaus, damit das Glas nicht auf ihrer Kante endet.
-    // NEGATIV statt einer Polsterung an `navLeiste`: eine Polsterung haette
-    // den Fortschrittsbalken um 8 Punkte nach unten geschoben, und dessen
-    // Abstand ist am 2026-09-03 eigens eingestellt worden.
-    // Enthaelt ausserdem die Punkte, um die die Knoepfe am 2026-09-11 nach
-    // oben gerueckt sind - so bleibt die Unterkante der Leiste, wo sie war.
-    bottom: -(SPACING.sm + KNOEPFE_HOEHER),
-    // `top` kommt an der Verwendung, er haengt am Sicherheitsrand.
-  },
-  topBar: {
-    // Luft nach oben (2026-09-01, Simons Wunsch). ACHTUNG beim Nachjustieren:
-    // `Screen` setzt darueber schon `insets.top`, und der ist im Browser 0,
-    // auf einem iPhone mit Notch aber rund 47-59. Was hier steht, kommt also
-    // OBEN DRAUF - im Web wirkt es viel staerker als auf dem Geraet.
-    //
-    // 2026-09-11 (Simons Wunsch): Knoepfe "etwas nach oben", von md auf xs.
-    // Fortschrittsbalken, Pfad und die Unterkante der grauen Leiste bleiben
-    // stehen - `progressRow.marginTop` und `navGlas.bottom` gleichen genau
-    // diese Differenz aus (KNOEPFE_HOEHER).
-    marginTop: SPACING.xs,
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: SPACING.sm,
-    // Sprache links, Menue rechts. Frueher schob `flex: 1` am Sprachfeld das
-    // Menue nach aussen; jetzt uebernimmt das der Zwischenraum, und das Feld
-    // darf so schmal sein, wie sein Inhalt es braucht.
-    justifyContent: 'space-between',
-  },
-  langSlot: {
-    // `flexShrink` statt `flex`: das Feld waechst nicht mehr auf die ganze
-    // Zeile, kann aber schrumpfen, falls ein sehr langer Sprachname kommt -
-    // dann greift die Kuerzung im Feld selbst, statt dass das Menue
-    // hinausgeschoben wird.
-    flexShrink: 1,
-  },
-  progressRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    // Wie im Onboarding (`topBar.gap`) - frueher SPACING.sm. Zusammen mit
-    // den beiden Seitenplaetzen ergibt das denselben Rand wie dort: 16 vom
-    // Screen + 32 + 12 = 60 Punkte je Seite, am 2026-09-11 nachgemessen.
-    gap: SPACING.md,
-    // 2026-09-01: von SPACING.md auf lg - die drei Kopfzeilen-Elemente
-    // standen mit 12 Punkten zu dicht beieinander.
-    // 2026-09-03: von lg auf xl, im selben Zug dann auf xxl (Simon wollte
-    // oben nochmal deutlich mehr Luft als unten). Der Abstand DARUNTER
-    // steht nicht hier, sondern in `pathBox.marginTop` - beide zusammen
-    // ergeben das Bild, wer nur einen anfasst, macht es schief.
-    //
-    // Oben ist jetzt bewusst GROESSER als unten (32 gegen 24+12): der
-    // Balken loest sich damit von der Kopfzeile und gehoert optisch zum
-    // Pfad darunter, statt zwischen beidem zu schweben.
-    //
-    // `+ KNOEPFE_HOEHER` seit 2026-09-11: die Knoepfe darueber sind um so
-    // viel nach oben gerueckt, und der Balken soll dabei nicht mitwandern.
-    //
-    // Seit dem 2026-09-12 haelt die Standort-Zeile darueber diesen Abstand
-    // zur Kopfzeile; hier bleibt nur der Abstand zwischen Zeile und Balken.
-    // Alles darunter verschiebt sich entsprechend nach unten.
-    marginTop: SPACING.lg,
-  },
-  standortReihe: {
-    marginTop: SPACING.xxl + KNOEPFE_HOEHER,
-  },
-  balkenPlatz: {
-    // Nimmt die Restbreite; die Hoehe kommt vom Balken selbst, damit die
-    // Zeile ihn mittig setzen kann.
-    flex: 1,
-  },
-  progressSeite: {
-    width: PROGRESS_SEITE,
-    // Rechtsbuendig, damit die Zahl am Balken klebt statt am Bildschirmrand.
-    // `ProgressProzent` hat minWidth 34 und ragt damit 2 Punkte in den
-    // Abstand - der Platz selbst bleibt 32, der Balken also genau so breit
-    // wie im Onboarding.
-    alignItems: 'flex-end',
-  },
   // `progressValue` ist am 2026-09-01 weggefallen: die Prozentzahl liegt
   // jetzt als `ProgressProzent` beim Balken selbst, damit Schrift und Farbe
   // nicht an zwei Stellen gepflegt werden.

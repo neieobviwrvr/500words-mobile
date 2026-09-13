@@ -9,7 +9,8 @@ import { useAuthState } from '../../state/AuthState';
 import { scenarioLabel } from '../../data/scenarios';
 import { leihName } from '../../data/geliehen';
 import { TRAINING_MODES } from '../../data/trainingModes';
-import { HeaderMenu, Screen } from '../../components';
+import { Screen } from '../../components';
+import { LernKopf, useLernKopf } from '../home/LernKopf';
 import { Situation, useCategorySituations } from './useCategorySituations';
 import {
   getTheme,
@@ -108,6 +109,7 @@ export function LessonsScreen() {
   const { hatKonto } = useAuthState();
   const theme = getTheme(darkMode);
   const situations = useCategorySituations(targetLanguageId);
+  const { standort, anteil } = useLernKopf(situations);
   // Welches Kategorie-Chevron-Dropdown gerade offen ist - EINE Stelle statt
   // je Kategorie ein eigener State (2026-08-26, Simons Wunsch: "alle
   // Drop-Downs sollen sich schliessen, sobald ich ein neues oeffne"). `null`
@@ -133,11 +135,12 @@ export function LessonsScreen() {
 
   return (
     <Screen dark={darkMode} padHorizontal={false}>
-      {/* Hier ohne Drei-Punkte-Knopf: Coins und Profil stehen direkt da
-          (Nutzer-Wunsch 2026-08-20). Auf den uebrigen Screens bleibt das
-          ausfahrbare Menue. */}
-      <View style={styles.menuSlot}>
-        <HeaderMenu dark={darkMode} overlay inline />
+      {/* Kopf wie auf Freunde und Start (2026-09-13, Simon: "auf Start und
+          Lektionen die Top-Bar so machen wie bei Freunde"): Standort und
+          Balken, fest ueber der Liste. Die Coins-Pille, die hier seit dem
+          2026-08-20 oben rechts stand, ist damit weg. */}
+      <View style={styles.kopf}>
+        <LernKopf dark={darkMode} standort={standort} anteil={anteil} />
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.page}>
@@ -647,13 +650,15 @@ function KategorieMenu({
 const styles = StyleSheet.create({
   page: {
     paddingBottom: SPACING.xl,
-    // Platz fuer das Kopfzeilen-Menue, das rechts oben darueber liegt.
-    paddingTop: SPACING.xxl,
+    // Abstand zum Kopf darueber - derselbe wie auf Start und Freunde
+    // zwischen Balken und Karte. Frueher SPACING.xxl als Platz fuer die
+    // Coins-Pille, die rechts oben ueber der Liste lag.
+    paddingTop: SPACING.xl,
   },
-  menuSlot: {
-    position: 'relative',
+  kopf: {
+    // `Screen` laeuft hier ohne seitliche Polsterung (die Reihen scrollen
+    // bis an den Rand) - der Kopf holt sie sich selbst.
     paddingHorizontal: SPACING.lg,
-    zIndex: 10,
   },
   pageTitle: {
     // ExtraBold statt Serife (2026-09-01).
