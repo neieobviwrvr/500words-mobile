@@ -248,6 +248,12 @@ NICHT_TAGGEN = {
     # deshalb nur in PERSONAL, nicht als Nomen im Lexikon.
     "vi": {"co", "cô", "chi", "chị", "ba", "bà", "the", "thế"},
     "pl": {"to", "co", "za", "no", "a", "i"},
+    # Chinesisch (2026-09-13, Simons Entscheidung): Frage- und Hinweiswoerter
+    # bleiben ungefaerbt wie in allen anderen Sprachen ("vad", "this"), obwohl
+    # `chinesisch_vocab.wortart` sie seit 2026-09-07 als Pronomen fuehrt:
+    # 什么 shenme, 谁 shei, 哪/那 na, 这 zhe, 这些 zhexie. Tonlos notiert,
+    # weil der Abgleich tonlos ist. Personalpronomen stehen in PERSONAL.
+    "zh": {"shenme", "shei", "na", "zhe", "zhexie"},
     "en": {"that", "this", "will", "can", "like", "one", "s", "as", "so", "back", "well", "there"},
 }
 
