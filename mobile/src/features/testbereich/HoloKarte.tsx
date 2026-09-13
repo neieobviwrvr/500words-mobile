@@ -1,14 +1,13 @@
-import { useLayoutEffect, useMemo } from 'react';
-import { ScrollView, StyleSheet, useWindowDimensions, View } from 'react-native';
+import { useLayoutEffect } from 'react';
+import { StyleSheet, useWindowDimensions, View } from 'react-native';
 import { router, useNavigation } from 'expo-router';
 import type { BottomTabNavigationProp } from 'expo-router/tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Dropdown, ProgressBar, ProgressProzent, Screen } from '../../components';
 import type { DropdownOption } from '../../components';
 import { CONTENT_GAP } from '../../components/tabLeiste';
-import { CATEGORIES, GRUNDWORTSCHATZ_ID } from '../../data/categories';
 import { LANGUAGES, getLanguage } from '../../data/languages';
-import { useUnlockedProgress } from '../home/useUnlockedProgress';
+import { PfadFlaeche, useLernpfad } from '../home/PathScreen';
 import { useAppState } from '../../state/AppState';
 import {
   KACHEL_RAND_LIGHT,
@@ -18,7 +17,7 @@ import {
   RADIUS,
   SPACING,
 } from '../../theme/tokens';
-import { Standortzeile, useStandort } from '../home/Standort';
+import { Standortzeile } from '../home/Standort';
 import {
   BildKarte,
   BlattKarte,
@@ -48,10 +47,10 @@ import {
 //         untere Karte scheinbar stillstand.
 //   UNTEN die weisse Karte - erhoben wie ein Blatt, das vom unteren Rand
 //         heraufsteigt; scrollbar, dreht sich beim Tippen und kippt beim
-//         QUEREN Ziehen (senkrecht scrollt sie weiter). Inhalt: noch keiner,
-//         das Stueck gefuehrter Pfad darin ist am 2026-09-12 wieder raus -
-//         geblieben ist ein Raster aus Haarlinien (`Struktur`), an dem man
-//         die Drehung ueberhaupt ablesen kann.
+//         QUEREN Ziehen (senkrecht scrollt sie weiter). Inhalt seit
+//         2026-09-13 der Lernpfad wie auf S1 (`useLernpfad`, `PfadFlaeche`):
+//         vorne Speed-Run, hinten gefuehrter Kurs. Ein Tipp darauf dreht sie
+//         deshalb nicht mehr - die Pillen sind Knoepfe.
 //
 // Beide Karten tragen denselben Schatten (`SCHATTEN`) und beide eine
 // gezeichnete Flaeche - vorher war die Drehung oben ein Foto, das sich
@@ -110,8 +109,7 @@ const MANDARIN = require('../../../assets/sprachkarte-zh.png');
 const LEISTE_WIE_TOPBAR = true;
 
 export function HoloKarteTest() {
-  const { darkMode, purchased, targetLanguageId, setTargetLanguageId, learningMode } =
-    useAppState();
+  const { darkMode, targetLanguageId, setTargetLanguageId, learningMode } = useAppState();
   const theme = getTheme(darkMode);
   const sicherRand = useSafeAreaInsets();
   const { width, height } = useWindowDimensions();
@@ -130,16 +128,14 @@ export function HoloKarteTest() {
     unten.umdrehen();
   };
 
-  // Derselbe ECHTE Wert wie auf S1 im Speed-Run: Anteil der freigeschalteten
-  // Saetze, die schon einmal bewertet wurden. Kein Platzhalter - der Balken
-  // soll hier zeigen, was er auf S1 zeigt. (Den Kurs-Anteil des gefuehrten
-  // Modus laesst dieser Testscreen bewusst aus, das waere ein zweiter Hook
-  // fuer einen Screen, der wieder verschwindet.)
-  const freigeschaltet = useMemo(
-    () => [GRUNDWORTSCHATZ_ID, ...CATEGORIES.filter((c) => purchased[c.id]).map((c) => c.id)],
-    [purchased],
-  );
-  const anteil = useUnlockedProgress(targetLanguageId, freigeschaltet).ratio;
+  // Pfad, Balken und Standort-Zeile aus DEMSELBEN Hook wie auf S1
+  // (2026-09-13, Simon: "Leg mir bitte auch mal den Pfad bei Freunde in die
+  // untere Karte"). Vorher rechnete dieser Screen Balken und Standort mit
+  // eigenen Hooks - der Balken dabei nur im Speed-Run. Jetzt zeigt er
+  // genau, was S1 zeigt, auch den Kurs-Anteil im gefuehrten Modus, und die
+  // Daten laden hier nur einmal statt zweimal.
+  const { scrollRef, scrollHinten, expand, pfadVorne, pfadHinten, anteil, standort, speedLeerText, kursLeerText } =
+    useLernpfad();
 
   // Die Sprachauswahl ist mit der Kopfleiste weggefallen und kommt als
   // Flagge neben dem Balken zurueck (2026-09-12, Simons Wunsch) - derselbe
@@ -209,9 +205,6 @@ export function HoloKarteTest() {
   // Der Platz, den das Tab-Layout sonst unten freihaelt - hier wandert er in
   // die Scroll-Flaeche der unteren Karte, damit ihr letzter Eintrag ueber
   // der Leiste endet statt darunter.
-  // Der Testscreen liest die drei Quellen nur fuer diese Zeile - deshalb der
-  // bequeme Hook. S1 hat sie ohnehin und rechnet direkt.
-  const standort = useStandort(targetLanguageId, learningMode);
 
   // Die angedockte Leiste braucht weniger Platz als die schwebende: es
   // entfaellt der Schwebeabstand, der Sicherheitsrand steckt jetzt IN ihr.
@@ -372,8 +365,7 @@ export function HoloKarteTest() {
         {/* Untere Karte (Simon, 2026-09-11: "another card right below that -
             the card is allowed to go below the Tab-Bar and to be
             scrollable"). Reicht bis an den unteren Bildschirmrand, unter der
-            schwebenden Leiste durch; ihr Inhalt scrollt in ihr. Inhalt hat
-            sie im Moment keinen - was hineinkommt, ist noch offen. */}
+            schwebenden Leiste durch; ihr Inhalt scrollt in ihr. */}
         {/* Die Knopfreihe ZWISCHEN den Karten (2026-09-12, Simon: erst
             "overlapping both", dann "move it between the two cards"). Sie
             steht in der normalen Reihenfolge, nicht absolut darueber - die
@@ -427,11 +419,36 @@ export function HoloKarteTest() {
         </Knopfreihe>
 
         <View style={styles.blatt}>
+          {/* Der Lernpfad wie auf S1 (2026-09-13): vorne der Speed-Run, hinten
+              der gefuehrte Kurs. Dieselbe `PfadFlaeche`, derselbe Hook - nur
+              der Freiraum ueber der Leiste ist dieses Screens eigener, weil
+              seine Leiste angedockt statt schwebend ist. Die Karte dreht sich
+              hier weiterhin OHNE den Lernweg zu wechseln - das tut nur S1. */}
           <BlattKarte
             rahmen={blattKarte}
-            name="Farbkarte"
-            vorne={<ScrollView contentContainerStyle={[styles.blattInhalt, { paddingBottom: freiraum }]} />}
-            hinten={<ScrollView contentContainerStyle={[styles.blattInhalt, { paddingBottom: freiraum }]} />}
+            name="Lernpfad"
+            vorne={
+              <PfadFlaeche
+                layout={pfadVorne}
+                dark={darkMode}
+                scrollRef={scrollRef}
+                freiraum={freiraum}
+                expand={expand}
+                leerText={speedLeerText}
+              />
+            }
+            hinten={
+              <PfadFlaeche
+                layout={pfadHinten}
+                dark={darkMode}
+                scrollRef={scrollHinten}
+                freiraum={freiraum}
+                leerText={kursLeerText}
+              />
+            }
+            // Der Pfad besteht aus Knoepfen - ein Tipp auf eine Pille soll
+            // sie oeffnen, nicht die Karte umdrehen. Wie auf S1.
+            tippenDreht={false}
             dreh={unten.dreh}
             seite={unten.seite}
             umdrehen={unten.umdrehen}
@@ -523,10 +540,5 @@ const styles = StyleSheet.create({
     // Vorn: nur so legt sich ihr Schatten auf die obere Karte, und genau
     // das macht "erhoben" sichtbar.
     zIndex: 1,
-  },
-  blattInhalt: {
-    padding: SPACING.lg,
-    // `paddingBottom` kommt an der Verwendung - der Freiraum ueber der
-    // Leiste, damit Inhalt nicht unter ihr endet.
   },
 });

@@ -47,11 +47,21 @@ const KIPP_MAX = 14;
 /** Dauer einer Umdrehung in ms. Hochkant (90 Grad) ist die Karte nach der Haelfte. */
 const DREH_DAUER = 800;
 /**
- * Hoehe der oberen Karte als Anteil der Fensterhoehe (Simon, 2026-09-11:
- * "the card itself should be 35% of the screen tall"). Sie beginnt unter
- * dem Fortschrittsbalken.
+ * Hoehe der oberen Karte als Anteil der Fensterhoehe. Sie beginnt unter dem
+ * Fortschrittsbalken.
+ *
+ * 24 % seit 2026-09-13 (Simon: "einen Tick kleiner, damit man mehr vom
+ * Lernpfad sieht"). Vorher 35 % (Vorgabe 2026-09-11) - auf einem iPhone 12
+ * (844 pt) blieben damit bis zur Tab-Leiste nur ~150 pt Pfad, also ein bis
+ * zwei Pillen. Bei 24 % sind es ~240 pt. Die Alternative, den ganzen Screen
+ * wegscrollen zu lassen, ist bewusst NICHT gewaehlt: zwei ineinander
+ * liegende Scrollflaechen kaempfen auf iOS um die Geste, und die weggescrollte
+ * Karte zeigte ihr Umdrehen beim Lernweg-Wechsel nicht mehr.
+ *
+ * Gilt auch fuer die Holo-Karte im Testbereich - beide lesen diese eine
+ * Groesse, damit sie gleich aussehen.
  */
-const KARTE_HOEHE = 0.35;
+const KARTE_HOEHE = 0.24;
 /** Rundung der Ecken - wie bei den Karten der App (RADIUS.lg). */
 const ECKE = RADIUS.lg;
 /** Ab so viel Bewegung ist es ein Ziehen, darunter ein Tippen. */

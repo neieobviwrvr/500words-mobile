@@ -256,123 +256,27 @@ function nodeColors(node: { id: string; state: NodeState; lead?: boolean; theme?
   return { line: ACCENT_ORANGE, fill: PILL_FILL_ORANGE };
 }
 
-export function PathScreen() {
-  const { darkMode, purchased, targetLanguageId, setTargetLanguageId, coins, learningMode, toggleLearningMode } =
-    useAppState();
+/**
+ * Der Lernpfad beider Kartenseiten - Knoten, Auffaechern, Fortschritt,
+ * Merker und Auto-Scroll (2026-09-13 aus PathScreen herausgeloest).
+ *
+ * Anlass: Simon wollte denselben Pfad auch in der unteren Karte des
+ * Freunde-Testscreens sehen ("Leg mir bitte auch mal den Pfad bei Freunde
+ * in die untere Karte"). Kopiert waeren das rund 400 Zeilen gewesen, die
+ * beim ersten Umbau auseinanderlaufen. S1 benutzt den Hook genauso wie
+ * vorher den Code an Ort und Stelle - am Verhalten aendert sich nichts.
+ *
+ * Jeder Aufrufer hat eigenen Zustand (aufgefaecherte Pillen, Scroll-Stand)
+ * und laedt seine Daten selbst. Sind beide Screens geladen, laeuft das
+ * Laden also zweimal - fuer einen Testscreen hingenommen.
+ */
+export function useLernpfad() {
+  const { darkMode, purchased, targetLanguageId, learningMode } = useAppState();
   const { hatKonto } = useAuthState();
-  const theme = getTheme(darkMode);
   const activeLanguage = getLanguage(targetLanguageId);
-
-  const { width: windowWidth, height: windowHeight } = useWindowDimensions();
-
-  // Masse der beiden Karten (2026-09-12, Simons Umbau: der Startscreen soll
-  // aussehen wie der Testscreen auf /freunde). Die obere Karte nimmt 35 %
-  // der Hoehe, die untere nimmt sich den Rest und laeuft unten aus dem
-  // Bildschirm - beide mit demselben Seitenabstand.
-  const kartenBreite = windowWidth - 2 * KARTE_SEITE;
-  const kartenHoehe = Math.round(windowHeight * KARTE_HOEHE);
-
-  // Der bebilderte Pfad ist am 2026-09-12 ersatzlos weggefallen (Simon:
-  // "Vergiss den Bildpfad aus Chinesisch, wir brauchen keine Bilder als
-  // Hintergrund"). Die Knoten stehen seitdem in ALLEN Sprachen im Zickzack,
-  // und `ChinaPfadHintergrund.tsx` wird nirgends mehr eingebunden.
-
-  // Nach rechts wischen oeffnet die Geschenk-/Belohnungsseite (Nutzer-Wunsch
-  // 2026-08-20). Zusaetzlicher Weg, nicht der einzige: der Coins-Knopf im
-  // Menue bleibt - eine Wischgeste ist unsichtbar und fuer VoiceOver-Nutzer
-  // gar nicht bedienbar.
-  //
-  // `PanResponder` statt einer Gestenbibliothek: react-native-gesture-handler
-  // waere ein weiteres natives Modul samt neuem Build, und fuer eine einzelne
-  // Wischgeste ist der eingebaute Weg ausreichend.
-  //
-  // Die Bedingung ist bewusst streng - der Zug muss deutlich waagerecht sein
-  // (doppelt so weit seitlich wie hoch) und nach RECHTS gehen. Sonst wuerde
-  // die Geste das senkrechte Scrollen in der Pfad-Box abfangen.
-
-  // Verschiebung des Inhalts waehrend der Geste. Bewusst OHNE nativen
-  // Treiber: der Wert wird bei jeder Fingerbewegung aus JS gesetzt, und das
-  // vertraegt sich mit dem nativen Treiber schlecht. Bei einer Geste von
-  // wenigen hundert Millisekunden faellt das nicht ins Gewicht - anders als
-  // beim Dauer-Schimmer im Fortschrittsbalken.
-  const drag = useRef(new Animated.Value(0)).current;
-
-  const swipe = useRef(
-    PanResponder.create({
-      onMoveShouldSetPanResponder: (_e, g) =>
-        g.dx > SWIPE_CLAIM && Math.abs(g.dx) > Math.abs(g.dy) * 2,
-
-      // Der Inhalt geht mit, gedaempft und gedeckelt.
-      onPanResponderMove: (_e, g) => {
-        drag.setValue(Math.min(Math.max(g.dx, 0) * SWIPE_DAMPING, SWIPE_MAX_DRAG));
-      },
-
-      onPanResponderRelease: (_e, g) => {
-        const ausgeloest =
-          g.dx > SWIPE_DISTANCE || (g.dx > SWIPE_CLAIM && g.vx > SWIPE_VELOCITY);
-
-        if (ausgeloest) {
-          // Erst ganz hinausgleiten, dann wechseln - sonst springt der Screen
-          // um, waehrend der Inhalt noch mitten in der Bewegung steht.
-          Animated.timing(drag, {
-            toValue: SWIPE_MAX_DRAG,
-            duration: SWIPE_EXIT_DURATION,
-            easing: Easing.out(Easing.quad),
-            useNativeDriver: false,
-          }).start(() => {
-            router.push('/rewards');
-            // Zurueck auf 0, damit der Screen beim Zurueckkommen nicht
-            // verschoben dasteht.
-            drag.setValue(0);
-          });
-          return;
-        }
-
-        // Nicht weit genug: zurueckfedern. Der kleine Nachschwinger ist die
-        // Rueckmeldung "erkannt, aber nicht genug".
-        Animated.spring(drag, {
-          toValue: 0,
-          ...SWIPE_SPRING,
-          useNativeDriver: false,
-        }).start();
-      },
-
-      // Nimmt das System die Geste weg (Anruf, Mitteilung), darf der Inhalt
-      // nicht verschoben liegenbleiben.
-      onPanResponderTerminate: () => {
-        Animated.spring(drag, { toValue: 0, ...SWIPE_SPRING, useNativeDriver: false }).start();
-      },
-    })
-  ).current;
-
   const scrollRef = useRef<ScrollView>(null);
   const scrollHinten = useRef<ScrollView>(null);
-  // Navigationsleiste oben (2026-09-11). Drei Stufen am selben Tag:
-  // erst eine iOS-Leiste, die beim Scrollen milchig wird ("Option B, nur auf
-  // S1"), dann dauerhaft grau mit Schieferkante, dann - Simons endgueltiger
-  // Wunsch - im Look des "Du bist hier"-Kastens: `karte()`, also weiss,
-  // blasser Rand, grosser Radius, versetzter Schatten. Die volle Breite aus
-  // Option B bleibt; die Karte haengt wie ein Blatt von oben herab und ist
-  // nur unten gerundet. Die Scroll-Meldungen des Pfads sind wieder auf dem
-  // alten Stand (nur beim bebilderten Pfad).
-  const sicherRand = useSafeAreaInsets();
-  // Der Karten-Look aus `karte()`, aber nur als EINZELANGABEN - oben ohne
-  // Rand und Rundung. Die Sammelwerte `borderWidth`/`borderRadius` duerfen
-  // gar nicht erst ankommen: im Browser schlug die Sammelangabe eine
-  // spaetere Einzelangabe (oben blieb gerundet und umrandet, am 2026-09-11
-  // nachgemessen), auf dem Geraet haengt es an der Plattform. So gibt es
-  // nichts zu ueberstimmen.
-  const { borderWidth: kartenRand, borderRadius: kartenRadius, ...kartenRest } =
-    karte(darkMode);
-  const navKarte = {
-    ...kartenRest,
-    borderTopWidth: 0,
-    borderLeftWidth: kartenRand,
-    borderRightWidth: kartenRand,
-    borderBottomWidth: kartenRand,
-    borderBottomLeftRadius: kartenRadius,
-    borderBottomRightRadius: kartenRadius,
-  };
+
   // Fuer den bebilderten Pfad (2026-08-31): das Bild soll die GANZE Seite
   // fuellen, nicht nur die Pfad-Box - und trotzdem mit den Knoten wandern,
   // weil die auf dem gezeichneten Weg sitzen.
@@ -427,18 +331,6 @@ export function PathScreen() {
     []
   );
 
-  // Der Knopf im Kopf der Pfad-Box wechselt den Lernweg (Nutzer-Wunsch
-  // 2026-08-20). Vorher faecherte er alle Kategorien auf einmal auf - das
-  // faellt weg, der Tipp auf eine einzelne Pille bleibt.
-  const switchMode = useCallback(() => {
-    toggleLearningMode();
-    // Was danach aufgefaechert ist, setzt der Effekt weiter unten - im
-    // gefuehrten Kurs stehen die Lektionen von sich aus offen.
-    // Bewusst OHNE zusaetzliche Notice: der leere Pfad zeigt den Grund schon
-    // als Ruhezeile an. Beides gleichzeitig hiesse denselben Satz doppelt
-    // auf dem Schirm - im Browser gesehen und wieder entfernt.
-  }, [toggleLearningMode]);
-
   // Im gefuehrten Kurs stehen alle Lektionen von Anfang an offen
   // (Nutzer-Wunsch 2026-08-20): der Kurs ist eine Strecke, die man
   // ueberblicken soll, keine Sammlung, in die man hineinsieht. Zuklappen
@@ -483,8 +375,6 @@ export function PathScreen() {
       clearTimeout(timer);
     };
   }, [istOffen, expand]);
-  const [notice, setNotice] = useState<string | null>(null);
-  const hideNotice = useCallback(() => setNotice(null), []);
 
   const unlockedIds = useMemo(
     () => [GRUNDWORTSCHATZ_ID, ...CATEGORIES.filter((c) => purchased[c.id]).map((c) => c.id)],
@@ -527,10 +417,6 @@ export function PathScreen() {
     ]
   );
 
-  // Die Illustration der oberen Karte - zur Sprache passend, sonst keine.
-  const heldBild = SPRACH_BILDER[targetLanguageId];
-
-  const goCategory = (id: string) => () => router.push({ pathname: '/category/[id]', params: { id } });
   // Eine Situation oeffnet GENAU ihre Saetze (2026-08-21). Vorher landete
   // man auf der Kategorie und damit bei den vier Modus-Knoepfen - man hatte
   // "Naeher kommen" angetippt und bekam "Komplette Kategorie durchspammen".
@@ -803,6 +689,162 @@ export function PathScreen() {
     }, 0);
     return () => clearTimeout(timer);
   }, [progress.loading, pfadVorne, pfadHinten, pfade.speed.currentIndex, pfade.gefuehrt.currentIndex]);
+
+  return {
+    scrollRef,
+    scrollHinten,
+    expand,
+    pfadVorne,
+    pfadHinten,
+    anteil,
+    standort,
+    speedLeerText: `Für ${activeLanguage.label} gibt es bisher keine Sätze — dreh die Karte um, dort liegt der geführte Kurs.`,
+    kursLeerText: course.unavailable ?? 'Hier ist noch nichts.',
+  };
+}
+
+export function PathScreen() {
+  // `purchased` und `hatKonto` liest seit 2026-09-13 `useLernpfad`, nicht mehr der Screen.
+  const { darkMode, targetLanguageId, setTargetLanguageId, coins, learningMode, toggleLearningMode } =
+    useAppState();
+  const theme = getTheme(darkMode);
+  const activeLanguage = getLanguage(targetLanguageId);
+
+  const { width: windowWidth, height: windowHeight } = useWindowDimensions();
+
+  // Masse der beiden Karten (2026-09-12, Simons Umbau: der Startscreen soll
+  // aussehen wie der Testscreen auf /freunde). Die obere Karte nimmt 35 %
+  // der Hoehe, die untere nimmt sich den Rest und laeuft unten aus dem
+  // Bildschirm - beide mit demselben Seitenabstand.
+  const kartenBreite = windowWidth - 2 * KARTE_SEITE;
+  const kartenHoehe = Math.round(windowHeight * KARTE_HOEHE);
+
+  // Der bebilderte Pfad ist am 2026-09-12 ersatzlos weggefallen (Simon:
+  // "Vergiss den Bildpfad aus Chinesisch, wir brauchen keine Bilder als
+  // Hintergrund"). Die Knoten stehen seitdem in ALLEN Sprachen im Zickzack,
+  // und `ChinaPfadHintergrund.tsx` wird nirgends mehr eingebunden.
+
+  // Nach rechts wischen oeffnet die Geschenk-/Belohnungsseite (Nutzer-Wunsch
+  // 2026-08-20). Zusaetzlicher Weg, nicht der einzige: der Coins-Knopf im
+  // Menue bleibt - eine Wischgeste ist unsichtbar und fuer VoiceOver-Nutzer
+  // gar nicht bedienbar.
+  //
+  // `PanResponder` statt einer Gestenbibliothek: react-native-gesture-handler
+  // waere ein weiteres natives Modul samt neuem Build, und fuer eine einzelne
+  // Wischgeste ist der eingebaute Weg ausreichend.
+  //
+  // Die Bedingung ist bewusst streng - der Zug muss deutlich waagerecht sein
+  // (doppelt so weit seitlich wie hoch) und nach RECHTS gehen. Sonst wuerde
+  // die Geste das senkrechte Scrollen in der Pfad-Box abfangen.
+
+  // Verschiebung des Inhalts waehrend der Geste. Bewusst OHNE nativen
+  // Treiber: der Wert wird bei jeder Fingerbewegung aus JS gesetzt, und das
+  // vertraegt sich mit dem nativen Treiber schlecht. Bei einer Geste von
+  // wenigen hundert Millisekunden faellt das nicht ins Gewicht - anders als
+  // beim Dauer-Schimmer im Fortschrittsbalken.
+  const drag = useRef(new Animated.Value(0)).current;
+
+  const swipe = useRef(
+    PanResponder.create({
+      onMoveShouldSetPanResponder: (_e, g) =>
+        g.dx > SWIPE_CLAIM && Math.abs(g.dx) > Math.abs(g.dy) * 2,
+
+      // Der Inhalt geht mit, gedaempft und gedeckelt.
+      onPanResponderMove: (_e, g) => {
+        drag.setValue(Math.min(Math.max(g.dx, 0) * SWIPE_DAMPING, SWIPE_MAX_DRAG));
+      },
+
+      onPanResponderRelease: (_e, g) => {
+        const ausgeloest =
+          g.dx > SWIPE_DISTANCE || (g.dx > SWIPE_CLAIM && g.vx > SWIPE_VELOCITY);
+
+        if (ausgeloest) {
+          // Erst ganz hinausgleiten, dann wechseln - sonst springt der Screen
+          // um, waehrend der Inhalt noch mitten in der Bewegung steht.
+          Animated.timing(drag, {
+            toValue: SWIPE_MAX_DRAG,
+            duration: SWIPE_EXIT_DURATION,
+            easing: Easing.out(Easing.quad),
+            useNativeDriver: false,
+          }).start(() => {
+            router.push('/rewards');
+            // Zurueck auf 0, damit der Screen beim Zurueckkommen nicht
+            // verschoben dasteht.
+            drag.setValue(0);
+          });
+          return;
+        }
+
+        // Nicht weit genug: zurueckfedern. Der kleine Nachschwinger ist die
+        // Rueckmeldung "erkannt, aber nicht genug".
+        Animated.spring(drag, {
+          toValue: 0,
+          ...SWIPE_SPRING,
+          useNativeDriver: false,
+        }).start();
+      },
+
+      // Nimmt das System die Geste weg (Anruf, Mitteilung), darf der Inhalt
+      // nicht verschoben liegenbleiben.
+      onPanResponderTerminate: () => {
+        Animated.spring(drag, { toValue: 0, ...SWIPE_SPRING, useNativeDriver: false }).start();
+      },
+    })
+  ).current;
+
+  // Pfad, Fortschritt und Standort - seit 2026-09-13 ein eigener Hook, weil
+  // der Freunde-Testscreen denselben Pfad zeigt (siehe `useLernpfad`).
+  const { scrollRef, scrollHinten, expand, pfadVorne, pfadHinten, anteil, standort, speedLeerText, kursLeerText } =
+    useLernpfad();
+  // Navigationsleiste oben (2026-09-11). Drei Stufen am selben Tag:
+  // erst eine iOS-Leiste, die beim Scrollen milchig wird ("Option B, nur auf
+  // S1"), dann dauerhaft grau mit Schieferkante, dann - Simons endgueltiger
+  // Wunsch - im Look des "Du bist hier"-Kastens: `karte()`, also weiss,
+  // blasser Rand, grosser Radius, versetzter Schatten. Die volle Breite aus
+  // Option B bleibt; die Karte haengt wie ein Blatt von oben herab und ist
+  // nur unten gerundet. Die Scroll-Meldungen des Pfads sind wieder auf dem
+  // alten Stand (nur beim bebilderten Pfad).
+  const sicherRand = useSafeAreaInsets();
+  // Der Karten-Look aus `karte()`, aber nur als EINZELANGABEN - oben ohne
+  // Rand und Rundung. Die Sammelwerte `borderWidth`/`borderRadius` duerfen
+  // gar nicht erst ankommen: im Browser schlug die Sammelangabe eine
+  // spaetere Einzelangabe (oben blieb gerundet und umrandet, am 2026-09-11
+  // nachgemessen), auf dem Geraet haengt es an der Plattform. So gibt es
+  // nichts zu ueberstimmen.
+  const { borderWidth: kartenRand, borderRadius: kartenRadius, ...kartenRest } =
+    karte(darkMode);
+  const navKarte = {
+    ...kartenRest,
+    borderTopWidth: 0,
+    borderLeftWidth: kartenRand,
+    borderRightWidth: kartenRand,
+    borderBottomWidth: kartenRand,
+    borderBottomLeftRadius: kartenRadius,
+    borderBottomRightRadius: kartenRadius,
+  };
+
+
+  // Der Knopf im Kopf der Pfad-Box wechselt den Lernweg (Nutzer-Wunsch
+  // 2026-08-20). Vorher faecherte er alle Kategorien auf einmal auf - das
+  // faellt weg, der Tipp auf eine einzelne Pille bleibt.
+  const switchMode = useCallback(() => {
+    toggleLearningMode();
+    // Was danach aufgefaechert ist, setzt der Effekt weiter unten - im
+    // gefuehrten Kurs stehen die Lektionen von sich aus offen.
+    // Bewusst OHNE zusaetzliche Notice: der leere Pfad zeigt den Grund schon
+    // als Ruhezeile an. Beides gleichzeitig hiesse denselben Satz doppelt
+    // auf dem Schirm - im Browser gesehen und wieder entfernt.
+  }, [toggleLearningMode]);
+
+  const [notice, setNotice] = useState<string | null>(null);
+  const hideNotice = useCallback(() => setNotice(null), []);
+
+
+  // Die Illustration der oberen Karte - zur Sprache passend, sonst keine.
+  const heldBild = SPRACH_BILDER[targetLanguageId];
+
+  const goCategory = (id: string) => () => router.push({ pathname: '/category/[id]', params: { id } });
+
 
   // -------------------------------------------------------------------
   // Die beiden Karten (2026-09-12, Simons Umbau: "was wir jetzt auf Freunde
@@ -1102,7 +1144,7 @@ export function PathScreen() {
               scrollRef={scrollRef}
               freiraum={freiraum}
               expand={expand}
-              leerText={`Für ${activeLanguage.label} gibt es bisher keine Sätze — dreh die Karte um, dort liegt der geführte Kurs.`}
+              leerText={speedLeerText}
             />
           }
           hinten={
@@ -1111,7 +1153,7 @@ export function PathScreen() {
               dark={darkMode}
               scrollRef={scrollHinten}
               freiraum={freiraum}
-              leerText={course.unavailable ?? 'Hier ist noch nichts.'}
+              leerText={kursLeerText}
             />
           }
         />
@@ -1256,11 +1298,14 @@ function PathNode({
 /**
  * Eine Seite der unteren Karte: der scrollende Pfad (2026-09-12).
  *
+ * Seit 2026-09-13 exportiert: der Freunde-Testscreen zeigt denselben Pfad
+ * in seiner unteren Karte (siehe `useLernpfad`).
+ *
  * Beide Seiten sind IMMER gebaut, auch die abgewandte - sonst zeigte die
  * halbe Drehung eine leere Karte. Sie kostet nichts weiter: die Knotenliste
  * dahinter wird ohnehin fuer beide Lernwege gerechnet.
  */
-const PfadFlaeche = memo(function PfadFlaeche({
+export const PfadFlaeche = memo(function PfadFlaeche({
   layout,
   dark,
   scrollRef,
