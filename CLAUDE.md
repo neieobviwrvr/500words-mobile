@@ -275,8 +275,50 @@ Offline-Cache-Architektur (siehe Persistenz-Abschnitt oben), ist aktuell
 aber noch NICHT an echte Kauf-/Freischaltungslogik gekoppelt (Supabase
 Auth + serverseitiger Kaufstatus existieren noch nicht, siehe Backlog).
 
+### Aufpreis fuer Norwegisch und Vietnamesisch (2026-09-13, Simons Entscheidung)
+**Diese beiden Sprachen werden fuer den Nutzer teurer als die uebrigen.**
+Wie viel teurer, ist noch offen.
+
+**Der Grund sind laufende Kosten, keine Inhaltsfrage:** beide laufen seit
+dem 2026-09-13 auf dem genaueren Speechmatics-Modell **Enhanced**, alle
+anderen Sprachen auf **Standard** (siehe "STT Enhanced fuer Norwegisch und
+Vietnamesisch" im Tech-Stack-Abschnitt). Norwegisch wurde auf Simons iPhone
+nachweislich schlecht erkannt, und beide gelten als die schwaecher
+abgedeckten Sprachen bei Speechmatics. Enhanced fuer alle Sprachen war zu
+teuer - also Enhanced nur dort, und der Mehraufwand wird weitergegeben.
+
+**Groessenordnung des Mehraufwands** (Speechmatics-Listenpreis Batch, Pro,
+ohne Rabatte, Stand 2026-09-13): Standard 0,45 $ je Stunde Audio, Enhanced
+0,75 $ - rund zwei Drittel mehr. Bei ~1 Minute Aufnahme je Lektion (Annahme
+aus dem Abschnitt zur Aussprache-Bewertung) sind das ~0,5 Cent mehr je
+Lektion und ~0,60 $ mehr je Nutzer fuer den ganzen Kurs. Die tatsaechlichen
+Konto-Konditionen stehen in der Speechmatics-Abrechnung.
+**Vorsicht beim Nachlesen der Preisseite:** die dort sichtbare Tabelle
+("ab $0.129/hr") zeigt Preise MIT zwei Rabatten zugleich - 33 % fuer
+"Model Training" (der Schalter steht vorab auf an) und 20 % ab 500 Stunden
+im Monat. Die Listenpreise stehen in der CSV, aus der die Tabelle geladen
+wird. Vergleichsseiten nennen noch aeltere Preise (0,80/1,04 $).
+
+**"Model Training" NICHT fuer den Rabatt einschalten:** damit darf
+Speechmatics die Aufnahmen behalten und zum Trainieren nutzen - bei uns die
+Stimmen der Nutzer. Ohne den Schalter werden Batch-Aufnahmen nach hoechstens
+7 Tagen geloescht. Einschalten braeuchte Datenschutzerklaerung und
+Einwilligung.
+
+**Beim Ausarbeiten zuerst an die Store-Preispunkte denken** (siehe
+Kaufmodell oben): auch der Aufpreis braucht vorab angelegte Produkte bei
+Apple und Google. Eine eigene Preisstaffel je Sprache vervielfacht die Zahl
+der Store-Produkte (Groessen x Laufzeiten x Sprachgruppe); ein Aufschlag als
+eigenes Zusatzprodukt haelt sie klein.
+
+**Kommt eine weitere Sprache auf Enhanced, gilt fuer sie derselbe
+Aufpreis** - die Liste steht an EINER Stelle, `ENHANCED_SPRACHEN` in der
+Edge Function. Nicht ohne Simon erweitern.
+
 ### Weiterhin gueltig aus dem vorherigen Entwurf
-- Weitere Sprache (z.B. Franzoesisch zusaetzlich zu Spanisch): 5 Euro
+- Weitere Sprache (z.B. Franzoesisch zusaetzlich zu Spanisch): 5 Euro -
+  **fuer Norwegisch und Vietnamesisch mit Aufpreis**, siehe Abschnitt
+  darueber (2026-09-13)
 - KEIN Streak-Freeze/Boost-Kaeufe (widerspricht dem Ziel "schneller lernen
   als Duolingo")
 - Ueberlegt: B2B-Verkauf an Ober-/Realschulen pro Schueler
@@ -2597,6 +2639,60 @@ Supabase Auth (die noch nicht existiert), beide lokal auf dem Geraet:
   Nutzer-Entscheidung, dass die Erkennungsqualitaet das wert ist. Relevant
   fuer den Konversationsmodus-Kostenpunkt weiter oben, der bisher als
   einziger laufende Kosten hatte.
+  **STT Enhanced fuer Norwegisch und Vietnamesisch (2026-09-13).** Bis dahin
+  schickte die Edge Function nur den Sprachcode - Speechmatics nimmt ohne
+  Angabe das Modell **Standard** ("If you do not set it, the `standard`
+  model is used"). Seitdem bekommen `no` und `vi` `"model": "enhanced"`
+  (Konstante `ENHANCED_SPRACHEN`, Edge-Function-Version 2), alle anderen
+  bleiben auf Standard. Wirkt serverseitig, also ohne App-Build. Vor dem
+  Deploy geprueft: die bis dahin live laufende Version 1 (12.08.) war
+  identisch mit dem Repo. Getestet mit den Satz-Audios aus der Datenbank
+  (`no`, `vi`, `sv` - alle drei exakt erkannt). Kosten und Aufpreis fuer den
+  Nutzer: siehe "Aufpreis fuer Norwegisch und Vietnamesisch" im
+  Preismodell.
+  **Bokmaal -> Nynorsk umzustellen hilft NICHT** (geprueft, weil Simon es
+  vorgeschlagen hat): Speechmatics fuehrt sein Norwegisch selbst als
+  "Norwegian Bokmål (no)", Nynorsk nur als Uebersetzungsziel - die
+  Erkennung schreibt Bokmaal wie unsere Saetze.
+  **Der Zielsatz geht wieder an die Erkennung (2026-09-13, Simons Vorgabe:
+  "fuer JEDE Eingabe in JEDER Sprache").** Bis dahin nahm
+  `useSpeechmatics.transcribe()` ihn als `_prompt` entgegen und schickte ihn
+  nie ab - das Lenken auf die erwarteten Woerter (bei Whisper der "Zielsatz
+  als Prompt"-Mechanismus, siehe Bewertungslogik) war beim Anbieterwechsel
+  stillschweigend weggefallen. Jetzt heisst der Parameter `erwartet` (Text
+  oder Liste) und geht als Formularfeld mit; die Edge Function macht daraus
+  Speechmatics' `additional_vocab`.
+  * **Zerlegt wird serverseitig** (`vokabelnAus()`): Satzzeichen raus,
+    Woerter einzeln, doppelte raus, hoechstens 100 Eintraege. Ein
+    chinesischer Satz ohne Leerzeichen geht als ein Eintrag; die Kurs-Rahmen
+    tragen ihre Leerzeichen selbst. Regelaenderungen kosten dadurch keinen
+    App-Build.
+  * **Immer die Schrift, die die Erkennung zurueckgibt** (`text`/`schrift`:
+    Hanzi, Kyrillisch), nie Pinyin oder Umschrift.
+  * **Was je Stelle erwartet ist:** Saetze (Saetze-Wiederholung, Speed-Run,
+    Onboarding-Lektion, Teaser/Satz im Kurs) den Zielsatz; nachsprechen/
+    abrufen im Kurs das Wort; der Finisher alle Loesungssaetze des Moduls;
+    die Wort-Auswahl in der Woerter-Wiederholung ALLE vier Optionen (sonst
+    lenkte der Hinweis auf die Loesung); das freie Abrufen dort das Wort
+    samt gebeugter Formen. **Ohne Hinweis:** die Namensfrage im Onboarding
+    (der Name ist nicht bekannt) und der rohe Erkennungstest in dev-tools.
+  * **Bewusste Folge, von Simon trotz Hinweis so entschieden:** auch die
+    Aussprache-Pruefung einzelner Woerter im gefuehrten Kurs bekommt den
+    Hinweis und wird dadurch nachsichtiger - ein knapp danebenliegender Ton
+    wird eher als das erwartete Zeichen erkannt.
+  * **Eine Aufnahme scheitert nie am Hinweis:** lehnt Speechmatics den Job
+    mit Wortliste ab, wiederholt die Function ihn sofort ohne. Die Antwort
+    traegt zur Fehlersuche `vokabeln` (0 = keine erwartet oder ohne
+    wiederholt); die App liest nur `text`.
+  * **Stand:** Edge Function live als Version 4 (vorher geprueft: Version 2
+    war unser eigener Deploy, niemand dazwischen). Getestet mit Satz-Audios
+    aus der Datenbank in sv/no/vi/cmn/ru - alle exakt erkannt, Ziffern,
+    Schraegstrich und "[Slot]" in der Liste wurden nicht abgelehnt, und ein
+    FALSCHER Satz als Hinweis verbog die Erkennung nicht. **Die App-Seite
+    braucht einen neuen Build** - bis dahin schickt die installierte App
+    kein `erwartet`, und die Function verhaelt sich wie vorher.
+    Ob der Hinweis Akzente wirklich besser auffaengt, zeigt erst ein Test
+    mit echten Aufnahmen; die Test-Audios sind saubere Sprachausgabe.
   **`whisper.rn` ist seit 2026-08-16 vollstaendig entfernt** (Nutzer-
   Entscheidung): `useWhisper.ts` geloescht, das npm-Paket deinstalliert, der
   Modell-Download-Code weg, `app/dev-tools.tsx` auf Speechmatics umgestellt.
