@@ -1,27 +1,18 @@
 import { router } from 'expo-router';
 import { PlaceholderScreen } from '../../src/features/placeholder/PlaceholderScreen';
+import { FreundeScreen } from '../../src/features/freunde/FreundeScreen';
 import { useAuthState } from '../../src/state/AuthState';
 import { KONTO_NOETIG } from '../../src/data/demo';
-import { HoloKarteTest } from '../../src/features/testbereich/HoloKarte';
 
-// TEST (2026-09-11): solange das hier `true` ist, zeigt "Freunde" den
-// Holo-Karten-Testscreen statt seines eigentlichen Inhalts. Zurueck zum
-// normalen Stand: diese Konstante, die Zeile darunter in `Freunde` und den
-// Import oben loeschen. Der eigentliche Inhalt bleibt dabei unberuehrt.
-const HOLO_TEST = true;
-
-// Inhalt noch offen - Gruppen und Ranglisten sind auf Nutzer-Entscheidung
-// zurueckgestellt (2026-08-20).
+// Freunde: eigener Code, fremden Code eingeben, Liste (2026-09-14, siehe
+// FreundeScreen.tsx). Bis dahin stand hier der Holo-Karten-Testscreen - der
+// war inzwischen dieselbe Seite wie Start und ist mit diesem Umbau entfernt.
 //
-// Ohne Konto steht hier seit dem 2026-08-22 aber schon die Bedingung, statt
-// eines Versprechens: "Man muss sich anmelden und registriert haben um mit
-// Freunden in Gruppen zu kommen, deren Fortschritt zu sehen" (Simon). Wer
-// als Gast hier landet, soll nicht auf etwas warten, das ihn ohnehin nicht
-// erreicht.
+// Ohne Konto steht hier seit dem 2026-08-22 die Bedingung statt eines
+// Versprechens: "Man muss sich anmelden und registriert haben um mit
+// Freunden in Gruppen zu kommen, deren Fortschritt zu sehen" (Simon).
 export default function Freunde() {
   const { hatKonto } = useAuthState();
-
-  if (HOLO_TEST) return <HoloKarteTest />;
 
   if (!hatKonto) {
     return (
@@ -35,11 +26,5 @@ export default function Freunde() {
     );
   }
 
-  return (
-    <PlaceholderScreen
-      icon="message-circle"
-      title="Freunde"
-      description="Hier lädst du bald Freunde ein. Gemeinsame Gruppen für einen Trip, Gruppen-Streak und Rangliste sind geplant, aber zurückgestellt."
-    />
-  );
+  return <FreundeScreen />;
 }
