@@ -1,17 +1,11 @@
-import { useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Dropdown, ProgressBar, ProgressProzent } from '../../components';
 import type { DropdownOption } from '../../components';
-import { CATEGORIES, GRUNDWORTSCHATZ_ID } from '../../data/categories';
 import { LANGUAGES, getLanguage } from '../../data/languages';
 import { useAppState } from '../../state/AppState';
 import type { LearningMode } from '../../state/AppState';
 import { PROGRESS_SEITE, SPACING } from '../../theme/tokens';
-import type { CategorySituations } from '../lessons/useCategorySituations';
-import { standortAus, Standortzeile, type Standort } from './Standort';
-import { useGuidedCourse } from './useGuidedCourse';
-import { useGuidedProgress } from './useGuidedProgress';
-import { useUnlockedProgress } from './useUnlockedProgress';
+import { Standortzeile, type Standort } from './Standort';
 
 // ---------------------------------------------------------------------------
 // Der Kopf der Lern-Tabs (2026-09-13)
@@ -21,16 +15,16 @@ import { useUnlockedProgress } from './useUnlockedProgress';
 // bei Freunde?" - Freunde hat seit dem 2026-09-12 keine Kopfleiste mehr,
 // oben stehen nur zwei Dinge: WO man steht (Standortzeile) und WIE WEIT
 // (Balken, links die Flagge als Sprachauswahl, rechts die Prozentzahl). Das
-// ist jetzt der Kopf von Start und Lektionen. (Freunde selbst ist seit dem
-// 2026-09-14 wieder eine Freunde-Seite, siehe FreundeScreen.tsx.)
+// ist jetzt der Kopf von Start. (Lektionen trug ihn einen Tag lang und ist
+// seit dem 2026-09-14 wieder ohne Kopf; Freunde ist wieder eine
+// Freunde-Seite, siehe FreundeScreen.tsx.)
 //
 // Vorher stand der Aufbau zweimal fast gleich in PathScreen und auf dem
 // Freunde-Testscreen, mit eigenem Abstand je Kopie - ein dritter Screen haette
 // die dritte Kopie bedeutet. Jetzt EIN Baustein, der Abstand gehoert dazu.
 //
-// Mit der Kopfleiste ist auf Start und Lektionen auch das Drei-Punkte-Menue
-// bzw. die Coins-Pille weg - dasselbe wie auf Freunde. Das Geschenk sitzt auf
-// S1 inzwischen auf der Sprachkarte.
+// Mit der Kopfleiste ist auf Start auch das Drei-Punkte-Menue weg. Das
+// Geschenk sitzt dort inzwischen auf der Sprachkarte.
 
 /** Der Anteil im Balken: im Kurs der Kurs, im Speed-Run das Freigeschaltete. */
 export function fortschrittsAnteil(
@@ -40,47 +34,6 @@ export function fortschrittsAnteil(
 ): number {
   if (learningMode === 'gefuehrt') return kurs.gesamt > 0 ? kurs.fertig / kurs.gesamt : 0;
   return speedRunAnteil;
-}
-
-/**
- * Standort und Anteil fuer Screens, die NICHT den ganzen Lernpfad laden
- * (Lektionen). S1 bekommt beides aus `useLernpfad`.
- *
- * `situationen` kommt vom Aufrufer: Lektionen laedt sie ohnehin, und ein
- * zweiter `useCategorySituations` hier liese saemtliche Saetze und
- * Lernkarten doppelt laden - fuer zwei Zeilen Text.
- */
-export function useLernKopf(situationen: CategorySituations): { standort: Standort; anteil: number } {
-  const { purchased, targetLanguageId, learningMode } = useAppState();
-  const kurs = useGuidedCourse(targetLanguageId);
-  const kursFortschritt = useGuidedProgress(targetLanguageId);
-  const freigeschaltet = useMemo(
-    () => [GRUNDWORTSCHATZ_ID, ...CATEGORIES.filter((c) => purchased[c.id]).map((c) => c.id)],
-    [purchased]
-  );
-  const speedRun = useUnlockedProgress(targetLanguageId, freigeschaltet);
-
-  const standort = useMemo(
-    () =>
-      standortAus({
-        learningMode,
-        lektionen: kurs.lessons,
-        aktuellesModul: kursFortschritt.aktuellesModul,
-        aktuelleLektion: kursFortschritt.aktuelleLektion,
-        recentCategoryIds: situationen.recentCategoryIds,
-        recentSituations: situationen.recentSituations,
-      }),
-    [
-      learningMode,
-      kurs.lessons,
-      kursFortschritt.aktuellesModul,
-      kursFortschritt.aktuelleLektion,
-      situationen.recentCategoryIds,
-      situationen.recentSituations,
-    ]
-  );
-
-  return { standort, anteil: fortschrittsAnteil(learningMode, kursFortschritt, speedRun.ratio) };
 }
 
 export function LernKopf({

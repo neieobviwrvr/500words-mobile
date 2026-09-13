@@ -10,7 +10,6 @@ import { scenarioLabel } from '../../data/scenarios';
 import { leihName } from '../../data/geliehen';
 import { TRAINING_MODES } from '../../data/trainingModes';
 import { Screen } from '../../components';
-import { LernKopf, useLernKopf } from '../home/LernKopf';
 import { Situation, useCategorySituations } from './useCategorySituations';
 import {
   getTheme,
@@ -109,7 +108,6 @@ export function LessonsScreen() {
   const { hatKonto } = useAuthState();
   const theme = getTheme(darkMode);
   const situations = useCategorySituations(targetLanguageId);
-  const { standort, anteil } = useLernKopf(situations);
   // Welches Kategorie-Chevron-Dropdown gerade offen ist - EINE Stelle statt
   // je Kategorie ein eigener State (2026-08-26, Simons Wunsch: "alle
   // Drop-Downs sollen sich schliessen, sobald ich ein neues oeffne"). `null`
@@ -135,13 +133,10 @@ export function LessonsScreen() {
 
   return (
     <Screen dark={darkMode} padHorizontal={false}>
-      {/* Kopf wie auf Freunde und Start (2026-09-13, Simon: "auf Start und
-          Lektionen die Top-Bar so machen wie bei Freunde"): Standort und
-          Balken, fest ueber der Liste. Die Coins-Pille, die hier seit dem
-          2026-08-20 oben rechts stand, ist damit weg. */}
-      <View style={styles.kopf}>
-        <LernKopf dark={darkMode} standort={standort} anteil={anteil} />
-      </View>
+      {/* Kein Kopf ueber der Liste (2026-09-14, Simon: "Bitte entferne diese
+          Top-Bar von Lektionen"). Am 2026-09-13 stand hier kurz derselbe
+          Standort-und-Balken-Kopf wie auf Start; davor bis dahin die
+          Coins-Pille oben rechts. */}
 
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.page}>
         <Text style={[styles.pageTitle, { color: theme.text }]}>Lektionen</Text>
@@ -650,15 +645,9 @@ function KategorieMenu({
 const styles = StyleSheet.create({
   page: {
     paddingBottom: SPACING.xl,
-    // Abstand zum Kopf darueber - derselbe wie auf Start und Freunde
-    // zwischen Balken und Karte. Frueher SPACING.xxl als Platz fuer die
-    // Coins-Pille, die rechts oben ueber der Liste lag.
-    paddingTop: SPACING.xl,
-  },
-  kopf: {
-    // `Screen` laeuft hier ohne seitliche Polsterung (die Reihen scrollen
-    // bis an den Rand) - der Kopf holt sie sich selbst.
-    paddingHorizontal: SPACING.lg,
+    // Kein Abstand oben: nichts liegt mehr ueber der Ueberschrift, `Screen`
+    // gibt den Rand zur Statusleiste schon selbst - wie auf Profil und
+    // Freunde. Frueher SPACING.xxl als Platz fuer die Coins-Pille.
   },
   pageTitle: {
     // ExtraBold statt Serife (2026-09-01).

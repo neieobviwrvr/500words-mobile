@@ -1551,9 +1551,11 @@ bewusst verbaut. Falls sich das im Test als stoerend erweist, reicht es,
 `Screenplanung/UI - Rest/Homepage/Homescreen grobe Themenuebersicht.png`):**
 1. Kopfzeile: Sprach-Dropdown links, **Geschenk** und **Coins** rechts -
    **seit 2026-09-13 weg** (Simon: "auf Start und Lektionen die Top-Bar so
-   machen wie bei Freunde"). Start, Lektionen und Freunde tragen oben
-   denselben Baustein `LernKopf` (`features/home/LernKopf.tsx`): Standortzeile
-   plus Balken, die Flagge links am Balken ist die Sprachauswahl. Das
+   machen wie bei Freunde"). Start traegt oben den Baustein `LernKopf`
+   (`features/home/LernKopf.tsx`): Standortzeile plus Balken, die Flagge
+   links am Balken ist die Sprachauswahl. **Lektionen hatte ihn einen Tag
+   lang und ist seit 2026-09-14 wieder ohne Kopf** (Simon: "Bitte entferne
+   diese Top-Bar von Lektionen"), Freunde ist wieder eine Freunde-Seite. Das
    Geschenk sitzt als runder Knopf auf der Sprachkarte; Coins und Geschenke
    erreicht man noch ueber das Drei-Punkte-Menue auf Survival und Profil.
 2. Fortschrittsbalken 0-100%
