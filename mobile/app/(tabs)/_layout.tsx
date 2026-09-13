@@ -3,14 +3,11 @@ import {
   ActivityIndicator,
   AppState as RNAppState,
   StyleSheet,
-  useWindowDimensions,
   View,
 } from 'react-native';
 import { Redirect, Tabs } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
-import { Milchglas } from '../../src/components/Milchglas';
-import { BAR_HEIGHT, CONTENT_GAP, FLOAT_GAP } from '../../src/components/tabLeiste';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { CONTENT_GAP, leistenKarte, useTabLeiste } from '../../src/components/tabLeiste';
 import { useAppState } from '../../src/state/AppState';
 import { useAuthState } from '../../src/state/AuthState';
 import { useOnboardingState } from '../../src/state/OnboardingState';
@@ -18,13 +15,14 @@ import {
   getTheme,
   ACCENT_ORANGE,
   FONT_SIZE,
-  RADIUS,
   SPACING,
   schrift,
-  kachel,
 } from '../../src/theme/tokens';
 
-// Tab-Leiste (2026-08-18, seit dem 18. als schwebende Leiste).
+// Tab-Leiste (2026-08-18). Bis 2026-09-13 eine schwebende Kapsel mit
+// Milchglas, seitdem die angedockte Leiste, die vorher nur auf Freunde
+// stand (Simon: "die regulaere Tab-Bar mit der Tab-Bar von Freunde
+// ersetzen") - Masse und Material in src/components/tabLeiste.ts.
 //
 // Fuenf Einstiegspunkte nach Simons Vorlage
 // (`Screenplanung/UI - Rest/Homepage/Homescreen grobe Themenuebersicht.png`).
@@ -45,12 +43,10 @@ import {
 // Onboarding greift - man saehe die Tab-Leiste kurz aufblitzen. Auf dieser
 // Ebene wird die ganze Gruppe erst gar nicht aufgebaut.
 
-// --- Masse der schwebenden Leiste ------------------------------------------
-// FLOAT_GAP, BAR_HEIGHT und CONTENT_GAP liegen seit 2026-09-11 in
-// src/components/tabLeiste.ts (samt ihrer Begruendungen): Screens, deren
+// --- Masse der Leiste -------------------------------------------------------
+// Liegen in src/components/tabLeiste.ts (samt Begruendungen): Screens, deren
 // Inhalt unter der Leiste durchlaeuft, brauchen dieselben Zahlen fuer ihr
 // Scroll-Ende.
-const BAR_RADIUS = 36;
 
 /**
  * Wie lange nach einem Abgleich das Zurueckkehren in die App keinen neuen
@@ -67,24 +63,13 @@ const BAR_RADIUS = 36;
  * das zweite Geraet ist nur bis dahin veraltet.
  */
 const ZURUECK_DROSSEL_MS = 60_000;
-// Zweite, abgesetzte Kapsel rechts neben der Leiste (Nutzer-Vorlage
-// 2026-08-18). Quadratisch und so hoch wie die Leiste, damit beide auf
-// derselben Linie sitzen; der Abstand dazwischen macht sie als eigenes
-// Element lesbar statt als abgetrennten fuenften Tab.
-// Kleiner als die Leiste hoch ist (Nutzer-Rueckmeldung 2026-08-20): ein
-// gleich grosser Kreis las sich wie ein abgetrennter fuenfter Tab. Der
-// groessere Abstand daneben macht die Trennung eindeutig.
-/** Seitlicher Rand von Leiste UND Plus-Knopf - beide gleich weit vom Rand. */
-const BAR_SIDE = SPACING.xxl;
 
 export default function TabsLayout() {
   const { darkMode, hydrated, abgleichen } = useAppState();
   const { loading: authLoading, session } = useAuthState();
   const { completed, loading: onboardingLoading } = useOnboardingState();
   const theme = getTheme(darkMode);
-  const insets = useSafeAreaInsets();
-
-  const bottomOffset = Math.max(insets.bottom, FLOAT_GAP);
+  const leiste = useTabLeiste();
 
   /**
    * Geraeteabgleich anstossen (2026-08-22).
@@ -142,17 +127,6 @@ export default function TabsLayout() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nutzerId, hydrated]);
 
-  // Breite der Leiste AUSGERECHNET statt ueber `right` gesetzt.
-  //
-  // Grund (Geraete-Fehler vom 2026-08-20): mit `left` + `right` lief die
-  // Leiste auf dem iPhone unter dem Plus-Knopf durch und schnitt den letzten
-  // Tab an - im Browser stimmte es. Eine ausgerechnete Breite haengt nicht
-  // davon ab, ob die Leiste `right` beachtet.
-  const { width: windowWidth } = useWindowDimensions();
-  // Seit dem 2026-08-22 laeuft die Kapsel wieder ueber die volle Breite:
-  // der abgesetzte runde Knopf daneben ist weg, Profil ist stattdessen der
-  // fuenfte Tab. Vorher endete die Leiste vor ihm.
-  const barWidth = windowWidth - 2 * BAR_SIDE;
 
   // Beide Quellen liegen in AsyncStorage und laden asynchron. Ohne dieses
   // Warten blitzt kurz der Default-Zustand durch und schickt einen fertigen
@@ -186,81 +160,49 @@ export default function TabsLayout() {
         // Szene sonst mit seinem eigenen Standard (#F2F2F2). Im Darkmode
         // blitzt der beim Tab-Wechsel hellgrau hinter der App auf.
         //
-        // Der untere Innenabstand ersetzt den Platz, den die Leiste frueher
-        // im Layout belegt hat - seit sie schwebt, muessen die Screens ihn
-        // selbst freihalten.
+        // Der untere Innenabstand ersetzt den Platz, den die Leiste sonst im
+        // Layout belegen wuerde - sie liegt absolut darueber, die Screens
+        // muessen ihn selbst freihalten. S1 schaltet ihn ab und
+        // verlegt ihn in seine Scroll-Flaeche (`useTabLeistenFreiraum`).
         sceneStyle: {
           backgroundColor: theme.pageBg,
-          paddingBottom: bottomOffset + BAR_HEIGHT + CONTENT_GAP,
+          paddingBottom: leiste.hoehe + CONTENT_GAP,
         },
         tabBarActiveTintColor: ACCENT_ORANGE,
         tabBarInactiveTintColor: theme.sub,
-        tabBarBackground: () => <TabBarSurface dark={darkMode} />,
         tabBarStyle: {
+          // Absolut, damit S1 seine untere Karte bis an den
+          // Bildschirmrand ziehen kann - unter der Leiste durch.
           position: 'absolute',
-          // `start` UND `end` ausdruecklich (2026-09-11, Simons Befund: die
-          // Leiste sass auf dem iPhone nach links verschoben). Die von
-          // expo-router mitgelieferte Tab-Bibliothek setzt fuer die untere
-          // Leiste `start: 0, end: 0` (build/react-navigation/bottom-tabs/
-          // views/BottomTabBar.js, `styles.bottom`). Unser `left` allein
-          // ueberschrieb das nicht - und auf iOS schlaegt das logische
-          // `start` das physische `left`. Die Leiste stand bei x=0 und endete
-          // 64 Punkte vor dem rechten Rand. Im Browser gewinnt `left`, deshalb
-          // war es in der Vorschau nie zu sehen (dort 33/33 gemessen).
-          start: BAR_SIDE,
-          end: BAR_SIDE,
-          left: BAR_SIDE,
-          width: barWidth,
-          bottom: bottomOffset,
-          height: BAR_HEIGHT,
-          // WARUM DAS HIER STEHEN MUSS (Geraete-Fehler vom 2026-08-20):
-          // React Navigation rechnet den unteren Sicherheitsrand als INNEREN
-          // Abstand in die Leiste (BottomTabBar.js: `paddingBottom:
-          // insets.bottom`). Das ist fuer eine am Rand klebende Leiste
-          // richtig - unsere schwebt aber schon oberhalb des Sicherheitsrands,
-          // weil `bottom: bottomOffset` ihn bereits einrechnet.
-          //
-          // Folge ohne diese Zeile: von den 64 Punkten Hoehe gingen auf einem
-          // iPhone mit Home-Indikator 34 fuer den doppelt gezaehlten
-          // Sicherheitsrand drauf. Uebrig blieb Platz fuer das Symbol, die
-          // BESCHRIFTUNG WURDE ABGESCHNITTEN. Im Browser faellt das nie auf:
-          // dort ist `insets.bottom` gleich 0, deshalb sahen die Tabs in der
-          // Vorschau vollstaendig aus und auf dem Geraet nicht.
-          paddingBottom: 0,
-          borderRadius: BAR_RADIUS,
-          // Der Untergrund kommt komplett aus <TabBarSurface />. Waere hier
-          // eine Farbe gesetzt, laege sie ueber dem Blur und wuerde ihn
-          // zudecken.
-          backgroundColor: 'transparent',
-          // 3D-Kachel wie ueberall sonst (2026-09-01, Simons Vorgabe):
-          // derselbe `kachel()`-Baustein, den Kopfzeile, Positionskasten,
-          // Wiederholen-Knopf und das Onboarding benutzen. Damit ist die
-          // Leiste kein Sonderfall mehr - aendert sich die Kachel, aendert
-          // sie sich hier mit.
-          ...kachel(darkMode),
-          // `borderTopWidth` muss ausdruecklich noch einmal dastehen: React
-          // Navigation setzt fuer die angedockte Leiste eine eigene
-          // Trennlinie oben, und diese Einzelangabe schlaegt jede
-          // Sammelangabe - auch die aus `kachel()`. Ohne die Zeile hat die
-          // Kapsel drei Seiten Kontur und oben keine. (Wert von Hand
-          // gleichgezogen; `kachel()` gibt genau diese 1.5 zurueck.)
-          borderTopWidth: 1.5,
-          // Der weiche Schatten (Y5/Blur25, `elevation: 12`) ist ersatzlos
-          // weg. Die Hoehe entsteht jetzt allein aus der Kantenkombination,
-          // genau wie beim Wiederholen-Knopf. Angenehmer Nebeneffekt: der
-          // Schatten war auf Android ohnehin schwach, weil `elevation` eine
-          // deckende Flaeche braucht und der Untergrund hier durchscheint -
-          // dieser Vorbehalt entfaellt damit.
+          // `start`/`end` ZUSAETZLICH zu left/right (Geraetefehler vom
+          // 2026-09-11): die von expo-router mitgelieferte Tab-Bibliothek
+          // setzt `start: 0, end: 0`, und auf iOS schlaegt das logische
+          // `start` das physische `left`. Im Browser gewinnt `left`, deshalb
+          // war das in der Vorschau nie zu sehen.
+          start: 0,
+          end: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: leiste.hoehe,
+          // Der (gekappte) Sicherheitsrand INNEN - siehe `useTabLeiste`.
+          // React Navigation setzt hier sonst `insets.bottom` in voller Hoehe.
+          paddingBottom: leiste.rand,
+          // Deckend weiss wie die fruehere Kopfleiste, kein Milchglas.
+          backgroundColor: theme.cardBg,
+          // Rand, Rundung und Schatten gespiegelt - siehe `leistenKarte`.
+          // Setzt `borderTopWidth` ausdruecklich: React Navigation zieht fuer
+          // die angedockte Leiste sonst eine eigene Trennlinie oben.
+          ...leistenKarte(darkMode),
         },
         // Ausdruecklich, nicht auf den Standard verlassen: ohne
         // Beschriftungen stehen vier gleich aussehende Symbole in einer
         // breiten Leiste, und niemand weiss, was sie tun.
         tabBarShowLabel: true,
         tabBarItemStyle: {
-          // Klein gehalten: die Leiste ist mit 64 niedriger als eine
-          // Standardleiste samt Sicherheitsrand, und Symbol UND Beschriftung
-          // muessen hineinpassen. Mit SPACING.sm oben und unten blieb fuer
-          // die Beschriftung zu wenig, sie wurde abgeschnitten.
+          // Klein gehalten: Symbol UND Beschriftung muessen in das 56 hohe
+          // Band passen. Mit SPACING.sm oben und unten blieb fuer die
+          // Beschriftung zu wenig, sie wurde abgeschnitten.
           paddingTop: SPACING.xs,
           paddingBottom: SPACING.xs,
           // Ohne das setzt die Leiste einen eigenen seitlichen Abstand pro
@@ -346,30 +288,6 @@ export default function TabsLayout() {
 
     </View>
   );
-}
-
-// Der milchige Untergrund der Leiste.
-//
-// `systemThinMaterial` ist Apples eigenes Material und passt sich automatisch
-// an, was darunter durchscheint - deshalb die Systemvariante statt eines
-// nachgebauten Grautons. Die Hell-/Dunkelvariante wird ausdruecklich gewaehlt
-// statt der automatischen: der Darkmode der App ist ein eigener Schalter und
-// folgt nicht zwingend dem System-Erscheinungsbild.
-//
-// Der Farbschleier darueber ist bewusst duenn. Die geforderte leichte
-// Undurchsichtigkeit entsteht aus Material + Schleier zusammen; als flacher
-// `opacity`-Wert auf der ganzen Leiste haette er auch Symbole und
-// Beschriftungen mit ausgeblichen.
-//
-// Seit 2026-09-11 liegt das Material selbst in components/Milchglas.tsx,
-// weil die Navigationsleiste auf S1 dasselbe Glas benutzt. Die Begruendungen
-// oben gelten dort unveraendert - auch diese: `overflow: 'hidden'` statt
-// `borderRadius` direkt auf der BlurView, weil die Ecken-Rundung laut
-// Expo-Doku auf Android sonst nicht greift.
-function TabBarSurface({ dark, radius = BAR_RADIUS }: { dark: boolean; radius?: number }) {
-  // Das Material selbst liegt seit 2026-09-11 in components/Milchglas.tsx -
-  // die Navigationsleiste auf S1 benutzt dasselbe Glas.
-  return <Milchglas dark={dark} radius={radius} />;
 }
 
 const styles = StyleSheet.create({
