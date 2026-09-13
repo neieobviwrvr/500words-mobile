@@ -869,9 +869,12 @@ export function WordReviewScreen() {
       // Fehler - der Sprachcode fuer die Erkennung ist nicht derselbe wie
       // unsere interne Sprach-ID (siehe languages.ts). Fiel bisher nicht
       // auf, weil `normalisiereHanzi()`-Toleranz vieles auffing.
-      const { text } = await stt.transcribe(uri, language.sttLanguage);
-      const gesagt = normalisiereHanzi(text);
       const aufgabe = situationAufgaben[situationIndex];
+      // ALLE vier Optionen als Hinweis, nicht nur die richtige: die Erkennung
+      // soll unter den angezeigten Woertern das gesprochene finden, nicht auf
+      // die Loesung gelenkt werden.
+      const { text } = await stt.transcribe(uri, language.sttLanguage, aufgabe?.optionen.map((o) => o.schrift));
+      const gesagt = normalisiereHanzi(text);
       const treffer = aufgabe?.optionen.find((o) => gesagt.includes(normalisiereHanzi(o.schrift)));
       if (treffer) {
         setSituationGewaehlt(treffer);
@@ -968,7 +971,11 @@ export function WordReviewScreen() {
     try {
       const uri = await recorder.stop();
       if (!uri) throw new Error('keine Aufnahme');
-      const { text } = await stt.transcribe(uri, language.sttLanguage);
+      // Stufe 3 ist freies Abrufen - erwartet ist das gesuchte Wort samt
+      // seiner gebeugten Formen, die ebenfalls voll zaehlen.
+      const aufgabe = situationAufgaben[situationIndex];
+      const erwartet = aufgabe ? [aufgabe.richtig.schrift, ...(aufgabe.richtig.formen ?? [])] : undefined;
+      const { text } = await stt.transcribe(uri, language.sttLanguage, erwartet);
       situationStufe3Auswerten(text);
     } catch {
       setSituationSttFehler('Die Spracherkennung hat nicht geantwortet. Tippe es stattdessen ein.');

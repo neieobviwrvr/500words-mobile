@@ -28,7 +28,28 @@ export function useSpeechmatics() {
   const [status] = useState<SpeechmaticsStatus>('ready');
   const [error] = useState<string | null>(null);
 
-  async function transcribe(wavFileUri: string, language: string, _prompt?: string) {
+  /**
+   * `erwartet`: was an dieser Stelle gesagt werden soll - der Zielsatz, das
+   * Zielwort oder bei einer Auswahl alle Optionen (2026-09-13, Simons
+   * Vorgabe: "fuer JEDE Eingabe in JEDER Sprache").
+   *
+   * Die Edge Function macht daraus Speechmatics' `additional_vocab`: die
+   * Erkennung haelt diese Woerter fuer wahrscheinlich und erkennt ein mit
+   * Akzent gesprochenes "Jeg vet ikke" dadurch eher richtig. Vorher hiess der
+   * Parameter `_prompt` und wurde verworfen - das Lenken auf den Zielsatz,
+   * das es mit Whisper gab, war beim Anbieterwechsel stillschweigend
+   * weggefallen.
+   *
+   * **Immer in der Schrift, die die Erkennung zurueckgibt** (Hanzi,
+   * Kyrillisch), nie Pinyin oder Umschrift - sonst lenkt der Hinweis auf
+   * Woerter, die Speechmatics gar nicht ausgibt.
+   *
+   * Bewusste Folge, von Simon so entschieden: auch die Aussprache-Pruefung
+   * einzelner Woerter (gefuehrter Kurs) bekommt den Hinweis und wird dadurch
+   * nachsichtiger - ein knapp danebenliegender Ton wird eher als das
+   * erwartete Zeichen erkannt.
+   */
+  async function transcribe(wavFileUri: string, language: string, erwartet?: string | string[]) {
     // Korrektur (2026-08-12, echter Nutzerfall: "Unsupported FormDataPart
     // Implementation" auf dem Geraet): das klassische RN-FormData-Muster
     // (Objekt-Literal {uri, name, type} statt echtem Blob) wird von der
@@ -43,6 +64,8 @@ export function useSpeechmatics() {
     const form = new FormData();
     form.append('audio', file, 'audio.wav');
     form.append('language', language);
+    const liste = (Array.isArray(erwartet) ? erwartet : erwartet ? [erwartet] : []).filter((t) => t.trim());
+    if (liste.length > 0) form.append('erwartet', JSON.stringify(liste));
 
     const { data: sessionData } = await supabase.auth.getSession();
     const anonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY;

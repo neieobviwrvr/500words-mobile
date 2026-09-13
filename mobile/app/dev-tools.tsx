@@ -204,7 +204,9 @@ export default function DevToolsScreen() {
     setTranscript('');
     const startedAt = Date.now();
     try {
-      const { text: result } = await stt.transcribe(uri, 'fr', "Voici une phrase d'exemple en français.");
+      // Bewusst OHNE erwarteten Text: dieser Test misst die rohe Erkennung.
+      // Ein Beispielsatz als Hinweis wuerde sie auf fremde Woerter lenken.
+      const { text: result } = await stt.transcribe(uri, 'fr');
       setTranscript(`${result}  (${((Date.now() - startedAt) / 1000).toFixed(1)}s)`);
     } catch (e) {
       setRecordError(e instanceof Error ? e.message : String(e));

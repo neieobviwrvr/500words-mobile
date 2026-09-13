@@ -667,6 +667,32 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
     });
   }
 
+  /**
+   * Was in diesem Schritt gesagt werden soll - als Hinweis fuer die
+   * Spracherkennung (siehe useSpeechmatics.ts). Dieselben Ziele, gegen die
+   * `pruefe()` bewertet, und immer die `schrift`-Seite, weil die Erkennung
+   * Schriftzeichen bzw. Kyrillisch zurueckgibt, nicht die Lautschrift.
+   *
+   * Gilt auch fuer nachsprechen/abrufen, also die Aussprache-Pruefung
+   * einzelner Woerter - Simons ausdrueckliche Vorgabe ("fuer JEDE Eingabe").
+   * Die Pruefung wird dadurch nachsichtiger.
+   */
+  function erwarteteTexte(): string[] {
+    if (!schritt) return [];
+    switch (schritt.art) {
+      case 'teaser':
+      case 'satz':
+        return [schritt.schrift];
+      case 'nachsprechen':
+      case 'abrufen':
+        return [schritt.wort.schrift];
+      case 'finisher':
+        return loesungen.map((l) => l.schrift);
+      default:
+        return [];
+    }
+  }
+
   function pruefe(antwort: string, quelle: 'sprache' | 'text') {
     // `lektion` ist hier nie null (weiter oben wird sonst schon abgebrochen),
     // aber TypeScript kann das ueber die Funktionsgrenze nicht sehen.
@@ -768,7 +794,7 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
     try {
       const uri = await recorder.stop();
       if (!uri) throw new Error('keine Aufnahme');
-      const { text } = await stt.transcribe(uri, sprache.sttLanguage);
+      const { text } = await stt.transcribe(uri, sprache.sttLanguage, erwarteteTexte());
       setGehoert(text);
       pruefe(text, 'sprache');
     } catch {

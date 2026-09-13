@@ -397,7 +397,11 @@ export function ExerciseScreen({
       // Zielsatz statt offener Transkription, siehe CLAUDE.md) - staerkere
       // Sprachverankerung als der vorherige generische Platzhalter-Prompt.
       const targetPrompt = sentence?.text ?? language.sttPrompt;
-      const { text, detectedLanguage } = await stt.transcribe(uri, language.sttLanguage, targetPrompt);
+      // Seit dem Wechsel zu Speechmatics wurde der Prompt verworfen; seit
+      // 2026-09-13 geht der Zielsatz wieder mit, als Wortliste
+      // (`additional_vocab`, siehe useSpeechmatics.ts). Nur der ECHTE
+      // Zielsatz - der generische Beispielsatz bleibt dem Papagei-Check.
+      const { text, detectedLanguage } = await stt.transcribe(uri, language.sttLanguage, sentence?.text);
       setTranscript(text);
       // Sprach-Mismatch-Schutz. Stammt aus der whisper.rn-Zeit (2026-08-08,
       // echter Nutzerfall, auf iOS reproduziert): Whisper meldete zurueck,
