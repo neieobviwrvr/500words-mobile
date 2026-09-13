@@ -1341,6 +1341,25 @@ export function WordReviewScreen() {
           : ''
       : '';
 
+  // Was gerade auf dem Schirm steht - fuer "Wort melden" im Menue
+  // (2026-09-13). Nur wo EIN Wort gefragt ist; in der Zuordnungsrunde stehen
+  // fuenf Paare, dort geht die Meldung ohne bestimmtes Wort raus.
+  const meldeAufgabe = situationAufgaben[situationIndex];
+  const meldeVerb = pronomenVerben[pronomenIndex];
+  const meldeKontext = {
+    screen: `woerter-wiederholung:${phase === 'runde' ? rundentyp : phase}`,
+    sprache: targetLanguageId,
+    quelle: language.vocabTable ?? undefined,
+    inhaltText:
+      phase !== 'runde'
+        ? undefined
+        : (rundentyp === 'situation' || rundentyp === 'situation-stt') && meldeAufgabe
+          ? `${meldeAufgabe.richtig.lerntext}${meldeAufgabe.richtig.german ? ` (${meldeAufgabe.richtig.german})` : ''}`
+          : rundentyp === 'pronomen' && meldeVerb
+            ? `${meldeVerb.word} (${meldeVerb.german})`
+            : undefined,
+  };
+
   return (
     <Screen dark={darkMode}>
       <View style={styles.header}>
@@ -1353,7 +1372,11 @@ export function WordReviewScreen() {
           <Text style={[styles.backGlyph, { color: theme.text }]}>‹</Text>
         </Pressable>
         <Text style={[styles.title, { color: theme.text }]}>Wörter-Wiederholung{titelZusatz}</Text>
-        <UebungsMenu dark={darkMode} meldenLabel="Wort melden" />
+        <UebungsMenu
+          dark={darkMode}
+          meldenLabel="Wort melden"
+          kontext={meldeKontext}
+        />
       </View>
 
       {phase === 'runde' ? (

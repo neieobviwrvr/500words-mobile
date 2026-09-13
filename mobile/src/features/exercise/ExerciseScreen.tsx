@@ -593,7 +593,17 @@ export function ExerciseScreen({
           {headerTitle} ({language.label})
         </Text>
         {offline && <Text style={styles.offlineBadge}>📴 Offline</Text>}
-        <UebungsMenu dark={darkMode} meldenLabel="Satz melden" />
+        <UebungsMenu
+          dark={darkMode}
+          meldenLabel="Satz melden"
+          kontext={{
+            screen: `speed-run:${mode}`,
+            sprache: targetLanguageId,
+            quelle: language.table ?? undefined,
+            inhaltId: sentence?.id,
+            inhaltText: sentence?.text,
+          }}
+        />
       </View>
 
       {loading && (

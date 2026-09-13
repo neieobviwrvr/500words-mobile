@@ -1,8 +1,27 @@
 import { useEffect, useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { router } from 'expo-router';
+import {
+  KeyboardAvoidingView,
+  Modal,
+  Platform,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import { getTheme, RADIUS, SPACING, FONT_SIZE, schrift } from '../theme/tokens';
+import { useAppState } from '../state/AppState';
+import { useAuthState } from '../state/AuthState';
+import {
+  FEEDBACK_BELOHNUNG,
+  FEEDBACK_BELOHNUNG_SCHLUESSEL,
+  sendeRueckmeldung,
+  type RueckmeldungKontext,
+} from '../data/rueckmeldung';
+import { PillButton } from './PillButton';
+import { SatzChip } from './SatzTemplate';
+import { getTheme, RADIUS, SPACING, FONT_SIZE, LINE_HEIGHT, schrift } from '../theme/tokens';
 
 // "..."-Dropdown oben rechts auf jedem Uebungsscreen (2026-08-26, Simons
 // Wunsch: "auf jedem Uebungsscreen fuer egal welche Stufe"). Betrifft
@@ -13,36 +32,115 @@ import { getTheme, RADIUS, SPACING, FONT_SIZE, schrift } from '../theme/tokens';
 // Bewusst NICHT `HeaderMenu.tsx` wiederverwendet: das faehrt seine Knoepfe
 // seitlich AUS der Kopfzeile heraus (S1-Stil) - Simons Vorgabe hier ist
 // ausdruecklich ein klassisches Dropdown, das sich NACH UNTEN oeffnet.
-// Zwei unterschiedliche Interaktionen, deshalb ein eigener Baustein statt
-// eine Variante an HeaderMenu drangebaut.
 //
-// "Feedback" fuehrt zur bestehenden Rewards-Seite (`/rewards`) - dort gibt
-// es bereits ein Feedback-Textfeld, dessen "Absenden"-Knopf allerdings noch
-// deaktiviert ist ("(bald)", siehe RewardsScreen.tsx - keine echte
-// Backend-Anbindung existiert). "[X] melden" hat noch GAR KEINE
-// Infrastruktur (keine Tabelle, kein Endpunkt) - deshalb hier bewusst ein
-// ehrlicher Platzhalter statt eine Meldung vorzutaeuschen, die nirgendwo
-// ankommt. Gleiches Hinweis-Muster (Toast unten, 2,6s) wie beim
-// "Geschenk"-Knopf in HeaderMenu.tsx ("Die taegliche Kiste kommt spaeter.")
-// - dieselbe ehrliche Sprache fuer denselben Fall ("existiert technisch
-// noch nicht") an zwei verschiedenen Stellen der App.
+// Seit 2026-09-13 tun beide Eintraege etwas (Simon: "Satz-Melden hat noch
+// keine Funktion, Feedback leitet immer noch auf Geschenke, soll aber lieber
+// Textfeld oeffnen und dann wieder in der Lektion bleiben - zusaetzlich mit
+// Belohnung"):
+//   Feedback     oeffnet ein Textfeld UEBER der Uebung; nach dem Senden ist
+//                man genau dort, wo man war. Das erste Feedback bringt
+//                einen Coin, danach keinen mehr (siehe `FEEDBACK_BELOHNUNG`).
+//   ... melden   fragt nach dem Grund, optional mit Text, und schickt mit,
+//                welcher Satz bzw. welches Wort auf dem Schirm stand.
+// Beides landet in der Tabelle `rueckmeldung`. Vorher fuehrte Feedback aus
+// der Lektion heraus auf die Geschenke-Seite, deren Absenden-Knopf
+// deaktiviert ist - und Melden zeigte nur "kommt bald".
 
 type Props = {
   dark: boolean;
   /** "Satz melden" oder "Wort melden" - je nachdem, was der Screen zeigt. */
   meldenLabel: string;
+  /**
+   * Was gerade auf dem Schirm steht. Ohne Angabe geht die Rueckmeldung
+   * trotzdem raus, nur ohne Bezug auf einen bestimmten Inhalt.
+   */
+  kontext?: RueckmeldungKontext;
 };
 
-export function UebungsMenu({ dark, meldenLabel }: Props) {
+const GRUENDE_SATZ = [
+  'Übersetzung stimmt nicht',
+  'Satz klingt falsch',
+  'Audio stimmt nicht',
+  'Aussprache wird nicht erkannt',
+  'Etwas anderes',
+];
+const GRUENDE_WORT = [
+  'Bedeutung stimmt nicht',
+  'Wort ist falsch geschrieben',
+  'Audio stimmt nicht',
+  'Aussprache wird nicht erkannt',
+  'Etwas anderes',
+];
+
+type Fenster = 'feedback' | 'melden' | null;
+
+export function UebungsMenu({ dark, meldenLabel, kontext }: Props) {
   const theme = getTheme(dark);
+  const { grantCoins, coinGrants } = useAppState();
+  // Der Feedback-Coin gilt je KONTO (Simon, 2026-09-13) - und nur ein Konto
+  // hat auf dem Server ein Feedback, gegen das sich der Coin pruefen laesst.
+  const { hatKonto } = useAuthState();
   const [offen, setOffen] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
+  const [fenster, setFenster] = useState<Fenster>(null);
+  const [text, setText] = useState('');
+  const [grund, setGrund] = useState<string | null>(null);
+  const [sendet, setSendet] = useState(false);
+  const [fehler, setFehler] = useState<string | null>(null);
+
+  const istWort = meldenLabel.startsWith('Wort');
+  const gruende = istWort ? GRUENDE_WORT : GRUENDE_SATZ;
+  const belohnungOffen = !coinGrants[FEEDBACK_BELOHNUNG_SCHLUESSEL];
 
   useEffect(() => {
     if (!notice) return;
     const timer = setTimeout(() => setNotice(null), 2600);
     return () => clearTimeout(timer);
   }, [notice]);
+
+  function oeffne(welches: Exclude<Fenster, null>) {
+    setOffen(false);
+    setText('');
+    setGrund(null);
+    setFehler(null);
+    setFenster(welches);
+  }
+
+  function schliesse() {
+    if (sendet) return;
+    setFenster(null);
+  }
+
+  async function senden() {
+    if (sendet || !fenster) return;
+    if (fenster === 'feedback' && !text.trim()) return;
+    if (fenster === 'melden' && !grund) return;
+    setSendet(true);
+    setFehler(null);
+    try {
+      await sendeRueckmeldung(
+        fenster === 'feedback' ? 'feedback' : istWort ? 'wort_melden' : 'satz_melden',
+        { grund: fenster === 'melden' ? grund ?? undefined : undefined, text },
+        kontext ?? { screen: 'unbekannt' }
+      );
+      setFenster(null);
+      if (fenster === 'feedback') {
+        // Erst NACH erfolgreichem Senden anfordern - der Server bucht den Coin
+        // nur, wenn er das Feedback dieses Kontos tatsaechlich vorfindet.
+        const belohnt = hatKonto && grantCoins(FEEDBACK_BELOHNUNG_SCHLUESSEL, FEEDBACK_BELOHNUNG);
+        setNotice(belohnt ? `Danke für dein Feedback! +${FEEDBACK_BELOHNUNG} Coin` : 'Danke für dein Feedback!');
+      } else {
+        setNotice('Danke! Wir schauen uns das an.');
+      }
+    } catch {
+      // Text bleibt stehen - wer offline war, soll nicht alles neu tippen.
+      setFehler('Das hat nicht geklappt. Bist du online? Versuch es gleich noch einmal.');
+    } finally {
+      setSendet(false);
+    }
+  }
+
+  const sendenMoeglich = fenster === 'feedback' ? !!text.trim() : !!grund;
 
   return (
     <>
@@ -74,25 +172,19 @@ export function UebungsMenu({ dark, meldenLabel }: Props) {
             />
             <View style={[styles.panel, { backgroundColor: theme.cardBg, borderColor: theme.border }]}>
               <Pressable
-                onPress={() => {
-                  setOffen(false);
-                  router.push('/rewards');
-                }}
+                onPress={() => oeffne('feedback')}
                 accessibilityRole="button"
                 accessibilityLabel="Feedback"
+                accessibilityHint="Öffnet ein Textfeld, du bleibst in der Übung"
                 style={({ pressed }) => [styles.eintrag, { opacity: pressed ? 0.6 : 1 }]}
               >
                 <Text style={[styles.eintragText, { color: theme.text }]}>Feedback</Text>
               </Pressable>
               <View style={[styles.trenner, { backgroundColor: theme.border }]} />
               <Pressable
-                onPress={() => {
-                  setOffen(false);
-                  setNotice('Danke! Melde-Funktion kommt bald.');
-                }}
+                onPress={() => oeffne('melden')}
                 accessibilityRole="button"
                 accessibilityLabel={meldenLabel}
-                accessibilityHint="Noch nicht angebunden"
                 style={({ pressed }) => [styles.eintrag, { opacity: pressed ? 0.6 : 1 }]}
               >
                 <Text style={[styles.eintragText, { color: theme.text }]}>{meldenLabel}</Text>
@@ -101,6 +193,95 @@ export function UebungsMenu({ dark, meldenLabel }: Props) {
           </>
         ) : null}
       </View>
+
+      {/* Die Eingabe liegt in einem Modal UEBER der Uebung - nichts wird
+          verlassen, und nach dem Schliessen steht die Aufgabe unveraendert
+          da. */}
+      <Modal visible={fenster !== null} transparent animationType="fade" onRequestClose={schliesse}>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+          style={styles.modalWurzel}
+        >
+          <Pressable
+            style={StyleSheet.absoluteFill}
+            onPress={schliesse}
+            accessibilityRole="button"
+            accessibilityLabel="Schließen"
+          />
+          <View style={[styles.blatt, { backgroundColor: theme.cardBg, borderColor: theme.border }]}>
+            <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={styles.blattInhalt}>
+              <Text style={[styles.blattTitel, { color: theme.text }]} accessibilityRole="header">
+                {fenster === 'feedback' ? 'Feedback' : meldenLabel}
+              </Text>
+
+              {fenster === 'feedback' ? (
+                <Text style={[styles.blattHinweis, { color: theme.sub }]}>
+                  Was fällt dir auf, was fehlt dir? Wir lesen alles.
+                  {!hatKonto
+                    ? ` Mit Konto gibt es für dein erstes Feedback ${FEEDBACK_BELOHNUNG} Coin.`
+                    : belohnungOffen
+                      ? ` Für dein erstes Feedback gibt es ${FEEDBACK_BELOHNUNG} Coin.`
+                      : ''}
+                </Text>
+              ) : (
+                <>
+                  {kontext?.inhaltText ? (
+                    <Text style={[styles.blattHinweis, { color: theme.sub }]}>
+                      Gemeldet wird: „{kontext.inhaltText}“
+                    </Text>
+                  ) : null}
+                  <Text style={[styles.abschnitt, { color: theme.text }]}>Was stimmt nicht?</Text>
+                  <View style={styles.gruende}>
+                    {gruende.map((g) => (
+                      <SatzChip
+                        key={g}
+                        dark={dark}
+                        label={g}
+                        aktiv={grund === g}
+                        selected={grund === g}
+                        onPress={() => setGrund(g)}
+                        a11y={g}
+                      />
+                    ))}
+                  </View>
+                </>
+              )}
+
+              <TextInput
+                value={text}
+                onChangeText={setText}
+                multiline
+                autoFocus={fenster === 'feedback'}
+                maxLength={2000}
+                placeholder={fenster === 'feedback' ? 'Dein Feedback' : 'Magst du es kurz erklären? (optional)'}
+                placeholderTextColor={theme.sub}
+                accessibilityLabel={fenster === 'feedback' ? 'Dein Feedback' : 'Erklärung, optional'}
+                style={[
+                  styles.eingabe,
+                  { color: theme.text, borderColor: theme.border, backgroundColor: theme.subtleFill },
+                ]}
+              />
+
+              {fehler ? (
+                <Text style={[styles.fehler, { color: theme.text }]} accessibilityLiveRegion="polite">
+                  {fehler}
+                </Text>
+              ) : null}
+
+              <View style={styles.knoepfe}>
+                <PillButton
+                  dark={dark}
+                  label="Senden"
+                  onPress={senden}
+                  disabled={!sendenMoeglich}
+                  busy={sendet}
+                />
+                <PillButton dark={dark} variant="ghost" label="Abbrechen" onPress={schliesse} disabled={sendet} />
+              </View>
+            </ScrollView>
+          </View>
+        </KeyboardAvoidingView>
+      </Modal>
 
       {notice ? (
         <View
@@ -153,6 +334,34 @@ const styles = StyleSheet.create({
   eintrag: { paddingVertical: SPACING.md, paddingHorizontal: SPACING.lg },
   eintragText: { fontSize: FONT_SIZE.body, ...schrift('600') },
   trenner: { height: StyleSheet.hairlineWidth, marginHorizontal: SPACING.sm },
+  modalWurzel: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    // Leichter Schleier, damit klar ist, dass die Uebung dahinter pausiert.
+    backgroundColor: 'rgba(0,0,0,0.35)',
+  },
+  blatt: {
+    borderTopLeftRadius: RADIUS.lg,
+    borderTopRightRadius: RADIUS.lg,
+    borderWidth: 1.5,
+    borderBottomWidth: 0,
+    maxHeight: '85%',
+  },
+  blattInhalt: { padding: SPACING.lg, paddingBottom: SPACING.xl, gap: SPACING.md },
+  blattTitel: { fontSize: FONT_SIZE.h2, lineHeight: LINE_HEIGHT.h2, ...schrift('800') },
+  blattHinweis: { fontSize: FONT_SIZE.body, lineHeight: LINE_HEIGHT.body },
+  abschnitt: { fontSize: FONT_SIZE.body, ...schrift('700') },
+  gruende: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACING.sm },
+  eingabe: {
+    minHeight: 110,
+    borderWidth: 1.5,
+    borderRadius: RADIUS.md,
+    padding: SPACING.md,
+    fontSize: FONT_SIZE.body,
+    textAlignVertical: 'top',
+  },
+  fehler: { fontSize: FONT_SIZE.small, ...schrift('700') },
+  knoepfe: { gap: SPACING.sm },
   notice: {
     position: 'absolute',
     left: 0,

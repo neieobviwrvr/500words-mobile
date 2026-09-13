@@ -27,6 +27,7 @@ import { useSttRecorder } from '../stt/useSttRecorder';
 import { useSpeechmatics } from '../stt/useSpeechmatics';
 import { getLanguage, sprachAdjektiv } from '../../data/languages';
 import type { Phrase } from '../../data/cheatsheetContent';
+import type { RueckmeldungKontext } from '../../data/rueckmeldung';
 import { scenarioLabel } from '../../data/scenarios';
 import { newCard, reviewCard } from '../srs/fsrsEngine';
 import { cardKey, KURS_RAHMEN, KURS_WORT, loadAllCards, saveCard } from '../srs/srsStorage';
@@ -859,12 +860,34 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
   const gesamtSchritte = schritte.filter((x) => x.art !== 'ergebnis').length;
   const bisher = Math.min(pos + 1, gesamtSchritte);
 
+  // Was gerade auf dem Schirm steht - damit eine Meldung aus dem Menue
+  // sagt, welcher Satz oder welches Wort gemeint war (2026-09-13).
+  // Lautschrift UND Schrift, wo sie verschieden sind: gelesen wird die
+  // Lautschrift, gesprochen und bewertet die Schrift.
+  const mitSchrift = (lerntext: string, schrift: string) =>
+    lerntext === schrift ? schrift : `${lerntext} (${schrift})`;
+  const meldeKontext: RueckmeldungKontext = {
+    screen: `kurs:${schritt?.art ?? 'ende'}`,
+    sprache: targetLanguageId,
+    quelle: 'kurs',
+    inhaltId: lessonId ?? (schritt?.art === 'satz' ? schritt.lektionId : undefined),
+    inhaltText:
+      schritt?.art === 'teaser' || schritt?.art === 'satz'
+        ? mitSchrift(schritt.lerntext, schritt.schrift)
+        : schritt?.art === 'nachsprechen' || schritt?.art === 'abrufen'
+          ? mitSchrift(schritt.wort.lerntext, schritt.wort.schrift)
+          : schritt?.art === 'finisher'
+            ? schritt.aufgabe
+            : undefined,
+  };
+
   return (
     <Screen dark={darkMode} padBottom>
       <Kopf
         dark={darkMode}
         titel={titel ?? `Lektion ${lessonId}`}
         untertitel={untertitel ?? lektion?.modul.title}
+        kontext={meldeKontext}
       />
 
       {hatStimme === false ? (
@@ -1423,7 +1446,18 @@ function SatzUrteil({
   );
 }
 
-function Kopf({ dark, titel, untertitel }: { dark: boolean; titel: string; untertitel?: string }) {
+function Kopf({
+  dark,
+  titel,
+  untertitel,
+  kontext,
+}: {
+  dark: boolean;
+  titel: string;
+  untertitel?: string;
+  /** Was gerade auf dem Schirm steht - fuer "Satz melden" im Menue. */
+  kontext?: RueckmeldungKontext;
+}) {
   const theme = getTheme(dark);
   return (
     <View style={styles.kopf}>
@@ -1443,7 +1477,7 @@ function Kopf({ dark, titel, untertitel }: { dark: boolean; titel: string; unter
           </Text>
         ) : null}
       </View>
-      <UebungsMenu dark={dark} meldenLabel="Satz melden" />
+      <UebungsMenu dark={dark} meldenLabel="Satz melden" kontext={kontext} />
     </View>
   );
 }

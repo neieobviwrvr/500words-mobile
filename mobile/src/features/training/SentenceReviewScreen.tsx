@@ -1035,7 +1035,17 @@ export function SentenceReviewScreen() {
         <Text style={[styles.title, { color: theme.text }]} numberOfLines={1}>
           {kategorieModus ? anzeigeName : 'Sätze-Wiederholung'}
         </Text>
-        <UebungsMenu dark={darkMode} meldenLabel="Satz melden" />
+        <UebungsMenu
+          dark={darkMode}
+          meldenLabel="Satz melden"
+          kontext={{
+            screen: `${situationsModus ? 'situation' : kategorieModus ? 'kategorie' : 'saetze-wiederholung'}:stufe${stufe}`,
+            sprache: targetLanguageId,
+            quelle: language.table ?? undefined,
+            inhaltId: aktuellerSatz?.id,
+            inhaltText: aktuellerSatz?.text,
+          }}
+        />
       </View>
 
       {/* Sitzungs-Fortschritt (2026-08-30, Simons Punkt 1): nur der Balken,
