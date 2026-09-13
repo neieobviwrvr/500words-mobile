@@ -120,7 +120,27 @@ import {
 const SPRACH_BILDER: Record<string, ReturnType<typeof require>> = {
   zh: require('../../../assets/sprachkarte-zh.png'),
   it: require('../../../assets/sprachkarte-it.png'),
+  de: require('../../../assets/sprachkarte-de.jpg'),
+  // Die "ohne Schnee"-Fassungen (2026-09-13, Simons Auswahl): dieselben
+  // Szenen ohne fallende Flocken.
+  sv: require('../../../assets/sprachkarte-sv.png'),
+  no: require('../../../assets/sprachkarte-no.png'),
+  ru: require('../../../assets/sprachkarte-ru.png'),
+  es: require('../../../assets/sprachkarte-es.png'),
 };
+
+// ZUR AUFLOESUNG, weil die Dateien sehr unterschiedlich sind: die Karte ist
+// 359 Punkte breit, auf einem dreifach aufloesenden iPhone also rund 1080
+// Bildpunkte. Wer darunter liegt, wird dort weich gezeichnet - im Browser
+// faellt das nicht auf, weil dort ein Punkt einem Pixel entspricht.
+//
+//   de 1448, it 1759, zh 1327   reichen
+//   ru 793, sv 448, no 433, es 430   sind kleiner als noetig
+//
+// Die kleinen sind Simons ausdrueckliche Wahl (Motiv vor Schaerfe: die
+// grossen Fassungen zeigen fallenden Schnee und einen anderen Ausschnitt).
+// Kommt eine groessere Fassung, ersetzt sie einfach die Datei - am Code
+// aendert sich nichts.
 
 const PILL_W = 176;
 const PILL_H = 48;
