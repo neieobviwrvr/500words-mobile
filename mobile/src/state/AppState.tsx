@@ -1,6 +1,8 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { abgleichen as syncAbgleichen } from '../lib/sync';
+import { supabase } from '../lib/supabase';
+import { COIN_BETRAEGE, coinAbholen, ladeCoinBuchungen, lokalErfuellt } from '../lib/coins';
 import { loadAllCards, saveCards } from '../features/srs/srsStorage';
 
 /** Wo der Geraeteabgleich gerade steht. */
@@ -26,6 +28,31 @@ import { DEFAULT_LANGUAGE_ID } from '../data/languages';
 // Suchauswahl), kein sinnvoller Grund, die ueber einen Neustart zu retten.
 
 const STORAGE_KEY = 'app_state_v1';
+// Coins liegen seit 2026-09-13 unter eigenem Schluessel: sie folgen nicht mehr
+// dem Abgleich ueber `geaendertAm`, und eine bestaetigte Gutschrift soll die
+// Einstellungen beim naechsten Abgleich nicht "juenger" machen.
+const COINS_KEY = 'coins_v1';
+
+/**
+ * Coins auf dem Geraet (2026-09-13).
+ *
+ * Die Wahrheit liegt auf dem Server (`coin_buchung`, lib/coins.ts) - hier
+ * steht nur, was die Anzeige braucht, auch offline:
+ *
+ * - `bestaetigt`: die zuletzt vom Server geladenen Buchungen des Kontos.
+ * - `ausstehend`: Gutschriften, die das Geraet angefordert hat, deren Antwort
+ *   aber noch fehlt - kein Netz, noch kein Konto (Gast, Onboarding vor der
+ *   Kontofrage) oder ein Zaehler, der erst beim naechsten Abgleich hochgeht.
+ *   Sie zaehlen in der Anzeige mit, damit ein Coin nicht erst Minuten spaeter
+ *   erscheint. Der Server kann sie noch ablehnen, dann fallen sie weg.
+ *
+ * Wer spaeter Coins AUSGIBT, darf nur gegen den Serverstand pruefen - die
+ * Anzeige hier ist dafuer kein Beleg.
+ */
+type CoinSpeicher = {
+  bestaetigt: Record<string, number>;
+  ausstehend: Record<string, number>;
+};
 
 export type ThemeSelection = { groupId: string; groupTitle: string; themeLabel: string; key: string };
 
@@ -77,13 +104,15 @@ type PersistedState = {
   purchased: Record<string, boolean>;
   saved: Record<string, boolean>;
   savedMeta: Record<string, Phrase>;
-  coins: number;
   /**
-   * Welche einmaligen Geschenke schon vergeben wurden - Schluessel wie
-   * "onboarding_lektion". Ohne das gaebe es bei jedem Betreten des
-   * Geschenk-Screens einen weiteren Coin.
+   * VERALTET seit 2026-09-13 - Coins stehen unter `COINS_KEY`. Beide Felder
+   * werden nur noch EINMAL gelesen, um einen alten Stand zu uebernehmen:
+   * die vergebenen Geschenke gehen als ausstehende Gutschriften an den
+   * Server, der sie noch einmal prueft. Die alte Zahl `coins` wird verworfen,
+   * sie ergibt sich jetzt aus den Buchungen.
    */
-  coinGrants: Record<string, boolean>;
+  coins?: number;
+  coinGrants?: Record<string, boolean>;
   lockscreenContent: LockscreenContent;
   learningMode: LearningMode;
   /**
@@ -179,20 +208,26 @@ type AppStateValue = {
   toggleThemeSelect: (key: string, meta: ThemeSelection) => void;
   clearSelectedThemes: () => void;
 
+  /** Bestaetigte plus noch ausstehende Coins - zur ANZEIGE (siehe CoinSpeicher). */
   coins: number;
   /**
-   * Vergibt Coins genau einmal pro `grantId`. Gibt zurueck, ob dieser Aufruf
-   * die Gutschrift ausgeloest hat - der Geschenk-Screen zeigt danach je
+   * Fordert eine Gutschrift an, genau einmal pro `grantId`. Gibt zurueck, ob
+   * dieser Aufruf sie ausgeloest hat - der Geschenk-Screen zeigt danach je
    * nachdem "Du bekommst einen Coin" oder nur noch den Kontostand.
+   *
+   * Zaehlt sofort in der Anzeige mit; gebucht wird auf dem Server, sobald ein
+   * Konto und Netz da sind, und nur, wenn der Server die Bedingung selbst
+   * bestaetigt. `amount` ist nur fuer die Anzeige - den Betrag legt der
+   * Server fest.
    *
    * Erst aufrufen, wenn `hydrated` true ist, sonst wird gegen den leeren
    * Default-Zustand geprueft statt gegen den gespeicherten.
    */
   grantCoins: (grantId: string, amount: number) => boolean;
   /**
-   * Welche Geschenke schon vergeben sind. Die Herausforderungen lesen das,
-   * um "abholen" von "abgeholt" zu unterscheiden - `grantCoins` selbst gibt
-   * das nur beim Aufruf zurueck, nicht beim Zeichnen.
+   * Welche Geschenke schon vergeben oder angefordert sind. Die
+   * Herausforderungen lesen das, um "abholen" von "abgeholt" zu
+   * unterscheiden - `grantCoins` selbst gibt das nur beim Aufruf zurueck.
    */
   coinGrants: Record<string, boolean>;
 
@@ -242,10 +277,9 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   const [saved, setSaved] = useState<Record<string, boolean>>({});
   const [savedMeta, setSavedMeta] = useState<Record<string, Phrase>>({});
   const [selectedThemes, setSelectedThemes] = useState<Record<string, ThemeSelection>>({});
-  const [coins, setCoins] = useState(0);
   const [fortschritt, setFortschritt] = useState<Fortschritt>(FORTSCHRITT_LEER);
   const [uebersprungen, setUebersprungen] = useState<Record<string, boolean>>({});
-  const [coinGrants, setCoinGrants] = useState<Record<string, boolean>>({});
+  const [coinSpeicher, setCoinSpeicher] = useState<CoinSpeicher>({ bestaetigt: {}, ausstehend: {} });
   // Saetze als Vorgabe, nicht Woerter: Saetze gibt es in jeder Sprache mit
   // Inhalt, eine Wortliste bisher nur fuer Schwedisch und Franzoesisch
   // (siehe data/vocabContent.ts). Die Vorgabe soll ueberall etwas anzeigen.
@@ -254,10 +288,15 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   const [learningMode, setLearningMode] = useState<LearningMode>('speedrun');
   // Aus als Vorgabe (2026-08-30, siehe PersistedState-Kommentar).
   const [wortartenFarben, setWortartenFarben] = useState(false);
-  // Spiegel der vergebenen Geschenke. `grantCoins` muss SOFORT wissen, ob ein
-  // Geschenk schon vergeben wurde, und darf nicht auf den naechsten Render
-  // warten - sonst wuerden zwei schnelle Aufrufe beide gutschreiben.
-  const coinGrantsRef = useRef<Record<string, boolean>>({});
+  // Spiegel des Coin-Stands. `grantCoins` muss SOFORT wissen, ob ein
+  // Geschenk schon angefordert wurde, und darf nicht auf den naechsten Render
+  // warten - sonst zeigten zwei schnelle Aufrufe beide einen Coin an. (Buchen
+  // koennte der Server ohnehin nur einen.)
+  const coinRef = useRef<CoinSpeicher>({ bestaetigt: {}, ausstehend: {} });
+  const setzeCoins = useCallback((neu: CoinSpeicher) => {
+    coinRef.current = neu;
+    setCoinSpeicher(neu);
+  }, []);
 
   // Verhindert, dass der Hydrations-Ladevorgang selbst als "Aenderung"
   // sofort wieder in den Speicher zurueckgeschrieben wird, und dass vor dem
@@ -276,7 +315,14 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     (async () => {
       try {
-        const raw = await AsyncStorage.getItem(STORAGE_KEY);
+        const [raw, coinRaw] = await Promise.all([
+          AsyncStorage.getItem(STORAGE_KEY),
+          AsyncStorage.getItem(COINS_KEY),
+        ]);
+        if (coinRaw) {
+          const c: Partial<CoinSpeicher> = JSON.parse(coinRaw);
+          setzeCoins({ bestaetigt: c.bestaetigt ?? {}, ausstehend: c.ausstehend ?? {} });
+        }
         if (raw) {
           const parsed: Partial<PersistedState> = JSON.parse(raw);
           if (parsed.darkMode !== undefined) setDarkMode(parsed.darkMode);
@@ -285,19 +331,22 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
           if (parsed.purchased) setPurchased(parsed.purchased);
           if (parsed.saved) setSaved(parsed.saved);
           if (parsed.savedMeta) setSavedMeta(parsed.savedMeta);
-          if (parsed.coins !== undefined) setCoins(parsed.coins);
           if (parsed.fortschritt) setFortschritt({ ...FORTSCHRITT_LEER, ...parsed.fortschritt });
           if (parsed.uebersprungen) setUebersprungen(parsed.uebersprungen);
           if (parsed.geaendertAm) geaendertAmRef.current = parsed.geaendertAm;
           if (parsed.lockscreenContent) setLockscreenContent(parsed.lockscreenContent);
           if (parsed.learningMode) setLearningMode(parsed.learningMode);
           if (parsed.wortartenFarben !== undefined) setWortartenFarben(parsed.wortartenFarben);
-          if (parsed.coinGrants) {
-            setCoinGrants(parsed.coinGrants);
-            // Auch den Spiegel setzen, nicht erst ueber den Render-Umweg -
-            // sonst koennte ein frueher Aufruf ein schon vergebenes
-            // Geschenk ein zweites Mal gutschreiben.
-            coinGrantsRef.current = parsed.coinGrants;
+          if (!coinRaw && parsed.coinGrants) {
+            // Alter Stand (vor 2026-09-13): die vergebenen Geschenke gehen
+            // als Anforderung an den Server, der sie noch einmal prueft.
+            // Unbekannte Schluessel (die fruehere Tagesgrenze beim Feedback,
+            // Reste aus Tests) fallen weg - der Server kennt sie nicht.
+            const ausstehend: Record<string, number> = {};
+            for (const [grund, vergeben] of Object.entries(parsed.coinGrants)) {
+              if (vergeben && COIN_BETRAEGE[grund]) ausstehend[grund] = COIN_BETRAEGE[grund];
+            }
+            setzeCoins({ bestaetigt: {}, ausstehend });
           }
         }
       } catch {
@@ -320,11 +369,17 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     if (!hydrated.current) return;
     if (ersterSchreibvorgang.current) ersterSchreibvorgang.current = false;
     else geaendertAmRef.current = Date.now();
-    const toPersist: PersistedState = { darkMode, targetLanguageId, sourceLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode, wortartenFarben, fortschritt, uebersprungen, geaendertAm: geaendertAmRef.current };
+    const toPersist: PersistedState = { darkMode, targetLanguageId, sourceLanguageId, purchased, saved, savedMeta, lockscreenContent, learningMode, wortartenFarben, fortschritt, uebersprungen, geaendertAm: geaendertAmRef.current };
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(toPersist)).catch(() => {
       // Best-effort - ein Speicherfehler soll die laufende Session nicht stoeren.
     });
-  }, [darkMode, targetLanguageId, sourceLanguageId, purchased, saved, savedMeta, coins, coinGrants, lockscreenContent, learningMode, wortartenFarben, fortschritt, uebersprungen]);
+  }, [darkMode, targetLanguageId, sourceLanguageId, purchased, saved, savedMeta, lockscreenContent, learningMode, wortartenFarben, fortschritt, uebersprungen]);
+
+  // Coins getrennt speichern - ohne `geaendertAm` anzufassen (siehe COINS_KEY).
+  useEffect(() => {
+    if (!hydrated.current) return;
+    AsyncStorage.setItem(COINS_KEY, JSON.stringify(coinSpeicher)).catch(() => {});
+  }, [coinSpeicher]);
 
   const toggleDark = useCallback(() => setDarkMode((d) => !d), []);
   const toggleWortartenFarben = useCallback(() => setWortartenFarben((w) => !w), []);
@@ -367,13 +422,67 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
 
   const clearSelectedThemes = useCallback(() => setSelectedThemes({}), []);
 
+  // Aktueller Fortschritt fuer die Coin-Pruefung, die ausserhalb eines
+  // Renders laeuft (siehe `coinsNachreichen`).
+  const fortschrittRef = useRef<Fortschritt>(FORTSCHRITT_LEER);
+  fortschrittRef.current = fortschritt;
+
+  /**
+   * Ausstehende Gutschriften beim Server einreichen und den Serverstand holen.
+   *
+   * Ohne Sitzung passiert nichts - Gaeste behalten ihre Anforderungen, bis sie
+   * ein Konto haben. Wirft nie; was scheitert, wird beim naechsten Mal erneut
+   * versucht.
+   */
+  const coinsLaeuftRef = useRef(false);
+  const coinsNachreichen = useCallback(async () => {
+    if (coinsLaeuftRef.current) return;
+    coinsLaeuftRef.current = true;
+    try {
+      const { data } = await supabase.auth.getSession();
+      const nutzerId = data.session?.user?.id;
+      if (!nutzerId) return;
+
+      const erledigt: string[] = [];
+      for (const grund of Object.keys(coinRef.current.ausstehend)) {
+        const ergebnis = await coinAbholen(grund);
+        // Kein Netz oder Sitzung abgelaufen: stehen lassen.
+        if (ergebnis === null || ergebnis === 'kein_konto') continue;
+        // Herausforderung abgelehnt, obwohl der Zaehler hier reicht: der
+        // Server hat den Zaehler noch nicht, der naechste Abgleich bringt ihn.
+        if (ergebnis === 'bedingung_fehlt' && lokalErfuellt(grund, fortschrittRef.current)) continue;
+        erledigt.push(grund);
+      }
+
+      const buchungen = await ladeCoinBuchungen(nutzerId);
+      const ausstehend = { ...coinRef.current.ausstehend };
+      for (const grund of erledigt) delete ausstehend[grund];
+      if (buchungen) {
+        for (const grund of Object.keys(buchungen)) delete ausstehend[grund];
+      }
+      setzeCoins({ bestaetigt: buchungen ?? coinRef.current.bestaetigt, ausstehend });
+    } catch {
+      // Beim naechsten Anlass erneut.
+    } finally {
+      coinsLaeuftRef.current = false;
+    }
+  }, [setzeCoins]);
+
   const grantCoins = useCallback((grantId: string, amount: number) => {
-    if (coinGrantsRef.current[grantId]) return false;
-    coinGrantsRef.current = { ...coinGrantsRef.current, [grantId]: true };
-    setCoinGrants(coinGrantsRef.current);
-    setCoins((c) => c + amount);
+    const { bestaetigt, ausstehend } = coinRef.current;
+    if (grantId in bestaetigt || grantId in ausstehend) return false;
+    setzeCoins({ bestaetigt, ausstehend: { ...ausstehend, [grantId]: amount } });
+    void coinsNachreichen();
     return true;
-  }, []);
+  }, [setzeCoins, coinsNachreichen]);
+
+  // Abmelden: die Buchungen gehoeren dem Konto, nicht dem Geraet.
+  useEffect(() => {
+    const { data } = supabase.auth.onAuthStateChange((ereignis) => {
+      if (ereignis === 'SIGNED_OUT') setzeCoins({ bestaetigt: {}, ausstehend: coinRef.current.ausstehend });
+    });
+    return () => data.subscription.unsubscribe();
+  }, [setzeCoins]);
 
   const zaehle = useCallback((was: keyof Fortschritt, um = 1) => {
     setFortschritt((f) => ({ ...f, [was]: f[was] + um }));
@@ -404,8 +513,6 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     const ergebnis = await syncAbgleichen(
       nutzerId,
       {
-        coins,
-        coinGrants: coinGrantsRef.current,
         fortschritt,
         einstellungen: { darkMode, targetLanguageId, sourceLanguageId, lockscreenContent, learningMode, wortartenFarben, uebersprungen },
         gemerkt: { saved, savedMeta },
@@ -431,9 +538,6 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     const s = ergebnis.stand;
     geaendertAmRef.current = s.geaendertAm;
     ersterSchreibvorgang.current = true;
-    setCoins(s.coins);
-    coinGrantsRef.current = s.coinGrants;
-    setCoinGrants(s.coinGrants);
     setFortschritt({ ...FORTSCHRITT_LEER, ...s.fortschritt } as Fortschritt);
     setPurchased(s.purchased);
     setSaved(s.gemerkt.saved);
@@ -447,14 +551,33 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     if (e.wortartenFarben !== undefined) setWortartenFarben(e.wortartenFarben);
     if (e.uebersprungen) setUebersprungen(e.uebersprungen);
     await saveCards(ergebnis.karten);
+    // Coins NACH dem Abgleich: der hat gerade den Fortschritt hochgeschoben,
+    // gegen den der Server Herausforderungen prueft.
+    fortschrittRef.current = { ...FORTSCHRITT_LEER, ...s.fortschritt } as Fortschritt;
+    await coinsNachreichen();
     laeuftRef.current = false;
     setAbgleichStand('fertig');
-  }, [coins, fortschritt, darkMode, targetLanguageId, sourceLanguageId, lockscreenContent, learningMode, wortartenFarben, uebersprungen, saved, savedMeta, purchased]);
+  }, [coinsNachreichen, fortschritt, darkMode, targetLanguageId, sourceLanguageId, lockscreenContent, learningMode, wortartenFarben, uebersprungen, saved, savedMeta, purchased]);
 
   const ueberspringen = useCallback((satzId: string) => {
     setUebersprungen((u) => ({ ...u, [satzId]: true }));
   }, []);
   const ueberspringenZuruecknehmen = useCallback(() => setUebersprungen({}), []);
+
+  const coins = useMemo(() => {
+    const { bestaetigt, ausstehend } = coinSpeicher;
+    let summe = 0;
+    for (const betrag of Object.values(bestaetigt)) summe += betrag;
+    for (const [grund, betrag] of Object.entries(ausstehend)) if (!(grund in bestaetigt)) summe += betrag;
+    return summe;
+  }, [coinSpeicher]);
+
+  const coinGrants = useMemo(() => {
+    const vergeben: Record<string, boolean> = {};
+    for (const grund of Object.keys(coinSpeicher.bestaetigt)) vergeben[grund] = true;
+    for (const grund of Object.keys(coinSpeicher.ausstehend)) vergeben[grund] = true;
+    return vergeben;
+  }, [coinSpeicher]);
 
   const value = useMemo<AppStateValue>(
     () => ({

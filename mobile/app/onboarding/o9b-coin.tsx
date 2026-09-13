@@ -4,6 +4,7 @@ import { router } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
 import { OnboardingScaffold, PillButton } from '../../src/components/onboarding';
 import { useAppState } from '../../src/state/AppState';
+import { ONBOARDING_COIN_GRUND } from '../../src/lib/coins';
 import { ONBOARDING_TOTAL_STEPS, stepNumber } from '../../src/data/onboardingOptions';
 import { Mascot } from '../../src/features/mascot';
 import {
@@ -34,7 +35,7 @@ import {
 // den Schluessel unten. Wer per Zurueck-Wisch noch einmal auf diesen Screen
 // kommt, sieht denselben Kontostand und bekommt keinen zweiten Coin.
 
-const GRANT_ID = 'onboarding_lektion';
+const GRANT_ID = ONBOARDING_COIN_GRUND;
 
 export default function CoinScreen() {
   const { darkMode, coins, grantCoins, hydrated } = useAppState();

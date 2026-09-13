@@ -30,10 +30,14 @@ import { mergeZaehler, mergeMarken, mergeJuengeres, mergeKarten, zuSchicken, typ
  * sind die Einstellungen - und dort ist es richtig so.
  */
 
-/** Der lokale Stand, wie ihn AppState haelt. */
+/**
+ * Der lokale Stand, wie ihn AppState haelt.
+ *
+ * Coins fehlen hier seit 2026-09-13 mit Absicht: die gehen nicht mehr ueber
+ * `nutzer_zustand`, das die App selbst beschreibt, sondern ueber
+ * `coin_buchung`, das sie nur lesen darf (siehe lib/coins.ts).
+ */
 export type LokalerStand = {
-  coins: number;
-  coinGrants: Record<string, boolean>;
   fortschritt: Record<string, number>;
   einstellungen: Record<string, unknown>;
   gemerkt: { saved: Record<string, boolean>; savedMeta: Record<string, unknown> };
@@ -96,12 +100,6 @@ export async function abgleichen(
 
     // --- 2. VERSCHMELZEN --------------------------------------------------
     const verschmolzen: LokalerStand = {
-      // Coins sind ERSETZBAR, nicht monoton: sobald man sie ausgeben kann,
-      // waere "das Groessere gewinnt" ein Weg, jede Ausgabe rueckgaengig zu
-      // machen. Heute gibt es noch nichts zu kaufen, aber die Regel jetzt
-      // richtig zu haben kostet nichts.
-      coins: mergeJuengeres(lokal.coins, lokal.geaendertAm, fern?.coins ?? 0, fernAm),
-      coinGrants: mergeMarken(lokal.coinGrants, fern?.coin_grants ?? {}),
       fortschritt: mergeZaehler(lokal.fortschritt, fern?.fortschritt ?? {}),
       einstellungen: mergeJuengeres(
         lokal.einstellungen,
@@ -146,8 +144,6 @@ export async function abgleichen(
     await supabase.from('nutzer_zustand').upsert(
       {
         nutzer_id: nutzerId,
-        coins: verschmolzen.coins,
-        coin_grants: verschmolzen.coinGrants,
         fortschritt: verschmolzen.fortschritt,
         einstellungen: verschmolzen.einstellungen,
         gemerkt: verschmolzen.gemerkt,
