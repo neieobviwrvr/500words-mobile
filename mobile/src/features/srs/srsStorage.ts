@@ -41,6 +41,22 @@ export function cardKey(languageId: string, table: string, id: string | number):
 export const KURS_WORT = 'course-wort';
 export const KURS_RAHMEN = 'course-rahmen';
 
+/**
+ * Die Umkehrung von `cardKey` (2026-09-14, fuer das Lern-Tagebuch): aus dem
+ * Schluessel wieder Sprache, Namensraum und ID. Die ID darf selbst
+ * Doppelpunkte enthalten, deshalb wird nur zweimal getrennt.
+ */
+export function zerlegeKartenSchluessel(
+  key: string
+): { sprache: string; namensraum: string; id: string } | null {
+  if (!key.startsWith(STORAGE_KEY_PREFIX)) return null;
+  const rest = key.slice(STORAGE_KEY_PREFIX.length);
+  const erster = rest.indexOf(':');
+  const zweiter = erster < 0 ? -1 : rest.indexOf(':', erster + 1);
+  if (erster <= 0 || zweiter < 0) return null;
+  return { sprache: rest.slice(0, erster), namensraum: rest.slice(erster + 1, zweiter), id: rest.slice(zweiter + 1) };
+}
+
 function deserializeCard(raw: string): Card {
   const parsed = JSON.parse(raw);
   return {

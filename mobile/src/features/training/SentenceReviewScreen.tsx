@@ -15,8 +15,8 @@ import { evaluateConcepts, EvaluationResult } from '../evaluation/evaluateConcep
 import { useSttRecorder } from '../stt/useSttRecorder';
 import { useSpeechmatics } from '../stt/useSpeechmatics';
 import { speakSentence, stopSpeaking } from '../tts/speak';
-import { newCard, reviewCard } from '../srs/fsrsEngine';
-import { cardKey, loadCard, saveCard } from '../srs/srsStorage';
+import { bewerteUndSpeichere } from '../srs/bewerten';
+import { cardKey, loadCard } from '../srs/srsStorage';
 import { merkeBesuch } from '../home/zuletztBesucht';
 import { ladeZaehler, aendereZaehler, setzeZaehler, ladeJeErreicht, markiereJeErreicht, aktiverBatchPool } from './batchLeiter';
 import {
@@ -870,7 +870,8 @@ export function SentenceReviewScreen() {
     if (language.table && !kategorieModus) {
       const fsrsKey = cardKey(targetLanguageId, language.table, aktuellerSatz.id);
       const tier = evaluation.tier;
-      void loadCard(fsrsKey).then((bisherige) => saveCard(fsrsKey, reviewCard(bisherige ?? newCard(), tier)));
+      // Speichern und Tagebuch-Eintrag: srs/bewerten.ts.
+      void loadCard(fsrsKey).then((bisherige) => bewerteUndSpeichere(fsrsKey, bisherige, tier));
     }
 
     if (evaluation.tier === 'nicht_verstanden') {

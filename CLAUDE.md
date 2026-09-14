@@ -2746,6 +2746,82 @@ Konten mit diesem Werber), nicht in einen Zaehler der App.
 **Eingespielt wie `rueckmeldung` ueber `supabase db query --linked --file`**,
 nicht `db push` (siehe dort).
 
+## Lern-Tagebuch und Statistikseite (2026-09-14)
+
+Simon hat das Konzept einer Statistikseite fuer beide Lernwege
+abgenommen ("Mach es genau so, bau zuerst das Tagebuch ein"). **Gebaut ist
+bisher nur das Tagebuch**, die Seite kommt danach.
+
+**Warum das Tagebuch zuerst:** eine FSRS-Karte kennt nur ihren aktuellen
+Stand und ihre LETZTE Bewertung. Wie viel an welchem Tag gelernt wurde, und
+mit welcher Stufe, laesst sich daraus nie zurueckrechnen. Jeder Tag ohne
+Tagebuch fehlt dem Verlauf fuer immer - gezaehlt wird erst ab dem Build, der
+es enthaelt.
+
+**Was es zaehlt** (`src/features/srs/lerntagebuch.ts`, AsyncStorage
+`lerntagebuch_v1`): je Tag in ORTSZEIT und je `sprache:weg` (`no:gefuehrt`,
+`no:speedrun`) die Antworten `richtig`, `ueberlebt`, `nichtVerstanden` und
+die bis zum Ergebnis gespielten Kurs-Lektionen (`lektionen`). Keine Saetze,
+keine Aufnahmen, keine Uhrzeiten. Eigener Schluessel neben `app_state_v1`,
+aus demselben Grund wie `coins_v1`.
+
+**Gezaehlt wird genau, was eine Karte schreibt.** Dafuer gibt es jetzt EINEN
+Weg in die Wiederholung: `bewerteUndSpeichere(key, bisherige, stufe)` in
+`src/features/srs/bewerten.ts`. Er ersetzt das Paar `reviewCard` +
+`saveCard`, das vorher dreimal einzeln dastand (LessonScreen,
+ExerciseScreen, SentenceReviewScreen), und schreibt den Eintrag mit. Sprache
+und Lernweg kommen aus dem Kartenschluessel (`zerlegeKartenSchluessel` in
+srsStorage.ts): `course-wort`/`course-rahmen` = gefuehrt, jede Satztabelle =
+Speed-Run. **Wer eine vierte Stelle baut, die Karten bewertet, nimmt diese
+Funktion** - sonst zeigt die Statistik still zu wenig.
+- Nicht gezaehlt, weil keine Karte: Teaser im Kurs, Stufen 1 und 2 der
+  Saetze-Wiederholung und deren Kategorie-Modus, die Woerter-Wiederholung.
+- Ein Satz-Schritt mit WIEDERHOLTEM Wort schreibt zwei Karten, zaehlt aber
+  als EINE Antwort (`zaehlen: false` fuer die Wortkarte).
+- `lektionen` nur fuer echte Lektionen (`lessonId` ohne `schritteVon`),
+  nicht fuer Wiederholungs-Sitzungen.
+- Schreibvorgaenge laufen hintereinander ueber eine Kette im Modul - die
+  Saetze-Wiederholung schreibt asynchron, zwei schnelle Antworten wuerden
+  sich sonst gegenseitig ueberschreiben.
+
+**Im Browser geprueft:** Lektion 1.1 Norwegisch getippt durchgespielt ->
+11 Antworten (= "11 Karten fuer die Wiederholung aufgefrischt" auf dem
+Ergebnis) plus 1 Lektion, Teaser nicht mitgezaehlt; zwei Speed-Run-Saetze
+landen getrennt unter `no:speedrun`; nach Neuladen wird weitergezaehlt.
+Die Saetze-Wiederholung (Stufe 3) ist nur per Typpruefung abgedeckt.
+
+**Noch NICHT auf dem Server.** `lernaktivitaet` (seit 2026-08-22, `tag`,
+`karten`, `richtig`) wird weiterhin nirgends beschrieben. Geplant: Spalten
+`sprache`, `weg`, `ueberlebt`, `lektionen`, Primaerschluessel um Sprache und
+Weg erweitert, Abgleich in `sync.ts` mit der Zaehler-Regel (Maximum). Folge
+der Maximum-Regel, bewusst hingenommen: wer am selben Tag auf zwei Geraeten
+lernt, sieht die groessere Zahl, nicht die Summe.
+
+**Die Seite, wie abgenommen** (Reihenfolge: Tagebuch -> Seite mit heute
+Messbarem -> Verlauf -> Server):
+- Route `/statistik?weg=speedrun|gefuehrt` in `(tabs)` mit `href: null`,
+  **kein eigener Tab**. Einstieg per Tipp auf den Fortschrittsbalken auf
+  Start (oeffnet den Weg, der vorne liegt) und eine Zeile "Statistik" im
+  Profil. Der Umschalter auf der Seite aendert `learningMode` NICHT.
+- Bloecke beide Wege: Wie gut es sitzt (sitzt / im Aufbau / wackelt), Faellig
+  (heute + 6 Tage), Letzte 7 Tage, Verstanden, Wackelt gerade mit "Ueben".
+  Speed-Run zusaetzlich Stand (= Balken auf Start) und Kategorien; gefuehrt
+  Stand, Module, Woerter, "Bis A2" als Schaetzung.
+- Grenzen: **sitzt** = `state Review` und `stability >= 21` (Anki "reif");
+  **wackelt** = `Relearning` oder `lapses >= 2`; **faellig** = `due` bis
+  Tagesende lokal; **verstanden** = richtig + ueberlebt; **Lerntag** = Tag
+  mit mindestens einer bewerteten Antwort.
+- Simons Entscheidungen: Lerntage je Woche zeigen, "Tage am Stueck" erst
+  zusammen mit den Streak-Coins; Lernzeit wird NICHT gemessen (die Restzeit
+  bis A2 bleibt eine Schaetzung aus der mittleren Lektionsdauer); die Seite
+  gibt es auch fuer Gaeste, alle Zahlen liegen auf dem Geraet.
+- Ton: keine Fehlerquote, kein Rot, "wackelt" in Bernstein neben einem
+  Uebe-Knopf; vor der ersten Uebung eine einzige Karte statt Nullen; Tage vor
+  dem Tagebuch-Start nicht als leere Saeulen, sondern "seit ...".
+- **Stolperstelle Woerter:** Kurs-Wortkarten haengen an der SATZFORM
+  (`er`, `var`). Norwegisch hat 592 Formen in den Luecken bei 500 Woertern -
+  "x von 500" muss ueber die Kursdaten auf das Grundwort zurueck.
+
 ## Konto noetig, Demo fuer Gaeste (2026-08-22)
 
 Nutzer-Entscheidung: **ohne Konto nur eine Demo-Version** - kein Kauf, keine

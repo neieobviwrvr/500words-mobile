@@ -19,8 +19,9 @@ import { evaluateConcepts, EvaluationResult } from '../../features/evaluation/ev
 import { looksLikeGarbageTranscript } from '../../features/stt/transcriptQuality';
 import { useSpeechmatics } from '../../features/stt/useSpeechmatics';
 import { useSttRecorder } from '../../features/stt/useSttRecorder';
-import { newCard, reviewCard, isDue } from '../../features/srs/fsrsEngine';
-import { cardKey, loadAllCards, saveCard } from '../../features/srs/srsStorage';
+import { isDue } from '../../features/srs/fsrsEngine';
+import { bewerteUndSpeichere } from '../../features/srs/bewerten';
+import { cardKey, loadAllCards } from '../../features/srs/srsStorage';
 import { getTheme, ACCENT_BLUE, ACCENT_GREEN, schrift } from '../../theme/tokens';
 
 // S4 - Uebungs-Screen (generisch fuer Woerter/Saetze/Konversation/SRS).
@@ -475,15 +476,9 @@ export function ExerciseScreen({
 
     // FSRS-Update - passiert IMMER, egal ob die Session von S2 oder S5
     // gestartet wurde (siehe Kommentar am Dateianfang: gemeinsamer Pool).
+    // Speichern und Tagebuch-Eintrag laufen dort mit, siehe srs/bewerten.ts.
     const key = cardKey(targetLanguageId, language.table, sentence.id);
-    const previous = cardsRef.current[key] ?? newCard();
-    const updated = reviewCard(previous, evaluation.tier);
-    cardsRef.current[key] = updated;
-    saveCard(key, updated).catch(() => {
-      // Best-effort - ein einzelner Speicherfehler soll die Uebung nicht
-      // unterbrechen, hoechstens verhindern, dass diese eine Karte korrekt
-      // eingeplant wird.
-    });
+    cardsRef.current[key] = bewerteUndSpeichere(key, cardsRef.current[key], evaluation.tier);
   }
 
   function checkAnswer() {

@@ -29,8 +29,10 @@ import { getLanguage, sprachAdjektiv } from '../../data/languages';
 import type { Phrase } from '../../data/cheatsheetContent';
 import type { RueckmeldungKontext } from '../../data/rueckmeldung';
 import { scenarioLabel } from '../../data/scenarios';
-import { newCard, reviewCard } from '../srs/fsrsEngine';
-import { cardKey, KURS_RAHMEN, KURS_WORT, loadAllCards, saveCard } from '../srs/srsStorage';
+import { newCard } from '../srs/fsrsEngine';
+import { bewerteUndSpeichere } from '../srs/bewerten';
+import { merkeLektion } from '../srs/lerntagebuch';
+import { cardKey, KURS_RAHMEN, KURS_WORT, loadAllCards } from '../srs/srsStorage';
 import {
   bewerteAntwort,
   bewerteFinisher,
@@ -657,15 +659,12 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
    * Wuerden Abrufen UND Satz dieselbe Wortkarte bewerten, bekaeme sie zwei
    * Bewertungen im Abstand von Minuten - damit rechnet FSRS nicht.
    */
-  function schreibeKarte(namensraum: string, id: string, tier: Tier) {
+  function schreibeKarte(namensraum: string, id: string, tier: Tier, zaehlen = true) {
     const key = cardKey(targetLanguageId, namensraum, id);
-    const aktualisiert = reviewCard(kartenRef.current[key] ?? newCard(), tier);
+    // Speichern und Tagebuch-Eintrag laufen dort mit, siehe srs/bewerten.ts.
+    const aktualisiert = bewerteUndSpeichere(key, kartenRef.current[key], tier, { zaehlen });
     kartenRef.current = { ...kartenRef.current, [key]: aktualisiert };
     setKarten((n) => n + 1);
-    saveCard(key, aktualisiert).catch(() => {
-      // Best effort - ein Speicherfehler soll die laufende Lektion nicht
-      // unterbrechen.
-    });
   }
 
   /**
@@ -770,8 +769,11 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
       // Ohne das bekaeme ein wiederholtes Wort zwar Uebung, aber keine
       // FSRS-Bewertung mehr; seine Karte staende weiter allein auf dem Tag
       // ihrer Einfuehrung. Genau das soll die Wiederholung ja beheben.
+      //
+      // Im Lern-Tagebuch bleibt es EINE Antwort - die Rahmenkarte hat sie
+      // schon gezaehlt.
       if (schritt.wort.wieder) {
-        schreibeKarte(KURS_WORT, schritt.wort.schrift, b.tier);
+        schreibeKarte(KURS_WORT, schritt.wort.schrift, b.tier, false);
       }
     }
   }
@@ -855,7 +857,11 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
     if (ergebnisse.length > 0 && ergebnisse.every((e) => e === 'richtig')) {
       zaehle('perfekteLektionen');
     }
-  }, [schritt?.art, ergebnisse, zaehle]);
+    // Fuers Lern-Tagebuch (2026-09-14): eine echte Lektion, keine
+    // Wiederholungs-Sitzung - die spielt dieser Screen mit `schritteVon` ab,
+    // und dort gibt es keine Lektion, die fertig werden koennte.
+    if (lessonId && !schritteVon) void merkeLektion(targetLanguageId);
+  }, [schritt?.art, ergebnisse, zaehle, lessonId, schritteVon, targetLanguageId]);
 
   const gesamtSchritte = schritte.filter((x) => x.art !== 'ergebnis').length;
   const bisher = Math.min(pos + 1, gesamtSchritte);
