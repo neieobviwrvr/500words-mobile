@@ -284,6 +284,8 @@ export default function TabsLayout() {
       {/* Detailseiten des Profils (2026-09-11, Umbau im iOS-Stil). */}
       <Tabs.Screen name="einstellungen/sperrbildschirm" options={{ href: null }} />
       <Tabs.Screen name="einstellungen/herausforderungen" options={{ href: null }} />
+      {/* Statistik (2026-09-14): vom Balken auf Start und vom Profil aus. */}
+      <Tabs.Screen name="statistik" options={{ href: null }} />
     </Tabs>
 
     </View>

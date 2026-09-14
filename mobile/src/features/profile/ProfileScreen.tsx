@@ -150,6 +150,12 @@ export function ProfileScreen() {
         </Gruppe>
 
         <Gruppe dark={darkMode} titel="Lernen">
+          {/* Zweiter Weg zur Statistik neben dem Balken auf Start (2026-09-14). */}
+          <Zeile
+            dark={darkMode}
+            titel="Statistik"
+            onPress={() => router.push({ pathname: '/statistik', params: { von: 'profil' } })}
+          />
           <SchalterZeile
             dark={darkMode}
             titel="Wortarten einfärben"

@@ -20,7 +20,7 @@ import {
   hilfeAusschnitt,
 } from '../../components';
 import { useAppState } from '../../state/AppState';
-import { CourseFrame, CourseWord } from '../../data/courseTypes';
+import { CourseFrame, CourseLessonData, CourseWord } from '../../data/courseTypes';
 import { courseFor } from '../../data/courses';
 import { hasVoiceFor, speakText, stopSpeaking } from '../tts/speak';
 import { useSttRecorder } from '../stt/useSttRecorder';
@@ -191,6 +191,113 @@ type Props = {
   untertitel?: string;
 };
 
+/**
+ * Der Ablauf EINER Lektion als flache Schrittliste, mit Ergebnis am Ende.
+ *
+ * Seit 2026-09-14 ausserhalb des Screens: die Statistikseite schaetzt die
+ * Restzeit bis A2 aus der Zahl der Schritte, und eine zweite Rechnung, die
+ * diesen Aufbau nachzaehlt, liefe beim naechsten Umbau still auseinander.
+ * Die Begruendung des Aufbaus steht beim Aufruf im Screen.
+ */
+export function schritteFuerLektion(l: CourseLessonData): UebungsSchritt[] {
+  if (l.kind === 'finisher') {
+    return [
+      { art: 'finisher', aufgabe: l.task ?? 'Sag etwas aus diesem Modul.' },
+      { art: 'ergebnis' },
+    ];
+  }
+
+  const slots = l.slotGroups.flat();
+  if (slots.length === 0) return [{ art: 'ergebnis' }];
+
+  // Der Teaser gehoert einem NEUEN Wort. Steht ein wiederholtes vorn,
+  // bekaeme es die Einfuehrung, die es nicht braucht - und das neue Wort
+  // gar keine.
+  const erstes = slots.find((w) => !w.wieder) ?? slots[0];
+  const teaserWoerter = [...l.newFrameWords, erstes];
+
+  const liste: UebungsSchritt[] = [
+    {
+      art: 'teaser',
+      schrift: fuelleRahmen(l.frame.schrift, erstes.schrift),
+      lerntext: fuelleRahmen(l.frame.lerntext, erstes.lerntext),
+      deutsch: deutscherSatz(l.frameDe, erstes),
+      rahmenLerntext: l.frame.lerntext,
+      wortarten: l.frame.wortarten,
+      woerter: teaserWoerter,
+    },
+    { art: 'auszeichnung', woerter: teaserWoerter },
+  ];
+
+  for (const w of teaserWoerter) {
+    liste.push({ art: 'nachsprechen', wort: w });
+    liste.push({ art: 'abrufen', wort: w });
+  }
+
+  // Auch das erste Slot-Wort schliesst mit dem selbst gebildeten Satz ab -
+  // sonst waere es als einziges nie produziert worden. Seinen Zusammenhang
+  // hatte es schon im Teaser oben.
+  liste.push({
+    art: 'satz',
+    wort: erstes,
+    deutsch: deutscherSatz(l.frameDe, erstes),
+    wortarten: l.frame.wortarten,
+    schrift: fuelleRahmen(l.frame.schrift, erstes.schrift),
+    lerntext: fuelleRahmen(l.frame.lerntext, erstes.lerntext),
+    lektionId: l.id,
+    rahmenLerntext: l.frame.lerntext,
+  });
+
+  // Die uebrigen Slot-Woerter bekommen JEDES einen eigenen Teaser-Satz
+  // (Nutzer-Entscheidung 2026-08-21): "damit Woerter nicht einfach leer im
+  // Raum stehen". Vorher kam der Satz erst NACH dem Wort - das neue Wort
+  // stand also zuerst ohne jeden Zusammenhang da.
+  //
+  // Reihenfolge je Wort, vom Zusammenhang zur eigenen Leistung:
+  //   Satz nachmachen  -> das Wort im Zusammenhang hoeren, ohne es schon
+  //                       verstehen zu muessen
+  //   Wort nachsprechen-> isoliert, hier greift die Tonpruefung
+  //   Wort abrufen     -> nur Deutsch, das Chinesische aus dem Kopf
+  //   Satz bilden      -> dasselbe Wort selbst in den Rahmen setzen
+  //
+  // WIEDERHOLTE Woerter bekommen davon nur den letzten Schritt (2026-09-07,
+  // `wieder` in courseTypes.ts). Sie sind eingefuehrt; was ihnen fehlt, ist
+  // ein zweiter Zusammenhang - genau das ist der Satz. Sie noch einmal
+  // vorzustellen, nachsprechen und abrufen zu lassen, machte die Lektion
+  // vier- statt einmal so teuer und war der Grund, warum Wiederholung so
+  // sparsam ausfiel.
+  for (const w of slots.filter((x) => x !== erstes)) {
+    const satzSchrift = fuelleRahmen(l.frame.schrift, w.schrift);
+    const satzLerntext = fuelleRahmen(l.frame.lerntext, w.lerntext);
+    if (!w.wieder) {
+      liste.push({
+        art: 'teaser',
+        schrift: satzSchrift,
+        lerntext: satzLerntext,
+        deutsch: deutscherSatz(l.frameDe, w),
+        rahmenLerntext: l.frame.lerntext,
+        wortarten: l.frame.wortarten,
+        woerter: [w],
+      });
+      liste.push({ art: 'nachsprechen', wort: w });
+      liste.push({ art: 'abrufen', wort: w });
+    }
+    liste.push({
+      art: 'satz',
+      wort: w,
+      deutsch: deutscherSatz(l.frameDe, w),
+      wortarten: l.frame.wortarten,
+      schrift: satzSchrift,
+      lerntext: satzLerntext,
+      lektionId: l.id,
+      rahmenLerntext: l.frame.lerntext,
+    });
+  }
+
+  liste.push({ art: 'ergebnis' });
+  return liste;
+}
+
 export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props) {
   const { darkMode, zaehle, targetLanguageId, saved, toggleSaved, wortartenFarben } = useAppState();
   const theme = getTheme(darkMode);
@@ -317,104 +424,7 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
     // Von aussen gereichte Schritte gewinnen - das ist die Wiederholung.
     if (schritteVon) return [...schritteVon, { art: 'ergebnis' as const }];
     if (!lektion) return [];
-    const l = lektion.lektion;
-
-    if (l.kind === 'finisher') {
-      return [
-        { art: 'finisher', aufgabe: l.task ?? 'Sag etwas aus diesem Modul.' },
-        { art: 'ergebnis' },
-      ];
-    }
-
-    const slots = l.slotGroups.flat();
-    if (slots.length === 0) return [{ art: 'ergebnis' }];
-
-    // Der Teaser gehoert einem NEUEN Wort. Steht ein wiederholtes vorn,
-    // bekaeme es die Einfuehrung, die es nicht braucht - und das neue Wort
-    // gar keine.
-    const erstes = slots.find((w) => !w.wieder) ?? slots[0];
-    const teaserWoerter = [...l.newFrameWords, erstes];
-
-    const liste: UebungsSchritt[] = [
-      {
-        art: 'teaser',
-        schrift: fuelleRahmen(l.frame.schrift, erstes.schrift),
-        lerntext: fuelleRahmen(l.frame.lerntext, erstes.lerntext),
-        deutsch: deutscherSatz(l.frameDe, erstes),
-        rahmenLerntext: l.frame.lerntext,
-        wortarten: l.frame.wortarten,
-        woerter: teaserWoerter,
-      },
-      { art: 'auszeichnung', woerter: teaserWoerter },
-    ];
-
-    for (const w of teaserWoerter) {
-      liste.push({ art: 'nachsprechen', wort: w });
-      liste.push({ art: 'abrufen', wort: w });
-    }
-
-    // Auch das erste Slot-Wort schliesst mit dem selbst gebildeten Satz ab -
-    // sonst waere es als einziges nie produziert worden. Seinen Zusammenhang
-    // hatte es schon im Teaser oben.
-    liste.push({
-      art: 'satz',
-      wort: erstes,
-      deutsch: deutscherSatz(l.frameDe, erstes),
-      wortarten: l.frame.wortarten,
-      schrift: fuelleRahmen(l.frame.schrift, erstes.schrift),
-      lerntext: fuelleRahmen(l.frame.lerntext, erstes.lerntext),
-      lektionId: l.id,
-      rahmenLerntext: l.frame.lerntext,
-    });
-
-    // Die uebrigen Slot-Woerter bekommen JEDES einen eigenen Teaser-Satz
-    // (Nutzer-Entscheidung 2026-08-21): "damit Woerter nicht einfach leer im
-    // Raum stehen". Vorher kam der Satz erst NACH dem Wort - das neue Wort
-    // stand also zuerst ohne jeden Zusammenhang da.
-    //
-    // Reihenfolge je Wort, vom Zusammenhang zur eigenen Leistung:
-    //   Satz nachmachen  -> das Wort im Zusammenhang hoeren, ohne es schon
-    //                       verstehen zu muessen
-    //   Wort nachsprechen-> isoliert, hier greift die Tonpruefung
-    //   Wort abrufen     -> nur Deutsch, das Chinesische aus dem Kopf
-    //   Satz bilden      -> dasselbe Wort selbst in den Rahmen setzen
-    //
-    // WIEDERHOLTE Woerter bekommen davon nur den letzten Schritt (2026-09-07,
-    // `wieder` in courseTypes.ts). Sie sind eingefuehrt; was ihnen fehlt, ist
-    // ein zweiter Zusammenhang - genau das ist der Satz. Sie noch einmal
-    // vorzustellen, nachsprechen und abrufen zu lassen, machte die Lektion
-    // vier- statt einmal so teuer und war der Grund, warum Wiederholung so
-    // sparsam ausfiel.
-    for (const w of slots.filter((x) => x !== erstes)) {
-      const satzSchrift = fuelleRahmen(l.frame.schrift, w.schrift);
-      const satzLerntext = fuelleRahmen(l.frame.lerntext, w.lerntext);
-      if (!w.wieder) {
-        liste.push({
-          art: 'teaser',
-          schrift: satzSchrift,
-          lerntext: satzLerntext,
-          deutsch: deutscherSatz(l.frameDe, w),
-          rahmenLerntext: l.frame.lerntext,
-          wortarten: l.frame.wortarten,
-          woerter: [w],
-        });
-        liste.push({ art: 'nachsprechen', wort: w });
-        liste.push({ art: 'abrufen', wort: w });
-      }
-      liste.push({
-        art: 'satz',
-        wort: w,
-        deutsch: deutscherSatz(l.frameDe, w),
-        wortarten: l.frame.wortarten,
-        schrift: satzSchrift,
-        lerntext: satzLerntext,
-        lektionId: l.id,
-        rahmenLerntext: l.frame.lerntext,
-      });
-    }
-
-    liste.push({ art: 'ergebnis' });
-    return liste;
+    return schritteFuerLektion(lektion.lektion);
   }, [lektion, schritteVon]);
 
   const loesungen = useMemo(() => {

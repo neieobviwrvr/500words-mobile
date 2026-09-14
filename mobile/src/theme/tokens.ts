@@ -388,6 +388,11 @@ export const ACCENT_GREEN_DARK = '#256B3F';
 export const ACCENT_GREEN_BG = '#DFF1E4';
 export const ACCENT_AMBER_BG = '#FBE9D8';
 export const ACCENT_AMBER_TEXT = '#9A5A1E';
+// Bernstein als FLAECHE (2026-09-14, Statistikseite): "wackelt" im
+// Gedaechtnis-Balken. Zwischen AMBER_BG und AMBER_TEXT - hell genug neben
+// Gruen und Grau, ohne nach Warnung oder Fehler auszusehen. Kein Rot:
+// die Statistik soll nicht schlecht gelaunt machen.
+export const ACCENT_AMBER = '#E3A15F';
 export const ACCENT_NEUTRAL_BG = '#F1EEE6';
 export const ACCENT_NEUTRAL_TEXT = '#85807D';
 export const ACCENT_PREMIUM = '#C99A2E';

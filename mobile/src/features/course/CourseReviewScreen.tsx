@@ -5,7 +5,7 @@ import { PillButton, Screen } from '../../components';
 import { useAppState } from '../../state/AppState';
 import { getLanguage } from '../../data/languages';
 import { LessonScreen, UebungsSchritt } from './LessonScreen';
-import { Kartenart, useFaelligeKarten } from './useFaelligeKarten';
+import { Auswahl, Kartenart, useFaelligeKarten } from './useFaelligeKarten';
 import { FONT_SIZE, getTheme, LINE_HEIGHT, SPACING, schrift } from '../../theme/tokens';
 
 // Wiederholungs-Sitzung des gefuehrten Kurses (2026-08-21).
@@ -24,11 +24,11 @@ import { FONT_SIZE, getTheme, LINE_HEIGHT, SPACING, schrift } from '../../theme/
 // schreiben - die Wiederholung frischt also dieselben Karten auf, die sie
 // abfragt.
 
-export function CourseReviewScreen({ modus }: { modus?: Kartenart }) {
+export function CourseReviewScreen({ modus, auswahl = 'faellig' }: { modus?: Kartenart; auswahl?: Auswahl }) {
   const { darkMode, targetLanguageId } = useAppState();
   const theme = getTheme(darkMode);
   const sprache = getLanguage(targetLanguageId);
-  const faellig = useFaelligeKarten(targetLanguageId, modus);
+  const faellig = useFaelligeKarten(targetLanguageId, modus, auswahl);
 
   const schritte = useMemo<UebungsSchritt[]>(
     () =>
@@ -70,9 +70,13 @@ export function CourseReviewScreen({ modus }: { modus?: Kartenart }) {
       <Screen dark={darkMode} padBottom>
         <View style={styles.mitte}>
           <Feather name="check-circle" size={40} color={theme.sub} />
-          <Text style={[styles.titel, { color: theme.text }]}>Nichts zu wiederholen</Text>
+          <Text style={[styles.titel, { color: theme.text }]}>
+            {auswahl === 'wackelt' ? 'Gerade wackelt kein Wort' : 'Nichts zu wiederholen'}
+          </Text>
           <Text style={[styles.text, { color: theme.sub }]}>
-            Alles frisch. Komm später wieder, oder mach eine neue Lektion.
+            {auswahl === 'wackelt'
+              ? 'Alles, was du geübt hast, hält gerade.'
+              : 'Alles frisch. Komm später wieder, oder mach eine neue Lektion.'}
           </Text>
         </View>
       </Screen>
@@ -102,7 +106,7 @@ export function CourseReviewScreen({ modus }: { modus?: Kartenart }) {
       ) : null}
       <LessonScreen
         schritteVon={schritte}
-        titel={modus === 'wort' ? 'Wörter' : modus === 'rahmen' ? 'Sätze' : 'Wiederholen'}
+        titel={auswahl === 'wackelt' ? 'Wackelt gerade' : modus === 'wort' ? 'Wörter' : modus === 'rahmen' ? 'Sätze' : 'Wiederholen'}
         untertitel={`${schritte.length} ${schritte.length === 1 ? 'Karte' : 'Karten'}`}
       />
     </>

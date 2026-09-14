@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useFocusEffect } from 'expo-router';
-import { loadExerciseSentences } from '../../data/phrasebookContent';
+import type { Card } from 'ts-fsrs';
+import { loadExerciseSentences, type ExerciseSentence } from '../../data/phrasebookContent';
 import { getLanguage } from '../../data/languages';
 import { cardKey, loadAllCards } from '../srs/srsStorage';
 
@@ -36,6 +37,14 @@ export type UnlockedProgress = {
   byCategory: Record<string, CategoryProgress>;
   /** true, wenn gerade der letzte gespeicherte Stand statt frischer Daten laeuft. */
   offline: boolean;
+  /**
+   * Die geladenen Saetze und Karten selbst (2026-09-14, fuer die
+   * Statistikseite). Sie rechnet daraus, was sitzt und was faellig ist - mit
+   * GENAU denselben Daten, aus denen der Balken auf Start entsteht, statt sie
+   * ein zweites Mal zu laden.
+   */
+  saetze: ExerciseSentence[];
+  karten: Record<string, Card>;
 };
 
 const EMPTY: UnlockedProgress = {
@@ -45,6 +54,8 @@ const EMPTY: UnlockedProgress = {
   total: 0,
   byCategory: {},
   offline: false,
+  saetze: [],
+  karten: {},
 };
 
 export function useUnlockedProgress(
@@ -101,6 +112,8 @@ export function useUnlockedProgress(
             total: sentences.length,
             byCategory,
             offline: fromCache,
+            saetze: sentences,
+            karten: cards,
           });
         } catch {
           // Ein Fortschrittsbalken ist kein Grund, den Startscreen scheitern

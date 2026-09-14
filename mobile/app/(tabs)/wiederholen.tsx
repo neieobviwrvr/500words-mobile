@@ -12,12 +12,13 @@ import { SwipeBackScreen } from '../../src/components';
 // "woerter" fragt nur einzelne Vokabeln ab, "saetze" nur ganze Saetze
 // (Nutzer-Vorgabe 2026-08-21). Ohne Angabe kommt beides.
 export default function Wiederholen() {
-  const { modus } = useLocalSearchParams<{ modus?: string }>();
+  const { modus, auswahl } = useLocalSearchParams<{ modus?: string; auswahl?: string }>();
   const art: Kartenart | undefined =
     modus === 'woerter' ? 'wort' : modus === 'saetze' ? 'rahmen' : undefined;
   return (
     <SwipeBackScreen>
-      <CourseReviewScreen modus={art} />
+      {/* `auswahl=wackelt`: "Diese Woerter ueben" von der Statistikseite. */}
+      <CourseReviewScreen modus={art} auswahl={auswahl === 'wackelt' ? 'wackelt' : 'faellig'} />
     </SwipeBackScreen>
   );
 }

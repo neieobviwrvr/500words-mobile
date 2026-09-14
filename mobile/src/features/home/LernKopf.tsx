@@ -1,4 +1,5 @@
-import { StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
+import { router } from 'expo-router';
 import { Dropdown, ProgressBar, ProgressProzent } from '../../components';
 import type { DropdownOption } from '../../components';
 import { LANGUAGES, getLanguage } from '../../data/languages';
@@ -46,6 +47,8 @@ export function LernKopf({
   anteil: number;
 }) {
   const { targetLanguageId, setTargetLanguageId, learningMode } = useAppState();
+  const oeffneStatistik = () =>
+    router.push({ pathname: '/statistik', params: { weg: learningMode, von: 'start' } });
 
   const sprachen: DropdownOption[] = LANGUAGES.map((l) => ({
     id: l.id,
@@ -81,7 +84,21 @@ export function LernKopf({
             sitzt (2026-09-13): die Spur traegt `alignSelf: 'stretch'`, was
             sie in einer Zeile nach oben setzt. Die Huelle wird mittig gesetzt
             und laesst die Spur darin ihre Breite fuellen. */}
-        <View style={styles.balkenPlatz}>
+        {/* Balken und Zahl oeffnen die Statistik (2026-09-14) - der Balken ist
+            die Kurzfassung, die Seite die Langfassung, und zwar fuer den
+            Lernweg, der gerade vorne liegt. EIN Knopf fuer den Screenreader:
+            die Zahl daneben ist ausgeblendet, sonst kaeme dasselbe Ziel
+            zweimal hintereinander. */}
+        <Pressable
+          style={({ pressed }) => [styles.balkenPlatz, pressed && styles.gedrueckt]}
+          onPress={oeffneStatistik}
+          hitSlop={{ top: SPACING.md, bottom: SPACING.md }}
+          accessibilityRole="button"
+          accessibilityLabel={`Statistik, ${Math.round(anteil * 100)} Prozent ${
+            learningMode === 'gefuehrt' ? 'des Kurses geschafft' : 'deiner freigeschalteten Inhalte geübt'
+          }`}
+          accessibilityHint="Zeigt, was schon sitzt und wie viel du gelernt hast"
+        >
           <ProgressBar
             dark={dark}
             ratio={anteil}
@@ -89,10 +106,16 @@ export function LernKopf({
               learningMode === 'gefuehrt' ? 'des Kurses geschafft' : 'deiner freigeschalteten Inhalte geübt'
             }`}
           />
-        </View>
-        <View style={styles.progressSeite}>
+        </Pressable>
+        <Pressable
+          style={({ pressed }) => [styles.progressSeite, pressed && styles.gedrueckt]}
+          onPress={oeffneStatistik}
+          hitSlop={SPACING.md}
+          accessibilityElementsHidden
+          importantForAccessibility="no-hide-descendants"
+        >
           <ProgressProzent dark={dark} ratio={anteil} />
-        </View>
+        </Pressable>
       </View>
     </>
   );
@@ -119,5 +142,8 @@ const styles = StyleSheet.create({
     width: PROGRESS_SEITE,
     // Rechtsbuendig, damit die Zahl am Balken klebt statt am Rand.
     alignItems: 'flex-end',
+  },
+  gedrueckt: {
+    opacity: 0.7,
   },
 });

@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useFocusEffect } from 'expo-router';
+import type { Card } from 'ts-fsrs';
 import { courseFor } from '../../data/courses';
 import { cardKey, KURS_RAHMEN, loadAllCards } from '../srs/srsStorage';
 
@@ -42,11 +43,17 @@ export type GuidedProgress = {
   /** Wie viele Uebungs-Lektionen erledigt sind, von wie vielen. */
   fertig: number;
   gesamt: number;
+  /**
+   * Alle geladenen Karten (2026-09-14, fuer die Statistikseite) - sie
+   * rechnet daraus, welche Woerter sitzen, ohne ein zweites Mal zu laden.
+   */
+  karten: Record<string, Card>;
 };
 
 const LEER: GuidedProgress = {
   loading: true, lektionen: {}, module: {},
   aktuelleLektion: null, aktuellesModul: null, fertig: 0, gesamt: 0,
+  karten: {},
 };
 
 export function useGuidedProgress(languageId: string): GuidedProgress {
@@ -113,7 +120,7 @@ export function useGuidedProgress(languageId: string): GuidedProgress {
         if (!abgebrochen) {
           setStand({
             loading: false, lektionen, module,
-            aktuelleLektion, aktuellesModul, fertig, gesamt,
+            aktuelleLektion, aktuellesModul, fertig, gesamt, karten,
           });
         }
       })();

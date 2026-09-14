@@ -20,6 +20,7 @@ import { looksLikeGarbageTranscript } from '../../features/stt/transcriptQuality
 import { useSpeechmatics } from '../../features/stt/useSpeechmatics';
 import { useSttRecorder } from '../../features/stt/useSttRecorder';
 import { isDue } from '../../features/srs/fsrsEngine';
+import { gedaechtnisVon } from '../../features/srs/gedaechtnis';
 import { bewerteUndSpeichere } from '../../features/srs/bewerten';
 import { cardKey, loadAllCards } from '../../features/srs/srsStorage';
 import { getTheme, ACCENT_BLUE, ACCENT_GREEN, schrift } from '../../theme/tokens';
@@ -133,11 +134,17 @@ export function ExerciseScreen({
    *                   per Kategorie-Dropdown filtern") und war beim Umbau
    *                   vom 2026-08-06 verlorengegangen.
    *
+   * - `wackelt`       die Saetze, die gerade wackeln, ueber alle
+   *                   freigeschalteten Kategorien (2026-09-14) - der Knopf
+   *                   "Diese Saetze ueben" auf der Statistikseite. Dieselbe
+   *                   Grenze wie dort (srs/gedaechtnis.ts), unabhaengig von
+   *                   der Faelligkeit.
+   *
    * Warum ein eigener Wert und nicht "srs plus categoryId": die Route setzt
    * `categoryId` ersatzweise auf 'grundwortschatz', wenn keiner mitkommt -
    * an seiner Anwesenheit laesst sich der Umfang also nicht ablesen.
    */
-  source?: 'category' | 'srs' | 'srs-kategorie';
+  source?: 'category' | 'srs' | 'srs-kategorie' | 'wackelt';
   /**
    * Auf EINE Situation einschraenken (2026-08-21).
    *
@@ -237,7 +244,9 @@ export function ExerciseScreen({
   // unterscheidet, ob die Session von S2 (Kategorie) oder S5 (SRS) aus
   // gestartet wurde, statt "srs" als eigenen mode-Wert zu behandeln.
   const headerTitle =
-    source === 'srs-kategorie'
+    source === 'wackelt'
+      ? 'Wackelt gerade'
+      : source === 'srs-kategorie'
       ? `${anzeigeName} — Wiederholen`
       : `${source === 'srs' ? 'Wiederholen' : anzeigeName} — ${MODE_LABELS[mode] ?? 'Üben'}`;
 
@@ -254,8 +263,9 @@ export function ExerciseScreen({
         // auf die eine angeklickte Kategorie beschraenkt.
         // Nur `srs` greift ueber alle Kategorien - `srs-kategorie` bleibt wie
         // `category` bei der einen, filtert danach aber auf faellig.
+        const ueberAlle = source === 'srs' || source === 'wackelt';
         const gewaehlt =
-          source === 'srs' ? [...CATEGORIES.filter((c) => purchased[c.id]).map((c) => c.id), 'grundwortschatz'] : [categoryId];
+          ueberAlle ? [...CATEGORIES.filter((c) => purchased[c.id]).map((c) => c.id), 'grundwortschatz'] : [categoryId];
         // Geliehene Situationen mitladen (siehe data/geliehen.ts): Smalltalk
         // zeigt auch Begruessen und Vorstellen aus dem Grundwortschatz, weil
         // niemand garantiert, dass der Nutzer den je angesehen hat.
@@ -271,7 +281,7 @@ export function ExerciseScreen({
         // Beim Leihen kaeme sonst der ganze Grundwortschatz mit - `saetzeFuer`
         // laesst nur die wirklich geliehenen Situationen durch.
         const eigeneUndGeliehene =
-          source === 'srs'
+          ueberAlle
             ? sentencesResult.sentences
             : saetzeFuer(categoryId, sentencesResult.sentences);
 
@@ -304,6 +314,18 @@ export function ExerciseScreen({
         let pool = sentencesData;
         // Nur beim Vorziehen wird gedeckelt - siehe unten, warum sonst nicht.
         let deckeln = false;
+        if (source === 'wackelt') {
+          pool = sentencesData.filter((s) => {
+            const karte = cardStates[cardKey(targetLanguageId, language.table!, s.id)];
+            return karte !== undefined && gedaechtnisVon(karte) === 'wackelt';
+          });
+          if (pool.length === 0) {
+            setLoadError('Gerade wackelt kein Satz.');
+            setSentences([]);
+            setClusters(clusterData);
+            return;
+          }
+        }
         if (istWiederholung) {
           const due = sentencesData.filter((s) => {
             const key = cardKey(targetLanguageId, language.table!, s.id);

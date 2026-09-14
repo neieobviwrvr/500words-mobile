@@ -15,7 +15,7 @@ export default function Exercise() {
   const { mode, categoryId, source, scenario } = useLocalSearchParams<{
     mode?: string;
     categoryId?: string;
-    source?: 'category' | 'srs' | 'srs-kategorie';
+    source?: 'category' | 'srs' | 'srs-kategorie' | 'wackelt';
     scenario?: string;
   }>();
   return (

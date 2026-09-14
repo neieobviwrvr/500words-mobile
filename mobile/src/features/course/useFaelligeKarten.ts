@@ -1,8 +1,10 @@
 import { useCallback, useState } from 'react';
 import { useFocusEffect } from 'expo-router';
+import type { Card } from 'ts-fsrs';
 import { CourseFrame, CourseWord } from '../../data/courseTypes';
 import { courseFor } from '../../data/courses';
 import { isDue } from '../srs/fsrsEngine';
+import { gedaechtnisVon, wackelndZuerst } from '../srs/gedaechtnis';
 import { cardKey, KURS_RAHMEN, KURS_WORT, loadAllCards } from '../srs/srsStorage';
 import { deutscherSatz, fuelleRahmen } from './lessonEvaluation';
 
@@ -85,7 +87,16 @@ function mischen<T>(arr: T[]): T[] {
  */
 export type Kartenart = 'wort' | 'rahmen';
 
-export function useFaelligeKarten(languageId: string, nur?: Kartenart): FaelligeKarten {
+/**
+ * `wackelt`: statt der faelligen die Woerter, die gerade wackeln - fuer
+ * "Diese Woerter ueben" auf der Statistikseite (2026-09-14). Dieselbe Grenze
+ * wie dort (srs/gedaechtnis.ts), unabhaengig von der Faelligkeit, ohne
+ * Vorziehen und ohne Kostprobe, und jedes Wort nur einmal - im Kurs taucht
+ * dasselbe Wort in vielen Lektionen auf.
+ */
+export type Auswahl = 'faellig' | 'wackelt';
+
+export function useFaelligeKarten(languageId: string, nur?: Kartenart, auswahl: Auswahl = 'faellig'): FaelligeKarten {
   const [state, setState] = useState<FaelligeKarten>(LEER);
 
   useFocusEffect(
@@ -148,6 +159,26 @@ export function useFaelligeKarten(languageId: string, nur?: Kartenart): Faellige
         // Erst filtern, DANN ueber das Vorziehen entscheiden - sonst
         // zieht ein leerer Wort-Modus Satzkarten vor, die er gar nicht
         // zeigen darf.
+        if (auswahl === 'wackelt') {
+          const gesehen = new Set<string>();
+          const wackelnd: { eintrag: FaelligeWortkarte; karte: Card }[] = [];
+          for (const x of [...alle, ...nichtFaellig]) {
+            if (x.art !== 'wort' || gesehen.has(x.wort.schrift)) continue;
+            gesehen.add(x.wort.schrift);
+            const karte = karten[cardKey(languageId, KURS_WORT, x.wort.schrift)];
+            if (karte && gedaechtnisVon(karte) === 'wackelt') wackelnd.push({ eintrag: x, karte });
+          }
+          wackelnd.sort((a, b) => wackelndZuerst(a.karte, b.karte));
+          setState({
+            loading: false,
+            faellig: wackelnd.map((w) => w.eintrag),
+            bekannt: wackelnd.length,
+            vorgezogen: false,
+            kostprobe: false,
+          });
+          return;
+        }
+
         const passt = (x: Faellig) => !nur || x.art === nur;
         const gefiltert = alle.filter(passt);
         const restGefiltert = nichtFaellig.filter(passt);
@@ -180,7 +211,7 @@ export function useFaelligeKarten(languageId: string, nur?: Kartenart): Faellige
       return () => {
         abgebrochen = true;
       };
-    }, [languageId, nur])
+    }, [languageId, nur, auswahl])
   );
 
   return state;

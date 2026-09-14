@@ -2749,8 +2749,9 @@ nicht `db push` (siehe dort).
 ## Lern-Tagebuch und Statistikseite (2026-09-14)
 
 Simon hat das Konzept einer Statistikseite fuer beide Lernwege
-abgenommen ("Mach es genau so, bau zuerst das Tagebuch ein"). **Gebaut ist
-bisher nur das Tagebuch**, die Seite kommt danach.
+abgenommen ("Mach es genau so, bau zuerst das Tagebuch ein"). **Gebaut:
+das Tagebuch (seit IPA aus 6c8919c) und die Seite selbst.** Offen ist nur
+noch der Abgleich des Tagebuchs mit dem Server.
 
 **Warum das Tagebuch zuerst:** eine FSRS-Karte kennt nur ihren aktuellen
 Stand und ihre LETZTE Bewertung. Wie viel an welchem Tag gelernt wurde, und
@@ -2797,8 +2798,10 @@ Weg erweitert, Abgleich in `sync.ts` mit der Zaehler-Regel (Maximum). Folge
 der Maximum-Regel, bewusst hingenommen: wer am selben Tag auf zwei Geraeten
 lernt, sieht die groessere Zahl, nicht die Summe.
 
-**Die Seite, wie abgenommen** (Reihenfolge: Tagebuch -> Seite mit heute
-Messbarem -> Verlauf -> Server):
+**Die Seite** (`src/features/statistik/StatistikScreen.tsx`, Rechnungen in
+`kartenBilanz.ts`, sitzt/wackelt in `src/features/srs/gedaechtnis.ts`).
+Reihenfolge war: Tagebuch -> Seite mit heute Messbarem -> Verlauf ->
+Server; die ersten drei stehen.
 - Route `/statistik?weg=speedrun|gefuehrt` in `(tabs)` mit `href: null`,
   **kein eigener Tab**. Einstieg per Tipp auf den Fortschrittsbalken auf
   Start (oeffnet den Weg, der vorne liegt) und eine Zeile "Statistik" im
@@ -2819,8 +2822,44 @@ Messbarem -> Verlauf -> Server):
   Uebe-Knopf; vor der ersten Uebung eine einzige Karte statt Nullen; Tage vor
   dem Tagebuch-Start nicht als leere Saeulen, sondern "seit ...".
 - **Stolperstelle Woerter:** Kurs-Wortkarten haengen an der SATZFORM
-  (`er`, `var`). Norwegisch hat 592 Formen in den Luecken bei 500 Woertern -
-  "x von 500" muss ueber die Kursdaten auf das Grundwort zurueck.
+  (`er`, `var`). Ein Rueckweg zum Grundwort steht NICHT in den Kursdaten.
+  Die Seite zeigt deshalb ehrlich "96 Woerter eingefuehrt, von 609 im Kurs"
+  (Norwegisch: 609 Schreibweisen ueber Rahmen- und Slotwoerter) statt "von
+  500". Fuer "von 500" braeuchte es die Formen aus der Vokabeltabelle
+  (`vocabContent.ts` `alleFormen`), also Laden aus Supabase.
+
+**Beim Bauen gegenueber dem Konzept praezisiert:**
+- **sitzt schlaegt den Vergessens-Zaehler.** `lapses` sinkt nie wieder; mit
+  der Reihenfolge aus dem Konzept hiesse eine Karte, die vor Monaten zweimal
+  vergessen wurde und seit Wochen haelt, fuer immer "wackelt". Jetzt:
+  Relearning -> wackelt, sonst Review mit Stabilitaet >= 21 -> sitzt, sonst
+  lapses >= 2 -> wackelt, sonst im Aufbau.
+- **Stand im Kurs ueber den GANZEN Kurs** (38 von 245), nicht nur A1 - sonst
+  zeigte die Seite eine andere Prozentzahl als der Balken auf Start. A1/A2
+  stehen im Kasten "Bis A2" mit eigenem Balken.
+- **Faellig im Kurs** zaehlt Wort- UND Rahmenkarten, weil "Tageslektion"
+  (`/wiederholen`) beide abfragt.
+- **Tempo** erst ab 3 Lektionen in den letzten 14 Tagen (gezaehlt ab dem
+  ersten Tagebuch-Tag), sonst nur die geschaetzte Lernzeit. Die Lernzeit
+  rechnet 10 Sekunden je Schritt aus der ECHTEN Schrittzahl jeder offenen
+  Lektion - dafuer liegt der Lektionsablauf jetzt als
+  `schritteFuerLektion()` in LessonScreen.tsx statt im Screen verborgen.
+- **Stand und Karten kommen aus denselben Hooks wie Start**:
+  `useUnlockedProgress` liefert zusaetzlich `saetze` und `karten`,
+  `useGuidedProgress` zusaetzlich `karten` - kein zweites Laden.
+- **"Diese Saetze ueben"** -> `/exercise?source=wackelt` (alle
+  freigeschalteten Kategorien, nur wackelnde Saetze); **"Diese Woerter
+  ueben"** -> `/wiederholen?auswahl=wackelt` (`useFaelligeKarten` mit
+  `auswahl`, jedes Wort einmal). Beide nehmen dieselbe Grenze aus
+  `gedaechtnis.ts`.
+- Neuer Token `ACCENT_AMBER` (#E3A15F) fuer "wackelt" als Flaeche.
+
+**Im Browser geprueft** (Norwegisch mit Testkarten und -tagebuch, danach
+wieder entfernt): Einstieg ueber den Balken (61 % auf Start = 46 von 75 auf
+der Seite) und ueber das Profil, Umschalter aendert `learningMode` nicht,
+Leer-Zustand, Verlauf mit "gezaehlt seit", Tempo 2 Lektionen am Tag ->
+"10 Wochen", A2-Trenner in der vollen Modulliste, beide Uebe-Knoepfe
+(6 Saetze, 10 Woerter), Darkmode.
 
 ## Konto noetig, Demo fuer Gaeste (2026-08-22)
 
