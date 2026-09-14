@@ -125,8 +125,12 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <AuthStateProvider>
-        <AppStateProvider>
-          <OnboardingStateProvider>
+        {/* Onboarding AUSSEN um AppState (2026-09-14): der Abgleich in
+            AppState liest und schreibt seit dem auch das Profil aus dem
+            Onboarding. Umgekehrt braucht OnboardingState nichts aus
+            AppState. */}
+        <OnboardingStateProvider>
+          <AppStateProvider>
             {/* Der Startbildschirm liegt UEBER allem und geht von selbst weg,
                 sobald Sitzung, Onboarding-Stand und lokaler Zustand geladen
                 sind. Innerhalb aller drei Provider, weil er genau deren
@@ -134,8 +138,8 @@ export default function RootLayout() {
             <SplashGate>
               <RootStack />
             </SplashGate>
-          </OnboardingStateProvider>
-        </AppStateProvider>
+          </AppStateProvider>
+        </OnboardingStateProvider>
       </AuthStateProvider>
     </SafeAreaProvider>
   );

@@ -114,3 +114,10 @@ export async function loadAllCards(): Promise<Record<string, Card>> {
   }
   return result;
 }
+
+/** Beim Abmelden (2026-09-14): die Karten gehoeren dem Konto, nicht dem Geraet. */
+export async function loescheAlleKarten(): Promise<void> {
+  const allKeys = await AsyncStorage.getAllKeys();
+  const srsKeys = allKeys.filter((k) => k.startsWith(STORAGE_KEY_PREFIX));
+  if (srsKeys.length > 0) await AsyncStorage.multiRemove(srsKeys);
+}

@@ -23,6 +23,89 @@ function zaehlerKey(praefix: string, languageId: string, key: string): string {
   return `${praefix}${languageId}:${key}`;
 }
 
+/**
+ * ALLE Praefixe, deren Zaehler zum Lernstand gehoeren (2026-09-14).
+ *
+ * Der Abgleich mit dem Konto (lib/sync.ts) nimmt genau diese - wer einen
+ * neuen Zaehler anlegt, traegt ihn HIER ein und benutzt ihn von hier, sonst
+ * bleibt er still nur auf dem Geraet. Die Werte sind die bisherigen
+ * Schluessel-Anfaenge, unveraendert, damit bestehende Zaehler lesbar bleiben.
+ */
+export const TRAINING_PRAEFIXE = {
+  wortStufe1: 'graduierung_v1:',
+  wortStufe2: 'wort_stufe2_v1:',
+  wortJeStufe3: 'je_graduiert_v1:',
+  satzStufe1: 'satz_stufe1_v1:',
+  satzStufe2: 'satz_stufe2_v1:',
+  satzJeStufe3: 'satz_je_stufe3_v1:',
+  katStufe1: 'kat_stufe1_v1:',
+  katStufe2: 'kat_stufe2_v1:',
+  katJeStufe3: 'kat_je_stufe3_v1:',
+} as const;
+
+const ALLE_PRAEFIXE: string[] = Object.values(TRAINING_PRAEFIXE);
+
+/**
+ * Ein Zaehler samt Zeitpunkt seiner letzten Aenderung (2026-09-14).
+ *
+ * Gespeichert als `"2@1789012345678"`. Der Zeitpunkt ist fuer den Abgleich
+ * da: Zaehler duerfen hier auch SINKEN - eine falsche Antwort stuft zurueck.
+ * Mit der Regel "das Groessere gewinnt" haette jeder Abgleich diese
+ * Rueckstufung wieder aufgehoben, weil der Server noch den alten, hoeheren
+ * Stand kennt. Deshalb gewinnt je Eintrag die JUENGERE Aenderung.
+ *
+ * Aeltere Eintraege ohne `@` (vor 2026-09-14) gelten als Zeitpunkt 0 und
+ * verlieren damit gegen jede echte Aenderung; unter sich gewinnt der groessere
+ * Wert.
+ */
+export type TrainingEintrag = [wert: number, geaendertAm: number];
+export type Trainingsstand = Record<string, TrainingEintrag>;
+
+function leseEintrag(roh: string): TrainingEintrag | null {
+  const [w, am] = roh.split('@');
+  const wert = Number(w);
+  if (!Number.isFinite(wert)) return null;
+  const zeit = Number(am);
+  return [wert, Number.isFinite(zeit) ? zeit : 0];
+}
+
+function schreibWert(wert: number, geaendertAm: number = Date.now()): string {
+  return `${wert}@${geaendertAm}`;
+}
+
+async function trainingsSchluessel(): Promise<string[]> {
+  const alle = await AsyncStorage.getAllKeys();
+  return alle.filter((k) => ALLE_PRAEFIXE.some((p) => k.startsWith(p)));
+}
+
+/** Der ganze Trainingsstand ueber alle Praefixe und Sprachen - fuer den Abgleich. */
+export async function ladeTrainingsstand(): Promise<Trainingsstand> {
+  const schluessel = await trainingsSchluessel();
+  if (schluessel.length === 0) return {};
+  const paare = await AsyncStorage.multiGet(schluessel);
+  const stand: Trainingsstand = {};
+  for (const [k, roh] of paare) {
+    if (!roh) continue;
+    const eintrag = leseEintrag(roh);
+    if (eintrag) stand[k] = eintrag;
+  }
+  return stand;
+}
+
+/** Den verschmolzenen Stand zurueckschreiben. Nur uebergebene Schluessel, geloescht wird nichts. */
+export async function schreibeTrainingsstand(stand: Trainingsstand): Promise<void> {
+  const paare = Object.entries(stand)
+    .filter(([k]) => ALLE_PRAEFIXE.some((p) => k.startsWith(p)))
+    .map(([k, [wert, am]]) => [k, schreibWert(wert, am)] as [string, string]);
+  if (paare.length > 0) await AsyncStorage.multiSet(paare);
+}
+
+/** Beim Abmelden: der Trainingsstand gehoert dem Konto, nicht dem Geraet. */
+export async function loescheTrainingsstand(): Promise<void> {
+  const schluessel = await trainingsSchluessel();
+  if (schluessel.length > 0) await AsyncStorage.multiRemove(schluessel);
+}
+
 /** Alle bekannten Zaehler eines Praefixes/einer Sprache auf einmal. */
 export async function ladeZaehler(praefix: string, languageId: string): Promise<Record<string, number>> {
   const allKeys = await AsyncStorage.getAllKeys();
@@ -34,8 +117,8 @@ export async function ladeZaehler(praefix: string, languageId: string): Promise<
   for (const [k, raw] of pairs) {
     if (!raw) continue;
     const key = k.slice(vollpraefix.length);
-    const wert = Number(raw);
-    if (Number.isFinite(wert)) result[key] = wert;
+    const eintrag = leseEintrag(raw);
+    if (eintrag) result[key] = eintrag[0];
   }
   return result;
 }
@@ -57,7 +140,7 @@ export async function aendereZaehler(
 ): Promise<number> {
   const alt = bisher[key] ?? 0;
   const neu = Math.max(0, Math.min(schwelle, alt + delta));
-  await AsyncStorage.setItem(zaehlerKey(praefix, languageId, key), String(neu));
+  await AsyncStorage.setItem(zaehlerKey(praefix, languageId, key), schreibWert(neu));
   return neu;
 }
 
@@ -68,7 +151,7 @@ export async function setzeZaehler(
   key: string,
   wert: number
 ): Promise<void> {
-  await AsyncStorage.setItem(zaehlerKey(praefix, languageId, key), String(wert));
+  await AsyncStorage.setItem(zaehlerKey(praefix, languageId, key), schreibWert(wert));
 }
 
 /**
@@ -89,7 +172,9 @@ export async function ladeJeErreicht(praefix: string, languageId: string): Promi
 
 /** Idempotent - erneutes Markieren eines schon markierten Eintrags ist harmlos. */
 export async function markiereJeErreicht(praefix: string, languageId: string, key: string): Promise<void> {
-  await AsyncStorage.setItem(zaehlerKey(praefix, languageId, key), '1');
+  // Zeitpunkt 0 mit Absicht: eine Einweg-Marke hat keine "juengere" Fassung,
+  // beim Abgleich soll sie einfach da sein (gleich alt -> groesserer Wert).
+  await AsyncStorage.setItem(zaehlerKey(praefix, languageId, key), schreibWert(1, 0));
 }
 
 /**

@@ -30,32 +30,25 @@ import {
 //
 // "Ueberspringen" ist kein Sonderweg, sondern der schon vorhandene
 // Gastmodus - die Lektion in O9 lief ohnehin ohne Konto.
+//
+// E-Mail funktioniert seit dem 2026-09-14 auch HIER (vorher nur ueber
+// Profil > Konto, hier stand es als "noch nicht freigeschaltet"). Google ist
+// dagegen weiterhin nicht eingerichtet (OAuth-Client fehlt) und deshalb wie
+// Apple gesperrt - vorher schickte der Knopf jeden in eine Fehlermeldung.
+// Die Reihenfolge bleibt Simons.
 
 export default function AccountScreen() {
   const { darkMode } = useAppState();
-  const { signInWithGoogle, continueAsGuest } = useAuthState();
+  const { continueAsGuest, hatKonto } = useAuthState();
   // completeOnboarding() steht bewusst erst auf O12: Wer hier abbricht,
   // soll die Strecke beim naechsten Start fortsetzen koennen.
   const { name } = useOnboardingState();
   const theme = getTheme(darkMode);
 
-  const [busy, setBusy] = useState<'google' | 'skip' | null>(null);
+  const [busy, setBusy] = useState<'skip' | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const goNext = () => router.push('/onboarding/o11-benachrichtigungen');
-
-  const withGoogle = async () => {
-    setBusy('google');
-    setError(null);
-    try {
-      await signInWithGoogle();
-      goNext();
-    } catch (e) {
-      setError(e instanceof Error ? e.message : String(e));
-    } finally {
-      setBusy(null);
-    }
-  };
 
   const skip = async () => {
     setBusy('skip');
@@ -69,6 +62,26 @@ export default function AccountScreen() {
       setBusy(null);
     }
   };
+
+  // Schon angemeldet (etwa ueber "Ich habe schon ein Konto" auf der ersten
+  // Seite, mit einem Konto ohne fertiges Onboarding): nichts mehr zu sichern.
+  if (hatKonto) {
+    return (
+      <OnboardingScaffold
+        step={stepNumber(9)}
+        total={ONBOARDING_TOTAL_STEPS}
+        dark={darkMode}
+        title="Dein Konto ist verbunden"
+        subtitle="Dein Fortschritt wird in deinem Konto gesichert."
+        onBack={() => router.back()}
+        footer={<PillButton label="Weiter" dark={darkMode} onPress={goNext} />}
+      >
+        <Text style={[styles.body, { color: theme.sub }]}>
+          Meldest du dich auf einem anderen Gerät mit derselben E-Mail an, geht es dort weiter.
+        </Text>
+      </OnboardingScaffold>
+    );
+  }
 
   return (
     <OnboardingScaffold
@@ -92,19 +105,18 @@ export default function AccountScreen() {
           <View style={styles.buttonGap}>
             <PillButton
               label="Mit Google anmelden"
+              variant="secondary"
               dark={darkMode}
-              busy={busy === 'google'}
-              disabled={busy !== null}
-              onPress={withGoogle}
+              disabled
+              onPress={() => {}}
             />
           </View>
           <View style={styles.buttonGap}>
             <PillButton
               label="Mit E-Mail anmelden"
-              variant="secondary"
               dark={darkMode}
-              disabled
-              onPress={() => {}}
+              disabled={busy !== null}
+              onPress={() => router.push('/onboarding/konto')}
             />
           </View>
           <PillButton
@@ -125,8 +137,8 @@ export default function AccountScreen() {
         oder wechselst du es, fängst du von vorn an.
       </Text>
       <Text style={[styles.smallNote, { color: theme.sub }]}>
-        Apple und E-Mail sind noch nicht freigeschaltet — bis dahin geht es über
-        Google oder ohne Konto weiter.
+        Apple und Google sind noch nicht freigeschaltet — bis dahin geht es über
+        E-Mail oder ohne Konto weiter.
       </Text>
     </OnboardingScaffold>
   );

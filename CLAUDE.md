@@ -350,7 +350,8 @@ beschreibt weiterhin das Zielbild.
   "Code teilen" (Teilen-Menue, also WhatsApp & Co.), Feld "Code eingeben",
   Liste der Freunde, und der Name, unter dem Freunde einen sehen
   (`profil.anzeigename`, hoechstens 30 Zeichen). Der Onboarding-Name bleibt
-  privat auf dem Geraet. Ohne Konto weiterhin der Hinweis "Freunde brauchen
+  privat - seit 2026-09-14 zwar am eigenen Konto gesichert
+  (`nutzer_zustand.profil`), aber fuer Freunde unsichtbar. Ohne Konto weiterhin der Hinweis "Freunde brauchen
   ein Konto".
 - **Absicherung** (Migration `20260914120000_freundescode.sql`): Codes kann
   niemand selbst setzen oder fremde lesen. `freundschaft` war fuer den Nutzer
@@ -2530,6 +2531,9 @@ Ergebnis des ersten.
 | Einstellungen | juengerer gewinnt | wer auf dem iPad Darkmode einschaltet, meint das neuere |
 | Coins | gar nicht mehr (seit 2026-09-13) | Summe der Buchungen in `coin_buchung`, siehe "Coins liegen auf dem Server" |
 | FSRS-Karten | juengere Bewertung | eine Karte verdichtet ihre ganze Historie, die spaetere kennt alles |
+| Lern-Tagebuch (seit 2026-09-14) | je Zaehler Maximum, serverseitig erzwungen | welches Geraet welche Antworten schon kennt, weiss niemand - die Summe zaehlte doppelt |
+| Stufen-Zaehler der Wiederholung (seit 2026-09-14) | je Eintrag die juengere Aenderung | sie SINKEN bei falschen Antworten - Maximum haette jede Rueckstufung zurueckgedreht |
+| Profil aus dem Onboarding (seit 2026-09-14) | erledigtes Onboarding schlaegt unerledigtes, sonst das juengere als Ganzes | wer sich auf einem neuen Geraet anmeldet, bekommt sein Profil zurueck statt halber Antworten |
 
 **Der Fehler, der beim ersten Test zuschlug** - und der Grund, warum
 `geaendertAm` mitgespeichert wird: stand er auf einem frisch eingerichteten
@@ -2549,6 +2553,91 @@ die Quittung von Apple/Google.
 **Noch offen:** Entfernen setzt sich nicht ueber Geraete durch (gemerkte
 Saetze werden vereinigt) - dafuer braeuchte es Grabsteine. Lieber ein Satz zu
 viel in der Liste als ein verlorener.
+
+## Konto und Profil: wirklich alles am Konto (2026-09-14)
+
+Simons Auftrag: "Kannst du machen, dass wirklich alles gelernte gespeichert
+ist und der User ein Profil erstellen kann das gespeichert wird und auf
+welches die Lernergebnisse und Einstellungen gespeichert sind?"
+
+**Bestandsaufnahme vorher** (jeder AsyncStorage-Schluessel der App
+durchgegangen): am Konto hingen schon Einstellungen, Fortschrittszaehler,
+gemerkte und uebersprungene Saetze, Freischaltungen, FSRS-Karten, Coins und
+das Lern-Tagebuch. Fuenf Luecken:
+1. **Onboarding-Angaben** (Name, Geschlecht, Anrede, Alter, Anlaesse, Ziele,
+   Herkunft, Begleitfigur, erledigt) nur auf dem Geraet.
+2. **Stufen-Zaehler** der Woerter- und Saetze-Wiederholung
+   (`training/batchLeiter.ts`, neun Praefixe) nur auf dem Geraet.
+3. **Im Onboarding liess sich kein Konto anlegen**: E-Mail stand dort als
+   "noch nicht freigeschaltet" (funktionierte laengst ueber Profil > Konto),
+   Google ist nicht eingerichtet.
+4. **Angemeldet** zeigte die Konto-Seite wieder die Anmeldemaske; abmelden
+   ging nirgends (`signOut` wurde von keinem Screen aufgerufen).
+5. **Neues Geraet**: keine Anmeldung am Anfang, das Onboarding lief komplett
+   neu.
+(`zuletzt_besucht_v1` - die Wegmarke im Pfad - bleibt bewusst am Geraet.)
+
+**Server** (Migration `20260914220000_profil_und_training.sql`, live,
+Probelauf und Test zurueckgerollt 5 von 5): `nutzer_zustand` bekommt
+`profil jsonb` und `training jsonb` (Obergrenzen 20 KB / 2 MB). anon verliert
+alle Rechte auf die Tabelle (hatte sogar TRUNCATE), authenticated
+TRUNCATE/REFERENCES/TRIGGER.
+
+**Stufen-Zaehler tragen jetzt einen Zeitstempel** (`"2@1789012345678"`).
+Grund: sie SINKEN bei falschen Antworten. Mit "das Groessere gewinnt" haette
+jeder Abgleich die Rueckstufung zurueckgedreht, weil der Server noch den
+alten hoeheren Stand kennt. Alte Eintraege ohne `@` lesen sich als Zeitpunkt
+0, Einweg-Marken werden mit 0 geschrieben (gleich alt -> groesserer Wert =
+Vereinigung). Die neun Praefixe stehen EINMAL in `TRAINING_PRAEFIXE`
+(batchLeiter.ts); **wer einen neuen Zaehler anlegt, traegt ihn dort ein**,
+sonst bleibt er still am Geraet. Im Browser geprueft: altes und neues Format
+nebeneinander ergeben "2/20 auf Stufe 3".
+
+**Profil**: `OnboardingState` fuehrt `profilGeaendertAm` (nur Angaben ueber
+die Person, nicht `lastActiveAt`) und `uebernehmeProfil()`. Alte Profile ohne
+Zeitstempel bekommen beim Laden `lastActiveAt` - mit 0 schoeben sich zwei alte
+Geraete ihr Profil sonst endlos gegenseitig zu. Der Provider sitzt jetzt
+AUSSEN um AppState (`app/_layout.tsx`), damit der Abgleich es lesen kann.
+
+**Der Abgleich** (`lib/sync.ts`, `AppState.abgleichen`):
+- nimmt Profil und Trainingsstand mit; den Trainingsstand nur, wenn er sich
+  gegenueber dem Server geaendert hat (einige hundert KB).
+- **bricht ab, wenn das Lesen scheitert** - vorher lief er bei einem stillen
+  Lesefehler mit "Server leer" weiter und haette auf einem frischen Geraet
+  die leeren Vorgaben ueber das echte Profil geschoben.
+- **meldet, ob wirklich ALLES geschrieben wurde** (`gesichert`). Supabase
+  meldet Fehler als Rueckgabewert, bis dahin gingen abgelehnte Schreibvorgaenge
+  still unter. Plus das Tagebuch.
+- ein zweiter Aufruf waehrend eines laufenden bekommt DENSELBEN Durchgang
+  zurueck statt nichts - "Jetzt sichern" und "Abmelden" muessen das Ergebnis
+  kennen.
+- Regeln in `merge.ts` (`mergeTraining`, `trainingGleich`, `mergeProfil`),
+  11 neue Faelle in `npm run pruefe:merge`.
+
+**Oberflaeche:**
+- **Profil > Konto angemeldet**: E-Mail, Lernstand ("Gesichert um 14:32" /
+  "Nicht gesichert"), "Jetzt sichern", "Abmelden" mit Nachfrage. Die
+  Profil-Zeile nennt die E-Mail.
+- **Abmelden** sichert zuerst; klappt das nicht, bleibt alles, wie es ist
+  (mit Hinweis). Sonst: abmelden, DANN alles Lokale loeschen (Karten,
+  Trainingsstand, Tagebuch, Coins-Speicher, Wegmarke, App-Zustand auf
+  Vorgaben, Onboarding zurueck) - der Lernstand gehoert dem Konto. Die
+  Reihenfolge zaehlt: solange die Sitzung besteht, koennte ein Abgleich im
+  Hintergrund den leeren Stand verschmelzen. `signOut` faellt ohne Netz auf
+  `scope: 'local'` zurueck, sonst bliebe die Sitzung stehen.
+- **Onboarding, erste Seite**: "Ich habe schon ein Konto" -> `/onboarding/konto`
+  (eigene Route, /konto liegt hinter der Onboarding-Sperre der Tabs).
+  Nach der Anmeldung wird sofort abgeglichen; ist das Onboarding am Konto
+  erledigt, geht es direkt in die App.
+- **Onboarding O10**: "Mit E-Mail anmelden" funktioniert (neues Konto, danach
+  weiter mit O11); Google jetzt wie Apple gesperrt, Hinweistext berichtigt;
+  angemeldet steht dort nur noch "Dein Konto ist verbunden" mit Weiter.
+
+**Nicht durchgespielt:** alles, was eine echte Anmeldung braucht - Anlegen,
+Anmelden auf zweitem Geraet, Sichern, Abmelden. Geprueft sind Datenbank und
+Rechte, die Merge-Regeln, die Typen, das Laden alter und neuer Zaehler und die
+Screens ohne Anmeldung. **Datenschutz:** Alter, Geschlecht und Anrede liegen
+damit auf dem Server - gehoert in die Datenschutzerklaerung.
 
 ## Acht Tabellen hatten kein RLS (2026-09-10)
 
@@ -2661,9 +2750,10 @@ offenen Tabellen oben beschreibt: filtern ist nicht ablehnen.
 `20260910120000_rls_content_tabellen.sql` ist in der Datenbank wirksam,
 fehlt aber in der Migrations-Historie des Servers - `db push` wuerde sie
 erneut anwenden wollen. Dasselbe gilt jetzt fuer `20260913120000`. Wer die
-Historie aufraeumt: alle vier (`20260910120000`, `20260913120000`,
-`20260913180000`, `20260914120000`) mit `supabase migration repair --status
-applied` nachtragen.
+Historie aufraeumt: alle sieben (`20260910120000`, `20260913120000`,
+`20260913180000`, `20260914120000`, `20260914180000`, `20260914200000`,
+`20260914220000`) mit `supabase migration repair --status applied`
+nachtragen.
 
 ## Coins liegen auf dem Server (2026-09-13)
 
@@ -2750,8 +2840,8 @@ nicht `db push` (siehe dort).
 
 Simon hat das Konzept einer Statistikseite fuer beide Lernwege
 abgenommen ("Mach es genau so, bau zuerst das Tagebuch ein"). **Gebaut:
-das Tagebuch (seit IPA aus 6c8919c) und die Seite selbst.** Offen ist nur
-noch der Abgleich des Tagebuchs mit dem Server.
+das Tagebuch (seit IPA aus 6c8919c), die Seite selbst und seit dem
+2026-09-14 auch der Abgleich des Tagebuchs mit dem Server.
 
 **Warum das Tagebuch zuerst:** eine FSRS-Karte kennt nur ihren aktuellen
 Stand und ihre LETZTE Bewertung. Wie viel an welchem Tag gelernt wurde, und
@@ -2791,12 +2881,57 @@ Ergebnis) plus 1 Lektion, Teaser nicht mitgezaehlt; zwei Speed-Run-Saetze
 landen getrennt unter `no:speedrun`; nach Neuladen wird weitergezaehlt.
 Die Saetze-Wiederholung (Stufe 3) ist nur per Typpruefung abgedeckt.
 
-**Noch NICHT auf dem Server.** `lernaktivitaet` (seit 2026-08-22, `tag`,
-`karten`, `richtig`) wird weiterhin nirgends beschrieben. Geplant: Spalten
-`sprache`, `weg`, `ueberlebt`, `lektionen`, Primaerschluessel um Sprache und
-Weg erweitert, Abgleich in `sync.ts` mit der Zaehler-Regel (Maximum). Folge
-der Maximum-Regel, bewusst hingenommen: wer am selben Tag auf zwei Geraeten
-lernt, sieht die groessere Zahl, nicht die Summe.
+**Auf dem Server (2026-09-14, Migration `20260914180000_lernaktivitaet_tagebuch.sql`).**
+`lernaktivitaet` gab es seit 2026-08-22, beschrieben wurde sie nie - vor dem
+Umbau geprueft: 0 Zeilen. Jetzt eine Zeile je Konto, Tag, Sprache und Weg
+(`richtig`, `ueberlebt`, `nicht_verstanden`, `lektionen`; `karten` ist eine
+GERECHNETE Spalte aus den drei Stufen, damit sie der Summe nie widerspricht).
+- **Die App darf nur LESEN.** Geschrieben wird allein ueber
+  `tagebuch_abgleichen(p_zeilen jsonb)` (security definer, Nutzer aus der
+  Anmeldung): je Zaehler das GROESSERE, doppelte Zeilen im Aufruf
+  zusammengefasst, ungueltige Sprache/Weg und Tage ab uebermorgen still
+  verworfen, Zaehler auf 5000 bzw. 500 Lektionen gekappt, hoechstens 500
+  Zeilen je Aufruf. Vorher durfte der Nutzer die Tabelle frei schreiben, und
+  die Standard-Grants gaben anon und authenticated sogar TRUNCATE - ein
+  Geraet mit altem Stand haette Zahlen verkleinern koennen. Die Gruppen-
+  Policy fuer die spaetere Rangliste (`aktivitaet_gruppe`) bleibt.
+- **Nachgemessen:** Probelauf der ganzen Migration in einer zurueckgerollten
+  Transaktion, danach live eingespielt und derselbe Test noch einmal (zwei
+  Testkonten nur in der Transaktion, 12 von 12 Pruefungen: Groesseres
+  gewinnt, alter Stand verkleinert nichts, direktes Insert/Update/Delete
+  abgelehnt, fremde Zeilen unsichtbar, anon weder Funktion noch Lesen).
+  Keine Testkonten zurueckgeblieben. Oeffentliche API mit dem anon-Key:
+  Lesen, Insert und Funktion alle 401.
+- **In der App:** `tagebuchAbgleichen(nutzerId)` in `src/lib/sync.ts`, am
+  Ende jedes Abgleichs aus `AppState.abgleichen` aufgerufen - also bei Start,
+  Wegschalten und Rueckkehr wie der Rest. Ziehen (letzte 400 Tage), Schicken
+  (nur Eintraege, die fehlen oder irgendwo groesser sind, im SELBEN Fenster -
+  sonst gingen aeltere bei jedem Abgleich erneut hinaus), dann Verschmelzen
+  hinter der Schreibkette des Tagebuchs (`uebernehmeFern`), damit Antworten
+  waehrend der Wartezeit nicht verlorengehen. Scheitert es, bleibt der uebrige
+  Abgleich gueltig. Regeln in `merge.ts` (`mergeTagebuch`,
+  `tagebuchZuSchicken`), 5 neue Faelle in `npm run pruefe:merge`.
+- **Nicht im Browser durchgespielt:** der Abgleich braucht ein angemeldetes
+  Konto. Geprueft sind Datenbank, API-Rechte, die Merge-Regeln und dass die
+  App mit dem neuen Code fehlerfrei laedt - der erste echte Durchgang passiert
+  auf dem Geraet.
+- Folge der Maximum-Regel, bewusst hingenommen: wer am selben Tag auf zwei
+  Geraeten lernt, sieht die groessere Zahl, nicht die Summe. Und wie beim
+  `fortschritt`-Zaehler kommen die Zahlen vom Geraet - wer Streak-Coins
+  daran haengt, weiss, dass sie faelschbar sind.
+- **Faelschungsschutz besprochen und ZURUECKGESTELLT** (2026-09-14, Simon:
+  "Egal, lassen wir das erstmal"). Ausgangslage: bewertet wird auf dem
+  Geraet, die Speechmatics-Function liefert nur Text, getippte Antworten
+  erreichen den Server nie, und die Kursdaten liegen nur im App-Bundle. Drei
+  Wege lagen auf dem Tisch: (1) nur Grenzen - Server-Datum, kein Nachtragen
+  alter Tage, Obergrenzen; (2) Nachweis beim Sprechen - Streak und Rangliste
+  zaehlen nur Antworten, die ueber die Speechmatics-Function liefen, dazu
+  (1); Empfehlung, weil Offline-Lernen fuer die eigene Statistik bleibt;
+  (3) Server bewertet alles - einzig echt sicher, aber grosser Umbau,
+  Kursdaten auf den Server, ohne Internet zaehlt nichts. Schuetzen muss man
+  nur, was auszahlt oder verglichen wird; die eigene Statistik zu faelschen
+  taeuscht nur den Faelscher. Spaetestens mit den Streak-Coins wieder
+  aufgreifen.
 
 **Die Seite** (`src/features/statistik/StatistikScreen.tsx`, Rechnungen in
 `kartenBilanz.ts`, sitzt/wackelt in `src/features/srs/gedaechtnis.ts`).
@@ -3013,6 +3148,38 @@ Supabase Auth (die noch nicht existiert), beide lokal auf dem Geraet:
     kein `erwartet`, und die Function verhaelt sich wie vorher.
     Ob der Hinweis Akzente wirklich besser auffaengt, zeigt erst ein Test
     mit echten Aufnahmen; die Test-Audios sind saubere Sprachausgabe.
+  **Abgesichert gegen Missbrauch (2026-09-14, Edge-Function-Version 5).**
+  Ausloeser war Simons Frage, ob eine feindliche Injection ueber STT moeglich
+  sei. Antwort: nein - der erkannte Text geht nur zurueck ans Geraet, wird
+  dort verglichen und als Text angezeigt, landet in keiner Datenbankabfrage,
+  und es gibt kein `eval`/`innerHTML`/WebView. (Mit dem Konversationsmodus
+  kommt Prompt Injection dazu: dann darf das Transkript nur als
+  Nutzerinhalt ans Modell, nie in dessen Anweisungen.) Das echte Risiko
+  waren die KOSTEN, weil die Function mit dem oeffentlichen anon-Key
+  aufrufbar ist (Gaeste nutzen STT). Seitdem:
+  * **Nur die elf Sprachcodes der App** (`ERLAUBTE_SPRACHEN`), sonst 400 -
+    vorher liess sich mit `language=no` fuer jedes Audio das teurere
+    Enhanced-Modell erzwingen.
+  * **Hoechstens 29 Sekunden** (Simon: "knapp 30"), sonst 413, BEVOR
+    Speechmatics etwas sieht. Bei WAV (Handy: 16-bit, 16 kHz, mono) exakt
+    aus dem Dateikopf; bei anderen Formaten (Web-Vorschau nimmt WebM auf)
+    nur eine Byte-Grenze von 500 KB, rund 30 Sekunden bei ueblichen
+    Browser-Bitraten. Die App stoppt die Aufnahme bei 29 Sekunden NICHT von
+    selbst - wer laenger spricht, bekommt einen Fehler.
+  * **Bremse je Konto bzw. Gast-IP**: Konto 20 je Minute / 600 je Tag, Gast
+    30 / 800 (im Mobilfunk teilen sich viele eine IP). Tabelle `stt_aufruf`
+    und Funktion `stt_bremse` (Migration `20260914200000_stt_bremse.sql`),
+    nur fuer die Service-Rolle. IPs nur als gekuerzter SHA-256, Zeilen nach
+    einem Tag weg. Ungueltige und abgewiesene Aufrufe zaehlen nicht mit.
+    Faellt die Datenbank aus, laesst die Bremse DURCH - niemand soll mitten
+    in der Lektion nicht mehr sprechen koennen.
+  * **Fehlertexte von Speechmatics** gehen nur noch ins Function-Log, der
+    Aufrufer bekommt einen deutschen Satz.
+  * **Nachgemessen:** vor dem Deploy geprueft, dass Version 4 identisch mit
+    dem Repo war; Bremse in der Datenbank zurueckgerollt getestet (7 von 7),
+    danach live. Gegen die live Function mit dem anon-Key: falsche Sprache
+    400, 31-s-WAV 413, 600-KB-Nicht-WAV 413, ohne Audio 400, 1-s- und
+    28-s-WAV 200; die Bremse zaehlte genau die zwei gueltigen Aufrufe.
   **`whisper.rn` ist seit 2026-08-16 vollstaendig entfernt** (Nutzer-
   Entscheidung): `useWhisper.ts` geloescht, das npm-Paket deinstalliert, der
   Modell-Download-Code weg, `app/dev-tools.tsx` auf Speechmatics umgestellt.

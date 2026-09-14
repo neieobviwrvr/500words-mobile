@@ -68,7 +68,7 @@ const GESCHLECHT_LABEL: Record<string, string> = Object.fromEntries(
 
 export function ProfileScreen() {
   const { name, gender: geschlecht, addressing: ansprache } = useOnboardingState();
-  const { hatKonto, isGuest } = useAuthState();
+  const { hatKonto, isGuest, session } = useAuthState();
   const {
     uebersprungen,
     ueberspringenZuruecknehmen,
@@ -97,7 +97,7 @@ export function ProfileScreen() {
   const anzeigeName = name?.trim() || 'Dein Profil';
   const initiale = name?.trim() ? name.trim()[0].toUpperCase() : null;
   const sprache = getLanguage(targetLanguageId).label;
-  const kontoStand = hatKonto ? 'Angemeldet' : isGuest ? 'Gast' : 'Nicht angemeldet';
+  const kontoStand = hatKonto ? (session?.user.email ?? 'Angemeldet') : isGuest ? 'Gast' : 'Nicht angemeldet';
 
   // Ruhige Flaeche statt Verlauf: helles Orange mit dunklem Buchstaben (rund
   // 5:1), im Darkmode umgekehrt - der Buchstabe traegt die Farbe.

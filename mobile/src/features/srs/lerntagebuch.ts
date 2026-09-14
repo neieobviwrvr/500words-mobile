@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { mergeTagebuch } from '../../lib/merge';
 import type { Tier } from '../evaluation/evaluateConcepts';
 import type { LearningMode } from '../../state/AppState';
 
@@ -114,6 +115,21 @@ export function merkeLektion(sprache: string, zeit: Date = new Date()): Promise<
 }
 
 /**
+ * Den Stand vom Server hineinnehmen (2026-09-14, siehe `tagebuchAbgleichen`
+ * in lib/sync.ts). Je Zaehler das Groessere, weggenommen wird nichts.
+ *
+ * Laeuft hinter der Schreibkette und verschmilzt mit dem Stand, der DANN gilt
+ * - wer waehrend der Netzwerk-Wartezeit weiterlernt, verliert diese
+ * Antworten nicht an einen vorher gelesenen Stand.
+ */
+export function uebernehmeFern(fern: Tagebuch): Promise<void> {
+  return aendere((buch) => {
+    const neu = mergeTagebuch(buch, fern);
+    for (const tag of Object.keys(neu)) buch[tag] = neu[tag];
+  });
+}
+
+/**
  * Das ganze Tagebuch, fuer die Statistikseite und den Abgleich.
  *
  * Laeuft hinter der Schreibkette: wer direkt nach einer Antwort liest, sieht
@@ -126,4 +142,14 @@ export function ladeTagebuch(): Promise<Tagebuch> {
   });
   kette = lesen.catch(() => undefined);
   return lesen;
+}
+
+/** Beim Abmelden (2026-09-14): leert Speicher UND den Stand im Arbeitsspeicher. */
+export function vergissTagebuch(): Promise<void> {
+  const loeschen = kette.then(async () => {
+    stand = {};
+    await AsyncStorage.removeItem(SCHLUESSEL);
+  });
+  kette = loeschen.catch(() => undefined);
+  return loeschen;
 }

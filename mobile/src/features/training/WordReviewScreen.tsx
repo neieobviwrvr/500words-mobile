@@ -16,6 +16,7 @@ import {
   markiereJeErreicht,
   aktiverBatchIndex as aktiverBatchIndexGeneric,
   aktiverBatchPool as aktiverBatchPoolGeneric,
+  TRAINING_PRAEFIXE,
 } from './batchLeiter';
 import { normalisiereHanzi } from '../course/lessonEvaluation';
 import { bewerteWort } from '../evaluation/evaluateWord';
@@ -115,9 +116,11 @@ const BATCH_FREISCHALT_ANTEIL = 0.9;
 // seit 2026-08-26 in `batchLeiter.ts` (wiederverwendet von
 // SentenceReviewScreen.tsx fuer die Saetze-Leiter) - hier nur noch duenne,
 // wortspezifische Wrapper drumherum.
-const STUFE1_PRAEFIX = 'graduierung_v1:';
-const STUFE2_PRAEFIX = 'wort_stufe2_v1:';
-const JE_STUFE3_PRAEFIX = 'je_graduiert_v1:';
+// Die Praefixe selbst stehen in batchLeiter.ts (`TRAINING_PRAEFIXE`), damit
+// der Abgleich mit dem Konto keinen Zaehler uebersieht.
+const STUFE1_PRAEFIX = TRAINING_PRAEFIXE.wortStufe1;
+const STUFE2_PRAEFIX = TRAINING_PRAEFIXE.wortStufe2;
+const JE_STUFE3_PRAEFIX = TRAINING_PRAEFIXE.wortJeStufe3;
 const STUFE1_SCHWELLE = 3;
 const STUFE2_SCHWELLE = 3;
 // `w.hanzi ?? String(w.id)` statt vorher nur `w.hanzi ?? ''` - der leere

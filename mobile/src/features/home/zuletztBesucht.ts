@@ -51,3 +51,12 @@ export async function ladeBesuch(): Promise<ZuletztBesucht | null> {
     return null;
   }
 }
+
+/** Beim Abmelden (2026-09-14). */
+export async function vergissBesuch(): Promise<void> {
+  try {
+    await AsyncStorage.removeItem(SCHLUESSEL);
+  } catch {
+    // Absichtlich still - eine uebrig gebliebene Wegmarke schadet niemandem.
+  }
+}

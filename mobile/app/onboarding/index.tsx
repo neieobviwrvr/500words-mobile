@@ -3,6 +3,8 @@ import { router } from 'expo-router';
 import { Dropdown, OnboardingScaffold, type DropdownOption } from '../../src/components/onboarding';
 import { useAppState } from '../../src/state/AppState';
 import { useOnboardingState, type SourceLanguageId } from '../../src/state/OnboardingState';
+import { useAuthState } from '../../src/state/AuthState';
+import { aktionsFarbe } from '../../src/features/profile/ListenBausteine';
 import { LANGUAGES } from '../../src/data/languages';
 import { ONBOARDING_TOTAL_STEPS, stepNumber } from '../../src/data/onboardingOptions';
 import {
@@ -76,6 +78,7 @@ const SOURCE_LANGUAGES: DropdownOption[] = [
 export default function LanguageSelectScreen() {
   const { darkMode, targetLanguageId, setTargetLanguageId, setSourceLanguageId: setSourceLanguageIdApp } = useAppState();
   const { sourceLanguageId, setSourceLanguageId } = useOnboardingState();
+  const { hatKonto } = useAuthState();
   const theme = getTheme(darkMode);
 
   const chooseTarget = (id: string) => {
@@ -151,6 +154,20 @@ export default function LanguageSelectScreen() {
           );
         })}
       </View>
+
+      {/* Neues Geraet, schon ein Konto (2026-09-14): anmelden, und die App holt
+          Profil, Lernstand und Einstellungen zurueck, statt das ganze
+          Onboarding noch einmal abzufragen. */}
+      {hatKonto ? null : (
+        <Pressable
+          onPress={() => router.push({ pathname: '/onboarding/konto', params: { weiter: 'start' } })}
+          accessibilityRole="button"
+          accessibilityHint="Meldet dich an und holt deinen Lernstand zurück"
+          style={({ pressed }) => [styles.kontoLink, { opacity: pressed ? 0.6 : 1 }]}
+        >
+          <Text style={[styles.kontoLinkText, { color: aktionsFarbe(darkMode) }]}>Ich habe schon ein Konto</Text>
+        </Pressable>
+      )}
     </OnboardingScaffold>
   );
 }
@@ -192,5 +209,16 @@ const styles = StyleSheet.create({
   cardNote: {
     fontSize: FONT_SIZE.caption,
     marginTop: 2,
+  },
+  kontoLink: {
+    alignSelf: 'center',
+    minHeight: 44,
+    justifyContent: 'center',
+    paddingHorizontal: SPACING.lg,
+    marginTop: SPACING.xl,
+  },
+  kontoLinkText: {
+    fontSize: FONT_SIZE.body,
+    ...schrift('700'),
   },
 });

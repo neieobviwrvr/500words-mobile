@@ -145,7 +145,12 @@ export function AuthStateProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const signOut = useCallback(async () => {
-    await supabase.auth.signOut();
+    // Ohne Netz meldet `signOut()` einen Fehler und laesst die Sitzung STEHEN
+    // (supabase-js widerruft sie erst auf dem Server). Dann wenigstens auf
+    // dem Geraet abmelden - sonst glaubt die App, sie sei noch angemeldet,
+    // waehrend das Konto-Menue "abgemeldet" zeigt.
+    const { error } = await supabase.auth.signOut();
+    if (error) await supabase.auth.signOut({ scope: 'local' });
     await AsyncStorage.removeItem(GUEST_FLAG_KEY);
     setIsGuest(false);
   }, []);

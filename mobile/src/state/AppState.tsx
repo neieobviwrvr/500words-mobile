@@ -1,12 +1,28 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { abgleichen as syncAbgleichen } from '../lib/sync';
+import { abgleichen as syncAbgleichen, tagebuchAbgleichen } from '../lib/sync';
 import { supabase } from '../lib/supabase';
 import { COIN_BETRAEGE, coinAbholen, ladeCoinBuchungen, lokalErfuellt } from '../lib/coins';
-import { loadAllCards, saveCards } from '../features/srs/srsStorage';
+import { loadAllCards, loescheAlleKarten, saveCards } from '../features/srs/srsStorage';
+import { ladeTrainingsstand, loescheTrainingsstand, schreibeTrainingsstand } from '../features/training/batchLeiter';
+import { vergissTagebuch } from '../features/srs/lerntagebuch';
+import { vergissBesuch } from '../features/home/zuletztBesucht';
+import { useOnboardingState } from './OnboardingState';
+import { useAuthState } from './AuthState';
 
 /** Wo der Geraeteabgleich gerade steht. */
 export type AbgleichStand = 'aus' | 'laeuft' | 'fertig' | 'fehlgeschlagen';
+
+/**
+ * Was ein Abgleich ergeben hat (2026-09-14).
+ *
+ * `gesichert`: JEDER Schreibvorgang ging durch - Einstellungen, Profil,
+ * Trainingsstand, Karten, Freischaltungen, Tagebuch. Nur dann darf lokal
+ * etwas geloescht werden.
+ * `onboardingErledigt`: das Profil (lokal oder vom Konto) hat das Onboarding
+ * hinter sich - wer sich auf einem neuen Geraet anmeldet, ueberspringt es.
+ */
+export type AbgleichAusgang = { gesichert: boolean; onboardingErledigt: boolean };
 import { Phrase } from '../data/cheatsheetContent';
 import { DEFAULT_LANGUAGE_ID } from '../data/languages';
 
@@ -248,8 +264,16 @@ type AppStateValue = {
    * Wird vom Tab-Layout angestossen, sobald Sitzung UND lokaler Stand da
    * sind.
    */
-  abgleichen: (nutzerId: string) => Promise<void>;
+  abgleichen: (nutzerId: string) => Promise<AbgleichAusgang>;
   abgleichStand: AbgleichStand;
+  /** Wann zuletzt ALLES gesichert wurde, seit die App laeuft. `null` = noch nicht. */
+  zuletztGesichert: number | null;
+  /**
+   * Abmelden (2026-09-14): erst sichern, dann abmelden, dann alles Lokale
+   * loeschen - der Lernstand gehoert dem Konto, nicht dem Geraet. Laesst sich
+   * nicht sichern, bleibt alles, wie es ist.
+   */
+  abmelden: () => Promise<'abgemeldet' | 'nicht_gesichert'>;
 
   lockscreenContent: LockscreenContent;
   setLockscreenContent: (value: LockscreenContent) => void;
@@ -308,6 +332,9 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   const [isHydrated, setIsHydrated] = useState(false);
   // Abgleich mit dem Server (2026-08-22). `null` heisst: noch nie versucht.
   const [abgleichStand, setAbgleichStand] = useState<AbgleichStand>('aus');
+  const [zuletztGesichert, setZuletztGesichert] = useState<number | null>(null);
+  const { profil: onboardingProfil, uebernehmeProfil, resetOnboarding } = useOnboardingState();
+  const { session, signOut } = useAuthState();
   // Zeitpunkt der letzten lokalen Aenderung - der Schiedsrichter fuer
   // ersetzbare Werte beim Verschmelzen (siehe lib/merge.ts).
   const geaendertAmRef = useRef(0);
@@ -499,65 +526,139 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
    * Erst wenn `hydrated` steht, sonst liefe der Abgleich gegen den leeren
    * Vorgabezustand und schriebe ihn als "lokalen Stand" hoch.
    */
-  const laeuftRef = useRef(false);
-  const abgleichen = useCallback(async (nutzerId: string) => {
-    if (!hydrated.current) return;
+  const laufenderAbgleich = useRef<Promise<AbgleichAusgang> | null>(null);
+  const abgleichen = useCallback((nutzerId: string): Promise<AbgleichAusgang> => {
+    if (!hydrated.current) {
+      return Promise.resolve({ gesichert: false, onboardingErledigt: onboardingProfil.completed });
+    }
     // Zwei gleichzeitige Durchgaenge wuerden gegeneinander schreiben: beide
     // lesen denselben Serverstand, beide verschmelzen dagegen, der zweite
     // ueberschreibt das Ergebnis des ersten. Beim Wegschalten und
     // Zurueckkehren kurz hintereinander ist das kein theoretischer Fall.
-    if (laeuftRef.current) return;
-    laeuftRef.current = true;
-    setAbgleichStand('laeuft');
-    const karten = await loadAllCards();
-    const ergebnis = await syncAbgleichen(
-      nutzerId,
-      {
-        fortschritt,
-        einstellungen: { darkMode, targetLanguageId, sourceLanguageId, lockscreenContent, learningMode, wortartenFarben, uebersprungen },
-        gemerkt: { saved, savedMeta },
-        purchased,
-        geaendertAm: geaendertAmRef.current,
-      },
-      karten,
-    );
-    if (!ergebnis) {
-      laeuftRef.current = false;
+    //
+    // Seit 2026-09-14 bekommt ein zweiter Aufruf den LAUFENDEN Durchgang
+    // zurueck statt nichts: "Jetzt sichern" und "Abmelden" muessen wissen, ob
+    // gesichert wurde, auch wenn gerade ein Abgleich im Hintergrund lief.
+    if (laufenderAbgleich.current) return laufenderAbgleich.current;
+
+    const lauf = (async (): Promise<AbgleichAusgang> => {
+      setAbgleichStand('laeuft');
+      const [karten, training] = await Promise.all([loadAllCards(), ladeTrainingsstand()]);
+      const ergebnis = await syncAbgleichen(
+        nutzerId,
+        {
+          fortschritt,
+          einstellungen: { darkMode, targetLanguageId, sourceLanguageId, lockscreenContent, learningMode, wortartenFarben, uebersprungen },
+          gemerkt: { saved, savedMeta },
+          purchased,
+          geaendertAm: geaendertAmRef.current,
+          profil: onboardingProfil,
+          training,
+        },
+        karten,
+      );
+      if (!ergebnis) {
+        setAbgleichStand('fehlgeschlagen');
+        return { gesichert: false, onboardingErledigt: onboardingProfil.completed };
+      }
+
+      // Ergebnis lokal nachziehen. Die Setter loesen die Speicher-Wirkung aus,
+      // der Stand landet also von selbst wieder in AsyncStorage.
+      //
+      // Die zwei Marker MUESSEN vor den Settern stehen: React kann den
+      // Speicher-Effekt schon ausgefuehrt haben, bevor das `await` darunter
+      // zurueckkommt. Stuenden sie danach, haette dieser Schreibvorgang
+      // `geaendertAm` bereits hochgezogen - und der gerade vom Server geholte
+      // Stand gaelte als "eben hier geaendert".
+      const s = ergebnis.stand;
+      geaendertAmRef.current = s.geaendertAm;
+      ersterSchreibvorgang.current = true;
+      setFortschritt({ ...FORTSCHRITT_LEER, ...s.fortschritt } as Fortschritt);
+      setPurchased(s.purchased);
+      setSaved(s.gemerkt.saved);
+      setSavedMeta(s.gemerkt.savedMeta as Record<string, Phrase>);
+      const e = s.einstellungen as Partial<PersistedState>;
+      if (e.darkMode !== undefined) setDarkMode(e.darkMode);
+      if (e.targetLanguageId) setTargetLanguageId(e.targetLanguageId);
+      if (e.sourceLanguageId) setSourceLanguageId(e.sourceLanguageId);
+      if (e.lockscreenContent) setLockscreenContent(e.lockscreenContent);
+      if (e.learningMode) setLearningMode(e.learningMode);
+      if (e.wortartenFarben !== undefined) setWortartenFarben(e.wortartenFarben);
+      if (e.uebersprungen) setUebersprungen(e.uebersprungen);
+      // Profil aus dem Onboarding und Stufen-Zaehler (2026-09-14).
+      uebernehmeProfil(s.profil);
+      await schreibeTrainingsstand(s.training);
+      await saveCards(ergebnis.karten);
+      // Lern-Tagebuch (2026-09-14) - eigener Speicher, eigener Schreibweg,
+      // siehe lib/sync.ts. Scheitert es, bleibt der uebrige Abgleich gueltig;
+      // der naechste Durchgang holt es nach.
+      const tagebuchGesichert = await tagebuchAbgleichen(nutzerId);
+      // Coins NACH dem Abgleich: der hat gerade den Fortschritt hochgeschoben,
+      // gegen den der Server Herausforderungen prueft.
+      fortschrittRef.current = { ...FORTSCHRITT_LEER, ...s.fortschritt } as Fortschritt;
+      await coinsNachreichen();
+      const gesichert = ergebnis.gesichert && tagebuchGesichert;
+      setAbgleichStand(gesichert ? 'fertig' : 'fehlgeschlagen');
+      if (gesichert) setZuletztGesichert(Date.now());
+      return { gesichert, onboardingErledigt: s.profil.completed || onboardingProfil.completed };
+    })().catch((): AbgleichAusgang => {
       setAbgleichStand('fehlgeschlagen');
-      return;
+      return { gesichert: false, onboardingErledigt: onboardingProfil.completed };
+    });
+
+    laufenderAbgleich.current = lauf;
+    void lauf.finally(() => {
+      laufenderAbgleich.current = null;
+    });
+    return lauf;
+  }, [coinsNachreichen, fortschritt, darkMode, targetLanguageId, sourceLanguageId, lockscreenContent, learningMode, wortartenFarben, uebersprungen, saved, savedMeta, purchased, onboardingProfil, uebernehmeProfil]);
+
+  const abmelden = useCallback(async (): Promise<'abgemeldet' | 'nicht_gesichert'> => {
+    const nutzerId = session?.user?.id;
+    if (nutzerId) {
+      const ausgang = await abgleichen(nutzerId);
+      if (!ausgang.gesichert) return 'nicht_gesichert';
     }
 
-    // Ergebnis lokal nachziehen. Die Setter loesen die Speicher-Wirkung aus,
-    // der Stand landet also von selbst wieder in AsyncStorage.
-    //
-    // Die zwei Marker MUESSEN vor den Settern stehen: React kann den
-    // Speicher-Effekt schon ausgefuehrt haben, bevor das `await` darunter
-    // zurueckkommt. Stuenden sie danach, haette dieser Schreibvorgang
-    // `geaendertAm` bereits hochgezogen - und der gerade vom Server geholte
-    // Stand gaelte als "eben hier geaendert".
-    const s = ergebnis.stand;
-    geaendertAmRef.current = s.geaendertAm;
+    // Erst abmelden, DANN loeschen. Solange die Sitzung besteht, koennte ein
+    // Abgleich im Hintergrund anlaufen und den gerade geleerten Stand mit dem
+    // Server verschmelzen.
+    await signOut();
+
+    await Promise.all([
+      AsyncStorage.removeItem(COINS_KEY),
+      loescheAlleKarten(),
+      loescheTrainingsstand(),
+      vergissTagebuch(),
+      vergissBesuch(),
+    ]).catch(() => undefined);
+
+    // Zurueck auf die Vorgaben eines frischen Geraets. `geaendertAm` auf 0
+    // und der naechste Schreibvorgang zaehlt nicht als Aenderung - sonst
+    // gaelte der leere Stand bei der naechsten Anmeldung als der juengere.
+    geaendertAmRef.current = 0;
     ersterSchreibvorgang.current = true;
-    setFortschritt({ ...FORTSCHRITT_LEER, ...s.fortschritt } as Fortschritt);
-    setPurchased(s.purchased);
-    setSaved(s.gemerkt.saved);
-    setSavedMeta(s.gemerkt.savedMeta as Record<string, Phrase>);
-    const e = s.einstellungen as Partial<PersistedState>;
-    if (e.darkMode !== undefined) setDarkMode(e.darkMode);
-    if (e.targetLanguageId) setTargetLanguageId(e.targetLanguageId);
-    if (e.sourceLanguageId) setSourceLanguageId(e.sourceLanguageId);
-    if (e.lockscreenContent) setLockscreenContent(e.lockscreenContent);
-    if (e.learningMode) setLearningMode(e.learningMode);
-    if (e.wortartenFarben !== undefined) setWortartenFarben(e.wortartenFarben);
-    if (e.uebersprungen) setUebersprungen(e.uebersprungen);
-    await saveCards(ergebnis.karten);
-    // Coins NACH dem Abgleich: der hat gerade den Fortschritt hochgeschoben,
-    // gegen den der Server Herausforderungen prueft.
-    fortschrittRef.current = { ...FORTSCHRITT_LEER, ...s.fortschritt } as Fortschritt;
-    await coinsNachreichen();
-    laeuftRef.current = false;
-    setAbgleichStand('fertig');
-  }, [coinsNachreichen, fortschritt, darkMode, targetLanguageId, sourceLanguageId, lockscreenContent, learningMode, wortartenFarben, uebersprungen, saved, savedMeta, purchased]);
+    setDarkMode(false);
+    setTargetLanguageId(DEFAULT_LANGUAGE_ID);
+    setSourceLanguageId('de');
+    setPurchased({});
+    setCart([]);
+    setSaved({});
+    setSavedMeta({});
+    setSelectedThemes({});
+    setFortschritt(FORTSCHRITT_LEER);
+    setUebersprungen({});
+    setzeCoins({ bestaetigt: {}, ausstehend: {} });
+    setLockscreenContent('saetze');
+    setLearningMode('speedrun');
+    setWortartenFarben(false);
+    setZuletztGesichert(null);
+    setAbgleichStand('aus');
+    // Das Onboarding auch: das Profil gehoert ebenfalls dem Konto. Danach
+    // fuehrt das Tab-Layout von selbst zurueck an den Anfang.
+    resetOnboarding();
+    return 'abgemeldet';
+  }, [session, abgleichen, signOut, setzeCoins, resetOnboarding]);
 
   const ueberspringen = useCallback((satzId: string) => {
     setUebersprungen((u) => ({ ...u, [satzId]: true }));
@@ -607,6 +708,8 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       ueberspringenZuruecknehmen,
       abgleichen,
       abgleichStand,
+      zuletztGesichert,
+      abmelden,
       lockscreenContent,
       setLockscreenContent,
       learningMode,
@@ -615,7 +718,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       toggleWortartenFarben,
       hydrated: isHydrated,
     }),
-    [darkMode, toggleDark, targetLanguageId, sourceLanguageId, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes, coins, grantCoins, coinGrants, fortschritt, zaehle, uebersprungen, ueberspringen, ueberspringenZuruecknehmen, abgleichen, abgleichStand, lockscreenContent, learningMode, toggleLearningMode, wortartenFarben, toggleWortartenFarben, isHydrated]
+    [darkMode, toggleDark, targetLanguageId, sourceLanguageId, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes, coins, grantCoins, coinGrants, fortschritt, zaehle, uebersprungen, ueberspringen, ueberspringenZuruecknehmen, abgleichen, abgleichStand, zuletztGesichert, abmelden, lockscreenContent, learningMode, toggleLearningMode, wortartenFarben, toggleWortartenFarben, isHydrated]
   );
 
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;

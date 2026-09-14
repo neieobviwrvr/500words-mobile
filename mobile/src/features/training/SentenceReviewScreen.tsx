@@ -18,7 +18,7 @@ import { speakSentence, stopSpeaking } from '../tts/speak';
 import { bewerteUndSpeichere } from '../srs/bewerten';
 import { cardKey, loadCard } from '../srs/srsStorage';
 import { merkeBesuch } from '../home/zuletztBesucht';
-import { ladeZaehler, aendereZaehler, setzeZaehler, ladeJeErreicht, markiereJeErreicht, aktiverBatchPool } from './batchLeiter';
+import { ladeZaehler, aendereZaehler, setzeZaehler, ladeJeErreicht, markiereJeErreicht, aktiverBatchPool, TRAINING_PRAEFIXE } from './batchLeiter';
 import {
   Screen,
   PillButton,
@@ -70,9 +70,11 @@ import { getTheme, SPACING, RADIUS, FONT_SIZE, LINE_HEIGHT, ACCENT_GREEN, ACCENT
 // übernommen; die Zusatz-Diagnosen von ExerciseScreen könnten bei Bedarf
 // denselben Weg hierher finden.
 
-const STUFE1_PRAEFIX = 'satz_stufe1_v1:';
-const STUFE2_PRAEFIX = 'satz_stufe2_v1:';
-const JE_STUFE3_PRAEFIX = 'satz_je_stufe3_v1:';
+// Die Praefixe selbst stehen in batchLeiter.ts (`TRAINING_PRAEFIXE`), damit
+// der Abgleich mit dem Konto keinen Zaehler uebersieht.
+const STUFE1_PRAEFIX = TRAINING_PRAEFIXE.satzStufe1;
+const STUFE2_PRAEFIX = TRAINING_PRAEFIXE.satzStufe2;
+const JE_STUFE3_PRAEFIX = TRAINING_PRAEFIXE.satzJeStufe3;
 // Kategorie/Situation (2026-08-27, Simons Wunsch: "alles aus Kategorie/
 // Situation soll auch durch die drei Stufen laufen koennen, unabhaengig von
 // Saetze-Wiederholung") - EIGENE Praefixe statt der SATZ_*-Praefixe oben, ein
@@ -81,9 +83,9 @@ const JE_STUFE3_PRAEFIX = 'satz_je_stufe3_v1:';
 // Keine weitere Verschachtelung noetig (z.B. nach categoryId), weil jeder
 // Satz genau EINER Kategorie/Situation gehoert - der Schluessel bleibt die
 // Satz-ID, es gibt also keine Kollisionsgefahr zwischen Kategorien.
-const KAT_STUFE1_PRAEFIX = 'kat_stufe1_v1:';
-const KAT_STUFE2_PRAEFIX = 'kat_stufe2_v1:';
-const KAT_JE_STUFE3_PRAEFIX = 'kat_je_stufe3_v1:';
+const KAT_STUFE1_PRAEFIX = TRAINING_PRAEFIXE.katStufe1;
+const KAT_STUFE2_PRAEFIX = TRAINING_PRAEFIXE.katStufe2;
+const KAT_JE_STUFE3_PRAEFIX = TRAINING_PRAEFIXE.katJeStufe3;
 const STUFE1_SCHWELLE = 1;
 const STUFE2_SCHWELLE = 3;
 
