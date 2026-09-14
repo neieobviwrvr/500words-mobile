@@ -2058,6 +2058,13 @@ frueher hier notierte "offene Anschlusspunkt" ist damit erledigt.
   9 der 10 befuellten Kategorien haben genau ein Szenario (siehe
   `Sprachlisten/assign_categories.sql`). Die Unterthemen sind echte, noch
   nicht begonnene Content-Arbeit.
+- **Seit 2026-09-14 sind die Knoten UNFARBIG** (Simon: "Mach die Buttons in
+  den beiden Pfaden wieder unfarbig"), in beiden Pfaden: weiss mit grauem
+  Rand, aktuell = dicker Rand in Textfarbe, gesperrt und Situationen = grau,
+  erledigt bleibt GRUEN mit Haken. Blau fuer die Sprache und die
+  Kategorie-Farben (`KATEGORIE_FARBEN`) gelten im Pfad nicht mehr, der
+  Schleier ueber gesperrten Kacheln ist weg. Die Farbangaben im naechsten
+  Punkt sind damit ueberholt, die Zustaende selbst nicht.
 - **Knoten-Zustaende, aus echten Daten:** gruen + Haken = jeder Satz der
   Kategorie mindestens einmal bewertet; orange mit dickerem Rand = aktuell
   (erste nicht fertige freigeschaltete Kategorie); orange = freigeschaltet;

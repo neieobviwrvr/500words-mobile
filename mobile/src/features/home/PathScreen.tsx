@@ -46,17 +46,10 @@ import { scenarioLabel } from '../../data/scenarios';
 import { leihName } from '../../data/geliehen';
 import {
   getTheme,
-  ACCENT_BLUE,
-  ACCENT_ORANGE,
   ACCENT_GREEN,
   ACCENT_GREEN_BG,
-  PILL_FILL_BLUE,
-  PILL_FILL_ORANGE,
-  KATEGORIE_FARBEN,
   PATH_LINE_NEUTRAL,
   PATH_LINE_NEUTRAL_DARK,
-  VEIL_LIGHT,
-  VEIL_DARK,
   KACHEL_RAND_LIGHT,
   RADIUS,
   SPACING,
@@ -152,9 +145,10 @@ const THEME_ROW_H = 58;
 // Kategorien ab (`finding_friends`, `dating_romance`, `drinking_dining` und
 // `job_work` fielen mangels Bild schon vorher auf die Text-Pille zurueck -
 // ein Bruch, der jetzt verschwindet, weil wieder ALLE Kategorien denselben
-// Aufbau haben). An ihre Stelle tritt die Kategorie-Farbe selbst (siehe
-// `KATEGORIE_FARBEN` in tokens.ts) - der Name der Kategorie steht wieder als
-// Text auf der Kachel, wie vor dem Bild-Umbau.
+// Aufbau haben). Der Name der Kategorie steht wieder als Text auf der
+// Kachel, wie vor dem Bild-Umbau. (Die Kategorie-Farbe, die zuerst an die
+// Stelle der Bilder trat, ist seit dem 2026-09-14 ebenfalls raus - siehe
+// `nodeColors`.)
 //
 // Auffaechern: die Themen materialisieren von OBEN (Nutzer-Wunsch
 // 2026-08-20) - sie sinken aus ihrer Kategorie herab, statt seitlich
@@ -162,10 +156,6 @@ const THEME_ROW_H = 58;
 // einen Teil der Kategorie wirken statt wie etwas Hereingeschobenes.
 const EXPAND_DURATION = 420;
 const EXPAND_DROP = 14;
-/** Grau der Themen-Pillen - dunkler als das Gesperrten-Grau, damit sie
- *  lesbar bleiben, aber farblich neutral gegenueber den Kategorien. */
-const THEME_LINE = '#7D7A73';
-const THEME_FILL = '#F4F2ED';
 
 // Wischgeste nach rechts: der Inhalt folgt dem Finger, federt zurueck oder
 // gleitet hinaus. Ohne dieses Mitgehen passiert optisch nichts und die Geste
@@ -219,33 +209,34 @@ type Connector = { left: number; top: number; length: number; angle: number; col
 // Farbe pro Knoten. Bewusst zentral und nicht am Knoten selbst: der Zustand
 // ist die Information, die Farbe nur ihre Darstellung.
 //
-// Blau gehoert dem freien Grundwortschatz, Gruen steht nach dem Stil-Rezept
-// ausschliesslich fuer Erfolg und schlaegt deshalb alles andere. Kategorien
-// tragen seit 2026-09-01 ("Boom"-Vorgabe) ihre EIGENE Farbe statt eines
-// einheitlichen Orange - siehe `KATEGORIE_FARBEN` in tokens.ts.
+// UNFARBIG seit dem 2026-09-14 (Simon: "Mach die Buttons in den beiden
+// Pfaden wieder unfarbig"). Bis dahin trug die Sprach-Pille Blau und jede
+// Kategorie ihre eigene Farbe (`KATEGORIE_FARBEN`, "Boom"-Vorgabe vom
+// 2026-09-01), gesperrte mit einem Schleier darueber. Jetzt gilt fuer beide
+// Pfade das Material der Knoepfe zwischen den Karten: weisse Flaeche, grauer
+// Rand, Text in Textfarbe.
 //
-// `dark` waehlt zwischen Hell-/Dunkel-Variante der Kategorie-Farbe. Die
-// anderen Faelle (done/theme/lead) waren schon vorher pro Modus flache
-// Konstanten und brauchen dafuer keinen eigenen Zweig.
-function nodeColors(node: { id: string; state: NodeState; lead?: boolean; theme?: boolean }, dark: boolean) {
-  // Gruen schlaegt alles - nach dem Stil-Rezept ist es die einzige Farbe fuer
-  // Erfolg, und das gilt auch fuer ein abgeschlossenes Thema.
-  if (node.state === 'done') return { line: ACCENT_GREEN, fill: ACCENT_GREEN_BG };
-  // Aufgefaecherte Themen sind grau (Nutzer-Wunsch 2026-08-20): sie sollen
-  // sich nicht mit dem Blau des Grundwortschatzes und den Kategorie-Farben
-  // beissen. Gesperrte Themen bleiben durch das Schloss und ihren Namen
-  // unterscheidbar, nicht durch die Farbe. UNVERAENDERT vom "Boom"-Umbau -
-  // der galt ausdruecklich nur den Kategorie-KACHELN, nicht den Situationen
-  // darunter.
-  if (node.theme) return { line: THEME_LINE, fill: THEME_FILL };
-  if (node.lead) return { line: ACCENT_BLUE, fill: PILL_FILL_BLUE };
-  // Kategorie-Kachel: eigene Farbe, AUCH gesperrt - der Schleier in
-  // `PathNode` macht daraus "gesperrt", nicht eine ausgetauschte Graufarbe.
-  const t = KATEGORIE_FARBEN[node.id];
-  if (t) return dark ? { line: t.lineDark, fill: t.fillDark } : { line: t.line, fill: t.fill };
-  // Sicherheitsnetz fuer eine Kategorie ohne Eintrag (sollte nicht
-  // vorkommen - alle 14 aus `categories.ts` sind erfasst).
-  return { line: ACCENT_ORANGE, fill: PILL_FILL_ORANGE };
+// Was die Zustaende ohne Farbe traegt:
+// - erledigt: GRUEN mit Haken, die eine Farbe, die bleibt. Gruen steht nach
+//   dem Stil-Rezept fuer Erfolg - ohne sie saehe man dem Pfad den
+//   Fortschritt nicht mehr an.
+// - hier bist du: dicker Rand in Textfarbe
+// - gesperrt: graue Flaeche, grauer Text, Schloss
+// - Situationen: graue Flaeche und kleiner, wie seit 2026-08-20
+// Jeder Zustand steht zusaetzlich im `accessibilityLabel`.
+//
+// Die Grautoene kommen aus `getTheme`, damit sie im Darkmode mitgehen - die
+// frueheren Themen-Konstanten waren in beiden Modi hell.
+function nodeColors(node: { state: NodeState; theme?: boolean }, dark: boolean) {
+  if (node.state === 'done') return { line: ACCENT_GREEN, fill: ACCENT_GREEN_BG, text: ACCENT_GREEN };
+  const theme = getTheme(dark);
+  // Vor Situation und Sperre: auch eine Lektion im Kurs kann "hier bist du"
+  // sein, und die muss aus der grauen Reihe herausstechen.
+  if (node.state === 'current') return { line: theme.text, fill: theme.cardBg, text: theme.text };
+  if (node.state === 'locked' || node.theme) {
+    return { line: theme.dividerColor, fill: theme.subtleFill, text: theme.sub };
+  }
+  return { line: theme.dividerColor, fill: theme.cardBg, text: theme.text };
 }
 
 /**
@@ -1051,10 +1042,6 @@ function PathNode({
   const colors = nodeColors(node, dark);
   const isLocked = node.state === 'locked';
   const isCurrent = node.state === 'current';
-  // Nur echte Kategorie-Kacheln bekommen den Schleier - Situationen (theme)
-  // und die Sprach-Pille (lead) bleiben bei ihrer bisherigen Darstellung
-  // (siehe Kommentar bei `nodeColors`).
-  const zeigeSchleier = isLocked && !node.theme && !node.lead;
 
   // Aufbau in zwei Schichten, und das ist wichtig:
   //
@@ -1129,30 +1116,17 @@ function PathNode({
           },
         ]}
       >
-        {/* Schleier fuer gesperrte Kategorie-Kacheln (2026-09-01): die
-            Flaeche behaelt ihre Kategorie-Farbe, wird nur abgedunkelt/
-            aufgehellt - dieselbe Technik wie bei den Lektionen-Kategorie-
-            karten (`VEIL_LIGHT`/`VEIL_DARK`). Zuerst gezeichnet, damit Text
-            und Schloss-Symbol DARUEBER liegen und scharf bleiben - ein
-            flacher `opacity`-Wert haette beides mit ausgeblichen. */}
-        {zeigeSchleier ? (
-          <View
-            accessibilityElementsHidden
-            importantForAccessibility="no"
-            style={[styles.nodeVeil, { backgroundColor: dark ? VEIL_DARK : VEIL_LIGHT }]}
-          />
-        ) : null}
         {node.state === 'done' && !node.theme ? (
-          <Feather name="check" size={14} color={colors.line} accessibilityElementsHidden />
+          <Feather name="check" size={14} color={colors.text} accessibilityElementsHidden />
         ) : null}
         {isLocked ? (
-          <Feather name="lock" size={13} color={colors.line} accessibilityElementsHidden />
+          <Feather name="lock" size={13} color={colors.text} accessibilityElementsHidden />
         ) : null}
         <Text
           numberOfLines={2}
           style={[
             node.lead ? styles.nodeLabelLead : node.theme ? styles.nodeLabelTheme : styles.nodeLabel,
-            { color: colors.line },
+            { color: colors.text },
           ]}
         >
           {node.label}
@@ -1343,19 +1317,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: SPACING.xs,
     paddingHorizontal: SPACING.md,
-  },
-  // Schleier fuer gesperrte Kategorie-Kacheln (2026-09-01). Eigener
-  // `borderRadius` statt `overflow: 'hidden'` auf `.node`: der Schleier
-  // folgt so der Pillenform, ohne dass der Rand beschnitten wird.
-  // (Bis 2026-09-03 stand hier die Druckkante als Begruendung - die gibt
-  // es nicht mehr, der eigene Radius ist aber weiterhin richtig.)
-  nodeVeil: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    borderRadius: RADIUS.pill,
   },
   nodeTheme: {
     // Kleiner und leiser als eine Kategorie - ein Thema ist ein Teil von ihr,
