@@ -100,3 +100,40 @@ export const SITUATIONS_REIHENFOLGE: Record<string, string[]> = {
     'job_lohn',
   ],
 };
+/**
+ * Wie die Situationen EINER Kategorie zu ordnen sind - eigene vor
+ * geliehenen, gelistete an ihrer festen Position, der Rest nach Groesse.
+ *
+ * Steht hier und nicht im Screen, weil sie ZWEI Stellen bedient: die
+ * Kachelreihe im Lektionen-Screen (`useCategorySituations`) und die
+ * Satzliste darunter (`CheatsheetCategoryScreen`). Liefen sie
+ * auseinander, staende derselbe Content in zwei Reihenfolgen da - genau
+ * die Doppelung, vor der schon `saetzeFuer` in geliehen.ts warnt.
+ */
+export function situationsVergleich<T extends { scenario: string; geliehen: boolean; total: number }>(
+  categoryId: string,
+): (a: T, b: T) => number {
+  // Ohne Vorgabe: eigene Situationen zuerst, danach die geliehenen -
+  // innerhalb beider die groesste zuerst. Ohne das eroeffnet jede
+  // Kategorie mit derselben Leihgabe.
+  const standard = (a: T, b: T) => {
+    if (a.geliehen !== b.geliehen) return a.geliehen ? 1 : -1;
+    return b.total - a.total;
+  };
+
+  const reihenfolge = SITUATIONS_REIHENFOLGE[categoryId];
+  if (!reihenfolge) return standard;
+
+  // Gelistete zuerst, in genau dieser Position. Was nicht in der Liste
+  // steht - z.B. neuer Content ohne zugewiesene Position - faellt hinten
+  // an, statt zu verschwinden.
+  const position = new Map(reihenfolge.map((scenario, i) => [scenario, i]));
+  return (a, b) => {
+    const pa = position.get(a.scenario);
+    const pb = position.get(b.scenario);
+    if (pa !== undefined && pb !== undefined) return pa - pb;
+    if (pa !== undefined) return -1;
+    if (pb !== undefined) return 1;
+    return standard(a, b);
+  };
+}

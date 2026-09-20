@@ -108,7 +108,36 @@ export function PhraseCard({
           />
         ) : (
           <>
-            <Text style={[styles.target, { color: theme.text }]}>{phrase.text}</Text>
+            {/* Ohne eigene Schrift traegt der HAUPTTEXT die Farben
+                (berichtigt 2026-09-20).
+                
+                Hier stand ein schlichtes <Text>, und dadurch bekamen NEUN
+                der elf Sprachen nie eine Wortart-Farbe zu sehen: die Farben
+                haengen im Zweig darunter an `phrase.phonetic`, und die gibt
+                es nur bei Chinesisch und Russisch. Die Tags selbst lagen
+                laengst vollstaendig vor (alle 6.760 Saetze, 2026-09-03) -
+                genau dafuer wurden sie erzeugt.
+                
+                Die Bedingung bleibt `!phrase.phonetic`: wo es eine
+                Lautschrift gibt, ist `phrase.text` die SCHRIFT, und
+                TaggedTokens wuerde sie durch die Lautschrift ersetzen statt
+                sie nur einzufaerben (Simons Vorgabe "Schriftzeichen nie
+                einfaerben", siehe Kommentar oben und SatzTemplate.tsx).
+                
+                Geprueft, bevor das hier stand: in allen elf Sprachen ergibt
+                `wordTags` mit Leerzeichen verbunden exakt den Satz - 6.760
+                von 6.760. Ohne diese Zusicherung waere es gefaehrlich,
+                TaggedTokens den sichtbaren Satz zeichnen zu lassen. */}
+            {!phrase.phonetic && phrase.wordTags && phrase.wordTags.length > 0 ? (
+              <TaggedTokens
+                style={styles.target}
+                textColor={theme.text}
+                showColors={zeigeFarben}
+                tokens={phrase.wordTags.map((t) => ({ t: t.w, c: t.c }))}
+              />
+            ) : (
+              <Text style={[styles.target, { color: theme.text }]}>{phrase.text}</Text>
+            )}
             {phrase.phonetic ? (
               phrase.wordTags && phrase.wordTags.length > 0 ? (
                 <Text style={[styles.phonetic, { color: theme.sub }]}>
