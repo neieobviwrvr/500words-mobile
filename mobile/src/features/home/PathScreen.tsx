@@ -16,8 +16,6 @@ import type { BottomTabNavigationProp } from 'expo-router/tabs';
 import { Feather } from '@expo/vector-icons';
 import { LEARNING_MODE_LABEL, useAppState } from '../../state/AppState';
 import { CATEGORIES, GRUNDWORTSCHATZ_ID } from '../../data/categories';
-import { sichtbareSituationen } from '../../data/demo';
-import { useAuthState } from '../../state/AuthState';
 import { getLanguage } from '../../data/languages';
 import { Screen } from '../../components';
 import { useTabLeistenFreiraum } from '../../components/tabLeiste';
@@ -255,7 +253,6 @@ function nodeColors(node: { state: NodeState; theme?: boolean }, dark: boolean) 
  */
 export function useLernpfad() {
   const { darkMode, purchased, targetLanguageId, learningMode } = useAppState();
-  const { hatKonto } = useAuthState();
   const activeLanguage = getLanguage(targetLanguageId);
   const scrollRef = useRef<ScrollView>(null);
   const scrollHinten = useRef<ScrollView>(null);
@@ -465,10 +462,11 @@ export function useLernpfad() {
       return { nodes: [] as RawNode[], currentIndex: 0 };
     }
 
-    // ALLE Kategorien, auch ohne Konto (berichtigt 2026-08-23, siehe
-    // data/demo.ts) - gesperrte Kategorien sollen werben, nicht verschwinden.
-    // Die Demo-Grenze wirkt seit der Berichtigung nur noch auf Situationen
-    // innerhalb einzelner Kategorien, siehe `sichtbareSituationen` unten.
+    // ALLE Kategorien und ALLE ihre Situationen, mit Konto wie ohne
+    // (2026-08-23 / 2026-09-20, siehe data/demo.ts) - gesperrte Kategorien
+    // sollen werben, nicht verschwinden und auch nicht halbiert werden. Sie
+    // sind fuer einen Gast ohnehin nicht spielbar; wegzulassen schuetzt
+    // nichts und kostet nur Schaufenster.
     const purchasedCategories = CATEGORIES.filter((c) => purchased[c.id]);
     const lockedCategories = CATEGORIES.filter((c) => !purchased[c.id]);
 
@@ -484,9 +482,7 @@ export function useLernpfad() {
     // es zu holen gibt. Ihre Themen fuehren dann in den Shop.
     const themenVon = (categoryId: string, locked: boolean): RawNode[] => {
       if (!themesMounted || !expandedIds.includes(categoryId)) return [];
-      // Ohne Konto nur die ersten Situationen je Kategorie - siehe
-      // data/demo.ts.
-      return sichtbareSituationen(situations.byCategory[categoryId] ?? [], hatKonto, categoryId, purchased).map((sit) => ({
+      return (situations.byCategory[categoryId] ?? []).map((sit) => ({
         id: `${categoryId}:${sit.scenario}`,
         label: leihName(categoryId, sit.scenario) ?? scenarioLabel(sit.scenario),
         state: (locked
@@ -564,7 +560,7 @@ export function useLernpfad() {
 
     return { gefuehrt, speed };
   }, [course.lessons, guidedProgress.module, guidedProgress.lektionen,
-      guidedProgress.aktuelleLektion, guidedProgress.aktuellesModul, purchased, activeLanguage.label, activeLanguage.table, progress.byCategory, situations.recentCategoryIds, situations.recentSituations, besuch, targetLanguageId, expandedIds, offenGefuehrt, themesMounted, situations.byCategory, toggleCategory, toggleModul, hatKonto]);
+      guidedProgress.aktuelleLektion, guidedProgress.aktuellesModul, purchased, activeLanguage.label, activeLanguage.table, progress.byCategory, situations.recentCategoryIds, situations.recentSituations, besuch, targetLanguageId, expandedIds, offenGefuehrt, themesMounted, situations.byCategory, toggleCategory, toggleModul]);
 
   // ---------------------------------------------------------------------
   // Zickzack-Layout: Pillen abwechselnd links/rechts, verbunden durch
@@ -682,7 +678,7 @@ export function useLernpfad() {
 }
 
 export function PathScreen() {
-  // `purchased` und `hatKonto` liest seit 2026-09-13 `useLernpfad`, nicht mehr der Screen.
+  // `purchased` liest seit 2026-09-13 `useLernpfad`, nicht mehr der Screen.
   const { darkMode, targetLanguageId, coins, learningMode, toggleLearningMode } =
     useAppState();
   const theme = getTheme(darkMode);

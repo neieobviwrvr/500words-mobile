@@ -1,76 +1,67 @@
-import { GRUNDWORTSCHATZ_ID } from './categories';
-
 /**
- * Was jemand OHNE Konto zu sehen bekommt (2026-08-22, berichtigt 2026-08-23).
+ * Was jemand OHNE Konto zu sehen bekommt (2026-08-22, Grenze zweimal neu
+ * gezogen - 2026-08-23 und 2026-09-20).
  *
  * Nutzer-Entscheidung (Simon): "Leute ohne Account sollen nur die
  * 'Demo-Version' der App sehen [...] Man muss sich anmelden und registriert
  * haben um mit Freunden in Gruppen zu kommen, deren Fortschritt zu sehen oder
  * irgendetwas zu kaufen."
  *
- * Damit hat sich die Bedeutung des Gastmodus umgedreht. Bis heute stand in
- * CLAUDE.md "Gast-Modus = nur lokale Speicherung, App bleibt voll nutzbar" -
- * der Unterschied war rein technisch (kein Abgleich). Jetzt ist er
- * INHALTLICH: der Gast sieht weniger.
- *
  * ============================================================ Zwei Achsen
  *
  * Nicht verwechseln - es gibt zwei voneinander unabhaengige Beschraenkungen:
  *
- *   KONTO?        entscheidet ueber den DEMO-Umfang (diese Datei)
+ *   KONTO?        entscheidet ueber Kaufen, Freunde, Gruppen, Abgleich
+ *                 (diese Datei)
  *   LAUNCH-PHASE? entscheidet ueber das Teaser-Modell (Preismodell in
  *                 CLAUDE.md: erste 6 Monate alles frei, ab Monat 7 nur noch
  *                 2-3 Grundlagen-Kategorien fuer neue Nutzer)
  *
- * Ein registrierter Nutzer in der Launch-Phase bekommt also alles; ein Gast
- * in derselben Phase bekommt die Demo. Wer die beiden vermischt, baut
- * entweder eine Demo, die sich nach sechs Monaten heimlich aendert, oder ein
- * Teaser-Modell, das Gaeste nicht erreicht.
+ * Wer die beiden vermischt, baut entweder eine Demo, die sich nach sechs
+ * Monaten heimlich aendert, oder ein Teaser-Modell, das Gaeste nicht
+ * erreicht.
  *
- * ============================================================ Berichtigt 2026-08-23
+ * ============================================================ Die Grenze
+ *                                                              liegt NICHT
+ *                                                              im Content
  *
- * **Kategorien werden NICHT mehr aus Pfad/Lektionen gefiltert.** Der erste
- * Entwurf entfernte Kategorien ausserhalb der Demo-Liste komplett aus der
- * Anzeige - Simon fand beim Testen mit Chinesisch nur 4 von 14 Kategorien
- * vor, der Rest war spurlos weg, nicht einmal als gesperrter Knoten. Das
- * widersprach dem AELTEREN, weiterhin gueltigen Grundsatz aus CLAUDE.md:
+ * Ein Gast sieht heute JEDE Kategorie mit ALLEN ihren Situationen - genau
+ * dasselbe wie jemand mit Konto. Das Konto entscheidet nur darueber, was
+ * man TUN kann: kaufen, Freunde haben, in Gruppen lernen, den Stand auf ein
+ * zweites Geraet bekommen (siehe `KONTO_NOETIG` unten).
+ *
+ * Diese Datei hatte bis zum 2026-09-20 zwei Stellschrauben dafuer, beide
+ * sind ersatzlos entfallen:
+ *
+ * 1. `sichtbareKategorien` (weg am 2026-08-23) entfernte Kategorien
+ *    ausserhalb der Demo-Liste komplett aus der Anzeige. Simon fand beim
+ *    Testen mit Chinesisch nur 4 von 14 Kategorien vor, der Rest war
+ *    spurlos weg, nicht einmal als gesperrter Knoten.
+ *
+ * 2. `sichtbareSituationen` (weg am 2026-09-20) kappte innerhalb von Club +
+ *    Nightlife und Travel + Transportation auf die ersten zwei Situationen.
+ *    Simon beim Test: "auf dem Lernpfad [...] nur noch zwei Situationen
+ *    sichtbar - was soll ich damit anfangen???"
+ *
+ * **Beide Male derselbe Denkfehler, und er ist der Grund, warum hier keine
+ * dritte Stellschraube hingehoert:** die betroffenen Kategorien sind fuer
+ * einen Gast ohnehin GESPERRT. Jede ihrer Situationen fuehrt in den Shop,
+ * keine ist spielbar. Wegzulassen schuetzt also gar nichts - es nimmt nur
+ * Schaufenster weg. Club hat zehn Situationen und 130 Saetze; sichtbar
+ * waren zwei. Das wirkt nicht wie eine Kostprobe, sondern wie eine leere
+ * Kategorie, und genau so hat es sich beim Testen auch angefuehlt.
+ *
+ * Es gilt damit wieder ungeteilt der aeltere Grundsatz aus CLAUDE.md:
  * "Auch gesperrte Kategorien faechern auf - der Pfad soll zeigen, was es zu
- * holen gibt" und "der Katalog soll bewerben, nicht verstecken". Kategorien
- * ausblenden ist das Gegenteil von bewerben.
+ * holen gibt", "der Katalog soll bewerben, nicht verstecken".
  *
- * Die Demo-Grenze wirkt seitdem nur noch auf SITUATIONEN, und zwar nur
- * innerhalb der Kategorien in `DEMO_KATEGORIEN` - jede andere gesperrte
- * Kategorie zeigt weiterhin ALLE ihre Situationen als Werbung, genau wie vor
- * der Demo-Grenze. `sichtbareKategorien`/`zeigtKategorie` sind damit
- * entfallen; die Bildschirme zeigen `CATEGORIES` direkt.
+ * **Ein Nebenfehler ist damit mitverschwunden:** `LessonsScreen` rechnete
+ * seine Satzzahl (`gesamt`, Beschriftung von "Alle N" und der Wortliste)
+ * aus der GEKUERZTEN Liste. Gaeste sahen dort nicht 130, sondern die Summe
+ * der zwei sichtbaren Situationen - die Anzeige-Grenze war zur vermeintlichen
+ * Wahrheit ueber den Content geworden. Wer je wieder eine Sichtbarkeits-
+ * Grenze einzieht, filtert sie erst NACH solchen Rechnungen ein.
  */
-
-/**
- * **VORLAEUFIG - der genaue Umfang ist noch offen.**
- *
- * Simon: "zum Beispiel nur zwei Kategorien und davon zwei Situationen oder so
- * aehnlich (sprechen wir nochmal durch)". Sein Beispiel stand hier als
- * Startwert; seit der Berichtigung 2026-08-23 filtert es keine Kategorien
- * mehr aus der Anzeige (siehe oben) - `DEMO_KATEGORIEN` bestimmt jetzt nur
- * noch, WELCHE gesperrten Kategorien eine Situations-Kostprobe statt der
- * vollen Werbeliste zeigen. Zwei sind es seit dem 2026-08-23: Club +
- * Nightlife (der urspruengliche Startwert) und Travel + Transportation
- * (Nutzer-Wunsch, gleicher Tag).
- *
- * `grundwortschatz` steht bewusst NICHT (mehr) hier: er ist keine Kaufkategorie,
- * sondern der immer-freie Grundwortschatz - ihn zu kappen waere keine
- * Kostprobe, sondern eine Kuerzung von etwas, das laut CLAUDE.md "dauerhaft
- * gratis" ist. Siehe `sichtbareSituationen` fuer die explizite Ausnahme.
- *
- * Offen und beim Durchsprechen zu klaeren:
- *   - Sollen es feste Kategorien sein oder die zum Onboarding passenden?
- *   - Duerfen Gaeste den gefuehrten Kurs sehen? Der haengt an keiner
- *     Kategorie und ist heute komplett offen.
- */
-export const DEMO_KATEGORIEN = ['club_nightlife', 'travel_transportation'];
-
-/** Wie viele Situationen je Kategorie im Demo-Umfang sichtbar sind. */
-export const DEMO_SITUATIONEN_JE_KATEGORIE = 2;
 
 /**
  * Was ein Konto voraussetzt - je Fall ein eigener Satz fuer die Oberflaeche.
@@ -98,37 +89,3 @@ export const KONTO_NOETIG = {
 } as const;
 
 export type KontoGrund = keyof typeof KONTO_NOETIG;
-
-/** Ist diese Kategorie eine der wenigen mit Situations-Kostprobe? */
-export function imDemoUmfang(categoryId: string): boolean {
-  return DEMO_KATEGORIEN.includes(categoryId);
-}
-
-/**
- * Sichtbare Situationen einer Kategorie - fuer Gaeste ggf. auf eine
- * Kostprobe gekuerzt (berichtigt 2026-08-23, siehe Kopfkommentar der Datei).
- *
- * Reihenfolge der Ausnahmen, jede davon gibt die VOLLE Liste zurueck:
- *   1. Mit Konto gilt keine Grenze.
- *   2. Gekaufte Kategorien sind gekauft - eine Demo wuerde hier etwas
- *      WEGNEHMEN statt anzupreisen.
- *   3. Der Grundwortschatz ist keine Kaufkategorie, sondern laut CLAUDE.md
- *      "dauerhaft gratis" - ihn zu kappen waere keine Kostprobe, sondern
- *      eine Kuerzung von etwas, das jedem gehoert.
- *   4. Jede Kategorie AUSSERHALB von `DEMO_KATEGORIEN` zeigt ebenfalls alles:
- *      sie ist reiner Katalog/Werbung ("was gibt es zu kaufen"), keine
- *      Kostprobe. Nur die Kategorien IN `DEMO_KATEGORIEN` bekommen die
- *      Kuerzung.
- */
-export function sichtbareSituationen<T>(
-  situationen: T[],
-  hatKonto: boolean,
-  categoryId?: string,
-  purchased: Record<string, boolean> = {},
-): T[] {
-  if (hatKonto) return situationen;
-  if (categoryId && purchased[categoryId]) return situationen;
-  if (categoryId === GRUNDWORTSCHATZ_ID) return situationen;
-  if (!categoryId || !imDemoUmfang(categoryId)) return situationen;
-  return situationen.slice(0, DEMO_SITUATIONEN_JE_KATEGORIE);
-}

@@ -4,8 +4,6 @@ import { router } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
 import { useAppState } from '../../state/AppState';
 import { CATEGORIES, CATEGORY_BY_ID, GRUNDWORTSCHATZ_ID } from '../../data/categories';
-import { sichtbareSituationen } from '../../data/demo';
-import { useAuthState } from '../../state/AuthState';
 import { scenarioLabel } from '../../data/scenarios';
 import { leihName } from '../../data/geliehen';
 import { TRAINING_MODES } from '../../data/trainingModes';
@@ -105,7 +103,6 @@ const TINT_ORDER = ['ankommen', 'essen', 'leute', 'alltag', 'grundlagen'] as con
 
 export function LessonsScreen() {
   const { darkMode, purchased, targetLanguageId } = useAppState();
-  const { hatKonto } = useAuthState();
   const theme = getTheme(darkMode);
   const situations = useCategorySituations(targetLanguageId);
   // Welches Kategorie-Chevron-Dropdown gerade offen ist - EINE Stelle statt
@@ -118,10 +115,10 @@ export function LessonsScreen() {
 
   // Grundwortschatz zuerst, dann freigeschaltet, dann gesperrt.
   //
-  // ALLE Kategorien, auch ohne Konto (berichtigt 2026-08-23, siehe
-  // data/demo.ts) - der Katalog soll werben, nicht Kategorien verschwinden
-  // lassen. Die Demo-Grenze wirkt seitdem nur noch auf Situationen innerhalb
-  // einzelner Kategorien, siehe `sichtbareSituationen` weiter unten.
+  // ALLE Kategorien und ALLE ihre Situationen, mit Konto wie ohne
+  // (2026-08-23 / 2026-09-20, siehe data/demo.ts) - der Katalog soll werben,
+  // nicht Kategorien verschwinden lassen und auch nicht deren Reihen
+  // halbieren.
   const orderedIds = useMemo(() => {
     const paid = CATEGORIES.map((c) => c.id);
     return [
@@ -195,13 +192,15 @@ export function LessonsScreen() {
             const tintKey =
               categoryId === GRUNDWORTSCHATZ_ID ? 'grundlagen' : TINT_ORDER[i % TINT_ORDER.length];
             const tint = WORLD_TINTS[tintKey];
-            // Ohne Konto nur die ersten Situationen je Kategorie
-            // (data/demo.ts). Nicht in `useCategorySituations` gefiltert,
-            // sondern hier: der Hook liefert die Wahrheit ueber den Content,
-            // die Demo-Grenze ist eine Anzeige-Entscheidung.
-            const list = sichtbareSituationen(situations.byCategory[categoryId] ?? [], hatKonto, categoryId, purchased);
+            const list = situations.byCategory[categoryId] ?? [];
             // Saetze der ganzen Kategorie, fuer die Beschriftung des
-            // "Alle"-Knopfes.
+            // "Alle"-Knopfes und der Wortliste.
+            //
+            // Zaehlt seit 2026-09-20 wieder die ganze Kategorie. Bis dahin
+            // lief `list` vorher durch die Demo-Kappung, und Gaeste lasen
+            // hier nicht die 130 Saetze von Club, sondern die Summe der zwei
+            // sichtbaren Situationen - eine Anzeige-Grenze, die sich als
+            // Wahrheit ueber den Content ausgab (siehe data/demo.ts).
             const gesamt = list.reduce((n, sit) => n + sit.total, 0);
             const locked = !isUnlocked(categoryId);
             // Nur wenn es ueberhaupt ein Chevron-Menue gibt, darf die
