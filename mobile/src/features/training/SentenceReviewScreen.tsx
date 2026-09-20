@@ -31,6 +31,7 @@ import {
   SatzRahmen,
   SatzMikrofon,
   SatzWeiterKnopf,
+  SatzUeberspringen,
   hilfeWortzahl,
   hilfeAusschnitt,
 } from '../../components';
@@ -361,6 +362,19 @@ export function SentenceReviewScreen() {
   const [rundeId, setRundeId] = useState(0);
   const rundeIdRef = useRef(0);
   const beantwortetRef = useRef(false);
+  /**
+   * Was in DIESER Sitzung uebersprungen wurde (2026-09-20).
+   *
+   * Beim ersten Durchspielen kam nach dem Ueberspringen derselbe Satz
+   * wieder - der Batch hat 20 Eintraege, und gezogen wird zufaellig. Wer
+   * durchskippen will, tippt dann zweimal auf dasselbe.
+   *
+   * Nur ein Vorrang, keine Sperre: sind alle Kandidaten uebersprungen,
+   * greift wieder der ganze Batch. Sonst waere die Sitzung am Ende leer.
+   * Lebt nur, solange der Screen offen ist - `uebersprungen` im AppState
+   * ist etwas anderes (dauerhaft, siehe dort).
+   */
+  const inSitzungUebersprungenRef = useRef<Set<number>>(new Set());
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const aufnahmeRundeRef = useRef(0);
 
@@ -491,7 +505,9 @@ export function SentenceReviewScreen() {
       const batch = aktiverBatchPool(sentences, SATZ_KEY, je3, BATCH_GROESSE, BATCH_FREISCHALT_ANTEIL);
       const nichtFertig = batch.filter((s) => stufeVon(s, s1, s2, kannAbfragen) !== 3);
       const kandidaten = nichtFertig.length > 0 ? nichtFertig : batch;
-      satz = mischen(kandidaten)[0];
+      // Gerade Uebersprungene zuletzt - siehe inSitzungUebersprungenRef.
+      const frisch = kandidaten.filter((s) => !inSitzungUebersprungenRef.current.has(s.id));
+      satz = mischen(frisch.length > 0 ? frisch : kandidaten)[0];
     }
     const neueStufe: Stufe = satz ? stufeVon(satz, s1, s2, kannAbfragen) : 1;
     neueRundenNummer();
@@ -807,6 +823,28 @@ export function SentenceReviewScreen() {
     if (!beantwortetRef.current) return;
     if (ausstehenderWechselRef.current) ausstehenderWechselRef.current();
     else weiterGewuenschtRef.current = true;
+  }
+
+  /**
+   * "Überspringen" - diese Aufgabe auslassen (2026-09-20, Simons Wunsch).
+   *
+   * `rundeAbschliessen(0, 0, ...)` statt eines eigenen Wegs: die Runde wird
+   * verbraucht, aber mit null Punkten von null moeglichen - sie zaehlt
+   * weder als richtig noch als falsch, und die Stufen-Zaehler bleiben
+   * unberuehrt (keine `overrides`). Der Satz kommt in einer spaeteren Runde
+   * wieder, auf derselben Stufe wie zuvor.
+   *
+   * Die Runde IST damit verbraucht, die Sitzung wird also nicht laenger -
+   * sonst liesse sich das Ende endlos wegskippen.
+   *
+   * `beantwortetRef` wird gesetzt, bevor gewechselt wird: sonst traegt eine
+   * noch laufende Aufnahme ihr Ergebnis in die naechste Runde nach.
+   */
+  function ueberspringeRunde() {
+    if (beantwortetRef.current) return;
+    beantwortetRef.current = true;
+    if (aktuellerSatz) inSitzungUebersprungenRef.current.add(aktuellerSatz.id);
+    rundeAbschliessen(0, 0, undefined, rundeIdRef.current);
   }
 
   /** Stufe 1 (Nachsprechen) und Stufe 3 (Freie Übersetzung) - beide über evaluateConcepts. */
@@ -1326,6 +1364,9 @@ export function SentenceReviewScreen() {
             gesperrt={!feedback && !input.trim() && !transcript}
             onPress={feedback ? weiterTippen : checkAnswer}
           />
+          {/* Ueberspringen nur VOR der Antwort - danach fuehrt "Weiter"
+              ohnehin weiter (2026-09-20). */}
+          {!feedback ? <SatzUeberspringen dark={darkMode} onPress={ueberspringeRunde} /> : null}
         </ScrollView>
       )}
 
@@ -1458,6 +1499,9 @@ export function SentenceReviewScreen() {
               <PillButton dark={darkMode} label="Lösen" disabled={!stufe2Gewaehlt} onPress={stufe2Loesen} />
             )
           )}
+          {stufe2Optionen.length > 0 && !stufe2Ausgewertet ? (
+            <SatzUeberspringen dark={darkMode} onPress={ueberspringeRunde} />
+          ) : null}
         </ScrollView>
       )}
 
@@ -1550,6 +1594,9 @@ export function SentenceReviewScreen() {
             gesperrt={!feedback && !input.trim() && !transcript}
             onPress={feedback ? weiterTippen : checkAnswer}
           />
+          {/* Ueberspringen nur VOR der Antwort - danach fuehrt "Weiter"
+              ohnehin weiter (2026-09-20). */}
+          {!feedback ? <SatzUeberspringen dark={darkMode} onPress={ueberspringeRunde} /> : null}
         </ScrollView>
       )}
 

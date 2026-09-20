@@ -1277,6 +1277,23 @@ export function LessonScreen({ lessonId, schritteVon, titel, untertitel }: Props
             <PillButton dark={darkMode} label="Fertig" onPress={zurueckZumPfad} />
           </>
         ) : null}
+
+        {/* HIER STEHT BEWUSST KEIN "Überspringen" (2026-09-20).
+
+            Der Knopf war kurz da und ist auf Simons Vorgabe wieder raus:
+            "Bei geführtes Lernen soll das skippen ueberhaupt nicht
+            funktionieren, weil der Kurs ja gefuehrt wird."
+
+            Die beiden Wiederholungen haben ihn weiterhin
+            (SentenceReviewScreen, WordReviewScreen) - dort waehlt FSRS aus,
+            was drankommt, und eine ausgelassene Karte kommt ohnehin wieder.
+            Der Kurs dagegen ist eine geplante Strecke: wer eine Aufgabe
+            ueberspringt, uebt das Wort in dieser Lektion gar nicht.
+
+            Es haette ausserdem still den Fortschritt verbogen - der haengt
+            an der Rahmenkarte aus dem `satz`-Schritt, und eine
+            uebersprungene Lektion waere im Pfad nie als gemacht erschienen.
+            Wer den Knopf wieder einbauen will, loest erst das. */}
       </ScrollView>
     </Screen>
   );

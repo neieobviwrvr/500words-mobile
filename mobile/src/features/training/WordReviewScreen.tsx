@@ -25,7 +25,7 @@ import { loadAnswerClusters } from '../../data/phrasebookContent';
 import { useSttRecorder } from '../stt/useSttRecorder';
 import { useSpeechmatics } from '../stt/useSpeechmatics';
 import { speakText } from '../tts/speak';
-import { Screen, PillButton, ProgressBar, SchreibenFeld, UebungsMenu } from '../../components';
+import { Screen, PillButton, ProgressBar, SatzUeberspringen, SchreibenFeld, UebungsMenu } from '../../components';
 import {
   getTheme,
   SPACING,
@@ -759,6 +759,18 @@ export function WordReviewScreen() {
    * Aufrufer stehen alle in `setTimeout`-Callbacks, und Component-State waere
    * dort je nach Timing noch der alte Wert von vor dem letzten Tipp.
    */
+  /**
+   * "Überspringen" - diese Runde auslassen (2026-09-20, Simons Wunsch).
+   *
+   * Wie in der Saetze-Wiederholung: `rundeAbschliessen(0, 0)` ohne
+   * Overrides. Die Runde ist verbraucht, zaehlt aber weder richtig noch
+   * falsch, und kein Stufen-Zaehler bewegt sich - das Wort kommt spaeter
+   * auf derselben Stufe wieder.
+   */
+  function ueberspringeRunde() {
+    rundeAbschliessen(0, 0);
+  }
+
   function rundeAbschliessen(
     richtigDieseRunde: number,
     gesamtDieseRunde: number,
@@ -1612,6 +1624,9 @@ export function WordReviewScreen() {
               ) : null}
 
               <PillButton dark={darkMode} label="Lösen" disabled={!situationGewaehlt || !!situationAusgewertet} onPress={situationLoesen} />
+              {!situationAusgewertet ? (
+                <SatzUeberspringen dark={darkMode} onPress={ueberspringeRunde} />
+              ) : null}
             </>
           )}
         </ScrollView>
@@ -1705,6 +1720,9 @@ export function WordReviewScreen() {
               />
             </>
           )}
+          {!situationAusgewertet ? (
+            <SatzUeberspringen dark={darkMode} onPress={ueberspringeRunde} />
+          ) : null}
         </ScrollView>
       )}
 
@@ -1744,6 +1762,9 @@ export function WordReviewScreen() {
               {frameForm(pronomenVerb)} ({pronomenVerb.german})
             </Text>
           </View>
+          {!pronomenGewaehlt ? (
+            <SatzUeberspringen dark={darkMode} onPress={ueberspringeRunde} />
+          ) : null}
         </ScrollView>
       )}
 
@@ -1844,6 +1865,10 @@ export function WordReviewScreen() {
               })}
             </View>
           </View>
+          {/* Das Zuordnungsspiel hat keinen "Weiter"-Knopf - es endet, wenn
+              alle Paare sitzen. Ueberspringen ist hier der einzige Ausweg
+              aus einer Runde, die man nicht machen will. */}
+          <SatzUeberspringen dark={darkMode} onPress={ueberspringeRunde} />
         </View>
       )}
 

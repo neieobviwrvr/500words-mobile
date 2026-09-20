@@ -417,7 +417,62 @@ export function SatzWeiterKnopf({
   );
 }
 
+/**
+ * "Überspringen" - eine Aufgabe auslassen, ohne sie zu beantworten
+ * (2026-09-20, Simons Wunsch: "damit man so bisschen durchskippen kann wenn
+ * man ein Wort nicht braucht").
+ *
+ * **Eigener Knopf statt "Weiter" freizuschalten**, Simons Entscheidung aus
+ * drei Varianten. "Weiter" bleibt gesperrt, bis eine Antwort da ist -
+ * Ueberspringen wird damit eine bewusste Geste und kein Versehen beim
+ * schnellen Tippen. Das Duolingo-Muster, auf das sich der gesperrte Knopf
+ * am 2026-08-21 berief, macht es genauso.
+ *
+ * **Absichtlich unscheinbar**: kein Fuellton, keine Druckkante, kleine
+ * Schrift in der Nebenfarbe. Er soll auffindbar sein, wenn man ihn sucht,
+ * und nicht der bequemste Weg durch die Lektion.
+ *
+ * **Was NICHT passiert:** keine Bewertung, keine FSRS-Karte, kein Eintrag
+ * im Lern-Tagebuch. Ueberspringen ist weder Fehler noch Erfolg - die
+ * Aufgabe kommt in einer spaeteren Runde wieder. Im gefuehrten Kurs heisst
+ * das auch: wer den Satz-Schritt ueberspringt, bekommt keine Rahmenkarte
+ * und die Lektion gilt nicht als gemacht. Das ist die ehrliche Folge und
+ * kein Fehler - der Pfad zeigt, was man geuebt hat, nicht was man
+ * durchgeklickt hat.
+ */
+export function SatzUeberspringen({
+  dark,
+  onPress,
+  label = 'Überspringen',
+}: {
+  dark: boolean;
+  onPress: () => void;
+  /** Eigener Wortlaut, wo "Aufgabe" nicht passt. */
+  label?: string;
+}) {
+  const theme = getTheme(dark);
+  return (
+    <Pressable
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      accessibilityHint="Springt weiter, ohne die Aufgabe zu bewerten"
+      hitSlop={10}
+      style={({ pressed }) => [styles.ueberspringen, { opacity: pressed ? 0.5 : 1 }]}
+    >
+      <Text style={{ color: theme.sub, ...schrift('600'), fontSize: FONT_SIZE.caption }}>
+        {label}
+      </Text>
+    </Pressable>
+  );
+}
+
 const styles = StyleSheet.create({
+  ueberspringen: {
+    alignSelf: 'center',
+    paddingVertical: SPACING.sm,
+    paddingHorizontal: SPACING.md,
+  },
   chipReihe: {
     flexDirection: 'row',
     flexWrap: 'wrap',

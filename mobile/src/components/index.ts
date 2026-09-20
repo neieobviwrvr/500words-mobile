@@ -21,6 +21,7 @@ export {
   SatzRahmen,
   SatzMikrofon,
   SatzWeiterKnopf,
+  SatzUeberspringen,
   hilfeWortzahl,
   hilfeAusschnitt,
 } from './SatzTemplate';

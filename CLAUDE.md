@@ -1972,6 +1972,58 @@ Wort fuellen) - `finisher` - `ergebnis`.
   (Nutzer-Wunsch 2026-08-21). Vorher erschien der Knopf erst mit dem Urteil -
   man sah nicht, wohin es geht. Sichtbar-aber-gesperrt ist auch Duolingos
   Muster.
+- **Im gefuehrten Kurs gibt es KEIN "Überspringen"** - und das ist eine
+  ausdrueckliche Entscheidung, keine Luecke. Der Knopf war am 2026-09-20
+  kurz da und ist noch am selben Tag wieder raus. Simon: "Bei gefuehrtes
+  Lernen soll das skippen ueberhaupt nicht funktionieren, weil der Kurs ja
+  gefuehrt wird."
+
+  Die Begruendung traegt auch technisch: der Lektions-Fortschritt haengt an
+  der Rahmenkarte, die der `satz`-Schritt schreibt. Wer sie ueberspringt,
+  bekommt keine - die Lektion waere durchgeklickt, im Pfad aber nie als
+  gemacht erschienen. **Wer den Knopf wieder einbauen will, loest erst
+  das.** Der Merkposten steht an der Stelle im Code, wo er stand.
+
+  **Die beiden Wiederholungen haben ihn** (2026-09-20, derselbe Auftrag:
+  "damit man so bisschen durchskippen kann wenn man ein Wort nicht
+  braucht"). Dort waehlt FSRS aus, was drankommt, und eine ausgelassene
+  Karte kommt ohnehin wieder; der Kurs dagegen ist eine geplante Strecke.
+
+  Zur Wahl standen drei Wege - "Weiter" freischalten, ein eigener Knopf,
+  oder das dauerhafte Ausblenden aus dem Speed-Run; Simon hat den **eigenen
+  Knopf, einmalig** gewaehlt. "Weiter" bleibt damit gesperrt, und
+  Ueberspringen ist eine bewusste Geste statt eines Versehens beim schnellen
+  Tippen.
+
+  **Der Baustein steht EINMAL** (`SatzUeberspringen` in
+  components/SatzTemplate.tsx): Saetze-Wiederholung (Stufe 1, 2, 3) und
+  Woerter-Wiederholung (alle vier Rundentypen), acht Stellen. Absichtlich
+  unscheinbar - kleine Schrift in der Nebenfarbe, kein Fuellton.
+
+  **Was NICHT passiert:** keine Bewertung, keine FSRS-Karte, kein Eintrag im
+  Lern-Tagebuch, keine Bewegung der Stufen-Zaehler. Ueberspringen ist weder
+  Fehler noch Erfolg. Es laeuft ueber `rundeAbschliessen(0, 0, ...)` - die
+  Runde IST verbraucht, sonst liesse sich das Sitzungsende endlos
+  wegskippen.
+
+  **Beim ersten Durchspielen gefunden:** nach dem Ueberspringen kam derselbe
+  Satz wieder. Der Batch hat 20 Eintraege und wird zufaellig gezogen - wer
+  durchskippen will, tippt dann zweimal auf dasselbe.
+  `inSitzungUebersprungenRef` stellt sie deshalb hinten an. Nur ein Vorrang,
+  keine Sperre: sind alle Kandidaten uebersprungen, greift wieder der ganze
+  Batch. **Nicht zu verwechseln mit `uebersprungen` im AppState** - das ist
+  das DAUERHAFTE Ausblenden aus dem Speed-Run, im Profil zuruecknehmbar.
+
+  **Die Kurs-Wiederholung (`/wiederholen`) hat ihn ebenfalls nicht**, weil
+  sie `LessonScreen` als duenne Huelle benutzt (siehe dort). Sie ist
+  inhaltlich eine Wiederholung, koennte ihn also vertragen - wer ihn dort
+  will, haengt ihn an `schritteVon` statt an den Screen.
+
+  Geprueft im Browser (Norwegisch): vier Skips in der Saetze-Wiederholung
+  ergaben vier verschiedene Saetze (Runde 1 -> 5), fuenf in der
+  Woerter-Wiederholung ueber alle Rundentypen (Runde 1 -> 6). Danach im
+  Speicher: keine Karte, kein Tagebuch, kein Zaehler. Kurs-Lektion 1.1 nach
+  dem Rueckbau ohne Knopf.
 - **Ueberholt (2026-09-04): alle Lektionen aller drei Sprachen sind offen.**
   Hier stand: nur drei Lektionen (`LEKTIONEN_MIT_UEBUNG = ['1.1','1.2','1.8']`)
   - zum Testen des Ablaufs, bevor er auf 113 Lektionen ausgerollt wird. Alle
