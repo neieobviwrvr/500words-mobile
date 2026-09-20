@@ -179,9 +179,21 @@ export async function loadVocabWords(
 
   const wordColumn = lang.vocabColumn;
   const cacheKey = `vocab:${lang.id}`;
-  // Nur Schwedisch hat eine `forms`-Spalte - franz_vocab hat keine, die
-  // waere ein 400er beim Anfragen einer nicht existierenden Spalte.
-  const hatFormen = languageId === 'sv';
+  // Welche Vokabeltabelle eine `forms`-Spalte hat (berichtigt 2026-09-20).
+  //
+  // Hier stand "Nur Schwedisch hat eine forms-Spalte - franz_vocab hat
+  // keine". Das war bis zum 2026-09-08 richtig; seitdem legte Migration
+  // 20260908120000 die Spalte in spanisch/franz/italienisch/russisch/
+  // polnisch an, Englisch und Norwegisch kamen ebenfalls dazu. Nur
+  // `vietnamesisch_vocab` hat sie bis heute nicht - die Sprache beugt
+  // nicht, dort waere sie gegenstandslos (ein Select darauf ist ein 400er).
+  //
+  // Die Auswirkung war nicht theoretisch: die gebeugten Formen sind der
+  // Weg von "hotellet" zurueck zu "hotell". Ohne sie findet die Wortliste
+  // fuer jede Sprache ausser Schwedisch ein Drittel ihrer Woerter nicht
+  // wieder.
+  const OHNE_FORMEN = new Set(['vi']);
+  const hatFormen = !OHNE_FORMEN.has(languageId);
   // Sprachen mit eigener Schrift (heute Russisch) tragen die Lautschrift in
   // einer eigenen Spalte, und DIE ist der Lerntext - dieselbe Aufteilung wie
   // beim Phrasebook, nur datengetrieben statt als zweiter Sonderzweig neben

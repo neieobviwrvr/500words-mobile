@@ -2287,6 +2287,88 @@ ehrlich als "(Platzhalter)" statt Fake-Content.
   hat gar keine Spalte dafuer, `schwedisch_phrasebook.audio_url` ist 0 von
   189 belegt. Der Weg steht, die Dateien fehlen.
 
+#### Die Satzliste liess die geliehenen Saetze weg (2026-09-20)
+
+Simons Fehlerbericht: "Satzliste hat manchmal nur 2 oder 12 Saetze obwohl
+wir insgesamt 120 Saetze haben sollten." Die beiden Zahlen waren exakt die
+EIGENEN Saetze von Dating (2) und Smalltalk (12).
+
+`CheatsheetCategoryScreen` lud `loadExerciseSentences(sprache, [groupId])` -
+also nur die Kategorie selbst. Die Kachelreihe direkt darueber im
+Lektionen-Screen zaehlt aber die geliehenen Situationen mit
+(`useCategorySituations` ruft `istGeliehen`). **Derselbe Screen versprach
+damit 65 Saetze fuer Smalltalk und lieferte 12.**
+
+| | Satzliste vorher | jetzt | davon EIGENE |
+|---|---|---|---|
+| Finding Friends | **0** | 43 | **0** |
+| Dating + Romance | 2 | 35 | 2 |
+| Love + Relationship | 8 | 17 | 8 |
+| Smalltalk + Socialising | 12 | 65 | 12 |
+| Shopping + Haggling | 16 | 36 | 16 |
+| Moving + Settling | 18 | 44 | 18 |
+| Culture + Immersion | 20 | 35 | 20 |
+| University + Studying | 24 | 45 | 24 |
+| Hotel + Accommodation | 25 | 51 | 25 |
+| Travel + Transportation | 36 | 62 | 36 |
+| Drinking + Dining | 92 | 125 | 92 |
+| Grundwortschatz, Club, Job | unveraendert | | leihen nichts |
+
+**Finding Friends zeigte eine LEERE Satzliste**, obwohl der Lektionen-Screen
+43 Kacheln anbot - die Kategorie hat keinen einzigen eigenen Satz, und ohne
+die Leihgaben blieb nichts uebrig.
+
+**Die Funktion dagegen gab es laengst.** `saetzeFuer()` in `geliehen.ts`
+traegt im eigenen Kommentar den Satz "Uebungs-Screen, Lektionen-Screen und
+Wortliste muessen dieselbe Antwort geben, sonst zeigt die eine Stelle
+Saetze, die die andere nicht kennt" - `ExerciseScreen` und
+`SentenceReviewScreen` benutzten sie, die Satzliste nicht. Wer einen vierten
+Screen baut, der Saetze einer Kategorie zeigt, nimmt `leihgeberVon()` zum
+Laden und `saetzeFuer()` zum Filtern.
+
+**Die Liste ist jetzt nach Situation gegliedert**, in DERSELBEN Reihenfolge
+wie die Kacheln. Flach ging es, solange nur eigene Saetze darin standen; mit
+bis zu vier fremden Situationen stuende "Danke!" sonst unkommentiert
+zwischen zwei Smalltalk-Fragen. Geliehene Gruppen tragen den Namen, den die
+Kategorie ihnen gibt (`LEIH_NAMEN`) - denselben wie die Kachel, von der man
+kam. Die Sortierung liegt dafuer seit heute als `situationsVergleich()` in
+`situationsReihenfolge.ts` statt im Hook: zwei Stellen, eine Quelle.
+
+**Neun von elf Sprachen bekamen nie eine Wortart-Farbe zu sehen**
+(derselbe Durchgang, 2026-09-20). `PhraseCard` rendert den Hauptsatz; die
+Farben hingen dort am Zweig fuer die LAUTSCHRIFT, und die gibt es nur bei
+Chinesisch und Russisch. Fuer sv/es/fr/it/no/vi/pl/en/de war
+`phrase.text` ein schlichtes `<Text>` - alle Tags lagen vor (seit
+2026-09-03 alle 6.760 Saetze), sie wurden nur nie gezeichnet.
+`SatzTemplate.tsx` machte es die ganze Zeit richtig, `PhraseCard` nicht.
+
+Die neue Bedingung ist `!phrase.phonetic`: wo eine Lautschrift existiert,
+ist `phrase.text` die SCHRIFT, und `TaggedTokens` wuerde sie durch die
+Lautschrift ERSETZEN statt sie einzufaerben - das ist die alte Falle
+("Schriftzeichen nie einfaerben"). Chinesisch mit "Zeichen ein" nach dem
+Umbau gegengeprueft: Hanzi oben, Pinyin darunter, unveraendert.
+
+**Vorher geprueft, weil TaggedTokens den sichtbaren Satz zeichnet:** in
+allen elf Sprachen ergibt `word_tags` mit Leerzeichen verbunden exakt
+`target_text` bzw. `german` - 6.760 von 6.760, keine Abweichung. Ohne diese
+Zusicherung waere das Einfaerben ein Risiko fuer den Satztext selbst.
+
+**Beim Gegenlesen aufgefallen, NICHT behoben** (Datenlage, nicht Anzeige):
+einzelne Tags sitzen falsch, wo ein Wort zwei Wortarten hat - spanisch
+"Trabajo como profesor" faerbt `Trabajo` als NOMEN (trabajo = die Arbeit),
+hier ist es das Verb. Vietnamesisch trennt zweisilbige Nomen
+("sinh viên" = Student) und faerbt nur die erste Silbe. Beides gehoert in
+`NICHT_TAGGEN` bzw. in die Tokenisierung von `wortarten_auto.py`.
+
+**Was der Fix NICHT behebt - und das ist der groessere Punkt:** vier
+Kategorien haben fast nichts Eigenes. Wer **Finding Friends kauft, bekommt
+ausschliesslich Saetze, die er im Grundwortschatz schon gratis hat**; bei
+Dating sind es 2 eigene von 35. Das ist kein Anzeigefehler mehr, sondern die
+offene Cross-Referenzierung aus der Satz-Auswahl-Methodik (Dating, Club,
+Smalltalk, Finding Friends haben keine Lehrbuch-Basis). Club wurde am
+2026-08-21 auf 137 eigene ausgebaut, die anderen drei nie. Vor dem Verkauf
+dieser Kategorien gehoert das gefuellt.
+
 ### S7 - Tab-Leiste (2026-08-18, neu)
 Fuenf Einstiege am unteren Rand, `mobile/app/(tabs)/_layout.tsx`. Nach den
 Apple-Richtlinien: zwei bis fuenf Ziele (fuenf ist das Maximum),
@@ -3008,26 +3090,46 @@ Demo-Umfang (`mobile/src/data/demo.ts`), Launch-Phase ueber das Teaser-Modell
 (Preismodell oben). Wer sie vermischt, baut eine Demo, die sich nach sechs
 Monaten heimlich aendert.
 
-**Berichtigt 2026-08-23: Kategorien werden nicht mehr aus Pfad/Lektionen
-gefiltert.** Simon testete mit Chinesisch und sah nur 4 von 14 Kategorien -
-der Rest war spurlos weg, nicht einmal als gesperrter Knoten. Das
-widersprach dem AELTEREN, weiterhin gueltigen Grundsatz weiter unten ("Auch
-gesperrte Kategorien faechern auf... der Katalog soll bewerben, nicht
-verstecken"). Kategorien ausblenden ist das Gegenteil von bewerben.
+**Erledigt 2026-09-20: die Demo-Grenze beschneidet den Content NICHT mehr.**
+Ein Gast sieht jede Kategorie mit allen ihren Situationen, genau wie jemand
+mit Konto. Das Konto entscheidet allein darueber, was man TUN kann: kaufen,
+Freunde, Gruppen, Abgleich (`KONTO_NOETIG` in `mobile/src/data/demo.ts`).
 
-Die Demo-Grenze wirkt seitdem nur noch auf **Situationen**, und zwar nur
-innerhalb EINER Kategorie (`club_nightlife`, `DEMO_KATEGORIEN` in
-`mobile/src/data/demo.ts`) - jede andere gesperrte Kategorie zeigt weiterhin
-alle ihre Situationen als Werbung. Der Grundwortschatz ist explizit
-ausgenommen: er ist keine Kaufkategorie, sondern laut Konzept oben
-"dauerhaft gratis" - ihn zu kappen waere keine Kostprobe, sondern eine
-Kuerzung von etwas, das jedem gehoert.
+**Der Weg dahin war zweimal derselbe Fehler.** Beide Stellschrauben sind
+ersatzlos entfallen:
 
-**Der genaue Umfang bleibt offen** - ob es ueberhaupt noch eine
-Situations-Kostprobe braucht, jetzt wo Kategorien wieder voll sichtbar sind,
-ist Teil des "sprechen wir nochmal durch". Weiterhin ungeklaert: **darf ein
-Gast den gefuehrten Kurs sehen?** Der haengt an keiner Kategorie und ist
-derzeit komplett offen - das groesste Loch in der Grenze.
+1. **`sichtbareKategorien` (weg 2026-08-23).** Simon testete mit Chinesisch
+   und sah nur 4 von 14 Kategorien - der Rest war spurlos weg, nicht einmal
+   als gesperrter Knoten.
+2. **`sichtbareSituationen` (weg 2026-09-20).** Kappte innerhalb von
+   `club_nightlife` und `travel_transportation` auf die ersten ZWEI
+   Situationen. Simon beim Test: "auf dem Lernpfad [...] nur noch zwei
+   Situationen sichtbar - was soll ich damit anfangen???"
+
+**Warum hier keine dritte Stellschraube hingehoert:** die betroffenen
+Kategorien sind fuer einen Gast ohnehin GESPERRT. Jede ihrer Situationen
+fuehrt in den Shop, keine ist spielbar. Wegzulassen schuetzt also nichts -
+es nimmt nur Schaufenster weg. Club hat zehn Situationen und 137 Saetze;
+sichtbar waren zwei. Das wirkt nicht wie eine Kostprobe, sondern wie eine
+leere Kategorie. Es gilt damit wieder ungeteilt der aeltere Grundsatz
+weiter unten: "Auch gesperrte Kategorien faechern auf... der Katalog soll
+bewerben, nicht verstecken".
+
+**Zwei Dinge, die beim Aufraeumen auffielen:**
+- Dieser Abschnitt nannte bis heute nur EINE gekappte Kategorie; im Code
+  standen seit dem 2026-08-23 zwei (Travel kam am selben Tag dazu). Wer
+  eine Grenze in Prosa beschreibt, prueft sie gegen die Konstante.
+- `LessonsScreen` rechnete seine Satzzahl (`gesamt`) aus der GEKUERZTEN
+  Liste. Sichtbar wurde das nie - die Zahl erscheint nur bei
+  freigeschalteten Kategorien, und die waren von der Kappung ausgenommen.
+  Eine Anzeige-Grenze, die sich als Wahrheit ueber den Content ausgab, und
+  die beim naechsten Umbau zugeschlagen haette. Wer je wieder eine
+  Sichtbarkeits-Grenze einzieht, filtert sie erst NACH solchen Rechnungen
+  ein.
+
+**Weiterhin ungeklaert: darf ein Gast den gefuehrten Kurs sehen?** Der
+haengt an keiner Kategorie und ist derzeit komplett offen - jetzt das
+einzige verbliebene Loch in der Grenze.
 
 **Die Grenze nimmt niemandem etwas weg:** wer eine Kategorie besitzt, sieht
 sie immer ungekuerzt. Der erste Entwurf filterte Kategorien stur und liess
@@ -3813,14 +3915,152 @@ Content:
       wichtig es ist. INNERHALB einer Gruppe sortiert sie dagegen gut.
     * **Reihenfolge nach Wichtigkeit** (Nutzer-Vorgabe): Personen, Verben,
       weitere Woerter, Grammatik - so, wie ein Satz entsteht.
-    * **Die Wortart steht nirgends in den Daten.** Sie wird aus der
-      deutschen Bedeutung abgeleitet (Infinitiv auf "-n"), was jedes Wort
-      auf -n faengt: "schoen", "duenn", "morgen", "zusammen", "draussen".
-      Deshalb die Ausnahmeliste `AUSNAHMEN` in `useCategoryVocab.ts` - wer
-      etwas falsch einsortiert findet, traegt es dort ein.
-    * **Nur fuer Chinesisch.** Die Zerlegung braucht eine Wortliste zum
-      Abgleichen; bei Sprachen mit Leerzeichen kaemen nur gebeugte Formen
-      heraus ("brauche", "einen").
+    * **Die Wortart kommt seit 2026-09-20 aus den Daten.** Hier stand, sie
+      stehe "nirgends in den Daten" und werde aus der deutschen Bedeutung
+      abgeleitet (Infinitiv auf "-n") - mit einer Ausnahmeliste gegen
+      "schoen", "morgen", "zusammen", "draussen". Beides ist weg:
+      `chinesisch_vocab.wortart` ist seit dem 2026-09-07 vollstaendig, die
+      uebrigen Sprachen nehmen das Wortart-Tag des Satzes.
+
+#### Die Wortliste gibt es jetzt in ALLEN Sprachen (2026-09-20)
+
+Simons Auftrag: "alle wichtigen Woerter wie Personenwoerter, Verben,
+Adjektive und Nomen sortiert ausgeben [...] aus den Saetzen der
+entsprechenden Kategorie [...] fuer die ganzen Sprachen."
+
+Hier stand bis heute **"Nur fuer Chinesisch. Die Zerlegung braucht eine
+Wortliste zum Abgleichen; bei Sprachen mit Leerzeichen kaemen nur gebeugte
+Formen heraus"** - und das ist nur zur Haelfte ueberholt, was beim Lesen
+wichtig ist:
+
+* Der Teil mit den **gebeugten Formen stimmt weiterhin**. "hotellet",
+  "vennene", "amigos", "sjunger" stehen in keiner Vokabelliste.
+* Der Teil mit der **Zerlegung ist ueberholt**: seit dem 2026-09-03 traegt
+  JEDER Satz `word_tags`, also seine Woerter einzeln mit Wortart.
+
+**Was die Sache kippt, ist Simons Zuschnitt.** Gefragt sind Personenwoerter,
+Verben, Adjektive und Nomen - und genau diese vier tragen ein Tag
+(Praepositionen und Partikeln bleiben nach dem Farb-Rezept ungetaggt). Die
+gebeugten Formen, an denen die alte Begruendung scheiterte, sind
+groesstenteils Funktionswoerter. Gemessen ueber den ganzen Satzbestand,
+Woerter MIT Bedeutung von allen getaggten:
+
+| en | no | vi | it | pl | ru | es | sv | fr |
+|---|---|---|---|---|---|---|---|---|
+| 100% | 98% | 98% | 97% | 97% | 96% | 87% | 85% | 83% |
+
+Keine der **135 Kombinationen** (15 Kategorien x 9 Sprachen) ist leer;
+Chinesisch kommt mit 161 Woertern in Club dazu, Deutsch sagt ehrlich, dass
+es die Ausgangssprache ist.
+
+**Zwei Wege, und der zweite ist nachgemessen, nicht vergessen.** Chinesisch
+bleibt bei der Laengster-Treffer-Zerlegung: ueber `word_tags` kaeme es auf
+**50%**, ueber die Zerlegung gegen `chinesisch_vocab` auf **100%** (161 von
+161, kein ungedecktes Zeichen). Der Grund ist die fehlende Wortgrenze - die
+Tags liegen dort auf dem Pinyin, das im Satz anders segmentiert ist als im
+Woerterbuch.
+
+**Russisch brauchte eine Bruecke.** Seine Tags liegen auf der UMSCHRIFT,
+die `forms`-Spalte ist kyrillisch - konjugierte Verben trafen nie, die
+Sprache lag bei 63% und ihre Verben bei 16 von 78. Jetzt wird zusaetzlich
+ueber das kyrillische Wort an DERSELBEN STELLE im Satz nachgeschlagen
+(Tag-Anzahl und Wortanzahl stimmen bei 399 von 400 Saetzen). Ergebnis:
+**96%, Verben 57/57.**
+
+**Drei Dinge, die beim Bauen auffielen:**
+- **`loadVocabWords` lud `forms` nur fuer Schwedisch.** Der Kommentar
+  ("franz_vocab hat keine") stimmte bis zum 2026-09-08, dann legte
+  Migration `20260908120000` die Spalte in fuenf weiteren Tabellen an. Ohne
+  die Formen findet die Wortliste den Weg von "hotellet" zu "hotell" nicht -
+  jede Sprache ausser Schwedisch haette ein Drittel verloren. Jetzt laden
+  alle ausser `vi` (die Sprache beugt nicht, die Spalte gibt es dort gar
+  nicht).
+- **Gezaehlt wird je VOKABEL, nicht je Wortform.** Der erste Durchgang
+  fuehrte norwegisch "betale" und "betaler" als zwei Eintraege mit
+  derselben Bedeutung, "er" und "være" ebenso. Eine Wortliste listet
+  Woerter, keine Flexionsformen - Norwegisch fiel dadurch von 88 auf 73.
+- **Geliehene Situationen zaehlen mit**, wie in der Satzliste vom selben
+  Tag. Sonst zeigte die Wortliste weniger, als die Kategorie an Saetzen
+  anbietet.
+
+**Woerter ohne Bedeutung fallen heraus, aber nicht still:** der Screen
+nennt sie ("2 gebeugte Formen ohne Woerterbuch-Eintrag sind nicht dabei").
+Eine leere Zeile waere schlechter, eine stille Kuerzung genau der Fehler,
+der am selben Tag schon zweimal vorkam.
+
+**Grenze, die bleibt:** Polnisch und Russisch zeigen rund halb so viele
+Woerter wie Englisch (Club: 51 und 45 gegen 85). Das ist die
+Tag-Abdeckung - beide DEKLINIEREN, und `forms` deckt nur die Verben ab
+(pl 31%, ru 37% getaggte Woerter insgesamt). Mehr geht dort erst mit
+Fallformen in der Vokabeltabelle.
+
+**"Personenwoerter" sind echte Personen** (Simons Eingrenzung, noch am
+selben Tag). Das Tag `p` und die chinesische `wortart`-Spalte meinen
+PRONOMEN - unter der Ueberschrift standen dadurch auch "noe" (etwas),
+"samme" (selbe), "hverandre" (einander), russisch это/ничего/свой und
+chinesisch 这/那/什么. Grammatisch richtig, aber nicht, was das Wort
+verspricht. Simon: "Ja, mach das genau so" - eingegrenzt auf ich/du/er/wir,
+der Rest steht jetzt unter "Weitere Woerter".
+
+**Entschieden wird ueber die DEUTSCHE Bedeutung** (`PERSONEN_BEDEUTUNG` in
+useCategoryVocab.ts), nicht ueber eine Pronomenliste je Sprache: jede
+Vokabel traegt ihre Bedeutung ohnehin, elf Listen waeren elf Stellen zum
+Auseinanderlaufen, und Sprachen mit eigener Schrift braeuchten sie in zwei
+Schreibweisen. Possessivbegleiter bleiben drin ("mein", "dein") - sie
+benennen eine Person, nur in anderer Rolle.
+
+**Geprueft wird jeder Bedeutungsteil EINZELN und VOLLSTAENDIG**, sonst
+faengt sich "sein eigener" ueber das enthaltene "sein" als Personenwort.
+Nach dem Umbau enthaelt die Gruppe bei Norwegisch jeg/du/deg/vi/meg/dere/
+min/din, bei Russisch я/ты/мне/тебя/тебе/мой/меня/вы/твой/мы/нас/вас, bei
+Chinesisch 我/你/我们/你们 - und sonst nichts.
+
+##### Satzpartikeln und Fragewoerter (2026-09-20, noch am selben Tag)
+
+Simons Frage: "Es gibt doch bei Chinesisch noch die Woerter am Satzende wie
+le oder ma [...] Fuege das auch noch auf die Wortlisten hinzu, fuer
+Chinesisch und fuer welche Sprachen das sonst noch in Frage kommt."
+
+**Bei Chinesisch fehlten sie nie** - 了/吗/吧/的 standen laengst in der
+Liste, nur zwischen vierzig anderen Eintraegen unter "Weitere Woerter".
+Jetzt haben sie eine eigene Ueberschrift. Dasselbe fuer Fragewoerter.
+
+**Die Antwort auf "welche Sprachen sonst" steht in den Daten:** genau dort,
+wo eine Bedeutung das Wort "Partikel" traegt. **Chinesisch 8** (吗 呢 了 过
+吧 的 得 们), **Vietnamesisch 2** (không, nhé), **Polnisch 1** (czy) -
+sonst keine. Russisch, Norwegisch, Englisch und die romanischen Sprachen
+markieren Frage und Aspekt ueber Wortstellung und Beugung. Eine leere
+Gruppe erscheint nicht.
+
+**Dabei fiel die groessere Luecke auf.** Gefaerbt werden nur Nomen, Verb,
+Adjektiv, Pronomen und Konjunktion - **Fragewoerter, Adverbien,
+Praepositionen, Zahlwoerter, Artikel und Partikeln tragen kein Tag** und
+fehlten deshalb in JEDER Sprache ausser Chinesisch, wo die Zerlegung gegen
+die ganze Vokabelliste laeuft. "wo", "wann", "wie viel" standen in keiner
+Wortliste. Ungetaggte Woerter kommen jetzt mit, sofern die Vokabeltabelle
+sie kennt - ihre Wortart steht dort, geraten wird nichts:
+
+| | sv | es | fr | it | no | ru | vi | pl | en |
+|---|---|---|---|---|---|---|---|---|---|
+| vorher | 71 | 73 | 70 | 78 | 73 | 45 | 84 | 51 | 85 |
+| jetzt | 100 | 111 | 108 | 121 | 113 | 75 | 127 | 83 | 129 |
+
+**Die Bedeutung schlaegt die Wortart.** 吗 steht in `chinesisch_vocab` als
+"Sonstiges", 什么 als "Pronomen" - beide waeren sonst in der falschen
+Gruppe. Deshalb entscheiden `istPartikel()` und `istFragewort()` vor der
+Wortart, nach demselben Muster wie `istPersonenwort()`.
+
+**Ohne Vokabeleintrag faellt ein ungetaggtes Wort STILL weg** und zaehlt
+nicht in `ohneBedeutung`: es ist kein Luecken-Befund, sondern ein Wort, das
+gar nicht zum Wortschatz gehoert. Bei getaggten bleibt es beim Zaehlen -
+dort IST das Fehlen die Meldung.
+
+**Zu 了, weil es im Auftrag anders stand:** Simon nannte es "fuer
+Vergangenheit". Die Vokabeltabelle sagt "Zustandspartikel", und das ist
+genauer - Chinesisch hat kein Tempus. 了 markiert eine abgeschlossene
+Handlung oder einen Zustandswechsel, was oft, aber nicht zwingend in der
+Vergangenheit liegt. Angezeigt wird der Text aus der Tabelle, also die
+genauere Fassung.
   - **Kategorie-Vokabeln jetzt auch in Supabase.** Neue Spalte
     `chinesisch_vocab.category`; die 25 club-eigenen Woerter stehen dort mit
     `category = 'club_nightlife'`, die 350 Kurswoerter behalten `null`.

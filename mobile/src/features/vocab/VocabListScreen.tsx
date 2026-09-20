@@ -59,13 +59,24 @@ export function VocabListScreen({ categoryId }: { categoryId: string }) {
         </View>
       ) : (
         <ScrollView contentContainerStyle={[styles.inhalt, { paddingBottom: insets.bottom + SPACING.xxxl }]}>
+          {/* Die weggelassenen Woerter stehen mit in der Zeile (2026-09-20):
+              rund jedes zehnte Wort ist eine gebeugte Form, die in keiner
+              Vokabelliste steht ("hotellet", "amigos"). Sie ohne Bedeutung
+              zu zeigen waere eine leere Zeile, sie stillschweigend
+              wegzulassen die Sorte Kuerzung, die uns heute schon zweimal
+              begegnet ist - also wird sie benannt. */}
           <Text style={[styles.hinweis, { color: theme.sub }]}>
             {`${liste.woerter.length} Wörter aus den Sätzen dieser Kategorie. Nur zum Nachschlagen — hier gibt es nichts zu wiederholen.`}
+            {liste.ohneBedeutung === 1
+              ? ' (Eine gebeugte Form ohne Wörterbuch-Eintrag ist nicht dabei.)'
+              : liste.ohneBedeutung > 1
+                ? ` (${liste.ohneBedeutung} gebeugte Formen ohne Wörterbuch-Eintrag sind nicht dabei.)`
+                : ''}
           </Text>
           {liste.woerter.map((w, i) => {
             const vorher = i > 0 ? liste.woerter[i - 1].gruppe : null;
             return (
-              <Fragment key={w.hanzi}>
+              <Fragment key={`${w.gruppe}:${w.lerntext}`}>
                 {w.gruppe !== vorher ? (
                   <Text style={[styles.gruppe, { color: theme.sub }]}>
                     {GRUPPEN_TITEL[w.gruppe as Gruppe].toUpperCase()}
@@ -74,10 +85,16 @@ export function VocabListScreen({ categoryId }: { categoryId: string }) {
                 <View style={[styles.zeile, { borderColor: theme.border, backgroundColor: theme.cardBg }]}>
                   <View style={styles.zeileText}>
                     <View style={styles.pinyinZeile}>
-                      {/* Pinyin ist der Lerntext, die Zeichen laufen daneben
-                          mit - siehe CLAUDE.md, "keine Zeichen zum Lernen". */}
-                      <Text style={[styles.pinyin, { color: theme.text }]}>{w.pinyin}</Text>
-                      <Text style={[styles.hanzi, { color: theme.sub }]}>{w.hanzi}</Text>
+                      {/* `lerntext` ist, was gelesen wird (Pinyin, Umschrift
+                          oder das Wort selbst), `schrift` laeuft nur bei
+                          eigener Schrift daneben mit - siehe CLAUDE.md,
+                          "keine Zeichen zum Lernen". Bei lateinischer
+                          Schrift sind beide gleich, dann entfaellt die
+                          zweite Spalte statt dasselbe doppelt zu zeigen. */}
+                      <Text style={[styles.pinyin, { color: theme.text }]}>{w.lerntext}</Text>
+                      {w.schrift !== w.lerntext ? (
+                        <Text style={[styles.hanzi, { color: theme.sub }]}>{w.schrift}</Text>
+                      ) : null}
                       {w.neu ? (
                         <Text style={[styles.marke, { color: ACCENT_ORANGE, borderColor: ACCENT_ORANGE }]}>
                           neu
@@ -87,9 +104,9 @@ export function VocabListScreen({ categoryId }: { categoryId: string }) {
                     <Text style={[styles.bedeutung, { color: theme.sub }]}>{w.de}</Text>
                   </View>
                   <Pressable
-                    onPress={() => speakSentence({ text: w.hanzi }, { languageId: targetLanguageId })}
+                    onPress={() => speakSentence({ text: w.schrift }, { languageId: targetLanguageId })}
                     accessibilityRole="button"
-                    accessibilityLabel={`${w.pinyin} anhören`}
+                    accessibilityLabel={`${w.lerntext} anhören`}
                     style={({ pressed }) => [
                       styles.hoeren,
                       { borderColor: theme.border, opacity: pressed ? 0.6 : 1 },
