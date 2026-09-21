@@ -116,10 +116,16 @@ export async function loadCheatsheetGroups(
   // Nachschlage-Saetze durch, der Rest bleibt hinter dem Kauf - nebenbei
   // ein ehrlicher Werbeeffekt: man sieht, was die Kategorie kann.
   const alleIds = CATEGORIES.map((c) => c.id);
+  // `new Set` als zweite Sicherung (2026-09-21): eine Kategorie darf hier
+  // nur EINMAL stehen, sonst entstehen zwei Gruppen mit denselben Saetzen
+  // und die Suche liefert jeden davon doppelt. Der Aufrufer sollte schon
+  // saubere Listen schicken - diese Zeile kostet nichts und faengt es ab.
   const categoryIds = [
-    'grundwortschatz',
-    ...purchasedCategoryIds,
-    ...alleIds.filter((id) => !freigeschaltet.includes(id)),
+    ...new Set([
+      'grundwortschatz',
+      ...purchasedCategoryIds,
+      ...alleIds.filter((id) => !freigeschaltet.includes(id)),
+    ]),
   ];
   const { sentences, fromCache } = await loadExerciseSentences(languageId, categoryIds);
 
@@ -235,61 +241,216 @@ const SUCH_SYNONYME: Record<string, string[]> = {
 // `loadCheatsheetGroups` liefert sonst auch gesperrte Kategorien mit ihren
 // Nachschlage-Saetzen zurueck (Werbeeffekt), die hier nicht auftauchen
 // sollen.
+/**
+ * Ein Treffer im NAMEN der Situation zaehlt nur als Beiwerk.
+ *
+ * Er zieht alle Saetze seiner Situation gleichzeitig an und sagt ueber den
+ * einzelnen nichts: bei "bezahlen" kamen 40 Saetze, weil eine Situation
+ * "Versicherung und Bezahlen" heisst - darunter "Reicht das?" und "Hier ist
+ * meine Karte". Er entscheidet deshalb nur die RANGFOLGE, nicht die
+ * Aufnahme: ob ein Satz ueberhaupt in die Liste kommt, rechnet
+ * `abdeckung` ohne diesen Abschlag (siehe Regel 3 unten).
+ */
+const GEWICHT_LABEL = 0.35;
+/** Ein Synonym ist eine Vermutung, kein Wort des Nutzers - es zaehlt weniger. */
+const GEWICHT_SYNONYM = 0.6;
+
+/**
+ * Wie viel der Anfrage ein Satz mindestens abdecken muss.
+ *
+ * Gemessen an dem, was die Anfrage HERGIBT, nicht am besten Treffer: die
+ * Summe aller Suchbegriff-Gewichte ist die volle Anfrage, die Haelfte davon
+ * die Grenze. Bei einem einzelnen Suchwort aendert das nichts (jeder
+ * Treffer deckt es ganz ab), bei einem ganzen Satz trennt es Kern von
+ * Beiwerk.
+ *
+ * Der Wert ist gemessen, nicht geraten. "Ich brauche einen Arzt" zerfaellt
+ * in `brauche` (haeufig, schwach) und `arzt` (selten, stark): ein Satz mit
+ * `arzt` deckt 56% der Anfrage ab, einer mit nur `brauche` 44%. Genau
+ * dazwischen liegt die Haelfte - und genau die zweite Sorte ("Ich brauche
+ * die Quittung fuer meine Versicherung") hatte Simon beim Test beanstandet.
+ */
+const MINDESTANTEIL = 0.5;
+
+/** Zerlegt einen Text in kleingeschriebene Woerter (fuer Zaehlung und Abgleich). */
+function woerterVon(text: string): string[] {
+  return text
+    .toLowerCase()
+    .split(/[^\p{L}\p{N}]+/u)
+    .filter(Boolean);
+}
+
+/**
+ * Trifft ein Suchwort dieses Wort aus dem Satz?
+ *
+ * **Kein beliebiger Teilstring mehr** (bis 2026-09-21 war es einer, und
+ * zwar auf dem ganzen Satz): "eis" traf damit "Preis", "Reise" und
+ * "heiss". Wie weit die Toleranz reicht, haengt jetzt an der LAENGE -
+ * kurze Woerter stecken in zu vielen anderen:
+ *
+ * | Laenge | erlaubt ist | faengt | verhindert |
+ * |---|---|---|---|
+ * | 1-3 | nur das ganze Wort | "wo" -> "Wo ist ...?" | "wo" -> "Woche", "Woher" |
+ * | 4 | zusaetzlich der Wortanfang | "arzt" -> "Arztes" | "arzt" im Wortinneren |
+ * | 5+ | zusaetzlich das Wortinnere | "toilette" -> "Herrentoilette" | - |
+ *
+ * Das Wortinnere erst ab fuenf, weil deutsche Komposita das Grundwort
+ * hinten anhaengen ("Hausarzt") - bei vier Zeichen waere dieselbe Regel
+ * schon gefaehrlich, "kann" steckt in "bekannt".
+ */
+function trifft(suchwort: string, wort: string): boolean {
+  if (wort === suchwort) return true;
+  if (suchwort.length < 4) return false;
+  if (wort.startsWith(suchwort)) return true;
+  return suchwort.length >= 5 && wort.includes(suchwort);
+}
+
+/**
+ * Ein Suchbegriff mit allem, was fuer ihn zaehlt.
+ *
+ * Ein getipptes Wort und seine Synonyme sind EIN Begriff, nicht drei
+ * Suchworte: wer "Preis" sucht, sucht einmal nach dem Thema Preis, und ob
+ * der Satz "kostet" oder "teuer" sagt, ist dieselbe Frage. Als getrennte
+ * Suchworte haette eine Anfrage mit vielen Synonymen von allein mehr
+ * Gewicht als eine ohne, und ein Satz mit zwei davon saehe doppelt so
+ * passend aus, obwohl er nur einmal vom Preis spricht.
+ */
+type Suchbegriff = { varianten: { wort: string; faktor: number }[]; gewicht: number };
+
+/**
+ * Freitextsuche im Survival (z.B. "Arzt", "Wo ist die Toilette").
+ *
+ * Kein Server, keine KI - siehe CLAUDE.md "keine Laufzeitkosten". Aber seit
+ * 2026-09-21 mit GEWICHTUNG statt bloss "irgendein Wort passt".
+ *
+ * **Was vorher schieflief** (Simons Fehlerbericht: "es hat einfach
+ * schlampig funktioniert und nicht die Situationen/Kategorien und Saetze
+ * angezeigt die ich mit meiner Eingabe erwartet habe"): jeder Satz mit
+ * EINEM getroffenen Token kam in die Liste, alle Tokens zaehlten gleich
+ * viel, und geprueft wurde auf Teilstrings im ganzen Satz. "Ich brauche
+ * einen Arzt" lieferte 18 Treffer, darunter "Ich brauche eine Bestaetigung
+ * meiner Adresse" - verbunden allein durch "brauche".
+ *
+ * Drei Regeln ersetzen das, jede gegen den echten Bestand gemessen
+ * (`npm run pruefe:suche`):
+ *
+ * 1. **Seltenheit schlaegt Haeufigkeit.** Das Gewicht eines Suchbegriffs
+ *    ergibt sich aus dem durchsuchten Bestand selbst (`log(N / 1+Treffer)`,
+ *    die uebliche IDF-Rechnung) - "brauche" faellt damit von allein ab,
+ *    ohne dass jemand es in eine Liste eintragen muss. Genau das war die
+ *    Schwaeche der FUELLWOERTER-Liste: sie kennt nur, was jemand vorher
+ *    hineingeschrieben hat.
+ * 2. **Die halbe Anfrage muss abgedeckt sein** (MINDESTANTEIL).
+ * 3. **Der Name einer Situation ist der Rueckfall, nicht das Ergebnis.**
+ *    Deckt irgendein Satz die Anfrage schon mit seinem eigenen TEXT ab,
+ *    zaehlen nur solche Saetze - bei "bezahlen" sind das die acht, die das
+ *    Wort wirklich sagen, statt der ganzen Situation "Versicherung und
+ *    Bezahlen". Reicht der blosse Text nirgends, uebernehmen die Namen:
+ *    wer "jemanden ansprechen" tippt, bekommt diese Situation, obwohl
+ *    kein einziger ihrer Saetze das Wort "ansprechen" enthaelt.
+ */
 export function searchCheatsheetSentences(
   groups: CheatsheetCategoryGroup[],
   query: string,
   durchsuchbareKategorien?: Set<string>,
 ): ExerciseSentence[] {
-  const alleTokens = query
-    .trim()
-    .toLowerCase()
-    .split(/\s+/)
-    .filter(Boolean);
+  const alleTokens = woerterVon(query);
   if (alleTokens.length === 0) return [];
 
   // Fuellwoerter raus - bleibt danach nichts uebrig (z.B. eine Suche nur
   // nach "ich du"), lieber mit den Originaltokens weitersuchen als leer
   // zurueckzugeben.
   const inhaltsworte = alleTokens.filter((t) => !FUELLWOERTER.has(t));
-  const basisTokens = inhaltsworte.length > 0 ? inhaltsworte : alleTokens;
-
-  // Jedes Basis-Token um seine Themen-Synonyme erweitern (siehe
-  // SUCH_SYNONYME oben) - ODER-verknuepft wie alle anderen Tokens, erhoeht
-  // also nur die Trefferchance, verengt sie nie.
-  const tokens = Array.from(
-    new Set(basisTokens.flatMap((t) => [t, ...(SUCH_SYNONYME[t] ?? [])])),
-  );
+  const basisTokens = [...new Set(inhaltsworte.length > 0 ? inhaltsworte : alleTokens)];
 
   const durchsuchen = durchsuchbareKategorien
     ? groups.filter((g) => durchsuchbareKategorien.has(g.categoryId))
     : groups;
 
-  const scored: { sentence: ExerciseSentence; score: number }[] = [];
+  // Jeden Satz nur EINMAL - dieselbe Kategorie kann in `groups` mehrfach
+  // stehen (siehe loadCheatsheetGroups), und bei geliehenen Situationen
+  // faende man denselben Satz ohnehin zweimal.
+  const kandidaten = new Map<
+    number,
+    { s: ExerciseSentence; textWoerter: string[]; etikettWoerter: string[] }
+  >();
   for (const group of durchsuchen) {
     for (const s of group.allSentences) {
-      // Satztext bleibt Teilstring-Suche (bewusst grosszuegig, siehe oben).
-      const textHaystack = [s.text, s.germanGloss ?? ''].join(' ').toLowerCase();
-
-      // Situations-/Kategorie-Name dagegen nur GANZES WORT, nicht Teilstring
-      // (Fehlerbericht 2026-08-24): die Kategorienamen sind teils englisch
-      // ("Health + Emergency", "Hotel + Accommodation") - "Health" enthaelt
-      // zufaellig "alt" als Teilstring ("he-alt-h") und liess "Alter" jeden
-      // einzelnen Satz der Kategorie Health + Emergency treffen, egal welche
-      // Situation. Ganze-Wort-Abgleich lässt "Notfall" weiterhin die
-      // gleichnamige Situation finden, ohne dass kurze Tokens (v.a. die
-      // Themen-Synonyme oben, oft 3-4 Zeichen) in fremden Woertern
-      // untertauchen koennen.
-      const labelWoerter = new Set(
-        `${SCENARIO_LABELS[s.scenario] ?? s.scenario} ${CATEGORY_BY_ID[s.category]?.name ?? s.category}`
-          .toLowerCase()
-          .split(/[^a-zà-öø-ÿ]+/)
-          .filter(Boolean),
-      );
-
-      const score = tokens.filter((t) => textHaystack.includes(t) || labelWoerter.has(t)).length;
-      if (score > 0) scored.push({ sentence: s, score });
+      if (kandidaten.has(s.id)) continue;
+      kandidaten.set(s.id, {
+        s,
+        textWoerter: woerterVon(`${s.text} ${s.germanGloss ?? ''}`),
+        // Die "hinterlegten Tags" eines Satzes sind sein Situations- und
+        // sein Kategoriename - etwas anderes traegt er nicht. (`wordTags`
+        // ist die WORTART je Wort, kein Thema.)
+        etikettWoerter: woerterVon(
+          `${SCENARIO_LABELS[s.scenario] ?? s.scenario} ${CATEGORY_BY_ID[s.category]?.name ?? s.category}`,
+        ),
+      });
     }
   }
-  scored.sort((a, b) => b.score - a.score);
-  return scored.map((s) => s.sentence);
+  if (kandidaten.size === 0) return [];
+
+  const gesamt = kandidaten.size;
+  const begriffe: Suchbegriff[] = basisTokens.map((token) => {
+    const varianten = [
+      { wort: token, faktor: 1 },
+      ...(SUCH_SYNONYME[token] ?? []).map((syn) => ({ wort: syn, faktor: GEWICHT_SYNONYM })),
+    ];
+    // Das Gewicht des Begriffs ist das seiner staerksten Variante. Eine
+    // Variante, die GAR NICHT vorkommt, traegt nichts bei - sonst bestimmte
+    // ein Tippfehler die ganze Rangfolge.
+    let gewicht = 0;
+    for (const v of varianten) {
+      let treffer = 0;
+      for (const k of kandidaten.values()) {
+        if (k.textWoerter.some((w) => trifft(v.wort, w)) || k.etikettWoerter.some((w) => trifft(v.wort, w))) {
+          treffer += 1;
+        }
+      }
+      if (treffer > 0) gewicht = Math.max(gewicht, v.faktor * Math.log(gesamt / (1 + treffer)));
+    }
+    return { varianten, gewicht };
+  });
+
+  // Was die Anfrage hergibt, wenn ein Satz sie vollstaendig abdeckt.
+  const volleAnfrage = begriffe.reduce((n, b) => n + b.gewicht, 0);
+  if (volleAnfrage <= 0) return [];
+
+  // Drei Zahlen je Satz, und sie machen Verschiedenes:
+  //
+  // - `abdeckung`  wie viel der Anfrage der Satz ueberhaupt beantwortet -
+  //                entscheidet ueber Aufnahme, ohne Abschlag fuers Etikett.
+  //                Sonst kaeme eine Situation, deren NAME die Anfrage
+  //                woertlich ist, nie ueber MINDESTANTEIL hinaus.
+  // - `textAnteil` dasselbe, aber nur aus dem Satz selbst - entscheidet, ob
+  //                die Etiketten ueberhaupt gebraucht werden (Regel 3).
+  // - `score`      die Rangfolge, hier zaehlt der Abschlag mit.
+  const bewertet: { sentence: ExerciseSentence; abdeckung: number; textAnteil: number; score: number }[] = [];
+  for (const k of kandidaten.values()) {
+    let abdeckung = 0;
+    let textAnteil = 0;
+    let score = 0;
+    for (const b of begriffe) {
+      if (b.gewicht <= 0) continue;
+      if (b.varianten.some((v) => k.textWoerter.some((w) => trifft(v.wort, w)))) {
+        abdeckung += b.gewicht;
+        textAnteil += b.gewicht;
+        score += b.gewicht;
+      } else if (b.varianten.some((v) => k.etikettWoerter.some((w) => trifft(v.wort, w)))) {
+        abdeckung += b.gewicht;
+        score += b.gewicht * GEWICHT_LABEL;
+      }
+    }
+    if (abdeckung > 0) bewertet.push({ sentence: k.s, abdeckung, textAnteil, score });
+  }
+
+  const grenze = volleAnfrage * MINDESTANTEIL;
+  // Regel 3: nur wenn der blosse Satztext die Anfrage nirgends traegt,
+  // duerfen die Situations- und Kategorienamen einspringen.
+  const textReicht = bewertet.some((b) => b.textAnteil >= grenze);
+  return bewertet
+    .filter((b) => (textReicht ? b.textAnteil : b.abdeckung) >= grenze)
+    .sort((a, b) => b.score - a.score)
+    .map((b) => b.sentence);
 }

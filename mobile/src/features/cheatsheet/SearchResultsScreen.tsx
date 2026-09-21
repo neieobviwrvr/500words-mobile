@@ -4,6 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useAppState } from '../../state/AppState';
 import { CATEGORIES } from '../../data/categories';
+import { SCENARIO_LABELS } from '../../data/scenarios';
 import { getLanguage } from '../../data/languages';
 import { CheatsheetCategoryGroup, Phrase, loadCheatsheetGroups, phraseLanguageId, searchCheatsheetSentences, toPhrase } from '../../data/cheatsheetContent';
 import { speakSentence } from '../tts/speak';
@@ -49,7 +50,12 @@ export function SearchResultsScreen() {
         // hier so geladen, als waere sie gekauft; `durchsuchbareKategorien`
         // weiter unten sorgt trotzdem dafuer, dass in den ANGEZEIGTEN
         // Ergebnissen nur sie, Grundwortschatz und echte Kaeufe auftauchen.
-        const ladeAlsOffen = ['health_emergency', ...purchasedIds];
+        // `new Set`, weil health_emergency auch GEKAUFT sein kann
+        // (berichtigt 2026-09-21, Simons Fehlerbericht zur Suche). Stand es
+        // zweimal in der Liste, baute `loadCheatsheetGroups` zwei Gruppen
+        // daraus - und JEDER Gesundheits-Satz erschien in den Treffern
+        // doppelt. Bei "Arzt" war die halbe Ergebnisliste derselbe Satz.
+        const ladeAlsOffen = [...new Set(['health_emergency', ...purchasedIds])];
         const result = await loadCheatsheetGroups(targetLanguageId, ladeAlsOffen);
         if (cancelled) return;
         setGroups(result.groups);
@@ -92,13 +98,34 @@ export function SearchResultsScreen() {
     ]);
     const matches = searchCheatsheetSentences(groups, query, durchsuchbareKategorien);
     if (matches.length > 0 && language.table) {
-      sections = [
-        {
-          situation: `„${query}"`,
-          kategorie: `${matches.length} Treffer`,
-          phrases: matches.map((s) => toPhrase(targetLanguageId, language.table!, groups.find((g) => g.categoryId === s.category)?.title ?? s.category, s)),
-        },
-      ];
+      // Nach SITUATION gliedern, nicht als eine lange Liste (2026-09-21,
+      // zweite Haelfte von Simons Fehlerbericht: "nicht die Situationen/
+      // Kategorien und Saetze angezeigt die ich mit meiner Eingabe erwartet
+      // habe"). Vorher stand ueber allem eine Zeile „bezahlen" (8 Treffer)
+      // und darunter acht Karten ohne Herkunft - dass vier davon aus dem
+      // Club kommen und vier vom Arzt, sah man nicht. Der Zweig darunter
+      // (Themen-Auswahl) macht es laengst so.
+      //
+      // Die Reihenfolge kommt aus der Bewertung: `matches` ist nach
+      // Passgenauigkeit sortiert, und eine Situation erscheint dort, wo ihr
+      // BESTER Satz steht. Neu sortieren wuerde die beste Antwort nach unten
+      // schieben koennen.
+      const nachSituation = new Map<string, ResultSection>();
+      for (const s of matches) {
+        const grp = groups.find((g) => g.categoryId === s.category);
+        const schluessel = `${s.category}/${s.scenario}`;
+        if (!nachSituation.has(schluessel)) {
+          nachSituation.set(schluessel, {
+            situation: SCENARIO_LABELS[s.scenario] ?? s.scenario,
+            kategorie: grp?.title ?? s.category,
+            phrases: [],
+          });
+        }
+        nachSituation.get(schluessel)!.phrases.push(
+          toPhrase(targetLanguageId, language.table!, grp?.title ?? s.category, s),
+        );
+      }
+      sections = [...nachSituation.values()];
     }
   } else {
     // Ueber die AUSWAHL laufen, nicht ueber die Kategorien - nur so bleibt
@@ -128,8 +155,11 @@ export function SearchResultsScreen() {
   // Verschiedene Kategorien zaehlen, nicht Abschnitte - seit ein Abschnitt je
   // Situation entsteht, sind das zwei verschiedene Zahlen.
   const anzahlKategorien = new Set(sections.map((s) => s.kategorie)).size;
+  const anzahlTreffer = sections.reduce((n, s) => n + s.phrases.length, 0);
   const untertitel = query
-    ? `Sätze zu „${query}" (${sections.reduce((n, s) => n + s.phrases.length, 0)} Treffer)`
+    ? `Sätze zu „${query}" – ${anzahlTreffer} Treffer in ${
+        sections.length === 1 ? 'einer Situation' : `${sections.length} Situationen`
+      }`
     : `Sätze – ${
         gewaehlteNamen.length > 3
           ? `${gewaehlteNamen.length} Situationen`

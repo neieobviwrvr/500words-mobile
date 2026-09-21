@@ -47,7 +47,8 @@
     "web": "expo start --web",
     "pruefe:merge": "node --experimental-strip-types scripts/pruefe-merge.mjs",
     "pruefe:konzepte": "node --experimental-strip-types scripts/pruefe-konzepte.mjs",
-    "pruefe:bewertung": "node scripts/pruefe_bewertung.mjs"
+    "pruefe:bewertung": "node scripts/pruefe_bewertung.mjs",
+    "pruefe:suche": "node scripts/pruefe-suche.mjs"
   },
   "private": true
 }

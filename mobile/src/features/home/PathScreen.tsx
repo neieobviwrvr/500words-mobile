@@ -191,6 +191,20 @@ type RawNode = {
   /** Aufgefaechertes Thema unter seiner Kategorie - kleiner, blendet ein. */
   theme?: boolean;
   onPress: () => void;
+  /**
+   * Gedrueckt halten (2026-09-21, Simons Fehlerbericht).
+   *
+   * Eine GESPERRTE Kategorie hatte gar keinen Weg in den Shop: ihr Tipp
+   * faechert die Situationen auf, und das soll er auch weiter ("soll so
+   * bleiben!"). Damit war der Shop von dort aus unerreichbar - man sah, was
+   * es zu holen gibt, und konnte es nicht holen.
+   *
+   * Langes Druecken oeffnet ihn jetzt, ohne dem Tipp etwas wegzunehmen.
+   * Gesperrte Situationen bekommen es ebenfalls, obwohl ihr Tipp schon in
+   * den Shop fuehrt - wer die Geste einmal kennt, soll sie nicht auf halbem
+   * Weg wieder verlieren.
+   */
+  onLongPress?: () => void;
 };
 
 type LaidOutNode = RawNode & {
@@ -492,6 +506,7 @@ export function useLernpfad() {
             : 'open') as NodeState,
         theme: true,
         onPress: locked ? goShop : goSituation(categoryId, sit.scenario),
+        onLongPress: locked ? goShop : undefined,
       }));
     };
 
@@ -524,7 +539,9 @@ export function useLernpfad() {
           id: cat.id,
           label: cat.name,
           state: 'locked' as NodeState,
+          // Tipp faechert auf (Simons Vorgabe), gedrueckt halten kauft.
           onPress: toggleCategory(cat.id),
+          onLongPress: goShop,
         },
         ...themenVon(cat.id, true),
       ]),
@@ -1073,6 +1090,7 @@ function PathNode({
     >
       <Pressable
         onPress={node.onPress}
+        onLongPress={node.onLongPress}
         accessibilityRole="button"
         // Der Zustand darf nicht allein an Farbe und Symbol haengen - Gruen,
         // Haekchen und Schloss sind fuer VoiceOver unsichtbar, deshalb steht
@@ -1086,7 +1104,19 @@ function PathNode({
                 ? `${node.label}, hier bist du`
                 : node.label
         }
-        accessibilityHint={isLocked ? 'Öffnet den Shop zum Freischalten' : 'Öffnet die Kategorie'}
+        // Der Hinweis nennt, was der TIPP tut - und bei gesperrten Knoten
+        // zusaetzlich das lange Druecken. Bis 2026-09-21 stand hier fuer
+        // jeden gesperrten Knoten "Öffnet den Shop", auch fuer die
+        // Kategorie-Pille, die in Wahrheit auffaechert.
+        accessibilityHint={
+          node.onLongPress
+            ? node.theme
+              ? 'Öffnet den Shop zum Freischalten'
+              : 'Zeigt die Situationen. Gedrückt halten öffnet den Shop zum Freischalten.'
+            : node.theme
+              ? 'Öffnet die Übung'
+              : 'Zeigt die Situationen'
+        }
         style={({ pressed }) => [
           styles.node,
           node.theme && styles.nodeTheme,

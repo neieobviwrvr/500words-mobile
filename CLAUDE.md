@@ -2169,8 +2169,42 @@ frueher hier notierte "offene Anschlusspunkt" ist damit erledigt.
   ist jetzt der Tab "Survival", die Extras haengen am Coins-Knopf.
 
 **Aktionen -> Ziele:**
-- Tap auf freigeschaltete Pille -> **S2 Kategorie-Detail-Screen**
-- Tap auf gesperrte Pille (Schloss) -> **S3 Shop-Screen**
+- Tap auf freigeschaltete Pille -> faechert ihre Situationen auf
+- Tap auf gesperrte KATEGORIE -> faechert ebenfalls auf (nicht in den Shop)
+- Tap auf gesperrte SITUATION -> **S3 Shop-Screen**
+- **Gedrueckt halten auf eine gesperrte Kategorie oder Situation -> S3
+  Shop-Screen** (2026-09-21, siehe unten)
+
+**Der Shop war von einer gesperrten Kategorie aus unerreichbar**
+(2026-09-21, Simons Fehlerbericht: "Ich habe beim Test Probleme mit
+gesperrten Kategorien und Situationen gehabt, weil Klicken auf Situation ja
+die unteren Pillen oeffnet (soll so bleiben!)").
+
+Die Zeile darueber sagte bis heute "Tap auf gesperrte Pille (Schloss) ->
+S3" - fuer die KATEGORIE stimmte das nie: ihr `onPress` ist
+`toggleCategory`, sie faechert auf. Gesperrte Situationen fuehren in den
+Shop, die Kategorie-Pille darueber fuehrte nirgendwohin. Man sah also, was
+es zu holen gibt, und kam nicht hin.
+
+**Geloest ueber `onLongPress`, nicht ueber den Tipp** - der soll
+auffaechern bleiben, Simons ausdrueckliche Vorgabe. Gesperrte Situationen
+bekommen die Geste ebenfalls, obwohl ihr Tipp schon in den Shop fuehrt: wer
+sie einmal kennt, soll sie nicht auf halbem Weg wieder verlieren.
+Freigeschaltete Knoten haben KEIN `onLongPress` - langes Druecken tut dort
+nichts, statt in einen Shop zu springen, in dem es nichts zu kaufen gibt.
+
+**Der `accessibilityHint` war mit derselben Annahme falsch** und sagte fuer
+jeden gesperrten Knoten "Öffnet den Shop zum Freischalten", auch fuer die
+auffaechernde Kategorie-Pille. Er nennt jetzt, was der Tipp wirklich tut,
+und bei gesperrten Knoten zusaetzlich das lange Druecken.
+
+**Offene Schwaeche, bewusst so ausgeliefert:** langes Druecken ist nicht
+entdeckbar - wer die Geste nicht kennt, findet den Shop von einer
+gesperrten Kategorie aus weiterhin nur ueber ihre Situationen. Der
+Lektionen-Screen loest dasselbe Problem sichtbar (dort ist das
+Schloss-Symbol ein eigener Knopf, siehe "Schloss fuehrt in den Shop"). Im
+Pfad ginge das auch, ist aber bei den kleinen Situations-Pillen ein enger
+Tippbereich.
 - Tap "Taegliches Wiederholen" -> **direkt in EINE gemischte Sitzung**,
   und zwar in die des aktuellen LERNWEGS (Nutzer-Wunsch 2026-08-21):
   `gefuehrt` -> `/wiederholen` (Kurs-Woerter und -Rahmen), `speedrun` ->
@@ -2338,6 +2372,102 @@ ehrlich als "(Platzhalter)" statt Fake-Content.
 - **Noch keine Satz-Audios vorhanden**, in keiner Sprache: `phrasebook_master`
   hat gar keine Spalte dafuer, `schwedisch_phrasebook.audio_url` ist 0 von
   189 belegt. Der Weg steht, die Dateien fehlen.
+
+#### Die Suche fand zu viel und zeigte zu wenig (2026-09-21)
+
+Simons Fehlerbericht nach dem Test: "es hat einfach schlampig funktioniert
+und nicht die Situationen/Kategorien und Saetze angezeigt die ich mit meiner
+Eingabe erwartet habe." Nachgemessen gegen den echten Bestand (584 Saetze,
+alle Kategorien freigeschaltet):
+
+| Anfrage | vorher | jetzt |
+|---|---|---|
+| "Wo ist die Toilette" | 56 | **3** |
+| "Zug nach Berlin" | 37 | **1** |
+| "bezahlen" | 24 | **8** |
+| "Hilfe" | 18 | **5** |
+| "Ich brauche einen Arzt" | 13 | **3** |
+| "Eis" | 11 | **2** |
+| "Arzt" | 3 | 3 |
+| "jemanden ansprechen" | 17 | 17 |
+
+**Vier Ursachen, alle verschieden:**
+
+1. **Jedes Wort zaehlte gleich viel**, und EIN Treffer reichte. "Ich brauche
+   einen Arzt" fand "Ich brauche die Quittung fuer meine Versicherung" -
+   gemeinsam ist beiden nur "brauche". Die `FUELLWOERTER`-Liste half nicht:
+   sie kennt nur, was jemand vorher hineingeschrieben hat, und "brauche"
+   stand nicht drin.
+2. **Teilstrings auf dem ganzen Satz.** "Eis" traf "Preis", "Reise" und
+   "heiss"; "wo" traf "Woche" und "Woher".
+3. **Ein Situationsname zog alle seine Saetze an.** "bezahlen" brachte
+   "Reicht das?" und "Hier ist meine Karte", weil eine Situation
+   "Versicherung und Bezahlen" heisst.
+4. **Health + Emergency stand doppelt in der Ladeliste**, sobald es GEKAUFT
+   war (`['health_emergency', ...purchasedIds]` in `SearchResultsScreen`) -
+   `loadCheatsheetGroups` baute zwei Gruppen daraus, und jeder
+   Gesundheitssatz erschien zweimal. Genau die Kategorie, mit der Simon
+   getestet hat.
+
+**Drei Regeln ersetzen das "irgendein Wort passt"**
+(`searchCheatsheetSentences` in `data/cheatsheetContent.ts`):
+
+* **Seltenheit schlaegt Haeufigkeit.** Das Gewicht eines Suchbegriffs kommt
+  aus dem durchsuchten Bestand selbst (`log(N / 1+Treffer)`, die uebliche
+  IDF-Rechnung). "brauche" faellt damit von allein ab - **keine gepflegte
+  Liste mehr noetig**, und der Wert stimmt automatisch fuer jede Sprache
+  und jeden Kaufstand. Ein getipptes Wort und seine `SUCH_SYNONYME` sind
+  dabei EIN Begriff, nicht mehrere: sonst waere eine Anfrage mit vielen
+  Synonymen von allein gewichtiger als eine ohne.
+* **Die halbe Anfrage muss abgedeckt sein** (`MINDESTANTEIL = 0.5`),
+  gemessen an dem, was die Anfrage hergibt, nicht am besten Treffer. Bei
+  einem einzelnen Suchwort aendert das nichts, bei einem ganzen Satz trennt
+  es Kern von Beiwerk: "arzt" deckt 56% von "Ich brauche einen Arzt" ab,
+  "brauche" allein 44%.
+* **Der Situationsname ist der Rueckfall, nicht das Ergebnis.** Traegt
+  irgendein Satz die Anfrage schon mit seinem eigenen TEXT, zaehlen nur
+  solche Saetze. Findet der Text nirgends etwas, uebernehmen die Namen -
+  **"jemanden ansprechen" liefert weiterhin alle 17 Saetze dieser
+  Situation, obwohl keiner davon das Wort enthaelt.** Genau dafuer ist der
+  Weg da, und deshalb bleibt die Zahl dort gleich.
+
+**Die Toleranz haengt jetzt an der Wortlaenge**, statt ueberall Teilstring
+zu sein: bis drei Zeichen nur das ganze Wort ("wo"), ab vier zusaetzlich
+der Wortanfang ("arzt" -> "Arzttermin"), ab fuenf auch das Wortinnere
+("toilette" -> "Herrentoilette"). Das Wortinnere erst ab fuenf, weil
+deutsche Komposita das Grundwort hinten anhaengen - bei vier waere "kann"
+in "bekannt" schon ein Treffer.
+
+**Die "hinterlegten Tags" eines Satzes sind sein Situations- und sein
+Kategoriename**, sonst nichts. Nicht zu verwechseln mit `word_tags` - das
+ist die WORTART je Wort (fuers Einfaerben), kein Thema. Ein eigener
+Such-Tag je Satz bleibt moeglich, ist aber weiterhin kein Blocker.
+
+**Die Trefferliste ist nach SITUATION gegliedert** (zweite Haelfte von
+Simons Satz). Vorher stand ueber allem eine Zeile "bezahlen (8 Treffer)"
+und darunter acht Karten ohne Herkunft; jetzt "VERSICHERUNG UND BEZAHLEN
+(Health + Emergency)", "AN DER BAR (Club + Nightlife)" und so fort -
+dieselbe Gliederung, die der Zweig fuer die Themen-Auswahl laengst hatte.
+Die Reihenfolge kommt aus der Bewertung: eine Situation erscheint dort, wo
+ihr BESTER Satz steht, nicht alphabetisch.
+
+**`npm run pruefe:suche`** (`scripts/pruefe-suche.mjs`) laeuft gegen die
+echte Datenbank und die echte Suchfunktion - kein Nachbau, dieselbe
+Begruendung wie bei `pruefe:konzepte`. Zehn Faelle, jeder ein Verhalten,
+das die Suche haben MUSS: welche Saetze kommen muessen, welche nicht mehr
+kommen duerfen (es sind genau Simons beanstandete Treffer), und dass kein
+Satz doppelt in der Liste steht. `--vorher HEAD` stellt den alten Stand
+daneben, `--zeigen` listet jeden Treffer, `--frisch` rechnet mit einem
+Konto ohne Kaeufe.
+
+**Vorgabe ist das VOLLE Konto, und das ist wichtig:** mit einem frischen
+Konto sind nur Grundwortschatz und Health durchsuchbar (161 Saetze), und
+drei der vier Fehler zeigen sich dort gar nicht. Wer die Suche mit einem
+leeren Konto prueft, misst den leichten Fall.
+
+**Geprueft in de/no/ru/zh** - dieselben Zahlen, weil in der Zielsprache UND
+in der deutschen Bedeutung gesucht wird (norwegisch "betale" findet
+dieselben Saetze wie "bezahlen"). Im Browser durchgespielt.
 
 #### Die Satzliste liess die geliehenen Saetze weg (2026-09-20)
 
@@ -3704,13 +3834,14 @@ Projekt-ROOT (nicht der veralteten `uploads/CLAUDE.md`-Kopie) - Designs
 eigene Erklaerung dazu war also korrekt, siehe [[claude-design-project]]:
 - **S6 Cheat-Sheet-Survival-Suchfeld - erledigt (2026-08-07):** echte
   Freitextsuche eingebaut (z.B. "Arzt suchen" findet "Ich brauche einen
-  Arzt."), OHNE dafuer eine neue DB-Spalte/Such-Tag pro Satz zu brauchen -
-  MVP-Loesung tokenisiert die Eingabe und matched jedes Wort einzeln (ODER-
-  verknuepft, nach Trefferzahl sortiert) gegen Satztext + deutsche Gloss +
-  `scenario` + `category`, siehe `mobile/src/data/cheatsheetContent.ts`
-  `searchCheatsheetSentences()`. Kein Server/KI noetig, laeuft rein lokal.
-  Ein dedizierter Such-Tag pro Satz (der urspruengliche Plan) bleibt eine
-  moegliche spaetere Verbesserung, ist aber kein Blocker mehr.
+  Arzt."), OHNE dafuer eine neue DB-Spalte/Such-Tag pro Satz zu brauchen.
+  Kein Server/KI noetig, laeuft rein lokal. Ein dedizierter Such-Tag pro
+  Satz (der urspruengliche Plan) bleibt eine moegliche spaetere
+  Verbesserung, ist aber kein Blocker mehr.
+  **Ueberholt (2026-09-21):** hier stand, die MVP-Loesung matche jedes Wort
+  einzeln, ODER-verknuepft und nach Trefferzahl sortiert. Genau das war der
+  Fehler, den Simon beim Test beanstandet hat - siehe "Die Suche fand zu
+  viel und zeigte zu wenig" im S6-Abschnitt oben.
 - **S6 auf echten Content umgestellt (2026-08-07):** kompletter Umbau von
   S6 (Uebersicht + Kategorie-Liste + Suchergebnisse) weg von den alten
   Platzhaltern (1 Fake-Satz + 5 Dummy-Karten pro Thema) hin zu echtem
