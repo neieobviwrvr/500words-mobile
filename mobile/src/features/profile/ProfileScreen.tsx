@@ -29,6 +29,7 @@ import {
   Zeile,
 } from './ListenBausteine';
 import { SPERR_OPTIONEN } from './SperrbildschirmScreen';
+import { DESIGNS } from '../../theme/designs';
 
 // Profil im Stil der iOS-Einstellungen (2026-09-11).
 //
@@ -80,6 +81,7 @@ export function ProfileScreen() {
     toggleWortartenFarben,
     fortschritt,
     coinGrants,
+    designId,
   } = useAppState();
   const theme = getTheme(darkMode);
   const pick = useLockscreenPick();
@@ -241,6 +243,26 @@ export function ProfileScreen() {
             titel="Du sprichst an"
             wert={ansprache ? ANSPRACHE_LABEL[ansprache] ?? ansprache : 'Noch offen'}
             onPress={() => router.push('/anrede')}
+          />
+        </Gruppe>
+
+        {/* VOR DEM LAUNCH ENTFERNEN (2026-09-23).
+
+            Das Design-Labor ist ein Werkzeug, um zwei Looks direkt
+            gegeneinander zu halten (siehe theme/designs.ts) - kein Inhalt
+            fuer Nutzer. Solange nur Simon und Nils testen, steht es offen;
+            spaetestens zum Launch faellt diese Gruppe weg oder haengt an
+            einer Kontopruefung. */}
+        <Gruppe
+          dark={darkMode}
+          titel="Nur zum Testen"
+          fuss="Vergleicht mehrere Looks. Verschwindet vor dem Launch."
+        >
+          <Zeile
+            dark={darkMode}
+            titel="Design-Labor"
+            wert={DESIGNS[designId].name}
+            onPress={() => router.push('/einstellungen/design')}
           />
         </Gruppe>
       </ScrollView>

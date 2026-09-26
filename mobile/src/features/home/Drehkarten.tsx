@@ -100,14 +100,31 @@ const TINTE = '#2A2644';
  * die untere haengt am unteren Bildschirmrand - ein Sonderfall dieses
  * Testscreens, kein neuer App-Schatten.
  */
+// Zurueckgenommen am 2026-09-26 (Simon: "mach den Schatten unter der Karte
+// bisschen weniger"): Deckkraft 0,26 -> 0,16, Weichzeichnung 20 -> 16,
+// Versatz 10 -> 7. Die Karte liegt dadurch flacher auf, ohne den Schatten
+// ganz zu verlieren - er traegt weiterhin die Drehung.
+/**
+ * Was eine Karte ohne eigene Flaeche ueberschreibt.
+ *
+ * `shadowOpacity: 0` statt den Schatten wegzulassen: der Stil kommt aus
+ * `styles.flaeche` und laesst sich nicht selektiv entfernen, nur ueberschreiben.
+ * `elevation: 0` ist die Entsprechung fuer Android.
+ */
+const OHNE_FLAECHE = {
+  backgroundColor: 'transparent',
+  shadowOpacity: 0,
+  elevation: 0,
+} as const;
+
 const SCHATTEN = {
   shadowColor: TINTE,
-  shadowRadius: 20,
-  shadowOpacity: 0.26,
-  elevation: 8,
+  shadowRadius: 16,
+  shadowOpacity: 0.16,
+  elevation: 5,
 } as const;
 /** Versatz zum Schatten; das Vorzeichen setzt jede Karte selbst. */
-const SCHATTEN_TIEFE = 10;
+const SCHATTEN_TIEFE = 7;
 
 function begrenze(wert: number) {
   return Math.max(-KIPP_MAX, Math.min(KIPP_MAX, wert));
@@ -224,6 +241,8 @@ export function BildKarte({
   name,
   rueckseite,
   rueckseitenBild,
+  figur,
+  ohneFlaeche = false,
   knopf,
 }: {
   breite: number;
@@ -253,6 +272,30 @@ export function BildKarte({
    * zeigt die untere Karte.
    */
   rueckseitenBild?: ImageSourcePropType;
+  /**
+   * Eine freigestellte Figur AUF dem Bild (2026-09-26, fuer Chinesisch auf
+   * S1 - siehe `Sprachfigur`).
+   *
+   * Liegt INNERHALB des Beschnitts, teilt also die runden Ecken des Bildes,
+   * und steht auf BEIDEN Seiten - wie der Knopf, und aus demselben Grund:
+   * sie klebt am Bild, statt ueber der drehenden Karte stehenzubleiben.
+   *
+   * Positioniert sich selbst und faengt keine Tipps ab, sonst waere die
+   * halbe Karte nicht mehr drehbar.
+   */
+  figur?: ReactNode;
+  /**
+   * Karte ohne eigene Flaeche (2026-09-26, Simon fuer S1: "Mach den Rand und
+   * die Hintergrundfarbe der Karte auf S1 weg").
+   *
+   * Nimmt Fuellung, Rasterlinien UND Schatten - der Schatten gehoert dazu,
+   * auch wenn er nicht genannt war: er ist der Schlagschatten genau dieser
+   * Flaeche und stuende sonst als grauer Fleck unter etwas Unsichtbarem.
+   *
+   * Uebrig bleibt, was auf der Karte liegt: Figur, Sprechblasen, Knopf. Die
+   * Drehung funktioniert unveraendert, sie ist eine Bewegung des Inhalts.
+   */
+  ohneFlaeche?: boolean;
   /**
    * Ein Bedienelement AUF der Karte, z.B. der Geschenk-Knopf (2026-09-13,
    * Simon: "einen runden Button fuer die Geschenke auf das Bild, so dass es
@@ -341,7 +384,8 @@ export function BildKarte({
               // Ohne Bild derselbe helle Ton wie die Rueckseite - der mittlere
               // Perlmutt-Ton aus `flaeche` sieht als leere Karte aus wie ein
               // fehlendes Bild.
-              ...(quelle ? null : { backgroundColor: PERLMUTT[0] }),
+              ...(quelle || ohneFlaeche ? null : { backgroundColor: PERLMUTT[0] }),
+              ...(ohneFlaeche ? OHNE_FLAECHE : null),
               opacity: anim.vorneDeckung,
               transform: [{ perspective: 1000 }, { rotateX: anim.neigung }, { rotateY: anim.vorneY }],
             },
@@ -364,6 +408,7 @@ export function BildKarte({
               />
             </View>
           ) : null}
+          {figur ? <View style={[styles.bildRahmen, styles.figurPlatz]}>{figur}</View> : null}
         </Animated.View>
 
         {/* Rueckseite MIT Flaeche (2026-09-12, Simons Wahl: "give the backs
@@ -386,6 +431,7 @@ export function BildKarte({
               width: breite,
               height: hoehe,
               backgroundColor: PERLMUTT[0],
+              ...(ohneFlaeche ? OHNE_FLAECHE : null),
               opacity: anim.hintenDeckung,
               transform: [{ perspective: 1000 }, { rotateX: anim.neigung }, { rotateY: anim.hintenY }],
             },
@@ -397,7 +443,7 @@ export function BildKarte({
               die Struktur unten schliessen sollte. Linienfarbe aus dem
               Perlmutt der Karte, nicht aus der App-Palette: der Grund hier ist
               kuehles Violettweiss, ein warmer Grauton saesse daneben. */}
-          {RASTER ? <Struktur farbe={PERLMUTT[1]} ecken="alle" /> : null}
+          {RASTER && !ohneFlaeche ? <Struktur farbe={PERLMUTT[1]} ecken="alle" /> : null}
 
           {rueckseitenBild ? (
             // Gleicher Beschnitt wie vorn: die Rundung sitzt an der Huelle,
@@ -411,6 +457,7 @@ export function BildKarte({
               />
             </View>
           ) : null}
+          {figur ? <View style={[styles.bildRahmen, styles.figurPlatz]}>{figur}</View> : null}
           {rueckseite}
         </Animated.View>
       </View>
@@ -507,8 +554,12 @@ export function KartenKnopf({
  *
  * Auf der Skala: 8 ist `SPACING.sm`. Beide Karten lesen diese eine Groesse -
  * der naechste Versuch ist eine Zeile.
+ *
+ * Fuenfter Schritt am 2026-09-26: "Mach die Raender links und rechts
+ * horizontal kleiner" - von 8 auf `SPACING.xs` (4). Gilt weiterhin fuer
+ * BEIDE Karten, das ist der Sinn dieser einen Konstante.
  */
-const KARTE_SEITE = SPACING.sm;
+const KARTE_SEITE = SPACING.xs;
 
 const KNOPF_HOEHE = 76;
 const WECHSEL_BREITE = 56;
@@ -1030,6 +1081,20 @@ const styles = StyleSheet.create({
   bildRahmen: {
     borderRadius: ECKE,
     overflow: 'hidden',
+  },
+  /**
+   * Die Figur liegt ueber der ganzen Karte, nicht im Bildrahmen (2026-09-26).
+   *
+   * Vorher stand sie INNERHALB des Bild-Elements - damit verschwand sie,
+   * sobald eine Karte kein Hintergrundbild hat. Genau das ist bei Chinesisch
+   * jetzt der Fall: dort traegt die Karte nur noch die Figur.
+   */
+  figurPlatz: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
   rueckseiteInhalt: {
     position: 'absolute',

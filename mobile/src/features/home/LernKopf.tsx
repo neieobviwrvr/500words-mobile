@@ -41,10 +41,13 @@ export function LernKopf({
   dark,
   standort,
   anteil,
+  nurModus = false,
 }: {
   dark: boolean;
   standort: Standort;
   anteil: number;
+  /** Ueberschrift linksbuendig und nur der Lernweg - siehe `Standortzeile`. */
+  nurModus?: boolean;
 }) {
   const { targetLanguageId, setTargetLanguageId, learningMode } = useAppState();
   const oeffneStatistik = () =>
@@ -60,7 +63,7 @@ export function LernKopf({
   return (
     <>
       <View style={styles.standortReihe}>
-        <Standortzeile dark={dark} standort={standort} />
+        <Standortzeile dark={dark} standort={standort} nurModus={nurModus} />
       </View>
 
       <View style={styles.progressRow}>

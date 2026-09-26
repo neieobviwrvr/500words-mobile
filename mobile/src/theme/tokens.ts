@@ -12,39 +12,38 @@
 // eingetippt und entsprechend auseinandergedriftet.
 
 
-export type Theme = {
-  dark: boolean;
-  pageBg: string;
-  bg: string;
-  cardBg: string;
-  border: string;
-  text: string;
-  sub: string;
-  pathBoxBg: string;
-  modeBg: string;
-  buyBg: string;
-  dividerColor: string;
-  // Neu: dezente Fuellung fuer nicht ausgewaehlte Auswahlzeilen im
-  // Onboarding (Babbel nutzt dort einen Hauch Grau statt reinem Weiss,
-  // damit die Karte sich vom weissen Seitenhintergrund abhebt).
-  subtleFill: string;
-};
+import { designVon, type Design } from './designs';
+
+// Die Flaechen- und Textfarben stehen seit 2026-09-23 in `designs.ts`, je
+// Look einmal. `Theme` bleibt hier abrufbar, damit die rund 54 Screens ihre
+// Importe behalten - es ist derselbe Typ, nur woanders beschrieben.
+export type { Theme } from './designs';
+import type { Theme } from './designs';
+
+/**
+ * Der gerade aktive Look. Die EINZIGE veraenderliche Stelle in dieser
+ * Datei, und sie ist es mit Absicht.
+ *
+ * Der Umweg ueber eine Modulvariable spart den Umbau von 54 Screens: alle
+ * rufen laengst `getTheme(darkMode)`, und dadurch schalten Seitengrund,
+ * Kartenflaechen, Text-, Neben- und Rahmenfarben app-weit mit, ohne dass
+ * eine einzige dieser Dateien angefasst werden muss. Akzentfarbe, Schrift,
+ * Radien und Schatten stehen dagegen in ihren `StyleSheet.create`-Bloecken
+ * fest, also beim Start - die schalten nur auf Screens mit, die auf
+ * `useDesign()` umgestellt sind (siehe theme/useDesign.ts).
+ *
+ * Gesetzt wird der Wert ausschliesslich von `AppState`, und zwar VOR dem
+ * zugehoerigen `setState` - der Neuaufbau der Screens liest dann schon den
+ * neuen Look.
+ */
+let aktivesDesign: Design = designVon('aktuell');
+
+export function setzeDesign(design: Design) {
+  aktivesDesign = design;
+}
 
 export function getTheme(dark: boolean): Theme {
-  return {
-    dark,
-    pageBg: dark ? '#0F0F0E' : '#FFFFFF',
-    bg: dark ? '#171715' : '#FAFAF9',
-    cardBg: dark ? '#1D1D1B' : '#FFFFFF',
-    border: dark ? '#33322E' : '#E6E4E0',
-    text: dark ? '#F5F4F1' : '#1A1A18',
-    sub: dark ? '#A3A099' : '#6B6862',
-    pathBoxBg: dark ? '#1A1A18' : '#FFFFFF',
-    modeBg: dark ? '#1F2A3E' : '#EDF2FC',
-    buyBg: dark ? '#16261C' : '#EAF6EE',
-    dividerColor: dark ? '#4A4842' : '#D8D5CF',
-    subtleFill: dark ? '#232320' : '#F5F4F1',
-  };
+  return aktivesDesign.farben(dark);
 }
 
 // ---------------------------------------------------------------------------
@@ -401,7 +400,15 @@ export const ACCENT_PREMIUM = '#C99A2E';
 // Pfad dem Grundwortschatz, der Balken misst aber alle freigeschalteten
 // Inhalte. Zwei verschiedene Blau nebeneinander waeren verwirrend, ein
 // helleres unterscheidet die beiden Rollen.
-export const PROGRESS_FILL = '#58AFDD';
+// Seit 2026-09-27 GRUEN (Simon: "Aendere das blau der Progressionbar zu
+// einem knalligen Gruen"). Derselbe Ton, den der neue Startscreen schon
+// fuer "x von y Lektionen abgeschlossen" benutzt - ein zweites, leicht
+// abweichendes Gruen direkt darueber waere der haeufigste Farbfehler.
+//
+// Die Begruendung von 2026-08-18 gegen ACCENT_BLUE (#3E6FD1) ist damit
+// hinfaellig, die Rolle aber unveraendert: der Balken misst alle
+// freigeschalteten Inhalte, nicht den Grundwortschatz.
+export const PROGRESS_FILL = '#22C55E';
 // Untere Kante der Fuellung (2026-09-01, Simons Vorgabe "physisches
 // 3D-Volumen"). Dieselbe Farbtonlage wie `PROGRESS_FILL`, nur dunkler - das
 // ist die Regel, die auch die Karten-Knoepfe tragen: die Kante ist derselbe
@@ -411,7 +418,7 @@ export const PROGRESS_FILL = '#58AFDD';
 // Blau ergibt ein graustichiges Dunkelblau. Ein sattes, gleich gesaettigtes
 // Blau laesst die Fuellung wie einen Zylinder aussehen, ein grauer Rand wie
 // eine schmutzige Kante.
-export const PROGRESS_FILL_EDGE = '#3689B9';
+export const PROGRESS_FILL_EDGE = '#16A34A';
 export const NODE_LOCKED = '#B7B2A6';
 // `NODE_DONE` (#4C9A6A) ist am 2026-08-18 weggefallen: eine zweite,
 // leicht abweichende Gruenfassung neben ACCENT_GREEN, die nie irgendwo

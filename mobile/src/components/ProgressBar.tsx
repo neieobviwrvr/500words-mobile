@@ -42,8 +42,16 @@ import {
 // einer Lichtkante in der Fuellung und einer weichen Bewegung beim
 // Wertwechsel. Kein Fremdbauteil, keine Plattform-Komponente.
 
-/** Simons Mass. Bis dahin 10 - das war die Slider-Anmutung. */
-const BAR_HEIGHT = 18;
+/**
+ * Simons Mass. 10 -> 18 (weg von der Slider-Anmutung) -> 12 am 2026-09-27
+ * ("mach das Rohr weniger dick vertikal").
+ *
+ * Nach unten ist bei rund 10 Schluss: Lichtkante (30 %) und Unterkante der
+ * Fuellung teilen sich die Hoehe, darunter bleibt vom Koerper dazwischen
+ * nichts mehr uebrig und der Balken sieht wieder flach aus. `GLOSS_HEIGHT`
+ * rechnet mit, hier ist nichts von Hand nachzuziehen.
+ */
+const BAR_HEIGHT = 12;
 
 // --- Der Koerper: Kante, Glanz, Rille (2026-09-01, Simons Vorgabe) ---------
 //

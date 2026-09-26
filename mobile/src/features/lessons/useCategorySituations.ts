@@ -38,6 +38,26 @@ export type Situation = {
    * jede Kategorie gleich aus.
    */
   geliehen: boolean;
+  /**
+   * Wie oft JEDER Satz dieser Situation mindestens beantwortet wurde - das
+   * Minimum ueber die `reps` aller zugehoerigen FSRS-Karten (2026-09-26,
+   * fuer den Start-Entwurf, siehe features/entwurf/).
+   *
+   * Das Minimum und nicht der Durchschnitt: "durchgelernt" heisst, dass
+   * KEIN Satz mehr aussteht. Bei einem Mittelwert verstecken zehn leichte
+   * Saetze einen, der nie drankam.
+   *
+   * **Nicht zu verwechseln mit Sitzungen:** gezaehlt werden Antworten je
+   * Satz, egal woher sie kommen - aus der Situation selbst, aus dem
+   * taeglichen Wiederholen oder aus dem Kategorie-Durchlauf. "2" heisst
+   * also "jeder Satz hier wurde mindestens zweimal beantwortet", nicht
+   * "zweimal am Stueck durchgespielt". Fuer eine Fortschrittsanzeige ist
+   * das die ehrlichere Groesse, weil sie am INHALT haengt und nicht daran,
+   * auf welchem Weg er drankam.
+   *
+   * 0, solange auch nur ein Satz noch keine Karte hat.
+   */
+  durchgaenge: number;
 };
 
 export type CategorySituations = {
@@ -123,9 +143,15 @@ export function useCategorySituations(languageId: string): CategorySituations {
               total: 0,
               seen: 0,
               geliehen: zielKategorie !== sentence.category,
+              // Startet bei Unendlich, damit das Minimum ueber die Saetze
+              // laufen kann - unten wird daraus eine Zahl.
+              durchgaenge: Number.POSITIVE_INFINITY,
             });
             sit.total += 1;
             const card = cards[cardKey(languageId, lang.table as string, sentence.id)];
+            // Ein Satz ohne Karte ist ein Satz mit null Antworten und zieht
+            // das Minimum auf 0 - genau richtig, solange er aussteht.
+            sit.durchgaenge = Math.min(sit.durchgaenge, card?.reps ?? 0);
             if (card) {
               sit.seen += 1;
               // Karten ohne `last_review` wurden angelegt, aber nie
@@ -145,9 +171,14 @@ export function useCategorySituations(languageId: string): CategorySituations {
           for (const [categoryId, perScenario] of Object.entries(index)) {
             // Reihenfolge seit 2026-09-20 in situationsReihenfolge.ts, weil
             // die Satzliste dieselbe braucht - siehe `situationsVergleich`.
-            byCategory[categoryId] = Object.values(perScenario).sort(
-              situationsVergleich<Situation>(categoryId),
-            );
+            byCategory[categoryId] = Object.values(perScenario)
+              // Unendlich kann nur uebrigbleiben, wenn die Situation gar
+              // keinen Satz hat - dann sind es null Durchgaenge.
+              .map((sit) => ({
+                ...sit,
+                durchgaenge: Number.isFinite(sit.durchgaenge) ? sit.durchgaenge : 0,
+              }))
+              .sort(situationsVergleich<Situation>(categoryId));
           }
 
           const recentCategoryIds = Object.entries(lastReviewPerCategory)

@@ -1,5 +1,6 @@
+import { Platform } from 'react-native';
 import * as Speech from 'expo-speech';
-import { createAudioPlayer, type AudioPlayer } from 'expo-audio';
+import { createAudioPlayer, setAudioModeAsync, type AudioPlayer } from 'expo-audio';
 import { getLanguage } from '../../data/languages';
 
 // Sprachausgabe der App - eine Fallback-Kette statt einer Entweder-oder-Wahl.
@@ -16,6 +17,50 @@ import { getLanguage } from '../../data/languages';
 //
 // Damit fuellt sich die Vertonung spaeter Satz fuer Satz von selbst auf,
 // ohne dass am Abspiel-Code etwas geaendert werden muss.
+
+/**
+ * Der Stummschalter des iPhones darf die Saetze nicht verschlucken
+ * (2026-09-21).
+ *
+ * Simons Fehlerbericht: "Warum zum Henker lassen sich bei Satzliste keine
+ * Audios abspielen obwohl die Audios da sind?" Die Dateien WAREN da - 581
+ * von 581 norwegischen Saetzen, alle abrufbar -, und im Browser spielte die
+ * Satzliste genau die richtige ab. Der Fehler sitzt eine Ebene tiefer, in
+ * iOS selbst:
+ *
+ * Solange eine App ihre Audio-Sitzung nicht einstellt, laeuft sie in der
+ * Kategorie `.soloAmbient`, und die schaltet der STUMMSCHALTER stumm. Kein
+ * Fehler, kein Ton. Eingestellt hat die Sitzung bis heute allein der
+ * Mikrofon-Hook (`useSttRecorder`, `playsInSilentMode: true`) - also nur
+ * Screens MIT Mikrofon. Deshalb klangen die Uebungen, waehrend Satzliste,
+ * Survival und Wortliste schwiegen, solange man in dieser App-Sitzung noch
+ * keine Uebung geoeffnet hatte. Die Systemstimme (expo-speech) haengt an
+ * derselben Sitzung und schwieg dort ebenso.
+ *
+ * **Genau EINMAL, beim App-Start** - aufgerufen auf Modulebene in
+ * `app/_layout.tsx`, also bevor irgendein Screen steht. NICHT hier in
+ * `speakSentence()` bei jedem Abspielen: `.playback` (ohne Aufnahme) ueber
+ * ein laufendes `.playAndRecord` gesetzt, haelt expo-audio eine laufende
+ * Aufnahme an und sperrt alle Recorder (`setAudioMode` in AudioModule.swift).
+ * Beim Start kommt der Mikrofon-Hook danach und stellt auf Aufnahme um;
+ * zurueck dreht es niemand.
+ *
+ * **Stoert die Musik des Nutzers nicht.** `setAudioModeAsync` setzt nur die
+ * Kategorie und aktiviert die Sitzung nicht - Spotify laeuft beim Oeffnen
+ * der App weiter. Und weil expo-audio `mixWithOthers` voreinstellt, legt
+ * sich ein Satz ueber die Musik, statt sie anzuhalten; dasselbe tut der
+ * Mikrofon-Hook schon heute.
+ *
+ * Nur iOS: den Stummschalter gibt es nur dort, und auf Android fasst die
+ * Einstellung andere Dinge an, die hier niemand braucht.
+ */
+export function wiedergabeImStummmodusErlauben() {
+  if (Platform.OS !== 'ios') return;
+  setAudioModeAsync({ playsInSilentMode: true }).catch(() => {
+    // Schlaegt es fehl, bleibt es beim alten Verhalten - lieber das als ein
+    // Absturz beim Start.
+  });
+}
 
 // Nur ein Player gleichzeitig. Ein neuer Aufruf loest den alten ab - sonst
 // reden zwei Saetze gleichzeitig, wenn jemand schnell zweimal tippt.

@@ -10,11 +10,30 @@ import {
   Nunito_700Bold,
   Nunito_800ExtraBold,
 } from '@expo-google-fonts/nunito';
+// Manrope traegt die Alternativ-Looks aus theme/designs.ts ("Klar",
+// "Nacht"). Geladen wird sie IMMER, nicht erst beim Umschalten: `useFonts`
+// laeuft einmal beim Start, und ein Look, dessen Schrift erst nachlaedt,
+// zeigt beim Umschalten Ersatzkaestchen. Faellt der Design-Schalter
+// spaeter weg, kann auch dieser Import weg.
+import {
+  Manrope_400Regular,
+  Manrope_500Medium,
+  Manrope_600SemiBold,
+  Manrope_700Bold,
+  Manrope_800ExtraBold,
+} from '@expo-google-fonts/manrope';
 import { AppStateProvider, useAppState } from '../src/state/AppState';
 import { AuthStateProvider } from '../src/state/AuthState';
 import { OnboardingStateProvider } from '../src/state/OnboardingState';
 import { SplashGate } from '../src/features/splash/SplashGate';
+import { wiedergabeImStummmodusErlauben } from '../src/features/tts/speak';
 import { getTheme, ACCENT_ORANGE } from '../src/theme/tokens';
+
+// Auf Modulebene, nicht in einem Effekt: Effekte laufen von innen nach
+// aussen, ein Screen mit Mikrofon kaeme also VOR dem Wurzel-Layout dran und
+// wuerde danach wieder ueberschrieben. Warum es das ueberhaupt braucht,
+// steht an der Funktion.
+wiedergabeImStummmodusErlauben();
 
 // Alle echten Screens (S1-S6) zeichnen ihren eigenen Header (Zurueck-Pfeil,
 // Titel) passend zum Claude-Design-Prototyp - der native expo-router-Header
@@ -86,6 +105,9 @@ function RootStack() {
         <Stack.Screen name="onboarding" />
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="dev-tools" options={{ headerShown: true, title: 'Dev-Tools (Testscreens)' }} />
+        {/* Start-Entwurf (2026-09-26): hier und nicht in der Tab-Gruppe, weil
+            er seine eigene Leiste mitbringt. VOR DEM LAUNCH weg. */}
+        <Stack.Screen name="entwurf" />
       </Stack>
     </ThemeProvider>
   );
@@ -116,6 +138,11 @@ export default function RootLayout() {
     Nunito_600SemiBold,
     Nunito_700Bold,
     Nunito_800ExtraBold,
+    Manrope_400Regular,
+    Manrope_500Medium,
+    Manrope_600SemiBold,
+    Manrope_700Bold,
+    Manrope_800ExtraBold,
     ...Feather.font,
     ...Ionicons.font,
   });

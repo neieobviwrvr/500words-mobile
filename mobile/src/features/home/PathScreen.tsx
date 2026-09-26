@@ -26,6 +26,8 @@ import { useGuidedProgress } from './useGuidedProgress';
 import { PathBackdrop } from './PathBackdrop';
 import { standortAus } from './Standort';
 import { fortschrittsAnteil, LernKopf } from './LernKopf';
+import { SPRACH_FIGUREN, Sprachfigur } from './Sprachfigur';
+import { EntwurfKnopf } from '../entwurf/EntwurfKnopf';
 import {
   BildKarte,
   BlattKarte,
@@ -101,7 +103,10 @@ import {
  * Zeichnung und noch keine echten Anzeigen.
  */
 const SPRACH_BILDER: Record<string, ReturnType<typeof require>> = {
-  zh: require('../../../assets/sprachkarte-zh.png'),
+  // Chinesisch hat seit dem 2026-09-26 KEINE Szene mehr (Simon: "entferne
+  // den Hintergrund") - die Karte traegt dort allein das Maskottchen auf der
+  // hellen Kartenflaeche. `assets/sprachkarte-zh.png` liegt unbenutzt daneben,
+  // falls die Szene zurueckkommen soll.
   it: require('../../../assets/sprachkarte-it.png'),
   de: require('../../../assets/sprachkarte-de.jpg'),
   // Die "ohne Schnee"-Fassungen (2026-09-13, Simons Auswahl): dieselben
@@ -806,6 +811,7 @@ export function PathScreen() {
 
   // Die Illustration der oberen Karte - zur Sprache passend, sonst keine.
   const heldBild = SPRACH_BILDER[targetLanguageId];
+  const heldFigur = SPRACH_FIGUREN[targetLanguageId];
 
   const goCategory = (id: string) => () => router.push({ pathname: '/category/[id]', params: { id } });
 
@@ -918,6 +924,11 @@ export function PathScreen() {
           die Top-Bar so machen wie bei Freunde"): keine Kopfleiste mehr -
           Sprach-Dropdown und Drei-Punkte-Menue sind weg, die Flagge am Balken
           ist die Sprachauswahl, das Geschenk sitzt auf der Sprachkarte. */}
+      {/* Testeinstieg zur leeren Seite (2026-09-26, Simons Auftrag). Steht
+          GANZ oben, also vor dem Kopf - VOR DEM LAUNCH weg, zusammen mit
+          `features/entwurf/`. */}
+      <EntwurfKnopf dark={darkMode} />
+
       <LernKopf dark={darkMode} standort={standort} anteil={anteil} />
 
       {/* Obere Karte: die Illustration der Sprache - auf BEIDEN Seiten
@@ -934,6 +945,15 @@ export function PathScreen() {
           umdrehen={beideUmdrehen}
           quelle={heldBild}
           rueckseitenBild={heldBild}
+          figur={
+            heldFigur ? (
+              <Sprachfigur
+                quelle={heldFigur.ruhe}
+                blinzeln={heldFigur.blinzeln}
+                kartenHoehe={kartenHoehe}
+              />
+            ) : undefined
+          }
           name="Sprachkarte"
           // Das Geschenk auf der Karte (2026-09-13, Simons Wunsch). Dasselbe
           // Verhalten wie der Geschenk-Knopf im Drei-Punkte-Menue: ohne

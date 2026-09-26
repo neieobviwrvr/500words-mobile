@@ -12,7 +12,9 @@ import { scenarioLabel } from '../../data/scenarios';
 import { situationsVergleich } from '../../data/situationsReihenfolge';
 import { speakSentence } from '../../features/tts/speak';
 import { PhraseCard } from './PhraseCard';
-import { getTheme, ACCENT_BLUE, ACCENT_GREEN, schrift } from '../../theme/tokens';
+import { getTheme, ACCENT_BLUE } from '../../theme/tokens';
+import { useDesign } from '../../theme/useDesign';
+import type { Design } from '../../theme/designs';
 
 // Cheat-Sheet-Kategorie-Screen: alle Saetze EINER Kategorie am Stueck, mit
 // Vorlesen/Speichern pro Satz - seit 2026-08-07 auf echtem Content statt
@@ -23,6 +25,9 @@ import { getTheme, ACCENT_BLUE, ACCENT_GREEN, schrift } from '../../theme/tokens
 export function CheatsheetCategoryScreen({ groupId }: { groupId: string }) {
   const { darkMode, toggleDark, saved, toggleSaved, targetLanguageId } = useAppState();
   const theme = getTheme(darkMode);
+  // Am Design-Labor angeschlossen (2026-09-23) - siehe theme/useDesign.ts.
+  const design = useDesign();
+  const styles = useMemo(() => macheStyles(design), [design]);
   // Der native Header ist app-weit aus (app/_layout.tsx), jeder Screen
   // zeichnet seinen eigenen. Ohne diesen Einsatz liegt die Ueberschrift unter
   // der Statusleiste bzw. der Kamera-Insel und wird verdeckt.
@@ -145,7 +150,7 @@ export function CheatsheetCategoryScreen({ groupId }: { groupId: string }) {
                 accessibilityState={{ checked: zeichenEin }}
                 style={[styles.actionBtn, { borderColor: theme.border, backgroundColor: theme.cardBg }]}
               >
-                <Text style={{ color: theme.text, ...schrift('700'), fontSize: 11 }}>
+                <Text style={{ color: theme.text, ...design.schrift('700'), fontSize: 11 }}>
                   Zeichen {zeichenEin ? 'aus' : 'ein'}
                 </Text>
               </Pressable>
@@ -157,7 +162,7 @@ export function CheatsheetCategoryScreen({ groupId }: { groupId: string }) {
               accessibilityState={{ checked: darkMode }}
               style={[styles.actionBtn, { borderColor: theme.border, backgroundColor: darkMode ? theme.modeBg : theme.cardBg }]}
             >
-              <Text style={{ color: theme.text, ...schrift('700'), fontSize: 11 }}>Darkmode</Text>
+              <Text style={{ color: theme.text, ...design.schrift('700'), fontSize: 11 }}>Darkmode</Text>
             </Pressable>
             <Pressable
               accessibilityRole="button"
@@ -166,7 +171,7 @@ export function CheatsheetCategoryScreen({ groupId }: { groupId: string }) {
               accessibilityState={{ disabled: true }}
               style={[styles.actionBtn, { borderColor: theme.border }]}
             >
-              <Text style={{ color: theme.text, ...schrift('700'), fontSize: 11 }}>Teilen + Drucken</Text>
+              <Text style={{ color: theme.text, ...design.schrift('700'), fontSize: 11 }}>Teilen + Drucken</Text>
             </Pressable>
           </View>
         </View>
@@ -230,25 +235,26 @@ export function CheatsheetCategoryScreen({ groupId }: { groupId: string }) {
   );
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1 },
-  top: { padding: 16, paddingBottom: 8, gap: 6 },
-  header: { flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8 },
-  headerLeft: { flexDirection: 'row', alignItems: 'center', gap: 10, flexShrink: 1 },
-  backBtn: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
-  backGlyph: { fontSize: 26 },
-  title: { ...schrift('800'), fontSize: 19, lineHeight: 22 },
-  headerActions: { gap: 6 },
-  actionBtn: { paddingVertical: 7, paddingHorizontal: 10, borderRadius: 8, borderWidth: 1.5 },
-  count: { fontSize: 13, ...schrift('500') },
-  centerBox: { alignItems: 'center', justifyContent: 'center', paddingVertical: 40 },
-  scrollContent: { paddingHorizontal: 16, paddingBottom: 18, gap: 18 },
-  gruppe: { gap: 10 },
-  gruppenTitel: { ...schrift('800'), fontSize: 11, letterSpacing: 0.6 },
-  card: { borderWidth: 1.5, borderRadius: 14, padding: 14, flexDirection: 'row', justifyContent: 'space-between', gap: 10, alignItems: 'center' },
-  cardBody: { flex: 1, minWidth: 0, gap: 3 },
-  sentenceText: { fontSize: 15, ...schrift('700') },
-  de: { fontSize: 13, ...schrift('500') },
-  cardActions: { gap: 6, flexShrink: 0 },
-  smallBtn: { paddingVertical: 7, paddingHorizontal: 10, borderRadius: 8, borderWidth: 1.5 },
-});
+// Stile aus dem aktiven Look (2026-09-23). Sechs Eintraege sind dabei
+// weggefallen (card, cardBody, sentenceText, de, cardActions, smallBtn):
+// sie stammen aus der Zeit, als dieser Screen seine Saetze selbst zeichnete,
+// und wurden seit der Umstellung auf `PhraseCard` (2026-09-20) von keiner
+// Zeile mehr benutzt.
+function macheStyles(d: Design) {
+  return StyleSheet.create({
+    container: { flex: 1 },
+    top: { padding: d.abstand.lg, paddingBottom: d.abstand.sm, gap: 6 },
+    header: { flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8 },
+    headerLeft: { flexDirection: 'row', alignItems: 'center', gap: 10, flexShrink: 1 },
+    backBtn: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
+    backGlyph: { fontSize: 26 },
+    title: { ...d.schrift('800'), fontSize: 19, lineHeight: 22 },
+    headerActions: { gap: 6 },
+    actionBtn: { paddingVertical: 7, paddingHorizontal: 10, borderRadius: d.radius.sm, borderWidth: 1.5 },
+    count: { fontSize: 13, ...d.schrift('500') },
+    centerBox: { alignItems: 'center', justifyContent: 'center', paddingVertical: 40 },
+    scrollContent: { paddingHorizontal: d.abstand.lg, paddingBottom: 18, gap: 18 },
+    gruppe: { gap: 10 },
+    gruppenTitel: { ...d.schrift('800'), fontSize: 11, letterSpacing: 0.6 },
+  });
+}

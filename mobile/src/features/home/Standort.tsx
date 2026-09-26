@@ -147,8 +147,35 @@ export function useStandort(languageId: string, learningMode: LearningMode): Sta
  * frueher war, ist beim Umbau bewusst weggefallen; hier steht nur noch der
  * Text, mittig ueber dem Balken.
  */
-export function Standortzeile({ dark, standort }: { dark: boolean; standort: Standort }) {
+export function Standortzeile({
+  dark,
+  standort,
+  nurModus = false,
+}: {
+  dark: boolean;
+  standort: Standort;
+  /**
+   * Nur den Lernweg zeigen, linksbuendig als Ueberschrift (2026-09-26,
+   * Simon: "schiebe 'Speed-Run Grundwortschatz' ueber die Flagge wie auf
+   * dem Bild und lass nur Speed-Run hin").
+   *
+   * Die Stelle im Pfad faellt damit weg - sie steht ohnehin gleich darunter
+   * als Abschnitts-Ueberschrift, seit S1 die Kategorien als Liste zeigt.
+   * Zweimal derselbe Name waere Doppelung, keine Orientierung.
+   */
+  nurModus?: boolean;
+}) {
   const theme = getTheme(dark);
+
+  if (nurModus) {
+    return (
+      <View style={styles.zeileLinks} accessible accessibilityLabel={`Lernweg: ${standort.klein}`}>
+        <Text style={[styles.gross, { color: theme.text }]} numberOfLines={1}>
+          {standort.klein}
+        </Text>
+      </View>
+    );
+  }
 
   return (
     // Als EIN Element fuer die Sprachausgabe: "Speed-Run, Hotel und
@@ -171,6 +198,10 @@ export function Standortzeile({ dark, standort }: { dark: boolean; standort: Sta
 const styles = StyleSheet.create({
   zeile: {
     alignItems: 'center',
+    paddingHorizontal: SPACING.lg,
+  },
+  zeileLinks: {
+    alignItems: 'flex-start',
     paddingHorizontal: SPACING.lg,
   },
   klein: {

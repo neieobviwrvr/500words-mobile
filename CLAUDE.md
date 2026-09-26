@@ -2369,9 +2369,76 @@ ehrlich als "(Platzhalter)" statt Fake-Content.
   Saetze" sichtbar - das widerspricht der Vorgabe "Cheat-Sheet zeigt immer
   alle bisher freigeschalteten Saetze, dauerhaft". Die Merkmale dafuer
   liegen jetzt bereit.
-- **Noch keine Satz-Audios vorhanden**, in keiner Sprache: `phrasebook_master`
-  hat gar keine Spalte dafuer, `schwedisch_phrasebook.audio_url` ist 0 von
-  189 belegt. Der Weg steht, die Dateien fehlen.
+- **Ueberholt (2026-09-21): die Satz-Audios SIND da**, in allen elf
+  Sprachen und fuer jeden Satz (Vertonung vom 2026-09-11, siehe "Vertonung:
+  Google Cloud TTS"). Hier stand bis heute "Noch keine Satz-Audios
+  vorhanden, `phrasebook_master` hat gar keine Spalte dafuer" - beides
+  stimmte nur bis zur Vertonung, und genau dieser Satz stand auch als
+  Kommentar im Code und hielt Deutsch von seinen Aufnahmen fern. Siehe den
+  naechsten Abschnitt.
+
+#### Die Satzliste schwieg auf dem iPhone (2026-09-21)
+
+Simons Fehlerbericht: "Warum zum Henker lassen sich bei Satzliste keine
+Audios abspielen obwohl die Audios da sind?"
+
+**Die Daten waren in Ordnung**, und das war schnell nachgemessen:
+`audio_url` ist in allen Satztabellen voll belegt (norwegisch 581/581,
+deutsch 584/584), die Dateien antworten mit 200 und `audio/mpeg`. Im
+Browser spielte die Satzliste beim Antippen genau die richtige Datei ab.
+Der Code-Pfad stimmte also bis zum Player.
+
+**Die Ursache sitzt in iOS: der Stummschalter.** Eine App, die ihre
+Audio-Sitzung nie einstellt, laeuft in der Kategorie `.soloAmbient` - und
+die schaltet der Stummschalter stumm. Kein Fehler, keine Meldung, kein Ton.
+Eingestellt hat die Sitzung bis heute allein der Mikrofon-Hook
+(`useSttRecorder`: `playsInSilentMode: true, allowsRecording: true`, schon
+beim Aufbau jedes Screens mit Mikrofon). Deshalb waren die Aufnahmen in den
+Uebungen zu hoeren, waehrend Satzliste, Survival und Wortliste schwiegen -
+jedenfalls solange man in dieser App-Sitzung noch keine Uebung geoeffnet
+hatte. Die Systemstimme (expo-speech) haengt an derselben Sitzung und
+schwieg dort ebenso.
+
+**Nachgelesen, nicht vermutet** (expo-audio 57.0.3, `AudioModule.swift`):
+die Kategorie setzen nur `setAudioMode` und der Recorder; ohne Aufruf bleibt
+der iOS-Standard. `playsInSilentMode` steht per Vorgabe auf `false`.
+
+**Behoben mit `wiedergabeImStummmodusErlauben()`** in
+`features/tts/speak.ts`, EINMAL beim App-Start auf Modulebene in
+`app/_layout.tsx` - nicht in einem Effekt, weil Effekte von innen nach
+aussen laufen und ein Screen mit Mikrofon sonst zuerst dran waere.
+
+* **Nicht bei jedem Abspielen.** Das waere der naheliegende Ort und der
+  falsche: `.playback` ueber ein laufendes `.playAndRecord` gesetzt, haelt
+  expo-audio eine Aufnahme an und sperrt alle Recorder. Beim Start kommt
+  der Mikrofon-Hook danach und stellt auf Aufnahme um; zurueck dreht es
+  niemand.
+* **Die Musik des Nutzers laeuft weiter.** `setAudioModeAsync` setzt nur die
+  Kategorie, es aktiviert die Sitzung nicht - Spotify wird beim Oeffnen der
+  App nicht angehalten. Beim Abspielen legt sich der Satz darueber
+  (`mixWithOthers` ist expo-audios Vorgabe), genau wie heute schon in den
+  Uebungen.
+* **Nur iOS.** Den Stummschalter gibt es nur dort.
+
+**Nicht im Browser pruefbar**, und das gehoert dazugesagt: der Browser hat
+keinen Stummschalter, und die Funktion kehrt dort sofort zurueck. Der
+eigentliche Beweis ist der Test auf dem iPhone MIT eingeschaltetem
+Stummschalter, direkt nach dem App-Start in die Satzliste, ohne vorher eine
+Uebung zu oeffnen.
+
+**Zweiter Fund, derselbe Satz: Deutsch lud seine Aufnahmen gar nicht.**
+`loadExerciseSentences` liess `audio_url` fuer `phrasebook_master` weg,
+begruendet mit "die Tabelle hat die Spalte nicht" - seit der Vertonung
+falsch. Deutsche Saetze liefen deshalb immer ueber die Systemstimme. Jetzt
+geladen; im Browser spielt die deutsche Satzliste
+`228_was_kostet_der_eintritt.mp3` statt der Systemstimme.
+
+**Offen, bewusst nicht angefasst (nicht Teil des Auftrags): die Wortliste
+spielt die Systemstimme, obwohl es die Aufnahmen gibt.** Die
+Vokabeltabellen tragen `audio_urls` (norwegisch 500/500), aber
+`loadVocabWords` laedt keine Audio-Spalte, und `VocabListScreen` gibt
+`speakSentence` keine Datei mit. Hoerbar ist sie nach diesem Fix trotzdem,
+auch im Stummmodus - nur eben mit der Systemstimme statt der Google-Stimme.
 
 #### Die Suche fand zu viel und zeigte zu wenig (2026-09-21)
 
@@ -2746,6 +2813,87 @@ auseinander, wie vor dem Aufraeumen am 2026-08-16/18.
 - **Navigations-Theme:** `app/_layout.tsx` gibt React Navigation unsere
   Farben. Ohne das liegt hinter jedem Screen der Standard-Untergrund
   (#F2F2F2), der im Darkmode hellgrau aufblitzt.
+
+### Design-Labor: mehrere Looks nebeneinander (2026-09-23)
+
+Simons Auftrag: "Ich wuerde gerne ein paar weitere Designs testen, wie so ein
+A/B-Test etwa" - und auf die Rueckfrage nach dem Zuschnitt: **"Selber Screen
+in einem ganz anderem Look."**
+
+**Kein A/B-Test mit Nutzern, und das ist Absicht.** Ein echter Test braucht
+Nutzer und eine Auswertung; vor dem Launch gibt es beides nicht, und mit
+zwei Testern sagt keine Statistik etwas. Hier schaltet Simon um und
+vergleicht selbst. Der Aufbau traegt den echten Test spaeter mit: dann
+wuerfelt die App die Variante je Geraet, statt dass jemand tippt.
+
+**Drei Looks** (`src/theme/designs.ts`), umschaltbar im laufenden Betrieb
+ueber **Profil > Nur zum Testen > Design-Labor**:
+
+| | Grund | Schrift | Akzent | Form |
+|---|---|---|---|---|
+| **Aktuell** | Weiss | Nunito | Orange #E0793E | runde Pillen, Schatten |
+| **Klar** | Weiss | Manrope | Kobalt #2F5BEA | harte Ecken, kein Schatten, mehr Luft |
+| **Nacht** | #0F0F14 | Manrope | Limette #C6F432 | flach, 8 px, kein Schatten |
+
+**Design A ist der heutige Stand, Wert fuer Wert kopiert** - kein Entwurf,
+sondern das, was ausgeliefert wird. Wer dort etwas aendert, aendert die App.
+
+**Zwei Reichweiten, und der Unterschied ist wichtig:**
+
+* **App-weit, ohne eine einzige Datei umzubauen:** Seitengrund, Kartenfarbe,
+  Text-, Neben- und Rahmenfarbe. Alle rund 54 Screens rufen laengst
+  `getTheme(darkMode)`; die Funktion holt ihre Werte jetzt aus dem aktiven
+  Look (`setzeDesign()` in tokens.ts, gesetzt von `AppState`). Das ist die
+  EINZIGE veraenderliche Stelle in tokens.ts und mit Absicht dort - der Umweg
+  spart 54 Dateiumbauten.
+* **Vollstaendig umgestellt ist bisher die SATZLISTE** (`PhraseCard` +
+  `CheatsheetCategoryScreen`): dort schalten zusaetzlich Schrift, Radien,
+  Abstaende, Kartenflaeche und die Merkfarbe mit. Ein Screen wird umgestellt,
+  indem sein `StyleSheet.create` von der Modulebene in eine Fabrik wandert
+  (`useDesign()` + `useMemo`, siehe theme/useDesign.ts) - mechanisch, aber
+  je Screen Handarbeit.
+
+**Warum die Satzliste als Pilot:** sie ist mit 254 + 287 Zeilen die
+kleinste der Kandidaten (PathScreen hat 1.388), und es ist der Screen, den
+Simon in diesen Tagen ohnehin testet. Start oder Lektionen sind als
+Naechstes dran, sobald eine Richtung feststeht.
+
+**Was der erste Durchgang in "Nacht" sofort zeigte:** der halbe Startscreen
+blieb hell. `PathBackdrop` legte eine feste Off-White-Flaeche
+(`#FAF9F6`) ueber die obere Haelfte, und die weisse Schrift darauf war
+unlesbar. Die Flaeche kommt jetzt als `pfadGrund` aus dem Look. **Solche
+festen Farben ausserhalb von `getTheme()` sind die Stolperstellen** - wer
+den naechsten Screen umstellt, sucht zuerst danach.
+
+**Weiterhin NICHT mitgeschaltet** (bewusst, nicht vergessen): Akzentfarbe,
+Schrift, Radien und Schatten auf allen noch nicht umgestellten Screens. Im
+Look "Nacht" bleibt deshalb z.B. das aktive Tab-Symbol orange. Das ist der
+Preis dafuer, dass der Schalter ohne einen 58-Dateien-Umbau steht.
+
+**"Nacht" ist in beiden Modi dunkel.** Der Darkmode-Schalter aendert dort
+fast nichts - der dunkle Grund IST der Look.
+
+**Manrope ist neu als Paket** (`@expo-google-fonts/manrope`) und wird IMMER
+mitgeladen, nicht erst beim Umschalten: `useFonts` laeuft einmal beim Start,
+und eine Schrift, die erst beim Umschalten nachlaedt, zeigt
+Ersatzkaestchen. Faellt das Labor weg, kann das Paket mit weg.
+
+**Der Look liegt unter eigenem AsyncStorage-Schluessel `design_v1`** - aus
+demselben Grund wie `coins_v1`: er ist ein Testwerkzeug, gehoert nicht in den
+Geraeteabgleich und darf `geaendertAm` nicht hochziehen. Wer auf zwei
+Geraeten vergleicht, soll dort auch zwei Looks sehen duerfen.
+
+**!!! VOR DEM LAUNCH !!!** Die Gruppe "Nur zum Testen" im Profil muss weg
+oder hinter eine Kontopruefung. Der Merkposten steht als Kommentar an der
+Stelle in `ProfileScreen.tsx`.
+
+**Geprueft im Browser** (Norwegisch, iPhone-Breite): Umschalten wirkt sofort
+ohne Neuladen, Satzliste in allen drei Looks, Start in "Nacht" nach dem
+Backdrop-Fix lesbar, und **A nach dem Umbau unveraendert** - dieselbe helle
+Flaeche, dieselben runden Pillen, dasselbe Orange. Sechs tote Stile in
+`CheatsheetCategoryScreen` sind dabei weggefallen (`card`, `cardBody`,
+`sentenceText`, `de`, `cardActions`, `smallBtn`): Reste aus der Zeit vor der
+Umstellung auf `PhraseCard` am 2026-09-20, seither von keiner Zeile benutzt.
 
 ## Nutzerdaten serverseitig (2026-08-22, gebaut)
 

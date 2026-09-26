@@ -1,4 +1,5 @@
 import { View } from 'react-native';
+import { useDesign } from '../../theme/useDesign';
 
 // Der Hintergrund von S1: nur noch die Pergament-Textur (Nutzer-Wunsch
 // 2026-08-21).
@@ -46,9 +47,15 @@ export const PATH_BACKDROP_COLOR = '#FAF9F6';
 export const PATH_BACKDROP_TRANSPARENT = `${PATH_BACKDROP_COLOR}00`;
 
 export function PathBackdrop({ width, height }: { width: number; height: number }) {
+  // Seit 2026-09-23 aus dem aktiven Look (Design-Labor): diese Flaeche deckt
+  // den halben Startscreen, und als feste Off-White-Konstante machte sie in
+  // einem dunklen Look die weisse Schrift darueber unlesbar. `pfadGrund` von
+  // Design A ist exakt `PATH_BACKDROP_COLOR`, der heutige Stand bleibt also
+  // unveraendert.
+  const design = useDesign();
   return (
     <View
-      style={{ position: 'absolute', top: 0, left: 0, width, height, backgroundColor: PATH_BACKDROP_COLOR }}
+      style={{ position: 'absolute', top: 0, left: 0, width, height, backgroundColor: design.pfadGrund }}
     />
   );
 }

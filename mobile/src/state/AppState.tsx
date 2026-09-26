@@ -25,6 +25,8 @@ export type AbgleichStand = 'aus' | 'laeuft' | 'fertig' | 'fehlgeschlagen';
 export type AbgleichAusgang = { gesichert: boolean; onboardingErledigt: boolean };
 import { Phrase } from '../data/cheatsheetContent';
 import { DEFAULT_LANGUAGE_ID } from '../data/languages';
+import { designVon, type DesignId } from '../theme/designs';
+import { setzeDesign } from '../theme/tokens';
 
 // Globaler App-Zustand - Entsprechung zum "state"-Objekt der einen grossen
 // Klassenkomponente im Claude-Design-Prototyp. Dort lief alles ueber
@@ -48,6 +50,12 @@ const STORAGE_KEY = 'app_state_v1';
 // dem Abgleich ueber `geaendertAm`, und eine bestaetigte Gutschrift soll die
 // Einstellungen beim naechsten Abgleich nicht "juenger" machen.
 const COINS_KEY = 'coins_v1';
+// Der Design-Look liegt aus demselben Grund unter eigenem Schluessel wie die
+// Coins: er ist ein reines TESTWERKZEUG fuer den Vergleich zweier Looks
+// (siehe theme/designs.ts) und soll weder im Geraeteabgleich auftauchen noch
+// `geaendertAm` hochziehen. Wer auf zwei Geraeten vergleicht, will dort auch
+// zwei verschiedene Looks sehen duerfen.
+const DESIGN_KEY = 'design_v1';
 
 /**
  * Coins auf dem Geraet (2026-09-13).
@@ -205,6 +213,10 @@ type AppStateValue = {
   darkMode: boolean;
   toggleDark: () => void;
 
+  /** Aktiver Look - siehe theme/designs.ts und das Design-Labor im Profil. */
+  designId: DesignId;
+  waehleDesign: (id: DesignId) => void;
+
   targetLanguageId: string;
   setTargetLanguageId: (id: string) => void;
 
@@ -292,6 +304,7 @@ const AppStateContext = createContext<AppStateValue | null>(null);
 
 export function AppStateProvider({ children }: { children: React.ReactNode }) {
   const [darkMode, setDarkMode] = useState(false);
+  const [designId, setDesignId] = useState<DesignId>('aktuell');
   const [targetLanguageId, setTargetLanguageId] = useState(DEFAULT_LANGUAGE_ID);
   // 'de' als Vorgabe, dieselbe wie SourceLanguageId's Default in
   // OnboardingState.tsx - Deutsch ist die einzige heute waehlbare Option.
@@ -342,10 +355,18 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     (async () => {
       try {
-        const [raw, coinRaw] = await Promise.all([
+        const [raw, coinRaw, designRaw] = await Promise.all([
           AsyncStorage.getItem(STORAGE_KEY),
           AsyncStorage.getItem(COINS_KEY),
+          AsyncStorage.getItem(DESIGN_KEY),
         ]);
+        if (designRaw) {
+          // ERST den Look setzen, DANN den Zustand: der folgende Neuaufbau
+          // ruft `getTheme()` und soll schon die neuen Farben lesen.
+          const geladen = designVon(designRaw);
+          setzeDesign(geladen);
+          setDesignId(geladen.id);
+        }
         if (coinRaw) {
           const c: Partial<CoinSpeicher> = JSON.parse(coinRaw);
           setzeCoins({ bestaetigt: c.bestaetigt ?? {}, ausstehend: c.ausstehend ?? {} });
@@ -407,6 +428,15 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     if (!hydrated.current) return;
     AsyncStorage.setItem(COINS_KEY, JSON.stringify(coinSpeicher)).catch(() => {});
   }, [coinSpeicher]);
+
+  const waehleDesign = useCallback((id: DesignId) => {
+    const gewaehlt = designVon(id);
+    setzeDesign(gewaehlt);
+    setDesignId(gewaehlt.id);
+    AsyncStorage.setItem(DESIGN_KEY, gewaehlt.id).catch(() => {
+      // Nicht gespeichert heisst nur: beim naechsten Start wieder "Aktuell".
+    });
+  }, []);
 
   const toggleDark = useCallback(() => setDarkMode((d) => !d), []);
   const toggleWortartenFarben = useCallback(() => setWortartenFarben((w) => !w), []);
@@ -684,6 +714,8 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     () => ({
       darkMode,
       toggleDark,
+      designId,
+      waehleDesign,
       targetLanguageId,
       setTargetLanguageId,
       sourceLanguageId,
@@ -718,7 +750,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       toggleWortartenFarben,
       hydrated: isHydrated,
     }),
-    [darkMode, toggleDark, targetLanguageId, sourceLanguageId, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes, coins, grantCoins, coinGrants, fortschritt, zaehle, uebersprungen, ueberspringen, ueberspringenZuruecknehmen, abgleichen, abgleichStand, zuletztGesichert, abmelden, lockscreenContent, learningMode, toggleLearningMode, wortartenFarben, toggleWortartenFarben, isHydrated]
+    [darkMode, toggleDark, designId, waehleDesign, targetLanguageId, sourceLanguageId, purchased, cart, toggleCartItem, buyCart, saved, savedMeta, toggleSaved, selectedThemes, toggleThemeSelect, clearSelectedThemes, coins, grantCoins, coinGrants, fortschritt, zaehle, uebersprungen, ueberspringen, ueberspringenZuruecknehmen, abgleichen, abgleichStand, zuletztGesichert, abmelden, lockscreenContent, learningMode, toggleLearningMode, wortartenFarben, toggleWortartenFarben, isHydrated]
   );
 
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;

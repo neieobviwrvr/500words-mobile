@@ -111,8 +111,11 @@ export async function loadExerciseSentences(
   if (!lang.table) return { sentences: [], fromCache: false };
 
   const textColumn = lang.id === 'de' ? 'german' : 'target_text';
-  // `audio_url` gibt es NUR in den Nicht-Deutsch-Tabellen - phrasebook_master
-  // hat die Spalte nicht, ein Select darauf wuerde dort scheitern.
+  // `audio_url` laden ALLE elf Tabellen, auch phrasebook_master. Hier stand
+  // bis 2026-09-21, die deutsche Tabelle habe die Spalte nicht - das stimmte
+  // bis zur Vertonung vom 2026-09-11, die sie dort angelegt und fuer alle 584
+  // Saetze gefuellt hat. Deutsch spielte danach weiter die Systemstimme,
+  // obwohl die Aufnahmen daneben lagen.
   // Ausgeschrieben statt aus Bausteinen zusammengesetzt: Supabase leitet den
   // Ergebnistyp AUS DIESEM STRING ab, und ein Template-Literal sprengt dabei
   // den Typpruefer ("union type too complex"). Etwas Wiederholung ist der
@@ -124,7 +127,7 @@ export async function loadExerciseSentences(
   // eigener Schrift soll keinen weiteren Zweig kosten.
   const columns =
     lang.id === 'de'
-      ? 'id, german, scenario, category, accepted_concepts, lookup_only, addressing, culture_note, word_tags'
+      ? 'id, german, scenario, category, accepted_concepts, lookup_only, addressing, culture_note, audio_url, word_tags'
       : lang.lautschriftSpalte
         ? `id, target_text, ${lang.lautschriftSpalte}, german, scenario, category, accepted_concepts, lookup_only, addressing, culture_note, verb_cluster, audio_url, word_tags`
         : 'id, target_text, german, scenario, category, accepted_concepts, lookup_only, addressing, culture_note, verb_cluster, audio_url, word_tags';

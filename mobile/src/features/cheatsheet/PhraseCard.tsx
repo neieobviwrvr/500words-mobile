@@ -1,20 +1,12 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { Phrase } from '../../data/cheatsheetContent';
 import { TaggedTokens } from '../../components/ColoredTokens';
 import { useAppState } from '../../state/AppState';
-import {
-  getTheme,
-  ACCENT_BLUE,
-  FLOATING_SHADOW,
-  FLOATING_BORDER,
-  RADIUS,
-  SPACING,
-  FONT_SIZE,
-  LINE_HEIGHT,
-  schrift,
-} from '../../theme/tokens';
+import { getTheme, FONT_SIZE, LINE_HEIGHT } from '../../theme/tokens';
+import { useDesign } from '../../theme/useDesign';
+import type { Design } from '../../theme/designs';
 
 // Ein Satz im Survival-Nachschlagewerk (Nutzer-Vorlage 2026-08-20).
 //
@@ -68,6 +60,11 @@ export function PhraseCard({
   zeigeFarbenKnopf = true,
 }: Props) {
   const theme = getTheme(dark);
+  // Erster Baustein am Design-Labor (2026-09-23): Schrift, Radien, Abstaende
+  // und die Kartenflaeche kommen aus dem aktiven Look statt aus festen
+  // Tokens. Ohne `useMemo` baut jedes Rendern neue Stil-Objekte.
+  const design = useDesign();
+  const styles = useMemo(() => macheStyles(design), [design]);
   const zeichenAusblendbar = zeichenEin === false && !!phrase.phonetic;
   const { wortartenFarben } = useAppState();
   // "Nur diesmal"-Ausnahme (2026-08-30) - eigener Zustand JE KARTE, nicht
@@ -85,7 +82,7 @@ export function PhraseCard({
         styles.card,
         // "Floating Card" statt 3D-Kante (2026-09-02, nur fuer Survival):
         // duenner heller Rahmen plus weicher Schatten statt `kachel()`.
-        { borderWidth: 1, borderColor: FLOATING_BORDER, ...FLOATING_SHADOW },
+        design.kartenFlaeche(dark),
         { backgroundColor: theme.cardBg },
       ]}
     >
@@ -179,7 +176,7 @@ export function PhraseCard({
             ist, der bei uns seltsam klaenge ("du bist schlank"). Ohne ihn
             traut sich niemand, den Satz zu benutzen. */}
         {phrase.cultureNote ? (
-          <View style={[styles.hinweis, { borderLeftColor: ACCENT_BLUE }]}>
+          <View style={[styles.hinweis, { borderLeftColor: design.gemerkt }]}>
             <Text style={[styles.hinweisText, { color: theme.sub }]}>{phrase.cultureNote}</Text>
           </View>
         ) : null}
@@ -207,7 +204,7 @@ export function PhraseCard({
           <Feather
             name="bookmark"
             size={20}
-            color={saved ? ACCENT_BLUE : theme.sub}
+            color={saved ? design.gemerkt : theme.sub}
             // Feather kennt kein gefuelltes Lesezeichen - die Fuellung kommt
             // ueber die Schriftfarbe, deshalb zusaetzlich der Farbwechsel.
             style={saved ? styles.savedMark : undefined}
@@ -218,16 +215,25 @@ export function PhraseCard({
   );
 }
 
-const styles = StyleSheet.create({
+/**
+ * Die Stile dieser Karte, gebaut aus dem aktiven Look.
+ *
+ * Bis 2026-09-23 stand hier ein `StyleSheet.create` auf Modulebene. Das
+ * wird beim Laden der Datei EINMAL ausgewertet - Schrift, Radien und
+ * Abstaende standen damit fuer die ganze Sitzung fest und liessen sich
+ * nicht umschalten.
+ */
+function macheStyles(d: Design) {
+  return StyleSheet.create({
   hinweis: {
     borderLeftWidth: 2,
-    paddingLeft: SPACING.sm,
-    marginTop: SPACING.xs,
+    paddingLeft: d.abstand.sm,
+    marginTop: d.abstand.xs,
   },
   hinweisText: {
     // Fehlte bisher komplett - Systemschrift statt Nunito, gleiche Luecke
     // wie an mehreren anderen Stellen in dieser Sitzung.
-    ...schrift('500'),
+    ...d.schrift('500'),
     fontSize: FONT_SIZE.caption,
     lineHeight: LINE_HEIGHT.caption,
     fontStyle: 'italic',
@@ -235,12 +241,12 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: SPACING.md,
+    gap: d.abstand.md,
     // Rahmen und Schatten kommen aus `FLOATING_BORDER`/`FLOATING_SHADOW` an
     // der Verwendungsstelle - dieselbe 3D-Kante hielt hier nicht einmal
     // einen Tag (siehe deren Kommentar in tokens.ts fuer die Geschichte).
-    borderRadius: RADIUS.md,
-    padding: SPACING.md,
+    borderRadius: d.radius.md,
+    padding: d.abstand.md,
   },
   textBlock: {
     flex: 1,
@@ -249,17 +255,17 @@ const styles = StyleSheet.create({
   target: {
     fontSize: FONT_SIZE.body,
     lineHeight: LINE_HEIGHT.body,
-    ...schrift('800'),
+    ...d.schrift('800'),
   },
   phonetic: {
     // Fehlte bisher komplett, gleiche Luecke wie bei `hinweisText`.
-    ...schrift('500'),
+    ...d.schrift('500'),
     fontSize: FONT_SIZE.small,
     lineHeight: LINE_HEIGHT.body,
     fontStyle: 'italic',
   },
   gloss: {
-    ...schrift('500'),
+    ...d.schrift('500'),
     fontSize: FONT_SIZE.small,
     lineHeight: LINE_HEIGHT.body,
   },
@@ -269,11 +275,11 @@ const styles = StyleSheet.create({
     gap: 3,
     marginTop: 2,
   },
-  farbenHilfeText: { fontSize: 11, ...schrift('600') },
+  farbenHilfeText: { fontSize: 11, ...d.schrift('600') },
   actions: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: SPACING.md,
+    gap: d.abstand.md,
   },
   iconButton: {
     width: 32,
@@ -281,7 +287,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  savedMark: {
-    opacity: 1,
-  },
-});
+    savedMark: {
+      opacity: 1,
+    },
+  });
+}
