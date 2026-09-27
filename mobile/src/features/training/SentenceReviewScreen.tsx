@@ -18,7 +18,7 @@ import { speakSentence, stopSpeaking } from '../tts/speak';
 import { bewerteUndSpeichere } from '../srs/bewerten';
 import { cardKey, loadCard } from '../srs/srsStorage';
 import { merkeBesuch } from '../home/zuletztBesucht';
-import { ladeZaehler, aendereZaehler, setzeZaehler, ladeJeErreicht, markiereJeErreicht, aktiverBatchPool, TRAINING_PRAEFIXE } from './batchLeiter';
+import { ladeZaehler, aendereZaehler, setzeZaehler, ladeJeErreicht, markiereJeErreicht, aktiverBatchPool, leiterStufe, SATZ_SCHWELLE, TRAINING_PRAEFIXE } from './batchLeiter';
 import {
   Screen,
   PillButton,
@@ -87,8 +87,10 @@ const JE_STUFE3_PRAEFIX = TRAINING_PRAEFIXE.satzJeStufe3;
 const KAT_STUFE1_PRAEFIX = TRAINING_PRAEFIXE.katStufe1;
 const KAT_STUFE2_PRAEFIX = TRAINING_PRAEFIXE.katStufe2;
 const KAT_JE_STUFE3_PRAEFIX = TRAINING_PRAEFIXE.katJeStufe3;
-const STUFE1_SCHWELLE = 1;
-const STUFE2_SCHWELLE = 3;
+// Die zwei Schwellen liegen seit 2026-09-27 in batchLeiter.ts, weil die
+// Uebersicht auf "Lektionen" je Satz dieselbe Stufe nennt - siehe dort.
+const STUFE1_SCHWELLE = SATZ_SCHWELLE.stufe1;
+const STUFE2_SCHWELLE = SATZ_SCHWELLE.stufe2;
 
 const BATCH_GROESSE = 20;
 const BATCH_FREISCHALT_ANTEIL = 0.9;
@@ -150,9 +152,7 @@ function stufeVon(
   kannAbfragen: boolean
 ): Stufe {
   if (!kannAbfragen) return 1;
-  if ((stufe1[SATZ_KEY(satz)] ?? 0) < STUFE1_SCHWELLE) return 1;
-  if ((stufe2[SATZ_KEY(satz)] ?? 0) < STUFE2_SCHWELLE) return 2;
-  return 3;
+  return leiterStufe(SATZ_KEY(satz), stufe1, stufe2, SATZ_SCHWELLE);
 }
 
 /** Gleicher Satz bis auf Gross-/Kleinschreibung und Satzzeichen? */

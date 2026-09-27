@@ -173,7 +173,13 @@ export function StartScreen() {
             seite={karte.seite}
             umdrehen={karte.umdrehen}
             name="Sprachkarte"
-            ohneFlaeche
+            // Ohne Flaeche steht die Figur frei auf der Seite (Simons Wunsch
+            // vom 2026-09-26). Gibt es keine Zeichnung, bekommt die Karte
+            // ihre Flaeche zurueck - sonst waere an dieser Stelle gar nichts
+            // mehr, und der Nutzer sieht einen leeren Bereich statt einer
+            // Karte, die noch kein Bild hat. Betrifft Spanisch, Polnisch und
+            // Vietnamesisch, siehe SPRACH_FIGUREN.
+            ohneFlaeche={Boolean(figur)}
             figur={
               figur ? (
                 <Sprachfigur

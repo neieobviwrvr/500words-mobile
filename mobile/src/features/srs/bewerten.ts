@@ -1,5 +1,5 @@
-import type { Card } from 'ts-fsrs';
 import type { Tier } from '../evaluation/evaluateConcepts';
+import { bilanzNach, type GespeicherteKarte } from './bilanz';
 import { newCard, reviewCard } from './fsrsEngine';
 import { saveCard, zerlegeKartenSchluessel, KURS_RAHMEN, KURS_WORT } from './srsStorage';
 import { merkeAntwort } from './lerntagebuch';
@@ -25,15 +25,28 @@ import { merkeAntwort } from './lerntagebuch';
  * `zaehlen: false`, wenn EINE Antwort mehrere Karten schreibt - im Kurs
  * bewertet der Satz-Schritt bei einem wiederholten Wort Rahmen- und Wortkarte
  * zugleich. Im Tagebuch ist das eine Antwort, nicht zwei.
+ *
+ * **Die Karte fuehrt ausserdem ihre eigene Bilanz mit** (2026-09-27, siehe
+ * bilanz.ts): FSRS rechnet die Stufe in Stabilitaet um und vergisst sie
+ * danach. Hier ist die einzige Stelle, an der sie noch bekannt ist - deshalb
+ * gehoert das Mitzaehlen hierher und nicht in einen der Uebungs-Screens. Die
+ * Angabe `zaehlen` betrifft sie NICHT: sie haengt an der Karte, und jede
+ * Karte bekommt genau eine Bewertung. Doppelt gezaehlt wuerde nur im
+ * Tagebuch, wo eine Antwort eine Antwort ist.
  */
 export function bewerteUndSpeichere(
   key: string,
-  bisherige: Card | undefined,
+  bisherige: GespeicherteKarte | undefined,
   stufe: Tier,
   { zaehlen = true }: { zaehlen?: boolean } = {}
-): Card {
+): GespeicherteKarte {
   const jetzt = new Date();
-  const aktualisiert = reviewCard(bisherige ?? newCard(jetzt), stufe, jetzt);
+  // `reviewCard` gibt eine frische Karte des Planers zurueck und kennt unsere
+  // Zaehler nicht - die Bilanz muss deshalb danach wieder dran.
+  const aktualisiert: GespeicherteKarte = {
+    ...reviewCard(bisherige ?? newCard(jetzt), stufe, jetzt),
+    bilanz: bilanzNach(bisherige?.bilanz, stufe, jetzt),
+  };
 
   saveCard(key, aktualisiert).catch(() => undefined);
 

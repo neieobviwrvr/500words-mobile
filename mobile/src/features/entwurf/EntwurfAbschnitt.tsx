@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Feather, Ionicons } from '@expo/vector-icons';
 import Svg, { Circle } from 'react-native-svg';
-import { E, KREIS, SEITE, s } from './entwurfStil';
+import { KREIS, SEITE, s, usePalette, useStil, type Palette } from './entwurfStil';
 
 // Ein Abschnitt des Entwurfs: eine Kategorie mit allen ihren Situationen
 // als eine durchgehende senkrechte Kette.
@@ -69,6 +69,8 @@ export function EntwurfAbschnitt({
   /** Faerbt das Finale grau und setzt ein Schloss statt des Pokals. */
   gesperrt?: boolean;
 }) {
+  const E = usePalette();
+  const styles = useStil(stilFabrik);
   // "Abgeschlossen" heisst seit dem Stufen-Ring: alle vier Durchgaenge
   // voll. Vorher reichte ein einziger Blick auf jeden Satz - die Zeile
   // haette sonst etwas anderes gezaehlt als der Ring darunter zeigt.
@@ -131,6 +133,8 @@ export function EntwurfAbschnitt({
 // Inhalt frei.
 
 function Kette({ eintrag, onPress }: { eintrag: AbschnittsEintrag; onPress: () => void }) {
+  const E = usePalette();
+  const styles = useStil(stilFabrik);
   const { durchgaenge, gesperrt, label } = eintrag;
 
   const stufe = gesperrt ? 0 : Math.min(durchgaenge, STUFEN);
@@ -194,6 +198,7 @@ function Kette({ eintrag, onPress }: { eintrag: AbschnittsEintrag; onPress: () =
  * Ergebnis.
  */
 function Stufenring({ stufe, voll }: { stufe: number; voll: string }) {
+  const E = usePalette();
   // Dicker und mit groesseren Luecken als beim ersten Anlauf (2026-09-26):
   // 3 Punkte Strich und 5 Punkte Luecke waren auf 48 Punkten Durchmesser zu
   // zierlich, um die Teilung ueberhaupt zu erkennen.
@@ -242,6 +247,8 @@ function Stufenring({ stufe, voll }: { stufe: number; voll: string }) {
  * Situationsfilter: damit ist es die ganze Kategorie am Stueck.
  */
 function Finale({ onPress, gesperrt }: { onPress: () => void; gesperrt: boolean }) {
+  const E = usePalette();
+  const styles = useStil(stilFabrik);
   return (
     <Pressable
       onPress={onPress}
@@ -292,6 +299,7 @@ function Finale({ onPress, gesperrt }: { onPress: () => void; gesperrt: boolean 
  * Konstante wie der Kreis und nicht als abgeschriebene Zahl.
  */
 function Verbinder() {
+  const styles = useStil(stilFabrik);
   return (
     <View style={styles.verbinder} pointerEvents="none">
       <View style={styles.strich} />
@@ -299,7 +307,8 @@ function Verbinder() {
   );
 }
 
-const styles = StyleSheet.create({
+const stilFabrik = (E: Palette) =>
+  StyleSheet.create({
   gedrueckt: { opacity: 0.55 },
 
   // Abstand zum naechsten Abschnitt 1,5x so gross (2026-09-27, Simon):

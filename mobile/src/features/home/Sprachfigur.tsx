@@ -1,16 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { AccessibilityInfo, Animated, Easing, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import type { ImageSourcePropType } from 'react-native';
-import { FONT_SIZE, LINE_HEIGHT, RADIUS, SPACING, schrift } from '../../theme/tokens';
+import { FONT_SIZE, LINE_HEIGHT, RADIUS, SPACING, getTheme, schrift } from '../../theme/tokens';
+import { useAppState } from '../../state/AppState';
 
-/**
- * Welche Sprache welche Figur hat - EINE Stelle (2026-09-26 hierher gezogen).
- *
- * Lag vorher in PathScreen.tsx. Seit der neue Startscreen dieselbe Karte
- * zeigt, braeuchten es zwei Screens; eine Kopie waere die uebliche Falle,
- * dass eine neue Sprache nur auf einem von beiden ankommt.
- */
-export const SPRACH_FIGUREN: Record<
+// Lag vorher in PathScreen.tsx. Seit der neue Startscreen dieselbe Karte
+// zeigt, braeuchten es zwei Screens; eine Kopie waere die uebliche Falle,
+// dass eine neue Sprache nur auf einem von beiden ankommt.
+
+type Sprachfiguren = Record<
   string,
   {
     ruhe: ReturnType<typeof require>;
@@ -18,17 +16,80 @@ export const SPRACH_FIGUREN: Record<
     sagtOben?: string;
     sagtUnten?: string;
   }
-> = {
-  // Beide Fassungen stammen aus DERSELBEN Zeichnung: die geschlossenen Augen
-  // sind in die offene hineingemalt. Ausserhalb der Augenpartie sind die
-  // Dateien punktgleich - nur so springt die Figur beim Lidschlag nicht.
+>;
+
+/**
+ * Was die Figur sagt - fuer alle Sprachen dasselbe.
+ *
+ * Die Blasen sind OBERFLAECHE, kein Lernstoff: sie stehen auf Deutsch, so
+ * wie die ganze App. Eine Zeile je Sprache waere achtmal derselbe Satz und
+ * achtmal eine Stelle, an der beim naechsten Umformulieren eine vergessen
+ * wird. Wer einer Sprache etwas Eigenes geben will, traegt es unten bei ihr
+ * ein - die Vorgabe gilt nur, wo nichts steht.
+ */
+const SAGT_OBEN = 'Bereit für unsere nächste Unterhaltung?';
+const SAGT_UNTEN = 'Lass uns gemeinsam üben!';
+
+/**
+ * Die Zeichnungen (2026-09-27: acht Sprachen statt einer).
+ *
+ * **Beide Fassungen stammen aus DERSELBEN Datei** - Simons Vorlage zeigt je
+ * Sprache beide Posen nebeneinander. Die Blinzel-Fassung ist aber nicht die
+ * rechte Haelfte, sondern die LINKE mit der Augenpartie der rechten darin:
+ * die zwei Posen sind unabhaengig gezeichnet und unterscheiden sich in
+ * Haltung und Groesse um ein paar Punkte, und beim Wechsel haette die ganze
+ * Figur gezuckt. Ausserhalb der Augen sind die Dateien deshalb punktgleich,
+ * der Umriss sogar Punkt fuer Punkt identisch. Erzeugt von
+ * `Maskottchen neu/aufbereiten.py`, dort steht das Verfahren.
+ *
+ * **Es fehlen Spanisch, Polnisch und Vietnamesisch** - fuer die drei liegt
+ * keine Zeichnung vor. Ihre Karte bleibt leer, bis eine kommt; das ist
+ * sichtbar und deshalb besser als ein fremdes Land.
+ */
+const ZEICHNUNGEN: Sprachfiguren = {
+  de: {
+    ruhe: require('../../../assets/figur-de.png'),
+    blinzeln: require('../../../assets/figur-de-blinzeln.png'),
+  },
+  en: {
+    ruhe: require('../../../assets/figur-en.png'),
+    blinzeln: require('../../../assets/figur-en-blinzeln.png'),
+  },
+  fr: {
+    ruhe: require('../../../assets/figur-fr.png'),
+    blinzeln: require('../../../assets/figur-fr-blinzeln.png'),
+  },
+  it: {
+    ruhe: require('../../../assets/figur-it.png'),
+    blinzeln: require('../../../assets/figur-it-blinzeln.png'),
+  },
+  no: {
+    ruhe: require('../../../assets/figur-no.png'),
+    blinzeln: require('../../../assets/figur-no-blinzeln.png'),
+  },
+  ru: {
+    ruhe: require('../../../assets/figur-ru.png'),
+    blinzeln: require('../../../assets/figur-ru-blinzeln.png'),
+  },
+  sv: {
+    ruhe: require('../../../assets/figur-sv.png'),
+    blinzeln: require('../../../assets/figur-sv-blinzeln.png'),
+  },
   zh: {
     ruhe: require('../../../assets/figur-zh.png'),
     blinzeln: require('../../../assets/figur-zh-blinzeln.png'),
-    sagtOben: 'Bereit für unsere nächste Unterhaltung?',
-    sagtUnten: 'Lass uns gemeinsam üben!',
   },
 };
+
+/**
+ * Welche Sprache welche Figur hat - EINE Stelle (2026-09-26 hierher gezogen).
+ */
+export const SPRACH_FIGUREN: Sprachfiguren = Object.fromEntries(
+  Object.entries(ZEICHNUNGEN).map(([id, f]) => [
+    id,
+    { sagtOben: SAGT_OBEN, sagtUnten: SAGT_UNTEN, ...f },
+  ])
+);
 
 // Die Figur auf der Sprachkarte (2026-09-26, Simons Vorgabe: "Für S1
 // Chinesisch setze dieses Bild und mach Idle Animation").
@@ -81,8 +142,29 @@ const FIGUR_MIN = 70;
 /** Kantenlaenge des gedrehten Quadrats, das den Zipfel bildet. */
 const ZIPFEL = 12;
 
-/** Seitenverhaeltnis der Bilddateien (618 x 560) - beide Fassungen sind gleich gross. */
-const VERHAELTNIS = 618 / 560;
+/**
+ * Seitenverhaeltnis - JE FIGUR aus der Datei gelesen, nicht fest verdrahtet.
+ *
+ * Stand hier bis zum 2026-09-27 als `618 / 560`, weil es nur die chinesische
+ * Figur gab. Mit acht Sprachen stimmt keine einzige Zahl mehr fuer alle: die
+ * russische ist fast quadratisch, die deutsche deutlich breiter. Eine feste
+ * Zahl haette jede zweite Figur gestaucht.
+ *
+ * Aus dem Bild statt aus einer Tabelle: die Masse stehen ohnehin in der
+ * Datei, und eine Tabelle daneben waere die naechste Stelle, die beim
+ * Austauschen einer Zeichnung vergessen wird.
+ */
+const VERHAELTNIS_VORGABE = 618 / 560;
+
+function verhaeltnisVon(quelle: ImageSourcePropType): number {
+  try {
+    const gelesen = Image.resolveAssetSource(quelle as never);
+    if (gelesen?.width && gelesen?.height) return gelesen.width / gelesen.height;
+  } catch {
+    // Kein statisches Bild (z.B. eine URL) - dann bleibt die Vorgabe.
+  }
+  return VERHAELTNIS_VORGABE;
+}
 
 /** Wie weit sie beim Atmen steigt, in Punkten. */
 const HUB = 7;
@@ -153,7 +235,7 @@ export function Sprachfigur({
   const hoehe = mitBlasen
     ? Math.max(FIGUR_MIN, kartenHoehe - 2 * (BLASEN_PLATZ + LUFT))
     : Math.round(kartenHoehe * ANTEIL);
-  const breite = Math.round(hoehe * VERHAELTNIS);
+  const breite = Math.round(hoehe * verhaeltnisVon(quelle));
 
   const heben = useRef(new Animated.Value(0)).current;
   const kippen = useRef(new Animated.Value(0)).current;
@@ -367,6 +449,11 @@ function Sprechblase({
   zipfel: 'oben' | 'unten';
   onPress?: () => void;
 }) {
+  // Flaeche, Rand und Schrift aus dem App-Thema statt fest (2026-09-27):
+  // eine weisse Blase auf dem dunklen Startscreen war der letzte helle
+  // Fleck, der den Schalter nicht mitbekommen hat.
+  const theme = getTheme(useAppState().darkMode);
+  const haut = { backgroundColor: theme.cardBg, borderColor: theme.border };
   // Die OBERE Blase muss am Geschenk-Knopf vorbei (44 breit, 12 vom Rand -
   // er belegt die rechten 56 Punkte der Karte). Mittig gesetzt heisst das
   // hoechstens rund zwei Drittel der Breite, sonst laeuft sie darunter
@@ -375,6 +462,7 @@ function Sprechblase({
     <View
       style={[
         styles.zipfel,
+        haut,
         zipfel === 'unten' ? styles.zipfelUnten : styles.zipfelOben,
       ]}
     />
@@ -387,8 +475,8 @@ function Sprechblase({
       style={({ pressed }) => [styles.blasenPlatz, pressed && styles.gedrueckt]}
     >
       {zipfel === 'oben' ? spitze : null}
-      <View style={styles.blase}>
-        <Text style={styles.blasenText} numberOfLines={2}>
+      <View style={[styles.blase, haut]}>
+        <Text style={[styles.blasenText, { color: theme.text }]} numberOfLines={2}>
           {text}
         </Text>
       </View>
@@ -422,10 +510,8 @@ const styles = StyleSheet.create({
   // zurueck.
   blasenPlatz: { alignItems: 'center', maxWidth: '92%' },
   blase: {
-    backgroundColor: '#FFFFFF',
     borderRadius: RADIUS.lg,
     borderWidth: 1,
-    borderColor: '#E6E7EE',
     paddingVertical: SPACING.sm,
     paddingHorizontal: SPACING.md,
   },
@@ -433,14 +519,11 @@ const styles = StyleSheet.create({
     ...schrift('800'),
     fontSize: FONT_SIZE.caption,
     lineHeight: LINE_HEIGHT.caption,
-    color: '#1F2430',
     textAlign: 'center',
   },
   zipfel: {
     width: ZIPFEL,
     height: ZIPFEL,
-    backgroundColor: '#FFFFFF',
-    borderColor: '#E6E7EE',
     transform: [{ rotate: '45deg' }],
   },
   // Der halbe Ueberlapp schiebt die beiden rahmenlosen Seiten unter die

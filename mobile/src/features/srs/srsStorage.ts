@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import type { Card } from 'ts-fsrs';
+import type { GespeicherteKarte } from './bilanz';
 
 // Lokaler Speicher fuer die FSRS-Karten-Zustaende.
 //
@@ -57,7 +57,7 @@ export function zerlegeKartenSchluessel(
   return { sprache: rest.slice(0, erster), namensraum: rest.slice(erster + 1, zweiter), id: rest.slice(zweiter + 1) };
 }
 
-function deserializeCard(raw: string): Card {
+function deserializeCard(raw: string): GespeicherteKarte {
   const parsed = JSON.parse(raw);
   return {
     ...parsed,
@@ -66,7 +66,7 @@ function deserializeCard(raw: string): Card {
   };
 }
 
-export async function loadCard(key: string): Promise<Card | undefined> {
+export async function loadCard(key: string): Promise<GespeicherteKarte | undefined> {
   const raw = await AsyncStorage.getItem(key);
   if (!raw) return undefined;
   try {
@@ -76,7 +76,7 @@ export async function loadCard(key: string): Promise<Card | undefined> {
   }
 }
 
-export async function saveCard(key: string, card: Card): Promise<void> {
+export async function saveCard(key: string, card: GespeicherteKarte): Promise<void> {
   await AsyncStorage.setItem(key, JSON.stringify(card));
 }
 
@@ -87,7 +87,7 @@ export async function saveCard(key: string, card: Card): Promise<void> {
  * ist der Unterschied zwischen einem Schreibvorgang und Hunderten deutlich
  * spuerbar, und ein Abbruch mittendrin hinterliesse einen halben Stand.
  */
-export async function saveCards(karten: Record<string, Card>): Promise<void> {
+export async function saveCards(karten: Record<string, GespeicherteKarte>): Promise<void> {
   const paare = Object.entries(karten).map(([k, c]) => [k, JSON.stringify(c)] as [string, string]);
   if (paare.length === 0) return;
   await AsyncStorage.multiSet(paare);
@@ -97,12 +97,12 @@ export async function saveCards(karten: Record<string, Card>): Promise<void> {
 // Faelligkeits-Filterung in SrsScreen/ExerciseScreen (source="srs").
 // AsyncStorage hat kein "getAll mit Prefix" - erst alle Keys holen, dann
 // filtern und per multiGet in einem Rutsch laden.
-export async function loadAllCards(): Promise<Record<string, Card>> {
+export async function loadAllCards(): Promise<Record<string, GespeicherteKarte>> {
   const allKeys = await AsyncStorage.getAllKeys();
   const srsKeys = allKeys.filter((k) => k.startsWith(STORAGE_KEY_PREFIX));
   if (srsKeys.length === 0) return {};
   const pairs = await AsyncStorage.multiGet(srsKeys);
-  const result: Record<string, Card> = {};
+  const result: Record<string, GespeicherteKarte> = {};
   for (const [key, raw] of pairs) {
     if (!raw) continue;
     try {

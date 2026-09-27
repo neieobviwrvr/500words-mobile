@@ -46,6 +46,36 @@ export const TRAINING_PRAEFIXE = {
 const ALLE_PRAEFIXE: string[] = Object.values(TRAINING_PRAEFIXE);
 
 /**
+ * Die zwei Schwellen der SATZ-Leiter (2026-09-27 hierher gezogen).
+ *
+ * Standen bis dahin als lokale Konstanten in `SentenceReviewScreen.tsx`. Der
+ * Grund fuers Verschieben ist ein zweiter Leser: die Uebersicht auf
+ * "Lektionen" nennt je Satz seine Stufe, und mit einer eigenen Kopie der
+ * Zahlen wuerde sie beim naechsten Feintuning etwas anderes anzeigen als die
+ * Uebung selbst tut.
+ *
+ * Die WORT-Leiter hat eigene Schwellen (3/3) und bleibt in
+ * `WordReviewScreen.tsx` - sie schluesselt ueber die Vokabel, nicht ueber die
+ * Satz-ID, und teilt deshalb keine Zahl mit dieser hier.
+ */
+export const SATZ_SCHWELLE = { stufe1: 1, stufe2: 3 } as const;
+
+/**
+ * Auf welcher Stufe steht ein Eintrag? Die Zaehler sind zwei getrennte
+ * Leitern: wer Stufe 1 voll hat, ist auf 2, wer auch Stufe 2 voll hat, auf 3.
+ */
+export function leiterStufe(
+  key: string,
+  stufe1: Record<string, number>,
+  stufe2: Record<string, number>,
+  schwelle: { stufe1: number; stufe2: number },
+): 1 | 2 | 3 {
+  if ((stufe1[key] ?? 0) < schwelle.stufe1) return 1;
+  if ((stufe2[key] ?? 0) < schwelle.stufe2) return 2;
+  return 3;
+}
+
+/**
  * Ein Zaehler samt Zeitpunkt seiner letzten Aenderung (2026-09-14).
  *
  * Gespeichert als `"2@1789012345678"`. Der Zeitpunkt ist fuer den Abgleich
